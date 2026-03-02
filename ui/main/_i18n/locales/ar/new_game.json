@@ -1,0 +1,101 @@
+{
+    "- Host": {
+        "message": "- المضيف"
+    },
+    "AI Commander": {
+        "message": "قائد ذكاء إصطناعي"
+    },
+    "Add AI": {
+        "message": "أضف AI"
+    },
+    "Add AI Commander": {
+        "message": "أضف قائد ذكاء إصطناعي"
+    },
+    "Add Slot": {
+        "message": "أضف مكان لاعب"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "فقد الإتصال بالجهاز الخادم"
+    },
+    "Chat": {
+        "message": "الدردشة"
+    },
+    "Dynamic Alliances": {
+        "message": "تحالف فعال"
+    },
+    "Empty": {
+        "message": "فارغ"
+    },
+    "Free For All": {
+        "message": "متوفر للجميع"
+    },
+    "Friends": {
+        "message": "أصدقاء"
+    },
+    "Game Lobby": {
+        "message": "غرفة اللعبة"
+    },
+    "Game Mode": {
+        "message": "نمط اللعبة"
+    },
+    "Global Spectator Chat": {
+        "message": "دردشة المشاهد العالمي"
+    },
+    "Join": {
+        "message": "إنضم"
+    },
+    "Kick": {
+        "message": "اطرد"
+    },
+    "Leave": {
+        "message": "غادر"
+    },
+    "Open to:": {
+        "message": "مفتوح لــ :"
+    },
+    "Player Slot": {
+        "message": "مكان للاعب"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "اللعاب يختارون مكان الهبوط"
+    },
+    "Private": {
+        "message": "خاص"
+    },
+    "Public": {
+        "message": "عام"
+    },
+    "Ready": {
+        "message": "جاهز"
+    },
+    "Remove": {
+        "message": "أزل"
+    },
+    "Returning to Main Menu": {
+        "message": "جاري العودة للقائمة الرئيسة"
+    },
+    "SHARE ARMY": {
+        "message": "شارك بالجيش"
+    },
+    "Spectate": {
+        "message": "راقب"
+    },
+    "Spectators": {
+        "message": "مراقبون"
+    },
+    "Start Game": {
+        "message": "إبدأ اللعبة"
+    },
+    "System": {
+        "message": "النظام"
+    },
+    "Tag:": {
+        "message": "العلامة:"
+    },
+    "Team Armies": {
+        "message": "جيوش الفريق"
+    },
+    "Title": {
+        "message": "العنوان"
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "Accept": {
+        "message": "Godta"
+    },
+    "Appear Offline": {
+        "message": "Vis som offline"
+    },
+    "Away": {
+        "message": "Borte"
+    },
+    "Block": {
+        "message": "Blokker"
+    },
+    "CANCEL": {
+        "message": "AVBRYT"
+    },
+    "CHANGE": {
+        "message": "ENDRE"
+    },
+    "Change Display Name": {
+        "message": "Endre synlig navn"
+    },
+    "Change your display name?": {
+        "message": "Endre ditt viste navn?"
+    },
+    "Do Not Disturb": {
+        "message": "Ikke forstyrr"
+    },
+    "Friends": {
+        "message": "Venner"
+    },
+    "Ignore": {
+        "message": "Ignorer"
+    },
+    "Invite to Chat": {
+        "message": "Inviter til chat"
+    },
+    "Invite to game": {
+        "message": "Inviter til kamp"
+    },
+    "Join Game": {
+        "message": "Delta"
+    },
+    "New Display Name:": {
+        "message": "Nytt navn som vises:"
+    },
+    "No pending notifications.": {
+        "message": "Ingen avventende varsler."
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Pending Invite": {
+        "message": "Ventende invitasjon"
+    },
+    "Recent": {
+        "message": "Nylige"
+    },
+    "Remove": {
+        "message": "Fjern"
+    },
+    "Search Results": {
+        "message": "Søkeresultater"
+    },
+    "Send Friend Request": {
+        "message": "Send venneforespørsel"
+    },
+    "Unblock": {
+        "message": "Åpne blokkering"
+    },
+    "Unfriend": {
+        "message": "Ikke venn"
+    },
+    "Users": {
+        "message": "Brukere"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "As Efficiency percentage lowers, all fabbers, factories and Commanders build slower": {
+        "message": "Wanneer het efficiëntiepercentage daalt, zullen alle fabbers, fabrieken en commandanten langzamer bouwen"
+    },
+    "Build Metal Storage and Energy Storage to stockpile more resources": {
+        "message": "Bouw metaalopslag en energieopslag om meer voorraden aan te kunnen leggen"
+    },
+    "Economy and Resources": {
+        "message": "Economie en voorraden"
+    },
+    "Energy and Metal resources get consumed while building": {
+        "message": "Energie- en metaalvoorraden worden opgebruikt tijdens het bouwen"
+    },
+    "If you’re consuming more than you are producing, build efficiency slows down": {
+        "message": "Als je meer gebruikt dan je produceert, gaat je bouwefficiëntie omlaag"
+    },
+    "PA Guide: Economy": {
+        "message": "PA-handleiding: Economie"
+    },
+    "Resources build up over time": {
+        "message": "Voorraden worden in de loop der tijd opgebouwd"
+    },
+    "To generate Energy, build Energy Plants": {
+        "message": "Bouw energiecentrales om energie op te wekken"
+    },
+    "To generate Metal, build Metal Extractors": {
+        "message": "Bouw metaalextractors om metaal te produceren"
+    }
+}

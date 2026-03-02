@@ -1,0 +1,20 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Updating...)"
+    },
+    "Game": {
+        "message": "Peli"
+    },
+    "Returning to Main Menu": {
+        "message": "Palataan päävalikkoon"
+    },
+    "Search": {
+        "message": "Etsi"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

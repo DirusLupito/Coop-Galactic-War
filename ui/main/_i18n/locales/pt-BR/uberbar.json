@@ -1,0 +1,80 @@
+{
+    "Accept": {
+        "message": "Aceitar"
+    },
+    "Appear Offline": {
+        "message": "Mostrar como desconectado"
+    },
+    "Away": {
+        "message": "Ausente"
+    },
+    "Block": {
+        "message": "Bloquear"
+    },
+    "CANCEL": {
+        "message": "CANCELAR"
+    },
+    "CHANGE": {
+        "message": "ALTERAR"
+    },
+    "Change Display Name": {
+        "message": "Alterar o nome a ser exibido"
+    },
+    "Change your display name?": {
+        "message": "Alterar o seu nome a ser exibido?"
+    },
+    "Do Not Disturb": {
+        "message": "Não Perturbe"
+    },
+    "Friends": {
+        "message": "Amigos"
+    },
+    "Ignore": {
+        "message": "Ignorar"
+    },
+    "Invite to Chat": {
+        "message": "Convidar para bater papo"
+    },
+    "Invite to game": {
+        "message": "Convidar para jogo."
+    },
+    "Join Game": {
+        "message": "Juntar-se ao Jogo"
+    },
+    "New Display Name:": {
+        "message": "Novo nome a ser exibido:"
+    },
+    "No pending notifications.": {
+        "message": "Não existem notificações pendentes."
+    },
+    "Offline": {
+        "message": "Desconectado"
+    },
+    "Online": {
+        "message": "Conectado"
+    },
+    "Pending Invite": {
+        "message": "Convite pendente"
+    },
+    "Recent": {
+        "message": "Recente"
+    },
+    "Remove": {
+        "message": "Remover"
+    },
+    "Search Results": {
+        "message": "Resultados da pesquisa"
+    },
+    "Send Friend Request": {
+        "message": "Enviar solicitação a um amigo"
+    },
+    "Unblock": {
+        "message": "Desbloquear"
+    },
+    "Unfriend": {
+        "message": "Remover dos amigos"
+    },
+    "Users": {
+        "message": "Usuários"
+    }
+}

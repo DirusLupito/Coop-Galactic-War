@@ -1,0 +1,44 @@
+{
+    "Armory": {
+        "message": "Arsenal"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Forkert brugernavn eller kodeord. Tjek din indtastning eller prøv igen."
+    },
+    "New Build Available:": {
+        "message": "Ny version tilgængelig:"
+    },
+    "Password": {
+        "message": "Kode"
+    },
+    "Please choose a default region.": {
+        "message": "Vælg en standard for dit område"
+    },
+    "Quit": {
+        "message": "AFSLUT"
+    },
+    "Settings": {
+        "message": "Indstillinger"
+    },
+    "Sign in": {
+        "message": "LOG IND"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Der er ingen regioner tilgængelige for denne version."
+    },
+    "Unable to Sign In": {
+        "message": "Kan ikke logge på"
+    },
+    "Username": {
+        "message": "Brugernavn"
+    },
+    "You are already assigned to a game.": {
+        "message": "Du er allerede i et spil."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Du kan ændre din region senere i indstillings menuen."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Du mangler en nyere klient for at spille. Steam brugere skal måske genstarte Steam for at få den nye klient."
+    }
+}

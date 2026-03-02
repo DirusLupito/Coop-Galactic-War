@@ -1,0 +1,560 @@
+﻿/* (C) COPYRIGHT 2016-2021 Planetary Annihilation Inc. All rights reserved. */
+
+html, body
+{
+    min-width: inherit;
+    min-height: inherit;
+}
+
+div.section_content_table
+{
+    min-width: inherit;
+}
+
+div.btn_back_small
+{
+    position: relative;
+}
+
+div.btn_back_small.busy
+{
+    position: relative;
+}
+
+#community-mods-busy
+{
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+}
+
+.title
+{
+    white-space: nowrap;
+}
+
+div.section_content div.col_1
+{
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 200px;
+    padding-right: 15px;
+}
+
+div.section_content div.col_2
+{
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 40%;
+    min-width: 575px;
+}
+
+div.section_content div.col_3
+{
+    width: auto;
+    height: 100%;
+    min-width: initial;
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+    margin-left: 10px;
+}
+
+div.section_controls
+{
+    overflow-y: visible;
+    padding: 0;
+}
+
+div.section_content
+{
+    height: calc( 100% - 160px );
+}
+
+div.tab-wrapper
+{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.tab-content
+{
+    height: calc(100% - 75px) !important;
+    width: 100%;
+}
+
+#tabs
+{
+   margin-bottom: 5px;
+   overflow: auto;
+}
+
+#tabs li
+{
+	border: 1px #585858 solid;
+	border-radius: 1px;
+	background: #282828;
+	color: #FFFFFF;
+    display: inline-block;
+    margin: 0;
+}
+
+#tabs li.selected a
+{
+    background-color: #007800;
+    color: white;
+    text-decoration: none;
+}
+
+#tabs li a
+{
+    padding: 10px;
+	display: block;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+@media (min-width: 1400px)
+{
+    #tabs li a
+    {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 1600px)
+{
+    #tabs li a
+    {
+        font-size: 12px;
+    }
+}
+
+label.mod-search-type
+{
+    margin-left: 5px;
+}
+
+input.mod-search-type
+{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+#merge-units-checkbox
+{
+    display: inline;
+    width: auto;
+    vertical-align: top;
+}
+
+#downloads
+{
+    margin-right: 20px;
+}
+
+#downloads-queue
+{
+    width: 100%;
+    overflow: auto;
+}
+
+div.one-download
+{
+    position: relative;
+}
+
+div.one-download-name
+{
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    padding: 4px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+div.one-download-progress
+{
+    background-color: #007800;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#mods, #units
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#mods-list-message, #units-list-message
+{
+    padding-top: 10px;
+    color: #0d0;
+}
+
+#mods-list, #units-list
+{
+    padding-top: 10px;
+}
+
+div.one-mod, div.one-unit
+{
+    display: flex;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid transparent;
+    color: #e6e6e6;
+    height: 40px;
+    overflow: hidden;
+}
+
+div.one-mod div, div.one-unit div
+{
+    line-height: 40px;
+    max-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+div.one-mod div span, div.one-unit div span
+{
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 40px;
+    max-height: 40px;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+}
+
+div.mod-status, div.unit-status
+{
+    width: 15px;
+}
+
+div.one-mod.enabled div.mod-status, div.one-unit.enabled div.unit-status
+{
+    background-color: #007800;
+}
+
+div.one-mod.disabled div.mod-status, div.one-unit.disabled div.unit-status
+{
+    background-color: #FF9900;
+}
+
+div.one-mod.noMods div.mod-status, div.one-unit.noMods div.unit-status
+{
+    background-color: #cccc00;
+}
+
+div.one-mod.ui-selected, div.one-unit.ui-selected
+{
+    color: #FFFFFF;
+    text-shadow: 0px 0px 10px #FFFFFF;
+    background: #1e7aa1;
+    border: 1px solid #00B3FF;
+    box-shadow: inset 0px 0px 10px #00B3FF;
+}
+
+div.mod-icon, div.unit-icon
+{
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+}
+
+div.mod-icon img, div.unit-icon img
+{
+    max-height: 40px;
+    max-width: 40px;
+}
+
+div.mod-author, div-unit-description
+{
+    text-align: left;
+    font-size: 12px;
+}
+
+div.mod-author span, div.unit-description span
+{
+}
+
+div.one-mod div.mod-author span
+{
+    white-space: normal;
+    line-height: 170%!important;
+}
+
+div.mod-context
+{
+    text-align: center;
+    max-height: 40px;
+    font-size: 12px;
+}
+
+#detail-pane-wrapper
+{
+    width: 100%;
+    height: calc( 100% - 70px );
+    overflow-y: auto;
+}
+
+div.detail-pane
+{
+    height: 100%;
+    width: 100%;
+    font-family: 'Sansation Regular';
+    font-size: 16px;
+    color: #fff;
+    padding: 8px 16px 8px 16px;
+    line-height: 160%;
+    -webkit-user-select: auto;
+}
+
+div.mod-detail-info, div.unit-detail-info
+{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+div.mod-detail-icon-wrapper, div.unit-detail-icon-wrapper
+{
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+div.mod-detail-info-wrapper, div.unit-detail-info-wrapper
+{
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+img.mod-detail-icon, img.unit-detail-icon
+{
+    max-width: 150px;
+    padding-right: 20px;
+}
+
+img.mod-detail-product-icon, img.unit-detail-product-icon
+{
+    float: right;
+    margin-left: 5px;
+}
+
+div.detail-pane h3.mod-detail-name, div.detail-pane h3.unit-detail-name
+{
+    margin-top: 2px;
+}
+
+div.mod-detail-by
+{
+    color: #00b3ff;
+}
+
+div.detail-pane.help h3
+{
+    color:  #0D0;
+    font-size: 20px;
+    text-shadow: none;
+}
+
+div.detail-pane.help p.warning
+{
+    background-color: #800;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    /* color:  #00b3ff; */
+}
+
+div.detail-pane h3
+{
+    font-family: 'Sansation Bold';
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 0px 0px 20px #00b3ff;
+    margin-top: 0;
+}
+
+div.detail-pane h4
+{
+    clear: both;
+    font-family: 'Sansation Bold';
+    font-size: 18px;
+    color: #ddd;
+    text-shadow: 0px 0px 20px #00b3ff;
+}
+
+div.detail-pane h5
+{
+    font-family: 'Sansation Bold';
+    font-size: 16px;
+}
+
+#mod-conflict, #mod-local
+{
+    clear: both;
+
+    padding: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+    background-color: #800;
+}
+
+div.mod-details
+{
+    color: #00b3ff;
+}
+
+div.mod-details span
+{
+    color: #ddd;
+}
+
+div.clear
+{
+    clear: both;
+}
+
+#mod-companions, #mod-dependencies, #mod-consumers
+{
+    margin-top: 20px;
+}
+
+#mod-companions-list, #mod-dependencies-list, #mod-consumers-list
+{
+    font-size: 14px;
+}
+
+#unit-group-buttons
+{
+    left: 0;
+    bottom: 10px;
+    width: 200px;
+    position: absolute;
+}
+
+#unit-group-buttons button
+{
+    margin-top: 10px;
+    min-width: 180px;
+}
+
+#unit-buttons, #mod-buttons
+{
+    left: 0;
+    bottom: 10px;
+    position: absolute;
+}
+
+#unit-buttons button, #mod-buttons button
+{
+    background-color: #007800;
+    border: 1px solid #0D0;
+    color: #eee;
+    min-width: 100px;
+    margin-top: 10px;
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+button:hover, #unit-group-buttons button:hover, #unit-buttons button:hover, #mod-buttons button:hover
+{
+    background-color: #008C00;
+    border: 1px solid #0F0;
+    color: #fff
+}
+
+button:disabled, #mod-buttons button:disabled
+{
+    color: #666;
+}
+
+button:disabled:hover, #mod-buttons button:disabled:hover
+{
+    border: inherit;
+    background: inherit;
+}
+
+#reload-file-system-mods-button
+{
+    font-size: 10px;
+}
+
+#conflicting-unit-server-mods
+{
+    background-color: #800;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#community-mods-disable-button
+{
+    float: right;
+    text-transform: uppercase;
+}
+
+#community-mods-disable-confirmation-dialog
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 2;
+}
+
+#community-mods-disable-confirmation-wrapper
+{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#community-mods-disable-confirmation-buttons button
+{
+    margin: 20px;
+}
+
+@font-face
+{
+    font-family: "Glyphicons Halflings";
+    src: url('coui://ui/main/shared/font/glyphicons-halflings-regular.ttf');
+}
+
+.community-mods-link-icon
+{
+    padding-right: 5px;
+    font-size: 12px;
+    font-family: "Glyphicons Halflings";
+    vertical-align: middle;
+}
+
+#mod-forum, #mod-github
+{
+    margin-bottom: 8px;
+}

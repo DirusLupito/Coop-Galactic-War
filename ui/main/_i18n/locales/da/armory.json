@@ -1,0 +1,74 @@
+{
+    "Account Name:": {
+        "message": "Brugernavn:"
+    },
+    "Add To Cart": {
+        "message": "Tilføj til Vognen"
+    },
+    "Armory": {
+        "message": "Arsenal"
+    },
+    "Badges": {
+        "message": "Mærker"
+    },
+    "CHECKOUT": {
+        "message": "KASSE"
+    },
+    "Cancel": {
+        "message": "Annullere"
+    },
+    "Cart": {
+        "message": "Vogn"
+    },
+    "Commanders": {
+        "message": "Kommandører"
+    },
+    "Confirmation code:": {
+        "message": "Bekræftningskode:"
+    },
+    "Credit applied:": {
+        "message": "Credit applied:"
+    },
+    "Designed in collaboration with": {
+        "message": "Designet i samarbejde med"
+    },
+    "Go to Main Menu": {
+        "message": "Gå til Hovedmenuen"
+    },
+    "Here's your receipt.": {
+        "message": "Her er din kvittering."
+    },
+    "Item": {
+        "message": "Genstand"
+    },
+    "Item is already in cart.": {
+        "message": "Genstanden er allerede i kurven."
+    },
+    "Price": {
+        "message": "Pris"
+    },
+    "REMOVE": {
+        "message": "Fjern"
+    },
+    "Redeem": {
+        "message": "Indløs"
+    },
+    "Return to Armory": {
+        "message": "Retuner til Arsenal"
+    },
+    "Thank you for your purchase.": {
+        "message": "Tak for dit køb."
+    },
+    "Total:": {
+        "message": "I alt:"
+    },
+    "Updating...": {
+        "message": "Opdaterer..."
+    },
+    "Your cart is empty.": {
+        "message": "Din vogn er tom."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "Dine købte genstande er nu registrerede til din konto og er tilgængelige i spillet."
+    }
+}

@@ -1,0 +1,419 @@
+{
+    "Activates the Tech to build artillery structures.": {
+        "message": "ينشط تقنية بناء الهياكل المدفعية."
+    },
+    "Additional Data Bank": {
+        "message": "بنك معلومات أضافي"
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "تضيف قائد فرعي يمكنه مساعدتك في المعارك."
+    },
+    "Adds a new slot for another technology.": {
+        "message": "يضيف فتحة جديدة لتقنية أخرى."
+    },
+    "Advanced Air Tech": {
+        "message": "التقنية الجوية المتقدمة"
+    },
+    "Advanced Bot Tech": {
+        "message": "تقنية الروبوت المتقدمة"
+    },
+    "Advanced Bot tech enables building of Advanced Bots and Advanced Bot Factories. Advanced Bot factories are built via advanced bot fabricators. Also grants the Basic Bot Factory and Basic Bot Fabricator.": {
+        "message": "تقنية الروبوتات المتقدمة تسمح بناء الروبوتات المتقدمة و مصانع الروبوتات المتقدمة.مصانع الروبوتات المتقدمة تبنى عبر الروبوتات المصنعة المتقدمة و تمكن أيضا من بناء مصانع الروبوتات الأساسية و مصنعاة  الروبوتات الأساسية."
+    },
+    "Advanced Defense Technology": {
+        "message": "تفنية الدفاع المتقدم"
+    },
+    "Advanced Naval Tech": {
+        "message": "التقنية البحرية المتقدمة"
+    },
+    "Advanced Naval Tech enables building of the Advanced Naval Factory and advanced naval units. Advanced Naval Factories are built via your Advanced Naval Fabricators.": {
+        "message": "التقنية البحرية المتقدمة تمكن من بناء المصانع البحرية المتقدمة و الوحدات البحرية المتقدمة. تبنى المصانع البحرية المتقدمة عبر المُصنعات البحرية المتقدمة."
+    },
+    "Advanced Orbital Tech": {
+        "message": "التقنية المدارية المتقدمة"
+    },
+    "Advanced Vehicle Tech": {
+        "message": "تقنية المركبات المتقدمة"
+    },
+    "Advanced air tech enables building of mobile air units and factories. Advanced air factories are built via any air fabricator. Also grants the Basic Air Factory and Basic Air Fabricator.": {
+        "message": "التقنية الجوية المتقدمة تمكن بناء الوحدات الجوية المتنقلة والمُصنعات. المصانع الجوية المتقدمة تبنى عبر أي من المُصنعات الجوية. وأيضا يمنح مصنع جوي أساسي و مُصنعة جوية أساسية. "
+    },
+    "Air Ammunition Tech": {
+        "message": "تقنية الذخيرة الجوية"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "تقنية الذخيرة الجوية تزيد الضرر لجميع الوحدات الجوية بنسبة %25"
+    },
+    "Air Armor Tech": {
+        "message": "تقنية الدروع الجوية"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "تقنية الدروع الجوية تزيد الصحة لجميع الوحدات الجوية بنسبة %50"
+    },
+    "Air Combat Tech": {
+        "message": "تقنية القتال الجوي"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "تقنية القتال الجوي تزيد سرعة جميع الوحدات الجوية بنسبة 50%و الصحة بنسبة 50%و الضرر بنسبة 25%"
+    },
+    "Air Commander": {
+        "message": "قائد الفرقة الجوية"
+    },
+    "Air Engine Tech": {
+        "message": "تقنية المحرك الجوي"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "تقنية المحرك الجوي تزيد سرعة جميع الوحدات الجوية بنسبة 25%"
+    },
+    "Air Fabrication Tech": {
+        "message": "تقنية التصنيع الجوي"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "تقنية التصنيع الجوي تقلل من تكلفة المعدن لبناء جميع الوحدات الجوية بنسبة 25%"
+    },
+    "Artillery Ammunition Tech": {
+        "message": "تقنية الذخيرة المدفعية"
+    },
+    "Artillery Ammunition Tech increases the damage of all artillery structures by 25% and reduces their energy usage by 90%. Requires technology to build artillery structures and units.": {
+        "message": "تقنية ذخيرة المدفعية تزيد ضرر جميع مباني المدفعية بنسبة 25% و تقلل استهلاك الطاقة بنسبة 90%. تتطلب تقنية لبناء مباني المدفعية و وحداتها."
+    },
+    "Artillery Commander": {
+        "message": "قائد المدفعية"
+    },
+    "Artillery Fabrication Tech": {
+        "message": "تقنية تصنيع المدفعية"
+    },
+    "Artillery Fabrication Tech reduces metal build costs of all artillery structures and mobile artillery units by 75%. Requires technology to build artillery structures and units.": {
+        "message": "تقنية تصنيع المدفعية تقلل التكلفة المعدنية لجميع الهياكل المدفعية و وحدات المدفعية المتنقلة بنسبة %75. يتطلب تقنية لبناء الهياكل المدفعية والوحدات."
+    },
+    "Artillery Tech": {
+        "message": "تقنية المدفعية"
+    },
+    "Assault Commander": {
+        "message": "قائد الأعتداء"
+    },
+    "Basic Air Tech": {
+        "message": "تقنية الجو الأساسية"
+    },
+    "Basic Bot Tech": {
+        "message": "تقنية الروبوت الأساسية"
+    },
+    "Basic Naval Tech": {
+        "message": "البحرية الاساسية للتكنولوجيا"
+    },
+    "Basic Orbital Tech": {
+        "message": "تقنية المدار الأساسية"
+    },
+    "Basic Vehicle Tech": {
+        "message": "تقنية المركبة الأساسية"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "تقنية المركبات الأساسية تمكن بناء المركبات ومصانع المركبات.مصانع المركبات الأساسية تبنى عبر القائد أو أي مصنع أساسي آخر."
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "تقنية الجو الأساسية تمكن بناء الوحدات الجوية المتنقلة والمصانع. المصانع الجوية الأساسية تبنى عبر القائد أو أي مصنع أساسي آخر."
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "تعزيز قائد الشبكات"
+    },
+    "Bot Ammunition Tech": {
+        "message": "تقنية ذخيرة الروبوت"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "تقنية ذخيرة الروبوت تزيد ضرر جميع الروبوتات بنسبة 25%"
+    },
+    "Bot Armor Tech": {
+        "message": "تقنية درع الروبوت"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "تقنية دروع الروبوت تزيد صحة كل الروبوتات بنسبة %50"
+    },
+    "Bot Combat Tech": {
+        "message": "تقنية القتال الروبوتي"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "تقنية قتال الروبوت تزيد سرعة جميع الروبوتات بنسبة 50% الصحة بنسبة 50% و الضرر بنسبة 25%"
+    },
+    "Bot Commander": {
+        "message": "قائد الروبوتات"
+    },
+    "Bot Engine Tech": {
+        "message": "تقنية محركات الروبوتات"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "تقنية محرك الروبوتات تزيد سرعة كل الروبوتات بنسبة 50%"
+    },
+    "Bot Fabrication Tech": {
+        "message": "تكنولوجيا تصنيع البوت"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "تقنية تصنيع الروبوت تقلل تكلفة البناء المعدنية لجميع الروبوتات بنسبة %25"
+    },
+    "Commander Ammunition Tech": {
+        "message": "تقنية ذيخيرة القائد"
+    },
+    "Commander Ammunition Tech increases damage of your commanders by 25%": {
+        "message": "تقنية ذخيرة القائد تزيد من ضرره بمقدار 25%"
+    },
+    "Commander Armor Tech": {
+        "message": "تقنية دروع القائد"
+    },
+    "Commander Armor Tech increases the health of your commanders by 100%.": {
+        "message": "تقنية درع القائد تزيد من صحته بمقدار 100%"
+    },
+    "Commander Combat Tech": {
+        "message": "تقنية القائد القتالية"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "التقنية القتالية للقائد تزيد من سرعته بمقدار 200%/, وتضاعف صحته و تزيد من ضرره بمقدار 25%"
+    },
+    "Commander Engine Tech": {
+        "message": "تقنية قائد المحرك"
+    },
+    "Commander Engine Tech increases the speed of your commanders by 100%.": {
+        "message": "تقنية محرك القائد تزيد من سرعته بمقدار 100%"
+    },
+    "Commander Invictus is rumored to have this long ranged loadout on the Kohr System.": {
+        "message": "يشاع ان القائد انفكتوس يملك تعبئة طويلة المدة في نظام كوهر."
+    },
+    "Complete Air Tech": {
+        "message": "التقنية الجوية الكاملة"
+    },
+    "Complete Bot Tech": {
+        "message": "التقنية الروبوتية الكاملة"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "تقنية الروبوت الكاملة تمكن بناء كل الروبوتات وكل مصانع الروبوتات. يتم بناء مصانع الروبوتات الأساسية عبر القائد الخاص بك أو أي مُصنع أساسي آخر. مصانع الروبوتات المتقدمة تبنى عبر الروبوتات المُصنعة الأساسية أو المتقدمة."
+    },
+    "Complete Energy Tech": {
+        "message": "تقنية الطاقة الكاملة"
+    },
+    "Complete Naval Tech": {
+        "message": "التقنية البحرية الكاملة"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "التقنية البحرية الكاملة تمكن بناء جميع القوات البحرية و المصانع البحرية. يتم بناء المصانع البحرية الأساسية عبر القائد الخاص بم أو أي مصنع اخر.المصانع البحرية المتقدمة تبنى عبر القوات البحرية المصنعة الأساسية أو المتقدمة."
+    },
+    "Complete Orbital Tech": {
+        "message": "تقنية المدار الكاملة"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "تقنية المدار الكاملة تسمح ببناء جميع الوحدات المدارية و جميع المصانع المدارية.يمكن بناء القاذفات المدارية من خلال أي مصنع أساسي.يمكن بناء المصانع المدارية من خلال مصنع مداري."
+    },
+    "Complete Vehicle Tech": {
+        "message": "تقنية المركبات الكاملة"
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "تقنية الجو الكامل تسمح ببناء جميع الوحدات الجوية المتحركة و جميع المصانع الجوية.يمكن بناء المصانع الجوية من خلال القائد أو أي مصنع أساسي.يمكن بناء المصانع المتقدمة من خلال مصنع مركبات أساسي أو متقدم."
+    },
+    "Default Commander": {
+        "message": "قائد افتراضي"
+    },
+    "Defeat First Seeker Osiris on Alenquer, then, and only then, you will find this high flying loadout.": {
+        "message": "اهزم أولاً الباحث أوزيريس في الينكار, بعد ذلك، وعندئذ فقط، سوف تجد تعبئة الطيران العالي."
+    },
+    "Defense Ammunition Tech": {
+        "message": "تقنية ذخيرة الدفاع"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "تقنية ذخيرة الدفاع تزيد نسبة ضرر كل الهياكل الدفاعية بنسبة %25"
+    },
+    "Defense Fabrication Tech": {
+        "message": "تقنية التصنيع الدفاعي"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "تقنية تصنيع الحماية تقلل من تكلفة البناء لجميع الهياكل الدفاعية بنسبة 50%"
+    },
+    "Economy Fabrication Tech": {
+        "message": "تقنية التصنيع الاقتصادي"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "تقنية التصنيع الإقتصادي تقلل من تكلفة المعدن لبناء مراكز توليد المعدن و الطاقة بنسبة 50%"
+    },
+    "Economy boost:": {
+        "message": "دفعة اقتصادية:"
+    },
+    "Efficiency Tech": {
+        "message": "تقنية الكفاءة"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "تقنية الكفائة تزيد من إنتاج الطاقة والمعدن بنسبة 25%.التقنية بسمح أيضا بمساحة تخزين أكبر للمعدن و الطاقة."
+    },
+    "Favorite color:": {
+        "message": "لون المفضل:"
+    },
+    "General Commander": {
+        "message": "قائد العام"
+    },
+    "Improved Commander Build Arm": {
+        "message": "تحسين يد البناء للقائد"
+    },
+    "Improved Commander Build Arms increase build speed of all Commanders' build arms by 50% and reduces energy usage by 50%.": {
+        "message": "تحسين ذراع البناء للقائد, تسريع قدرة القائد على البناء ب 50% و تقليل استخدام الطاقة ب 50%"
+    },
+    "Improved Energy Weapons": {
+        "message": "تحسن اسلحة الطاقة"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "تقنية تحسين أسلحة الطاقة تقلل تكلفة الطاقة لجميع الأسلحة المبنية على الطاقة بنسبة %75"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "يد البناء للمصنعات المحسنة"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "تحسين ذراع البناء للمصنع, تسريع قدرة المصنع على البناء ب 50% و تقليل استخدام الطاقة ب 50%"
+    },
+    "Improved Intelligence Tech": {
+        "message": "تقنية الإستخبارات المحسنة"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "تقنية التصنيع الإستخباراتي"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "تقنية تصنيع الاستخبارات تقلل من تكلفة البناء لجميع الهياكل الاستخبارية و الوحدات المتنقلة بنسبة %50"
+    },
+    "Name:": {
+        "message": "الإسم:"
+    },
+    "Naval Ammunition Tech": {
+        "message": "تقنية الذخيرة البحرية"
+    },
+    "Naval Armor Tech": {
+        "message": "تقنية الدروع البحرية"
+    },
+    "Naval Armor Tech increases health of all naval units by 50%": {
+        "message": "تقنية الدرع البحري تزيد صحة جميع الوحدات البحربة بنسبة 50%"
+    },
+    "Naval Combat Tech": {
+        "message": "التقنية البحرية القتالية"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "تقنية القتال البحرية تزيد سرعة كل الوحدات البحرية بنسبة %50، والصحة بنسبة %50, والضرر بنسبة %25"
+    },
+    "Naval Engine Tech": {
+        "message": "تقنية المحرك البحرية"
+    },
+    "Naval Engine Tech increases speed of all naval units by 50%": {
+        "message": "تقنية المحرك البحري تزيد سرعة كل الوحدات البحرية بـ%50"
+    },
+    "Naval Fabrication Tech": {
+        "message": "تقنية التصنيع البحري"
+    },
+    "Naval Fabrication Tech reduces metal build costs of all naval vessels by 25%": {
+        "message": "تقنية التصنيع البحري تقلل تكلفة المعدن لبناء جميع الوحدات البحرية بنسبة 25%"
+    },
+    "On Atlas, Inquisitor Nemicus has this fast moving loadout installed in his data banks.": {
+        "message": "في نظام أطلس، المحقق نيميكوس لديه تعبئة سريعة الحركة مثبتة في بنك البيانات لديه."
+    },
+    "Only Inquisitor Nemicus knows the data for this assault focused loadout. Find it on Patagonia.": {
+        "message": "فقط المحقق نيميوكس يعرف البيانات لهذه التعبئة المركزة للهجوم. اعثر عليه في باتاغونيا."
+    },
+    "Orbital Ammunition Tech": {
+        "message": "تقنية الذخيرة المدارية"
+    },
+    "Orbital Ammunition Tech increases damage of all orbital units by 25%": {
+        "message": "تقنية الذخيرة المدارية تزيد نسبة ضرر كل الوحدات المدارية بنسبة %25"
+    },
+    "Orbital Armor Tech": {
+        "message": "تقنية الدرع المداري"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "تقنية الدروع المدارية تزيد نسبة صحة كل الوحدات المدارية بنسبة %50"
+    },
+    "Orbital Combat Tech": {
+        "message": "تقنية القتال المدارية"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "تقنية القتال المداري تزيد سرعة جميع الوحدات المدارية بنسبة 50% الصحة بنسبة 50% و الضرر بنسبة 25%"
+    },
+    "Orbital Commander": {
+        "message": "قائد مداري"
+    },
+    "Orbital Engine Tech": {
+        "message": "تقنية المحرك المداري"
+    },
+    "Orbital Engine Tech increases speed of all orbital units by 50%": {
+        "message": "تقنية المحرك المداري تزيد سرعة كل الوحدات المدارية بنسبة %50"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "تقنية التصنيع المداري"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "تقنية تصنيع المدارات تقلل تكلفة المعدن لبناء جميع مركبات المدارت بنسبة 25%"
+    },
+    "Storage Commander": {
+        "message": "قائد التخزين"
+    },
+    "Storage Compression Tech": {
+        "message": "تقنية ضغط التخزين"
+    },
+    "Structure Armor Tech": {
+        "message": "تقنية دروع الهياكل"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "تقنية درع المبنا تزيد صحة جميع المباني بنسبة 50%"
+    },
+    "Structure Combat Tech": {
+        "message": "تقنية الهياكل القتالية"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "تقنية الهياكل القتالية تزيد صحة كل الهياكل بنسبة %50. والهياكل الدفاعية أيضاً تكتسب زيادة الضرر بنسبة %25."
+    },
+    "Sub Commander": {
+        "message": "قائد فرعي"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "تقنية تصنيع الأسلحة الخارقة"
+    },
+    "Super Weapon Tech": {
+        "message": "تقنية الأسلحة العظمى"
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "تعبئة القائد الجوي تحتوي على المصانع الجوية الأساسية."
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander\\'s fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "تعبئة القائد البيونكي التكبيري للإبطال يحتوي على بنك واحد للبيانات ولكن يزيد معدل نار القائد بنسبة %100 ويقلل استخدام الطاقة لمدفع الأوبر بنسبة %75، ويزيد من الصحة بنسبة %200 ويزيد السرعة بنسبة %650."
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "تعبئة قائد الروبوت تحتوي على مصانع الروبوت الأساسية."
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "تعبئة قائد المدار تحتوي على جميع الوحدات المدارية و المصانع."
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "تعبئة قائد المركبات تحتوي على مصانع المركبات الأساسية."
+    },
+    "Trades flame tanks for storage": {
+        "message": "تتاجر دبابات اللهب للتخزين"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "تقنية ذخيرة المركبات"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": " تقنية ذخيرة المركبات تزيد ضرر جميع المركبات بنسبة 25%"
+    },
+    "Vehicle Armor Tech": {
+        "message": "تقنية درع المركبات"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": " تقنية دروع المركبات تزيد صحة كل المركبات بنسبة %50"
+    },
+    "Vehicle Combat Tech": {
+        "message": "تقنية مركبات القتال"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "تقنية المركبة القتالية تزيد سرعة كل المركبات بنسبة %50, والصحة بنسبة %50, والضرر بنسبة %25"
+    },
+    "Vehicle Commander": {
+        "message": "قائد المركية"
+    },
+    "Vehicle Engine Tech": {
+        "message": "تقنية محرك المركبة"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "تقنية محرك المركبات تزيد سرعة كل المركبات بنسبة 50%"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "تقنية تصنيع المركبات"
+    }
+}

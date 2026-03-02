@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "TOEGANG TOT WERELDSIMULATIE GEWEIGERD"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "VERBINDEN MET WERELDSIMULATIE"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "RESTERENDE POGINGEN: __num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "VERBINDEN MET DE SERVER"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "VERBINDEN MET DE SERVER IS GEANNULEERD"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "VERBINDEN MET DE SERVER IS MISLUKT"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "VERBINDING MET DE SERVER VERLOREN"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "WERELDSIMULATIE AANMAKEN…"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "SERVERMODS DOWNLOADEN…"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "GEEN TOESTEMMING GEKREGEN"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "DEELNEMEN AAN HET SPEL IS MISLUKT"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "LADEN VAN HET SPEL IS MISLUKT"
+    },
+    "FAILED TO START GAME": {
+        "message": "STARTEN VAN HET SPEL IS MISLUKT"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "STARTEN VAN DE HERHALING IS MISLUKT"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "LOGIN GEACCEPTEERD"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "INLOGGEN BIJ DE SERVER IS GEWEIGERD"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "OPNIEUW KOPPELEN VAN SERVERMODS…"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "TOEGANG VRAGEN…"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu…"
+    },
+    "STARTING GAME": {
+        "message": "HET SPEL WORDT GESTART"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "GEEN TOEGANG TOT WERELDSIMULATIE"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "DE SERVERMODS WORDEN GEÜPLOAD. EEN OGENBLIK GEDULD…"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "DE WERELDSIMULATIE IS VERDWENEN"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "Je wilt een offline spel starten, maar je systeem voldoet niet aan de aanbevolen specificaties voor offline spellen. Dit kan je spelervaring negatief beïnvloeden."
+    }
+}

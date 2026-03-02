@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "RESTERENDE POGINGEN: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Actief"
+    },
+    "Active Client": {
+        "message": "Actieve client"
+    },
+    "Active Server": {
+        "message": "Actieve server"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Actieve mods worden tijdens het opstarten en na elk spel automatisch bijgewerkt."
+    },
+    "Active/Inactive": {
+        "message": "Actief/Inactief"
+    },
+    "Available": {
+        "message": "Beschikbaar"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Beschikbare mod levert conflicten op met bestandssysteemmod geïnstalleerd op:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "HERHALINGEN GROTE SPELLEN"
+    },
+    "Build:": {
+        "message": "Build:"
+    },
+    "By": {
+        "message": "Door"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "CONTROLEREN VAN LOKALE BESTANDEN MODS"
+    },
+    "COMMUNITY MODS": {
+        "message": "COMMUNITY-MODS"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "ONDERSTEUNING COMMUNITY"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "GEEN VERBINDING MET DE SERVER"
+    },
+    "Client Mods": {
+        "message": "Clientmods"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Clientmods worden alleen aan de clientzijde geladen en hebben geen invloed op andere spelers."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Clientmods kunnen geen (eigenschappen van) eenheden aanpassen in AI-schermutselingen of multiplayerspellen."
+    },
+    "Community Mods": {
+        "message": "Community-mods"
+    },
+    "Companion Client Mods": {
+        "message": "Begeleidende clientmods"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Begeleidende mods zijn speciale clientmods die automatisch tijdelijk worden geladen wanneer dit nodig is voor servermods."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "Eenheidsservermods met conflict:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "SERVERMODS DOWNLOADEN"
+    },
+    "Date:": {
+        "message": "Datum:"
+    },
+    "Dependencies": {
+        "message": "Afhankelijkheden"
+    },
+    "Details": {
+        "message": "Details"
+    },
+    "Disable": {
+        "message": "Uitschakelen"
+    },
+    "Disable Nukes": {
+        "message": "Kernwapens uitschakelen"
+    },
+    "Disable Ragnaroks": {
+        "message": "Ragnaroks uitschakelen"
+    },
+    "Disable Titans": {
+        "message": "Titans uitschakelen"
+    },
+    "Disabled": {
+        "message": "Uitgeschakeld"
+    },
+    "Downloads": {
+        "message": "Downloads"
+    },
+    "Enable": {
+        "message": "Inschakelen"
+    },
+    "Enable All": {
+        "message": "Alles inschakelen"
+    },
+    "Enabled Client": {
+        "message": "Ingeschakelde client"
+    },
+    "Enabled Server": {
+        "message": "Ingeschakelde server"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "Ingeschakelde clientmods voor alleen jouw client in spellen die je speelt of bekijkt"
+    },
+    "Enabled/Disabled": {
+        "message": "Ingeschakeld/Uitgeschakeld"
+    },
+    "Filter": {
+        "message": "Filter"
+    },
+    "Identifier:": {
+        "message": "Identifier:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "Als ze niet actief zijn, worden begeleidende mods automatisch gedownload/bijgewerkt en vervolgens geladen wanneer je deelneemt of een AI-schermutseling of multiplayerspel bekijkt en worden ze weer uitgeschakeld wanneer het spel is afgelopen."
+    },
+    "Install": {
+        "message": "Installeren"
+    },
+    "Installed": {
+        "message": "Geïnstalleerd"
+    },
+    "Installed Path:": {
+        "message": "Installatiepad:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Geïnstalleerde server- en clientmods in de downloadcache"
+    },
+    "Installing Mods": {
+        "message": "Mods installeren"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "Als je een mod installeert, wordt een gecomprimeerd zipbestand van de mod gedownload naar je lokale PA-downloadcache."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Grote servermods zoals Legion Expansion gebruiken begeleidende mods om de grootte van servermods en hun upload-/downloadtijd te verminderen."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "Als de bandbreedte van je internetverbinding beperkt is, kan het enige tijd duren voordat grote servermods zijn geüpload/gedownload."
+    },
+    "Local file system mod installed at:": {
+        "message": "Lokale bestandssysteem-mod geïnstalleerd op:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "MODS UITGESCHAKELD DOOR --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "CLIENTMODS LADEN"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "CLIENT-MODS IN OFFLINE-MODUS LADEN"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "NOODZAKELIJKE MODS ACTIVEREN... EVEN GEDULD A.U.B."
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "SERVERMODS ACTIVEREN"
+    },
+    "Merge (experimental)": {
+        "message": "Samenvoegen (experimenteel)"
+    },
+    "Mods available to install": {
+        "message": "Beschikbare mods"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "De meeste geïnstalleerde mods kunnen in de offline modus zonder een internetverbinding worden gebruikt (voor sommige mods is mogelijk wel een internetverbinding vereist)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Meerdere eenheidservermods met conflicten kunnen problemen veroorzaken zoals een ontbrekende bouwbalk en servercrashes."
+    },
+    "Name": {
+        "message": "Naam"
+    },
+    "No": {
+        "message": "Nee "
+    },
+    "No __description__ mods match your criteria": {
+        "message": "Er zijn geen __description__ mods die voldoen aan de criteria"
+    },
+    "No units match your criteria": {
+        "message": "Er zijn geen eenheden die voldoen aan je criteria"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "OFFICIËLE DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "OFFICIËLE HANDLEIDINGEN"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "OFFICIËLE ONDERSTEUNING"
+    },
+    "OK": {
+        "message": "OKÉ"
+    },
+    "Offline Mode": {
+        "message": "Offline modus"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Alleen servermods kunnen het rooster of de specificaties van eenheden in een AI-schermutseling- of multiplayerspel wijzigen en worden door elke client van de server gedownload om vals spelen te voorkomen."
+    },
+    "Priority": {
+        "message": "Prioriteit"
+    },
+    "Priority:": {
+        "message": "Prioriteit:"
+    },
+    "Privacy Policy": {
+        "message": "Privacybeleid"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ACTIEVE CLIENTMODS OPNIEUW LADEN"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "SERVERMODS HERSTELLEN"
+    },
+    "Recommended": {
+        "message": "Aanbevolen"
+    },
+    "Recommended mods": {
+        "message": "Aanbevolen mods"
+    },
+    "Reload File System Mods": {
+        "message": "Bestandssysteem-mods opnieuw laden"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "Season ends __date__": {
+        "message": "Seizoen eindigt op __date__"
+    },
+    "Server Mods": {
+        "message": "Servermods"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Servermods worden naar de server geüpload wanneer je een AI-schermutseling of multiplayerspel aanmaakt en vervolgens naar elke client voor alle spelers en toeschouwers gedownload en gekoppeld (geladen) wanneer zij zich bij je spel aansluiten."
+    },
+    "Size:": {
+        "message": "Grootte:"
+    },
+    "Sort": {
+        "message": "Sorteren"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "GEBRUIK COMMUNITYMODS EN SPEEL 1V1 ZONDER PROBLEMEN<br />Volg de wiki-instructies om PAMM en je bestandssysteemmods te verwijderen"
+    },
+    "Type": {
+        "message": "Type"
+    },
+    "UI Scenes": {
+        "message": "Interface-scènes"
+    },
+    "UNIT DATABASE": {
+        "message": "DATABASE EENHEDEN"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "ACTIEVE MODS BIJWERKEN"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ACTIVE CLIENTMODS BIJWERKEN EN OPNIEUW LADEN"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "BESCHIKBARE MODS BIJWERKEN"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "COMMUNITYMODBESTANDEN BIJWERKEN"
+    },
+    "Uninstall": {
+        "message": "Verwijderen"
+    },
+    "Unit Restrictions": {
+        "message": "Beperkingen van eenheden"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "Beperkingen van eenheden zijn niet van toepassing op Galactische Oorlog."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Eenheden beperken om specifieke eenheden voor alle spelers in AI-schermutselingen en multiplayerspellen die je aanmaakt, uit te schakelen"
+    },
+    "Units": {
+        "message": "Eenheden"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Eenheden kunnen worden uitgeschakeld voor alle spelers, inclusief de AI in AI-schermutselingen of multiplayerspellen die je aanmaakt."
+    },
+    "Units matching your criteria": {
+        "message": "Eenheden die voldoen aan je criteria"
+    },
+    "Units:": {
+        "message": "Eenheden:"
+    },
+    "Updated": {
+        "message": "Bijgewerkt"
+    },
+    "Used By": {
+        "message": "Gebruikt door"
+    },
+    "Version:": {
+        "message": "Versie:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "__description__ mods voldoen aan je criteria"
+    },
+    "about-community-mods": {
+        "message": "Community-mods zijn een dienst door <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> voor <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a> die het basisspel uitbreiden met verbeteringen, foutherstel en honderden community-mods zoals <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">Legion Expansion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Communitymods en Communitychat zijn diensten door <a class=\"link\" data-bind=\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\">palobby.com <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> voor <a class=\"link\" data-bind=\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\">Planetary Annihilation Inc <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> die het basisspel uitbreiden met verbeteringen, foutherstel en honderden community-mods zoals <a class=\"link\" data-bind=\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\">Legion Expansion <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>"
+    },
+    "privacy policy": {
+        "message": "privacybeleid"
+    },
+    "Companions": {
+        "message": "Metgezellen"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Community-uitbreiding AI voor Legion inschakelen"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ positie"
+    },
+    "Systems": {
+        "message": "Stelsels"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "\u0202\u4e01\u4e01\u0190\u039c\u1e54\u4e01\u1e60 \u211d\u0190\u039c\u0202\u03aa\u019d\u03aa\u019d\u01f4: __num_attempts_remaining__", 
+        "original": "ATTEMPTS REMAINING: __num_attempts_remaining__"
+    }, 
+    "CONNECTION TO SERVER FAILED": {
+        "message": "\u04aa\u0472\u019d\u019d\u0190\u04aa\u4e01\u03aa\u0472\u019d \u4e01\u0472 \u1e60\u0190\u211d\u0476\u0190\u211d \u03dc\u0202\u03aa\u20a4\u0190\u0189", 
+        "original": "CONNECTION TO SERVER FAILED"
+    }, 
+    "DOWNLOADING SERVER MODS": {
+        "message": "\u0189\u0472\u20a9\u019d\u20a4\u0472\u0202\u0189\u03aa\u019d\u01f4 \u1e60\u0190\u211d\u0476\u0190\u211d \u039c\u0472\u0189\u1e60", 
+        "original": "DOWNLOADING SERVER MODS"
+    }, 
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "\u039c\u0472\u1ee6\u019d\u4e01\u03aa\u019d\u01f4 \u04aa\u0472\u039c\u1e54\u0202\u019d\u03aa\u0472\u019d \u039c\u0472\u0189\u1e60... \u1e54\u20a4\u0190\u0202\u1e60\u0190 \u20a9\u0202\u03aa\u4e01", 
+        "original": "MOUNTING COMPANION MODS... PLEASE WAIT"
+    }, 
+    "MOUNTING SERVER MODS": {
+        "message": "\u039c\u0472\u1ee6\u019d\u4e01\u03aa\u019d\u01f4 \u1e60\u0190\u211d\u0476\u0190\u211d \u039c\u0472\u0189\u1e60", 
+        "original": "MOUNTING SERVER MODS"
+    }, 
+    "No": {
+        "message": "\u019d\u020f ", 
+        "original": "No "
+    }, 
+    "Returning to Main Menu": {
+        "message": "\u211d\u1f73\u04ad\u0574\u0213\u019e\u0457\u019e\u0260 \u04ad\u020f \u039c\u0203\u0457\u019e \u039c\u1f73\u019e\u0574", 
+        "original": "Returning to Main Menu"
+    }, 
+    "Season ends __date__": {
+        "message": "\u1e60\u1f73\u0203\u01a8\u020f\u019e \u1f73\u019e\u0257\u01a8 __date__", 
+        "original": "Season ends __date__"
+    }
+}

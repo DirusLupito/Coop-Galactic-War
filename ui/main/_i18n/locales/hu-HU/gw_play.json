@@ -1,0 +1,29 @@
+{
+    "Delete Tech": {
+        "message": "Technológia törlése"
+    },
+    "Explore": {
+        "message": "Átkutatás"
+    },
+    "Fight": {
+        "message": "Harc"
+    },
+    "Jump": {
+        "message": "Ugrás"
+    },
+    "Preparing for battle": {
+        "message": "Felkészülés a harcra"
+    },
+    "Scanning System": {
+        "message": "Naprendszer Szkennelése"
+    },
+    "Settings": {
+        "message": "Beállítások"
+    },
+    "TECHS": {
+        "message": "TECHNOLÓGIÁK"
+    },
+    "Unlock Commander": {
+        "message": "Parancsnok feloldása"
+    }
+}

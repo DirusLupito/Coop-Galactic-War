@@ -1,0 +1,17 @@
+{
+    "CANCEL": {
+        "message": "СКАСУВАТИ"
+    },
+    "Delete": {
+        "message": "ВИДАЛИТИ"
+    },
+    "SHOW PLANETS": {
+        "message": "ПОКАЗАТИ ПЛАНЕТИ"
+    },
+    "SHOW SYSTEMS": {
+        "message": "ПОКАЗАТИ СИСТЕМИ"
+    },
+    "System Designer": {
+        "message": "SYSTEM DESIGNER"
+    }
+}

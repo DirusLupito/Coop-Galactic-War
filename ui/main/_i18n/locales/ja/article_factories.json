@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "工場"
+    },
+    "PA Guide: Factories": {
+        "message": "PAガイド: 工場"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "工場を選択してビルドバーにアクセス"
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "ユニットを [style=text_callout]Control + 左クリック[/style] で、残りの建造キューの前に割り込みで、そのユニットを1体造らせることができる"
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "ビルドバー上のユニットを [style=text_callout]左クリック[/style] で建造開始"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "ユニットを [style=text_callout]右クリック[/style] か [style=text_callout]Shift + 右クリック[/style] でキュー上にあるユニットの数を減らす"
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "ビルドバー上のユニットを [style=text_callout]Shift + 左クリック[/style] で複数体を建造開始"
+    }
+}

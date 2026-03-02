@@ -1,0 +1,32 @@
+{
+    "Advanced Fabbers come from Advanced Factories and can build both basic and advanced structures": {
+        "message": "Zaawansowane fabbery produkowane są w zaawansowanych fabrykach. Stawiają struktury podstawowe i zaawansowane"
+    },
+    "Basic Fabbers build basic structures and Advanced Factories": {
+        "message": "Podstawowe fabbery budują podstawowe konstrukcje i zaawansowane fabryki"
+    },
+    "Fabbers are built by Vehicle, Air, Naval, Bot, and Orbital Factories": {
+        "message": "Fabbery są produkowane w fabrykach pojazdów, lotniczych, botów i orbitalnych"
+    },
+    "Fabrication Units": {
+        "message": "Jednostki fabrykatorów (fabbery)"
+    },
+    "Hold Shift + Left Click to queue up multiple build orders": {
+        "message": "Przytrzymaj Shift i klikaj LPM obiekty, by zlecać ich jednoczesną produkcję"
+    },
+    "Left Click units on Build Bar and select a space in the world to build": {
+        "message": "Dodawaj jednostki, klikając LPM pasek budowy, i wybierz miejsce, w którym chcesz je wybudować"
+    },
+    "PA Guide: Fabbers": {
+        "message": "Przewodnik PA: Fabbery"
+    },
+    "Select a Fabber to get access to Build Bar": {
+        "message": "Wybierz fabbera, by uzyskać dostęp do paska budowy"
+    },
+    "[style=text_callout]Control + left click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Wciśnij Control i kliknij LPM[/style] jednostkę, żeby fabryka wyprodukowała jeden jej egzemplarz, zanim powróci do budowy pozostałych w kolejce."
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]Klikaj PPM[/style] lub [style=text_callout]wciśnij Shift i klikaj PPM[/style] jednostki, by zmniejszyć ich liczbę w kolejce"
+    }
+}

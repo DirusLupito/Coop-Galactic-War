@@ -1,0 +1,632 @@
+{
+    "ALL": {
+        "message": "すべて"
+    },
+    "ALLIANCES": {
+        "message": "同盟軍"
+    },
+    "ALLY": {
+        "message": "同盟"
+    },
+    "ALT-FIRE": {
+        "message": "サブ攻撃"
+    },
+    "ANNIHILATE EVERYTHING": {
+        "message": "全てを殲滅せよ"
+    },
+    "ANNIHILATED": {
+        "message": "殲滅"
+    },
+    "APS:": {
+        "message": "APS:"
+    },
+    "ARMY": {
+        "message": "軍"
+    },
+    "ASSIST": {
+        "message": "支援"
+    },
+    "AT WILL": {
+        "message": "任意"
+    },
+    "ATTACK": {
+        "message": "攻撃"
+    },
+    "ATTACKING": {
+        "message": "攻撃中"
+    },
+    "Abandon War": {
+        "message": "戦争を放棄"
+    },
+    "Accept": {
+        "message": "OK"
+    },
+    "Activate planetary laser": {
+        "message": "星間レーザーを起動"
+    },
+    "Add": {
+        "message": "追加"
+    },
+    "Advanced": {
+        "message": "上級"
+    },
+    "Air": {
+        "message": "飛行"
+    },
+    "All catalysts online on __planet_name__! Click here to annihilate!": {
+        "message": "全カタリストが __planet_name__ 上にオンライン！ここをクリックで殲滅開始！"
+    },
+    "Alliance Request": {
+        "message": "同盟リクエスト"
+    },
+    "Alliance requested": {
+        "message": "同盟リクエストあり"
+    },
+    "Allied With:": {
+        "message": "同盟先:"
+    },
+    "Allied __unit_name__ lost.": {
+        "message": "同盟 __unit_name__ が敗北"
+    },
+    "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)": {
+        "message": "この星系間戦争を本当に放棄しますか？[br]（全ての進捗とテクノロジーは失われます）"
+    },
+    "Army": {
+        "message": "軍"
+    },
+    "Army Count": {
+        "message": "軍数"
+    },
+    "BUILD MODE": {
+        "message": "建造モード"
+    },
+    "Bot": {
+        "message": "ボット"
+    },
+    "Bounty Econ Multiplier": {
+        "message": "バウンティ経済活動ボーナス"
+    },
+    "Bounty kill rewarded. Econ multipliers enabled.": {
+        "message": "バウンティキル達成。経済活動ボーナス適用"
+    },
+    "Build Efficiency": {
+        "message": "建造効率"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "サーバーとの接続が消失"
+    },
+    "CONTINUOUS": {
+        "message": "連続"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Cancel Fire": {
+        "message": "発射キャンセル"
+    },
+    "Cancel Move": {
+        "message": "移動キャンセル"
+    },
+    "Capture main view": {
+        "message": "メインビューをキャプチャ"
+    },
+    "Change orbit": {
+        "message": "軌道を変更"
+    },
+    "Chrono Cam": {
+        "message": "クロノカメラ"
+    },
+    "Chrono Cam Replay": {
+        "message": "クロノカメラ リプレイ"
+    },
+    "Close": {
+        "message": "閉じる"
+    },
+    "Commander": {
+        "message": "コマンダー"
+    },
+    "Continue Tutorial": {
+        "message": "チュートリアルを続ける"
+    },
+    "Continue War": {
+        "message": "戦争を続ける"
+    },
+    "Count": {
+        "message": "カウント"
+    },
+    "DMG": {
+        "message": "DMG"
+    },
+    "DMG:": {
+        "message": "DMG:"
+    },
+    "DPS": {
+        "message": "DPS"
+    },
+    "DPS:": {
+        "message": "DPS:"
+    },
+    "DRAW": {
+        "message": "DRAW"
+    },
+    "Destroy selected units?": {
+        "message": "選択したユニットを破壊？"
+    },
+    "ECONOMY": {
+        "message": "経済活動"
+    },
+    "ENERGY ORDERS": {
+        "message": "エネルギーオーダー"
+    },
+    "Eff": {
+        "message": "効率"
+    },
+    "Efficiency": {
+        "message": "効率"
+    },
+    "Enemy Contact!": {
+        "message": "敵に遭遇！"
+    },
+    "Energy": {
+        "message": "エネルギー"
+    },
+    "Energy Efficiency": {
+        "message": "エネルギー効率"
+    },
+    "Energy Expended": {
+        "message": "消費エネルギー"
+    },
+    "Energy Produced": {
+        "message": "生産エネルギー"
+    },
+    "Energy Storage": {
+        "message": "エネルギー貯蔵庫"
+    },
+    "Exit Game?": {
+        "message": "ゲームを終了？"
+    },
+    "FABRICATING": {
+        "message": "ファブリケート中"
+    },
+    "FIRE ORDERS": {
+        "message": "攻撃オーダー"
+    },
+    "Fab": {
+        "message": "ファブ"
+    },
+    "Fabber": {
+        "message": "ファッバー"
+    },
+    "Fabricator Count": {
+        "message": "ファブリケーター数"
+    },
+    "Fac": {
+        "message": "工場"
+    },
+    "Factory": {
+        "message": "工場"
+    },
+    "Factory Count": {
+        "message": "工場数"
+    },
+    "Fire Weapon": {
+        "message": "火器"
+    },
+    "Follow alerts": {
+        "message": "アラートをフォロー"
+    },
+    "GAME PAUSED": {
+        "message": "GAME PAUSE"
+    },
+    "Game Menu": {
+        "message": "ゲームメニュー"
+    },
+    "Game Ready": {
+        "message": "Game Ready"
+    },
+    "Game Settings": {
+        "message": "ゲーム設定"
+    },
+    "Game Stats": {
+        "message": "ゲームデータ"
+    },
+    "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds.": {
+        "message": "ゲームはPAUSE中です。対戦相手が180秒以内に再接続/復帰しなかった場合、あなたの勝利となります"
+    },
+    "Game starts in": {
+        "message": "ゲーム開始まで"
+    },
+    "HEALTH": {
+        "message": "ライフ"
+    },
+    "HOLD": {
+        "message": "ホールド"
+    },
+    "HOLD POSITION": {
+        "message": "現在地に待機"
+    },
+    "Halleys active on __planet_name__! Click here to annihilate!": {
+        "message": "ハレーが __planet_name__ にて起動！ここをクリックで殲滅開始！"
+    },
+    "Hold the mouse wheel down and drag to pan.": {
+        "message": "マウスホイールを押したままドラッグでパン"
+    },
+    "Ignore": {
+        "message": "無視"
+    },
+    "LOAD": {
+        "message": "積載"
+    },
+    "MANEUVER": {
+        "message": "自動移動"
+    },
+    "MOVE": {
+        "message": "移動"
+    },
+    "MOVE ORDERS": {
+        "message": "移動オーダー"
+    },
+    "Metal": {
+        "message": "金属"
+    },
+    "Metal Efficiency": {
+        "message": "金属効率"
+    },
+    "Metal Expended": {
+        "message": "金属消費量"
+    },
+    "Metal Produced": {
+        "message": "金属生産量"
+    },
+    "Metal Storage": {
+        "message": "金属貯蔵庫"
+    },
+    "Metal Value": {
+        "message": "金属の価値"
+    },
+    "Mobile": {
+        "message": "機動"
+    },
+    "NORMAL": {
+        "message": "ノーマル"
+    },
+    "Names can only include letters [a-Z] and numbers [0-9].": {
+        "message": "名前にはアルファベット [a-Z] と数字 [0-9] のみ使用できます"
+    },
+    "Naval": {
+        "message": "海戦"
+    },
+    "Net Energy Income": {
+        "message": "エネルギー純収益"
+    },
+    "Net Metal Income": {
+        "message": "金属純収益"
+    },
+    "Next": {
+        "message": "次"
+    },
+    "No metal": {
+        "message": "金属なし"
+    },
+    "Not enough energy": {
+        "message": "エネルギー不足"
+    },
+    "Not enough metal": {
+        "message": "金属不足"
+    },
+    "Not enough metal or energy": {
+        "message": "金属/エネルギー不足"
+    },
+    "OFF": {
+        "message": "OFF"
+    },
+    "ON": {
+        "message": "ON"
+    },
+    "Opponent disconnected": {
+        "message": "相手の接続が断絶"
+    },
+    "Orbital": {
+        "message": "衛星軌道"
+    },
+    "PATROL": {
+        "message": "パトロール"
+    },
+    "PLAYER": {
+        "message": "プレイヤー"
+    },
+    "POV Camera": {
+        "message": "POVカメラ"
+    },
+    "PROD": {
+        "message": "生産"
+    },
+    "Pause Game": {
+        "message": "ゲームポーズ"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "緑色のゾーンのどれかからコマンダーを出現させる位置を選ぼう"
+    },
+    "Pin to opposite side": {
+        "message": "反対側に固定"
+    },
+    "Ping": {
+        "message": "Ping"
+    },
+    "Ping!": {
+        "message": "Ping!"
+    },
+    "Play From Here": {
+        "message": "ここから再プレイ"
+    },
+    "Player Guide": {
+        "message": "プレイヤーガイド"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "位置を指定。クリックで決定"
+    },
+    "Prev": {
+        "message": "前"
+    },
+    "Quit": {
+        "message": "終了"
+    },
+    "Quit Game": {
+        "message": "ゲームを終了"
+    },
+    "Quit to Main Menu": {
+        "message": "メインメニューに戻る"
+    },
+    "READY": {
+        "message": "READY"
+    },
+    "RECLAIM": {
+        "message": "奪還"
+    },
+    "RECLAIMING": {
+        "message": "取得中"
+    },
+    "REPAIR": {
+        "message": "修復"
+    },
+    "RETURN FIRE": {
+        "message": "応射"
+    },
+    "ROAM": {
+        "message": "ローム"
+    },
+    "Radius": {
+        "message": "半径"
+    },
+    "Request pending": {
+        "message": "リクエスト保留中"
+    },
+    "Resume": {
+        "message": "再開"
+    },
+    "Resume Game": {
+        "message": "ゲームを再開"
+    },
+    "Resume from here?": {
+        "message": "ここから再開？"
+    },
+    "Return to Galactic War": {
+        "message": "星系間戦争に戻る"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "Rewinding Time": {
+        "message": "時転を逆行中…"
+    },
+    "SELECTING": {
+        "message": "選択中…"
+    },
+    "SHARE ECO": {
+        "message": "資源をシェア"
+    },
+    "SHARED ENERGY:": {
+        "message": "エネルギー（シェア分）: "
+    },
+    "SHARED METAL:": {
+        "message": "金属（シェア分）: "
+    },
+    "SPECIAL-MOVE": {
+        "message": "スペシャルムーブ"
+    },
+    "START ANNIHILATION": {
+        "message": "殲滅 開始"
+    },
+    "STOP": {
+        "message": "停止"
+    },
+    "STORAGE": {
+        "message": "貯蔵庫"
+    },
+    "Save": {
+        "message": "セーブ"
+    },
+    "Save Game": {
+        "message": "ゲームをセーブ"
+    },
+    "Save complete": {
+        "message": "セーブ完了"
+    },
+    "Save game?": {
+        "message": "ゲームをセーブ？"
+    },
+    "Saving game": {
+        "message": "ゲームをセーブ中…"
+    },
+    "Scroll mouse wheel to zoom in and out.": {
+        "message": "マウスホイールをスクロールでズームイン/アウト"
+    },
+    "Second Camera PIP": {
+        "message": "セカンドカメラPIP"
+    },
+    "Select a new gravity well.": {
+        "message": "新規重力の井戸を選択"
+    },
+    "Select a planet to attack.": {
+        "message": "攻撃する惑星を選択"
+    },
+    "Select a planet to destroy.": {
+        "message": "破壊する惑星を選択"
+    },
+    "Select all advanced units in view": {
+        "message": "視界内の全上級ユニットを選択"
+    },
+    "Select all air units in view": {
+        "message": "視界内の全飛行ユニットを選択"
+    },
+    "Select all bot units in view": {
+        "message": "視界内の全ボットユニットを選択"
+    },
+    "Select all fabber units in view": {
+        "message": "視界内の全ファッバーユニットを選択"
+    },
+    "Select all naval units in view": {
+        "message": "視界内の全海戦ユニットを選択"
+    },
+    "Select all orbital units in view": {
+        "message": "視界内の全衛星軌道ユニットを選択"
+    },
+    "Select all vehicle units in view": {
+        "message": "視界内の全陸戦車両ユニットを選択"
+    },
+    "Select idle fabbers": {
+        "message": "待機状態のファッバーを選択"
+    },
+    "Select idle factories": {
+        "message": "待機状態の工場を選択"
+    },
+    "Send to Annihilate": {
+        "message": "進軍して殲滅"
+    },
+    "Set course for annihilation": {
+        "message": "殲滅への進路設定"
+    },
+    "Set target spot": {
+        "message": "目標スポットを設定"
+    },
+    "Sim Performance": {
+        "message": "シム パフォーマンス"
+    },
+    "Social Bar": {
+        "message": "ソーシャルバー"
+    },
+    "Surrender": {
+        "message": "降伏"
+    },
+    "Surrender Game?": {
+        "message": "ゲームを降伏？"
+    },
+    "Swap cameras": {
+        "message": "カメラ入れ替え"
+    },
+    "TRANSPORT": {
+        "message": "輸送"
+    },
+    "Then confirm destination to set course.": {
+        "message": "それから目的地を決定してコースを設定"
+    },
+    "This process can take a while.": {
+        "message": "このプロセスは時間がかかる場合があります"
+    },
+    "Toggle POV Camera": {
+        "message": "POVカメラの切替"
+    },
+    "UNLOAD": {
+        "message": "荷降"
+    },
+    "USE": {
+        "message": "使用"
+    },
+    "Unknown": {
+        "message": "不明"
+    },
+    "Vehicle": {
+        "message": "陸戦車両"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "ワールドシミュレーションを開始できません"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "他プレイヤーの出現場所選択を待っています"
+    },
+    "Yes": {
+        "message": "Yes"
+    },
+    "__metal_spots__ metal": {
+        "message": "金属スポット数: __metal_spots__"
+    },
+    "__num_idle_fabbers__ Idle": {
+        "message": "__num_idle_fabbers__ 体 待機"
+    },
+    "__num_idle_factories__ Idle": {
+        "message": "__num_idle_factories__ 体 待機"
+    },
+    "__unit_name__ arrived.": {
+        "message": "__unit_name__ が到着"
+    },
+    "__unit_name__ destroyed.": {
+        "message": "__unit_name__ が破壊された"
+    },
+    "__unit_name__ idle.": {
+        "message": "__unit_name__ は待機中"
+    },
+    "__unit_name__ launched!": {
+        "message": "__unit_name__ が起動！"
+    },
+    "__unit_name__ located.": {
+        "message": "__unit_name__ が設置"
+    },
+    "__unit_name__ lost.": {
+        "message": "__unit_name__ が敗北"
+    },
+    "__unit_name__ ready.": {
+        "message": "__unit_name__ 準備完了"
+    },
+    "__unit_name__ under attack.": {
+        "message": "__unit_name__ が攻撃を受けている"
+    },
+    "__victim_name__ has been annihilated.": {
+        "message": "__victim_name__ が殲滅された"
+    },
+    "__victim_name__ was annihilated by __killer_name__.": {
+        "message": "__victim_name__ が __killer_name__ の手で殲滅された"
+    },
+    "air": {
+        "message": "飛行"
+    },
+    "ammo": {
+        "message": "弾薬"
+    },
+    "army": {
+        "message": "軍"
+    },
+    "bot": {
+        "message": "ボット"
+    },
+    "combat": {
+        "message": "戦闘"
+    },
+    "factory": {
+        "message": "工場"
+    },
+    "orbital": {
+        "message": "衛星軌道"
+    },
+    "sea": {
+        "message": "海"
+    },
+    "utility": {
+        "message": "施設"
+    },
+    "vehicle": {
+        "message": "陸戦車両"
+    },
+    "Returning to Galactic War": {
+        "message": "星系間戦争に戻る"
+    }
+}

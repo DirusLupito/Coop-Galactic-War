@@ -1,0 +1,23 @@
+{
+    "Advanced Energy Plants generate 8x more energy": {
+        "message": "上級エネルギープラントは通常の8倍ものエネルギーを生成できる"
+    },
+    "Build Energy Plants to generate energy": {
+        "message": "エネルギープラントを建ててエネルギーを生成しよう"
+    },
+    "Energy Resource": {
+        "message": "エネルギー資源"
+    },
+    "Energy is required for building units, structures and some functionality": {
+        "message": "エネルギーは、ユニットや構造体その他を建造/構築するのに必要となる"
+    },
+    "PA Guide: Energy": {
+        "message": "PAガイド: エネルギー"
+    },
+    "Select Fabber, select [style=text_callout]Build Energy Plant Icon[/style].": {
+        "message": "ファッバーを選択してから [style=text_callout]エネルギープラント建造[/style] アイコンを選択する"
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build multiple Energy Plants.": {
+        "message": "ワールド上を[style=text_callout]左クリック + ドラッグ[/style]で複数のエネルギープラントを建造"
+    }
+}

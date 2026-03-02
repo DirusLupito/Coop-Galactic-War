@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "Принять"
+    },
+    "Back": {
+        "message": "Назад"
+    },
+    "Banned": {
+        "message": "Бан"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Decline": {
+        "message": "Отклонить"
+    },
+    "Enter Queue": {
+        "message": "Встать в очередь"
+    },
+    "Failed to Join": {
+        "message": "Не удалось присоединиться"
+    },
+    "Failed to connect to match making server.": {
+        "message": "Не удалось подключиться к серверу подбора противника."
+    },
+    "Failed to create game.": {
+        "message": "Не удалось создать игру."
+    },
+    "Match Making Error": {
+        "message": "Ошибка подбора противника"
+    },
+    "Match Making Penalty": {
+        "message": "Штраф при подборе противника"
+    },
+    "Matchmaking found a match!": {
+        "message": "Противник подобран!"
+    },
+    "Offline for Maintenance": {
+        "message": "Закрыто на техобслуживание"
+    },
+    "One or more other players declined or the match expired.": {
+        "message": "Один или несколько других игроков отклонили приглашение либо матч истек."
+    },
+    "Opponent": {
+        "message": "Противник"
+    },
+    "Reconnect": {
+        "message": "Подключиться заново"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращение в главное меню"
+    },
+    "Unable to connect to server.": {
+        "message": "Невозможно подключиться к серверу."
+    },
+    "We will be back soon!": {
+        "message": "Мы скоро вернемся!"
+    },
+    "You": {
+        "message": "Вы"
+    },
+    "You are already assigned to a match.": {
+        "message": "Противник был подобран, и вы уже закреплены за игрой."
+    },
+    "You have been penalized for abandoning a game, please try matchmaking again when your penalty has expired.": {
+        "message": "Вы были оштрафованы за то, что вы покинули игру. Вы сможете попробовать подыскать противника, когда истечет штрафное время."
+    },
+    "You have been penalized for abandoning a game.": {
+        "message": "Вы были оштрафованы за то, что вы покинули игру."
+    },
+    "You were penalized for abandoning, but your penalty has now expired.": {
+        "message": "Вы были оштрафованы за то, что вы покинули игру, однако ваше штрафное время уже истекло."
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Ваш аккаунт был заблокирован. Если вы считаете, что это произошло по ошибке, свяжитесь с нами по адресу: __email__"
+    },
+    "Your confirmation was not received in time.": {
+        "message": "Мы не получили вовремя от вас подтверждение."
+    },
+    "average queue time": {
+        "message": "среднее время в очереди"
+    },
+    "beginning match making": {
+        "message": "начало подбора противника"
+    },
+    "connecting to matchmaker": {
+        "message": "подключение к серверу подбора противника"
+    },
+    "finding game server": {
+        "message": "поиск игрового сервера"
+    },
+    "idle": {
+        "message": "свободный"
+    },
+    "leaving match making": {
+        "message": "завершаем подбор противника"
+    },
+    "leaving queue": {
+        "message": "покидаем очередь"
+    },
+    "match expires in:": {
+        "message": "истечет через:"
+    },
+    "match found": {
+        "message": "найден противник"
+    },
+    "penalty expires in:": {
+        "message": "штраф истечет через:"
+    },
+    "players in queue": {
+        "message": "игроков в очереди"
+    },
+    "queue time": {
+        "message": "время очереди"
+    },
+    "reconnect": {
+        "message": "подключиться заново"
+    },
+    "searching for opponent": {
+        "message": "поиск противника"
+    },
+    "searching for opponents": {
+        "message": "поиск противников"
+    }
+}

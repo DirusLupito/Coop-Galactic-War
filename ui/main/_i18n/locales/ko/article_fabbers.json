@@ -1,0 +1,32 @@
+{
+    "Advanced Fabbers come from Advanced Factories and can build both basic and advanced structures": {
+        "message": "상급 공장에서 생산되는 상급 건설 유닛은 기본 및 상급 건물을 모두 건설할 수 있습니다."
+    },
+    "Basic Fabbers build basic structures and Advanced Factories": {
+        "message": "기본 건설 유닛은 기본 건물과 상급 공장을 건설할 수 있습니다."
+    },
+    "Fabbers are built by Vehicle, Air, Naval, Bot, and Orbital Factories": {
+        "message": "건설 유닛은 차량 공장, 항공기 공장, 조선소, 로봇 및 궤도 공장에서 생산됩니다."
+    },
+    "Fabrication Units": {
+        "message": "건설 유닛"
+    },
+    "Hold Shift + Left Click to queue up multiple build orders": {
+        "message": "Shift + 왼쪽 클릭을 유지하고 있으면 다수의 건설 명령을 예약할 수 있습니다."
+    },
+    "Left Click units on Build Bar and select a space in the world to build": {
+        "message": "건설 바에서 유닛을 왼쪽 클릭하고 월드의 빈 공간을 선택해 건설하십시오."
+    },
+    "PA Guide: Fabbers": {
+        "message": "PA 가이드: 건설 유닛"
+    },
+    "Select a Fabber to get access to Build Bar": {
+        "message": "건설 유닛을 눌러 건설 바를 여십시오."
+    },
+    "[style=text_callout]Control + left click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "유닛을 [style=text_callout]Control + 왼쪽 클릭[/style]하면 공장에서 생산 대기 중인 다른 유닛에 앞서, 클릭된 해당 유닛 하나를 먼저 생산할 수 있습니다."
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "유닛을 [style=text_callout]오른쪽 클릭[/style] 또는 [style=text_callout]Shift + 오른쪽 클릭[/style]하면 생산 예약된 유닛 수를 줄일 수 있습니다."
+    }
+}

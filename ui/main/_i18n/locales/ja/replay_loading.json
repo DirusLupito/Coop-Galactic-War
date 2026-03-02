@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "サーバーMODをダウンロード中…"
+    },
+    "Loading Game": {
+        "message": "ゲームをロード中…"
+    },
+    "Loading Replay": {
+        "message": "リプレイをロード中…"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "Returning to menu": {
+        "message": "メニューに帰還中…"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "リプレイサーバーを開始中、お待ちください…"
+    },
+    "Unable to load replay": {
+        "message": "リプレイをロードできません"
+    },
+    "Unable to load save game": {
+        "message": "セーブデータをロードできません"
+    }
+}

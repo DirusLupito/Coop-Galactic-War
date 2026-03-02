@@ -1,0 +1,23 @@
+{
+    "Advanced Energy Plants generate 8x more energy": {
+        "message": "상급 발전소는 8배 더 많은 에너지를 생산합니다."
+    },
+    "Build Energy Plants to generate energy": {
+        "message": "발전소를 건설해 에너지를 생산하십시오."
+    },
+    "Energy Resource": {
+        "message": "에너지 자원"
+    },
+    "Energy is required for building units, structures and some functionality": {
+        "message": "에너지는 유닛 생산과 건물 건설, 그리고 일부 기능에 필요한 자원입니다."
+    },
+    "PA Guide: Energy": {
+        "message": "PA 가이드: 에너지"
+    },
+    "Select Fabber, select [style=text_callout]Build Energy Plant Icon[/style].": {
+        "message": "건설 유닛을 선택하고 [style=text_callout]발전소 건설 아이콘[/style]을 클릭하십시오."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build multiple Energy Plants.": {
+        "message": "[style=text_callout]왼쪽 클릭 + 드래그[/style]로 여러 개의 발전소를 건설할 수 있습니다."
+    }
+}

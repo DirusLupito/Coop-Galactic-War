@@ -1,0 +1,38 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "ZNIČENÍ DOKONČENO."
+    },
+    "Average": {
+        "message": "Průměr"
+    },
+    "Built": {
+        "message": "Postaveno"
+    },
+    "Destroyed": {
+        "message": "Zničeno"
+    },
+    "Draw": {
+        "message": "REMÍZA"
+    },
+    "Efficiency": {
+        "message": "Efektivita"
+    },
+    "The game has ended.": {
+        "message": "Hra skončila."
+    },
+    "Used": {
+        "message": "Použito"
+    },
+    "VICTORY IS YOURS": {
+        "message": "VÍTĚZSTVÍ JE TVOJE"
+    },
+    "Winner:": {
+        "message": "Vítěz:"
+    },
+    "Winners:": {
+        "message": "Vítězové:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "BYL JSI ZNIČEN"
+    }
+}

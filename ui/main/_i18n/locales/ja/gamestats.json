@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "建造効率"
+    },
+    "CLOSE": {
+        "message": "閉じる"
+    },
+    "Command Rate": {
+        "message": "行動頻度"
+    },
+    "Draw": {
+        "message": "Draw"
+    },
+    "Energy Demand": {
+        "message": "エネルギー需要"
+    },
+    "Energy Production": {
+        "message": "エネルギー生産"
+    },
+    "Energy Wasted": {
+        "message": "消費エネルギー"
+    },
+    "GAME SUMMARY": {
+        "message": "ゲームサマリー"
+    },
+    "In Progress": {
+        "message": "進行中"
+    },
+    "Metal Demand": {
+        "message": "金属需要"
+    },
+    "Metal Destruction Rate": {
+        "message": "金属破壊率"
+    },
+    "Metal Loss Rate": {
+        "message": "金属消失率"
+    },
+    "Metal Production": {
+        "message": "金属生産"
+    },
+    "Metal Wasted": {
+        "message": "消費金属"
+    },
+    "Retrieving Stats...": {
+        "message": "データを取得中…"
+    },
+    "Total Units": {
+        "message": "総ユニット数"
+    },
+    "Unit Build Rate": {
+        "message": "ユニット建造頻度"
+    },
+    "Unit Destruction Rate": {
+        "message": "ユニット破壊率"
+    },
+    "Unit Loss Rate": {
+        "message": "ユニット消失率"
+    },
+    "Units In Combat": {
+        "message": "戦闘中ユニット"
+    },
+    "Units: Fabricators": {
+        "message": "ユニット: ファブリケーター"
+    },
+    "Units: Factory": {
+        "message": "ユニット: 工場"
+    },
+    "Units: Mobile": {
+        "message": "ユニット: モバイル"
+    },
+    "Winner:": {
+        "message": "勝者:"
+    },
+    "Winners:": {
+        "message": "勝者:"
+    }
+}

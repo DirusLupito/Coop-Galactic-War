@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "重要热键"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "PA 指南：基本热键"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 选中指挥官"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 选中视野范围内所有同类单位"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 选中屏幕上所有空闲的建造兵"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 开/关能源指令"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 开/关生产"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 缩放至您所选中的单位"
+    }
+}

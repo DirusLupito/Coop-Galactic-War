@@ -1,0 +1,83 @@
+{
+    "ABSURD": {
+        "message": "ABSURDO"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Aniquile inimigos em sistemas reivindicados para coletar as suas tecnologias."
+    },
+    "Archived Wars": {
+        "message": "Guerras arquivadas"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Escolha um carregamento, a fim de conferir ao seu comandante diferentes configurações iniciais de tecnologia."
+    },
+    "Commander": {
+        "message": "Comandante"
+    },
+    "Difficulty:": {
+        "message": "Dificuldade:"
+    },
+    "EPIC": {
+        "message": "ÉPICO"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Explore sistemas não reivindicados para recuperar tecnologias."
+    },
+    "Faction": {
+        "message": "Facção"
+    },
+    "Go to War": {
+        "message": "Ir para a guerra"
+    },
+    "HARD": {
+        "message": "DIFÍCIL"
+    },
+    "How to Play": {
+        "message": "Como jogar"
+    },
+    "LARGE": {
+        "message": "GRANDE"
+    },
+    "LOCKED": {
+        "message": "TRANCADO"
+    },
+    "MEDIUM": {
+        "message": "MÉDIO"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Mova-se de um sistema estelar para outro e colete tecnologias. Empregue essas tecnologias para derrotar os líderes das facções inimigas e conquiste a galáxia!"
+    },
+    "Name": {
+        "message": "Nome"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Navegue pelo mapa da galáxia saltando de um sistema para outro."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Novos bancos de dados para armazenar tecnologias podem ser encontrados por meio da exploração de sistemas."
+    },
+    "RELENTLESS": {
+        "message": "IMPLACÁVEL"
+    },
+    "SMALL": {
+        "message": "PEQUENO"
+    },
+    "Seed Value": {
+        "message": "Valor gerativo"
+    },
+    "Size:": {
+        "message": "Tamanho:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Alguns sistemas têm carregamentos de comandante ocultos. Recupere-os para futuras guerras galácticas."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "É possível excluir tecnologias antigas, a fim de dar espaço a novas tecnologias para baixar. Tecnologias excluídas e rejeitadas desaparecem para os remanescentes da guerra galáctica."
+    },
+    "Tip:": {
+        "message": "Dica:"
+    },
+    "Tips": {
+        "message": "Dicas"
+    }
+}

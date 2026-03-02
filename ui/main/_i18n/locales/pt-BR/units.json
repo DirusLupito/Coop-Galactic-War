@@ -1,0 +1,110 @@
+{
+    "Advanced Bot Factory": {
+        "message": "Fábrica de Bots Avançada"
+    },
+    "Advanced Energy Plant": {
+        "message": "Usina Elétrica Avançada"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Nave Construtora Avançada"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Bot Construtor Avançado"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Nave Construtora Avançada"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Veículo Construtor Avançado"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Torre Laser Defensiva Avançada"
+    },
+    "Advanced Metal Extractor": {
+        "message": "Extrator de Metal Avançado"
+    },
+    "Advanced Naval Factory": {
+        "message": "Fábrica Naval Avançada"
+    },
+    "Advanced Radar": {
+        "message": "Radar Avançado"
+    },
+    "Advanced Radar Satellite": {
+        "message": "Satélite Radar Avançado"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Fábrica de Veículos Avançada"
+    },
+    "Air Factory": {
+        "message": "Fábrica Aérea"
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Lançador Anti-Ogiva"
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "Anti ogiva - Intercepta mísseis nucleares a caminho."
+    },
+    "Energy Plant": {
+        "message": "Usina Elétrica"
+    },
+    "Fabrication Bot": {
+        "message": "Bot Construtor"
+    },
+    "Fabrication Ship": {
+        "message": "Navio Construtor"
+    },
+    "Fabrication Vehicle": {
+        "message": "Veículo de Fabricação"
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 -Pacifier-Missile"
+    },
+    "Laser Defense Tower": {
+        "message": "Torre Laser Defensiva"
+    },
+    "Metal Extractor": {
+        "message": "Extrator de Metal"
+    },
+    "Metal Storage": {
+        "message": "Depósito de Metal"
+    },
+    "Naval Factory": {
+        "message": "Fábrica Naval"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Lançador de Mísseis Nucleares"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "Míssil nuclear - Projétil de longo alcance e de grande área de impacto."
+    },
+    "Orbital Factory": {
+        "message": "Fábrica Orbital"
+    },
+    "Orbital Launcher": {
+        "message": "Lançado Orbital"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "Radar Orbital de Longo Alcance"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 Plataforma Laser"
+    },
+    "Single Laser Defense Tower": {
+        "message": "Torre Defensiva de Laser Único"
+    },
+    "Vehicle Factory": {
+        "message": "Fábrica de Veículos"
+    },
+    "Wall": {
+        "message": "Muro"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "Tanque pesado - Veículo avançado de curto alcance, fortemente blindado, com radar móvel."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "Bloqueador de radar - Oculta unidades aliadas do radar inimigo em um raio ao redor de si mesmo. Consome energia."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Barcaça de apoio - Repara navios danificados e recupera automaticamente os destroços. Constrói e detecta minas. Não pode ajudar a construir unidades. Flutuador de água."
+    }
+}

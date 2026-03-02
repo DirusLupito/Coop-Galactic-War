@@ -1,0 +1,35 @@
+{
+    "CONNECTION TO SERVER LOST": {
+        "message": "與伺服器的連線中斷"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Chrono Cam": {
+        "message": "時空回放系統"
+    },
+    "Exit Game?": {
+        "message": "離開遊戲?"
+    },
+    "Game Settings": {
+        "message": "遊戲設定"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "在綠色區域中挑選你的指揮官出戰位置。"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "位置鎖定. 點擊確認."
+    },
+    "Quit": {
+        "message": "結束"
+    },
+    "Returning to Main Menu": {
+        "message": "正在返回主目錄"
+    },
+    "START ANNIHILATION": {
+        "message": "開始殲滅行動"
+    },
+    "Yes": {
+        "message": "是"
+    }
+}

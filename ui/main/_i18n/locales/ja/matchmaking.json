@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "OK"
+    },
+    "Back": {
+        "message": "戻る"
+    },
+    "Banned": {
+        "message": "BAN"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Decline": {
+        "message": "辞退"
+    },
+    "Enter Queue": {
+        "message": "待機列に入る"
+    },
+    "Failed to Join": {
+        "message": "参加できませんでした"
+    },
+    "Failed to connect to match making server.": {
+        "message": "マッチメイキングサーバーへの接続に失敗しました"
+    },
+    "Failed to create game.": {
+        "message": "ゲームを作成できませんでした"
+    },
+    "Match Making Error": {
+        "message": "マッチメイキング エラー"
+    },
+    "Match Making Penalty": {
+        "message": "マッチメイキング ペナルティ"
+    },
+    "Matchmaking found a match!": {
+        "message": "マッチメイキングがマッチを発見！"
+    },
+    "Offline for Maintenance": {
+        "message": "メンテナンスでオフライン"
+    },
+    "One or more other players declined or the match expired.": {
+        "message": "1人以上のプレイヤーが辞退したか、マッチの有効期限が切れました"
+    },
+    "Opponent": {
+        "message": "対戦相手"
+    },
+    "Reconnect": {
+        "message": "再接続"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "Unable to connect to server.": {
+        "message": "サーバーに接続できません"
+    },
+    "We will be back soon!": {
+        "message": "しばしお待ちください！"
+    },
+    "You": {
+        "message": "You"
+    },
+    "You are already assigned to a match.": {
+        "message": "このマッチに既にアサインしています"
+    },
+    "You have been penalized for abandoning a game, please try matchmaking again when your penalty has expired.": {
+        "message": "ゲームを放棄したことにより、あなたにはペナルティが課されました。ペナルティ期間終了後に再びマッチメイキングを試みてください"
+    },
+    "You have been penalized for abandoning a game.": {
+        "message": "ゲームを放棄したことにより、あなたにはペナルティが課されました"
+    },
+    "You were penalized for abandoning, but your penalty has now expired.": {
+        "message": "あなたにはゲーム放棄のペナルティが課されていましたが、たった今ペナルティ期間が終わりました"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "お使いのアカウントはBAN処置になっています。これが間違いであるとお考えの場合は、お手数ですが以下に問い合わせください: __email__"
+    },
+    "Your confirmation was not received in time.": {
+        "message": "確認/決定が制限時間に間に合いませんでした"
+    },
+    "average queue time": {
+        "message": "平均待機時間"
+    },
+    "beginning match making": {
+        "message": "マッチメイキングを開始…"
+    },
+    "connecting to matchmaker": {
+        "message": "マッチメイカーに接続中…"
+    },
+    "finding game server": {
+        "message": "ゲームサーバーを検索中…"
+    },
+    "idle": {
+        "message": "待機"
+    },
+    "leaving match making": {
+        "message": "マッチメイキングを離脱中…"
+    },
+    "leaving queue": {
+        "message": "待機列から離れる"
+    },
+    "match expires in:": {
+        "message": "マッチ期限切れまで: "
+    },
+    "match found": {
+        "message": "マッチを発見しました"
+    },
+    "penalty expires in:": {
+        "message": "ペナルティ期間終了まで:"
+    },
+    "players in queue": {
+        "message": "待機列内のプレイヤー人数"
+    },
+    "queue time": {
+        "message": "待機時間"
+    },
+    "reconnect": {
+        "message": "再接続"
+    },
+    "searching for opponent": {
+        "message": "対戦相手を検索中…"
+    },
+    "searching for opponents": {
+        "message": "対戦相手を検索中…"
+    }
+}

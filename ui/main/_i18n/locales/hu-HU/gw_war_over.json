@@ -1,0 +1,23 @@
+{
+    "Annihilated": {
+        "message": "Megsemmisítve"
+    },
+    "Close": {
+        "message": "Bezárás"
+    },
+    "Discards": {
+        "message": "Eldobások"
+    },
+    "Final Tech": {
+        "message": "Legutolsó Technológia"
+    },
+    "Turns:": {
+        "message": "Körök:"
+    },
+    "Victory": {
+        "message": "Győzelem"
+    },
+    "Wins:": {
+        "message": "Győzelmek:"
+    }
+}

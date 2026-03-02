@@ -1,0 +1,137 @@
+{
+    "ABSURD": {
+        "message": "荒謬"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "在你擁有的星系殲滅敵人以收集他們的科技。"
+    },
+    "Archived Wars": {
+        "message": "歷史戰役"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "選擇一個配備來改變你的指揮官初始科技配置"
+    },
+    "Commander": {
+        "message": "指揮官"
+    },
+    "Difficulty:": {
+        "message": "難易度："
+    },
+    "EASY": {
+        "message": "簡單"
+    },
+    "EPIC": {
+        "message": "史詩"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "探索未被占據的星系以回收科技。"
+    },
+    "Faction": {
+        "message": "派系"
+    },
+    "Galactic War": {
+        "message": "銀河戰爭"
+    },
+    "Game name": {
+        "message": "遊戲名稱"
+    },
+    "Go to War": {
+        "message": "開戰"
+    },
+    "HARD": {
+        "message": "困難"
+    },
+    "Hardcore": {
+        "message": "專家模式"
+    },
+    "How To Play": {
+        "message": "遊戲說明"
+    },
+    "How to Play": {
+        "message": "遊戲說明"
+    },
+    "LARGE": {
+        "message": "大"
+    },
+    "LOCKED": {
+        "message": "未解鎖"
+    },
+    "Loadout": {
+        "message": "配備"
+    },
+    "MEDIUM": {
+        "message": "中級"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "往來不同的星系以收集科技。使用這些科技擊敗敵軍派系領袖，征服全銀河！"
+    },
+    "NORMAL": {
+        "message": "普通"
+    },
+    "Name": {
+        "message": "名稱"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "在星系之間跳躍來導覽銀河系星圖。"
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "探索星系時可發現可用來儲存科技的新資料儲存庫。"
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "永久死亡。你的指揮官被殲滅後無法重來。"
+    },
+    "RELENTLESS": {
+        "message": "兇殘"
+    },
+    "Random number for generating new galaxy": {
+        "message": "用於生成新銀河系的隨機數字"
+    },
+    "SMALL": {
+        "message": "小"
+    },
+    "Saved Games": {
+        "message": "儲存的遊戲"
+    },
+    "Seed Value": {
+        "message": "種子值"
+    },
+    "Setup": {
+        "message": "設定"
+    },
+    "Size:": {
+        "message": "大小："
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "有些指揮官只懂戰爭，有些指揮官則是想找尋自己的身世。指揮官之間動機與信念的衝突，讓銀河系陷入了數個世紀的戰亂。"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "某些星系隱藏著指揮官配備。回收他們以用於未來的銀河戰爭。"
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "你可刪除科技來釋出空間以供下載新的科技。被刪除或放棄的科技在該次銀河戰爭中不會再次出現。"
+    },
+    "The Commanders": {
+        "message": "指揮官"
+    },
+    "The Progenitors": {
+        "message": "祖先"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "指揮官已沉睡了數百萬年，醒過來時銀河系已幾乎沒有文明的痕跡。這些古老的戰爭機器現在仍在遵從他們過去所收到的唯一指令，在銀河系四處征戰。"
+    },
+    "Tip:": {
+        "message": "提示："
+    },
+    "Tips": {
+        "message": "提示"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "War - __date__": {
+        "message": "戰爭 - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "唯一知道的是，銀河系原本有一個龐大的帝國，但在戰爭之中遭到摧毀。指揮官把他們稱為祖先。許多指揮官相信自己的身世跟這個古老的帝國有關。"
+    }
+}

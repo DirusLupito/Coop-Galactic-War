@@ -1,0 +1,143 @@
+{
+    "Advanced Air Factory": {
+        "message": "Fejlett Repülőgyár"
+    },
+    "Advanced Bot Factory": {
+        "message": "Fejlett Robotgyár"
+    },
+    "Advanced Energy Plant": {
+        "message": "Fejlett Energia Gyártó"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Fejlett Gyártórepülő"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Fejlett Gyártórobot"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Fejlett Gyártóhajó"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Fejlett Gyártójármű"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Fejlett Lézeres Védelmi Torony"
+    },
+    "Advanced Metal Extractor": {
+        "message": "Fejlett Fémtermelő"
+    },
+    "Advanced Naval Factory": {
+        "message": "Fejlett Hajógyár"
+    },
+    "Advanced Radar": {
+        "message": "Fejlett Radar"
+    },
+    "Advanced Radar Satellite": {
+        "message": "Fejlett Radar Műhold"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "Fejlett Torpedókilövő"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Fejlett Járműgyár"
+    },
+    "Air Factory": {
+        "message": "Repülőgyár"
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Anti-Atom Kilövő"
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "Anti-atom - Megsemmisíti a közeledő nukleáris rakétákat."
+    },
+    "Bot Factory": {
+        "message": "Robotgyár"
+    },
+    "Energy Plant": {
+        "message": "Energia Gyártó"
+    },
+    "Energy Storage": {
+        "message": "Energia Tároló"
+    },
+    "Fabrication Aircraft": {
+        "message": "Gyártórepülő"
+    },
+    "Fabrication Bot": {
+        "message": "Gyártórobot"
+    },
+    "Fabrication Ship": {
+        "message": "Gyártóhajó"
+    },
+    "Fabrication Vehicle": {
+        "message": "Gyártójármű"
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 -Békéltető- Rakéta"
+    },
+    "Land Mine": {
+        "message": "Taposóakna"
+    },
+    "Laser Defense Tower": {
+        "message": "Lézeres Védelmi Torony"
+    },
+    "Metal Extractor": {
+        "message": "Fémtermelő"
+    },
+    "Metal Storage": {
+        "message": "Fém Tároló"
+    },
+    "Naval Factory": {
+        "message": "Hajógyár"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Nukleáris Rakétavető"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "Nukleáris rakéta - Hosszútávú, nagy térsebzésű lövedék"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "Bolygóközeli Gyártórobot"
+    },
+    "Orbital Factory": {
+        "message": "Bolygóközeli Gyár"
+    },
+    "Orbital Launcher": {
+        "message": "Bolygóközeli Egység Kilövő"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "Bolygóközeli és Mélyűr Radar"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 Lézer Platform"
+    },
+    "Single Laser Defense Tower": {
+        "message": "Egycsövű Lézeres Védelmi Torony"
+    },
+    "Solar Array": {
+        "message": "Szolár Panel"
+    },
+    "Teleporter": {
+        "message": "Teleportkapu"
+    },
+    "Torpedo Launcher": {
+        "message": "Torpedókilövő"
+    },
+    "Unit Cannon": {
+        "message": "Egységágyú"
+    },
+    "Vehicle Factory": {
+        "message": "Járműgyár"
+    },
+    "Wall": {
+        "message": "Fal"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "Nehéz tank - Fejlett, rövid hatótávolságú, erősen páncélozott jármű mobil radarral."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "Radarzavaró - Elrejti a szövetséges egységeket az ellenséges radarok elől egy sugarú körben. Fogyaszt energiát."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Támogató uszály - Javítja a sérült hajókat és automatikusan visszaszerzi a roncsokat. Aknákat épít és észlel. Nem tud segíteni az egységek építésében. Vízi lebegő."
+    }
+}

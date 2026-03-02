@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "Absurd"
+    },
+    "Absurd Testing": {
+        "message": "Testing (Absurd)"
+    },
+    "Easy": {
+        "message": "Gemakkelijk"
+    },
+    "Hard": {
+        "message": "Moeilijk"
+    },
+    "Idle": {
+        "message": "Doet niets"
+    },
+    "Normal": {
+        "message": "Normaal"
+    },
+    "Relentless": {
+        "message": "Wreed"
+    }
+}

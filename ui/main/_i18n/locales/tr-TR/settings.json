@@ -1,0 +1,17 @@
+{
+    "OFF": {
+        "message": "KAPALI"
+    },
+    "ON": {
+        "message": "AÇIK"
+    },
+    "SERVER": {
+        "message": "SUNUCU"
+    },
+    "Save": {
+        "message": "Kaydet"
+    },
+    "Settings": {
+        "message": "AYARLAR"
+    }
+}

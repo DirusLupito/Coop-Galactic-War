@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "Potyczka z SI"
+    },
+    "Cancel": {
+        "message": "Anuluj"
+    },
+    "Delete": {
+        "message": "Usuń"
+    },
+    "Galactic War": {
+        "message": "Wojna galaktyczna"
+    },
+    "Game": {
+        "message": "Gra"
+    },
+    "Last Saved": {
+        "message": "Ostatni zapis"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Resume Game": {
+        "message": "Wznów grę"
+    },
+    "Saved Games": {
+        "message": "Zapisane gry"
+    },
+    "Switch to": {
+        "message": "Przełącz na "
+    },
+    "Type": {
+        "message": "Rodzaj"
+    },
+    "mode?": {
+        "message": "Tryb?"
+    }
+}

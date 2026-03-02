@@ -1,0 +1,26 @@
+{
+    "Delete Tech": {
+        "message": "Slett teknologi"
+    },
+    "Explore": {
+        "message": "Utforsk"
+    },
+    "Fight": {
+        "message": "Kjemp"
+    },
+    "Jump": {
+        "message": "Flytt hit"
+    },
+    "Preparing for battle": {
+        "message": "Klargjør for kamp"
+    },
+    "Scanning System": {
+        "message": "Skanner systemet"
+    },
+    "Settings": {
+        "message": "Innstillinger"
+    },
+    "Unlock Commander": {
+        "message": "Lås opp kommandør"
+    }
+}

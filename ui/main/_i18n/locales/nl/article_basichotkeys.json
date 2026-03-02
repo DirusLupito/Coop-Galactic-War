@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "Belangrijke sneltoetsen"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "PA-handleiding: Belangrijke sneltoetsen"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Commandant selecteren"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Selecteer alle momenteel geselecteerde en zichtbare eenheden"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Selecteer niet-werkende fabbers in beeld"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Schakel tussen energie-opdrachten"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Productie wisselen"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Zoom naar geselecteerde eenheid"
+    }
+}

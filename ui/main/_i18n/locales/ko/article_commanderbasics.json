@@ -1,0 +1,17 @@
+{
+    "Commander Basics": {
+        "message": "지휘관 기본 사항"
+    },
+    "Commander starts with energy and metal resources": {
+        "message": "지휘관은 에너지와 금속 자원을 가지고 시작합니다."
+    },
+    "Keep your Commander alive or the match is over": {
+        "message": "지휘관을 적에게 잃으면 게임에 지게 됩니다."
+    },
+    "PA Guide: Commander Basics": {
+        "message": "PA 가이드: 지휘관 기본 사항"
+    },
+    "Select a landing zone near metal spots": {
+        "message": "금속 매장지 근처의 착륙 지점을 선택하십시오."
+    }
+}

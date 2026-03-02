@@ -1,0 +1,104 @@
+{
+    "AI Battle": {
+        "message": "معركة الذكاء الإصطناعي"
+    },
+    "Any": {
+        "message": "أي"
+    },
+    "Can Join": {
+        "message": "يمكن الإنضمام"
+    },
+    "Can Play": {
+        "message": "يمكن اللعب"
+    },
+    "Can Spectate": {
+        "message": "يمكن المشاهدة"
+    },
+    "Casual": {
+        "message": "عابر"
+    },
+    "Competitive": {
+        "message": "منافسة"
+    },
+    "Create Game": {
+        "message": "ابدأ لعبة جديدة"
+    },
+    "Free For All": {
+        "message": "متوفر للجميع"
+    },
+    "Game": {
+        "message": "لعبة"
+    },
+    "Game State": {
+        "message": "حالة اللعبة"
+    },
+    "In Lobby": {
+        "message": "في الردهة"
+    },
+    "In Progress": {
+        "message": "قيد الإنجاز"
+    },
+    "Join Game": {
+        "message": "الانضمام إلى لعبة"
+    },
+    "Locked Game": {
+        "message": "(لعبة مغلقة)"
+    },
+    "Mod": {
+        "message": "تعديل"
+    },
+    "Mode": {
+        "message": "وضع"
+    },
+    "Mods": {
+        "message": "تعاديل"
+    },
+    "Multiplayer": {
+        "message": "متعدد اللاعبين"
+    },
+    "No max": {
+        "message": "لا يوجد حد أقصى"
+    },
+    "No min": {
+        "message": "لا دقيقة"
+    },
+    "Number of Planets": {
+        "message": "عدد الكواكب"
+    },
+    "Number of Players": {
+        "message": "عدد الاعبين"
+    },
+    "Password": {
+        "message": "كلمة المرور"
+    },
+    "Planets": {
+        "message": "كواكب"
+    },
+    "Players": {
+        "message": "الاعبون"
+    },
+    "Region": {
+        "message": "منطقة"
+    },
+    "Slots": {
+        "message": "أماكن لاعبين"
+    },
+    "Spectate": {
+        "message": "راقب"
+    },
+    "Spectators": {
+        "message": "مراقبون"
+    },
+    "Status": {
+        "message": "الحالة"
+    },
+    "Tag": {
+        "message": "العلامة"
+    },
+    "Team Armies": {
+        "message": "جيوش الفريق"
+    },
+    "Testing": {
+        "message": "يتم الإختبار"
+    }
+}

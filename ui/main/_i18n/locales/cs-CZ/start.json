@@ -1,0 +1,83 @@
+{
+    "AI Skirmish": {
+        "message": "AI Šarvátka"
+    },
+    "Armory": {
+        "message": "Zbrojnice"
+    },
+    "Connecting to PA": {
+        "message": "Připojuji se k PA"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Velitelé Kosmické Edice"
+    },
+    "Extra special thanks to our:": {
+        "message": "Extra speciální poděkování naším:"
+    },
+    "Founding Commanders": {
+        "message": "Zakládající Velitelé"
+    },
+    "Galactic War": {
+        "message": "Galaktická válka"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Nesprávné uživatelské jméno nebo heslo. Prosím zkontroluj správnost a zkus to znovu."
+    },
+    "Multiplayer": {
+        "message": "Více hráčů"
+    },
+    "New Build Available:": {
+        "message": "Nové dostupné budovy."
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Nic z tohoto by nebylo možné bez vaší štědrosti a my děkujeme, že jste na sebe vzali to riziko a věřili naší vizi."
+    },
+    "Password": {
+        "message": "Heslo"
+    },
+    "Please choose a default region.": {
+        "message": "Zvol prosím výchozí oblast."
+    },
+    "Quit": {
+        "message": "Konec"
+    },
+    "Replays": {
+        "message": "Záznamy"
+    },
+    "Settings": {
+        "message": "Nastavení"
+    },
+    "Sign in": {
+        "message": "Přihlásit se"
+    },
+    "Single Player": {
+        "message": "Jeden hráč"
+    },
+    "System Designer": {
+        "message": "Návrhář Systémů"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Pro tuto verzi nejsou dostupné žádné oblasti."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Těm, kteří podpořili naší Kickstarterovou kampaň, chceme poděkovat za veškerou podporu."
+    },
+    "Unable to Sign In": {
+        "message": "Nemožno se přihlásit"
+    },
+    "Username": {
+        "message": "Uživatelské jméno"
+    },
+    "Version:": {
+        "message": "Verze:"
+    },
+    "You are already assigned to a game.": {
+        "message": "Už jste již přiřazen ke hře."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Oblast může být později změněna v Nastavení."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Potřebuješ novou verzi klienta ke hraní. Steam uživatelé budou nejspíš muset Steam restartovat pro novou klientskou verzi."
+    }
+}

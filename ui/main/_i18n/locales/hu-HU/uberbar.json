@@ -1,0 +1,77 @@
+{
+    "Accept": {
+        "message": "Elfogad"
+    },
+    "Appear Offline": {
+        "message": "Megjelenítés Offline-ként"
+    },
+    "Away": {
+        "message": "Távol van"
+    },
+    "Block": {
+        "message": "Blokkol"
+    },
+    "CANCEL": {
+        "message": "MÉGSE"
+    },
+    "CHANGE": {
+        "message": "VÁLTOZTAT"
+    },
+    "Change Display Name": {
+        "message": "Megjelenített Név Megváltoztatása"
+    },
+    "Change your display name?": {
+        "message": "Megváltoztatnád a megjelenített neved?"
+    },
+    "Do Not Disturb": {
+        "message": "Ne Zavarj"
+    },
+    "Friends": {
+        "message": "Barátok"
+    },
+    "Ignore": {
+        "message": "Figyelmen kívül hagy"
+    },
+    "Invite to Chat": {
+        "message": "Meghívás Csevegésbe"
+    },
+    "Invite to game": {
+        "message": "Meghívás játékba"
+    },
+    "Join Game": {
+        "message": "Csatlakozás a játékhoz"
+    },
+    "New Display Name:": {
+        "message": "Új Megjelenített Név:"
+    },
+    "No pending notifications.": {
+        "message": "Nincs függőben lévő értesítés"
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Pending Invite": {
+        "message": "Függőben lévő meghívás"
+    },
+    "Recent": {
+        "message": "Legutóbbi"
+    },
+    "Remove": {
+        "message": "Eltávolítás"
+    },
+    "Search Results": {
+        "message": "Keresési Eredmények"
+    },
+    "Send Friend Request": {
+        "message": "Barátkérelem Küldése"
+    },
+    "Unblock": {
+        "message": "Feloldás"
+    },
+    "Unfriend": {
+        "message": "Barátság megszüntetése"
+    },
+    "Users": {
+        "message": "Felhasználók"
+    }
+}

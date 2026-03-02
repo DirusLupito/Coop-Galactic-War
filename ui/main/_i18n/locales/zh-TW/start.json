@@ -1,0 +1,491 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "#__position__ __league__排名"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "1v1 排名賽"
+    },
+    "ABANDON": {
+        "message": "放棄"
+    },
+    "AI Skirmish": {
+        "message": "AI遭遇戰"
+    },
+    "Account created successfully.": {
+        "message": "已成功建立帳戶。"
+    },
+    "Activate": {
+        "message": "啟用"
+    },
+    "Activation Key": {
+        "message": "啟用金鑰"
+    },
+    "An activation key is required to play online.": {
+        "message": "線上遊戲需要啟用金鑰。"
+    },
+    "Armory": {
+        "message": "軍械廠"
+    },
+    "Art": {
+        "message": "美術"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "感謝你的持續支持，你已獲得免費的新TITANS擴充包！"
+    },
+    "Audio": {
+        "message": "音訊"
+    },
+    "Audio Engine:": {
+        "message": "音訊引擎："
+    },
+    "Battle Everyone.": {
+        "message": "與所有人戰鬥。"
+    },
+    "Before you jump in...": {
+        "message": "在你加入之前……"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Close": {
+        "message": "關閉"
+    },
+    "Community Videos": {
+        "message": "社群影片"
+    },
+    "Confirm Password": {
+        "message": "確認密碼"
+    },
+    "Connecting to PA": {
+        "message": "正在連線至 PA"
+    },
+    "Continue Tutorial": {
+        "message": "繼續教學"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "宇宙版指揮官"
+    },
+    "Create Account": {
+        "message": "建立帳戶"
+    },
+    "Create an account to play online.": {
+        "message": "建立帳戶以在線上玩遊戲。"
+    },
+    "Credits": {
+        "message": "製作團隊"
+    },
+    "Custom": {
+        "message": "自訂"
+    },
+    "Design": {
+        "message": "設計"
+    },
+    "Dismiss": {
+        "message": "解散"
+    },
+    "EXIT": {
+        "message": "退出"
+    },
+    "Email": {
+        "message": "電子郵件"
+    },
+    "Email already in use.": {
+        "message": "電子郵件已使用。"
+    },
+    "Email is invalid": {
+        "message": "電子郵件無效"
+    },
+    "Enable Offline Play": {
+        "message": "啟用離線進行遊戲"
+    },
+    "Engineering": {
+        "message": "工程"
+    },
+    "Engineers": {
+        "message": "工程師"
+    },
+    "Extra special thanks to our:": {
+        "message": "特別感謝我們的："
+    },
+    "Founding Commanders": {
+        "message": "創始指揮官"
+    },
+    "Galactic War": {
+        "message": "銀河戰爭"
+    },
+    "Gameplay Disabled": {
+        "message": "遊戲已停用"
+    },
+    "Gameplay Unavailable": {
+        "message": "遊戲無法使用"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "如果你啟用離線進行遊戲而忽略此建議，則可能會體驗到降差的遊戲效能。"
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "如果你想玩 Classic PA，建議你執行 TITANS，並在遊戲設定中變更你的「現用擴充」。"
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "__inactive_days__ 天無活動"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "使用者名稱或密碼錯誤。請檢查你的輸入並重試。"
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "工作階段票證無效，請重新登入。"
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "看來你上次進行遊戲時《Planetary Annihilation》當掉了。此當機可能是由於安裝的顯示卡驅動程式中存在問題。"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "你似乎已關閉 Steam Overlay，如果沒有它，我們將無法開始你的購買。"
+    },
+    "LATER": {
+        "message": "稍後"
+    },
+    "Last match played": {
+        "message": "上一場比賽"
+    },
+    "Latest News": {
+        "message": "最新消息"
+    },
+    "Leaderboards": {
+        "message": "排行榜"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "了解基本資訊、命令一部泰坦、粉碎一顆行星。"
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "看起來你已經有一個進行中的教學。"
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "看來你執行的是 Steam 檔案庫中的 Classic PA，而非 TITANS。"
+    },
+    "Minimize": {
+        "message": "最小化"
+    },
+    "More Info": {
+        "message": "更多資訊"
+    },
+    "Multiplayer": {
+        "message": "多人遊戲"
+    },
+    "Music Composed by": {
+        "message": "作曲者"
+    },
+    "New Build Available:": {
+        "message": "新的可用組建版本："
+    },
+    "No thanks. I got this.": {
+        "message": "不用，謝謝，知道了。"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "沒有你的慷慨支持，這一切都是不可能實現，我們感謝你把握此機會並相信我們的願景。"
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "西北管絃樂團"
+    },
+    "Not right now": {
+        "message": "現在不要"
+    },
+    "OK": {
+        "message": "確定"
+    },
+    "OKAY": {
+        "message": "確定"
+    },
+    "Official Discord": {
+        "message": "官方 Discord"
+    },
+    "Official Guides": {
+        "message": "官方指南"
+    },
+    "Official Support": {
+        "message": "官方支援"
+    },
+    "Offline Play Disabled": {
+        "message": "已停用離線進行遊戲"
+    },
+    "Offline Play Unavailable": {
+        "message": "離線進行遊戲無法使用"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "通常這類型的當機可以透過確認你擁有來自__vendor_name__的最新顯示卡驅動程式而解決，而且我們[strong]強烈建議[/strong]你訪問其驅動程式網站以下載並安裝最新版本。"
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "哎呀！我們無法在你的帳戶中找到該遊戲。如果你是 Steam 使用者，請重新啟動 Steam 並重試。如果問題仍然存在，請來信 __email__ 與我們連絡"
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "哎呀！你的帳戶似乎處於無效狀態。如果你是Steam使用者，請重新啟動Steam並重試。如果問題仍然存在，請透過__email__與我們連絡"
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "開啟__vendor_name__的驅動程式網站"
+    },
+    "Password": {
+        "message": "密碼"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "密碼必須介於 6 到 20 個字元之間。"
+    },
+    "Passwords do not match.": {
+        "message": "密碼不符合。"
+    },
+    "Play Tutorial": {
+        "message": "進行遊戲教學"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "線上玩配對、排行榜以及專用伺服器。"
+    },
+    "Player Guide": {
+        "message": "玩家指南"
+    },
+    "Please choose a default region.": {
+        "message": "請選取一個預設區域。"
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "請享用所有新單位、新世界以及殲滅一切的新方式！"
+    },
+    "Please enter an activation key.": {
+        "message": "請輸入啟用金鑰。"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "請退出遊戲，在 Steam 檔案庫中找到它，按一下滑鼠右鍵，選擇「屬性」，並請務必勾選「遊戲中啟用 Steam Overlay」。之後，開始遊戲並再次嘗試。"
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "請登入以在 PA 伺服器上玩遊戲，或到[strong]設定[/strong]，手動將本機伺服器設定為[strong]開啟[/strong]。"
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "請稍後再試一次。如果此錯誤仍然存在，請連絡支援人員並查看論壇。"
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "偵測到可能的顯示卡驅動程式當機問題"
+    },
+    "Production": {
+        "message": "生產"
+    },
+    "Production Babies": {
+        "message": "跟遊戲一起出生的寶貝們"
+    },
+    "QA": {
+        "message": "品質保證"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "離開並安裝 TITANS"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "離開並啟動 TITANS"
+    },
+    "Quit": {
+        "message": "離開"
+    },
+    "RECONNECT": {
+        "message": "重新連線"
+    },
+    "Reconnect": {
+        "message": "重新連線"
+    },
+    "Replays": {
+        "message": "遊戲重播"
+    },
+    "Restart From Beginning": {
+        "message": "從頭重新開始"
+    },
+    "Resume last saved:": {
+        "message": "恢復上次的儲存："
+    },
+    "Saved Games": {
+        "message": "儲存的遊戲"
+    },
+    "Season ends __date__": {
+        "message": "賽季結束 __date__"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Sign In": {
+        "message": "登入"
+    },
+    "Sign in": {
+        "message": "登入"
+    },
+    "Sign in with your PA account": {
+        "message": "使用 PA 帳戶登入"
+    },
+    "Single Player": {
+        "message": "單人遊戲"
+    },
+    "Soundtrack Credits": {
+        "message": "原聲帶製作群"
+    },
+    "Steam Overlay Disabled": {
+        "message": "已停用 Steam Overlay"
+    },
+    "Streams": {
+        "message": "串流直播"
+    },
+    "System Designer": {
+        "message": "系統設計"
+    },
+    "The TITANS have arrived.": {
+        "message": "TITANS 來了。"
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "輸入的代碼已轉換為 Steam 金鑰。"
+    },
+    "The entered code has already been used.": {
+        "message": "輸入的代碼已使用。"
+    },
+    "The entered code was invalid.": {
+        "message": "輸入的代碼無效。"
+    },
+    "The game will require an internet connection to play.": {
+        "message": "遊戲將需要網際網路連線才能進行遊戲。"
+    },
+    "The leaderboard is currently empty.": {
+        "message": "排行榜目前空白。"
+    },
+    "There are no regions available for this build version.": {
+        "message": "沒有此組建版本可用的區域。"
+    },
+    "There are no streams currently.": {
+        "message": "目前無串流。"
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "Steam 出了問題。請重新啟動 Steam 並重試，或者來信 __email__ 與我們連絡"
+    },
+    "They're here for you.": {
+        "message": "他們在此為你服務。"
+    },
+    "This account already owns this title.": {
+        "message": "此帳戶已擁有此遊戲。"
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "不該發生此狀況。請來信 __email__ 與我們連絡"
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "贊助我們 Kickstarter 活動的各位，我們感謝你的支持。"
+    },
+    "Top Ranked Players": {
+        "message": "名列前矛的玩家"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "試玩 TITANS 教學"
+    },
+    "Tutorial": {
+        "message": "教學"
+    },
+    "Twitch": {
+        "message": "Twitch"
+    },
+    "UI Library:": {
+        "message": "UI檔案庫："
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "無法登入"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "無法連結你的 Steam 帳戶（使用中電子郵件地址），請來信 __email__與我們連絡"
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "無法連結你的 Steam 帳戶（電子郵件地址無效），請來信 __email__ 與我們連絡"
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "無法連結你的 Steam 帳戶（未知錯誤 __code__），請來信 __email__ 與我們連絡"
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "無法連結你的 Steam 帳戶（正在使用的使用者名稱），請來信 __email__ 與我們連絡"
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "無法連結你的 Steam 帳戶，請嘗試重新啟動遊戲或來信 __email__ 與我們連絡"
+    },
+    "Unknown": {
+        "message": "未知"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "驗證時發生未知錯誤，可能與防火牆或防毒設定有關。如果問題仍然存在，請連絡支援。（__error_code__）"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "以新的永久一折升級至 Titans"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "使用者名稱必須介於 3 到 20 個字元之間。"
+    },
+    "Username": {
+        "message": "使用者名稱"
+    },
+    "Username already in use.": {
+        "message": "使用者名稱已使用。"
+    },
+    "Version:": {
+        "message": "版本："
+    },
+    "View Intro": {
+        "message": "觀看開場"
+    },
+    "View Leaderboards": {
+        "message": "檢視排行榜"
+    },
+    "View full column": {
+        "message": "檢視完整直欄"
+    },
+    "Watch Replay": {
+        "message": "觀看重播"
+    },
+    "You are already assigned to a game.": {
+        "message": "你已經被指配到一場比賽"
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "稍後可以在設定功能表中變更區域。"
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "你需要新用戶端程式來玩此遊戲。Steam 使用者可能需要重新啟動 Steam 來取得新用戶端程式。"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "你需要玩 __number__ 次排名賽才能獲得排名"
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "你會發現它就在你的 Steam 遊戲庫的《Planetary Annihilation》旁等著你！"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "你的帳戶已被停權。如果你認為其中有誤，請來信 __email__ 與我們連絡"
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "你的預設地區目前無法使用。請選取其他地區。"
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "你的電腦不符合建議的離線進行遊戲系統要求 - 要進行離線模式，我們建議電腦至少有 8 GB RAM 和四核心處理器。"
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "你的電腦無法離線執行《Planetary Annihilation》 - 離線模式需要 64 位元處理器以及 64 位元作業系統。"
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "系統不符合離線遊戲的要求。請登入後在 PA 伺服器上遊戲，或者到[strong]設定[/strong]，手動將本機伺服器設定為[strong]開啟[/strong]。"
+    },
+    "Your username is: __username__": {
+        "message": "你的使用者名稱是：__username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__位階"
+    },
+    "__viewer_count__ viewers": {
+        "message": "__viewer_count__ 名觀眾"
+    },
+    "days": {
+        "message": "天"
+    },
+    "ending in": {
+        "message": "結束倒數"
+    },
+    "starting in": {
+        "message": "開始倒數"
+    },
+    "LIVE": {
+        "message": "進行中"
+    },
+    "View Replays": {
+        "message": "觀看重播"
+    }
+}

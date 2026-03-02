@@ -1,0 +1,47 @@
+{
+    "ARMY": {
+        "message": "HÆR"
+    },
+    "Accept": {
+        "message": "Accepter"
+    },
+    "Allied With:": {
+        "message": "Allied with:"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "FORBINDELSE TIL SERVEREN ER TABT"
+    },
+    "Cancel": {
+        "message": "Annullere"
+    },
+    "Close": {
+        "message": "Luk"
+    },
+    "Efficiency": {
+        "message": "Effektivitet"
+    },
+    "Exit Game?": {
+        "message": "Forlad Spil?"
+    },
+    "GAME PAUSED": {
+        "message": "SPIL PAUSET"
+    },
+    "Ignore": {
+        "message": "Ignorer"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Vælg et sted inden i en af de grønne zoner for af lande din kommandør."
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Position valgt. Klik for at bekræfte."
+    },
+    "Returning to Main Menu": {
+        "message": "Går til Hovedmenu"
+    },
+    "START ANNIHILATION": {
+        "message": "START UDRYDDELSE"
+    },
+    "Yes": {
+        "message": "Ja"
+    }
+}

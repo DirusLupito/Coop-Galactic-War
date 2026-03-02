@@ -1,0 +1,71 @@
+{
+    "Air Armor Tech": {
+        "message": "Air Armour Tech"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "Air Armour Tech increases the health of all air units by 50%"
+    },
+    "An eccentric even among Foundation standards, Blaz has taken to adorning her chassis with various trophies from felled enemies in the form of weaponry, circuitry, and armor chunks. She does so to emulate the various warlords depicted in unearthed progenitor records.": {
+        "message": "An eccentric even among Foundation standards, Blaz has taken to adorning her chassis with various trophies from felled enemies in the form of weaponry, circuitry, and armour chunks. She does so to emulate the various warlords depicted in unearthed progenitor records."
+    },
+    "Armored Commander": {
+        "message": "Armoured Commander"
+    },
+    "Bot Armor Tech": {
+        "message": "Bot Armour Tech"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "Bot Armour Tech increases health of all bots by 50%"
+    },
+    "Commander Armor Tech": {
+        "message": "Commander Armour Tech"
+    },
+    "Commander Armor Tech increases the health of your commanders by 100%.": {
+        "message": "Commander Armour Tech increases the health of your commanders by 100%."
+    },
+    "Favorite color:": {
+        "message": "Favorite colour: "
+    },
+    "Governed entirely by aesthetic concerns, Wultok has amassed an unwieldy but beautiful array of salvaged armor that somehow still leaves many of his most vulnerable areas open to attack. When questioned about the wisdom of this practice, Wultok declares that one must suffer for fashion. He tisks audibly when faced with an ugly adversary.": {
+        "message": "Governed entirely by aesthetic concerns, Wultok has amassed an unwieldy but beautiful array of salvaged armour that somehow still leaves many of his most vulnerable areas open to attack. When questioned about the wisdom of this practice, Wultok declares that one must suffer for fashion. He tisks audibly when faced with an ugly adversary."
+    },
+    "Imperator Invictus guards superior armor blueprints on Agoge": {
+        "message": "Imperator Invictus guards superior armour blueprints on Agoge"
+    },
+    "Many commanders in the Legion considered Bassus inefficient at best and defective at worst for his insistence on outfitting himself with armor five times thicker than other commanders at the cost of mobility. Their opinion changed when Bassus was recovered while drifting through space--the sole survivor of a pivotal battle that ended in a moon colliding with his base.": {
+        "message": "Many commanders in the Legion considered Bassus inefficient at best and defective at worst for his insistence on outfitting himself with armour five times thicker than other commanders at the cost of mobility. Their opinion changed when Bassus was recovered while drifting through space--the sole survivor of a pivotal battle that ended in a moon colliding with his base."
+    },
+    "Naval Armor Tech": {
+        "message": "Naval Armour Tech"
+    },
+    "Naval Armor Tech increases health of all naval units by 50%": {
+        "message": "Naval Armour Tech increases health of all naval units by 50%"
+    },
+    "Orbital Armor Tech": {
+        "message": "Orbital Armour Tech"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "Orbital Armour Tech increases health of all orbital units by 50%"
+    },
+    "Structure Armor Tech": {
+        "message": "Structure Armour Tech"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "Structure Armour Tech increases the health of all structures by 50%"
+    },
+    "Vehicle Armor Tech": {
+        "message": "Vehicle Armour Tech"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "Vehicle Armour Tech increases health of all vehicles by 50%"
+    },
+    "[strong]Bots:[/strong] Quick and lightly armored units that tend to be used for multiple purposes.": {
+        "message": "[strong]Bots:[/strong] Quick and lightly armoured units that tend to be used for multiple purposes."
+    },
+    "[strong]Naval:[/strong] Very heavily armored units but are relegated to water movement.": {
+        "message": "[strong]Naval:[/strong] Very heavily armoured units but are relegated to water movement."
+    },
+    "[strong]Vehicles:[/strong] Slow, heavily armored units that tend to have a singular purpose.": {
+        "message": "[strong]Vehicles:[/strong] Slow, heavily armoured units that tend to have a singular purpose."
+    }
+}

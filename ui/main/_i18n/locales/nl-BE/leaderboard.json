@@ -1,0 +1,125 @@
+{
+    "1 day ago": {
+        "message": "1 dag geleden"
+    },
+    "1 hour ago": {
+        "message": "1 uur geleden"
+    },
+    "1 minute ago": {
+        "message": "1 minuut geleden"
+    },
+    "1 second ago": {
+        "message": "1 seconde geleden"
+    },
+    "1 week ago": {
+        "message": "1 week geleden"
+    },
+    "Bronze": {
+        "message": "Brons"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "Kan dit ranglijstniveau niet laden."
+    },
+    "Games": {
+        "message": "Spellen"
+    },
+    "Gold": {
+        "message": "Goud"
+    },
+    "Inactive": {
+        "message": "Inactief"
+    },
+    "Just now": {
+        "message": "Zojuist"
+    },
+    "Last Match Played": {
+        "message": "Laatst gespeelde wedstrijd"
+    },
+    "Last match played": {
+        "message": "Laatst gespeelde wedstrijd"
+    },
+    "Leaderboards": {
+        "message": "Ranglijsten"
+    },
+    "Level rank": {
+        "message": "Niveau rang"
+    },
+    "Loading Leaderboard": {
+        "message": "Ranglijsten laden"
+    },
+    "Match games played": {
+        "message": "Gespeelde wedstrijden"
+    },
+    "No ranked players at this level.": {
+        "message": "Geen geclassificeerde spelers op dit niveau."
+    },
+    "No recent matches played.": {
+        "message": "Geen recente wedstrijden gespeeld."
+    },
+    "One ranked player at this level.": {
+        "message": "Eén geclassificeerde speler op dit niveau."
+    },
+    "Platinum": {
+        "message": "Platina"
+    },
+    "Play ranked match": {
+        "message": "Ranglijstwedstrijd spelen"
+    },
+    "Player": {
+        "message": "Speler"
+    },
+    "Provisional": {
+        "message": "Voorlopig"
+    },
+    "Rank": {
+        "message": "Rang"
+    },
+    "Rating": {
+        "message": "Score"
+    },
+    "Season ends __date__": {
+        "message": "Seizoen loopt af op __date__"
+    },
+    "Silver": {
+        "message": "Zilver"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "Dit ranglijstniveau is momenteel leeg."
+    },
+    "Unranked": {
+        "message": "Niet geclassificeerd"
+    },
+    "Watch Replay": {
+        "message": "Herhaling bekijken"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Je moet __number__ geclassificeerde spellen spelen om een positie op de ranglijst te krijgen"
+    },
+    "Your rank": {
+        "message": "Je rang"
+    },
+    "__n__ days ago": {
+        "message": "__n__ dagen geleden"
+    },
+    "__n__ hours ago": {
+        "message": "__n__ uur geleden"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__ minuten geleden"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__ seconden geleden"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__ weken geleden"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "__num_players__ spelers geclassificeerd op dit niveau."
+    },
+    "Star": {
+        "message": "Ster"
+    },
+    "View Replays": {
+        "message": "Herhalingen bekijken"
+    }
+}

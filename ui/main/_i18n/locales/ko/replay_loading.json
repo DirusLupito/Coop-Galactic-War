@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "취소"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "서버 모드 다운로드 중"
+    },
+    "Loading Game": {
+        "message": "게임 불러오는 중"
+    },
+    "Loading Replay": {
+        "message": "리플레이 불러오는 중"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Returning to menu": {
+        "message": "메뉴로 돌아가는 중"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "리플레이 서버를 시작하고 있습니다. 잠시 기다려 주십시오..."
+    },
+    "Unable to load replay": {
+        "message": "리플레이를 불러올 수 없습니다."
+    },
+    "Unable to load save game": {
+        "message": "저장된 게임을 불러올 수 없습니다."
+    }
+}

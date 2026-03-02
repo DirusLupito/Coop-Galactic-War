@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "Assurda"
+    },
+    "Absurd Testing": {
+        "message": "Test difficoltà assurda"
+    },
+    "Easy": {
+        "message": "Facile"
+    },
+    "Hard": {
+        "message": "Difficile"
+    },
+    "Idle": {
+        "message": "Inattiva"
+    },
+    "Normal": {
+        "message": "Normale"
+    },
+    "Relentless": {
+        "message": "Frenetica"
+    }
+}

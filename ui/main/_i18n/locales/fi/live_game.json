@@ -1,0 +1,56 @@
+{
+    "ARMY": {
+        "message": "ARMEIJA"
+    },
+    "Accept": {
+        "message": "Hyväksy"
+    },
+    "Allied With:": {
+        "message": "Allied with:"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "YHTEYS PALVELIMEEN KATKESI"
+    },
+    "CONTINUOUS": {
+        "message": "JATKUVA"
+    },
+    "Cancel": {
+        "message": "Peruuta"
+    },
+    "Close": {
+        "message": "Sulje"
+    },
+    "Efficiency": {
+        "message": "Tehokkuus"
+    },
+    "Enemy Contact!": {
+        "message": "Viholliskontakti!"
+    },
+    "Exit Game?": {
+        "message": "Poistu pelistä?"
+    },
+    "GAME PAUSED": {
+        "message": "PELI PYSÄYTETTY"
+    },
+    "NORMAL": {
+        "message": "NORMAALI"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Valitse komentajan aloituspiste haluamaltasi vihreältä alueelta."
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Aloituspiste Lukittu. Hyväksy klikkaamalla"
+    },
+    "RETURN FIRE": {
+        "message": "VASTAA TULEEN"
+    },
+    "Returning to Main Menu": {
+        "message": "Palataan päävalikkoon"
+    },
+    "START ANNIHILATION": {
+        "message": "ALOITA TUHOAMINEN"
+    },
+    "Yes": {
+        "message": "Kyllä"
+    }
+}

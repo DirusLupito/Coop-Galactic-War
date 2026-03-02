@@ -1,0 +1,104 @@
+{
+    "APPROVE": {
+        "message": "GOEDKEUREN"
+    },
+    "APPROVED USERS": {
+        "message": "GOEDGEKEURDE GEBRUIKERS"
+    },
+    "Add": {
+        "message": "Toevoegen"
+    },
+    "Add Contacts": {
+        "message": "Contactpersonen toevoegen"
+    },
+    "Add a Friend": {
+        "message": "Een vriend toevoegen"
+    },
+    "BLOCK": {
+        "message": "BLOKKEREN"
+    },
+    "BLOCKED USERS": {
+        "message": "GEBLOKKEERDE GEBRUIKERS"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Close": {
+        "message": "Sluiten"
+    },
+    "Contact List Updated": {
+        "message": "Lijst met contactpersonen is vernieuwd"
+    },
+    "Contact Not Found": {
+        "message": "Lijst met contactpersonen niet gevonden"
+    },
+    "Current Nickname:": {
+        "message": "Huidige bijnaam:"
+    },
+    "Dismiss": {
+        "message": "Sluiten"
+    },
+    "Filter contacts by tag:": {
+        "message": "Contactpersonen filteren op label:"
+    },
+    "Games you make will be hidden to these players.": {
+        "message": "Spellen die je aanmaakt blijven verborgen voor deze spelers."
+    },
+    "Name:": {
+        "message": "Naam: "
+    },
+    "New Nickname:": {
+        "message": "Nieuwe bijnaam: "
+    },
+    "New Tag:": {
+        "message": "Nieuw label: "
+    },
+    "Players you have encountered recently.": {
+        "message": "Spelers die je recent bent tegengekomen."
+    },
+    "Private games you make will only be visible to these players.": {
+        "message": "Privéspellen die je aanmaakt zijn alleen zichtbaar voor deze spelers."
+    },
+    "RECENT": {
+        "message": "RECENT"
+    },
+    "REMOVE": {
+        "message": "VERWIJDEREN"
+    },
+    "RENAME": {
+        "message": "HERNOEMEN"
+    },
+    "Refresh Contacts": {
+        "message": "Contactpersonen vernieuwen"
+    },
+    "Refreshing friends list.....": {
+        "message": "Vriendenlijst vernieuwen…"
+    },
+    "Rename": {
+        "message": "Hernoemen"
+    },
+    "Rename Friend": {
+        "message": "Vriend hernoemen"
+    },
+    "SOCIAL": {
+        "message": "SOCIAAL"
+    },
+    "Tag": {
+        "message": "Label"
+    },
+    "Tag Friend:": {
+        "message": "Label vriend: "
+    },
+    "Tags:": {
+        "message": "Labels: "
+    },
+    "UBERDEX": {
+        "message": "UBERDEX"
+    },
+    "Uber Name": {
+        "message": "Gebruikersnaam"
+    },
+    "or": {
+        "message": "of"
+    }
+}

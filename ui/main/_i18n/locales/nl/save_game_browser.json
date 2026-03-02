@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "Schermutseling met AI"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Delete": {
+        "message": "Verwijderen"
+    },
+    "Galactic War": {
+        "message": "Galactische Oorlog"
+    },
+    "Game": {
+        "message": "Spel"
+    },
+    "Last Saved": {
+        "message": "Laatst opgeslagen"
+    },
+    "OK": {
+        "message": "OKÉ"
+    },
+    "Resume Game": {
+        "message": "Spel hervatten"
+    },
+    "Saved Games": {
+        "message": "Opgeslagen spellen"
+    },
+    "Switch to": {
+        "message": "Overschakelen naar "
+    },
+    "Type": {
+        "message": "Type"
+    },
+    "mode?": {
+        "message": "modus?"
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "تمت الإبادة"
+    },
+    "APM": {
+        "message": "ل.م.ا"
+    },
+    "Average": {
+        "message": "متوسط"
+    },
+    "Built": {
+        "message": "بُنيت"
+    },
+    "Destroyed": {
+        "message": "دُمرت"
+    },
+    "Draw": {
+        "message": "تعادل\\n"
+    },
+    "Efficiency": {
+        "message": "فعاليه او كفاءه "
+    },
+    "The game has ended.": {
+        "message": "اللعبة انتهت"
+    },
+    "Used": {
+        "message": "أُستخدم"
+    },
+    "VICTORY IS YOURS": {
+        "message": "النصر لك"
+    },
+    "Winner:": {
+        "message": "الفائز:"
+    },
+    "Winners:": {
+        "message": "الفائزون"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "لقد تم إبادتك"
+    }
+}

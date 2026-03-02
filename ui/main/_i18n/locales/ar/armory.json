@@ -1,0 +1,86 @@
+{
+    "Account Name:": {
+        "message": "إسم الحساب"
+    },
+    "Add To Cart": {
+        "message": "أضف إلى سلة المشتريات"
+    },
+    "Armory": {
+        "message": "الترسانة"
+    },
+    "Badges": {
+        "message": "الشارات"
+    },
+    "CHECKOUT": {
+        "message": "التحقق"
+    },
+    "Cancel": {
+        "message": "إلغاء"
+    },
+    "Cart": {
+        "message": "السلة"
+    },
+    "Commanders": {
+        "message": "القادة"
+    },
+    "Confirmation code:": {
+        "message": "كود التأكيد:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "التأكد من شرائك متوفر في الأسفل"
+    },
+    "Continue Shopping": {
+        "message": "الإستمرار في التسوق"
+    },
+    "Credit applied:": {
+        "message": "تطبيق الائتمان"
+    },
+    "Designed in collaboration with": {
+        "message": "تم التصميم بالمشاركة مع"
+    },
+    "Go to Main Menu": {
+        "message": "إذهب للقائمة الرئيسة"
+    },
+    "Here's your receipt.": {
+        "message": "تفضل الإيصال"
+    },
+    "Item": {
+        "message": "العنصر"
+    },
+    "Item is already in cart.": {
+        "message": "المادة موجودة بالفعل في السلة"
+    },
+    "Kickstarter Backer": {
+        "message": "داعم من كيكستارتار"
+    },
+    "Price": {
+        "message": "سعر"
+    },
+    "REMOVE": {
+        "message": "إزالة"
+    },
+    "Redeem": {
+        "message": "إسترد"
+    },
+    "Return to Armory": {
+        "message": "العودة للترسانة"
+    },
+    "Set As Default Commander": {
+        "message": "إفترض هذا القائد دائما"
+    },
+    "Thank you for your purchase.": {
+        "message": "شكرا لك"
+    },
+    "Total:": {
+        "message": "المجموع:"
+    },
+    "Updating...": {
+        "message": "جاري التحديث..."
+    },
+    "Your cart is empty.": {
+        "message": "سلتك فارغة"
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "المواد التي اشتريتها هي الآن مسجلة في حسابك ويمكن الوصول إليها في اللعبة"
+    }
+}

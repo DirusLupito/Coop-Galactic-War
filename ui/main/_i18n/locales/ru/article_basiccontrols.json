@@ -1,0 +1,20 @@
+{
+    "Arrow Keys to rotate around planet": {
+        "message": "Клавиши со стрелками позволяют вращать планету"
+    },
+    "Basic Camera Controls": {
+        "message": "Основные элементы управления камерой"
+    },
+    "Go between planets using planet menu (upper right of screen)": {
+        "message": "Переключайтесь между планетами, используя меню планет (в правом верхнем углу экрана)"
+    },
+    "Hold Mouse Wheel, drag to pan view": {
+        "message": "Удерживайте колесико и перетащите мышь, чтобы изменить масштаб"
+    },
+    "PA Guide: Basic Controls": {
+        "message": "Руководство PA: Основные элементы управления"
+    },
+    "Scroll Mouse Wheel to zoom in and out": {
+        "message": "Прокрутите колесико мыши, чтобы увеличить и уменьшить масштаб"
+    }
+}

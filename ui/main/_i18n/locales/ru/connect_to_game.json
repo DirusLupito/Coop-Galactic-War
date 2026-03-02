@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "ОТКАЗАНО В ДОСТУПЕ К СИМУЛЯЦИИ МИРА"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "ДОСТУП К СИМУЛЯЦИИ МИРА"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "ОСТАЛОСЬ ПОПЫТОК: __num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "ПОДКЛЮЧЕНИЕ К СЕРВЕРУ"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "ПОДКЛЮЧЕНИЕ К СЕРВЕРУ ОТМЕНЕНО"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "НЕ УДАЛОСЬ СОЕДИНИТЬСЯ С СЕРВЕРОМ"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ПОТЕРЯНО СОЕДИНЕНИЕ С СЕРВЕРОМ"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "СОЗДАНИЕ СИМУЛЯЦИИ МИРА"
+    },
+    "Cancel": {
+        "message": "Отмена"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "ЗАГРУЗКА МОДОВ СЕРВЕРА"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "НЕ УДАЛОСЬ ПОЛУЧИТЬ РАЗРЕШЕНИЕ"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "НЕ УДАЛОСЬ ПРИСОЕДИНИТЬСЯ К ИГРЕ"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "НЕ УДАЛОСЬ ЗАГРУЗИТЬ ИГРУ"
+    },
+    "FAILED TO START GAME": {
+        "message": "НЕ УДАЛОСЬ НАЧАТЬ ИГРУ"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "НЕ УДАЛОСЬ ЗАПУСТИТЬ ПОВТОР"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "УСПЕШНЫЙ ВХОД"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "ОТКАЗАНО В СОЕДИНЕНИИ С СЕРВЕРОМ"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "ПЕРЕУСТАНОВКА МОДОВ СЕРВЕРА"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "ЗАПРОС РАЗРЕШЕНИЯ"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращение в главное меню"
+    },
+    "STARTING GAME": {
+        "message": "ЗАПУСК ИГРЫ"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "НЕ УДАЛОСЬ ПОЛУЧИТЬ ДОСТУП К СИМУЛЯЦИИ МИРА"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "ЗАГРУЗКА МОДОВ СЕРВЕРА... ПОЖАЛУЙСТА, ПОДОЖДИТЕ"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "НЕ УДАЛОСЬ ЗАПУСТИТЬ СИМУЛЯЦИЮ МИРА"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "Вы запускаете игру в автономном режиме, но ваша система не соответствует рекомендованным требованиям для автономной игры. Это может негативно сказаться на вашем игровом процессе."
+    }
+}

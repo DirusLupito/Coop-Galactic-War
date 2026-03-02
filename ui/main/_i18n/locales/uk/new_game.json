@@ -1,0 +1,83 @@
+{
+    "- Host": {
+        "message": ":Хост"
+    },
+    "AI Commander": {
+        "message": "ШІ Командер"
+    },
+    "Add AI Commander": {
+        "message": "Додати ШІ Командера"
+    },
+    "Add Slot": {
+        "message": "Додати слот"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ВТРАЧЕНО ЗВ'ЯЗОК ЗІ СЕРВЕРОМ"
+    },
+    "Chat": {
+        "message": "Чат"
+    },
+    "Empty": {
+        "message": "Порожньо"
+    },
+    "Free For All": {
+        "message": "Всі проти всіх"
+    },
+    "Friends": {
+        "message": "Друзі"
+    },
+    "Game Lobby": {
+        "message": "Лобі гри"
+    },
+    "Game Mode": {
+        "message": "Режим гри:"
+    },
+    "Join": {
+        "message": "Приєднатись"
+    },
+    "Kick": {
+        "message": "Вигнати"
+    },
+    "Leave": {
+        "message": "Покинути"
+    },
+    "Open to:": {
+        "message": "Відкрито для:"
+    },
+    "Player Slot": {
+        "message": "Слот гравця"
+    },
+    "Private": {
+        "message": "Приватний"
+    },
+    "Public": {
+        "message": "Публічний"
+    },
+    "Ready": {
+        "message": "Готовий"
+    },
+    "Remove": {
+        "message": "Видалити"
+    },
+    "Returning to Main Menu": {
+        "message": "Повернення до головного меню"
+    },
+    "SHARE ARMY": {
+        "message": "ПОДІЛИТИСЯ АРМІЄЮ"
+    },
+    "Spectate": {
+        "message": "Спостерігати"
+    },
+    "Spectators": {
+        "message": "ГЛЯДАЧІ"
+    },
+    "Start Game": {
+        "message": "Почати гру"
+    },
+    "System": {
+        "message": "Система:"
+    },
+    "Team Armies": {
+        "message": "Командні армії"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "CONEXIUNEA CĂTRE SERVER NEREUŞITĂ"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "CONEXIUNEA CĂTRE SERVER PIERDUTĂ"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "ÎNSCRIEREA ÎN JOC NEREUŞITĂ"
+    },
+    "FAILED TO START GAME": {
+        "message": "ÎNCEPEREA JOCULUI NEREUŞITĂ"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "AUTENTIFICARE ACCEPTATĂ"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "AUTENTIFICAREA PE SERVER RESPINSĂ"
+    },
+    "Returning to Main Menu": {
+        "message": "Revenind la Meniul Principal"
+    }
+}

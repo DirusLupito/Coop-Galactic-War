@@ -1,0 +1,138 @@
+{
+    "AIP Aggressive": {
+        "message": "ȂΪṔ ȂɠɠȓέƨƨїѷέΩΩΩΩΩΩΩ",
+        "original": "AIP Aggressive"
+    },
+    "AIP Air": {
+        "message": "ȂΪṔ ȂїȓΩΩΩ",
+        "original": "AIP Air"
+    },
+    "AIP Bot": {
+        "message": "ȂΪṔ ฿ȏҭΩΩΩ",
+        "original": "AIP Bot"
+    },
+    "AIP Cautious": {
+        "message": "ȂΪṔ ҪȃմҭїȏմƨΩΩΩΩΩΩ",
+        "original": "AIP Cautious"
+    },
+    "AIP Defender": {
+        "message": "ȂΪṔ ƉέғέƞɗέȓΩΩΩΩΩΩ",
+        "original": "AIP Defender"
+    },
+    "AIP Economist": {
+        "message": "ȂΪṔ ƐϲȏƞȏʍїƨҭΩΩΩΩΩΩ",
+        "original": "AIP Economist"
+    },
+    "AIP Fabber": {
+        "message": "ȂΪṔ ϜȃББέȓΩΩΩΩΩ",
+        "original": "AIP Fabber"
+    },
+    "AIP Fast Tech": {
+        "message": "ȂΪṔ Ϝȃƨҭ 丁έϲнΩΩΩΩΩΩ",
+        "original": "AIP Fast Tech"
+    },
+    "AIP Foundation": {
+        "message": "ȂΪṔ ϜȏմƞɗȃҭїȏƞΩΩΩΩΩΩΩ",
+        "original": "AIP Foundation"
+    },
+    "AIP Land": {
+        "message": "ȂΪṔ ₤ȃƞɗΩΩΩΩ",
+        "original": "AIP Land"
+    },
+    "AIP Legonis Machina": {
+        "message": "ȂΪṔ ₤έɠȏƞїƨ ΜȃϲнїƞȃΩΩΩΩΩΩΩΩΩ",
+        "original": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "ȂΪṔ ₤ȏῴ 丁έϲнΩΩΩΩΩΩ",
+        "original": "AIP Low Tech"
+    },
+    "AIP Naval": {
+        "message": "ȂΪṔ Ɲȃѷȃ⌊ΩΩΩΩ",
+        "original": "AIP Naval"
+    },
+    "AIP Orbital": {
+        "message": "ȂΪṔ ѲȓБїҭȃ⌊ΩΩΩΩΩ",
+        "original": "AIP Orbital"
+    },
+    "AIP Random": {
+        "message": "ȂΪṔ ℝȃƞɗȏʍΩΩΩΩΩ",
+        "original": "AIP Random"
+    },
+    "AIP Revenants": {
+        "message": "ȂΪṔ ℝέѷέƞȃƞҭƨΩΩΩΩΩΩ",
+        "original": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "ȂΪṔ ℝմƨнΩΩΩΩ",
+        "original": "AIP Rush"
+    },
+    "AIP Swarm": {
+        "message": "ȂΪṔ ṠῴȃȓʍΩΩΩΩ",
+        "original": "AIP Swarm"
+    },
+    "AIP Synchronous": {
+        "message": "ȂΪṔ ṠуƞϲнȓȏƞȏմƨΩΩΩΩΩΩΩ",
+        "original": "AIP Synchronous"
+    },
+    "AIP Tank": {
+        "message": "ȂΪṔ 丁ȃƞќΩΩΩΩ",
+        "original": "AIP Tank"
+    },
+    "AIP Turtle": {
+        "message": "ȂΪṔ 丁մȓҭ⌊έΩΩΩΩΩ",
+        "original": "AIP Turtle"
+    },
+    "AIP Amphibious": {
+        "message": "ȂΪṔ Ȃʍ⍴нїБїȏմƨΩΩΩΩΩΩΩ",
+        "original": "AIP Amphibious"
+    },
+    "AIP All-terrain": {
+        "message": "ȂΪṔ Ȃ⌊⌊-ҭέȓȓȃїƞΩΩΩΩΩΩΩ",
+        "original": "AIP All-terrain"
+    },
+    "AIP Artillery": {
+        "message": "ȂΪṔ Ȃȓҭї⌊⌊έȓуΩΩΩΩΩΩ",
+        "original": "AIP Artillery"
+    },
+    "AIP Assault": {
+        "message": "ȂΪṔ Ȃƨƨȃմ⌊ҭΩΩΩΩΩ",
+        "original": "AIP Assault"
+    },
+    "AIP Boomer": {
+        "message": "ȂΪṔ ฿ȏȏʍέȓΩΩΩΩΩ",
+        "original": "AIP Boomer"
+    },
+    "AIP Fortress": {
+        "message": "ȂΪṔ ϜȏȓҭȓέƨƨΩΩΩΩΩΩ",
+        "original": "AIP Fortress"
+    },
+    "AIP Heavy": {
+        "message": "ȂΪṔ ӇέȃѷуΩΩΩΩ",
+        "original": "AIP Heavy"
+    },
+    "AIP Infernodier": {
+        "message": "ȂΪṔ ΪƞғέȓƞȏɗїέȓΩΩΩΩΩΩΩ",
+        "original": "AIP Infernodier"
+    },
+    "AIP Micro": {
+        "message": "ȂΪṔ ΜїϲȓȏΩΩΩΩ",
+        "original": "AIP Micro"
+    },
+    "AIP Nuker": {
+        "message": "ȂΪṔ ƝմќέȓΩΩΩΩ",
+        "original": "AIP Nuker"
+    },
+    "AIP Raider": {
+        "message": "ȂΪṔ ℝȃїɗέȓΩΩΩΩΩ",
+        "original": "AIP Raider"
+    },
+    "AIP Ranked": {
+        "message": "ȂΪṔ ℝȃƞќέɗΩΩΩΩΩ",
+        "original": "AIP Ranked"
+    },
+    "AIP Sniper": {
+        "message": "ȂΪṔ Ṡƞї⍴έȓΩΩΩΩΩ",
+        "original": "AIP Sniper"
+    }
+}

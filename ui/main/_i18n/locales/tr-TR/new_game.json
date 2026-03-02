@@ -1,0 +1,86 @@
+{
+    "- Host": {
+        "message": ": Oyun Sahibi"
+    },
+    "AI Commander": {
+        "message": "YZ Kumandan"
+    },
+    "Add AI": {
+        "message": "YZ Ekle"
+    },
+    "Add AI Commander": {
+        "message": "YZ Kumandan Ekle"
+    },
+    "Add Slot": {
+        "message": "Slot Ekle"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "SUNUCUYLA BAĞLANTI KAYBOLDU"
+    },
+    "Chat": {
+        "message": "Sohbet"
+    },
+    "Empty": {
+        "message": "Boş"
+    },
+    "Free For All": {
+        "message": "Herkes Tek Başına"
+    },
+    "Friends": {
+        "message": "Arkadaşlar"
+    },
+    "Game Lobby": {
+        "message": "Oyun Lobisi"
+    },
+    "Game Mode": {
+        "message": "Oyun Modu:"
+    },
+    "Join": {
+        "message": "Katıl"
+    },
+    "Kick": {
+        "message": "Kov"
+    },
+    "Leave": {
+        "message": "Ayrıl"
+    },
+    "Open to:": {
+        "message": "Kime açık:"
+    },
+    "Player Slot": {
+        "message": "Oyuncu Slotu"
+    },
+    "Private": {
+        "message": "Özel"
+    },
+    "Public": {
+        "message": "Herkese Açık"
+    },
+    "Ready": {
+        "message": "Hazır"
+    },
+    "Remove": {
+        "message": "Çıkar"
+    },
+    "Returning to Main Menu": {
+        "message": "Ana Menüye Geri Dönülüyor"
+    },
+    "SHARE ARMY": {
+        "message": "ORDU PAYLAŞ"
+    },
+    "Spectate": {
+        "message": "İzle"
+    },
+    "Spectators": {
+        "message": "İZLEYİCİLER"
+    },
+    "Start Game": {
+        "message": "Oyunu Başlat"
+    },
+    "System": {
+        "message": "Sistem:"
+    },
+    "Team Armies": {
+        "message": "Takım Ordular"
+    }
+}

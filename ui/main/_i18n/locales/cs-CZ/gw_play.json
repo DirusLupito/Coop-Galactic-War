@@ -1,0 +1,29 @@
+{
+    "Delete Tech": {
+        "message": "Smazat technologii"
+    },
+    "Explore": {
+        "message": "Prozkoumat"
+    },
+    "Fight": {
+        "message": "Boj"
+    },
+    "Jump": {
+        "message": "Skočit"
+    },
+    "Preparing for battle": {
+        "message": "Přípraven k boji"
+    },
+    "Scanning System": {
+        "message": "Skenování systemu"
+    },
+    "Settings": {
+        "message": "Nastavení"
+    },
+    "TECHS": {
+        "message": "TECH."
+    },
+    "Unlock Commander": {
+        "message": "Odemknout Komandéra"
+    }
+}

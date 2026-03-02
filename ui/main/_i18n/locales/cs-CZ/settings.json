@@ -1,0 +1,419 @@
+{
+    "ALL": {
+        "message": "VŠE"
+    },
+    "ALWAYS": {
+        "message": "POŘÁD"
+    },
+    "Audio": {
+        "message": "Zvuk"
+    },
+    "CUSTOM": {
+        "message": "VLASTNÍ"
+    },
+    "Camera": {
+        "message": "Kamera"
+    },
+    "Cancel": {
+        "message": "Zrušit"
+    },
+    "Graphics": {
+        "message": "Grafika"
+    },
+    "HIGH": {
+        "message": "VYSOKÝ"
+    },
+    "Keyboard": {
+        "message": "Klávesnice"
+    },
+    "LOW": {
+        "message": "NÍZKÝ"
+    },
+    "Language": {
+        "message": "Jazyk"
+    },
+    "Master Volume": {
+        "message": "Celková hlasitost"
+    },
+    "Music Volume": {
+        "message": "Hlasitost hudby"
+    },
+    "NEVER": {
+        "message": "NIKDY"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "OFF (KURZOR NEUZAMČEN)"
+    },
+    "Orbital Shell": {
+        "message": "Orbitální plášť"
+    },
+    "Pole Lock": {
+        "message": "Uzamknout pól"
+    },
+    "Quality Preset": {
+        "message": "Přednastavení kvality"
+    },
+    "Resolution Scaling": {
+        "message": "Rozlišení měřítka"
+    },
+    "SELECTED": {
+        "message": "VYBRÁNO"
+    },
+    "Save": {
+        "message": "Uložit"
+    },
+    "Settings": {
+        "message": "Nastavení"
+    },
+    "Shadows": {
+        "message": "Stíny"
+    },
+    "Show Metal Spot Icons": {
+        "message": "Ukázat ikony kovových uložišť"
+    },
+    "Show Stat Bars": {
+        "message": "Zobrazit statistickou lištu"
+    },
+    "Show Unit Icons": {
+        "message": "Zobrazit ikony jednotek"
+    },
+    "Show/Hide game stats": {
+        "message": "Zobrazit/Schovat herní statistiky"
+    },
+    "Show/Hide pip": {
+        "message": "Zobrazit/Schovat pip"
+    },
+    "Sound Effects Volume": {
+        "message": "Hlasitost zvukových efektů"
+    },
+    "Zoom Speed": {
+        "message": "Rychlost přiblížení"
+    },
+    "abort": {
+        "message": "zrušit"
+    },
+    "alerts": {
+        "message": "upozornění"
+    },
+    "align to pole": {
+        "message": "Vyrovnat k pólu"
+    },
+    "alt fire": {
+        "message": "alternativní útok"
+    },
+    "assist": {
+        "message": "asistovat"
+    },
+    "attack": {
+        "message": "útok"
+    },
+    "bug report": {
+        "message": "Hlášení chyb"
+    },
+    "build": {
+        "message": "postavit"
+    },
+    "build once": {
+        "message": "Postavit jednou"
+    },
+    "build orders": {
+        "message": "Stavební příkazy"
+    },
+    "capture anchor": {
+        "message": "Uložit upevnění"
+    },
+    "chronocam": {
+        "message": "chronokamera"
+    },
+    "communication": {
+        "message": "Komunikace"
+    },
+    "copy unit": {
+        "message": "kopírovat jednotku"
+    },
+    "crash": {
+        "message": "pád"
+    },
+    "dev mode": {
+        "message": "vývojářský mód"
+    },
+    "dismiss alert notification": {
+        "message": "Zrušit upozornění"
+    },
+    "energy off": {
+        "message": "Energie vypnuta"
+    },
+    "energy on": {
+        "message": "energie zapnuta"
+    },
+    "fire at will": {
+        "message": "pálit dle uvážení"
+    },
+    "free move down": {
+        "message": "Volný pohyb dolů"
+    },
+    "free move forward": {
+        "message": "Volný pohyb vpřed"
+    },
+    "free move left": {
+        "message": "Volný pohyb doleva"
+    },
+    "free move up": {
+        "message": "Volný pohyb nahoru"
+    },
+    "free movement": {
+        "message": "Volný pohyb"
+    },
+    "free yaw left": {
+        "message": "Volné stočení doleva"
+    },
+    "free zoom in": {
+        "message": "Volné přiblížení"
+    },
+    "free zoom out": {
+        "message": "Volné oddálení"
+    },
+    "hold fire": {
+        "message": "nestřílet"
+    },
+    "hold position": {
+        "message": "Držet pozici"
+    },
+    "jump to next planet": {
+        "message": "skočit na další planetu"
+    },
+    "jump to previous planet": {
+        "message": "Předchozí planeta"
+    },
+    "load": {
+        "message": "načíst"
+    },
+    "maneuver": {
+        "message": "manévrovat"
+    },
+    "modes": {
+        "message": "módy"
+    },
+    "move": {
+        "message": "pohyb"
+    },
+    "move down": {
+        "message": "Pohyb dolů"
+    },
+    "move left": {
+        "message": "Pohyb doleva"
+    },
+    "move right": {
+        "message": "Pohyb doprava"
+    },
+    "move up": {
+        "message": "pohyb nahoru"
+    },
+    "navigate back/exit": {
+        "message": "navigovat zpět/pryč"
+    },
+    "paste unit": {
+        "message": "Vložit jednotku"
+    },
+    "patrol": {
+        "message": "Hlídkovat"
+    },
+    "pause game": {
+        "message": "Pozastavit hru"
+    },
+    "pause time": {
+        "message": "pauza"
+    },
+    "picture-in-picture": {
+        "message": "obraz v obraze"
+    },
+    "ping": {
+        "message": "označit\\n"
+    },
+    "planet jump": {
+        "message": "planetární skok"
+    },
+    "play backwards at 100%": {
+        "message": "Přehrát pozpátku na 100%"
+    },
+    "play backwards at 50%": {
+        "message": "Přehrát pozpátku na 50%"
+    },
+    "play forward at 100%": {
+        "message": "přehrát dopředu na 100%"
+    },
+    "play forward at 50%": {
+        "message": "přehrát dopředu na 50%"
+    },
+    "publish server mods": {
+        "message": "publikovat serverové módy"
+    },
+    "quick profile": {
+        "message": "Rychlý náhled"
+    },
+    "recall anchor": {
+        "message": "Vyvolat upevnění"
+    },
+    "reload view": {
+        "message": "obnovit pohled"
+    },
+    "repair": {
+        "message": "Opravit"
+    },
+    "return fire": {
+        "message": "opětovat palbu"
+    },
+    "roam": {
+        "message": "toulat se"
+    },
+    "select air group": {
+        "message": "Vybrat leteckou jednotku"
+    },
+    "select all air combat units": {
+        "message": "Vybrat všechny letecké bojové jednotky"
+    },
+    "select all air combat units on screen": {
+        "message": "Vybrat všechny letecké bojové jednotky na obrazovce"
+    },
+    "select all combat units": {
+        "message": "Vybrat všechny bojové jednotky"
+    },
+    "select all combat units on screen": {
+        "message": "Vybrat všechny bojové jednotky na obrazovce"
+    },
+    "select all factories": {
+        "message": "Vybrat všechny továrny"
+    },
+    "select all idle factories": {
+        "message": "Vybrat všechny nečinné továrny"
+    },
+    "select all idle factories on screen": {
+        "message": "Vybrat všechny nečinné továrny na obrazovce"
+    },
+    "select all land combat units": {
+        "message": "Vybrat všechny pozemní bojové jednotky"
+    },
+    "select all land combat units on screen": {
+        "message": "vybrat všechny jednotky na obrazovce"
+    },
+    "select all naval combat units": {
+        "message": "Vybrat všechny námořní bojové jednotky"
+    },
+    "select all naval combat units on screen": {
+        "message": "Vybrat všechny námořní bojové jednotky na obrazovce"
+    },
+    "select bot group": {
+        "message": "vybrat skupinu botů"
+    },
+    "select combat group": {
+        "message": "Vybrat bojovou skupinu"
+    },
+    "select commander": {
+        "message": "vybrat velitele"
+    },
+    "select factory group": {
+        "message": "vybrat tovární skupinu"
+    },
+    "select idle fabbers": {
+        "message": "Vybrat všechny nečinné konstruktéry"
+    },
+    "select orbital group (buildings)": {
+        "message": "vybrat orbitální skupinu (budovy)"
+    },
+    "select orbital group (units)": {
+        "message": "vybrat orbitální skupinu (jednotky)"
+    },
+    "select sea group": {
+        "message": "Vybrat námořní skupinu"
+    },
+    "select utility group": {
+        "message": "vybrat technickou skupinu"
+    },
+    "select vehicle group": {
+        "message": "vybrat skupinu pro vozidla"
+    },
+    "self destruct selected unit": {
+        "message": "autodestrukce vybrané jednotky"
+    },
+    "set default camera": {
+        "message": "nastavit výchozí kameru"
+    },
+    "set free camera": {
+        "message": "Volná kamera"
+    },
+    "set planet camera": {
+        "message": "nastavit kameru planety"
+    },
+    "show/hide UI": {
+        "message": "zobrazit/schovat UI"
+    },
+    "show/hide performance panel": {
+        "message": "zobrazi/schovat panel s výkonností"
+    },
+    "smooth zoom in": {
+        "message": "hladké přiblížení"
+    },
+    "smooth zoom out": {
+        "message": "Hladké oddálení"
+    },
+    "stop": {
+        "message": "Zastavit"
+    },
+    "team chat": {
+        "message": "týmový chat"
+    },
+    "toggle FOW": {
+        "message": "zapnout FOW"
+    },
+    "toggle audio logging": {
+        "message": "Zapnout zvukové nahrávání"
+    },
+    "toggle build orders": {
+        "message": "Přepnout stavební rozkazy"
+    },
+    "toggle console": {
+        "message": "Zapnout konzoli"
+    },
+    "toggle fire orders": {
+        "message": "Přepnout bojové rozkazy"
+    },
+    "toggle free camera": {
+        "message": "Zapnout volnou kameru"
+    },
+    "toggle fullscreen": {
+        "message": "zapnout na celou obrazovku"
+    },
+    "toggle music": {
+        "message": "Zapnout hudbu"
+    },
+    "unit commands": {
+        "message": "Příkazy jednotky"
+    },
+    "unit orders": {
+        "message": "rozkazy jednotek"
+    },
+    "unit selection": {
+        "message": "Výběr jednotek"
+    },
+    "units": {
+        "message": "Jednotky"
+    },
+    "unload": {
+        "message": "vyložit"
+    },
+    "zoom": {
+        "message": "Přiblížit"
+    },
+    "zoom in": {
+        "message": "Přiblížit"
+    },
+    "zoom out": {
+        "message": "oddálit"
+    },
+    "zoom to orbital": {
+        "message": "Přiblížit na orbitu"
+    },
+    "zoom to surface": {
+        "message": "přiblížit k povrchu"
+    }
+}

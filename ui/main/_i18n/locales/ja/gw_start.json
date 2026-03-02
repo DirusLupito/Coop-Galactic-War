@@ -1,0 +1,137 @@
+{
+    "ABSURD": {
+        "message": "エクストリーム"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "星系にいる敵を殲滅し、テクノを回収しよう"
+    },
+    "Archived Wars": {
+        "message": "戦火の記録"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "装備を選択することで、バトル開始時のコマンダーに新たなテクノ仕様を持たせることができる"
+    },
+    "Commander": {
+        "message": "コマンダー"
+    },
+    "Difficulty:": {
+        "message": "難易度:"
+    },
+    "EASY": {
+        "message": "EASY"
+    },
+    "EPIC": {
+        "message": "EPIC"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "前人未到の星系を探索してテクノを発見しよう"
+    },
+    "Faction": {
+        "message": "ファクション"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "Game name": {
+        "message": "ゲーム名"
+    },
+    "Go to War": {
+        "message": "戦争へ"
+    },
+    "HARD": {
+        "message": "ハード"
+    },
+    "Hardcore": {
+        "message": "ハードコア"
+    },
+    "How To Play": {
+        "message": "遊び方"
+    },
+    "How to Play": {
+        "message": "遊び方"
+    },
+    "LARGE": {
+        "message": "LARGE"
+    },
+    "LOCKED": {
+        "message": "未解放"
+    },
+    "Loadout": {
+        "message": "装備"
+    },
+    "MEDIUM": {
+        "message": "MEDIUM"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "星系間を移動して様々なテクノを回収していこう。そしてテクノを駆使して敵ファクションのリーダーを撃破し銀河を制圧するんだ！"
+    },
+    "NORMAL": {
+        "message": "ノーマル"
+    },
+    "Name": {
+        "message": "名前"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "星系間をジャンプすることで、銀河マップを移動しよう"
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "テクノを保全できるデータバンクは、星系を探索することで発見できる"
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "完全なる「死」。コマンダーが死亡してもやり直しが効かない。"
+    },
+    "RELENTLESS": {
+        "message": "ベリーハード"
+    },
+    "Random number for generating new galaxy": {
+        "message": "新たな銀河がランダムに生成される"
+    },
+    "SMALL": {
+        "message": "SMALL"
+    },
+    "Saved Games": {
+        "message": "セーブゲーム"
+    },
+    "Seed Value": {
+        "message": "シード値"
+    },
+    "Setup": {
+        "message": "セットアップ"
+    },
+    "Size:": {
+        "message": "サイズ:"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "戦うことしか知らないがために戦いを続けるコマンダーもいれば、自らの起源という答えを追い求めて戦い続けるコマンダーもいる。様々な欲求と信条がコマンダーたちを戦いへと駆り立てる、こうして銀河を荒廃させる戦争が幾世紀も続いているのだ…"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "どこかの星系には謎のコマンダー装備が密かに眠るという。星系間戦争に勝利するため、協力無比なる装備を回収せよ"
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "テクノを削除することで、新しいテクノをダウンロードするスペースができる。削除/拒否されたテクノは、星系間戦争が終了するまで失われることとなる"
+    },
+    "The Commanders": {
+        "message": "コマンダー"
+    },
+    "The Progenitors": {
+        "message": "The Progenitors"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "何百万年も冬眠状態にあったコマンダーたちは、やがて文明の残響のみが広がる銀河に目覚めた。こうして、いにしえの戦争機械たちは銀河を舞台に戦いを繰り広げる…太古の昔にプログラムされた「本能」だけに付き従いながら"
+    },
+    "Tip:": {
+        "message": "ヒント:"
+    },
+    "Tips": {
+        "message": "ヒント"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "War - __date__": {
+        "message": "戦争 - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "かろうじて確かなことは、かつて広大な銀河を統括していた帝国が栄えていたということ、そしてそれが紛争によって滅びたということだ。こうした先人たちをコマンダーたちは「The Progenitors」と呼ぶ。多くのコマンダーは彼らの「出生の秘密」の答えが、かつて偉大であった文明を象徴する廃墟群の奥に隠されていると信じている"
+    }
+}

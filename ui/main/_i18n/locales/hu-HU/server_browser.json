@@ -1,0 +1,101 @@
+{
+    "AI Battle": {
+        "message": "AI Csata"
+    },
+    "Any": {
+        "message": "Minden"
+    },
+    "Can Join": {
+        "message": "Csatlakozhat"
+    },
+    "Can Play": {
+        "message": "Játszható"
+    },
+    "Can Spectate": {
+        "message": "Van néző hely"
+    },
+    "Casual": {
+        "message": "Alkalmi játék"
+    },
+    "Competitive": {
+        "message": "Kompetetív"
+    },
+    "Create Game": {
+        "message": "Játék Létrehozása"
+    },
+    "Free For All": {
+        "message": "Mindenki mindenki ellen"
+    },
+    "Game": {
+        "message": "Játék"
+    },
+    "Game State": {
+        "message": "Játék Állapota"
+    },
+    "In Lobby": {
+        "message": "Váróteremben"
+    },
+    "In Progress": {
+        "message": "Folyamatban"
+    },
+    "Join Game": {
+        "message": "Csatlakozás a játékhoz"
+    },
+    "Locked Game": {
+        "message": "Zártkörű játék"
+    },
+    "Mode": {
+        "message": "Mód"
+    },
+    "Mods": {
+        "message": "Modok"
+    },
+    "Multiplayer": {
+        "message": "Többjátékos"
+    },
+    "No max": {
+        "message": "Nincs max"
+    },
+    "No min": {
+        "message": "Nincs min"
+    },
+    "Number of Planets": {
+        "message": "Bolygók Száma"
+    },
+    "Number of Players": {
+        "message": "Játékosok Száma"
+    },
+    "Password": {
+        "message": "Jelszó"
+    },
+    "Planets": {
+        "message": "Bolygók"
+    },
+    "Players": {
+        "message": "Játékosok"
+    },
+    "Region": {
+        "message": "Régió"
+    },
+    "Slots": {
+        "message": "Férőhelyek"
+    },
+    "Spectate": {
+        "message": "Megfigyelés"
+    },
+    "Spectators": {
+        "message": "Nézők"
+    },
+    "Status": {
+        "message": "Állapot"
+    },
+    "Tag": {
+        "message": "Címke"
+    },
+    "Team Armies": {
+        "message": "Több játékos seregenként"
+    },
+    "Testing": {
+        "message": "Tesztelés"
+    }
+}

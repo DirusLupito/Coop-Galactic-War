@@ -1,0 +1,80 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": " （+__aiCount__个电脑）"
+    },
+    "(Updating...)": {
+        "message": " （正在更新……）"
+    },
+    "(no info available)": {
+        "message": "（没有可用信息）"
+    },
+    "Duration": {
+        "message": "时长："
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "未能获取回放列表"
+    },
+    "Filter": {
+        "message": "筛选"
+    },
+    "Galactic War": {
+        "message": "银河战争"
+    },
+    "Game": {
+        "message": "游戏"
+    },
+    "Lobby Id": {
+        "message": "大厅 ID"
+    },
+    "Longest Game Duration": {
+        "message": "最大游戏时长"
+    },
+    "Most Recent": {
+        "message": "最近"
+    },
+    "Multiplayer": {
+        "message": "多人游戏"
+    },
+    "Replays": {
+        "message": "回放"
+    },
+    "Returning to Main Menu": {
+        "message": "正在返回主菜单"
+    },
+    "Search": {
+        "message": "搜索"
+    },
+    "Sorted By": {
+        "message": "排序依据"
+    },
+    "Version": {
+        "message": "版本"
+    },
+    "Versus AI": {
+        "message": "对抗电脑"
+    },
+    "View": {
+        "message": "查看"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "观看直接大厅ID：__lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "观看回放"
+    },
+    "Winner": {
+        "message": "胜利者"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": " __gwClientNames__：银河战争\"__gwWarName__\"（回合__gwTurn__，__gwSystemName__），对抗__gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1对1排位赛"
+    },
+    "All Recent Games": {
+        "message": "近期所有战局"
+    },
+    "My Games Only": {
+        "message": "仅限我的战局"
+    }
+}

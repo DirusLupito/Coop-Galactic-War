@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "ОСТАЛОСЬ ПОПЫТОК: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Активные"
+    },
+    "Active Client": {
+        "message": "Активный клиент"
+    },
+    "Active Server": {
+        "message": "Активный сервер"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Активные моды будут автоматически обновляться при запуске и после каждой игры."
+    },
+    "Active/Inactive": {
+        "message": "Активный/Неактивный"
+    },
+    "Available": {
+        "message": "Доступные"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Доступный мод конфликтует с модом файловой системы, установленным по адресу:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "ПОВТОРЫ КРУПНЫХ МАТЧЕЙ"
+    },
+    "Build:": {
+        "message": "Билд:"
+    },
+    "By": {
+        "message": "Автор"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "ПРОВЕРКА МОДОВ ФАЙЛОВОЙ СИСТЕМЫ"
+    },
+    "COMMUNITY MODS": {
+        "message": "МОДЫ СООБЩЕСТВА"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "ПОДДЕРЖКА СООБЩЕСТВА"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "НЕ УДАЛОСЬ СОЕДИНИТЬСЯ С СЕРВЕРОМ"
+    },
+    "Client Mods": {
+        "message": "Клиентские моды"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Клиентские моды монтируются (загружаются) только на вашем клиенте и не влияют на других игроков."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Клиентские моды не могут изменять сами юниты или их настройки в Схватках с ИИ или многопользовательских играх."
+    },
+    "Community Mods": {
+        "message": "Моды сообщества"
+    },
+    "Companion Client Mods": {
+        "message": "Дополнительные клиентские моды"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Дополнительные моды – это специальные клиентские моды, которые могут автоматически загружаться на какое-то время, если того требуют моды сервера."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "Конфликтующие моды юнитов на сервере:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "ЗАГРУЗКА МОДОВ СЕРВЕРА"
+    },
+    "Date:": {
+        "message": "Дата:"
+    },
+    "Dependencies": {
+        "message": "Зависимости"
+    },
+    "Details": {
+        "message": "Подробная информация"
+    },
+    "Disable": {
+        "message": "Отключить"
+    },
+    "Disable Nukes": {
+        "message": "Отключить ядерное оружие"
+    },
+    "Disable Ragnaroks": {
+        "message": "Отключить Ragnarok"
+    },
+    "Disable Titans": {
+        "message": "Отключить титанов"
+    },
+    "Disabled": {
+        "message": "Отключенные"
+    },
+    "Downloads": {
+        "message": "Загрузки"
+    },
+    "Enable": {
+        "message": "Включить"
+    },
+    "Enable All": {
+        "message": "Включить все"
+    },
+    "Enabled Client": {
+        "message": "Включенный клиент"
+    },
+    "Enabled Server": {
+        "message": "Включенный сервер"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "Включенные клиентские моды только для вашего клиента в любых играх, в которые вы играете или смотрите"
+    },
+    "Enabled/Disabled": {
+        "message": "Включено/Выключено"
+    },
+    "Filter": {
+        "message": "Фильтр"
+    },
+    "Identifier:": {
+        "message": "Идентификатор:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "Если они не активны, то дополнительные моды автоматически загружаются/обновляются, а затем монтируются, когда вы присоединяетесь к или наблюдаете за Схваткой с ИИ или многопользовательской игрой. По окончании игры, эти моды отключаются."
+    },
+    "Install": {
+        "message": "Установить"
+    },
+    "Installed": {
+        "message": "Установленные"
+    },
+    "Installed Path:": {
+        "message": "Путь:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Установленные моды сервера и клиентские моды в кеше загрузки"
+    },
+    "Installing Mods": {
+        "message": "Установка модов"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "При установка мода в ваш локальный кеш загрузки PA будет загружен сжатый zip-файл мода."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Крупные моды сервера для юнитов, такие как Legion Expansion, используют дополнительные моды для уменьшения размера модов сервера и их времени загрузки/выгрузки."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "Если у вас медленное Интернет-соединение, то загрузка/выгрузка больших модов сервера для юнитов может занять некоторое время."
+    },
+    "Local file system mod installed at:": {
+        "message": "Мод локальной файловой системы установлен по адресу:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "МОДЫ ОТКЛЮЧЕНЫ --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "УСТАНОВКА КЛИЕНТСКИХ МОДОВ"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "УСТАНОВКА КЛИЕНТСКИХ МОДОВ В АВТОНОМНОМ РЕЖИМЕ"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "ЗАГРУЖАЕМ ДОПОЛНИТЕЛЬНЫЕ МОДЫ... ПОЖАЛУЙСТА, ПОДОЖДИТЕ"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "ЗАГРУЖАЕМ МОДЫ СЕРВЕРА"
+    },
+    "Merge (experimental)": {
+        "message": "Объединить (экспериментальное)"
+    },
+    "Mods available to install": {
+        "message": "Доступные для установки моды"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "Большинство установленных модов можно использовать в автономном режиме без подключения к Интернету (для некоторых модов может потребоваться подключение к Интернету)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Несколько конфликтующих модов сервера для юнитов могут вызвать такие проблемы, как отсутствие панели строительства и сбои в работе сервера."
+    },
+    "Name": {
+        "message": "Имя"
+    },
+    "No": {
+        "message": "Нет "
+    },
+    "No __description__ mods match your criteria": {
+        "message": "Нет модов из категории __description__, которые соответствовали бы вашим критериям"
+    },
+    "No units match your criteria": {
+        "message": "Нет юнитов, соответствующих вашим критериям"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "ОФИЦИАЛЬНЫЙ DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "ОФИЦИАЛЬНЫЕ РУКОВОДСТВА"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "ОФИЦИАЛЬНАЯ ПОДДЕРЖКА"
+    },
+    "OK": {
+        "message": "ОК"
+    },
+    "Offline Mode": {
+        "message": "Автономный режим"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Только моды сервера могут изменять список или настройки юнитов в Схватках с ИИ или многопользовательских играх. Кроме того, они должны загружаться с сервера каждым клиентом, чтобы предотвратить попытки читерства."
+    },
+    "Priority": {
+        "message": "Приоритет"
+    },
+    "Priority:": {
+        "message": "Приоритет:"
+    },
+    "Privacy Policy": {
+        "message": "Политика конфиденциальности"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ПОВТОРНАЯ ЗАГРУЗКА АКТИВНЫХ КЛИЕНТСКИХ МОДОВ"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "ПЕРЕУСТАНОВКА МОДОВ СЕРВЕРА"
+    },
+    "Recommended": {
+        "message": "Рекомендуемые"
+    },
+    "Recommended mods": {
+        "message": "Рекомендуемые моды"
+    },
+    "Reload File System Mods": {
+        "message": "Перезагрузить моды файловой системы"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращаемся в главное меню"
+    },
+    "Season ends __date__": {
+        "message": "Сезон заканчивается: __date__"
+    },
+    "Server Mods": {
+        "message": "Моды сервера"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Моды сервера сначала загружаются на сервер, когда вы создаете Схватку с ИИ или многопользовательскую игру, а затем загружаются и монтируются на каждом клиенте всех игроков и зрителей, когда они присоединяются к вашей игре."
+    },
+    "Size:": {
+        "message": "Размер:"
+    },
+    "Sort": {
+        "message": "Сортировать"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "ЕСЛИ ВЫ ХОТИТЕ ИГРАТЬ РАНГОВЫЕ МАТЧИ 1 НА 1, ВАМ НУЖНО ИСПОЛЬЗОВАТЬ МОДЫ СООБЩЕСТВА, ЧТОБЫ ИЗБЕЖАТЬ ПРОБЛЕМ <br />Пожалуйста, следуйте инструкциям на вики-странице, чтобы удалить PAMM и ваши моды файловой системы"
+    },
+    "Type": {
+        "message": "Тип"
+    },
+    "UI Scenes": {
+        "message": "Сцены пользовательского интерфейса"
+    },
+    "UNIT DATABASE": {
+        "message": "БАЗА ДАННЫХ ЮНИТОВ"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "ОБНОВЛЕНИЕ АКТИВНЫХ МОДОВ"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ОБНОВЛЕНИЕ И ПОВТОРНАЯ ЗАГРУЗКА АКТИВНЫХ КЛИЕНТСКИХ МОДОВ"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "ОБНОВЛЕНИЕ ДОСТУПНЫХ МОДОВ"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "ОБНОВЛЕНИЕ ФАЙЛОВ МОДОВ СООБЩЕСТВА"
+    },
+    "Uninstall": {
+        "message": "Удалить"
+    },
+    "Unit Restrictions": {
+        "message": "Ограничения юнитов"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "Ограничения юнитов не применяются к Галактической Войне."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Ограничения юнитов для отключения определенных юнитов для всех игроков в создаваемых вами Схватках с ИИ и многопользовательских играх"
+    },
+    "Units": {
+        "message": "Юниты"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Юниты могут быть отключены для всех игроков, включая ИИ в Схватках с ИИ или в многопользовательских играх, которые вы создаете."
+    },
+    "Units matching your criteria": {
+        "message": "Юниты, которые соответствуют вашим критериям"
+    },
+    "Units:": {
+        "message": "Юниты:"
+    },
+    "Updated": {
+        "message": "Обновленные"
+    },
+    "Used By": {
+        "message": "Используется"
+    },
+    "Version:": {
+        "message": "Версия:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "Моды из категории __description__, которые соответствуют вашим критериям"
+    },
+    "about-community-mods": {
+        "message": "Моды сообщества – это услуга, предоставляемая <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> для <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc. <span class=\"community-mods-link-icon\">&#xe164;</span></a> Она позволяет расширить базовую игру за счёт улучшений, исправлений и сотен созданных сообществом модов, таких как, например, <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">Legion Expansion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Моды сообщества и Чат сообщества – это услуги, предоставляемые <a class=\"link\" data-bind=\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\">palobby.com <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> для <a class=\"link\" data-bind=\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\">Planetary Annihilation Inc. <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> Они позволяют расширить базовую игру за счёт улучшений, исправлений и сотен созданных сообществом модов, таких как, например, <a class=\"link\" data-bind=\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\">Legion Expansion <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>"
+    },
+    "privacy policy": {
+        "message": "политика конфиденциальности"
+    },
+    "Companions": {
+        "message": "Компаньоны"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Включить ИИ из Legion Expansion"
+    },
+    "__rank_title__ Rank": {
+        "message": "Ранг: __rank_title__"
+    },
+    "Systems": {
+        "message": "Системы"
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "1v1": {
+        "message": "1 на 1"
+    },
+    "Building planets": {
+        "message": "Строительство планет"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ПОТЕРЯНО СОЕДИНЕНИЕ С СЕРВЕРОМ"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Chat": {
+        "message": "Чат"
+    },
+    "Empty": {
+        "message": "Пусто"
+    },
+    "Leave": {
+        "message": "Выйти"
+    },
+    "Leaving the game will result in a match making timeout penalty.": {
+        "message": "Если вы выйдите из игры, то ваше время ожидания подбора противника увеличится."
+    },
+    "Main Menu": {
+        "message": "Главное меню"
+    },
+    "Opponent abandoned the game": {
+        "message": "Противник отказался от игры"
+    },
+    "Ranked Match": {
+        "message": "Ранговый матч"
+    },
+    "Requeue": {
+        "message": "Вернуться в очередь"
+    },
+    "Requeuing": {
+        "message": "Добавляем в очередь"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращаемся в главное меню"
+    },
+    "System": {
+        "message": "Система"
+    },
+    "Waiting for opponent to connect": {
+        "message": "Ожидание подключения противника"
+    },
+    "Warning": {
+        "message": "Предупреждение"
+    },
+    "Your opponent abandoned the game and has received a time penalty.": {
+        "message": "Ваш противник отказался от игры и получил штрафное время."
+    }
+}

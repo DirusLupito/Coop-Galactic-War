@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP アグレッシブ"
+    },
+    "AIP Air": {
+        "message": "AIP エアー"
+    },
+    "AIP Bot": {
+        "message": "AIP ボット"
+    },
+    "AIP Cautious": {
+        "message": "AIP コーシャス"
+    },
+    "AIP Defender": {
+        "message": "AIP ディフェンダー"
+    },
+    "AIP Economist": {
+        "message": "AIP エコノミスト"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP ファストテクノ"
+    },
+    "AIP Foundation": {
+        "message": "AIP ファウンデーション"
+    },
+    "AIP Land": {
+        "message": "AIP ランド"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP ローテクノ"
+    },
+    "AIP Naval": {
+        "message": "AIP ネイバル"
+    },
+    "AIP Orbital": {
+        "message": "AIP オービタル"
+    },
+    "AIP Random": {
+        "message": "AIP ランダム"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "AIP ラッシュ"
+    },
+    "AIP Swarm": {
+        "message": "AIP スワーム"
+    },
+    "AIP Synchronous": {
+        "message": "AIP Synchronous"
+    },
+    "AIP Tank": {
+        "message": "AIP タンク"
+    },
+    "AIP Turtle": {
+        "message": "AIP タートル"
+    },
+    "AIP Amphibious": {
+        "message": "AIP 水陸両用"
+    },
+    "AIP Fabber": {
+        "message": "AIP ファッバー"
+    },
+    "AIP All-terrain": {
+        "message": "AIP 全地形"
+    },
+    "AIP Artillery": {
+        "message": "AIP 迫撃"
+    },
+    "AIP Assault": {
+        "message": "AIP アサルト"
+    },
+    "AIP Boomer": {
+        "message": "AIP ブーマー"
+    },
+    "AIP Fortress": {
+        "message": "AIP 専守防衛"
+    },
+    "AIP Heavy": {
+        "message": "AIP 重装"
+    },
+    "AIP Infernodier": {
+        "message": "AIP 地上重装"
+    },
+    "AIP Micro": {
+        "message": "AIP ミクロ"
+    },
+    "AIP Nuker": {
+        "message": "AIP 核攻撃"
+    },
+    "AIP Raider": {
+        "message": "AIP 高速襲撃"
+    },
+    "AIP Ranked": {
+        "message": "AIP 上位指向"
+    },
+    "AIP Sniper": {
+        "message": "AIP 遠隔"
+    }
+}

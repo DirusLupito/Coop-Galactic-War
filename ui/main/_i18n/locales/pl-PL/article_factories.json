@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "Fabryki"
+    },
+    "PA Guide: Factories": {
+        "message": "Przewodnik PA: Fabryki"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "Wybierz fabrykę, by uzyskać dostęp do paska budowy"
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Wciśnij Control i kliknij LPM[/style] jednostkę, żeby fabryka wyprodukowała jeden jej egzemplarz, zanim powróci do budowy pozostałych w kolejce."
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "Dodawaj jednostki, [style=text_callout] klikając LPM[/style] pasek budowy, by je wybudować"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]Kliknij PPM[/style] lub [style=text_callout]wciśnij Shift i kliknij PPM[/style] jednostki, aby zmniejszyć liczbę jednostek w kolejce budowy"
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "[style=text_callout]Wciśnij Shift i klikaj LPM[/style] jednostki z paska budowy, aby zacząć ich jednoczesną budowę"
+    }
+}

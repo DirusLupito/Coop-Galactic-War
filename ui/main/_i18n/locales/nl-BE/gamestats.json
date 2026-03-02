@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "Bouwefficiëntie"
+    },
+    "CLOSE": {
+        "message": "SLUITEN"
+    },
+    "Command Rate": {
+        "message": "Bevelverhouding"
+    },
+    "Draw": {
+        "message": "Gelijkspel"
+    },
+    "Energy Demand": {
+        "message": "Energievraag"
+    },
+    "Energy Production": {
+        "message": "Energieproductie"
+    },
+    "Energy Wasted": {
+        "message": "Energie verspild"
+    },
+    "GAME SUMMARY": {
+        "message": "SPELSAMENVATTING"
+    },
+    "In Progress": {
+        "message": "Bezig"
+    },
+    "Metal Demand": {
+        "message": "Metaalvraag"
+    },
+    "Metal Destruction Rate": {
+        "message": "Vernietigingstempo metaal"
+    },
+    "Metal Loss Rate": {
+        "message": "Metaalverlies"
+    },
+    "Metal Production": {
+        "message": "Metaalproductie"
+    },
+    "Metal Wasted": {
+        "message": "Metaal verspild"
+    },
+    "Retrieving Stats...": {
+        "message": "Statistieken ophalen..."
+    },
+    "Total Units": {
+        "message": "Totaal eenheden"
+    },
+    "Unit Build Rate": {
+        "message": "Bouwtempo eenheden"
+    },
+    "Unit Destruction Rate": {
+        "message": "Vernietigingstempo eenheden"
+    },
+    "Unit Loss Rate": {
+        "message": "Verlies eenheden"
+    },
+    "Units In Combat": {
+        "message": "Eenheden in gevecht"
+    },
+    "Units: Fabricators": {
+        "message": "Eenheden: fabricage"
+    },
+    "Units: Factory": {
+        "message": "Eenheden: fabriek"
+    },
+    "Units: Mobile": {
+        "message": "Eenheden: mobiel"
+    },
+    "Winner:": {
+        "message": "Winnaar:"
+    },
+    "Winners:": {
+        "message": "Winnaars:"
+    }
+}

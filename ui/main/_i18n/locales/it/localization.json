@@ -1,0 +1,11 @@
+{
+    "No results match": {
+        "message": " Nessun risultato corrispondente"
+    },
+    "Nothing Selected": {
+        "message": "Nessuna selezione"
+    },
+    "{0} of {1} selected": {
+        "message": "Selezione: {0} su {1}"
+    }
+}

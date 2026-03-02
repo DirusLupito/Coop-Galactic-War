@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "Эффективность строительства"
+    },
+    "CLOSE": {
+        "message": "ЗАКРЫТЬ"
+    },
+    "Command Rate": {
+        "message": "Скорость приказов"
+    },
+    "Draw": {
+        "message": "Чертить"
+    },
+    "Energy Demand": {
+        "message": "Спрос на энергию"
+    },
+    "Energy Production": {
+        "message": "Производство энергии"
+    },
+    "Energy Wasted": {
+        "message": "Потрачено энергии"
+    },
+    "GAME SUMMARY": {
+        "message": "ИГРОВАЯ СВОДКА"
+    },
+    "In Progress": {
+        "message": "В процессе"
+    },
+    "Metal Demand": {
+        "message": "Спрос на металл"
+    },
+    "Metal Destruction Rate": {
+        "message": "Скорость разрушения металла"
+    },
+    "Metal Loss Rate": {
+        "message": "Скорость потери металла"
+    },
+    "Metal Production": {
+        "message": "Производство металла"
+    },
+    "Metal Wasted": {
+        "message": "Потрачено металла"
+    },
+    "Retrieving Stats...": {
+        "message": "Получение статистики..."
+    },
+    "Total Units": {
+        "message": "Всего юнитов"
+    },
+    "Unit Build Rate": {
+        "message": "Скорость строительства юнитов"
+    },
+    "Unit Destruction Rate": {
+        "message": "Скорость разрушения юнитов"
+    },
+    "Unit Loss Rate": {
+        "message": "Скорость потери юнитов"
+    },
+    "Units In Combat": {
+        "message": "Юниты в бою"
+    },
+    "Units: Fabricators": {
+        "message": "Юниты: Фабрикаторы"
+    },
+    "Units: Factory": {
+        "message": "Юниты: Завод"
+    },
+    "Units: Mobile": {
+        "message": "Юниты: Мобильные"
+    },
+    "Winner:": {
+        "message": "Победитель:"
+    },
+    "Winners:": {
+        "message": "Победители:"
+    }
+}

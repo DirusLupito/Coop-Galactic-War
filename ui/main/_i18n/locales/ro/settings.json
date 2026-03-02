@@ -1,0 +1,74 @@
+{
+    "Ambient Occlusion": {
+        "message": "AMBIENT OCCLUSION"
+    },
+    "Anti-Aliasing": {
+        "message": "ANTI-ALIASING"
+    },
+    "Audio": {
+        "message": "AUDIO"
+    },
+    "Camera": {
+        "message": "CAMERA"
+    },
+    "Camera Friction": {
+        "message": "FRICŢIUNEA CAMEREI"
+    },
+    "Cancel": {
+        "message": "ANULEAZĂ"
+    },
+    "Display Mode": {
+        "message": "MOD DE PREZENTARE"
+    },
+    "Graphics": {
+        "message": "GRAFICĂ"
+    },
+    "Headlights": {
+        "message": "FARURI"
+    },
+    "Key Pan Speed": {
+        "message": "VITEZĂ DE MIŞCARE PRIN COMANDĂ"
+    },
+    "Keyboard": {
+        "message": "TASTATURĂ"
+    },
+    "Master Volume": {
+        "message": "VOLUM PRINCIPAL"
+    },
+    "Mouse Pan Speed": {
+        "message": "VITEZĂ DE MIŞCARE MOUSE"
+    },
+    "Orbital Shell": {
+        "message": "CARAPACE ORIBTALĂ"
+    },
+    "Quality Preset": {
+        "message": "SETARE DE CALITATE"
+    },
+    "Resolution Scaling": {
+        "message": "SCALARE REZOLUŢIE"
+    },
+    "Settings": {
+        "message": "SETĂRI"
+    },
+    "Shadows": {
+        "message": "UMBRE"
+    },
+    "Show Build Previews": {
+        "message": "ARATĂ AVANPREMIERĂ CONSTRUCŢIE"
+    },
+    "Show Metal Spot Icons": {
+        "message": "ARATĂ ICONIŢE PENTRU SPOT DE METAL"
+    },
+    "Show Stat Bars": {
+        "message": "ARATĂ BARELE PENTRU STATISTICI"
+    },
+    "Show Unit Icons": {
+        "message": "ARATĂ ICONIŢELE TRUPELOR"
+    },
+    "Virtual Texture": {
+        "message": "TEXTURĂ VIRTUALĂ"
+    },
+    "Zoom Speed": {
+        "message": "VITEZĂ ZOOM"
+    }
+}

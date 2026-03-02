@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "Accepteren"
+    },
+    "Appear Offline": {
+        "message": "Onzichtbaar"
+    },
+    "Away": {
+        "message": "Afwezig"
+    },
+    "Block": {
+        "message": "Blokkeren"
+    },
+    "Buy Expansion": {
+        "message": "Uitbreiding kopen"
+    },
+    "CANCEL": {
+        "message": "ANNULEREN"
+    },
+    "CHANGE": {
+        "message": "VERANDEREN"
+    },
+    "CHAT": {
+        "message": "CHAT"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Change Display Name": {
+        "message": "Schermnaam wijzigen"
+    },
+    "Change your display name?": {
+        "message": "Je schermnaam wijzigen?"
+    },
+    "Chat": {
+        "message": "Chat"
+    },
+    "Date": {
+        "message": "Datum"
+    },
+    "Do Not Disturb": {
+        "message": "Niet storen"
+    },
+    "Enter a status message": {
+        "message": "Voer een statusbericht in"
+    },
+    "Friends": {
+        "message": "Vrienden"
+    },
+    "Ignore": {
+        "message": "Negeren"
+    },
+    "Invite to Chat": {
+        "message": "Uitnodigen voor chat"
+    },
+    "Invite to game": {
+        "message": "Voor een spel uitnodigen"
+    },
+    "Join Game": {
+        "message": "Meedoen met spel"
+    },
+    "New Display Name:": {
+        "message": "Nieuwe schermnaam:"
+    },
+    "No pending notifications.": {
+        "message": "Geen meldingen in de wachtrij."
+    },
+    "Offline": {
+        "message": "Offline"
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Pending Invite": {
+        "message": "Wachtende uitnodiging"
+    },
+    "REMOVE": {
+        "message": "VERWIJDEREN"
+    },
+    "Recent": {
+        "message": "Recente"
+    },
+    "Remove": {
+        "message": "Verwijderen"
+    },
+    "Replays": {
+        "message": "Herhalingen"
+    },
+    "Required Expansion Pack": {
+        "message": "Vereist uitbreidingspakket"
+    },
+    "Search Players": {
+        "message": "Spelers zoeken"
+    },
+    "Search Results": {
+        "message": "Zoekresultaten"
+    },
+    "Send Friend Request": {
+        "message": "Vriendschapsverzoek versturen"
+    },
+    "Tags:": {
+        "message": "Labels:"
+    },
+    "The game you are trying to join requires the [style=content_description]__content_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "Het spel waaraan je probeert deel te nemen vereist de [style=content_description]__content_name__[/style] uitbreiding voor Planetary Annihilation."
+    },
+    "Unblock": {
+        "message": "Blokkering opheffen"
+    },
+    "Unfriend": {
+        "message": "Ontvrienden"
+    },
+    "Users": {
+        "message": "Gebruikers"
+    },
+    "__display_name__ invited you to a game.": {
+        "message": "__display_name__ heeft je uitgenodigd voor een spel."
+    },
+    "__display_name__ invited you to chat.": {
+        "message": "__display_name__ heeft je uitgenodigd om te chatten."
+    },
+    "__display_name__ wants to be your friend.": {
+        "message": "__display_name__ wil je vriend zijn."
+    }
+}

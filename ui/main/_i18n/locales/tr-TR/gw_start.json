@@ -1,0 +1,74 @@
+{
+    "ABSURD": {
+        "message": "SAÇMA"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Ele geçirilmiş sistemlerdeki düşmanların Teknolojilerini toplamak için onları yok et."
+    },
+    "Archived Wars": {
+        "message": "Arşivlenmiş Savaşlar"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Kumandanınıza farklı başlangıç Teknoloji yapılandırmaları vermek için bir yük çıkışı seçin."
+    },
+    "Difficulty:": {
+        "message": "Zorluk Seviyesi:"
+    },
+    "EPIC": {
+        "message": "EPİK"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Teknolojileri kurtarmak için ele geçirilmemiş sistemleri tara."
+    },
+    "Faction": {
+        "message": "Grup"
+    },
+    "Go to War": {
+        "message": "Savaşa Git"
+    },
+    "HARD": {
+        "message": "ZOR"
+    },
+    "How to Play": {
+        "message": "Nasıl Oynanır"
+    },
+    "LARGE": {
+        "message": "BÜYÜK"
+    },
+    "MEDIUM": {
+        "message": "ORTA"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Yıldız sisteminden, teknoloji toplayan yıldız sistemlerine gidiniz.Bu Teknolojileri düşman grup liderlerini yenmek için kullanınız ve galaksiyi ele geçiriniz."
+    },
+    "Name": {
+        "message": "İsim"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Sistemden sisteme geçiş yaparak galaksi haritasında dolaş."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Teknolojileri biriktiren yeni veri bankaları, sistemler araştırarak bulunabilir."
+    },
+    "RELENTLESS": {
+        "message": "ACIMASIZ"
+    },
+    "SMALL": {
+        "message": "KÜÇÜK"
+    },
+    "Seed Value": {
+        "message": "Tohum Değeri"
+    },
+    "Size:": {
+        "message": "Boyut:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Bazı sistemlerde gizli Kumandan yük çıkışları var.Onları,ilerideki Galaksi Savaşları için kurtar."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Yeni Teknolojilere yer açmak için Teknoloji silinebilir.Silinen ve kabul edilmeyen Teknolojiler,Galaktik savasda kalanlar için kayıptır."
+    },
+    "Tips": {
+        "message": "İpuçları"
+    }
+}

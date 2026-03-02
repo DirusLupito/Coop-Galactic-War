@@ -1,0 +1,26 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "فشل في الإتصال مع الخادم"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "فقد الإتصال بالجهاز الخادم"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "فشل في المشاركة في اللعبة"
+    },
+    "FAILED TO START GAME": {
+        "message": "فشل في بدء لعبة جديدة"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "فشل في إعادة عرض الأحداث"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "الدخول مقبول"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "الدخول للجهاز الخادم مرفوض"
+    },
+    "Returning to Main Menu": {
+        "message": "جاري العودة للقائمة الرئيسة"
+    }
+}

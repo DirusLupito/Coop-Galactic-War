@@ -1,0 +1,26 @@
+{
+    "Delete Tech": {
+        "message": "Poista teknologia"
+    },
+    "Explore": {
+        "message": "Tutki"
+    },
+    "Fight": {
+        "message": "Taistele"
+    },
+    "Jump": {
+        "message": "Siirry"
+    },
+    "Preparing for battle": {
+        "message": "Valmistaudutaan taisteluun"
+    },
+    "Scanning System": {
+        "message": "Järjestelmää skannataan"
+    },
+    "Settings": {
+        "message": "Asetukset"
+    },
+    "Unlock Commander": {
+        "message": "Avaa komentaja"
+    }
+}

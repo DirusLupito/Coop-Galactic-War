@@ -1,0 +1,104 @@
+{
+    "APPROVE": {
+        "message": "批准"
+    },
+    "APPROVED USERS": {
+        "message": "已批准的用户"
+    },
+    "Add": {
+        "message": "添加"
+    },
+    "Add Contacts": {
+        "message": "添加联系人"
+    },
+    "Add a Friend": {
+        "message": "添加好友"
+    },
+    "BLOCK": {
+        "message": "拉黑"
+    },
+    "BLOCKED USERS": {
+        "message": "已拉黑的用户"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Close": {
+        "message": "关闭"
+    },
+    "Contact List Updated": {
+        "message": "联系人列表已更新"
+    },
+    "Contact Not Found": {
+        "message": "找不到联系人"
+    },
+    "Current Nickname:": {
+        "message": "当前昵称："
+    },
+    "Dismiss": {
+        "message": "忽略"
+    },
+    "Filter contacts by tag:": {
+        "message": "按标签筛选联系人："
+    },
+    "Games you make will be hidden to these players.": {
+        "message": "这些玩家将无法看到您所创建的战局。"
+    },
+    "Name:": {
+        "message": "名称："
+    },
+    "New Nickname:": {
+        "message": "新昵称："
+    },
+    "New Tag:": {
+        "message": "新标签："
+    },
+    "Players you have encountered recently.": {
+        "message": "您最近遇到的玩家。"
+    },
+    "Private games you make will only be visible to these players.": {
+        "message": "只有这些玩家能看到您所创建的私人战局。"
+    },
+    "RECENT": {
+        "message": "最近"
+    },
+    "REMOVE": {
+        "message": "移除"
+    },
+    "RENAME": {
+        "message": "改名"
+    },
+    "Refresh Contacts": {
+        "message": "刷新联系人"
+    },
+    "Refreshing friends list.....": {
+        "message": "正在刷新好友列表……"
+    },
+    "Rename": {
+        "message": "改名"
+    },
+    "Rename Friend": {
+        "message": "给好友改名"
+    },
+    "SOCIAL": {
+        "message": "社交"
+    },
+    "Tag": {
+        "message": "标签"
+    },
+    "Tag Friend:": {
+        "message": "为好友加上标签："
+    },
+    "Tags:": {
+        "message": "标签："
+    },
+    "UBERDEX": {
+        "message": "UBERDEX"
+    },
+    "Uber Name": {
+        "message": "用户名"
+    },
+    "or": {
+        "message": "或"
+    }
+}

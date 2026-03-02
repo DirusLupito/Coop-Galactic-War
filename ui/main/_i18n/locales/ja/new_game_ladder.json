@@ -1,0 +1,56 @@
+{
+    "1v1": {
+        "message": "1vs1"
+    },
+    "Building planets": {
+        "message": "惑星群を建造中"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "サーバーとの接続が失われました"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Chat": {
+        "message": "チャット"
+    },
+    "Empty": {
+        "message": "空き"
+    },
+    "Leave": {
+        "message": "離脱"
+    },
+    "Leaving the game will result in a match making timeout penalty.": {
+        "message": "ゲームを離脱すると、マッチメイキングでタイムアウトペナルティが課されます"
+    },
+    "Main Menu": {
+        "message": "メインメニュー"
+    },
+    "Opponent abandoned the game": {
+        "message": "対戦相手がゲームを放棄しました"
+    },
+    "Ranked Match": {
+        "message": "ランクマッチ"
+    },
+    "Requeue": {
+        "message": "再キュー"
+    },
+    "Requeuing": {
+        "message": "再キュー中"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "System": {
+        "message": "星系"
+    },
+    "Waiting for opponent to connect": {
+        "message": "対戦相手の接続を待っています…"
+    },
+    "Warning": {
+        "message": "警告"
+    },
+    "Your opponent abandoned the game and has received a time penalty.": {
+        "message": "対戦相手がゲームを放棄し、タイムアウトペナルティを課されました"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "CANCEL": {
+        "message": "LUK"
+    },
+    "Delete": {
+        "message": "SLET"
+    },
+    "Delete this system?": {
+        "message": "Slet Systemet?"
+    },
+    "SHOW PLANETS": {
+        "message": "VIS PLANETER"
+    },
+    "SHOW SYSTEMS": {
+        "message": "VIS SYSTEMER"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "电脑散兵战"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Delete": {
+        "message": "删除"
+    },
+    "Galactic War": {
+        "message": "银河战争"
+    },
+    "Game": {
+        "message": "战局"
+    },
+    "Last Saved": {
+        "message": "上次保存"
+    },
+    "OK": {
+        "message": "好的"
+    },
+    "Resume Game": {
+        "message": "恢复游戏"
+    },
+    "Saved Games": {
+        "message": "游戏存档"
+    },
+    "Switch to": {
+        "message": "是否要切换到"
+    },
+    "Type": {
+        "message": "类型"
+    },
+    "mode?": {
+        "message": "模式？"
+    }
+}

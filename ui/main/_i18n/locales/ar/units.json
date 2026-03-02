@@ -1,0 +1,146 @@
+{
+    "Advanced Air Factory": {
+        "message": "مصنع جوي متقدم"
+    },
+    "Advanced Bot Factory": {
+        "message": "مصنع روبوتات متقدم"
+    },
+    "Advanced Energy Plant": {
+        "message": "مصنع طاقة متقدم"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "طائرة فاب متقدمة"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "ربوت تصنيع متقدم"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "سفينة تصنيع متقدمة"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "مركبة تصنيع متقدمة"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "برج دفاع ليزري متقدم"
+    },
+    "Advanced Metal Extractor": {
+        "message": "مستخرج معادن متقدم"
+    },
+    "Advanced Naval Factory": {
+        "message": "مصنع بحري متقدم"
+    },
+    "Advanced Radar": {
+        "message": "رادار متقدم"
+    },
+    "Advanced Radar Satellite": {
+        "message": "قمر صناعي راداري متقدم"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "قاذف طوربيد متقدم"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "مصنع المركبات المتقدم"
+    },
+    "Air Factory": {
+        "message": "مصنع جوي"
+    },
+    "Anti-Nuke Launcher": {
+        "message": "قاذفة مضاد-النووي"
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "مضاد-النووي - يعترض الصواريخ النووية الوافدة"
+    },
+    "Bot Factory": {
+        "message": "مصنع روبوتات"
+    },
+    "Energy Plant": {
+        "message": "محطة الطاقة"
+    },
+    "Energy Storage": {
+        "message": "مخزن الطاقة"
+    },
+    "Fabrication Aircraft": {
+        "message": "طائرات البناء"
+    },
+    "Fabrication Bot": {
+        "message": "روبوت التصنيع"
+    },
+    "Fabrication Ship": {
+        "message": "سفن تصنيع "
+    },
+    "Fabrication Vehicle": {
+        "message": "مركبة التصنيع"
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": " صاروخ -المصاص- م ق-96"
+    },
+    "Land Mine": {
+        "message": "لغم أرضي"
+    },
+    "Laser Defense Tower": {
+        "message": "برج دفاع ليزري"
+    },
+    "Metal Extractor": {
+        "message": "مستخرج المعادن"
+    },
+    "Metal Storage": {
+        "message": "مخزن المعادن"
+    },
+    "Naval Factory": {
+        "message": "مصنع بحري"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "قاذفة الصواريخ النووية"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "صاروخ نووي - مقذوف, طويل المدى, يسبب الضرر لمساحة كبيرة"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "ربوت تصنيع مداري"
+    },
+    "Orbital Factory": {
+        "message": "مصنع مداري"
+    },
+    "Orbital Launcher": {
+        "message": "قاذفة مدارية"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "رادار الفضاء العميق المداري"
+    },
+    "Radar": {
+        "message": "رادار"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 منصة ليزر"
+    },
+    "Single Laser Defense Tower": {
+        "message": "برج دفاعي احادي الليزر"
+    },
+    "Solar Array": {
+        "message": "مجموعة شمسية"
+    },
+    "Teleporter": {
+        "message": "الناقل"
+    },
+    "Torpedo Launcher": {
+        "message": "قاذفة الطوربيدات"
+    },
+    "Unit Cannon": {
+        "message": "مدفع الوحدات"
+    },
+    "Vehicle Factory": {
+        "message": "مصنع المركبات"
+    },
+    "Wall": {
+        "message": "جدار"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "دبابة ثقيلة - عربة متطورة قصيرة المدى، مدرعة ثقيلة مزودة برادار متحرك."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "جهاز تشويش الرادار - يخفي وحدات الحلفاء عن رادار العدو في دائرة نصف قطرها حول نفسها. يستهلك طاقة."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "بارجة الدعم - تصلح السفن المتضررة وتستعيد الحطام تلقائيًا. يبني ويكشف الألغام. لا تساعد في بناء الوحدات. حوامة مائية."
+    }
+}

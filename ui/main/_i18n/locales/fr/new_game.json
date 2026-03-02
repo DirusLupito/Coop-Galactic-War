@@ -1,0 +1,221 @@
+{
+    "- Host": {
+        "message": "- Hôte"
+    },
+    "AI Commander": {
+        "message": "IA Commandeur"
+    },
+    "AI:": {
+        "message": "IA : "
+    },
+    "Add AI": {
+        "message": "Ajouter IA"
+    },
+    "Add AI Commander": {
+        "message": "Ajouter IA Commandeur"
+    },
+    "Add Slot": {
+        "message": "Ajouter emplacement"
+    },
+    "Add Team": {
+        "message": "Ajouter équipe"
+    },
+    "Alliance Victory": {
+        "message": "Victoire de l'alliance"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " Permet aux joueurs de faire et défaire des alliances en jeu ainsi que l'option de partager des ressources"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " Permet aux joueurs de couper et coller des unités pour expérimenter"
+    },
+    "Bounty Mode": {
+        "message": "Mode prime"
+    },
+    "Browse systems...": {
+        "message": "Parcourir les systèmes..."
+    },
+    "Building planets": {
+        "message": "Construction de planètes"
+    },
+    "Building planets...": {
+        "message": "Construction de planètes..."
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "CONNEXION AU SERVEUR PERDUE"
+    },
+    "Chat": {
+        "message": "Tchat"
+    },
+    "Default": {
+        "message": "Par défaut"
+    },
+    "Dynamic Alliances": {
+        "message": "Alliances dynamiques"
+    },
+    "Econ Rate": {
+        "message": "Taux économique"
+    },
+    "Empty": {
+        "message": "Vide"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": " La première équipe à tuer un commandeur gagne (protégez votre joueur le plus faible)"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " Chaque fois qu'un joueur élimine une armée, un multiplicateur d'économie augmentant son taux de production lui est attribué"
+    },
+    "Free For All": {
+        "message": "Chacun pour soi"
+    },
+    "Friends": {
+        "message": "Amis"
+    },
+    "Game Lobby": {
+        "message": "Lobby"
+    },
+    "Game Mode": {
+        "message": "Mode de jeu"
+    },
+    "Global Spectator Chat": {
+        "message": "Tchat spectateur global"
+    },
+    "Join": {
+        "message": "Rejoindre"
+    },
+    "Kick": {
+        "message": "Exclure"
+    },
+    "Large Planets": {
+        "message": "Grandes planètes"
+    },
+    "Leave": {
+        "message": "Abandonner"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "Multiplicateur par armée éliminée :"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " Aucune zone de départ verte utilisée. Les joueurs peuvent commencer où ils veulent."
+    },
+    "Open to:": {
+        "message": "Ouvrir à :"
+    },
+    "Password (optional)": {
+        "message": "Mot de passe (facultatif)"
+    },
+    "Player Slot": {
+        "message": "Emplacement de joueur"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Le joueur choisit un emplacement sur la planète de départ"
+    },
+    "Players": {
+        "message": "Joueurs"
+    },
+    "Private": {
+        "message": "Privé"
+    },
+    "Public": {
+        "message": "Public"
+    },
+    "Random": {
+        "message": "Aléatoire"
+    },
+    "Ready": {
+        "message": "Prêt"
+    },
+    "Remove": {
+        "message": "Enlever"
+    },
+    "Returning to Main Menu": {
+        "message": "Retour au menu principal"
+    },
+    "SHARE ARMY": {
+        "message": "PARTAGER L'ARMÉE"
+    },
+    "SPECTATORS": {
+        "message": "SPECTATEURS"
+    },
+    "Sandbox": {
+        "message": "Bac à sable"
+    },
+    "Select System": {
+        "message": "Sélectionner le système"
+    },
+    "Shuffle landing zones": {
+        "message": "Zones d'atterrissage aléatoires"
+    },
+    "Slot": {
+        "message": "Emplacement"
+    },
+    "Slot __slot_number__": {
+        "message": "Emplacement __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "Les emplacements sont vides"
+    },
+    "Spectate": {
+        "message": "Regarder"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " Les messages des spectateurs sont visibles durant le tchat de la partie"
+    },
+    "Spectators": {
+        "message": "Spectateurs"
+    },
+    "Start Anywhere": {
+        "message": "Commencer n'importe où"
+    },
+    "Start Game": {
+        "message": "Commencer une partie"
+    },
+    "Start Nearby": {
+        "message": "Commencer à proximité"
+    },
+    "Start Offworld": {
+        "message": "Départ sur une autre planète"
+    },
+    "Sudden Death Mode": {
+        "message": "Mode mort subite"
+    },
+    "Symmetrical": {
+        "message": "Symétrique"
+    },
+    "System": {
+        "message": "Système"
+    },
+    "Tag:": {
+        "message": "Tag :"
+    },
+    "Team": {
+        "message": "Équipe"
+    },
+    "Team Armies": {
+        "message": "Armées alliées"
+    },
+    "Team __team_number__": {
+        "message": "Équipe __team_number__"
+    },
+    "Title": {
+        "message": "Titre"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "Vous devez avoir des amis pour commencer une partie entre amis"
+    },
+    "Asteroid": {
+        "message": "Astéroïde"
+    },
+    "Multiple starting planets": {
+        "message": "Planètes de départ multiples"
+    },
+    "Select a system": {
+        "message": "Sélectionner un système"
+    },
+    "Started": {
+        "message": "Commencé"
+    },
+    "Waiting for system": {
+        "message": "En attente de système"
+    }
+}

@@ -1,0 +1,152 @@
+{
+    "ALLY": {
+        "message": "حليف"
+    },
+    "ARMY": {
+        "message": "جيش"
+    },
+    "AT WILL": {
+        "message": "عندما تريد"
+    },
+    "Accept": {
+        "message": "قبول"
+    },
+    "Activate planetary laser": {
+        "message": "ليز كواكبي نشط"
+    },
+    "Alliance Request": {
+        "message": "طلب تحالف"
+    },
+    "Alliance requested": {
+        "message": "تم طلب التحالف"
+    },
+    "Allied With:": {
+        "message": "حليف مع:"
+    },
+    "BUILD MODE": {
+        "message": "وضعية البناء"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "فقد الإتصال بالجهاز الخادم"
+    },
+    "CONTINUOUS": {
+        "message": "المستمر"
+    },
+    "Cancel": {
+        "message": "إلغي"
+    },
+    "Change orbit": {
+        "message": "تغيير المدار"
+    },
+    "Close": {
+        "message": "اغلق"
+    },
+    "Count": {
+        "message": "العد"
+    },
+    "DMG:": {
+        "message": "الضرر:"
+    },
+    "ECONOMY": {
+        "message": "الاقتصاد"
+    },
+    "ENERGY ORDERS": {
+        "message": "أوامر الطاقة"
+    },
+    "Efficiency": {
+        "message": "الكفاءة"
+    },
+    "Enemy Contact!": {
+        "message": "تشابك مع العدو!"
+    },
+    "Exit Game?": {
+        "message": "الخروج من اللعبة؟"
+    },
+    "FIRE ORDERS": {
+        "message": "أوامر إطلاق النار"
+    },
+    "Factory": {
+        "message": "مصنع"
+    },
+    "GAME PAUSED": {
+        "message": "اللعبة متوقفة"
+    },
+    "HOLD": {
+        "message": "توقف"
+    },
+    "HOLD POSITION": {
+        "message": "حافظ على مركزك"
+    },
+    "Ignore": {
+        "message": "تجاهل"
+    },
+    "MOVE ORDERS": {
+        "message": "أوامر التحرك"
+    },
+    "Mobile": {
+        "message": "متنقل"
+    },
+    "NORMAL": {
+        "message": "عادي"
+    },
+    "OFF": {
+        "message": "إيقاف"
+    },
+    "ON": {
+        "message": "تشغيل"
+    },
+    "PLAYER": {
+        "message": "لاعب"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "إختر مكاناً داخل المناطق الخضراء"
+    },
+    "Ping!": {
+        "message": "رن!"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "تم تحديد الموقع. أنقر للتأكيد"
+    },
+    "RETURN FIRE": {
+        "message": "الرد على النيران"
+    },
+    "ROAM": {
+        "message": "تجول"
+    },
+    "Request pending": {
+        "message": "الطلب معلق"
+    },
+    "Returning to Main Menu": {
+        "message": "جاري العودة للقائمة الرئيسة"
+    },
+    "START ANNIHILATION": {
+        "message": "إبدأ الإبادة"
+    },
+    "Select a new gravity well.": {
+        "message": "حدد ثقب جاذبية جديد."
+    },
+    "Select a planet to attack.": {
+        "message": "حدد كوكب للهجوم."
+    },
+    "Select a planet to destroy.": {
+        "message": "حدد كوكب لتدميره."
+    },
+    "Set course for annihilation": {
+        "message": "حدد المسار من اجل الإبادة"
+    },
+    "Set target spot": {
+        "message": "حدد بقعة الهدف"
+    },
+    "Then confirm destination to set course.": {
+        "message": "ثم أكد الوجهة لتحديد المسار."
+    },
+    "Unknown": {
+        "message": "مجهول"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "الإنتظار للاعبين الآخرين ليختاروا مكان البدء"
+    },
+    "Yes": {
+        "message": "نعم"
+    }
+}

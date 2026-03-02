@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "Нажатия кнопок мыши"
+    },
+    "PA Guide: Clicking": {
+        "message": "Руководство PA: Нажатие кнопок мыши"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "[style=text_callout]Щелкните два раза[/style] по юниту, чтобы выбрать похожие юниты"
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]Нажмите ЛКМ и выделите[/style] несколько юнитов"
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]Щелкните ЛКМ,[/style] чтобы выбрать юнит, [style=text_callout]ПКМ,[/style] чтобы отдать приказ."
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Shift + ПКМ,[/style] чтобы добавить в очередь несколько приказов"
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "Acquire": {
+        "message": "取得"
+    },
+    "All progress and Tech will be lost.": {
+        "message": "全ての進捗とテクノが失われます"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "この星系間戦争を本当に放棄しますか？"
+    },
+    "Continue": {
+        "message": "次へ"
+    },
+    "Data Cache Discovered": {
+        "message": "データキャッシュ発見"
+    },
+    "Delete Tech": {
+        "message": "テクノを削除"
+    },
+    "Dismiss Tech": {
+        "message": "テクノを却下"
+    },
+    "Duplicate Tech": {
+        "message": "テクノを複製"
+    },
+    "Explore": {
+        "message": "探索"
+    },
+    "Fight": {
+        "message": "戦闘"
+    },
+    "Game Menu": {
+        "message": "ゲームメニュー"
+    },
+    "Jump": {
+        "message": "ジャンプ"
+    },
+    "Loading...": {
+        "message": "ロード中…"
+    },
+    "Preparing for battle": {
+        "message": "バトル準備中…"
+    },
+    "Restart": {
+        "message": "リスタート"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに戻ります…"
+    },
+    "Save & Exit": {
+        "message": "セーブ＆終了"
+    },
+    "Saving...": {
+        "message": "セーブ中…"
+    },
+    "Scanning System": {
+        "message": "システムをスキャン中…"
+    },
+    "Select a technology to develop using this data.": {
+        "message": "このデータを使って発展させるテクノロジーを選択"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Social Bar": {
+        "message": "ソーシャルバー"
+    },
+    "TECHS": {
+        "message": "テクノ"
+    },
+    "Tech Bank is full. To develop new technology, select an existing tech and delete it to open a slot.": {
+        "message": "テクノバンクがいっぱいです。新たなテクノロジーを発展/開発するには、いずれかを削除して空きスロットを作ろう"
+    },
+    "Turns:": {
+        "message": "ターン数:"
+    },
+    "Unlock Commander": {
+        "message": "コマンダーを解放"
+    },
+    "Wins:": {
+        "message": "勝利数:"
+    }
+}

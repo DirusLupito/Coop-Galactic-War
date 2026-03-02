@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP Agressif"
+    },
+    "AIP Air": {
+        "message": "AIP Aérien"
+    },
+    "AIP Bot": {
+        "message": "AIP Robot"
+    },
+    "AIP Cautious": {
+        "message": "AIP Prudent"
+    },
+    "AIP Defender": {
+        "message": "AIP Défenseur"
+    },
+    "AIP Economist": {
+        "message": "AIP Économiste"
+    },
+    "AIP Fabber": {
+        "message": "AIP Constructeur"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP Tech rapide"
+    },
+    "AIP Foundation": {
+        "message": "AIP Fondation"
+    },
+    "AIP Land": {
+        "message": "AIP Terre"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP Tech simple"
+    },
+    "AIP Naval": {
+        "message": "AIP Naval"
+    },
+    "AIP Orbital": {
+        "message": "AIP Orbital"
+    },
+    "AIP Random": {
+        "message": "AIP Aléatoire"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "AIP Pressé d'attaquer"
+    },
+    "AIP Swarm": {
+        "message": "AIP Colonie"
+    },
+    "AIP Synchronous": {
+        "message": "AIP Synchronous"
+    },
+    "AIP Tank": {
+        "message": "AIP Char"
+    },
+    "AIP Turtle": {
+        "message": "AIP Tortue"
+    },
+    "AIP Amphibious": {
+        "message": "AIP Amphibie"
+    },
+    "AIP All-terrain": {
+        "message": "AIP Tout terrain"
+    },
+    "AIP Artillery": {
+        "message": "AIP Artillerie"
+    },
+    "AIP Assault": {
+        "message": "AIP Assaut"
+    },
+    "AIP Boomer": {
+        "message": "AIP Boomer"
+    },
+    "AIP Fortress": {
+        "message": "AIP Forteresse"
+    },
+    "AIP Heavy": {
+        "message": "AIP Lourd"
+    },
+    "AIP Infernodier": {
+        "message": "AIP Infernodier"
+    },
+    "AIP Micro": {
+        "message": "AIP Micro"
+    },
+    "AIP Nuker": {
+        "message": "AIP Nuker"
+    },
+    "AIP Raider": {
+        "message": "AIP Prédateur"
+    },
+    "AIP Ranked": {
+        "message": "AIP Classé"
+    },
+    "AIP Sniper": {
+        "message": "AIP Sniper"
+    }
+}

@@ -1,0 +1,95 @@
+{
+    "AI Commander": {
+        "message": "Comandante IA"
+    },
+    "Add AI": {
+        "message": "Adicionar IA"
+    },
+    "Add AI Commander": {
+        "message": "Adicionar Computador"
+    },
+    "Add Slot": {
+        "message": "Adicionar vaga"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "CONEXÃO COM O SERVIDOR PERDIDA"
+    },
+    "Dynamic Alliances": {
+        "message": "Alianças Dinâmicas"
+    },
+    "Empty": {
+        "message": "Vago"
+    },
+    "Free For All": {
+        "message": "Cada um por si"
+    },
+    "Friends": {
+        "message": "Amigos"
+    },
+    "Game Lobby": {
+        "message": "Sala de Jogo"
+    },
+    "Game Mode": {
+        "message": "Modo de Jogo"
+    },
+    "Global Spectator Chat": {
+        "message": "Chat Global de Espectadores"
+    },
+    "Join": {
+        "message": "Juntar-se"
+    },
+    "Kick": {
+        "message": "Expulsar"
+    },
+    "Leave": {
+        "message": "Sair"
+    },
+    "Open to:": {
+        "message": "Aberto para:"
+    },
+    "Player Slot": {
+        "message": "Vaga"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "O jogador escolhe um local no planeta inicial"
+    },
+    "Private": {
+        "message": "Privado"
+    },
+    "Public": {
+        "message": "Público"
+    },
+    "Ready": {
+        "message": "Pronto"
+    },
+    "Remove": {
+        "message": "Remover"
+    },
+    "Returning to Main Menu": {
+        "message": "Retornando ao Manu Principal"
+    },
+    "SHARE ARMY": {
+        "message": "COMPARTILHAR EXÉRCITO"
+    },
+    "Spectate": {
+        "message": "Espectador"
+    },
+    "Spectators": {
+        "message": "Espectadores"
+    },
+    "Start Game": {
+        "message": "Iniciar Jogo"
+    },
+    "System": {
+        "message": "Sistema"
+    },
+    "Tag:": {
+        "message": "Marcação:"
+    },
+    "Team Armies": {
+        "message": "Exércitos Aliados"
+    },
+    "Title": {
+        "message": "Título"
+    }
+}

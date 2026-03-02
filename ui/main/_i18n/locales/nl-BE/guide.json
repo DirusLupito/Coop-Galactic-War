@@ -1,0 +1,38 @@
+{
+    "Area Commands": {
+        "message": "Gebiedcommando's"
+    },
+    "Basic Camera Controls": {
+        "message": "Basisbesturing camera"
+    },
+    "Clicking": {
+        "message": "Klikken"
+    },
+    "Close": {
+        "message": "Sluiten"
+    },
+    "Commander Basics": {
+        "message": "Beginselen voor commandanten"
+    },
+    "Economy and Resources": {
+        "message": "Economie en grondstoffen"
+    },
+    "Energy Resources": {
+        "message": "Energiebronnen"
+    },
+    "Fabrication Units": {
+        "message": "Fabricage-eenheden"
+    },
+    "Factories": {
+        "message": "Fabrieken"
+    },
+    "Important Hotkeys": {
+        "message": "Belangrijke sneltoetsen"
+    },
+    "Metal Resources": {
+        "message": "Metaalgrondstoffen"
+    },
+    "Player Guide": {
+        "message": "Handleiding"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "Absurdalna"
+    },
+    "Absurd Testing": {
+        "message": "Absurdalna Testowa"
+    },
+    "Easy": {
+        "message": "Łatwa"
+    },
+    "Hard": {
+        "message": "Trudna"
+    },
+    "Idle": {
+        "message": "Bezczynna"
+    },
+    "Normal": {
+        "message": "Normalna"
+    },
+    "Relentless": {
+        "message": "Bezlitosna"
+    }
+}

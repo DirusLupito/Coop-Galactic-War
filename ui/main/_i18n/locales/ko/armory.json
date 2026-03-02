@@ -1,0 +1,230 @@
+{
+    "*Must meet Minimum System Requirements for offline play": {
+        "message": "* 오프라인 플레이를 위한 최소 시스템 요구 사양을 충족해야 합니다."
+    },
+    "Account Name:": {
+        "message": "계정 이름:"
+    },
+    "Add To Cart": {
+        "message": "장바구니에 담기"
+    },
+    "Advanced Command And Control": {
+        "message": "향상된 명령 및 컨트롤"
+    },
+    "Armory": {
+        "message": "무기고"
+    },
+    "Automate your armies with intuitive controls and features, allowing you to create and manage massive armies and production lines with ease across multiple fronts on multiple planets at once!": {
+        "message": "직관적인 컨트롤과 기능으로 군대를 자동화하여, 여러 행성의 많은 전선에서 동시에 대규모의 군대와 생산 시설을 손쉽게 만들고 관리할 수 있습니다!"
+    },
+    "Badges": {
+        "message": "배지"
+    },
+    "CHECKOUT": {
+        "message": "결제"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Cart": {
+        "message": "장바구니"
+    },
+    "Command armies with numbers in the thousands across multiple planets on land, sea, air, and even in orbit.": {
+        "message": "여러 행성의 땅과 바다, 하늘, 그리고 궤도에서 대규모의 군대를 지휘하십시오."
+    },
+    "Commander Name": {
+        "message": "지휘관 이름"
+    },
+    "Commanders": {
+        "message": "지휘관"
+    },
+    "Confirmation code:": {
+        "message": "인증 코드:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "구매 확정 내용은 아래에 표시됩니다."
+    },
+    "Continue Shopping": {
+        "message": "쇼핑 계속하기"
+    },
+    "Coupon code": {
+        "message": "쿠폰 코드"
+    },
+    "Credit applied:": {
+        "message": "크레딧 적용됨: "
+    },
+    "Designed in collaboration with": {
+        "message": "후원자들과 협력하여 개발됨:"
+    },
+    "Devastate your enemies with 5 massive Titan-class super units like the earth-shaking Atlas bot and lightning-wielding Zeus airship!": {
+        "message": "대지를 뒤흔드는 아틀라스나 번개의 힘을 다루는 제우스 공중 전함 등, 강력한 5가지 타이탄 클래스 슈퍼 유닛으로 적들을 압도하십시오."
+    },
+    "DirectX: Version 9.0c": {
+        "message": "DirectX: 버전 9.0c"
+    },
+    "Dismiss": {
+        "message": "닫기"
+    },
+    "Elevate your game with new planets that feature multi-level terrain available in both single and multiplayer. Get up to speed faster with a new, streamlined tutorial experience, then take your game to the next level with the new Bounty Mode option for AI skirmish and multiplayer.": {
+        "message": "싱글 및 멀티 플레이에서 여러 단계의 지형을 품은 행성들을 무대로 더 치열한 게임을 즐겨보십시오. 새롭고 효율적인 튜토리얼로 본격적인 게임을 배우고, AI 대항전 및 멀티 플레이를 위한 새로운 바운티 모드 옵션으로 게임을 한 차원 더 끌어올릴 수 있습니다."
+    },
+    "End games by destroying entire planets with giant lasers, asteroid collisions, and the new planet-splitting Ragnarok Titan!": {
+        "message": "거대한 레이저 병기, 소행성 충돌, 그리고 새로운 행성 파괴 병기인 라그나로크 타이탄으로 행성을 완전히 파괴하여 게임에 종지부를 찍으십시오!"
+    },
+    "Epic Multiplayer": {
+        "message": "장엄한 멀티 플레이"
+    },
+    "Epic Scale": {
+        "message": "거대한 스케일"
+    },
+    "Epic Single-Player": {
+        "message": "장엄한 싱글 플레이"
+    },
+    "Expand your strategic arsenal with 16 new units such as versatile Hover Tanks, indomitable Orbital Battleships, and voracious Nanobot Swarms!": {
+        "message": "다목적 호버 탱크, 막강한 궤도 전함, 살벌한 나노봇 스웜 등 16가지 새로운 유닛으로 더 다양한 전략을 구사하십시오!"
+    },
+    "Galactic War is a twist on traditional real-time strategy campaigns that has players battling across a dynamic galaxy filled with procedurally-generated content. Every playthrough is different.": {
+        "message": "은하계 전쟁은 다소 변화를 준 전통적 방식의 실시간 전략 캠페인으로, 계속해서 생성되는 콘텐츠를 통해 역동적인 은하계에서 적들과 싸우는 게임입니다. 진행할 때마다 게임이 항상 달라집니다."
+    },
+    "Go to Main Menu": {
+        "message": "메인 메뉴로 이동"
+    },
+    "Graphics: 1 GB GPU RAM / OpenGL 3.2+": {
+        "message": "그래픽 카드: 1GB GPU RAM / OpenGL 3.2+"
+    },
+    "Hard Drive: 5 GB available space": {
+        "message": "하드 드라이브: 5GB 여유 공간"
+    },
+    "Here's your receipt.": {
+        "message": "영수증입니다."
+    },
+    "Including everything you loved about Planetary Annihilation:": {
+        "message": "Planetary Annihilation에서 사랑받은 모든 요소를 포함:"
+    },
+    "Instant Replays": {
+        "message": "즉시 리플레이"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Steam 오버레이가 꺼져 있는 것 같습니다. 이 상태에서는 구매를 진행할 수 없습니다."
+    },
+    "Item": {
+        "message": "상품"
+    },
+    "Item is already in cart.": {
+        "message": "상품이 이미 장바구니에 있습니다."
+    },
+    "Kickstarter Backer": {
+        "message": "킥스타터 후원자"
+    },
+    "Linux": {
+        "message": "Linux"
+    },
+    "Mac": {
+        "message": "Mac"
+    },
+    "Mac Mini \"Core i5\" (Late 2014)": {
+        "message": "Mac Mini \"Core i5\" (2014년 후반)"
+    },
+    "Mac Pro \"Quad Core\" with 8GB Memory (2010)": {
+        "message": "Mac Pro \"Quad Core\" 8GB 메모리 (2010)"
+    },
+    "MacBook Air \"Core i5\" (Early 2015)": {
+        "message": "MacBook Air \"Core i5\" (2015년 초반)"
+    },
+    "MacBook Pro \"Core i7\" with 8GB Memory (Mid 2012)": {
+        "message": "MacBook Pro \"Core i7\" 8GB 메모리(2012년 중반)"
+    },
+    "Memory: 8 GB RAM": {
+        "message": "메모리: 8GB RAM"
+    },
+    "Minimum System Requirements": {
+        "message": "최소 시스템 요구 사양"
+    },
+    "OS: Any Linux distribution supported by Steam": {
+        "message": "OS: Steam에서 지원하는 모든 Linux 배포판"
+    },
+    "OS: Windows 7": {
+        "message": "OS: Windows 7"
+    },
+    "Play with up to ten friends (or enemies) in massive free-for-all and team-based matches. Or, compete in the 1v1 ranked play ladder.": {
+        "message": "대규모 개인전 및 팀 기반 대결에서 최대 10명이 친구 또는 적이 되어 게임을 즐길 수 있습니다. 또는 1v1 랭킹 래더 게임에서 대결해 보십시오."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "새로운 유닛과 월드, 그리고 새로운 방식으로 파괴의 즐거움을 만끽해 보십시오!"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "게임을 종료하고 Steam 라이브러리에서 게임을 찾은 후, 마우스 오른쪽 버튼으로 클릭하고 속성을 선택한 다음 \"게임 내 Steam 오버레이 사용\"이 체크되어 있는지 확인하십시오. 그런 다음 게임을 시작하여 다시 시도해 보십시오."
+    },
+    "Price": {
+        "message": "가격"
+    },
+    "Processor: 64-bit Quad Core": {
+        "message": "프로세서: 64비트 쿼드 코어"
+    },
+    "Processor: Quad Core": {
+        "message": "프로세서: 쿼드 코어"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "종료 및 TITANS 설치"
+    },
+    "REMOVE": {
+        "message": "제거"
+    },
+    "RTS JUST GOT BIGGER": {
+        "message": "더 거대해진 RTS"
+    },
+    "Redeem": {
+        "message": "교환"
+    },
+    "Reset Default Commander": {
+        "message": "기본 지휘관 재설정"
+    },
+    "Return to Armory": {
+        "message": "무기고로 돌아가기"
+    },
+    "Set As Default Commander": {
+        "message": "기본 지휘관으로 설정"
+    },
+    "Smash Planets": {
+        "message": "행성 파괴 병기"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam 오버레이 비활성화됨"
+    },
+    "THE TITANS HAVE ARRIVED": {
+        "message": "TITANS를 소개합니다"
+    },
+    "TITANS is the huge stand-alone expansion to the already massive-scale RTS Planetary Annihilation, which includes the base game and adds tons of new features:": {
+        "message": "TITANS는 거대한 스케일의 RTS, Planetary Annihilation을 더욱 거대하게 만들어줄 독립 실행형 확장팩이며, 기본 게임과 다양한 신규 기능들을 포함하고 있습니다:"
+    },
+    "Thank you for purchasing TITANS! You'll find it in your Steam library right next to Planetary Annihilation!": {
+        "message": "TITANS를 구매해 주셔서 감사합니다! Steam 라이브러리의 Planetary Annihilation 바로 옆에서 찾으실 수 있습니다!"
+    },
+    "Thank you for your purchase.": {
+        "message": "구매해주셔서 감사합니다."
+    },
+    "Total:": {
+        "message": "합계: "
+    },
+    "Updating...": {
+        "message": "업데이트 중..."
+    },
+    "Upgrade for:": {
+        "message": "업그레이드 가격:"
+    },
+    "View in-match recordings in real-time while matches are in progress. See when a battle turned by rewinding the game to any point, and use Play From Here to turn it back in your favor.": {
+        "message": "게임 진행 중에도 실시간으로 녹화된 영상 확인이 가능합니다. 어떤 시점으로든 원하는 대로 게임 시간을 되감은 다음, \"여기부터 플레이\" 기능을 사용해 해당 시점부터 게임을 재개할 수 있습니다."
+    },
+    "Windows": {
+        "message": "Windows"
+    },
+    "Your cart is empty.": {
+        "message": "장바구니가 비었습니다."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "구매하신 상품이 계정에 등록되어 게임에서 사용 가능합니다."
+    },
+    "iMac \"Core i5\" (Late 2012)": {
+        "message": "iMac \"Core i5\" (2012년 후반)"
+    }
+}

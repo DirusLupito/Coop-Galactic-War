@@ -1,0 +1,74 @@
+{
+    "AI Commander": {
+        "message": "Tekoäly Komentaja"
+    },
+    "Add AI": {
+        "message": "Lisää teköäly"
+    },
+    "Add AI Commander": {
+        "message": "Lisää Tekoäly Komentaja"
+    },
+    "Add Slot": {
+        "message": "Lisää Paikka"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "YHTEYS PALVELIMEEN KATKESI"
+    },
+    "Empty": {
+        "message": "Tyhjä"
+    },
+    "Free For All": {
+        "message": "Kaikki vastaan kaikki"
+    },
+    "Friends": {
+        "message": "Kaverit"
+    },
+    "Game Lobby": {
+        "message": "Peliaula"
+    },
+    "Join": {
+        "message": "Liity"
+    },
+    "Kick": {
+        "message": "Poista"
+    },
+    "Leave": {
+        "message": "Poistu"
+    },
+    "Open to:": {
+        "message": "Avoinna:"
+    },
+    "Player Slot": {
+        "message": "Pelaajan Paikka"
+    },
+    "Private": {
+        "message": "Yksityinen"
+    },
+    "Public": {
+        "message": "Julkinen"
+    },
+    "Ready": {
+        "message": "Valmis"
+    },
+    "Remove": {
+        "message": "Poista"
+    },
+    "Returning to Main Menu": {
+        "message": "Palataan päävalikkoon"
+    },
+    "SHARE ARMY": {
+        "message": "JAA ARMEIJA"
+    },
+    "Spectate": {
+        "message": "Katsomo"
+    },
+    "Spectators": {
+        "message": "Katsojat"
+    },
+    "Start Game": {
+        "message": "Aloita peli"
+    },
+    "Team Armies": {
+        "message": "Joukkuearmeijat"
+    }
+}

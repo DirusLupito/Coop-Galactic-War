@@ -1,0 +1,17 @@
+{
+    "Draw": {
+        "message": "Döntetlen"
+    },
+    "In Progress": {
+        "message": "Folyamatban"
+    },
+    "Total Units": {
+        "message": "Összes Egység"
+    },
+    "Winner:": {
+        "message": "Győztes:"
+    },
+    "Winners:": {
+        "message": "Győztesek:"
+    }
+}

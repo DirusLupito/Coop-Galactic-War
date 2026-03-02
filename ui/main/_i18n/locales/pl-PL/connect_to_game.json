@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "ODMOWA DOSTĘPU DO SYMULACJI ŚWIATA"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "UZYSKIWANIE DOSTĘPU DO SYMULACJI ŚWIATA"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "POZOSTAŁE PRÓBY: __num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "ŁĄCZENIE Z SERWEREM"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "POŁĄCZENIE Z SERWEREM ANULOWANE"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "POŁĄCZENIE Z SERWEREM NIEUDANE"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "POŁĄCZENIE Z SERWEREM UTRACONE"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "TWORZENIE SYMULACJI ŚWIATA"
+    },
+    "Cancel": {
+        "message": "Anuluj"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "POBIERANIE MODÓW SERWERA"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "BRAK UZYSKANIA ZGODY"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "DOŁĄCZENIE NIEUDANE"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "WCZYTANIE GRY NIEUDANE"
+    },
+    "FAILED TO START GAME": {
+        "message": "URUCHOMIENIE NIEUDANE"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "ODTWORZENIE POWTÓRKI NIEUDANE"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "LOGOWANIE UDANE"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "LOGOWANIE NA SERWERZE ODRZUCONE"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "RESETOWANIE MODÓW SERWERA"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "UZYSKIWANIE ZGODY"
+    },
+    "Returning to Main Menu": {
+        "message": "Powrót do menu głównego"
+    },
+    "STARTING GAME": {
+        "message": "URUCHAMIANIE GRY"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "BRAK DOSTĘPU DO SYMULACJI ŚWIATA"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "WYSYŁANIE MODÓW SERWERA... PROSZĘ CZEKAĆ"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "SYMULACJA ŚWIATA ZAKŁÓCONA"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "Uruchamiasz właśnie grę w trybie offline, jednak Twój system nie spełnia zalecanych dla tego trybu wymagań. Komfort rozgrywki może być przez to ograniczony."
+    }
+}

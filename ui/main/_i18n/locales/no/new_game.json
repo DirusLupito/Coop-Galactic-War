@@ -1,0 +1,95 @@
+{
+    "- Host": {
+        "message": "- Vert"
+    },
+    "AI Commander": {
+        "message": "AI-kommandør"
+    },
+    "Add AI": {
+        "message": "Legg til AI"
+    },
+    "Add AI Commander": {
+        "message": "Legg til AI-kommandør"
+    },
+    "Add Slot": {
+        "message": "Flere spillere"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "SERVERTILKOBLING BRUTT"
+    },
+    "Dynamic Alliances": {
+        "message": "Dynamiske allianser"
+    },
+    "Empty": {
+        "message": "Tom"
+    },
+    "Free For All": {
+        "message": "Alle mot alle"
+    },
+    "Friends": {
+        "message": "Venner"
+    },
+    "Game Lobby": {
+        "message": "Spill-lobby"
+    },
+    "Game Mode": {
+        "message": "Kampmodus"
+    },
+    "Global Spectator Chat": {
+        "message": "Global tilskuerprat"
+    },
+    "Join": {
+        "message": "Delta"
+    },
+    "Kick": {
+        "message": "Spark"
+    },
+    "Leave": {
+        "message": "Forlat"
+    },
+    "Open to:": {
+        "message": "Tilgang:"
+    },
+    "Player Slot": {
+        "message": "Spillerplass"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Spiller velger område på startplaneten "
+    },
+    "Private": {
+        "message": "Privat"
+    },
+    "Public": {
+        "message": "Åpen"
+    },
+    "Ready": {
+        "message": "Klar"
+    },
+    "Remove": {
+        "message": "Fjern"
+    },
+    "Returning to Main Menu": {
+        "message": "Returnerer til hovedmenyen"
+    },
+    "SHARE ARMY": {
+        "message": "DEL HÆR"
+    },
+    "Spectate": {
+        "message": "Se på"
+    },
+    "Spectators": {
+        "message": "Observatører"
+    },
+    "Start Game": {
+        "message": "Start kampen"
+    },
+    "Tag:": {
+        "message": "Angivelse:"
+    },
+    "Team Armies": {
+        "message": "Lag"
+    },
+    "Title": {
+        "message": "Tittel"
+    }
+}

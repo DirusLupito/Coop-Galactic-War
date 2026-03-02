@@ -1,0 +1,38 @@
+{
+    "Create Game": {
+        "message": "Створити гру"
+    },
+    "Game": {
+        "message": "Гра"
+    },
+    "In Lobby": {
+        "message": "В лобі гри"
+    },
+    "In Progress": {
+        "message": "В процесі"
+    },
+    "Join Game": {
+        "message": "Приєднатися"
+    },
+    "Locked Game": {
+        "message": "Закрита гра"
+    },
+    "Mode": {
+        "message": "Режим"
+    },
+    "Password": {
+        "message": "Пароль"
+    },
+    "Planets": {
+        "message": "Планети"
+    },
+    "Region": {
+        "message": "Регіон"
+    },
+    "Slots": {
+        "message": "Слоти"
+    },
+    "Spectate": {
+        "message": "Спостерігати"
+    }
+}

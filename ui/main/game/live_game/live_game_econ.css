@@ -1,0 +1,387 @@
+/* UTILITY */
+.receiveMouse
+{
+    pointer-events: all;
+}
+
+.ignoreMouse
+{
+    pointer-events: none;
+}
+
+.body_panel
+{
+    width: 100%;
+}
+
+/*----- STATUS BAR
+-----------------------------------------------------------------*/
+
+.div-econ-bar
+{
+    position: relative;
+    top: -30px;
+    height: 120px;
+    width: 100%;
+    font-family: 'Sansation';
+    font-weight: bold;
+    margin: -15px auto 0px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    opacity: 0;
+    -webkit-transition: all .2s ease-in-out; /* this timing keeps us in sync with the action bar pretty well */
+}
+
+.show-econ
+{
+    opacity: 1;
+    top: 0;
+}
+
+.div-metal
+{
+    border-image: url('coui://ui/main/game/live_game/img/status_bar/img-econ-bar-left.png') 60 25 0 51 fill;
+    border-width: 60px 25px 0px 51px;
+    display: flex;
+}
+
+.div-metal .contents, .div-energy .contents
+{
+    margin-top: -45px;
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+
+.div-metal .contents
+{
+    padding-right: 15px; /* allow for efficiency border image */
+    margin-left: -8px;
+}
+
+.div-energy .contents
+{
+    padding-left: 15px;  /* allow for efficiency border image */
+    margin-right: -8px;
+}
+
+.div-metal .div_rate_ctr_overall, .div-energy .div_rate_ctr_overall
+{
+    min-width: 4em;
+}
+
+.div-energy
+{
+    border-image: url('coui://ui/main/game/live_game/img/status_bar/img-econ-bar-right.png') 60 51 0 25 fill;
+    border-width: 60px 51px 0px 25px;
+    margin-left: 0px;
+    position: relative;
+    display: flex;
+}
+
+.div-econ
+{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 1;
+    border-image: url('coui://ui/main/game/live_game/img/status_bar/img-efficiency-bground.png') 18 47 18 47 fill;
+    border-width: 18px 47px 18px 47px;
+    margin: 0 -60px;
+}
+
+    .div-econ .contents
+    {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+    }
+
+.div_efficiency
+{
+    display: flex;
+}
+
+.div_multiplier
+{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    margin-top: 5px;
+}
+
+    .div_multiplier .value
+    {
+        color: #000;
+        background: linear-gradient(to top, #ff0000 0%, #ff7e00 20%, #fcff00 100%);
+        text-shadow: 0 0 10px #fff600;
+        border: 1px solid #eaff00;
+        box-shadow: 0 0 20px #fff600;
+        text-align: center;
+        padding: 2px 5px;
+        font-size: 10px;
+    }
+
+.div_handicap_ctr_perc_center
+{
+    font-size: 16px;
+    color: #FFF;
+    margin: 0px 0px 0px 0px;
+}
+
+.div_econ_notification_bar {
+    height: 45px;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+    .div_econ_notification_bar > .notification {
+        border-image: url('coui://ui/main/game/live_game/img/status_bar/img-bounty-bground.png') 18 47 0 47 fill;
+        border-width: 18px 47px 0 47px;
+        display: flex;
+        margin-top: 15px;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        color: #000;
+        font-family: "Sansation";
+        font-size: 14px;
+        font-weight: normal;
+        text-shadow: 0 0 10px #fff600;
+    }
+
+        .div_econ_notification_bar > .notification > div {
+            margin: -18px 0 0 0;
+        }
+
+.category_icon_metal
+{
+    text-align: center;
+    margin-left: 5px;
+}
+
+.category_icon_energy
+{
+    text-align: center;
+    margin-right: 5px;
+}
+
+.div_status_bar_display
+{
+    display: flex;
+    flex-direction: column;
+    /* margin: 10px 6px 0px 0px; */
+}
+
+.status_bar_frame
+{
+    border: 1px solid #D1D1D1;
+    border-radius: 0px;
+    height: 10px;
+    /* height: 6px; */
+    /* margin: -4px 0px 0px 0px; */
+    /* width: 90px; */
+}
+
+.status_bar_frame_narrow
+{
+    border: 1px solid #D1D1D1;
+    border-radius: 0px;
+    height: 10px;
+    /* margin: -4px 0px 0px 0px; */
+    /* width: 70px; */
+}
+
+.status_bar_frame_red
+{
+    opacity: .3;
+}
+
+.status_bar_metal
+{
+    height: 100%;
+    /* width: 75%; */
+}
+
+.status_bar_energy
+{
+    height: 100%;
+    /* width: 75%; */
+}
+
+.status_stats
+{
+    color: #D1D1D1;
+    font-size: 13px;
+    margin-top: 1px;
+    text-align: center;
+    min-width: 8em;
+}
+
+.div_rate_ctr_cont
+{
+    display: flex;
+}
+
+.div_build_rate_cont {
+    text-align: center;
+}
+
+.div_rate_ctr_overall
+{
+    min-width: 3.5em; /* 999.0K */
+    font-size: 22px;
+    text-align: center;
+    box-shadow: inset 0px 0px 10px red;
+    -webkit-transition: .3s ease-out;
+}
+
+    .div_rate_ctr_overall:hover
+    {
+        /* border: 1px solid rgba(30,122,161,1);
+        border-width: 0px 1px;
+        -webkit-transition: none; */
+    }
+
+    .div_rate_ctr_overall:active
+    {
+        /* border: 1px solid rgba(0,179,255,1);
+        border-width: 0px 1px;
+        color: #fff; */
+    }
+
+.div_rate_ctr_perc_center
+{
+    font-size: 22px;
+    text-align: center;
+    min-width: 3em;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.build_eff_text
+{
+    text-transform: uppercase;
+    color: #FFF;
+    font-weight: light;
+    font-size: 10px;
+    text-shadow: 0px 0px 20px #00B3FF;
+}
+
+.color_positive {
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #00B800), color-stop(1, #4FFF69) );
+    box-shadow: 0px 0px 20px #4FFF69;
+    text-shadow: 0px 0px 20px rgba(79, 255, 105,.5);
+}
+
+.color_handicap {
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #FFFF00), color-stop(1, #FFFF99) );
+    box-shadow: 0px 0px 20px #4FFF69;
+    text-shadow: 0px 0px 20px rgba(79, 255, 105,.5);
+}
+
+.color_negative {
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #E00000), color-stop(1, #FF0000) );
+    box-shadow: 0px 0px 20px #FF0000;
+    text-shadow: 0px 0px 20px rgba(255, 0, 0,.5);
+}
+
+.color_warning {
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #B5B500), color-stop(1, #FFFF00) );
+    box-shadow: 0px 0px 20px #FFFF00;
+    text-shadow: 0px 0px 20px rgba(255, 255, 0, .5);
+}
+
+.color_waste {
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #008EBD), color-stop(1, #00BFFF) );
+    box-shadow: 0px 0px 20px #00BFFF;
+    text-shadow: 0px 0px 20px rgba(0, 191, 255, .5);
+}
+
+.text_rate {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rate_positive_small
+{
+    color: #4FFF69;
+}
+
+.rate_negative_small
+{
+    color: #ff0000;
+}
+
+.div_plusminus_rate_cont
+{
+    width: auto;
+    min-width: 3em;
+    text-align: center;
+}
+
+.rate_stat
+{
+    font-size: 13px;
+    min-width: 5em;
+}
+
+.div_shared_resources
+{
+    min-width: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.shared_resource_icon
+{
+
+}
+
+.tooltip {
+    font-weight: normal;
+    max-width: none;
+    line-height: 1.2;
+}
+
+.bounty_reward_notification {
+    opacity: 0;
+    -webkit-animation: reward_appear;
+    -webkit-animation-duration: 2.2s;
+}
+
+@-webkit-keyframes reward_appear {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.tooltip-inner {
+    white-space: nowrap;
+}

@@ -1,0 +1,17 @@
+{
+    "CANCEL": {
+        "message": "ANULEAZĂ"
+    },
+    "Delete": {
+        "message": "ŞTERGE"
+    },
+    "SHOW PLANETS": {
+        "message": "ARATĂ PLANETELE"
+    },
+    "SHOW SYSTEMS": {
+        "message": "ARATĂ SISTEMELE"
+    },
+    "System Designer": {
+        "message": "SYSTEM DESIGNER"
+    }
+}

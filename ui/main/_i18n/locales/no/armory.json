@@ -1,0 +1,86 @@
+{
+    "Account Name:": {
+        "message": "Kontonavn:"
+    },
+    "Add To Cart": {
+        "message": "Legg i handlekurven"
+    },
+    "Armory": {
+        "message": "Drakt"
+    },
+    "Badges": {
+        "message": "Emblemer"
+    },
+    "CHECKOUT": {
+        "message": "UTSJEKK"
+    },
+    "Cancel": {
+        "message": "Avbryt"
+    },
+    "Cart": {
+        "message": "Handlekurv"
+    },
+    "Commanders": {
+        "message": "Rustninger"
+    },
+    "Confirmation code:": {
+        "message": "Bekreftelseskode:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "Bekreftelse på ditt kjøp finner du nedenfor."
+    },
+    "Continue Shopping": {
+        "message": "Fortsett å handle"
+    },
+    "Credit applied:": {
+        "message": "Kreditt lagt til:"
+    },
+    "Designed in collaboration with": {
+        "message": "Utført i samarbeid med"
+    },
+    "Go to Main Menu": {
+        "message": "Gå til hovedmenyen"
+    },
+    "Here's your receipt.": {
+        "message": "Her er din kvittering."
+    },
+    "Item": {
+        "message": "Vare"
+    },
+    "Item is already in cart.": {
+        "message": "Valgt gjenstand er allerede i handlekurven."
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter-støttespiller"
+    },
+    "Price": {
+        "message": "Pris"
+    },
+    "REMOVE": {
+        "message": "FJERN"
+    },
+    "Redeem": {
+        "message": "Innløs"
+    },
+    "Return to Armory": {
+        "message": "Tilbake til rustkammeret"
+    },
+    "Set As Default Commander": {
+        "message": "Bruk som standard Commander"
+    },
+    "Thank you for your purchase.": {
+        "message": "Takk for ditt kjøp."
+    },
+    "Total:": {
+        "message": "Totalt:"
+    },
+    "Updating...": {
+        "message": "Oppdaterer..."
+    },
+    "Your cart is empty.": {
+        "message": "Handlekurven er tom."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "Ditt kjøp er nå registrert på din konto og kan hentes i spillet."
+    }
+}

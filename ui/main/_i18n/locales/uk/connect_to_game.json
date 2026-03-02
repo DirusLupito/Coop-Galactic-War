@@ -1,0 +1,23 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "НЕВДАЛОСЯ З'ЄДНАТИСЯ"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "З'ЄДНАННЯ З СЕРВЕРОМ ВТРАЧЕНЕ"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "НЕВДАЛОСЯ УВІЙТИ"
+    },
+    "FAILED TO START GAME": {
+        "message": "НЕ ВДАЛОСЯ ПОЧАТИ ГРУ"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "УСПІШНИЙ ВХІД"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "ВІДМОВА В ДОСТУПІ ДО СЕРВЕРУ"
+    },
+    "Returning to Main Menu": {
+        "message": "До головного меню"
+    }
+}

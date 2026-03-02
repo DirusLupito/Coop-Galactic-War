@@ -1,0 +1,89 @@
+{
+    "ABSURD": {
+        "message": "لا معقول"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "اهلك الأعداء على الأنظمة المزعومة لجمع تقنياتهم"
+    },
+    "Archived Wars": {
+        "message": "أرشيف الحروب"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "اختر التسليح لتعطي القائد الخاص بك تقنيات بدء مختلفة."
+    },
+    "Commander": {
+        "message": "القائد"
+    },
+    "Difficulty:": {
+        "message": "الصعوبة:"
+    },
+    "EPIC": {
+        "message": "ملحمي"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "اكتشف أنظمة لم يستولي عليها احد لتستعيد التقنيات."
+    },
+    "Faction": {
+        "message": "فصيل"
+    },
+    "Go to War": {
+        "message": "الذهاب إلى الحرب"
+    },
+    "HARD": {
+        "message": "صعب"
+    },
+    "How to Play": {
+        "message": "كيفية اللعب"
+    },
+    "LARGE": {
+        "message": "ضخم"
+    },
+    "LOCKED": {
+        "message": "مغلق"
+    },
+    "Loadout": {
+        "message": "التعبئة"
+    },
+    "MEDIUM": {
+        "message": "متوسط"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "انتقل من نظام نجمي إلى نظام نجمي واجمع التقنيات. استخدم تلك التقنيات لهزيمة قادة الفصائل المعادية وسيطر على المجرة!"
+    },
+    "Name": {
+        "message": "الأسم"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "تنقل في خريطة المجرة بالقفز من نظام إلى نظام."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "بنوك التقنيات الجديدة لتخزين التقنيات يمكن العثور عليها عبر استكشاف الأنظمة."
+    },
+    "RELENTLESS": {
+        "message": "لا هوادة فيها"
+    },
+    "SMALL": {
+        "message": "الصغير"
+    },
+    "Seed Value": {
+        "message": "قيمة البذرة"
+    },
+    "Setup": {
+        "message": "الإعداد"
+    },
+    "Size:": {
+        "message": "الحجم:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "بعض الأنظمة لديها تسليحات للقادة مخبئة. استعدها من اجل حرب مجرات مستقبلية"
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "يمكن حذف التقنيات لإفساح المجال لتقنيات جديدة يمكن تحميلها. التقنيات المحذوفة أو المرفوضة ستفقد للفترة المتبقية من حرب المجرة."
+    },
+    "Tip:": {
+        "message": "تلميح:"
+    },
+    "Tips": {
+        "message": "نصائح"
+    }
+}

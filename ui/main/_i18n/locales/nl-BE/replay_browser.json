@@ -1,0 +1,80 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+__AIaantal__AI)"
+    },
+    "(Updating...)": {
+        "message": "(Updaten...)"
+    },
+    "(no info available)": {
+        "message": "(geen info beschikbaar)"
+    },
+    "Duration": {
+        "message": "Spelduur"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "Opnamelijst niet toegankelijk"
+    },
+    "Filter": {
+        "message": "Filter"
+    },
+    "Galactic War": {
+        "message": "Galactische Oorlog"
+    },
+    "Game": {
+        "message": "Spel"
+    },
+    "Lobby Id": {
+        "message": "Lobby-ID"
+    },
+    "Longest Game Duration": {
+        "message": "Langste Spelduur"
+    },
+    "Most Recent": {
+        "message": "Meest Recent"
+    },
+    "Multiplayer": {
+        "message": "Multiplayer"
+    },
+    "Replays": {
+        "message": "Opnames"
+    },
+    "Returning to Main Menu": {
+        "message": "Aan het terugkeren naar het hoofdmenu"
+    },
+    "Search": {
+        "message": "Zoeken"
+    },
+    "Sorted By": {
+        "message": "Gesorteerd op"
+    },
+    "Version": {
+        "message": "Versie"
+    },
+    "Versus AI": {
+        "message": "Tegen AI"
+    },
+    "View": {
+        "message": "Bekijk"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "Lobby-ID voor direct bekijken: __lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "Bekijk Opname"
+    },
+    "Winner": {
+        "message": "Winnaar"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": " __gwClientNames__: Galactische Oorlog \"__gwWarName__\" (beurt __gwTurn__, __gwSystemName__), tegen. __gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1v1 Geclassificeerd"
+    },
+    "All Recent Games": {
+        "message": "Alle recente spellen"
+    },
+    "My Games Only": {
+        "message": "Alleen mijn spellen"
+    }
+}

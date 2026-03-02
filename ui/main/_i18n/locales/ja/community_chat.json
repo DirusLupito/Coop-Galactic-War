@@ -1,0 +1,248 @@
+{
+    "(Updating...)": {
+        "message": "（更新中…）"
+    },
+    "1v1 Ranked Ladder Season 2": {
+        "message": "1vs1 ランクラダーシーズン 2"
+    },
+    "1v1 Ranked Ladder Season 3": {
+        "message": "1vs1 ランクラダーシーズン 3"
+    },
+    "Ask questions, get help, find a game": {
+        "message": "質問、ヘルプ、ゲーム検索"
+    },
+    "Big Game Replays": {
+        "message": "ビッグゲームリプレイ"
+    },
+    "Block": {
+        "message": "ブロック"
+    },
+    "Chat": {
+        "message": "チャット"
+    },
+    "Check Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "互換性のないWindowsソフトウェアをチェック（例: GameFirstを無効にする）"
+    },
+    "Check firewall / antivirus and Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "ファイヤーウォール/アンチウイルス、互換性のないWindowsソフトウェアをチェック（例: GameFirstを無効にする）"
+    },
+    "Classic PA players upgrade to Titans for US$2.99 (90% off)": {
+        "message": "Classic PA のプレイヤーは、Titansへのアップグレードが US$2.99 (90%オフ)"
+    },
+    "Classic PA players upgrade to Titans for US$3.99 (90% off)": {
+        "message": "Classic PA からTitansへのプレイヤーアップグレードが US$3.99 (90%オフ)"
+    },
+    "Community Chat Help": {
+        "message": "コミュニティチャットヘルプ"
+    },
+    "Community Chat and Community Mods are hosted on private servers.": {
+        "message": "コミュニティチャットとコミュニティModsはプライベートサーバーでホストされています"
+    },
+    "Community Mods": {
+        "message": "コミュニティMods"
+    },
+    "Community Rules and Guidelines": {
+        "message": "コミュニティルール＆ガイドライン"
+    },
+    "Custom / Local Servers and LAN / WAN Games": {
+        "message": "カスタム / ローカルサーバー＆LAN / WAN ゲーム"
+    },
+    "DON'T BE A JERK": {
+        "message": "常識的にふるまおう"
+    },
+    "DON'T BE A LOSER": {
+        "message": "良き敗者であろう"
+    },
+    "Dedicated Servers": {
+        "message": "専用サーバー"
+    },
+    "Default": {
+        "message": "デフォルト"
+    },
+    "Disable Auto Join": {
+        "message": "自動参加を無効にする"
+    },
+    "Empty friends list try clicking on": {
+        "message": "以下をクリックでフレンドリストを空に:"
+    },
+    "Firewall / Antivirus / Incompatible Windows Software": {
+        "message": "ファイアウォール/アンチウイルス/互換性のないWindowsソフトウェア"
+    },
+    "Full Screen Desktop Resolution": {
+        "message": "フルスクリーンデスクトップ解像度"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "General Discussion Forum": {
+        "message": "一般ディスカッションフォーラム"
+    },
+    "HELP": {
+        "message": "HELP"
+    },
+    "Hot Keys": {
+        "message": "ホットキー"
+    },
+    "Incompatible Windows Software": {
+        "message": "互換性のないWindowsソフトウェア"
+    },
+    "Invite to Chat": {
+        "message": "チャットに招待"
+    },
+    "Invite to game": {
+        "message": "ゲームに招待"
+    },
+    "Join Community Chat": {
+        "message": "コミュニティチャットに参加"
+    },
+    "Join Tournaments": {
+        "message": "トーナメントに参加"
+    },
+    "LINKS": {
+        "message": "リンク"
+    },
+    "Learning to Play": {
+        "message": "プレイしながら覚える"
+    },
+    "Legion Expansion Overview": {
+        "message": "Legion Expansionオーバービュー"
+    },
+    "Lost Titans Ownership When Linking": {
+        "message": "リンク時のTitans所有権消失"
+    },
+    "Mention": {
+        "message": "返信"
+    },
+    "Notify": {
+        "message": "通知"
+    },
+    "Official Planetary Annihilation Discord": {
+        "message": "公式Planetary Annihilation Discord"
+    },
+    "Old PAMM Mods": {
+        "message": "旧 PAMM Mods"
+    },
+    "PA Friends & Display Names": {
+        "message": "PA フレンド&ディスプレイ名"
+    },
+    "PAnet Migration": {
+        "message": "PAnetの移行"
+    },
+    "Pending": {
+        "message": "ペンディング"
+    },
+    "Planetary Annihilation Vocabulary": {
+        "message": "Planetary Annihilation ボキャブラリー"
+    },
+    "Planetary Annihilation community rules apply to community chat:": {
+        "message": "Planetary Annihilation コミュニティルールがコミュニティチャットに適用されます:"
+    },
+    "Player Guides": {
+        "message": "プレイヤーガイド"
+    },
+    "Public Test Environments (PTE)": {
+        "message": "パブリックテスト環境(PTE)"
+    },
+    "Queller AI mod for Skirmish & Multiplayer": {
+        "message": "スカーミッシュ＆マルチプレイ用Queller AI Mod"
+    },
+    "Remember that you are here to play the game and not be a jerk. No spam, flaming, politics, abuse or hate speech.": {
+        "message": "ゲームをプレイ中も常識は守りましょう。スパム行為、侮辱行為、政治的言動、ヘイトスピーチは禁止です"
+    },
+    "Replays": {
+        "message": "リプレイ"
+    },
+    "Report game issues in the PA support forums:": {
+        "message": "PAサポートフォーラムにゲームの問題を報告"
+    },
+    "Reporting Issues": {
+        "message": "問題を報告"
+    },
+    "Right click on a name for more options.": {
+        "message": "名前を右クリックで他のオプション"
+    },
+    "Send Friend Request": {
+        "message": "フレンドリクエストを送信"
+    },
+    "Server Sim Performance / Time Dilation / RAM Usage": {
+        "message": "サーバーSimパフォーマンス / 時間経過 / RAM使用量"
+    },
+    "Skills Pyramid": {
+        "message": "スキルピラミッド"
+    },
+    "Special Characters in Display Name": {
+        "message": "ディスプレイ名に特殊文字"
+    },
+    "TITANS 1v1 ranked": {
+        "message": "TITANS 1vs1 ランク"
+    },
+    "The notify checkbox on the top right of each chat enables or disables notifications when someone mentions you.": {
+        "message": "各チャットの右上にある通知チェックボックスで、誰かが返信をしてきた時の通知のON/OFFを設定できます"
+    },
+    "Timeline of updates to Titans & Classic PA": {
+        "message": "Titans & Classic PAのアップデートタイムライン"
+    },
+    "Titans Overview": {
+        "message": "Titans オーバービュー"
+    },
+    "UI is Slow": {
+        "message": "UI が遅延"
+    },
+    "Unblock": {
+        "message": "ブロック解除"
+    },
+    "Unfriend": {
+        "message": "フレンド解除"
+    },
+    "Unit Database": {
+        "message": "ユニットデータベース"
+    },
+    "User Interface Controls": {
+        "message": "ユーザーインターフェイス操作"
+    },
+    "Web based Community Chat:": {
+        "message": "ウェブベース型コミュニティチャット:"
+    },
+    "When a chat window is minimised it will flash green for new messages and red when someone mentions you. Right click to clear the mention.": {
+        "message": "チャットウィンドウを最小化した場合、新規メッセージが来ると緑色、誰かがあなたに返信した時は赤色に点滅します。右クリックで返信を消去できます"
+    },
+    "Your Message Colour": {
+        "message": "メッセージカラー"
+    },
+    "Zero tolerance for backseat moderation or arguing with moderators.": {
+        "message": "妨害行為やモデレーターと揉めるといった行為はいかなる理由においても禁止です"
+    },
+    "Zero tolerance for complainers and rants about PA.": {
+        "message": "PAに対する理不尽な暴言などは禁止です"
+    },
+    "click HELP on top right": {
+        "message": "右上のHELPをクリック"
+    },
+    "click title bar to minimise": {
+        "message": "タイトルバーをクリックで最小化"
+    },
+    "click to maximise": {
+        "message": "クリックで最大化"
+    },
+    "community-chat-muted": {
+        "message": "もし<span data-bind=\"style: { color: $root.chatRoomMutedColour }\">ミュート状態</span>であれば、<span data-bind=\"style: { color: $root.chatRoomModeratorColour }\">モデレーター</span>か<span data-bind=\"style: { color: $root.chatRoomOwnerColour }\">オーナー</span>に連絡してミュートを解除してもらってください"
+    },
+    "hello": {
+        "message": "こんにちは"
+    },
+    "if you have plenty of RAM then you can download and watch big game replays": {
+        "message": "RAMに余裕があれば、ビッグゲームのリプレイをダウンロードして観戦できます"
+    },
+    "Classic PA players upgrade to TITANS for 90% off (US$2.99)": {
+        "message": "Classic PAプレイヤー向け、TITANSへのアップグレードが90%オフ(US$2.99)！"
+    },
+    "TITANS 1v1 Leaderboards": {
+        "message": "TITANS 1v1 ランキング"
+    },
+    "TITANS 1v1 Ranked Seasons": {
+        "message": "TITANS 1vs1 ランクシーズン"
+    },
+    "Timeline of updates to TITANS & Classic PA": {
+        "message": "TITANS & Classic PAのアップデートタイムライン"
+    }
+}

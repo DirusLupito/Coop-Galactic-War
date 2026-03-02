@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "AI 전투"
+    },
+    "Any": {
+        "message": "전체"
+    },
+    "Auto refresh": {
+        "message": "자동 갱신"
+    },
+    "Bounty Mode": {
+        "message": "바운티 모드"
+    },
+    "Buy Expansion": {
+        "message": "확장팩 구매"
+    },
+    "Can Join": {
+        "message": "참가 가능"
+    },
+    "Can Play": {
+        "message": "플레이 가능"
+    },
+    "Can Spectate": {
+        "message": "관전 가능"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Casual": {
+        "message": "캐주얼"
+    },
+    "Competitive": {
+        "message": "경쟁"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "연결된 네트워크를 찾을 수 없어 게임 목록을 가져오지 못했습니다."
+    },
+    "Create Game": {
+        "message": "게임 생성"
+    },
+    "Enter game password": {
+        "message": "게임 암호 입력"
+    },
+    "Free For All": {
+        "message": "개인전"
+    },
+    "Game": {
+        "message": "게임"
+    },
+    "Game State": {
+        "message": "게임 상태"
+    },
+    "Host game locally": {
+        "message": "로컬 게임 호스트하기"
+    },
+    "In Lobby": {
+        "message": "로비에 있음"
+    },
+    "In Progress": {
+        "message": "진행 중"
+    },
+    "Join Game": {
+        "message": "게임 참가"
+    },
+    "LOCKED": {
+        "message": "잠김"
+    },
+    "Locked": {
+        "message": "잠김"
+    },
+    "Locked Game": {
+        "message": "잠긴 게임"
+    },
+    "Mod": {
+        "message": "모드"
+    },
+    "Modded": {
+        "message": "모드 적용됨"
+    },
+    "Mode": {
+        "message": "모드"
+    },
+    "Mods": {
+        "message": "모드"
+    },
+    "Multiplayer": {
+        "message": "멀티 플레이"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "PA 서버에 연결되지 않았습니다. 새 게임이 로컬로 호스트됩니다."
+    },
+    "No max": {
+        "message": "최대 없음"
+    },
+    "No min": {
+        "message": "최소 없음"
+    },
+    "Not Bounty Mode": {
+        "message": "바운티 모드 아님"
+    },
+    "Not Modded": {
+        "message": "모드 적용되지 않음"
+    },
+    "Not Selected": {
+        "message": "선택되지 않음"
+    },
+    "Number of Planets": {
+        "message": "행성 수"
+    },
+    "Number of Players": {
+        "message": "플레이어 수"
+    },
+    "Open": {
+        "message": "공개"
+    },
+    "Open slot": {
+        "message": "공개 슬롯"
+    },
+    "Password": {
+        "message": "암호"
+    },
+    "Planets": {
+        "message": "행성"
+    },
+    "Players": {
+        "message": "플레이어"
+    },
+    "Radius __radius__": {
+        "message": "반경 __radius__"
+    },
+    "Refresh": {
+        "message": "갱신"
+    },
+    "Region": {
+        "message": "지역"
+    },
+    "Rejoin Local Game": {
+        "message": "로컬 게임에 다시 참가"
+    },
+    "Required Expansion Pack": {
+        "message": "확장팩 필요"
+    },
+    "Reset Filters": {
+        "message": "필터 재설정"
+    },
+    "Sandbox": {
+        "message": "샌드박스"
+    },
+    "Slots": {
+        "message": "슬롯"
+    },
+    "Spectate": {
+        "message": "관전"
+    },
+    "Spectators": {
+        "message": "관전자"
+    },
+    "Status": {
+        "message": "상태"
+    },
+    "Tag": {
+        "message": "태그"
+    },
+    "Team Armies": {
+        "message": "팀 군대"
+    },
+    "Testing": {
+        "message": "테스트 중"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "참가하려는 게임에는 Planetary Annihilation의 [style=content_description]__expansion_name__[/style] 확장팩이 필요합니다."
+    },
+    "This game is no longer available.": {
+        "message": "이 게임은 더 이상 이용할 수 없습니다."
+    }
+}

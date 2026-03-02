@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "电脑战斗"
+    },
+    "Any": {
+        "message": "任何"
+    },
+    "Auto refresh": {
+        "message": "自动刷新"
+    },
+    "Bounty Mode": {
+        "message": "赏金模式"
+    },
+    "Buy Expansion": {
+        "message": "购买扩展内容"
+    },
+    "Can Join": {
+        "message": "可以加入"
+    },
+    "Can Play": {
+        "message": "可以游玩"
+    },
+    "Can Spectate": {
+        "message": "可以观战"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Casual": {
+        "message": "休闲"
+    },
+    "Competitive": {
+        "message": "竞技"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "无法检索游戏列表，因为找不到网络连接。"
+    },
+    "Create Game": {
+        "message": "创建战局"
+    },
+    "Enter game password": {
+        "message": "输入战局密码"
+    },
+    "Free For All": {
+        "message": "混战"
+    },
+    "Game": {
+        "message": "战局"
+    },
+    "Game State": {
+        "message": "战局状态"
+    },
+    "Host game locally": {
+        "message": "创建本地游戏"
+    },
+    "In Lobby": {
+        "message": "位于大厅"
+    },
+    "In Progress": {
+        "message": "正在进行"
+    },
+    "Join Game": {
+        "message": "加入战局"
+    },
+    "LOCKED": {
+        "message": "锁定"
+    },
+    "Locked": {
+        "message": "锁定"
+    },
+    "Locked Game": {
+        "message": "锁定的游戏"
+    },
+    "Mod": {
+        "message": "模型"
+    },
+    "Modded": {
+        "message": "已使用模型"
+    },
+    "Mode": {
+        "message": "模式"
+    },
+    "Mods": {
+        "message": "模型"
+    },
+    "Multiplayer": {
+        "message": "多人游戏"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "未找到与PA服务器的连接。新游戏将在本地建立。"
+    },
+    "No max": {
+        "message": "没有最大"
+    },
+    "No min": {
+        "message": "没有最小"
+    },
+    "Not Bounty Mode": {
+        "message": "非赏金模式"
+    },
+    "Not Modded": {
+        "message": "未使用模型"
+    },
+    "Not Selected": {
+        "message": "未选"
+    },
+    "Number of Planets": {
+        "message": "星球数"
+    },
+    "Number of Players": {
+        "message": "玩家数"
+    },
+    "Open": {
+        "message": "打开"
+    },
+    "Open slot": {
+        "message": "栏位开放中"
+    },
+    "Password": {
+        "message": "密码"
+    },
+    "Planets": {
+        "message": "星球"
+    },
+    "Players": {
+        "message": "玩家"
+    },
+    "Radius __radius__": {
+        "message": "半径__radius__"
+    },
+    "Refresh": {
+        "message": "刷新"
+    },
+    "Region": {
+        "message": "地区"
+    },
+    "Rejoin Local Game": {
+        "message": "重新加入本地战局"
+    },
+    "Required Expansion Pack": {
+        "message": "必需的扩展包"
+    },
+    "Reset Filters": {
+        "message": "重置筛选条件"
+    },
+    "Sandbox": {
+        "message": "沙盒"
+    },
+    "Slots": {
+        "message": "栏位"
+    },
+    "Spectate": {
+        "message": "观战"
+    },
+    "Spectators": {
+        "message": "观战者"
+    },
+    "Status": {
+        "message": "状态"
+    },
+    "Tag": {
+        "message": "标签"
+    },
+    "Team Armies": {
+        "message": "组队对战"
+    },
+    "Testing": {
+        "message": "正在测试"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "你想要加入的游戏需要《Planetary Annihilation》的[style=content_description]__expansion_name__[/style]扩展内容。"
+    },
+    "This game is no longer available.": {
+        "message": "此游戏不再可用。"
+    }
+}

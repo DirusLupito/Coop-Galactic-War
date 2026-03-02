@@ -1,0 +1,83 @@
+{
+    "AI Skirmish": {
+        "message": "مناوشة حاسوب"
+    },
+    "Armory": {
+        "message": "الترسانة"
+    },
+    "Audio Engine:": {
+        "message": "محرك الصوت:"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "القادة إضافة الطبعة الكونية"
+    },
+    "Extra special thanks to our:": {
+        "message": "شكر خاص اضافي إلى:"
+    },
+    "Founding Commanders": {
+        "message": "القادة المؤسسين"
+    },
+    "Galactic War": {
+        "message": "حرب المجرات"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "اسم المستخدم أو كلمة المرور غير صحيحة. يرجى التحقق من الإدخال الخاص بك ثم حاول مرة أخرى."
+    },
+    "Multiplayer": {
+        "message": "العب الجماعي"
+    },
+    "New Build Available:": {
+        "message": "بناء جديد متاح:"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "لا شيء من هذا كان ممكن دون كرمكم، ونحن ممتنون انك اخذت الفرصة وصدقت في رؤيتنا."
+    },
+    "Password": {
+        "message": "كلمة المرور"
+    },
+    "Please choose a default region.": {
+        "message": "الرجاء اختيار منطقة افتراضية."
+    },
+    "Quit": {
+        "message": "إنهاء"
+    },
+    "Replays": {
+        "message": "إعادة المشاهدة"
+    },
+    "Settings": {
+        "message": "إعدادات"
+    },
+    "Sign in": {
+        "message": "تسجيل الدخول"
+    },
+    "Single Player": {
+        "message": "لاعب واحد"
+    },
+    "System Designer": {
+        "message": "مصمم النظام"
+    },
+    "There are no regions available for this build version.": {
+        "message": "لا تتوفر أية مناطق لهذا الإصدار من البناء."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "لأولئك الذين ساهموا في حملتنا في Kickstarter، نود أن نشكركم على كل هذا الدعم."
+    },
+    "Unable to Sign In": {
+        "message": "غير قادر على تسجيل الدخول"
+    },
+    "Username": {
+        "message": "اسم المستخدم"
+    },
+    "Version:": {
+        "message": "الإصدار:"
+    },
+    "You are already assigned to a game.": {
+        "message": "تم تعيينك انت مسبقا إلى لعبة."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "يمكنك تغيير المنطقة في وقت لاحق في إعدادات القائمة."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "أنت بحاجة إلى عميل جديد للعب اللعبة. مستخدمي ستيم قد تحتاج إلى إعادة تشغيل ستيم للحصول على عميل جديد."
+    }
+}

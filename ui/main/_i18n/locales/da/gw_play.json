@@ -1,0 +1,23 @@
+{
+    "Delete Tech": {
+        "message": "Slet Teknologi"
+    },
+    "Explore": {
+        "message": "Udforsk"
+    },
+    "Fight": {
+        "message": "Kæmp"
+    },
+    "Jump": {
+        "message": "Hop"
+    },
+    "Preparing for battle": {
+        "message": "Forbereder til kamp"
+    },
+    "Scanning System": {
+        "message": "Scanner System"
+    },
+    "Settings": {
+        "message": "Indstillinger"
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "Advanced Bot Tech": {
+        "message": "Tecnologia Avançada de Bot"
+    },
+    "Advanced Defense Technology": {
+        "message": "Tecnologia de Defesa Avançada"
+    },
+    "Advanced Orbital Tech": {
+        "message": "Tecnologia Avançada de Orbital"
+    },
+    "Advanced Vehicle Tech": {
+        "message": "Tecnologia Avançada de Veículos"
+    },
+    "Artillery Ammunition Tech": {
+        "message": "Tecnologia de Munição de Artilharia"
+    },
+    "Artillery Ammunition Tech increases the damage of all artillery structures by 25% and reduces their energy usage by 90%. Requires technology to build artillery structures and units.": {
+        "message": "Tecnologia de Munição de Artilharia aumenta o dano de todas as estruturas de artilharias em 25% and reduz os consumo de energia em 90%. Requer outra tecnologia para construir estruturas e unidades de artilharia."
+    },
+    "Basic Bot Tech": {
+        "message": "Tecnologia Básica de Bot"
+    },
+    "Bot Ammunition Tech": {
+        "message": "Tecnologia de Munições de Bot"
+    },
+    "Bot Armor Tech": {
+        "message": "Tecnologia de Blindagem de Bot"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "Tecnologia de Blindagem de Bot aumenta a vida de todos os bots em 50%"
+    },
+    "Complete Bot Tech": {
+        "message": "Tecnologia Completa de Bot"
+    },
+    "Defense Ammunition Tech": {
+        "message": "Tecnologia de Munições de Defesa"
+    },
+    "Economy boost:": {
+        "message": "Economy boost:"
+    },
+    "Favorite color:": {
+        "message": "Favorite color:"
+    },
+    "Name:": {
+        "message": "Nome:"
+    },
+    "Naval Ammunition Tech": {
+        "message": "Tecnologia de Munição Naval"
+    },
+    "Naval Armor Tech": {
+        "message": "Tecnologia de Blindagem Naval"
+    },
+    "Naval Fabrication Tech": {
+        "message": "Tecnologia de Fabricação Naval"
+    },
+    "Orbital Combat Tech": {
+        "message": "Tecnologia de Combate Orbital"
+    },
+    "Orbital Engine Tech": {
+        "message": "Tecnologia de Motor Orbital"
+    },
+    "Orbital Engine Tech increases speed of all orbital units by 50%": {
+        "message": "Tecnologia de Motor Orbital aumenta a velocidade de todas as unidades orbitais em 50%"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "Tecnologia de Fabricação Orbital reduz os custos de metal para construir de todas as unidades orbitais em 25%"
+    },
+    "Storage Commander": {
+        "message": "Comandante Armazenador"
+    },
+    "Storage Compression Tech": {
+        "message": "Tech' de compreessao de armazenamento"
+    },
+    "Super Weapon Tech": {
+        "message": "Tecnologia de Super Armas"
+    },
+    "Super Weapon Tech enables nuclear missiles, metal planet controllers, and planetary engines to be built. An advanced fabricator is required to build super weapons.": {
+        "message": "Tecnologia de Super Armas habilita construir mísseis nucleares, controladores de planetas de metais e motores planetares. Um fabricador avançado é necessário para construir super armas."
+    }
+}

@@ -1,0 +1,644 @@
+{
+    "ALL": {
+        "message": "الكل"
+    },
+    "ALWAYS": {
+        "message": "دائماً"
+    },
+    "Ambient Occlusion": {
+        "message": "الإطباق في الجو المحيط"
+    },
+    "Anti-Aliasing": {
+        "message": "التنعيم"
+    },
+    "Audio": {
+        "message": "الصوت"
+    },
+    "Build Preview Behavior": {
+        "message": "إنشاء معاينة السلوك"
+    },
+    "CUSTOM": {
+        "message": "يدوي"
+    },
+    "Camera": {
+        "message": "الكاميرا"
+    },
+    "Camera Friction": {
+        "message": "احتكاك الكاميرا"
+    },
+    "Cancel": {
+        "message": "إلغاء"
+    },
+    "Display Mode": {
+        "message": "نظام العرض"
+    },
+    "Edge Scroll Options": {
+        "message": "خيارات تمرير الحافة"
+    },
+    "FOV": {
+        "message": "المدى"
+    },
+    "FULLSCREEN": {
+        "message": "ملء الشاشة"
+    },
+    "FXAA": {
+        "message": "التنعيم"
+    },
+    "Graphics": {
+        "message": "الرسومات"
+    },
+    "HDR": {
+        "message": "ت م د ع"
+    },
+    "HIGH": {
+        "message": "عالي"
+    },
+    "Headlights": {
+        "message": "المصابيح الآمامية"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "مسافة إظهار الرموز "
+    },
+    "Key Pan Speed": {
+        "message": "مفتاح عموم سرعة"
+    },
+    "Keyboard": {
+        "message": "لوحة المفاتيح"
+    },
+    "LOW": {
+        "message": "منخفض"
+    },
+    "Language": {
+        "message": "اللغة"
+    },
+    "Master Volume": {
+        "message": "وحدة القياس الرئيسية"
+    },
+    "Mouse Pan Speed": {
+        "message": "سرعة الماوس العامة"
+    },
+    "Music Volume": {
+        "message": "حجم صوت الموسيقى"
+    },
+    "NATIVE (100%)": {
+        "message": "محلي (100%)"
+    },
+    "NEVER": {
+        "message": "ابدا"
+    },
+    "OFF": {
+        "message": "إيقاف"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "إيقاف (قفل الماوس)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "إيقاف (لا قفل للماوس) "
+    },
+    "ON": {
+        "message": "تشغيل"
+    },
+    "Orbital Shell": {
+        "message": "قذيفة مدارية"
+    },
+    "Order Preview Behavior": {
+        "message": "معاينة سلوك الأمر"
+    },
+    "Pole Lock": {
+        "message": "قفل القطب"
+    },
+    "Quality Preset": {
+        "message": "الإعداد المسبق للجودة"
+    },
+    "RANGE DEPENDENT": {
+        "message": "معتمدة على المدى"
+    },
+    "Resolution Scaling": {
+        "message": "تحجيم الدقة"
+    },
+    "SELECTED": {
+        "message": "المختاره"
+    },
+    "SERVER": {
+        "message": "جهاز خادم"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "عينة فرعية (50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "عينة فرعية (75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "عينة مفرطة (110%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "عينة مفرطة (150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "عينة مفرطة (175%)"
+    },
+    "Save": {
+        "message": "إحفظ"
+    },
+    "Server": {
+        "message": "الخادم"
+    },
+    "Settings": {
+        "message": "إعدادات"
+    },
+    "Shadows": {
+        "message": "الظلال"
+    },
+    "Show Build Previews": {
+        "message": "إظهار معاينة البناء"
+    },
+    "Show Metal Spot Icons": {
+        "message": "إظهار رموز البقع المعدنية"
+    },
+    "Show Order Previews": {
+        "message": "اظهر الاوامر المعطاه "
+    },
+    "Show Stat Bars": {
+        "message": "أظهر شريط الحالة"
+    },
+    "Show Unit Icons": {
+        "message": "أظهر رموز الوحدات"
+    },
+    "Show/Hide game stats": {
+        "message": "اظهار/اخفاء احصائيات اللعبة"
+    },
+    "Show/Hide pip": {
+        "message": "إظهار/إخفاء pip"
+    },
+    "Sound Effects Volume": {
+        "message": "مستوى المؤثرات الصوتية"
+    },
+    "VALUE DEPENDENT": {
+        "message": "معتمد على القيمة"
+    },
+    "Virtual Texture": {
+        "message": "النسيج الظاهري"
+    },
+    "Voice Volume": {
+        "message": "حجم الصوت"
+    },
+    "WINDOWED": {
+        "message": "في نافذة"
+    },
+    "Zoom Speed": {
+        "message": "سرعة التكبير"
+    },
+    "abort": {
+        "message": "إجهاض"
+    },
+    "alerts": {
+        "message": "إنذارات"
+    },
+    "align to pole": {
+        "message": "محاذاة إلى القطب"
+    },
+    "alt fire": {
+        "message": "أوقف النار"
+    },
+    "assist": {
+        "message": "ساعد"
+    },
+    "attack": {
+        "message": "الهجوم"
+    },
+    "bug report": {
+        "message": "تقرير الأخطاء"
+    },
+    "build": {
+        "message": "بناء"
+    },
+    "build avatar": {
+        "message": "بناء افتار"
+    },
+    "build avatar factory": {
+        "message": "بناء مصنع افاتار"
+    },
+    "build bar groups": {
+        "message": "بناء مجموعات بار"
+    },
+    "build items": {
+        "message": "بناء أداه"
+    },
+    "build loop": {
+        "message": "تكرار البناء"
+    },
+    "build once": {
+        "message": "ابني مرة واحدة"
+    },
+    "build orders": {
+        "message": "أوامر البناء"
+    },
+    "capture anchor": {
+        "message": "القبض على مرساة"
+    },
+    "chronocam": {
+        "message": "كاميرا حيه"
+    },
+    "communication": {
+        "message": "تواصل"
+    },
+    "copy to pip": {
+        "message": "النسخ إلى النقطة"
+    },
+    "copy unit": {
+        "message": "نسخ الوحدات"
+    },
+    "crash": {
+        "message": "تحطم"
+    },
+    "decrease camera pan speed": {
+        "message": "إنقاص السرعة العمومية للكاميرا"
+    },
+    "dev mode": {
+        "message": "وضع المطور"
+    },
+    "direction": {
+        "message": "الاتجاه"
+    },
+    "disable navigation debug info": {
+        "message": "تعطيل معلومات مصحح الملاحة"
+    },
+    "dismiss alert notification": {
+        "message": "إقالة اشعارات التحذير"
+    },
+    "enable navigation debug info": {
+        "message": "تمكين معلومات تصحيح الملاحة"
+    },
+    "energy off": {
+        "message": "إنقطعت الطاقة"
+    },
+    "energy on": {
+        "message": "الطاقة تعمل"
+    },
+    "fire at will": {
+        "message": "اطلاق النار عند الإرادة"
+    },
+    "free move backward": {
+        "message": "الإنتقال الحر إلى الخلف"
+    },
+    "free move down": {
+        "message": "حرية التحرك للأسفل"
+    },
+    "free move forward": {
+        "message": "التحرك الحر للأمام"
+    },
+    "free move left": {
+        "message": "تحرك حر لليسار"
+    },
+    "free move right": {
+        "message": "تحرك حر لليمين"
+    },
+    "free move up": {
+        "message": "تحرك حر للأعلى"
+    },
+    "free movement": {
+        "message": "حركة حره"
+    },
+    "free pitch backward": {
+        "message": "قِيْر حر بالخلف"
+    },
+    "free pitch forward": {
+        "message": "انحدار حر للأمام"
+    },
+    "free roll left": {
+        "message": "التدحرج الحر يساراً"
+    },
+    "free roll right": {
+        "message": "تدحرج حر لليمين"
+    },
+    "free yaw left": {
+        "message": "انعراج حر لليسار"
+    },
+    "free yaw right": {
+        "message": "انعراج حر لليمين"
+    },
+    "free zoom in": {
+        "message": "تكبير الكميرا بشكل حر"
+    },
+    "free zoom out": {
+        "message": "تصغير الكاميرا بشكل حر"
+    },
+    "general": {
+        "message": "عام"
+    },
+    "hold fire": {
+        "message": "إيقاف النار"
+    },
+    "hold position": {
+        "message": "احمي الموقع"
+    },
+    "increase camera pan speed": {
+        "message": "زيادة سرعة عموم الكاميرا"
+    },
+    "jump to next planet": {
+        "message": "إنتقل للكوكب التالي"
+    },
+    "jump to previous planet": {
+        "message": "القفز إلى الكوكب السابق"
+    },
+    "last pseudo frame": {
+        "message": "الإطار المفترض الأخير"
+    },
+    "load": {
+        "message": "حمّل"
+    },
+    "maneuver": {
+        "message": "مناورة"
+    },
+    "modes": {
+        "message": "وسائط"
+    },
+    "move": {
+        "message": "تحريك"
+    },
+    "move down": {
+        "message": "التحرك للأسفل"
+    },
+    "move left": {
+        "message": "تحرك يساراً"
+    },
+    "move right": {
+        "message": "تحرك يميناً"
+    },
+    "move up": {
+        "message": "التحريك للأعلى"
+    },
+    "navigate back/exit": {
+        "message": "تنقل العودة/الخروج"
+    },
+    "next pseudo frame": {
+        "message": "الإطار المفترض التالي"
+    },
+    "paste unit": {
+        "message": "لصق الوحدة"
+    },
+    "patrol": {
+        "message": "دورية"
+    },
+    "pause game": {
+        "message": "وقف اللعبة"
+    },
+    "pause time": {
+        "message": "وقت الإيقاف المؤقت"
+    },
+    "picture-in-picture": {
+        "message": "صورة-على-صورة"
+    },
+    "ping": {
+        "message": "بينغ"
+    },
+    "planet jump": {
+        "message": "قفز الكوكب"
+    },
+    "play backwards at 100%": {
+        "message": "التشغيل بالخلف بنسبة 100% "
+    },
+    "play backwards at 50%": {
+        "message": "التشغيل بالخلف بنسبة 50% "
+    },
+    "play forward at 100%": {
+        "message": "التشغيل إلى الأمام بــ%100"
+    },
+    "play forward at 50%": {
+        "message": "تشغيل إلى الأمام بنسبة 50٪"
+    },
+    "publish server mods": {
+        "message": "انشر اضافات السيرفر"
+    },
+    "quick profile": {
+        "message": "لمحة سريعة"
+    },
+    "recall anchor": {
+        "message": "استدعاء مرساة "
+    },
+    "reclaim": {
+        "message": "استعادة"
+    },
+    "reload view": {
+        "message": "أعد تحميل المنظر"
+    },
+    "repair": {
+        "message": "تصليح"
+    },
+    "resume at latest time": {
+        "message": "إستكمال آخر مرة"
+    },
+    "return fire": {
+        "message": "الرد على النيران"
+    },
+    "roam": {
+        "message": "تجول"
+    },
+    "select air group": {
+        "message": "اختر وحدات الجو"
+    },
+    "select all air combat units": {
+        "message": "حدد جميع الوحدات المقاتلة الجوية"
+    },
+    "select all air combat units on screen": {
+        "message": "حدد جميع الوحدات القتالية الجوية على الشاشة"
+    },
+    "select all combat units": {
+        "message": "حدد جميع الوحدات المقاتلة"
+    },
+    "select all combat units on screen": {
+        "message": "حدد جميع الوحدات المقاتلة على الشاشة"
+    },
+    "select all factories": {
+        "message": "حدد جميع المصانع"
+    },
+    "select all factories on screen": {
+        "message": "حدد جميع المصانع الظاهره على الشاشه"
+    },
+    "select all idle factories": {
+        "message": "حدد جميع المصانع الراكدة"
+    },
+    "select all idle factories on screen": {
+        "message": "حدد جميع المصانع المتوقفه على الشاشة"
+    },
+    "select all land combat units": {
+        "message": "حدد جميع الوحدات المقاتلة الأرضية"
+    },
+    "select all land combat units on screen": {
+        "message": "حدد جميع الوحدات القتالية البرية على الشاشة"
+    },
+    "select all matching units on screen": {
+        "message": "حدد جميع الوحدات المشابهة على الشاشة"
+    },
+    "select all naval combat units": {
+        "message": "حدد جميع الوحدات القتالية البحرية"
+    },
+    "select all naval combat units on screen": {
+        "message": "حدد جميع الوحدات القتالية البحرية على الشاشة"
+    },
+    "select bot group": {
+        "message": "حدد مجموعة روبوتات"
+    },
+    "select combat group": {
+        "message": "حدد المجموعات المقاتلة"
+    },
+    "select commander": {
+        "message": "حدد قائد"
+    },
+    "select factory group": {
+        "message": "حدد مجموعة مصانع"
+    },
+    "select idle fabbers": {
+        "message": "تحديد الفابرس الراكد"
+    },
+    "select orbital group (buildings)": {
+        "message": "حدد مجموعة مدارية (الأبنية)"
+    },
+    "select orbital group (units)": {
+        "message": "حدد مجموعة مدارية (وحدات)"
+    },
+    "select sea group": {
+        "message": "اختر مجموعة بحرية"
+    },
+    "select utility group": {
+        "message": "اختر أداة مساعدة المجموعة"
+    },
+    "select vehicle group": {
+        "message": "حدد مجموعة المركبات"
+    },
+    "self destruct selected unit": {
+        "message": "وحدات التدمير الذاتي المختارة"
+    },
+    "set army from hover": {
+        "message": "ضبط الجيش من الحوامة"
+    },
+    "set debug camera": {
+        "message": "تعيين مصحح الكاميرا"
+    },
+    "set default camera": {
+        "message": "تعيين الكاميرا الأفتراضية"
+    },
+    "set free camera": {
+        "message": "تعيين الكاميرا الحرة"
+    },
+    "set planet camera": {
+        "message": "تعيين كاميرا الكوكب"
+    },
+    "show/hide UI": {
+        "message": "إظهار/إخفاء واجهة المستخدم"
+    },
+    "show/hide performance panel": {
+        "message": "إظهار / إخفاء إطار الأداء"
+    },
+    "show/hide visual aid overlays": {
+        "message": "اظهار/إخفاء تراكبات المساعد البصري"
+    },
+    "smooth zoom in": {
+        "message": "تكبير سلس"
+    },
+    "smooth zoom out": {
+        "message": "تصغير سلس"
+    },
+    "special move": {
+        "message": "تحرك مميز"
+    },
+    "stop": {
+        "message": "قف"
+    },
+    "swap pip": {
+        "message": "pip مبادلة"
+    },
+    "team chat": {
+        "message": "دردشة الفريق"
+    },
+    "toggle FOW": {
+        "message": "تعديل مجال الرؤية"
+    },
+    "toggle audio logging": {
+        "message": "تبديل تسجيل الصوت"
+    },
+    "toggle build orders": {
+        "message": "تبديل أوامر البناء"
+    },
+    "toggle console": {
+        "message": "تبديل وحدة التحكم"
+    },
+    "toggle debug camera": {
+        "message": "تبديل مصحح الكاميرا"
+    },
+    "toggle energy orders": {
+        "message": "تعديل أوامر الطاقة"
+    },
+    "toggle fire orders": {
+        "message": "تبديل أوامر إطلاق النار"
+    },
+    "toggle free camera": {
+        "message": "تبديل الكاميرا الحرة"
+    },
+    "toggle fullscreen": {
+        "message": "تبديل ملء الشاشة"
+    },
+    "toggle move orders": {
+        "message": "اختر أوامر البناء"
+    },
+    "toggle music": {
+        "message": "تبديل الموسيقى"
+    },
+    "toggle nav debug": {
+        "message": "تعديل المصحح المحلي"
+    },
+    "toggle pip mirror": {
+        "message": "تعديل مرآة النقطة"
+    },
+    "track selection with camera": {
+        "message": "اختيار المسار مع الكاميرا"
+    },
+    "tracking & alignment": {
+        "message": "التتبع و المحاذاة"
+    },
+    "tuning": {
+        "message": "ضبط"
+    },
+    "unit capture groups": {
+        "message": "وحدة التقاط مجموعات"
+    },
+    "unit commands": {
+        "message": "اوامر الوحدة"
+    },
+    "unit orders": {
+        "message": "أوامر الوحدة"
+    },
+    "unit recall groups": {
+        "message": "وحدة استدعاء المجموعات"
+    },
+    "unit selection": {
+        "message": "اختيار وحدة"
+    },
+    "units": {
+        "message": "الوحدات"
+    },
+    "unload": {
+        "message": "تفريغ"
+    },
+    "zoom": {
+        "message": "التكبير"
+    },
+    "zoom in": {
+        "message": "التكبير"
+    },
+    "zoom out": {
+        "message": "التصغير"
+    },
+    "zoom to air": {
+        "message": "التكبير للهواء"
+    },
+    "zoom to celestial": {
+        "message": "تكبير فلكي"
+    },
+    "zoom to orbital": {
+        "message": "أظهر المدارات"
+    },
+    "zoom to surface": {
+        "message": "التكبير إلى السطح"
+    }
+}

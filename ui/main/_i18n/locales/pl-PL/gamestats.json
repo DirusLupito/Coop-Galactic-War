@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "Wydajność budowy"
+    },
+    "CLOSE": {
+        "message": "ZAMKNIJ"
+    },
+    "Command Rate": {
+        "message": "Tempo rozkazów"
+    },
+    "Draw": {
+        "message": "Remis"
+    },
+    "Energy Demand": {
+        "message": "Energia: Zapotrzebowanie"
+    },
+    "Energy Production": {
+        "message": "Energia: Produlcja"
+    },
+    "Energy Wasted": {
+        "message": "Energia: Straty"
+    },
+    "GAME SUMMARY": {
+        "message": "PODSUMOWANIE GRY"
+    },
+    "In Progress": {
+        "message": "Gra w toku"
+    },
+    "Metal Demand": {
+        "message": "Metal: Zapotrzebowanie"
+    },
+    "Metal Destruction Rate": {
+        "message": "Tempo destrukcji metalu"
+    },
+    "Metal Loss Rate": {
+        "message": "Tempo utraty metalu"
+    },
+    "Metal Production": {
+        "message": "Metal: Produkcja"
+    },
+    "Metal Wasted": {
+        "message": "Metal: Straty"
+    },
+    "Retrieving Stats...": {
+        "message": "Pobieranie statystyk..."
+    },
+    "Total Units": {
+        "message": "Suma jednostek"
+    },
+    "Unit Build Rate": {
+        "message": "Tempo budowy jednostek"
+    },
+    "Unit Destruction Rate": {
+        "message": "Tempo destrukcji jednostek"
+    },
+    "Unit Loss Rate": {
+        "message": "Tempo utraty jednostek"
+    },
+    "Units In Combat": {
+        "message": "Jednostki w walce"
+    },
+    "Units: Fabricators": {
+        "message": "Jednostki: Fabbery"
+    },
+    "Units: Factory": {
+        "message": "Jednostki: Fabryki"
+    },
+    "Units: Mobile": {
+        "message": "Jednostki: Mobilne"
+    },
+    "Winner:": {
+        "message": "Zwycięzca:"
+    },
+    "Winners:": {
+        "message": "Zwycięzcy:"
+    }
+}

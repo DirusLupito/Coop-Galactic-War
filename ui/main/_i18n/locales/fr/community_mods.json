@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "ESSAIS RESTANTS : __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Actif"
+    },
+    "Active Client": {
+        "message": "Client actif"
+    },
+    "Active Server": {
+        "message": "Serveur actif"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Les mods actifs seront automatiquement mis à jour au démarrage et après chaque partie."
+    },
+    "Active/Inactive": {
+        "message": "Actif/Inactif"
+    },
+    "Available": {
+        "message": "Disponible"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Mod disponible en conflit avec le mod de système de fichiers installé à :"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "REPLAYS DES GRANDES PARTIES"
+    },
+    "Build:": {
+        "message": "Configuration :"
+    },
+    "By": {
+        "message": "Par"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "VÉRIFICATION DES MODS DU SYSTÈME DE FICHIERS"
+    },
+    "COMMUNITY MODS": {
+        "message": "MODS DE LA COMMUNAUTÉ"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "AIDE COMMUNAUTÉ"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "ÉCHEC DE LA CONNEXION AU SERVEUR"
+    },
+    "Client Mods": {
+        "message": "Mods client"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Les mods client sont montés (chargés) uniquement sur votre client et n'affectent pas les autres joueurs."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Les mods client ne peuvent pas changer les unités ou les caractéristiques des unités en escarmouche IA ou en parties multijoueur."
+    },
+    "Community Mods": {
+        "message": "Mods de la communauté"
+    },
+    "Companion Client Mods": {
+        "message": "Mods client compagnons"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Les mods compagnons sont des mods client spéciaux qui sont montés temporairement de manière automatique lorsque les mods de serveur en ont besoin."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "En conflit avec les mods de serveur d'unités :"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "TÉLÉCHARGEMENT DE MODS DE SERVEUR"
+    },
+    "Date:": {
+        "message": "Date :"
+    },
+    "Dependencies": {
+        "message": "Dépendances"
+    },
+    "Details": {
+        "message": "Détails"
+    },
+    "Disable": {
+        "message": "Désactiver"
+    },
+    "Disable Nukes": {
+        "message": "Désactiver armes nucléaires"
+    },
+    "Disable Ragnaroks": {
+        "message": "Désactiver Ragnaroks"
+    },
+    "Disable Titans": {
+        "message": "Désactiver Titans"
+    },
+    "Disabled": {
+        "message": "Désactivé"
+    },
+    "Downloads": {
+        "message": "Téléchargements"
+    },
+    "Enable": {
+        "message": "Activer"
+    },
+    "Enable All": {
+        "message": "Activer tout"
+    },
+    "Enabled Client": {
+        "message": "Client Activé"
+    },
+    "Enabled Server": {
+        "message": "Serveur Activé"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "Les mods de serveur activés uniquement pour votre client dans n'importe quelle partie à laquelle vous jouez ou assistez"
+    },
+    "Enabled/Disabled": {
+        "message": "Activé/Désactivé"
+    },
+    "Filter": {
+        "message": "Filtre"
+    },
+    "Identifier:": {
+        "message": "Identifiant :"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "S'ils ne sont pas actifs, les mods compagnons sont automatiquement téléchargés / mis à jour et montés lorsque vous rejoignez ou assistez à une escarmouche IA ou une partie multijoueur puis démontés à la fin de la partie."
+    },
+    "Install": {
+        "message": "Installer"
+    },
+    "Installed": {
+        "message": "Installé"
+    },
+    "Installed Path:": {
+        "message": "Chemin d'installation :"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Mods client & serveur installés dans le cache de téléchargement"
+    },
+    "Installing Mods": {
+        "message": "Installation de mods"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "L'installation d'un mod téléchargera un zip compressé du mod dans votre cache de téléchargement PA local."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Les mods de serveur d'unités volumineux comme l'extension Legion utilisent des mods compagnons pour réduire la taille des mods de serveur et leur durée de chargement / téléchargement."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "Les mods de serveur d'unités volumineux peuvent prendre un certain temps à charger / télécharger si la vitesse de votre connexion est lente."
+    },
+    "Local file system mod installed at:": {
+        "message": "Mod de système de fichiers local installé à :"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "MODS DÉSACTIVÉS PAR --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "MONTAGE DES MODS CLIENT"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "MONTAGE DES MODS CLIENT EN MODE HORS LIGNE"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "MONTAGE DES MODS COMPAGNONS... VEUILLEZ PATIENTER"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "MONTAGE DES MODS DE SERVEUR"
+    },
+    "Merge (experimental)": {
+        "message": "Fusionner (expérimental)"
+    },
+    "Mods available to install": {
+        "message": "Mods disponibles à l'installation"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "La plupart des mods installés peuvent être utilisés en mode hors ligne sans connexion internet (certains mods peuvent nécessiter une connexion internet)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Un trop grand nombre de conflits de mods de serveurs d'unités peuvent causer des problèmes tels que l'absence de la barre de construction ou des plantages du serveur."
+    },
+    "Name": {
+        "message": "Nom"
+    },
+    "No": {
+        "message": "Non"
+    },
+    "No __description__ mods match your criteria": {
+        "message": "Aucun mod __description__ ne correspond à vos critères"
+    },
+    "No units match your criteria": {
+        "message": "Aucune unité ne correspond à vos critères"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "DISCORD OFFICIEL"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "GUIDES OFFICIELS"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "ASSISTANCE OFFICIELLE"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Offline Mode": {
+        "message": "Mode hors ligne"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Seuls les mods de serveur peuvent changer la liste des unités ou les caractéristiques des unités dans une escarmouche IA ou une partie multijoueur et sont téléchargés depuis le serveur par chaque client afin d'éviter toute triche."
+    },
+    "Priority": {
+        "message": "Priorité"
+    },
+    "Priority:": {
+        "message": "Priorité :"
+    },
+    "Privacy Policy": {
+        "message": "Politique de confidentialité"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "REMONTAGE DES MODS CLIENT ACTIFS"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "RÉINITIALISATION DES MODS DE SERVEUR"
+    },
+    "Recommended": {
+        "message": "Recommandé"
+    },
+    "Recommended mods": {
+        "message": "Mods recommandés"
+    },
+    "Reload File System Mods": {
+        "message": "Recharger les mods du système de fichiers"
+    },
+    "Returning to Main Menu": {
+        "message": "Retourner au menu principal"
+    },
+    "Season ends __date__": {
+        "message": "La saison se termine le __date__"
+    },
+    "Server Mods": {
+        "message": "Mods de serveur"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Les mods de serveurs sont téléchargés sur le serveur lorsque vous créez une escarmouche IA ou une partie multijoueur, puis sont téléchargés et montés (chargés) sur chaque client pour tous les joueurs et spectateurs dès qu'ils rejoignent votre partie."
+    },
+    "Size:": {
+        "message": "Taille :"
+    },
+    "Sort": {
+        "message": "Trier"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "POUR JOUER AU 1 CONTRE 1 CLASSÉ, UTILISEZ LES MODS DE LA COMMUNAUTÉ ET ÉVITEZ LES PROBLÈMES <br />Veuillez suivre les instructions du wiki pour supprimer le PAMM et vos mods de systèmes de fichiers"
+    },
+    "Type": {
+        "message": "Type"
+    },
+    "UI Scenes": {
+        "message": "Scènes UI"
+    },
+    "UNIT DATABASE": {
+        "message": "BASE DE DONNÉES DES UNITÉS"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "MISE À JOUR DES MODS ACTIFS"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "MISE À JOUR ET REMONTAGE DES MODS CLIENT ACTIFS"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "MISE À JOUR DES MODS DISPONIBLES"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "MISE À JOUR DES FICHIERS DES MODS DE LA COMMUNAUTÉ"
+    },
+    "Uninstall": {
+        "message": "Désinstaller"
+    },
+    "Unit Restrictions": {
+        "message": "Restrictions d'unités"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "La restriction d'unités ne s'applique pas à la Guerre galactique."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Les restrictions d'unités permettent de désactiver des unités spécifiques pour tous les joueurs dans les escarmouches IA & parties multijoueur que vous créez"
+    },
+    "Units": {
+        "message": "Unités"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Les unités peuvent être désactivées pour tous les joueurs y compris l'IA en escarmouche IA ou les parties multijoueurs que vous créez."
+    },
+    "Units matching your criteria": {
+        "message": "Unités correspondant à vos critères"
+    },
+    "Units:": {
+        "message": "Unités :"
+    },
+    "Updated": {
+        "message": "Mis à jour"
+    },
+    "Used By": {
+        "message": "Utilisé par"
+    },
+    "Version:": {
+        "message": "Version :"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "Mods __description__ correspondant à vos critères"
+    },
+    "about-community-mods": {
+        "message": "Les mods de la communauté est un service proposé par <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> pour <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a> qui élargit le jeu de base avec des améliorations, des correctifs et des centaines de mods créés par la communauté comme <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">l'extension Legion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Les mods de la communauté et le tchat de la communauté sont des services proposés par <a class=\"link\" data-bind=\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\">palobby.com<span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> pour <a class=\"link\" data-bind=\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\">Planetary Annihilation Inc <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a> qui élargit le jeu de base avec des améliorations, des correctifs et des centaines de mods créés par la communauté comme <a class=\"link\" data-bind=\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\">l'extension Legion <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>"
+    },
+    "privacy policy": {
+        "message": "politique de confidentialité"
+    },
+    "Companions": {
+        "message": "Compagnons"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Activer l'IA d'extension de la communauté de Legion"
+    },
+    "__rank_title__ Rank": {
+        "message": "Rang : __rank_title__"
+    },
+    "Systems": {
+        "message": "Systèmes"
+    }
+}

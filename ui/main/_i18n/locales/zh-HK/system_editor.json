@@ -1,0 +1,65 @@
+{
+    "Accept": {
+        "message": "接受"
+    },
+    "CLEAR SYSTEM": {
+        "message": "清空星系"
+    },
+    "CLOSE": {
+        "message": "關閉"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Do you want to save this system?": {
+        "message": "你想要儲存此星系嗎？"
+    },
+    "EDIT PLANET": {
+        "message": "編輯星球"
+    },
+    "HIDE": {
+        "message": "隱藏"
+    },
+    "MY PLANETS": {
+        "message": "我的星球"
+    },
+    "Mass": {
+        "message": "MASS"
+    },
+    "PREVIEW ALL": {
+        "message": "預覽全部"
+    },
+    "Position": {
+        "message": "位置"
+    },
+    "RECENT": {
+        "message": "最近"
+    },
+    "REMOVE": {
+        "message": "移除"
+    },
+    "SAVE SYSTEM": {
+        "message": "儲存星系"
+    },
+    "SHOW": {
+        "message": "顯示"
+    },
+    "Save": {
+        "message": "保存"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "橫掃千星正在載入中。需等待一段時間。"
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "星系自上次儲存以來已被改動。"
+    },
+    "The system has not been saved.": {
+        "message": "此星系尚未被儲存。"
+    },
+    "Velocity": {
+        "message": "VELOCITY"
+    },
+    "Water": {
+        "message": "水"
+    }
+}

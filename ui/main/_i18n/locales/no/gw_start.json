@@ -1,0 +1,65 @@
+{
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Utslett fiender i kaprede solsystemer for å få tilgang til deres teknologi."
+    },
+    "Archived Wars": {
+        "message": "Lagrede kriger"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Velg et utgangspunkt for å gi din Commander forskjellige teknologiske start-konfigurasjoner."
+    },
+    "Difficulty:": {
+        "message": "Vanskelighetsgrad:"
+    },
+    "EPIC": {
+        "message": "EPISK"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Utforsk ukjente stjernesystemer for å gjenopprette teknologi."
+    },
+    "Faction": {
+        "message": "Fraksjon"
+    },
+    "Go to War": {
+        "message": "Gå i krig"
+    },
+    "HARD": {
+        "message": "VANSKELIG"
+    },
+    "How to Play": {
+        "message": "Hvordan spille"
+    },
+    "LARGE": {
+        "message": "STOR"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Dra fra stjernesystem til stjernesystem for å samle opp teknologier. Bruk de nye teknologiene til å overvinne fiendens ledere og hersk over galaksen!"
+    },
+    "Name": {
+        "message": "Navn"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Flytt deg rundt i galaksen ved å hoppe fra system til system."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Nye databanker for å lagre teknologier finner du ved å lete i galaksesystemet."
+    },
+    "RELENTLESS": {
+        "message": "NÅDELØS"
+    },
+    "SMALL": {
+        "message": "LITEN"
+    },
+    "Seed Value": {
+        "message": "Såverdi"
+    },
+    "Size:": {
+        "message": "Størrelse:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Noen systemer har gjemte Commanders. Gjenopprett dem for å bruke dem i fremtidige galaktiske kriger."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Teknologi kan slettes for å gi plass til å laste ned nye, Slettede og avviste teknologier mistes for godt for den gjenværende galaktiske krigen."
+    }
+}

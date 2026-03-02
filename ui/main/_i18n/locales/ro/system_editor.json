@@ -1,0 +1,71 @@
+{
+    "CLEAR SYSTEM": {
+        "message": "GOLEŞTE SISTEMUL"
+    },
+    "CLOSE": {
+        "message": "ÎNCHIDE"
+    },
+    "Cancel": {
+        "message": "Anulează"
+    },
+    "Discard": {
+        "message": "Respinge"
+    },
+    "Do you want to save this system?": {
+        "message": "Doreşti să salvezi acest sistem?"
+    },
+    "EDIT PLANET": {
+        "message": "MODIFICĂ PLANETA"
+    },
+    "HIDE": {
+        "message": "ASCUNDE"
+    },
+    "MY PLANETS": {
+        "message": "PLANETELE MELE"
+    },
+    "Mass": {
+        "message": "MASĂ"
+    },
+    "PREVIEW ALL": {
+        "message": "VEZI TOATE"
+    },
+    "Position": {
+        "message": "POZIŢIE"
+    },
+    "REMOVE": {
+        "message": "ELIMINĂ"
+    },
+    "SAVE SYSTEM": {
+        "message": "SALVEAZĂ SISTEM"
+    },
+    "SHOW": {
+        "message": "ARATĂ"
+    },
+    "SIMULATE": {
+        "message": "SIMULEAZĂ"
+    },
+    "Save": {
+        "message": "Salvează"
+    },
+    "TEMPLATES": {
+        "message": "MODELE"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Planeta se încarcă. E posibil să dureze mult timp."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Programul nu va răspunde până planeta a terminat."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Sistemul a fost schimbat de la ultima salvare."
+    },
+    "The system has not been saved.": {
+        "message": "Acest sistem nu a fost salvat."
+    },
+    "Velocity": {
+        "message": "VELOCITATE"
+    },
+    "Water": {
+        "message": "Apă"
+    }
+}

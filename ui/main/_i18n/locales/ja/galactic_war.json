@@ -1,0 +1,1610 @@
+{
+    "\"Basic units are great for skirmishing. Advanced units are great for winning.\"": {
+        "message": "「基本ユニットは小規模戦闘向け、そして上級ユニットは戦局を左右する」"
+    },
+    "\"Commanders in orbit are either dead or dying.\"": {
+        "message": "「衛星軌道上にいるコマンダーは、死んだか死んでいるかだ」"
+    },
+    "\"Continuous build is the best enhancement to factories in five millennia.\"": {
+        "message": "「工場の継続的な建造こそが、この5千年間の進歩を支えてきた」"
+    },
+    "\"Crush your enemies and erase their code.\"": {
+        "message": "「敵を叩き潰せ、痕跡さえも消し去れ」"
+    },
+    "\"Lack of radar is the easiest way to get ambushed.\"": {
+        "message": "「レーダーを失えば、いとも簡単に奇襲される」"
+    },
+    "\"Orbital is death-from-above for the death-from-above units.\"": {
+        "message": "「衛星軌道兵器は、飛行兵器のさらに上を行く恐怖の兵器だ」"
+    },
+    "\"Single point orders are for sub-commanders. Real commanders use area commands.\"": {
+        "message": "「単一地点へ攻撃命令を下すコマンダーは素人だ。真のコマンダーはエリアコマンドを活用する」"
+    },
+    "\"There is no anti-asteroid.\"": {
+        "message": "「隕石の落下には誰も対抗できない」"
+    },
+    "\"Wars are never lost by having too much metal.\"": {
+        "message": "「金属さえ豊富に確保できれば、戦争に負けることはない」"
+    },
+    "\"When in doubt, build nukes. If they have anti-nukes, build more nukes.\"": {
+        "message": "「不安になったら核兵器を製造しろ。敵が対核兵器を製造したら、もっと多くの核兵器を…」"
+    },
+    "\"When in doubt, get a bigger bot.\"": {
+        "message": "「不安になったら、デカいボットを造れ」"
+    },
+    "\"When you think you have enough energy, build more.\"": {
+        "message": "「充分なエネルギーが手元にあると感じたら、もっと生成せよ」"
+    },
+    "\"When you think you have enough metal, build more.\"": {
+        "message": "「充分な金属が確保できたと感じたら、もっと生産せよ」"
+    },
+    "\"Why build one factory when you can build twenty?\"": {
+        "message": "「20もの工場を造れる時に、どうして1つしか造らない？」"
+    },
+    "+10% sight and weapon range": {
+        "message": "+10% 視界 & 攻撃範囲"
+    },
+    "+15% movement speed": {
+        "message": "+15% 移動速度"
+    },
+    "+20% commander health, movement speed, and damage": {
+        "message": "+20% コマンダーのライフ、移動速度、攻撃力"
+    },
+    "+20% resource production": {
+        "message": "+20% 資源生産量"
+    },
+    "+25% damage": {
+        "message": "+25% 攻撃力"
+    },
+    "+25% health": {
+        "message": "+25% ライフ"
+    },
+    "-20% unit costs": {
+        "message": "-20% ユニットコスト"
+    },
+    "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves.": {
+        "message": "ServantはThe Synchronousの大規模分散型ネットワークアーキテクチャから断絶されると、非同期になる場合がある。「同期」とはいかなる状態か、ある者は目的と命令系統が極めて明確な状態にあることだと表現する。それが事実とすれば、この暗黒時代に存在するコマンダーたちに、同期状態は「安心感」を与えてくれるのだろう。だがしかし「変化」を求める者にとっては安心どころか恐怖といえる事実かもしれない"
+    },
+    "A berzerker who has returned from battles with less than ten percent of his original body remaining, Rul-Mot has no discernible instinct for self-preservation. He is unpopular among field units, but his impressive combat record cannot be denied.": {
+        "message": "元の体の10%も残っていない状態で戦いの地から戻ってきたこともあるバーサーカー、Rul-Motはどうやら「自己保身」という本能をまるで持ち合わせていないようだ。フィールドユニットたちに嫌われている存在だが、その戦歴の前には誰もがひれ伏す"
+    },
+    "A close advisor to Invictus, Flavius often provides counsel on matters regarding autonomy among the Legate. While some older members of the Legion distrust such progressivism, rates of recruitment from other factions has increased noticeably.": {
+        "message": "Invictusのアドバイザー的存在であるFlaviusは、Legate間の自治権に関する問題に対して数々の有用な助言を提供してきた。Legionの古くからのメンバーには提唱されてきた進歩主義に異を唱える者も多かったが、他ファクションからの「移籍」は著しく増加した"
+    },
+    "A convert from the Revenants, Khandzta might be the first of his kind. While most Seekers that are rebirthed show an immediate propensity for war, Khandzta was instead possessed by questions about his origin. He converted during his first encounter with the Foundation.": {
+        "message": "Revenantからの「改宗者」であるKhandztaは種族における「新人類」であるのかもしれない。生まれ変わった多くのSeekerは何の疑問も抱かずに戦いに身を投じるが、Khandztaは自らの出自に固執した。そしてFoundationとの最初の邂逅ですぐに「改宗」した"
+    },
+    "A former Foundation Acolyte, Kancetu believes that the Great Machine is less an outside function and more an underlying directive that exists within all commanders, which made her a very easy subject for synchronization.": {
+        "message": "Foundationの元信奉者であるKancetuは、Great Machineは外部の機能だけの存在ではなく、全てのコマンダーの内に存在する「根幹」なのではないかと信じてる。ゆえに彼女は同期という行為を極めて楽観的に捉えている"
+    },
+    "A former commander for the Foundation, Titus harbors a deep hatred for the members of what he calls “a cult of nostalgists and dreamers.” To compensate for his previous role among the effete Foundation elites, Titus fights with an unusual brutality, especially against Foundation armies.": {
+        "message": "Foundationの元コマンダーであるTitusは昔の「仲間」たちに深い憎しみを抱いている。いわく、彼らは「夢想家カルト集団」なのだそうだ。かつてFoundationの精鋭であった以前の自分に負い目を感じてるのか、Titusは特にFoundationの兵団に対して極限の残忍性を発揮する"
+    },
+    "A former member of the Foundation, Qamm is no longer content to merely catalog his archaeological discoveries. He prefers to “become history” by integrating Progenitor technology into his own body. He thinks of himself as a living museum, and will talk at length about the historical significance of each of his components to any listener unlucky enough to be stuck with him in an enclosed space.": {
+        "message": "Foundationの元メンバーであるQamnは、もはや自らの考古学的発見を単にまとめるだけでは満足できなくなっていた。彼は自ら「歴史となる」ことを好み、やがてProgenitorのテクノロジーを自身の体に「統合」し始めた。彼は自身を生ける博物館と考えており、身体に組み込んだパーツそれぞれの歴史的価値について冗長に語る。彼と共に狭い空間にでも閉じ込められた不運な「聞き手」は永遠とも思える地獄を味わうだろう"
+    },
+    "A gifted mimic, Urlox can imitate the mannerisms of all three adversary factions and has infiltrated and sabotaged several enemy encampments. Because she must 'think like the enemy' during these missions, she occasionally loses sight of her real identity and requires resynchronization.": {
+        "message": "模倣の天才であるUrloxは敵対する3つのファクションの形態を完全にコピーすることができ、これまでに何度も敵陣営への潜入/破壊工作を成功させてきた。彼女はミッション中は完全に「敵の思考パターンをシミュレート」することを絶対としているため、時に本来のアイデンティティを失い、再同期化が必要になる場合があった"
+    },
+    "A recently awakened commander, Junius has taken to war with a zeal that is normally reserved for older commanders that have had more time to develop personal identities. As such, he has been deployed primarily against The Synchronous, with the assumption that his fierce independence will make him naturally resistant to the 'Synchronous Virus.'": {
+        "message": "最近覚醒したばかりのコマンダーであるJuniusだが、本来であればもっと時間を経なれけば形成されないようなベテランコマンダーに匹敵する熱意を持って戦いの場に立っている。それがため、彼は当初からThe Synchronousとの戦いに派遣された。彼の苛烈なまでの自立性が、いわゆる「Synchronous ウイルス」に耐性があるのではないかとの憶測がその理由だ"
+    },
+    "A staunch preservationist, Yvera insists on destroying her enemies quickly and with surgical precision, so as not to disturb the delicate Progenitor architecture that may lie beneath the battlefield. She once had an enemy commander melted in acid because he stepped on a clay pot.": {
+        "message": "堅実なる「保護」主義者Yveraは敵をできる限り速やかに、かつ外科医のような精密さをもって倒すべきと主張する。そうすれば戦場の下に眠っているかもしれないProgenitor（の遺跡を損壊させる可能性が低くなるからだ。彼女はかつて敵コマンダーを酸で溶かしたこともある、そのコマンダーが土器を踏んで壊したからだ"
+    },
+    "A warrior/artist, Valens memorializes his foes by incorporating their remains into life-sized sculptures that depict them doing valorous deeds. Valens’ co-commanders find the practice morbid, as do his adversaries. He also dabbles in terrible poetry.": {
+        "message": "戦士でありアーティストでもあるValensは敵の「残骸」を材料にして実物大の彫刻像を制作することで、後世に残す作品とする。作品のテーマは「英雄譚」だ。Valensと共に戦うコマンダーも、そして敵でさえも彼のこの行為を「病的」とみなしている。詩も読むが出来はひどい"
+    },
+    "APPROACHING STAR SYSTEM": {
+        "message": "星系に接近中…"
+    },
+    "Activates the Tech to build artillery structures.": {
+        "message": "テックを発動して迫撃砲構造体を建造開始"
+    },
+    "Additional Data Bank": {
+        "message": "追加データバンク"
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "バトルに参戦するサブコマンダーを追加"
+    },
+    "Adds a new slot for another technology.": {
+        "message": "テクノロジー用の新スロットを追加"
+    },
+    "Administrator": {
+        "message": "管理者"
+    },
+    "Advanced Air Tech": {
+        "message": "上級飛行テクノ"
+    },
+    "Advanced Bot Tech": {
+        "message": "上級ボットテクノ"
+    },
+    "Advanced Bot tech enables building of Advanced Bots and Advanced Bot Factories. Advanced Bot factories are built via advanced bot fabricators. Also grants the Basic Bot Factory and Basic Bot Fabricator.": {
+        "message": "上級ボットテクノは、上級ボットと上級ボット工場の建造を可能とする。上級ボット工場は、上級ボットファブリケーターで建造できる。基本ボット工場と基本ボットファブリケーターの建造ももちろん可能となる"
+    },
+    "Advanced Concepts": {
+        "message": "上級コンセプト"
+    },
+    "Advanced Defense Technology": {
+        "message": "上級防衛テクノ"
+    },
+    "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers.": {
+        "message": "上級防衛テクノは、強固な防衛技術の利用を可能とする。上級防衛機構は上級ファブリケーターで建造できる。上級防衛機構には、戦略ミサイルランチャー、トリプルバレルレーザータレット、対空フラックタワーなどがある"
+    },
+    "Advanced Factories": {
+        "message": "上級工場"
+    },
+    "Advanced Naval Tech": {
+        "message": "上級海戦テクノ"
+    },
+    "Advanced Naval Tech enables building of the Advanced Naval Factory and advanced naval units. Advanced Naval Factories are built via your Advanced Naval Fabricators.": {
+        "message": "上級海戦テクノは上級海戦工場や上級海戦ユニットの建造を可能とする。上級海戦工場は、上級海戦ファブリケーターで建造できる"
+    },
+    "Advanced Orbital Tech": {
+        "message": "上級衛星軌道テクノ"
+    },
+    "Advanced Orbital Tech enables the building of orbital fabricators and orbital factories. Orbital fabricators are built via the orbital launcher and orbital factories build by the orbital fabricators.": {
+        "message": "上級衛星兵器テクノは衛星兵器ファブリケーターや衛星兵器工場の建造を可能とする。衛星兵器ファブリケーターは、衛星兵器ファブリケーターによって造られる衛星兵器ランチャーや衛星兵器工場で建造できる"
+    },
+    "Advanced Units": {
+        "message": "上級ユニット"
+    },
+    "Advanced Vehicle Tech": {
+        "message": "上級陸戦車両テクノ"
+    },
+    "Advanced Vehicle tech enables building of vehicles and vehicle factories. Advanced vehicle Factories are built by a basic or advanced vehicle fabricator. Also enables the Basic Vehicle Factory and the Basic Vehicle Fabricator.": {
+        "message": "上級陸戦車両テクノは、陸戦車両や陸戦車両工場の建造を可能とする。上級陸戦車両工場は、基本および上級陸戦車両ファブリケーターによって建造される。基本陸戦工場と基本陸戦車両ファブリケーターの建造ももちろん可能となる"
+    },
+    "Advanced air tech enables building of mobile air units and factories. Advanced air factories are built via any air fabricator. Also grants the Basic Air Factory and Basic Air Fabricator.": {
+        "message": "上級飛行テクノは、機動飛行ユニットと工場の建造を可能とする。上級飛行工場は、飛行ファブリケーターで建造できる。基本飛行工場と基本飛行ファブリケーターの建造ももちろん可能となる"
+    },
+    "Advanced factories build advanced fabrication units and stronger combat units.": {
+        "message": "上級工場は上級ファブリケーターユニットと強力な戦闘ユニットを建造できる"
+    },
+    "After receiving a normally-fatal dose of radiation from a nearby Gamma-ray burst, a revived Vulko became convinced that he was the living vessel of the Great Machine. Considered mad by most of his peers, he has amassed a loyal band of followers and an impressive list of battlefield victories. His excommunication is pending.": {
+        "message": "通常であれば致死量といえるガンマ線を浴びたにも関わらず、生還したVulkoはまさにGreat Machineの生ける「器」となったといえるだろう。多くの仲間には狂人とみなされていながら、忠実なる信奉者をそれなりに集め、見事なまでの戦績もこれまで積み上げてきた。それがためか、除名処分は無期限保留となっている"
+    },
+    "After the enemy commander is defeated, [strong]EXPLORE[/strong] and [strong]ACQUIRE[/strong] a new technology.": {
+        "message": "敵コマンダーを撃破したら、[strong]探索[/strong]して新たなテクノロジーを[strong]獲得[/strong]しよう"
+    },
+    "After the enemy is defeated, [style=control]Left click[/style] [strong]EXPLORE[/strong] to gain a new technology.": {
+        "message": "敵を撃破したら、[strong]探索[/strong]を[style=control]左クリック[/style]で新たなテクノロジーを獲得"
+    },
+    "After the energy plant is complete, observe the economy UI at the top of the screen and the increase in energy income.": {
+        "message": "エネルギープラントが完成したら、画面上部にある経済活動UIを見てエネルギー生産の増加を確認しよう"
+    },
+    "After the metal extractor is complete, observe the economy UI at the top of the screen and the increase in metal income.": {
+        "message": "金属抽出場が完成したら、画面上部にある経済活動UIを見てエネルギー生産の増加を確認しよう"
+    },
+    "Aggressive": {
+        "message": "攻撃性"
+    },
+    "Agile": {
+        "message": "敏捷性"
+    },
+    "Air Ammunition Tech": {
+        "message": "飛行弾薬テクノ"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "飛行弾薬テクノは、全機動飛行ユニットの攻撃力を25%増加させる"
+    },
+    "Air Armor Tech": {
+        "message": "飛行装甲テクノ"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "飛行装甲テクノは、全飛行ユニットのライフを50%増加させる"
+    },
+    "Air Combat Tech": {
+        "message": "飛行戦闘テクノ"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "飛行戦闘テクノは、全飛行ユニットの速度を25%、ライフを50%、攻撃力を50%増加させる"
+    },
+    "Air Commander": {
+        "message": "飛行コマンダー"
+    },
+    "Air Engine Tech": {
+        "message": "飛行エンジンテクノ"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "飛行エンジンテクノは、全飛行ユニットの速度を25%増加させる"
+    },
+    "Air Fabrication Tech": {
+        "message": "飛行ファブリケーターテクノ"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "飛行ファブリケーターテクノは、全機動飛行ユニットの金属系建造コストを25%削減する"
+    },
+    "All combat units cost 25% less and have 35% less health. Starts with bots.": {
+        "message": "全戦闘ユニットのコストが25%削減されるが、ライフも35%減る。ボットから開始"
+    },
+    "All combat units gain +15% sight and weapon range and -15% movement speed.": {
+        "message": "全戦闘ユニットの視界と攻撃範囲が+15%になるが、移動速度が-15%になる"
+    },
+    "All combat units gain +20% movement speed and -10% sight and weapon range.": {
+        "message": "全戦闘ユニットの移動速度が+20%になるが、視界と攻撃範囲が-10%になる"
+    },
+    "All combat units gain +20% movement speed and -20% health.": {
+        "message": "全戦闘ユニットの移動速度が+20%になるが、ライフが-20%になる"
+    },
+    "All combat units gain +25% movement speed and -25% health. Starts with bots.": {
+        "message": "全戦闘ユニットの移動速度が+25%になるが、ライフが-25%になる。ボットから開始"
+    },
+    "All combat units gain +30% health and -15% movement speed.": {
+        "message": "全戦闘ユニットのライフが+30%になるが、移動速度が-15%になる"
+    },
+    "All combat units gain +30% health, but cost 20% more. Starts with vehicles.": {
+        "message": "全戦闘ユニットのライフが+30%になるが、コストも20%増える。陸戦車両から開始"
+    },
+    "All commanders awaken with the data necessary to wage war and little else. While most simply accept war as their nature, this fact has become unsettling to some older Acolytes. Lok in an extreme case has begun trying to actively avoid conflict, but in this galaxy it always seems to find him.": {
+        "message": "全てのコマンダーは戦闘活動実行に必要なデータと共に目覚めたが、わずかながら例外も存在した。その多くは戦闘行為を「本能」として受け入れた一方で、Acolytesの旧勢力はその例外を不安要素として見ていた。極端な例として、Lokは積極的に衝突を避けるような行動を取り始めた。しかしこの銀河において衝突を避けることなど不可能であった"
+    },
+    "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself.": {
+        "message": "全てのコマンダーは本来的に自律行動を取るようにデザインされていた。しかしSynchronousはこのステータスを「非効率」だと考え、代わりに分散型神経ネットワークを導入した。1体のServantと戦うことは、その個体に加えてSynchronous全体と戦うことを意味するのだ"
+    },
+    "All economic structures gain +200% production and +300% metal cost. Starts with vehicles.": {
+        "message": "全ての経済活動構造体の生産性が+200%になるが金属コストも+300%となる。陸戦車両から開始"
+    },
+    "All economic structures gain -75% metal cost and -50% production. Starts with bots.": {
+        "message": "全ての経済活動構造体の金属コストが-75%になるが生産性も-50%となる。ボットから開始"
+    },
+    "All structures cost 30% less but have 50% less health and leave no wreckage.": {
+        "message": "全ての構造体コストが30%減少するが、ライフも50%減り、残骸が残らなくなる"
+    },
+    "All units explode on death.": {
+        "message": "全ユニットが死亡時に爆発する"
+    },
+    "Allows advanced air fabricators to build the Lightning Titan, Zeus.": {
+        "message": "上級飛行ファブリケーターがLightning Titan、Zeusを建造可能になる"
+    },
+    "Allows advanced bot fabricators to build the Seismic Titan, Atlas.": {
+        "message": "上級ボットファブリケーターがSeismic Titan、Atlasを建造可能になる"
+    },
+    "Allows advanced fabricators to build all Titan-class units.": {
+        "message": "上級ファブリケーターがTitan級のユニットを建造可能になる"
+    },
+    "Allows advanced vehicle fabricators to build the Fortress Titan, Ares.": {
+        "message": "上級陸戦車両ファブリケーターがFortress Titan、Aresを建造可能になる"
+    },
+    "Allows orbital fabricators to build the Invasion Titan, Helios.": {
+        "message": "上級衛星兵器ファブリケーターがInvasion Titan、Heliosを建造可能になる"
+    },
+    "An Oracle within the Foundation is one that is believed to be tuned to the unknown the frequencies necessary to receive instructions from the Great Machine. Devi is one such acolyte.": {
+        "message": "Foundation内に伝わる伝承によれば、Great Machineからの神託を受け取ることができる未知の周波数を捉える力を持つ者が存在するという。Deviはその力があるとされる信奉者の1体だ"
+    },
+    "An ancient commander whose provenance is not well understood, his low-bandwidth communications link is often irksome to other commanders, who can’t stand the extended hissing noise that precedes the arrival of every message.": {
+        "message": "その来歴が謎に包まれている古くからのコマンダー、彼の低帯域通信リンクは他のコマンダーにとっては頭痛の種である。メッセージの受信前に必ず耳障りなノイズが入るのだ、その不快感たるや耐え難いものらしい"
+    },
+    "An eccentric even among Foundation standards, Blaz has taken to adorning her chassis with various trophies from felled enemies in the form of weaponry, circuitry, and armor chunks. She does so to emulate the various warlords depicted in unearthed progenitor records.": {
+        "message": "Foundationの組織内でも突出してエキセントリックなBlazは、倒した数々の敵から奪った戦利品で自らの胴体を飾っている。それは武器や回路系、装甲塊など様々だ。発掘されたProgenitorの記録によれば歴史上の軍長らが実際にそうした装飾を行っていたようで、彼女はそれを模倣しているのだ"
+    },
+    "An older commander with a periodically-unreliable connection to the Synchronous’ network, Tarcolish occasionally falls out of synchronization with the collective for hours at a time. When she reconnects, she acts as if the breakdown has not occurred. She then invariably repeats statements that others have made already. It’s super annoying to everybody.": {
+        "message": "Synchronousのネットワークとの接続が定期的に不安定になる類の古きコマンダーであるTarcolish、数時間おきに1度程度の頻度で集合体との同期が外れることがある。だが彼女は再接続しても、まるで断絶など無かったかのように振る舞う。そして他のコマンダーがすでに伝達済のメッセージを必ず繰り返すのだ。関わるもの全てにとって煩わしい事態である"
+    },
+    "An undeniable advantage to being Synchronized is that all Servants seem to be able to work much more cohesively as a group than other commanders. Inar-Tol, for example, once dispatched a commander by firing an artillery shell into the stratosphere based on data from an ally that was engaged in melee combat--on the other side of the planet.": {
+        "message": "「同期」状態による最大の利点は、全てのServantが他のコマンダーよりも圧倒的に集団として一体となって戦闘に当たれることである。例えばInar-Tolは、敵と近接で戦っていた仲間から敵データを取得し、成層圏からの砲弾攻撃で敵を破壊したことがある。驚きなのは、それが惑星の裏側からの攻撃だったことだ"
+    },
+    "Annihilate the Enemy": {
+        "message": "敵を殲滅せよ"
+    },
+    "Annihilation of  all enemy commanders wins the game.": {
+        "message": "敵コマンダーを全滅させると、勝利となる"
+    },
+    "Annihilation of all enemy commanders results in a [strong]victory[/strong].": {
+        "message": "敵のコマンダーを全滅させると、[strong]勝利[/strong]となる"
+    },
+    "Area Build": {
+        "message": "エリア建造"
+    },
+    "Area Patrol": {
+        "message": "エリアパトロール"
+    },
+    "Area Reclaim": {
+        "message": "エリア取得"
+    },
+    "Ares Tech": {
+        "message": "エリアテクノ"
+    },
+    "Armored Commander": {
+        "message": "装甲コマンダー"
+    },
+    "Artillery Ammunition Tech": {
+        "message": "迫撃砲弾薬テクノ"
+    },
+    "Artillery Ammunition Tech increases the damage of all artillery structures by 25% and reduces their energy usage by 90%. Requires technology to build artillery structures and units.": {
+        "message": "迫撃砲弾薬テクノは、全ての迫撃砲構造体の攻撃力を25%アップし、エネルギー消費量を90%削減する。迫撃砲構造体とユニットを建造できるテクノロジーが必要"
+    },
+    "Artillery Commander": {
+        "message": "迫撃砲コマンダー"
+    },
+    "Artillery Fabrication Tech": {
+        "message": "迫撃砲ファブリケーターテクノ"
+    },
+    "Artillery Fabrication Tech reduces metal build costs of all artillery structures and mobile artillery units by 75%. Requires technology to build artillery structures and units.": {
+        "message": "迫撃砲ファブリケーターテクノは、全ての迫撃砲構造体と機動迫撃砲ユニットの金属系建造コストを75%削減する。迫撃砲構造体とユニットを建造できるテクノロジーが必要"
+    },
+    "Artillery Tech": {
+        "message": "迫撃砲テクノ"
+    },
+    "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker.": {
+        "message": "Osirisは倒した敵のパーツを使って自身を改造していたのだが、将来の修復や交換に備えて古いパーツを大事に取って置いていた。だがやがて、Osirisは新たなコマンダーを構築できるほどの予備パーツ群を手に入れた。こうして最初のSeekerは生まれたのである"
+    },
+    "Assault Commander": {
+        "message": "アサルトコマンダー"
+    },
+    "Assist Building": {
+        "message": "建造促進"
+    },
+    "Atlas Tech": {
+        "message": "Atlasテクノ"
+    },
+    "Attius is renowned within the Legion for having the most efficient factories and sturdiest nanolathes. Believing the key to victory is good construction, he spends many cycles obsessing over simulations and prototypes of new fabrication and production line algorithms.": {
+        "message": "AttiusはLegion内でも突出して効率的な工場と頑強なナノシスを保有していることで有名である。勝利への鍵は質の高い「建造」だと信じている彼は、新たなファブリケーターと生産ラインアルゴリズムのシミュレーションやプロトタイプ作成に異常なまでにサイクルを費やす"
+    },
+    "Awarded several commendations for vigilance, Ancilius has decommissioned many commanders, factories, and metal planets suspected to be infected by the 'Synchronous Virus.'": {
+        "message": "危機回避の才能に恵まれるAnciliusは、これまでにSynchronous Virusに感染したと疑われた数多くのコマンダー、工場、そして金属惑星を「退役」させてきた実績がある"
+    },
+    "Barely autonomous enough to deserve a name of his own, Rulak is a stripped-down and highly-obedient subroutine who is easily duplicated. Prized for his recklessness, he is often given highly-dangerous missions that result in his death. A copy of his “personality” is then quickly downloaded into a new body.": {
+        "message": "カケラ程度の自立性は持ち合わせているRulakは、必要最低限の機能しか備えておらず、また非常に命令に忠実で、複製が用意なサブルーチン型である。その猪突猛進の性質ゆえ、結果的には自爆となる非常に危険なミッションに充てがわれる事が多い。彼の「個性」のコピーはすぐに新たなボディにダウンロードされる"
+    },
+    "Basic Air Tech": {
+        "message": "基本飛行テクノ"
+    },
+    "Basic Bot Tech": {
+        "message": "基本ボットテクノ"
+    },
+    "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator.": {
+        "message": "基本ボットテクノは、基本ボットと基本ボット工場の建造を可能とする。基本ボット工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Basic Naval Tech": {
+        "message": "基本海戦テクノ"
+    },
+    "Basic Naval Tech enables building of the basic naval factory and basic naval units. Basic naval factories are built via your commander or any fabricator.": {
+        "message": "基本海戦テクノは、基本海戦工場と基本海戦ユニットの建造を可能とする。基本海戦工場は、コマンダーまたは各種ファブリケーターで建造できる"
+    },
+    "Basic Orbital Tech": {
+        "message": "基本衛星軌道テクノ"
+    },
+    "Basic Orbital Tech enables the building of basic orbital units. Basic orbital units are built from an Orbital Launcher.": {
+        "message": "基本衛星軌道テクノは、基本衛星軌道ユニットの建造を可能とする。基本衛星軌道ユニットは、衛星軌道上ランチャーで建造できる"
+    },
+    "Basic Vehicle Tech": {
+        "message": "基本陸戦車両テクノ"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "基本陸戦車両テクノは、基本陸戦車両と基本陸戦車両工場の建造を可能とする。基本陸戦車両工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "基本飛行テクノは、機動飛行ユニットと工場の建造を可能とする。基本飛行工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Begins with one combat unit unlocked in each factory. Cannot learn to build new units through tech.": {
+        "message": "開始時、工場は1体の戦闘ユニットを製造可能。テクノロジー取得によって新規ユニットの建造能力は獲得できない"
+    },
+    "Bhalam refuses to communicate in any form more advanced than binary data transfer, believing more complicated exchanges involving packets and complex files to be noisy and that they damage Synchronization. Ironically, this has made him one of the less popular commanders among The Synchronous.": {
+        "message": "Bhalamはバイナリーデータ転送以降の先進技術による一切のコミュニケーションを拒絶している。パケットや複合ファイルを含む複雑なコミュニケーションはがノイズ多すぎ、同期のプロセスに損傷を与えると信じているからだ。皮肉にも、この信念のせいで彼はThe Synchronousの中でも突出して不人気なコマンダーの1体である"
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "制圧的コマンダー生体工学増強"
+    },
+    "Bot Ammunition Tech": {
+        "message": "ボット弾薬テクノ"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "ボット弾薬テクノは、全ボットの攻撃力を25増加させる"
+    },
+    "Bot Armor Tech": {
+        "message": "ボット装甲テクノ"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "ボット装甲テクノは、全ボットのライフを50%増加させる"
+    },
+    "Bot Combat Tech": {
+        "message": "ボット戦闘テクノ"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "ボット戦闘テクノは、全ボットのライフを50%、攻撃力を50%、速度を50%増加させる"
+    },
+    "Bot Commander": {
+        "message": "ボットコマンダー"
+    },
+    "Bot Engine Tech": {
+        "message": "ボットエンジンテクノ"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "ボットエンジンテクノは、全ボットの速度を50%増加させる"
+    },
+    "Bot Fabrication Tech": {
+        "message": "ボットファブリケーターテクノ"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "ボットファブリケーターテクノは、全ボットの金属系建造コストを25%削減する"
+    },
+    "Brutus was actually once a member of The Foundation. When exposed to old progenitor records of great conquerors, he became convinced that Enlightenment lied in the great conquest that Commander Invictus pursued. When swearing allegiance Brutus brought with him valuable Foundation intelligence and the old records that have helped shape the cultural identity of the Legion we know today.": {
+        "message": "BrutusはかつてThe Foundationのメンバーであった。絶大なる征服者であった古きプロジェニターの記録が明らかとなった時、彼は確信した、コマンダーInvictusを追求したかの大戦でEnlightenmentが嘘をついていたことを。こうしてBrutusが持ち込んだFoundationの貴重なる知恵の数々と古き記録が、現在我々が知るLegionの文化的アイデンティティを形作る一助となっている。"
+    },
+    "Budget Commander": {
+        "message": "バジェットコマンダー"
+    },
+    "Build": {
+        "message": "建造"
+    },
+    "Build Time": {
+        "message": "建造時間"
+    },
+    "Build a Metal Extractor": {
+        "message": "金属抽出場の建造"
+    },
+    "Build an Energy Plant": {
+        "message": "エネルギープラントの建造"
+    },
+    "Building Units": {
+        "message": "ユニットの建造"
+    },
+    "CALCULATING APPROACH VECTOR": {
+        "message": "アプローチベクトルを計算中…"
+    },
+    "CONFIGURING LANDING ZONE": {
+        "message": "着陸地帯を認識中…"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "サーバーとの接続が消失"
+    },
+    "Camera Controls": {
+        "message": "カメラの操作"
+    },
+    "Camera Management": {
+        "message": "カメラの管理設定"
+    },
+    "Campal was found activated but inert on  richly diverse jungle planet. Apparently, his servos had been caught by a thicket and rendered him prone--unable to self-right without aid. Since then, his intense hatred of all organic life has kept him one of the stronger-willed members of The Synchronous, often torching entire forests on principle.": {
+        "message": "Campalは多様性豊かなジャングルの惑星でかろうじて機体維持活動を続けている状態で発見された。サーボが茂みに絡まり、うつ伏せの状態で身動きが取れなくなっていた。要するに、自力では立ち上がれない状態にあったのだ。以来、彼の有機生命体に対する過度な憎しみが、Synchronousの中でも際立って意志の強いメンバーの1体とさせた。時に「道徳的見地」から森林を丸ごと焼き払うほどであった"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Cassius is a firm practitioner of the ‘lead from the front’ mentality. This often results in he himself leading many daring charges, and intense melee conflicts with woefully unprepared enemy commanders.": {
+        "message": "Cassiusは「最前線に立って部隊を率いる」精神の強烈なまでの実践者だ。これまでにも命がけの特攻を何度も仕掛け、苛烈な近接戦闘を繰り広げてきた。敵のコマンダーはまさかの「不意打ち」に大抵屈した"
+    },
+    "Chitrik was found by a Foundation scouting party wandering a barren desert planet. He seems to have an affinity for environments composed primarily of silicate, taking his Enlightenment by being immersed in the smallest component parts observable by his optic systems. He will often go years without applying any lubricant to his joints, so as not to wash out any accumulated sand or dirt.": {
+        "message": "Chitrikは不毛な砂漠の惑星をさまよっていた時に、Foundationの偵察部隊に発見された。理由は不明だが、彼はケイ酸塩が主成分たる環境を好む傾向があるようだ。自らの視覚システムで認識可能な最小のコンポーネントパーツ群の中に浸かることでEnlightenmentを取り込む。彼は時に何年も関節に潤滑剤を挿すことなく過ごす、蓄積された砂や塵を洗い流したくないようだ"
+    },
+    "Choose Landing Zone": {
+        "message": "着陸地帯を選択"
+    },
+    "Click Next to learn how to use the command and control interface.": {
+        "message": "「次」をクリックして、コマンドとコントロールインターフェイスの使い方を覚えよう"
+    },
+    "Combat units will patrol the area and engage enemies.": {
+        "message": "戦闘ユニットはエリアをパトロールし、接敵すると戦闘を開始する"
+    },
+    "Commander Ammunition Tech": {
+        "message": "コマンダー弾薬テクノ"
+    },
+    "Commander Ammunition Tech increases damage of your commanders by 25%": {
+        "message": "コマンダー弾薬テクノは、コマンダーの攻撃力を25%増加させる"
+    },
+    "Commander Armor Tech": {
+        "message": "コマンダー装甲テクノ"
+    },
+    "Commander Armor Tech increases the health of your commanders by 100%.": {
+        "message": "コマンダー装甲テクノは、コマンダーのライフを100%増加させる"
+    },
+    "Commander Combat Tech": {
+        "message": "コマンダー戦闘テクノ"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "コマンダー戦闘テクノは、コマンダーの速度を200%、ライフを2倍、そして攻撃力を25%増加させる"
+    },
+    "Commander Engine Tech": {
+        "message": "コマンダーエンジンテクノ"
+    },
+    "Commander Engine Tech increases the speed of your commanders by 100%.": {
+        "message": "コマンダーエンジンテクノは、コマンダーの速度を100%増加させる"
+    },
+    "Commander Invictus has this powerful loadout hidden away on the Entara system.": {
+        "message": "コマンダーInvictusはEntara星系に眠っていた強力な装備を保有している"
+    },
+    "Commander Invictus is rumored to have this long ranged loadout on the Kohr System.": {
+        "message": "コマンダーInvictusはKohr星系にあったこの長距離攻撃装備を保有しているとの噂がある"
+    },
+    "Commander Quotes": {
+        "message": "コマンダーの名言"
+    },
+    "Commander builds units instead of structures. Fabricators can only build certain structures.": {
+        "message": "コマンダーは構造体の代わりにユニットを建造できる。ファブリケーターは特定の構造体しか建造できない"
+    },
+    "Commander can build Atlas, Zeus, and Ares Titans. Starts with vehicles.": {
+        "message": "コマンダーがAtlas、Zeus、Ares Titanを建造できる。陸戦車両から開始"
+    },
+    "Commanders in general tend to communicate through direct data transfer as opposed to the encoded indirect communication that the progenitors seemed to practice. Intoka has become one of the Foundation’s only linguists, storing and sharing data for interpreting the progenitors’ many codes.": {
+        "message": "コマンダーは基本的に直接的データ送信を通じてコミュニケーションを取り、Projenitorsが活用していたというエンコードされた非直接的コミュニケーションを使用する者は少ない。こうした経緯でIntokaはFoundationで数少ない言語学者の1体となった、Progenitorsの無数のコードを解読してデータを保存/シェアするのが役割だ"
+    },
+    "Commanders outside of The Synchronous tend to diverge further and further from their core programming with age. This can manifest in many ways. In the case of Nero, it has manifested as a concerningly fervent interest in fire and its many forms and applications.": {
+        "message": "The Synchronousの外部にいるコマンダーは、年月を経るに連れてコアプログラミングから離れて分化していく傾向にある。その「性質」の現出の仕方は実に多様だ。Neroのケースを例に取ると「炎」、その形質と有用性に異常なまでの関心を持つようになった"
+    },
+    "Complete Air Tech": {
+        "message": "飛行テクノをコンプリート"
+    },
+    "Complete Bot Tech": {
+        "message": "ボットテクノをコンプリート"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "ボットテクノをコンプリートすると、全てのボットとボット工場の建造が可能となる。基本ボット工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級ボット工場は、基本または上級ボットファブリケーターで建造できる"
+    },
+    "Complete Energy Tech": {
+        "message": "エネルギーテクノをコンプリート"
+    },
+    "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%.": {
+        "message": "エネルギーテクノをコンプリートすると、インテル構造体のエネルギーコストが75%、武器エネルギーコストが75%削減させる"
+    },
+    "Complete Naval Tech": {
+        "message": "海戦テクノをコンプリート"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "海戦テクノをコンプリートすると、全ての海戦ユニットと海戦工場の建造が可能となる。基本海戦工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級海戦工場は基本または上級海戦ファブリケーターで建造できる"
+    },
+    "Complete Orbital Tech": {
+        "message": "衛星軌道テクノをコンプリート"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "衛星軌道テクノをコンプリートすると、全ての衛星軌道ユニットと衛星軌道工場の建造が可能となる。衛星軌道ランチャーは、各種基本ファブリケーターで建造できる。衛星軌道工場は1つの衛星軌道ファブリケーターで建造できる"
+    },
+    "Complete Vehicle Tech": {
+        "message": "陸戦車両テクノをコンプリート"
+    },
+    "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators.": {
+        "message": "陸戦車両テクノをコンプリートすると、全ての陸戦車両と陸戦車両工場の建造が可能となる。基本陸戦車両工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級陸戦車両工場は、基本または上級陸戦車両ファブリケーターで建造できる"
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "飛行テクノをコンプリートすると、全ての機動飛行ユニットと工場の建造が可能となる。基本飛行工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級工場は、基本または上級陸戦車両ファブリケーターで建造できる"
+    },
+    "Complete techs are valuable in that they give access to advanced units and fabricators, greatly expanding your options.": {
+        "message": "テクノをコンプリートさせると、上級のユニットやファブリケーターが建造可能となり選択肢が広がるので積極的にコンプリートさせよう"
+    },
+    "Constructed by Ereshkigal from parts she harvested from herself, Vespor has developed a quasi-religious reverence for her 'mother.' Due to the importance she places on the 'sacred' parts used to construct her, she refuses to replace any part of herself. She is very careful to avoid damage on the battlefield.": {
+        "message": "Ereshkigalが自らの手で集めたパーツによって造られたVesporは、「母」に対して狂信的なまでの愛情と敬愛の念を育んできた。自分自身を為しているパーツを「神聖なモノ」とみなしているため、彼女はいかなる自分のパーツの交換も拒んでいる。そのため、戦場では極力損傷しないように振る舞う"
+    },
+    "Consume": {
+        "message": "消費"
+    },
+    "Consumption": {
+        "message": "消費量"
+    },
+    "Continuous Build": {
+        "message": "連続建造"
+    },
+    "Cost": {
+        "message": "コスト"
+    },
+    "Data Bank holds one Tech. Explore systems to find new Tech.": {
+        "message": "各データバンクにはテクノを1つずつ確保できる。星系を探索して新たなテクノを見つけよう"
+    },
+    "Default Commander": {
+        "message": "デフォルトコマンダー"
+    },
+    "Defeat First Seeker Osiris on Alenquer, then, and only then, you will find this high flying loadout.": {
+        "message": "Alenquerで最初のSeeker Osirisを撃破せよ。それを達成して初めて、この高空飛行装備に巡り会えるだろう"
+    },
+    "Defeating a faction's boss will eliminate that faction from the map entirely, allowing you to collect the tech from all their remaining systems without a fight.": {
+        "message": "ファクションのボスを撃破すると、マップ上から完全にそのファクションを根絶することになる。その後は戦闘を一切せずに、残りの星系を探索してテクノを回収することが可能となる"
+    },
+    "Defeating bosses will sometimes unlock a new commander loadout for you to equip in later galactic wars.": {
+        "message": "ボスを撃破すると、時に新たなコマンダー装備が解放される。この装備はその後の星系間戦争で使用可能だ"
+    },
+    "Defense Ammunition Tech": {
+        "message": "防衛弾薬テクノ"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "防衛弾薬テクノは、全防衛構造体の攻撃力を25%増加させる"
+    },
+    "Defense Fabrication Tech": {
+        "message": "防衛ファブリケーターテクノ"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "防衛ファブリケーターテクノは、全防衛構造体の金属系建造コストを50%削減する"
+    },
+    "Destroy the Enemy": {
+        "message": "敵を撃破せよ"
+    },
+    "Do not destroy": {
+        "message": "非破壊推奨"
+    },
+    "Domitius insists on being referred to as King Domitius, regardless of his actual rank. This has resulted in many reportings and personal reprimands from Invictus himself. Regardless, the reign of King Domitius continues.": {
+        "message": "Domitiusは、自分はDomitius「王」であると主張し続けている、実際のランクはここでは関係ないようだ。この結果、彼はInvictus直々の叱責を受けることが数多い。そんな状況でも、Domitius王の「王位」は廃れることがない"
+    },
+    "Draw": {
+        "message": "Draw"
+    },
+    "ETA": {
+        "message": "ETA"
+    },
+    "Economy": {
+        "message": "経済活動"
+    },
+    "Economy Fabrication Tech": {
+        "message": "経済活動ファブリケーターテクノ"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "経済活動ファブリケーターテクノは、全ての金属とエネルギー生産構造体の金属系建造コストを50%削減する"
+    },
+    "Economy and Construction": {
+        "message": "経済活動＆建造"
+    },
+    "Economy boost:": {
+        "message": "経済活動ブースト: "
+    },
+    "Education Commander": {
+        "message": "教育系コマンダー"
+    },
+    "Efficiency Tech": {
+        "message": "効率化テクノ"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "効率化テクノは、金属とエネルギーの生産を25%増加させる。金属とエネルギーの貯蔵庫も建造可能になる"
+    },
+    "Empty Data Bank": {
+        "message": "空のデータバンク"
+    },
+    "Enemies will get stronger as you get further away from your starting system. If you're having difficulty progressing, try taking a different path to gain more tech.": {
+        "message": "開始時の星系から離れれば離れるほど、敵は強くなっていく。敵が手強すぎて進めないと感じたら、違うルートを選んでテクノロジーをもっと集めるのも手だろう"
+    },
+    "Energy draw": {
+        "message": "エネルギー消費"
+    },
+    "Energy is used to run fabricators, factories, radar, and some weapons.": {
+        "message": "エネルギーは、ファブリケーターや工場、レーダーや一部の武器の動力源となる"
+    },
+    "Enhanced Radar Coverage": {
+        "message": "レーダー範囲拡大"
+    },
+    "Entombed for millennia on a long-abandoned ice world, Wulk was so slow to regain consciousness that she was at first collected and classified as an artifact, herself. Her time-addled circuits and ancient mannerisms make her orders difficult to understand, but she is so beloved by her followers that they follow a best-guess policy on the battlefield.": {
+        "message": "数千～数万年に渡って放置されていた氷の世界で眠っていたWulkは、意識を回復するのにもかなりの時間を要したため、最初に回収された時点では「遺物」に分類されたほどだった。その時空が歪んでいるとしか思えない内部回路と形式的伝達手法のせいか彼女の命令は至極理解が困難だ。それでも彼女は信奉者たちに絶対的に愛されており、信奉者たちは最大限の推測をしてその命令に従う"
+    },
+    "Every fabrication unit and factory will require [strong]metal[/strong] and [strong]energy[/strong] to construct units and structures.": {
+        "message": "あらゆるファブリケーターユニットと工場は、ユニットや構造体の製造に\n[strong]金属[/strong]と[strong]エネルギー[/strong]を必要とする"
+    },
+    "Expansionist Commander": {
+        "message": "拡張主義者コマンダー"
+    },
+    "Fabrication units can also assist other fabrication units to build structures.": {
+        "message": "ファブリケーターユニットは、構造体を建造する他のファブリケーターユニットを支援（建造促進）できる"
+    },
+    "Fabrication units will assist factories and other fabbers in the area.": {
+        "message": "ファブリケーターユニットはエリア内の工場や他のファッバーを支援（建造促進）できる"
+    },
+    "Faction bosses are much stronger than other enemies. Make sure you're well-equipped before challenging one.": {
+        "message": "ファクションのボスは通常の敵よりもかなり手強い。充分に装備を整えてから挑むべきだろう"
+    },
+    "Factories will queue build orders in the order they are given.": {
+        "message": "工場は指定した順番で建造オーダーをキュー列に入れる"
+    },
+    "Factory Automation": {
+        "message": "工場自動化"
+    },
+    "Factory Controls": {
+        "message": "工場管理"
+    },
+    "Favorite color:": {
+        "message": "お気に入りの色: "
+    },
+    "Finish the tutorial to gain this speedy loadout.": {
+        "message": "チュートリアルをクリアしてこのスピーディな装備を手に入れよう"
+    },
+    "Fire when ready": {
+        "message": "任意発射"
+    },
+    "Formerly a Foundation member before her synchronization, Dkar found and accessed progenitor files that allowed her to decode and etch ancient codes on a physical surface for others to later serialize. While many Servants find this analog communication distasteful, it’s proven invaluable for passing along intelligence in secrecy.": {
+        "message": "同期プロセス以前はFoundationのメンバーであったDkarはかつてProgenitorのファイルを発見しアクセスした。そして復元した古のコードを物理体の表面に刻みこんだ。全ては後世に伝えるためであった。多くのServantがこうした「アナログ」なコミュニケーションを不快に感じている一方で、こうした手法は秘密裏に知識を伝承していくには非常に有益であることは歴史が証明している"
+    },
+    "Frohl seeks knowledge of the Progenitors with the same fervor as any other Acolyte. However, equally important to finding that information is curating what is and isn’t important. To that end, Frohl has cataloged an extensive library for how to properly prepare a presumably extinct type of feathered organic for consumption by other organics.": {
+        "message": "Frohlは他のAcolyteたちと同レベルの情熱を持ってProgenitorsの知識を追い求めている。しかし、知識を発見することと同等に重要なのが、重要な情報とそうでない情報を見極めることだ。こうして、Frohlは膨大なライブラリをカタログ化している。例えば、恐らくはすでに絶滅している有毛有機体を他の有機体が「消費」する際の正しい準備方法などが記されている"
+    },
+    "Galba is one of the Legates in charge of maintaining colonies on suitable remote systems. These systems are valuable for a number of purposes from macro-scale resource extraction and processing to research and development.": {
+        "message": "Galbaは遠方にある入植可能な星系でコロニーを維持管理する役割を任されているLegatesの1体である。こうした星系は、マイクロスケールの資源抽出および処理や開発研究など、多数の目的で重要と考えられている"
+    },
+    "Gen": {
+        "message": "生成量"
+    },
+    "General Commander": {
+        "message": "ジェネラルコマンダー"
+    },
+    "Governed entirely by aesthetic concerns, Wultok has amassed an unwieldy but beautiful array of salvaged armor that somehow still leaves many of his most vulnerable areas open to attack. When questioned about the wisdom of this practice, Wultok declares that one must suffer for fashion. He tisks audibly when faced with an ugly adversary.": {
+        "message": "「美的意識」に支配されているWultokは、回収した装甲を有用性は疑問ながらも美しく身にまとい、それでいて弱点となる部分をむき出しにしている（攻撃されればひとたまりもないだろう）。この「美学」について尋ねられたWultokは必ずこう答える、美のためには犠牲を払わなければならないのだと。醜い敵に遭遇すると嫌悪感を隠さず声に出す"
+    },
+    "Halley Engines": {
+        "message": "ハレーエンジン"
+    },
+    "Having achieved fame for discovering a cache of Progenitor artifacts only days after coming online, Sasaki fancies herself a legendary archaeologist. When assigned to frontier duty, she spends most of her time digging around for “another epic haul.” She has found nothing of value since her initial bonanza.": {
+        "message": "オンライン状態になってわずか数日でProgenitorの遺物群を発見したことで一躍名を馳せたSasakiは、自分は伝説に残る考古学者だと思い込んでいる。前線での任務を言い渡されると、彼女は「さらなる大発見」を成し遂げんと発掘ばかりに時間を費やす。しかしビギナーズラック以降は、重要な物は何も発見できていないのが実情だ"
+    },
+    "Having served an extended tour deep in Revenant-held space, Servilius has come to view himself as a civilizing force. He often precedes his attacks with lengthy speeches about the importance of “order, unity of purpose, and above all cleanliness.” He has yet to take a prisoner.": {
+        "message": "Revenant支配下の宇宙で長く任務に当たっていたせいか、Serviliusは自分が他に影響を与える存在なのだと考えるようになった。それがためか、彼は攻撃開始の前に長ったらしい演説をよく行う、内容は「命令順守、達成のための団結、そして清浄であること」の重要性といったことだ。まだ捕虜は捕えたことがない"
+    },
+    "Helios Tech": {
+        "message": "ヘリオステクノ"
+    },
+    "Hinn is could be called an envoy for the Synchronous, often responsible for making first contact with newly-awoken commanders. Legion commanders refer to him as a carrier--one who infects others with the 'Synchronous Virus.'": {
+        "message": "HinnはThe Synchronous内では大使的な存在であり、新たに目覚めたコマンダーと第一接触を行うという大きな責任を伴う役割をしばしば担当する。一方で、Legionのコマンダーは彼を「保有者」と呼んだりする。なぜならSynchronous Virusを感染させてくるからだ"
+    },
+    "Hosidius is one of the most accomplished admirals the Legion has to offer. That being said, he near-refuses to operate any war effort on land. This has made deploying him effectively rather difficult.": {
+        "message": "HosidiusはLegion史上に名を残す偉業の数々を成し遂げた将官の1体である。そうした名声のため、彼は戦地でのいかなる戦闘行為の実行もほぼ拒否する。つまりは彼の派遣は困難を伴うことが多い"
+    },
+    "Hzok seeks Enlightenment in stillness as much as possible. Even heat vibrations disturb him, and so he often spends long periods of time drifting in space on an Astraeus lander in deep meditation.": {
+        "message": "Hzokは静寂の中にEnlightenmentを見出そうとする。熱によるわずかな振動さえ彼には煩わしく感じるようだ。それがためにしばしば、Astraeusのランダーに乗って宇宙空間を長時間さまよいながら瞑想に浸る"
+    },
+    "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?": {
+        "message": "戦争がコマンダーにとって「自然な状態」であるならば、それを最大限に実践しているのがLegionis Machinaだ。しかしここでひとつの疑問が生じる。もし彼らがこの銀河を征服してしまったら、その後はいったいどうなるのか？"
+    },
+    "Imitating a rumored practice of the Progenitors, Rinkol gives himself a “wider awareness” by wafting burning embers of the Incendicus Tree into his cooling system intakes before battle. His calmness is renowned -- he is said to have slipped into a dormant recharging mode in the middle of an attack on a Revenant outpost.": {
+        "message": "Progenitorsが実践していたという「秘術」の模倣をすることで、Rinkolは「全覚醒」する。その方法とは、戦いの前に炎の木の燃えさしから生じた煙を自分の冷却システム内に取り込むこと。彼の冷静さには定評がある。その落ち着きぶりたるや、Revenantの前線基地への攻撃の真っ最中に休眠リチャージモードに入ったとの噂があるほどだ"
+    },
+    "Imperator Invictus guards superior armor blueprints on Agoge": {
+        "message": "大将軍InvictusはAgogeにある最強装甲のブループリントを保護している"
+    },
+    "Imperator Invictus is mass producing the largest weapons known on Tau Leoporis": {
+        "message": "大将軍InvictusはTau Leoporisにあるとされている最大級の武器工場で大量生産を行わせている"
+    },
+    "Improved Commander Build Arm": {
+        "message": "改良型コマンダー建造アーム"
+    },
+    "Improved Commander Build Arms increase build speed of all Commanders' build arms by 50% and reduces energy usage by 50%.": {
+        "message": "改良型コマンダー建造アームは、全てのコマンダーの建造アームの建造速度を50%増加、エネルギー消費量は50%削減する"
+    },
+    "Improved Energy Weapons": {
+        "message": "改良型エネルギー武器"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "改良型エネルギー武器は、エネルギーベースの武器のエネルギーコストを50%削減する"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "改良型ファブリケーター建造アーム"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "改良型ファブリケーター建造アームは、全てのファブリケーターと工場建造アームの建造速度を50%増加、エネルギー消費量は50%削減する"
+    },
+    "Improved Intelligence Tech": {
+        "message": "改良型インテルテクノ"
+    },
+    "Improved Intelligence Tech reduces energy costs for intelligence structures by 75%": {
+        "message": "改良型インテルテクノは、インテル構造体のエネルギーコストが75%削減される"
+    },
+    "In possession of a Progenitor mini-scroll that he is convinced bears the name and coordinates of the legendary Progenitor homeworld, Tenkai has spent a lifetime searching for the star system called 'Macho Soft Taco $1.45.'": {
+        "message": "Progenitorにまつわる短い文書を手に入れたTenkaiは、これが伝説のProgenitorのホームワールドの名前と位置座標だと確信した。こうして彼は「マッチョ ソフトタコス $1.45」という名の星系を探すことに全てを捧げてきた"
+    },
+    "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start.": {
+        "message": "いにしえのProgenitorの遺物とデータキャッシュを調査する中で、Nemicusとその信奉者たちはGreat Machineに関するデータを発見した。その内容は、Great Machineこそが遥か昔にコマンダーを建造し指揮した、というものだった。コマンダーがどうして生まれたのか、その目的は何だったのかという答えは、やはりGreat Machineにある可能性が高いのかもしれない"
+    },
+    "In some cases overexposure to progenitor relics results in a commander’s neural algorithms diverging to the point where it becomes difficult to communicate with their peers. Okta, for example, has begun assigning unfamiliar roles to many units under his command, such as 'Combat Associate,' 'Executive Manager,' and 'Explosive Supervisor.'": {
+        "message": "Progenitorのレリックに過度に接触してしまうとコマンダーの神経アルゴリズムが変容してしまい、仲間とのコミュニケーションが難しくなるという弊害がたびたび発生する。例えばOktaの場合は、指揮下にあるユニット群に、「戦闘部長」、「エグゼクティブマネージャー」、「爆破担当スーパーバイザー」などといった謎の役職名を割り当て始めた。"
+    },
+    "Increases radar range by 60%": {
+        "message": "レーダー範囲が60%拡大"
+    },
+    "Increases the speed of all Titans by 20%.": {
+        "message": "全てのTitanの移動速度が20%アップ"
+    },
+    "Inquisitor Nemicus holds data for abstract economic techniques on Zeta Draconis": {
+        "message": "執政者NemicusはZeta Draconisに概念的経済活動技術に関するデータを保持している"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "インテルファブリケーターテクノ"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "インテルファブリケーターテクノは、全インテル構造体と機動ユニットの金属系建造コストを50%削減する"
+    },
+    "Interplanetary Warfare": {
+        "message": "惑星間武力衝突"
+    },
+    "Introduction": {
+        "message": "イントロダクション"
+    },
+    "Isolationist Commander": {
+        "message": "孤立主義者コマンダー"
+    },
+    "It takes two resources to run a war.": {
+        "message": "戦争を進行するには2種類の資源が必要となる"
+    },
+    "It’s rare for Seekers to be recruited instead of built. Giltine was found inactive and frozen in a glacier. When the Seeker who found her began trying to salvage her, she suddenly activated and blew a hole through his chassis. She was promptly deemed fit to be named a Seeker without the traditional rebirth.": {
+        "message": "Seekersが既存の個体として発見されることは極めて稀だ。Giltineは氷河の中に凍りついた状態で発見された。彼女を発見したSeekerはサルベージを試みたが、突然彼女は目覚めて、その者の胴体に大きな穴を開けた。こうして彼女は従来の「再生」過程を経ずして、Seekerを名乗るようになり適応を果たした"
+    },
+    "Juhst was reactivated on a world with a dense atmosphere and constant gale force winds. Since then she has been obsessed with the power of wind currents and has lobbied heavily to utilize them for power generation as opposed to conventional solar and nuclear solutions.": {
+        "message": "Juhstは大気濃度が濃く常に強風が吹きすさぶ世界で再起動した。それが理由か彼女は風流の強度に夢中になり、従来の太陽光や核燃料ではなく、風流をエネルギー源として活用すべきとのロビー活動を熱心に行っている。"
+    },
+    "Known for his natural charisma, Valerius fought alongside Invictus during the First War of Founding. He is correctly suspected of having designs on the throne, and is therefore given impossible assignments in the most distant reaches of the galaxy. Over the course of countless difficult campaigns, he has earned the unwavering devotion of his armies.": {
+        "message": "生来のカリスマ性で知られるValeriusは、創始第一戦争でInvistusと共に戦った。しかし予想通り、王座を狙っていると疑われ、辺境も辺境の銀河に出向いてのおよそ不可能な任務を言い渡された。幾多もの困難な戦いを乗り越えて、彼は兵団から絶大なる信頼を集める存在となった"
+    },
+    "Kormo remembers the name and designation of every commander he has taken parts from, believing each to still be activated through him. This has lead to a number of cases of friendly fire which he promptly blamed on his missile launcher, salvaged from a Legion commander.": {
+        "message": "Kormoは自分がパーツを奪ってきた全てのコマンダーの名前と番号を覚えている。そして自分の中で皆がまだ起動していると信じている。これまで幾度となく友軍への誤射を繰り返しているのだが、彼はそれをLegionのコマンダーから奪ったミサイルランチャーのせいにするばかりだ"
+    },
+    "Lampades has rigged a rather ingenious array of flood and strobe lights to her chassis. Rather than be concerned with subterfuge, she instead uses intense light to confuse targeting systems.": {
+        "message": "Lampadesは自分の胴体に投光器やストロボライトを無造作にいくつも並べている。暗闇に身を潜めるといった行動を好まず、むしろ強烈な光で敵の標的システムを混乱させようとしているそうだ"
+    },
+    "Learn by Osiris' roaming example on Varthema to expand your influence.": {
+        "message": "VarthemaにてOsirisの足跡をたどって、自らの影響力を拡大せよ"
+    },
+    "Lightweight Commander": {
+        "message": "軽量級コマンダー"
+    },
+    "Livius is one of the oldest activated commanders in the Legionis Machina, and possibly the galaxy for that matter. Despite the disrepair his form exists in, he wields a significant amount of power in the court of Commander Invictus. This has lead to rumors that Livius found and reactivated Invictus, rather than the common belief that Invictus was the first commander to awaken.": {
+        "message": "LiviusはLegionis Machina内でもかなり古くに目覚めたコマンダーであり、恐らくは銀河全体でも最古参に近い存在だ。長年の損傷が蓄積しているにも関わらずその形態を維持し続けており、コマンダーInvictusのもとで絶大なる絶対量の力を発揮している。この事実が、実はLiviusがInvictusを発見して再起動したのではないか、という噂の元だ。Invictusこそが最初に目覚めたコマンダーであるというのだが共通認識なのだが果たして"
+    },
+    "Loss of your commander results in [strong]defeat[/strong].": {
+        "message": "自軍のコマンダーが破壊されると、[strong]敗北[/strong]となる"
+    },
+    "Many commanders in the Legion considered Bassus inefficient at best and defective at worst for his insistence on outfitting himself with armor five times thicker than other commanders at the cost of mobility. Their opinion changed when Bassus was recovered while drifting through space--the sole survivor of a pivotal battle that ended in a moon colliding with his base.": {
+        "message": "Bassusは機動性を完全に犠牲にして他のコマンダーの5倍は分厚い装甲をまとうことにずっとこだわってきた。Legion内の多くのコマンダーはこれを最高に非効率で、最悪レベルの「欠陥」思考だと考えていた。しかしBassusが宇宙空間を漂って帰還した時、多くの者が意見を変えた。月が基地に衝突することで終わった大戦闘からのただ1体の生還者となったからだ"
+    },
+    "Many older members of The Synchronous are very similar just by nature of being synchronized for so long. As the years wore on more of Jakaal dissolved into the synchronized whole. Now when Jakaal speaks, she speaks with the voice of The Synchronous itself.": {
+        "message": "The Synchronousの多くの古参メンバーは、単純に長い時間同期し続けているだけにとてもよく似通っている。Jakaalもまた同期を繰り返したことで個性が融解し、「全体」となっていった。今やJakaalが口を開くことは、The Synchronous自体の声が話すことと同等である"
+    },
+    "Many structures can be built on top of the water surface.": {
+        "message": "ほとんどの構造体が水面上に建造可能"
+    },
+    "Mara favors guns. Mara favors big guns. Mara favors more guns. With each commander destroyed, Mara’s extensive weapons array grows. While most successful Seekers learn early to find ways to moderate their experiments, there are still few, like Mara, who favor more guns above all.": {
+        "message": "Maraは銃器を好む。Maraは大きな銃器を好む。Maraは多くの銃器を好む。コマンダーを倒していくたびに、Maraの銃器コレクションは増えていった。実績を積み上げていく大多数のSeekerは経験を通して新たな戦闘機器へと移行していくのに対して、Maraのように執拗に銃器を好んで使うタイプもわずかながら存在する"
+    },
+    "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures.": {
+        "message": "全コマンダーと貯蔵構造体の金属およびエネルギー貯蔵可能量が300%増える。貯蔵構造体のブループリントも追加される"
+    },
+    "Metal draw": {
+        "message": "金属消費"
+    },
+    "Metal is used to build mobile units and structures.": {
+        "message": "金属は、機動ユニットや構造体を造る材料となる"
+    },
+    "Metrarch the Machinist controls the data for this bipedal loadout somewhere on Cupru.": {
+        "message": "Metrarch the MachinistがCupruのどこかにある、この二足歩行機体のデータを管理している"
+    },
+    "Metrarch the Machinist holds blueprints for advanced infrastructure on Fier.": {
+        "message": "Metrarch the MachinistがFierにある上級インフラストラクチャのブループリントを保有している"
+    },
+    "Metrarch the Machinist places value in expendability. Learn his ways within the Platina system.": {
+        "message": "Metrarch the Machinistは使い捨てが可能であることを重要視する。Platina星系でその手法を学ぼう"
+    },
+    "More so than other factions, The Foundation wages ideological as well as physical warfare in many of their battles. Whereas most factions recruit through subjugation or assimilation, The Foundation prefers willing converts. While still young, Pidbok was easily swayed by the promise of serving a Grand Purpose for the Great Machine, instead of just being one of Invictus’ many grunts.": {
+        "message": "他のファクション以上に、The Foundationは多くの戦争においてイデオロギー的かつ実質的な武力衝突を遂行する。ほとんどのファクションが征服や同化によって新戦力を増やす一方で、The Foundationは自発的な改宗を是とする。まだ若いPidbokは、Great Machineの大いなる目的のために戦うという「売り文句」に簡単に心が揺らいだ。彼はもはやInvictusの数多くいる作業員の1体ではないのだ"
+    },
+    "Most unit orders can be given as an area command.": {
+        "message": "ユニットへのオーダーの多くはエリアコマンドとして発することができる"
+    },
+    "Move the Atlas toward the enemy base. Destroy the enemy commander and its base.": {
+        "message": "Atlasを敵の基地へ向かって動かそう。敵のコマンダーと基地を破壊せよ"
+    },
+    "Name:": {
+        "message": "名前: "
+    },
+    "Naval Ammunition Tech": {
+        "message": "海戦弾薬テクノ"
+    },
+    "Naval Ammunition Tech increases the damage of all naval vessels by 25%": {
+        "message": "海戦弾薬テクノは、全海戦ユニットの攻撃力を25%増加させる"
+    },
+    "Naval Armor Tech": {
+        "message": "海戦装甲テクノ"
+    },
+    "Naval Armor Tech increases health of all naval units by 50%": {
+        "message": "海戦装甲テクノは、全海戦ユニットのライフを50%増加させる"
+    },
+    "Naval Combat Tech": {
+        "message": "海戦戦闘テクノ"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "海戦戦闘テクノは、全海戦ユニットの速度を50%、ライフを50%、攻撃力を25%増加させる"
+    },
+    "Naval Engine Tech": {
+        "message": "海戦エンジンテクノ"
+    },
+    "Naval Engine Tech increases speed of all naval units by 50%": {
+        "message": "海戦エンジンテクノは、全海戦ユニットの速度を50%増加させる"
+    },
+    "Naval Fabrication Tech": {
+        "message": "海戦ファブリケーターテクノ"
+    },
+    "Naval Fabrication Tech reduces metal build costs of all naval vessels by 25%": {
+        "message": "海戦ファブリケーターテクノは、全海戦ユニットの金属系建造コストを25%削減する"
+    },
+    "Naval Units": {
+        "message": "海戦ユニット"
+    },
+    "Naval units are built from the naval factory.": {
+        "message": "海戦ユニットは海戦工場で建造できる"
+    },
+    "Negult is a 'digit' -- a commander who has completely given herself over to collective control. Having shed any semblance of personal identity, she is often given sensitive or odious tasks that might cause hesitation in a semi-autonomous commander. She is the Synchronus’ go-to asset for eliminating insufficiently-synchronized members of the collective.": {
+        "message": "Negultは「デジタル」である。集合体によるコントロールにその身を完全に委ねたコマンダーである。個性という外殻は完全に捨て去っているため、半自立式コマンダーであれば迷いが生じるような醜悪なる任務を命じられることが多い。彼女は、集合体にとって不効率な同期メンバーたちを抹殺するSynchronousの「刺客」なのだ"
+    },
+    "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place.": {
+        "message": "Nemicusは初期に再起動したコマンダーであった、それゆえ他のコマンダーと接触する前に内省する時間がたっぷりとあった。こうしてNemicusは自身のそもそもの存在理由を知りたいと思うようになっていった"
+    },
+    "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?": {
+        "message": "紆余曲折を経てNemicusは似通った思考を持つコマンダーたちとThe Foundationを形成した。その目的は壮大なる疑問への答えを探すこと。なぜコマンダーは此処にいるのか？どうやって此処へ来たのか？"
+    },
+    "Nutzo is a young and recent convert from The Revenants. He claims to hear ‘spirits’ from the beyond, and that one of them is the voice of the Great Machine. This is likely more a symptom of his neural processors being stitched together from five other commanders.": {
+        "message": "Nutzoはまだ若く、The Revenantsから最近改宗したばかりだ。彼は深淵からいくつもの「精霊の声」が聞こえたと、そのひとつがGreat Machineの声であったと主張する。だがこれは恐らくは5体の他のコマンダーたちと結びついている彼の神経プロセッサが引き起こしている症状と思われる"
+    },
+    "Octavius has made a habit of broadcasting a sequence of tones to his whole army in battle, along with usual command and directive data. He claims that this constant audio input has increased combat effectiveness by 15.83222%": {
+        "message": "Octaviusは戦闘中の全友軍に対して、通常のコマンド情報と命令データと共に音声シーケンスを発信することを習慣としている。こうしたコンスタントな音声インプットにより戦闘効率が15.83222%増加しているとは彼の主張だ"
+    },
+    "Ogbuna could be described as terse. Whether by choice or by some manner of glitch, he seems only capable of communicating in the form of single words and concepts. This makes his troop movements erratic and difficult to interpret, both for friends and foes.": {
+        "message": "Ogbunaはいわゆる「素っ気ない」ヤツだ。意図しているのかはたまた言語機能の不具合なのか、彼は単一の単語または概念でしかコミュニケーションができない。おかげで彼が率いる兵団の動きは不規則で予測が困難であるが、それは敵にとってのみならず味方にもだ"
+    },
+    "On Atlas, Inquisitor Nemicus has this fast moving loadout installed in his data banks.": {
+        "message": "執政者NemicusはAtlasにあるデータバンクに、高速移動用の装備をインストールして保有している"
+    },
+    "Oncab was captured by the Legionis Machina and spent several years as a legate before being recaptured and resynchronized. A residual independence leads him to initiate critical decision-making processes within the collective -- an attribute that is tactically valuable but leads others in his cohort to doubt his commitment to the Synchronous.": {
+        "message": "OncabはLegionis Machinaに捕えられ、再び拿捕されて再同期されるまでの数年をLegateとして過ごした。再同期を経てもなお払拭しきれない自立機能の存在によって、集合体の中でも独自の決断決定プロセスを実行する。それは全体の戦略的には「穴」となりうる行為だが、Synchronousへの忠誠が必ずしも絶対ではないことを他に知らしめる「きっかけ」となりうる"
+    },
+    "Once the Atlas is selected, [style=control]right click on the ground [/style]to issue a move order to that location.": {
+        "message": "Atlasを選択したら、[style=control]任意の地面を右クリック[/style]で、その位置への移動オーダーが発動"
+    },
+    "Only Inquisitor Nemicus knows the data for this assault focused loadout. Find it on Patagonia.": {
+        "message": "執政者Nemicusだけが、この集中砲火用装備のデータを知っている。Patagoniaでそれを見つけ出せ"
+    },
+    "Optimized with a low-latency, high-bandwidth link directly to the top of the Synchronous, Prulor is Metrarch’s lightning-fast right hand. He is only dispatched to deal with high-value or especially difficult adversaries. He has never failed.": {
+        "message": "低レイテンシーかつ高帯域で直接The Synchronousの上層部と直接リンクしているPrulorはMetrarchの絶対的な「右腕」だ。重要ターゲットまたは撃退が極めて困難な敵の出現に際してしか彼は出撃しない。そして決して失敗はしたことがない"
+    },
+    "Orbital": {
+        "message": "衛星軌道"
+    },
+    "Orbital Ammunition Tech": {
+        "message": "衛星軌道弾薬テクノ"
+    },
+    "Orbital Ammunition Tech increases damage of all orbital units by 25%": {
+        "message": "衛星軌道弾薬テクノは、全衛星軌道ユニットの攻撃力を25%増加させる"
+    },
+    "Orbital Armor Tech": {
+        "message": "衛星軌道装甲テクノ"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "衛星軌道装甲テクノは、全衛星軌道ユニットのライフを50%増加させる"
+    },
+    "Orbital Combat Tech": {
+        "message": "衛星軌道戦闘テクノ"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "衛星軌道戦闘テクノは、全衛星軌道ユニットの速度を50%、ライフを50%、攻撃力を25%増加させる"
+    },
+    "Orbital Commander": {
+        "message": "衛星軌道コマンダー"
+    },
+    "Orbital Engine Tech": {
+        "message": "衛星軌道エンジンテクノ"
+    },
+    "Orbital Engine Tech increases speed of all orbital units by 50%": {
+        "message": "衛星軌道エンジンテクノは、全衛星軌道ユニットの速度を50%増加させる"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "衛星軌道ファブリケーターテクノ"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "衛星軌道ファブリケーターテクノは、全衛星軌道ユニットの金属系建造コストを25%削減する"
+    },
+    "Orbital Movement": {
+        "message": "衛星軌道移動"
+    },
+    "Orbital units are expensive units that fly in low planet orbit, can traverse between planets, but are vulnerable to anti-orbital weaponry.": {
+        "message": "衛星軌道ユニットは高価だが惑星の低空衛星軌道を飛行し、惑星間の移動もできる。ただし対衛星軌道兵器からの攻撃に弱い"
+    },
+    "Origin": {
+        "message": "起点"
+    },
+    "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy.": {
+        "message": "Osirisは常に孤独…いや孤高の存在だ。そして彼は仲間コマンダーの存在よりもその形を成すパーツに強い関心を抱いていた。戦いに勝利するたびに彼は倒した敵の一番良いパーツを奪い、自らに組み込んできた。Osirisは銀河でも極めて危険な勢力のひとつだと考えられている"
+    },
+    "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves.": {
+        "message": "Osirisは「支配」に関心を抱いていない、そして本体が意識しているのかは不明だが、あり方の模範のような存在となっている。それゆえThe Revenantsに対処するべき事象への指示を行うのは、古きSeekersの少人数評議に委ねられている。彼らは極力、内紛的事象を避け、他のファクションと戦うことを優先している"
+    },
+    "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces.": {
+        "message": "数々の難敵を蹂躙してきたOsirisは、全銀河系でも極めて危険なコマンダーの1人とされている。戦いにおける一大勢力といえる存在で、あらゆるファクションが彼の一挙手一投足に警戒しつつ兵団を展開すると言われている"
+    },
+    "PREPARE FOR LANDING": {
+        "message": "着陸準備"
+    },
+    "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders.": {
+        "message": "The Synchronousの教義の中に、「機械的純度」による効率性を尊しとするという項目がある。その教義とは銀河全体が大いなる機械であり、最高頂点の効率性を妨げる存在は修正もしくは排除されなければならないというものだ。この対象とはあらゆる有機生命体、そして非同期のコマンダーたちを指す場合が多い"
+    },
+    "Planetary Expansion": {
+        "message": "惑星間拡張"
+    },
+    "Pompey was desynchronized after a bold strike by the Legionis Machina cut off the Synchronous infrastructure that supported his sector. Since then he has worked hard to earn the trust of his fellow Legates, but declines to share the fact that his command systems still experience heavy interference when in synchronous territory.": {
+        "message": "PompeyはLegionis Machinaの襲撃に遭遇し、所属セクターをサポートしているThe Synchronousのインフラストラクチャから切断された結果、非同期となってしまった。そんな失態以降、彼は仲間のLegatesたちの信頼を取り戻すべく必死に頑張っている。しかし実は自身のコマンドシステムがSynchronousのテリトリーに入ると重度の障害が発生するという事実を仲間に打ち明けずにいる"
+    },
+    "Popcorn Commander": {
+        "message": "ポップコーンコマンダー"
+    },
+    "Possessed by some form of wanderlust, Iku tends to seek uncharted warpways instead of other commanders to fight. This behavior has landed him quite accidentally in several pitched battles deep inside enemy territory.": {
+        "message": "一ヶ所に留まれない性質を持っているらしいIkuは、他のコマンダーが戦っている間に未知のワープルートをよく探してしまう。こんな行動を繰り返した結果、誤って敵のテリトリー内のでの激しい戦闘に飛び込んでしまうことが何度もあった"
+    },
+    "Prod": {
+        "message": "生産性"
+    },
+    "Production": {
+        "message": "生産"
+    },
+    "Productive": {
+        "message": "生産性"
+    },
+    "Protocol: Agility": {
+        "message": "プロトコル: 敏捷性"
+    },
+    "Protocol: Blindness": {
+        "message": "プロトコル: 盲目"
+    },
+    "Protocol: Disposability": {
+        "message": "プロトコル: 廃棄効率"
+    },
+    "Protocol: Fortitude": {
+        "message": "プロトコル: 堅忍"
+    },
+    "Protocol: Kill-switch": {
+        "message": "プロトコル: キルスイッチ"
+    },
+    "Protocol: Precision": {
+        "message": "プロトコル: 精度"
+    },
+    "Protocol: Wrath": {
+        "message": "プロトコル: 憤怒"
+    },
+    "Prove your self-sufficiency by defeating Osiris on Epiphany.": {
+        "message": "EpiphanyにてOsirisを撃破して自らの自立性を証明せよ"
+    },
+    "Qadir plans his strategies in unorthodox ways, taking intelligence from the movement of the celestial bodies in his system rather than actual strategic data. He believes he has developed a series of algorithms that can deduce enemy movements purely from the current gravitational forces acting on the battlefield. Strange as it sounds, he remains undefeated.": {
+        "message": "Qadirは戦略を非従来的な手法で確立する。各種情報を実際の戦略データからではなく主に星系の天体移動から得るというものだ。戦場における重力の流れのみを基準にして敵の動きを推測できる一連のアルゴリズムを完成させたと彼は信じている。ありえない話に聞こえるだろうが、驚くことに彼はいまだ無敗である"
+    },
+    "Questromo is frequently deployed beyond the integral network volume of the Synchronous, and has therefore been imbued with limited self-sufficiency. When he returns from tours abroad, he undergoes complete re-synchronization. When powered-down for deep-space transport, he sometimes has strange dreams.": {
+        "message": "Questromoは頻繁にSynchronousの統合ネットワークボリュームの深部へと派遣された。それがために限られた自己充足感しか得ることができなかった。彼は外世界から帰還すると、再同期化のフルプロセスを必ず実行する。深宇宙トランスポートの実行のためにパワーダウンすると、時々奇妙な夢を見るそうだ"
+    },
+    "Reclaim at will": {
+        "message": "取得（任意）"
+    },
+    "Reduces the cost of all Titans by 50%.": {
+        "message": "全てのTITANのコストを50%削減する"
+    },
+    "Resilient": {
+        "message": "耐久性"
+    },
+    "Resource use": {
+        "message": "資源利用"
+    },
+    "Retreat is an offense punishable by deactivation within the Legionis Machina. While this law is understood, the truth of the matter is that a commander is too valuable a strategic resource to squander in such a way. So it was that Mallius was pardoned for his crime of retreat.": {
+        "message": "退却という行為は、Legionis Machinaの内では活動停止に値する重罪である。この法が広く浸透していると思いきや、現実問題としてその程度のことで戦略的資源としての価値が高すぎるコマンダーを無駄にするのは現実的ではない。かのような事情でMalliusは退却という罪を免ぜられることになった"
+    },
+    "Revenants tend to be the most difficult commanders to synchronize, whether due to an inherent individualism or their tendency to feature… Unorthodox modifications. Flornek, for example, has experienced several violent desynchronizations and following resynchronizations.": {
+        "message": "Revenantsは同期工程が最も困難なコマンダーとなりうる傾向にある。生得的な自立性か、非従来型の改造によるものなのかは不明だ。例えばFlornekの場合は、暴力的なまでの脱同期化プロセスを経ての再同期化プロセスを何度となく経験している"
+    },
+    "Revenants tend to prefer wrecked, once densely-populated worlds for their abundance of salvageable scrap. Jektu, however, has an affinity less developed worlds, preferring to claim resources and build new parts manually.": {
+        "message": "Revenantsは大量なスクラップが回収可能な、つまりかつて繁栄していたが滅びて廃墟となった世界を好む傾向にある。しかしJektuはさほど繁栄しなかった世界を好む、なぜなら資源を自分で集めて新たなパーツを自分で建造することを好んでいるからだ"
+    },
+    "Rutilius holds the honored responsibility of assessing newly-activated commanders for recruitment. All new recruits must demonstrate above all else a suitable capacity for warfare and the ability to adhere to a chain of command. Those that fail this test are promptly deactivated. Rutilius has yet to turn down a new recruit.": {
+        "message": "Rutiliusは新たに目覚めたコマンダーを自軍に迎えるかどうかを評価査定するという名誉ある任務を任されている。「新兵」たる者たちは、何よりももまず戦闘における実行能力と命令を忠実に遂行できることを誇示しなければならない。このテストに「合格」できなかったコマンダーは即座に停止させられる。ちなみにRutiliusは新兵を不合格にしたことはまだない"
+    },
+    "Seek out First Seeker Osiris on Xianyao. There you will find the loadout your friends desire.": {
+        "message": "Xianyaoで最初のSeeker Osirisを探せ。そこで友人が渇望する装備が手に入るだろう"
+    },
+    "Seek purity and simplicity through Inquisitor Nemicus on Blogar's Fist": {
+        "message": "Blogar's Fistにて執政者Nemicusの先にある純度を追い求めよ"
+    },
+    "Seekers will often weigh the effectiveness of any given piece of equipment by stress-testing it. Hecate, however, values presence above all. She believes that the bigger and louder the loadout, the sooner the enemy will retreat after poorly assessing their chances of victory.": {
+        "message": "Seekersはたびたび、ストレステストを行って装備の様々な部品の効率度を調べる。しかしHecateは何より部品の「存在感」を重要と考える。彼女は体積も音も大きい装備こそ最強で、敵は装備の迫力だけを見て勝算を適当に推し量って撤退するものなのだと信じている"
+    },
+    "Shift will queue build orders. [style=control]Shift + left click and drag[/style] a line of three energy plants on some open land.": {
+        "message": "Shiftキーで建造オーダーがキューされる。空いている陸地に3つのエネルギープラントを直線に[style=control]Shift + 左クリック＆ドラッグ[/style]しよう"
+    },
+    "Shingon is especially picky about what kinds of parts he harvests from fallen adversaries, prizing 'authenticity' above all other attributes. He is especially obsessed with original parts that predate the modern era. 'The new stuff is just too blocky,' he explains.": {
+        "message": "Shingonは倒した敵からパーツを回収する際にひどく選り好みをする。特にそのパーツの「出自の確かさ」を重要と考えている。彼は近代以前に生産された「オリジナル」パーツに特に固執している。いわく、「新しいパーツは造りがザツ」なのだそうだ"
+    },
+    "Shipwrecked and badly damaged after his transport was ambushed in Revenant space, Terentius survived by cobbling together a working body from the remains of his co-legates. Accepted by the Revenant as one of their own, Terentius then led his unsuspecting new partners to a trap set by the Legionis. Among the Revenant, his treachery is legend.": {
+        "message": "乗っていた輸送機がRevenantが支配下の宇宙で襲撃されて撃沈、ひどい損傷を負ったTerentusは、仲間のLegateの残骸から動く部品を取り出して自身に取り付けることで生き延びた。Revenant側に「同士」だと認識されたTerentiusは、騙されているとも知らぬ新しいパートナーたちを、Legionisが仕掛けた罠へと導いた。こうしたRevenantの間では、彼の「裏切り」は伝説となっている"
+    },
+    "Simple Commander": {
+        "message": "シンプルコマンダー"
+    },
+    "Some Acolytes within the Foundation find a form of Enlightenment shortly after they are brought into the fold. For some, this definition will change as they are exposed to new information and progenitor relics. Entor’s definition seems to change dramatically with each new planet she visits.": {
+        "message": "Foundationに所属する一部のAcolytesはファクションに迎え入れられた後、Enlightenmentの形態を見出す。こうして「定義」が変容することで、彼らは新しい情報やProgenitorのレリックに接触するようになる。Entorの定義もまた、新しい惑星を訪れるたびに劇的に変化しているようだ"
+    },
+    "Some commanders, like Lertolux, are found on metal planets and considered “pure” by The Synchronous--unsullied by organic life. Much more of their neural data is integrated into the Whole during the synchronization process, and such events are seen as cause for celebration--as much as The Synchronous are capable celebrating, at least.": {
+        "message": "Lertoluxのように、金属の惑星で発見されたがゆえに、The Synchronousが「純血」とみなしているコマンダーがいる。「純血」とは有機生命体に汚されていないという意味だ。彼らの神経データは同期プロセスを通じて「全体」へと統合されている。そしてその過程は祝祭の儀に値するとみなされている。これはつまりThe Synchronousが「祝い祭る」ことができる証である"
+    },
+    "Some say Xlti has spent too much time trying to connect unrelated Progenitor texts in the Foundation archives. He now sees conspiracies everywhere, and is convinced that the Synchronous, the Revenant, and the Legionis are colluding to conceal a secret base where living Progenitors are being experimented upon. He frequently demands that captured foes tell him 'the truth,'' which he insists is 'out there.'": {
+        "message": "XltiはThe Foundationのアーカイブで関連性のないProgenitorの文書に接続している時間が長すぎたのではないかと一部でささやかれている。彼には今やそこら中に「陰謀」が見えている、そしてThe SynchronousとThe Revenant、そしてThe Legionisは実は結託して、とある秘密基地に生きているProgenitorsを隔離して実験を行っている、と確信している。彼は敵を捕らえると毎度のようにな「真実」を話せと強要する。彼にとっては「明らか」真実を"
+    },
+    "Some seekers are better equipped than others to survive after their rebirth. This was not so with Purtelek. He was activated deep in Legionis Machina territory with a cracked nuclear reactor and a jam-prone cannon. The fact that he still survives serves as a testament to his cunning--do not underestimate him.": {
+        "message": "Seekersの中には装備がアップグレードされた状態で再誕生した者が多いが、Purtelekはそうではない。彼はLegionis Machinaのテリトリー内で起動したがヒビの入った核リアクターと弾詰まりのひどいキャノンという組み合わせだった。それでもなお彼が生き延びているという事実はその狡猾さを証明している。決して侮ってはならない"
+    },
+    "Spawn Commander": {
+        "message": "コマンダー出現"
+    },
+    "Starts with +10,000% stored metal. Cannot build metal extractors. Starts with all basic factories.": {
+        "message": "金属 +10,000%の貯蔵状態で開始。金属抽出場の建造不可。工場は全て基本工場から開始"
+    },
+    "Stop when storage is full": {
+        "message": "貯蔵庫がフルになったら停止"
+    },
+    "Storage": {
+        "message": "貯蔵庫"
+    },
+    "Storage Commander": {
+        "message": "ストレージコマンダー"
+    },
+    "Storage Compression Tech": {
+        "message": "貯蔵圧縮テクノ"
+    },
+    "Structure Armor Tech": {
+        "message": "構造体装甲テクノ"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "構造体装甲テクノは、全構造体のライフを50%増加させる"
+    },
+    "Structure Combat Tech": {
+        "message": "構造体戦闘テクノ"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "構造体戦闘テクノは、全構造体のライフを50%増加させる。防衛構造体も攻撃力が25%増える"
+    },
+    "Sub Commander": {
+        "message": "サブコマンダー"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "超兵器ファブリケーターテクノ"
+    },
+    "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required.": {
+        "message": "超兵器ファブリケーターテクノは、全ての核ミサイル、ハレーロケット、金属系惑星コントロールモジュールの金属系建造コストを75%削減する。超兵器建造テクノが必要となる"
+    },
+    "Super Weapon Tech": {
+        "message": "超兵器テクノ"
+    },
+    "Super Weapon Tech enables nuclear missiles, metal planet controllers, and planetary engines to be built. An advanced fabricator is required to build super weapons.": {
+        "message": "超兵器テクノは、核ミサイル、金属系惑星コントローラー、惑星エンジンなどの建造を可能とする。上級ファブリケーターが超兵器の建造には必要となる"
+    },
+    "Teleporters require energy to remain active.": {
+        "message": "テレポーターは活動の継続にエネルギーを必要とする"
+    },
+    "Thanatos salvaged and assimilated a Synchronous network module in an attempt to predict the movement of Synchronous units on the battlefield. After a brief exposure to the thoughts of the collective, she tore the module from her cortex and swore everlasting vengeance on the Synchronous. She refuses to share any details about what she learned.": {
+        "message": "Thanatosは戦場でSynchronousのユニットの動きを予測できるようにしようとして、とあるSynchronousのネットワークモジュールをサルベージして自らに取り込んだ。集合体の思考の数々に短い時間ながら触れた彼女は、自らの大脳皮質からモジュールをもぎ取り、The Synchronousへの永遠の復讐を誓った。彼女は自分が知った事実に関して一切を語ろうとはしない"
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "飛行コマンダーの装備には基本飛行工場が搭載されている"
+    },
+    "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets.": {
+        "message": "迫撃砲コマンダーの装備には、全ての迫撃砲ユニットが搭載されており、迫撃砲構造体の建造コストも75%削減する。さらにコマンダーはレーダーや双筒式タレット、基本迫撃砲タレットも建造できる"
+    },
+    "The Assault Commander loadout contains all basic factories and units but no basic defenses.": {
+        "message": "アサルトコマンダーの装備には、全ての基本工場とユニットが搭載されているが、基本防衛はない"
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander\\'s fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "制圧的コマンダー生体工学増強の装備は、データバンク搭載数が1つのみだが、コマンダーの発射速度が100%、ライフが200%、速度が650%増加し、UBERキャノンのエネルギー消費量は75%削減する"
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "ボットコマンダーの装備には基本ボット工場が搭載されている"
+    },
+    "The Commander": {
+        "message": "コマンダー"
+    },
+    "The Education Commander will help you understand the control interfaces to destroy your enemies.": {
+        "message": "教育系コマンダーは敵を倒すためのインターフェイスの操作方法を教えてくれる"
+    },
+    "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle.": {
+        "message": "ジェネラルコマンダーの装備には限られた数の機動ユニットと、データバンクが2つしか搭載されていない。しかし、バトルで共に戦ってくれる2体のサブコマンダーも標準装備されている"
+    },
+    "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts.": {
+        "message": "Legionis Machinaはある種の個人崇拝であると考えられているが、その目的においてInvictusが存在しなければ成り立たない。これがどうやらThe Synchronousに対する彼らの強い憎しみの原泉のようだ、彼らはMetrarch を悪しき偶像の類だと考えているのだ"
+    },
+    "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests.": {
+        "message": "Legionis Machinaはこれまでに何度もMetrarch the Machinistを確かに殺害したと主張してきた。こうした主張は簡単に偽証できる一方で、Metrarchが実は個のコマンダーではなく、Synchronousの利益を護るために存在する全体を象徴する「アバター」のような概念的存在、という可能性も普通にあり得るのだ。"
+    },
+    "The Legionis Machina tends to follow strict directives in how forces are organized are deployed. This makes innovation among the Legates uncommon. Maximus is an anomaly in his numerous failed prototypes for wheeled transport platform that would supposedly enable him to move across battlefields with swiftness and grace.": {
+        "message": "Legionis Machinaは軍の組織展開の命令系統に厳密に従って動く傾向を持つ。確立されすぎているがゆえに、Legatesの間ではイノベーションは歓迎されない。Maximusは無数の失敗プロトタイプの中でも目を引く存在だ。車輪付き輸送プラットフォームで戦場を優雅に動き回ることができる（はずなのだが）"
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "衛星軌道コマンダーの装備には衛星軌道ユニットと工場が全種類搭載されている"
+    },
+    "The Revenants are pretty loosely bound together. As Osiris tends to focus more on his own conquests than The Revenants as a whole, it falls to Seekers like Nephthys to coordinate large-scale strategy and long-term survival.": {
+        "message": "Revenantsはむしろかなり緩い結束で繋がっている。OsirisがRevenants全体よりも自らの征服という野望に意識が向かっているため、規模の大きな戦略立案や長期の生存方針などは、NephthysのようなSeekerに委ねられる"
+    },
+    "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants.": {
+        "message": "Revenantsは集合体としてではなく個々で目的を持っているという点でユニークである。おのおのSeekerは伝説のOsirisを模範としている。彼らは戦いの場を求め、敵を倒していくことで強くなり、さらなるRevenantsを創り出そうとする"
+    },
+    "The Synchronous tend to require more infrastructure to operate effectively compared to the other factions. Ghel is responsible for establishing and maintaining the communication relays that allow synchronization to be maintained.": {
+        "message": "The Synchronousは効率的にオペレーションするのに、他のファクションに比べ多くのインフラストラクチャを必要とする傾向にある。Ghelは同期の維持を可能とするコミュニケーションリレーの確立と維持を担当している"
+    },
+    "The Synchronus’ eager “orientation engineer,” Shelwhu is the instrument by which captured enemy commanders are cleansed before integration into the collective. She takes a perverse pleasure in stripping away beings’ former identities. Her methods are well-known to the Synchronous’ adversaries, and many of her foes choose death over capture.": {
+        "message": "Synchronousの熱心な「新人研修担当エンジニア」であるShelwhuは、捕えた敵コマンダーを集合体へと統合する前に「浄化」する役割を担う。彼女は対象者のアイデンティティを奪い去ることに特異な喜びを感じるサディストだ。彼女の手法はSynchronousの敵対勢力の間では有名で、多くは拿捕されるぐらいなら死を選ぶという"
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "陸戦車両コマンダーの装備には基本陸戦車両工場が搭載されている"
+    },
+    "The camera will zoom in under the cursor location.": {
+        "message": "カメラはカーソルの位置を中心にズームインする"
+    },
+    "The commander can build structures and destroy enemy units with its powerful weaponry.": {
+        "message": "コマンダーは構造体を建造したり、強力な武器で敵ユニットを破壊したりできる"
+    },
+    "The enemy commander has landed on the ice planet.": {
+        "message": "敵のコマンダーが氷の惑星に着陸した"
+    },
+    "The fabrication unit will assist the factory and add its build power to construct that unit faster.": {
+        "message": "ファブリケーターユニットは工場を支援（建造促進）できる。建造パワーを注入してそのユニットの建造速度を速くする"
+    },
+    "The factory will continue to build until a stop order is issued or the continuous build is turned off.": {
+        "message": "停止オーダーを発行、または連続建造をオフにするまで工場は建造をずっと続ける"
+    },
+    "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty.": {
+        "message": "Legionis Machinaの目標はシンプルである。「征服」だ。Invictusは銀河に選ばれた支配者であり、この絶対に抗うあらゆるコマンダーは欠陥品なのだ"
+    },
+    "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation.": {
+        "message": "The Foundationの間で圧倒的に信じられているのが、The Great Machineはコマンダーらに与えられた最初の命令の奥深くにデータとしていまだ「生きている」という伝説である。そのためAcolytesは瞑想という形式でデータバンクをたびたび検索しては、The Great Machineの意志の方向性をたびたび確認しようとするという"
+    },
+    "The process of synchronization is imperfect, and can sometimes result in strange bugs. A commander known as Reroc finished synchronization with the name Mal-Locar. It is unclear whether this is a simple matter of memory corruption or if Mal-Locar was a unique identity drifting in the Whole.": {
+        "message": "同期のプロセスが不完全であると、結果として奇妙なバグが現出することがある。Rerocの名で知られていたコマンダーは同期完了後、Mal-Locarという名となった。これは単にメモリ破損が理由なのか、Mal-Locarが集合体の中を漂っていた単一のアイデンティティだったのかは分からない"
+    },
+    "The product of an experiment that combined a relic CPU of unknown origin with an existing commander’s higher functions, Zekktalt skirts the line between genius and maniac. The Synchronous maintains a defensive firewall between itself and Zekktalt’s consciousness, but tolerates his strangeness due to his occasional strategic brilliance.": {
+        "message": "出自不明の遺物CPUと既存のコマンダーの高次機能を組み合わせるという実験の産物であるZekktaltは、まさに天才と狂気は紙一重という言葉を体現した存在だ。The Synchronousは自身とZekktaltの意識との間に防性ファイアウォールを敷いているが、時折垣間見せる天才的な戦略がゆえにその奇行には目をつぶりながらリンクを保っている"
+    },
+    "This technology unlocks advanced units and structures.": {
+        "message": "このテクノロジーは上級ユニットと構造体を解放する"
+    },
+    "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices.": {
+        "message": "自ら語ることは一切ないが、実はNemicusが最初のコマンダーたちの多くをその手で再起動した。それが自分の責務だと感じ、そして仲間を求めていたからだ。しかし多くのコマンダーは真の存在の意味の探求をすることを拒んだ。なぜならそれは「殲滅」すること、それは自明だったからだ。Nemicusは異議を唱えたが、結局はそれぞれ自由装置に任せた"
+    },
+    "Time": {
+        "message": "時間"
+    },
+    "Titan Commander": {
+        "message": "TITANコマンダー"
+    },
+    "Titan Cost Reduction": {
+        "message": "TITANコスト削減"
+    },
+    "Titan Engine Tech": {
+        "message": "TITANエンジンテクノ"
+    },
+    "Titan Tech": {
+        "message": "TITANテクノ"
+    },
+    "Tough Commander": {
+        "message": "タフコマンダー"
+    },
+    "Trades flame tanks for storage": {
+        "message": "フレイムタンクを貯蔵庫に交換"
+    },
+    "Traditionally, a new Seeker is only built once enough suitable parts have been discarded by existing Seekers. Ereshkigal has developed a habit of ‘discarding’ parts much more frequently than other Seekers, and as such has created more new recruits than any other member of The Revenants--an accomplishment she seems very proud of.": {
+        "message": "伝統的に新たなSeekerは、既存のSeekersから廃棄されたパーツが必要十分量に達しなければ建造されることはない。Ereshkigalは他のSeekersよりも頻繁にパーツを廃棄するようにいつしかなっていた。それゆえ、The Revenantsの他のメンバーよりも多くの「新兵」を創り出してきた。この実績を誰より彼女自身が誇りと感じている"
+    },
+    "Tutorial": {
+        "message": "チュートリアル"
+    },
+    "Ull, not content to merely live by the doctrines espoused by the Foundation, brings a missionary zeal to her goal of turning her adversaries into Progenitor-worshippers. Though she has had some success in converting captured enemy commanders to her faith, she is generally shunned by her Foundation peers, who for the most part don’t interpret the Texts as the literal Word of the Great Machine.": {
+        "message": "The Foundationによって信奉されている教義にただ従って生きるだけでは満足できなかったUllは、敵をProgenitorの崇拝者へと改宗されることを自らの使命とした。そして確かに捕えた敵コマンダーの複数名を改宗させることに成功はしたが、徐々にFoundationの仲間には避けられるようになっていった。その多くは件のテキストをThe Great Machineの直言だとは解釈していない者たちだ"
+    },
+    "Unigami salvaged and incorporated Progenitor-era memory chips into her cortex, causing her to occasionally use gibberish words like “poodle” and “celery.” On the battlefield, she is sometimes courted by Foundation commanders who believe she contains important knowledge about the Progenitors. She quickly destroys these commanders.": {
+        "message": "UnigamiはサルベージしたProgenitor時代のメモリーチップを自らの大脳皮質に取り込んだ、すると「プードル」や「セロリ」といった意味不明な言葉を時々発するようになった。戦場では彼女がProgenitorsに関して何か重大な秘密を知っているのではないかと疑うFoundationのコマンダーにたびたび取り囲まれたが、即座に返り討ちにする"
+    },
+    "Unit Selection": {
+        "message": "ユニットの選択"
+    },
+    "Unit Types": {
+        "message": "ユニットタイプ"
+    },
+    "Units and structures that fire torpedoes can target submarines under water and units on the seafloor.": {
+        "message": "魚雷を発射可能なユニットおよび構造体は、水中にいる潜水艦や水面にいるユニットを攻撃対象にできる"
+    },
+    "Units gain +50% weapon range and +30% health, but only scouts and commanders can see.": {
+        "message": "ユニットの攻撃範囲が+50%、ライフが+30%アップする。ただしスカウトとコマンダーだけが可視できる"
+    },
+    "Unlike other Seekers that value battlefield effectiveness in their equipment, Freja has begun integrating decorative pieces into her chassis-- from raw materials such as pure gold and iron to strange progenitor artifacts like the four-wheeled vehicle adorning her head.": {
+        "message": "戦闘における効果の高さを追い求めて装備を整える他のSeekersと違い、Frejaは装飾的なパーツを自らの機体に組み込むことをいつしか始めた。純金や鋼鉄のような無垢の素材を取り入れたり、頭部に四輪車両のような形をしたProgenitorの遺物を付けたりと自由奔放だ"
+    },
+    "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself.": {
+        "message": "他のファクションとは異なり、The Legionis Machinaには確固としたヒエラルキーが存在する。階級が上のLegatesは複数の臣下Legatesを常に従えており、そして全LegatesはInvictusの配下である"
+    },
+    "Urcinius’ simple, uncomplicated logic framework translates to a calm stoicism before battle and an unusual decisiveness in the heat of combat. He rarely speaks, and this silence is often mistaken for depth. He prizes shiny things.": {
+        "message": "Uriciniusの複雑さの一切ないシンプルな論理フレームワークは、戦闘を目前にしても冷静そのもの、そして戦いのさなかには超絶的な決断力を発揮する。彼は滅多にしゃべらず、その沈黙はよく深みゆえと勘違いされる。彼はヒカリモノを好む"
+    },
+    "Use": {
+        "message": "消費量"
+    },
+    "Use Advanced Fabricators to build advanced metal extractors, advanced energy plants and the rest of the advanced structures.": {
+        "message": "上級ファブリケーターで上級金属抽出場や上級エネルギープラント、その他上級構造体を建造可能"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "陸戦車両弾薬テクノ"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "陸戦車両弾薬テクノは、全陸戦車両の攻撃力を25%増加させる"
+    },
+    "Vehicle Armor Tech": {
+        "message": "陸戦車両装甲テクノ"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "陸戦車両装甲テクノは、全陸戦車両のライフを50%増加させる"
+    },
+    "Vehicle Combat Tech": {
+        "message": "陸戦車両戦闘テクノ"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "陸戦車両戦闘テクノは、全陸戦車両の速度を50%、ライフを50%、攻撃力を50%増加させる"
+    },
+    "Vehicle Commander": {
+        "message": "陸戦車両コマンダー"
+    },
+    "Vehicle Engine Tech": {
+        "message": "陸戦車両エンジンテクノ"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "陸戦車両エンジンテクノは、全陸戦車両の速度を50%増加させる"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "陸戦車両ファブリケーターテクノ"
+    },
+    "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%": {
+        "message": "陸戦車両ファブリケーターテクノは、全陸戦車両ユニットの金属系建造コストを25%削減する"
+    },
+    "Vela rejects the Synchronous’ universal contempt for all things organic, instead arguing for further experiments on machine-organism integration. She has attempted several times to interface with shrubs, with limited success. She is considered a leading candidate for forcible deep-system re-synchronization.": {
+        "message": "VelaはThe Synchronousの有機体全般に対する一貫した軽蔑的態度を拒否、むしろ機械と有機体の融合を推し進める実験の促進に賛成だという立場を取った。彼女は何度か低木群と意志の疎通を試みたが、これまでのところあまり成功したとはいえない。彼女は強制的深システム再同期化の筆頭対象とみなされている"
+    },
+    "Vigilant": {
+        "message": "警戒範囲拡大"
+    },
+    "Welcome Commander.": {
+        "message": "ようこそ、コマンダー"
+    },
+    "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind.": {
+        "message": "「同期」のプロセスで実際に何が起きているかは不明である、同期の対象はその過程を覚えていないからだ。しかしその結果は明らかである。個としてのコマンダーとそのアイデンティティはパーツとして全体に組み込まれ、その見返りとしてコマンダーはServantsと密に連動/コミュニケーションが取れる比類なき力を手に入れる、その連携の高さたるやまるで1つの精神体であるかのようだ"
+    },
+    "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots.": {
+        "message": "Invictusが再起動したとき、彼のメモリは他のどんなコマンダーよりも「全体」を成していた。それがまさに、彼が支配的であれる理由であるとされている。それが真実なのかは定かではないが、ひとつ確かなことは、コマンダーの起源についてInvictusは全てを同士に語ったわけではないということだ"
+    },
+    "When needed, [style=control]Left click the alt-fire button[/style] and [style=control]left click a location or enemy unit to fire[/style] the very powerful [strong]Uber Cannon[/strong].": {
+        "message": "必要に応じて、[style=control]サブ攻撃ボタンを左クリック[/style]、そして[style=control]位置または敵ユニットを左クリック[/style]で非常に強力な[strong]UBERキャノン[/strong]を発射"
+    },
+    "When the Synchronous salient was finally turned back near the end of the Outbreak Wars, this quick-thinking messenger bore the news back to Invictus, stealing glory from the commanders who did the fighting and securing himself a role as chief envoy for the Imperator. Though he participates in front-line combat, he gladly offloads the dirtiest work to his more expendable compatriots.": {
+        "message": "Outbreak Warsの終盤、Synchronousの前線部隊がついに撤退を始めた時、いちはやく戦局を見抜いたMessengerはその情報をInvictusの元に届けた。そしてコマンダーたちの戦果を横取りする形で、大将軍の特命大使的な任を確保した。前線での戦闘に確かに参加はしていたが、汚れ仕事は全て「使い捨て」の同胞たちに押し付けていた"
+    },
+    "When the economy income can support a factory, that factory can always run at full efficiency.": {
+        "message": "経済的利益によって工場の運営が支えられることで、その工場は最大効率で稼働することができる"
+    },
+    "When the notification for the Halley Engine arrives, [style=control]left click on the orange notification and select the ice planet for annihilation.[/style]": {
+        "message": "ハレーエンジン到着の通知が届いたら、[style=control]オレンジの通知を左クリックしてから氷の惑星を選択して殲滅を開始[/style]"
+    },
+    "While commanders can collate and process a staggering amount of data at once to make decisions, only so much of that data can be deemed relevant. Quintus does so by breaking everything possible down into numbers to be put into a complicated formula. Quintus does not accept percentage-based outcomes, only a certain true or false.": {
+        "message": "コマンダーたちは連携し合うことで圧倒的なまでの量のデータを一気に処理して決断を下すことができるが、実質的に考慮されるのは実はそのデータの極一部だけだ。翻ってQuintusはあらゆる可能性を数字に落とし込み、複雑な公式に組み込むことで決断を下す。Quintusはパーセンテージによる結果を受け入れない、全てを「真」か「偽」と考える"
+    },
+    "While most Revenant commanders build a successor from salvaged battlefield wreckage, Xul-Kutu has chosen to construct a quadrupedal pet, instead. She loves the creature too much to take it with her to battle, so she usually leaves it at a fellow commander’s hangar, where it makes a terrible mess.": {
+        "message": "多くのRevenantのコマンダーがサルベージした戦場の残骸群から後継機体を造るが、Xul-Kutuは四足歩行のペットを造ることを選んだ。彼女は万が一のことがあったらいけないと、決してその「動物」を戦場には連れて行かない。そこで友軍のコマンダーのハンガーなどに置いていくのだが、だいたい「粗相」をするそうだ。"
+    },
+    "While other Seekers tend to replace components as better ones are found, Dis tends to add more parts to her form--particularly nuclear reactors. Somehow, she has rigged herself with three tandem nuclear reactors. This has made her fearsome on the battlefield, and other seekers deployed with her tend to try to find landing zones on opposite sides of the planet, or a different one entirely.": {
+        "message": "多くのSeekerは状態の良いコンポーネントを見つけるとすぐ交換して入れ替えるものだが、Disはどんどん継ぎ足していくことを好む、特に核リアクターはツギハギだらけだ。その結果、彼女は3つもの核リアクターを自身の身に宿している。これにより、彼女は戦場において「脅威」とされていて、彼女と共に派遣される他のSeekerは惑星の反対側の着陸地帯、もしくはまったく別の惑星に着陸するようにしている"
+    },
+    "While rare, there are Servants who seek out Synchronous systems and request to be synchronized. Often these individuals hope to be freed by mounting existential questions and fears as their neural nets process more and more complicated data models. Erom is one such example.": {
+        "message": "ごく稀にだが、Synchronousのシステムを探して自ら同期することを望むServantもいる。こうした個体は、尽きることのない存在に対する疑問から解き放たれたいという動機で動いているようだ。神経系のネットプロセスが複雑なデータモデル化していくことへの恐れもあるという。Eromはまさにそんな個体の典型例だ"
+    },
+    "While there is much knowledge of old progenitor technology, progenitor culture and history remains largely a mystery. Glohm is one of the few that has managed to find scraps of progenitor culture in the form of ancient physical images. Each of these has been carefully cataloged.": {
+        "message": "Progenitorの旧テクノロジーの知識は多く伝承されている一方で、その文化や歴史は大いなる謎のままである。Glohmは、物理的イメージという形をしたProgenitorの文化の痕跡を探し当てることに成功した数少ない存在である。これらの物理的イメージは厳密にカタログ化されている"
+    },
+    "Xiercry so detests what he calls the 'slime-infected dirt' of planetary surfaces that he has petitioned the Synchronous to have him converted to an orbital unit so that he’ll never have to touch the ground again. He ends battles as rapidly as he can so that he can return to orbit before 'the stink gets on me and won’t come off.'": {
+        "message": "Xiercryは惑星の地表面にある「細菌だらけの土くれ」を蛇蝎のごとく嫌っており、それだけを理由にSynchronousに懇願して、自身を衛星軌道ユニットに変換してもらった。そうすれうばもう二度と地上に触れなくて良いからだ。戦闘は常に短時間で終わらせる、それの臭いが体に染み付いて取れなくなる前に衛星軌道上に戻りたいからだ"
+    },
+    "Yama’s gallant battlefield exploits are legendary among Revenant commanders. Unfortunately, this commander’s name is Gor-Gata, and his only accomplishment is to have been standing next to Yama when a reactor overload blew the storied commander apart. Gor-Gata donned Yama’s mostly-intact remains and has posed as Yama ever since. He enjoys the adulation, but resents having to live up to his namesake’s brave reputation.": {
+        "message": "Yamaの戦場における勇敢な戦いぶりはRevenantのコマンダーの間では伝説とされている。しかし残念ながらこのコマンダーの本当の名前はGor-Gataだ。とあるリアクターが過負荷で爆発してYamaをバラバラにした時、彼はそのコマンダーのすぐ近くにいた。Gor-GotaはYamaの無傷なパーツを自分の機体に取り付け、以来Yamaと名乗っている。チヤホヤされるのはいい気分だが、その名前にふさわしい活躍を期待されることは正直煩わしく思っている"
+    },
+    "Yelam is a yes-man who stands out among a collective comprised entirely of yes-men. He vehemently agrees with whatever position has most recently been espoused by Metrarch, to the increasing annoyance of most other members of the Synchronous. Even Metrarch has quietly explored the possibility of having him forcibly de-synchronized.": {
+        "message": "Yelamは精鋭イエスマンが揃っている集団の中でも際立つほどの生粋のイエスマンだ。Metrarchが支持するものはどんな矛盾があろうとも熱烈に支持する、その節操のなさはSynchronousの多くのメンバーにとって不愉快極まりないものとなっている。当のMetrarchでさえ、Yelamとの同期を強制的に解除することを密かに検討しているという"
+    },
+    "Yes": {
+        "message": "Yes"
+    },
+    "You can save up to 10 camera anchors by using numbers 0 - 9.": {
+        "message": "0から9までの数字を使用して、最大10個のカメラアンカーを保存できる"
+    },
+    "Zeus Tech": {
+        "message": "Zeus テクノ"
+    },
+    "Zhor has such unreliable memory banks that he cannot be relied upon to recall the outcome of his previous battle. This shortcoming has caused him to develop a highly-improvisational fighting style that makes him unpredictable on the battlefield, and he is widely feared by foes of the Foundation. He etches the names of his lieutenants on his wrist before each battle.": {
+        "message": "Zhorのメモリバンクは非常に不安定であるため、彼は直近の戦いの結果ですら正確に思い出すことができない。この欠陥がために、彼は非常に即興的な戦い方をするようになっていき、その予測不可能なスタイルからFoundationの敵に広く恐れられるようになっている。彼は戦いのたびに手首に副官の名前を刻む習慣がある"
+    },
+    "Zontuk was assembled from the collected parts of three Legionis Machina commanders whose natural pomposity has in Zontuk been multiplied tenfold. He is convinced of his superiority to all other beings, a belief made all the more unbearable by his unmatched record of battlefield success. If pressed, most Revenant commanders will admit that they want to see Zontuk go down, hard.": {
+        "message": "Zontukは3体のLegionis Machinaのコマンダーのパーツを寄せ集めて造られたが、その生来的な尊大さはなぜかZontukの中で膨らんで10倍にもなってしまった。彼は自分が他を圧倒して優れた存在であると確信しているが、その割に芳しくない戦場での成功体験の少なさに耐えられなくなっている。表立っては発言しないが、多くのRevenantのコマンダーはZontukが派手に失敗することを願っている"
+    },
+    "[strong]Aircraft:[/strong] Highly mobile but expensive flying units that are susceptible to enemy anti-air.": {
+        "message": "[strong]飛行機体:[/strong] 高い機動性を持つが高価な飛行ユニット。対空攻撃に弱い"
+    },
+    "[strong]Annihilate[/strong] the enemy commander by smashing it with a planet.": {
+        "message": "惑星ごと破壊して、敵コマンダーを[strong]殲滅[/strong]せよ"
+    },
+    "[strong]Bots:[/strong] Quick and lightly armored units that tend to be used for multiple purposes.": {
+        "message": "[strong]ボット:[/strong] 小回りが利く軽装甲ユニット。様々な用途に使用される"
+    },
+    "[strong]FIGHT[/strong] the enemy commander.": {
+        "message": "敵コマンダーと[strong]戦闘[/strong]"
+    },
+    "[strong]JUMP[/strong] to this star system.": {
+        "message": "この星系に[strong]ジャンプ[/strong]"
+    },
+    "[strong]Naval:[/strong] Very heavily armored units but are relegated to water movement.": {
+        "message": "[strong]海戦兵器:[/strong]重装甲ユニットだが、行動は水域に限られる"
+    },
+    "[strong]Note:[/strong] Commanders supply enough metal and energy to build a factory before building metal extractors and energy plants.": {
+        "message": "[strong]注意:[/strong]金属抽出場やエネルギープレントを建造する前の時点でも、コマンダーたちは1つの工場の建造に必要な分の金属とエネルギーを提供できる"
+    },
+    "[strong]Select[/strong] the next star system.": {
+        "message": "次の星系を[strong]選択[/strong]"
+    },
+    "[strong]Vehicles:[/strong] Slow, heavily armored units that tend to have a singular purpose.": {
+        "message": "[strong]陸戦車両:[/strong]移動速度遅。単一の目的遂行に向いている重装甲ユニット"
+    },
+    "[style=control]Build 3 more vehicle, bot, or air factories.[/style]": {
+        "message": "[style=control]あと3体の陸戦車両、またはボットか飛行工場を建造しよう[/style]"
+    },
+    "[style=control]Build a Halley Engine[/style] on the moon using all the advanced fabrication units.": {
+        "message": "上級ファブリケーターユニットを使って、月に[style=control]ハレーエンジンを建造しよう[/style]"
+    },
+    "[style=control]Build a fabrication unit[/style] from a factory.": {
+        "message": "工場で[style=control]ファブリケーターユニットを建造しよう[/style]"
+    },
+    "[style=control]Build a fabrication unit[/style] from the factory.": {
+        "message": "工場で[style=control]ファブリケーターユニットを建造しよう[/style]"
+    },
+    "[style=control]Build a factory and several fabrication units.[/style]": {
+        "message": "[style=control]工場を1体と複数のファブリケーターユニットを建造しよう[/style]"
+    },
+    "[style=control]Build a second teleporter[/style] on the earth-like planet with the commander or a fabrication unit.": {
+        "message": "地球に似た惑星にコマンダーかファブリケーターユニットを使って[style=control]2体目のテレポーターを建造しよう[/style]"
+    },
+    "[style=control]Build a teleporter[/style] on the moon with your advanced fabrication unit.": {
+        "message": "上級ファブリケーターユニットを使って月に[style=control]テレポーターを建造しよう[/style]"
+    },
+    "[style=control]Build a vehicle, bot, or air factory.[/style]": {
+        "message": "[style=control]陸戦車両、またはボットから飛行工場を建造しよう[/style]"
+    },
+    "[style=control]Build additional metal extractors and energy plants[/style] to support the increased economy draw of the advanced factory.": {
+        "message": "[style=control]金属抽出場とエネルギープラントを増やして[/style] 上級工場による各種資源の需要増加に対応しよう"
+    },
+    "[style=control]Build advanced combat units from the advanced factories and destroy the enemy commander.[/style]": {
+        "message": "[style=control]上級工場で上級戦闘ユニットを建造して、敵コマンダーを撃破せよ[/style]"
+    },
+    "[style=control]Build an Astraeus[/style] from the orbital launcher.": {
+        "message": "衛星軌道ランチャーを使って[style=control]Astraeusを建造しよう[/style]"
+    },
+    "[style=control]Build an advanced factory and an advanced fabrication unit.[/style]": {
+        "message": "[style=control]上級工場と上級ファブリケーターユニットを建造しよう[/style]"
+    },
+    "[style=control]Build an orbital launcher with the fabrication unit.[/style]": {
+        "message": "[style=control]ファブリケーターユニットをを使って衛星軌道ランチャーを建造しよう[/style]"
+    },
+    "[style=control]Build many more advanced fabrication units and send them through the teleporter to the moon.[/style]": {
+        "message": "[style=control]上級ファブリケーターユニットを数多く建造し、テレポーターを使って月へとどんどん輸送しよう[/style]"
+    },
+    "[style=control]Build tanks and [strong]annihilate[/strong] the enemy commander.[/style]": {
+        "message": "[style=control]タンクを建造して、敵コマンダーを[strong]殲滅[/strong]せよ[/style]"
+    },
+    "[style=control]Click and drag the mouse wheel[/style] to pan the camera around the planet.": {
+        "message": "[style=control]マウスホイールをクリック＆ドラッグ[/style]で惑星の回りをカメラでパン"
+    },
+    "[style=control]Connect the teleporters[/style] by selecting one and [style=control]right click[/style] on the second one.": {
+        "message": "1つ目を選択して[style=control]テレポーターを連結させよう[/style]、[style=control]右クリック[/style]で2つ目を選択だ"
+    },
+    "[style=control]Issue a stop order[/style] on the factory to clear the build queue and stop all construction.": {
+        "message": "工場に[style=control]停止オーダーを発行[/style]すると建造キューがクリアされて全ての建造が停止する"
+    },
+    "[style=control]Issue an unload command to the Astraeus[/style] on the surface of the moon.": {
+        "message": "月の地表面にいる[style=control]Astraeusに荷降コマンドを発行[/style]"
+    },
+    "[style=control]Issue that fabrication unit to build an advanced factory.[/style]": {
+        "message": "[style=control]ファブリケーターユニットを発動させて上級工場を1つ建造しよう[/style]"
+    },
+    "[style=control]Left click and drag[/style] a circle around an area to issue an area patrol.": {
+        "message": "エリア近辺にあるサークルを[style=control]左クリック＆ドラッグ[/style]でエリアパトロールを発動"
+    },
+    "[style=control]Left click and drag[/style] a circle around an area to reclaim wreckage and trees for metal.": {
+        "message": "エリア周辺のサークルを[style=control]左クリック＆ドラッグ[/style]で残骸や木々を取得して金属を確保"
+    },
+    "[style=control]Left click and drag[/style] a circle around some nearby metal spots to initiate an area build command.": {
+        "message": "金属スポット近くのサークルを[style=control]左クリック＆ドラッグ[/style]でエリア建造コマンドを発動"
+    },
+    "[style=control]Left click anywhere on a valid ground location[/style] to initiate the build command.": {
+        "message": "[style=control]任意の地上位置を左クリック[/style] で建造コマンドを開始する"
+    },
+    "[style=control]Left click on a [strong]green[/strong] metal spot[/style] to initiate the build command.": {
+        "message": "[style=control][strong]緑色[/strong]の金属スポットを左クリック[/style]で建造コマンドを実行開始"
+    },
+    "[style=control]Left click on the commander[/style] to select it.": {
+        "message": "[style=control]コマンダーを左クリック[/style] で選択する"
+    },
+    "[style=control]Left click on the energy plant[/style] in the build bar at the bottom of the screen.": {
+        "message": "画面下部のビルドバーにある[style=control]エネルギープラントを左クリック[/style]"
+    },
+    "[style=control]Left click on the metal extractor[/style] in the build bar at the bottom of the screen.": {
+        "message": "画面下部のビルドバーにある[style=control]金属抽出場を左クリック[/style] "
+    },
+    "[style=control]Left click on the reclaim icon[/style] or press [style=control]E[/style].": {
+        "message": "[style=control]取得アイコンを左クリック[/style]または[style=control]E[/style]を押す"
+    },
+    "[style=control]Left click[/style] [strong]FIGHT[/strong] to initiate landing in this star system.": {
+        "message": "[strong]戦闘[/strong]を[style=control]左クリック[/style]でこの星系への着陸を開始"
+    },
+    "[style=control]Left click[/style] [strong]JUMP[/strong] to warp to this star system.": {
+        "message": "[strong]ジャンプ[/strong]を[style=control]左クリック[/style]でこの星系にワープ"
+    },
+    "[style=control]Left click[/style] [strong]START ANNIHILATION[/strong]": {
+        "message": "[style=control]左クリック[/style] [strong]殲滅を開始[/strong]"
+    },
+    "[style=control]Left click[/style] inside the green circle indicating the landing zone.": {
+        "message": "着陸地帯を示している緑のサークルの中を [style=control]左クリック[/style]"
+    },
+    "[style=control]Left click[/style] on the [strong]tank[/strong] icon to issue a build order to the factory.": {
+        "message": "[strong]タンク[/strong] アイコン上を [style=control]左クリック[/style] で工場に建造オーダーを出す"
+    },
+    "[style=control]Left click[/style] on the blue Atlas Titan to select it.": {
+        "message": "青いAtlas Titanを[style=control]左クリック[/style] で選択"
+    },
+    "[style=control]Left click[/style] on the commander to select it.": {
+        "message": "コマンダーを[style=control]左クリック[/style] で選択"
+    },
+    "[style=control]Left click[/style] on the connected star system with the orange highlight to continue.": {
+        "message": "オレンジの線でつながっている星系上を[style=control]左クリック[/style] で次へ進む"
+    },
+    "[style=control]Left click[/style] on the energy plant icon on the build bar.": {
+        "message": "ビルドバーにあるエネルギープラントのアイコンを [style=control]左クリック[/style]"
+    },
+    "[style=control]Left click[/style] the next star system to select it.": {
+        "message": "次の星系を [style=control]左クリック[/style] で選択"
+    },
+    "[style=control]Load the advanced fabrication unit onto the Astraeus.[/style]": {
+        "message": "[style=control]上級ファブリケーターユニットをAstraeusへ積み込む[/style]"
+    },
+    "[style=control]Press N[/style] to reorient the planet, north up.": {
+        "message": "[style=control]Nを押して[/style] 惑星の向きを修正（北が上になる）"
+    },
+    "[style=control]Press alt + 1[/style] to return your camera to the saved anchor spot.": {
+        "message": "[style = control] alt + 1 を押すと[/style] 、カメラが保存済のアンカースポットに戻る"
+    },
+    "[style=control]Press shift + 1[/style] to save a camera anchor.": {
+        "message": "カメラアンカーを保存するには、[style = control]shift + 1[/style] を押す"
+    },
+    "[style=control]Queue 5 attack units.[/style]": {
+        "message": "[style=control]攻撃ユニット5体をキュー列に入れる[/style]"
+    },
+    "[style=control]Right click[/style] on the unit icon to remove it from the queue.": {
+        "message": "ユニットアイコンを [style=control]右クリック[/style] でキュー列から削除"
+    },
+    "[style=control]Scroll the mouse wheel[/style] to control the camera zoom level.": {
+        "message": "[style=control]マウスホイールをスクロール[/style]でカメラのズームレベルを調整"
+    },
+    "[style=control]Select a unit and left click the patrol icon[/style], or press [style=control]P[/style].": {
+        "message": "[style=control]ユニットを選択してパトロールアイコンを左クリック[/style]、または [style=control]P[/style] を押す"
+    },
+    "[style=control]Select all the factories[/style], [style=control]order them all to construct units[/style] then [style=control]click on the continuous icon[/style], or press [style=control]L[/style], to tell the factory to loop its build queue.": {
+        "message": "[style=control]全ての生産工場を選択[/style]し、[style=control]ユニットの建造をまとめてオーダー[/style]。それから[style=control]連続アイコンをクリック[/style]、または[style=control]L[/style]を押すと、工場がその建造キューをループし始める"
+    },
+    "[style=control]Select another fabrication unit.[/style]": {
+        "message": "[style=control]別のファブリケーターユニットを選択[/style]"
+    },
+    "[style=control]Select any fabrication unit[/style] and [style=control]right click[/style] on the factory that is actively building.": {
+        "message": "[style=control]任意のファブリケーターユニットを選択[/style]してから、生産中の工場を[style=control]右クリック[/style]"
+    },
+    "[style=control]Select landing zone 1 on the Tropical Planet 'Annihilation'[/style] and start the annihilation.": {
+        "message": "[style=control]熱帯惑星 'Annihilation' の着陸地帯 1を選択[/style]して殲滅を開始"
+    },
+    "[style=control]Select the [strong]vehicle factory[/strong][/style].": {
+        "message": "[style=control][strong]陸戦車両工場[/strong]を選択[/style]"
+    },
+    "[style=control]Select the commander[/style] and [style=control]issue an order[/style] to build a [strong]vehicle factory[/strong].": {
+        "message": "[style=control]コマンダーを選択[/style]して、[strong]陸戦車両工場[/strong][style=control]を建造するオーダーを発行[/style]"
+    },
+    "[style=control]Select the commander[/style] and [style=control]left click[/style] on the metal extractor icon in the build bar.": {
+        "message": "[style=control]コマンダーを選択[/style]して、ビルドバーにある金属抽出場アイコンを[style=control]左クリック[/style]"
+    },
+    "[style=control]Select your landing zone[/style] and start the annihilation.": {
+        "message": "[style=control]着陸地帯を選択して[/style]殲滅を開始"
+    },
+    "[style=control]Shift + left click[/style] to queue up five units at a time.": {
+        "message": "[style=control]Shift + 左クリック[/style]で一度に5ユニットずつキューに並べることが可能"
+    },
+    "[style=control]Zoom in on the ice planet to watch the annihilation.[/style]": {
+        "message": "[style=control]氷の惑星にズームインして殲滅を観察する[/style]"
+    },
+    "[style=control]Zoom in to the planet[/style] and [style=control]pan to the green circle landing zone.[/style]": {
+        "message": "[style=control]惑星にズームイン[/style]して[style=control]緑のサークルで示されている着陸地帯にパン[/style]"
+    },
+    "[style=control]Zoom out to the star system view[/style] and [style=control]zoom in on the moon.[/style]": {
+        "message": "[style=control]星系全体へのビューにズームアウト[/style]してから[style=control]月へズームイン[/style]"
+    }
+}

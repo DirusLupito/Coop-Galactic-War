@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "全滅"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "平均"
+    },
+    "Built": {
+        "message": "建造"
+    },
+    "Destroyed": {
+        "message": "摧毀"
+    },
+    "Determining ladder rank...": {
+        "message": "天梯排名計算中……"
+    },
+    "Draw": {
+        "message": "平手"
+    },
+    "Duration:": {
+        "message": "時間："
+    },
+    "Efficiency": {
+        "message": "效率"
+    },
+    "Energy": {
+        "message": "能源"
+    },
+    "Metal": {
+        "message": "金屬"
+    },
+    "Produced": {
+        "message": "生產"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "回到主功能表"
+    },
+    "REVIEW": {
+        "message": "回顧"
+    },
+    "Requeue": {
+        "message": "重新排隊"
+    },
+    "SPECTATE": {
+        "message": "觀戰"
+    },
+    "The battle ended in a draw.": {
+        "message": "戰鬥結果為平手。"
+    },
+    "The game has ended.": {
+        "message": "遊戲結束。"
+    },
+    "Total Oblivion": {
+        "message": "全滅"
+    },
+    "Units": {
+        "message": "單位"
+    },
+    "Used": {
+        "message": "使用"
+    },
+    "VICTORY IS YOURS": {
+        "message": "你獲得了勝利"
+    },
+    "VIEW RESULTS": {
+        "message": "觀看結果"
+    },
+    "VIEW STATS": {
+        "message": "觀看數據"
+    },
+    "Winner:": {
+        "message": "勝利者："
+    },
+    "Winners:": {
+        "message": "勝利者："
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "你已被殲滅"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "你目前的排名不明。完成更多場遊戲後才能決定你的天梯排名。"
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "你的 1v1 天梯排名為 __rank_title__。"
+    }
+}

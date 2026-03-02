@@ -1,0 +1,80 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": " (+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(업데이트 중...)"
+    },
+    "(no info available)": {
+        "message": "(정보 없음)"
+    },
+    "Duration": {
+        "message": "지속 시간"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "리플레이 목록을 가져오지 못했습니다."
+    },
+    "Filter": {
+        "message": "필터"
+    },
+    "Galactic War": {
+        "message": "은하계 전쟁"
+    },
+    "Game": {
+        "message": "게임"
+    },
+    "Lobby Id": {
+        "message": "로비 ID"
+    },
+    "Longest Game Duration": {
+        "message": "최장 경기 시간"
+    },
+    "Most Recent": {
+        "message": "가장 최근"
+    },
+    "Multiplayer": {
+        "message": "멀티 플레이"
+    },
+    "Replays": {
+        "message": "리플레이"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Search": {
+        "message": "검색하기"
+    },
+    "Sorted By": {
+        "message": "정렬 기준:"
+    },
+    "Version": {
+        "message": "버전"
+    },
+    "Versus AI": {
+        "message": "vs AI"
+    },
+    "View": {
+        "message": "보기"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "로비 ID로 직접 보기: __lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "리플레이 보기"
+    },
+    "Winner": {
+        "message": "승자"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": " __gwClientNames__: 은하계 전쟁 \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1v1 랭크"
+    },
+    "All Recent Games": {
+        "message": "모든 최근 게임"
+    },
+    "My Games Only": {
+        "message": "나의 게임만 보기"
+    }
+}

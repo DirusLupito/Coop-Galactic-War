@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP 공격적"
+    },
+    "AIP Air": {
+        "message": "AIP 항공"
+    },
+    "AIP Bot": {
+        "message": "AIP 봇"
+    },
+    "AIP Cautious": {
+        "message": "AIP 신중"
+    },
+    "AIP Defender": {
+        "message": "AIP 방어자"
+    },
+    "AIP Economist": {
+        "message": "AIP 경제학자"
+    },
+    "AIP Fabber": {
+        "message": "AIP 건설 유닛"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP 신속 테크"
+    },
+    "AIP Foundation": {
+        "message": "AIP 토대"
+    },
+    "AIP Land": {
+        "message": "AIP 지상"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP 레고니스 머시나"
+    },
+    "AIP Low Tech": {
+        "message": "AIP 로우 테크"
+    },
+    "AIP Naval": {
+        "message": "AIP 해양"
+    },
+    "AIP Orbital": {
+        "message": "AIP 궤도"
+    },
+    "AIP Random": {
+        "message": "AIP 무작위"
+    },
+    "AIP Revenants": {
+        "message": "AIP 레버넌트"
+    },
+    "AIP Rush": {
+        "message": "AIP 러쉬"
+    },
+    "AIP Swarm": {
+        "message": "AIP 스웜"
+    },
+    "AIP Synchronous": {
+        "message": "AIP 동기화"
+    },
+    "AIP Tank": {
+        "message": "AIP 탱크"
+    },
+    "AIP Turtle": {
+        "message": "AIP 터틀"
+    },
+    "AIP Amphibious": {
+        "message": "AIP 수륙 양용"
+    },
+    "AIP All-terrain": {
+        "message": "AIP 모든 지형"
+    },
+    "AIP Artillery": {
+        "message": "AIP 포병"
+    },
+    "AIP Assault": {
+        "message": "AIP 어설트"
+    },
+    "AIP Boomer": {
+        "message": "AIP 부머"
+    },
+    "AIP Fortress": {
+        "message": "AIP 요새"
+    },
+    "AIP Heavy": {
+        "message": "AIP 헤비"
+    },
+    "AIP Infernodier": {
+        "message": "AIP 인페르노디어"
+    },
+    "AIP Micro": {
+        "message": "AIP 마이크로"
+    },
+    "AIP Nuker": {
+        "message": "AIP 누커"
+    },
+    "AIP Raider": {
+        "message": "AIP 레이더"
+    },
+    "AIP Ranked": {
+        "message": "AIP 랭킹"
+    },
+    "AIP Sniper": {
+        "message": "AIP 스나이퍼"
+    }
+}

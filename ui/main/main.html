@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <noloc><title>Planetary Annihilation Main</title></noloc>
+    <link href="bundle://boot/boot.css" rel="stylesheet" type="text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="bundle://boot/boot.js" type="text/javascript" defer></script>
+    <script src="coui://ui/main/shared/js/ui_media_utility.js" type="text/javascript"></script>
+    <script src="coui://ui/main/game/community_mods/community-mods-manager.js" defer></script>
+    <script src="coui://ui/main/game/community_mods/states/main.js" type="text/javascript" defer></script>
+    <script src="coui://ui/main/main.js" type="text/javascript" defer></script>
+</head>
+<body>
+    <div id="splash_overlay">
+        <img id="img_splash" src="uncached://pa/ui/splash/splash.png" />
+        <div id="black_splash">
+        </div>
+    </div>
+    <div class="fullscreen front">
+        <panel id="player" yield-focus data-bind="visible: showPlayer, attr: { src: playerUrl }" src="" fit="dock-top"></panel>
+    </div>
+    <div class="fullscreen back">
+        <panel id="game" no-input src="coui://ui/main/game/start/start.html"></panel>
+        <panel id="uberbar" src="coui://ui/main/uberbar/uberbar.html"></panel>
+    </div>
+</body>
+</html>

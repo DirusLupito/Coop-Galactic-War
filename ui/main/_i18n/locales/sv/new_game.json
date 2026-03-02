@@ -1,0 +1,83 @@
+{
+    "- Host": {
+        "message": ": Värd"
+    },
+    "AI Commander": {
+        "message": "AI Befälhavare"
+    },
+    "Add AI Commander": {
+        "message": "Lägg till AI Befälhavare"
+    },
+    "Add Slot": {
+        "message": "Lägg Till Plats"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ANSLUTNING TILL SERVER FÖRLORAD"
+    },
+    "Chat": {
+        "message": "Chatt"
+    },
+    "Empty": {
+        "message": "Tom"
+    },
+    "Free For All": {
+        "message": "Alla Mot Alla"
+    },
+    "Friends": {
+        "message": "Vänner"
+    },
+    "Game Lobby": {
+        "message": "SPELLOBBY"
+    },
+    "Game Mode": {
+        "message": "Speltyp:"
+    },
+    "Join": {
+        "message": "Anslut"
+    },
+    "Kick": {
+        "message": "Sparka"
+    },
+    "Leave": {
+        "message": "Lämna"
+    },
+    "Open to:": {
+        "message": "Öppen för:"
+    },
+    "Player Slot": {
+        "message": "Spelarplats"
+    },
+    "Private": {
+        "message": "Privat"
+    },
+    "Public": {
+        "message": "Offentlig"
+    },
+    "Ready": {
+        "message": "Redo"
+    },
+    "Remove": {
+        "message": "Ta Bort"
+    },
+    "Returning to Main Menu": {
+        "message": "Återgår till Huvudmeny"
+    },
+    "SHARE ARMY": {
+        "message": "DELA ARMÉ"
+    },
+    "Spectate": {
+        "message": "Titta på"
+    },
+    "Spectators": {
+        "message": "ÅSKÅDARE"
+    },
+    "Start Game": {
+        "message": "Starta Spelet"
+    },
+    "System": {
+        "message": "System:"
+    },
+    "Team Armies": {
+        "message": "Team Arméer"
+    }
+}

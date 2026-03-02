@@ -1,0 +1,47 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Oppdaterer...)"
+    },
+    "(no info available)": {
+        "message": "(ingen informasjon tilgjengelig)"
+    },
+    "Duration": {
+        "message": "Lengde"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "HENTING AV REPRISELISTE MISLYKTES"
+    },
+    "Game": {
+        "message": "Spill"
+    },
+    "Lobby Id": {
+        "message": "Lobbyid"
+    },
+    "Longest Game Duration": {
+        "message": "Lange spill"
+    },
+    "Most Recent": {
+        "message": "Nylige"
+    },
+    "Returning to Main Menu": {
+        "message": "Returnerer til hovedmenyen"
+    },
+    "Search": {
+        "message": "Søk"
+    },
+    "Sorted By": {
+        "message": "Sortert etter"
+    },
+    "View": {
+        "message": "Se"
+    },
+    "Watch Replay": {
+        "message": "Se reprise"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

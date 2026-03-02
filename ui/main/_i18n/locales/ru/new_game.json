@@ -1,0 +1,221 @@
+{
+    "- Host": {
+        "message": "- Хост"
+    },
+    "AI Commander": {
+        "message": "ИИ Коммандер"
+    },
+    "AI:": {
+        "message": "ИИ: "
+    },
+    "Add AI": {
+        "message": "Добавить бота"
+    },
+    "Add AI Commander": {
+        "message": "Добавить ИИ Коммандера"
+    },
+    "Add Slot": {
+        "message": "Добавить слот"
+    },
+    "Add Team": {
+        "message": "Добавить команду"
+    },
+    "Alliance Victory": {
+        "message": "Победа альянса"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " Позволяет игрокам вступать в/разрывать альянсы, а также делиться ресурсами"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " Позволяет игрокам вырезать и вставлять юниты для экспериментов"
+    },
+    "Bounty Mode": {
+        "message": "Режим Охоты"
+    },
+    "Browse systems...": {
+        "message": "Обзор систем..."
+    },
+    "Building planets": {
+        "message": "Строительство планет"
+    },
+    "Building planets...": {
+        "message": "Строительство планет..."
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ПОТЕРЯНО СОЕДИНЕНИЕ С СЕРВЕРОМ"
+    },
+    "Chat": {
+        "message": "Чат"
+    },
+    "Default": {
+        "message": "По умолчанию"
+    },
+    "Dynamic Alliances": {
+        "message": "Динамичные союзы"
+    },
+    "Econ Rate": {
+        "message": "Мнж. экон."
+    },
+    "Empty": {
+        "message": "Пусто"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": " Победит первая команда, которая убьет коммандера (защищайте вашего самого слабого игрока)"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " За каждую убитую игроком армии присваивается множитель экономики, который ускоряет производство"
+    },
+    "Free For All": {
+        "message": "Все против всех"
+    },
+    "Friends": {
+        "message": "Друзья"
+    },
+    "Game Lobby": {
+        "message": "Игровое Лобби"
+    },
+    "Game Mode": {
+        "message": "Режим игры"
+    },
+    "Global Spectator Chat": {
+        "message": "Общий чат зрителей"
+    },
+    "Join": {
+        "message": "Присоединиться"
+    },
+    "Kick": {
+        "message": "Выгнать"
+    },
+    "Large Planets": {
+        "message": "Большие планеты"
+    },
+    "Leave": {
+        "message": "Покинуть"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "Множитель за убийство армии:"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " Зеленые стартовые зоны не используются. Игроки могут начать где угодно."
+    },
+    "Open to:": {
+        "message": "Открыто для:"
+    },
+    "Password (optional)": {
+        "message": "Пароль (необязательно)"
+    },
+    "Player Slot": {
+        "message": "Слот игрока"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Игрок выбирает место высадки на стартовой планете"
+    },
+    "Players": {
+        "message": "Игроки"
+    },
+    "Private": {
+        "message": "Личный"
+    },
+    "Public": {
+        "message": "Публичный"
+    },
+    "Random": {
+        "message": "Случайные"
+    },
+    "Ready": {
+        "message": "Готов"
+    },
+    "Remove": {
+        "message": "Удалить"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращение в главное меню"
+    },
+    "SHARE ARMY": {
+        "message": "ПОДЕЛИТЬСЯ АРМИЕЙ"
+    },
+    "SPECTATORS": {
+        "message": "ЗРИТЕЛИ"
+    },
+    "Sandbox": {
+        "message": "Песочница"
+    },
+    "Select System": {
+        "message": "Выберите систему"
+    },
+    "Shuffle landing zones": {
+        "message": "Рандомизировать зоны высадки"
+    },
+    "Slot": {
+        "message": "Слот"
+    },
+    "Slot __slot_number__": {
+        "message": "Слот __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "Слоты пусты"
+    },
+    "Spectate": {
+        "message": "Наблюдать"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " Сообщения от наблюдателей отображаются в игровом чате"
+    },
+    "Spectators": {
+        "message": "Наблюдатели"
+    },
+    "Start Anywhere": {
+        "message": "Начать где угодно"
+    },
+    "Start Game": {
+        "message": "Начать игру"
+    },
+    "Start Nearby": {
+        "message": "Начать рядом"
+    },
+    "Start Offworld": {
+        "message": "Начать на другой планете"
+    },
+    "Sudden Death Mode": {
+        "message": "Режим мгновенной смерти"
+    },
+    "Symmetrical": {
+        "message": "Симметричные"
+    },
+    "System": {
+        "message": "Система"
+    },
+    "Tag:": {
+        "message": "Метка:"
+    },
+    "Team": {
+        "message": "Команда"
+    },
+    "Team Armies": {
+        "message": "Командные армии"
+    },
+    "Team __team_number__": {
+        "message": "Команда __team_number__"
+    },
+    "Title": {
+        "message": "Название"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "У вас должен быть кто-то в списке друзей, чтобы создать игру только для них"
+    },
+    "Asteroid": {
+        "message": "Астероид"
+    },
+    "Multiple starting planets": {
+        "message": "Несколько начальных планет"
+    },
+    "Select a system": {
+        "message": "Выберите систему"
+    },
+    "Started": {
+        "message": "Началась игра"
+    },
+    "Waiting for system": {
+        "message": "Ожидаем выбора системы"
+    }
+}

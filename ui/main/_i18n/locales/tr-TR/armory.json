@@ -1,0 +1,83 @@
+{
+    "Account Name:": {
+        "message": "Hesap Adı:"
+    },
+    "Add To Cart": {
+        "message": "Sepete Ekle"
+    },
+    "Badges": {
+        "message": "Rozetlerim"
+    },
+    "CHECKOUT": {
+        "message": "ÖDE"
+    },
+    "Cancel": {
+        "message": "İPTAL"
+    },
+    "Cart": {
+        "message": "Sepet"
+    },
+    "Commanders": {
+        "message": "Kumandanlar"
+    },
+    "Confirmation code:": {
+        "message": "Onay Kodu:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "Satın aldığınıza dair onay aşağıdadır."
+    },
+    "Continue Shopping": {
+        "message": "Alişverişe Devam Et"
+    },
+    "Credit applied:": {
+        "message": "Kredi uygulandı:"
+    },
+    "Designed in collaboration with": {
+        "message": "İşbirliğiyle dizayn edilmiştir"
+    },
+    "Go to Main Menu": {
+        "message": "Ana Menüye Git"
+    },
+    "Here's your receipt.": {
+        "message": "Faturanız burdadır."
+    },
+    "Item": {
+        "message": "Ürün"
+    },
+    "Item is already in cart.": {
+        "message": "Ürün zaten sepetinizde."
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter Destekcileri"
+    },
+    "Price": {
+        "message": "Fiyat"
+    },
+    "REMOVE": {
+        "message": "ÇIKAR"
+    },
+    "Redeem": {
+        "message": "Öde"
+    },
+    "Return to Armory": {
+        "message": "Cephaneliğe Dön"
+    },
+    "Set As Default Commander": {
+        "message": "Varsayılan Kumandan Olarak Ata"
+    },
+    "Thank you for your purchase.": {
+        "message": "Satın aldığınız için teşekkürler."
+    },
+    "Total:": {
+        "message": "Toplam:"
+    },
+    "Updating...": {
+        "message": "Güncelleniyor..."
+    },
+    "Your cart is empty.": {
+        "message": "Sepetiniz boş."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "Satın aldığınız ürünler hesabınıza şimdi kaydedildi ve oyun içinden ulaşabilirsiniz."
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "CANCEL": {
+        "message": "إلغاء"
+    },
+    "Delete": {
+        "message": "إمسح"
+    },
+    "Delete this system?": {
+        "message": "إمسح هذا النظام الشمسي؟"
+    },
+    "Load System": {
+        "message": "حمل نظام شمسي"
+    },
+    "New system": {
+        "message": "نظام شمسي جديد"
+    },
+    "SHOW PLANETS": {
+        "message": "استعراض الكواكب"
+    },
+    "SHOW SYSTEMS": {
+        "message": "استعراض الانظمه  الشمسية"
+    },
+    "System Designer": {
+        "message": "مصمم النظام\\n"
+    }
+}

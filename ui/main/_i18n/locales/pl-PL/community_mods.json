@@ -1,0 +1,329 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "POZOSTAŁE PRÓBY: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Aktywny"
+    },
+    "Active Client": {
+        "message": "Aktywne (klient)"
+    },
+    "Active Server": {
+        "message": "Aktywne (serwer)"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Aktywne mody będą automatycznie aktualizowane przy uruchomieniu każdej gry i po jej zakończeniu."
+    },
+    "Active/Inactive": {
+        "message": "Aktywne/Nieaktywne"
+    },
+    "Available": {
+        "message": "Dostępne"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Konflikty modów dla moda systemu plików pod adresem:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "POWTÓRKI DUŻYCH GIER"
+    },
+    "Build:": {
+        "message": "Kompilacja:"
+    },
+    "By": {
+        "message": "Autor:"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "WERYFIKACJA MODÓW SYSTEMU PLIKÓW"
+    },
+    "COMMUNITY MODS": {
+        "message": "MODY SPOŁECZNOŚCI"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "POMOC SPOŁECZNOŚCI"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "POŁĄCZENIE Z SERWEREM NIEUDANE"
+    },
+    "Client Mods": {
+        "message": "Mody klienta"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Mody klienta są wczytywane tylko na Twoim kliencie i nie mają wpływu na rozgrywkę innych graczy."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Mody klienta nie mogą modyfikować jednostek ani ich specyfikacji w potyczkach z SI czy grach wieloosobowych."
+    },
+    "Community Mods": {
+        "message": "Mody społeczności"
+    },
+    "Companion Client Mods": {
+        "message": "Pomocnicze mody klienta"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Mody pomocnicze to specjalne mody klienta, które są wczytywane tymczasowo na żądanie modów serwera."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "Sprzeczne mody serwera:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "POBIERANIE MODÓW SERWERA"
+    },
+    "Date:": {
+        "message": "Data:"
+    },
+    "Dependencies": {
+        "message": "Zależności"
+    },
+    "Details": {
+        "message": "Szczegóły"
+    },
+    "Disable": {
+        "message": "Wyłącz"
+    },
+    "Disable Nukes": {
+        "message": "Wyłącz nuklearne"
+    },
+    "Disable Ragnaroks": {
+        "message": "Wyłącz Ragnaroki"
+    },
+    "Disable Titans": {
+        "message": "Wyłącz Titany"
+    },
+    "Disabled": {
+        "message": "Wyłącz."
+    },
+    "Downloads": {
+        "message": "Pobrania"
+    },
+    "Enable": {
+        "message": "Włącz"
+    },
+    "Enable All": {
+        "message": "Włącz wszystkie"
+    },
+    "Enabled Client": {
+        "message": "Włączone (klient)"
+    },
+    "Enabled Server": {
+        "message": "Włączone (serwer)"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "Mody włączone tylko dla lokalnego klienta we wszystkich grach (także w trybie obserwacji)"
+    },
+    "Enabled/Disabled": {
+        "message": "Włączone/Wyłączone"
+    },
+    "Filter": {
+        "message": "Filtr"
+    },
+    "Identifier:": {
+        "message": "Identyfikator:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "Jeśli wymagane mody pomocnicze nie będą uaktywnione, zostaną one pobrane, zaktualizowane, a następnie wczytane podczas dołączania do gry lub obserwacji potyczki z SI czy też gry wieloosobowej."
+    },
+    "Install": {
+        "message": "Zainstaluj"
+    },
+    "Installed": {
+        "message": "Zainstalowane"
+    },
+    "Installed Path:": {
+        "message": "Ścieżka instalacji:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Zainstalowane mody serwera i klienta w bazie pobierania"
+    },
+    "Installing Mods": {
+        "message": "Instalowanie modów"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "Podczas instalacji moda spakowany plik z jego zawartością zostanie pobrany do lokalnej bazy pobierania PA."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Mody z dużą liczbą jednostek, np. dodatek Legion, korzystają z modów pomocniczych, aby zmniejszyć rozmiary modów serwera oraz skrócić czas ich przesyłania i pobierania."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "W przypadku wolniejszych połączeń internetowych mody serwera z większą liczbą jednostek mogą się dłużej przesyłać lub pobierać."
+    },
+    "Local file system mod installed at:": {
+        "message": "Mod z lokalnym systemen plików zainstalowany pod adresem:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "MODY WYŁĄCZONE POPRZEZ --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "WCZYTYWANIE MODÓW KLIENTA"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "WCZYTYWANIE MODÓW KLIENTA W TRYBIE OFFLINE"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "WYSYŁANIE MODÓW POMOCNICZYCH... PROSZĘ CZEKAĆ"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "WCZYTYWANIE MODÓW SERWERA"
+    },
+    "Merge (experimental)": {
+        "message": "Scal (opcja eksperymentalna)"
+    },
+    "Mods available to install": {
+        "message": "Mody dostępne do zainstalowania"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "Większość zainstalowanych modów można używać w trybie offline – bez połączenia z Internetem (niektóre mogą jednak wymagać takiego połączenia)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Sprzeczne ze sobą mody serwera mogą powodować różne problemy, np. zniknięcie paska budowy lub awarie serwera."
+    },
+    "Name": {
+        "message": "Nazwa"
+    },
+    "No": {
+        "message": "Nie"
+    },
+    "No __description__ mods match your criteria": {
+        "message": "Żadne mody typu __description__ nie spełniają kryteriów"
+    },
+    "No units match your criteria": {
+        "message": "Żadne jednostki nie spełniają kryteriów"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "OFICJALNY DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "OFICJALNE PRZEWODNIKI"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "OFICJALNA POMOC"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Offline Mode": {
+        "message": "Tryb offline"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Jedynie mody serwera mogą modyfikować listę jednostek lub ich specyfikacje w potyczce z SI bądź grze wieloosobowej i są one pobierane z serwera przez każdego klienta, by zapobiec cheatowaniu."
+    },
+    "Priority": {
+        "message": "Priorytet"
+    },
+    "Priority:": {
+        "message": "Priorytet:"
+    },
+    "Privacy Policy": {
+        "message": "Polityka prywatności"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "RESETOWANIE AKTYWNYCH MODÓW KLIENTA"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "RESETOWANIE MODÓW SERWERA"
+    },
+    "Recommended": {
+        "message": "Rekomendowane"
+    },
+    "Recommended mods": {
+        "message": "Mody rekomendowane"
+    },
+    "Reload File System Mods": {
+        "message": "Zresetuj mody systemu plików"
+    },
+    "Returning to Main Menu": {
+        "message": "Powrót do menu głównego"
+    },
+    "Season ends __date__": {
+        "message": "Koniec sezonu __date__"
+    },
+    "Server Mods": {
+        "message": "Mody serwera"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Mody serwera są przesyłane na serwer po utworzeniu potyczki z SI lub gry wieloosobowej, a następnie pobierane i wczytywane na każdym z klientów graczy oraz obserwatorów, którzy dołączają do gry."
+    },
+    "Size:": {
+        "message": "Rozmiar:"
+    },
+    "Sort": {
+        "message": "Sortowanie"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "DO GIER RANKINGOWYCH 1V1 UŻYWAJ MODÓW SPOŁECZNOŚCI, BY UNIKNĄĆ PROBLEMÓW <br />Postępuj zgodnie z instrukcjami z wiki, aby usunąć mody PAMM i własne mody systemu plików"
+    },
+    "Type": {
+        "message": "Rodzaj"
+    },
+    "UI Scenes": {
+        "message": "Elementy UI"
+    },
+    "UNIT DATABASE": {
+        "message": "BAZA JEDNOSTEK"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "AKTUALIZACJA AKTYWNYCH MODÓW"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "AKTUALIZACJA I RESETOWANIE AKTYWNYCH MODÓW KLIENTA"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "AKTUALIZACJA DOSTĘPNYCH MODÓW"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "AKTUALIZACJA MODÓW SPOŁECZNOŚCI"
+    },
+    "Uninstall": {
+        "message": "Odinstaluj"
+    },
+    "Unit Restrictions": {
+        "message": "Wyłączenia jednostek"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "Wyłączenia jednostek nie dotyczą wojny galaktycznej."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Wyłączenia poszczególnych jednostek dla wszystkich graczy w potyczkach z SI i grach wieloosobowych"
+    },
+    "Units": {
+        "message": "Jednostki"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Wybrane jednostki mogą zostać wyłączone dla wszystkich graczy (w tym SI) w potyczkach z SI lub grach wieloosobowych, jakie utworzysz."
+    },
+    "Units matching your criteria": {
+        "message": "Jednostki spełniające kryteria"
+    },
+    "Units:": {
+        "message": "Jednostki:"
+    },
+    "Updated": {
+        "message": "Zaktualizowane"
+    },
+    "Used By": {
+        "message": "Używany przez"
+    },
+    "Version:": {
+        "message": "Wersja:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "Mody typu __description__ spełniające kryteria"
+    },
+    "about-community-mods": {
+        "message": "Mody społeczności to usługa świadczona przez <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> dla zespołu <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc<span class=\"community-mods-link-icon\">&#xe164;</span></a>, która rozszerza możliwości podstawowej wersji gry o dodatki, usprawnienia i setki modyfikacji społeczności, jak choćby <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">dodatek Legion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Mody społeczności oraz czat społeczności to usługi świadczone przez <a class=\\\"link\\\" data-bind=\\\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\\\">palobby.com <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a> dla zespołu <a class=\\\"link\\\" data-bind=\\\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\\\">Planetary Annihilation Inc<span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a>, które rozszerzają możliwości podstawowej wersji gry o dodatki, usprawnienia i setki modyfikacji społeczności, jak choćby <a class=\\\"link\\\" data-bind=\\\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\\\">dodatek Legion<span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a>."
+    },
+    "privacy policy": {
+        "message": "— Polityka prywatności"
+    },
+    "Companions": {
+        "message": "Pomocnicze mody"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Włącz SI dodatku społecznościowego Legion"
+    },
+    "__rank_title__ Rank": {
+        "message": "Pozycja __rank_title__"
+    }
+}

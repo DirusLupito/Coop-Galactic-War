@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "공장"
+    },
+    "PA Guide: Factories": {
+        "message": "PA 가이드: 공장"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "공장을 선택해 건설 바를 여십시오."
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "유닛을 [style=text_callout]Control + 왼쪽 클릭[/style]하면 공장에서 생산 대기 중인 다른 유닛에 앞서, 클릭된 해당 유닛 하나를 먼저 생산할 수 있습니다."
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "건설 바에서 유닛을 [style=text_callout]왼쪽 클릭[/style]해 생산하십시오."
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "유닛을 [style=text_callout]오른쪽 클릭[/style] 또는 [style=text_callout]Shift + 오른쪽 클릭[/style]하면 생산 예약된 유닛 수를 줄일 수 있습니다."
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "건설 바에서 유닛을 [style=text_callout]Shift + 왼쪽 클릭[/style]해 다수의 유닛을 생산하십시오."
+    }
+}

@@ -1,0 +1,647 @@
+{
+    "ALL": {
+        "message": "전체"
+    },
+    "ALLIANCES": {
+        "message": "동맹"
+    },
+    "ALLY": {
+        "message": "동맹"
+    },
+    "ALT-FIRE": {
+        "message": "보조 공격"
+    },
+    "ANNIHILATE EVERYTHING": {
+        "message": "모든 것을 섬멸하십시오"
+    },
+    "ANNIHILATED": {
+        "message": "섬멸됨"
+    },
+    "APS:": {
+        "message": "APS:"
+    },
+    "ARMY": {
+        "message": "군대"
+    },
+    "ASSIST": {
+        "message": "지원"
+    },
+    "AT WILL": {
+        "message": "각개"
+    },
+    "ATTACK": {
+        "message": "공격"
+    },
+    "ATTACKING": {
+        "message": "공격 중"
+    },
+    "Abandon War": {
+        "message": "전쟁 포기"
+    },
+    "Accept": {
+        "message": "수락"
+    },
+    "Activate planetary laser": {
+        "message": "행성 레이져 가동"
+    },
+    "Add": {
+        "message": "추가"
+    },
+    "Advanced": {
+        "message": "상급"
+    },
+    "Air": {
+        "message": "항공"
+    },
+    "All catalysts online on __planet_name__! Click here to annihilate!": {
+        "message": "__planet_name__의 모든 카탈리스트가 가동되었습니다! 여기를 클릭하면 섬멸을 개시합니다!"
+    },
+    "Alliance Request": {
+        "message": "동맹 제의"
+    },
+    "Alliance requested": {
+        "message": "동맹 제의함"
+    },
+    "Allied With:": {
+        "message": "동맹:"
+    },
+    "Allied __unit_name__ lost.": {
+        "message": "동맹의 __unit_name__ 유닛을 잃었습니다."
+    },
+    "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)": {
+        "message": "정말 이 은하계 전쟁을 포기하시겠습니까?[br](모든 진행 내용과 기술이 사라집니다.)"
+    },
+    "Army": {
+        "message": "군대"
+    },
+    "Army Count": {
+        "message": "군대 수"
+    },
+    "BUILD MODE": {
+        "message": "건설 모드"
+    },
+    "Bot": {
+        "message": "로봇"
+    },
+    "Bounty Econ Multiplier": {
+        "message": "바운티 경제 배수 보너스"
+    },
+    "Bounty kill rewarded. Econ multipliers enabled.": {
+        "message": "바운티 킬 보상이 지급되었습니다. 경제 배수 보너스가 활성화되었습니다."
+    },
+    "Build Efficiency": {
+        "message": "건설 효율"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "서버 연결 끊어짐"
+    },
+    "CONTINUOUS": {
+        "message": "연속"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Cancel Fire": {
+        "message": "발사 취소"
+    },
+    "Cancel Move": {
+        "message": "이동 취소"
+    },
+    "Capture main view": {
+        "message": "메인 시점 캡처"
+    },
+    "Change orbit": {
+        "message": "궤도 변경"
+    },
+    "Chrono Cam": {
+        "message": "크로노 캠"
+    },
+    "Chrono Cam Replay": {
+        "message": "크로노 캠 리플레이"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Commander": {
+        "message": "지휘관"
+    },
+    "Continue Tutorial": {
+        "message": "튜토리얼 계속하기"
+    },
+    "Continue War": {
+        "message": "전쟁 계속하기"
+    },
+    "Count": {
+        "message": "카운트"
+    },
+    "DMG": {
+        "message": "DMG"
+    },
+    "DMG:": {
+        "message": "DMG:"
+    },
+    "DPS": {
+        "message": "DPS"
+    },
+    "DPS:": {
+        "message": "DPS:"
+    },
+    "DRAW": {
+        "message": "소모"
+    },
+    "Destroy selected units?": {
+        "message": "선택한 유닛을 파괴하시겠습니까?"
+    },
+    "ECONOMY": {
+        "message": "경제"
+    },
+    "ENERGY ORDERS": {
+        "message": "에너지 명령"
+    },
+    "Eff": {
+        "message": "효율"
+    },
+    "Efficiency": {
+        "message": "효율"
+    },
+    "Enemy Contact!": {
+        "message": "적 발견!"
+    },
+    "Energy": {
+        "message": "에너지"
+    },
+    "Energy Efficiency": {
+        "message": "에너지 효율"
+    },
+    "Energy Expended": {
+        "message": "에너지 소비"
+    },
+    "Energy Produced": {
+        "message": "에너지 생산"
+    },
+    "Energy Storage": {
+        "message": "에너지 저장"
+    },
+    "Exit Game?": {
+        "message": "게임을 종료하시겠습니까?"
+    },
+    "FABRICATING": {
+        "message": "건설 중"
+    },
+    "FIRE ORDERS": {
+        "message": "발사 명령"
+    },
+    "Fab": {
+        "message": "건설"
+    },
+    "Fabber": {
+        "message": "건설 유닛"
+    },
+    "Fabricator Count": {
+        "message": "건설 유닛 수"
+    },
+    "Fac": {
+        "message": "공장"
+    },
+    "Factory": {
+        "message": "공장"
+    },
+    "Factory Count": {
+        "message": "공장 수"
+    },
+    "Fire Weapon": {
+        "message": "무기 발사"
+    },
+    "Follow alerts": {
+        "message": "경보 따라가기"
+    },
+    "GAME PAUSED": {
+        "message": "게임 일시 중지됨"
+    },
+    "Game Menu": {
+        "message": "게임 메뉴"
+    },
+    "Game Ready": {
+        "message": "게임 준비됨"
+    },
+    "Game Settings": {
+        "message": "게임 설정"
+    },
+    "Game Stats": {
+        "message": "게임 통계"
+    },
+    "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds.": {
+        "message": "게임이 일시 중지되었습니다. 상대방이 180초 안에 다시 연결하지 않으면 당신이 승리합니다."
+    },
+    "Game starts in": {
+        "message": "게임 시작까지"
+    },
+    "HEALTH": {
+        "message": "HP"
+    },
+    "HOLD": {
+        "message": "방어"
+    },
+    "HOLD POSITION": {
+        "message": "위치 사수"
+    },
+    "Halleys active on __planet_name__! Click here to annihilate!": {
+        "message": "__planet_name__의 모든 핼리 엔진이 가동되었습니다! 여기를 클릭하면 섬멸을 개시합니다!"
+    },
+    "Hold the mouse wheel down and drag to pan.": {
+        "message": "마우스 휠을 누른 채로 드래그하여 시점을 이동합니다."
+    },
+    "Ignore": {
+        "message": "무시하기"
+    },
+    "LOAD": {
+        "message": "싣기"
+    },
+    "MANEUVER": {
+        "message": "기동"
+    },
+    "MOVE": {
+        "message": "이동"
+    },
+    "MOVE ORDERS": {
+        "message": "이동 명령"
+    },
+    "Metal": {
+        "message": "금속"
+    },
+    "Metal Efficiency": {
+        "message": "금속 효율"
+    },
+    "Metal Expended": {
+        "message": "금속 소모"
+    },
+    "Metal Produced": {
+        "message": "금속 생산"
+    },
+    "Metal Storage": {
+        "message": "금속 저장고"
+    },
+    "Metal Value": {
+        "message": "금속 가치"
+    },
+    "Mobile": {
+        "message": "기동"
+    },
+    "NORMAL": {
+        "message": "일반"
+    },
+    "Names can only include letters [a-Z] and numbers [0-9].": {
+        "message": "이름은 알파벳 [a-Z]과 숫자 [0-9]만 포함할 수 있습니다."
+    },
+    "Naval": {
+        "message": "해양"
+    },
+    "Net Energy Income": {
+        "message": "에너지 순익"
+    },
+    "Net Metal Income": {
+        "message": "금속 순익"
+    },
+    "Next": {
+        "message": "다음"
+    },
+    "No metal": {
+        "message": "금속 없음"
+    },
+    "Not enough energy": {
+        "message": "에너지 부족"
+    },
+    "Not enough metal": {
+        "message": "금속 부족"
+    },
+    "Not enough metal or energy": {
+        "message": "금속 또는 에너지 부족"
+    },
+    "OFF": {
+        "message": "끄기"
+    },
+    "ON": {
+        "message": "켜기"
+    },
+    "Opponent disconnected": {
+        "message": "상대 연결 끊어짐"
+    },
+    "Orbital": {
+        "message": "궤도"
+    },
+    "PATROL": {
+        "message": "순찰"
+    },
+    "PLAYER": {
+        "message": "플레이어"
+    },
+    "POV Camera": {
+        "message": "POV 카메라"
+    },
+    "PROD": {
+        "message": "생산"
+    },
+    "Pause Game": {
+        "message": "게임 일시 중지"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "녹색 지역 중 한 곳을 선택해 지휘관을 파견하십시오."
+    },
+    "Pin to opposite side": {
+        "message": "반대편에 고정"
+    },
+    "Ping": {
+        "message": "핑"
+    },
+    "Ping!": {
+        "message": "핑!"
+    },
+    "Play From Here": {
+        "message": "여기서부터 플레이"
+    },
+    "Player Guide": {
+        "message": "플레이어 가이드"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "위치가 목표 지정되었습니다. 클릭하면 확정합니다."
+    },
+    "Prev": {
+        "message": "이전"
+    },
+    "Quit": {
+        "message": "나가기"
+    },
+    "Quit Game": {
+        "message": "게임 나가기"
+    },
+    "Quit to Main Menu": {
+        "message": "메인 메뉴로 나가기"
+    },
+    "READY": {
+        "message": "준비"
+    },
+    "RECLAIM": {
+        "message": "회수"
+    },
+    "RECLAIMING": {
+        "message": "회수 중"
+    },
+    "REPAIR": {
+        "message": "수리"
+    },
+    "RETURN FIRE": {
+        "message": "대응 사격"
+    },
+    "ROAM": {
+        "message": "자율 이동"
+    },
+    "Radius": {
+        "message": "반경"
+    },
+    "Request pending": {
+        "message": "요청 보류 중"
+    },
+    "Resume": {
+        "message": "재개하기"
+    },
+    "Resume Game": {
+        "message": "게임 재개하기"
+    },
+    "Resume from here?": {
+        "message": "여기서부터 재개하시겠습니까?"
+    },
+    "Return to Galactic War": {
+        "message": "은하계 전쟁으로 돌아가기"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Rewinding Time": {
+        "message": "시간 되감는 중"
+    },
+    "SELECTING": {
+        "message": "선택 중"
+    },
+    "SHARE ECO": {
+        "message": "경제 공유"
+    },
+    "SHARED ENERGY:": {
+        "message": "공유된 에너지: "
+    },
+    "SHARED METAL:": {
+        "message": "공유된 금속: "
+    },
+    "SPECIAL-MOVE": {
+        "message": "특수 이동"
+    },
+    "START ANNIHILATION": {
+        "message": "섬멸전 개시"
+    },
+    "STOP": {
+        "message": "중지"
+    },
+    "STORAGE": {
+        "message": "저장고"
+    },
+    "Save": {
+        "message": "저장"
+    },
+    "Save Game": {
+        "message": "게임 저장"
+    },
+    "Save complete": {
+        "message": "저장 완료"
+    },
+    "Save game?": {
+        "message": "게임을 저장하시겠습니까?"
+    },
+    "Saving game": {
+        "message": "게임 저장 중"
+    },
+    "Scroll mouse wheel to zoom in and out.": {
+        "message": "마우스 휠을 스크롤하여 확대 및 축소합니다."
+    },
+    "Second Camera PIP": {
+        "message": "두 번째 카메라 PIP"
+    },
+    "Select a new gravity well.": {
+        "message": "새로운 중력 우물을 선택하십시오."
+    },
+    "Select a planet to attack.": {
+        "message": "공격할 행성을 선택하십시오."
+    },
+    "Select a planet to destroy.": {
+        "message": "파괴할 행성을 선택하십시오."
+    },
+    "Select all advanced units in view": {
+        "message": "시야 안의 모든 상급 유닛 선택"
+    },
+    "Select all air units in view": {
+        "message": "시야 안의 모든 항공 유닛 선택"
+    },
+    "Select all bot units in view": {
+        "message": "시야 안의 모든 로봇 유닛 선택"
+    },
+    "Select all fabber units in view": {
+        "message": "시야 안의 모든 건설 유닛 선택"
+    },
+    "Select all naval units in view": {
+        "message": "시야 안의 모든 해양 유닛 선택"
+    },
+    "Select all orbital units in view": {
+        "message": "시야 안의 모든 궤도 유닛 선택"
+    },
+    "Select all vehicle units in view": {
+        "message": "시야 안의 모든 차량 유닛 선택"
+    },
+    "Select idle fabbers": {
+        "message": "비활동 건설 유닛 선택"
+    },
+    "Select idle factories": {
+        "message": "비활동 공장 선택"
+    },
+    "Send to Annihilate": {
+        "message": "보내서 섬멸하기"
+    },
+    "Set course for annihilation": {
+        "message": "섬멸 경로 지정"
+    },
+    "Set target spot": {
+        "message": "목표 지점 설정"
+    },
+    "Sim Performance": {
+        "message": "시뮬레이션 성능"
+    },
+    "Social Bar": {
+        "message": "소셜 바"
+    },
+    "Surrender": {
+        "message": "항복"
+    },
+    "Surrender Game?": {
+        "message": "항복하시겠습니까?"
+    },
+    "Swap cameras": {
+        "message": "카메라 전환"
+    },
+    "TRANSPORT": {
+        "message": "수송"
+    },
+    "Then confirm destination to set course.": {
+        "message": "그런 다음 확인하여 경로를 설정하십시오."
+    },
+    "This process can take a while.": {
+        "message": "이 과정은 다소 시간이 걸릴 수 있습니다."
+    },
+    "Toggle POV Camera": {
+        "message": "POV 카메라 전환"
+    },
+    "UNLOAD": {
+        "message": "내리기"
+    },
+    "USE": {
+        "message": "사용"
+    },
+    "Unknown": {
+        "message": "미확인"
+    },
+    "Vehicle": {
+        "message": "차량"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "월드 시뮬레이션 연결 오류"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "다른 플레이어들이 시작 지점을 선택할 때까지 기다려주세요."
+    },
+    "Yes": {
+        "message": "예"
+    },
+    "__metal_spots__ metal": {
+        "message": "__metal_spots__ 금속"
+    },
+    "__num_idle_fabbers__ Idle": {
+        "message": "__num_idle_fabbers__ 정지 중"
+    },
+    "__num_idle_factories__ Idle": {
+        "message": "__num_idle_factories__ 정지 중"
+    },
+    "__unit_name__ arrived.": {
+        "message": "__unit_name__ 도착"
+    },
+    "__unit_name__ destroyed.": {
+        "message": "__unit_name__ 파괴됨"
+    },
+    "__unit_name__ idle.": {
+        "message": "__unit_name__ 정지 중"
+    },
+    "__unit_name__ launched!": {
+        "message": "__unit_name__ 발사됨!"
+    },
+    "__unit_name__ located.": {
+        "message": "__unit_name__ 발견"
+    },
+    "__unit_name__ lost.": {
+        "message": "__unit_name__ 손실됨"
+    },
+    "__unit_name__ ready.": {
+        "message": "__unit_name__ 준비 완료"
+    },
+    "__unit_name__ under attack.": {
+        "message": "__unit_name__ 공격 받는 중"
+    },
+    "__victim_name__ has been annihilated.": {
+        "message": "__victim_name__ 섬멸됨"
+    },
+    "__victim_name__ was annihilated by __killer_name__.": {
+        "message": "__victim_name__이(가) __killer_name__에 의해 섬멸됨"
+    },
+    "air": {
+        "message": "항공"
+    },
+    "ammo": {
+        "message": "탄약"
+    },
+    "army": {
+        "message": "군대"
+    },
+    "bot": {
+        "message": "로봇"
+    },
+    "combat": {
+        "message": "전투"
+    },
+    "factory": {
+        "message": "공장"
+    },
+    "orbital": {
+        "message": "궤도"
+    },
+    "sea": {
+        "message": "해양"
+    },
+    "utility": {
+        "message": "보조"
+    },
+    "vehicle": {
+        "message": "차량"
+    },
+    "Alliance?": {
+        "message": "동맹?"
+    },
+    "Dynamic Alliance": {
+        "message": "유동적 동맹"
+    },
+    "Pending": {
+        "message": "보류 중"
+    },
+    "Returning to Galactic War": {
+        "message": "은하계 전쟁으로 돌아가는 중"
+    },
+    "SHARE": {
+        "message": "공유"
+    },
+    "Share Economy": {
+        "message": "경제 공유"
+    }
+}

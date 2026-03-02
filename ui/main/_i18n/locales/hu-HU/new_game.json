@@ -1,0 +1,101 @@
+{
+    "- Host": {
+        "message": "- Házigazda"
+    },
+    "AI Commander": {
+        "message": "AI Parancsnok"
+    },
+    "Add AI": {
+        "message": "AI hozzáadása"
+    },
+    "Add AI Commander": {
+        "message": "AI Parancsnok hozzáadása"
+    },
+    "Add Slot": {
+        "message": "Hely Hozzáadása"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "MEGSZAKADT A KAPCSOLAT A SZERVERREL"
+    },
+    "Chat": {
+        "message": "CSEVEGÉS"
+    },
+    "Dynamic Alliances": {
+        "message": "Dinamikus Szövetségek"
+    },
+    "Empty": {
+        "message": "Üres"
+    },
+    "Free For All": {
+        "message": "Mindenki mindenki ellen"
+    },
+    "Friends": {
+        "message": "Barátok"
+    },
+    "Game Lobby": {
+        "message": "Játék Váróterem"
+    },
+    "Game Mode": {
+        "message": "Játékmód"
+    },
+    "Global Spectator Chat": {
+        "message": "Globális Néző Chat"
+    },
+    "Join": {
+        "message": "Csatlakozás"
+    },
+    "Kick": {
+        "message": "Kirúgás"
+    },
+    "Leave": {
+        "message": "Távozás"
+    },
+    "Open to:": {
+        "message": "Hozzáférhetőség:"
+    },
+    "Player Slot": {
+        "message": "Játékos Hely"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "A játékos a kezdőbolygón választ kezdőhelyet."
+    },
+    "Private": {
+        "message": "Privát"
+    },
+    "Public": {
+        "message": "Nyilvános"
+    },
+    "Ready": {
+        "message": "Kész"
+    },
+    "Remove": {
+        "message": "Eltávolítás"
+    },
+    "Returning to Main Menu": {
+        "message": "Visszatérés a főmenübe"
+    },
+    "SHARE ARMY": {
+        "message": "HADERŐ MEGOSZTÁSA"
+    },
+    "Spectate": {
+        "message": "Néző"
+    },
+    "Spectators": {
+        "message": "Nézők"
+    },
+    "Start Game": {
+        "message": "Játék Indítása"
+    },
+    "System": {
+        "message": "Naprendszer"
+    },
+    "Tag:": {
+        "message": "Címke:"
+    },
+    "Team Armies": {
+        "message": "Több játékos seregenként"
+    },
+    "Title": {
+        "message": "Cím"
+    }
+}

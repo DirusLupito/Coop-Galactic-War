@@ -1,0 +1,53 @@
+{
+    "Create Game": {
+        "message": "Luo peli"
+    },
+    "Free For All": {
+        "message": "Kaikki kaikkia vastaan"
+    },
+    "Game": {
+        "message": "Peli"
+    },
+    "In Lobby": {
+        "message": "Aulassa"
+    },
+    "In Progress": {
+        "message": "Käynnissä"
+    },
+    "Join Game": {
+        "message": "Liity peliin"
+    },
+    "Locked Game": {
+        "message": "Lukittu Peli"
+    },
+    "Mode": {
+        "message": "Muoto"
+    },
+    "Multiplayer": {
+        "message": "Moninpeli"
+    },
+    "Password": {
+        "message": "Salasana"
+    },
+    "Planets": {
+        "message": "Planeetat"
+    },
+    "Players": {
+        "message": "Pelaajat"
+    },
+    "Region": {
+        "message": "Alue"
+    },
+    "Slots": {
+        "message": "Paikat"
+    },
+    "Spectate": {
+        "message": "Katsomo"
+    },
+    "Spectators": {
+        "message": "Katsojat"
+    },
+    "Team Armies": {
+        "message": "Joukkuearmeijat"
+    }
+}

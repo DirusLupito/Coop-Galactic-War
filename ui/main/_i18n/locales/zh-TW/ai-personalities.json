@@ -1,0 +1,68 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP 積極"
+    },
+    "AIP Air": {
+        "message": "AIP 空軍"
+    },
+    "AIP Bot": {
+        "message": "AIP 機器人"
+    },
+    "AIP Cautious": {
+        "message": "AIP 謹慎"
+    },
+    "AIP Defender": {
+        "message": "AIP 防禦者"
+    },
+    "AIP Economist": {
+        "message": "AIP 經濟學家"
+    },
+    "AIP Fabber": {
+        "message": "AIP 建造物"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP 快速科技"
+    },
+    "AIP Foundation": {
+        "message": "AIP 基要軍團"
+    },
+    "AIP Land": {
+        "message": "AIP 地面"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP 軍團機器"
+    },
+    "AIP Low Tech": {
+        "message": "AIP 低科技"
+    },
+    "AIP Naval": {
+        "message": "AIP 海軍"
+    },
+    "AIP Orbital": {
+        "message": "AIP 軌道"
+    },
+    "AIP Random": {
+        "message": "AIP 隨機"
+    },
+    "AIP Revenants": {
+        "message": "AIP 不死軍團"
+    },
+    "AIP Rush": {
+        "message": "AIP 快攻"
+    },
+    "AIP Swarm": {
+        "message": "AIP 蜂群"
+    },
+    "AIP Synchronous": {
+        "message": "AIP 同步軍團"
+    },
+    "AIP Tank": {
+        "message": "AIP 坦克"
+    },
+    "AIP Turtle": {
+        "message": "AIP 固守"
+    },
+    "AIP Amphibious": {
+        "message": "AIP 兩棲"
+    }
+}

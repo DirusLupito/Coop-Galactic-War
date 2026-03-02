@@ -1,0 +1,143 @@
+{
+    "ALLY": {
+        "message": "ALIADO"
+    },
+    "ARMY": {
+        "message": "EXÉRCITO"
+    },
+    "AT WILL": {
+        "message": "À VONTADE"
+    },
+    "Accept": {
+        "message": "Aceitar"
+    },
+    "Activate planetary laser": {
+        "message": "Ativar laser planetário"
+    },
+    "Alliance Request": {
+        "message": "Requisição de Aliança"
+    },
+    "Allied With:": {
+        "message": "Aliado com:"
+    },
+    "BUILD MODE": {
+        "message": "MODO DE CONSTRUÇÃO"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "CONEXÃO COM O SERVIDOR PERDIDA"
+    },
+    "CONTINUOUS": {
+        "message": "CONTÍNUO"
+    },
+    "Cancel": {
+        "message": "Cancelar"
+    },
+    "Change orbit": {
+        "message": "Mudar órbita"
+    },
+    "Close": {
+        "message": "Fechar"
+    },
+    "Count": {
+        "message": "Contagem"
+    },
+    "DMG:": {
+        "message": "DANO:"
+    },
+    "ECONOMY": {
+        "message": "ECONOMIA"
+    },
+    "ENERGY ORDERS": {
+        "message": "ORDENS DE ENERGIA"
+    },
+    "Efficiency": {
+        "message": "Eficiência"
+    },
+    "Enemy Contact!": {
+        "message": "Contato com o inimigo!"
+    },
+    "Exit Game?": {
+        "message": "Sair do jogo?"
+    },
+    "FIRE ORDERS": {
+        "message": "ORDENS DE DISPARO"
+    },
+    "Fabber": {
+        "message": "Fabricador"
+    },
+    "Factory": {
+        "message": "Fábrica"
+    },
+    "GAME PAUSED": {
+        "message": "JOGO PAUSADO"
+    },
+    "HOLD": {
+        "message": "PARAR"
+    },
+    "HOLD POSITION": {
+        "message": "MANTER POSIÇÃO"
+    },
+    "Ignore": {
+        "message": "Ignorar"
+    },
+    "MOVE ORDERS": {
+        "message": "ORDENS DE MOVIMENTO"
+    },
+    "Mobile": {
+        "message": "Móvel"
+    },
+    "OFF": {
+        "message": "DESLIGADO"
+    },
+    "ON": {
+        "message": "LIGADO"
+    },
+    "PLAYER": {
+        "message": "JOGADOR"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Selecione um ponto dentro da zona verde para gerar o seu Comandante."
+    },
+    "Ping!": {
+        "message": "Sinalizar!"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Posição selecionada. Clique para confirmar"
+    },
+    "RETURN FIRE": {
+        "message": "DEVOLVER FOGO"
+    },
+    "ROAM": {
+        "message": "VAGUEAR"
+    },
+    "Returning to Main Menu": {
+        "message": "Retornando ao Menu Principal"
+    },
+    "START ANNIHILATION": {
+        "message": "INICIAR ANIQUILAÇÃO"
+    },
+    "Select a new gravity well.": {
+        "message": "Selecione um novo campo gravitacional."
+    },
+    "Select a planet to attack.": {
+        "message": "Escolha um planeta para atacar."
+    },
+    "Select a planet to destroy.": {
+        "message": "Escolha um planeta para destruir."
+    },
+    "Set course for annihilation": {
+        "message": "Definir rota de aniquilação"
+    },
+    "Set target spot": {
+        "message": "Selecione local do alvo"
+    },
+    "Then confirm destination to set course.": {
+        "message": "Então confirme o destíno para definir a rota."
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Aguardando outros jogadores escolherem um local de pouso."
+    },
+    "Yes": {
+        "message": "Sim"
+    }
+}

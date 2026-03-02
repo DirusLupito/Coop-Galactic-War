@@ -1,0 +1,38 @@
+{
+    "Area Commands": {
+        "message": "エリアコマンド"
+    },
+    "Basic Camera Controls": {
+        "message": "基本カメラ操作"
+    },
+    "Clicking": {
+        "message": "クリック"
+    },
+    "Close": {
+        "message": "閉じる"
+    },
+    "Commander Basics": {
+        "message": "コマンダーの基本"
+    },
+    "Economy and Resources": {
+        "message": "経済活動と資源"
+    },
+    "Energy Resources": {
+        "message": "エネルギー資源"
+    },
+    "Fabrication Units": {
+        "message": "ファブリケーター(製造)ユニット"
+    },
+    "Factories": {
+        "message": "工場"
+    },
+    "Important Hotkeys": {
+        "message": "よく使うホットキー"
+    },
+    "Metal Resources": {
+        "message": "金属資源"
+    },
+    "Player Guide": {
+        "message": "プレイヤーガイド"
+    }
+}

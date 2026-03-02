@@ -1,0 +1,23 @@
+{
+    "CANCEL": {
+        "message": "İPTAL"
+    },
+    "Delete": {
+        "message": "SİL"
+    },
+    "Delete this system?": {
+        "message": "Bu sistem silinsin mi?"
+    },
+    "Load System": {
+        "message": "Sistemi yükle"
+    },
+    "SHOW PLANETS": {
+        "message": "GEZEGENLERİ GÖSTER"
+    },
+    "SHOW SYSTEMS": {
+        "message": "SİSTEMLERİ GÖSTER"
+    },
+    "System Designer": {
+        "message": "Sistem oluşturucu"
+    }
+}

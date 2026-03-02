@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "Accepteren"
+    },
+    "Back": {
+        "message": "Terug"
+    },
+    "Banned": {
+        "message": "Verbannen"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Decline": {
+        "message": "Afwijzen"
+    },
+    "Enter Queue": {
+        "message": "In wachtrij"
+    },
+    "Failed to Join": {
+        "message": "Aansluiten mislukt"
+    },
+    "Failed to connect to match making server.": {
+        "message": "Geen verbinding met matchmaking-server."
+    },
+    "Failed to create game.": {
+        "message": "Spel aanmaken is mislukt."
+    },
+    "Match Making Error": {
+        "message": "Fout in matchmaking"
+    },
+    "Match Making Penalty": {
+        "message": "Handicap voor matchmaking"
+    },
+    "Matchmaking found a match!": {
+        "message": "Matchmaking heeft een wedstrijd gevonden!"
+    },
+    "Offline for Maintenance": {
+        "message": "Offline voor onderhoud"
+    },
+    "One or more other players declined or the match expired.": {
+        "message": "Een of meer spelers hebben geweigerd of de wedstrijd is verlopen."
+    },
+    "Opponent": {
+        "message": "Tegenstander"
+    },
+    "Reconnect": {
+        "message": "Opnieuw verbinden"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "Unable to connect to server.": {
+        "message": "Kan niet verbinden met server."
+    },
+    "We will be back soon!": {
+        "message": "We zijn zo terug!"
+    },
+    "You": {
+        "message": "Je"
+    },
+    "You are already assigned to a match.": {
+        "message": "Je bent al aan een spel toegewezen."
+    },
+    "You have been penalized for abandoning a game, please try matchmaking again when your penalty has expired.": {
+        "message": "Je bent bestraft omdat je een spel hebt opgegeven. Probeer matchmaking opnieuw wanneer de straf is verlopen."
+    },
+    "You have been penalized for abandoning a game.": {
+        "message": "Je bent bestraft omdat je een spel hebt opgegeven."
+    },
+    "You were penalized for abandoning, but your penalty has now expired.": {
+        "message": "Je bent bestraft omdat je een spel hebt opgegeven, maar je straf is verlopen."
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Je account is verbannen. Als je denkt dat dit een vergissing is, neem dan contact met ons op via __email__"
+    },
+    "Your confirmation was not received in time.": {
+        "message": "Je bevestiging is niet op tijd ontvangen."
+    },
+    "average queue time": {
+        "message": "gemiddelde wachttijd"
+    },
+    "beginning match making": {
+        "message": "beginnen met matchmaking"
+    },
+    "connecting to matchmaker": {
+        "message": "verbinden met matchmaker"
+    },
+    "finding game server": {
+        "message": "gameserver vinden"
+    },
+    "idle": {
+        "message": "inactief"
+    },
+    "leaving match making": {
+        "message": "matchmaking verlaten"
+    },
+    "leaving queue": {
+        "message": "wachtrij verlaten"
+    },
+    "match expires in:": {
+        "message": "wedstrijd verloopt over:"
+    },
+    "match found": {
+        "message": "wedstrijd gevonden"
+    },
+    "penalty expires in:": {
+        "message": "straf verloopt over:"
+    },
+    "players in queue": {
+        "message": "spelers in wachtrij"
+    },
+    "queue time": {
+        "message": "wachttijd"
+    },
+    "reconnect": {
+        "message": "opnieuw verbinden"
+    },
+    "searching for opponent": {
+        "message": "tegenstander zoeken"
+    },
+    "searching for opponents": {
+        "message": "zoeken naar tegenstanders"
+    }
+}

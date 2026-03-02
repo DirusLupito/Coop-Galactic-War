@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "АННИГИЛЯЦИЯ ЗАВЕРШЕНА"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "В среднем"
+    },
+    "Built": {
+        "message": "Построено"
+    },
+    "Destroyed": {
+        "message": "Уничтожено"
+    },
+    "Determining ladder rank...": {
+        "message": "Определение рейтинга..."
+    },
+    "Draw": {
+        "message": "НИЧЬЯ"
+    },
+    "Duration:": {
+        "message": "Продолжительность:"
+    },
+    "Efficiency": {
+        "message": "Эффективность "
+    },
+    "Energy": {
+        "message": "Энергия"
+    },
+    "Metal": {
+        "message": "Металл"
+    },
+    "Produced": {
+        "message": "Произведено"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "ВЫЙТИ В ГЛАВНОЕ МЕНЮ"
+    },
+    "REVIEW": {
+        "message": "ОБЗОР"
+    },
+    "Requeue": {
+        "message": "Вернуться в очередь"
+    },
+    "SPECTATE": {
+        "message": "НАБЛЮДАТЬ"
+    },
+    "The battle ended in a draw.": {
+        "message": "Битва закончилась ничьей."
+    },
+    "The game has ended.": {
+        "message": "Игра окончена."
+    },
+    "Total Oblivion": {
+        "message": "Тотальное забвение"
+    },
+    "Units": {
+        "message": "Юниты"
+    },
+    "Used": {
+        "message": "Исп."
+    },
+    "VICTORY IS YOURS": {
+        "message": "ПОБЕДА ВАША"
+    },
+    "VIEW RESULTS": {
+        "message": "ПОСМОТРЕТЬ РЕЗУЛЬТАТЫ"
+    },
+    "VIEW STATS": {
+        "message": "ПОСМОТРЕТЬ СТАТИСТИКУ"
+    },
+    "Winner:": {
+        "message": "Победитель:"
+    },
+    "Winners:": {
+        "message": "Победители:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "ВЫ БЫЛИ АННИГИЛИРОВАНЫ"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "В настоящее время у вас неизвестный ранг. Завершите больше игр, чтобы определить свой ранг."
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "Ваш ранг в сражениях 1 на 1: __rank_title__."
+    }
+}

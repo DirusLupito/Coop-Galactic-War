@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "AI 대항전"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Delete": {
+        "message": "삭제"
+    },
+    "Galactic War": {
+        "message": "은하계 전쟁"
+    },
+    "Game": {
+        "message": "게임"
+    },
+    "Last Saved": {
+        "message": "마지막 저장됨"
+    },
+    "OK": {
+        "message": "확인"
+    },
+    "Resume Game": {
+        "message": "게임 재개하기"
+    },
+    "Saved Games": {
+        "message": "저장된 게임"
+    },
+    "Switch to": {
+        "message": "전환: "
+    },
+    "Type": {
+        "message": "유형"
+    },
+    "mode?": {
+        "message": "모드?"
+    }
+}

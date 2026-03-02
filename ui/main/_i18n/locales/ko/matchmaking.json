@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "수락"
+    },
+    "Back": {
+        "message": "뒤로"
+    },
+    "Banned": {
+        "message": "차단됨"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Decline": {
+        "message": "거부"
+    },
+    "Enter Queue": {
+        "message": "대기 예약"
+    },
+    "Failed to Join": {
+        "message": "참가 실패"
+    },
+    "Failed to connect to match making server.": {
+        "message": "매치메이킹 서버에 연결하지 못했습니다."
+    },
+    "Failed to create game.": {
+        "message": "게임을 생성하지 못했습니다."
+    },
+    "Match Making Error": {
+        "message": "매치메이킹 오류"
+    },
+    "Match Making Penalty": {
+        "message": "매치메이킹 페널티"
+    },
+    "Matchmaking found a match!": {
+        "message": "매치메이킹이 매치를 발견했습니다!"
+    },
+    "Offline for Maintenance": {
+        "message": "점검을 위해 오프라인"
+    },
+    "One or more other players declined or the match expired.": {
+        "message": "하나 또는 그 이상의 플레이어가 매치를 거부했거나, 매치가 만료되었습니다."
+    },
+    "Opponent": {
+        "message": "상대"
+    },
+    "Reconnect": {
+        "message": "다시 연결"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Unable to connect to server.": {
+        "message": "서버에 연결할 수 없습니다."
+    },
+    "We will be back soon!": {
+        "message": "곧 돌아오겠습니다!"
+    },
+    "You": {
+        "message": "당신"
+    },
+    "You are already assigned to a match.": {
+        "message": "이미 매치메이킹 게임에 배정되어 있습니다."
+    },
+    "You have been penalized for abandoning a game, please try matchmaking again when your penalty has expired.": {
+        "message": "게임을 포기하여 페널티를 받았습니다. 페널티가 만료되면 매치메이킹을 다시 시도하십시오."
+    },
+    "You have been penalized for abandoning a game.": {
+        "message": "게임을 포기하여 페널티를 받았습니다."
+    },
+    "You were penalized for abandoning, but your penalty has now expired.": {
+        "message": "게임을 포기하여 페널티를 받았지만, 이제 페널티가 만료되었습니다."
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "계정이 차단되어 있습니다. 오류로 인한 상태라고 생각하신다면 __email__으로 문의해 주십시오."
+    },
+    "Your confirmation was not received in time.": {
+        "message": "제 시간 안에 확인을 받지 못했습니다."
+    },
+    "average queue time": {
+        "message": "평균 대기 시간"
+    },
+    "beginning match making": {
+        "message": "매치메이킹 시작 중"
+    },
+    "connecting to matchmaker": {
+        "message": "매치메이커에 연결 중"
+    },
+    "finding game server": {
+        "message": "게임 서버를 찾는 중"
+    },
+    "idle": {
+        "message": "유휴 상태"
+    },
+    "leaving match making": {
+        "message": "매치메이킹을 떠나는 중"
+    },
+    "leaving queue": {
+        "message": "대기열을 떠나는 중"
+    },
+    "match expires in:": {
+        "message": "매치 만료까지:"
+    },
+    "match found": {
+        "message": "매치 발견"
+    },
+    "penalty expires in:": {
+        "message": "페널티 만료까지:"
+    },
+    "players in queue": {
+        "message": "대기 중인 플레이어"
+    },
+    "queue time": {
+        "message": "대기 시간"
+    },
+    "reconnect": {
+        "message": "다시 연결"
+    },
+    "searching for opponent": {
+        "message": "상대를 찾는 중"
+    },
+    "searching for opponents": {
+        "message": "상대를 찾는 중"
+    }
+}

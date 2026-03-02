@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "기본 및 상급 금속 추출기 모두 같은 금속 매장지에 건설할 수 있습니다."
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "금속 매장지에 금속 추출기를 건설하십시오."
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "금속 저장고를 건설해 자원 보유량을 늘리십시오."
+    },
+    "Metal Resource": {
+        "message": "금속 자원"
+    },
+    "Metal is required for building units and structures": {
+        "message": "금속은 유닛 생산과 건물 건설에 필요합니다."
+    },
+    "PA Guide: Metal": {
+        "message": "PA 가이드: 금속"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "건설 유닛을 선택하고 [style=text_callout]금속 추출기 건설 아이콘[/style]을 클릭하십시오."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "[style=text_callout]왼쪽 클릭 + 드래그[/style]로 여러 개의 금속 매장지에 추출기를 건설할 수 있습니다."
+    }
+}

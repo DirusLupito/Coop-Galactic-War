@@ -1,0 +1,80 @@
+{
+    "Accept": {
+        "message": "Hyväksy"
+    },
+    "CLEAR SYSTEM": {
+        "message": "TYHJENNÄ JÄRJESTELMÄ"
+    },
+    "CLOSE": {
+        "message": "SULJE"
+    },
+    "Cancel": {
+        "message": "Peruuta"
+    },
+    "Discard": {
+        "message": "Hylkää"
+    },
+    "Do you want to save this system?": {
+        "message": "Haluatko tallentaa tämän järjestelmän?"
+    },
+    "EDIT PLANET": {
+        "message": "MUOKKAA PLANEETTAA"
+    },
+    "HIDE": {
+        "message": "PIILOTA"
+    },
+    "MY PLANETS": {
+        "message": "PLANEETTANI"
+    },
+    "Mass": {
+        "message": "MASSA"
+    },
+    "PREVIEW ALL": {
+        "message": "ESIKATSELE KAIKKI"
+    },
+    "Position": {
+        "message": "SIJAINTI"
+    },
+    "RECENT": {
+        "message": "VIIMEAIKAISET"
+    },
+    "REMOVE": {
+        "message": "POISTA"
+    },
+    "SAVE SYSTEM": {
+        "message": "TALLENNA JÄRJESTELMÄ"
+    },
+    "SHOW": {
+        "message": "NÄYTÄ"
+    },
+    "SIMULATE": {
+        "message": "SIMULOI"
+    },
+    "Save": {
+        "message": "Tallenna"
+    },
+    "TEMPLATES": {
+        "message": "SAPLUUNAT"
+    },
+    "Temp": {
+        "message": "Väliaikainen"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Planeetta ladataan. Tämä saattaa kestää kauan."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Ohjelma ei vastaa ennen kuin planeetta on valmis."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Järjestelmää on muutettu viime tallennuksen jälkeen."
+    },
+    "The system has not been saved.": {
+        "message": "Järjestelmää ei ole tallennettu."
+    },
+    "Velocity": {
+        "message": "NOPEUS"
+    },
+    "Water": {
+        "message": "Vesi"
+    }
+}

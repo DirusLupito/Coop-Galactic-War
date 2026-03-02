@@ -1,0 +1,11 @@
+{
+    "No results match": {
+        "message": " No hay resultados que coinciden"
+    },
+    "Nothing Selected": {
+        "message": "No se seleccionó nada"
+    },
+    "{0} of {1} selected": {
+        "message": "{0} de {1} seleccionado(s)"
+    }
+}

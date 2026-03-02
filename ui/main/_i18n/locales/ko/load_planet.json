@@ -1,0 +1,59 @@
+{
+    "CANCEL": {
+        "message": "취소"
+    },
+    "DELETE": {
+        "message": "삭제"
+    },
+    "Delete": {
+        "message": "삭제"
+    },
+    "Delete this system?": {
+        "message": "이 행성계를 삭제하시겠습니까?"
+    },
+    "Edit System": {
+        "message": "행성계 편집"
+    },
+    "Export": {
+        "message": "내보내기"
+    },
+    "Import": {
+        "message": "가져오기"
+    },
+    "Load System": {
+        "message": "행성계 불러오기"
+    },
+    "Metal Spots: __num_metal_spots__": {
+        "message": "금속 매장지: __num_metal_spots__"
+    },
+    "New system": {
+        "message": "새 행성계"
+    },
+    "No Metal": {
+        "message": "금속 없음"
+    },
+    "Radius: __radius__": {
+        "message": "반경: __radius__"
+    },
+    "SHOW PLANETS": {
+        "message": "행성 보기"
+    },
+    "SHOW SYSTEMS": {
+        "message": "행성계 보기"
+    },
+    "Starting Planet": {
+        "message": "시작 행성"
+    },
+    "System Designer": {
+        "message": "행성계 편집기"
+    },
+    "Thrusters Required": {
+        "message": "추진기 필요"
+    },
+    "__min_players__-__max_players__ Players": {
+        "message": "플레이어 __min_players__-__max_players__명"
+    },
+    "__num_players__ Players": {
+        "message": "플레이어 __num_players__명"
+    }
+}

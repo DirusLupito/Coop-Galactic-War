@@ -1,0 +1,647 @@
+{
+    "ALL": {
+        "message": "ALLES"
+    },
+    "ALLIANCES": {
+        "message": "ALLIANTIES"
+    },
+    "ALLY": {
+        "message": "BONDGENOOT"
+    },
+    "ALT-FIRE": {
+        "message": "ALT-VUREN"
+    },
+    "ANNIHILATE EVERYTHING": {
+        "message": "VERNIETIG ALLES"
+    },
+    "ANNIHILATED": {
+        "message": "VERNIETIGD"
+    },
+    "APS:": {
+        "message": "APS:"
+    },
+    "ARMY": {
+        "message": "LEGER"
+    },
+    "ASSIST": {
+        "message": "HELPEN"
+    },
+    "AT WILL": {
+        "message": "VRIJ VUREN"
+    },
+    "ATTACK": {
+        "message": "AANVAL"
+    },
+    "ATTACKING": {
+        "message": "VALT AAN"
+    },
+    "Abandon War": {
+        "message": "Oorlog verlaten"
+    },
+    "Accept": {
+        "message": "Accepteren"
+    },
+    "Activate planetary laser": {
+        "message": "Planetaire laser activeren"
+    },
+    "Add": {
+        "message": "Toevoegen"
+    },
+    "Advanced": {
+        "message": "Geavanceerd"
+    },
+    "Air": {
+        "message": "Lucht"
+    },
+    "All catalysts online on __planet_name__! Click here to annihilate!": {
+        "message": "Alle katalysatoren online op __planet_name__! Klik hier om te vernietigen!"
+    },
+    "Alliance Request": {
+        "message": "Alliantieverzoek"
+    },
+    "Alliance requested": {
+        "message": "Alliantie aangevraagd"
+    },
+    "Allied With:": {
+        "message": "Geallieerd met:"
+    },
+    "Allied __unit_name__ lost.": {
+        "message": "Geallieerde __unit_name__ verloren."
+    },
+    "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)": {
+        "message": "Weet je zeker dat je deze Galactische Oorlog wilt verlaten?[br](Alle voortgang en Tech gaan verloren.)"
+    },
+    "Army": {
+        "message": "Leger"
+    },
+    "Army Count": {
+        "message": "Legergrootte"
+    },
+    "BUILD MODE": {
+        "message": "BOUWMODUS"
+    },
+    "Bot": {
+        "message": "Bot"
+    },
+    "Bounty Econ Multiplier": {
+        "message": "Econ.-vermenigvuldiger"
+    },
+    "Bounty kill rewarded. Econ multipliers enabled.": {
+        "message": "Premie ontvangen. Econ. vermenigvuldiger actief."
+    },
+    "Build Efficiency": {
+        "message": "Bouwefficiëntie"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "VERBINDING MET SERVER VERLOREN"
+    },
+    "CONTINUOUS": {
+        "message": "DOORLOPEND"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Cancel Fire": {
+        "message": "Vuren annuleren"
+    },
+    "Cancel Move": {
+        "message": "Verplaatsing annuleren"
+    },
+    "Capture main view": {
+        "message": "Hoofdweergave vastleggen"
+    },
+    "Change orbit": {
+        "message": "Baan veranderen"
+    },
+    "Chrono Cam": {
+        "message": "Chrono Cam"
+    },
+    "Chrono Cam Replay": {
+        "message": "Herhaling Chrono Cam"
+    },
+    "Close": {
+        "message": "Sluiten"
+    },
+    "Commander": {
+        "message": "Commandant"
+    },
+    "Continue Tutorial": {
+        "message": "Doorgaan met speluitleg"
+    },
+    "Continue War": {
+        "message": "Doorgaan met oorlog"
+    },
+    "Count": {
+        "message": "Aantal"
+    },
+    "DMG": {
+        "message": "SCH"
+    },
+    "DMG:": {
+        "message": "SCH:"
+    },
+    "DPS": {
+        "message": "DPS"
+    },
+    "DPS:": {
+        "message": "DPS:"
+    },
+    "DRAW": {
+        "message": "VERBRUIK"
+    },
+    "Destroy selected units?": {
+        "message": "Geselecteerde eenheden vernietigen?"
+    },
+    "ECONOMY": {
+        "message": "ECONOMIE"
+    },
+    "ENERGY ORDERS": {
+        "message": "ENERGIEBEVELEN"
+    },
+    "Eff": {
+        "message": "Effecten"
+    },
+    "Efficiency": {
+        "message": "Efficiëntie"
+    },
+    "Enemy Contact!": {
+        "message": "Vijandig contact!"
+    },
+    "Energy": {
+        "message": "Energie"
+    },
+    "Energy Efficiency": {
+        "message": "Energie-efficiëntie"
+    },
+    "Energy Expended": {
+        "message": "Energie verbruikt"
+    },
+    "Energy Produced": {
+        "message": "Energie geproduceerd"
+    },
+    "Energy Storage": {
+        "message": "Energie-opslag"
+    },
+    "Exit Game?": {
+        "message": "Spel afsluiten?"
+    },
+    "FABRICATING": {
+        "message": "FABRICEERT"
+    },
+    "FIRE ORDERS": {
+        "message": "VUURBEVELEN"
+    },
+    "Fab": {
+        "message": "Fabriceren"
+    },
+    "Fabber": {
+        "message": "Fabber"
+    },
+    "Fabricator Count": {
+        "message": "Aantal Fabricators"
+    },
+    "Fac": {
+        "message": "Fac"
+    },
+    "Factory": {
+        "message": "Fabriek"
+    },
+    "Factory Count": {
+        "message": "Aantal fabrieken"
+    },
+    "Fire Weapon": {
+        "message": "Wapen vuren"
+    },
+    "Follow alerts": {
+        "message": "Meldingen volgen"
+    },
+    "GAME PAUSED": {
+        "message": "SPEL GEPAUZEERD"
+    },
+    "Game Menu": {
+        "message": "Spelmenu"
+    },
+    "Game Ready": {
+        "message": "Spel gereed"
+    },
+    "Game Settings": {
+        "message": "Spelinstellingen"
+    },
+    "Game Stats": {
+        "message": "Statistieken"
+    },
+    "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds.": {
+        "message": "Het spel is gepauzeerd. Je behaalt een overwinning als je tegenstander niet binnen 180 seconden opnieuw verbinding maakt."
+    },
+    "Game starts in": {
+        "message": "Het spel begint over"
+    },
+    "HEALTH": {
+        "message": "GEZONDHEID"
+    },
+    "HOLD": {
+        "message": "NIET VUREN"
+    },
+    "HOLD POSITION": {
+        "message": "POSITIE VASTHOUDEN"
+    },
+    "Halleys active on __planet_name__! Click here to annihilate!": {
+        "message": "Halley-motoren actief op __planet_name__! Klik hier om te vernietigen!"
+    },
+    "Hold the mouse wheel down and drag to pan.": {
+        "message": "Houd het muiswiel ingedrukt en sleep om te pannen."
+    },
+    "Ignore": {
+        "message": "Negeren"
+    },
+    "LOAD": {
+        "message": "LADEN"
+    },
+    "MANEUVER": {
+        "message": "MANOEUVREREN"
+    },
+    "MOVE": {
+        "message": "VERPLAATSEN"
+    },
+    "MOVE ORDERS": {
+        "message": "VERPLAATSBEVELEN"
+    },
+    "Metal": {
+        "message": "Metaal"
+    },
+    "Metal Efficiency": {
+        "message": "Metaalefficiëntie"
+    },
+    "Metal Expended": {
+        "message": "Metaal verbruikt"
+    },
+    "Metal Produced": {
+        "message": "Metaal geproduceerd"
+    },
+    "Metal Storage": {
+        "message": "Metaalopslag"
+    },
+    "Metal Value": {
+        "message": "Metaalwaarde"
+    },
+    "Mobile": {
+        "message": "Mobiel"
+    },
+    "NORMAL": {
+        "message": "NORMAAL"
+    },
+    "Names can only include letters [a-Z] and numbers [0-9].": {
+        "message": "Namen mogen alleen letters [a-Z] en nummer [0-9] bevatten."
+    },
+    "Naval": {
+        "message": "Marine"
+    },
+    "Net Energy Income": {
+        "message": "Netto energie-inkomen"
+    },
+    "Net Metal Income": {
+        "message": "Netto metaalinkomen"
+    },
+    "Next": {
+        "message": "Volgende"
+    },
+    "No metal": {
+        "message": "Geen metaal"
+    },
+    "Not enough energy": {
+        "message": "Niet genoeg energie"
+    },
+    "Not enough metal": {
+        "message": "Niet genoeg metaal"
+    },
+    "Not enough metal or energy": {
+        "message": "Niet genoeg metaal of energie"
+    },
+    "OFF": {
+        "message": "UIT"
+    },
+    "ON": {
+        "message": "AAN"
+    },
+    "Opponent disconnected": {
+        "message": "Verbinding tegenstander verbroken"
+    },
+    "Orbital": {
+        "message": "Ruimte"
+    },
+    "PATROL": {
+        "message": "PATROUILLEREN"
+    },
+    "PLAYER": {
+        "message": "SPELER"
+    },
+    "POV Camera": {
+        "message": "POV-camera"
+    },
+    "PROD": {
+        "message": "PROD"
+    },
+    "Pause Game": {
+        "message": "Spel pauzeren"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Kies een plek binnen een van de groene zones als beginpositie voor je commandant."
+    },
+    "Pin to opposite side": {
+        "message": "Aan de andere kant vastzetten"
+    },
+    "Ping": {
+        "message": "Ping"
+    },
+    "Ping!": {
+        "message": "Ping!"
+    },
+    "Play From Here": {
+        "message": "Vanaf hier spelen"
+    },
+    "Player Guide": {
+        "message": "Handleiding"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Positie als doel ingesteld. Klik om te bevestigen."
+    },
+    "Prev": {
+        "message": "Vorige"
+    },
+    "Quit": {
+        "message": "Afsluiten"
+    },
+    "Quit Game": {
+        "message": "Spel afsluiten"
+    },
+    "Quit to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "READY": {
+        "message": "GEREED"
+    },
+    "RECLAIM": {
+        "message": "TERUGWINNEN"
+    },
+    "RECLAIMING": {
+        "message": "TERUGWINNEN"
+    },
+    "REPAIR": {
+        "message": "REPAREREN"
+    },
+    "RETURN FIRE": {
+        "message": "TERUGSCHIETEN"
+    },
+    "ROAM": {
+        "message": "VRIJ RONDBEWEGEN"
+    },
+    "Radius": {
+        "message": "Straal"
+    },
+    "Request pending": {
+        "message": "Verzoek in behandeling"
+    },
+    "Resume": {
+        "message": "Hervatten"
+    },
+    "Resume Game": {
+        "message": "Spel hervatten"
+    },
+    "Resume from here?": {
+        "message": "Vanaf hier hervatten?"
+    },
+    "Return to Galactic War": {
+        "message": "Terug naar Galactische Oorlog"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "Rewinding Time": {
+        "message": "Tijd terugspoelen"
+    },
+    "SELECTING": {
+        "message": "SELECTEREN"
+    },
+    "SHARE ECO": {
+        "message": "ECON. DELEN"
+    },
+    "SHARED ENERGY:": {
+        "message": "GEDEELDE ENERGIE: "
+    },
+    "SHARED METAL:": {
+        "message": "GEDEELD METAAL: "
+    },
+    "SPECIAL-MOVE": {
+        "message": "SPECIALE BEWEGING"
+    },
+    "START ANNIHILATION": {
+        "message": "BEGIN VERNIETIGING"
+    },
+    "STOP": {
+        "message": "STOPPEN"
+    },
+    "STORAGE": {
+        "message": "OPSLAG"
+    },
+    "Save": {
+        "message": "Opslaan"
+    },
+    "Save Game": {
+        "message": "Spel opslaan"
+    },
+    "Save complete": {
+        "message": "Opgeslagen"
+    },
+    "Save game?": {
+        "message": "Spel opslaan?"
+    },
+    "Saving game": {
+        "message": "Spel opslaan"
+    },
+    "Scroll mouse wheel to zoom in and out.": {
+        "message": "Scroll het muiswiel om in en uit te zoomen."
+    },
+    "Second Camera PIP": {
+        "message": "Tweede camera Beeld-in-Beeld"
+    },
+    "Select a new gravity well.": {
+        "message": "Selecteer een zwaartekrachtput."
+    },
+    "Select a planet to attack.": {
+        "message": "Selecteer een planeet om aan te vallen."
+    },
+    "Select a planet to destroy.": {
+        "message": "Selecteer een planeet om te vernietigen."
+    },
+    "Select all advanced units in view": {
+        "message": "Alle geavanceerde eenheden in beeld selecteren"
+    },
+    "Select all air units in view": {
+        "message": "Alle luchteenheden in beeld selecteren"
+    },
+    "Select all bot units in view": {
+        "message": "Alle bots in beeld selecteren"
+    },
+    "Select all fabber units in view": {
+        "message": "Alle fabricage-eenheden in beeld selecteren"
+    },
+    "Select all naval units in view": {
+        "message": "Alle zee-eenheden in beeld selecteren"
+    },
+    "Select all orbital units in view": {
+        "message": "Alle ruimte-eenheden in beeld selecteren"
+    },
+    "Select all vehicle units in view": {
+        "message": "Alle voertuigen in beeld selecteren"
+    },
+    "Select idle fabbers": {
+        "message": "Alle niet-gebruikte fabricage-eenheden selecteren"
+    },
+    "Select idle factories": {
+        "message": "Alle niet-gebruikte fabrieken selecteren"
+    },
+    "Send to Annihilate": {
+        "message": "Vernietigen"
+    },
+    "Set course for annihilation": {
+        "message": "Zet koers voor vernietiging"
+    },
+    "Set target spot": {
+        "message": "Doel instellen"
+    },
+    "Sim Performance": {
+        "message": "Sim-prestaties"
+    },
+    "Social Bar": {
+        "message": "Sociale balk"
+    },
+    "Surrender": {
+        "message": "Opgeven"
+    },
+    "Surrender Game?": {
+        "message": "Spel opgeven?"
+    },
+    "Swap cameras": {
+        "message": "Camera's wisselen"
+    },
+    "TRANSPORT": {
+        "message": "VERVOER"
+    },
+    "Then confirm destination to set course.": {
+        "message": "Bevestig daarna de bestemming om koers te zetten."
+    },
+    "This process can take a while.": {
+        "message": "Dit proces kan enige tijd duren."
+    },
+    "Toggle POV Camera": {
+        "message": "Pov-camera in-/uitschakelen"
+    },
+    "UNLOAD": {
+        "message": "UITLADEN"
+    },
+    "USE": {
+        "message": "GEBRUIKEN"
+    },
+    "Unknown": {
+        "message": "Onbekend"
+    },
+    "Vehicle": {
+        "message": "Voertuig"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "WERELDSIMULATIE VERDWENEN"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Wachten tot de andere spelers een spawnlocatie hebben gekozen."
+    },
+    "Yes": {
+        "message": "Ja"
+    },
+    "__metal_spots__ metal": {
+        "message": "__metal_spots__ metaal"
+    },
+    "__num_idle_fabbers__ Idle": {
+        "message": "__num_idle_fabbers__ Inactief"
+    },
+    "__num_idle_factories__ Idle": {
+        "message": "__num_idle_factories__ Inactief"
+    },
+    "__unit_name__ arrived.": {
+        "message": "__unit_name__ aangekomen."
+    },
+    "__unit_name__ destroyed.": {
+        "message": "__unit_name__ vernietigd."
+    },
+    "__unit_name__ idle.": {
+        "message": "__unit_name__ inactief."
+    },
+    "__unit_name__ launched!": {
+        "message": "__unit_name__ gelanceerd!"
+    },
+    "__unit_name__ located.": {
+        "message": "__unit_name__ gevonden."
+    },
+    "__unit_name__ lost.": {
+        "message": "__unit_name__ verloren."
+    },
+    "__unit_name__ ready.": {
+        "message": "__unit_name__ gereed."
+    },
+    "__unit_name__ under attack.": {
+        "message": "__unit_name__ wordt aangevallen."
+    },
+    "__victim_name__ has been annihilated.": {
+        "message": "__victim_name__ is vernietigd."
+    },
+    "__victim_name__ was annihilated by __killer_name__.": {
+        "message": "__victim_name__ is vernietigd door __killer_name__."
+    },
+    "air": {
+        "message": "lucht"
+    },
+    "ammo": {
+        "message": "ammunitie"
+    },
+    "army": {
+        "message": "leger"
+    },
+    "bot": {
+        "message": "bot"
+    },
+    "combat": {
+        "message": "gevecht"
+    },
+    "factory": {
+        "message": "fabrieken"
+    },
+    "orbital": {
+        "message": "ruimte"
+    },
+    "sea": {
+        "message": "zee"
+    },
+    "utility": {
+        "message": "voorzieningen"
+    },
+    "vehicle": {
+        "message": "voertuig"
+    },
+    "Alliance?": {
+        "message": "Alliantie?"
+    },
+    "Dynamic Alliance": {
+        "message": "Dynamische alliantie"
+    },
+    "Pending": {
+        "message": "In afwachting"
+    },
+    "Returning to Galactic War": {
+        "message": "Terug naar Galactische Oorlog"
+    },
+    "SHARE": {
+        "message": "DELEN"
+    },
+    "Share Economy": {
+        "message": "Economie delen"
+    }
+}

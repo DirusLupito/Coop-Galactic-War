@@ -1,0 +1,26 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "SPOJENÍ SE SERVEREM SELHALO"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "PŘIPOJENÍ SE SERVEREM BYLO ZTRACENO"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "NEPOVEDLO SE PŘIPOJIT KE HŘE"
+    },
+    "FAILED TO START GAME": {
+        "message": "NEPODAŘILO SE SPUSTIT HRU"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "NEPODAŘILO SE SPUSTIT ZÁZNAM"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "PŘÍSTUP POVOLEN"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "PŘÍSTUP K SERVERU BYL ODMÍTNUT"
+    },
+    "Returning to Main Menu": {
+        "message": "Návrat do Hlavního Menu"
+    }
+}

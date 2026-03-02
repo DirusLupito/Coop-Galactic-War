@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "VERNICHTUNG ABGESCHLOSSEN"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "Durchschnittlich"
+    },
+    "Built": {
+        "message": "Gebaut"
+    },
+    "Destroyed": {
+        "message": "Zerstört"
+    },
+    "Determining ladder rank...": {
+        "message": "Errechnet Rang..."
+    },
+    "Draw": {
+        "message": "UNENTSCHIEDEN"
+    },
+    "Duration:": {
+        "message": "Dauer:"
+    },
+    "Efficiency": {
+        "message": "Effektivität"
+    },
+    "Energy": {
+        "message": "Energie"
+    },
+    "Metal": {
+        "message": "Metall"
+    },
+    "Produced": {
+        "message": "Produziert"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "ZURÜCK ZUM HAUPTMENÜ"
+    },
+    "REVIEW": {
+        "message": "ÜBERPRÜFEN"
+    },
+    "Requeue": {
+        "message": "Wieder anstellen"
+    },
+    "SPECTATE": {
+        "message": "ZUSCHAUEN"
+    },
+    "The battle ended in a draw.": {
+        "message": "Die Schlacht endete mit einem Unentschieden."
+    },
+    "The game has ended.": {
+        "message": "Das Spiel ist zu Ende."
+    },
+    "Total Oblivion": {
+        "message": "In absoluter Vergessenheit"
+    },
+    "Units": {
+        "message": "Einheiten"
+    },
+    "Used": {
+        "message": "Gebraucht"
+    },
+    "VICTORY IS YOURS": {
+        "message": "DER SIEG GEHÖRT IHNEN"
+    },
+    "VIEW RESULTS": {
+        "message": "ERGEBNISSE ANSEHEN"
+    },
+    "VIEW STATS": {
+        "message": "STATISTIKEN ANSEHEN"
+    },
+    "Winner:": {
+        "message": "Gewinner:"
+    },
+    "Winners:": {
+        "message": "Gewinner:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "SIE WURDEN VERNICHET"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "Momentan ist dein Rang unbekannt. Spiele noch mehr, um es auf die Rangliste zu schaffen."
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "Deine 1v1-Rangnummer ist __rank_title__."
+    }
+}

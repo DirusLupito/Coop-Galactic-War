@@ -1,0 +1,374 @@
+{
+    "Accept": {
+        "message": "Aanvaarden"
+    },
+    "Advanced Edit": {
+        "message": "Geavanceerde bewerken"
+    },
+    "Advanced edit planet": {
+        "message": "Planeet geavanceerd beweken"
+    },
+    "Auto": {
+        "message": "Auto"
+    },
+    "Base:": {
+        "message": "Basis:"
+    },
+    "Biome:": {
+        "message": "Biome:"
+    },
+    "Brushes:": {
+        "message": "Kwasten:"
+    },
+    "CLEAR SYSTEM": {
+        "message": "Begin met een nieuw systeem."
+    },
+    "CLOSE": {
+        "message": "SLUITEN"
+    },
+    "CSG": {
+        "message": "CSG"
+    },
+    "Camera": {
+        "message": "Camera"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Creator": {
+        "message": "Ontwikkelaar"
+    },
+    "Data": {
+        "message": "Gegevens"
+    },
+    "Description": {
+        "message": "Omschrijving"
+    },
+    "Discard": {
+        "message": "Verwijderen"
+    },
+    "Do you want to save this system?": {
+        "message": "Wilt u dit systeem bewaren?"
+    },
+    "EDIT PLANET": {
+        "message": "BEWERK PLANEET"
+    },
+    "EXPORT SYSTEM": {
+        "message": "SYSTEEM EXPORTEREN"
+    },
+    "Edit": {
+        "message": "Bewerken"
+    },
+    "Edit System Info": {
+        "message": "Systeeminfo bewerken"
+    },
+    "Flooded": {
+        "message": "Onder water"
+    },
+    "GAMEPLAY": {
+        "message": "SPEELSTIJL"
+    },
+    "HIDE": {
+        "message": "VERBERG"
+    },
+    "Height:": {
+        "message": "Hoogte:"
+    },
+    "Include:": {
+        "message": "Opnemen:"
+    },
+    "Landing Zone Restrictions": {
+        "message": "Landingszonebeperkingen"
+    },
+    "Landing Zone Size": {
+        "message": "Grootte landingszones"
+    },
+    "Landing Zones": {
+        "message": "Landingszones"
+    },
+    "Latitude:": {
+        "message": "Breedtegraad:"
+    },
+    "Longitude:": {
+        "message": "Lengtegraad:"
+    },
+    "MY PLANETS": {
+        "message": "MIJN PLANETEN"
+    },
+    "Mass": {
+        "message": "MASSA"
+    },
+    "Max": {
+        "message": "Max."
+    },
+    "Max Asteroid Count": {
+        "message": "Max. aantal asteroïdes"
+    },
+    "Mergeable": {
+        "message": "Samenvoegbaar"
+    },
+    "Metal Spots": {
+        "message": "Metaalafzettingen"
+    },
+    "Min": {
+        "message": "Min."
+    },
+    "Mouse": {
+        "message": "Muis"
+    },
+    "NONE": {
+        "message": "GEEN"
+    },
+    "No Features": {
+        "message": "Geen voorwerpen"
+    },
+    "Ok": {
+        "message": "Ok"
+    },
+    "Once in Advanced Edit mode, the planet will remain in this mode for future edits.": {
+        "message": "Als je de modus Geavanceerd bewerken activeert, zal de planeet voor toekomstige bewerkingen in die modus blijven."
+    },
+    "PREVIEW ALL": {
+        "message": "BEKIJK ALLES"
+    },
+    "Pathable": {
+        "message": "Bereikbaar"
+    },
+    "Position": {
+        "message": "POSITIE"
+    },
+    "Preview": {
+        "message": "Voorbeeld"
+    },
+    "Preview planet": {
+        "message": "Voorbeeld van de planeet bekijken"
+    },
+    "Preview to copy CSG": {
+        "message": "Voorbeeld om CSG te kopiëren"
+    },
+    "Properties": {
+        "message": "Eigenschappen"
+    },
+    "RECENT": {
+        "message": "RECENT"
+    },
+    "REMOVE": {
+        "message": "VERWIJDERD"
+    },
+    "REMOVE ASTEROID BELT": {
+        "message": "ASTEROÏDEGORDEL VERWIJDEREN"
+    },
+    "Radius:": {
+        "message": "Straal:"
+    },
+    "SAVE SYSTEM": {
+        "message": "BEWAAR SYSTEEM"
+    },
+    "SELECT CSG": {
+        "message": " CSG SELECTEREN"
+    },
+    "SHOW": {
+        "message": "TOON"
+    },
+    "SIMULATE": {
+        "message": "SIMULEREN"
+    },
+    "STOP": {
+        "message": "STOPPEN"
+    },
+    "Save": {
+        "message": "Opslaan"
+    },
+    "Save as template": {
+        "message": "Opslaan als sjabloon"
+    },
+    "Seed:": {
+        "message": "Seed:"
+    },
+    "Selected CSG": {
+        "message": "Geselecteerde CSG"
+    },
+    "Shuffle Landing Zones": {
+        "message": "Landingszones wisselen"
+    },
+    "Spawn Delay (in seconds)": {
+        "message": "Landingsvertraging (in seconden)"
+    },
+    "Spots:": {
+        "message": "Plekken:"
+    },
+    "Starting Asteroid Count": {
+        "message": "Beginaantal asteroïdes"
+    },
+    "Starting planet options": {
+        "message": "Opties startplaneet"
+    },
+    "System Designer": {
+        "message": "Stelselontwerper"
+    },
+    "System Name:": {
+        "message": "Stelselnaam:"
+    },
+    "System radius is too large.": {
+        "message": "Systeemradius is te groot."
+    },
+    "System radius is too small.": {
+        "message": "Systeemradius is te klein."
+    },
+    "System requires at least one starting planet.": {
+        "message": "Stelsel heeft minstens een startplaneet nodig."
+    },
+    "TEMPLATES": {
+        "message": "SJABLOON"
+    },
+    "TERRAIN": {
+        "message": "TERREIN"
+    },
+    "TERRAIN AND CSG": {
+        "message": "TERREIN EN CSG"
+    },
+    "Temp": {
+        "message": "Temp."
+    },
+    "Temp:": {
+        "message": "Temp:"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "De planeet is aan het laden. Dit kan een lange tijd duren."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Het programma zal niet reageren totdat de planeet klaar is."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Het systeem is veranderd nadat het voor de laatste keer was opgeslagen."
+    },
+    "The system has not been saved.": {
+        "message": "Het systeem werd niet bewaard."
+    },
+    "This planet has been customized. It must be fully built before modifying.": {
+        "message": "Deze planeet is aangepast. Hij moet volledig worden afgebouwd voordat je hem verder kunt aanpassen."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to delete.": {
+        "message": "Gebruik [style=hotkey_title]__hotkey__[/style] om te verwijderen."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor.": {
+        "message": "Gebruik [style=hotkey_title]__hotkey__[/style] om de landingszone onder de cursor te plaatsen."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
+        "message": "Gebruik [style=hotkey_title]__hotkey__[/style] om een metaalplek onder de cursor te plaatsen."
+    },
+    "Use as a starting planet": {
+        "message": "Als startplaneet gebruiken"
+    },
+    "Variance:": {
+        "message": "Variatie:"
+    },
+    "Velocity": {
+        "message": "SNELHEID"
+    },
+    "Version": {
+        "message": "Versie"
+    },
+    "Water": {
+        "message": "Water"
+    },
+    "Water:": {
+        "message": "Water:"
+    },
+    "X": {
+        "message": "X"
+    },
+    "X:": {
+        "message": "X:"
+    },
+    "Y": {
+        "message": "Y"
+    },
+    "Y:": {
+        "message": "Y:"
+    },
+    "You will have to fix the system before saving.": {
+        "message": "Je moet het systeem repareren voor je kunt opslaan."
+    },
+    "You will not be able to revert back and use standard editing controls.": {
+        "message": "Je kunt de standaard bewerkingsbediening niet meer gebruiken."
+    },
+    "Z": {
+        "message": "Z"
+    },
+    "Z:": {
+        "message": "Z:"
+    },
+    "Zones:": {
+        "message": "Zones:"
+    },
+    "biome": {
+        "message": "biome"
+    },
+    "edit asteroid belt": {
+        "message": "asteroïdegordel bewerken"
+    },
+    "edit planet": {
+        "message": "planeet bewerken"
+    },
+    "height": {
+        "message": "hoogte"
+    },
+    "height range": {
+        "message": "hoogtebereik"
+    },
+    "landing zone size": {
+        "message": "grootte landingszones"
+    },
+    "landing zones per army": {
+        "message": "landingszones per leger"
+    },
+    "metal clusters": {
+        "message": "metaalclusters"
+    },
+    "metal density": {
+        "message": "metaaldichtheid"
+    },
+    "metal spots": {
+        "message": "metaalafzettingen"
+    },
+    "metal spots on asteroids": {
+        "message": "metaalafzettingen op asteroïdes"
+    },
+    "planet name": {
+        "message": "planeetnaam"
+    },
+    "preview landing zones by number of armies": {
+        "message": "voorbeeld landingszones per aantal legers"
+    },
+    "radius": {
+        "message": "straal"
+    },
+    "seed": {
+        "message": "seed"
+    },
+    "start spots": {
+        "message": "startplekken"
+    },
+    "symmetry type": {
+        "message": "type symmetrie"
+    },
+    "temperature": {
+        "message": "temperatuur"
+    },
+    "terrain": {
+        "message": "terrein"
+    },
+    "terrain and gameplay": {
+        "message": "terrein en speelstijl"
+    },
+    "thrusters required for attack": {
+        "message": "benodigde raketmotoren voor aanval"
+    },
+    "water coverage": {
+        "message": "waterdekking"
+    },
+    "water depth": {
+        "message": "waterdiepte"
+    }
+}

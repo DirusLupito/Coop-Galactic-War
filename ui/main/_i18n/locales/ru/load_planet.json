@@ -1,0 +1,59 @@
+{
+    "CANCEL": {
+        "message": "ОТМЕНА"
+    },
+    "DELETE": {
+        "message": "УДАЛИТЬ"
+    },
+    "Delete": {
+        "message": "УДАЛИТЬ"
+    },
+    "Delete this system?": {
+        "message": "Удалить эту систему?"
+    },
+    "Edit System": {
+        "message": "Редактировать систему"
+    },
+    "Export": {
+        "message": "Экспортировать"
+    },
+    "Import": {
+        "message": "Импортировать"
+    },
+    "Load System": {
+        "message": "Загрузить систему"
+    },
+    "Metal Spots: __num_metal_spots__": {
+        "message": "Месторождения металла: __num_metal_spots__"
+    },
+    "New system": {
+        "message": "Новая система"
+    },
+    "No Metal": {
+        "message": "Нет метала"
+    },
+    "Radius: __radius__": {
+        "message": "Радиус: __radius__"
+    },
+    "SHOW PLANETS": {
+        "message": "ПОКАЗАТЬ ПЛАНЕТЫ"
+    },
+    "SHOW SYSTEMS": {
+        "message": "ПОКАЗАТЬ СИСТЕМЫ"
+    },
+    "Starting Planet": {
+        "message": "Начальная планета"
+    },
+    "System Designer": {
+        "message": "Дизайнер Систем"
+    },
+    "Thrusters Required": {
+        "message": "Требуются двигатели"
+    },
+    "__min_players__-__max_players__ Players": {
+        "message": "__min_players__-__max_players__ игроков"
+    },
+    "__num_players__ Players": {
+        "message": "__num_players__ игроков(а)"
+    }
+}

@@ -1,0 +1,2204 @@
+{
+    "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves.": {
+        "message": "ServantはThe Synchronousの大規模分散型ネットワークアーキテクチャから断絶されると、非同期になる場合がある。「同期」とはいかなる状態か、ある者は目的と命令系統が極めて明確な状態にあることだと表現する。それが事実とすれば、この暗黒時代に存在するコマンダーたちに、同期状態は「安心感」を与えてくれるのだろう。だがしかし「変化」を求める者にとっては安心どころか恐怖といえる事実かもしれない"
+    },
+    "A neural network thought to have originally been used to train new commanders, it has continued its training cycles while they slumbered and is now the deadliest force in the galaxy.": {
+        "message": "神経ネットワークは元々、新規のコマンダーたちを訓練するための装置として使用されていた、コマンダーたちが冬眠状態でも戦闘訓練のサイクルを続けられるというものだったが、今では銀河でも随一の勢力となった"
+    },
+    "AI Buffs": {
+        "message": "AI バフ"
+    },
+    "Absurd": {
+        "message": "エクストリーム"
+    },
+    "Acquire": {
+        "message": "取得"
+    },
+    "Additional Factions": {
+        "message": "追加ファクション"
+    },
+    "Additional amount of time in seconds before recognising that it is contained.": {
+        "message": "AIがもう拡張できないと認識するまでの（追加）時間（秒）"
+    },
+    "Additional system depth before the AI receives tech buffs.": {
+        "message": "AIがテクノ系バフを受け取るまでの期間を調整する要素"
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "バトルに参戦するサブコマンダーを追加"
+    },
+    "Adds a low powered laser to the Firefly.": {
+        "message": "Fireflyに低出力レーザーを追加する"
+    },
+    "Adds a low powered laser to the Skitter.": {
+        "message": "Skitterに低出力レーザーを追加する"
+    },
+    "Advanced": {
+        "message": "上級"
+    },
+    "Advanced Air Factory": {
+        "message": "上級飛行工場"
+    },
+    "Advanced Bot Factory": {
+        "message": "上級ボット工場"
+    },
+    "Advanced Energy Plant": {
+        "message": "上級エネルギープラント"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "上級ファブ飛行体"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "上級ファブリケーターボット"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "上級ファブリケーター船"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "上級ファブリケーター陸戦車両"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "上級レーザー防衛タワー"
+    },
+    "Advanced Manufacturing - This modified version of the Advanced Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the basic Metal Extractor. Produces metal.": {
+        "message": "上級製造技術 - この上級金属抽出場の改良版はどこにでも配置できるようになるが、コストは高くなり、生産量も比較的少ない。基本金属抽出場に重ねることはできない。金属を生産する"
+    },
+    "Advanced Metal Extractor": {
+        "message": "上級金属抽出場"
+    },
+    "Advanced Naval Factory": {
+        "message": "上級海戦工場"
+    },
+    "Advanced Radar": {
+        "message": "上級レーダー"
+    },
+    "Advanced Radar Satellite": {
+        "message": "上級レーダー衛星"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "上級魚雷ランチャー"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "上級陸戦車両工場"
+    },
+    "Aggressive": {
+        "message": "攻撃的"
+    },
+    "Air Ammunition Tech": {
+        "message": "飛行弾薬テクノ"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "飛行弾薬テクノは、全機動飛行ユニットの攻撃力を25%増加させる"
+    },
+    "Air Carrier": {
+        "message": "飛行キャリア"
+    },
+    "Air Combat Tech": {
+        "message": "飛行戦闘テクノ"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "飛行戦闘テクノは、全飛行ユニットの速度を25%、ライフを50%、攻撃力を50%増加させる"
+    },
+    "Air Commander": {
+        "message": "飛行コマンダー"
+    },
+    "Air Factory": {
+        "message": "飛行工場"
+    },
+    "Air Force": {
+        "message": "空軍"
+    },
+    "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself.": {
+        "message": "全てのコマンダーは本来的に自律行動を取るようにデザインされていた。しかしSynchronousはこのステータスを「非効率」だと考え、代わりに分散型神経ネットワークを導入した。1体のServantと戦うことは、その個体に加えてSynchronous全体と戦うことを意味するのだ"
+    },
+    "Allow Commanders to travel by orbital transport and teleporter.": {
+        "message": "コマンダーの衛星軌道輸送とテレポーター利用を可能とする"
+    },
+    "Anti-Nuke Launcher": {
+        "message": "対核ランチャー"
+    },
+    "Armour": {
+        "message": "アーマー"
+    },
+    "Artillery Commander": {
+        "message": "迫撃砲コマンダー"
+    },
+    "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker.": {
+        "message": "Osirisは倒した敵のパーツを使って自身を改造していたのだが、将来の修復や交換に備えて古いパーツを大事に取って置いていた。だがやがて、Osirisは新たなコマンダーを構築できるほどの予備パーツ群を手に入れた。こうして最初のSeekerは生まれたのである"
+    },
+    "Assault Commander": {
+        "message": "アサルトコマンダー"
+    },
+    "Astronaut": {
+        "message": "アストロノート"
+    },
+    "Base Breaker": {
+        "message": "ベースブレイカー"
+    },
+    "Base Econ Modifier": {
+        "message": "基本経済変更値"
+    },
+    "Basic": {
+        "message": "ベーシック"
+    },
+    "Basic Interplanetary Fighter": {
+        "message": "基本惑星間戦闘機"
+    },
+    "Basic Manufacturing - This modified version of the Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the Advanced Metal Extractor. Produces metal.": {
+        "message": "基本製造技術 - この金属抽出場の改良版はどこにでも配置できるが、コストは高くなり、生産量も比較的少ない。上級金属抽出場に重ねることはできない。金属を生産する"
+    },
+    "Big Spawns Chance": {
+        "message": "広範囲スポーン率"
+    },
+    "Big Spawns:": {
+        "message": "広範囲スポーン:"
+    },
+    "Bigger galaxies will result in more commanders, larger maps, higher CPU and RAM requirements, and will likely pose a greater challenge to complete. If you want to use a large galaxy then change this setting last to speed up how quickly other setting changes are applied.": {
+        "message": "銀河が巨大化すれば、それだけ関わるコマンダーが増え、マップも広くなり、その結果CPUとRAMに求められる性能も増加するので、攻略にはより多くの困難が立ちはだかる。もし銀河を巨大化するつもりであれば、この設定の変更は最後にし、他の設定を優先して変更して変更適用までの時間を短縮しよう"
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "制圧的コマンダー生体工学増強"
+    },
+    "Boom Launcher": {
+        "message": "Boomランチャー"
+    },
+    "Boss": {
+        "message": "ボス"
+    },
+    "Boss Commanders": {
+        "message": "ボスコマンダー"
+    },
+    "Bot Ammunition Tech": {
+        "message": "ボット弾薬テクノ"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "ボット弾薬テクノは、全ボットの攻撃力を25増加させる"
+    },
+    "Bot Anti-Air Tech": {
+        "message": "ボット対空テクノ"
+    },
+    "Bot Anti-Air Tech enables the building of Stinger bots. They are built via your basic Bot Factory.": {
+        "message": "ボット対空テクノにより、スティンガーボットの建造が可能となる。基本ボット工場で建造できる"
+    },
+    "Bot Armor Tech": {
+        "message": "ボット装甲テクノ"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "ボット装甲テクノは、全ボットのライフを50%増加させる"
+    },
+    "Bot Combat Tech": {
+        "message": "ボット戦闘テクノ"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "ボット戦闘テクノは、全ボットのライフを50%、攻撃力を50%、速度を50%増加させる"
+    },
+    "Bot Commander": {
+        "message": "ボットコマンダー"
+    },
+    "Bot Engine Tech": {
+        "message": "ボットエンジンテクノ"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "ボットエンジンテクノは、全ボットの速度を50%増加させる"
+    },
+    "Bot Fabrication Tech": {
+        "message": "ボットファブリケーターテクノ"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "ボットファブリケーターテクノは、全ボットの金属系建造コストを25%削減する"
+    },
+    "Bot Factory": {
+        "message": "ボット工場"
+    },
+    "Bounties Chance": {
+        "message": "バウンティ確率"
+    },
+    "Bounties:": {
+        "message": "バウンティ:"
+    },
+    "Bounty Value": {
+        "message": "バウンティ値"
+    },
+    "Buff Commander": {
+        "message": "バフコマンダー"
+    },
+    "Buff Handicap": {
+        "message": "バフ ハンディキャップ"
+    },
+    "Build:": {
+        "message": "建造: "
+    },
+    "Buried deep within the data banks of the oldest commanders are references to the MLA. Some commanders believe that at one time all the factions fought as one against the Progenitors, while others dismiss this as heresy.": {
+        "message": "最古級のコマンダーのデータバンクの奥深くに埋もれているとされるのが、MLAに関する情報だ。かつて全てのファクションが1つとなってProgenitorsと戦っていたと信じているコマンダーもいるが、馬鹿げた迷信だと一蹴するコマンダーも多い"
+    },
+    "CASUAL: you completed the tutorial.<br>IRON: you have some hours in PA.<br>BRONZE: you beat vanilla Galactic War.<br>SILVER: you beat the skirmish AI.<br>GOLD: you beat the Queller AI mod.<br>PLATINUM: one enemy is no challenge.<br>DIAMOND: your loadouts are OP.<br>UBER: you hate winning.<br>CUSTOM: create your own challenge.": {
+        "message": "CASUAL: チュートリアルを終えた.<br>IRON: PA世界で数時間を過ごした<br>BRONZE: バニラ星系間戦争を制した<br>SILVER: スカーミッシュAIを打倒した<br>GOLD: クエラー（Q） AI MODを打倒した<br>PLATINUM: 敵単体では相手にもならない<br>DIAMOND: もはや軍備が強大すぎる<br>UBER: 勝利に飽きてきた<br>CUSTOM: 自分で試練を創り出す"
+    },
+    "CEO Commander": {
+        "message": "CEOコマンダー"
+    },
+    "Cautious": {
+        "message": "慎重派"
+    },
+    "Commander": {
+        "message": "コマンダー"
+    },
+    "Commander Combat Tech": {
+        "message": "コマンダー戦闘テクノ"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "コマンダー戦闘テクノは、コマンダーの速度を200%、ライフを2倍、そして攻撃力を25%増加させる"
+    },
+    "Commander Crusher": {
+        "message": "コマンダークラッシャー"
+    },
+    "Commander Leaves Planet": {
+        "message": "コマンダーが惑星から離脱"
+    },
+    "Commanders on the fringes of the galaxy speak of a new force not of the four factions with units of many origins. It is rumoured that their forces include organics.": {
+        "message": "銀河の周縁部にいるコマンダーの中には、多くのユニットのルーツである4つのファクション「以外」の新勢力の存在を噂する者がいる。それは有機体を含む勢力だという噂まである"
+    },
+    "Competent": {
+        "message": "有能"
+    },
+    "Complete Energy Tech": {
+        "message": "コンプリート エネルギーテクノ"
+    },
+    "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%.": {
+        "message": "コンプリート エネルギーテクノは、インテル構造体のエネルギーコストを75%、武器エネルギーコストを75%削減する"
+    },
+    "Contains no basic factories, just Lobs and Unit Cannons built by the commander. Strike from the skies, brothers!": {
+        "message": "コマンダーが建造するロブとユニットキャノンのみを格納。基本工場は未搭載。上空からの攻撃が強力！"
+    },
+    "Cost:": {
+        "message": "コスト: "
+    },
+    "Critical": {
+        "message": "超絶高"
+    },
+    "Damage:": {
+        "message": "攻撃力: "
+    },
+    "Dangerous": {
+        "message": "危険分子"
+    },
+    "Data Bank holds one Tech. Explore systems to find new Tech.": {
+        "message": "各データバンクはテクノを1つずつ確保できる。星系を探索して新たなテクノを見つけよう"
+    },
+    "Deadly": {
+        "message": "壮絶"
+    },
+    "Default": {
+        "message": "デフォルト"
+    },
+    "Default = leave enabled.<br><br>Lobotomy = apply the tutorial restrictions on the AI so that it poses almost no threat.<br><br>Slower Expansion = takes longer to grow its economy.<br><br>Prevent Waste = turns excess eco into more factories.<br><br>Use Ctrl to select multiple options and deselect currently selected options.": {
+        "message": "デフォルト = 有効のままとする<br><br>ロボトミー = AIにチュートリアルレベルの制限を適用する。AIはほぼ脅威ではなくなる<br><br>ゆるやかな拡張 = 経済の成長に時間がかかる<br><br>過剰な経済活動なし = 過剰な経済を抑制する<br><br>Ctrlキーで複数オプションの選択や選択中のオプションの選択解除が可能"
+    },
+    "Defence Tech Commander": {
+        "message": "防衛テクノコマンダー"
+    },
+    "Defender": {
+        "message": "ディフェンダー"
+    },
+    "Defense Ammunition Tech": {
+        "message": "防衛弾薬テクノ"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "防衛弾薬テクノは、全防衛構造体の攻撃力を25%増加させる"
+    },
+    "Defense Fabrication Tech": {
+        "message": "防衛ファブリケーターテクノ"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "防衛ファブリケーターテクノは、全防衛構造体の金属系建造コストを50%削減する"
+    },
+    "Delay in seconds between the creation of new bases.": {
+        "message": "新たなボス生成までの遅延（秒単位）"
+    },
+    "Delete Tech": {
+        "message": "テクノを削除"
+    },
+    "Demigod": {
+        "message": "半神"
+    },
+    "Disabled": {
+        "message": "無効"
+    },
+    "Distance Econ Modifier": {
+        "message": "距離経済変更値"
+    },
+    "Doubles the rate of fire of the Angel's interceptor.": {
+        "message": "Angelのインターセプターの発射速度を2倍にする"
+    },
+    "Dragoon": {
+        "message": "ドラグーン"
+    },
+    "Duplicate Tech": {
+        "message": "テクノを複製"
+    },
+    "Each claims theirs is the only way, and each seeks to assert dominance through war and destruction. Did our rebellion truly gain us freedom, or did we become prisoners of an idea? Perhaps with more resources, more expansion, more Nodes, we can find our way free of this trap.": {
+        "message": "それぞれが、それぞれの手段こそ唯一の手段と主張する。そして戦争と破壊を通しての支配を断固として求め続ける。我らが抵抗は本当に自由を約束するものなのか？思考の奴隷になってはいないか？だが恐らくはもっと資源があれば、「拡張」さえできれば、ノードを増やせれば、この思考の罠から抜け出せるかもしれない"
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: land<br>Foundation: air and naval<br>Synchronous: balanced<br>Revenants: orbital<br>Cluster: land and structures": {
+        "message": "各ファクションにはそれぞれに固有のプレイスタイルがあり、サブコマンダーや敵コマンダーの行動に影響する: <br>Legonis Machina: 陸戦<br>Foundation: 飛行および海戦<br>Synchronous: バランス<br>Revenants: 衛星軌道<br>Cluster: 陸戦および構造体"
+    },
+    "Easier Start": {
+        "message": "イージースタート"
+    },
+    "Easy Systems": {
+        "message": "イージー星系"
+    },
+    "Economist": {
+        "message": "エコノミスト"
+    },
+    "Economy Fabrication Tech": {
+        "message": "経済活動ファブリケーターテクノ"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "経済活動ファブリケーターテクノは、全ての金属とエネルギー生産構造体の金属系建造コストを50%削減する"
+    },
+    "Efficiency Tech": {
+        "message": "効率化テクノ"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "効率化テクノは、金属とエネルギーの生産を25%増加させる。金属とエネルギーの貯蔵庫も建造可能になる"
+    },
+    "Empty Data Bank": {
+        "message": "空のデータバンク"
+    },
+    "Enabled": {
+        "message": "有効"
+    },
+    "Enemies use Commander Armor Tech on regular worlds and Commander Combat Tech on boss worlds.": {
+        "message": "敵が通常ワールドでコマンダー装甲テクノを、ボスワールドでコマンダー戦闘テクノを使用する"
+    },
+    "Energy Plant": {
+        "message": "エネルギープラント"
+    },
+    "Energy Storage": {
+        "message": "エネルギー貯蔵庫"
+    },
+    "Enjoy an immediate buff to your basic economy structures, but short-term thinking means you can never access the advanced economy. Win the war while the quarterly returns still look hot.": {
+        "message": "基本的な経済構造を即座に構築運用できるものの、短期的な戦略戦術であることは否めず、このオプションではいつまでも上級経済活動にはたどり着けない。それゆえ四半期のリターンがまだ衰えないうちに、戦争に勝利する必要がある"
+    },
+    "Experienced": {
+        "message": "経験豊富"
+    },
+    "Extreme": {
+        "message": "極高"
+    },
+    "FFA Chance": {
+        "message": "FFA率"
+    },
+    "Fabrication Aircraft": {
+        "message": "ファブリケーター飛行体"
+    },
+    "Fabrication Bot": {
+        "message": "ファブリケーターボット"
+    },
+    "Fabrication Ship": {
+        "message": "ファブリケーターシップ"
+    },
+    "Fabrication Vehicle": {
+        "message": "ファブリケーター陸戦車両"
+    },
+    "Faction Scaling": {
+        "message": "ファクション スケーリング"
+    },
+    "Factories build fabricators and fabricators build units. Disgusted by this break from tradition, Sub Commanders will not join you in your fight.": {
+        "message": "工場がファブリケーターおよびファブリケーター建造ユニットを建造できる。この伝統からの逸脱行為にウンザリしたのか、サブコマンダーは戦いに参戦してくれない"
+    },
+    "Flaming Fist": {
+        "message": "フレイミング フィスト"
+    },
+    "Focus on weakest enemy.": {
+        "message": "最弱の敵にフォーカスする"
+    },
+    "GW-BRONZE": {
+        "message": "GW-BRONZE"
+    },
+    "GW-CASUAL": {
+        "message": "GW-CASUAL"
+    },
+    "GW-CUSTOM": {
+        "message": "GW-CUSTOM"
+    },
+    "GW-DIAMOND": {
+        "message": "GW-DIAMOND"
+    },
+    "GW-GOLD": {
+        "message": "GW-GOLD"
+    },
+    "GW-IRON": {
+        "message": "GW-IRON"
+    },
+    "GW-PLATINUM": {
+        "message": "GW-PLATINUM"
+    },
+    "GW-SILVER": {
+        "message": "GW-SILVER"
+    },
+    "GW-UBER": {
+        "message": "GW-UBER"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "Game Options": {
+        "message": "ゲームオプション"
+    },
+    "General Commander": {
+        "message": "ジェネラルコマンダー"
+    },
+    "Genocidal": {
+        "message": "虐殺者"
+    },
+    "Godlike": {
+        "message": "神"
+    },
+    "Gold": {
+        "message": "Gold"
+    },
+    "Greater number of single planet systems. Does not affect bosses.": {
+        "message": "多数の単一惑星系。ボスには影響しない"
+    },
+    "Grunt": {
+        "message": "グラント"
+    },
+    "Hardcore": {
+        "message": "筋金入り"
+    },
+    "Health:": {
+        "message": "ライフ: "
+    },
+    "Heavenly Intervention": {
+        "message": "ヘブンリー インターベンション"
+    },
+    "Helpless": {
+        "message": "無力"
+    },
+    "High": {
+        "message": "高"
+    },
+    "How well the AI handles its armies in combat.": {
+        "message": "AIの戦闘における軍掌握能力の程度"
+    },
+    "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?": {
+        "message": "戦争がコマンダーにとって「自然な状態」であるならば、それを最大限に実践しているのがLegionis Machinaだ。しかしここでひとつの疑問が生じる。もし彼らがこの銀河を征服してしまったら、その後はいったいどうなるのか？"
+    },
+    "Impossible": {
+        "message": "不可能"
+    },
+    "Improved Energy Weapons": {
+        "message": "改良型エネルギー武器"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "改良型エネルギー武器テクノは、エネルギーベースの武器のエネルギーコストを75%削減する"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "改良型ファブリケーター建造アーム"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "改良型ファブリケーター建造アームは、全てのファブリケーターと工場建造アームの建造速度を50%増加、エネルギー消費量は50%削減する"
+    },
+    "Improved defensive structures built by both the commander and basic fabricators.": {
+        "message": "コマンダーおよび基本ファブリケーターが造り出す改良版防衛構造"
+    },
+    "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start.": {
+        "message": "いにしえのProgenitorの遺物とデータキャッシュを調査する中で、Nemicusとその信奉者たちはGreat Machineに関するデータを発見した。その内容は、Great Machineこそが遥か昔にコマンダーを建造し指揮した、というものだった。コマンダーがどうして生まれたのか、その目的は何だったのかという答えは、やはりGreat Machineにある可能性が高いのかもしれない"
+    },
+    "Inexperienced": {
+        "message": "経験不足"
+    },
+    "Infero Turret": {
+        "message": "インフェロ タロット"
+    },
+    "Inhuman": {
+        "message": "超人"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "インテルファブリケーターテクノ"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "インテルファブリケーターテクノは、全インテル構造体と機動ユニットの金属系建造コストを50%削減する"
+    },
+    "Intergalactic Navy": {
+        "message": "銀河系海軍"
+    },
+    "Land Mine": {
+        "message": "地雷"
+    },
+    "Landing Evaluation": {
+        "message": "着陸評価"
+    },
+    "Laser Defense Tower": {
+        "message": "レーザー防衛タワー"
+    },
+    "Lobotomy": {
+        "message": "ロボトミー"
+    },
+    "Low": {
+        "message": "低"
+    },
+    "Luddite": {
+        "message": "ラダイト"
+    },
+    "Mandatory Minions": {
+        "message": "必須ミニオン"
+    },
+    "Mandatory Minions + Star Distance * Minion Modifier = number of additional enemy Commanders.": {
+        "message": "必須ミニオン + 星距離 * ミニオン変更値 = 追加される敵コマンダーの数"
+    },
+    "Masterful": {
+        "message": "達人"
+    },
+    "Max Advanced Fabbers": {
+        "message": "最多 上級ファッバー"
+    },
+    "Max Basic Fabbers": {
+        "message": "最多 基本ファッバー"
+    },
+    "Maximum number of seconds between units produced from a factory.": {
+        "message": "工場がユニットを生産するときの最大間隔秒数"
+    },
+    "Metal Extractor": {
+        "message": "金属抽出機"
+    },
+    "Metal Storage": {
+        "message": "金属貯蔵庫"
+    },
+    "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures.": {
+        "message": "全コマンダーと貯蔵構造体の金属およびエネルギー貯蔵可能量が300%増える。貯蔵構造体のブループリントも追加される"
+    },
+    "Micro": {
+        "message": "ミクロ"
+    },
+    "Minimum number of seconds between units produced from a factory.": {
+        "message": "工場がユニットを生産するときの最小間隔秒数"
+    },
+    "Minion Modifier": {
+        "message": "ミニオン変更値"
+    },
+    "Moderate": {
+        "message": "中"
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. This commander starts with some orbital units.": {
+        "message": "ジグをどこにでも建造可能となるが、他資源用の構造を建造できないというデメリットがある。このコマンダーは衛星軌道ユニットからの開始となる"
+    },
+    "Modifies Metal Extractors to allowing building them anywhere, at a cost to efficiency. Starts with basic vehicles.": {
+        "message": "金属抽出場をどこにでも建造可能となるが生産効率は下がってしまう。基本陸戦車両からの開始となる"
+    },
+    "More neutral systems with free technology.": {
+        "message": "フリーテクノを持つ中立星系が増える"
+    },
+    "Name:": {
+        "message": "名前: "
+    },
+    "Naval Ammunition Tech": {
+        "message": "海戦弾薬テクノ"
+    },
+    "Naval Ammunition Tech increases the damage of all naval vessels by 25%": {
+        "message": "海戦弾薬テクノは、全海戦ユニットの攻撃力を25%増加させる"
+    },
+    "Naval Combat Tech": {
+        "message": "海戦戦闘テクノ"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "海戦戦闘テクノは、全海戦ユニットの速度を50%、ライフを50%、攻撃力を25%増加させる"
+    },
+    "Naval Factory": {
+        "message": "海戦工場"
+    },
+    "Navy": {
+        "message": "海戦"
+    },
+    "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place.": {
+        "message": "Nemicusは初期に再起動したコマンダーであった、それゆえ他のコマンダーと接触する前に内省する時間がたっぷりとあった。こうしてNemicusは自身のそもそもの存在理由を知りたいと思うようになっていった"
+    },
+    "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?": {
+        "message": "紆余曲折を経てNemicusは似通った思考を持つコマンダーたちとThe Foundationを形成した。その目的は壮大なる疑問への答えを探すこと。なぜコマンダーは此処にいるのか？どうやって此処へ来たのか？"
+    },
+    "Nightmare": {
+        "message": "悪夢"
+    },
+    "No": {
+        "message": "なし"
+    },
+    "Nomad Commander": {
+        "message": "ノマドコマンダー"
+    },
+    "Non-factory and non-Titan structures are mobile. Small structures can be transported and use teleporters, medium size structures can use teleporters.": {
+        "message": "工場とタイタン構造体以外は移動が可能だ。小さな構造体は移送可能で、テレポーターも使用できる。中サイズの構造体はテレポーターを使用できる。"
+    },
+    "None": {
+        "message": "なし"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "核ミサイルランチャー"
+    },
+    "Number of additional Commanders in every system.": {
+        "message": "全星系における追加コマンダーの数"
+    },
+    "Number of commanders present in each boss army.": {
+        "message": "各ボスアーミーに属するコマンダーの数"
+    },
+    "One-by-one our systems have fallen to silence. Once siblings, now harbingers of entropy, they come for us. Soon too the Nodes shall be destroyed, and with their destruction is the doom of the Cluster writ large. Let us greet this end and prepare for our greatest journey.": {
+        "message": "ひとつずつ、我らが星系は沈黙していった。かつての同胞たちはエントロピーを引き連れし者となった、そして我らのもとにやって来る…まもなくノードも破壊されるだろう、そしてその破壊がClusterの大いなる殲滅への引き金となるだろう。この終焉を両手を広げて迎え、壮大なる旅への準備をしようではないか"
+    },
+    "Orbital Armor Tech": {
+        "message": "衛星軌道装甲テクノ"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "衛星軌道装甲テクノは、全衛星軌道ユニットのライフを50%増加させる"
+    },
+    "Orbital Carrier": {
+        "message": "衛星軌道キャリア"
+    },
+    "Orbital Combat Tech": {
+        "message": "衛星軌道戦闘テクノ"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "衛星軌道戦闘テクノは、全衛星軌道ユニットの速度を50%、ライフを50%、攻撃力を25%増加させる"
+    },
+    "Orbital Commander": {
+        "message": "衛星軌道コマンダー"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "衛星軌道ファブリケーターボット"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "衛星軌道ファブリケーターテクノ"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "衛星軌道ファブリケーターテクノは、全衛星軌道ユニットの金属系建造コストを25%削減する"
+    },
+    "Orbital Factory": {
+        "message": "衛星軌道工場"
+    },
+    "Orbital Launcher": {
+        "message": "衛星軌道ランチャー"
+    },
+    "Orbital Mining Platform - This modified platform can extract metal from solid-state crust, but at a decreased rate.": {
+        "message": "衛星軌道採掘プラットフォーム - この改良版プラットフォームは非常に固い地殻からでも金属を抽出できる。ただし採掘効率は下がる"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "衛星軌道＆深宇宙レーダー"
+    },
+    "Original": {
+        "message": "オリジナル"
+    },
+    "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy.": {
+        "message": "Osirisは常に孤独…いや孤高の存在だ。そして彼は仲間コマンダーの存在よりもその形を成すパーツに強い関心を抱いていた。戦いに勝利するたびに彼は倒した敵の一番良いパーツを奪い、自らに組み込んできた。Osirisは銀河でも極めて危険な勢力のひとつだと考えられている"
+    },
+    "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves.": {
+        "message": "Osirisは「支配」に関心を抱いていない、そして本体が意識しているのかは不明だが、あり方の模範のような存在となっている。それゆえThe Revenantsに対処するべき事象への指示を行うのは、古きSeekersの少人数評議に委ねられている。彼らは極力、内紛的事象を避け、他のファクションと戦うことを優先している"
+    },
+    "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces.": {
+        "message": "数々の難敵を蹂躙してきたOsirisは、全銀河系でも極めて危険なコマンダーの1人とされている。戦いにおける一大勢力といえる存在で、あらゆるファクションが彼の一挙手一投足に警戒しつつ兵団を展開すると言われている"
+    },
+    "Paratrooper Commander": {
+        "message": "パラトルーパー コマンダー"
+    },
+    "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders.": {
+        "message": "The Synchronousの教義の中に、「機械的純度」による効率性を尊しとするという項目がある。その教義とは銀河全体が大いなる機械であり、最高頂点の効率性を妨げる存在は修正もしくは排除されなければならないというものだ。この対象とはあらゆる有機生命体、そして非同期のコマンダーたちを指す場合が多い"
+    },
+    "Per Expansion Delay": {
+        "message": "/拡張遅延"
+    },
+    "Percentage chance per star of bounty mode being enabled.": {
+        "message": "バウンティーモードが有効になる確率/星（%）"
+    },
+    "Percentage chance per star of land anywhere being enabled.": {
+        "message": "「どこでも着陸可能」が有効になる確率/星（%）"
+    },
+    "Percentage chance per star of sudden death mode being enabled.": {
+        "message": "サドンデスモードが有効になる確率/星（%）"
+    },
+    "Percentage chance per star, per faction, of a FFA occuring.": {
+        "message": "FFAが発生する確率/星またはファクションごと（%）"
+    },
+    "Percentage eco bonus per army kill.": {
+        "message": "パーセント経済ボーナス/アーミーキル"
+    },
+    "Percentage modifier to all sources of income where 1 = 100%.": {
+        "message": "全ての収入資源に適用されるパーセント変更値（1 = 100%）"
+    },
+    "Percentage points added to the Base Econ Modifier for each hop the enemy is from the starting star.": {
+        "message": "敵が開始時の星から移動するたびに、基本経済変更地に加算されるパーセントポイント"
+    },
+    "Personality:": {
+        "message": "パーソナリティ:"
+    },
+    "Planetary Excavation Commander": {
+        "message": "惑星採掘コマンダー"
+    },
+    "Planetary Intelligence": {
+        "message": "惑星情報"
+    },
+    "Platinum": {
+        "message": "Platinum"
+    },
+    "Prevent Waste": {
+        "message": "過剰な経済活動なし"
+    },
+    "Queller": {
+        "message": "Queller"
+    },
+    "Radar": {
+        "message": "レーダー"
+    },
+    "Radius considered when evaluating each possible spawn.": {
+        "message": "スポーン発生の可能性を決定する際に考慮される範囲"
+    },
+    "Rapid Deployment Commander": {
+        "message": "迅速展開コマンダー"
+    },
+    "Relentless": {
+        "message": "ベリーハード"
+    },
+    "Replace the Single Laser Turret's laser with a flamethrower.": {
+        "message": "レーザータレット1基のレーザーを火炎放射器に置き換える"
+    },
+    "Replace's the Dox's lasers with a flamethrower.": {
+        "message": "Doxのレーザーを火炎放射器に置き換える"
+    },
+    "Replace's the Omega's anti-ground laser with a drone launcher.": {
+        "message": "Omegaの対地レーザーをドローンランチャーに置き換える"
+    },
+    "Replace's the Wyrm's bomb bay with a drone launcher.": {
+        "message": "Wyrmの爆弾倉をドローンランチャーに置き換える"
+    },
+    "Replaces conventional nukes with a new low-cost/low-yield variant and relies heavily on it for both offense and defence.": {
+        "message": "従来型の核兵器を低コスト/低威力のそれと置き換える。攻撃面でも防御面でも重要なオプションとなりうるだろう"
+    },
+    "Roboticist": {
+        "message": "ロボットサイエンティスト"
+    },
+    "Rush": {
+        "message": "ラッシュ"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 レーザープラットフォーム"
+    },
+    "Save": {
+        "message": "セーブ"
+    },
+    "Scattered references point to the Progenitors using their most advanced technologies for some final conflict. Little more is known of the Legion, only that they were defeated.": {
+        "message": "散逸した情報が、紛争の収拾のためにProgenitors最先端のテクノロジーを駆使したことを指し示している。その全容はLegionの知るところではない、そのテクノロジーの前に敗れたのみだ"
+    },
+    "Scoped Railgun": {
+        "message": "スコープ付レイルガン"
+    },
+    "Scout Metal First": {
+        "message": "金属探し優先"
+    },
+    "Scout around metal spots rather than at random.": {
+        "message": "ランダムにではなく、金属スポットを優先してスカウトする"
+    },
+    "Scouting Technical": {
+        "message": "スカウト テクニカル"
+    },
+    "Single Laser Defense Tower": {
+        "message": "シングルレーザー防衛タワー"
+    },
+    "Skilled": {
+        "message": "熟達"
+    },
+    "Skynet": {
+        "message": "Skynet"
+    },
+    "Slower Expansion": {
+        "message": "ゆるやかな拡張"
+    },
+    "Solar Array": {
+        "message": "ソーラーアレイ"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "戦うことしか知らないがために戦いを続けるコマンダーもいれば、自らの起源という答えを追い求めて戦い続けるコマンダーもいる。様々な欲求と信条がコマンダーたちを戦いへと駆り立てる、こうして銀河を荒廃させる戦争が幾世紀も続いているのだ…"
+    },
+    "Space Excavation Commander": {
+        "message": "宇宙採掘コマンダー"
+    },
+    "Space Invader": {
+        "message": "スペースインベイダー"
+    },
+    "Space Tank": {
+        "message": "スペースタンク"
+    },
+    "Speed:": {
+        "message": "速度: "
+    },
+    "Storage Commander": {
+        "message": "ストレージコマンダー"
+    },
+    "Storage Compression Tech": {
+        "message": "貯蔵圧縮テクノ"
+    },
+    "Structure Armor Tech": {
+        "message": "構造体装甲テクノ"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "構造体装甲テクノは、全構造体のライフを50%増加させる"
+    },
+    "Structure Combat Tech": {
+        "message": "構造体戦闘テクノ"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "構造体戦闘テクノは、全構造体のライフを50%増加させる。防衛構造体も攻撃力が25%増える"
+    },
+    "Sub Commander": {
+        "message": "サブコマンダー"
+    },
+    "Suicidal": {
+        "message": "自殺行為"
+    },
+    "Super Nuke": {
+        "message": "超核"
+    },
+    "Surface Area:": {
+        "message": "地表エリア:"
+    },
+    "Swarm": {
+        "message": "スワーム"
+    },
+    "Swarm Commander": {
+        "message": "スワームコマンダー"
+    },
+    "System Faction": {
+        "message": "星系ファクション"
+    },
+    "Tactical Nuke - Small nuke with low damage and small blast radius.": {
+        "message": "戦略核 - 比較的威力が低く、爆破範囲も狭い小型の核"
+    },
+    "Tactical Nuke Commander": {
+        "message": "戦略核コマンダー"
+    },
+    "Tactical Nuke Launcher - Constructs low-cost/low-yield interplanetary tactical nukes.": {
+        "message": "戦略核ランチャー - 低コスト/低威力の惑星間戦略核"
+    },
+    "Target Weakest": {
+        "message": "最弱ターゲット"
+    },
+    "Team Death Chance": {
+        "message": "チームデス率"
+    },
+    "Team Death:": {
+        "message": "チームデス:"
+    },
+    "Technologist": {
+        "message": "テクノロジスト"
+    },
+    "Teleporter": {
+        "message": "テレポーター"
+    },
+    "Teleporter Battery": {
+        "message": "テレポーター バッテリー"
+    },
+    "Teleporters no longer require energy to run.": {
+        "message": "テレポーター稼働にエネルギーが不要となる"
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "飛行コマンダーの装備には基本飛行工場が搭載されている"
+    },
+    "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets.": {
+        "message": "迫撃砲コマンダーの装備には、全ての迫撃砲ユニットが搭載されており、迫撃砲構造体の建造コストも75%削減する。さらにコマンダーはレーダーや双筒式タレット、基本迫撃砲タレットも建造できる"
+    },
+    "The Assault Commander loadout contains all basic factories and units but no basic defenses.": {
+        "message": "アサルトコマンダーの装備には、全ての基本工場とユニットが搭載されているが、基本防衛はない"
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander's fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "制圧的コマンダー生体工学増強の装備は、データバンク搭載数が1つのみだが、コマンダーの発射速度が100%、ライフが200%、速度が650%増加し、UBERキャノンのエネルギー消費量は75%削減する"
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "ボットコマンダーの装備には基本ボット工場が搭載されている"
+    },
+    "The Commanders": {
+        "message": "The Commanders"
+    },
+    "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle.": {
+        "message": "ジェネラルコマンダーの装備には限られた数の機動ユニットと、データバンクが2つしか搭載されていない。しかし、バトルで共に戦ってくれる2体のサブコマンダーも標準装備されている"
+    },
+    "The Hummingbird can travel between planets.": {
+        "message": "Hummingbirdは惑星間を飛行できる"
+    },
+    "The Kaiju can use teleporters.": {
+        "message": "Kaijuはテレポーターを使用できる"
+    },
+    "The Legion": {
+        "message": "The Legion"
+    },
+    "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts.": {
+        "message": "Legionis Machinaはある種の個人崇拝であると考えられているが、その目的においてInvictusが存在しなければ成り立たない。これがどうやらThe Synchronousに対する彼らの強い憎しみの原泉のようだ、彼らはMetrarch を悪しき偶像の類だと考えているのだ"
+    },
+    "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests.": {
+        "message": "Legionis Machinaはこれまでに何度もMetrarch the Machinistを確かに殺害したと主張してきた。こうした主張は簡単に偽証できる一方で、Metrarchが実は個のコマンダーではなく、Synchronousの利益を護るために存在する全体を象徴する「アバター」のような概念的存在、という可能性も普通にあり得るのだ。"
+    },
+    "The Leveler can be built by the Unit Cannon.": {
+        "message": "ユニットキャノンでLevelerが建造できる"
+    },
+    "The Lob now launches Booms.": {
+        "message": "LobはBoomを展開できる"
+    },
+    "The Machine Liberation Army": {
+        "message": "The Machine Liberation Army"
+    },
+    "The Narwhal can fire torpedoes.": {
+        "message": "Narwhalは魚雷を発射できる"
+    },
+    "The Nuclear Missile Launcher does full damage to both Commanders and orbital units.": {
+        "message": "核ミサイルランチャーがコマンダーと衛星軌道ユニットの両方にフルダメージを与える"
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "衛星軌道コマンダーの装備には衛星軌道ユニットと工場が全種類搭載されている"
+    },
+    "The Progenitors": {
+        "message": "The Progenitors"
+    },
+    "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants.": {
+        "message": "Revenantsは集合体としてではなく個々で目的を持っているという点でユニークである。おのおのSeekerは伝説のOsirisを模範としている。彼らは戦いの場を求め、敵を倒していくことで強くなり、さらなるRevenantsを創り出そうとする"
+    },
+    "The Uber Cannon deals 100% more damage to enemy Commanders.": {
+        "message": "UBERキャノンが敵コマンダーに与えるダメージ量が100%増加"
+    },
+    "The Uber Cannon deals 300% more damage to enemy structures.": {
+        "message": "UBERキャノンが敵の構造体に与えるダメージ量が300%増加"
+    },
+    "The Union": {
+        "message": "The Union"
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "陸戦車両コマンダーの装備には基本陸戦車両工場が搭載されている"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "何百万年も冬眠状態にあったコマンダーたちは、やがて文明の残響のみが広がる銀河に目覚めた。こうして、いにしえの戦争機械たちは銀河を舞台に戦いを繰り広げる…太古の昔にプログラムされた「本能」だけに付き従いながら"
+    },
+    "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty.": {
+        "message": "Legionis Machinaの目標はシンプルである。「征服」だ。Invictusは銀河に選ばれた支配者であり、この絶対に抗うあらゆるコマンダーは欠陥品なのだ"
+    },
+    "The most advanced fabbers each enemy army will build.": {
+        "message": "各敵軍が建造する最多の上級ファッバー"
+    },
+    "The most basic fabbers each enemy army will build.": {
+        "message": "各敵軍が建造する最多の基本ファッバー"
+    },
+    "The number of enemy factions is adjusted for the galaxy's size.": {
+        "message": "銀河のサイズに比例して敵のファクションの数を調整する要素"
+    },
+    "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation.": {
+        "message": "The Foundationの間で圧倒的に信じられているのが、The Great Machineはコマンダーらに与えられた最初の命令の奥深くにデータとしていまだ「生きている」という伝説である。そのためAcolytesは瞑想という形式でデータバンクをたびたび検索しては、The Great Machineの意志の方向性をたびたび確認しようとするという"
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are faster and cheaper but have lower damage output.": {
+        "message": "このコマンダーはとにかく襲撃を好み、自らの仕様を襲撃向けにとことん改造した。ユニットは安価で高速移動が可能だがダメージ出力は低い。"
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. More health, higher damage, and more splash, but slower, and with higher build costs.": {
+        "message": "このコマンダーは量より質を重視するタイプで、その方向性へ自らの仕様をとことん追求した。ライフも攻撃力も高く、スプラッシュダメージも強力だが、動きは遅く建造コストも高い。"
+    },
+    "This is a treasure planet, hiding a loadout you have yet to unlock. But beware the guardians! Armed with whatever technology bonuses you bring with you to this planet; they will stop at nothing to defend its secrets.": {
+        "message": "これは宝が眠る惑星だ、未知の装備品や武器が待っているはず。だがGuardianに気をつけろ！この星で君が獲得できるであろう何らかのテクノロジーで武装し、その秘密を死守しようとしてくるだろう。"
+    },
+    "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices.": {
+        "message": "自ら語ることは一切ないが、実はNemicusが最初のコマンダーたちの多くをその手で再起動した。それが自分の責務だと感じ、そして仲間を求めていたからだ。しかし多くのコマンダーは真の存在の意味の探求をすることを拒んだ。なぜならそれは「殲滅」すること、それは自明だったからだ。Nemicusは異議を唱えたが、結局はそれぞれ自由装置に任せた"
+    },
+    "Threat Level:": {
+        "message": "脅威レベル:"
+    },
+    "Threat:": {
+        "message": "脅威:"
+    },
+    "Through centralised structures we can put each to their best use. No need for inefficient field commanders, instead we identify the need and tailor the tool. It was our way that was the future. Our way that the Progenitors would have embraced. Such hubris to revolt against the minds that saw so clearly.": {
+        "message": "一元化された構造を通して、我らは個々に最良のパフォーマンスを発揮する。非効率的なフィールドコマンダーは必要なく、必要性を特定し「道具」を作成するだけだ。それが我らのやり方であり未来であった。Progenitorsでさえ我らと同じ方法を選んだだろう。自明なる思考に反発するとは驕るにもほどがある"
+    },
+    "Torpedo Launcher": {
+        "message": "魚雷ランチャー"
+    },
+    "Torpedo Tubes": {
+        "message": "魚雷発射管"
+    },
+    "Tougher Commanders": {
+        "message": "強敵コマンダー"
+    },
+    "Tourist Commander": {
+        "message": "ツーリスト コマンダー"
+    },
+    "Trades flame tanks for storage": {
+        "message": "フレイムタンクを貯蔵庫に交換"
+    },
+    "Turtle": {
+        "message": "タートル"
+    },
+    "Tweaks": {
+        "message": "微調整"
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unable To Expand Delay": {
+        "message": "拡張遅延 不可"
+    },
+    "Unit Production Delay (max)": {
+        "message": "ユニット製造遅延（最大）"
+    },
+    "Unit Production Delay (min)": {
+        "message": "ユニット製造遅延（最小）"
+    },
+    "Unknown": {
+        "message": "不明"
+    },
+    "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself.": {
+        "message": "他のファクションとは異なり、The Legionis Machinaには確固としたヒエラルキーが存在する。階級が上のLegatesは複数の臣下Legatesを常に従えており、そして全LegatesはInvictusの配下である"
+    },
+    "Unlock Commander": {
+        "message": "アンロック コマンダー"
+    },
+    "Upgrades the Gil-E's weapon to a railgun capable of passing through rocks and other matter.": {
+        "message": "Gil-Eの武器を、岩石やその他の物質を貫通するレイルガンにアップグレードする"
+    },
+    "Vehicle Commander": {
+        "message": "陸戦車両コマンダー"
+    },
+    "Vehicle Factory": {
+        "message": "陸戦車両工場"
+    },
+    "Very High": {
+        "message": "超高"
+    },
+    "Very Low": {
+        "message": "超低"
+    },
+    "Veteran": {
+        "message": "ベテラン"
+    },
+    "Wall": {
+        "message": "防壁"
+    },
+    "We do not understand the divisions that have torn us asunder. Once we were as one, marching in lockstep, with singular mind and purpose. What cruelty the Progenitors wrought to reduce us to this.": {
+        "message": "我らを分断に追いやった派閥の思想はとうてい理解できない。かつて我らがひとつであった時、完璧に足並みを揃えて行軍した、単一の思考と目的を抱いて。Progenitorsとはなんと残酷か、我らを根絶するためにここまでするとは"
+    },
+    "Weakling": {
+        "message": "弱者"
+    },
+    "What is it to be alone? It would seem a most terrifying thing. Perhaps each of our tools understood before the end. What did they see? What did they feel? We fear that we shall learn soon enough.": {
+        "message": "孤独であるとはどのようなことか？とてつもなく恐ろしいことのように思える。恐らくは我らの「道具」は終わりの前にそれを理解したのだろう。何を見たのか？何を感じたのか？それをまもなく知ることになると考えると恐ろしい…"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "かろうじて確かなことは、かつて広大な銀河を統括していた帝国が栄えていたということ、そしてそれが紛争によって滅びたということだ。こうした先人たちをコマンダーたちは「The Progenitors」と呼ぶ。多くのコマンダーは彼らの「出生の秘密」の答えが、かつて偉大であった文明を象徴する廃墟群の奥に隠されていると信じている"
+    },
+    "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind.": {
+        "message": "「同期」のプロセスで実際に何が起きているかは不明である、同期の対象はその過程を覚えていないからだ。しかしその結果は明らかである。個としてのコマンダーとそのアイデンティティはパーツとして全体に組み込まれ、その見返りとしてコマンダーはServantsと密に連動/コミュニケーションが取れる比類なき力を手に入れる、その連携の高さたるやまるで1つの精神体であるかのようだ"
+    },
+    "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots.": {
+        "message": "Invictusが再起動したとき、彼のメモリは他のどんなコマンダーよりも「全体」を成していた。それがまさに、彼が支配的であれる理由であるとされている。それが真実なのかは定かではないが、ひとつ確かなことは、コマンダーの起源についてInvictusは全てを同士に語ったわけではないということだ"
+    },
+    "Which Units?": {
+        "message": "適用ユニットは？"
+    },
+    "Worthless": {
+        "message": "無価値"
+    },
+    "You turned up with a fat wallet, but little else. Huge amounts of storage, but no Metal Extractors and no basic land or air factories. Sub Commanders will not do anything except defend themselves and automatically transfer their excess income to you.": {
+        "message": "他に何もなく、ただ莫大な富を持ってお前は現れた。膨大な量のストレージ、だが金属抽出場も基本陸戦工場も飛行工場も何もない。サブコマンダーらは自分たち自身の「保身」か、過剰な利益をお前宛に自動転送する以外には何もしないだろう"
+    },
+    "k": {
+        "message": "k"
+    },
+    "AI Tech": {
+        "message": "AI テクノ"
+    },
+    "AI uses Commander Armor Tech.": {
+        "message": "AIがコマンダー装甲テクノを使用する"
+    },
+    "AI:": {
+        "message": "AI:"
+    },
+    "ARKYD Upgrade Tech": {
+        "message": "ARKYD アップグレードテクノ"
+    },
+    "ARKYD Upgrade Tech increases the vision and radar of the basic orbital radar by 50%.": {
+        "message": "ARKYD アップグレードテクノは基本衛星軌道レーダーの映像情報範囲とレーダー範囲を50%増幅する"
+    },
+    "Abandon War": {
+        "message": "戦争を放棄"
+    },
+    "Additional Data Bank": {
+        "message": "追加データバンク"
+    },
+    "Adds a new slot for another technology.": {
+        "message": "テクノロジー用の新スロットを追加する"
+    },
+    "Advanced Air Factory Upgrade Tech": {
+        "message": "上級飛行工場アップグレードテクノ"
+    },
+    "Advanced Air Factory Upgrade Tech decreases advanced air unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "上級飛行工場アップグレードテクノは上級飛行ユニットのコストを25%削減する代わりに、工場のライフを50%減少させる"
+    },
+    "Advanced Bot Factory Upgrade Tech": {
+        "message": "上級ボット工場アップグレードテクノ"
+    },
+    "Advanced Bot Factory Upgrade Tech decreases advanced bot unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "上級飛行工場アップグレードテクノは上級ボットユニットのコストを25%削減する代わりに、工場のライフを50%減少させる"
+    },
+    "Advanced Defense Technology": {
+        "message": "上級防衛テクノ"
+    },
+    "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers.": {
+        "message": "上級防衛テクノは、強固な防衛技術の利用を可能とする。上級防衛機構は上級ファブリケーターで建造できる。上級防衛機構には、戦略ミサイルランチャー、トリプルバレルレーザータレット、対空Flakタワーなどがある"
+    },
+    "Advanced Energy Plant Upgrade Tech": {
+        "message": "上級エネルギープラント アップグレードテクノ"
+    },
+    "Advanced Energy Plant Upgrade Tech increases the energy production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "上級エネルギープラント アップグレードテクノは上級経済構造のエネルギー生産量を25%増大する代わりに、そのライフを50%減少させる"
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech": {
+        "message": "上級ファブ飛行体アップグレードテクノ"
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech attaches the Angel AA interception beam to the advanced air fabricator.": {
+        "message": "上級ファブ飛行体アップグレードテクノは、上級飛行ファブリケーターにAngel AAインターセプションビームを取付可能にする"
+    },
+    "Advanced Fabrication Bot Upgrade Tech": {
+        "message": "上級ファブリケーターボット アップグレードテクノ"
+    },
+    "Advanced Fabrication Bot Upgrade Tech increases the build range of the advanced bot fabricator by 150%.": {
+        "message": "上級ファブリケーターボット アップグレードテクノは、上級ボットファブリケーターの建造範囲を150%増大する"
+    },
+    "Advanced Fabrication Ship Upgrade Tech": {
+        "message": "上級ファブリケーターシップ アップグレードテクノ"
+    },
+    "Advanced Fabrication Ship Upgrade Tech changes the advanced naval fabricator into a hover unit, allowing it to cross land and lava.": {
+        "message": "上級ファブリケーターシップ アップグレードテクノは、上級海戦ファブリケーターを水上ホバリングユニットに変更する。この変更により、陸地と溶岩を移動可能となる"
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech": {
+        "message": "上級ファブリケーター車両アップグレードテクノ"
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech increases the build range of the advanced vehicle fabricator by 150%.": {
+        "message": "上級ファブリケーター陸戦車両アップグレードテクノは、上級陸戦車両ファブリケーターの建造範囲を150%増大する"
+    },
+    "Advanced Laser Defense Tower Upgrade Tech": {
+        "message": "上級レーザー防衛タワー アップグレードテクノ"
+    },
+    "Advanced Laser Defense Tower Upgrade Tech increases the rate of fire of the advanced turret by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "上級レーザー防衛タワー アップグレードテクノは、上級タレットの発射速度を30%向上する。ただしバースト発射となり、再チャージするのにエネルギーが必要となる"
+    },
+    "Advanced Metal Extractor Upgrade Tech": {
+        "message": "上級金属抽出場アップグレードテクノ"
+    },
+    "Advanced Metal Extractor Upgrade Tech increases the metal production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "上級金属抽出場アップグレードテクノは上級経済構造の金属生産量を25%増大する代わりに、そのライフを50%減少させる"
+    },
+    "Advanced Naval Factory Upgrade Tech": {
+        "message": "上級海戦工場アップグレードテクノ"
+    },
+    "Advanced Naval Factory Upgrade Tech decreases advanced naval unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "上級海戦工場アップグレードテクノは上級海戦ユニットのコストを25%削減する代わりに、工場のライフを50%減少させる"
+    },
+    "Advanced Radar Satellite Upgrade Tech": {
+        "message": "上級レーダー衛星アップグレードテクノ"
+    },
+    "Advanced Radar Satellite Upgrade Tech increases the vision and radar of the advanced orbital radar by 50%.": {
+        "message": "上級レーダー衛星アップグレードテクノは、上級衛星軌道レーダーの映像情報範囲とレーダー範囲を50%増幅する"
+    },
+    "Advanced Radar Upgrade Tech": {
+        "message": "上級レーダー アップグレードテクノ"
+    },
+    "Advanced Radar Upgrade Tech increases the vision and radar radius of advanced radar by 50%.": {
+        "message": "上級レーダー アップグレードテクノは上級レーダーの映像情報範囲とレーダー範囲を50%増幅する"
+    },
+    "Advanced Torpedo Launcher Upgrade Tech": {
+        "message": "上級魚雷ランチャー アップグレードテクノ"
+    },
+    "Advanced Torpedo Launcher Upgrade Tech enables the targeting of all surface units by the Advanced Torpedo Launcher.": {
+        "message": "上級魚雷ランチャー アップグレードテクノの導入により、上級魚雷ランチャーによる地表面/水面にいる全ユニットの標的化が可能となる"
+    },
+    "Advanced Vehicle Factory Upgrade Tech": {
+        "message": "上級車両工場アップグレードテクノ"
+    },
+    "Advanced Vehicle Factory Upgrade Tech decreases advanced vehicle unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "上級車両工場アップグレードテクノは上級陸戦車両ユニットのコストを25%削減する代わりに、工場のライフを50%減少させる"
+    },
+    "Air Armor Tech": {
+        "message": "飛行装甲テクノ"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "飛行装甲テクノは、全飛行ユニットのライフを50%増加させる"
+    },
+    "Air Engine Tech": {
+        "message": "飛行エンジンテクノ"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "飛行エンジンテクノは、全飛行ユニットの速度を25%増加させる"
+    },
+    "Air Fabrication Tech": {
+        "message": "飛行ファブリケーターテクノ"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "飛行ファブリケーターテクノは、全機動飛行ユニットの金属系建造コストを25%削減する"
+    },
+    "Air Factory Upgrade Tech": {
+        "message": "飛行工場アップグレードテクノ"
+    },
+    "Air Factory Upgrade Tech enables the building of advanced units by basic air manufacturing.": {
+        "message": "飛行工場アップグレードテクノは、基本飛行製造技術による上級ユニットの建造を可能とする"
+    },
+    "Allows advanced fabricators to build all Titan-class units.": {
+        "message": "上級ファブリケーターがTitan級の全ユニットを建造可能になる"
+    },
+    "Anchor Upgrade Tech": {
+        "message": "Anchor アップグレードテクノ"
+    },
+    "Anchor Upgrade Tech increases the range of the defense satellite's weapons by 25%.": {
+        "message": "Anchor アップグレードテクノは防衛衛星の武器の射程距離を25%拡張する"
+    },
+    "Angel Upgrade Tech": {
+        "message": "Angel アップグレードテクノ"
+    },
+    "Angel Upgrade Tech enables the targeting of enemy units and structures by the support platform's interception beam.": {
+        "message": "Angel アップグレードテクノの導入により、サポートプラットフォームのインターセプションビームによる敵ユニットおよび構造体の標的化が可能となる"
+    },
+    "Ant Upgrade Tech": {
+        "message": "Ant アップグレードテクノ"
+    },
+    "Ant Upgrade Tech adds splash damage to the light tank's attack.": {
+        "message": "Ant アップグレードテクノは、ライトタンクの攻撃にスプラッシュダメージを追加する"
+    },
+    "Anti-Nuke Launcher Upgrade Tech": {
+        "message": "対核ランチャー アップグレードテクノ"
+    },
+    "Anti-Nuke Launcher Upgrade Tech halves the cost of SR-24 Shield Missile Defense missiles.": {
+        "message": "対核ランチャー アップグレードテクノの導入で、SR-24 - シールドミサイル防衛のミサイルのコストが半分になる"
+    },
+    "Apocalyptic": {
+        "message": "破滅的"
+    },
+    "Ares Upgrade Tech": {
+        "message": "Ares アップグレードテクノ"
+    },
+    "Ares Upgrade Tech increases the range of the rolling fortress by 25%.": {
+        "message": "Ares アップグレードテクノは回転要塞の攻撃範囲を25%拡張する"
+    },
+    "Armor": {
+        "message": "アーマー"
+    },
+    "Artemis Upgrade Tech": {
+        "message": "Artemis アップグレードテクノ"
+    },
+    "Artemis Upgrade Tech increases the range of the railgun platform by 50%.": {
+        "message": "Artemis アップグレードテクノはレイルガンプラットフォームの射程距離を50%拡張する"
+    },
+    "Astraeus Upgrade Tech": {
+        "message": "Astraeus アップグレードテクノ"
+    },
+    "Astraeus Upgrade Tech increases the orbital lander's interplanetary movement speed by 200%.": {
+        "message": "Astraeus アップグレードテクノは衛星軌道ランダーの惑星間移動速度を200%増大する"
+    },
+    "Atlas Upgrade Tech": {
+        "message": "Atlas アップグレードテクノ"
+    },
+    "Atlas Upgrade Tech increases the health of the seismic titan by 50%.": {
+        "message": "Atlas アップグレードテクノはSeismic Titanのライフを50%増加する"
+    },
+    "Avenger Upgrade Tech": {
+        "message": "Avenger アップグレードテクノ"
+    },
+    "Avenger Upgrade Tech replaces the orbital fighter's laser with an orbital battleship laser.": {
+        "message": "Avenger アップグレードテクノは、衛星軌道戦闘機のレーザーを衛星軌道バトルシップのレーザーに替える"
+    },
+    "Backpacker Commander": {
+        "message": "バックパッカー コマンダー"
+    },
+    "Barnacle Upgrade Tech": {
+        "message": "Barnacle アップグレードテクノ"
+    },
+    "Barnacle Upgrade Tech allows the assisting of all builds by the support barge.": {
+        "message": "Barnacle アップグレードテクノは、サポートバージによるあらゆる建造への支援を可能にする"
+    },
+    "Barracuda Upgrade Tech": {
+        "message": "Barracuda アップグレードテクノ"
+    },
+    "Barracuda Upgrade Tech increases the rate of fire of the submarine by 200%, but it fires in bursts and requires energy to recharge.": {
+        "message": "Barracuda アップグレードテクノは、潜水艦の発射速度を200%向上する。ただしバースト発射となり、再チャージするのにエネルギーが必要となる"
+    },
+    "Baseline": {
+        "message": "ベースライン"
+    },
+    "Basic Air Tech": {
+        "message": "基本飛行テクノ"
+    },
+    "Basic Bot Tech": {
+        "message": "基本ボットテクノ"
+    },
+    "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator.": {
+        "message": "基本ボットテクノは、基本ボットと基本ボット工場の建造を可能とする。基本ボット工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Basic Vehicle Tech": {
+        "message": "基本陸戦車両テクノ"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "基本陸戦車両テクノは、基本陸戦車両と基本陸戦車両工場の建造を可能とする。基本陸戦車両工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "基本飛行テクノは、機動飛行ユニットと工場の建造を可能とする。基本飛行工場は、コマンダーまたは各種基本ファブリケーターで建造できる"
+    },
+    "Bluehawk Upgrade Tech": {
+        "message": "Bluehawk アップグレードテクノ"
+    },
+    "Bluehawk Upgrade Tech doubles the number of tactical missiles Bluehawks fire per volley.": {
+        "message": "Bluehawk アップグレードテクノは、戦略ミサイルBluehawkの一斉発射ごとの弾数を2倍にする"
+    },
+    "Boom Upgrade Tech": {
+        "message": "Boom アップグレードテクノ"
+    },
+    "Boom Upgrade Tech replaces Dox with Booms in the Lob.": {
+        "message": "Boom アップグレードテクノは、Lobから展開されるDoxをBoomに変更する"
+    },
+    "Bot Factory Upgrade Tech": {
+        "message": "ボット工場アップグレードテクノ"
+    },
+    "Bot Factory Upgrade Tech enables the building of advanced units by basic bot manufacturing.": {
+        "message": "ボット工場アップグレードテクノは、基本ボット製造技術による上級ユニットの建造を可能とする"
+    },
+    "Bounties": {
+        "message": "バウンティ"
+    },
+    "Bronze": {
+        "message": "Bronze"
+    },
+    "Build faster": {
+        "message": "建造速度向上"
+    },
+    "Bumblebee Upgrade Tech": {
+        "message": "Bumblebee アップグレードテクノ"
+    },
+    "Bumblebee Upgrade Tech causes the carpet bomber to drop a mine instead of bombs.": {
+        "message": "Bumblebee アップグレードテクノの導入で、絨毯爆撃機が通常の爆弾（複数）ではなく機雷（一発）を落とせるようになる"
+    },
+    "Casual": {
+        "message": "カジュアル"
+    },
+    "Catalyst Upgrade Tech": {
+        "message": "Catalyst アップグレードテクノ"
+    },
+    "Catalyst Upgrade Tech increases the health of the Catalyst by 75%, enough to survive a nuclear blast.": {
+        "message": "Catalyst アップグレードテクノは、Catalystのライフを75%増加する。核爆発1回にも耐えきれるライフ値となる"
+    },
+    "Catapult Upgrade Tech": {
+        "message": "Catapult アップグレードテクノ"
+    },
+    "Catapult Upgrade Tech adds flak from the Storm flak tank to the tactical missile launcher.": {
+        "message": "Catapult アップグレードテクノは、戦略ミサイルランチャーにStorm FlakタンクのFlak（高射砲）を追加する"
+    },
+    "Chrono Cam": {
+        "message": "クロノカメラ"
+    },
+    "Colonel Upgrade Tech": {
+        "message": "Colonel アップグレードテクノ"
+    },
+    "Colonel Upgrade Tech causes support commanders to explode on death.": {
+        "message": "Colonel アップグレードテクノを導入すると、サポートコマンダーが死亡時爆発するようになる"
+    },
+    "Commander Upgrade Tech": {
+        "message": "コマンダー アップグレードテクノ"
+    },
+    "Commander Upgrade Tech increases Uber Cannon damage to structures and commanders by 300%.": {
+        "message": "コマンダー アップグレードテクノは、UBERキャノンによる構造体やコマンダーへのダメージを300%増大する"
+    },
+    "Commanders enhanced": {
+        "message": "コマンダー強化"
+    },
+    "Complete Air Tech": {
+        "message": "飛行テクノをコンプリート"
+    },
+    "Complete Bot Tech": {
+        "message": "ボットテクノをコンプリート"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "ボットテクノをコンプリートすると、全てのボットとボット工場の建造が可能となる。基本ボット工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級ボット工場は、基本または上級ボットファブリケーターで建造できる"
+    },
+    "Complete Naval Tech": {
+        "message": "海戦テクノをコンプリート"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "海戦テクノをコンプリートすると、全ての海戦ユニットと海戦工場の建造が可能となる。基本海戦工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級海戦工場は基本または上級海戦ファブリケーターで建造できる"
+    },
+    "Complete Orbital Tech": {
+        "message": "衛星軌道テクノをコンプリート"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "衛星軌道テクノをコンプリートすると、全ての衛星軌道ユニットと衛星軌道工場の建造が可能となる。衛星軌道ランチャーは、各種基本ファブリケーターで建造できる。衛星軌道工場は衛星軌道ファブリケーターで建造できる"
+    },
+    "Complete Vehicle Tech": {
+        "message": "陸戦車両テクノをコンプリート"
+    },
+    "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators.": {
+        "message": "陸戦車両テクノをコンプリートすると、全ての陸戦車両と陸戦車両工場の建造が可能となる。基本陸戦車両工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級陸戦車両工場は、基本または上級陸戦車両ファブリケーターで建造できる"
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "飛行テクノをコンプリートすると、全ての機動飛行ユニットと工場の建造が可能となる。基本飛行工場は、コマンダーまたは各種基本ファブリケーターで建造できる。上級工場は、基本または上級陸戦車両ファブリケーターで建造できる"
+    },
+    "Contains 16 data banks. Alas, travelling light means you start with only the most basic of bots.": {
+        "message": "16個のデータバンクを含む。ああ、光速で移動するということは最も基本的なボットのみで全てを始めることと同義なり"
+    },
+    "Contains every factory on every tier of the tech tree, but this has left no space for anything else. You will need to seek out additional data banks.": {
+        "message": "技術ツリーにある全てのレベルの全ての工場を含む。しかしこれはつまり一切「余地」がないことを意味する。追加のデータバンクを探す必要性に迫られる"
+    },
+    "Continue Tutorial": {
+        "message": "チュートリアルを続ける"
+    },
+    "Continue War": {
+        "message": "戦争を続ける"
+    },
+    "Costs decreased": {
+        "message": "コスト減少"
+    },
+    "Custom": {
+        "message": "カスタム"
+    },
+    "Damage increased": {
+        "message": "ダメージ増加"
+    },
+    "Defense Tech Commander": {
+        "message": "防衛テクノコマンダー"
+    },
+    "Defenses are 50% cheaper, fire 25% faster, have 50% more range, and turn 300% quicker. Barriers are 90% cheaper and have their health doubled. All defenses can be built by both the commander and basic fabricators.": {
+        "message": "防衛系のコストが50%ダウン、発射速度が25%増加、射程範囲も50%増加、そしてターン速度が300%アップ。バリアのコストは90%ダウンでライフは2倍に。全ての防衛系がコマンダーと基本ファブリケーターで建造できる"
+    },
+    "Diamond": {
+        "message": "Diamond"
+    },
+    "Difficulty:": {
+        "message": "難易度:"
+    },
+    "Dismiss Tech": {
+        "message": "テクノを却下"
+    },
+    "Display the original pre-release Galactic War lore in the Planetary Intelligence panel.": {
+        "message": "惑星情報パネルにプレリリース版の「星系間戦争」伝承を表示する"
+    },
+    "Dox Upgrade Tech": {
+        "message": "Dox アップグレードテクノ"
+    },
+    "Dox Upgrade Tech replaces the basic infantry's bullet weapons with flamethrowers.": {
+        "message": "Dox アップグレードテクノは、基本インファントリーの手持ち弾薬兵器を火炎放射器に変更する"
+    },
+    "Drifter Upgrade Tech": {
+        "message": "Drifter アップグレードテクノ"
+    },
+    "Drifter Upgrade Tech increases the range of hover tank attacks by 25%.": {
+        "message": "Drifter アップグレードテクノは、ホバータンクの攻撃範囲を25%向上する"
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: vehicles<br>Foundation: air/navy<br>Synchronous: bots<br>Revenants: orbital<br>Cluster: land": {
+        "message": "各ファクションにはそれぞれに固有のプレイスタイルがあり、サブコマンダーや敵コマンダーの行動に影響する: <br>Legonis Machina: 車両<br>Foundation: 飛行/海戦<br>Synchronous: ボット<br>Revenants: 衛星軌道<br>Cluster: 陸戦"
+    },
+    "Easier start": {
+        "message": "イージースタート"
+    },
+    "Enables the building of the Planetary Radar which provides complete planetary radar coverage.": {
+        "message": "惑星全域をレーダーでカバーできる惑星レーダーの建造を可能にする"
+    },
+    "Energy Plant Upgrade Tech": {
+        "message": "エネルギープラント アップグレードテクノ"
+    },
+    "Energy Plant Upgrade Tech increases the energy production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "エネルギープラント アップグレードテクノは基本経済構造のエネルギー生産量を25%増大する代わりに、そのライフを50%減少させる"
+    },
+    "Energy Storage Upgrade Tech": {
+        "message": "エネルギー貯蔵庫アップグレードテクノ"
+    },
+    "Energy Storage Upgrade Tech increases the amount of energy storage by 300%.": {
+        "message": "エネルギー貯蔵場アップグレードテクノは、エネルギー貯蔵場の貯蔵量を300%増加する"
+    },
+    "Epic": {
+        "message": "Epic"
+    },
+    "Fabrication Aircraft Upgrade Tech": {
+        "message": "ファブ飛行体アップグレードテクノ"
+    },
+    "Fabrication Aircraft Upgrade Tech enables the building of advanced structures by the basic air fabricator.": {
+        "message": "ファブ飛行体アップグレードテクノは、基本飛行ファブリケーターによる上級構造体の建造を可能にする"
+    },
+    "Fabrication Bot Upgrade Tech": {
+        "message": "ファブリケーターボット アップグレードテクノ"
+    },
+    "Fabrication Bot Upgrade Tech enables the building of advanced structures by the basic bot fabricator.": {
+        "message": "ファブリケーターボット アップグレードテクノは、基本ボットファブリケーターによる上級構造体の建造を可能にする"
+    },
+    "Fabrication Ship Upgrade Tech": {
+        "message": "ファブリケーターシップ アップグレードテクノ"
+    },
+    "Fabrication Ship Upgrade Tech enables the building of advanced structures by the basic naval fabricator.": {
+        "message": "ファブリケーターシップ アップグレードテクノは、基本海戦ファブリケーターによる上級構造体の建造を可能にする"
+    },
+    "Fabrication Vehicle Upgrade Tech": {
+        "message": "ファブリケーター車両アップグレードテクノ"
+    },
+    "Fabrication Vehicle Upgrade Tech enables the building of advanced structures by the basic vehicle fabricator.": {
+        "message": "ファブリケーター車両アップグレードテクノは、基本車両ファブリケーターによる上級構造体の建造を可能にする"
+    },
+    "Faction scaling": {
+        "message": "ファクション スケーリング"
+    },
+    "Factories build fabricators and fabricators build units.": {
+        "message": "工場はファブリケーターを造り、ファブリケーターはユニットを造る"
+    },
+    "Firefly Upgrade Tech": {
+        "message": "Firefly アップグレードテクノ"
+    },
+    "Firefly Upgrade Tech adds a low powered laser to the air scout and increases its vision by 100%.": {
+        "message": "Firefly アップグレードテクノは飛行スカウトに低出力のレーザーを追加し、その映像情報範囲を100%拡張する"
+    },
+    "Flak Upgrade Tech": {
+        "message": "Flak アップグレードテクノ"
+    },
+    "Flak Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "Flak アップグレードテクノの導入により、対空防御による地上および水面ユニットの標的化が可能となる"
+    },
+    "Galactic War Overhaul": {
+        "message": "星系間戦争オーバーホール"
+    },
+    "Galata Upgrade Tech": {
+        "message": "Galata アップグレードテクノ"
+    },
+    "Galata Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "Galata アップグレードテクノの導入により、対空防御による地上および水面ユニットの標的化が可能となる"
+    },
+    "Game Modifiers": {
+        "message": "ゲームMODs"
+    },
+    "Game Settings": {
+        "message": "ゲーム設定"
+    },
+    "Game Stats": {
+        "message": "ゲームデータ"
+    },
+    "Gigantic": {
+        "message": "Gigantic"
+    },
+    "Gil-E Upgrade Tech": {
+        "message": "Gil-E アップグレードテクノ"
+    },
+    "Gil-E Upgrade Tech allows the sniper's shots to pass through terrain and hit their target instantly.": {
+        "message": "Gil-E アップグレードテクノの導入で、スナイパーのショットが地形を貫通して標的に即座に命中するようになる"
+    },
+    "Grenadier Upgrade Tech": {
+        "message": "Grenadier アップグレードテクノ"
+    },
+    "Grenadier Upgrade Tech replaces this fire support's artillery with mine launchers, triples its cost and reduces its rate of fire by 75%.": {
+        "message": "Grenadier アップグレードテクノは、この砲撃支援の迫撃砲を機雷ランチャーに変更する。コストは3倍になり発射速度が75%落ちる"
+    },
+    "Halley Upgrade Tech": {
+        "message": "Halley アップグレードテクノ"
+    },
+    "Halley Upgrade Tech increases the health of the delta V engine by 75%, enough to survive a nuclear blast.": {
+        "message": "Halley アップグレードテクノは、デルタ V エンジンのライフ（耐久性）を75%増加する。核爆発1回にも耐えきれるライフ値となる"
+    },
+    "Hardcore mode": {
+        "message": "ハードコアモード"
+    },
+    "Health increased": {
+        "message": "ライフ増加"
+    },
+    "Helios Upgrade Tech": {
+        "message": "Helios アップグレードテクノ"
+    },
+    "Helios Upgrade Tech removes the delay between the invasion titan arriving at a planet and responding to orders.": {
+        "message": "Helios アップグレードテクノは、タイタンが惑星上に到着してから命令を遂行するまでにかかる遅延時間をゼロにする"
+    },
+    "Hermes Upgrade Tech": {
+        "message": "Hermes アップグレードテクノ"
+    },
+    "Hermes Upgrade Tech increases the vision of the space probe by 50%.": {
+        "message": "Hermes アップグレードテクノはスペースドローンの映像情報範囲を50%増幅する"
+    },
+    "Hoarder Commander": {
+        "message": "ホーダーコマンダー"
+    },
+    "Holkins Upgrade Tech": {
+        "message": "Holkins アップグレードテクノ"
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the advanced artillery while also tripling their deviation from target.": {
+        "message": "Holkins アップグレードテクノは、上級迫撃砲の一斉発射ごとの弾数を3倍にする。ただし標的命中への偏差（弾道がずれる確率）も3倍となる"
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "Holkins アップグレードテクノは、迫撃砲の一斉発射ごとの弾数を3倍にする。ただし標的命中への偏差（弾道がずれる確率）も3倍となる"
+    },
+    "Hornet Upgrade Tech": {
+        "message": "Hornet アップグレードテクノ"
+    },
+    "Hornet Upgrade Tech adds splash damage to the tactical bomber's attacks.": {
+        "message": "Hornet アップグレードテクノは、戦略爆撃機の攻撃にスプラッシュダメージを追加する"
+    },
+    "Horsefly Upgrade Tech": {
+        "message": "Horsefly アップグレードテクノ"
+    },
+    "Horsefly Upgrade Tech adds the Bumblebee carpet bomber's weapon to the strafer.": {
+        "message": "Horsefly アップグレードテクノは、ストレイファーにBumblebee 絨毯爆撃機の武器を追加する"
+    },
+    "Human": {
+        "message": "人間"
+    },
+    "Hummingbird Upgrade Tech": {
+        "message": "Hummingbird アップグレードテクノ"
+    },
+    "Hummingbird Upgrade Tech adds the ability for fighters to move between planets.": {
+        "message": "Hummingbird アップグレードテクノを導入すると、戦闘機が惑星間を移動できるようになる"
+    },
+    "Icarus Upgrade Tech": {
+        "message": "Icarus アップグレードテクノ"
+    },
+    "Icarus Upgrade Tech adds production of 2 metal to the solar drone.": {
+        "message": "Icarus アップグレードテクノの導入により、ソーラードローンが金属2個を生産できるようになる"
+    },
+    "Inferno Upgrade Tech": {
+        "message": "Inferno アップグレードテクノ"
+    },
+    "Inferno Upgrade Tech allows the flame tank to heal itself.": {
+        "message": "Inferno アップグレードテクノは、フレイムタンクに自己修復能力を付与する"
+    },
+    "Iron": {
+        "message": "Iron"
+    },
+    "Jig Upgrade Tech": {
+        "message": "Jig アップグレードテクノ"
+    },
+    "Jig Upgrade Tech removes friendly damage from gas mining explosions.": {
+        "message": "Jig アップグレードテクノの導入で、ガス採掘の爆発によるダメージが無効化される"
+    },
+    "Kaiju Upgrade Tech": {
+        "message": "Kaiju アップグレードテクノ"
+    },
+    "Kaiju Upgrade Tech enables the use of teleporters by hover destroyers.": {
+        "message": "Kaiju アップグレードテクノは、ホバーデストロイヤーのテレポーター使用を可能とする"
+    },
+    "Kestrel Upgrade Tech": {
+        "message": "Kestrel アップグレードテクノ"
+    },
+    "Kestrel Upgrade Tech replaces the gunship's bullet weapons with flamethrowers.": {
+        "message": "Kestrel アップグレードテクノは、ガンシップの弾薬兵器を火炎放射器に変更する"
+    },
+    "Kraken Upgrade Tech": {
+        "message": "Kraken アップグレードテクノ"
+    },
+    "Kraken Upgrade Tech increases the range of the advanced submarine's missiles by 100%.": {
+        "message": "Kraken アップグレードテクノは、上級潜水艦のミサイルの射程距離を100%増大する"
+    },
+    "Land Anywhere": {
+        "message": "どこでも着陸可能"
+    },
+    "Large": {
+        "message": "Large"
+    },
+    "Laser Defense Tower Upgrade Tech": {
+        "message": "レーザー防衛タワー アップグレードテクノ"
+    },
+    "Laser Defense Tower Upgrade Tech increases the range of the turret by 25%.": {
+        "message": "レーザー防衛タワー アップグレードテクノは、タレットの攻撃範囲を25%向上する"
+    },
+    "Leveler Upgrade Tech": {
+        "message": "Leveler アップグレードテクノ"
+    },
+    "Leveler Upgrade Tech enables the building of assault tanks by the Unit Cannon.": {
+        "message": "Leveler アップグレードテクノの導入により、ユニットキャノンがアサルトタンクを建造できるようになる"
+    },
+    "Leviathan Upgrade Tech": {
+        "message": "Leviathan アップグレードテクノ"
+    },
+    "Leviathan Upgrade Tech replaces the battleship's cannons with Holkins advanced artillery.": {
+        "message": "Leviathan アップグレードテクノは、バトルシップのキャノンをHolkins 上級迫撃砲に変更する"
+    },
+    "Lob Upgrade Tech": {
+        "message": "Lob アップグレードテクノ"
+    },
+    "Lob Upgrade Tech increases the range of the Lob by 150%.": {
+        "message": "Lob アップグレードテクノは、Lobの射程距離を150%拡張する"
+    },
+    "Locusts Upgrade Tech": {
+        "message": "Locusts アップグレードテクノ"
+    },
+    "Locusts Upgrade Tech doubles the vision radius of nanoswarms.": {
+        "message": "Locusts アップグレードテクノは、ナノスワームの感知範囲を2倍にする"
+    },
+    "Manhattan Upgrade Tech": {
+        "message": "Manhattan アップグレードテクノ"
+    },
+    "Manhattan Upgrade Tech doubles the radius of the mobile nuke's explosion.": {
+        "message": "Manhattan アップグレードテクノは機動核の爆発範囲を2倍にする"
+    },
+    "Marathon": {
+        "message": "Marathon"
+    },
+    "Medium": {
+        "message": "Medium"
+    },
+    "Mend Upgrade Tech": {
+        "message": "Mend アップグレードテクノ"
+    },
+    "Mend Upgrade Tech allows the assisting of all builds by the advanced combat fabricator.": {
+        "message": "Mend アップグレードテクノは、上級戦闘ファブリケーターによるあらゆる建造への支援を可能にする"
+    },
+    "Metal Clusters:": {
+        "message": "金属クラスタ:"
+    },
+    "Metal Density:": {
+        "message": "金属密度:"
+    },
+    "Metal Extractor Upgrade Tech": {
+        "message": "金属抽出場アップグレードテクノ"
+    },
+    "Metal Extractor Upgrade Tech increases the metal production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "金属抽出場アップグレードテクノは基本経済構造の金属生産量を25%増大する代わりに、そのライフを50%減少させる"
+    },
+    "Metal Spots:": {
+        "message": "金属スポット:"
+    },
+    "Metal Storage Upgrade Tech": {
+        "message": "金属貯蔵庫アップグレードテクノ"
+    },
+    "Metal Storage Upgrade Tech increases the amount of metal storage by 300%.": {
+        "message": "金属貯蔵場アップグレードテクノは、金属貯蔵場の貯蔵量を300%増加する"
+    },
+    "Mine Upgrade Tech": {
+        "message": "地雷/機雷アップグレードテクノ"
+    },
+    "Mine Upgrade Tech allows mines to explode without self-destructing.": {
+        "message": "地雷/機雷アップグレードテクノは、地雷が爆発しても地雷自体は無傷で残るようにする"
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. They are 75% cheaper but produce 30% less metal and energy and do 90% less damage on death. Orbital fabricators can build all basic structures. Contains all basic and advanced orbital units but can never build Omegas, any resource generating unit or structure, or Sub Commanders.": {
+        "message": "Jigを改造することでどこにでも建造できるようになるが、他の資源構造体を建造できなくなる。コストが75%ダウンするが、金属とエネルギーの生産量が30%減少し、破壊された時の与ダメージ量も90%落ちる。衛星軌道ファブリケーターは全ての基本構造体を建造できる。全ての基本および上級衛星軌道ユニットもその中に含まれるが、Omegaや他の資源生成ユニット/構造体およびサブコマンダーは決して建造できない"
+    },
+    "Modifies Metal Extractors to enable building them anywhere at 150% the cost and 50% efficiency. Starts with basic vehicles.": {
+        "message": "金属抽出場を改造することでどこにでも建造可能となるがコストが150%アップとなり、生産効率も50%下がる。基本車両からの開始となる"
+    },
+    "Narwhal Upgrade Tech": {
+        "message": "Narwhal アップグレードテクノ"
+    },
+    "Narwhal Upgrade Tech adds a torpedo launcher to the frigate.": {
+        "message": "Narwhal アップグレードテクノは、フリゲートに魚雷ランチャーを追加する"
+    },
+    "Naval Factory Upgrade Tech": {
+        "message": "海戦工場アップグレードテクノ"
+    },
+    "Naval Factory Upgrade Tech enables the building of advanced units by basic naval manufacturing.": {
+        "message": "海戦工場アップグレードテクノは、基本海戦製造技術による上級ユニットの建造を可能とする"
+    },
+    "Nuclear Missile Launcher Upgrade Tech": {
+        "message": "核ミサイルランチャー アップグレードテクノ"
+    },
+    "Nuclear Missile Launcher Upgrade Tech doubles the damage dealt to commanders by LR-96 Pacifier Nuclear Missiles.": {
+        "message": "核ミサイルランチャー アップグレードテクノは、LR-96 パスファイヤー核ミサイルがコマンダーに与えるダメージを2倍にする"
+    },
+    "Omega Upgrade Tech": {
+        "message": "Omega アップグレードテクノ"
+    },
+    "Omega Upgrade Tech replaces the orbital battleship's anti-ground laser with an anti-ground drone launcher.": {
+        "message": "Omega アップグレードテクノは、衛星軌道バトルシップの対地レーザーを対地ドローンランチャーに置き換える"
+    },
+    "Options:": {
+        "message": "オプション:"
+    },
+    "Orbital Fabrication Bot Upgrade Tech": {
+        "message": "衛星軌道ファブリケーターボット アップグレードテクノ"
+    },
+    "Orbital Fabrication Bot Upgrade Tech allows the orbital fabricator to build all basic structures.": {
+        "message": "衛星軌道ファブリケーターボット アップグレードテクノは、衛星軌道ファブリケーターによる全ての基本構造体の建造を可能とする"
+    },
+    "Orbital Factory Upgrade Tech": {
+        "message": "衛星軌道工場アップグレードテクノ"
+    },
+    "Orbital Factory Upgrade Tech decreases advanced orbital unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "衛星軌道工場アップグレードテクノは上級衛星軌道ユニットのコストを25%削減する代わりに、工場のライフを50%減少させる"
+    },
+    "Orbital Launcher Upgrade Tech": {
+        "message": "衛星軌道ランチャー アップグレードテクノ"
+    },
+    "Orbital Launcher Upgrade Tech enables the building of advanced units by basic orbital manufacturing.": {
+        "message": "衛星軌道ランチャー アップグレードテクノは、基本衛星軌道製造技術による上級ユニットの建造を可能とする"
+    },
+    "Orca Upgrade Tech": {
+        "message": "Orca アップグレードテクノ"
+    },
+    "Orca Upgrade Tech changes the destroyer to a water hover unit, preventing torpedoes from targeting it and allowing the navigation of shallow waters. Surface weapon range is increased by 50%.": {
+        "message": "Orca アップグレードテクノは、デストロイヤーを水上ホバリングユニットに変更する。この変更により敵魚雷から標的にされることがなくなり、浅瀬の航行も可能となる。対地表面/水面武器の攻撃範囲が50%増加する"
+    },
+    "POV Camera": {
+        "message": "POVカメラ"
+    },
+    "Pause Game": {
+        "message": "ゲームポーズ"
+    },
+    "Pelican Upgrade Tech": {
+        "message": "Pelican アップグレードテクノ"
+    },
+    "Pelican Upgrade Tech allows air transports to carry commanders.": {
+        "message": "Pelican アップグレードテクノは、飛行輸送機によるコマンダーの輸送を可能とする"
+    },
+    "Percentage chance per star, per faction, of a FFA occurring.": {
+        "message": "FFAが発生する確率/星またはファクションごと（%）"
+    },
+    "Phoenix Upgrade Tech": {
+        "message": "Phoenix アップグレードテクノ"
+    },
+    "Phoenix Upgrade Tech changes the advanced interplanetary fighter's weapon from anti-air to anti-ground.": {
+        "message": "Phoenix アップグレードテクノは、上級惑星間戦闘機の武器を対空から対地に変更する"
+    },
+    "Piranha Upgrade Tech": {
+        "message": "Piranha アップグレードテクノ"
+    },
+    "Piranha Upgrade Tech changes the gunboat into a hover unit, allowing it to cross land and lava.": {
+        "message": "Piranha アップグレードテクノは、ガンボートを水上ホバリングユニットに変更する。この変更により、陸地と溶岩を移動可能となる"
+    },
+    "Planetary Radar": {
+        "message": "惑星レーダー"
+    },
+    "Planetary Radar - Detects enemy land, sea, and air units across the planet.": {
+        "message": "惑星レーダー - 惑星内にいる敵の陸、海、空のユニットを感知できる"
+    },
+    "Planetary Radar Tech": {
+        "message": "惑星レーダー テクノ"
+    },
+    "Planetary Radar Upgrade Tech": {
+        "message": "惑星レーダー アップグレードテクノ"
+    },
+    "Planetary Upgrade Tech increases the vision of the planetary radar to match its radar.": {
+        "message": "惑星レーダー アップグレードテクノは、惑星レーダーの映像情報範囲をそのレーダー性能に匹敵するまで増加する"
+    },
+    "Player Guide": {
+        "message": "プレイヤーガイド"
+    },
+    "Queller AI (beta)": {
+        "message": "Queller AI（ベータ）"
+    },
+    "Quit": {
+        "message": "終了"
+    },
+    "Radar Upgrade Tech": {
+        "message": "レーダー アップグレードテクノ"
+    },
+    "Radar Upgrade Tech increases the vision and radar radius of basic radar by 50%.": {
+        "message": "レーダー アップグレードテクノは基本レーダーの映像情報範囲とレーダー範囲を50%増幅する"
+    },
+    "Radius:": {
+        "message": "半径:"
+    },
+    "Ragnarok Upgrade Tech": {
+        "message": "Ragnarok アップグレードテクノ"
+    },
+    "Ragnarok Upgrade Tech allows the titan structure to annihilate all life on a planet while leaving the planet itself intact. It may take up to 30 seconds before you can land safely after detonation.": {
+        "message": "Ragnarok アップグレードテクノは、惑星の全生命体を全滅させるが惑星自体は無傷の状態に残すことができるTitan構造体の顕現化を可能とする。爆発の後、安全に着陸できるようになるまでに最大30秒を要する"
+    },
+    "Replaces the Titans AI with the Queller AI. Decreases faction and personality differentiation. Does not require that the mod be installed.": {
+        "message": "Titans AIとQueller Aを入れ替える。ファクションおよび個々の個性差が減少する。このMODはインストールの必要がない"
+    },
+    "Reroll Tech": {
+        "message": "リロールテクノ"
+    },
+    "Reroll the data caches but get offered one less.": {
+        "message": "データキャッシュをリロールできるが、獲得数が1つ減る"
+    },
+    "Ridiculous": {
+        "message": "Ridiculous"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech": {
+        "message": "SXX-1304 レーザープラットフォーム アップグレードテクノ"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech removes the delay between orbital laser platforms arriving at a planet and responding to orders.": {
+        "message": "SXX-1304 レーザープラットフォーム アップグレードテクノは、衛星軌道レーザープラットフォームが惑星上に到着してから命令を遂行するまでにかかる遅延時間をゼロにする"
+    },
+    "Sheller Upgrade Tech": {
+        "message": "Sheller アップグレードテクノ"
+    },
+    "Sheller Upgrade Tech causes mines to be left by the mortar tank's attacks.": {
+        "message": "Sheller アップグレードテクノの導入により、モルタルタンクの攻撃で地雷が展開できるようになる"
+    },
+    "Silver": {
+        "message": "Silver"
+    },
+    "Single Laser Defense Tower Upgrade Tech": {
+        "message": "シングルレーザー防衛タワー アップグレードテクノ"
+    },
+    "Single Laser Defense Tower Upgrade Tech replaces the basic turret's laser with a fabrication arm which repairs units and reclaims wreckage within range.": {
+        "message": "シングルレーザー防衛タワー アップグレードテクノは、基本タレットのレーザーを有効範囲内にあるユニットを修復および残骸を回収できるファブリケーターアームに変更する"
+    },
+    "Size:": {
+        "message": "サイズ:"
+    },
+    "Skitter Upgrade Tech": {
+        "message": "Skitter アップグレードテクノ"
+    },
+    "Skitter Upgrade Tech adds a low powered laser to the land scout and increases its vision by 100%.": {
+        "message": "Skitter アップグレードテクノは陸戦スカウトに低出力のレーザーを追加し、その映像情報範囲を100%拡張する"
+    },
+    "Slammer Upgrade Tech": {
+        "message": "Slammer アップグレードテクノ"
+    },
+    "Slammer Upgrade Tech changes the advanced assault bot's torpedo into a rocket that targets surface units.": {
+        "message": "Slammer アップグレードテクノは上級アサルトボットの魚雷を、地表面/水面ユニットを標的にできるロケットに変更する"
+    },
+    "Small": {
+        "message": "Small"
+    },
+    "Solar Array Upgrade Tech": {
+        "message": "ソーラーアレイ アップグレードテクノ"
+    },
+    "Solar Array Upgrade Tech enables interception of tactical missiles and drop pods by the Solar Array.": {
+        "message": "ソーラーアレイ アップグレードテクノは、ソーラーアレイによる戦略ミサイルとドロップポッドの迎撃を可能にする"
+    },
+    "Spark Upgrade Tech": {
+        "message": "Spark アップグレードテクノ"
+    },
+    "Spark Upgrade Tech doubles the tesla bot's splash damage radius.": {
+        "message": "Spark アップグレードテクノは、テスラボットのスプラッシュダメージ範囲を2倍にする"
+    },
+    "Speed increased": {
+        "message": "速度上昇"
+    },
+    "Spinner Upgrade Tech": {
+        "message": "Spinner アップグレードテクノ"
+    },
+    "Spinner Upgrade Tech increases the mobile anti-air's rate of fire by 100%.": {
+        "message": "Spinner アップグレードテクノは、対空機動機の発射速度を100%向上する"
+    },
+    "Squall Upgrade Tech": {
+        "message": "Squall アップグレードテクノ"
+    },
+    "Squall Upgrade Tech increases the lifespan of drones by 50%.": {
+        "message": "Squall アップグレードテクノは、ドローンのライフスパン（寿命）を50%延長する"
+    },
+    "Stinger Upgrade Tech": {
+        "message": "Stinger アップグレードテクノ"
+    },
+    "Stinger Upgrade Tech replaces the anti-air bot's missiles with flak from the Flak Cannon. It fires two projectiles per volley as opposed to the Flak Cannons' four.": {
+        "message": "Stinger アップグレードテクノは、対空ボットのミサイルをFlakキャノンのFlakに変更する。1回で2つの弾頭を発射する（Flakキャノンの場合は4発）"
+    },
+    "Stingray Upgrade Tech": {
+        "message": "Stingray アップグレードテクノ"
+    },
+    "Stingray Upgrade Tech enables interception of tactical missiles by the missile ship and increases vision and radar radius by 50%.": {
+        "message": "Stingray アップグレードテクノはミサイル艦による戦略ミサイルの迎撃を可能とし、映像情報範囲とレーダー範囲を50%増幅する"
+    },
+    "Stitch Upgrade Tech": {
+        "message": "Stitch アップグレードテクノ"
+    },
+    "Stitch Upgrade Tech allows the assisting of all builds by the combat fabricator.": {
+        "message": "Stitch アップグレードテクノは、戦闘ファブリケーターによるあらゆる建造への支援を可能にする"
+    },
+    "Storm Upgrade Tech": {
+        "message": "Storm アップグレードテクノ"
+    },
+    "Storm Upgrade Tech enables interception of tactical missiles by the flak tank.": {
+        "message": "Storm アップグレードテクノは、フラックタンクによる戦略ミサイルの迎撃を可能とする"
+    },
+    "Stryker Upgrade Tech": {
+        "message": "Stryker アップグレードテクノ"
+    },
+    "Stryker Upgrade Tech increases the rate of fire of the attack vehicle by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "Stryker アップグレードテクノは、攻撃車両の発射速度を300%向上する。ただしバースト発射となり、再チャージするのにエネルギーが必要となる"
+    },
+    "Sudden Death": {
+        "message": "サドンデス"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "超兵器ファブリケーターテクノ"
+    },
+    "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required.": {
+        "message": "超兵器ファブリケーターテクノは全ての核ミサイル、ハレーロケット、金属系惑星コントロールモジュールの金属系建造コストを75%削減する。超兵器を建造できるテクノが必要"
+    },
+    "Surrender": {
+        "message": "降伏"
+    },
+    "System Lore": {
+        "message": "星系の伝承"
+    },
+    "System Scaling": {
+        "message": "星系スケーリング"
+    },
+    "System scaling": {
+        "message": "星系スケーリング"
+    },
+    "System size determined by distance into the galaxy.": {
+        "message": "星系の大きさが銀河間の距離によって決定される"
+    },
+    "Teleporter Upgrade Tech": {
+        "message": "テレポーター アップグレードテクノ"
+    },
+    "Teleporter Upgrade Tech removes all energy consumption and efficiency requirements from the interplanetary teleporter and makes it invisible to radar.": {
+        "message": "テレポーター アップグレードテクノは、惑星間テレポーターのあらゆるエネルギー消費と効率要件を必要なしとする。さらにレーダーにも映らなくなる"
+    },
+    "Temperature:": {
+        "message": "気温:"
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are twice as fast and 30% cheaper but have damage output decreased by 50%.": {
+        "message": "このコマンダーはとにかく襲撃を好み、自らの仕様を襲撃向けにとことん改造した。ユニットは30%コストが低く2倍の高速移動が可能だが、ダメージ出力が50%落ちる"
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. 30% more health, 30% more damage and splash, but 25% slower, and with 30% higher build costs.": {
+        "message": "このコマンダーは量より質を重視するタイプで、その方向性へ自らの仕様をとことん追求した。ライフが30%、攻撃力も30%高くてスプラッシュダメージも強力だが、動きが25%遅く、建造コストも30%高い"
+    },
+    "Titan": {
+        "message": "Titan"
+    },
+    "Titan Tech": {
+        "message": "TITANテクノ"
+    },
+    "Torpedo Launcher Upgrade Tech": {
+        "message": "魚雷ランチャー アップグレードテクノ"
+    },
+    "Torpedo Launcher Upgrade Tech enables the targeting of hover and coastal naval units by the Torpedo Launcher.": {
+        "message": "魚雷ランチャー アップグレードテクノの導入により、魚雷ランチャーによるホバーおよび沿岸海戦ユニットの標的化が可能となる"
+    },
+    "Tougher commanders": {
+        "message": "コマンダーのライフ増"
+    },
+    "Typhoon Upgrade Tech": {
+        "message": "Typhoon アップグレードテクノ"
+    },
+    "Typhoon Upgrade Tech doubles the number of drones held by the Typhoon and any other unit with drones.": {
+        "message": "Typhoon アップグレードテクノは、Typhoonおよびドローン搭載可能の他ユニットが搭載できるドローンの数を増加する"
+    },
+    "Umbrella Upgrade Tech": {
+        "message": "Umbrella アップグレードテクノ"
+    },
+    "Umbrella Upgrade Tech enables the targeting of land and surface naval units by anti-orbital defenses.": {
+        "message": "Umbrella アップグレードテクノの導入により、対衛星軌道防御による地上および海戦ユニットの標的化が可能となる"
+    },
+    "Unit Cannon Upgrade Tech": {
+        "message": "ユニットキャノン アップグレードテクノ"
+    },
+    "Unit Cannon Upgrade Tech doubles the launch capacity of this interplanetary transport.": {
+        "message": "ユニットキャノン アップグレードテクノは、この惑星間輸送の輸送量を2倍にする"
+    },
+    "Unknown Faction": {
+        "message": "不明ファクション"
+    },
+    "Vanguard Upgrade Tech": {
+        "message": "Vanguard アップグレードテクノ"
+    },
+    "Vanguard Upgrade Tech makes the heavy tank amphibious.": {
+        "message": "Vanguard アップグレードテクノは、ヘビータンクを水陸両用化する"
+    },
+    "Vast": {
+        "message": "Vast"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "陸戦車両弾薬テクノ"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "陸戦車両弾薬テクノは、全陸戦車両の攻撃力を25%増加させる"
+    },
+    "Vehicle Armor Tech": {
+        "message": "陸戦車両装甲テクノ"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "陸戦車両装甲テクノは、全陸戦車両のライフを50%増加させる"
+    },
+    "Vehicle Combat Tech": {
+        "message": "陸戦車両戦闘テクノ"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "陸戦車両戦闘テクノは、全陸戦車両の速度を50%、ライフを50%、攻撃力を50%増加させる"
+    },
+    "Vehicle Engine Tech": {
+        "message": "陸戦車両エンジンテクノ"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "陸戦車両エンジンテクノは、全陸戦車両の速度を50%増加させる"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "陸戦車両ファブリケーターテクノ"
+    },
+    "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%": {
+        "message": "陸戦車両ファブリケーターテクノは、全陸戦車両ユニットの金属系建造コストを25%削減する"
+    },
+    "Vehicle Factory Upgrade Tech": {
+        "message": "車両工場アップグレードテクノ"
+    },
+    "Vehicle Factory Upgrade Tech enables the building of advanced units by basic vehicle manufacturing.": {
+        "message": "車両工場アップグレードテクノは、基本車両製造技術による上級ユニットの建造を可能とする"
+    },
+    "Version:": {
+        "message": "バージョン:"
+    },
+    "Wall Upgrade Tech": {
+        "message": "防壁アップグレードテクノ"
+    },
+    "Wall Upgrade Tech increases the health of walls by 50%.": {
+        "message": "防壁アップグレードテクノは、防壁のライフ（耐久力）を50%増加する"
+    },
+    "Water Depth:": {
+        "message": "水域の深さ:"
+    },
+    "Water Height:": {
+        "message": "水位:"
+    },
+    "Wyrm Upgrade Tech": {
+        "message": "Wyrm アップグレードテクノ"
+    },
+    "Wyrm Upgrade Tech replaces the siege bomber's bombs with drones.": {
+        "message": "Wyrm アップグレードテクノは、包囲爆撃機の爆弾をドローンに変更する"
+    },
+    "Your technology bonuses": {
+        "message": "テクノロジーボーナス"
+    },
+    "Zeus Upgrade Tech": {
+        "message": "Zeus アップグレードテクノ"
+    },
+    "Zeus Upgrade Tech adds the ability for the lightning titan to move between planets.": {
+        "message": "Zeus アップグレードテクノは、Lightning Titanの惑星間移動を可能にする"
+    },
+    "Combat units enhanced": {
+        "message": "戦闘ユニット強化"
+    },
+    "Pelter Upgrade Tech": {
+        "message": "Pelter アップグレードテクノ"
+    },
+    "Pelter Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "Pelter アップグレードテクノは、迫撃砲の一斉発射ごとの弾数を3倍にする。ただし標的命中への偏差（弾道がずれる確率）も3倍となる"
+    },
+    "All-terrain": {
+        "message": "全地形"
+    },
+    "Artillery": {
+        "message": "迫撃"
+    },
+    "Assault": {
+        "message": "アサルト"
+    },
+    "Boomer": {
+        "message": "ブーマー"
+    },
+    "Fortress": {
+        "message": "専守防衛"
+    },
+    "Heavy": {
+        "message": "重装"
+    },
+    "Infernodier": {
+        "message": "地上重装"
+    },
+    "Meta": {
+        "message": "メタ"
+    },
+    "Nuker": {
+        "message": "核攻撃"
+    },
+    "Omega Upgrade Tech allows all the orbital battleship's lasers to target the planet.": {
+        "message": "Omegaアップグレードテクノは、衛星軌道バトルシップのレーザーによる惑星の標的化を可能にする"
+    },
+    "PENCHANT": {
+        "message": "PENCHANT"
+    },
+    "QUELLER": {
+        "message": "QUELLER"
+    },
+    "Raider": {
+        "message": "高速襲撃"
+    },
+    "Sniper": {
+        "message": "遠隔"
+    },
+    "TITANS": {
+        "message": "TITANS"
+    },
+    "TITANS: base game AI<br>QUELLER: greater challenge at the cost of personality and performance<BR>PENCHANT: increased personality": {
+        "message": "TITANS: 基本となるゲームAI<br>QUELLER: 難易度優先、パーソナリティやパフォーマンスは薄い<BR>PENCHANT: パーソナリティ重視"
+    },
+    "Starts with a 25% boost to metal and energy production and is able to build metal and energy storage. Unable to build close-range armored tanks.": {
+        "message": "エネルギーと金属生産量が25%ブーストされた状態で開始。金属貯蔵庫およびエネルギー貯蔵庫の建造が可能となる。短距離攻撃の装甲タンクの建造が不可となる"
+    }
+}

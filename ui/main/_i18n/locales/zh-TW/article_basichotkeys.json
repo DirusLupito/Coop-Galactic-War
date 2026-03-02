@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "重要快速鍵"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "PA指南：基本熱鍵"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 選取指揮官"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 選取所有目前可見的選取單位"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 選取畫面上閒置的建造物"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 切換能源指令"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 切換生產"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 縮放至選取的單位"
+    }
+}

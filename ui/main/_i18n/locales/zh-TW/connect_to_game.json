@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "進入世界模擬被拒絕"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "進入世界模擬"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "剩餘嘗試次數：__num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "正在連線伺服器……"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "伺服器連線已取消"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "連線伺服器失敗"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "與伺服器的連線中斷"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "正在建立世界模擬"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "正在下載伺服器模組"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "未能獲得許可"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "加入遊戲失敗"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "載入遊戲失敗"
+    },
+    "FAILED TO START GAME": {
+        "message": "開始遊戲失敗"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "無法開始重玩"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "登入已接受"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "登入伺服器被拒絕"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "正在重新掛載伺服器模組"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "請求許可"
+    },
+    "Returning to Main Menu": {
+        "message": "返回主功能表"
+    },
+    "STARTING GAME": {
+        "message": "開始遊戲"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "無法存取世界模擬"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "正在上傳伺服器模組……請稍候"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "世界模擬發生問題"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "你即將開始一個離線遊戲，但系統不符合建議的離線遊戲規格，遊戲體驗可能會因此受到負面影響。"
+    }
+}

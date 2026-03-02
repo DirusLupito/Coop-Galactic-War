@@ -1,0 +1,83 @@
+{
+    "- Host": {
+        "message": ": 主持"
+    },
+    "AI Commander": {
+        "message": "AI 指揮官"
+    },
+    "Add AI Commander": {
+        "message": "新增 AI 指揮官"
+    },
+    "Add Slot": {
+        "message": "新增欄位"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "與伺服器的連線已中斷"
+    },
+    "Chat": {
+        "message": "交談"
+    },
+    "Empty": {
+        "message": "空"
+    },
+    "Free For All": {
+        "message": "自由交戰"
+    },
+    "Friends": {
+        "message": "好友"
+    },
+    "Game Lobby": {
+        "message": "遊戲大廳"
+    },
+    "Game Mode": {
+        "message": "遊戲模式:"
+    },
+    "Join": {
+        "message": "加入"
+    },
+    "Kick": {
+        "message": "踢除"
+    },
+    "Leave": {
+        "message": "離開"
+    },
+    "Open to:": {
+        "message": "對 ... 公開:"
+    },
+    "Player Slot": {
+        "message": "玩家欄位"
+    },
+    "Private": {
+        "message": "私人"
+    },
+    "Public": {
+        "message": "公開"
+    },
+    "Ready": {
+        "message": "準備"
+    },
+    "Remove": {
+        "message": "移除"
+    },
+    "Returning to Main Menu": {
+        "message": "正式返回主目綠"
+    },
+    "SHARE ARMY": {
+        "message": "共用軍團"
+    },
+    "Spectate": {
+        "message": "觀戰"
+    },
+    "Spectators": {
+        "message": "觀戰者"
+    },
+    "Start Game": {
+        "message": "開始遊戲"
+    },
+    "System": {
+        "message": "星系:"
+    },
+    "Team Armies": {
+        "message": "團隊軍團"
+    }
+}

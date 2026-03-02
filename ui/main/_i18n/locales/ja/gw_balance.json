@@ -1,0 +1,17 @@
+{
+    "Absurd": {
+        "message": "エクストリーム"
+    },
+    "Easy": {
+        "message": "イージー"
+    },
+    "Hard": {
+        "message": "ハード"
+    },
+    "Normal": {
+        "message": "ノーマル"
+    },
+    "Relentless": {
+        "message": "ベリーハード"
+    }
+}

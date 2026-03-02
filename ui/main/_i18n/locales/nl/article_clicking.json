@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "Klikken"
+    },
+    "PA Guide: Clicking": {
+        "message": "PA-handleiding: Klikken"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "[style=text_callout]Dubbelklik[/style] op een eenheid om gelijksoortige eenheden te selecteren"
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]Klik met de linkermuisknop + houd vast[/style] en sleep om meerdere eenheden te selecteren"
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]Klik met de linkermuisknop[/style] om de eenheid te selecteren, [style=text_callout]klik met de rechtermuisknop[/style] voor actie."
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Shift + linkermuisknop[/style] om meerdere commando's in de wachtrij te zetten"
+    }
+}

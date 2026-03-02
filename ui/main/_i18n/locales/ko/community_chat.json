@@ -1,0 +1,248 @@
+{
+    "(Updating...)": {
+        "message": " (업데이트 중...)"
+    },
+    "1v1 Ranked Ladder Season 2": {
+        "message": "1v1 랭킹 래더 시즌 2"
+    },
+    "1v1 Ranked Ladder Season 3": {
+        "message": "1v1 랭킹 래더 시즌 3"
+    },
+    "Ask questions, get help, find a game": {
+        "message": "질문하고, 도움을 받고, 게임을 찾으십시오."
+    },
+    "Big Game Replays": {
+        "message": "빅 게임 리플레이"
+    },
+    "Block": {
+        "message": "차단"
+    },
+    "Chat": {
+        "message": "채팅"
+    },
+    "Check Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "호환되지 않는 Windows 소프트웨어 확인 (예: GameFirst 사용 안 함)"
+    },
+    "Check firewall / antivirus and Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "방화벽 / 바이러스 백신 및 호환되지 않는 Windows 소프트웨어 확인 (예: GameFirst 사용 안 함)"
+    },
+    "Classic PA players upgrade to Titans for US$2.99 (90% off)": {
+        "message": "클래식 PA 플레이어에게 Titans 업그레이드를 US$2.99 가격으로 제공 (90% 할인)"
+    },
+    "Classic PA players upgrade to Titans for US$3.99 (90% off)": {
+        "message": "클래식 PA 플레이어에게 Titans 업그레이드를 US$3.99 가격으로 제공 (90% 할인)"
+    },
+    "Community Chat Help": {
+        "message": "커뮤니티 채팅 도움말"
+    },
+    "Community Chat and Community Mods are hosted on private servers.": {
+        "message": "커뮤니티 채팅 및 커뮤니티 모드는 사설 서버에서 호스트합니다."
+    },
+    "Community Mods": {
+        "message": "커뮤니티 모드"
+    },
+    "Community Rules and Guidelines": {
+        "message": "커뮤니티 규정 및 가이드라인"
+    },
+    "Custom / Local Servers and LAN / WAN Games": {
+        "message": "사용자 설정 / 로컬 서버 및 LAN / WAN 게임"
+    },
+    "DON'T BE A JERK": {
+        "message": "찌질이가 되지 마십시오."
+    },
+    "DON'T BE A LOSER": {
+        "message": "패배자가 되지 마십시오."
+    },
+    "Dedicated Servers": {
+        "message": "전용 서버"
+    },
+    "Default": {
+        "message": "기본"
+    },
+    "Disable Auto Join": {
+        "message": "자동 참가 비활성화"
+    },
+    "Empty friends list try clicking on": {
+        "message": "빈 친구 목록 클릭 시도 "
+    },
+    "Firewall / Antivirus / Incompatible Windows Software": {
+        "message": "방화벽 / 바이러스 백신 / 호환되지 않는 Windows 소프트웨어"
+    },
+    "Full Screen Desktop Resolution": {
+        "message": "전체 화면 해상도"
+    },
+    "Galactic War": {
+        "message": "은하계 전쟁"
+    },
+    "General Discussion Forum": {
+        "message": "일반 토론 포럼"
+    },
+    "HELP": {
+        "message": "도움말"
+    },
+    "Hot Keys": {
+        "message": "단축키"
+    },
+    "Incompatible Windows Software": {
+        "message": "호환되지 않는 Windows 소프트웨어"
+    },
+    "Invite to Chat": {
+        "message": "채팅에 초대"
+    },
+    "Invite to game": {
+        "message": "게임에 초대"
+    },
+    "Join Community Chat": {
+        "message": "커뮤니티 채팅에 참가"
+    },
+    "Join Tournaments": {
+        "message": "토너먼트에 참가"
+    },
+    "LINKS": {
+        "message": "링크"
+    },
+    "Learning to Play": {
+        "message": "플레이 방법 배우기"
+    },
+    "Legion Expansion Overview": {
+        "message": "군단 확장팩 개요"
+    },
+    "Lost Titans Ownership When Linking": {
+        "message": "연결 시 Titans 소유권 상실"
+    },
+    "Mention": {
+        "message": "멘션"
+    },
+    "Notify": {
+        "message": "알림"
+    },
+    "Official Planetary Annihilation Discord": {
+        "message": "Planetary Annihilation 공식 디스코드"
+    },
+    "Old PAMM Mods": {
+        "message": "구 버전 PAMM 모드"
+    },
+    "PA Friends & Display Names": {
+        "message": "PA 친구 & 이름 표시"
+    },
+    "PAnet Migration": {
+        "message": "PAnet 마이그레이션"
+    },
+    "Pending": {
+        "message": "보류 중"
+    },
+    "Planetary Annihilation Vocabulary": {
+        "message": "Planetary Annihilation 용어 사전"
+    },
+    "Planetary Annihilation community rules apply to community chat:": {
+        "message": "커뮤니티 채팅에는 Planetary Annihilation 커뮤니티 규정이 적용됩니다:"
+    },
+    "Player Guides": {
+        "message": "플레이어 가이드"
+    },
+    "Public Test Environments (PTE)": {
+        "message": "공개 테스트 환경 (PTE)"
+    },
+    "Queller AI mod for Skirmish & Multiplayer": {
+        "message": "대항전 & 멀티 플레이용 Queller AI 모드"
+    },
+    "Remember that you are here to play the game and not be a jerk. No spam, flaming, politics, abuse or hate speech.": {
+        "message": "당신은 게임을 즐기러 온 사람이지, 찌질이가 아니라는 것을 잊지 마십시오. 스팸, 악플, 정치질, 괴롭히기 또는 혐오 발언을 해서는 안 됩니다."
+    },
+    "Replays": {
+        "message": "리플레이"
+    },
+    "Report game issues in the PA support forums:": {
+        "message": "PA 지원 포럼에 게임 문제 보고:"
+    },
+    "Reporting Issues": {
+        "message": "문제 신고 중"
+    },
+    "Right click on a name for more options.": {
+        "message": "이름을 오른쪽 클릭하면 더 많은 옵션을 볼 수 있습니다."
+    },
+    "Send Friend Request": {
+        "message": "친구 요청 전송"
+    },
+    "Server Sim Performance / Time Dilation / RAM Usage": {
+        "message": "서버 시뮬레이션 성능 / 시간 연장 / RAM 사용량"
+    },
+    "Skills Pyramid": {
+        "message": "스킬 피라미드"
+    },
+    "Special Characters in Display Name": {
+        "message": "표시 이름의 특수 문자"
+    },
+    "TITANS 1v1 ranked": {
+        "message": "TITANS 1v1 랭크"
+    },
+    "The notify checkbox on the top right of each chat enables or disables notifications when someone mentions you.": {
+        "message": "각 채팅 우측 상단의 알림 체크박스를 사용해, 다른 사람이 나를 멘션했을 때의 알림을 켜거나 끌 수 있습니다."
+    },
+    "Timeline of updates to Titans & Classic PA": {
+        "message": "Titans & 클래식 PA 업데이트 타임라인"
+    },
+    "Titans Overview": {
+        "message": "Titans 개요"
+    },
+    "UI is Slow": {
+        "message": "UI 느림"
+    },
+    "Unblock": {
+        "message": "차단 해제"
+    },
+    "Unfriend": {
+        "message": "친구 끊기"
+    },
+    "Unit Database": {
+        "message": "유닛 데이터베이스"
+    },
+    "User Interface Controls": {
+        "message": "사용자 인터페이스 컨트롤"
+    },
+    "Web based Community Chat:": {
+        "message": "웹 기반 커뮤니티 채팅:"
+    },
+    "When a chat window is minimised it will flash green for new messages and red when someone mentions you. Right click to clear the mention.": {
+        "message": "채팅 창이 최소화되면 새로운 메시지가 있을 경우 녹색으로 깜박이며, 다른 사용자가 멘션하면 빨간색으로 깜박입니다. 오른쪽 클릭하면 멘션을 삭제합니다."
+    },
+    "Your Message Colour": {
+        "message": "내 메시지 색상"
+    },
+    "Zero tolerance for backseat moderation or arguing with moderators.": {
+        "message": "중재자인 것처럼 과잉 행동을 하거나 중재자와 논쟁하는 행위는 용인되지 않습니다."
+    },
+    "Zero tolerance for complainers and rants about PA.": {
+        "message": "PA에 관한 불만이나 불평은 용인되지 않습니다."
+    },
+    "click HELP on top right": {
+        "message": "우측 상단의 도움말 클릭"
+    },
+    "click title bar to minimise": {
+        "message": "타이틀 바를 클릭해 최소화"
+    },
+    "click to maximise": {
+        "message": "클릭하여 최대화"
+    },
+    "community-chat-muted": {
+        "message": "본인이 <span data-bind=\"style: { color: $root.chatRoomMutedColour }\">발언 차단</span> 상태라면 <span data-bind=\"style: { color: $root.chatRoomModeratorColour }\">중재자</span> 또는 <span data-bind=\"style: { color: $root.chatRoomOwnerColour }\">소유자</span>에게 차단 해제를 요청하십시오."
+    },
+    "hello": {
+        "message": "안녕하세요"
+    },
+    "if you have plenty of RAM then you can download and watch big game replays": {
+        "message": "RAM이 충분하다면 빅 게임 리플레이를 다운로드해 시청할 수 있습니다."
+    },
+    "Classic PA players upgrade to TITANS for 90% off (US$2.99)": {
+        "message": "클래식 PA 플레이어는 90% 할인 가격(미화 2.99달러)에 TITANS로 업그레이드"
+    },
+    "TITANS 1v1 Leaderboards": {
+        "message": "TITANS 1v1 순위표"
+    },
+    "TITANS 1v1 Ranked Seasons": {
+        "message": "TITANS 1v1 랭킹 시즌"
+    },
+    "Timeline of updates to TITANS & Classic PA": {
+        "message": "TITANS & 클래식 PA 업데이트 타임라인"
+    }
+}

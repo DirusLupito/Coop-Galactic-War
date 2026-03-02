@@ -1,0 +1,551 @@
+{
+    "Advanced Air Factory": {
+        "message": "상급 항공기 공장"
+    },
+    "Advanced Anti-Air - Overhead heavy damage. Only attacks air.": {
+        "message": "상급 대공 방어 시설 - 상공에 큰 피해를 줍니다. 공중만 공격할 수 있습니다."
+    },
+    "Advanced Artillery - Extremely long range heavy damage. Can lay siege from very far away. Attacks land and sea targets.": {
+        "message": "상급 포탑 - 사정거리와 공격력이 매우 우수합니다. 매우 먼 거리에서 공격할 수 있습니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Advanced Bot Factory": {
+        "message": "상급 로봇 공장"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "상급 전투 건설 유닛 - 훨씬 더 빠르게 수리 작업을 하고 잔해를 자동 회수합니다. 폭뢰 설치와 더불어 텔레포터와 방어 시설을 건설할 수 있습니다."
+    },
+    "Advanced Combat Fabricator - Repairs much faster. Can build teleporters and turrets in addition to mines.": {
+        "message": "상급 전투 건설 유닛 - 훨씬 더 빠르게 수리 작업을 합니다. 폭뢰 설치와 더불어 텔레포터와 포탑을 건설할 수 있습니다."
+    },
+    "Advanced Economy - Produces energy.": {
+        "message": "상급 경제 시설 - 에너지를 생산합니다."
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "상급 경제 시설 - 금속을 생산합니다. 금속 매장지에만 건설할 수 있습니다."
+    },
+    "Advanced Energy Plant": {
+        "message": "상급 발전소"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "상급 건설 항공기"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "상급 건설 로봇"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "상급 건설 선박"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "상급 건설 차량"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "상급 건설 유닛 - 기본 및 상급 건물을 건설합니다."
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "상급 건설 유닛 - 기본 및 상급 해양 건물을 건설합니다."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "상급 건설 유닛 - 기본 및 상급 건물을 건설합니다."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "상급 건설 유닛 - 기본 및 상급 건물을 건설합니다. 내구도가 높습니다. 다른 건설 유닛보다 더 강력합니다."
+    },
+    "Advanced Interplanetary Fighter - Stronger fighter. Can move between planets. Can only attack air targets.": {
+        "message": "상급 행성간 전투기 - 강력한 전투기입니다. 다른 행성으로 비행할 수 있습니다. 공중의 대상만 공격 가능합니다."
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "상급 레이저 방어 포탑"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "상급 생산 시설 - 기본 및 상급 항공 유닛을 생산합니다."
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "상급 생산 시설 - 기본 및 상급 로봇을 생산합니다."
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "상급 생산 시설 - 기본 및 상급 차량을 생산합니다."
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "상급 생산 시설 - 기본 및 상급 해양 유닛을 생산합니다."
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "상급 생산 시설 - 궤도 위성과 우주선을 제작합니다."
+    },
+    "Advanced Metal Extractor": {
+        "message": "상급 금속 추출기"
+    },
+    "Advanced Naval Factory": {
+        "message": "상급 조선소"
+    },
+    "Advanced Radar": {
+        "message": "상급 레이더"
+    },
+    "Advanced Radar - Detects a vast area for enemy land, sea, and air units.": {
+        "message": "상급 레이더 - 넓은 범위의 적 차량, 선박, 항공기를 탐지합니다."
+    },
+    "Advanced Radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "상급 레이더 - 주변의 적 차량, 선박, 항공기를 탐지합니다."
+    },
+    "Advanced Radar Satellite": {
+        "message": "상급 레이더 위성"
+    },
+    "Advanced Submarine - Radar stealth with very high damage. Attacks land, sea and undersea targets.": {
+        "message": "상급 잠수함 - 레이더에 탐지되지 않으며 공격력이 매우 강합니다. 지상, 해양, 수중 표적을 공격합니다."
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "상급 어뢰 발사관"
+    },
+    "Advanced Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "상급 포탑 - 지상과 해양 표적을 공격할 수 있는 방어 시설입니다."
+    },
+    "Advanced Vehicle Factory": {
+        "message": "상급 차량 공장"
+    },
+    "Air Factory": {
+        "message": "항공기 공장"
+    },
+    "Air Transport - Load a land unit to transport for snipes or expansions.": {
+        "message": "항공 수송기 - 저격이나 기지 확장 등의 임무를 수행할 지상 유닛을 실어 나릅니다."
+    },
+    "All Terrain Bot - Can crawl almost anywhere.": {
+        "message": "전천후 로봇 - 거의 모든 환경에서 이동할 수 있습니다."
+    },
+    "Anti-Air Bot - Equipped with basic anti-air missiles.": {
+        "message": "대공 로봇 - 기본적인 대공 미사일이 장착되어 있습니다."
+    },
+    "Anti-Air Defense - Equipped with homing missiles. Only attacks air.": {
+        "message": "대공 방어 시설 - 유도 미사일이 장착되어 있습니다. 공중 표적만 공격합니다."
+    },
+    "Anti-Nuke - Builds advanced anti-nuclear missiles.": {
+        "message": "핵 방어 병기 - 상급 핵 요격 미사일을 생산합니다."
+    },
+    "Anti-Nuke Launcher": {
+        "message": "핵 방어 미사일 발사대"
+    },
+    "Anti-Orbital Defense - Rapid fire with high damage. Attacks orbital targets and intercepts drop pods.": {
+        "message": "궤도 방어 시설 - 공격 속도가 빠르고 피해량이 높습니다. 궤도의 표적을 공격하고 드롭 포드를 요격합니다."
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "핵 방어 병기 - 적의 핵미사일을 요격합니다."
+    },
+    "Artillery - Medium range for siege and area denial. Attacks land and sea targets.": {
+        "message": "포탑 - 공성 공격과 광역 방어를 위한 중거리 포탑입니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Assault Bot - Armoured with high damage guns and torpedoes. Amphibious. Attacks land and sea.": {
+        "message": "강습 로봇 - 강력한 기관총과 어뢰로 무장한 수륙 양용 유닛입니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets.": {
+        "message": "강습 탱크 - 장갑이 두터우며 파괴력이 막강합니다. 측면 공격에 취약합니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Attack Vehicle - Fast, adaptable, expendable. Attacks surface targets.": {
+        "message": "공격용 차량 - 빠르고 적응력이 우수하며 부담 없이 소모할 수 있습니다. 지상의 적을 공격합니다."
+    },
+    "Barrier - Blocks units and protects from incoming fire.": {
+        "message": "방어막 - 유닛의 접근을 차단하고 적의 공격을 막아줍니다."
+    },
+    "Basic Economy - Produces energy.": {
+        "message": "기본 경제 시설 - 에너지를 생산합니다."
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "기본 경제 시설 - 금속을 생산합니다. 금속 매장지에만 건설할 수 있습니다."
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "기본 건설 유닛 - 기본 건물을 건설합니다."
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "기본 건설 유닛 - 기본 건물을 건설합니다. 다른 건설 유닛들보다 약합니다."
+    },
+    "Basic Fabricator - Builds basic naval structures.": {
+        "message": "기본 건설 유닛 - 기본 해양 건물을 건설합니다."
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "기본 건설 유닛 - 기본 해양 건물을 건설합니다. 물 위에서 호버링합니다."
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "기본 건설 유닛 - 기본 건물을 건설합니다. 내구도가 높습니다. 다른 건설 유닛보다 더 강력합니다."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks land, air and sea targets when on land.": {
+        "message": "기본 보병 - 빠르고 적응력이 우수하며 부담 없이 소모할 수 있습니다. 수륙 양용입니다. 지상에 있을 때 지상, 공중 및 해양 표적을 공격합니다."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks surface targets when on land.": {
+        "message": "기본 보병 - 빠르고 적응력이 우수하며 부담 없이 소모할 수 있습니다. 수륙 양용입니다. 지상에 있을 때 지상 표적을 공격합니다."
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "기본 생산 시설 - 기본 궤도 유닛을 생산 및 발사할 수 있습니다."
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "기본 생산 시설 - 기본 항공 유닛을 생산합니다."
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "기본 생산 시설 - 기본 로봇을 생산합니다."
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "기본 생산 시설 - 기본적인 차량을 생산합니다."
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "기본 생산 시설 - 기본 해양 유닛을 생산합니다."
+    },
+    "Basic Radar - Detects a large area for enemy land, sea, and air units.": {
+        "message": "기본 레이더 - 넓은 영역을 탐지해 적의 지상과 공중, 해양 유닛을 감지합니다."
+    },
+    "Basic Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "기본 포탑 - 대지 및 대함 방어 직사 화기로 무장했습니다."
+    },
+    "Basic radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "기본 레이더 - 인근의 적 지상, 해상, 공중 유닛들을 감지합니다."
+    },
+    "Battleship - Long range advanced anti-ship, and anti-land guns.": {
+        "message": "전함 - 향상된 장거리 대함 및 대지 함포로 무장했습니다."
+    },
+    "Bluehawk Tactical Missile": {
+        "message": "블루호크 전술 미사일"
+    },
+    "Bomb Bot - Self destructs to deal very heavy damage over a nearby area. Extremely fast.": {
+        "message": "폭탄 로봇 - 자폭하여 주변에 매우 큰 피해를 줍니다. 속도가 매우 빠릅니다."
+    },
+    "Bot Factory": {
+        "message": "로봇 공장"
+    },
+    "Carpet Bomber - High damage over a wide area. Fragile and slow. Attacks land, sea and undersea targets.": {
+        "message": "융단 폭격기 - 넓은 범위에 큰 피해를 줍니다. 내구도가 약하고 속도가 느립니다. 지상, 해양, 수중의 대상을 공격합니다."
+    },
+    "Catapult Tactical Missile": {
+        "message": "캐터펄트 전술 미사일"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "전투 건설 유닛 - 손상된 유닛을 수리합니다. 지뢰를 설치 및 탐지할 수 있습니다. 텔레포터를 건설할 수 있습니다. 다른 구조물 건설은 지원할 수 없습니다."
+    },
+    "Commander Anti-Air Missile": {
+        "message": "지휘관 대공 미사일"
+    },
+    "Deep Space Radar": {
+        "message": "심우주 레이더"
+    },
+    "Deep Space Radar - System wide planetary radar.": {
+        "message": "심우주 레이더 - 행성계 전역 레이더입니다."
+    },
+    "Deep Water Destroyer - Medium range with high damage. Very durable. Attacks land, sea and undersea targets.": {
+        "message": "심해 전투함 - 중간 정도 사정거리에 공격력이 높습니다. 매우 튼튼합니다. 지상, 해양, 수중의 표적을 공격할 수 있습니다."
+    },
+    "Defense Satellite - Heavy orbital offensive and defensive platform with basic laser.": {
+        "message": "방어 위성 - 기본 레이저를 장착한 중 궤도 공격/방어 플랫폼입니다."
+    },
+    "Delta V Engine - Used to move small to medium celestial bodies.": {
+        "message": "델타 V 엔진 - 중소형의 천체를 움직일 수 있습니다."
+    },
+    "Doomsday Titan - Destroys the planet it's built on once finished.": {
+        "message": "둠스데이 타이탄 - 완성되면 자신이 있는 행성을 파괴해 버립니다."
+    },
+    "Dox Launcher - Builds and fires Dox at nearby targets.": {
+        "message": "Dox 런처 - Dox를 생산해 근처의 표적에 발사합니다."
+    },
+    "Drone Carrier - Builds and launches missile drones at enemies. Attacks land, air and sea targets.": {
+        "message": "드론 모함 - 미사일 드론을 생산해 적에게 발사합니다. 지상, 공중 및 해양 표적을 공격할 수 있습니다."
+    },
+    "Economy - Orbital energy generation.": {
+        "message": "경제 - 궤도에서 에너지를 생산합니다."
+    },
+    "Energy Plant": {
+        "message": "발전소"
+    },
+    "Energy Storage": {
+        "message": "에너지 저장고"
+    },
+    "Fabrication Aircraft": {
+        "message": "건설 항공기"
+    },
+    "Fabrication Bot": {
+        "message": "건설 로봇"
+    },
+    "Fabrication Ship": {
+        "message": "건설 선박"
+    },
+    "Fabrication Vehicle": {
+        "message": "건설 차량"
+    },
+    "Fighter - Fast. High damage. Only attacks air targets.": {
+        "message": "전투기 - 빠르고 공격력이 강합니다. 공중의 표적만 공격합니다."
+    },
+    "Fire Support - Medium range. Can fire over walls. Attacks land and sea targets.": {
+        "message": "화력 지원 - 사정거리는 중간 정도이며 방어벽 너머로 공격할 수 있습니다. 지상 및 해양 표적을 공격합니다."
+    },
+    "Flak Tank - Damage over a very wide area. Only attacks air targets.": {
+        "message": "플랙 탱크 - 매우 넓은 범위에 피해를 줍니다. 공중 표적만 공격합니다."
+    },
+    "Flame Tank - Short range, heavy armored vehicle.": {
+        "message": "플레임 탱크 - 사정거리가 짧고 장갑이 두터운 차량입니다."
+    },
+    "Frigate - Durable. Rapid-fire. Attacks land, air, and sea targets.": {
+        "message": "구축함 - 내구도가 높고 공격 속도가 빠릅니다. 지상, 공중 및 해양 표적을 공격합니다."
+    },
+    "Galata Anti-Air Missile": {
+        "message": "갈라타 대공 미사일"
+    },
+    "Gas Mining - Advanced energy and metal creation satellite. Only works above gas giant planets.": {
+        "message": "가스 추출 - 상급의 에너지 및 금속 생산 위성입니다. 가스 거성 위에서만 작동합니다."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Attacks land and sea targets.": {
+        "message": "포격함 - 값싸고 빠르며 부담 없이 소모할 수 있습니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Water hover. Attacks land and sea targets.": {
+        "message": "포격함 - 값싸고 빠르며 부담 없이 소모할 수 있습니다. 물 위에서 호버링합니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Gunship - Fast. Cheap. Durable. Attacks land and sea targets.": {
+        "message": "건십 - 빠르고 값싸며 튼튼합니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle.": {
+        "message": "헤비 탱크 - 더욱 향상된 단거리 전투용의 중장갑 차량입니다."
+    },
+    "Hornet Tactical Missile": {
+        "message": "호넷 전술 미사일"
+    },
+    "Hover Destroyer - Long Range. Durable. Hover. Attacks land and sea targets.": {
+        "message": "호버 구축함 - 사정거리가 길고 내구도가 튼튼합니다. 공중에 떠서 이동합니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Hover Tank - Fast. Can cross water and lava. Attacks land and sea targets.": {
+        "message": "호버 탱크 - 속도가 빠르고 물과 용암을 건널 수 있습니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Hummingbird Air-To-Air Missile": {
+        "message": "허밍버드 공대공 미사일"
+    },
+    "Interplanetary Teleporter: Teleports units between linked Teleporters.": {
+        "message": "행성간 텔레포터 - 연결된 텔레포터끼리 유닛을 전송하고 받을 수 있습니다."
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "행성간 텔레포터 - 12개의 유닛을 즉시 생산해 행성계 어디로든 보낼 수 있습니다."
+    },
+    "Invasion Titan - Can link with a teleporter to send units directly to planet surface. Attacks everything.": {
+        "message": "인베이전 타이탄 - 텔레포터와 연결해 행성 지표면으로 유닛을 직접 보낼 수 있습니다. 모든 표적을 공격합니다."
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 -패시파이어- 미사일"
+    },
+    "LR-96 Pacifier Nuclear Missile": {
+        "message": "LR-96 패시파이어 핵미사일"
+    },
+    "Land Mine": {
+        "message": "지뢰"
+    },
+    "Land Mine - Detonates when enemy units are in proximity.": {
+        "message": "지뢰 - 적 유닛이 접근하면 폭발합니다."
+    },
+    "Laser Defense Tower": {
+        "message": "레이저 방어 포탑"
+    },
+    "Light Tank - Well-rounded. Reliable. Attacks land and sea targets.": {
+        "message": "라이트 탱크 - 신뢰성이 뛰어난 만능 전차입니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Lightning Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "라이트닝 타이탄 - 넓은 범위에 큰 피해를 줍니다. 궤도를 제외한 모든 표적을 공격합니다."
+    },
+    "Metal Extractor": {
+        "message": "금속 추출기"
+    },
+    "Metal Storage": {
+        "message": "금속 저장고"
+    },
+    "Missile Ship - Long range with radar. High damage anti-air and tactical missiles. Attacks land, sea, air, and orbital targets.": {
+        "message": "미사일함 - 레이더를 탑재해 사정거리가 깁니다. 위력이 강한 대공 및 전술 미사일을 발사합니다. 지상, 공중 및 해양 및 궤도 표적을 공격합니다."
+    },
+    "Missile and Torpedo Drone - Fast, fragile, attacks land, sea and air.": {
+        "message": "미사일 및 어뢰 드론 - 빠르고 부서지기 쉬우며 지상, 바다 및 공중을 공격합니다."
+    },
+    "Mobile Anti-Air - Equipped with homing missiles. Only attacks air.": {
+        "message": "기동 대공 병기 - 유도 미사일을 장착하고 있습니다. 공중 표적만 공격합니다."
+    },
+    "Mobile Nuke - Detonates a nuke on death. Slow. Extremely durable. Self-destruct attack.": {
+        "message": "기동 핵 병기 - 파괴 시 핵폭탄을 터뜨립니다. 속도가 느리며 내구도가 매우 강합니다. 자폭 공격을 합니다."
+    },
+    "Mobile Tactical Missile - Long range with heavy damage. Fires homing missiles. Attacks land, sea and orbital targets.": {
+        "message": "기동 전술 미사일 - 사정거리가 길고 위력이 매우 강합니다. 유도 미사일을 발사합니다. 지상과 해양, 궤도 표적을 공격합니다."
+    },
+    "Mortar tank - Advanced long range mobile artillery.": {
+        "message": "박격포 탱크 - 향상된 장거리 기동 포격 병기입니다."
+    },
+    "Nanobot Swarm - Extremely Fast. Cheap. Close range. Devastating damage. Hover. Attacks land and sea targets.": {
+        "message": "나노봇 스웜 - 속도가 매우 빠르고 값이 싼 근거리 전투 병기입니다. 호버링 능력이 있고 공격력이 매우 높으며 지상과 해양 표적을 공격합니다."
+    },
+    "Narwhal Anti-Air Missile": {
+        "message": "나르왈 대공 미사일"
+    },
+    "Naval Factory": {
+        "message": "조선소"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "핵미사일 발사대"
+    },
+    "Nuclear Missile Launcher - Builds interplanetary long range nuclear missile with large area damage.": {
+        "message": "핵미사일 발사대 - 넓은 범위에 피해를 주는 행성간 장거리 핵미사일을 생산합니다."
+    },
+    "Nuclear missile - Long range interplanetary, large area damage, projectile": {
+        "message": "핵미사일 - 사정거리가 길고 피해 반경이 넓은 행성간 탄도 미사일입니다."
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "핵미사일 - 사정거리가 길고 피해 반경이 넓은 미사일입니다."
+    },
+    "Orbital Battleship - Rapid-Fire. Very durable. Heavy damage. Attacks everything.": {
+        "message": "궤도 전함 - 공격 속도가 빠르고 내구도가 매우 튼튼하며 공격력이 강합니다. 모든 표적을 공격합니다."
+    },
+    "Orbital Carrier - Can load up to 12 units.": {
+        "message": "궤도 모함 - 최대 12개의 유닛을 실을 수 있습니다."
+    },
+    "Orbital Fabrication Bot": {
+        "message": "궤도 건설 로봇"
+    },
+    "Orbital Fabricator - Builds orbital satellites and spaceships.": {
+        "message": "궤도 건설 유닛 - 궤도 위성과 우주선을 생산합니다."
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "궤도 건설 유닛 - 궤도 위성과 우주선, 그리고 타이탄을 생산합니다."
+    },
+    "Orbital Factory": {
+        "message": "궤도 공장"
+    },
+    "Orbital Fighter - Fast moving orbital fighter for offense and defense.": {
+        "message": "궤도 전투기 - 속도가 빠른 공격 및 방어용의 궤도 전투기입니다."
+    },
+    "Orbital Lander - Load it up and transport a unit to other planets.": {
+        "message": "궤도 착륙선 - 유닛을 실어 다른 행성으로 운반합니다."
+    },
+    "Orbital Laser Platform - Rains death from above.": {
+        "message": "궤도 레이저 플랫폼 - 상공에서 치명적인 공격을 퍼붓습니다."
+    },
+    "Orbital Launcher": {
+        "message": "궤도 발사대"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "궤도 및 심우주 레이더"
+    },
+    "Orbital and Deepspace Radar - Orbital and celestial radar telemetry.": {
+        "message": "궤도 및 심우주 레이더 - 궤도 및 천체 원격 레이더입니다."
+    },
+    "Phoenix Air-To-Air Missile": {
+        "message": "피닉스 공대공 미사일"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "대리 지휘관 - 상급 건물을 건설합니다. 수륙 양용이고 내구도가 튼튼하며 공격력이 강합니다. 궤도를 제외한 모든 표적을 공격합니다."
+    },
+    "Radar": {
+        "message": "레이더"
+    },
+    "Railgun Platform - Long range with high damage. Very low rate of fire. Uses energy. Attacks orbital.": {
+        "message": "레일건 플랫폼 - 사정거리가 길고 공격력이 강합니다. 발사 속도가 매우 느립니다. 에너지를 사용하며 궤도 표적을 공격합니다."
+    },
+    "Rolling Fortress - Near invincible. Long range. Heavy damage. Hover. Attacks land and sea targets.": {
+        "message": "롤링 포트리스 - 거의 무적입니다. 사정거리가 길고 공격력이 매우 강하며, 공중에 떠서 이동합니다. 지상과 해양 표적을 공격합니다."
+    },
+    "SR-24 Shield Missile Defense": {
+        "message": "SR-24 실드 미사일 디펜스"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 레이저 플랫폼"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "정찰 - 속도가 빠릅니다. 시야 거리가 길고 지뢰 탐지가 가능합니다. 공격은 할 수 없습니다."
+    },
+    "Scout - Fast. Can see far away. Does not attack.": {
+        "message": "정찰 - 속도가 빠릅니다. 시야 거리가 길며 공격은 할 수 없습니다."
+    },
+    "Sea Mine - Detonates when ships are in proximity.": {
+        "message": "폭뢰 - 선박이 접근하면 폭발합니다."
+    },
+    "Seismic Titan - Devastating damage to everything nearby. Amphibious. Attacks land, sea, and undersea targets.": {
+        "message": "사이즈믹 타이탄 - 주변의 모든 것에 엄청난 피해를 줍니다. 수륙 양용이며 지상, 해양, 수중 표적을 공격합니다."
+    },
+    "Siege Bomber - Durable. Slow. Devastating damage. Attacks land and sea targets.": {
+        "message": "공성 폭격기 - 내구도가 튼튼하고 속도가 느리며 공격력이 막강합니다. 지상 및 해양 표적을 공격합니다."
+    },
+    "Single Laser Defense Tower": {
+        "message": "단일 레이저 방어 포탑"
+    },
+    "Sniper - Long range with high damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "저격 병기 - 사정거리가 길고 공격력이 강합니다. 공격 속도가 느립니다. 미사일을 요격할 수 있습니다. 지상, 공중, 해양 표적을 공격합니다."
+    },
+    "Sniper - Long range. High damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "저격 병기 - 사정거리가 길고 공격력이 강합니다. 공격 속도가 느립니다. 미사일을 요격할 수 있습니다. 지상, 공중, 해양 표적을 공격합니다."
+    },
+    "Solar Array": {
+        "message": "태양광 발전기"
+    },
+    "Solar Drone - Produces energy. Mobile but slow. Weak. Attacks land, air, and sea targets.": {
+        "message": "솔라 드론 - 에너지를 생산합니다. 움직일 수 있지만 속도가 느리고 약합니다. 지상, 공중 및 해양 표적을 공격합니다."
+    },
+    "Space Probe - Fast. Cheap. Expendable. Provides ground vision. Does not attack.": {
+        "message": "우주 탐사선 - 빠르고 값싸며 부담 없이 소모할 수 있습니다. 지상을 정찰할 수 있으며 공격은 할 수 없습니다."
+    },
+    "Spinner Anti-Air Missile": {
+        "message": "스피너 대공 미사일"
+    },
+    "Stealth Sub - Radar stealth with very high damage. Attacks land, sea, and undersea targets.": {
+        "message": "스텔스 잠수함 - 레이더에 탐지되지 않으며 공격력이 매우 강합니다. 지상, 해양, 수중 표적을 공격합니다."
+    },
+    "Stingray Anti-Air Missile": {
+        "message": "스팅레이 대공 미사일"
+    },
+    "Stingray Tactical Missile": {
+        "message": "스팅레이 전술 미사일"
+    },
+    "Storage - Increases maximum energy storage capacity.": {
+        "message": "저장고 - 최대 에너지 저장량을 높여줍니다."
+    },
+    "Storage - Increases maximum metal storage capacity.": {
+        "message": "저장고 - 최대 금속 저장량을 높여줍니다."
+    },
+    "Strafer Aircraft - Loud and annoying. Attacks land and sea targets.": {
+        "message": "폭격기 - 시끄럽고 성가십니다. 지상과 해양 표적을 공격합니다."
+    },
+    "Submarine - High damage. Cannot be targeted by cannons. Attacks sea and undersea targets.": {
+        "message": "잠수함 - 공격력이 강합니다. 포격 병기의 표적이 되지 않습니다. 해양 및 수중 표적을 공격합니다."
+    },
+    "Submarine - Radar stealth. Attacks sea and undersea targets.": {
+        "message": "잠수함 - 레이더에 탐지되지 않습니다. 해양, 수중 표적을 공격합니다."
+    },
+    "Super Weapon - Build five on a metal planet to activate the Annihilazer.": {
+        "message": "궁극 병기 - 금속 행성에 5개를 건설해 어나힐레이저를 가동하십시오."
+    },
+    "Support Platform - Repairs nearby units and auto reclaims wreckage. Intercepts homing missiles. Does not attack.": {
+        "message": "지원 플랫폼 - 주변 유닛을 수리하고 잔해를 자동 회수하며, 유도 미사일을 요격할 수 있습니다. 공격은 할 수 없습니다."
+    },
+    "Tactical Bomber - Long range. High damage tactical missiles. Attacks land and sea targets.": {
+        "message": "전술 폭격기 - 사정거리가 길고 공격력이 강한 전술 미사일입니다. 지상 및 해양 표적을 공격합니다."
+    },
+    "Tactical Missile Launcher - Long range with very heavy damage. Attacks land, sea, and orbital targets.": {
+        "message": "전술 미사일 발사기 - 사정거리가 길고 매우 큰 피해를 줍니다. 지상, 해양, 궤도 표적을 공격합니다."
+    },
+    "Teleporter": {
+        "message": "텔레포터"
+    },
+    "Tesla Bot - Very high damage over a short range area. Uses energy. Attacks land targets.": {
+        "message": "테슬라 로봇 - 짧은 거리에 매우 큰 피해를 줍니다. 에너지를 사용합니다. 지상 표적을 공격합니다."
+    },
+    "Torpedo Launcher": {
+        "message": "어뢰 발사관"
+    },
+    "Torpedo Launcher - Advanced anti-ship defense.": {
+        "message": "어뢰 발사관 - 상급 대함 방어 시설입니다."
+    },
+    "Torpedo Launcher - Basic anti-ship defense.": {
+        "message": "어뢰 발사관 - 기본 대함 방어 시설입니다."
+    },
+    "Unit Cannon": {
+        "message": "유닛 캐논"
+    },
+    "Vehicle Factory": {
+        "message": "차량 공장"
+    },
+    "Wall": {
+        "message": "방어벽"
+    },
+    "Stinger Anti-Air Missile": {
+        "message": "스팅어 대공 미사일"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "중 전차 - 짧은 사거리, 이동식 레이더를 가지고 있으며 중장갑을 갖춘 차량"
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "레이더 재머 - 사거리 내 적의 레이더로부터 본인을 포함한 아군 유닛들을 숨깁니다.  에너지를 소모합니다."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "지원 바지선 - 배를 수리하며 잔해를 자동으로 수거합니다. 기뢰를 심을 수 있고. 생산 보조를 하지 못합니다. 호버 유닛입니다."
+    }
+}

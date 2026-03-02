@@ -1,0 +1,50 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Frissítés...)"
+    },
+    "(no info available)": {
+        "message": "(nincs elérhető információ)"
+    },
+    "Duration": {
+        "message": "Időtartam"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "NEM SIKERÜLT ELŐHOZNI A VISSZAJÁTSZÁSI LISTÁT"
+    },
+    "Game": {
+        "message": "Játék"
+    },
+    "Lobby Id": {
+        "message": "Várótermi ID"
+    },
+    "Longest Game Duration": {
+        "message": "Leghosszabb Játék Időtartama"
+    },
+    "Most Recent": {
+        "message": "Legújabb"
+    },
+    "Replays": {
+        "message": "Visszajátszások"
+    },
+    "Returning to Main Menu": {
+        "message": "Visszatérés a főmenübe"
+    },
+    "Search": {
+        "message": "Keresés"
+    },
+    "Sorted By": {
+        "message": "Rendezés"
+    },
+    "View": {
+        "message": "Nézet"
+    },
+    "Watch Replay": {
+        "message": "Visszajátszás Megtekintése"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

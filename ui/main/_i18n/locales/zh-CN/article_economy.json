@@ -1,0 +1,29 @@
+{
+    "As Efficiency percentage lowers, all fabbers, factories and Commanders build slower": {
+        "message": "如果生成效率较低，所有建造兵、工厂和指挥官的建造速度会变慢"
+    },
+    "Build Metal Storage and Energy Storage to stockpile more resources": {
+        "message": "建造金属仓库和能源仓库，以储备更多资源"
+    },
+    "Economy and Resources": {
+        "message": "经济与资源"
+    },
+    "Energy and Metal resources get consumed while building": {
+        "message": "建造过程中会消耗能源与金属资源"
+    },
+    "If you’re consuming more than you are producing, build efficiency slows down": {
+        "message": "若资源消耗量高于生产量，则建造效率将随之降低"
+    },
+    "PA Guide: Economy": {
+        "message": "PA 指南：经济"
+    },
+    "Resources build up over time": {
+        "message": "资源会随时间流逝而慢慢增长"
+    },
+    "To generate Energy, build Energy Plants": {
+        "message": "建造能源厂后即可生成能源"
+    },
+    "To generate Metal, build Metal Extractors": {
+        "message": "建造金属开采装置后即可生成金属"
+    }
+}

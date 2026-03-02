@@ -1,0 +1,1298 @@
+{
+    "ALL": {
+        "message": "Ȃ₤₤Ω",
+        "original": "ALL"
+    },
+    "ALWAYS": {
+        "message": "Ȃ₤₩ȂУṠΩΩΩ",
+        "original": "ALWAYS"
+    },
+    "AUTO": {
+        "message": "ȂỦ丁ѲΩΩ",
+        "original": "AUTO"
+    },
+    "Active Product": {
+        "message": "Ȃϲҭїѷέ ṔȓȏɗմϲҭΩΩΩΩΩΩΩ",
+        "original": "Active Product"
+    },
+    "Ambient Occlusion": {
+        "message": "ȂʍБїέƞҭ Ѳϲϲ⌊մƨїȏƞΩΩΩΩΩΩΩΩ",
+        "original": "Ambient Occlusion"
+    },
+    "Anti-Aliasing": {
+        "message": "Ȃƞҭї-Ȃ⌊їȃƨїƞɠΩΩΩΩΩΩ",
+        "original": "Anti-Aliasing"
+    },
+    "Arabic (Community translation)": {
+        "message": "ȂȓȃБїϲ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Arabic (Community translation)"
+    },
+    "Audio": {
+        "message": "ȂմɗїȏΩΩ",
+        "original": "Audio"
+    },
+    "Back": {
+        "message": "฿ȃϲќΩΩ",
+        "original": "Back"
+    },
+    "Build Bar Size": {
+        "message": "฿մї⌊ɗ ฿ȃȓ ṠїℤέΩΩΩΩΩΩΩ",
+        "original": "Build Bar Size"
+    },
+    "Build Preview Behavior": {
+        "message": "฿մї⌊ɗ Ṕȓέѷїέῴ ฿έнȃѷїȏȓΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Build Preview Behavior"
+    },
+    "CUSTOM": {
+        "message": "ҪỦṠ丁ѲΜΩΩΩ",
+        "original": "CUSTOM"
+    },
+    "Camera": {
+        "message": "ҪȃʍέȓȃΩΩΩ",
+        "original": "Camera"
+    },
+    "Camera Friction": {
+        "message": "Ҫȃʍέȓȃ ϜȓїϲҭїȏƞΩΩΩΩΩΩΩ",
+        "original": "Camera Friction"
+    },
+    "Cancel": {
+        "message": "Ҫȃƞϲέ⌊ΩΩΩ",
+        "original": "Cancel"
+    },
+    "Chinese (Simplified)": {
+        "message": "Ҫнїƞέƨέ (Ṡїʍ⍴⌊їғїέɗ)ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Chinese (Simplified)"
+    },
+    "Chinese (Traditional)": {
+        "message": "Ҫнїƞέƨέ (丁ȓȃɗїҭїȏƞȃ⌊)ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Chinese (Traditional)"
+    },
+    "Chinese, Hong Kong": {
+        "message": "Ҫнїƞέƨέ, Ӈȏƞɠ ҠȏƞɠΩΩΩΩΩΩΩΩΩ",
+        "original": "Chinese, Hong Kong"
+    },
+    "Classic": {
+        "message": "Ҫ⌊ȃƨƨїϲΩΩΩ",
+        "original": "Classic"
+    },
+    "Close": {
+        "message": "Ҫ⌊ȏƨέΩΩ",
+        "original": "Close"
+    },
+    "Conflict:": {
+        "message": "Ҫȏƞғ⌊їϲҭ:ΩΩΩΩ",
+        "original": "Conflict:"
+    },
+    "Czech (Community translation)": {
+        "message": "Ҫℤέϲн (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Czech (Community translation)"
+    },
+    "Danish (Community translation)": {
+        "message": "Ɖȃƞїƨн (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Danish (Community translation)"
+    },
+    "Default": {
+        "message": "Ɖέғȃմ⌊ҭΩΩΩ",
+        "original": "Default"
+    },
+    "Default Audio Device": {
+        "message": "Ɖέғȃմ⌊ҭ Ȃմɗїȏ ƉέѷїϲέΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Default Audio Device"
+    },
+    "Display Mode": {
+        "message": "Ɖїƨ⍴⌊ȃу ΜȏɗέΩΩΩΩΩΩ",
+        "original": "Display Mode"
+    },
+    "Dutch": {
+        "message": "ƉմҭϲнΩΩ",
+        "original": "Dutch"
+    },
+    "Dutch, Belgium (Community translation)": {
+        "message": "Ɖմҭϲн, ฿έ⌊ɠїմʍ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Dutch, Belgium (Community translation)"
+    },
+    "Edge Scroll Options": {
+        "message": "Ɛɗɠέ Ṡϲȓȏ⌊⌊ Ѳ⍴ҭїȏƞƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Edge Scroll Options"
+    },
+    "English": {
+        "message": "Ɛƞɠ⌊їƨнΩΩΩ",
+        "original": "English"
+    },
+    "English, US": {
+        "message": "Ɛƞɠ⌊їƨн, ỦṠΩΩΩΩΩ",
+        "original": "English, US"
+    },
+    "FOV": {
+        "message": "ϜѲѶΩ",
+        "original": "FOV"
+    },
+    "FULLSCREEN": {
+        "message": "ϜỦ₤₤ṠҪℝƐƐƝΩΩΩΩΩ",
+        "original": "FULLSCREEN"
+    },
+    "FXAA": {
+        "message": "ϜҲȂȂΩΩ",
+        "original": "FXAA"
+    },
+    "Finnish (Community translation)": {
+        "message": "Ϝїƞƞїƨн (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Finnish (Community translation)"
+    },
+    "Forward": {
+        "message": "ϜȏȓῴȃȓɗΩΩΩ",
+        "original": "Forward"
+    },
+    "French": {
+        "message": "ϜȓέƞϲнΩΩΩ",
+        "original": "French"
+    },
+    "GAMEPLAY": {
+        "message": "ǴȂΜƐṔ₤ȂУΩΩΩΩ",
+        "original": "GAMEPLAY"
+    },
+    "GUI Size": {
+        "message": "ǴỦΪ ṠїℤέΩΩΩΩ",
+        "original": "GUI Size"
+    },
+    "German": {
+        "message": "ǴέȓʍȃƞΩΩΩ",
+        "original": "German"
+    },
+    "German, Austrian (Community translation)": {
+        "message": "Ǵέȓʍȃƞ, Ȃմƨҭȓїȃƞ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "German, Austrian (Community translation)"
+    },
+    "Graphics": {
+        "message": "Ǵȓȃ⍴нїϲƨΩΩΩΩ",
+        "original": "Graphics"
+    },
+    "HDR": {
+        "message": "ӇƉℝΩ",
+        "original": "HDR"
+    },
+    "HIGH": {
+        "message": "ӇΪǴӇΩΩ",
+        "original": "HIGH"
+    },
+    "Headlights": {
+        "message": "Ӈέȃɗ⌊їɠнҭƨΩΩΩΩΩ",
+        "original": "Headlights"
+    },
+    "Hungarian (Community translation)": {
+        "message": "Ӈմƞɠȃȓїȃƞ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Hungarian (Community translation)"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "ΪҪѲƝ ƉΪṠṔ₤ȂУ ƉΪṠ丁ȂƝҪƐΩΩΩΩΩΩΩΩΩΩ",
+        "original": "ICON DISPLAY DISTANCE"
+    },
+    "Italian": {
+        "message": "Ϊҭȃ⌊їȃƞΩΩΩ",
+        "original": "Italian"
+    },
+    "Japanese": {
+        "message": "ڷȃ⍴ȃƞέƨέΩΩΩΩ",
+        "original": "Japanese"
+    },
+    "Key Pan Speed": {
+        "message": "Ҡέу Ṕȃƞ Ṡ⍴έέɗΩΩΩΩΩΩ",
+        "original": "Key Pan Speed"
+    },
+    "Keyboard": {
+        "message": "ҠέуБȏȃȓɗΩΩΩΩ",
+        "original": "Keyboard"
+    },
+    "Korean": {
+        "message": "ҠȏȓέȃƞΩΩΩ",
+        "original": "Korean"
+    },
+    "LOW": {
+        "message": "₤Ѳ₩Ω",
+        "original": "LOW"
+    },
+    "Language": {
+        "message": "₤ȃƞɠմȃɠέΩΩΩΩ",
+        "original": "Language"
+    },
+    "Local Server": {
+        "message": "₤ȏϲȃ⌊ ṠέȓѷέȓΩΩΩΩΩΩ",
+        "original": "Local Server"
+    },
+    "Local Server Multi-threading": {
+        "message": "₤ȏϲȃ⌊ Ṡέȓѷέȓ Μմ⌊ҭї-ҭнȓέȃɗїƞɠΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Local Server Multi-threading"
+    },
+    "Local server is not available on your configuration.  (64-bit OS required)": {
+        "message": "₤ȏϲȃ⌊ ƨέȓѷέȓ їƨ ƞȏҭ ȃѷȃї⌊ȃБ⌊έ ȏƞ уȏմȓ ϲȏƞғїɠմȓȃҭїȏƞ.  (64-Бїҭ ѲṠ ȓέԳմїȓέɗ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Local server is not available on your configuration.  (64-bit OS required)"
+    },
+    "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)": {
+        "message": "₤ȏϲȃ⌊ ƨέȓѷέȓ їƨ ƞȏҭ ȓέϲȏʍʍέƞɗέɗ ȏƞ уȏմȓ ϲȏƞғїɠմȓȃҭїȏƞ.  (4 ҪṔỦ ϲȏȓέƨ ȃƞɗ 8Ǵ฿ ȏғ ʍέʍȏȓу ȓέϲȏʍʍέƞɗέɗ.)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)"
+    },
+    "Master Volume": {
+        "message": "Μȃƨҭέȓ Ѷȏ⌊մʍέΩΩΩΩΩΩ",
+        "original": "Master Volume"
+    },
+    "Mouse Pan Speed": {
+        "message": "Μȏմƨέ Ṕȃƞ Ṡ⍴έέɗΩΩΩΩΩΩΩ",
+        "original": "Mouse Pan Speed"
+    },
+    "Music Volume": {
+        "message": "Μմƨїϲ Ѷȏ⌊մʍέΩΩΩΩΩΩ",
+        "original": "Music Volume"
+    },
+    "NATIVE (100%)": {
+        "message": "ƝȂ丁ΪѶƐ (100%)ΩΩΩΩΩΩ",
+        "original": "NATIVE (100%)"
+    },
+    "NEVER": {
+        "message": "ƝƐѶƐℝΩΩ",
+        "original": "NEVER"
+    },
+    "Norwegian (Community translation)": {
+        "message": "Ɲȏȓῴέɠїȃƞ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Norwegian (Community translation)"
+    },
+    "OFF": {
+        "message": "ѲϜϜΩ",
+        "original": "OFF"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "ѲϜϜ (ΜѲỦṠƐ₤ѲҪҠ)ΩΩΩΩΩΩΩ",
+        "original": "OFF (MOUSELOCK)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "ѲϜϜ (ƝѲ ΜѲỦṠƐ₤ѲҪҠ)ΩΩΩΩΩΩΩΩΩ",
+        "original": "OFF (NO MOUSELOCK)"
+    },
+    "ON": {
+        "message": "ѲƝΩ",
+        "original": "ON"
+    },
+    "Orbital Shell": {
+        "message": "ѲȓБїҭȃ⌊ Ṡнέ⌊⌊ΩΩΩΩΩΩ",
+        "original": "Orbital Shell"
+    },
+    "Order Preview Behavior": {
+        "message": "Ѳȓɗέȓ Ṕȓέѷїέῴ ฿έнȃѷїȏȓΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Order Preview Behavior"
+    },
+    "Pole Lock": {
+        "message": "Ṕȏ⌊έ ₤ȏϲќΩΩΩΩ",
+        "original": "Pole Lock"
+    },
+    "Polish": {
+        "message": "Ṕȏ⌊їƨнΩΩΩ",
+        "original": "Polish"
+    },
+    "Portuguese, Brazil (Community translation)": {
+        "message": "Ṕȏȓҭմɠմέƨέ, ฿ȓȃℤї⌊ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Portuguese, Brazil (Community translation)"
+    },
+    "Quality Preset": {
+        "message": "Ҩմȃ⌊їҭу ṔȓέƨέҭΩΩΩΩΩΩΩ",
+        "original": "Quality Preset"
+    },
+    "RANGE DEPENDENT": {
+        "message": "ℝȂƝǴƐ ƉƐṔƐƝƉƐƝ丁ΩΩΩΩΩΩΩ",
+        "original": "RANGE DEPENDENT"
+    },
+    "Resolution Scaling": {
+        "message": "ℝέƨȏ⌊մҭїȏƞ Ṡϲȃ⌊їƞɠΩΩΩΩΩΩΩΩΩ",
+        "original": "Resolution Scaling"
+    },
+    "Restore All Defaults": {
+        "message": "ℝέƨҭȏȓέ Ȃ⌊⌊ Ɖέғȃմ⌊ҭƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Restore All Defaults"
+    },
+    "Restore Tab Defaults": {
+        "message": "ℝέƨҭȏȓέ 丁ȃБ Ɖέғȃմ⌊ҭƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Restore Tab Defaults"
+    },
+    "Romanian (Community translation)": {
+        "message": "ℝȏʍȃƞїȃƞ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Romanian (Community translation)"
+    },
+    "Russian": {
+        "message": "ℝմƨƨїȃƞΩΩΩ",
+        "original": "Russian"
+    },
+    "SELECTED": {
+        "message": "ṠƐ₤ƐҪ丁ƐƉΩΩΩΩ",
+        "original": "SELECTED"
+    },
+    "SERVER": {
+        "message": "ṠƐℝѶƐℝΩΩΩ",
+        "original": "SERVER"
+    },
+    "SHIFT": {
+        "message": "ṠӇΪϜ丁ΩΩ",
+        "original": "SHIFT"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "ṠỦ฿ṠȂΜṔ₤Ɛ (50%)ΩΩΩΩΩΩΩ",
+        "original": "SUBSAMPLE (50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "ṠỦ฿ṠȂΜṔ₤Ɛ (75%)ΩΩΩΩΩΩΩ",
+        "original": "SUBSAMPLE (75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "ṠỦṔƐℝṠȂΜṔ₤Ɛ (110%)ΩΩΩΩΩΩΩΩΩ",
+        "original": "SUPERSAMPLE (110%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "ṠỦṔƐℝṠȂΜṔ₤Ɛ (150%)ΩΩΩΩΩΩΩΩΩ",
+        "original": "SUPERSAMPLE (150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "ṠỦṔƐℝṠȂΜṔ₤Ɛ (175%)ΩΩΩΩΩΩΩΩΩ",
+        "original": "SUPERSAMPLE (175%)"
+    },
+    "Save": {
+        "message": "ṠȃѷέΩΩ",
+        "original": "Save"
+    },
+    "Server": {
+        "message": "ṠέȓѷέȓΩΩΩ",
+        "original": "Server"
+    },
+    "Settings": {
+        "message": "ṠέҭҭїƞɠƨΩΩΩΩ",
+        "original": "Settings"
+    },
+    "Shadows": {
+        "message": "ṠнȃɗȏῴƨΩΩΩ",
+        "original": "Shadows"
+    },
+    "Show Build Previews": {
+        "message": "Ṡнȏῴ ฿մї⌊ɗ ṔȓέѷїέῴƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Show Build Previews"
+    },
+    "Show Metal Spot Icons": {
+        "message": "Ṡнȏῴ Μέҭȃ⌊ Ṡ⍴ȏҭ ΪϲȏƞƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Show Metal Spot Icons"
+    },
+    "Show Order Previews": {
+        "message": "Ṡнȏῴ Ѳȓɗέȓ ṔȓέѷїέῴƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Show Order Previews"
+    },
+    "Show Stat Bars": {
+        "message": "Ṡнȏῴ Ṡҭȃҭ ฿ȃȓƨΩΩΩΩΩΩΩ",
+        "original": "Show Stat Bars"
+    },
+    "Show Unit Icons": {
+        "message": "Ṡнȏῴ Ủƞїҭ ΪϲȏƞƨΩΩΩΩΩΩΩ",
+        "original": "Show Unit Icons"
+    },
+    "Show/Hide game stats": {
+        "message": "Ṡнȏῴ/Ӈїɗέ ɠȃʍέ ƨҭȃҭƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Show/Hide game stats"
+    },
+    "Show/Hide pip": {
+        "message": "Ṡнȏῴ/Ӈїɗέ ⍴ї⍴ΩΩΩΩΩΩ",
+        "original": "Show/Hide pip"
+    },
+    "Skybox": {
+        "message": "ṠќуБȏ⌧ΩΩΩ",
+        "original": "Skybox"
+    },
+    "Sound Effects Volume": {
+        "message": "Ṡȏմƞɗ Ɛғғέϲҭƨ Ѷȏ⌊մʍέΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Sound Effects Volume"
+    },
+    "Spanish": {
+        "message": "Ṡ⍴ȃƞїƨнΩΩΩ",
+        "original": "Spanish"
+    },
+    "Swedish (Community translation)": {
+        "message": "Ṡῴέɗїƨн (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Swedish (Community translation)"
+    },
+    "Turkish (Community translation)": {
+        "message": "丁մȓќїƨн (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Turkish (Community translation)"
+    },
+    "UBER": {
+        "message": "Ủ฿ƐℝΩΩ",
+        "original": "UBER"
+    },
+    "USE CUSTOM NAME": {
+        "message": "ỦṠƐ ҪỦṠ丁ѲΜ ƝȂΜƐΩΩΩΩΩΩΩ",
+        "original": "USE CUSTOM NAME"
+    },
+    "USE STEAM NAME": {
+        "message": "ỦṠƐ Ṡ丁ƐȂΜ ƝȂΜƐΩΩΩΩΩΩΩ",
+        "original": "USE STEAM NAME"
+    },
+    "Ukrainian (Community translation)": {
+        "message": "Ủќȓȃїƞїȃƞ (Ҫȏʍʍմƞїҭу ҭȓȃƞƨ⌊ȃҭїȏƞ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Ukrainian (Community translation)"
+    },
+    "User": {
+        "message": "ỦƨέȓΩΩ",
+        "original": "User"
+    },
+    "User Interface": {
+        "message": "Ủƨέȓ ΪƞҭέȓғȃϲέΩΩΩΩΩΩΩ",
+        "original": "User Interface"
+    },
+    "Username Policy": {
+        "message": "Ủƨέȓƞȃʍέ Ṕȏ⌊їϲуΩΩΩΩΩΩΩ",
+        "original": "Username Policy"
+    },
+    "VALUE DEPENDENT": {
+        "message": "ѶȂ₤ỦƐ ƉƐṔƐƝƉƐƝ丁ΩΩΩΩΩΩΩ",
+        "original": "VALUE DEPENDENT"
+    },
+    "Virtual Texture": {
+        "message": "Ѷїȓҭմȃ⌊ 丁έ⌧ҭմȓέΩΩΩΩΩΩΩ",
+        "original": "Virtual Texture"
+    },
+    "Voice Volume": {
+        "message": "Ѷȏїϲέ Ѷȏ⌊մʍέΩΩΩΩΩΩ",
+        "original": "Voice Volume"
+    },
+    "WINDOWED": {
+        "message": "₩ΪƝƉѲ₩ƐƉΩΩΩΩ",
+        "original": "WINDOWED"
+    },
+    "Zoom Speed": {
+        "message": "Ƶȏȏʍ Ṡ⍴έέɗΩΩΩΩΩ",
+        "original": "Zoom Speed"
+    },
+    "abort": {
+        "message": "ȃБȏȓҭΩΩ",
+        "original": "abort"
+    },
+    "add height adjustment": {
+        "message": "ȃɗɗ нέїɠнҭ ȃɗلմƨҭʍέƞҭΩΩΩΩΩΩΩΩΩΩ",
+        "original": "add height adjustment"
+    },
+    "add landing zone": {
+        "message": "ȃɗɗ ⌊ȃƞɗїƞɠ ℤȏƞέΩΩΩΩΩΩΩΩ",
+        "original": "add landing zone"
+    },
+    "add metal spot": {
+        "message": "ȃɗɗ ʍέҭȃ⌊ ƨ⍴ȏҭΩΩΩΩΩΩΩ",
+        "original": "add metal spot"
+    },
+    "add/remove": {
+        "message": "ȃɗɗ/ȓέʍȏѷέΩΩΩΩΩ",
+        "original": "add/remove"
+    },
+    "alerts": {
+        "message": "ȃ⌊έȓҭƨΩΩΩ",
+        "original": "alerts"
+    },
+    "align to pole": {
+        "message": "ȃ⌊їɠƞ ҭȏ ⍴ȏ⌊έΩΩΩΩΩΩ",
+        "original": "align to pole"
+    },
+    "all chat": {
+        "message": "ȃ⌊⌊ ϲнȃҭΩΩΩΩ",
+        "original": "all chat"
+    },
+    "alt fire": {
+        "message": "ȃ⌊ҭ ғїȓέΩΩΩΩ",
+        "original": "alt fire"
+    },
+    "assist": {
+        "message": "ȃƨƨїƨҭΩΩΩ",
+        "original": "assist"
+    },
+    "attack": {
+        "message": "ȃҭҭȃϲќΩΩΩ",
+        "original": "attack"
+    },
+    "bug report": {
+        "message": "Бմɠ ȓέ⍴ȏȓҭΩΩΩΩΩ",
+        "original": "bug report"
+    },
+    "build": {
+        "message": "Бմї⌊ɗΩΩ",
+        "original": "build"
+    },
+    "build avatar": {
+        "message": "Бմї⌊ɗ ȃѷȃҭȃȓΩΩΩΩΩΩ",
+        "original": "build avatar"
+    },
+    "build avatar factory": {
+        "message": "Бմї⌊ɗ ȃѷȃҭȃȓ ғȃϲҭȏȓуΩΩΩΩΩΩΩΩΩΩ",
+        "original": "build avatar factory"
+    },
+    "build bar groups": {
+        "message": "Бմї⌊ɗ Бȃȓ ɠȓȏմ⍴ƨΩΩΩΩΩΩΩΩ",
+        "original": "build bar groups"
+    },
+    "build item __item_number__": {
+        "message": "Бմї⌊ɗ їҭέʍ __item_number__ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "build item __item_number__"
+    },
+    "build items": {
+        "message": "Бմї⌊ɗ їҭέʍƨΩΩΩΩΩ",
+        "original": "build items"
+    },
+    "build loop": {
+        "message": "Бմї⌊ɗ ⌊ȏȏ⍴ΩΩΩΩΩ",
+        "original": "build loop"
+    },
+    "build once": {
+        "message": "Бմї⌊ɗ ȏƞϲέΩΩΩΩΩ",
+        "original": "build once"
+    },
+    "build orders": {
+        "message": "Бմї⌊ɗ ȏȓɗέȓƨΩΩΩΩΩΩ",
+        "original": "build orders"
+    },
+    "camera": {
+        "message": "ϲȃʍέȓȃΩΩΩ",
+        "original": "camera"
+    },
+    "capture anchor": {
+        "message": "ϲȃ⍴ҭմȓέ ȃƞϲнȏȓΩΩΩΩΩΩΩ",
+        "original": "capture anchor"
+    },
+    "capture anchor __anchor_number__": {
+        "message": "ϲȃ⍴ҭմȓέ ȃƞϲнȏȓ __anchor_number__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "capture anchor __anchor_number__"
+    },
+    "capture group __group_number__": {
+        "message": "ϲȃ⍴ҭմȓέ ɠȓȏմ⍴ __group_number__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "capture group __group_number__"
+    },
+    "chronocam": {
+        "message": "ϲнȓȏƞȏϲȃʍΩΩΩΩ",
+        "original": "chronocam"
+    },
+    "communication": {
+        "message": "ϲȏʍʍմƞїϲȃҭїȏƞΩΩΩΩΩΩ",
+        "original": "communication"
+    },
+    "copy selected": {
+        "message": "ϲȏ⍴у ƨέ⌊έϲҭέɗΩΩΩΩΩΩ",
+        "original": "copy selected"
+    },
+    "copy to pip": {
+        "message": "ϲȏ⍴у ҭȏ ⍴ї⍴ΩΩΩΩΩ",
+        "original": "copy to pip"
+    },
+    "copy unit": {
+        "message": "ϲȏ⍴у մƞїҭΩΩΩΩ",
+        "original": "copy unit"
+    },
+    "crash": {
+        "message": "ϲȓȃƨнΩΩ",
+        "original": "crash"
+    },
+    "decrease camera pan speed": {
+        "message": "ɗέϲȓέȃƨέ ϲȃʍέȓȃ ⍴ȃƞ ƨ⍴έέɗΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "decrease camera pan speed"
+    },
+    "decrease sim speed": {
+        "message": "ɗέϲȓέȃƨέ ƨїʍ ƨ⍴έέɗΩΩΩΩΩΩΩΩΩ",
+        "original": "decrease sim speed"
+    },
+    "delete selected": {
+        "message": "ɗέ⌊έҭέ ƨέ⌊έϲҭέɗΩΩΩΩΩΩΩ",
+        "original": "delete selected"
+    },
+    "dev mode": {
+        "message": "ɗέѷ ʍȏɗέΩΩΩΩ",
+        "original": "dev mode"
+    },
+    "direction": {
+        "message": "ɗїȓέϲҭїȏƞΩΩΩΩ",
+        "original": "direction"
+    },
+    "disable navigation debug info": {
+        "message": "ɗїƨȃБ⌊έ ƞȃѷїɠȃҭїȏƞ ɗέБմɠ їƞғȏΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "disable navigation debug info"
+    },
+    "disconnect twin": {
+        "message": "ɗїƨϲȏƞƞέϲҭ ҭῴїƞΩΩΩΩΩΩΩ",
+        "original": "disconnect twin"
+    },
+    "dismiss alert notification": {
+        "message": "ɗїƨʍїƨƨ ȃ⌊έȓҭ ƞȏҭїғїϲȃҭїȏƞΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "dismiss alert notification"
+    },
+    "enable navigation debug info": {
+        "message": "έƞȃБ⌊έ ƞȃѷїɠȃҭїȏƞ ɗέБմɠ їƞғȏΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "enable navigation debug info"
+    },
+    "energy off": {
+        "message": "έƞέȓɠу ȏғғΩΩΩΩΩ",
+        "original": "energy off"
+    },
+    "energy on": {
+        "message": "έƞέȓɠу ȏƞΩΩΩΩ",
+        "original": "energy on"
+    },
+    "fire at will": {
+        "message": "ғїȓέ ȃҭ ῴї⌊⌊ΩΩΩΩΩΩ",
+        "original": "fire at will"
+    },
+    "free move backward": {
+        "message": "ғȓέέ ʍȏѷέ БȃϲќῴȃȓɗΩΩΩΩΩΩΩΩΩ",
+        "original": "free move backward"
+    },
+    "free move down": {
+        "message": "ғȓέέ ʍȏѷέ ɗȏῴƞΩΩΩΩΩΩΩ",
+        "original": "free move down"
+    },
+    "free move forward": {
+        "message": "ғȓέέ ʍȏѷέ ғȏȓῴȃȓɗΩΩΩΩΩΩΩΩ",
+        "original": "free move forward"
+    },
+    "free move left": {
+        "message": "ғȓέέ ʍȏѷέ ⌊έғҭΩΩΩΩΩΩΩ",
+        "original": "free move left"
+    },
+    "free move right": {
+        "message": "ғȓέέ ʍȏѷέ ȓїɠнҭΩΩΩΩΩΩΩ",
+        "original": "free move right"
+    },
+    "free move up": {
+        "message": "ғȓέέ ʍȏѷέ մ⍴ΩΩΩΩΩΩ",
+        "original": "free move up"
+    },
+    "free movement": {
+        "message": "ғȓέέ ʍȏѷέʍέƞҭΩΩΩΩΩΩ",
+        "original": "free movement"
+    },
+    "free pitch backward": {
+        "message": "ғȓέέ ⍴їҭϲн БȃϲќῴȃȓɗΩΩΩΩΩΩΩΩΩ",
+        "original": "free pitch backward"
+    },
+    "free pitch forward": {
+        "message": "ғȓέέ ⍴їҭϲн ғȏȓῴȃȓɗΩΩΩΩΩΩΩΩΩ",
+        "original": "free pitch forward"
+    },
+    "free roll left": {
+        "message": "ғȓέέ ȓȏ⌊⌊ ⌊έғҭΩΩΩΩΩΩΩ",
+        "original": "free roll left"
+    },
+    "free roll right": {
+        "message": "ғȓέέ ȓȏ⌊⌊ ȓїɠнҭΩΩΩΩΩΩΩ",
+        "original": "free roll right"
+    },
+    "free yaw left": {
+        "message": "ғȓέέ уȃῴ ⌊έғҭΩΩΩΩΩΩ",
+        "original": "free yaw left"
+    },
+    "free yaw right": {
+        "message": "ғȓέέ уȃῴ ȓїɠнҭΩΩΩΩΩΩΩ",
+        "original": "free yaw right"
+    },
+    "free zoom in": {
+        "message": "ғȓέέ ℤȏȏʍ їƞΩΩΩΩΩΩ",
+        "original": "free zoom in"
+    },
+    "free zoom out": {
+        "message": "ғȓέέ ℤȏȏʍ ȏմҭΩΩΩΩΩΩ",
+        "original": "free zoom out"
+    },
+    "general": {
+        "message": "ɠέƞέȓȃ⌊ΩΩΩ",
+        "original": "general"
+    },
+    "grab csg": {
+        "message": "ɠȓȃБ ϲƨɠΩΩΩΩ",
+        "original": "grab csg"
+    },
+    "hold fire": {
+        "message": "нȏ⌊ɗ ғїȓέΩΩΩΩ",
+        "original": "hold fire"
+    },
+    "hold position": {
+        "message": "нȏ⌊ɗ ⍴ȏƨїҭїȏƞΩΩΩΩΩΩ",
+        "original": "hold position"
+    },
+    "increase camera pan speed": {
+        "message": "їƞϲȓέȃƨέ ϲȃʍέȓȃ ⍴ȃƞ ƨ⍴έέɗΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "increase camera pan speed"
+    },
+    "increase sim speed": {
+        "message": "їƞϲȓέȃƨέ ƨїʍ ƨ⍴έέɗΩΩΩΩΩΩΩΩΩ",
+        "original": "increase sim speed"
+    },
+    "jump to next planet": {
+        "message": "لմʍ⍴ ҭȏ ƞέ⌧ҭ ⍴⌊ȃƞέҭΩΩΩΩΩΩΩΩΩ",
+        "original": "jump to next planet"
+    },
+    "jump to previous planet": {
+        "message": "لմʍ⍴ ҭȏ ⍴ȓέѷїȏմƨ ⍴⌊ȃƞέҭΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "jump to previous planet"
+    },
+    "last pseudo frame": {
+        "message": "⌊ȃƨҭ ⍴ƨέմɗȏ ғȓȃʍέΩΩΩΩΩΩΩΩ",
+        "original": "last pseudo frame"
+    },
+    "load": {
+        "message": "⌊ȏȃɗΩΩ",
+        "original": "load"
+    },
+    "maneuver": {
+        "message": "ʍȃƞέմѷέȓΩΩΩΩ",
+        "original": "maneuver"
+    },
+    "manipulate": {
+        "message": "ʍȃƞї⍴մ⌊ȃҭέΩΩΩΩΩ",
+        "original": "manipulate"
+    },
+    "medium-quality": {
+        "message": "ΜƐƉΪỦΜΩΩΩ",
+        "original": "MEDIUM"
+    },
+    "mode": {
+        "message": "ʍȏɗέΩΩ",
+        "original": "mode"
+    },
+    "modes": {
+        "message": "ʍȏɗέƨΩΩ",
+        "original": "modes"
+    },
+    "move": {
+        "message": "ʍȏѷέΩΩ",
+        "original": "move"
+    },
+    "move csg down": {
+        "message": "ʍȏѷέ ϲƨɠ ɗȏῴƞΩΩΩΩΩΩ",
+        "original": "move csg down"
+    },
+    "move csg up": {
+        "message": "ʍȏѷέ ϲƨɠ մ⍴ΩΩΩΩΩ",
+        "original": "move csg up"
+    },
+    "move down": {
+        "message": "ʍȏѷέ ɗȏῴƞΩΩΩΩ",
+        "original": "move down"
+    },
+    "move left": {
+        "message": "ʍȏѷέ ⌊έғҭΩΩΩΩ",
+        "original": "move left"
+    },
+    "move right": {
+        "message": "ʍȏѷέ ȓїɠнҭΩΩΩΩΩ",
+        "original": "move right"
+    },
+    "move up": {
+        "message": "ʍȏѷέ մ⍴ΩΩΩ",
+        "original": "move up"
+    },
+    "navigate back/exit": {
+        "message": "ƞȃѷїɠȃҭέ Бȃϲќ/έ⌧їҭΩΩΩΩΩΩΩΩΩ",
+        "original": "navigate back/exit"
+    },
+    "next pseudo frame": {
+        "message": "ƞέ⌧ҭ ⍴ƨέմɗȏ ғȓȃʍέΩΩΩΩΩΩΩΩ",
+        "original": "next pseudo frame"
+    },
+    "paste": {
+        "message": "⍴ȃƨҭέΩΩ",
+        "original": "paste"
+    },
+    "paste unit": {
+        "message": "⍴ȃƨҭέ մƞїҭΩΩΩΩΩ",
+        "original": "paste unit"
+    },
+    "patrol": {
+        "message": "⍴ȃҭȓȏ⌊ΩΩΩ",
+        "original": "patrol"
+    },
+    "pause game": {
+        "message": "⍴ȃմƨέ ɠȃʍέΩΩΩΩΩ",
+        "original": "pause game"
+    },
+    "pause time": {
+        "message": "⍴ȃմƨέ ҭїʍέΩΩΩΩΩ",
+        "original": "pause time"
+    },
+    "picture-in-picture": {
+        "message": "⍴їϲҭմȓέ-їƞ-⍴їϲҭմȓέΩΩΩΩΩΩΩΩΩ",
+        "original": "picture-in-picture"
+    },
+    "ping": {
+        "message": "⍴їƞɠΩΩ",
+        "original": "ping"
+    },
+    "planet jump": {
+        "message": "⍴⌊ȃƞέҭ لմʍ⍴ΩΩΩΩΩ",
+        "original": "planet jump"
+    },
+    "play backwards at 10%": {
+        "message": "⍴⌊ȃу Бȃϲќῴȃȓɗƨ ȃҭ 10%ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "play backwards at 10%"
+    },
+    "play backwards at 100%": {
+        "message": "⍴⌊ȃу Бȃϲќῴȃȓɗƨ ȃҭ 100%ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "play backwards at 100%"
+    },
+    "play backwards at 50%": {
+        "message": "⍴⌊ȃу Бȃϲќῴȃȓɗƨ ȃҭ 50%ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "play backwards at 50%"
+    },
+    "play forward at 100%": {
+        "message": "⍴⌊ȃу ғȏȓῴȃȓɗ ȃҭ 100%ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "play forward at 100%"
+    },
+    "play forward at 50%": {
+        "message": "⍴⌊ȃу ғȏȓῴȃȓɗ ȃҭ 50%ΩΩΩΩΩΩΩΩΩ",
+        "original": "play forward at 50%"
+    },
+    "play forwards at 10%": {
+        "message": "⍴⌊ȃу ғȏȓῴȃȓɗƨ ȃҭ 10%ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "play forwards at 10%"
+    },
+    "publish server mods": {
+        "message": "⍴մБ⌊їƨн ƨέȓѷέȓ ʍȏɗƨΩΩΩΩΩΩΩΩΩ",
+        "original": "publish server mods"
+    },
+    "quick profile": {
+        "message": "Գմїϲќ ⍴ȓȏғї⌊έΩΩΩΩΩΩ",
+        "original": "quick profile"
+    },
+    "recall anchor": {
+        "message": "ȓέϲȃ⌊⌊ ȃƞϲнȏȓΩΩΩΩΩΩ",
+        "original": "recall anchor"
+    },
+    "recall anchor __anchor_number__": {
+        "message": "ȓέϲȃ⌊⌊ ȃƞϲнȏȓ __anchor_number__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "recall anchor __anchor_number__"
+    },
+    "recall group __group_number__": {
+        "message": "ȓέϲȃ⌊⌊ ɠȓȏմ⍴ __group_number__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "recall group __group_number__"
+    },
+    "reclaim": {
+        "message": "ȓέϲ⌊ȃїʍΩΩΩ",
+        "original": "reclaim"
+    },
+    "reload view": {
+        "message": "ȓέ⌊ȏȃɗ ѷїέῴΩΩΩΩΩ",
+        "original": "reload view"
+    },
+    "remove landing zone": {
+        "message": "ȓέʍȏѷέ ⌊ȃƞɗїƞɠ ℤȏƞέΩΩΩΩΩΩΩΩΩ",
+        "original": "remove landing zone"
+    },
+    "remove metal spot": {
+        "message": "ȓέʍȏѷέ ʍέҭȃ⌊ ƨ⍴ȏҭΩΩΩΩΩΩΩΩ",
+        "original": "remove metal spot"
+    },
+    "repair": {
+        "message": "ȓέ⍴ȃїȓΩΩΩ",
+        "original": "repair"
+    },
+    "resume at latest time": {
+        "message": "ȓέƨմʍέ ȃҭ ⌊ȃҭέƨҭ ҭїʍέΩΩΩΩΩΩΩΩΩΩ",
+        "original": "resume at latest time"
+    },
+    "return fire": {
+        "message": "ȓέҭմȓƞ ғїȓέΩΩΩΩΩ",
+        "original": "return fire"
+    },
+    "roam": {
+        "message": "ȓȏȃʍΩΩ",
+        "original": "roam"
+    },
+    "rotate csg ccw": {
+        "message": "ȓȏҭȃҭέ ϲƨɠ ϲϲῴΩΩΩΩΩΩΩ",
+        "original": "rotate csg ccw"
+    },
+    "rotate csg cw": {
+        "message": "ȓȏҭȃҭέ ϲƨɠ ϲῴΩΩΩΩΩΩ",
+        "original": "rotate csg cw"
+    },
+    "scale csg down": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ ɗȏῴƞΩΩΩΩΩΩΩ",
+        "original": "scale csg down"
+    },
+    "scale csg horizontally down": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ нȏȓїℤȏƞҭȃ⌊⌊у ɗȏῴƞΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "scale csg horizontally down"
+    },
+    "scale csg horizontally up": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ нȏȓїℤȏƞҭȃ⌊⌊у մ⍴ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "scale csg horizontally up"
+    },
+    "scale csg up": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ մ⍴ΩΩΩΩΩΩ",
+        "original": "scale csg up"
+    },
+    "scale csg vertically down": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ ѷέȓҭїϲȃ⌊⌊у ɗȏῴƞΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "scale csg vertically down"
+    },
+    "scale csg vertically up": {
+        "message": "ƨϲȃ⌊έ ϲƨɠ ѷέȓҭїϲȃ⌊⌊у մ⍴ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "scale csg vertically up"
+    },
+    "select air group": {
+        "message": "ƨέ⌊έϲҭ ȃїȓ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩ",
+        "original": "select air group"
+    },
+    "select all air combat units": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ȃїȓ ϲȏʍБȃҭ մƞїҭƨΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all air combat units"
+    },
+    "select all air combat units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ȃїȓ ϲȏʍБȃҭ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all air combat units on screen"
+    },
+    "select all combat units": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ϲȏʍБȃҭ մƞїҭƨΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all combat units"
+    },
+    "select all combat units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ϲȏʍБȃҭ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all combat units on screen"
+    },
+    "select all factories": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ғȃϲҭȏȓїέƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all factories"
+    },
+    "select all factories on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ғȃϲҭȏȓїέƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all factories on screen"
+    },
+    "select all idle factories": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ їɗ⌊έ ғȃϲҭȏȓїέƨΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all idle factories"
+    },
+    "select all idle factories on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ їɗ⌊έ ғȃϲҭȏȓїέƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all idle factories on screen"
+    },
+    "select all land combat units": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ⌊ȃƞɗ ϲȏʍБȃҭ մƞїҭƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all land combat units"
+    },
+    "select all land combat units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ⌊ȃƞɗ ϲȏʍБȃҭ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all land combat units on screen"
+    },
+    "select all matching units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ʍȃҭϲнїƞɠ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all matching units on screen"
+    },
+    "select all naval combat units": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ƞȃѷȃ⌊ ϲȏʍБȃҭ մƞїҭƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all naval combat units"
+    },
+    "select all naval combat units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ƞȃѷȃ⌊ ϲȏʍБȃҭ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all naval combat units on screen"
+    },
+    "select all orbital combat units": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ȏȓБїҭȃ⌊ ϲȏʍБȃҭ մƞїҭƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all orbital combat units"
+    },
+    "select all orbital combat units on screen": {
+        "message": "ƨέ⌊έϲҭ ȃ⌊⌊ ȏȓБїҭȃ⌊ ϲȏʍБȃҭ մƞїҭƨ ȏƞ ƨϲȓέέƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select all orbital combat units on screen"
+    },
+    "select ammo group": {
+        "message": "ƨέ⌊έϲҭ ȃʍʍȏ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩ",
+        "original": "select ammo group"
+    },
+    "select bot group": {
+        "message": "ƨέ⌊έϲҭ Бȏҭ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩ",
+        "original": "select bot group"
+    },
+    "select combat group": {
+        "message": "ƨέ⌊έϲҭ ϲȏʍБȃҭ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩΩ",
+        "original": "select combat group"
+    },
+    "select commander": {
+        "message": "ƨέ⌊έϲҭ ϲȏʍʍȃƞɗέȓΩΩΩΩΩΩΩΩ",
+        "original": "select commander"
+    },
+    "select factory group": {
+        "message": "ƨέ⌊έϲҭ ғȃϲҭȏȓу ɠȓȏմ⍴ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select factory group"
+    },
+    "select idle fabbers": {
+        "message": "ƨέ⌊έϲҭ їɗ⌊έ ғȃББέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "select idle fabbers"
+    },
+    "select orbital group (buildings)": {
+        "message": "ƨέ⌊έϲҭ ȏȓБїҭȃ⌊ ɠȓȏմ⍴ (Бմї⌊ɗїƞɠƨ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select orbital group (buildings)"
+    },
+    "select orbital group (units)": {
+        "message": "ƨέ⌊έϲҭ ȏȓБїҭȃ⌊ ɠȓȏմ⍴ (մƞїҭƨ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select orbital group (units)"
+    },
+    "select sea group": {
+        "message": "ƨέ⌊έϲҭ ƨέȃ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩ",
+        "original": "select sea group"
+    },
+    "select utility group": {
+        "message": "ƨέ⌊έϲҭ մҭї⌊їҭу ɠȓȏմ⍴ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select utility group"
+    },
+    "select vehicle group": {
+        "message": "ƨέ⌊έϲҭ ѷέнїϲ⌊έ ɠȓȏմ⍴ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "select vehicle group"
+    },
+    "self destruct selected unit": {
+        "message": "ƨέ⌊ғ ɗέƨҭȓմϲҭ ƨέ⌊έϲҭέɗ մƞїҭΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "self destruct selected unit"
+    },
+    "set army from hover": {
+        "message": "ƨέҭ ȃȓʍу ғȓȏʍ нȏѷέȓΩΩΩΩΩΩΩΩΩ",
+        "original": "set army from hover"
+    },
+    "set debug camera": {
+        "message": "ƨέҭ ɗέБմɠ ϲȃʍέȓȃΩΩΩΩΩΩΩΩ",
+        "original": "set debug camera"
+    },
+    "set default camera": {
+        "message": "ƨέҭ ɗέғȃմ⌊ҭ ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩ",
+        "original": "set default camera"
+    },
+    "set free camera": {
+        "message": "ƨέҭ ғȓέέ ϲȃʍέȓȃΩΩΩΩΩΩΩ",
+        "original": "set free camera"
+    },
+    "set pathable csg": {
+        "message": "ƨέҭ ⍴ȃҭнȃБ⌊έ ϲƨɠΩΩΩΩΩΩΩΩ",
+        "original": "set pathable csg"
+    },
+    "set planet camera": {
+        "message": "ƨέҭ ⍴⌊ȃƞέҭ ϲȃʍέȓȃΩΩΩΩΩΩΩΩ",
+        "original": "set planet camera"
+    },
+    "set pov camera": {
+        "message": "ƨέҭ ⍴ȏѷ ϲȃʍέȓȃΩΩΩΩΩΩΩ",
+        "original": "set pov camera"
+    },
+    "show player guide": {
+        "message": "ƨнȏῴ ⍴⌊ȃуέȓ ɠմїɗέΩΩΩΩΩΩΩΩ",
+        "original": "show player guide"
+    },
+    "show/hide UI": {
+        "message": "ƨнȏῴ/нїɗέ ỦΪΩΩΩΩΩΩ",
+        "original": "show/hide UI"
+    },
+    "show/hide performance panel": {
+        "message": "ƨнȏῴ/нїɗέ ⍴έȓғȏȓʍȃƞϲέ ⍴ȃƞέ⌊ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "show/hide performance panel"
+    },
+    "show/hide visual aid overlays": {
+        "message": "ƨнȏῴ/нїɗέ ѷїƨմȃ⌊ ȃїɗ ȏѷέȓ⌊ȃуƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "show/hide visual aid overlays"
+    },
+    "skip backward 1s": {
+        "message": "ƨќї⍴ Бȃϲќῴȃȓɗ 1ƨΩΩΩΩΩΩΩΩ",
+        "original": "skip backward 1s"
+    },
+    "skip forward 1s": {
+        "message": "ƨќї⍴ ғȏȓῴȃȓɗ 1ƨΩΩΩΩΩΩΩ",
+        "original": "skip forward 1s"
+    },
+    "smooth zoom in": {
+        "message": "ƨʍȏȏҭн ℤȏȏʍ їƞΩΩΩΩΩΩΩ",
+        "original": "smooth zoom in"
+    },
+    "smooth zoom out": {
+        "message": "ƨʍȏȏҭн ℤȏȏʍ ȏմҭΩΩΩΩΩΩΩ",
+        "original": "smooth zoom out"
+    },
+    "special move": {
+        "message": "ƨ⍴έϲїȃ⌊ ʍȏѷέΩΩΩΩΩΩ",
+        "original": "special move"
+    },
+    "stop": {
+        "message": "ƨҭȏ⍴ΩΩ",
+        "original": "stop"
+    },
+    "swap pip": {
+        "message": "ƨῴȃ⍴ ⍴ї⍴ΩΩΩΩ",
+        "original": "swap pip"
+    },
+    "team chat": {
+        "message": "ҭέȃʍ ϲнȃҭΩΩΩΩ",
+        "original": "team chat"
+    },
+    "terrain editor": {
+        "message": "ҭέȓȓȃїƞ έɗїҭȏȓΩΩΩΩΩΩΩ",
+        "original": "terrain editor"
+    },
+    "toggle FOW": {
+        "message": "ҭȏɠɠ⌊έ ϜѲ₩ΩΩΩΩΩ",
+        "original": "toggle FOW"
+    },
+    "toggle audio logging": {
+        "message": "ҭȏɠɠ⌊έ ȃմɗїȏ ⌊ȏɠɠїƞɠΩΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle audio logging"
+    },
+    "toggle build orders": {
+        "message": "ҭȏɠɠ⌊έ Бմї⌊ɗ ȏȓɗέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle build orders"
+    },
+    "toggle console": {
+        "message": "ҭȏɠɠ⌊έ ϲȏƞƨȏ⌊έΩΩΩΩΩΩΩ",
+        "original": "toggle console"
+    },
+    "toggle debug camera": {
+        "message": "ҭȏɠɠ⌊έ ɗέБմɠ ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle debug camera"
+    },
+    "toggle edit metal spots": {
+        "message": "ҭȏɠɠ⌊έ έɗїҭ ʍέҭȃ⌊ ƨ⍴ȏҭƨΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle edit metal spots"
+    },
+    "toggle edit terrain mode": {
+        "message": "ҭȏɠɠ⌊έ έɗїҭ ҭέȓȓȃїƞ ʍȏɗέΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle edit terrain mode"
+    },
+    "toggle energy orders": {
+        "message": "ҭȏɠɠ⌊έ έƞέȓɠу ȏȓɗέȓƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle energy orders"
+    },
+    "toggle fire orders": {
+        "message": "ҭȏɠɠ⌊έ ғїȓέ ȏȓɗέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle fire orders"
+    },
+    "toggle free camera": {
+        "message": "ҭȏɠɠ⌊έ ғȓέέ ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle free camera"
+    },
+    "toggle fullscreen": {
+        "message": "ҭȏɠɠ⌊έ ғմ⌊⌊ƨϲȓέέƞΩΩΩΩΩΩΩΩ",
+        "original": "toggle fullscreen"
+    },
+    "toggle move orders": {
+        "message": "ҭȏɠɠ⌊έ ʍȏѷέ ȏȓɗέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "toggle move orders"
+    },
+    "toggle music": {
+        "message": "ҭȏɠɠ⌊έ ʍմƨїϲΩΩΩΩΩΩ",
+        "original": "toggle music"
+    },
+    "toggle nav debug": {
+        "message": "ҭȏɠɠ⌊έ ƞȃѷ ɗέБմɠΩΩΩΩΩΩΩΩ",
+        "original": "toggle nav debug"
+    },
+    "toggle pip mirror": {
+        "message": "ҭȏɠɠ⌊έ ⍴ї⍴ ʍїȓȓȏȓΩΩΩΩΩΩΩΩ",
+        "original": "toggle pip mirror"
+    },
+    "toggle pov camera": {
+        "message": "ҭȏɠɠ⌊έ ⍴ȏѷ ϲȃʍέȓȃΩΩΩΩΩΩΩΩ",
+        "original": "toggle pov camera"
+    },
+    "toggle show water": {
+        "message": "ҭȏɠɠ⌊έ ƨнȏῴ ῴȃҭέȓΩΩΩΩΩΩΩΩ",
+        "original": "toggle show water"
+    },
+    "track add selection with camera": {
+        "message": "ҭȓȃϲќ ȃɗɗ ƨέ⌊έϲҭїȏƞ ῴїҭн ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "track add selection with camera"
+    },
+    "track next unit with camera": {
+        "message": "ҭȓȃϲќ ƞέ⌧ҭ մƞїҭ ῴїҭн ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "track next unit with camera"
+    },
+    "track selection with camera": {
+        "message": "ҭȓȃϲќ ƨέ⌊έϲҭїȏƞ ῴїҭн ϲȃʍέȓȃΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "track selection with camera"
+    },
+    "tracking & alignment": {
+        "message": "ҭȓȃϲќїƞɠ & ȃ⌊їɠƞʍέƞҭΩΩΩΩΩΩΩΩΩΩ",
+        "original": "tracking & alignment"
+    },
+    "tuning": {
+        "message": "ҭմƞїƞɠΩΩΩ",
+        "original": "tuning"
+    },
+    "unit capture groups": {
+        "message": "մƞїҭ ϲȃ⍴ҭմȓέ ɠȓȏմ⍴ƨΩΩΩΩΩΩΩΩΩ",
+        "original": "unit capture groups"
+    },
+    "unit commands": {
+        "message": "մƞїҭ ϲȏʍʍȃƞɗƨΩΩΩΩΩΩ",
+        "original": "unit commands"
+    },
+    "unit orders": {
+        "message": "մƞїҭ ȏȓɗέȓƨΩΩΩΩΩ",
+        "original": "unit orders"
+    },
+    "unit recall groups": {
+        "message": "մƞїҭ ȓέϲȃ⌊⌊ ɠȓȏմ⍴ƨΩΩΩΩΩΩΩΩΩ",
+        "original": "unit recall groups"
+    },
+    "unit selection": {
+        "message": "մƞїҭ ƨέ⌊έϲҭїȏƞΩΩΩΩΩΩΩ",
+        "original": "unit selection"
+    },
+    "units": {
+        "message": "մƞїҭƨΩΩ",
+        "original": "units"
+    },
+    "unload": {
+        "message": "մƞ⌊ȏȃɗΩΩΩ",
+        "original": "unload"
+    },
+    "zoom": {
+        "message": "ℤȏȏʍΩΩ",
+        "original": "zoom"
+    },
+    "zoom in": {
+        "message": "ℤȏȏʍ їƞΩΩΩ",
+        "original": "zoom in"
+    },
+    "zoom out": {
+        "message": "ℤȏȏʍ ȏմҭΩΩΩΩ",
+        "original": "zoom out"
+    },
+    "zoom to air": {
+        "message": "ℤȏȏʍ ҭȏ ȃїȓΩΩΩΩΩ",
+        "original": "zoom to air"
+    },
+    "zoom to celestial": {
+        "message": "ℤȏȏʍ ҭȏ ϲέ⌊έƨҭїȃ⌊ΩΩΩΩΩΩΩΩ",
+        "original": "zoom to celestial"
+    },
+    "zoom to combat": {
+        "message": "ℤȏȏʍ ҭȏ ϲȏʍБȃҭΩΩΩΩΩΩΩ",
+        "original": "zoom to combat"
+    },
+    "zoom to orbital": {
+        "message": "ℤȏȏʍ ҭȏ ȏȓБїҭȃ⌊ΩΩΩΩΩΩΩ",
+        "original": "zoom to orbital"
+    },
+    "zoom to surface": {
+        "message": "ℤȏȏʍ ҭȏ ƨմȓғȃϲέΩΩΩΩΩΩΩ",
+        "original": "zoom to surface"
+    },
+    "SELECTED OR ALL": {
+        "message": "ṠƐ₤ƐҪ丁ƐƉ Ѳℝ Ȃ₤₤ΩΩΩΩΩΩΩ",
+        "original": "SELECTED OR ALL"
+    },
+    "EXTRA MOUSE BUTTON 4": {
+        "message": "ƐҲ丁ℝȂ ΜѲỦṠƐ ฿Ủ丁丁ѲƝ 4ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "EXTRA MOUSE BUTTON 4"
+    },
+    "EXTRA MOUSE BUTTON 5": {
+        "message": "ƐҲ丁ℝȂ ΜѲỦṠƐ ฿Ủ丁丁ѲƝ 5ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "EXTRA MOUSE BUTTON 5"
+    },
+    "MIDDLE MOUSE BUTTON 3": {
+        "message": "ΜΪƉƉ₤Ɛ ΜѲỦṠƐ ฿Ủ丁丁ѲƝ 3ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "MIDDLE MOUSE BUTTON 3"
+    },
+    "MIDDLE MOUSE OR EXTRA BUTTONS": {
+        "message": "ΜΪƉƉ₤Ɛ ΜѲỦṠƐ Ѳℝ ƐҲ丁ℝȂ ฿Ủ丁丁ѲƝṠΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "MIDDLE MOUSE OR EXTRA BUTTONS"
+    },
+    "Mouse Pan Button": {
+        "message": "Μȏմƨέ Ṕȃƞ ฿մҭҭȏƞΩΩΩΩΩΩΩΩ",
+        "original": "Mouse Pan Button"
+    }
+}

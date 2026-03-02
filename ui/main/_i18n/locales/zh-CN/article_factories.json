@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "工厂"
+    },
+    "PA Guide: Factories": {
+        "message": "PA 指南：工厂"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "选择一个工厂来访问建造栏"
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Control + 鼠标左键[/style]点击一个单位，以使工厂生产一个该单位，然后再继续余下的建造队列。"
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "在建造栏上，[style=text_callout]鼠标左键点击[/style]要建造的单位"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]鼠标右键点击[/style]或[style=text_callout]Shift + 鼠标右键点击[/style]单位来减少队列中单位的数量"
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "在建造栏上，[style=text_callout]Shift + 鼠标左键点击[/style]单位建造多个"
+    }
+}

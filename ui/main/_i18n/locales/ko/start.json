@@ -1,0 +1,491 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "#__position__ __league__ 랭크"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "1v1 랭킹 매치"
+    },
+    "ABANDON": {
+        "message": "포기"
+    },
+    "AI Skirmish": {
+        "message": "AI 대항전"
+    },
+    "Account created successfully.": {
+        "message": "계정 생성에 성공했습니다."
+    },
+    "Activate": {
+        "message": "활성화"
+    },
+    "Activation Key": {
+        "message": "활성화 키"
+    },
+    "An activation key is required to play online.": {
+        "message": "온라인으로 게임을 플레이하려면 활성화 키가 필요합니다."
+    },
+    "Armory": {
+        "message": "무기고"
+    },
+    "Art": {
+        "message": "Art"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "지속적인 지원에 대한 감사의 표시로 새로운 TITANS 확장팩을 무료로 드립니다!"
+    },
+    "Audio": {
+        "message": "오디오"
+    },
+    "Audio Engine:": {
+        "message": "오디오 엔진:"
+    },
+    "Battle Everyone.": {
+        "message": "모두와 맞서 싸우십시오."
+    },
+    "Before you jump in...": {
+        "message": "참가하기 전에..."
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Community Videos": {
+        "message": "커뮤니티 비디오"
+    },
+    "Confirm Password": {
+        "message": "암호 확인"
+    },
+    "Connecting to PA": {
+        "message": "PA에 연결 중"
+    },
+    "Continue Tutorial": {
+        "message": "튜토리얼 계속하기"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "코즈믹 에디션 지휘관"
+    },
+    "Create Account": {
+        "message": "계정 생성"
+    },
+    "Create an account to play online.": {
+        "message": "온라인으로 플레이하려면 계정을 만드십시오."
+    },
+    "Credits": {
+        "message": "제작진"
+    },
+    "Custom": {
+        "message": "사용자 설정"
+    },
+    "Design": {
+        "message": "Design"
+    },
+    "Dismiss": {
+        "message": "닫기"
+    },
+    "EXIT": {
+        "message": "종료"
+    },
+    "Email": {
+        "message": "이메일"
+    },
+    "Email already in use.": {
+        "message": "이메일이 이미 사용 중입니다."
+    },
+    "Email is invalid": {
+        "message": "이메일이 올바르지 않습니다."
+    },
+    "Enable Offline Play": {
+        "message": "오프라인 플레이 활성화"
+    },
+    "Engineering": {
+        "message": "Engineering"
+    },
+    "Engineers": {
+        "message": "Engineers"
+    },
+    "Extra special thanks to our:": {
+        "message": "Extra special thanks to our:"
+    },
+    "Founding Commanders": {
+        "message": "창설 지휘관"
+    },
+    "Galactic War": {
+        "message": "은하계 전쟁"
+    },
+    "Gameplay Disabled": {
+        "message": "게임 플레이 비활성화됨"
+    },
+    "Gameplay Unavailable": {
+        "message": "게임 플레이 사용 불가"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "오프라인 플레이를 활성화해 이 권장 사항을 무시하면 게임 성능이 저하될 수 있습니다."
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "클래식 PA를 플레이하려면 TITANS를 실행하고 게임 플레이 설정에서 활성 확장팩을 변경하는 방법이 좋습니다."
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "__inactive_days__일 동안 비활성"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "사용자 이름 또는 암호가 올바르지 않습니다. 확인 후 다시 입력하십시오."
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "세션 티켓이 올바르지 않습니다. 다시 로그인하십시오."
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "마지막으로 플레이했을 때 Planetary Annihilation이 충돌했던 것 같습니다. 설치된 그래픽 카드 드라이버의 문제가 충돌 원인일 수 있습니다."
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Steam 오버레이가 꺼져 있는 것 같습니다. 이 상태에서는 구매를 진행할 수 없습니다."
+    },
+    "LATER": {
+        "message": "나중에"
+    },
+    "Last match played": {
+        "message": "마지막 매치 플레이"
+    },
+    "Latest News": {
+        "message": "최신 소식"
+    },
+    "Leaderboards": {
+        "message": "순위표"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "기본을 배우고 타이탄을 지휘해 행성을 파괴하십시오."
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "이미 튜토리얼을 진행 중인 것 같습니다."
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "Steam 라이브러리에서 TITANS가 아닌 클래식 PA를 실행 중인 것 같습니다."
+    },
+    "Minimize": {
+        "message": "최소화"
+    },
+    "More Info": {
+        "message": "추가 정보"
+    },
+    "Multiplayer": {
+        "message": "멀티 플레이"
+    },
+    "Music Composed by": {
+        "message": "Music Composed by"
+    },
+    "New Build Available:": {
+        "message": "새로운 버전이 나왔습니다:"
+    },
+    "No thanks. I got this.": {
+        "message": "괜찮습니다."
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "여러분의 지원 없이는 모든 것이 불가능했을 것입니다. 기회를 주시고 저희의 비전을 믿어주신 여러분께 감사드립니다."
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "Northwest Sinfonia and Chorale"
+    },
+    "Not right now": {
+        "message": "나중에"
+    },
+    "OK": {
+        "message": "확인"
+    },
+    "OKAY": {
+        "message": "확인"
+    },
+    "Official Discord": {
+        "message": "공식 Discord"
+    },
+    "Official Guides": {
+        "message": "공식 가이드"
+    },
+    "Official Support": {
+        "message": "공식 지원"
+    },
+    "Offline Play Disabled": {
+        "message": "오프라인 플레이 비활성화됨"
+    },
+    "Offline Play Unavailable": {
+        "message": "오프라인 플레이 사용 불가"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "이런 유형의 충돌은 __vendor_name__의 최신 그래픽 드라이버로 해결되는 경우가 많습니다. 제조사 드라이버 웹 사이트에서 최신 버전을 다운로드해 설치하실 것을 [strong]적극 권장[/strong]합니다."
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "앗, 당신의 계정에서 게임을 찾을 수 없습니다! Steam 이용자일 경우 Steam을 재시작하고 다시 시도해 보십시오. 문제가 계속되면 __email__으로 문의해 주십시오."
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "앗, 당신의 계정이 비정상적인 상태인 것 같습니다. Steam 이용자일 경우 Steam을 재시작하고 다시 시도해 보십시오. 문제가 계속되면 __email__으로 문의해 주십시오."
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "__vendor_name__' 드라이버 웹 사이트 열기"
+    },
+    "Password": {
+        "message": "암호"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "암호는 6자에서 20자 사이여야 합니다."
+    },
+    "Passwords do not match.": {
+        "message": "암호가 일치하지 않습니다."
+    },
+    "Play Tutorial": {
+        "message": "튜토리얼 플레이"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "온라인으로 플레이하여 매치메이킹, 순위표, 전용 서버를 이용하십시오."
+    },
+    "Player Guide": {
+        "message": "플레이어 가이드"
+    },
+    "Please choose a default region.": {
+        "message": "기본 지역을 선택하십시오."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "새로운 유닛과 월드, 그리고 새로운 방식으로 파괴의 즐거움을 만끽해 보십시오!"
+    },
+    "Please enter an activation key.": {
+        "message": "활성화 키를 입력하십시오."
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "게임을 종료하고 Steam 라이브러리에서 게임을 찾은 후, 마우스 오른쪽 버튼으로 클릭하고 속성을 선택한 다음 \"게임 내 Steam 오버레이 사용\"이 체크되어 있는지 확인하십시오. 그런 다음 게임을 시작하여 다시 시도해 보십시오."
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "로그인하여 PA 서버에서 플레이하거나, [strong]설정[/strong]에서 직접 로컬 서버를 [strong]켜기[/strong]로 설정하십시오."
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "나중에 다시 시도하십시오. 이 오류가 계속되면 지원 담당자에게 문의하고 포럼을 확인하십시오."
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "그래픽 드라이버 충돌 가능성 탐지됨"
+    },
+    "Production": {
+        "message": "Production"
+    },
+    "Production Babies": {
+        "message": "Production Babies"
+    },
+    "QA": {
+        "message": "QA"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "종료 및 TITANS 설치"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "종료 및 TITANS 실행"
+    },
+    "Quit": {
+        "message": "나가기"
+    },
+    "RECONNECT": {
+        "message": "다시 연결"
+    },
+    "Reconnect": {
+        "message": "다시 연결"
+    },
+    "Replays": {
+        "message": "리플레이"
+    },
+    "Restart From Beginning": {
+        "message": "처음부터 다시 시작"
+    },
+    "Resume last saved:": {
+        "message": "마지막 저장 시점에서 재개:"
+    },
+    "Saved Games": {
+        "message": "저장된 게임"
+    },
+    "Season ends __date__": {
+        "message": "시즌 종료: __date__"
+    },
+    "Settings": {
+        "message": "설정"
+    },
+    "Sign In": {
+        "message": "로그인"
+    },
+    "Sign in": {
+        "message": "로그인"
+    },
+    "Sign in with your PA account": {
+        "message": "PA 계정으로 로그인"
+    },
+    "Single Player": {
+        "message": "싱글 플레이"
+    },
+    "Soundtrack Credits": {
+        "message": "Soundtrack Credits"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam 오버레이 비활성화됨"
+    },
+    "Streams": {
+        "message": "스트리밍"
+    },
+    "System Designer": {
+        "message": "행성계 편집기"
+    },
+    "The TITANS have arrived.": {
+        "message": "TITANS가 도착했습니다."
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "입력된 코드는 이미 Steam 키로 변환되었습니다."
+    },
+    "The entered code has already been used.": {
+        "message": "입력된 코드는 이미 사용되었습니다."
+    },
+    "The entered code was invalid.": {
+        "message": "입력된 코드가 유효하지 않습니다."
+    },
+    "The game will require an internet connection to play.": {
+        "message": "게임을 플레이하려면 인터넷 연결이 필요합니다."
+    },
+    "The leaderboard is currently empty.": {
+        "message": "순위표가 비어 있습니다."
+    },
+    "There are no regions available for this build version.": {
+        "message": "이 빌드 버전에서 이용 가능한 지역이 없습니다."
+    },
+    "There are no streams currently.": {
+        "message": "진행 중인 스트리밍이 없습니다."
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "Steam에 문제가 있습니다. Steam을 재시작한 후 다시 시도하거나 __email__으로 문의하십시오."
+    },
+    "They're here for you.": {
+        "message": "당신을 위해 우리가 찾아왔습니다."
+    },
+    "This account already owns this title.": {
+        "message": "이 계정은 이미 이 타이틀을 소유하고 있습니다."
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "발생해서는 안 되는 상황입니다. __email__으로 문의해 주십시오."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "저희 Kickstarter 캠페인을 후원해 주신 여러분께 감사의 말씀을 전합니다."
+    },
+    "Top Ranked Players": {
+        "message": "최고 랭킹 플레이어"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "TITANS 튜토리얼 진행"
+    },
+    "Tutorial": {
+        "message": "튜토리얼"
+    },
+    "Twitch": {
+        "message": "Twitch"
+    },
+    "UI Library:": {
+        "message": "UI 라이브러리:"
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "로그인 불가"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "이메일 주소가 이미 사용 중이어서 Steam 계정을 연동할 수 없습니다. __email__으로 문의해 주십시오."
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "이메일 주소가 올바르지 않아 Steam 계정을 연동할 수 없습니다. __email__으로 문의해 주십시오."
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "알 수 없는 __code__ 오류 때문에 Steam 계정을 연동할 수 없습니다. __email__으로 문의해 주십시오."
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "사용자 이름이 이미 사용 중이어서 Steam 계정을 연동할 수 없습니다. __email__으로 문의해 주십시오."
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "Steam 계정을 연동할 수 없습니다. 게임을 다시 시작해 보거나 __email__으로 문의해 주십시오."
+    },
+    "Unknown": {
+        "message": "미확인"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "알 수 없는 인증 오류입니다. 방화벽이나 백신 설정이 문제일 수 있습니다. 문제가 계속 발생하면 지원 팀으로 문의해 주십시오. (__error_code__)"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "새로운 90% 영구 할인가로 Titans로 업그레이드"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "사용자 이름은 3자에서 20자 사이여야 합니다."
+    },
+    "Username": {
+        "message": "사용자 이름"
+    },
+    "Username already in use.": {
+        "message": "사용자 이름이 이미 사용 중입니다."
+    },
+    "Version:": {
+        "message": "버전:"
+    },
+    "View Intro": {
+        "message": "인트로 보기"
+    },
+    "View Leaderboards": {
+        "message": "순위표 보기"
+    },
+    "View full column": {
+        "message": "전체 열 보기"
+    },
+    "Watch Replay": {
+        "message": "리플레이 보기"
+    },
+    "You are already assigned to a game.": {
+        "message": "이미 게임에 배정되어 있습니다."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "지역은 나중에 설정 메뉴에서 바꿀 수 있습니다."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "게임을 플레이하려면 새로운 클라이언트가 필요합니다. Steam 사용자는 새 클라이언트를 받기 위해 Steam 재시작이 필요할 수 있습니다."
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "랭크를 받으려면 랭킹 게임을 __number__번 플레이해야 합니다."
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "Steam 라이브러리의 Planetary Annihilation 바로 옆에 준비되어 있습니다!"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "계정이 차단되어 있습니다. 오류로 인한 상태라고 생각하신다면 __email__으로 문의해 주십시오."
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "현재 사용하실 수 없는 기본 지역입니다. 다른 지역을 선택하십시오."
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "사용 중인 컴퓨터가 오프라인 플레이를 위한 시스템 권장 사양을 충족하지 못합니다. 오프라인 모드를 플레이하려면 최소 8GB의 RAM과 쿼드 코어 프로세서가 필요합니다."
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "사용 중인 컴퓨터가 Planetary Annihilation 오프라인 실행에 적합하지 않습니다. 오프라인 모드를 실행하려면 64비트 프로세서와 64비트 운영 체제가 필요합니다."
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "시스템이 오프라인 플레이를 위한 요구 사양을 충족하지 못합니다. 로그인하여 PA 서버에서 플레이하거나, [strong]설정[/strong]에서 직접 로컬 서버를 [strong]켜기[/strong]로 설정하십시오."
+    },
+    "Your username is: __username__": {
+        "message": "내 사용자 이름: __username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ 랭크"
+    },
+    "__viewer_count__ viewers": {
+        "message": "시청자 __viewer_count__명"
+    },
+    "days": {
+        "message": "일"
+    },
+    "ending in": {
+        "message": "종료까지"
+    },
+    "starting in": {
+        "message": "시작까지"
+    },
+    "LIVE": {
+        "message": "라이브 "
+    },
+    "View Replays": {
+        "message": "리플레이 보기"
+    }
+}

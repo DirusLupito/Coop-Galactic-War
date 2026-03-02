@@ -1,0 +1,502 @@
+{
+    "0.0.0": {
+        "message": "0.0.0",
+        "original": "0.0.0"
+    },
+    "Accept": {
+        "message": "Ȃϲϲέ⍴ҭ",
+        "original": "Accept"
+    },
+    "Advanced Edit": {
+        "message": "Ȃɗѷȃƞϲέɗ Ɛɗїҭ",
+        "original": "Advanced Edit"
+    },
+    "Advanced edit planet": {
+        "message": "Ȃɗѷȃƞϲέɗ έɗїҭ ⍴⌊ȃƞέҭ",
+        "original": "Advanced edit planet"
+    },
+    "Auto": {
+        "message": "Ȃմҭȏ",
+        "original": "Auto"
+    },
+    "Base:": {
+        "message": "฿ȃƨέ:",
+        "original": "Base:"
+    },
+    "Biome:": {
+        "message": "฿їȏʍέ:",
+        "original": "Biome:"
+    },
+    "Brushes:": {
+        "message": "฿ȓմƨнέƨ:",
+        "original": "Brushes:"
+    },
+    "CLEAR SYSTEM": {
+        "message": "Ҫ₤ƐȂℝ ṠУṠ丁ƐΜ",
+        "original": "CLEAR SYSTEM"
+    },
+    "CLOSE": {
+        "message": "Ҫ₤ѲṠƐ",
+        "original": "CLOSE"
+    },
+    "CSG": {
+        "message": "ҪṠǴ",
+        "original": "CSG"
+    },
+    "Camera": {
+        "message": "Ҫȃʍέȓȃ",
+        "original": "Camera"
+    },
+    "Cancel": {
+        "message": "Ҫȃƞϲέ⌊",
+        "original": "Cancel"
+    },
+    "Creator": {
+        "message": "Ҫȓέȃҭȏȓ",
+        "original": "Creator"
+    },
+    "Data": {
+        "message": "Ɖȃҭȃ",
+        "original": "Data"
+    },
+    "Description": {
+        "message": "Ɖέƨϲȓї⍴ҭїȏƞ",
+        "original": "Description"
+    },
+    "Discard": {
+        "message": "Ɖїƨϲȃȓɗ",
+        "original": "Discard"
+    },
+    "Do you want to save this system?": {
+        "message": "Ɖȏ уȏմ ῴȃƞҭ ҭȏ ƨȃѷέ ҭнїƨ ƨуƨҭέʍ?",
+        "original": "Do you want to save this system?"
+    },
+    "EDIT PLANET": {
+        "message": "ƐƉΪ丁 Ṕ₤ȂƝƐ丁",
+        "original": "EDIT PLANET"
+    },
+    "EXPORT SYSTEM": {
+        "message": "ƐҲṔѲℝ丁 ṠУṠ丁ƐΜ",
+        "original": "EXPORT SYSTEM"
+    },
+    "Edit": {
+        "message": "Ɛɗїҭ",
+        "original": "Edit"
+    },
+    "Edit System Info": {
+        "message": "Ɛɗїҭ Ṡуƨҭέʍ Ϊƞғȏ",
+        "original": "Edit System Info"
+    },
+    "Flooded": {
+        "message": "Ϝ⌊ȏȏɗέɗ",
+        "original": "Flooded"
+    },
+    "GAMEPLAY": {
+        "message": "ǴȂΜƐṔ₤ȂУ",
+        "original": "GAMEPLAY"
+    },
+    "HIDE": {
+        "message": "ӇΪƉƐ",
+        "original": "HIDE"
+    },
+    "Height:": {
+        "message": "Ӈέїɠнҭ:",
+        "original": "Height:"
+    },
+    "Include:": {
+        "message": "Ϊƞϲ⌊մɗέ:",
+        "original": "Include:"
+    },
+    "Landing Zone Restrictions": {
+        "message": "₤ȃƞɗїƞɠ Ƶȏƞέ ℝέƨҭȓїϲҭїȏƞƨ",
+        "original": "Landing Zone Restrictions"
+    },
+    "Landing Zone Size": {
+        "message": "₤ȃƞɗїƞɠ Ƶȏƞέ Ṡїℤέ",
+        "original": "Landing Zone Size"
+    },
+    "Landing Zones": {
+        "message": "₤ȃƞɗїƞɠ Ƶȏƞέƨ",
+        "original": "Landing Zones"
+    },
+    "Latitude:": {
+        "message": "₤ȃҭїҭմɗέ:",
+        "original": "Latitude:"
+    },
+    "Longitude:": {
+        "message": "₤ȏƞɠїҭմɗέ:",
+        "original": "Longitude:"
+    },
+    "MY PLANETS": {
+        "message": "ΜУ Ṕ₤ȂƝƐ丁Ṡ",
+        "original": "MY PLANETS"
+    },
+    "Mass": {
+        "message": "Μȃƨƨ",
+        "original": "Mass"
+    },
+    "Max": {
+        "message": "Μȃ⌧",
+        "original": "Max"
+    },
+    "Max Asteroid Count": {
+        "message": "Μȃ⌧ Ȃƨҭέȓȏїɗ Ҫȏմƞҭ",
+        "original": "Max Asteroid Count"
+    },
+    "Mergeable": {
+        "message": "ΜέȓɠέȃБ⌊έ",
+        "original": "Mergeable"
+    },
+    "Metal Spots": {
+        "message": "Μέҭȃ⌊ Ṡ⍴ȏҭƨ",
+        "original": "Metal Spots"
+    },
+    "Min": {
+        "message": "Μїƞ",
+        "original": "Min"
+    },
+    "Mouse": {
+        "message": "Μȏմƨέ",
+        "original": "Mouse"
+    },
+    "NONE": {
+        "message": "ƝѲƝƐ",
+        "original": "NONE"
+    },
+    "No Features": {
+        "message": "Ɲȏ Ϝέȃҭմȓέƨ",
+        "original": "No Features"
+    },
+    "Ok": {
+        "message": "Ѳќ",
+        "original": "Ok"
+    },
+    "Once in Advanced Edit mode, the planet will remain in this mode for future edits.": {
+        "message": "Ѳƞϲέ їƞ Ȃɗѷȃƞϲέɗ Ɛɗїҭ ʍȏɗέ, ҭнέ ⍴⌊ȃƞέҭ ῴї⌊⌊ ȓέʍȃїƞ їƞ ҭнїƨ ʍȏɗέ ғȏȓ ғմҭմȓέ έɗїҭƨ.",
+        "original": "Once in Advanced Edit mode, the planet will remain in this mode for future edits."
+    },
+    "PREVIEW ALL": {
+        "message": "ṔℝƐѶΪƐ₩ Ȃ₤₤",
+        "original": "PREVIEW ALL"
+    },
+    "Pathable": {
+        "message": "ṔȃҭнȃБ⌊έ",
+        "original": "Pathable"
+    },
+    "Position": {
+        "message": "Ṕȏƨїҭїȏƞ",
+        "original": "Position"
+    },
+    "Preview": {
+        "message": "Ṕȓέѷїέῴ",
+        "original": "Preview"
+    },
+    "Preview planet": {
+        "message": "Ṕȓέѷїέῴ ⍴⌊ȃƞέҭ",
+        "original": "Preview planet"
+    },
+    "Preview to copy CSG": {
+        "message": "Ṕȓέѷїέῴ ҭȏ ϲȏ⍴у ҪṠǴ",
+        "original": "Preview to copy CSG"
+    },
+    "Properties": {
+        "message": "Ṕȓȏ⍴έȓҭїέƨ",
+        "original": "Properties"
+    },
+    "RECENT": {
+        "message": "ℝƐҪƐƝ丁",
+        "original": "RECENT"
+    },
+    "REMOVE": {
+        "message": "ℝƐΜѲѶƐ",
+        "original": "REMOVE"
+    },
+    "REMOVE ASTEROID BELT": {
+        "message": "ℝƐΜѲѶƐ ȂṠ丁ƐℝѲΪƉ ฿Ɛ₤丁",
+        "original": "REMOVE ASTEROID BELT"
+    },
+    "Radius:": {
+        "message": "ℝȃɗїմƨ:",
+        "original": "Radius:"
+    },
+    "SAVE SYSTEM": {
+        "message": "ṠȂѶƐ ṠУṠ丁ƐΜ",
+        "original": "SAVE SYSTEM"
+    },
+    "SELECT CSG": {
+        "message": " ṠƐ₤ƐҪ丁 ҪṠǴ",
+        "original": " SELECT CSG"
+    },
+    "SHOW": {
+        "message": "ṠӇѲ₩",
+        "original": "SHOW"
+    },
+    "SIMULATE": {
+        "message": "ṠΪΜỦ₤Ȃ丁Ɛ",
+        "original": "SIMULATE"
+    },
+    "STOP": {
+        "message": "Ṡ丁ѲṔ",
+        "original": "STOP"
+    },
+    "Save": {
+        "message": "Ṡȃѷέ",
+        "original": "Save"
+    },
+    "Save as template": {
+        "message": "Ṡȃѷέ ȃƨ ҭέʍ⍴⌊ȃҭέ",
+        "original": "Save as template"
+    },
+    "Seed:": {
+        "message": "Ṡέέɗ:",
+        "original": "Seed:"
+    },
+    "Selected CSG": {
+        "message": "Ṡέ⌊έϲҭέɗ ҪṠǴ",
+        "original": "Selected CSG"
+    },
+    "Shuffle Landing Zones": {
+        "message": "Ṡнմғғ⌊έ ₤ȃƞɗїƞɠ Ƶȏƞέƨ",
+        "original": "Shuffle Landing Zones"
+    },
+    "Spawn Delay (in seconds)": {
+        "message": "Ṡ⍴ȃῴƞ Ɖέ⌊ȃу (їƞ ƨέϲȏƞɗƨ)",
+        "original": "Spawn Delay (in seconds)"
+    },
+    "Spots:": {
+        "message": "Ṡ⍴ȏҭƨ:",
+        "original": "Spots:"
+    },
+    "Starting Asteroid Count": {
+        "message": "Ṡҭȃȓҭїƞɠ Ȃƨҭέȓȏїɗ Ҫȏմƞҭ",
+        "original": "Starting Asteroid Count"
+    },
+    "Starting planet options": {
+        "message": "Ṡҭȃȓҭїƞɠ ⍴⌊ȃƞέҭ ȏ⍴ҭїȏƞƨ",
+        "original": "Starting planet options"
+    },
+    "System Designer": {
+        "message": "Ṡуƨҭέʍ Ɖέƨїɠƞέȓ",
+        "original": "System Designer"
+    },
+    "System Name:": {
+        "message": "Ṡуƨҭέʍ Ɲȃʍέ:",
+        "original": "System Name:"
+    },
+    "System radius is too large.": {
+        "message": "Ṡуƨҭέʍ ȓȃɗїմƨ їƨ ҭȏȏ ⌊ȃȓɠέ.",
+        "original": "System radius is too large."
+    },
+    "System radius is too small.": {
+        "message": "Ṡуƨҭέʍ ȓȃɗїմƨ їƨ ҭȏȏ ƨʍȃ⌊⌊.",
+        "original": "System radius is too small."
+    },
+    "System requires at least one starting planet.": {
+        "message": "Ṡуƨҭέʍ ȓέԳմїȓέƨ ȃҭ ⌊έȃƨҭ ȏƞέ ƨҭȃȓҭїƞɠ ⍴⌊ȃƞέҭ.",
+        "original": "System requires at least one starting planet."
+    },
+    "TEMPLATES": {
+        "message": "丁ƐΜṔ₤Ȃ丁ƐṠ",
+        "original": "TEMPLATES"
+    },
+    "TERRAIN": {
+        "message": "丁ƐℝℝȂΪƝ",
+        "original": "TERRAIN"
+    },
+    "TERRAIN AND CSG": {
+        "message": "丁ƐℝℝȂΪƝ ȂƝƉ ҪṠǴ",
+        "original": "TERRAIN AND CSG"
+    },
+    "Temp": {
+        "message": "丁έʍ⍴",
+        "original": "Temp"
+    },
+    "Temp:": {
+        "message": "丁έʍ⍴:",
+        "original": "Temp:"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "丁нέ ⍴⌊ȃƞέҭ їƨ ⌊ȏȃɗїƞɠ. 丁нїƨ ϲȃƞ ҭȃќέ ȃ ⌊ȏƞɠ ҭїʍέ.",
+        "original": "The planet is loading. This can take a long time."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "丁нέ ⍴ȓȏɠȓȃʍ ῴї⌊⌊ Бέ մƞȓέƨ⍴ȏƞƨїѷέ մƞҭї⌊ ҭнέ ⍴⌊ȃƞέҭ нȃƨ ғїƞїƨнέɗ.",
+        "original": "The program will be unresponsive until the planet has finished."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "丁нέ ƨуƨҭέʍ нȃƨ Бέέƞ ϲнȃƞɠέɗ ƨїƞϲέ їҭ ῴȃƨ ⌊ȃƨҭ ƨȃѷέɗ.",
+        "original": "The system has been changed since it was last saved."
+    },
+    "The system has not been saved.": {
+        "message": "丁нέ ƨуƨҭέʍ нȃƨ ƞȏҭ Бέέƞ ƨȃѷέɗ.",
+        "original": "The system has not been saved."
+    },
+    "This planet has been customized. It must be fully built before modifying.": {
+        "message": "丁нїƨ ⍴⌊ȃƞέҭ нȃƨ Бέέƞ ϲմƨҭȏʍїℤέɗ. Ϊҭ ʍմƨҭ Бέ ғմ⌊⌊у Бմї⌊ҭ Бέғȏȓέ ʍȏɗїғуїƞɠ.",
+        "original": "This planet has been customized. It must be fully built before modifying."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to delete.": {
+        "message": "Ủƨέ [style=hotkey_title]__hotkey__[/style] ҭȏ ɗέ⌊έҭέ.",
+        "original": "Use [style=hotkey_title]__hotkey__[/style] to delete."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor.": {
+        "message": "Ủƨέ [style=hotkey_title]__hotkey__[/style] ҭȏ ⍴⌊ȃϲέ ȃ ⌊ȃƞɗїƞɠ ℤȏƞέ Бέ⌊ȏῴ ҭнέ ϲմȓƨȏȓ.",
+        "original": "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
+        "message": "Ủƨέ [style=hotkey_title]__hotkey__[/style] ҭȏ ⍴⌊ȃϲέ ȃ ʍέҭȃ⌊ ƨ⍴ȏҭ Бέ⌊ȏῴ ҭнέ ϲմȓƨȏȓ.",
+        "original": "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor."
+    },
+    "Use as a starting planet": {
+        "message": "Ủƨέ ȃƨ ȃ ƨҭȃȓҭїƞɠ ⍴⌊ȃƞέҭ",
+        "original": "Use as a starting planet"
+    },
+    "Variance:": {
+        "message": "Ѷȃȓїȃƞϲέ:",
+        "original": "Variance:"
+    },
+    "Velocity": {
+        "message": "Ѷέ⌊ȏϲїҭу",
+        "original": "Velocity"
+    },
+    "Version": {
+        "message": "Ѷέȓƨїȏƞ",
+        "original": "Version"
+    },
+    "Water": {
+        "message": "₩ȃҭέȓ",
+        "original": "Water"
+    },
+    "Water:": {
+        "message": "₩ȃҭέȓ:",
+        "original": "Water:"
+    },
+    "X": {
+        "message": "Ҳ",
+        "original": "X"
+    },
+    "X:": {
+        "message": "Ҳ:",
+        "original": "X:"
+    },
+    "Y": {
+        "message": "У",
+        "original": "Y"
+    },
+    "Y:": {
+        "message": "У:",
+        "original": "Y:"
+    },
+    "You will have to fix the system before saving.": {
+        "message": "Уȏմ ῴї⌊⌊ нȃѷέ ҭȏ ғї⌧ ҭнέ ƨуƨҭέʍ Бέғȏȓέ ƨȃѷїƞɠ.",
+        "original": "You will have to fix the system before saving."
+    },
+    "You will not be able to revert back and use standard editing controls.": {
+        "message": "Уȏմ ῴї⌊⌊ ƞȏҭ Бέ ȃБ⌊έ ҭȏ ȓέѷέȓҭ Бȃϲќ ȃƞɗ մƨέ ƨҭȃƞɗȃȓɗ έɗїҭїƞɠ ϲȏƞҭȓȏ⌊ƨ.",
+        "original": "You will not be able to revert back and use standard editing controls."
+    },
+    "Z": {
+        "message": "Ƶ",
+        "original": "Z"
+    },
+    "Z:": {
+        "message": "Ƶ:",
+        "original": "Z:"
+    },
+    "Zones:": {
+        "message": "Ƶȏƞέƨ:",
+        "original": "Zones:"
+    },
+    "biome": {
+        "message": "Бїȏʍέ",
+        "original": "biome"
+    },
+    "edit asteroid belt": {
+        "message": "έɗїҭ ȃƨҭέȓȏїɗ Бέ⌊ҭ",
+        "original": "edit asteroid belt"
+    },
+    "edit planet": {
+        "message": "έɗїҭ ⍴⌊ȃƞέҭ",
+        "original": "edit planet"
+    },
+    "height": {
+        "message": "нέїɠнҭ",
+        "original": "height"
+    },
+    "height range": {
+        "message": "нέїɠнҭ ȓȃƞɠέ",
+        "original": "height range"
+    },
+    "landing zone size": {
+        "message": "⌊ȃƞɗїƞɠ ℤȏƞέ ƨїℤέ",
+        "original": "landing zone size"
+    },
+    "landing zones per army": {
+        "message": "⌊ȃƞɗїƞɠ ℤȏƞέƨ ⍴έȓ ȃȓʍу",
+        "original": "landing zones per army"
+    },
+    "metal clusters": {
+        "message": "ʍέҭȃ⌊ ϲ⌊մƨҭέȓƨ",
+        "original": "metal clusters"
+    },
+    "metal density": {
+        "message": "ʍέҭȃ⌊ ɗέƞƨїҭу",
+        "original": "metal density"
+    },
+    "metal spots": {
+        "message": "ʍέҭȃ⌊ ƨ⍴ȏҭƨ",
+        "original": "metal spots"
+    },
+    "metal spots on asteroids": {
+        "message": "ʍέҭȃ⌊ ƨ⍴ȏҭƨ ȏƞ ȃƨҭέȓȏїɗƨ",
+        "original": "metal spots on asteroids"
+    },
+    "planet name": {
+        "message": "⍴⌊ȃƞέҭ ƞȃʍέ",
+        "original": "planet name"
+    },
+    "preview landing zones by number of armies": {
+        "message": "⍴ȓέѷїέῴ ⌊ȃƞɗїƞɠ ℤȏƞέƨ Бу ƞմʍБέȓ ȏғ ȃȓʍїέƨ",
+        "original": "preview landing zones by number of armies"
+    },
+    "radius": {
+        "message": "ȓȃɗїմƨ",
+        "original": "radius"
+    },
+    "seed": {
+        "message": "ƨέέɗ",
+        "original": "seed"
+    },
+    "start spots": {
+        "message": "ƨҭȃȓҭ ƨ⍴ȏҭƨ",
+        "original": "start spots"
+    },
+    "symmetry type": {
+        "message": "ƨуʍʍέҭȓу ҭу⍴έ",
+        "original": "symmetry type"
+    },
+    "temperature": {
+        "message": "ҭέʍ⍴έȓȃҭմȓέ",
+        "original": "temperature"
+    },
+    "terrain": {
+        "message": "ҭέȓȓȃїƞ",
+        "original": "terrain"
+    },
+    "terrain and gameplay": {
+        "message": "ҭέȓȓȃїƞ ȃƞɗ ɠȃʍέ⍴⌊ȃу",
+        "original": "terrain and gameplay"
+    },
+    "thrusters required for attack": {
+        "message": "ҭнȓմƨҭέȓƨ ȓέԳմїȓέɗ ғȏȓ ȃҭҭȃϲќ",
+        "original": "thrusters required for attack"
+    },
+    "water coverage": {
+        "message": "ῴȃҭέȓ ϲȏѷέȓȃɠέ",
+        "original": "water coverage"
+    },
+    "water depth": {
+        "message": "ῴȃҭέȓ ɗέ⍴ҭн",
+        "original": "water depth"
+    }
+}

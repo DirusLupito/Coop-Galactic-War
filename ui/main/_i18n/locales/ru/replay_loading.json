@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "ЗАГРУЗКА МОДОВ СЕРВЕРА"
+    },
+    "Loading Game": {
+        "message": "Загрузка игры"
+    },
+    "Loading Replay": {
+        "message": "Загрузка повтора"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращаемся в главное меню"
+    },
+    "Returning to menu": {
+        "message": "Возвращаемся в меню"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "Запускаем сервер воспроизведения повторов, пожалуйста, подождите..."
+    },
+    "Unable to load replay": {
+        "message": "Не удалось загрузить повтор"
+    },
+    "Unable to load save game": {
+        "message": "Не удалось загрузить сохраненную игру"
+    }
+}

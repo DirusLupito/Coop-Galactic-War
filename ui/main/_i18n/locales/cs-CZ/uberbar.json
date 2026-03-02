@@ -1,0 +1,77 @@
+{
+    "Accept": {
+        "message": "Přijmout"
+    },
+    "Appear Offline": {
+        "message": "Objevit se Offline"
+    },
+    "Away": {
+        "message": "Pryč"
+    },
+    "Block": {
+        "message": "Blokovat"
+    },
+    "CANCEL": {
+        "message": "ZRUŠIT"
+    },
+    "CHANGE": {
+        "message": "ZMĚNA"
+    },
+    "Change Display Name": {
+        "message": "Změna zobrazovaného jména"
+    },
+    "Change your display name?": {
+        "message": "Změnit zobrazované jméno?"
+    },
+    "Do Not Disturb": {
+        "message": "Nerušit"
+    },
+    "Friends": {
+        "message": "Přátelé"
+    },
+    "Ignore": {
+        "message": "Ignorovat"
+    },
+    "Invite to Chat": {
+        "message": "Pozvat na chat"
+    },
+    "Invite to game": {
+        "message": "Pozvat do hry"
+    },
+    "Join Game": {
+        "message": "Připojit se ke hře"
+    },
+    "New Display Name:": {
+        "message": "Nové zobrazované jméno:"
+    },
+    "No pending notifications.": {
+        "message": "Nemáte žádné nevyřízené oznámení."
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Pending Invite": {
+        "message": "Čeká na pozvání"
+    },
+    "Recent": {
+        "message": "Nedávný"
+    },
+    "Remove": {
+        "message": "Odstranit"
+    },
+    "Search Results": {
+        "message": "Výsledky vyhledávání"
+    },
+    "Send Friend Request": {
+        "message": "Poslat žádost o přátelství"
+    },
+    "Unblock": {
+        "message": "Odblokovat"
+    },
+    "Unfriend": {
+        "message": "Odebrat z přátel"
+    },
+    "Users": {
+        "message": "Uživatelé"
+    }
+}

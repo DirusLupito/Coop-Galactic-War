@@ -1,0 +1,92 @@
+{
+    "AI Battle": {
+        "message": "Batalha com IA"
+    },
+    "Any": {
+        "message": "Qualquer"
+    },
+    "Can Join": {
+        "message": "Acessível"
+    },
+    "Can Play": {
+        "message": "Jogável"
+    },
+    "Can Spectate": {
+        "message": "Assistível"
+    },
+    "Competitive": {
+        "message": "Competitivo"
+    },
+    "Create Game": {
+        "message": "Criar Jogo"
+    },
+    "Free For All": {
+        "message": "Cada um por si"
+    },
+    "Game": {
+        "message": "Jogo"
+    },
+    "Game State": {
+        "message": "Estado do Jogo"
+    },
+    "In Lobby": {
+        "message": "Na Sala"
+    },
+    "In Progress": {
+        "message": "Em Progresso"
+    },
+    "Join Game": {
+        "message": "Juntar-se ao Jogo"
+    },
+    "Locked Game": {
+        "message": "Jogo Trancado"
+    },
+    "Mode": {
+        "message": "Modo"
+    },
+    "Multiplayer": {
+        "message": "Multijogador"
+    },
+    "No max": {
+        "message": "Sem máximo"
+    },
+    "No min": {
+        "message": "Sem mínimo"
+    },
+    "Number of Planets": {
+        "message": "Número de Planetas"
+    },
+    "Number of Players": {
+        "message": "Número de Jogadores"
+    },
+    "Password": {
+        "message": "Senha"
+    },
+    "Planets": {
+        "message": "Planetas"
+    },
+    "Players": {
+        "message": "Jogadores"
+    },
+    "Region": {
+        "message": "Região"
+    },
+    "Slots": {
+        "message": "Vagas"
+    },
+    "Spectate": {
+        "message": "Espectador"
+    },
+    "Spectators": {
+        "message": "Espectadores"
+    },
+    "Tag": {
+        "message": "Marcar"
+    },
+    "Team Armies": {
+        "message": "Exércitos Aliados"
+    },
+    "Testing": {
+        "message": "Testando"
+    }
+}

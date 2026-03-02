@@ -1,0 +1,50 @@
+{
+    "Create Game": {
+        "message": "Start Et Spil"
+    },
+    "Free For All": {
+        "message": "Alle mod alle"
+    },
+    "Game": {
+        "message": "Spillet"
+    },
+    "In Lobby": {
+        "message": "I Lobby"
+    },
+    "In Progress": {
+        "message": "Igang"
+    },
+    "Join Game": {
+        "message": "Deltag i Spil"
+    },
+    "Locked Game": {
+        "message": "Låst Spil"
+    },
+    "Mode": {
+        "message": "Spiltype"
+    },
+    "Password": {
+        "message": "Kodeord"
+    },
+    "Planets": {
+        "message": "Planeter"
+    },
+    "Players": {
+        "message": "Spillere"
+    },
+    "Region": {
+        "message": "Område"
+    },
+    "Slots": {
+        "message": "Pladser"
+    },
+    "Spectate": {
+        "message": "Vær tilskuer"
+    },
+    "Spectators": {
+        "message": "Tilskuere"
+    },
+    "Team Armies": {
+        "message": "Hold"
+    }
+}

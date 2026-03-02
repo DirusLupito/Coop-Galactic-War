@@ -1,0 +1,26 @@
+{
+    "CANCEL": {
+        "message": "Zrušit"
+    },
+    "Delete": {
+        "message": "VYMAZAT"
+    },
+    "Delete this system?": {
+        "message": "Smazat tento systém?"
+    },
+    "Load System": {
+        "message": "Nahrát systém"
+    },
+    "New system": {
+        "message": "Nový systém"
+    },
+    "SHOW PLANETS": {
+        "message": "UKÁZAT PLANETY"
+    },
+    "SHOW SYSTEMS": {
+        "message": "UKÁZAT SYSTÉMY"
+    },
+    "System Designer": {
+        "message": "Návrhář Systémů"
+    }
+}

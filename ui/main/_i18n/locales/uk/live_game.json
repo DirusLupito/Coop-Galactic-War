@@ -1,0 +1,35 @@
+{
+    "CONNECTION TO SERVER LOST": {
+        "message": "З'ЄДНАННЯ З СЕРВЕРОМ ВТРАЧЕНЕ"
+    },
+    "Cancel": {
+        "message": "Скасувати"
+    },
+    "Chrono Cam": {
+        "message": "ХРОНОКАМЕРА"
+    },
+    "Exit Game?": {
+        "message": "Вийти з гри?"
+    },
+    "Game Settings": {
+        "message": "НАЛАШТУВАННЯ ГРИ"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Вкажіть місце всередині однієї зі зелених зон, щоб розмістити свого Командера."
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Позиція вказана. Натисніть для підтвердження."
+    },
+    "Quit": {
+        "message": "ВИЙТИ"
+    },
+    "Returning to Main Menu": {
+        "message": "До головного меню"
+    },
+    "START ANNIHILATION": {
+        "message": "РОЗПОЧАТИ АНІГІЛЯЦІЮ"
+    },
+    "Yes": {
+        "message": " Так"
+    }
+}

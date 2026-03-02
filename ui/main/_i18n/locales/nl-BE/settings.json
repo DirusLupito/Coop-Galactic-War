@@ -1,0 +1,971 @@
+{
+    "ALL": {
+        "message": "ALLE"
+    },
+    "ALWAYS": {
+        "message": "ALTIJD"
+    },
+    "AUTO": {
+        "message": "AUTO"
+    },
+    "Active Product": {
+        "message": "Actief product"
+    },
+    "Ambient Occlusion": {
+        "message": "Ambient Occlusion"
+    },
+    "Anti-Aliasing": {
+        "message": "Antialiasing"
+    },
+    "Arabic (Community translation)": {
+        "message": "Arabisch (Community-vertaling)"
+    },
+    "Audio": {
+        "message": "Geluid"
+    },
+    "Back": {
+        "message": "Terug"
+    },
+    "Build Bar Size": {
+        "message": "Grootte Bouwbalk"
+    },
+    "Build Preview Behavior": {
+        "message": "Gedrag van Bouwplannen"
+    },
+    "CUSTOM": {
+        "message": "AANGEPAST"
+    },
+    "Camera": {
+        "message": "Camera"
+    },
+    "Camera Friction": {
+        "message": "Wrijving camera"
+    },
+    "Cancel": {
+        "message": "Annuleer"
+    },
+    "Chinese (Simplified)": {
+        "message": "Chinees (Versimpeld)"
+    },
+    "Chinese (Traditional)": {
+        "message": "Chinees (Traditioneel)"
+    },
+    "Chinese, Hong Kong": {
+        "message": "Chinees, Hong Kong"
+    },
+    "Classic": {
+        "message": "Klassiek"
+    },
+    "Close": {
+        "message": "Sluiten"
+    },
+    "Conflict:": {
+        "message": "Conflict:"
+    },
+    "Czech (Community translation)": {
+        "message": "Tsjechisch (Community-vertaling)"
+    },
+    "Danish (Community translation)": {
+        "message": "Deens (Community-vertaling)"
+    },
+    "Default": {
+        "message": "Standaard"
+    },
+    "Default Audio Device": {
+        "message": "Standaard audioapparaat"
+    },
+    "Display Mode": {
+        "message": "Weergavemodus"
+    },
+    "Dutch": {
+        "message": "Nederlands"
+    },
+    "Dutch, Belgium (Community translation)": {
+        "message": "Vlaams (Community-vertaling)"
+    },
+    "Edge Scroll Options": {
+        "message": "Opties voor scrollen aan de zijkant"
+    },
+    "English": {
+        "message": "Engels"
+    },
+    "English, US": {
+        "message": "Amerikaans Engels"
+    },
+    "FOV": {
+        "message": "Zichtveld"
+    },
+    "FULLSCREEN": {
+        "message": "VOLLEDIG SCHERM"
+    },
+    "FXAA": {
+        "message": "FXAA"
+    },
+    "Finnish (Community translation)": {
+        "message": "Fins (Community-vertaling)"
+    },
+    "Forward": {
+        "message": "Vooruit"
+    },
+    "French": {
+        "message": "Frans"
+    },
+    "GAMEPLAY": {
+        "message": "SPEELSTIJL"
+    },
+    "GUI Size": {
+        "message": "Grootte interface"
+    },
+    "German": {
+        "message": "Duits"
+    },
+    "German, Austrian (Community translation)": {
+        "message": "Oostenrijks (Community-vertaling)"
+    },
+    "Graphics": {
+        "message": "Beeld"
+    },
+    "HDR": {
+        "message": "HDR"
+    },
+    "HIGH": {
+        "message": "HOOG"
+    },
+    "Headlights": {
+        "message": "Koplampen"
+    },
+    "Hungarian (Community translation)": {
+        "message": "Hongaars (Community-vertaling)"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "ICOON WEERGAVE-AFSTAND"
+    },
+    "Italian": {
+        "message": "Italiaans"
+    },
+    "Japanese": {
+        "message": "Japans"
+    },
+    "Key Pan Speed": {
+        "message": "Draaisnelheid toetsen"
+    },
+    "Keyboard": {
+        "message": "Toetsenbord"
+    },
+    "Korean": {
+        "message": "Koreaans"
+    },
+    "LOW": {
+        "message": "LAAG"
+    },
+    "Language": {
+        "message": "Taal"
+    },
+    "Local Server": {
+        "message": "Lokale server"
+    },
+    "Local Server Multi-threading": {
+        "message": "Multithreading lokale server"
+    },
+    "Local server is not available on your configuration.  (64-bit OS required)": {
+        "message": "Lokale server is niet beschikbaar voor je configuratie. (64-bit besturingssysteem vereist)"
+    },
+    "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)": {
+        "message": "Lokale server wordt niet aanbevolen voor je configuratie. (4 CPU-kernen en 8 GB aan geheugen aanbevolen.)"
+    },
+    "Master Volume": {
+        "message": "Volume meesterswitch"
+    },
+    "Mouse Pan Speed": {
+        "message": "Draaisnelheid muis"
+    },
+    "Music Volume": {
+        "message": "Muziekvolume"
+    },
+    "NATIVE (100%)": {
+        "message": "NATIVE (100%)"
+    },
+    "NEVER": {
+        "message": "NOOIT"
+    },
+    "Norwegian (Community translation)": {
+        "message": "Noors (Community-vertaling)"
+    },
+    "OFF": {
+        "message": "UIT"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "UIT (MUIS VASTZETTEN)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "UIT (MUIS NIET VASTZETTEN)"
+    },
+    "ON": {
+        "message": "AAN"
+    },
+    "Orbital Shell": {
+        "message": "Orbitale schil"
+    },
+    "Order Preview Behavior": {
+        "message": "Gedrag bevelvoorbeelden"
+    },
+    "Pole Lock": {
+        "message": "Stel vast op de polen"
+    },
+    "Polish": {
+        "message": "Pools"
+    },
+    "Portuguese, Brazil (Community translation)": {
+        "message": "Braziliaans Portugees (Community-vertaling)"
+    },
+    "Quality Preset": {
+        "message": "Kwaliteits-voorinstelling"
+    },
+    "RANGE DEPENDENT": {
+        "message": "AFSTANDSAFHANKELIJK"
+    },
+    "Resolution Scaling": {
+        "message": "Resolutie Schalen"
+    },
+    "Restore All Defaults": {
+        "message": "Alle standaardinstellingen herstellen"
+    },
+    "Restore Tab Defaults": {
+        "message": "Alle standaardtabbladen herstellen"
+    },
+    "Romanian (Community translation)": {
+        "message": "Roemeens (Community-vertaling)"
+    },
+    "Russian": {
+        "message": "Russisch"
+    },
+    "SELECTED": {
+        "message": "GESELECTEERD"
+    },
+    "SERVER": {
+        "message": "Server"
+    },
+    "SHIFT": {
+        "message": "SHIFT"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "ONDERSAMPLE (50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "ONDERSAMPLE (75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "OVERSAMPLE (110%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "OVERSAMPLE (150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "OVERSAMPLE (175%)"
+    },
+    "Save": {
+        "message": "Opslaan"
+    },
+    "Server": {
+        "message": "Server"
+    },
+    "Settings": {
+        "message": "Instellingen"
+    },
+    "Shadows": {
+        "message": "Schaduwen"
+    },
+    "Show Build Previews": {
+        "message": "Toon bouwplannen"
+    },
+    "Show Metal Spot Icons": {
+        "message": "Pictogrammen metaalafzettingen tonen"
+    },
+    "Show Order Previews": {
+        "message": "Toon Orderplannen"
+    },
+    "Show Stat Bars": {
+        "message": "Statistiekbalken tonen"
+    },
+    "Show Unit Icons": {
+        "message": "Eenheidpictogrammen tonen"
+    },
+    "Show/Hide game stats": {
+        "message": "Toon/verstop spelstatistieken"
+    },
+    "Show/Hide pip": {
+        "message": "Beeld-in-beeld tonen/verbergen"
+    },
+    "Skybox": {
+        "message": "Skybox"
+    },
+    "Sound Effects Volume": {
+        "message": "Volume geluidseffecten"
+    },
+    "Spanish": {
+        "message": "Spaans"
+    },
+    "Swedish (Community translation)": {
+        "message": "Zweeds (Community-vertaling)"
+    },
+    "Turkish (Community translation)": {
+        "message": "Turks (Community-vertaling)"
+    },
+    "USE CUSTOM NAME": {
+        "message": "AANGEPASTE NAAM GEBRUIKEN"
+    },
+    "USE STEAM NAME": {
+        "message": "STEAMNAAM GEBRUIKEN"
+    },
+    "Ukrainian (Community translation)": {
+        "message": "Oekraïens (Community-vertaling)"
+    },
+    "User": {
+        "message": "Gebruiker"
+    },
+    "User Interface": {
+        "message": "Gebruikersinterface"
+    },
+    "Username Policy": {
+        "message": "Beleid voor gebruikersnamen"
+    },
+    "VALUE DEPENDENT": {
+        "message": "WAARDE-AFHANKELIJK"
+    },
+    "Virtual Texture": {
+        "message": "Virtuele texture"
+    },
+    "Voice Volume": {
+        "message": "Stemvolume"
+    },
+    "WINDOWED": {
+        "message": "SPEEL IN WINDOWED"
+    },
+    "Zoom Speed": {
+        "message": "Zoomsnelheid"
+    },
+    "abort": {
+        "message": "afbreken"
+    },
+    "add height adjustment": {
+        "message": "hoogte aanpassing toevoegen"
+    },
+    "add landing zone": {
+        "message": "landingszone toevoegen"
+    },
+    "add metal spot": {
+        "message": "metaalplek toevoegen"
+    },
+    "add/remove": {
+        "message": "toevoegen/verwijderen"
+    },
+    "alerts": {
+        "message": "waarschuwingen"
+    },
+    "align to pole": {
+        "message": "Aligneer met polen"
+    },
+    "all chat": {
+        "message": "alle chatgesprekken"
+    },
+    "alt fire": {
+        "message": "alternatieve aanvalsmodus"
+    },
+    "assist": {
+        "message": "assisteer"
+    },
+    "attack": {
+        "message": "aanvallen"
+    },
+    "bug report": {
+        "message": "Bug rapport"
+    },
+    "build": {
+        "message": "bouwen"
+    },
+    "build avatar": {
+        "message": "avatar bouwen"
+    },
+    "build avatar factory": {
+        "message": "avatarfabriek bouwen"
+    },
+    "build bar groups": {
+        "message": "balkgroepen bouwen"
+    },
+    "build item __item_number__": {
+        "message": "item __item_number__ bouwen"
+    },
+    "build items": {
+        "message": "items bouwen"
+    },
+    "build loop": {
+        "message": "bouwlus"
+    },
+    "build once": {
+        "message": "eenmalig bouwen"
+    },
+    "build orders": {
+        "message": "bouwbevelen"
+    },
+    "camera": {
+        "message": "camera"
+    },
+    "capture anchor": {
+        "message": "Stel anker in"
+    },
+    "capture anchor __anchor_number__": {
+        "message": "anker __anchor_number__ vastleggen"
+    },
+    "capture group __group_number__": {
+        "message": "groep __group_number__ vastleggen"
+    },
+    "chronocam": {
+        "message": "chronocamera"
+    },
+    "communication": {
+        "message": "communicatie"
+    },
+    "copy selected": {
+        "message": "selectie kopiëren"
+    },
+    "copy to pip": {
+        "message": "kopiëren naar beeld-in-beeld"
+    },
+    "copy unit": {
+        "message": "eenheid kopiëren"
+    },
+    "crash": {
+        "message": "crashen"
+    },
+    "decrease camera pan speed": {
+        "message": "draaisnelheid camera verminderen"
+    },
+    "decrease sim speed": {
+        "message": "simulatiesnelheid verlagen"
+    },
+    "delete selected": {
+        "message": "selectie verwijderen"
+    },
+    "dev mode": {
+        "message": "Ontwerpersmodus"
+    },
+    "direction": {
+        "message": "richting"
+    },
+    "disable navigation debug info": {
+        "message": "navigatie-debuginfo uitschakelen"
+    },
+    "disconnect twin": {
+        "message": "tweeling ontkoppelen"
+    },
+    "dismiss alert notification": {
+        "message": "waarschuwingsbericht verwijderen"
+    },
+    "enable navigation debug info": {
+        "message": "navigatie-debuginfo in-/uitschakelen"
+    },
+    "energy off": {
+        "message": "energie uit"
+    },
+    "energy on": {
+        "message": "energie aan"
+    },
+    "fire at will": {
+        "message": "Vuur naar believen"
+    },
+    "free move backward": {
+        "message": "vrij achteruit bewegen"
+    },
+    "free move down": {
+        "message": "vrij omlaag bewegen"
+    },
+    "free move forward": {
+        "message": "vrij voorwaarts bewegen"
+    },
+    "free move left": {
+        "message": "vrij naar links bewegen"
+    },
+    "free move right": {
+        "message": "vrij naar rechts bewegen"
+    },
+    "free move up": {
+        "message": "vrij omhoog bewegen"
+    },
+    "free movement": {
+        "message": "vrij bewegen"
+    },
+    "free pitch backward": {
+        "message": "vrij achteruit hellen"
+    },
+    "free pitch forward": {
+        "message": "vrij vooruit hellen"
+    },
+    "free roll left": {
+        "message": "vrij naar links rollen"
+    },
+    "free roll right": {
+        "message": "Vrij draaien rechts"
+    },
+    "free yaw left": {
+        "message": "vrij naar links gieren"
+    },
+    "free yaw right": {
+        "message": "vrij naar rechts gieren"
+    },
+    "free zoom in": {
+        "message": "vrije zoom"
+    },
+    "free zoom out": {
+        "message": "vrij uitzoomen"
+    },
+    "general": {
+        "message": "algemeen"
+    },
+    "grab csg": {
+        "message": "csg pakken"
+    },
+    "hold fire": {
+        "message": "niet schieten"
+    },
+    "hold position": {
+        "message": "behoudt positie"
+    },
+    "increase camera pan speed": {
+        "message": "draaisnelheid camera verhogen"
+    },
+    "increase sim speed": {
+        "message": "simulatiesnelheid verhogen"
+    },
+    "jump to next planet": {
+        "message": "naar volgende planeet springen"
+    },
+    "jump to previous planet": {
+        "message": "naar vorige planeet springen"
+    },
+    "last pseudo frame": {
+        "message": "laatste pseudoframe"
+    },
+    "load": {
+        "message": "laden"
+    },
+    "maneuver": {
+        "message": "manoeuvreren"
+    },
+    "manipulate": {
+        "message": "manipuleren"
+    },
+    "medium-quality": {
+        "message": "GEMIDDELD"
+    },
+    "mode": {
+        "message": "modus"
+    },
+    "modes": {
+        "message": "modi"
+    },
+    "move": {
+        "message": "bewegen"
+    },
+    "move csg down": {
+        "message": "csg omlaag verplaatsen"
+    },
+    "move csg up": {
+        "message": "csg omhoog verplaatsen"
+    },
+    "move down": {
+        "message": "beweeg naar beneden"
+    },
+    "move left": {
+        "message": "naar links bewegen"
+    },
+    "move right": {
+        "message": "naar rechts bewegen"
+    },
+    "move up": {
+        "message": "omhoog bewegen"
+    },
+    "navigate back/exit": {
+        "message": "naar terug/sluiten navigeren"
+    },
+    "next pseudo frame": {
+        "message": "volgende pseudoframe"
+    },
+    "paste": {
+        "message": "plakken"
+    },
+    "paste unit": {
+        "message": "plak eenheden"
+    },
+    "patrol": {
+        "message": "patrouilleren"
+    },
+    "pause game": {
+        "message": "pauzeer spel"
+    },
+    "pause time": {
+        "message": "tijd pauzeren"
+    },
+    "picture-in-picture": {
+        "message": "beeld-in-beeld"
+    },
+    "ping": {
+        "message": "ping"
+    },
+    "planet jump": {
+        "message": "planeetsprong"
+    },
+    "play backwards at 10%": {
+        "message": "achteruit afspelen, 10%"
+    },
+    "play backwards at 100%": {
+        "message": "Spoel terug aan 100% snelheid"
+    },
+    "play backwards at 50%": {
+        "message": "achteruit afspelen op 50%"
+    },
+    "play forward at 100%": {
+        "message": "Vooruit afspelen op 100%"
+    },
+    "play forward at 50%": {
+        "message": "Speel aan 50% snelheid"
+    },
+    "play forwards at 10%": {
+        "message": "vooruit afspelen, 10%"
+    },
+    "publish server mods": {
+        "message": "publiceer server mods"
+    },
+    "quick profile": {
+        "message": "snel profiel"
+    },
+    "recall anchor": {
+        "message": "anker terughalen"
+    },
+    "recall anchor __anchor_number__": {
+        "message": "anker __anchor_number__ terughalen"
+    },
+    "recall group __group_number__": {
+        "message": "groep __group_number__ terughalen"
+    },
+    "reclaim": {
+        "message": "terugwinnen"
+    },
+    "reload view": {
+        "message": "weergave opnieuw laden"
+    },
+    "remove landing zone": {
+        "message": "landingszone verwijderen"
+    },
+    "remove metal spot": {
+        "message": "metaalplek verwijderen"
+    },
+    "repair": {
+        "message": "repareren"
+    },
+    "resume at latest time": {
+        "message": "op laatste moment hervatten"
+    },
+    "return fire": {
+        "message": "terugschieten"
+    },
+    "roam": {
+        "message": "vrij rondbewegen"
+    },
+    "rotate csg ccw": {
+        "message": "csg ccw draaien"
+    },
+    "rotate csg cw": {
+        "message": "csg cw draaien"
+    },
+    "scale csg down": {
+        "message": "csg verkleinen"
+    },
+    "scale csg horizontally down": {
+        "message": "csg horizontaal verkleinen"
+    },
+    "scale csg horizontally up": {
+        "message": "csg horizontaal vergroten"
+    },
+    "scale csg up": {
+        "message": "csg vergroten"
+    },
+    "scale csg vertically down": {
+        "message": "csg verticaal verkleinen"
+    },
+    "scale csg vertically up": {
+        "message": "csg verticaal vergroten"
+    },
+    "select air group": {
+        "message": "selecteer luchttroepen"
+    },
+    "select all air combat units": {
+        "message": "alle luchtgevechtseenheden selecteren"
+    },
+    "select all air combat units on screen": {
+        "message": "alle luchtgevechtseenheden op het scherm selecteren"
+    },
+    "select all combat units": {
+        "message": "alle gevechtseenheden selecteren"
+    },
+    "select all combat units on screen": {
+        "message": "alle gevechtseenheden op het scherm selecteren"
+    },
+    "select all factories": {
+        "message": "selecteer alle fabrieken"
+    },
+    "select all factories on screen": {
+        "message": "selecteer alle fabrieken op het scherm"
+    },
+    "select all idle factories": {
+        "message": "selecteer stilstaande fabrieken"
+    },
+    "select all idle factories on screen": {
+        "message": "alle niet-gebruikte fabrieken op het scherm selecteren"
+    },
+    "select all land combat units": {
+        "message": "selecteer alle landtroepen"
+    },
+    "select all land combat units on screen": {
+        "message": "alle landstrijdkrachten op het scherm selecteren"
+    },
+    "select all matching units on screen": {
+        "message": "alle overeenkomstige eenheden op het scherm selecteren"
+    },
+    "select all naval combat units": {
+        "message": "alle zeegevechtseenheden selecteren"
+    },
+    "select all naval combat units on screen": {
+        "message": "alle zeegevechtseenheden op het scherm selecteren"
+    },
+    "select all orbital combat units": {
+        "message": "alle orbitale gevechtseenheden selecteren"
+    },
+    "select all orbital combat units on screen": {
+        "message": "alle orbitale gevechtseenheden op het scherm selecteren"
+    },
+    "select ammo group": {
+        "message": "ammunitiegroep selecteren"
+    },
+    "select bot group": {
+        "message": "robotgroep selecteren"
+    },
+    "select combat group": {
+        "message": "Selecteer aanvalsgroep"
+    },
+    "select commander": {
+        "message": "commandant selecteren"
+    },
+    "select factory group": {
+        "message": "fabrieksgroep selecteren"
+    },
+    "select idle fabbers": {
+        "message": "Selecteer stilstaande fabriceerders"
+    },
+    "select orbital group (buildings)": {
+        "message": "selecteer ruimteeenheden(gebouwen)"
+    },
+    "select orbital group (units)": {
+        "message": "ruimte-eenheden selecteren (eenheden)"
+    },
+    "select sea group": {
+        "message": "selecteer zeegroep"
+    },
+    "select utility group": {
+        "message": "selecteer geniegroep"
+    },
+    "select vehicle group": {
+        "message": "voertuiggroep selecteren"
+    },
+    "self destruct selected unit": {
+        "message": "zelfvernietiging geselecteerde eenheid activeren"
+    },
+    "set army from hover": {
+        "message": "leger onder cursor vastleggen"
+    },
+    "set debug camera": {
+        "message": "stel debug camera in"
+    },
+    "set default camera": {
+        "message": "standaardcamera instellen"
+    },
+    "set free camera": {
+        "message": "vrije camera instellen"
+    },
+    "set pathable csg": {
+        "message": "bereikbare csg instellen"
+    },
+    "set planet camera": {
+        "message": "planeetcamera instellen"
+    },
+    "set pov camera": {
+        "message": "pov-camera instellen"
+    },
+    "show player guide": {
+        "message": "spelerhandleiding weergeven"
+    },
+    "show/hide UI": {
+        "message": "interface tonen/verbergen"
+    },
+    "show/hide performance panel": {
+        "message": "prestatiepaneel tonen/verbergen"
+    },
+    "show/hide visual aid overlays": {
+        "message": "toon/verstop visuele helpmiddelen"
+    },
+    "skip backward 1s": {
+        "message": "1 seconde terug"
+    },
+    "skip forward 1s": {
+        "message": "1 seconde vooruit"
+    },
+    "smooth zoom in": {
+        "message": "vloeiend inzoomen"
+    },
+    "smooth zoom out": {
+        "message": "vloeiend uitzoomen"
+    },
+    "special move": {
+        "message": "speciaal verplaatsen"
+    },
+    "stop": {
+        "message": "stoppen"
+    },
+    "swap pip": {
+        "message": "beeld-in-beeld wisselen"
+    },
+    "team chat": {
+        "message": "team-chat"
+    },
+    "terrain editor": {
+        "message": "terreineditor"
+    },
+    "toggle FOW": {
+        "message": "zichtveld in-/uitschakelen"
+    },
+    "toggle audio logging": {
+        "message": "toggle audio loggen"
+    },
+    "toggle build orders": {
+        "message": "toggle bouworders"
+    },
+    "toggle console": {
+        "message": "console in-/uitschakelen"
+    },
+    "toggle debug camera": {
+        "message": "debugcamera in-/uitschakelen"
+    },
+    "toggle edit metal spots": {
+        "message": "bewerken van metaalafzettingen in-/uitschakelen"
+    },
+    "toggle edit terrain mode": {
+        "message": "terreinbewerkingsmodus in-/uitschakelen"
+    },
+    "toggle energy orders": {
+        "message": "energiebevelen in-/uitschakelen"
+    },
+    "toggle fire orders": {
+        "message": "vuurbevelen in-/uitschakelen"
+    },
+    "toggle free camera": {
+        "message": "vrije camera in-/uitschakelen"
+    },
+    "toggle fullscreen": {
+        "message": "Wissel tussen volledig scherm"
+    },
+    "toggle move orders": {
+        "message": "toggle maneuver-orders"
+    },
+    "toggle music": {
+        "message": "muziek in-/uitschakelen"
+    },
+    "toggle nav debug": {
+        "message": "navigatiedebug in-/uitschakelen"
+    },
+    "toggle pip mirror": {
+        "message": "toggle pip spiegel"
+    },
+    "toggle pov camera": {
+        "message": "pov-camera in-/uitschakelen"
+    },
+    "toggle show water": {
+        "message": "water weergeven in-/uitschakelen"
+    },
+    "track add selection with camera": {
+        "message": "getrackte eenheden toevoegen aan selectie"
+    },
+    "track next unit with camera": {
+        "message": "volgende eenheid met camera tracken"
+    },
+    "track selection with camera": {
+        "message": "cameraselectie tracken"
+    },
+    "tracking & alignment": {
+        "message": "tracking & uitlijning"
+    },
+    "tuning": {
+        "message": "afstellen"
+    },
+    "unit capture groups": {
+        "message": "groepen eenheden vastleggen"
+    },
+    "unit commands": {
+        "message": "troepencommando's"
+    },
+    "unit orders": {
+        "message": "bevelen eenheid"
+    },
+    "unit recall groups": {
+        "message": "Roep groepen op"
+    },
+    "unit selection": {
+        "message": "Troepenselectie"
+    },
+    "units": {
+        "message": "Troepen"
+    },
+    "unload": {
+        "message": "uitladen"
+    },
+    "zoom": {
+        "message": "zoomen"
+    },
+    "zoom in": {
+        "message": "inzoomen"
+    },
+    "zoom out": {
+        "message": "uitzoomen"
+    },
+    "zoom to air": {
+        "message": "zoomen naar luchtlaag"
+    },
+    "zoom to celestial": {
+        "message": "zoomen naar stelsel"
+    },
+    "zoom to combat": {
+        "message": "zoomen naar gevecht"
+    },
+    "zoom to orbital": {
+        "message": "zoomen naar ruimteschil"
+    },
+    "zoom to surface": {
+        "message": "zoom naar de oppervlakte"
+    },
+    "SELECTED OR ALL": {
+        "message": "SELECTIE OF ALLES"
+    },
+    "EXTRA MOUSE BUTTON 4": {
+        "message": "EXTRA MUISKNOP 4"
+    },
+    "EXTRA MOUSE BUTTON 5": {
+        "message": "EXTRA MUISKNOP 5"
+    },
+    "MIDDLE MOUSE BUTTON 3": {
+        "message": "MIDDELSTE MUISKNOP 3"
+    },
+    "MIDDLE MOUSE OR EXTRA BUTTONS": {
+        "message": "MIDDENMUISKNOP OF EXTRA KNOPPEN"
+    },
+    "Mouse Pan Button": {
+        "message": "Muis-panknop"
+    }
+}

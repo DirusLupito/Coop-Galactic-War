@@ -1,0 +1,59 @@
+{
+    "Account Name:": {
+        "message": "Tunnuksen nimi:"
+    },
+    "Armory": {
+        "message": "Asevarasto"
+    },
+    "Badges": {
+        "message": "Merkit"
+    },
+    "Cancel": {
+        "message": "Peruuta"
+    },
+    "Cart": {
+        "message": "Ostoskori"
+    },
+    "Commanders": {
+        "message": "Komentajat"
+    },
+    "Confirmation code:": {
+        "message": "Varmistuskoodi:"
+    },
+    "Continue Shopping": {
+        "message": "Jatka ostoksia"
+    },
+    "Credit applied:": {
+        "message": "Credit applied:"
+    },
+    "Go to Main Menu": {
+        "message": "Palaa Päävalikkoon"
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter-tukija"
+    },
+    "Price": {
+        "message": "Hinta"
+    },
+    "REMOVE": {
+        "message": "POISTA"
+    },
+    "Redeem": {
+        "message": "Syötä koodi"
+    },
+    "Return to Armory": {
+        "message": "Palaa Asevarastoon"
+    },
+    "Set As Default Commander": {
+        "message": "Aseta oletuskomentajaksi"
+    },
+    "Total:": {
+        "message": "Yhteensä:"
+    },
+    "Updating...": {
+        "message": "Päivitetään..."
+    },
+    "Your cart is empty.": {
+        "message": "Ostoskorisi on tyhjä."
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "Arrow Keys to rotate around planet": {
+        "message": "Pijltjestoetsen om de planeet te roteren"
+    },
+    "Basic Camera Controls": {
+        "message": "Basisbesturing camera"
+    },
+    "Go between planets using planet menu (upper right of screen)": {
+        "message": "Wissel tussen planeten via het planeetmenu (rechtsboven in het scherm)"
+    },
+    "Hold Mouse Wheel, drag to pan view": {
+        "message": "Houd het muiswiel ingedrukt, sleep om het beeld te bewegen"
+    },
+    "PA Guide: Basic Controls": {
+        "message": "PA-handleiding: Basisbesturing"
+    },
+    "Scroll Mouse Wheel to zoom in and out": {
+        "message": "Scroll het muiswiel om in en uit te zoomen"
+    }
+}

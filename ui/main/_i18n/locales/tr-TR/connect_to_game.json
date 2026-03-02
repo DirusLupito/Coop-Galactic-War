@@ -1,0 +1,26 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "SUNUCUYLA BAĞLANTI BAŞARISIZ"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "SUNUCUYLA BAĞLANTI KAYBOLDU"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "OYUNA GİRİŞ SAĞLANAMADI"
+    },
+    "FAILED TO START GAME": {
+        "message": "OYUN BAŞLATILAMADI"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "TEKRARIN BAŞLATILMASI GERÇEKLEŞTİRİLEMEDİ"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "SUNUCUYA BAGLANTI KABUL EDİLDİ"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "SUNUCUYA BAĞLANTI REDDEDİLDİ"
+    },
+    "Returning to Main Menu": {
+        "message": "Ana Menüye Geri Dönülüyor"
+    }
+}

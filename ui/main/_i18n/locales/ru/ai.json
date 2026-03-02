@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "Абсурдный"
+    },
+    "Absurd Testing": {
+        "message": "Абсурдный (тестирование)"
+    },
+    "Easy": {
+        "message": "Легкий"
+    },
+    "Hard": {
+        "message": "Тяжелый"
+    },
+    "Idle": {
+        "message": "Свободный"
+    },
+    "Normal": {
+        "message": "Обычный"
+    },
+    "Relentless": {
+        "message": "Неугомонный"
+    }
+}

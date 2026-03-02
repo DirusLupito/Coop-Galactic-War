@@ -1,0 +1,83 @@
+{
+    "Accept": {
+        "message": "Kabul et"
+    },
+    "Appear Offline": {
+        "message": "Çevrimdışı gözüküyor"
+    },
+    "Away": {
+        "message": "Dışarda"
+    },
+    "Block": {
+        "message": "Engelle"
+    },
+    "CANCEL": {
+        "message": "İPTAL"
+    },
+    "CHANGE": {
+        "message": "DEĞİŞTİR"
+    },
+    "Change Display Name": {
+        "message": "Ekran ismini değiştir?"
+    },
+    "Change your display name?": {
+        "message": "Ekran ismini değiştir?"
+    },
+    "Chat": {
+        "message": "Sohbet"
+    },
+    "Do Not Disturb": {
+        "message": "Rahatsız etmeyin"
+    },
+    "Friends": {
+        "message": "ARKADAŞLAR"
+    },
+    "Ignore": {
+        "message": "Yok say"
+    },
+    "Invite to Chat": {
+        "message": "Sohbete Davet Et"
+    },
+    "Invite to game": {
+        "message": "Oyuna davet et"
+    },
+    "Join Game": {
+        "message": "Oyuna katıl"
+    },
+    "New Display Name:": {
+        "message": "Yeni Ekran Adı:"
+    },
+    "No pending notifications.": {
+        "message": "Sırada olan bilgilendirmeler yok."
+    },
+    "Offline": {
+        "message": "Çevrimdışı"
+    },
+    "Online": {
+        "message": "Çevrimiçi"
+    },
+    "Pending Invite": {
+        "message": "Davet işleme alınıyor"
+    },
+    "Recent": {
+        "message": "En yeni"
+    },
+    "Remove": {
+        "message": "Çıkar"
+    },
+    "Search Results": {
+        "message": "Arama Sonuçları"
+    },
+    "Send Friend Request": {
+        "message": "Arkadaş İsteği Gönder"
+    },
+    "Unblock": {
+        "message": "Engellemeyi kaldır"
+    },
+    "Unfriend": {
+        "message": "Arkadaş olmayan"
+    },
+    "Users": {
+        "message": "Kullanıcılar"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "AI Skirmish"
+    }, 
+    "Cancel": {
+        "message": "Cancel"
+    }, 
+    "Delete": {
+        "message": "Delete"
+    }, 
+    "Galactic War": {
+        "message": "Galactic War"
+    }, 
+    "Game": {
+        "message": "Game"
+    }, 
+    "Last Saved": {
+        "message": "Last Saved"
+    }, 
+    "OK": {
+        "message": "OK"
+    }, 
+    "Resume Game": {
+        "message": "Resume Game"
+    }, 
+    "Saved Games": {
+        "message": "Saved Games"
+    }, 
+    "Switch to": {
+        "message": "Switch to "
+    }, 
+    "Type": {
+        "message": "Type"
+    }, 
+    "mode?": {
+        "message": "mode?"
+    }
+}

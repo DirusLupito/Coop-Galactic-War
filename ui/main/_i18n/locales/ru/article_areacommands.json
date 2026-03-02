@@ -1,0 +1,20 @@
+{
+    "Area Commands": {
+        "message": "Команды на участках"
+    },
+    "PA Guide: Area Commands": {
+        "message": "Руководство PA: Команды на участках"
+    },
+    "Select units, click [style=text_callout]Attack button[/style].": {
+        "message": "Выберите единицы и нажмите [style=text_callout]Кнопку атаки[/style]."
+    },
+    "Select units, click [style=text_callout]Patrol button[/style].": {
+        "message": "Выберите единицы и нажмите [style=text_callout]Кнопку патрулирования[/style]."
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to attack": {
+        "message": "[style=text_callout]Нажмите ЛКМ и выделите[/style] участок атаки"
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to patrol": {
+        "message": "[style=text_callout]Нажмите ЛКМ и выделите[/style] участок патрулирования"
+    }
+}

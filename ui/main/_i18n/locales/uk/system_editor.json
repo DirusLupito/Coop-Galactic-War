@@ -1,0 +1,80 @@
+{
+    "Accept": {
+        "message": "Прийняти"
+    },
+    "CLEAR SYSTEM": {
+        "message": "ОЧИСТИТИ СИСТЕМУ"
+    },
+    "CLOSE": {
+        "message": "ЗАКРИТИ"
+    },
+    "Cancel": {
+        "message": "Скасувати"
+    },
+    "Discard": {
+        "message": "Відмовитись"
+    },
+    "Do you want to save this system?": {
+        "message": "Зберегти цю систему?"
+    },
+    "EDIT PLANET": {
+        "message": "РЕДАГУВАТИ ПЛАНЕТУ"
+    },
+    "HIDE": {
+        "message": "ПРИХОВАТИ"
+    },
+    "MY PLANETS": {
+        "message": "МОЇ ПЛАНЕТИ"
+    },
+    "Mass": {
+        "message": "МАСА"
+    },
+    "PREVIEW ALL": {
+        "message": "ПЕРЕДОГЛЯНУТИ ВСІХ"
+    },
+    "Position": {
+        "message": "ПОЗИЦІЯ"
+    },
+    "RECENT": {
+        "message": "НЕДАВНІ"
+    },
+    "REMOVE": {
+        "message": "ВИДАЛИТИ"
+    },
+    "SAVE SYSTEM": {
+        "message": "ЗБЕРЕГТИ СИСТЕМУ"
+    },
+    "SHOW": {
+        "message": "ПОКАЗАТИ"
+    },
+    "SIMULATE": {
+        "message": "СИМУЛЯЦІЯ"
+    },
+    "Save": {
+        "message": "Зберегти"
+    },
+    "TEMPLATES": {
+        "message": "ШАБЛОНИ"
+    },
+    "Temp": {
+        "message": "Темпер."
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Планета завантажується. Це може зайняти довгий час."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Програма не буде відповідати доки планета не згенерується."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Система була змінена з часу останнього збереження."
+    },
+    "The system has not been saved.": {
+        "message": "Система не була збережена."
+    },
+    "Velocity": {
+        "message": "ШВИДКІСТЬ"
+    },
+    "Water": {
+        "message": "Вода"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "Arrow Keys to rotate around planet": {
+        "message": "用方向键来旋转星球"
+    },
+    "Basic Camera Controls": {
+        "message": "关于镜头操控的基础知识"
+    },
+    "Go between planets using planet menu (upper right of screen)": {
+        "message": "屏幕右上角的星球菜单可用来切换星球"
+    },
+    "Hold Mouse Wheel, drag to pan view": {
+        "message": "按住鼠标滚轮并拖动鼠标，即可平移视角"
+    },
+    "PA Guide: Basic Controls": {
+        "message": "PA 指南：基本操作"
+    },
+    "Scroll Mouse Wheel to zoom in and out": {
+        "message": "滚动鼠标滚轮来放大和缩小"
+    }
+}

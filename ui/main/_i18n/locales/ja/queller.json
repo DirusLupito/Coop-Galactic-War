@@ -1,0 +1,44 @@
+{
+    "Q-Bronze": {
+        "message": "Q-Bronze"
+    },
+    "Q-Casual": {
+        "message": "Q-カジュアル"
+    },
+    "Q-Gold": {
+        "message": "Q-Gold"
+    },
+    "Q-Platinum": {
+        "message": "Q-Platinum"
+    },
+    "Q-Silver": {
+        "message": "Q-Silver"
+    },
+    "Q-Uber": {
+        "message": "Q-Uber"
+    },
+    "Q-Uber 1v1": {
+        "message": "Q-Uber 1v1"
+    },
+    "Q-Uber Bot": {
+        "message": "Q-Uber ボット"
+    },
+    "Q-Uber Free-For-All": {
+        "message": "Q-Uber Free-For-All"
+    },
+    "Q-Uber Rush": {
+        "message": "Q-Uber ラッシュ"
+    },
+    "Q-Uber Tank": {
+        "message": "Q-Uber タンク"
+    },
+    "Q-Uber Turtle": {
+        "message": "Q-Uber タートル"
+    },
+    "Queller AI": {
+        "message": "クエラー（Q） AI"
+    },
+    "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion.": {
+        "message": "Quitch提供。この難易度は頭に「Q」が付く。AIチームを人間チームより多くしないように。難易度か経済率を上げることで調節すべし。Legion Expansionに対応"
+    }
+}

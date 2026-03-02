@@ -1,0 +1,104 @@
+{
+    "APPROVE": {
+        "message": "승인"
+    },
+    "APPROVED USERS": {
+        "message": "승인된 사용자"
+    },
+    "Add": {
+        "message": "추가"
+    },
+    "Add Contacts": {
+        "message": "연락처 추가"
+    },
+    "Add a Friend": {
+        "message": "친구 추가"
+    },
+    "BLOCK": {
+        "message": "차단"
+    },
+    "BLOCKED USERS": {
+        "message": "차단된 사용자"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Contact List Updated": {
+        "message": "연락처 목록 업데이트됨"
+    },
+    "Contact Not Found": {
+        "message": "연락처를 찾을 수 없음"
+    },
+    "Current Nickname:": {
+        "message": "현재 별명:"
+    },
+    "Dismiss": {
+        "message": "닫기"
+    },
+    "Filter contacts by tag:": {
+        "message": "태그로 연락처 필터링:"
+    },
+    "Games you make will be hidden to these players.": {
+        "message": "이 플레이어들에게는 당신이 생성하는 게임이 숨겨집니다."
+    },
+    "Name:": {
+        "message": "이름: "
+    },
+    "New Nickname:": {
+        "message": "새 별명: "
+    },
+    "New Tag:": {
+        "message": "새 태그: "
+    },
+    "Players you have encountered recently.": {
+        "message": "최근에 만났던 플레이어들입니다."
+    },
+    "Private games you make will only be visible to these players.": {
+        "message": "생성한 비공개 게임이 이 플레이어들에게만 보여집니다."
+    },
+    "RECENT": {
+        "message": "최근"
+    },
+    "REMOVE": {
+        "message": "제거"
+    },
+    "RENAME": {
+        "message": "이름 변경"
+    },
+    "Refresh Contacts": {
+        "message": "연락처 갱신"
+    },
+    "Refreshing friends list.....": {
+        "message": "친구 목록 갱신 중..."
+    },
+    "Rename": {
+        "message": "이름 변경"
+    },
+    "Rename Friend": {
+        "message": "친구 이름 변경"
+    },
+    "SOCIAL": {
+        "message": "소셜"
+    },
+    "Tag": {
+        "message": "태그"
+    },
+    "Tag Friend:": {
+        "message": "친구 태그: "
+    },
+    "Tags:": {
+        "message": "태그: "
+    },
+    "UBERDEX": {
+        "message": "UBERDEX"
+    },
+    "Uber Name": {
+        "message": "우버 사용자"
+    },
+    "or": {
+        "message": "또는"
+    }
+}

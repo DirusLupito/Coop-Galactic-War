@@ -1,0 +1,32 @@
+{
+    "Difficulty:": {
+        "message": "Sværhed:"
+    },
+    "EPIC": {
+        "message": "EPISK"
+    },
+    "Go to War": {
+        "message": "Gå i Krig"
+    },
+    "HARD": {
+        "message": "SVÆR"
+    },
+    "MEDIUM": {
+        "message": "MELLEM"
+    },
+    "Name": {
+        "message": "Navn"
+    },
+    "SMALL": {
+        "message": "LILLE"
+    },
+    "Seed Value": {
+        "message": "Frø Værdi"
+    },
+    "Size:": {
+        "message": "Størrelse:"
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Teknologi kan blive slettet for at lave plads til nye nogle at downloade. Slettede og afviste teknologier er tabt for resten af Den Galaktiske Krig."
+    }
+}

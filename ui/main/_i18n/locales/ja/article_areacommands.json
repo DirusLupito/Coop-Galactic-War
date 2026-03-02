@@ -1,0 +1,20 @@
+{
+    "Area Commands": {
+        "message": "エリアコマンド"
+    },
+    "PA Guide: Area Commands": {
+        "message": "PAガイド: エリアコマンド"
+    },
+    "Select units, click [style=text_callout]Attack button[/style].": {
+        "message": "ユニットを選択して [style=text_callout]攻撃ボタン[/style] をクリック"
+    },
+    "Select units, click [style=text_callout]Patrol button[/style].": {
+        "message": "ユニットを選択して [style=text_callout]パトロールボタン[/style]をクリック"
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to attack": {
+        "message": "エリアを [style=text_callout]左クリック＆ドラッグ[/style] で攻撃"
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to patrol": {
+        "message": "エリアを [style=text_callout]左クリック＆ドラッグ[/style] でパトロール"
+    }
+}

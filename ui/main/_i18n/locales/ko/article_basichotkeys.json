@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "중요 단축키"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "PA 가이드: 기본 단축키"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 지휘관 선택"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 시야 범위 안에서 현재 선택된 유닛과 같은 종류의 유닛을 모두 선택"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 화면 안의 비활동 건설 유닛들을 선택"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 에너지 명령 전환"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 생산 전환"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 선택된 유닛으로 시점 확대"
+    }
+}

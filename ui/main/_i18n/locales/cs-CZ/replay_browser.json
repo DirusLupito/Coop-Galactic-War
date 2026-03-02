@@ -1,0 +1,50 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Aktualizace...)"
+    },
+    "(no info available)": {
+        "message": "(nejsou k dispozici žádné informace)"
+    },
+    "Duration": {
+        "message": "Trvání"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "Nepodařilo se nahrát záznamový list."
+    },
+    "Game": {
+        "message": "Hra"
+    },
+    "Lobby Id": {
+        "message": "Místnost č."
+    },
+    "Longest Game Duration": {
+        "message": "Nejdelší trvání hry"
+    },
+    "Most Recent": {
+        "message": "Nejnovější"
+    },
+    "Replays": {
+        "message": "Záznamy"
+    },
+    "Returning to Main Menu": {
+        "message": "Návrat do Hlavního Menu"
+    },
+    "Search": {
+        "message": "Hledat"
+    },
+    "Sorted By": {
+        "message": "Řazeno podle"
+    },
+    "View": {
+        "message": "Prohlížet"
+    },
+    "Watch Replay": {
+        "message": "Sledovat záznam"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galaktická válka \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

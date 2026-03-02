@@ -1,0 +1,83 @@
+{
+    "AI Skirmish": {
+        "message": "Escaramuça IA"
+    },
+    "Armory": {
+        "message": "Arsenal"
+    },
+    "Connecting to PA": {
+        "message": "Conectando ao PA"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Comandantes Cosmic Edition"
+    },
+    "Extra special thanks to our:": {
+        "message": "Um obrigado especial para os nossos:"
+    },
+    "Founding Commanders": {
+        "message": "Comandantes fundadores"
+    },
+    "Galactic War": {
+        "message": "Guerra galáctica"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Usuário ou senha incorretos. Por favor verifique e tente novamente."
+    },
+    "Multiplayer": {
+        "message": "Multijogador"
+    },
+    "New Build Available:": {
+        "message": "Nova atualização disponível:"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Nada disso seria possível sem a sua generosidade, e nós estamos gratos por aceitar o desafio e acreditar em nossa visão."
+    },
+    "Password": {
+        "message": "Senha"
+    },
+    "Please choose a default region.": {
+        "message": "Por favor escolha uma região padrão."
+    },
+    "Quit": {
+        "message": "Sair"
+    },
+    "Replays": {
+        "message": "Reprises"
+    },
+    "Settings": {
+        "message": "Configurações"
+    },
+    "Sign in": {
+        "message": "Entrar"
+    },
+    "Single Player": {
+        "message": "Jogo Solo"
+    },
+    "System Designer": {
+        "message": "Projetar Sistema"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Não há regiões disponíveis para a versão do seu jogo."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Para aqueles que contribuíram em nossa campanha Kickstarter, gostaríamos de agradecer por todo o suporte."
+    },
+    "Unable to Sign In": {
+        "message": "Não foi possível conectar"
+    },
+    "Username": {
+        "message": "Nome de usuário"
+    },
+    "Version:": {
+        "message": "Versão:"
+    },
+    "You are already assigned to a game.": {
+        "message": "Você já está em um jogo."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Você pode alterar a região posteriormente, no menu de configurações."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Você precisa de uma versão nova para rodar o jogo. Usuários Steam precisam reiniciar o Steam para obter a atualização."
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "YHTEYDENOTTO PALVELIMEEN EPÄONNISTUI"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "YHTEYS PALVELIMEEN KATKESI"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "PELIIN LIITTYMINEN EPÄONNISTUI"
+    },
+    "FAILED TO START GAME": {
+        "message": "PELIN ALOITTAMINEN EPÄONNISTUI"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "KIRJAUTUMINEN HYVÄKSYTTY"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "KIRJAUTUMINEN PALVELIMELLE HYLÄTTIIN"
+    },
+    "Returning to Main Menu": {
+        "message": "Palataan päävalikkoon"
+    }
+}

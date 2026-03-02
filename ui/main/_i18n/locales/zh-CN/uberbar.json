@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "接受"
+    },
+    "Appear Offline": {
+        "message": "\n                                                    显示为离线\n                                                "
+    },
+    "Away": {
+        "message": "\n                                                    离开\n                                                "
+    },
+    "Block": {
+        "message": "阻止"
+    },
+    "Buy Expansion": {
+        "message": "购买扩展内容"
+    },
+    "CANCEL": {
+        "message": "取消"
+    },
+    "CHANGE": {
+        "message": "更改"
+    },
+    "CHAT": {
+        "message": "聊天"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Change Display Name": {
+        "message": "\n                                                    更改显示名称\n                                                "
+    },
+    "Change your display name?": {
+        "message": "更改你的显示名称？"
+    },
+    "Chat": {
+        "message": "聊天"
+    },
+    "Date": {
+        "message": "日期"
+    },
+    "Do Not Disturb": {
+        "message": "\n                                                    请勿打扰\n                                                "
+    },
+    "Enter a status message": {
+        "message": "输入状态消息"
+    },
+    "Friends": {
+        "message": "好友"
+    },
+    "Ignore": {
+        "message": "忽略"
+    },
+    "Invite to Chat": {
+        "message": "邀请聊天"
+    },
+    "Invite to game": {
+        "message": "邀请加入战局"
+    },
+    "Join Game": {
+        "message": "加入战局"
+    },
+    "New Display Name:": {
+        "message": "新的显示名称："
+    },
+    "No pending notifications.": {
+        "message": "没有待处理的通知。"
+    },
+    "Offline": {
+        "message": "离线"
+    },
+    "Online": {
+        "message": "\n                                                    在线\n                                                "
+    },
+    "Pending Invite": {
+        "message": "待处理的邀请"
+    },
+    "REMOVE": {
+        "message": "移除"
+    },
+    "Recent": {
+        "message": "最近"
+    },
+    "Remove": {
+        "message": "移除"
+    },
+    "Replays": {
+        "message": "回放"
+    },
+    "Required Expansion Pack": {
+        "message": "必需的扩展包"
+    },
+    "Search Players": {
+        "message": "搜索玩家"
+    },
+    "Search Results": {
+        "message": "搜索结果"
+    },
+    "Send Friend Request": {
+        "message": "发送好友请求"
+    },
+    "Tags:": {
+        "message": "标签："
+    },
+    "The game you are trying to join requires the [style=content_description]__content_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "你想要加入的游戏需要《Planetary Annihilation》的[style=content_description]__content_name__[/style]扩展内容。"
+    },
+    "Unblock": {
+        "message": "取消阻止"
+    },
+    "Unfriend": {
+        "message": "删除好友"
+    },
+    "Users": {
+        "message": "用户"
+    },
+    "__display_name__ invited you to a game.": {
+        "message": "__display_name__邀请你参加一场比赛。"
+    },
+    "__display_name__ invited you to chat.": {
+        "message": "__display_name__邀请你进入一个聊天频道。"
+    },
+    "__display_name__ wants to be your friend.": {
+        "message": "__display_name__想成为你的朋友。"
+    }
+}

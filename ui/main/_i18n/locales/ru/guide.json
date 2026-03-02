@@ -1,0 +1,38 @@
+{
+    "Area Commands": {
+        "message": "Команды на участках"
+    },
+    "Basic Camera Controls": {
+        "message": "Основные элементы управления камерой"
+    },
+    "Clicking": {
+        "message": "Нажатия кнопок мыши"
+    },
+    "Close": {
+        "message": "Закрыть"
+    },
+    "Commander Basics": {
+        "message": "Коммандеры"
+    },
+    "Economy and Resources": {
+        "message": "Экономика и ресурсы"
+    },
+    "Energy Resources": {
+        "message": "Энергия"
+    },
+    "Fabrication Units": {
+        "message": "Фабрикаторы"
+    },
+    "Factories": {
+        "message": "Заводы"
+    },
+    "Important Hotkeys": {
+        "message": "Важные горячие клавиши"
+    },
+    "Metal Resources": {
+        "message": "Металл"
+    },
+    "Player Guide": {
+        "message": "Руководство игрока"
+    }
+}

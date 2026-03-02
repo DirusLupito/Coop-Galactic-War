@@ -1,0 +1,653 @@
+{
+    "Advanced Air Factory": {
+        "message": "高级空军工厂"
+    },
+    "Advanced Anti-Air Turret - Fires homing rockets which deal splash damage. Only attacks air targets.": {
+        "message": "高级防空炮塔 - 可发射跟踪导弹，造成溅射伤害。只能攻击空中目标。"
+    },
+    "Advanced Anti-Air Walker - High damage precision laser strikes. Only attacks air targets.": {
+        "message": "高级防空步行机 - 可进行精准激光打击，造成严重伤害。只能攻击空中目标。"
+    },
+    "Advanced Armour Fabricator": {
+        "message": "高级装甲建造兵"
+    },
+    "Advanced Armour Foundry": {
+        "message": "高级装甲铸造厂"
+    },
+    "Advanced Artillery - Very accurate. High splash damage. Attacks land, sea and seabed targets.": {
+        "message": "高级炮兵 - 非常精准。溅射伤害高。可攻击地面、海上和海底目标。"
+    },
+    "Advanced Bot Factory": {
+        "message": "高级机器人工厂"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds air titan. Very mobile. Vulnerable. Less efficient than other builders.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。可建造空中泰坦。机动性很强。易受伤害。比其他建造兵效率要低。"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds bot titan. Cheap. Less powerful than other builders.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。可建造机器人泰坦。价格低廉。比其他建造兵要弱。"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds vehicle titan. Durable. More powerful than other land and air builders.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。可建造载具泰坦。结实。比其他陆地和空中建造兵要强。"
+    },
+    "Advanced Builder - Builds orbital structures. Builds all titans.": {
+        "message": "高级建造兵 - 可建造轨道建筑物。可建造所有泰坦。"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "高级作战建造兵 - 维修速度大幅提升，且可自动回收残骸。除地雷外还可建造传送站和炮塔。"
+    },
+    "Advanced Economy - Fabricates black holes and harnesses their energy. Explodes on death, damaging friend and foe.": {
+        "message": "高级经济 - 可制造黑洞并利用它们的能量。死亡时会爆炸，对敌友双方均会造成伤害。"
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "高级经济 - 可生产金属。只能放置在金属矿床上。"
+    },
+    "Advanced Economy - Produces metal. Can only be placed on metal deposits. Can share a metal deposit with a Mass Extractor.": {
+        "message": "高级经济 - 可生产金属。只能放置在金属矿床上。可与一个质量开采装置共用一个金属矿床。"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "高级建造飞行器"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "高级建造机器人"
+    },
+    "Advanced Fabrication Flyer": {
+        "message": "高级建造飞行机"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "高级建造舰"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "高级建造车"
+    },
+    "Advanced Fabrication Vessel": {
+        "message": "高级建造船"
+    },
+    "Advanced Fabrication Walker": {
+        "message": "高级建造步行机"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。"
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "高级建造兵 - 可建造初级和高级海军建筑物。"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "高级建造兵 - 可建造初级和高级建筑物。结实。比其他制造兵要强。"
+    },
+    "Advanced Flyer Foundry": {
+        "message": "高级飞行机铸造厂"
+    },
+    "Advanced Frigate - Long range. High damage. Attacks land, air, sea, and orbital targets.": {
+        "message": "高级护卫舰 - 射程远。伤害高。可攻击地面、空中、海上和轨道目标。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "高级制造 - 可制造初级和高级空军单位。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "高级制造 - 可制造初级和高级机器人。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "高级制造 - 可制造初级和高级地面载具。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "高级制造 - 可制造初级和高级海军单位。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced orbital units.": {
+        "message": "高级制造 - 可制造初级和高级轨道单位。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced ships.": {
+        "message": "高级制造 - 可制造初级和高级舰船。"
+    },
+    "Advanced Manufacturing - Builds basic and advanced tanks.": {
+        "message": "高级制造 - 可制造初级和高级坦克。"
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "高级制造 - 可制造轨道卫星和飞船。"
+    },
+    "Advanced Mass Extractor": {
+        "message": "高级质量开采装置"
+    },
+    "Advanced Metal Extractor": {
+        "message": "高级金属开采装置"
+    },
+    "Advanced Naval Factory": {
+        "message": "高级海军工厂"
+    },
+    "Advanced Power Catalyst": {
+        "message": "高级电催化剂"
+    },
+    "Advanced Radar - Long-range enemy unit detection. Requires energy.": {
+        "message": "高级雷达 - 可远距离探测敌军单位。需要能量。"
+    },
+    "Advanced Radar Satellite - Long-range enemy unit detection. Requires energy. Attacks land and sea targets.": {
+        "message": "高级雷达卫星 - 可远距离探测敌军单位。需要能量。可攻击地面和海上目标。"
+    },
+    "Advanced Ship Foundry": {
+        "message": "高级舰船铸造厂"
+    },
+    "Advanced Stealth Scout - Launches a sneaky spy camera. Invisible to radar. Consumes energy. Can move between planets.": {
+        "message": "高级潜行侦察兵 - 可发射一枚隐蔽间谍摄像头。无法被雷达探测到。需要消耗能量。可在星球间移动。"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "高级载具工厂"
+    },
+    "Advanced Walker Foundry": {
+        "message": "高级步行机铸造厂"
+    },
+    "Advanced Wave Turret - Attacks sea, seabed and undersea targets.": {
+        "message": "高级海浪炮塔 - 可攻击海上、海底及海中目标。"
+    },
+    "Air Factory": {
+        "message": "空军工厂"
+    },
+    "Anti-Air Turret - Equipped with homing tracer rounds. Only attacks air targets.": {
+        "message": "防空炮塔 - 配有跟踪曳光弹。只能攻击空中目标。"
+    },
+    "Anti-Air Walker - Equipped with homing missiles. Only attacks air targets.": {
+        "message": "防空步行机 - 配有跟踪导弹。只能攻击空中目标。"
+    },
+    "Anti-Nuke Launcher - Space for four advanced anti-nuclear missile weapons.": {
+        "message": "反核武器发射器 - 提供放置四个高级反核导弹武器的空间。"
+    },
+    "Anti-Nuke Missile - Intercepts and destroys incoming nuclear missiles.": {
+        "message": "反核导弹 - 可拦截并摧毁来袭的核导弹。"
+    },
+    "Anti-Orbital Turret - Attacks orbital targets and drop pods.": {
+        "message": "反轨道炮塔 - 可攻击轨道目标和空投舱。"
+    },
+    "Armour Fabricator": {
+        "message": "装甲建造兵"
+    },
+    "Armour Foundry": {
+        "message": "装甲铸造厂"
+    },
+    "Artillery - Medium range. Attacks land, sea, seabed and underwater targets.": {
+        "message": "火炮 - 射程中等。可攻击地面、海上、海底及水下目标。"
+    },
+    "Assault Tank - Heavily armored. Splash damage. Attacks land, sea and seabed targets.": {
+        "message": "突击坦克 - 配有厚重的装甲。溅射伤害。可攻击地面、海上和海底目标。"
+    },
+    "Assault Titan - High splash damage for dealing with large armies. Attacks land, air, sea and seabed targets.": {
+        "message": "突击泰坦 - 对付大型敌人时溅射伤害高。可攻击地面、空中、海上和海底目标。"
+    },
+    "Assault Walker - High DPS. Attacks land, sea and seabed targets.": {
+        "message": "突击步行机 - 高 DPS。可攻击地面、海上和海底目标。"
+    },
+    "Auxiliary Commander - Can build advanced structures. Heavily armored. High damage. Attacks any targets except orbital.": {
+        "message": "辅助指挥官 - 可建造高级建筑物。配有厚重的装甲。伤害高。可攻击除轨道外的一切目标。"
+    },
+    "Basic Economy - Generates power.": {
+        "message": "初级经济 - 可产生电力。"
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "初级经济 - 可生产金属。只能放置在金属矿床上。"
+    },
+    "Basic Economy - Produces metal. Can only be placed on metal deposits. Can share a metal deposit with an Advanced Mass Extractor.": {
+        "message": "初级经济 - 可生产金属。只能放置在金属矿床上。可与一个高级质量开采装置共用一个金属矿床。"
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "初级建造兵 - 可建造初级建筑物。"
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "初级建造兵 - 可建造初级建筑物。比其他建造兵要弱。"
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "初级建造兵 - 可建造初级海军建筑物。可在水面上悬停。"
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "初级建造兵 - 可建造初级建筑物。结实。比其他建造兵要强。"
+    },
+    "Basic Infantry - Durable. Amphibious. Attacks land, sea and seabed targets.": {
+        "message": "初级步兵 - 结实。水陆两用。可攻击地面、海上和海底目标。"
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "初级制造 - 可制造和发射初级轨道单位。"
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "初级制造 - 可制造初级空中单位。"
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "初级制造 - 可制造初级机器人。"
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "初级制造 - 可制造初级地面载具。"
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "初级制造 - 可制造初级海军单位。"
+    },
+    "Basic Manufacturing - Builds basic orbital units.": {
+        "message": "初级制造 - 可制造初级轨道单位。"
+    },
+    "Basic Manufacturing - Builds basic ships.": {
+        "message": "初级制造 - 可制造初级舰船。"
+    },
+    "Basic Manufacturing - Builds basic tanks.": {
+        "message": "初级制造 - 可制造初级坦克。"
+    },
+    "Basic Radar - Short-range enemy unit detection. Requires energy.": {
+        "message": "初级雷达 - 可近距离探测敌军单位。需要能量。"
+    },
+    "Basic Radar Satellite - Short-range enemy unit detection. Requires energy.": {
+        "message": "初级雷达卫星 - 可近距离探测敌军单位。需要能量。"
+    },
+    "Battleship - High damage. Heavily armored. Long range. Attacks land and sea targets.": {
+        "message": "战舰 - 伤害高。配有厚重的装甲。射程远。可攻击地面和海上目标。"
+    },
+    "Bomber - High damage to a single target. Attacks land, sea, seabed and undersea targets.": {
+        "message": "轰炸机 - 伤害高，针对单一目标。可攻击地面、海上、海底和海中目标。"
+    },
+    "Bot Factory": {
+        "message": "机器人工厂"
+    },
+    "Builder - Builds advanced structures. Most powerful fabricator.": {
+        "message": "建造兵 - 可建造高级建筑物。所有建造兵中最强的一种。"
+    },
+    "Builder - Builds basic structures. Cheap. Less powerful than other builders.": {
+        "message": "建造兵 - 可建造初级建筑物。价格低廉。比其他建造兵要弱。"
+    },
+    "Builder - Builds basic structures. Durable. More powerful than other basic land and air builders.": {
+        "message": "建造兵 - 可建造初级建筑物。结实。比其他初级地面和空中建造兵要强。"
+    },
+    "Builder - Builds basic structures. Most powerful basic planetary fabricator.": {
+        "message": "建造兵 - 可建造初级建筑物。所有初级星球建造兵中最强的一种。"
+    },
+    "Builder - Builds basic structures. Very mobile. Vulnerable. Less efficient than other builders.": {
+        "message": "建造兵 - 可建造初级建筑物。机动性很强。易受伤害。比其他建造兵效率要低。"
+    },
+    "Camera Target": {
+        "message": "镜头目标"
+    },
+    "Carrier - Launches fast-flying drones at enemies. Attacks land, air and sea targets.": {
+        "message": "航母 - 可向敌军发射高速飞行的无人机。可攻击地面、空中和海上目标。"
+    },
+    "Catalyst": {
+        "message": "催化剂"
+    },
+    "Combat Builder - Builds mines, radar and teleporters. Detects mines. Repairs friendly units. Can't help build other structures.": {
+        "message": "作战建造兵 - 可建造地雷、雷达和传送站。可探测地雷。可维修友军单位。无法建造其他建筑物。"
+    },
+    "Combat Builder - Builds mines, shields and turrets. Detects mines. Repairs friendly units. Can't help build other structures.": {
+        "message": "作战建造兵 - 可建造地雷、护盾和炮塔。可探测地雷。可维修友军单位。无法建造其他建筑物。"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "作战建造兵 - 可维修受损单位。可建造和探测地雷。可建造传送站。无法建造其他建筑物。"
+    },
+    "Corvette - Fast. Cheap. Attacks land, sea, seabed and undersea targets.": {
+        "message": "轻武装快舰 - 速度快。价格低廉。可攻击地面、海上、海底及海中目标。"
+    },
+    "Destroyer - High damage. Long range. Attacks land and sea targets.": {
+        "message": "驱逐舰 - 伤害高。射程远。可攻击地面和海上目标。"
+    },
+    "Discuss": {
+        "message": "讨论"
+    },
+    "Do not show this again": {
+        "message": "不再显示"
+    },
+    "Doomsday Titan - Drops an explosive into the planet's core, breaking it apart from the inside.": {
+        "message": "末日泰坦 - 可将一枚炸弹掷入星球内核，使其从内部炸裂开来。"
+    },
+    "Drone - Fast. Fragile. Attacks land, sea and air targets.": {
+        "message": "无人机 - 速度快。血量低。可攻击地面、海上和空中目标。"
+    },
+    "Fabrication Aircraft": {
+        "message": "建造飞行器"
+    },
+    "Fabrication Bot": {
+        "message": "建造机器人"
+    },
+    "Fabrication Flyer": {
+        "message": "建造飞行机"
+    },
+    "Fabrication Ship": {
+        "message": "建造舰"
+    },
+    "Fabrication Starship": {
+        "message": "建造星舰"
+    },
+    "Fabrication Vehicle": {
+        "message": "建造载具"
+    },
+    "Fabrication Vessel": {
+        "message": "建造船"
+    },
+    "Fabrication Walker": {
+        "message": "建造步行机"
+    },
+    "Fighter - Fast. High damage. Forward firing only. Only attacks air targets.": {
+        "message": "战斗机 - 速度快。伤害高。只能向前方射击。只能攻击空中目标。"
+    },
+    "Flame Turret - High splash damage. Attacks land and sea targets.": {
+        "message": "火焰炮塔 - 高溅射伤害。可攻击地面和海上目标。"
+    },
+    "Flame Turret - Splash damage weapon. Attacks land and sea targets.": {
+        "message": "火焰炮塔 - 溅射伤害类武器。可攻击地面和海上目标。"
+    },
+    "Flyer Foundry": {
+        "message": "飞行机铸造厂"
+    },
+    "Flying Bomb - In the process of exploding. Deals very heavy damage over an area over time. Attacks air targets only.": {
+        "message": "飞弹 - 持续爆炸。随着时间的推移，可在一片区域内造成极高伤害。只能攻击空中目标。"
+    },
+    "Flying Bomb - Self-destructs to deal very heavy damage over an area over time. Attacks air targets only.": {
+        "message": "飞弹 - 具有自毁能力，随着时间的推移，可在一片区域内造成极高伤害。只能攻击空中目标。"
+    },
+    "Flying Fortress Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "飞翔堡垒泰坦 - 可在一片宽广区域内造成严重伤害。可攻击除轨道外的任何目标。"
+    },
+    "Frigate - High damage precision laser strikes. Only attacks air targets.": {
+        "message": "护卫舰 - 可进行精准激光打击，造成严重伤害。只能攻击空中目标。"
+    },
+    "Gunship - Heavily armored. Attacks land, sea and seabed targets.": {
+        "message": "炮舰 - 配有厚重的装甲。可攻击地面和海上目标。"
+    },
+    "Heavy Turret - High damage. Attacks land, sea and seabed targets.": {
+        "message": "重型炮塔 - 伤害高。可攻击地面、海上和海底目标。"
+    },
+    "Heavy Walker - Heavily armored. Long range. Attacks land, sea and seabed targets.": {
+        "message": "重型步行机 - 配有厚重的装甲。射程远。可攻击地面、海上和海底目标。"
+    },
+    "Hover Artillery - Can cross water and lava. Attacks land, sea and seabed targets.": {
+        "message": "悬浮炮兵 - 可以穿越水域和熔岩。可攻击地面、海上和海底目标。"
+    },
+    "Hover Assault - Can cross water and lava. Fires in salvos. Attacks land, air, sea and orbital targets.": {
+        "message": "悬浮突击 - 可以穿越水域和熔岩。炮弹齐射。可攻击地面、空中、海上和轨道目标。"
+    },
+    "Hover Railgun - Fast. Long range. Can cross water and lava. Attacks land, air and sea targets.": {
+        "message": "悬浮轨道炮 - 速度快。射程远。可穿越水域和熔岩。可攻击地面、空中和海上目标。"
+    },
+    "Imperial Cyclops Commander": {
+        "message": "帝国独眼巨人指挥官"
+    },
+    "Imperial Overwatch Commander": {
+        "message": "帝国监工指挥官"
+    },
+    "Imperial Wasushi Commander": {
+        "message": "帝国和寿司指挥官"
+    },
+    "Interplanetary Fighter - Fast. Can move between planets. Can only attack air targets.": {
+        "message": "高级星际战斗机 - 速度快。可在星球间移动。只能攻击空中目标。"
+    },
+    "Interplanetary Teleporter - Can link with a teleporter and send units directly to a planet's surface. Can move between planets.": {
+        "message": "星际传送站 - 可与一个传送站相连通，直接将单位运送到星球表面。可在星球之间移动。"
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "星际运输 - 最多可建造12个单位，并一次性发射到此星系中的任意位置。"
+    },
+    "Interplanetary Transport - Moves land and air units between planets.": {
+        "message": "星际运输 - 可使地面和空中单位在星球间移动。"
+    },
+    "Investigator Radar": {
+        "message": "侦查员雷达"
+    },
+    "Investigator Radar Collision Check": {
+        "message": "侦查员雷达碰撞检查"
+    },
+    "Iron Dome Interceptor": {
+        "message": "钢铁穹顶拦截器"
+    },
+    "It looks like you don't have the Legion Expansion client mod\n            installed.": {
+        "message": "您似乎并没有安装《Legion Expansion》客户端模组\n            。"
+    },
+    "KABOOM!": {
+        "message": "喀砰！"
+    },
+    "Land Mine - Sprays shrapnel then explodes after four seconds. Can be detonated manually using alt fire. Invisible to most units.": {
+        "message": "地雷 - 可喷射弹片，四秒钟后爆炸。可使用第二开火模式手动引爆。无法被绝大多数单位探测到。"
+    },
+    "Laser Walker - Short range. High damage. Attacks land, sea and seabed targets.": {
+        "message": "激光步行机 - 射程短。伤害高。可攻击地面、海上和海底目标。"
+    },
+    "Leaping Bomb Bot - Self-destructs. Leaps at enemies. Jumps with alt fire.  Attacks land and sea targets.": {
+        "message": "飞跃式炸弹机器人 - 具有自毁能力。可向敌人飞跃。使用第二开火模式时可跳起。可攻击地面和海上目标。"
+    },
+    "Learn More": {
+        "message": "进一步了解"
+    },
+    "Legion Commander Description - If you're seeing this, something is wrong in your commander.": {
+        "message": "军团指挥官说明 - 如果您看到此内容，说明您的指挥官出了点问题。"
+    },
+    "Legion Expansion": {
+        "message": "Legion Expansion"
+    },
+    "Legion Guides": {
+        "message": "军团指南"
+    },
+    "Legion UI": {
+        "message": "军团用户界面"
+    },
+    "Light Tank - Amphibious. Armed with torpedoes. Attacks land, sea, seabed and undersea targets.": {
+        "message": "轻型坦克 - 水陆两用。配有鱼雷。可攻击地面、海上、海底和海中目标。"
+    },
+    "Light Turret - Rapid fire. Attacks land, sea and seabed targets.": {
+        "message": "轻型炮塔 - 射速快。可攻击地面、海上和海底目标。"
+    },
+    "Lightning Tank - Shoots timed electric mines. Attacks land and sea targets.": {
+        "message": "闪电坦克 - 可向带有倒计时的电力地雷射击。可攻击地面和海上目标。"
+    },
+    "Mass Extractor": {
+        "message": "质量开采装置"
+    },
+    "Medium Tank - Splash damage. Attacks land, sea and seabed targets.": {
+        "message": "中型坦克 - 溅射伤害。可攻击地面、海上和海底目标。"
+    },
+    "Metal Extractor": {
+        "message": "金属开采装置"
+    },
+    "Metal Parasite - Extremely fast. Close range. Devastating damage. Attacks land, sea and seabed targets.": {
+        "message": "金属寄生虫 - 速度极快。射程短。能造成毁灭性的伤害。可攻击地面、海上和海底目标。"
+    },
+    "Napalm Bomber - High damage over a wide area. Heavily armored. Deploys flamethrower turrets. Attacks land and sea targets.": {
+        "message": "凝固汽油弹轰炸机 - 伤害高，攻击范围广。配有厚重的装甲。可部署喷火炮塔。可攻击地面和海上目标。"
+    },
+    "Naval Factory": {
+        "message": "海军工厂"
+    },
+    "Nuclear Missile - Long range, high damage ballistic missile.": {
+        "message": "核导弹 - 射程远、伤害高的弹道导弹。"
+    },
+    "Nuclear Missile Launcher - Builds and launches unlimited range, large splash damage, nuclear missiles. Can fire at other planets.": {
+        "message": "核导弹发射器 - 可建造并发射无限射程、高溅射伤害的核导弹。可向其他星球开火。"
+    },
+    "OmniSilo Storage Device": {
+        "message": "全仓储藏设备"
+    },
+    "Orbital Battleship - Launches drones at planetary enemies. Heavily armored. Attacks land, air, sea and orbital targets.": {
+        "message": "轨道战列舰 - 可向星际敌人发射无人机。配有厚重的装甲。可攻击地面、空中、海上和轨道目标。"
+    },
+    "Orbital Economy - Produces metal and energy. Only buildable on gas giants.": {
+        "message": "轨道经济 - 可生产金属与能量。只能放置在气态巨行星上。"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "轨道建造机器人"
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "轨道建造兵 - 可建造轨道卫星、飞船和泰坦。"
+    },
+    "Orbital Factory": {
+        "message": "轨道工厂"
+    },
+    "Orbital Fighter - Fast. Attacks orbital targets only.": {
+        "message": "轨道战斗机 - 速度快。只能攻击轨道目标。"
+    },
+    "Orbital Laser - High splash damage. Attacks land, air, sea and seabed targets.": {
+        "message": "轨道激光 - 溅射伤害高。可攻击地面、空中、海上和海底目标。"
+    },
+    "Orbital Launcher": {
+        "message": "轨道发射器"
+    },
+    "Orbital Mega-Laser - Purifies planetary surfaces of both enemies and allies. Attacks any targets except orbital.": {
+        "message": "轨道巨型激光 - 可净化敌友双方的星球表面。可攻击除轨道外的任何目标。"
+    },
+    "Orbital Scout - Fast. Provides small amount of vision of the planet below": {
+        "message": "轨道侦察兵 - 速度快。可提供下方星球的少量视野。"
+    },
+    "Orbital Siege - Long range. High damage. Attacks orbital targets only.": {
+        "message": "轨道攻城器 - 射程远。伤害高。只能攻击轨道目标。"
+    },
+    "Orbital Turret - Rapid fire. Attacks land, air, sea and orbital targets.": {
+        "message": "轨道炮塔 - 射速快。可攻击地面、空中、海上和轨道目标。"
+    },
+    "Planet Engine - Used to smash celestial bodies into each other. Build as many as the planet requires.": {
+        "message": "星球引擎 - 用途是将星体相互撞碎。建造数量没有上限，依星球需要而定。"
+    },
+    "Planetary Transport - Builds and launches up to 14 units at once to the planet below.": {
+        "message": "星球运输 - 最多可建造14个单位，并一次性发射到下方星球上。"
+    },
+    "Power Catalyst": {
+        "message": "电催化剂"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "代理指挥官 - 可建造高级建筑物。水陆两用。结实。伤害高。可攻击除轨道外的一切目标。"
+    },
+    "Purifier Collision Check": {
+        "message": "净化者碰撞检查"
+    },
+    "Radar": {
+        "message": "雷达"
+    },
+    "Radar - Immobile. Use alt fire to change into a fast-moving mine detector.": {
+        "message": "雷达 - 不可移动。使用第二开火模式后可变成行动迅捷的地雷探测器。"
+    },
+    "Raider - Fast. Can see far away. Attacks land and sea targets.": {
+        "message": "突袭者 - 速度快。视距远。可攻击地面和海上目标。"
+    },
+    "Rocket Turret - High damage. Attacks land and sea targets.": {
+        "message": "火箭炮塔 - 伤害高。可攻击地面和海上目标。"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "侦察机 - 速度快。视野远。可探测地雷。无法攻击。"
+    },
+    "Scout - Fast. Detects mines. Use alt fire to change into a short-range radar detectable only by radar.": {
+        "message": "侦察兵 - 速度快。可探测地雷。使用第二开火模式后可变成只能被雷达探测到的短程雷达。"
+    },
+    "Sea Mine - High damage. Invisible to most units.": {
+        "message": "水雷 - 伤害高。无法被绝大多数单位探测到。"
+    },
+    "Seismic Tank - Heavily armored. Short range. Huge splash damage. Attacks land and sea targets.": {
+        "message": "地震坦克 - 配有厚重的装甲。射程短。可造成巨量溅射伤害。可攻击地面和海上目标。"
+    },
+    "Select a blue Commander for MLA and a red one for Legion.": {
+        "message": "为 MLA 派系选择一名蓝色指挥官，为军团派系选择一名红色指挥官。"
+    },
+    "Shield - Blocks enemy projectiles. Requires energy. Overlapping Ramparts provides little benefit. Overwhelmed by rapid fire.": {
+        "message": "护盾 - 可阻挡敌军的抛射物。需要能量。交叠放置并不会额外提升多少强度。难以抵挡快速射击。"
+    },
+    "Ship Foundry": {
+        "message": "舰船铸造厂"
+    },
+    "Shotgun Tank - Close range. Heavily armored. Attacks land, sea and seabed targets.": {
+        "message": "霰弹坦克 - 射程极短。配有厚重的装甲。可攻击地面、海上和海底目标。"
+    },
+    "Siege Tank - Long range. Attacks land, sea and seabed.": {
+        "message": "攻城坦克 - 射程远。可攻击地面、海上和海底目标。"
+    },
+    "Siege Titan - Equipped with an arsenal of highly destructive weapons. Attacks land, sea, seabed and undersea targets.": {
+        "message": "攻城泰坦 - 配有一系列破坏力极高的武器。可攻击地面、海上、海底和海中目标。"
+    },
+    "Siege Walker - Long range. Launches timed sticky plasma mines. Attacks land, sea and seabed targets.": {
+        "message": "攻城步行机 - 射程远。可发射带有倒计时的粘性电浆地雷。可攻击地面、海上和海底目标。"
+    },
+    "Siege Walker - Spawns Purgers. Can attack land targets only.": {
+        "message": "攻城步行机 - 可产生 Purger。只能攻击地面目标。"
+    },
+    "Sky Bridge": {
+        "message": "天空之桥"
+    },
+    "Sneaky Spy Camera - Grants vision for a short time at the location.": {
+        "message": "隐蔽间谍摄像头 - 可短暂提供当地视野。"
+    },
+    "Spawns Purger": {
+        "message": "可产生 Purger"
+    },
+    "Starship Foundry": {
+        "message": "星舰铸造厂"
+    },
+    "Starship Projector": {
+        "message": "星舰抛射器"
+    },
+    "Storage - Increases maximum energy and metal storage capacity. Explodes on death, damaging friend and foe.": {
+        "message": "储藏库 - 可提高能量与金属的储量上限。死亡时会爆炸，对敌友双方均会造成伤害。"
+    },
+    "Submarine - Fast. Fires in salvos. Attacks sea, seabed and undersea targets.": {
+        "message": "潜水艇 - 伤害高。炮弹齐射。可攻击海上、海底及海中目标。"
+    },
+    "Supernova Strategic Warhead": {
+        "message": "Supernova 战略弹头"
+    },
+    "Support Barge - Repairs damaged ships. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "支援驳船 - 可维修受损舰船。可建造和探测地雷。无法建造其他单位。可在水面上悬停。"
+    },
+    "Swarm Turret - Spawns nanoswarms. Attacks land, sea and seabed targets.": {
+        "message": "虫群炮塔 - 可产生纳米机器人虫群。可攻击地面、海上和海底目标。"
+    },
+    "Tank Rockteeth Commander": {
+        "message": "坦克石牙指挥官"
+    },
+    "Teleporter - Link teleporters to move units around the system.": {
+        "message": "传送站 - 连接各个传送站后可在星系内移动各个单位。"
+    },
+    "The Legion Expansion adds an entirely new faction in Planetary\n            Annihilation.": {
+        "message": "《Legion Expansion》令《Planetary\n            Annihilation》增加了一个全新的派系。"
+    },
+    "To play as the Legion select one of the red Commanders.": {
+        "message": "要以军团派系成员的身份进行游戏，请选择一名红色指挥官。"
+    },
+    "Transport - Load a land unit for rapid long distance travel.": {
+        "message": "运输机 - 可装载一个地面单位，快速进行长途搬运。"
+    },
+    "Trireme - Rams enemy ships. Fast. Heavily armored. Attacks land, sea, seabed and undersea targets.": {
+        "message": "三列桨座战船 - 可撞击敌军舰船。速度快。配有厚重的装甲。可攻击地面、海上、海底和海中目标。"
+    },
+    "Unit Cannon": {
+        "message": "单位大炮"
+    },
+    "Vehicle Factory": {
+        "message": "载具工厂"
+    },
+    "Walker Foundry": {
+        "message": "步行机铸造厂"
+    },
+    "Wall - Very durable. Blocks enemy fire only.": {
+        "message": "围墙 - 非常结实。仅能阻挡敌军的炮火。"
+    },
+    "Wave Turret - Attacks sea, seabed and undersea targets.": {
+        "message": "海浪炮塔 - 可攻击海上、海底及海中目标。"
+    },
+    "You won't be able to play without it, but installing is easy!": {
+        "message": "没有它，您就玩不了这个游戏。不过安装起来很简单的！"
+    },
+    "air": {
+        "message": "空军类"
+    },
+    "ammo": {
+        "message": "弹药"
+    },
+    "bot": {
+        "message": "机器人"
+    },
+    "click or press space to close": {
+        "message": "单击或按空格键关闭"
+    },
+    "combat": {
+        "message": "作战类"
+    },
+    "factory": {
+        "message": "工厂类"
+    },
+    "orbital": {
+        "message": "轨道类"
+    },
+    "sea": {
+        "message": "海军类"
+    },
+    "utility": {
+        "message": "设施类"
+    },
+    "vehicle": {
+        "message": "载具类"
+    }
+}

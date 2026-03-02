@@ -1,0 +1,41 @@
+{
+    "Create Game": {
+        "message": "Skapa Spel"
+    },
+    "Game": {
+        "message": "Spel"
+    },
+    "In Lobby": {
+        "message": "I LOBBY"
+    },
+    "In Progress": {
+        "message": "Pågår"
+    },
+    "Join Game": {
+        "message": "ANSLUT TILL SPEL"
+    },
+    "Locked Game": {
+        "message": "Låst Spel"
+    },
+    "Mode": {
+        "message": "Speltyp"
+    },
+    "Password": {
+        "message": "Lösenord"
+    },
+    "Planets": {
+        "message": "Planeter"
+    },
+    "Players": {
+        "message": "Spelare"
+    },
+    "Slots": {
+        "message": "Platser"
+    },
+    "Spectate": {
+        "message": "Titta på"
+    },
+    "Spectators": {
+        "message": "Åskådare"
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "Appear Offline": {
+        "message": "顯示為離線"
+    },
+    "Away": {
+        "message": "Away"
+    },
+    "Block": {
+        "message": "封鎖"
+    },
+    "Chat": {
+        "message": "交談"
+    },
+    "Do Not Disturb": {
+        "message": "勿擾"
+    },
+    "Friends": {
+        "message": "好友"
+    },
+    "Ignore": {
+        "message": "忽略"
+    },
+    "Invite to game": {
+        "message": "邀請參加遊戲"
+    },
+    "Join Game": {
+        "message": "加入遊戲"
+    },
+    "No pending notifications.": {
+        "message": "沒有未處理通知。"
+    },
+    "Offline": {
+        "message": "離線"
+    },
+    "Online": {
+        "message": "線上"
+    },
+    "Recent": {
+        "message": "最近"
+    },
+    "Remove": {
+        "message": "移除"
+    },
+    "Unblock": {
+        "message": "解除封鎖"
+    },
+    "Unfriend": {
+        "message": "解除好友關係"
+    },
+    "Users": {
+        "message": "使用者"
+    }
+}

@@ -1,0 +1,551 @@
+{
+    "Advanced Air Factory": {
+        "message": "上級飛行工場"
+    },
+    "Advanced Anti-Air - Overhead heavy damage. Only attacks air.": {
+        "message": "上級対空攻撃 - 上空からの重攻撃。飛行する敵のみを攻撃可能"
+    },
+    "Advanced Artillery - Extremely long range heavy damage. Can lay siege from very far away. Attacks land and sea targets.": {
+        "message": "上級迫撃砲 - 超長距離による重攻撃。遠距離からの包囲攻撃ができる。陸と海の標的を攻撃可能"
+    },
+    "Advanced Bot Factory": {
+        "message": "上級ボット工場"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "上級戦闘ファブリケーター - 修復速度が高速。残骸を自動回収する。地雷に加えてテレポーターやタレットも建造できる"
+    },
+    "Advanced Combat Fabricator - Repairs much faster. Can build teleporters and turrets in addition to mines.": {
+        "message": "上級戦闘ファブリケーター - 修復速度が向上。地雷に加えてテレポーターやタレットも建造できる"
+    },
+    "Advanced Economy - Produces energy.": {
+        "message": "上級経済活動 - エネルギーを生産する"
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "上級経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない"
+    },
+    "Advanced Energy Plant": {
+        "message": "上級エネルギープラント"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "上級ファブ飛行体"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "上級ファブリケーターボット"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "上級ファブリケーターシップ"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "上級ファブリケーター陸戦車両"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "上級ファブリケーター - 基本および上級の海戦構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる。耐久性高。他のファブリケーターよりもパワフル"
+    },
+    "Advanced Interplanetary Fighter - Stronger fighter. Can move between planets. Can only attack air targets.": {
+        "message": "上級惑星間戦闘機 - かなりの戦力となる戦闘機。惑星間を移動できる。空の標的のみを攻撃可能"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "上級レーザー防衛タワー"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "上級製造技術 - 基本および上級飛行ユニットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "上級製造技術 - 基本および上級ボットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "上級製造技術 - 基本および上級陸戦車両を建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "上級製造技術 - 基本および上級海戦ユニットを建造できる"
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "上級製造技術 - 軌道衛星や宇宙船を建造できる"
+    },
+    "Advanced Metal Extractor": {
+        "message": "上級金属抽出場"
+    },
+    "Advanced Naval Factory": {
+        "message": "上級海戦工場"
+    },
+    "Advanced Radar": {
+        "message": "上級レーダー"
+    },
+    "Advanced Radar - Detects a vast area for enemy land, sea, and air units.": {
+        "message": "上級レーダー - 広範囲に渡って敵の陸、海、空のユニットを感知できる"
+    },
+    "Advanced Radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "上級レーダー - 近くにいる敵の陸、海、空のユニットを感知できる"
+    },
+    "Advanced Radar Satellite": {
+        "message": "上級レーダー衛星"
+    },
+    "Advanced Submarine - Radar stealth with very high damage. Attacks land, sea and undersea targets.": {
+        "message": "上級潜水艦 - レーダーステルス機能、超高ダメージ。陸、海と海中の標的を攻撃可能"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "上級魚雷ランチャー"
+    },
+    "Advanced Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "上級タレット - 陸戦兵器への砲撃、および対船防衛能力がある"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "上級陸戦車両工場"
+    },
+    "Air Factory": {
+        "message": "飛行工場"
+    },
+    "Air Transport - Load a land unit to transport for snipes or expansions.": {
+        "message": "飛行輸送 - 狙撃または領地拡張のための陸戦車両ユニットを積んで輸送する"
+    },
+    "All Terrain Bot - Can crawl almost anywhere.": {
+        "message": "全地形対応ボット - ほとんどの地形上を移動できる"
+    },
+    "Anti-Air Bot - Equipped with basic anti-air missiles.": {
+        "message": "対空ボット - 基本対空ミサイルを搭載"
+    },
+    "Anti-Air Defense - Equipped with homing missiles. Only attacks air.": {
+        "message": "対空防衛 - ホーミングミサイルを搭載。空の標的のみ攻撃可能"
+    },
+    "Anti-Nuke - Builds advanced anti-nuclear missiles.": {
+        "message": "対核 - 上級対核ミサイルを建造できる"
+    },
+    "Anti-Nuke Launcher": {
+        "message": "対核ランチャー"
+    },
+    "Anti-Orbital Defense - Rapid fire with high damage. Attacks orbital targets and intercepts drop pods.": {
+        "message": "対衛星軌道防衛 - 高速射撃、攻撃力高。衛星軌道の標的を攻撃＆ドロップポッドを迎撃可能"
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "対核兵器 - 飛行してくる核ミサイルを迎撃する"
+    },
+    "Artillery - Medium range for siege and area denial. Attacks land and sea targets.": {
+        "message": "迫撃砲 - 中距離からの包囲攻撃と領域拒否攻撃。陸と海の標的を攻撃可能"
+    },
+    "Assault Bot - Armoured with high damage guns and torpedoes. Amphibious. Attacks land and sea.": {
+        "message": "アサルトボット - 攻撃力が高い銃器と魚雷を搭載。水陸両用。陸と海の標的を攻撃可能"
+    },
+    "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets.": {
+        "message": "アサルトタンク - 攻撃力超高、重装甲。ただし側面からの攻撃に弱い。陸と海の標的を攻撃可能"
+    },
+    "Attack Vehicle - Fast, adaptable, expendable. Attacks surface targets.": {
+        "message": "攻撃車両 - 高速移動、適応力高、量産型。地表面の標的を攻撃可能"
+    },
+    "Barrier - Blocks units and protects from incoming fire.": {
+        "message": "バリア - ユニットをブロック＆敵の発射攻撃を遮断する"
+    },
+    "Basic Economy - Produces energy.": {
+        "message": "基本経済活動 - エネルギーを生産する"
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "基本経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない"
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる"
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる。他のファブリケーターよりも弱い"
+    },
+    "Basic Fabricator - Builds basic naval structures.": {
+        "message": "基本ファブリケーター - 基本海戦構造体を建造できる"
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "基本ファブリケーター - 基本海戦構造体を建造できる。水上をホバリングできる"
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる。耐久性高。他のファブリケーターよりもパワフル"
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks land, air and sea targets when on land.": {
+        "message": "基本インファントリー - 高速移動、適応力高、量産型。水陸両用。陸地にいる時は陸、空と海の標的を攻撃可能"
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks surface targets when on land.": {
+        "message": "基本インファントリー - 高速移動、適応力高、量産型。水陸両用。陸地にいる時は地表面の標的を攻撃可能"
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "基本製造技術 - 基本衛星軌道ユニットを建造/発射できる"
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "基本製造技術 - 基本飛行ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "基本製造技術 - 基本ボットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "基本製造技術 - 基本陸戦車両ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "基本製造技術 - 基本海戦ユニットを建造できる"
+    },
+    "Basic Radar - Detects a large area for enemy land, sea, and air units.": {
+        "message": "基本レーダー - 広範囲に渡って敵の陸、海、空のユニットを感知できる"
+    },
+    "Basic Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "基本タレット - 陸戦兵器への砲撃、および対船防衛能力がある"
+    },
+    "Basic radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "基本レーダー - 近くにいる敵の陸、海、空のユニットを感知できる"
+    },
+    "Battleship - Long range advanced anti-ship, and anti-land guns.": {
+        "message": "バトルシップ - 長距離攻撃が可能な上級艦。対地銃器も搭載している"
+    },
+    "Bluehawk Tactical Missile": {
+        "message": "Bluehawk 戦略ミサイル"
+    },
+    "Bomb Bot - Self destructs to deal very heavy damage over a nearby area. Extremely fast.": {
+        "message": "爆弾ボット - 自爆攻撃で近隣エリアに激烈なダメージを与える。超高速移動が可能"
+    },
+    "Bot Factory": {
+        "message": "ボット工場"
+    },
+    "Carpet Bomber - High damage over a wide area. Fragile and slow. Attacks land, sea and undersea targets.": {
+        "message": "絨毯爆撃機 - 広範囲に渡って重ダメージ。非常にもろく動きも遅い。陸、海と海中の標的を攻撃可能"
+    },
+    "Catapult Tactical Missile": {
+        "message": "Catapult 戦略ミサイル"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "戦闘ファブリケーター - 損傷したユニットを修復する。地雷を建造/感知できる。テレポーターも建造可能。その他の構造体の建造を常に支援する"
+    },
+    "Commander Anti-Air Missile": {
+        "message": "コマンダー対空ミサイル"
+    },
+    "Deep Space Radar": {
+        "message": "深宇宙レーダー"
+    },
+    "Deep Space Radar - System wide planetary radar.": {
+        "message": "深宇宙レーダー - 一星系を網羅できるレーダー"
+    },
+    "Deep Water Destroyer - Medium range with high damage. Very durable. Attacks land, sea and undersea targets.": {
+        "message": "深海デストロイヤー - 中距離攻撃、重ダメージ。耐久性高。陸、海の海中の標的を攻撃可能"
+    },
+    "Defense Satellite - Heavy orbital offensive and defensive platform with basic laser.": {
+        "message": "防衛衛星 - 基本レーザーを備えた衛星軌道攻撃および防御プラットフォーム"
+    },
+    "Delta V Engine - Used to move small to medium celestial bodies.": {
+        "message": "デルタ V エンジン - 小～中型の宇宙航行機体に使用されるエンジン"
+    },
+    "Doomsday Titan - Destroys the planet it's built on once finished.": {
+        "message": "Doomsday Titan - 完成すると、自分が建造されたその惑星を破壊する"
+    },
+    "Dox Launcher - Builds and fires Dox at nearby targets.": {
+        "message": "ドックスランチャー - ドックスを建造/近くの標的に発射"
+    },
+    "Drone Carrier - Builds and launches missile drones at enemies. Attacks land, air and sea targets.": {
+        "message": "ドローンキャリア - ミサイルドローンを建造し敵に向かって発射できる。陸、空と海の標的を攻撃可能"
+    },
+    "Economy - Orbital energy generation.": {
+        "message": "経済活動 - 衛星軌道エネルギー生成"
+    },
+    "Energy Plant": {
+        "message": "エネルギープラント"
+    },
+    "Energy Storage": {
+        "message": "エネルギー貯蔵庫"
+    },
+    "Fabrication Aircraft": {
+        "message": "ファブ飛行体"
+    },
+    "Fabrication Bot": {
+        "message": "ファブリケーターボット"
+    },
+    "Fabrication Ship": {
+        "message": "ファブリケーター船"
+    },
+    "Fabrication Vehicle": {
+        "message": "ファブリケーター車両"
+    },
+    "Fighter - Fast. High damage. Only attacks air targets.": {
+        "message": "戦闘機 - 高速。重ダメージ。空の標的のみ攻撃可能"
+    },
+    "Fire Support - Medium range. Can fire over walls. Attacks land and sea targets.": {
+        "message": "砲撃支援 - 中距離。壁を超えて攻撃できる。陸と海の標的を攻撃可能"
+    },
+    "Flak Tank - Damage over a very wide area. Only attacks air targets.": {
+        "message": "フラックタンク - 非常に広範囲にダメージを与える。空の標的のみ攻撃可能"
+    },
+    "Flame Tank - Short range, heavy armored vehicle.": {
+        "message": "フレイムタンク - 短距離攻撃、重装甲車両"
+    },
+    "Frigate - Durable. Rapid-fire. Attacks land, air, and sea targets.": {
+        "message": "フリゲート - 耐久性高。高速射撃。陸、空と海の標的を攻撃可能"
+    },
+    "Galata Anti-Air Missile": {
+        "message": "ガラタ対空ミサイル"
+    },
+    "Gas Mining - Advanced energy and metal creation satellite. Only works above gas giant planets.": {
+        "message": "ガス採掘 - 上級エネルギーと金属を生産可能な衛星。ガス巨大惑星上でのみ機能する"
+    },
+    "Gunboat - Cheap. Fast. Expendable. Attacks land and sea targets.": {
+        "message": "ガンボート - 安価で製造可能。高速。量産型。陸と海の標的を攻撃可能"
+    },
+    "Gunboat - Cheap. Fast. Expendable. Water hover. Attacks land and sea targets.": {
+        "message": "ガンボート - 安価で製造可能。高速。量産型。水上をホバリングできる。陸と海の標的を攻撃可能"
+    },
+    "Gunship - Fast. Cheap. Durable. Attacks land and sea targets.": {
+        "message": "ガンシップ - 高速移動。安価。耐久性高。陸と海の標的を攻撃可能"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle.": {
+        "message": "ヘビータンク - 近接攻撃、重装甲の上級陸戦車両"
+    },
+    "Hornet Tactical Missile": {
+        "message": "Hornet 戦略ミサイル"
+    },
+    "Hover Destroyer - Long Range. Durable. Hover. Attacks land and sea targets.": {
+        "message": "ホバーデストロイヤー - 長距離攻撃。耐久性高し。ホバー機能。陸と海の標的を攻撃可能"
+    },
+    "Hover Tank - Fast. Can cross water and lava. Attacks land and sea targets.": {
+        "message": "ホバータンク - 高速移動。海と溶岩を横断できる。陸と海の標的を攻撃可能"
+    },
+    "Hummingbird Air-To-Air Missile": {
+        "message": "Hummingbird 空対空ミサイル"
+    },
+    "Interplanetary Teleporter: Teleports units between linked Teleporters.": {
+        "message": "惑星間テレポーター: リンクしているテレポーター間でユニットをテレポートできる"
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "惑星間輸送 - 最大12のユニットを星系内の任意の場所に建造/起動する"
+    },
+    "Invasion Titan - Can link with a teleporter to send units directly to planet surface. Attacks everything.": {
+        "message": "Invasion Titan - テレポーターとリンクすることで惑星の地表面に直接ユニットを送り込むことができる。全てを攻撃する"
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 -パスファイヤー - ミサイル"
+    },
+    "LR-96 Pacifier Nuclear Missile": {
+        "message": "LR-96 -パスファイヤー核ミサイル"
+    },
+    "Land Mine": {
+        "message": "地雷"
+    },
+    "Land Mine - Detonates when enemy units are in proximity.": {
+        "message": "地雷 - 敵ユニットが近づくと爆発する"
+    },
+    "Laser Defense Tower": {
+        "message": "レーザー防衛タワー"
+    },
+    "Light Tank - Well-rounded. Reliable. Attacks land and sea targets.": {
+        "message": "ライトタンク- 汎用性高。信頼性も高い。陸と海の標的を攻撃可能"
+    },
+    "Lightning Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "Lightning Titan - 広範囲に渡って重ダメージを与える。衛星軌道以外の標的を攻撃可能"
+    },
+    "Metal Extractor": {
+        "message": "金属抽出機"
+    },
+    "Metal Storage": {
+        "message": "金属貯蔵庫"
+    },
+    "Missile Ship - Long range with radar. High damage anti-air and tactical missiles. Attacks land, sea, air, and orbital targets.": {
+        "message": "ミサイル艦 - レーダー範囲広。対空攻撃と戦略ミサイルは攻撃力高。陸、海、空と衛星軌道の標的を攻撃可能"
+    },
+    "Missile and Torpedo Drone - Fast, fragile, attacks land, sea and air.": {
+        "message": "ミサイル＆魚雷ドローン - 高速、耐久力低。陸、海と空の標的を攻撃可能"
+    },
+    "Mobile Anti-Air - Equipped with homing missiles. Only attacks air.": {
+        "message": "対空機動機 - ホーミングミサイルを搭載。空の標的のみ攻撃可能"
+    },
+    "Mobile Nuke - Detonates a nuke on death. Slow. Extremely durable. Self-destruct attack.": {
+        "message": "機動核 - 破壊されると核爆弾を起爆。移動速度遅。耐久性超高。恐怖の自爆攻撃"
+    },
+    "Mobile Tactical Missile - Long range with heavy damage. Fires homing missiles. Attacks land, sea and orbital targets.": {
+        "message": "機動型戦略ミサイル - 長距離攻撃で重ダメージを与える。ホーミングミサイルを発射。陸、海の衛星軌道の標的を攻撃可能"
+    },
+    "Mortar tank - Advanced long range mobile artillery.": {
+        "message": "モルタルタンク - 長距離攻撃が可能で機動性にも優れる上級砲車"
+    },
+    "Nanobot Swarm - Extremely Fast. Cheap. Close range. Devastating damage. Hover. Attacks land and sea targets.": {
+        "message": "ナノボットスワーム - 超高速移動。量産型。近距離攻撃。破壊力高。ホバリング可能。陸の標的を攻撃可能"
+    },
+    "Narwhal Anti-Air Missile": {
+        "message": "Narwhal 対空ミサイル"
+    },
+    "Naval Factory": {
+        "message": "海戦工場"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "核ミサイルランチャー"
+    },
+    "Nuclear Missile Launcher - Builds interplanetary long range nuclear missile with large area damage.": {
+        "message": "核ミサイルランチャー - 広範囲にダメージを与える星間弾道長距離核ミサイルを建造"
+    },
+    "Nuclear missile - Long range interplanetary, large area damage, projectile": {
+        "message": "核ミサイル - 長距離星間攻撃、広範囲にダメージ、弾頭"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "核ミサイル - 射程距離長、広範囲ダメージ、弾頭"
+    },
+    "Orbital Battleship - Rapid-Fire. Very durable. Heavy damage. Attacks everything.": {
+        "message": "衛星軌道バトルシップ - 高速連射。耐久性超高。重攻撃。あらゆる標的を攻撃可能"
+    },
+    "Orbital Carrier - Can load up to 12 units.": {
+        "message": "衛星軌道キャリア - 最大12のユニットを積み込み可能"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "衛星軌道ファブリケーターボット"
+    },
+    "Orbital Fabricator - Builds orbital satellites and spaceships.": {
+        "message": "衛星軌道ファブリケーター - 軌道衛星と宇宙船を建造できる"
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "衛星軌道ファブリケーター - 軌道衛星、宇宙船、TITANSを建造する"
+    },
+    "Orbital Factory": {
+        "message": "衛星軌道工場"
+    },
+    "Orbital Fighter - Fast moving orbital fighter for offense and defense.": {
+        "message": "衛星軌道戦闘機 - 攻撃/防衛の両方に使える衛星間を高速移動できる戦闘機"
+    },
+    "Orbital Lander - Load it up and transport a unit to other planets.": {
+        "message": "衛星軌道ランダー - ユニット1体を積んで、他の惑星に輸送できる"
+    },
+    "Orbital Laser Platform - Rains death from above.": {
+        "message": "衛星軌道レーザープラットフォーム - 上空から死の雨を降らせる"
+    },
+    "Orbital Launcher": {
+        "message": "衛星軌道ランチャー"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "衛星軌道＆深宇宙レーダー"
+    },
+    "Orbital and Deepspace Radar - Orbital and celestial radar telemetry.": {
+        "message": "衛星軌道＆深宇宙レーダー - 衛星軌道と宇宙を遠隔測定できるレーダー"
+    },
+    "Phoenix Air-To-Air Missile": {
+        "message": "Phoenix 空対空ミサイル"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "プロキシコマンダー - 上級構造体を建造できる。水陸両用。耐久性高。攻撃力高。衛星軌道以外の全てを攻撃可能"
+    },
+    "Radar": {
+        "message": "レーダー"
+    },
+    "Railgun Platform - Long range with high damage. Very low rate of fire. Uses energy. Attacks orbital.": {
+        "message": "レイルガンプラットフォーム - 長距離攻撃、重ダメージ。発射速度は極めて遅い。エネルギーを消費。衛星軌道の標的を攻撃可能"
+    },
+    "Rolling Fortress - Near invincible. Long range. Heavy damage. Hover. Attacks land and sea targets.": {
+        "message": "回転要塞 - ほぼ無敵に近い。長距離攻撃。重ダメージ。ホバー。陸と海の標的を攻撃可能"
+    },
+    "SR-24 Shield Missile Defense": {
+        "message": "SR-24 -シールドミサイル防衛"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 レーザープラットフォーム"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "スカウト - 高速移動。遠方まで見渡せ地雷を発見する。攻撃はできない"
+    },
+    "Scout - Fast. Can see far away. Does not attack.": {
+        "message": "スカウト - 遠方まで見渡せ地雷を発見する。攻撃はできない"
+    },
+    "Sea Mine - Detonates when ships are in proximity.": {
+        "message": "機雷 - 船が接近すると爆発する"
+    },
+    "Seismic Titan - Devastating damage to everything nearby. Amphibious. Attacks land, sea, and undersea targets.": {
+        "message": "Seismic Titan - 近くにあるもの全てに壊滅的なダメージを与える。水陸両用。陸、海と海中の標的を攻撃可能"
+    },
+    "Siege Bomber - Durable. Slow. Devastating damage. Attacks land and sea targets.": {
+        "message": "包囲爆撃機 - 耐久性高。速度遅。壊滅的なダメージを与えることができる。陸と海の標的を攻撃可能"
+    },
+    "Single Laser Defense Tower": {
+        "message": "シングルレーザー防衛タワー"
+    },
+    "Sniper - Long range with high damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "スナイパー - 長距離攻撃、重ダメージ。発射速度は遅い。ミサイルを迎撃できる。陸、空と海の標的を攻撃可能"
+    },
+    "Sniper - Long range. High damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "スナイパー - 長距離攻撃、重ダメージ。発射速度は遅い。ミサイルを迎撃できる。陸、空と海の標的を攻撃可能"
+    },
+    "Solar Array": {
+        "message": "ソーラーアレイ"
+    },
+    "Solar Drone - Produces energy. Mobile but slow. Weak. Attacks land, air, and sea targets.": {
+        "message": "ソーラードローン - エネルギーを生産する。移動できるが遅い。耐久性低。陸、空と海の標的を攻撃可能"
+    },
+    "Space Probe - Fast. Cheap. Expendable. Provides ground vision. Does not attack.": {
+        "message": "スペースドローン - 高速移動。安価で大量生産可能。地上の視覚情報を提供する。攻撃はできない"
+    },
+    "Spinner Anti-Air Missile": {
+        "message": "Spinner 対空ミサイル"
+    },
+    "Stealth Sub - Radar stealth with very high damage. Attacks land, sea, and undersea targets.": {
+        "message": "ステルスサブ - レーダーステルス機能、超高ダメージ。陸、海と海中の標的を攻撃可能"
+    },
+    "Stingray Anti-Air Missile": {
+        "message": "Stingray 対空ミサイル"
+    },
+    "Stingray Tactical Missile": {
+        "message": "Stingray 戦略ミサイル"
+    },
+    "Storage - Increases maximum energy storage capacity.": {
+        "message": "貯蔵庫 - エネルギーの最大貯蔵量を増加"
+    },
+    "Storage - Increases maximum metal storage capacity.": {
+        "message": "貯蔵庫 - 金属の最大貯蔵量を増加"
+    },
+    "Strafer Aircraft - Loud and annoying. Attacks land and sea targets.": {
+        "message": "ストレイファー飛行体 - 騒音が凄まじい。陸と海の標的を攻撃可能"
+    },
+    "Submarine - High damage. Cannot be targeted by cannons. Attacks sea and undersea targets.": {
+        "message": "潜水艦 - 重ダメージ。キャノンの標的になることはない。海と海中の標的を攻撃可能"
+    },
+    "Submarine - Radar stealth. Attacks sea and undersea targets.": {
+        "message": "潜水艦 - レーダーステルス機能。海と海中の標的を攻撃可能"
+    },
+    "Super Weapon - Build five on a metal planet to activate the Annihilazer.": {
+        "message": "超兵器 - 1つの金属系惑星上に5つ建造するとAnnihilaserを起動できる"
+    },
+    "Support Platform - Repairs nearby units and auto reclaims wreckage. Intercepts homing missiles. Does not attack.": {
+        "message": "サポートプラットフォーム - 近くのユニットを修復する。残骸を自動回収する。ホーミングミサイルを迎撃できる。攻撃はできない"
+    },
+    "Tactical Bomber - Long range. High damage tactical missiles. Attacks land and sea targets.": {
+        "message": "戦略爆撃機 - 長距離。戦略ミサイル攻撃による重ダメージ。陸と海の標的を攻撃可能"
+    },
+    "Tactical Missile Launcher - Long range with very heavy damage. Attacks land, sea, and orbital targets.": {
+        "message": "戦略ミサイルランチャー - 長距離攻撃で超重ダメージ。陸、海と衛星軌道の標的を攻撃可能"
+    },
+    "Teleporter": {
+        "message": "テレポーター"
+    },
+    "Tesla Bot - Very high damage over a short range area. Uses energy. Attacks land targets.": {
+        "message": "テスラボット - 短い距離内の一定範囲に超高ダメージ。エネルギーを消費。陸の標的を攻撃可能"
+    },
+    "Torpedo Launcher": {
+        "message": "魚雷ランチャー"
+    },
+    "Torpedo Launcher - Advanced anti-ship defense.": {
+        "message": "魚雷ランチャー - 上級対船防衛"
+    },
+    "Torpedo Launcher - Basic anti-ship defense.": {
+        "message": "魚雷ランチャー - 基本対船防衛"
+    },
+    "Unit Cannon": {
+        "message": "ユニットキャノン"
+    },
+    "Vehicle Factory": {
+        "message": "陸戦車両工場"
+    },
+    "Wall": {
+        "message": "防壁"
+    },
+    "Stinger Anti-Air Missile": {
+        "message": "Stinger 対空ミサイル"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "重戦車 - 移動式レーダーを搭載した先進的な近距離重装甲車両。"
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "レーダージャマー - 自身を中心とした半径内の敵レーダーから味方ユニットを隠す。電力を消費する。"
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "サポートバージ - 損傷した船を修理し、残骸を自動回収する。機雷を構築し探知する。ユニットの建造を支援することはできない。水上ホバー。"
+    }
+}

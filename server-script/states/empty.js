@@ -1,0 +1,93 @@
+var console = require('console'); // temporary workaround
+var main = require('main');
+var utils = require('utils');
+var env = require('env');
+var content_manager = require('content_manager');
+var _ = require('thirdparty/lodash');
+
+var cleanup = [];
+
+var MAX_PLAYERS = main.MAX_PLAYERS;
+var MAX_SPECTATORS = main.MAX_SPECTATORS;
+var SERVER_PASSWORD = main.SERVER_PASSWORD;
+
+var EMPTY_TIMEOUT = 5 * 60;
+
+exports.url = '';
+exports.enter = function() {
+
+    if (main.no_players) {
+        main.setState(main.states.config);
+        return;
+    }
+
+    var modsData = server.getModsForBeacon();
+
+    var maxClients = 1;
+
+    var playerIdsIndex = env.indexOf('--player-uberids');
+    if (playerIdsIndex >= 0 && env.length >= playerIdsIndex + 1) {
+        maxClients = env[playerIdsIndex + 1].split(',').length;
+    }
+    
+    server.maxClients = maxClients;
+    if (main.serverName)
+        server.beacon = {
+            state: 'empty',
+            uuid: server.uuid(),
+            full: false,
+            started: false,
+            players: 0,
+            creator: null,
+            max_players: MAX_PLAYERS,
+            spectators: 0,
+            max_spectators: MAX_SPECTATORS,
+            mode: 'Waiting',
+            mod_names: modsData.names,
+            mod_identifiers: modsData.identifiers,
+            cheat_config: main.cheats,
+            player_names: [],
+            spectator_names: [],
+            require_password: !! SERVER_PASSWORD,
+            whitelist: [],
+            blacklist: [],
+            tag: '',
+            game_name: main.serverName,
+            game: {
+                name: main.serverName
+            },
+            required_content: content_manager.getRequiredContent(),
+            bounty_mode: false,
+            bounty_value: 0.5,
+            sandbox: false
+        };
+    else
+        server.beacon = undefined;
+
+    utils.pushCallback(server, 'onConnect', function(onConnect, client, reconnect) {
+        if (client.rejected)
+        {
+            console.log("Rejected connection from misconfigured client, and shutting down.");
+            server.exit();
+        }
+        else
+            main.setState(main.gameModes[main.gameMode] || main.states.lobby, client);
+        return onConnect;
+    });
+    cleanup.push(function() { server.onConnect.pop(); });
+
+    if (!main.keep_alive) {
+        var timeout = setTimeout(function() { server.exit(); }, EMPTY_TIMEOUT * 1000);
+        cleanup.push(function() { clearTimeout(timeout); });
+    }
+};
+
+exports.exit = function(newState) {
+    _.forEachRight(cleanup, function(c) { c(); });
+    cleanup = [];
+
+    if (server.clients.length && !main.keep_alive)
+        main.shutdownWhenEmpty();
+
+    return true;
+};

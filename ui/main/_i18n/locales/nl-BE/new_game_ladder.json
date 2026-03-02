@@ -1,0 +1,56 @@
+{
+    "1v1": {
+        "message": "1v1"
+    },
+    "Building planets": {
+        "message": "Planeten bouwen"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "VERBINDING MET SERVER VERLOREN"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Chat": {
+        "message": "Chat"
+    },
+    "Empty": {
+        "message": "Leeg"
+    },
+    "Leave": {
+        "message": "Verlaten"
+    },
+    "Leaving the game will result in a match making timeout penalty.": {
+        "message": "Als je het spel verlaat, kun je als straf tijdelijk niet aan een nieuw spel beginnen."
+    },
+    "Main Menu": {
+        "message": "Hoofdmenu"
+    },
+    "Opponent abandoned the game": {
+        "message": "Tegenstander heeft het spel verlaten"
+    },
+    "Ranked Match": {
+        "message": "Geclassificeerde wedstrijd"
+    },
+    "Requeue": {
+        "message": "Wachtrij opnieuw betreden"
+    },
+    "Requeuing": {
+        "message": "Opnieuw in de wachtrij plaatsen"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "System": {
+        "message": "Stelsel"
+    },
+    "Waiting for opponent to connect": {
+        "message": "Wachten op verbinding van tegenstander"
+    },
+    "Warning": {
+        "message": "Waarschuwing"
+    },
+    "Your opponent abandoned the game and has received a time penalty.": {
+        "message": "Je tegenstander heeft het spel verlaten en heeft daarvoor straftijd ontvangen."
+    }
+}

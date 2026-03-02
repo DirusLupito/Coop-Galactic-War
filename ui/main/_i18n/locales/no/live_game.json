@@ -1,0 +1,74 @@
+{
+    "AT WILL": {
+        "message": "NÅR ØNSKELIG"
+    },
+    "BUILD MODE": {
+        "message": "BYGGEMODUS"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "SERVERTILKOBLING BRUTT"
+    },
+    "CONTINUOUS": {
+        "message": "LØPENDE"
+    },
+    "Cancel": {
+        "message": "Avbryt"
+    },
+    "Close": {
+        "message": "Avslutt"
+    },
+    "ENERGY ORDERS": {
+        "message": "ENERGIORDRE"
+    },
+    "Enemy Contact!": {
+        "message": "Fiendekontakt!"
+    },
+    "Exit Game?": {
+        "message": "Avslutte spillet?"
+    },
+    "FIRE ORDERS": {
+        "message": "SKYTEORDRE"
+    },
+    "GAME PAUSED": {
+        "message": "PAUSE"
+    },
+    "HOLD POSITION": {
+        "message": "HOLD POSISJON"
+    },
+    "MOVE ORDERS": {
+        "message": "FLYTTEORDRE"
+    },
+    "OFF": {
+        "message": "AV"
+    },
+    "ON": {
+        "message": "PÅ"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "I en grønn sone, velg startpunkt for kommandøren din."
+    },
+    "Ping!": {
+        "message": "Pling!"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Posisjon valgt. Klikk for å bekrefte."
+    },
+    "RETURN FIRE": {
+        "message": "SKYT TILBAKE"
+    },
+    "ROAM": {
+        "message": "ROAME"
+    },
+    "Returning to Main Menu": {
+        "message": "Går tilbake til hovedmenyen"
+    },
+    "START ANNIHILATION": {
+        "message": "START UTSLETTING"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Venter på at andre spillere velger startposisjon."
+    },
+    "Yes": {
+        "message": "Ja"
+    }
+}

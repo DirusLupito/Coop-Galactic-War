@@ -1,0 +1,44 @@
+{
+    "Armory": {
+        "message": "Depozit de arme"
+    },
+    "Connecting to PA": {
+        "message": "Conectarea la PA"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Nume de utilizator sau parolă incorecte. Vă rugăm verificaţi şi încercaţi din nou."
+    },
+    "New Build Available:": {
+        "message": "Versiune Nouă Disponibilă"
+    },
+    "Password": {
+        "message": "Parola"
+    },
+    "Please choose a default region.": {
+        "message": "Alege o regiune de bază."
+    },
+    "Quit": {
+        "message": "Părăseşte"
+    },
+    "Settings": {
+        "message": "Setări"
+    },
+    "Sign in": {
+        "message": "Conectează-te"
+    },
+    "System Designer": {
+        "message": "Proiectant de Sisteme"
+    },
+    "Unable to Sign In": {
+        "message": "Conectare Nereuşită"
+    },
+    "Username": {
+        "message": "Nume de Utilizator"
+    },
+    "You are already assigned to a game.": {
+        "message": "Eşti deja alocat unui joc."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Ai nevoie de un client nou pentru a juca jocul. Utilizatorii Steam vor trebui să repornească Steam pentru a obţine noul client."
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "As Efficiency percentage lowers, all fabbers, factories and Commanders build slower": {
+        "message": "По мере уменьшения процента Эффективности, все фабрикаторы, заводы и коммандеры будут строить медленнее"
+    },
+    "Build Metal Storage and Energy Storage to stockpile more resources": {
+        "message": "Постройте хранилище металла и энергохранилище, чтобы хранить больше ресурсов"
+    },
+    "Economy and Resources": {
+        "message": "Экономика и ресурсы"
+    },
+    "Energy and Metal resources get consumed while building": {
+        "message": "При строительстве расходуются энергия и металл"
+    },
+    "If you’re consuming more than you are producing, build efficiency slows down": {
+        "message": "Если вы потребляете больше, чем производите, эффективность строительства снижается"
+    },
+    "PA Guide: Economy": {
+        "message": "Руководство PA: Экономика"
+    },
+    "Resources build up over time": {
+        "message": "Ресурсы накапливаются со временем"
+    },
+    "To generate Energy, build Energy Plants": {
+        "message": "Постройте электростанцию, чтобы производить электроэнергию"
+    },
+    "To generate Metal, build Metal Extractors": {
+        "message": "Постройте добытчик металла, чтобы добывать металл"
+    }
+}

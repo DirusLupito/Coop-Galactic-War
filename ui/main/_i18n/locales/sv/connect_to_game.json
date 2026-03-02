@@ -1,0 +1,23 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "ANSLUTNING TILL SERVER MISSLYCKADES"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ANSLUTNING TILL SERVER FÖRLORAD"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "MISSLYCKADES MED ATT ANSLUTA TILL SPELET"
+    },
+    "FAILED TO START GAME": {
+        "message": "MISSLYCKADES MED ATT STARTA SPELET"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "INLOGGNING ACCEPTERAD"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "INLOGGNING TILL SERVER NEKAD"
+    },
+    "Returning to Main Menu": {
+        "message": "Återgår till Huvudmeny"
+    }
+}

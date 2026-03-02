@@ -1,0 +1,86 @@
+{
+    "AI Skirmish": {
+        "message": "Åpne kamper mot AI"
+    },
+    "Armory": {
+        "message": "Rustkammer"
+    },
+    "Audio Engine:": {
+        "message": "Lydprogram"
+    },
+    "Connecting to PA": {
+        "message": "Tilkobler til PA"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Kommandører i Kosmisk utgave"
+    },
+    "Extra special thanks to our:": {
+        "message": "Spesiell takk til vår:"
+    },
+    "Founding Commanders": {
+        "message": "Grunnleggende kommandører"
+    },
+    "Galactic War": {
+        "message": "Galaksekrig"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Feil brukernavn eller passord. Vennligst sjekk disse og prøv igjen."
+    },
+    "Multiplayer": {
+        "message": "Flerspiller"
+    },
+    "New Build Available:": {
+        "message": "Ny oppdatering tilgjengelig:"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Ikke noe av dette ville vært mulig uten din hjelp og vi er takknemlige for at du tok sjansen og trodde på vår visjon."
+    },
+    "Password": {
+        "message": "Passord"
+    },
+    "Please choose a default region.": {
+        "message": "Vær vennlig å velg din standardregion."
+    },
+    "Quit": {
+        "message": "Avslutt"
+    },
+    "Replays": {
+        "message": "Repriser"
+    },
+    "Settings": {
+        "message": "Innstillinger"
+    },
+    "Sign in": {
+        "message": "Logg inn"
+    },
+    "Single Player": {
+        "message": "Enspiller"
+    },
+    "System Designer": {
+        "message": "Systemdesigner"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Det er ingen regioner tilgjengelig for denne versjonen."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Til dere som deltok i vår Kickstarter-kampanje: vi vil takke dere for all support."
+    },
+    "Unable to Sign In": {
+        "message": "Innlogging mislyktes"
+    },
+    "Username": {
+        "message": "Brukernavn"
+    },
+    "Version:": {
+        "message": "Versjon:"
+    },
+    "You are already assigned to a game.": {
+        "message": "Du er allerede koblet til et spill."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Du kan endre region senere i innstillingene."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Du trenger en ny klient for å spille. Er du Steam-bruker kan det hende du må starte Steam på nytt for å få tilgang til den nye klienten."
+    }
+}

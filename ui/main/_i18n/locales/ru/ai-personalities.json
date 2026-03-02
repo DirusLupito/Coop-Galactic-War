@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP агрессивный"
+    },
+    "AIP Air": {
+        "message": "AIP воздушные"
+    },
+    "AIP Bot": {
+        "message": "AIP боты"
+    },
+    "AIP Cautious": {
+        "message": "AIP осторожный"
+    },
+    "AIP Defender": {
+        "message": "AIP защитник"
+    },
+    "AIP Economist": {
+        "message": "AIP экономист"
+    },
+    "AIP Fabber": {
+        "message": "AIP фабрикатор"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP быстрый технологический прогресс"
+    },
+    "AIP Foundation": {
+        "message": "AIP Институт"
+    },
+    "AIP Land": {
+        "message": "AIP наземные"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Легион Машин"
+    },
+    "AIP Low Tech": {
+        "message": "Примитивные технологии AIP"
+    },
+    "AIP Naval": {
+        "message": "AIP морские"
+    },
+    "AIP Orbital": {
+        "message": "AIP орбитальные"
+    },
+    "AIP Random": {
+        "message": "AIP случайные"
+    },
+    "AIP Revenants": {
+        "message": "AIP Выжившие"
+    },
+    "AIP Rush": {
+        "message": "AIP атакующий"
+    },
+    "AIP Swarm": {
+        "message": "AIP рой"
+    },
+    "AIP Synchronous": {
+        "message": "AIP синхронный"
+    },
+    "AIP Tank": {
+        "message": "AIP танк"
+    },
+    "AIP Turtle": {
+        "message": "AIP черепаха"
+    },
+    "AIP Amphibious": {
+        "message": "Амфибии AIP"
+    },
+    "AIP All-terrain": {
+        "message": "AIP вездеход"
+    },
+    "AIP Artillery": {
+        "message": "AIP артиллерия"
+    },
+    "AIP Assault": {
+        "message": "AIP штурмовой"
+    },
+    "AIP Boomer": {
+        "message": "AIP бумер"
+    },
+    "AIP Fortress": {
+        "message": "AIP крепость"
+    },
+    "AIP Heavy": {
+        "message": "AIP тяжелый"
+    },
+    "AIP Infernodier": {
+        "message": "AIP адский гранатометчик"
+    },
+    "AIP Micro": {
+        "message": "AIP микро"
+    },
+    "AIP Nuker": {
+        "message": "AIP ядерщик"
+    },
+    "AIP Raider": {
+        "message": "AIP рейдер"
+    },
+    "AIP Ranked": {
+        "message": "AIP высокоранговый"
+    },
+    "AIP Sniper": {
+        "message": "AIP снайпер"
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "AT WILL": {
+        "message": "SERBEST"
+    },
+    "BUILD MODE": {
+        "message": "ÜRETİM MODU"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "SUNUCUYLA BAĞLANTI KAYBOLDU"
+    },
+    "CONTINUOUS": {
+        "message": "SÜREKLİ"
+    },
+    "Cancel": {
+        "message": "İptal"
+    },
+    "Chrono Cam": {
+        "message": "KRONO KAMERA"
+    },
+    "Close": {
+        "message": "KAPAT"
+    },
+    "ENERGY ORDERS": {
+        "message": "ENERJİ EMİRLERİ"
+    },
+    "Enemy Contact!": {
+        "message": "Düşmanla Temas!"
+    },
+    "Exit Game?": {
+        "message": "Oyundan çık?"
+    },
+    "FIRE ORDERS": {
+        "message": "ATEŞ EMİRLERİ"
+    },
+    "GAME PAUSED": {
+        "message": "OYUN DURDURULDU"
+    },
+    "Game Settings": {
+        "message": "OYUN AYARLARI"
+    },
+    "HOLD": {
+        "message": "TUT"
+    },
+    "HOLD POSITION": {
+        "message": "POZİSYONU KORU"
+    },
+    "MOVE ORDERS": {
+        "message": "GİT EMİRLERİ"
+    },
+    "OFF": {
+        "message": "KAPALI"
+    },
+    "ON": {
+        "message": "AÇIK"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Kumandanınız için başlangıç noktası olarak yeşil alanlardan bir tanesini seçin."
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Başlangıç noktası seçildi. Onaylamak için tıklayın."
+    },
+    "Quit": {
+        "message": "ÇIK"
+    },
+    "RETURN FIRE": {
+        "message": "KARŞI ATEŞ"
+    },
+    "ROAM": {
+        "message": "DOLAŞIM"
+    },
+    "Returning to Main Menu": {
+        "message": "Ana Menüye Geri Dönülüyor"
+    },
+    "START ANNIHILATION": {
+        "message": "YOK ETMEYE BAŞLA"
+    },
+    "Yes": {
+        "message": "Evet"
+    }
+}

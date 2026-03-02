@@ -1,0 +1,26 @@
+{
+    "Appear Offline": {
+        "message": "Appear Offline"
+    },
+    "Away": {
+        "message": "Away"
+    },
+    "Chat": {
+        "message": "Чат"
+    },
+    "Do Not Disturb": {
+        "message": "Do Not Disturb"
+    },
+    "Friends": {
+        "message": "Друзі"
+    },
+    "Join Game": {
+        "message": "Приєднатися"
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Remove": {
+        "message": "Видалити"
+    }
+}

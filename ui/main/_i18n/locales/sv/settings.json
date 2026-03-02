@@ -1,0 +1,74 @@
+{
+    "Ambient Occlusion": {
+        "message": "AMBIENT OCCLUSION"
+    },
+    "Anti-Aliasing": {
+        "message": "KANTUJÄMNING"
+    },
+    "Audio": {
+        "message": "LJUD"
+    },
+    "Camera": {
+        "message": "KAMERA"
+    },
+    "Camera Friction": {
+        "message": "KAMERAFRIKTION"
+    },
+    "Cancel": {
+        "message": "AVBRYT"
+    },
+    "Display Mode": {
+        "message": "BILDLÄGE"
+    },
+    "Graphics": {
+        "message": "GRAFIK"
+    },
+    "Headlights": {
+        "message": "LYKTOR"
+    },
+    "Key Pan Speed": {
+        "message": "NYCKEL PAN HASTIGHET"
+    },
+    "Keyboard": {
+        "message": "TANGENTBORD"
+    },
+    "Master Volume": {
+        "message": "HUVUDVOLYM"
+    },
+    "Mouse Pan Speed": {
+        "message": "Hastighet för muspanorering"
+    },
+    "Orbital Shell": {
+        "message": "OMLOPPS SKAL"
+    },
+    "Quality Preset": {
+        "message": "KVALITETSINSTÄLLNINGAR"
+    },
+    "Resolution Scaling": {
+        "message": "UPPLÖSNINGSSKALNING"
+    },
+    "Settings": {
+        "message": "INSTÄLLNINGAR"
+    },
+    "Shadows": {
+        "message": "SKUGGOR"
+    },
+    "Show Build Previews": {
+        "message": "VISA FÖRHANDSVISNINGSBUILD"
+    },
+    "Show Metal Spot Icons": {
+        "message": "VISA METALLIKONER"
+    },
+    "Show Stat Bars": {
+        "message": "VISA STATUSRADER"
+    },
+    "Show Unit Icons": {
+        "message": "VISA ENHETSIKONER"
+    },
+    "Virtual Texture": {
+        "message": "VIRTUELL TEXTUR"
+    },
+    "Zoom Speed": {
+        "message": "ZOOMHASTIGHET"
+    }
+}

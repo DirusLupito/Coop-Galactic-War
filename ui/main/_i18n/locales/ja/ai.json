@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "エクストリーム"
+    },
+    "Absurd Testing": {
+        "message": "エクストリームテスト"
+    },
+    "Easy": {
+        "message": "イージー"
+    },
+    "Hard": {
+        "message": "ハード"
+    },
+    "Idle": {
+        "message": "非アクティブ"
+    },
+    "Normal": {
+        "message": "ノーマル"
+    },
+    "Relentless": {
+        "message": "ベリーハード"
+    }
+}

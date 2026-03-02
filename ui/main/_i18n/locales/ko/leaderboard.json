@@ -1,0 +1,128 @@
+{
+    "1 day ago": {
+        "message": "1일 전"
+    },
+    "1 hour ago": {
+        "message": "1시간 전"
+    },
+    "1 minute ago": {
+        "message": "1분 전"
+    },
+    "1 second ago": {
+        "message": "1초 전"
+    },
+    "1 week ago": {
+        "message": "1주 전"
+    },
+    "Bronze": {
+        "message": "브론즈"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "이 순위표 레벨을 불러오지 못했습니다."
+    },
+    "Games": {
+        "message": "게임"
+    },
+    "Gold": {
+        "message": "골드"
+    },
+    "Inactive": {
+        "message": "비활성"
+    },
+    "Just now": {
+        "message": "방금"
+    },
+    "Last Match Played": {
+        "message": "마지막 매치 플레이"
+    },
+    "Last match played": {
+        "message": "마지막 매치 플레이"
+    },
+    "Leaderboards": {
+        "message": "순위표"
+    },
+    "Level rank": {
+        "message": "레벨 랭크"
+    },
+    "Loading Leaderboard": {
+        "message": "순위표 불러오는 중"
+    },
+    "Match games played": {
+        "message": "매치 게임 플레이"
+    },
+    "No ranked players at this level.": {
+        "message": "이 레벨에 랭크된 플레이어가 없습니다."
+    },
+    "No recent matches played.": {
+        "message": "최근에 플레이한 매치가 없습니다."
+    },
+    "One ranked player at this level.": {
+        "message": "이 레벨에 랭크된 플레이어가 1명 있습니다."
+    },
+    "Platinum": {
+        "message": "플래티넘"
+    },
+    "Play ranked match": {
+        "message": "랭킹 매치 플레이"
+    },
+    "Player": {
+        "message": "플레이어"
+    },
+    "Provisional": {
+        "message": "임시"
+    },
+    "Rank": {
+        "message": "랭크"
+    },
+    "Rating": {
+        "message": "등급"
+    },
+    "Season ends __date__": {
+        "message": "__date__에 시즌 종료"
+    },
+    "Silver": {
+        "message": "실버"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "이 순위표 레벨은 현재 비어 있습니다."
+    },
+    "Uber": {
+        "message": "우버"
+    },
+    "Unranked": {
+        "message": "랭크 없음"
+    },
+    "Watch Replay": {
+        "message": "리플레이 보기"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "랭크를 받으려면 랭킹 게임을 __number__번 플레이해야 합니다."
+    },
+    "Your rank": {
+        "message": "내 랭크"
+    },
+    "__n__ days ago": {
+        "message": "__n__일 전"
+    },
+    "__n__ hours ago": {
+        "message": "__n__시간 전"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__분 전"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__초 전"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__주 전"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "이 레벨에 랭크된 플레이어가 __num_players__명 있습니다."
+    },
+    "Star": {
+        "message": "별"
+    },
+    "View Replays": {
+        "message": "리플레이 보기"
+    }
+}

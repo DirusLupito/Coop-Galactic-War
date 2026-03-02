@@ -1,0 +1,862 @@
+{
+    "ALL": {
+        "message": "Ȃ₤₤Ω",
+        "original": "ALL"
+    },
+    "ALLIANCES": {
+        "message": "Ȃ₤₤ΪȂƝҪƐṠΩΩΩΩ",
+        "original": "ALLIANCES"
+    },
+    "ALLY": {
+        "message": "Ȃ₤₤УΩΩ",
+        "original": "ALLY"
+    },
+    "ALT-FIRE": {
+        "message": "Ȃ₤丁-ϜΪℝƐΩΩΩΩ",
+        "original": "ALT-FIRE"
+    },
+    "ANNIHILATE EVERYTHING": {
+        "message": "ȂƝƝΪӇΪ₤Ȃ丁Ɛ ƐѶƐℝУ丁ӇΪƝǴΩΩΩΩΩΩΩΩΩΩ",
+        "original": "ANNIHILATE EVERYTHING"
+    },
+    "ANNIHILATED": {
+        "message": "ȂƝƝΪӇΪ₤Ȃ丁ƐƉΩΩΩΩΩ",
+        "original": "ANNIHILATED"
+    },
+    "APS:": {
+        "message": "ȂṔṠ:ΩΩ",
+        "original": "APS:"
+    },
+    "ARMY": {
+        "message": "ȂℝΜУΩΩ",
+        "original": "ARMY"
+    },
+    "ASSIST": {
+        "message": "ȂṠṠΪṠ丁ΩΩΩ",
+        "original": "ASSIST"
+    },
+    "AT WILL": {
+        "message": "Ȃ丁 ₩Ϊ₤₤ΩΩΩ",
+        "original": "AT WILL"
+    },
+    "ATTACK": {
+        "message": "Ȃ丁丁ȂҪҠΩΩΩ",
+        "original": "ATTACK"
+    },
+    "ATTACKING": {
+        "message": "Ȃ丁丁ȂҪҠΪƝǴΩΩΩΩ",
+        "original": "ATTACKING"
+    },
+    "Abandon War": {
+        "message": "ȂБȃƞɗȏƞ ₩ȃȓΩΩΩΩΩ",
+        "original": "Abandon War"
+    },
+    "Accept": {
+        "message": "Ȃϲϲέ⍴ҭΩΩΩ",
+        "original": "Accept"
+    },
+    "Activate planetary laser": {
+        "message": "Ȃϲҭїѷȃҭέ ⍴⌊ȃƞέҭȃȓу ⌊ȃƨέȓΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Activate planetary laser"
+    },
+    "Add": {
+        "message": "ȂɗɗΩ",
+        "original": "Add"
+    },
+    "Advanced": {
+        "message": "ȂɗѷȃƞϲέɗΩΩΩΩ",
+        "original": "Advanced"
+    },
+    "Air": {
+        "message": "ȂїȓΩ",
+        "original": "Air"
+    },
+    "All catalysts online on __planet_name__! Click here to annihilate!": {
+        "message": "Ȃ⌊⌊ ϲȃҭȃ⌊уƨҭƨ ȏƞ⌊їƞέ ȏƞ __planet_name__! Ҫ⌊їϲќ нέȓέ ҭȏ ȃƞƞїнї⌊ȃҭέ!ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "All catalysts online on __planet_name__! Click here to annihilate!"
+    },
+    "Alliance Request": {
+        "message": "Ȃ⌊⌊їȃƞϲέ ℝέԳմέƨҭΩΩΩΩΩΩΩΩ",
+        "original": "Alliance Request"
+    },
+    "Alliance requested": {
+        "message": "Ȃ⌊⌊їȃƞϲέ ȓέԳմέƨҭέɗΩΩΩΩΩΩΩΩΩ",
+        "original": "Alliance requested"
+    },
+    "Allied With:": {
+        "message": "Ȃ⌊⌊їέɗ ₩їҭн:ΩΩΩΩΩΩ",
+        "original": "Allied With:"
+    },
+    "Allied __unit_name__ lost.": {
+        "message": "Ȃ⌊⌊їέɗ __unit_name__ ⌊ȏƨҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Allied __unit_name__ lost."
+    },
+    "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)": {
+        "message": "Ȃȓέ уȏմ ƨմȓέ уȏմ ῴȃƞҭ ҭȏ ȃБȃƞɗȏƞ ҭнїƨ Ǵȃ⌊ȃϲҭїϲ ₩ȃȓ?[br](Ȃ⌊⌊ ⍴ȓȏɠȓέƨƨ ȃƞɗ 丁έϲн ῴї⌊⌊ Бέ ⌊ȏƨҭ.)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)"
+    },
+    "Army": {
+        "message": "ȂȓʍуΩΩ",
+        "original": "Army"
+    },
+    "Army Count": {
+        "message": "Ȃȓʍу ҪȏմƞҭΩΩΩΩΩ",
+        "original": "Army Count"
+    },
+    "BUILD MODE": {
+        "message": "฿ỦΪ₤Ɖ ΜѲƉƐΩΩΩΩΩ",
+        "original": "BUILD MODE"
+    },
+    "Bot": {
+        "message": "฿ȏҭΩ",
+        "original": "Bot"
+    },
+    "Bounty Econ Multiplier": {
+        "message": "฿ȏմƞҭу Ɛϲȏƞ Μմ⌊ҭї⍴⌊їέȓΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Bounty Econ Multiplier"
+    },
+    "Bounty kill rewarded. Econ multipliers enabled.": {
+        "message": "฿ȏմƞҭу ќї⌊⌊ ȓέῴȃȓɗέɗ. Ɛϲȏƞ ʍմ⌊ҭї⍴⌊їέȓƨ έƞȃБ⌊έɗ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Bounty kill rewarded. Econ multipliers enabled."
+    },
+    "Build Efficiency": {
+        "message": "฿մї⌊ɗ ƐғғїϲїέƞϲуΩΩΩΩΩΩΩΩ",
+        "original": "Build Efficiency"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ҪѲƝƝƐҪ丁ΪѲƝ 丁Ѳ ṠƐℝѶƐℝ ₤ѲṠ丁ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "CONNECTION TO SERVER LOST"
+    },
+    "CONTINUOUS": {
+        "message": "ҪѲƝ丁ΪƝỦѲỦṠΩΩΩΩΩ",
+        "original": "CONTINUOUS"
+    },
+    "Cancel": {
+        "message": "Ҫȃƞϲέ⌊ΩΩΩ",
+        "original": "Cancel"
+    },
+    "Cancel Fire": {
+        "message": "Ҫȃƞϲέ⌊ ϜїȓέΩΩΩΩΩ",
+        "original": "Cancel Fire"
+    },
+    "Cancel Move": {
+        "message": "Ҫȃƞϲέ⌊ ΜȏѷέΩΩΩΩΩ",
+        "original": "Cancel Move"
+    },
+    "Capture main view": {
+        "message": "Ҫȃ⍴ҭմȓέ ʍȃїƞ ѷїέῴΩΩΩΩΩΩΩΩ",
+        "original": "Capture main view"
+    },
+    "Change orbit": {
+        "message": "Ҫнȃƞɠέ ȏȓБїҭΩΩΩΩΩΩ",
+        "original": "Change orbit"
+    },
+    "Chrono Cam": {
+        "message": "Ҫнȓȏƞȏ ҪȃʍΩΩΩΩΩ",
+        "original": "Chrono Cam"
+    },
+    "Chrono Cam Replay": {
+        "message": "Ҫнȓȏƞȏ Ҫȃʍ ℝέ⍴⌊ȃуΩΩΩΩΩΩΩΩ",
+        "original": "Chrono Cam Replay"
+    },
+    "Close": {
+        "message": "Ҫ⌊ȏƨέΩΩ",
+        "original": "Close"
+    },
+    "Commander": {
+        "message": "ҪȏʍʍȃƞɗέȓΩΩΩΩ",
+        "original": "Commander"
+    },
+    "Continue Tutorial": {
+        "message": "Ҫȏƞҭїƞմέ 丁մҭȏȓїȃ⌊ΩΩΩΩΩΩΩΩ",
+        "original": "Continue Tutorial"
+    },
+    "Continue War": {
+        "message": "Ҫȏƞҭїƞմέ ₩ȃȓΩΩΩΩΩΩ",
+        "original": "Continue War"
+    },
+    "Count": {
+        "message": "ҪȏմƞҭΩΩ",
+        "original": "Count"
+    },
+    "DMG": {
+        "message": "ƉΜǴΩ",
+        "original": "DMG"
+    },
+    "DMG:": {
+        "message": "ƉΜǴ:ΩΩ",
+        "original": "DMG:"
+    },
+    "DPS": {
+        "message": "ƉṔṠΩ",
+        "original": "DPS"
+    },
+    "DPS:": {
+        "message": "ƉṔṠ:ΩΩ",
+        "original": "DPS:"
+    },
+    "DRAW": {
+        "message": "ƉℝȂ₩ΩΩ",
+        "original": "DRAW"
+    },
+    "Destroy selected units?": {
+        "message": "Ɖέƨҭȓȏу ƨέ⌊έϲҭέɗ մƞїҭƨ?ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Destroy selected units?"
+    },
+    "ECONOMY": {
+        "message": "ƐҪѲƝѲΜУΩΩΩ",
+        "original": "ECONOMY"
+    },
+    "ENERGY ORDERS": {
+        "message": "ƐƝƐℝǴУ ѲℝƉƐℝṠΩΩΩΩΩΩ",
+        "original": "ENERGY ORDERS"
+    },
+    "Eff": {
+        "message": "ƐғғΩ",
+        "original": "Eff"
+    },
+    "Efficiency": {
+        "message": "ƐғғїϲїέƞϲуΩΩΩΩΩ",
+        "original": "Efficiency"
+    },
+    "Enemy Contact!": {
+        "message": "Ɛƞέʍу Ҫȏƞҭȃϲҭ!ΩΩΩΩΩΩΩ",
+        "original": "Enemy Contact!"
+    },
+    "Energy": {
+        "message": "ƐƞέȓɠуΩΩΩ",
+        "original": "Energy"
+    },
+    "Energy Efficiency": {
+        "message": "Ɛƞέȓɠу ƐғғїϲїέƞϲуΩΩΩΩΩΩΩΩ",
+        "original": "Energy Efficiency"
+    },
+    "Energy Expended": {
+        "message": "Ɛƞέȓɠу Ɛ⌧⍴έƞɗέɗΩΩΩΩΩΩΩ",
+        "original": "Energy Expended"
+    },
+    "Energy Produced": {
+        "message": "Ɛƞέȓɠу ṔȓȏɗմϲέɗΩΩΩΩΩΩΩ",
+        "original": "Energy Produced"
+    },
+    "Energy Storage": {
+        "message": "Ɛƞέȓɠу ṠҭȏȓȃɠέΩΩΩΩΩΩΩ",
+        "original": "Energy Storage"
+    },
+    "Exit Game?": {
+        "message": "Ɛ⌧їҭ Ǵȃʍέ?ΩΩΩΩΩ",
+        "original": "Exit Game?"
+    },
+    "FABRICATING": {
+        "message": "ϜȂ฿ℝΪҪȂ丁ΪƝǴΩΩΩΩΩ",
+        "original": "FABRICATING"
+    },
+    "FIRE ORDERS": {
+        "message": "ϜΪℝƐ ѲℝƉƐℝṠΩΩΩΩΩ",
+        "original": "FIRE ORDERS"
+    },
+    "Fab": {
+        "message": "ϜȃБΩ",
+        "original": "Fab"
+    },
+    "Fabber": {
+        "message": "ϜȃББέȓΩΩΩ",
+        "original": "Fabber"
+    },
+    "Fabricator Count": {
+        "message": "ϜȃБȓїϲȃҭȏȓ ҪȏմƞҭΩΩΩΩΩΩΩΩ",
+        "original": "Fabricator Count"
+    },
+    "Fac": {
+        "message": "ϜȃϲΩ",
+        "original": "Fac"
+    },
+    "Factory": {
+        "message": "ϜȃϲҭȏȓуΩΩΩ",
+        "original": "Factory"
+    },
+    "Factory Count": {
+        "message": "Ϝȃϲҭȏȓу ҪȏմƞҭΩΩΩΩΩΩ",
+        "original": "Factory Count"
+    },
+    "Fire Weapon": {
+        "message": "Ϝїȓέ ₩έȃ⍴ȏƞΩΩΩΩΩ",
+        "original": "Fire Weapon"
+    },
+    "Follow alerts": {
+        "message": "Ϝȏ⌊⌊ȏῴ ȃ⌊έȓҭƨΩΩΩΩΩΩ",
+        "original": "Follow alerts"
+    },
+    "GAME PAUSED": {
+        "message": "ǴȂΜƐ ṔȂỦṠƐƉΩΩΩΩΩ",
+        "original": "GAME PAUSED"
+    },
+    "Game Menu": {
+        "message": "Ǵȃʍέ ΜέƞմΩΩΩΩ",
+        "original": "Game Menu"
+    },
+    "Game Ready": {
+        "message": "Ǵȃʍέ ℝέȃɗуΩΩΩΩΩ",
+        "original": "Game Ready"
+    },
+    "Game Settings": {
+        "message": "Ǵȃʍέ ṠέҭҭїƞɠƨΩΩΩΩΩΩ",
+        "original": "Game Settings"
+    },
+    "Game Stats": {
+        "message": "Ǵȃʍέ ṠҭȃҭƨΩΩΩΩΩ",
+        "original": "Game Stats"
+    },
+    "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds.": {
+        "message": "Ǵȃʍέ нȃƨ Бέέƞ ⍴ȃմƨέɗ. Уȏմ ῴї⌊⌊ ȓέϲέїѷέ ȃ ѷїϲҭȏȓу їғ уȏմȓ ȏ⍴⍴ȏƞέƞҭ ɗȏέƨ ƞȏҭ ȓέϲȏƞƞέϲҭ ῴїҭнїƞ 180 ƨέϲȏƞɗƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds."
+    },
+    "Game starts in": {
+        "message": "Ǵȃʍέ ƨҭȃȓҭƨ їƞΩΩΩΩΩΩΩ",
+        "original": "Game starts in"
+    },
+    "HEALTH": {
+        "message": "ӇƐȂ₤丁ӇΩΩΩ",
+        "original": "HEALTH"
+    },
+    "HOLD": {
+        "message": "ӇѲ₤ƉΩΩ",
+        "original": "HOLD"
+    },
+    "HOLD POSITION": {
+        "message": "ӇѲ₤Ɖ ṔѲṠΪ丁ΪѲƝΩΩΩΩΩΩ",
+        "original": "HOLD POSITION"
+    },
+    "Halleys active on __planet_name__! Click here to annihilate!": {
+        "message": "Ӈȃ⌊⌊έуƨ ȃϲҭїѷέ ȏƞ __planet_name__! Ҫ⌊їϲќ нέȓέ ҭȏ ȃƞƞїнї⌊ȃҭέ!ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Halleys active on __planet_name__! Click here to annihilate!"
+    },
+    "Hold the mouse wheel down and drag to pan.": {
+        "message": "Ӈȏ⌊ɗ ҭнέ ʍȏմƨέ ῴнέέ⌊ ɗȏῴƞ ȃƞɗ ɗȓȃɠ ҭȏ ⍴ȃƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Hold the mouse wheel down and drag to pan."
+    },
+    "Ignore": {
+        "message": "ΪɠƞȏȓέΩΩΩ",
+        "original": "Ignore"
+    },
+    "LOAD": {
+        "message": "₤ѲȂƉΩΩ",
+        "original": "LOAD"
+    },
+    "MANEUVER": {
+        "message": "ΜȂƝƐỦѶƐℝΩΩΩΩ",
+        "original": "MANEUVER"
+    },
+    "MOVE": {
+        "message": "ΜѲѶƐΩΩ",
+        "original": "MOVE"
+    },
+    "MOVE ORDERS": {
+        "message": "ΜѲѶƐ ѲℝƉƐℝṠΩΩΩΩΩ",
+        "original": "MOVE ORDERS"
+    },
+    "Metal": {
+        "message": "Μέҭȃ⌊ΩΩ",
+        "original": "Metal"
+    },
+    "Metal Efficiency": {
+        "message": "Μέҭȃ⌊ ƐғғїϲїέƞϲуΩΩΩΩΩΩΩΩ",
+        "original": "Metal Efficiency"
+    },
+    "Metal Expended": {
+        "message": "Μέҭȃ⌊ Ɛ⌧⍴έƞɗέɗΩΩΩΩΩΩΩ",
+        "original": "Metal Expended"
+    },
+    "Metal Produced": {
+        "message": "Μέҭȃ⌊ ṔȓȏɗմϲέɗΩΩΩΩΩΩΩ",
+        "original": "Metal Produced"
+    },
+    "Metal Storage": {
+        "message": "Μέҭȃ⌊ ṠҭȏȓȃɠέΩΩΩΩΩΩ",
+        "original": "Metal Storage"
+    },
+    "Metal Value": {
+        "message": "Μέҭȃ⌊ Ѷȃ⌊մέΩΩΩΩΩ",
+        "original": "Metal Value"
+    },
+    "Mobile": {
+        "message": "ΜȏБї⌊έΩΩΩ",
+        "original": "Mobile"
+    },
+    "NORMAL": {
+        "message": "ƝѲℝΜȂ₤ΩΩΩ",
+        "original": "NORMAL"
+    },
+    "Names can only include letters [a-Z] and numbers [0-9].": {
+        "message": "Ɲȃʍέƨ ϲȃƞ ȏƞ⌊у їƞϲ⌊մɗέ ⌊έҭҭέȓƨ [a-Z] ȃƞɗ ƞմʍБέȓƨ [0-9].ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Names can only include letters [a-Z] and numbers [0-9]."
+    },
+    "Naval": {
+        "message": "Ɲȃѷȃ⌊ΩΩ",
+        "original": "Naval"
+    },
+    "Net Energy Income": {
+        "message": "Ɲέҭ Ɛƞέȓɠу ΪƞϲȏʍέΩΩΩΩΩΩΩΩ",
+        "original": "Net Energy Income"
+    },
+    "Net Metal Income": {
+        "message": "Ɲέҭ Μέҭȃ⌊ ΪƞϲȏʍέΩΩΩΩΩΩΩΩ",
+        "original": "Net Metal Income"
+    },
+    "Next": {
+        "message": "Ɲέ⌧ҭΩΩ",
+        "original": "Next"
+    },
+    "No metal": {
+        "message": "Ɲȏ ʍέҭȃ⌊ΩΩΩΩ",
+        "original": "No metal"
+    },
+    "Not enough energy": {
+        "message": "Ɲȏҭ έƞȏմɠн έƞέȓɠуΩΩΩΩΩΩΩΩ",
+        "original": "Not enough energy"
+    },
+    "Not enough metal": {
+        "message": "Ɲȏҭ έƞȏմɠн ʍέҭȃ⌊ΩΩΩΩΩΩΩΩ",
+        "original": "Not enough metal"
+    },
+    "Not enough metal or energy": {
+        "message": "Ɲȏҭ έƞȏմɠн ʍέҭȃ⌊ ȏȓ έƞέȓɠуΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Not enough metal or energy"
+    },
+    "OFF": {
+        "message": "ѲϜϜΩ",
+        "original": "OFF"
+    },
+    "ON": {
+        "message": "ѲƝΩ",
+        "original": "ON"
+    },
+    "Opponent disconnected": {
+        "message": "Ѳ⍴⍴ȏƞέƞҭ ɗїƨϲȏƞƞέϲҭέɗΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Opponent disconnected"
+    },
+    "Orbital": {
+        "message": "ѲȓБїҭȃ⌊ΩΩΩ",
+        "original": "Orbital"
+    },
+    "PATROL": {
+        "message": "ṔȂ丁ℝѲ₤ΩΩΩ",
+        "original": "PATROL"
+    },
+    "PLAYER": {
+        "message": "Ṕ₤ȂУƐℝΩΩΩ",
+        "original": "PLAYER"
+    },
+    "POV Camera": {
+        "message": "ṔѲѶ ҪȃʍέȓȃΩΩΩΩΩ",
+        "original": "POV Camera"
+    },
+    "PROD": {
+        "message": "ṔℝѲƉΩΩ",
+        "original": "PROD"
+    },
+    "Pause Game": {
+        "message": "Ṕȃմƨέ ǴȃʍέΩΩΩΩΩ",
+        "original": "Pause Game"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Ṕїϲќ ȃ ⌊ȏϲȃҭїȏƞ їƞƨїɗέ ȏƞέ ȏғ ҭнέ ɠȓέέƞ ℤȏƞέƨ ҭȏ ƨ⍴ȃῴƞ уȏմȓ Ҫȏʍʍȃƞɗέȓ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Pick a location inside one of the green zones to spawn your Commander."
+    },
+    "Pin to opposite side": {
+        "message": "Ṕїƞ ҭȏ ȏ⍴⍴ȏƨїҭέ ƨїɗέΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Pin to opposite side"
+    },
+    "Ping": {
+        "message": "ṔїƞɠΩΩ",
+        "original": "Ping"
+    },
+    "Ping!": {
+        "message": "Ṕїƞɠ!ΩΩ",
+        "original": "Ping!"
+    },
+    "Play From Here": {
+        "message": "Ṕ⌊ȃу Ϝȓȏʍ ӇέȓέΩΩΩΩΩΩΩ",
+        "original": "Play From Here"
+    },
+    "Player Guide": {
+        "message": "Ṕ⌊ȃуέȓ ǴմїɗέΩΩΩΩΩΩ",
+        "original": "Player Guide"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Ṕȏƨїҭїȏƞ ҭȃȓɠέҭέɗ. Ҫ⌊їϲќ ҭȏ ϲȏƞғїȓʍ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Position targeted. Click to confirm."
+    },
+    "Prev": {
+        "message": "ṔȓέѷΩΩ",
+        "original": "Prev"
+    },
+    "Quit": {
+        "message": "ҨմїҭΩΩ",
+        "original": "Quit"
+    },
+    "Quit Game": {
+        "message": "Ҩմїҭ ǴȃʍέΩΩΩΩ",
+        "original": "Quit Game"
+    },
+    "Quit to Main Menu": {
+        "message": "Ҩմїҭ ҭȏ Μȃїƞ ΜέƞմΩΩΩΩΩΩΩΩ",
+        "original": "Quit to Main Menu"
+    },
+    "READY": {
+        "message": "ℝƐȂƉУΩΩ",
+        "original": "READY"
+    },
+    "RECLAIM": {
+        "message": "ℝƐҪ₤ȂΪΜΩΩΩ",
+        "original": "RECLAIM"
+    },
+    "RECLAIMING": {
+        "message": "ℝƐҪ₤ȂΪΜΪƝǴΩΩΩΩΩ",
+        "original": "RECLAIMING"
+    },
+    "REPAIR": {
+        "message": "ℝƐṔȂΪℝΩΩΩ",
+        "original": "REPAIR"
+    },
+    "RETURN FIRE": {
+        "message": "ℝƐ丁ỦℝƝ ϜΪℝƐΩΩΩΩΩ",
+        "original": "RETURN FIRE"
+    },
+    "ROAM": {
+        "message": "ℝѲȂΜΩΩ",
+        "original": "ROAM"
+    },
+    "Radius": {
+        "message": "ℝȃɗїմƨΩΩΩ",
+        "original": "Radius"
+    },
+    "Request pending": {
+        "message": "ℝέԳմέƨҭ ⍴έƞɗїƞɠΩΩΩΩΩΩΩ",
+        "original": "Request pending"
+    },
+    "Resume": {
+        "message": "ℝέƨմʍέΩΩΩ",
+        "original": "Resume"
+    },
+    "Resume Game": {
+        "message": "ℝέƨմʍέ ǴȃʍέΩΩΩΩΩ",
+        "original": "Resume Game"
+    },
+    "Resume from here?": {
+        "message": "ℝέƨմʍέ ғȓȏʍ нέȓέ?ΩΩΩΩΩΩΩΩ",
+        "original": "Resume from here?"
+    },
+    "Return to Galactic War": {
+        "message": "ℝέҭմȓƞ ҭȏ Ǵȃ⌊ȃϲҭїϲ ₩ȃȓΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Return to Galactic War"
+    },
+    "Returning to Main Menu": {
+        "message": "ℝέҭմȓƞїƞɠ ҭȏ Μȃїƞ ΜέƞմΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Returning to Main Menu"
+    },
+    "Rewinding Time": {
+        "message": "ℝέῴїƞɗїƞɠ 丁їʍέΩΩΩΩΩΩΩ",
+        "original": "Rewinding Time"
+    },
+    "SELECTING": {
+        "message": "ṠƐ₤ƐҪ丁ΪƝǴΩΩΩΩ",
+        "original": "SELECTING"
+    },
+    "SHARE ECO": {
+        "message": "ṠӇȂℝƐ ƐҪѲΩΩΩΩ",
+        "original": "SHARE ECO"
+    },
+    "SHARED ENERGY:": {
+        "message": "ṠӇȂℝƐƉ ƐƝƐℝǴУ: ΩΩΩΩΩΩΩ",
+        "original": "SHARED ENERGY: "
+    },
+    "SHARED METAL:": {
+        "message": "ṠӇȂℝƐƉ ΜƐ丁Ȃ₤: ΩΩΩΩΩΩΩ",
+        "original": "SHARED METAL: "
+    },
+    "SPECIAL-MOVE": {
+        "message": "ṠṔƐҪΪȂ₤-ΜѲѶƐΩΩΩΩΩΩ",
+        "original": "SPECIAL-MOVE"
+    },
+    "START ANNIHILATION": {
+        "message": "Ṡ丁Ȃℝ丁 ȂƝƝΪӇΪ₤Ȃ丁ΪѲƝΩΩΩΩΩΩΩΩΩ",
+        "original": "START ANNIHILATION"
+    },
+    "STOP": {
+        "message": "Ṡ丁ѲṔΩΩ",
+        "original": "STOP"
+    },
+    "STORAGE": {
+        "message": "Ṡ丁ѲℝȂǴƐΩΩΩ",
+        "original": "STORAGE"
+    },
+    "Save": {
+        "message": "ṠȃѷέΩΩ",
+        "original": "Save"
+    },
+    "Save Game": {
+        "message": "Ṡȃѷέ ǴȃʍέΩΩΩΩ",
+        "original": "Save Game"
+    },
+    "Save complete": {
+        "message": "Ṡȃѷέ ϲȏʍ⍴⌊έҭέΩΩΩΩΩΩ",
+        "original": "Save complete"
+    },
+    "Save game?": {
+        "message": "Ṡȃѷέ ɠȃʍέ?ΩΩΩΩΩ",
+        "original": "Save game?"
+    },
+    "Saving game": {
+        "message": "Ṡȃѷїƞɠ ɠȃʍέΩΩΩΩΩ",
+        "original": "Saving game"
+    },
+    "Scroll mouse wheel to zoom in and out.": {
+        "message": "Ṡϲȓȏ⌊⌊ ʍȏմƨέ ῴнέέ⌊ ҭȏ ℤȏȏʍ їƞ ȃƞɗ ȏմҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Scroll mouse wheel to zoom in and out."
+    },
+    "Second Camera PIP": {
+        "message": "Ṡέϲȏƞɗ Ҫȃʍέȓȃ ṔΪṔΩΩΩΩΩΩΩΩ",
+        "original": "Second Camera PIP"
+    },
+    "Select a new gravity well.": {
+        "message": "Ṡέ⌊έϲҭ ȃ ƞέῴ ɠȓȃѷїҭу ῴέ⌊⌊.ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select a new gravity well."
+    },
+    "Select a planet to attack.": {
+        "message": "Ṡέ⌊έϲҭ ȃ ⍴⌊ȃƞέҭ ҭȏ ȃҭҭȃϲќ.ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select a planet to attack."
+    },
+    "Select a planet to destroy.": {
+        "message": "Ṡέ⌊έϲҭ ȃ ⍴⌊ȃƞέҭ ҭȏ ɗέƨҭȓȏу.ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select a planet to destroy."
+    },
+    "Select all advanced units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ȃɗѷȃƞϲέɗ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all advanced units in view"
+    },
+    "Select all air units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ȃїȓ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all air units in view"
+    },
+    "Select all bot units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ Бȏҭ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all bot units in view"
+    },
+    "Select all fabber units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ғȃББέȓ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all fabber units in view"
+    },
+    "Select all naval units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ƞȃѷȃ⌊ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all naval units in view"
+    },
+    "Select all orbital units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ȏȓБїҭȃ⌊ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all orbital units in view"
+    },
+    "Select all vehicle units in view": {
+        "message": "Ṡέ⌊έϲҭ ȃ⌊⌊ ѷέнїϲ⌊έ մƞїҭƨ їƞ ѷїέῴΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select all vehicle units in view"
+    },
+    "Select idle fabbers": {
+        "message": "Ṡέ⌊έϲҭ їɗ⌊έ ғȃББέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Select idle fabbers"
+    },
+    "Select idle factories": {
+        "message": "Ṡέ⌊έϲҭ їɗ⌊έ ғȃϲҭȏȓїέƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Select idle factories"
+    },
+    "Send to Annihilate": {
+        "message": "Ṡέƞɗ ҭȏ Ȃƞƞїнї⌊ȃҭέΩΩΩΩΩΩΩΩΩ",
+        "original": "Send to Annihilate"
+    },
+    "Set course for annihilation": {
+        "message": "Ṡέҭ ϲȏմȓƨέ ғȏȓ ȃƞƞїнї⌊ȃҭїȏƞΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Set course for annihilation"
+    },
+    "Set target spot": {
+        "message": "Ṡέҭ ҭȃȓɠέҭ ƨ⍴ȏҭΩΩΩΩΩΩΩ",
+        "original": "Set target spot"
+    },
+    "Sim Performance": {
+        "message": "Ṡїʍ ṔέȓғȏȓʍȃƞϲέΩΩΩΩΩΩΩ",
+        "original": "Sim Performance"
+    },
+    "Social Bar": {
+        "message": "Ṡȏϲїȃ⌊ ฿ȃȓΩΩΩΩΩ",
+        "original": "Social Bar"
+    },
+    "Surrender": {
+        "message": "ṠմȓȓέƞɗέȓΩΩΩΩ",
+        "original": "Surrender"
+    },
+    "Surrender Game?": {
+        "message": "Ṡմȓȓέƞɗέȓ Ǵȃʍέ?ΩΩΩΩΩΩΩ",
+        "original": "Surrender Game?"
+    },
+    "Swap cameras": {
+        "message": "Ṡῴȃ⍴ ϲȃʍέȓȃƨΩΩΩΩΩΩ",
+        "original": "Swap cameras"
+    },
+    "TRANSPORT": {
+        "message": "丁ℝȂƝṠṔѲℝ丁ΩΩΩΩ",
+        "original": "TRANSPORT"
+    },
+    "Then confirm destination to set course.": {
+        "message": "丁нέƞ ϲȏƞғїȓʍ ɗέƨҭїƞȃҭїȏƞ ҭȏ ƨέҭ ϲȏմȓƨέ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Then confirm destination to set course."
+    },
+    "This process can take a while.": {
+        "message": "丁нїƨ ⍴ȓȏϲέƨƨ ϲȃƞ ҭȃќέ ȃ ῴнї⌊έ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "This process can take a while."
+    },
+    "Toggle POV Camera": {
+        "message": "丁ȏɠɠ⌊έ ṔѲѶ ҪȃʍέȓȃΩΩΩΩΩΩΩΩ",
+        "original": "Toggle POV Camera"
+    },
+    "UNLOAD": {
+        "message": "ỦƝ₤ѲȂƉΩΩΩ",
+        "original": "UNLOAD"
+    },
+    "USE": {
+        "message": "ỦṠƐΩ",
+        "original": "USE"
+    },
+    "Unknown": {
+        "message": "ỦƞќƞȏῴƞΩΩΩ",
+        "original": "Unknown"
+    },
+    "Vehicle": {
+        "message": "Ѷέнїϲ⌊έΩΩΩ",
+        "original": "Vehicle"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "₩Ѳℝ₤Ɖ ṠΪΜỦ₤Ȃ丁ΪѲƝ ₩ƐƝ丁 Ȃ₩ȂУΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "WORLD SIMULATION WENT AWAY"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "₩ȃїҭїƞɠ ғȏȓ ȏҭнέȓ ⍴⌊ȃуέȓƨ ҭȏ ƨέ⌊έϲҭ ȃ ƨ⍴ȃῴƞ ⌊ȏϲȃҭїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Waiting for other players to select a spawn location."
+    },
+    "Yes": {
+        "message": "УέƨΩ",
+        "original": "Yes"
+    },
+    "__metal_spots__ metal": {
+        "message": "__metal_spots__ ʍέҭȃ⌊ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__metal_spots__ metal"
+    },
+    "__num_idle_fabbers__ Idle": {
+        "message": "__num_idle_fabbers__ Ϊɗ⌊έΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__num_idle_fabbers__ Idle"
+    },
+    "__num_idle_factories__ Idle": {
+        "message": "__num_idle_factories__ Ϊɗ⌊έΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__num_idle_factories__ Idle"
+    },
+    "__unit_name__ arrived.": {
+        "message": "__unit_name__ ȃȓȓїѷέɗ.ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ arrived."
+    },
+    "__unit_name__ destroyed.": {
+        "message": "__unit_name__ ɗέƨҭȓȏуέɗ.ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ destroyed."
+    },
+    "__unit_name__ idle.": {
+        "message": "__unit_name__ їɗ⌊έ.ΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ idle."
+    },
+    "__unit_name__ launched!": {
+        "message": "__unit_name__ ⌊ȃմƞϲнέɗ!ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ launched!"
+    },
+    "__unit_name__ located.": {
+        "message": "__unit_name__ ⌊ȏϲȃҭέɗ.ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ located."
+    },
+    "__unit_name__ lost.": {
+        "message": "__unit_name__ ⌊ȏƨҭ.ΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ lost."
+    },
+    "__unit_name__ ready.": {
+        "message": "__unit_name__ ȓέȃɗу.ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ ready."
+    },
+    "__unit_name__ under attack.": {
+        "message": "__unit_name__ մƞɗέȓ ȃҭҭȃϲќ.ΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__unit_name__ under attack."
+    },
+    "__victim_name__ has been annihilated.": {
+        "message": "__victim_name__ нȃƨ Бέέƞ ȃƞƞїнї⌊ȃҭέɗ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__victim_name__ has been annihilated."
+    },
+    "__victim_name__ was annihilated by __killer_name__.": {
+        "message": "__victim_name__ ῴȃƨ ȃƞƞїнї⌊ȃҭέɗ Бу __killer_name__.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__victim_name__ was annihilated by __killer_name__."
+    },
+    "air": {
+        "message": "ȃїȓΩ",
+        "original": "air"
+    },
+    "ammo": {
+        "message": "ȃʍʍȏΩΩ",
+        "original": "ammo"
+    },
+    "army": {
+        "message": "ȃȓʍуΩΩ",
+        "original": "army"
+    },
+    "bot": {
+        "message": "БȏҭΩ",
+        "original": "bot"
+    },
+    "combat": {
+        "message": "ϲȏʍБȃҭΩΩΩ",
+        "original": "combat"
+    },
+    "factory": {
+        "message": "ғȃϲҭȏȓуΩΩΩ",
+        "original": "factory"
+    },
+    "orbital": {
+        "message": "ȏȓБїҭȃ⌊ΩΩΩ",
+        "original": "orbital"
+    },
+    "sea": {
+        "message": "ƨέȃΩ",
+        "original": "sea"
+    },
+    "utility": {
+        "message": "մҭї⌊їҭуΩΩΩ",
+        "original": "utility"
+    },
+    "vehicle": {
+        "message": "ѷέнїϲ⌊έΩΩΩ",
+        "original": "vehicle"
+    },
+    "Alliance?": {
+        "message": "Ȃ⌊⌊їȃƞϲέ?ΩΩΩΩ",
+        "original": "Alliance?"
+    },
+    "Dynamic Alliance": {
+        "message": "Ɖуƞȃʍїϲ Ȃ⌊⌊їȃƞϲέΩΩΩΩΩΩΩΩ",
+        "original": "Dynamic Alliance"
+    },
+    "Pending": {
+        "message": "ṔέƞɗїƞɠΩΩΩ",
+        "original": "Pending"
+    },
+    "Returning to Galactic War": {
+        "message": "ℝέҭմȓƞїƞɠ ҭȏ Ǵȃ⌊ȃϲҭїϲ ₩ȃȓΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Returning to Galactic War"
+    },
+    "SHARE": {
+        "message": "ṠӇȂℝƐΩΩ",
+        "original": "SHARE"
+    },
+    "Share Economy": {
+        "message": "Ṡнȃȓέ ƐϲȏƞȏʍуΩΩΩΩΩΩ",
+        "original": "Share Economy"
+    }
+}

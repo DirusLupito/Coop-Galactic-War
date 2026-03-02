@@ -1,0 +1,20 @@
+{
+    "Area Commands": {
+        "message": "Gebiedsopdrachten"
+    },
+    "PA Guide: Area Commands": {
+        "message": "PA-handleiding: Gebiedopdrachten"
+    },
+    "Select units, click [style=text_callout]Attack button[/style].": {
+        "message": "Selecteer eenheden, klik op de [style=text_callout]Aanvalknop[/style]."
+    },
+    "Select units, click [style=text_callout]Patrol button[/style].": {
+        "message": "Selecteer eenheden, klik op de [style=text_callout]Patrouilleerknop[/style]."
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to attack": {
+        "message": "[style=text_callout]Klik met de linkermuisknop en sleep[/style] over een gebied om aan te vallen"
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to patrol": {
+        "message": "[style=text_callout]Klik met de linkermuisknop en sleep[/style] over een gebied om te patrouilleren"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "点击"
+    },
+    "PA Guide: Clicking": {
+        "message": "PA 指南：点击"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "[style=text_callout]双击[/style]某一单位，即可同时选中其他类似单位"
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]按住鼠标左键并拖动鼠标[/style]，即可同时选中多个单位"
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]点击鼠标左键[/style]选择单位，[style=text_callout]鼠标右键[/style]执行操作。"
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Shift + 鼠标左键[/style]将多个指令放入队列"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "Zowel eenvoudige als geavanceerde metaalextractors kunnen op dezelfde metaalafzetting worden gebouwd"
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "Bouw metaalextractors op metaalafzettingen"
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "Bouw een metaalopslag om de grondstoffencapaciteit uit te breiden"
+    },
+    "Metal Resource": {
+        "message": "Metaalgrondstof"
+    },
+    "Metal is required for building units and structures": {
+        "message": "Metaal is vereist voor het bouwen van eenheden en gebouwen"
+    },
+    "PA Guide: Metal": {
+        "message": "PA-handleiding: metaal"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "Selecteer een fabber, selecteer [style = text_callout]pictogram Metaalextractor bouwen[/style]."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "[style=text_callout]Klik met de linkermuisknop + sleep[/style] over de planeet om op meerdere metaalafzettingen te bouwen."
+    }
+}

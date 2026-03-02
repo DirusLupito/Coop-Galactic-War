@@ -1,0 +1,38 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "ANIQUILAÇÃO COMPLETADA"
+    },
+    "Average": {
+        "message": "Média"
+    },
+    "Built": {
+        "message": "Construído"
+    },
+    "Destroyed": {
+        "message": "Destruído"
+    },
+    "Draw": {
+        "message": "EMPATE"
+    },
+    "Efficiency": {
+        "message": "Eficiência"
+    },
+    "The game has ended.": {
+        "message": "O jogo foi finalizado."
+    },
+    "Used": {
+        "message": "Utilizado"
+    },
+    "VICTORY IS YOURS": {
+        "message": "A VITÓRIA É SUA"
+    },
+    "Winner:": {
+        "message": "Ganhador:"
+    },
+    "Winners:": {
+        "message": "Ganhadores:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "VOCÊ FOI ANIQUILADO"
+    }
+}

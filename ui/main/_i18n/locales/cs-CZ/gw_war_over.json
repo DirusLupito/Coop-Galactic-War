@@ -1,0 +1,23 @@
+{
+    "Annihilated": {
+        "message": "Zničeno"
+    },
+    "Close": {
+        "message": "Zavřít"
+    },
+    "Discards": {
+        "message": "Odhozeno"
+    },
+    "Final Tech": {
+        "message": "Poslední tech."
+    },
+    "Turns:": {
+        "message": "Otočit:"
+    },
+    "Victory": {
+        "message": "Vítězství"
+    },
+    "Wins:": {
+        "message": "Výhry:"
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "Account Name:": {
+        "message": "Název účtu:"
+    },
+    "Add To Cart": {
+        "message": "Přidat do košíku"
+    },
+    "Armory": {
+        "message": "Zbrojnice"
+    },
+    "Badges": {
+        "message": "Odznaky"
+    },
+    "CHECKOUT": {
+        "message": "Přejít k pokladně"
+    },
+    "Cancel": {
+        "message": "Zrušit"
+    },
+    "Cart": {
+        "message": "Košík"
+    },
+    "Commanders": {
+        "message": "Velitelé"
+    },
+    "Confirmation code:": {
+        "message": "Potvrzovací kód:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "Potvrzení o zakoupení je uveden níže."
+    },
+    "Continue Shopping": {
+        "message": "Pokračovat v nákupu"
+    },
+    "Credit applied:": {
+        "message": "Kredit připsán"
+    },
+    "Designed in collaboration with": {
+        "message": "Navrženo ve spolupráci s"
+    },
+    "Go to Main Menu": {
+        "message": "Přejít na hlavní menu"
+    },
+    "Here's your receipt.": {
+        "message": "Zde je váš doklad."
+    },
+    "Item": {
+        "message": "Položka"
+    },
+    "Item is already in cart.": {
+        "message": "Položka je už v nákupním košíku."
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter stoupenec"
+    },
+    "Price": {
+        "message": "Cena"
+    },
+    "REMOVE": {
+        "message": "ODSTRANIT"
+    },
+    "Redeem": {
+        "message": "Uplatnit"
+    },
+    "Return to Armory": {
+        "message": "Zpět do zbrojnice"
+    },
+    "Set As Default Commander": {
+        "message": "Nastavit jako výchozího Komandéra"
+    },
+    "Thank you for your purchase.": {
+        "message": "Děkujeme vám za váš nákup."
+    },
+    "Total:": {
+        "message": "Celkem:"
+    },
+    "Updating...": {
+        "message": "Aktualizace..."
+    },
+    "Your cart is empty.": {
+        "message": "Váš nákupní košík je prázdný."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "Vaše nakupované položky jsou nyní registrovány na vašem účtu a jsou k dispozici ve hře."
+    }
+}

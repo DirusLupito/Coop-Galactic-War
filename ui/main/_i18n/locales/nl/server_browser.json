@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "AI-gevecht"
+    },
+    "Any": {
+        "message": "Alles"
+    },
+    "Auto refresh": {
+        "message": "Automatisch vernieuwen"
+    },
+    "Bounty Mode": {
+        "message": "Bounty-modus"
+    },
+    "Buy Expansion": {
+        "message": "Uitbreiding kopen"
+    },
+    "Can Join": {
+        "message": "Aansluiten"
+    },
+    "Can Play": {
+        "message": "Spelen"
+    },
+    "Can Spectate": {
+        "message": "Toeschouwen"
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Casual": {
+        "message": "Normaal"
+    },
+    "Competitive": {
+        "message": "Competitief"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "Kon de spellijst niet ophalen omdat er geen netwerkverbinding kon worden gevonden."
+    },
+    "Create Game": {
+        "message": "Spel aanmaken"
+    },
+    "Enter game password": {
+        "message": "Voer het spelwachtwoord in"
+    },
+    "Free For All": {
+        "message": "Ieder voor zich"
+    },
+    "Game": {
+        "message": "Spel"
+    },
+    "Game State": {
+        "message": "Speltoestand"
+    },
+    "Host game locally": {
+        "message": "Spel lokaal hosten"
+    },
+    "In Lobby": {
+        "message": "In de lobby"
+    },
+    "In Progress": {
+        "message": "Bezig"
+    },
+    "Join Game": {
+        "message": "Meedoen met spel"
+    },
+    "LOCKED": {
+        "message": "BESLOTEN"
+    },
+    "Locked": {
+        "message": "Besloten"
+    },
+    "Locked Game": {
+        "message": "Besloten spel"
+    },
+    "Mod": {
+        "message": "Mod"
+    },
+    "Modded": {
+        "message": "Met mods"
+    },
+    "Mode": {
+        "message": "Modus"
+    },
+    "Mods": {
+        "message": "Mods"
+    },
+    "Multiplayer": {
+        "message": "Multiplayer"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "Er is geen verbinding met PA-servers gevonden. Nieuwe spellen worden lokaal gehost."
+    },
+    "No max": {
+        "message": "Geen max."
+    },
+    "No min": {
+        "message": "Geen min."
+    },
+    "Not Bounty Mode": {
+        "message": "Geen Premie-modus"
+    },
+    "Not Modded": {
+        "message": "Zonder mods"
+    },
+    "Not Selected": {
+        "message": "Niet geselecteerd"
+    },
+    "Number of Planets": {
+        "message": "Aantal planeten"
+    },
+    "Number of Players": {
+        "message": "Aantal spelers"
+    },
+    "Open": {
+        "message": "Open"
+    },
+    "Open slot": {
+        "message": "Beschikbaar"
+    },
+    "Password": {
+        "message": "Wachtwoord"
+    },
+    "Planets": {
+        "message": "Planeten"
+    },
+    "Players": {
+        "message": "Spelers"
+    },
+    "Radius __radius__": {
+        "message": "Straal __radius__"
+    },
+    "Refresh": {
+        "message": "Verversen"
+    },
+    "Region": {
+        "message": "Regio"
+    },
+    "Rejoin Local Game": {
+        "message": "Terugkeren naar lokaal spel"
+    },
+    "Required Expansion Pack": {
+        "message": "Vereist uitbreidingspakket"
+    },
+    "Reset Filters": {
+        "message": "Filters herstellen"
+    },
+    "Sandbox": {
+        "message": "Vrij spel"
+    },
+    "Slots": {
+        "message": "Openingen"
+    },
+    "Spectate": {
+        "message": "Toeschouwen"
+    },
+    "Spectators": {
+        "message": "Toeschouwers"
+    },
+    "Status": {
+        "message": "Status"
+    },
+    "Tag": {
+        "message": "Label"
+    },
+    "Team Armies": {
+        "message": "Teamlegers"
+    },
+    "Testing": {
+        "message": "Testen"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "Voor het spel waaraan je probeert deel te nemen is de uitbreiding [style=content_description]__expansion_name__[/style] voor Planetary Annihilation vereist."
+    },
+    "This game is no longer available.": {
+        "message": "Dit spel is niet meer beschikbaar."
+    }
+}

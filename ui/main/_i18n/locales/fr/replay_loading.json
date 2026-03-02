@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "Annuler"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "TÉLÉCHARGEMENT DE MODS DE SERVEUR"
+    },
+    "Loading Game": {
+        "message": "Chargement de la partie"
+    },
+    "Loading Replay": {
+        "message": "Chargement du replay"
+    },
+    "Returning to Main Menu": {
+        "message": "Retour au menu principal"
+    },
+    "Returning to menu": {
+        "message": "Retour au menu"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "Veuillez patienter, serveur de replay en cours de lancement..."
+    },
+    "Unable to load replay": {
+        "message": "Impossible de charger le replay"
+    },
+    "Unable to load save game": {
+        "message": "Impossible de charger la sauvegarde de jeu"
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "Accept": {
+        "message": "Accepter"
+    },
+    "CLEAR SYSTEM": {
+        "message": "Ryd System"
+    },
+    "CLOSE": {
+        "message": "LUK"
+    },
+    "Cancel": {
+        "message": "Annullere"
+    },
+    "Discard": {
+        "message": "Udsmid"
+    },
+    "Do you want to save this system?": {
+        "message": "Vil du gemme dette system?"
+    },
+    "EDIT PLANET": {
+        "message": "REDIGER PLANET"
+    },
+    "HIDE": {
+        "message": "Skjul"
+    },
+    "MY PLANETS": {
+        "message": "MINE PLANETER"
+    },
+    "Mass": {
+        "message": "MASSEFYLDE"
+    },
+    "PREVIEW ALL": {
+        "message": "SE EKSEMPEL"
+    },
+    "Position": {
+        "message": "POSITION"
+    },
+    "RECENT": {
+        "message": "Nyligt"
+    },
+    "REMOVE": {
+        "message": "FJERN"
+    },
+    "SAVE SYSTEM": {
+        "message": "Gem System"
+    },
+    "SHOW": {
+        "message": "VIS"
+    },
+    "SIMULATE": {
+        "message": "SIMULÉR"
+    },
+    "Save": {
+        "message": "Gem"
+    },
+    "TEMPLATES": {
+        "message": "SKABELONER"
+    },
+    "Temp": {
+        "message": "Temperatur"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Planeten bliver genereret, dette kan tage lang tid."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Programmet vil ikke reagere indtil planeten er færdig."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Systemet er blevet ændret siden det sidst blev ændret."
+    },
+    "The system has not been saved.": {
+        "message": "Systemet blev ikke gemt."
+    },
+    "Velocity": {
+        "message": "HASTIGHED"
+    },
+    "Water": {
+        "message": "Vand"
+    }
+}

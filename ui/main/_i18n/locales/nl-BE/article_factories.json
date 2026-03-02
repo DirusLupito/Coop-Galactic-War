@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "Fabrieken"
+    },
+    "PA Guide: Factories": {
+        "message": "PA-handleiding: Fabrieken"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "Selecteer een fabriek voor toegang tot de bouwbalk"
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Ctrl + klik met de linkermuisknop[/style] op een eenheid om een fabriek zo'n eenheid te laten bouwen en daarna weer verder te gaan met de rest van de bouwrij."
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "[style=text_callout]Klik met de linkermuisknop[/style] op eenheden in de bouwbalk om ze te bouwen"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]Klik met de rechtermuisknop[/style] of [style=text_callout]Shift + klik met de rechtermuisknop[/style] op eenheden om het aantal ervan in de bouwrij te verminderen"
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "[style=text_callout]Shift + klik met de linkermuisknop[/style] op eenheden in de bouwbalk om er meerdere van te bouwen"
+    }
+}

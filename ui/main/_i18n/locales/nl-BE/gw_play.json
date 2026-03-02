@@ -1,0 +1,83 @@
+{
+    "Acquire": {
+        "message": "Verkrijgen"
+    },
+    "All progress and Tech will be lost.": {
+        "message": "Alle voortgang en technologie zullen verloren gaan."
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Weet je zeker dat je deze Galactische Oorlog wilt verlaten?"
+    },
+    "Continue": {
+        "message": "Doorgaan"
+    },
+    "Data Cache Discovered": {
+        "message": "Gegevenscache ontdekt"
+    },
+    "Delete Tech": {
+        "message": "Tech verwijderen"
+    },
+    "Dismiss Tech": {
+        "message": "Tech negeren"
+    },
+    "Duplicate Tech": {
+        "message": "Duplicaat Technologie"
+    },
+    "Explore": {
+        "message": "Ondek"
+    },
+    "Fight": {
+        "message": "Vecht"
+    },
+    "Game Menu": {
+        "message": "Spelmenu"
+    },
+    "Jump": {
+        "message": "Spring"
+    },
+    "Loading...": {
+        "message": "Laden..."
+    },
+    "Preparing for battle": {
+        "message": "Bereid je voor op oorlog"
+    },
+    "Restart": {
+        "message": "Herstarten"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu…"
+    },
+    "Save & Exit": {
+        "message": "Opslaan & afsluiten"
+    },
+    "Saving...": {
+        "message": "Opslaan..."
+    },
+    "Scanning System": {
+        "message": "Systeem scannen"
+    },
+    "Select a technology to develop using this data.": {
+        "message": "Kies een van de volgende technologieën."
+    },
+    "Settings": {
+        "message": "Instellingen"
+    },
+    "Social Bar": {
+        "message": "Sociale balk"
+    },
+    "TECHS": {
+        "message": "TECHNOLOGIE"
+    },
+    "Tech Bank is full. To develop new technology, select an existing tech and delete it to open a slot.": {
+        "message": "Technologiebank is vol. Om nieuwe technologie te ontwikkelen, selecteer je een bestaande technologie en verwijder je deze om plaats te maken."
+    },
+    "Turns:": {
+        "message": "Beurten:"
+    },
+    "Unlock Commander": {
+        "message": "Commander ontgrendelen"
+    },
+    "Wins:": {
+        "message": "Overwinningen:"
+    }
+}

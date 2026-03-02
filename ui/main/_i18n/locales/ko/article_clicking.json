@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "클릭"
+    },
+    "PA Guide: Clicking": {
+        "message": "PA 가이드: 클릭"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "유닛을 [style=text_callout]더블 클릭[/style]하면 비슷한 유닛들이 선택됩니다."
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]왼쪽 클릭 후 드래그[/style]로 여러 유닛을 선택할 수 있습니다."
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]왼쪽 클릭[/style]으로 유닛을 선택하고, [style=text_callout]오른쪽 클릭[/style]으로 행동 명령을 내립니다."
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Shift + 오른쪽 클릭[/style]으로 여러 명령을 예약해둘 수 있습니다."
+    }
+}

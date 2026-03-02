@@ -1,0 +1,294 @@
+{
+    "- Host": {
+        "message": "- ӇȏƨҭΩΩΩ",
+        "original": "- Host"
+    },
+    "AI Commander": {
+        "message": "ȂΪ ҪȏʍʍȃƞɗέȓΩΩΩΩΩΩ",
+        "original": "AI Commander"
+    },
+    "AI:": {
+        "message": "ȂΪ: ΩΩ",
+        "original": "AI: "
+    },
+    "Add AI": {
+        "message": "Ȃɗɗ ȂΪΩΩΩ",
+        "original": "Add AI"
+    },
+    "Add AI Commander": {
+        "message": "Ȃɗɗ ȂΪ ҪȏʍʍȃƞɗέȓΩΩΩΩΩΩΩΩ",
+        "original": "Add AI Commander"
+    },
+    "Add Slot": {
+        "message": "Ȃɗɗ Ṡ⌊ȏҭΩΩΩΩ",
+        "original": "Add Slot"
+    },
+    "Add Team": {
+        "message": "Ȃɗɗ 丁έȃʍΩΩΩΩ",
+        "original": "Add Team"
+    },
+    "Alliance Victory": {
+        "message": "Ȃ⌊⌊їȃƞϲέ ѶїϲҭȏȓуΩΩΩΩΩΩΩΩ",
+        "original": "Alliance Victory"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " Ȃ⌊⌊ȏῴ ғȏȓ ⍴⌊ȃуέȓƨ ҭȏ ʍȃќέ ȃƞɗ Бȓέȃќ їƞ-ɠȃʍέ ȃ⌊⌊їȃƞϲέƨ ȃƞɗ ҭнέ ȏ⍴ҭїȏƞ ҭȏ ƨнȃȓέ ȓέƨȏմȓϲέƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " Allow for players to make and break in-game alliances and the option to share resources"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " Ȃ⌊⌊ȏῴƨ ғȏȓ ⍴⌊ȃуέȓƨ ҭȏ ϲմҭ ȃƞɗ ⍴ȃƨҭέ մƞїҭƨ ғȏȓ έ⌧⍴έȓїʍέƞҭїƞɠΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " Allows for players to cut and paste units for experimenting"
+    },
+    "Bounty Mode": {
+        "message": "฿ȏմƞҭу ΜȏɗέΩΩΩΩΩ",
+        "original": "Bounty Mode"
+    },
+    "Browse systems...": {
+        "message": "฿ȓȏῴƨέ ƨуƨҭέʍƨ...ΩΩΩΩΩΩΩΩ",
+        "original": "Browse systems..."
+    },
+    "Building planets": {
+        "message": "฿մї⌊ɗїƞɠ ⍴⌊ȃƞέҭƨΩΩΩΩΩΩΩΩ",
+        "original": "Building planets"
+    },
+    "Building planets...": {
+        "message": "฿մї⌊ɗїƞɠ ⍴⌊ȃƞέҭƨ...ΩΩΩΩΩΩΩΩΩ",
+        "original": "Building planets..."
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ҪѲƝƝƐҪ丁ΪѲƝ 丁Ѳ ṠƐℝѶƐℝ ₤ѲṠ丁ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "CONNECTION TO SERVER LOST"
+    },
+    "Chat": {
+        "message": "ҪнȃҭΩΩ",
+        "original": "Chat"
+    },
+    "Default": {
+        "message": "Ɖέғȃմ⌊ҭΩΩΩ",
+        "original": "Default"
+    },
+    "Dynamic Alliances": {
+        "message": "Ɖуƞȃʍїϲ Ȃ⌊⌊їȃƞϲέƨΩΩΩΩΩΩΩΩ",
+        "original": "Dynamic Alliances"
+    },
+    "Econ Rate": {
+        "message": "Ɛϲȏƞ ℝȃҭέΩΩΩΩ",
+        "original": "Econ Rate"
+    },
+    "Empty": {
+        "message": "Ɛʍ⍴ҭуΩΩ",
+        "original": "Empty"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": " Ϝїȓƨҭ ҭέȃʍ ҭȏ ќї⌊⌊ ȃ ϲȏʍʍȃƞɗέȓ ῴїƞƨ (⍴ȓȏҭέϲҭ уȏմȓ ῴέȃќέƨҭ ⍴⌊ȃуέȓ)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " First team to kill a commander wins (protect your weakest player)"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " Ϝȏȓ έѷέȓу ȃȓʍу ȃ ⍴⌊ȃуέȓ ќї⌊⌊ƨ, ȃƞ έϲȏƞȏʍу ʍմ⌊ҭї⍴⌊їέȓ їƨ ȃῴȃȓɗέɗ ҭȏ ҭнέʍ ҭнȃҭ Бȏȏƨҭƨ ҭнέїȓ ȓȃҭέ ȏғ ⍴ȓȏɗմϲҭїȏƞΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production"
+    },
+    "Free For All": {
+        "message": "Ϝȓέέ Ϝȏȓ Ȃ⌊⌊ΩΩΩΩΩΩ",
+        "original": "Free For All"
+    },
+    "Friends": {
+        "message": "ϜȓїέƞɗƨΩΩΩ",
+        "original": "Friends"
+    },
+    "Game Lobby": {
+        "message": "Ǵȃʍέ ₤ȏББуΩΩΩΩΩ",
+        "original": "Game Lobby"
+    },
+    "Game Mode": {
+        "message": "Ǵȃʍέ ΜȏɗέΩΩΩΩ",
+        "original": "Game Mode"
+    },
+    "Global Spectator Chat": {
+        "message": "Ǵ⌊ȏБȃ⌊ Ṡ⍴έϲҭȃҭȏȓ ҪнȃҭΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Global Spectator Chat"
+    },
+    "Join": {
+        "message": "ڷȏїƞΩΩ",
+        "original": "Join"
+    },
+    "Kick": {
+        "message": "ҠїϲќΩΩ",
+        "original": "Kick"
+    },
+    "Large Planets": {
+        "message": "₤ȃȓɠέ Ṕ⌊ȃƞέҭƨΩΩΩΩΩΩ",
+        "original": "Large Planets"
+    },
+    "Leave": {
+        "message": "₤έȃѷέΩΩ",
+        "original": "Leave"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "Μմ⌊ҭї⍴⌊їέȓ Ṕέȓ Ȃȓʍу Ҡї⌊⌊:ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Multiplier Per Army Kill:"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " Ɲȏ ɠȓέέƞ ƨҭȃȓҭїƞɠ ℤȏƞέƨ մƨέɗ. Ṕ⌊ȃуέȓƨ ϲȃƞ ƨҭȃȓҭ ȃƞуῴнέȓέ ҭнέу ⍴їϲќ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " No green starting zones used. Players can start anywhere they pick."
+    },
+    "Open to:": {
+        "message": "Ѳ⍴έƞ ҭȏ:ΩΩΩΩ",
+        "original": "Open to:"
+    },
+    "Password (optional)": {
+        "message": "Ṕȃƨƨῴȏȓɗ (ȏ⍴ҭїȏƞȃ⌊)ΩΩΩΩΩΩΩΩΩ",
+        "original": "Password (optional)"
+    },
+    "Player Slot": {
+        "message": "Ṕ⌊ȃуέȓ Ṡ⌊ȏҭΩΩΩΩΩ",
+        "original": "Player Slot"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Ṕ⌊ȃуέȓ ϲнȏȏƨέƨ ƨ⍴ȏҭ ȏƞ ƨҭȃȓҭїƞɠ ⍴⌊ȃƞέҭΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Player chooses spot on starting planet"
+    },
+    "Players": {
+        "message": "Ṕ⌊ȃуέȓƨΩΩΩ",
+        "original": "Players"
+    },
+    "Private": {
+        "message": "ṔȓїѷȃҭέΩΩΩ",
+        "original": "Private"
+    },
+    "Public": {
+        "message": "ṔմБ⌊їϲΩΩΩ",
+        "original": "Public"
+    },
+    "Random": {
+        "message": "ℝȃƞɗȏʍΩΩΩ",
+        "original": "Random"
+    },
+    "Ready": {
+        "message": "ℝέȃɗуΩΩ",
+        "original": "Ready"
+    },
+    "Remove": {
+        "message": "ℝέʍȏѷέΩΩΩ",
+        "original": "Remove"
+    },
+    "Returning to Main Menu": {
+        "message": "ℝέҭմȓƞїƞɠ ҭȏ Μȃїƞ ΜέƞմΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Returning to Main Menu"
+    },
+    "SHARE ARMY": {
+        "message": "ṠӇȂℝƐ ȂℝΜУΩΩΩΩΩ",
+        "original": "SHARE ARMY"
+    },
+    "SPECTATORS": {
+        "message": "ṠṔƐҪ丁Ȃ丁ѲℝṠΩΩΩΩΩ",
+        "original": "SPECTATORS"
+    },
+    "Sandbox": {
+        "message": "ṠȃƞɗБȏ⌧ΩΩΩ",
+        "original": "Sandbox"
+    },
+    "Select System": {
+        "message": "Ṡέ⌊έϲҭ ṠуƨҭέʍΩΩΩΩΩΩ",
+        "original": "Select System"
+    },
+    "Shuffle landing zones": {
+        "message": "Ṡнմғғ⌊έ ⌊ȃƞɗїƞɠ ℤȏƞέƨΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Shuffle landing zones"
+    },
+    "Slot": {
+        "message": "Ṡ⌊ȏҭΩΩ",
+        "original": "Slot"
+    },
+    "Slot __slot_number__": {
+        "message": "Ṡ⌊ȏҭ __slot_number__ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Slot __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "Ṡ⌊ȏҭƨ ȃȓέ έʍ⍴ҭуΩΩΩΩΩΩΩ",
+        "original": "Slots are empty"
+    },
+    "Spectate": {
+        "message": "Ṡ⍴έϲҭȃҭέΩΩΩΩ",
+        "original": "Spectate"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " Ṡ⍴έϲҭȃҭȏȓ ʍέƨƨȃɠέƨ ȃȓέ ѷїƨїБ⌊έ ɗմȓїƞɠ їƞ-ɠȃʍέ ϲнȃҭΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": " Spectator messages are visible during in-game chat"
+    },
+    "Spectators": {
+        "message": "Ṡ⍴έϲҭȃҭȏȓƨΩΩΩΩΩ",
+        "original": "Spectators"
+    },
+    "Start Anywhere": {
+        "message": "Ṡҭȃȓҭ ȂƞуῴнέȓέΩΩΩΩΩΩΩ",
+        "original": "Start Anywhere"
+    },
+    "Start Game": {
+        "message": "Ṡҭȃȓҭ ǴȃʍέΩΩΩΩΩ",
+        "original": "Start Game"
+    },
+    "Start Nearby": {
+        "message": "Ṡҭȃȓҭ ƝέȃȓБуΩΩΩΩΩΩ",
+        "original": "Start Nearby"
+    },
+    "Start Offworld": {
+        "message": "Ṡҭȃȓҭ Ѳғғῴȏȓ⌊ɗΩΩΩΩΩΩΩ",
+        "original": "Start Offworld"
+    },
+    "Sudden Death Mode": {
+        "message": "Ṡմɗɗέƞ Ɖέȃҭн ΜȏɗέΩΩΩΩΩΩΩΩ",
+        "original": "Sudden Death Mode"
+    },
+    "Symmetrical": {
+        "message": "Ṡуʍʍέҭȓїϲȃ⌊ΩΩΩΩΩ",
+        "original": "Symmetrical"
+    },
+    "System": {
+        "message": "ṠуƨҭέʍΩΩΩ",
+        "original": "System"
+    },
+    "Tag:": {
+        "message": "丁ȃɠ:ΩΩ",
+        "original": "Tag:"
+    },
+    "Team": {
+        "message": "丁έȃʍΩΩ",
+        "original": "Team"
+    },
+    "Team Armies": {
+        "message": "丁έȃʍ ȂȓʍїέƨΩΩΩΩΩ",
+        "original": "Team Armies"
+    },
+    "Team __team_number__": {
+        "message": "丁έȃʍ __team_number__ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Team __team_number__"
+    },
+    "Title": {
+        "message": "丁їҭ⌊έΩΩ",
+        "original": "Title"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "Уȏմ ʍմƨҭ нȃѷέ ғȓїέƞɗƨ ҭȏ ⍴⌊ȃу ȃ ғȓїέƞɗƨ-ȏƞ⌊у ɠȃʍέΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You must have friends to play a friends-only game"
+    },
+    "Asteroid": {
+        "message": "ȂƨҭέȓȏїɗΩΩΩΩ",
+        "original": "Asteroid"
+    },
+    "Multiple starting planets": {
+        "message": "Μմ⌊ҭї⍴⌊έ ƨҭȃȓҭїƞɠ ⍴⌊ȃƞέҭƨΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Multiple starting planets"
+    },
+    "Select a system": {
+        "message": "Ṡέ⌊έϲҭ ȃ ƨуƨҭέʍΩΩΩΩΩΩΩ",
+        "original": "Select a system"
+    },
+    "Started": {
+        "message": "ṠҭȃȓҭέɗΩΩΩ",
+        "original": "Started"
+    },
+    "Waiting for system": {
+        "message": "₩ȃїҭїƞɠ ғȏȓ ƨуƨҭέʍΩΩΩΩΩΩΩΩΩ",
+        "original": "Waiting for system"
+    }
+}

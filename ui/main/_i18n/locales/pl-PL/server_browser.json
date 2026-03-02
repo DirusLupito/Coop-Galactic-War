@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "Bitwa z SI"
+    },
+    "Any": {
+        "message": "Dowolne"
+    },
+    "Auto refresh": {
+        "message": "Odświeżanie automatyczne"
+    },
+    "Bounty Mode": {
+        "message": "Bounty"
+    },
+    "Buy Expansion": {
+        "message": "Kup dodatek"
+    },
+    "Can Join": {
+        "message": "Można dołączyć"
+    },
+    "Can Play": {
+        "message": "Można grać"
+    },
+    "Can Spectate": {
+        "message": "Można obserwować"
+    },
+    "Cancel": {
+        "message": "Anuluj"
+    },
+    "Casual": {
+        "message": "Relaks"
+    },
+    "Competitive": {
+        "message": "Zawody"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "Nie można pobrać listy gier, ponieważ nie znaleziono połączenia sieciowego."
+    },
+    "Create Game": {
+        "message": "Stwórz grę"
+    },
+    "Enter game password": {
+        "message": "Podaj hasło do gry"
+    },
+    "Free For All": {
+        "message": "Free For All"
+    },
+    "Game": {
+        "message": "Gra"
+    },
+    "Game State": {
+        "message": "Status gry"
+    },
+    "Host game locally": {
+        "message": "Gra lokalna"
+    },
+    "In Lobby": {
+        "message": "W lobby"
+    },
+    "In Progress": {
+        "message": "W toku"
+    },
+    "Join Game": {
+        "message": "Dołącz do gry"
+    },
+    "LOCKED": {
+        "message": "ZAMKNIĘTA"
+    },
+    "Locked": {
+        "message": "Zamknięte"
+    },
+    "Locked Game": {
+        "message": "Gra zamknięta"
+    },
+    "Mod": {
+        "message": "Mod"
+    },
+    "Modded": {
+        "message": "Zmodowane"
+    },
+    "Mode": {
+        "message": "Tryb"
+    },
+    "Mods": {
+        "message": "Mody"
+    },
+    "Multiplayer": {
+        "message": "Wielu graczy"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "Nie znaleziono połączenia z serwerami PA. Nowe gry będą uruchamiane lokalnie."
+    },
+    "No max": {
+        "message": "Brak maks."
+    },
+    "No min": {
+        "message": "Brak min."
+    },
+    "Not Bounty Mode": {
+        "message": "Nie w trybie Bounty"
+    },
+    "Not Modded": {
+        "message": "Niezmodowane"
+    },
+    "Not Selected": {
+        "message": "Nie wybrano"
+    },
+    "Number of Planets": {
+        "message": "Liczba planet"
+    },
+    "Number of Players": {
+        "message": "Liczba graczy"
+    },
+    "Open": {
+        "message": "Otwarte"
+    },
+    "Open slot": {
+        "message": "Otwórz miejsce"
+    },
+    "Password": {
+        "message": "Hasło"
+    },
+    "Planets": {
+        "message": "Planety"
+    },
+    "Players": {
+        "message": "Gracze"
+    },
+    "Radius __radius__": {
+        "message": "Promień: __radius__"
+    },
+    "Refresh": {
+        "message": "Odśwież"
+    },
+    "Region": {
+        "message": "Region"
+    },
+    "Rejoin Local Game": {
+        "message": "Dołącz ponownie do gry lokalnej"
+    },
+    "Required Expansion Pack": {
+        "message": "Wymagany pakiet dodatków"
+    },
+    "Reset Filters": {
+        "message": "Zresetuj filtry"
+    },
+    "Sandbox": {
+        "message": "Sandbox"
+    },
+    "Slots": {
+        "message": "Miejsca"
+    },
+    "Spectate": {
+        "message": "Obserwuj"
+    },
+    "Spectators": {
+        "message": "Obserwatorzy"
+    },
+    "Status": {
+        "message": "Status"
+    },
+    "Tag": {
+        "message": "Tag"
+    },
+    "Team Armies": {
+        "message": "Drużyny"
+    },
+    "Testing": {
+        "message": "Testowanie"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "Gra, do której próbujesz dołączyć, wymaga dodatku [style=content_description]__expansion_name__[/style] do podstawowej wersji Planetary Annihilation."
+    },
+    "This game is no longer available.": {
+        "message": "Ta gra nie jest już dostępna."
+    }
+}

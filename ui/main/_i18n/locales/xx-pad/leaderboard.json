@@ -1,0 +1,170 @@
+{
+    "1 day ago": {
+        "message": "1 ɗȃу ȃɠȏΩΩΩΩ",
+        "original": "1 day ago"
+    },
+    "1 hour ago": {
+        "message": "1 нȏմȓ ȃɠȏΩΩΩΩΩ",
+        "original": "1 hour ago"
+    },
+    "1 minute ago": {
+        "message": "1 ʍїƞմҭέ ȃɠȏΩΩΩΩΩΩ",
+        "original": "1 minute ago"
+    },
+    "1 second ago": {
+        "message": "1 ƨέϲȏƞɗ ȃɠȏΩΩΩΩΩΩ",
+        "original": "1 second ago"
+    },
+    "1 week ago": {
+        "message": "1 ῴέέќ ȃɠȏΩΩΩΩΩ",
+        "original": "1 week ago"
+    },
+    "Bronze": {
+        "message": "฿ȓȏƞℤέΩΩΩ",
+        "original": "Bronze"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "Ϝȃї⌊έɗ ҭȏ ⌊ȏȃɗ ҭнїƨ ⌊έȃɗέȓБȏȃȓɗ ⌊έѷέ⌊.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Failed to load this leaderboard level."
+    },
+    "Games": {
+        "message": "ǴȃʍέƨΩΩ",
+        "original": "Games"
+    },
+    "Gold": {
+        "message": "Ǵȏ⌊ɗΩΩ",
+        "original": "Gold"
+    },
+    "Inactive": {
+        "message": "ΪƞȃϲҭїѷέΩΩΩΩ",
+        "original": "Inactive"
+    },
+    "Just now": {
+        "message": "ڷմƨҭ ƞȏῴΩΩΩΩ",
+        "original": "Just now"
+    },
+    "Last Match Played": {
+        "message": "₤ȃƨҭ Μȃҭϲн Ṕ⌊ȃуέɗΩΩΩΩΩΩΩΩ",
+        "original": "Last Match Played"
+    },
+    "Last match played": {
+        "message": "₤ȃƨҭ ʍȃҭϲн ⍴⌊ȃуέɗΩΩΩΩΩΩΩΩ",
+        "original": "Last match played"
+    },
+    "Leaderboards": {
+        "message": "₤έȃɗέȓБȏȃȓɗƨΩΩΩΩΩΩ",
+        "original": "Leaderboards"
+    },
+    "Level rank": {
+        "message": "₤έѷέ⌊ ȓȃƞќΩΩΩΩΩ",
+        "original": "Level rank"
+    },
+    "Loading Leaderboard": {
+        "message": "₤ȏȃɗїƞɠ ₤έȃɗέȓБȏȃȓɗΩΩΩΩΩΩΩΩΩ",
+        "original": "Loading Leaderboard"
+    },
+    "Match games played": {
+        "message": "Μȃҭϲн ɠȃʍέƨ ⍴⌊ȃуέɗΩΩΩΩΩΩΩΩΩ",
+        "original": "Match games played"
+    },
+    "No ranked players at this level.": {
+        "message": "Ɲȏ ȓȃƞќέɗ ⍴⌊ȃуέȓƨ ȃҭ ҭнїƨ ⌊έѷέ⌊.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "No ranked players at this level."
+    },
+    "No recent matches played.": {
+        "message": "Ɲȏ ȓέϲέƞҭ ʍȃҭϲнέƨ ⍴⌊ȃуέɗ.ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "No recent matches played."
+    },
+    "One ranked player at this level.": {
+        "message": "Ѳƞέ ȓȃƞќέɗ ⍴⌊ȃуέȓ ȃҭ ҭнїƨ ⌊έѷέ⌊.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "One ranked player at this level."
+    },
+    "Platinum": {
+        "message": "Ṕ⌊ȃҭїƞմʍΩΩΩΩ",
+        "original": "Platinum"
+    },
+    "Play ranked match": {
+        "message": "Ṕ⌊ȃу ȓȃƞќέɗ ʍȃҭϲнΩΩΩΩΩΩΩΩ",
+        "original": "Play ranked match"
+    },
+    "Player": {
+        "message": "Ṕ⌊ȃуέȓΩΩΩ",
+        "original": "Player"
+    },
+    "Provisional": {
+        "message": "Ṕȓȏѷїƨїȏƞȃ⌊ΩΩΩΩΩ",
+        "original": "Provisional"
+    },
+    "Rank": {
+        "message": "ℝȃƞќΩΩ",
+        "original": "Rank"
+    },
+    "Rating": {
+        "message": "ℝȃҭїƞɠΩΩΩ",
+        "original": "Rating"
+    },
+    "Season ends __date__": {
+        "message": "Ṡέȃƨȏƞ έƞɗƨ __date__ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Season ends __date__"
+    },
+    "Silver": {
+        "message": "Ṡї⌊ѷέȓΩΩΩ",
+        "original": "Silver"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "丁нїƨ ⌊έȃɗέȓБȏȃȓɗ ⌊έѷέ⌊ їƨ ϲմȓȓέƞҭ⌊у έʍ⍴ҭу.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "This leaderboard level is currently empty."
+    },
+    "Uber": {
+        "message": "ỦБέȓΩΩ",
+        "original": "Uber"
+    },
+    "Unranked": {
+        "message": "ỦƞȓȃƞќέɗΩΩΩΩ",
+        "original": "Unranked"
+    },
+    "Watch Replay": {
+        "message": "₩ȃҭϲн ℝέ⍴⌊ȃуΩΩΩΩΩΩ",
+        "original": "Watch Replay"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Уȏմ ƞέέɗ ҭȏ ⍴⌊ȃу __number__ ȓȃƞќέɗ ɠȃʍέƨ ҭȏ ȓέϲέїѷέ ȃ ȓȃƞќΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You need to play __number__ ranked games to receive a rank"
+    },
+    "Your rank": {
+        "message": "Уȏմȓ ȓȃƞќΩΩΩΩ",
+        "original": "Your rank"
+    },
+    "__n__ days ago": {
+        "message": "__n__ ɗȃуƨ ȃɠȏΩΩΩΩΩΩΩ",
+        "original": "__n__ days ago"
+    },
+    "__n__ hours ago": {
+        "message": "__n__ нȏմȓƨ ȃɠȏΩΩΩΩΩΩΩ",
+        "original": "__n__ hours ago"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__ ʍїƞմҭέƨ ȃɠȏΩΩΩΩΩΩΩΩ",
+        "original": "__n__ minutes ago"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__ ƨέϲȏƞɗƨ ȃɠȏΩΩΩΩΩΩΩΩ",
+        "original": "__n__ seconds ago"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__ ῴέέќƨ ȃɠȏΩΩΩΩΩΩΩ",
+        "original": "__n__ weeks ago"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "__num_players__ ȓȃƞќέɗ ⍴⌊ȃуέȓƨ ȃҭ ҭнїƨ ⌊έѷέ⌊.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__num_players__ ranked players at this level."
+    },
+    "Star": {
+        "message": "ṠҭȃȓΩΩ",
+        "original": "Star"
+    },
+    "View Replays": {
+        "message": "Ѷїέῴ ℝέ⍴⌊ȃуƨΩΩΩΩΩΩ",
+        "original": "View Replays"
+    }
+}

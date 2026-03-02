@@ -1,0 +1,491 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "Rang #__position__ __league__"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "Match classé 1 contre 1"
+    },
+    "ABANDON": {
+        "message": "ABANDONNER"
+    },
+    "AI Skirmish": {
+        "message": "Escarmouche IA"
+    },
+    "Account created successfully.": {
+        "message": "Compte créé avec succès."
+    },
+    "Activate": {
+        "message": "Activer"
+    },
+    "Activation Key": {
+        "message": "Clé d’activation"
+    },
+    "An activation key is required to play online.": {
+        "message": "Une clé d'activation est requise pour jouer en ligne."
+    },
+    "Armory": {
+        "message": "Armurerie"
+    },
+    "Art": {
+        "message": "Art"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "Pour vous remercier de votre soutien continu, la nouvelle extension TITANS vous a été offerte gratuitement !"
+    },
+    "Audio": {
+        "message": "Audio"
+    },
+    "Audio Engine:": {
+        "message": "Moteur audio :"
+    },
+    "Battle Everyone.": {
+        "message": "Combattre tout le monde."
+    },
+    "Before you jump in...": {
+        "message": "Avant de sauter..."
+    },
+    "Cancel": {
+        "message": "Annuler"
+    },
+    "Close": {
+        "message": "Fermer"
+    },
+    "Community Videos": {
+        "message": "Vidéos de la communauté"
+    },
+    "Confirm Password": {
+        "message": "Confirmer le mot de passe"
+    },
+    "Connecting to PA": {
+        "message": "Connexion à PA"
+    },
+    "Continue Tutorial": {
+        "message": "Poursuivre le didacticiel"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Commandeurs de l'édition cosmique"
+    },
+    "Create Account": {
+        "message": "Créer un compte"
+    },
+    "Create an account to play online.": {
+        "message": "Créez un compte pour jouer en ligne."
+    },
+    "Credits": {
+        "message": "Crédits"
+    },
+    "Custom": {
+        "message": "Personnalisé"
+    },
+    "Design": {
+        "message": "Conception"
+    },
+    "Dismiss": {
+        "message": "Exclure"
+    },
+    "EXIT": {
+        "message": "QUITTER"
+    },
+    "Email": {
+        "message": "Email"
+    },
+    "Email already in use.": {
+        "message": "Email déjà utilisé."
+    },
+    "Email is invalid": {
+        "message": "Email invalide"
+    },
+    "Enable Offline Play": {
+        "message": "Activer le jeu hors ligne"
+    },
+    "Engineering": {
+        "message": "Ingénierie"
+    },
+    "Engineers": {
+        "message": "Ingénieurs"
+    },
+    "Extra special thanks to our:": {
+        "message": "Un grand merci à nos :"
+    },
+    "Founding Commanders": {
+        "message": "Commandeurs fondateurs"
+    },
+    "Galactic War": {
+        "message": "Guerre galactique"
+    },
+    "Gameplay Disabled": {
+        "message": "Gameplay désactivé"
+    },
+    "Gameplay Unavailable": {
+        "message": "Gameplay non disponible"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "Si vous ne tenez pas compte de cette recommandation en activant les parties hors ligne, les performances et votre expérience de jeu risquent d'en pâtir."
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "Si vous souhaitez jouer à Classic PA, il est recommandé de lancer TITANS et de changer simplement votre Extension Active dans les paramètres de jeu."
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "Inactif pendant __inactive_days__ jours"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Nom d'utilisateur ou mot de passe incorrect. Veuillez vérifier votre saisie et réessayer."
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "Billet de session non valable. Veuillez vous reconnecter."
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "Planetary Annihilation s'est arrêté lors de votre dernière partie. C'est peut-être dû à un problème lié aux pilotes graphiques installés."
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Il semble que vous ayez désactivé l'overlay Steam, et nous ne pouvons pas lancer votre achat sans ce dernier."
+    },
+    "LATER": {
+        "message": "PLUS TARD"
+    },
+    "Last match played": {
+        "message": "Dernière partie"
+    },
+    "Latest News": {
+        "message": "Dernières actualités"
+    },
+    "Leaderboards": {
+        "message": "Classements"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "Apprenez les bases. Commandez un Titan. Détruisez une planète."
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "Vous avez déjà un didacticiel en cours."
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "On dirait que vous utilisez Classic PA depuis votre bibliothèque Steam au lieu de TITANS."
+    },
+    "Minimize": {
+        "message": "Minimiser"
+    },
+    "More Info": {
+        "message": "Plus d'infos"
+    },
+    "Multiplayer": {
+        "message": "Multijoueur"
+    },
+    "Music Composed by": {
+        "message": "Musique composée par"
+    },
+    "New Build Available:": {
+        "message": "Nouvelle version disponible"
+    },
+    "No thanks. I got this.": {
+        "message": "Non merci, ça va aller."
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Rien de tout ça n'aurait été possible sans votre générosité. Nous vous remercions de nous avoir fait confiance et d'avoir cru à notre vision."
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "Northwest Sinfonia and Chorale"
+    },
+    "Not right now": {
+        "message": "Pas tout de suite"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "OKAY": {
+        "message": "D'ACCORD"
+    },
+    "Official Discord": {
+        "message": "Discord officiel"
+    },
+    "Official Guides": {
+        "message": "Guides officiels"
+    },
+    "Official Support": {
+        "message": "Assistance officielle"
+    },
+    "Offline Play Disabled": {
+        "message": "Jeu hors ligne désactivé"
+    },
+    "Offline Play Unavailable": {
+        "message": "Jeu hors ligne indisponible"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "Bien souvent, il est possible d'éviter ce genre de problèmes en se procurant la dernière version du pilote graphique __vendor_name__ —. Nous vous [strong]recommandons vivement[/strong] de la télécharger sur leur site et de l'installer."
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "Aïe ! Nous ne trouvons pas le jeu dans votre compte. Si vous êtes un utilisateur de Steam, veuillez redémarrer Steam et réessayer. Si le problème persiste, envoyez-nous un courriel à __email__"
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "Aïe ! Votre compte n'est pas valide. Si vous êtes un utilisateur de Steam, veuillez redémarrer Steam et réessayer. Si le problème persiste, envoyez-nous un courriel à __email__"
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "Ouvrir le site des pilotes : __vendor_name__"
+    },
+    "Password": {
+        "message": "Mot de passe"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "Le mot de passe doit comporter entre 6 et 20 caractères."
+    },
+    "Passwords do not match.": {
+        "message": "Les mots de passe ne correspondent pas."
+    },
+    "Play Tutorial": {
+        "message": "Voir le didacticiel"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "Jouez en ligne pour les matchs, les classements et les serveurs dédiés."
+    },
+    "Player Guide": {
+        "message": "Guide"
+    },
+    "Please choose a default region.": {
+        "message": "Veuillez choisir une région par défaut."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "Profitez de toutes les nouvelles unités, les nouveaux mondes, et les nouvelles manières de tout annihiler !"
+    },
+    "Please enter an activation key.": {
+        "message": "Veuillez entrer une clé d'activation."
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "Quittez le jeu, trouvez-le dans votre bibliothèque Steam, cliquez dessus avec le bouton droit de la souris, sélectionnez Propriétés et assurez-vous que l'option « Activer l'overlay Steam pendant le jeu » est cochée. Après cela, démarrez le jeu et réessayez."
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Veuillez vous connecter pour jouer sur les serveurs de PA, ou définissez manuellement le serveur local sur [strong]Activé[/strong] dans les [strong]Paramètres[/strong]."
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "Veuillez réessayer. Si l'erreur persiste, veuillez contacter le service client et consulter les forums."
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "Possible erreur de pilote graphique détectée."
+    },
+    "Production": {
+        "message": "Production"
+    },
+    "Production Babies": {
+        "message": "Naissances en cours de projet"
+    },
+    "QA": {
+        "message": "AQ"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "QUITTER & INSTALLER TITANS"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "QUITTER & LANCER TITANS"
+    },
+    "Quit": {
+        "message": "Quitter"
+    },
+    "RECONNECT": {
+        "message": "SE RECONNECTER"
+    },
+    "Reconnect": {
+        "message": "Se reconnecter"
+    },
+    "Replays": {
+        "message": "Replays"
+    },
+    "Restart From Beginning": {
+        "message": "Recommencer du début"
+    },
+    "Resume last saved:": {
+        "message": "Reprendre la dernière sauvegarde."
+    },
+    "Saved Games": {
+        "message": "Parties sauvegardées"
+    },
+    "Season ends __date__": {
+        "message": "La saison se termine le __date__"
+    },
+    "Settings": {
+        "message": "Paramètres"
+    },
+    "Sign In": {
+        "message": "Se connecter"
+    },
+    "Sign in": {
+        "message": "SE CONNECTER"
+    },
+    "Sign in with your PA account": {
+        "message": "Se connecter avec votre compte PA"
+    },
+    "Single Player": {
+        "message": "Mode solo"
+    },
+    "Soundtrack Credits": {
+        "message": "Crédits de la bande originale"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Overlay Steam désactivé"
+    },
+    "Streams": {
+        "message": "Streams"
+    },
+    "System Designer": {
+        "message": "Créateur du système"
+    },
+    "The TITANS have arrived.": {
+        "message": "Les TITANS sont arrivés."
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "Le code entré a déjà été converti en clé Steam."
+    },
+    "The entered code has already been used.": {
+        "message": "Le code entré a déjà été utilisé."
+    },
+    "The entered code was invalid.": {
+        "message": "Le code entré est invalide."
+    },
+    "The game will require an internet connection to play.": {
+        "message": "Vous avez besoin d'une connexion internet pour jouer."
+    },
+    "The leaderboard is currently empty.": {
+        "message": "Le classement est actuellement vide."
+    },
+    "There are no regions available for this build version.": {
+        "message": "Il n'y a pas de régions disponibles pour cette version."
+    },
+    "There are no streams currently.": {
+        "message": "Il n'y a actuellement aucune diffusion."
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "Il y a un problème avec Steam. Veuillez redémarrer Steam et réessayer, ou nous envoyer un courriel à __email__"
+    },
+    "They're here for you.": {
+        "message": "Ils sont là pour vous."
+    },
+    "This account already owns this title.": {
+        "message": "Ce compte possède déjà ce titre."
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "Ce problème ne devrait pas se produire. Veuillez nous contacter à : __email__."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Nous souhaitons remercier tous ceux ayant participé à notre campagne Kickstarter."
+    },
+    "Top Ranked Players": {
+        "message": "Joueurs les mieux classés"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "Essayez le didacticiel TITANS"
+    },
+    "Tutorial": {
+        "message": "Didacticiel"
+    },
+    "Twitch": {
+        "message": "Twitch"
+    },
+    "UI Library:": {
+        "message": "Bibliothèque IU"
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "Impossible de se connecter"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "Impossible de lier votre compte Steam (adresse e-mail déjà utilisée). Envoyez-nous un courriel à __email__"
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "Impossible de lier votre compte Steam (adresse e-mail invalide). Envoyez-nous un courriel à __email__"
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "Impossible de lier votre compte Steam (erreur inconnue __code__). Envoyez-nous un courriel à __email__"
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "Impossible de lier votre compte Steam (nom d'utilisateur déjà utilisé). Envoyez-nous un courriel à __email__"
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "Impossible de lier votre compte Steam. Veuillez redémarrer le jeu ou nous envoyer un courriel à __email__"
+    },
+    "Unknown": {
+        "message": "Inconnu"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "Erreur inconnue d'identification. Ce problème peut-être lié à votre pare-feu ou aux paramètres de votre antivirus. Veuillez contacter le service client si le problème persiste. (__error_code__)"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "Passez à Titans avec la nouvelle réduction permanente de 90 %"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "Le nom d'utilisateur doit comporter entre 3 et 20 caractères."
+    },
+    "Username": {
+        "message": "Nom d'utilisateur"
+    },
+    "Username already in use.": {
+        "message": "Nom d'utilisateur déjà utilisé."
+    },
+    "Version:": {
+        "message": "Version :"
+    },
+    "View Intro": {
+        "message": "Voir l'intro"
+    },
+    "View Leaderboards": {
+        "message": "Voir les classements"
+    },
+    "View full column": {
+        "message": "Voir la colonne entière"
+    },
+    "Watch Replay": {
+        "message": "Voir le replay"
+    },
+    "You are already assigned to a game.": {
+        "message": "Une partie vous a déjà été assignée."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Il est possible de modifier la région plus tard dans les Paramètres."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Il vous faut un nouveau client pour jouer au jeu. Il est possible que les utilisateurs de Steam doivent redémarrer Steam pour obtenir le nouveau client."
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Vous devez jouer __number__ parties classées pour recevoir un rang"
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "Vous le trouverez dans votre bibliothèque Steam, juste à côté de Planetary Annihilation !"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Votre compte a été banni. Si vous pensez qu'il s'agit d'une erreur, veuillez nous contacter à : __email__."
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "Votre région par défaut est actuellement indisponible. Veuillez en choisir une autre."
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "Votre machine ne satisfait pas la configuration requise pour les parties hors ligne. Pour le jeu hors ligne, nous vous conseillons de disposer au minimum de 8 giga octets de RAM et d'un processeur Quad Core."
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "Votre machine n'est pas capable de faire tourner Planetary Annihilation. Pour le mode hors ligne, un processeur 64 bits ainsi qu'un système d'exploitation 64 bits sont nécessaires."
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Votre système ne satisfait pas la configuration requise pour les parties hors ligne. Veuillez vous inscrire aux serveurs PA pour jouer ou réglez manuellement le serveur local sur [strong]Activé[/strong] dans les [strong]Paramètres[/strong]."
+    },
+    "Your username is: __username__": {
+        "message": "Votre nom d’utilisateur est : __username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "Rang : __rank_title__"
+    },
+    "__viewer_count__ viewers": {
+        "message": "Vues : __viewer_count__"
+    },
+    "days": {
+        "message": "jours"
+    },
+    "ending in": {
+        "message": "se termine dans"
+    },
+    "starting in": {
+        "message": "commence dans"
+    },
+    "LIVE": {
+        "message": "LIVE "
+    },
+    "View Replays": {
+        "message": "Voir les Replays"
+    }
+}

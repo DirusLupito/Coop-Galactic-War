@@ -1,0 +1,17 @@
+{
+    "Absurd": {
+        "message": "荒谬"
+    },
+    "Easy": {
+        "message": "简单"
+    },
+    "Hard": {
+        "message": "困难"
+    },
+    "Normal": {
+        "message": "普通"
+    },
+    "Relentless": {
+        "message": "残酷"
+    }
+}

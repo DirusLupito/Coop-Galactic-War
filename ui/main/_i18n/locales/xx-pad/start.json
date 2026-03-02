@@ -1,0 +1,654 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "#__position__ __league__ ℝȃƞќΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "#__position__ __league__ Rank"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "1ѷ1 ℝȂƝҠƐƉ ΜȂ丁ҪӇΩΩΩΩΩΩΩΩ",
+        "original": "1v1 RANKED MATCH"
+    },
+    "ABANDON": {
+        "message": "Ȃ฿ȂƝƉѲƝΩΩΩ",
+        "original": "ABANDON"
+    },
+    "AI Skirmish": {
+        "message": "ȂΪ ṠќїȓʍїƨнΩΩΩΩΩ",
+        "original": "AI Skirmish"
+    },
+    "Account created successfully.": {
+        "message": "Ȃϲϲȏմƞҭ ϲȓέȃҭέɗ ƨմϲϲέƨƨғմ⌊⌊у.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Account created successfully."
+    },
+    "Activate": {
+        "message": "ȂϲҭїѷȃҭέΩΩΩΩ",
+        "original": "Activate"
+    },
+    "Activation Key": {
+        "message": "Ȃϲҭїѷȃҭїȏƞ ҠέуΩΩΩΩΩΩΩ",
+        "original": "Activation Key"
+    },
+    "An activation key is required to play online.": {
+        "message": "Ȃƞ ȃϲҭїѷȃҭїȏƞ ќέу їƨ ȓέԳմїȓέɗ ҭȏ ⍴⌊ȃу ȏƞ⌊їƞέ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "An activation key is required to play online."
+    },
+    "Armory": {
+        "message": "ȂȓʍȏȓуΩΩΩ",
+        "original": "Armory"
+    },
+    "Art": {
+        "message": "ȂȓҭΩ",
+        "original": "Art"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "Ȃƨ ҭнȃƞќƨ ғȏȓ уȏմȓ ϲȏƞҭїƞմέɗ ƨմ⍴⍴ȏȓҭ, уȏմ нȃѷέ Бέέƞ ɠїѷέƞ ҭнέ ƞέῴ 丁Ϊ丁ȂƝṠ έ⌧⍴ȃƞƨїȏƞ ғȏȓ ғȓέέ!ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "As thanks for your continued support, you have been given the new TITANS expansion for free!"
+    },
+    "Audio": {
+        "message": "ȂմɗїȏΩΩ",
+        "original": "Audio"
+    },
+    "Audio Engine:": {
+        "message": "Ȃմɗїȏ Ɛƞɠїƞέ:ΩΩΩΩΩΩ",
+        "original": "Audio Engine:"
+    },
+    "Battle Everyone.": {
+        "message": "฿ȃҭҭ⌊έ Ɛѷέȓуȏƞέ.ΩΩΩΩΩΩΩΩ",
+        "original": "Battle Everyone."
+    },
+    "Before you jump in...": {
+        "message": "฿έғȏȓέ уȏմ لմʍ⍴ їƞ...ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Before you jump in..."
+    },
+    "Cancel": {
+        "message": "Ҫȃƞϲέ⌊ΩΩΩ",
+        "original": "Cancel"
+    },
+    "Close": {
+        "message": "Ҫ⌊ȏƨέΩΩ",
+        "original": "Close"
+    },
+    "Community Videos": {
+        "message": "Ҫȏʍʍմƞїҭу ѶїɗέȏƨΩΩΩΩΩΩΩΩ",
+        "original": "Community Videos"
+    },
+    "Confirm Password": {
+        "message": "Ҫȏƞғїȓʍ ṔȃƨƨῴȏȓɗΩΩΩΩΩΩΩΩ",
+        "original": "Confirm Password"
+    },
+    "Connecting to PA": {
+        "message": "Ҫȏƞƞέϲҭїƞɠ ҭȏ ṔȂΩΩΩΩΩΩΩΩ",
+        "original": "Connecting to PA"
+    },
+    "Continue Tutorial": {
+        "message": "Ҫȏƞҭїƞմέ 丁մҭȏȓїȃ⌊ΩΩΩΩΩΩΩΩ",
+        "original": "Continue Tutorial"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Ҫȏƨʍїϲ Ɛɗїҭїȏƞ ҪȏʍʍȃƞɗέȓƨΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Cosmic Edition Commanders"
+    },
+    "Create Account": {
+        "message": "Ҫȓέȃҭέ ȂϲϲȏմƞҭΩΩΩΩΩΩΩ",
+        "original": "Create Account"
+    },
+    "Create an account to play online.": {
+        "message": "Ҫȓέȃҭέ ȃƞ ȃϲϲȏմƞҭ ҭȏ ⍴⌊ȃу ȏƞ⌊їƞέ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Create an account to play online."
+    },
+    "Credits": {
+        "message": "ҪȓέɗїҭƨΩΩΩ",
+        "original": "Credits"
+    },
+    "Custom": {
+        "message": "ҪմƨҭȏʍΩΩΩ",
+        "original": "Custom"
+    },
+    "Design": {
+        "message": "ƉέƨїɠƞΩΩΩ",
+        "original": "Design"
+    },
+    "Dismiss": {
+        "message": "ƉїƨʍїƨƨΩΩΩ",
+        "original": "Dismiss"
+    },
+    "EXIT": {
+        "message": "ƐҲΪ丁ΩΩ",
+        "original": "EXIT"
+    },
+    "Email": {
+        "message": "Ɛʍȃї⌊ΩΩ",
+        "original": "Email"
+    },
+    "Email already in use.": {
+        "message": "Ɛʍȃї⌊ ȃ⌊ȓέȃɗу їƞ մƨέ.ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Email already in use."
+    },
+    "Email is invalid": {
+        "message": "Ɛʍȃї⌊ їƨ їƞѷȃ⌊їɗΩΩΩΩΩΩΩΩ",
+        "original": "Email is invalid"
+    },
+    "Enable Offline Play": {
+        "message": "ƐƞȃБ⌊έ Ѳғғ⌊їƞέ Ṕ⌊ȃуΩΩΩΩΩΩΩΩΩ",
+        "original": "Enable Offline Play"
+    },
+    "Engineering": {
+        "message": "ƐƞɠїƞέέȓїƞɠΩΩΩΩΩ",
+        "original": "Engineering"
+    },
+    "Engineers": {
+        "message": "ƐƞɠїƞέέȓƨΩΩΩΩ",
+        "original": "Engineers"
+    },
+    "Extra special thanks to our:": {
+        "message": "Ɛ⌧ҭȓȃ ƨ⍴έϲїȃ⌊ ҭнȃƞќƨ ҭȏ ȏմȓ:ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Extra special thanks to our:"
+    },
+    "Founding Commanders": {
+        "message": "Ϝȏմƞɗїƞɠ ҪȏʍʍȃƞɗέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Founding Commanders"
+    },
+    "Galactic War": {
+        "message": "Ǵȃ⌊ȃϲҭїϲ ₩ȃȓΩΩΩΩΩΩ",
+        "original": "Galactic War"
+    },
+    "Gameplay Disabled": {
+        "message": "Ǵȃʍέ⍴⌊ȃу ƉїƨȃБ⌊έɗΩΩΩΩΩΩΩΩ",
+        "original": "Gameplay Disabled"
+    },
+    "Gameplay Unavailable": {
+        "message": "Ǵȃʍέ⍴⌊ȃу Ủƞȃѷȃї⌊ȃБ⌊έΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Gameplay Unavailable"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "Ϊғ уȏմ їɠƞȏȓέ ҭнїƨ ȓέϲȏʍʍέƞɗȃҭїȏƞ Бу έƞȃБ⌊їƞɠ ȏғғ⌊їƞέ ⍴⌊ȃу, уȏմ ʍȃу έ⌧⍴έȓїέƞϲέ ɗέɠȓȃɗέɗ ⍴έȓғȏȓʍȃƞϲέ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "If you ignore this recommendation by enabling offline play, you may experience degraded performance."
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "Ϊғ уȏմ ῴȃƞҭ ҭȏ ⍴⌊ȃу Ҫ⌊ȃƨƨїϲ ṔȂ, їҭ'ƨ ȓέϲȏʍʍέƞɗέɗ уȏմ ȓմƞ 丁Ϊ丁ȂƝṠ ȃƞɗ ƨїʍ⍴⌊у ϲнȃƞɠέ уȏմȓ Ȃϲҭїѷέ Ɛ⌧⍴ȃƞƨїȏƞ їƞ ҭнέ ɠȃʍέ⍴⌊ȃу ƨέҭҭїƞɠƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings."
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "Ϊƞȃϲҭїѷέ ғȏȓ __inactive_days__ ɗȃуƨΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Inactive for __inactive_days__ days"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Ϊƞϲȏȓȓέϲҭ մƨέȓƞȃʍέ ȏȓ ⍴ȃƨƨῴȏȓɗ. Ṕ⌊έȃƨέ ϲнέϲќ уȏմȓ έƞҭȓу ȃƞɗ ҭȓу ȃɠȃїƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Incorrect username or password. Please check your entry and try again."
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "Ϊƞѷȃ⌊їɗ ƨέƨƨїȏƞ ҭїϲќέҭ, ⍴⌊έȃƨέ ⌊ȏɠ їƞ ȃɠȃїƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Invalid session ticket, please log in again."
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "Ϊҭ ȃ⍴⍴έȃȓƨ ҭнȃҭ Ṕ⌊ȃƞέҭȃȓу Ȃƞƞїнї⌊ȃҭїȏƞ ϲȓȃƨнέɗ ҭнέ ⌊ȃƨҭ ҭїʍέ уȏմ ⍴⌊ȃуέɗ їҭ. 丁нїƨ ϲȓȃƨн ʍїɠнҭ Бέ ɗմέ ҭȏ ȃ ⍴ȓȏБ⌊έʍ їƞ ҭнέ їƞƨҭȃ⌊⌊έɗ ɠȓȃ⍴нїϲƨ ɗȓїѷέȓƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers."
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Ϊҭ ȃ⍴⍴έȃȓƨ ҭнȃҭ уȏմ нȃѷέ ҭմȓƞέɗ ȏғғ ҭнέ Ṡҭέȃʍ Ѳѷέȓ⌊ȃу, ȃƞɗ ῴέ ȃȓέ մƞȃБ⌊έ ҭȏ їƞїҭїȃҭέ уȏմȓ ⍴մȓϲнȃƨέ ῴїҭнȏմҭ їҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it."
+    },
+    "LATER": {
+        "message": "₤Ȃ丁ƐℝΩΩ",
+        "original": "LATER"
+    },
+    "Last match played": {
+        "message": "₤ȃƨҭ ʍȃҭϲн ⍴⌊ȃуέɗΩΩΩΩΩΩΩΩ",
+        "original": "Last match played"
+    },
+    "Latest News": {
+        "message": "₤ȃҭέƨҭ ƝέῴƨΩΩΩΩΩ",
+        "original": "Latest News"
+    },
+    "Leaderboards": {
+        "message": "₤έȃɗέȓБȏȃȓɗƨΩΩΩΩΩΩ",
+        "original": "Leaderboards"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "₤έȃȓƞ ҭнέ Бȃƨїϲƨ. Ҫȏʍʍȃƞɗ ȃ 丁їҭȃƞ. Ṡʍȃƨн ȃ ⍴⌊ȃƞέҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Learn the basics. Command a Titan. Smash a planet."
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "₤ȏȏќƨ ⌊їќέ уȏմ нȃѷέ ȃ ҭմҭȏȓїȃ⌊ ȃ⌊ȓέȃɗу їƞ ⍴ȓȏɠȓέƨƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Looks like you have a tutorial already in progress."
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "₤ȏȏќƨ ⌊їќέ уȏմ'ȓέ ȓմƞƞїƞɠ Ҫ⌊ȃƨƨїϲ ṔȂ ғȓȏʍ уȏմȓ Ṡҭέȃʍ ₤їБȓȃȓу, їƞƨҭέȃɗ ȏғ 丁Ϊ丁ȂƝṠ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Looks like you're running Classic PA from your Steam Library, instead of TITANS."
+    },
+    "Minimize": {
+        "message": "ΜїƞїʍїℤέΩΩΩΩ",
+        "original": "Minimize"
+    },
+    "More Info": {
+        "message": "Μȏȓέ ΪƞғȏΩΩΩΩ",
+        "original": "More Info"
+    },
+    "Multiplayer": {
+        "message": "Μմ⌊ҭї⍴⌊ȃуέȓΩΩΩΩΩ",
+        "original": "Multiplayer"
+    },
+    "Music Composed by": {
+        "message": "Μմƨїϲ Ҫȏʍ⍴ȏƨέɗ БуΩΩΩΩΩΩΩΩ",
+        "original": "Music Composed by"
+    },
+    "New Build Available:": {
+        "message": "Ɲέῴ ฿մї⌊ɗ Ȃѷȃї⌊ȃБ⌊έ:ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "New Build Available:"
+    },
+    "No thanks. I got this.": {
+        "message": "Ɲȏ ҭнȃƞќƨ. Ϊ ɠȏҭ ҭнїƨ.ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "No thanks. I got this."
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Ɲȏƞέ ȏғ ҭнїƨ ῴȏմ⌊ɗ нȃѷέ Бέέƞ ⍴ȏƨƨїБ⌊έ ῴїҭнȏմҭ уȏմȓ ɠέƞέȓȏƨїҭу, ȃƞɗ ῴέ ȃȓέ ɠȓȃҭέғմ⌊ ҭнȃҭ уȏմ ҭȏȏќ ҭнέ ϲнȃƞϲέ ȃƞɗ Бέ⌊їέѷέɗ їƞ ȏմȓ ѷїƨїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision."
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "Ɲȏȓҭнῴέƨҭ Ṡїƞғȏƞїȃ ȃƞɗ Ҫнȏȓȃ⌊έΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Northwest Sinfonia and Chorale"
+    },
+    "Not right now": {
+        "message": "Ɲȏҭ ȓїɠнҭ ƞȏῴΩΩΩΩΩΩ",
+        "original": "Not right now"
+    },
+    "OK": {
+        "message": "ѲҠΩ",
+        "original": "OK"
+    },
+    "OKAY": {
+        "message": "ѲҠȂУΩΩ",
+        "original": "OKAY"
+    },
+    "Official Discord": {
+        "message": "Ѳғғїϲїȃ⌊ ƉїƨϲȏȓɗΩΩΩΩΩΩΩΩ",
+        "original": "Official Discord"
+    },
+    "Official Guides": {
+        "message": "Ѳғғїϲїȃ⌊ ǴմїɗέƨΩΩΩΩΩΩΩ",
+        "original": "Official Guides"
+    },
+    "Official Support": {
+        "message": "Ѳғғїϲїȃ⌊ Ṡմ⍴⍴ȏȓҭΩΩΩΩΩΩΩΩ",
+        "original": "Official Support"
+    },
+    "Offline Play Disabled": {
+        "message": "Ѳғғ⌊їƞέ Ṕ⌊ȃу ƉїƨȃБ⌊έɗΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Offline Play Disabled"
+    },
+    "Offline Play Unavailable": {
+        "message": "Ѳғғ⌊їƞέ Ṕ⌊ȃу Ủƞȃѷȃї⌊ȃБ⌊έΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Offline Play Unavailable"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "Ѳғҭέƞ ҭнέƨέ ҭу⍴έƨ ȏғ ϲȓȃƨнέƨ ϲȃƞ Бέ ȓέƨȏ⌊ѷέɗ Бу ʍȃќїƞɠ ƨմȓέ уȏմ нȃѷέ ҭнέ ⌊ȃҭέƨҭ ɠȓȃ⍴нїϲƨ ɗȓїѷέȓ ғȓȏʍ __vendor_name__ — ȃƞɗ ῴέ [strong]ƨҭȓȏƞɠ⌊у ȓέϲȏʍʍέƞɗ[/strong] ҭнȃҭ уȏմ ѷїƨїҭ ҭнέїȓ ɗȓїѷέȓ ῴέБƨїҭέ ҭȏ ɗȏῴƞ⌊ȏȃɗ ȃƞɗ їƞƨҭȃ⌊⌊ ҭнέ ⌊ȃҭέƨҭ ѷέȓƨїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version."
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "Ѳȏ⍴ƨ! ₩έ ϲȃƞ'ҭ ғїƞɗ ҭнέ ɠȃʍέ їƞ уȏմȓ ȃϲϲȏմƞҭ.  Ϊғ уȏմ ȃȓέ ȃ Ṡҭέȃʍ մƨέȓ, ⍴⌊έȃƨέ ȓέƨҭȃȓҭ Ṡҭέȃʍ ȃƞɗ ҭȓу ȃɠȃїƞ.  Ϊғ ҭнέ ⍴ȓȏБ⌊έʍ ⍴έȓƨїƨҭƨ, ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__"
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "Ѳȏ⍴ƨ! Уȏմȓ ȃϲϲȏմƞҭ ƨέέʍƨ ҭȏ Бέ їƞ ȃƞ їƞѷȃ⌊їɗ ƨҭȃҭέ. Ϊғ уȏմ ȃȓέ ȃ Ṡҭέȃʍ մƨέȓ, ⍴⌊έȃƨέ ȓέƨҭȃȓҭ Ṡҭέȃʍ ȃƞɗ ҭȓу ȃɠȃїƞ. Ϊғ ҭнέ ⍴ȓȏБ⌊έʍ ⍴έȓƨїƨҭƨ, ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__"
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "Ѳ⍴έƞ __vendor_name__'ƨ Ɖȓїѷέȓ ₩έБƨїҭέΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Open __vendor_name__'s Driver Website"
+    },
+    "Password": {
+        "message": "ṔȃƨƨῴȏȓɗΩΩΩΩ",
+        "original": "Password"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "Ṕȃƨƨῴȏȓɗ ʍմƨҭ Бέ Бέҭῴέέƞ 6 ȃƞɗ 20 ϲнȃȓȃϲҭέȓƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Password must be between 6 and 20 characters."
+    },
+    "Passwords do not match.": {
+        "message": "Ṕȃƨƨῴȏȓɗƨ ɗȏ ƞȏҭ ʍȃҭϲн.ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Passwords do not match."
+    },
+    "Play Tutorial": {
+        "message": "Ṕ⌊ȃу 丁մҭȏȓїȃ⌊ΩΩΩΩΩΩ",
+        "original": "Play Tutorial"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "Ṕ⌊ȃу ȏƞ⌊їƞέ ғȏȓ ʍȃҭϲнʍȃќїƞɠ, ⌊έȃɗέȓБȏȃȓɗƨ, & ɗέɗїϲȃҭέɗ ƨέȓѷέȓƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Play online for matchmaking, leaderboards, & dedicated servers."
+    },
+    "Player Guide": {
+        "message": "Ṕ⌊ȃуέȓ ǴմїɗέΩΩΩΩΩΩ",
+        "original": "Player Guide"
+    },
+    "Please choose a default region.": {
+        "message": "Ṕ⌊έȃƨέ ϲнȏȏƨέ ȃ ɗέғȃմ⌊ҭ ȓέɠїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please choose a default region."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "Ṕ⌊έȃƨέ έƞلȏу ȃ⌊⌊ ҭнέ ƞέῴ մƞїҭƨ, ƞέῴ ῴȏȓ⌊ɗƨ, ȃƞɗ ƞέῴ ῴȃуƨ ҭȏ ȃƞƞїнї⌊ȃҭέ έѷέȓуҭнїƞɠ!ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please enjoy all the new units, new worlds, and new ways to annihilate everything!"
+    },
+    "Please enter an activation key.": {
+        "message": "Ṕ⌊έȃƨέ έƞҭέȓ ȃƞ ȃϲҭїѷȃҭїȏƞ ќέу.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please enter an activation key."
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "Ṕ⌊έȃƨέ έ⌧їҭ ҭнέ ɠȃʍέ, ғїƞɗ їҭ їƞ уȏմȓ Ṡҭέȃʍ ⌊їБȓȃȓу, ȓїɠнҭ ϲ⌊їϲќ їҭ, ƨέ⌊έϲҭ Ṕȓȏ⍴έȓҭїέƨ, ȃƞɗ ʍȃќέ ƨմȓέ ҭнȃҭ \"ƐƞȃБ⌊έ ҭнέ Ṡҭέȃʍ Ѳѷέȓ⌊ȃу ῴнї⌊έ їƞ-ɠȃʍέ\" їƨ ϲнέϲќέɗ. Ȃғҭέȓ ɗȏїƞɠ ƨȏ, ƨҭȃȓҭ ҭнέ ɠȃʍέ ȃƞɗ ҭȓу ȃɠȃїƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again."
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Ṕ⌊έȃƨέ ƨїɠƞ їƞ ҭȏ ⍴⌊ȃу ȏƞ ṔȂ ƨέȓѷέȓƨ, ȏȓ їƞ [strong]Ṡέҭҭїƞɠƨ[/strong], ʍȃƞմȃ⌊⌊у ƨέҭ ⌊ȏϲȃ⌊ ƨέȓѷέȓ ҭȏ [strong]Ѳƞ[/strong].ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong]."
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "Ṕ⌊έȃƨέ ҭȓу ȃɠȃїƞ ⌊ȃҭέȓ.  Ϊғ ҭнїƨ έȓȓȏȓ ⍴έȓƨїƨҭƨ, ⍴⌊έȃƨέ ϲȏƞҭȃϲҭ ƨմ⍴⍴ȏȓҭ ȃƞɗ ϲнέϲќ ҭнέ ғȏȓմʍƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Please try again later.  If this error persists, please contact support and check the forums."
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "ṔȏƨƨїБ⌊έ Ǵȓȃ⍴нїϲƨ Ɖȓїѷέȓ Ҫȓȃƨн ƉέҭέϲҭέɗΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Possible Graphics Driver Crash Detected"
+    },
+    "Production": {
+        "message": "ṔȓȏɗմϲҭїȏƞΩΩΩΩΩ",
+        "original": "Production"
+    },
+    "Production Babies": {
+        "message": "Ṕȓȏɗմϲҭїȏƞ ฿ȃБїέƨΩΩΩΩΩΩΩΩ",
+        "original": "Production Babies"
+    },
+    "QA": {
+        "message": "ҨȂΩ",
+        "original": "QA"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "ҨỦΪ丁 & ΪƝṠ丁Ȃ₤₤ 丁Ϊ丁ȂƝṠΩΩΩΩΩΩΩΩΩΩ",
+        "original": "QUIT & INSTALL TITANS"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "ҨỦΪ丁 & ₤ȂỦƝҪӇ 丁Ϊ丁ȂƝṠΩΩΩΩΩΩΩΩΩΩ",
+        "original": "QUIT & LAUNCH TITANS"
+    },
+    "Quit": {
+        "message": "ҨմїҭΩΩ",
+        "original": "Quit"
+    },
+    "RECONNECT": {
+        "message": "ℝƐҪѲƝƝƐҪ丁ΩΩΩΩ",
+        "original": "RECONNECT"
+    },
+    "Reconnect": {
+        "message": "ℝέϲȏƞƞέϲҭΩΩΩΩ",
+        "original": "Reconnect"
+    },
+    "Replays": {
+        "message": "ℝέ⍴⌊ȃуƨΩΩΩ",
+        "original": "Replays"
+    },
+    "Restart From Beginning": {
+        "message": "ℝέƨҭȃȓҭ Ϝȓȏʍ ฿έɠїƞƞїƞɠΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Restart From Beginning"
+    },
+    "Resume last saved:": {
+        "message": "ℝέƨմʍέ ⌊ȃƨҭ ƨȃѷέɗ:ΩΩΩΩΩΩΩΩΩ",
+        "original": "Resume last saved:"
+    },
+    "Saved Games": {
+        "message": "Ṡȃѷέɗ ǴȃʍέƨΩΩΩΩΩ",
+        "original": "Saved Games"
+    },
+    "Season ends __date__": {
+        "message": "Ṡέȃƨȏƞ έƞɗƨ __date__ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Season ends __date__"
+    },
+    "Settings": {
+        "message": "ṠέҭҭїƞɠƨΩΩΩΩ",
+        "original": "Settings"
+    },
+    "Sign In": {
+        "message": "Ṡїɠƞ ΪƞΩΩΩ",
+        "original": "Sign In"
+    },
+    "Sign in": {
+        "message": "Ṡїɠƞ їƞΩΩΩ",
+        "original": "Sign in"
+    },
+    "Sign in with your PA account": {
+        "message": "Ṡїɠƞ їƞ ῴїҭн уȏմȓ ṔȂ ȃϲϲȏմƞҭΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Sign in with your PA account"
+    },
+    "Single Player": {
+        "message": "Ṡїƞɠ⌊έ Ṕ⌊ȃуέȓΩΩΩΩΩΩ",
+        "original": "Single Player"
+    },
+    "Soundtrack Credits": {
+        "message": "Ṡȏմƞɗҭȓȃϲќ ҪȓέɗїҭƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Soundtrack Credits"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Ṡҭέȃʍ Ѳѷέȓ⌊ȃу ƉїƨȃБ⌊έɗΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Steam Overlay Disabled"
+    },
+    "Streams": {
+        "message": "ṠҭȓέȃʍƨΩΩΩ",
+        "original": "Streams"
+    },
+    "System Designer": {
+        "message": "Ṡуƨҭέʍ ƉέƨїɠƞέȓΩΩΩΩΩΩΩ",
+        "original": "System Designer"
+    },
+    "The TITANS have arrived.": {
+        "message": "丁нέ 丁Ϊ丁ȂƝṠ нȃѷέ ȃȓȓїѷέɗ.ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The TITANS have arrived."
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "丁нέ έƞҭέȓέɗ ϲȏɗέ нȃƨ ȃ⌊ȓέȃɗу Бέέƞ ϲȏƞѷέȓҭέɗ ҭȏ ȃ ƨҭέȃʍ ќέу.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The entered code has already been converted to a steam key."
+    },
+    "The entered code has already been used.": {
+        "message": "丁нέ έƞҭέȓέɗ ϲȏɗέ нȃƨ ȃ⌊ȓέȃɗу Бέέƞ մƨέɗ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The entered code has already been used."
+    },
+    "The entered code was invalid.": {
+        "message": "丁нέ έƞҭέȓέɗ ϲȏɗέ ῴȃƨ їƞѷȃ⌊їɗ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The entered code was invalid."
+    },
+    "The game will require an internet connection to play.": {
+        "message": "丁нέ ɠȃʍέ ῴї⌊⌊ ȓέԳմїȓέ ȃƞ їƞҭέȓƞέҭ ϲȏƞƞέϲҭїȏƞ ҭȏ ⍴⌊ȃу.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The game will require an internet connection to play."
+    },
+    "The leaderboard is currently empty.": {
+        "message": "丁нέ ⌊έȃɗέȓБȏȃȓɗ їƨ ϲմȓȓέƞҭ⌊у έʍ⍴ҭу.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "The leaderboard is currently empty."
+    },
+    "There are no regions available for this build version.": {
+        "message": "丁нέȓέ ȃȓέ ƞȏ ȓέɠїȏƞƨ ȃѷȃї⌊ȃБ⌊έ ғȏȓ ҭнїƨ Бմї⌊ɗ ѷέȓƨїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "There are no regions available for this build version."
+    },
+    "There are no streams currently.": {
+        "message": "丁нέȓέ ȃȓέ ƞȏ ƨҭȓέȃʍƨ ϲմȓȓέƞҭ⌊у.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "There are no streams currently."
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "丁нέȓέ їƨ ȃ ⍴ȓȏБ⌊έʍ ῴїҭн Ṡҭέȃʍ. Ṕ⌊έȃƨέ ȓέƨҭȃȓҭ Ṡҭέȃʍ ȃƞɗ ҭȓу ȃɠȃїƞ, ȏȓ ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__"
+    },
+    "They're here for you.": {
+        "message": "丁нέу'ȓέ нέȓέ ғȏȓ уȏմ.ΩΩΩΩΩΩΩΩΩΩ",
+        "original": "They're here for you."
+    },
+    "This account already owns this title.": {
+        "message": "丁нїƨ ȃϲϲȏմƞҭ ȃ⌊ȓέȃɗу ȏῴƞƨ ҭнїƨ ҭїҭ⌊έ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "This account already owns this title."
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "丁нїƨ ƨнȏմ⌊ɗƞ'ҭ нȃ⍴⍴έƞ. Ṕ⌊έȃƨέ ϲȏƞҭȃϲҭ մƨ ȃҭ  __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "This shouldn't happen. Please contact us at  __email__"
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "丁ȏ ҭнȏƨέ ῴнȏ ϲȏƞҭȓїБմҭέɗ ҭȏ ȏմȓ Ҡїϲќƨҭȃȓҭέȓ ϲȃʍ⍴ȃїɠƞ, ῴέ'ɗ ⌊їќέ ҭȏ ҭнȃƞќ уȏմ ғȏȓ ȃ⌊⌊ ҭнέ ƨմ⍴⍴ȏȓҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support."
+    },
+    "Top Ranked Players": {
+        "message": "丁ȏ⍴ ℝȃƞќέɗ Ṕ⌊ȃуέȓƨΩΩΩΩΩΩΩΩΩ",
+        "original": "Top Ranked Players"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "丁ȓу ҭнέ 丁Ϊ丁ȂƝṠ 丁մҭȏȓїȃ⌊ΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Try the TITANS Tutorial"
+    },
+    "Tutorial": {
+        "message": "丁մҭȏȓїȃ⌊ΩΩΩΩ",
+        "original": "Tutorial"
+    },
+    "Twitch": {
+        "message": "丁ῴїҭϲнΩΩΩ",
+        "original": "Twitch"
+    },
+    "UI Library:": {
+        "message": "ỦΪ ₤їБȓȃȓу:ΩΩΩΩΩ",
+        "original": "UI Library:"
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "ỦБέȓ Ɛƞҭέȓҭȃїƞʍέƞҭ 丁έȃʍ 2014ΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "ỦƞȃБ⌊έ ҭȏ Ṡїɠƞ ΪƞΩΩΩΩΩΩΩΩ",
+        "original": "Unable to Sign In"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "ỦƞȃБ⌊έ ҭȏ ⌊їƞќ уȏմȓ Ṡҭέȃʍ ȃϲϲȏմƞҭ (έʍȃї⌊ ȃɗɗȓέƨƨ їƞ մƨέ), ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unable to link your Steam account (email address in use), contact us at __email__"
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "ỦƞȃБ⌊έ ҭȏ ⌊їƞќ уȏմȓ Ṡҭέȃʍ ȃϲϲȏմƞҭ (έʍȃї⌊ ȃɗɗȓέƨƨ їƞѷȃ⌊їɗ), ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unable to link your Steam account (email address invalid), contact us at __email__"
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "ỦƞȃБ⌊έ ҭȏ ⌊їƞќ уȏմȓ Ṡҭέȃʍ ȃϲϲȏմƞҭ (մƞќƞȏῴƞ έȓȓȏȓ __code__), ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unable to link your Steam account (unknown error __code__), contact us at __email__"
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "ỦƞȃБ⌊έ ҭȏ ⌊їƞќ уȏմȓ Ṡҭέȃʍ ȃϲϲȏմƞҭ (մƨέȓƞȃʍέ їƞ մƨέ), ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unable to link your Steam account (username in use), contact us at __email__"
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "ỦƞȃБ⌊έ ҭȏ ⌊їƞќ уȏմȓ Ṡҭέȃʍ ȃϲϲȏմƞҭ, ҭȓу ȓέƨҭȃȓҭїƞɠ ҭнέ ɠȃʍέ ȏȓ ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unable to link your Steam account, try restarting the game or contact us at __email__"
+    },
+    "Unknown": {
+        "message": "ỦƞќƞȏῴƞΩΩΩ",
+        "original": "Unknown"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "Ủƞќƞȏῴƞ Ɛȓȓȏȓ ȃմҭнέƞҭїϲȃҭїƞɠ, ⍴ȏƨƨїБ⌊у ȓέ⌊ȃҭέɗ ҭȏ ғїȓέῴȃ⌊⌊ ȏȓ ȃƞҭїѷїȓմƨ ƨέҭҭїƞɠƨ.  Ṕ⌊έȃƨέ ϲȏƞҭȃϲҭ ƨմ⍴⍴ȏȓҭ їғ ⍴ȓȏБ⌊έʍ ⍴έȓƨїƨҭƨ. (__error_code__)ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "Ủ⍴ɠȓȃɗέ ҭȏ 丁їҭȃƞƨ ȃҭ ҭнέ ƞέῴ ⍴έȓʍȃʍέƞέƞҭ ɗїƨϲȏմƞҭ ȏғ 90%ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Upgrade to Titans at the new permamenent discount of 90%"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "ỦƨέȓƝȃʍέ ʍմƨҭ Бέ Бέҭῴέέƞ 3 ȃƞɗ 20 ϲнȃȓȃϲҭέȓƨ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "UserName must be between 3 and 20 characters."
+    },
+    "Username": {
+        "message": "ỦƨέȓƞȃʍέΩΩΩΩ",
+        "original": "Username"
+    },
+    "Username already in use.": {
+        "message": "Ủƨέȓƞȃʍέ ȃ⌊ȓέȃɗу їƞ մƨέ.ΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Username already in use."
+    },
+    "Version:": {
+        "message": "Ѷέȓƨїȏƞ:ΩΩΩΩ",
+        "original": "Version:"
+    },
+    "View Intro": {
+        "message": "Ѷїέῴ ΪƞҭȓȏΩΩΩΩΩ",
+        "original": "View Intro"
+    },
+    "View Leaderboards": {
+        "message": "Ѷїέῴ ₤έȃɗέȓБȏȃȓɗƨΩΩΩΩΩΩΩΩ",
+        "original": "View Leaderboards"
+    },
+    "View full column": {
+        "message": "Ѷїέῴ ғմ⌊⌊ ϲȏ⌊մʍƞΩΩΩΩΩΩΩΩ",
+        "original": "View full column"
+    },
+    "Watch Replay": {
+        "message": "₩ȃҭϲн ℝέ⍴⌊ȃуΩΩΩΩΩΩ",
+        "original": "Watch Replay"
+    },
+    "You are already assigned to a game.": {
+        "message": "Уȏմ ȃȓέ ȃ⌊ȓέȃɗу ȃƨƨїɠƞέɗ ҭȏ ȃ ɠȃʍέ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You are already assigned to a game."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Уȏմ ϲȃƞ ϲнȃƞɠέ ҭнέ ȓέɠїȏƞ ⌊ȃҭέȓ їƞ ҭнέ ƨέҭҭїƞɠƨ ʍέƞմ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You can change the region later in the settings menu."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Уȏմ ƞέέɗ ȃ ƞέῴ ϲ⌊їέƞҭ ҭȏ ⍴⌊ȃу ҭнέ ɠȃʍέ. Ṡҭέȃʍ մƨέȓƨ ʍȃу ƞέέɗ ҭȏ ȓέƨҭȃȓҭ Ṡҭέȃʍ ҭȏ ɠέҭ ҭнέ ƞέῴ ϲ⌊їέƞҭ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You need a new client to play the game. Steam users may need to restart Steam to get the new client."
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Уȏմ ƞέέɗ ҭȏ ⍴⌊ȃу __number__ ȓȃƞќέɗ ɠȃʍέƨ ҭȏ ȓέϲέїѷέ ȃ ȓȃƞќΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You need to play __number__ ranked games to receive a rank"
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "Уȏմ'⌊⌊ ғїƞɗ їҭ ῴȃїҭїƞɠ їƞ уȏմȓ Ṡҭέȃʍ ⌊їБȓȃȓу ȓїɠнҭ ƞέ⌧ҭ ҭȏ Ṕ⌊ȃƞέҭȃȓу Ȃƞƞїнї⌊ȃҭїȏƞ!ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "You'll find it waiting in your Steam library right next to Planetary Annihilation!"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Уȏմȓ ȃϲϲȏմƞҭ нȃƨ Бέέƞ Бȃƞƞέɗ. Ϊғ уȏմ Бέ⌊їέѷέ ҭнїƨ їƨ їƞ έȓȓȏȓ, ϲȏƞҭȃϲҭ մƨ ȃҭ __email__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your account has been banned. If you believe this is in error, contact us at __email__"
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "Уȏմȓ ɗέғȃմ⌊ҭ ȓέɠїȏƞ їƨ ϲմȓȓέƞҭ⌊у մƞȃѷȃї⌊ȃБ⌊έ.  Ṕ⌊έȃƨέ ϲнȏȏƨέ ȃ ɗїғғέȓέƞҭ ȓέɠїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your default region is currently unavailable.  Please choose a different region."
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "Уȏմȓ ʍȃϲнїƞέ ɗȏέƨ ƞȏҭ ʍέέҭ ҭнέ ȓέϲȏʍʍέƞɗέɗ ƨуƨҭέʍ ȓέԳմїȓέʍέƞҭƨ ғȏȓ ȏғғ⌊їƞέ ⍴⌊ȃу — ғȏȓ ȏғғ⌊їƞέ ʍȏɗέ ῴέ ȓέϲȏʍʍέƞɗ ȃҭ ⌊έȃƨҭ 8 ɠїɠȃБуҭέƨ ȏғ ℝȂΜ ȃƞɗ ȃ Ҩմȃɗ Ҫȏȓέ ⍴ȓȏϲέƨƨȏȓ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor."
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "Уȏմȓ ʍȃϲнїƞέ їƨ ƞȏҭ ϲȃ⍴ȃБ⌊έ ȏғ ȓմƞƞїƞɠ Ṕ⌊ȃƞέҭȃȓу Ȃƞƞїнї⌊ȃҭїȏƞ ȏғғ⌊їƞέ — ȏғғ⌊їƞέ ʍȏɗέ ȓέԳմїȓέƨ ȃ 64-Бїҭ ⍴ȓȏϲέƨƨȏȓ ȃƨ ῴέ⌊⌊ ȃƨ ȃ 64-Бїҭ ȏ⍴έȓȃҭїƞɠ ƨуƨҭέʍ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system."
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Уȏմȓ ƨуƨҭέʍ ɗȏέƨ ƞȏҭ ʍέέҭ ҭнέ ȓέԳմїȓέʍέƞҭƨ ғȏȓ ȏғғ⌊їƞέ ⍴⌊ȃу. Ṕ⌊έȃƨέ ƨїɠƞ їƞ ҭȏ ⍴⌊ȃу ȏƞ ṔȂ ƨέȓѷέȓƨ, ȏȓ їƞ [strong]Ṡέҭҭїƞɠƨ[/strong], ʍȃƞմȃ⌊⌊у ƨέҭ ⌊ȏϲȃ⌊ ƨέȓѷέȓ ҭȏ [strong]Ѳƞ[/strong].ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong]."
+    },
+    "Your username is: __username__": {
+        "message": "Уȏմȓ մƨέȓƞȃʍέ їƨ: __username__ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "Your username is: __username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ ℝȃƞќΩΩΩΩΩΩΩΩΩ",
+        "original": "__rank_title__ Rank"
+    },
+    "__viewer_count__ viewers": {
+        "message": "__viewer_count__ ѷїέῴέȓƨΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "__viewer_count__ viewers"
+    },
+    "days": {
+        "message": "ɗȃуƨΩΩ",
+        "original": "days"
+    },
+    "ending in": {
+        "message": "έƞɗїƞɠ їƞΩΩΩΩ",
+        "original": "ending in"
+    },
+    "starting in": {
+        "message": "ƨҭȃȓҭїƞɠ їƞΩΩΩΩΩ",
+        "original": "starting in"
+    },
+    "LIVE": {
+        "message": "₤ΪѶƐ ΩΩ",
+        "original": "LIVE "
+    },
+    "View Replays": {
+        "message": "Ѷїέῴ ℝέ⍴⌊ȃуƨΩΩΩΩΩΩ",
+        "original": "View Replays"
+    }
+}

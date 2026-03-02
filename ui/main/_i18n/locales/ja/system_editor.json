@@ -1,0 +1,377 @@
+{
+    "0.0.0": {
+        "message": "0.0.0"
+    },
+    "Accept": {
+        "message": "OK"
+    },
+    "Advanced Edit": {
+        "message": "編集（上級）"
+    },
+    "Advanced edit planet": {
+        "message": "惑星を編集（上級）"
+    },
+    "Auto": {
+        "message": "オート"
+    },
+    "Base:": {
+        "message": "基本値:"
+    },
+    "Biome:": {
+        "message": "生物群系:"
+    },
+    "Brushes:": {
+        "message": "ブラシ:"
+    },
+    "CLEAR SYSTEM": {
+        "message": "太陽系を消去"
+    },
+    "CLOSE": {
+        "message": "閉じる"
+    },
+    "CSG": {
+        "message": "CSG"
+    },
+    "Camera": {
+        "message": "カメラ"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Creator": {
+        "message": "クリエーター"
+    },
+    "Data": {
+        "message": "データ"
+    },
+    "Description": {
+        "message": "説明"
+    },
+    "Discard": {
+        "message": "破棄"
+    },
+    "Do you want to save this system?": {
+        "message": "この星系を保存しますか？"
+    },
+    "EDIT PLANET": {
+        "message": "惑星を編集"
+    },
+    "EXPORT SYSTEM": {
+        "message": "エクスポートシステム"
+    },
+    "Edit": {
+        "message": "編集"
+    },
+    "Edit System Info": {
+        "message": "システム情報を編集"
+    },
+    "Flooded": {
+        "message": "浸水"
+    },
+    "GAMEPLAY": {
+        "message": "ゲームプレイ"
+    },
+    "HIDE": {
+        "message": "非表示"
+    },
+    "Height:": {
+        "message": "高さ:"
+    },
+    "Include:": {
+        "message": "含:"
+    },
+    "Landing Zone Restrictions": {
+        "message": "着陸地帯の制限"
+    },
+    "Landing Zone Size": {
+        "message": "着陸地帯のサイズ"
+    },
+    "Landing Zones": {
+        "message": "着陸地帯"
+    },
+    "Latitude:": {
+        "message": "緯度:"
+    },
+    "Longitude:": {
+        "message": "経度:"
+    },
+    "MY PLANETS": {
+        "message": "我惑星群"
+    },
+    "Mass": {
+        "message": "質量"
+    },
+    "Max": {
+        "message": "最大"
+    },
+    "Max Asteroid Count": {
+        "message": "最大小惑星数"
+    },
+    "Mergeable": {
+        "message": "統合可能"
+    },
+    "Metal Spots": {
+        "message": "金属スポット"
+    },
+    "Min": {
+        "message": "最小"
+    },
+    "Mouse": {
+        "message": "マウス"
+    },
+    "NONE": {
+        "message": "なし"
+    },
+    "No Features": {
+        "message": "要素なし"
+    },
+    "Ok": {
+        "message": "OK"
+    },
+    "Once in Advanced Edit mode, the planet will remain in this mode for future edits.": {
+        "message": "上級編集モードに移行すると、続きの編集がいつでもできるように惑星がモード内に残ります"
+    },
+    "PREVIEW ALL": {
+        "message": "全てプレビュー"
+    },
+    "Pathable": {
+        "message": "パス可能"
+    },
+    "Position": {
+        "message": "位置"
+    },
+    "Preview": {
+        "message": "プレビュー"
+    },
+    "Preview planet": {
+        "message": "惑星をプレビュー"
+    },
+    "Preview to copy CSG": {
+        "message": "プレビューでCSGコピー"
+    },
+    "Properties": {
+        "message": "プロパティ"
+    },
+    "RECENT": {
+        "message": "最近"
+    },
+    "REMOVE": {
+        "message": "削除"
+    },
+    "REMOVE ASTEROID BELT": {
+        "message": "小惑星帯を削除"
+    },
+    "Radius:": {
+        "message": "半径:"
+    },
+    "SAVE SYSTEM": {
+        "message": "星系をセーブ"
+    },
+    "SELECT CSG": {
+        "message": "CSGを選択"
+    },
+    "SHOW": {
+        "message": "表示"
+    },
+    "SIMULATE": {
+        "message": "シミュレート"
+    },
+    "STOP": {
+        "message": "停止"
+    },
+    "Save": {
+        "message": "セーブ"
+    },
+    "Save as template": {
+        "message": "テンプレとしてセーブ"
+    },
+    "Seed:": {
+        "message": "種子"
+    },
+    "Selected CSG": {
+        "message": "選択済CSG"
+    },
+    "Shuffle Landing Zones": {
+        "message": "着陸地帯をシャッフル"
+    },
+    "Spawn Delay (in seconds)": {
+        "message": "出現遅延（秒）"
+    },
+    "Spots:": {
+        "message": "スポット:"
+    },
+    "Starting Asteroid Count": {
+        "message": "開始時小惑星数"
+    },
+    "Starting planet options": {
+        "message": "開始時惑星オプション"
+    },
+    "System Designer": {
+        "message": "星系デザイナー"
+    },
+    "System Name:": {
+        "message": "星系名:"
+    },
+    "System radius is too large.": {
+        "message": "星系の半径が大きすぎます"
+    },
+    "System radius is too small.": {
+        "message": "星系の半径が小さすぎます"
+    },
+    "System requires at least one starting planet.": {
+        "message": "星系には少なくとも1つ以上の惑星が開始時に必要です"
+    },
+    "TEMPLATES": {
+        "message": "テンプレート"
+    },
+    "TERRAIN": {
+        "message": "地形"
+    },
+    "TERRAIN AND CSG": {
+        "message": "地形とCSG"
+    },
+    "Temp": {
+        "message": "テンプレ"
+    },
+    "Temp:": {
+        "message": "気温:"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "惑星をロードしています。時間がかかる場合があります"
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "惑星が完成するまで、プログラムは応答しません"
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "最後にセーブしてから、星系に変更が加えられています"
+    },
+    "The system has not been saved.": {
+        "message": "星系がセーブされていません"
+    },
+    "This planet has been customized. It must be fully built before modifying.": {
+        "message": "この惑星はカスタマイズされています。完成させてからでないと修正できません"
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to delete.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] で削除"
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] でカーソルの下に着陸地帯を配置"
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] でカーソルの下に金属スポットを配置"
+    },
+    "Use as a starting planet": {
+        "message": "開始時惑星として使用"
+    },
+    "Variance:": {
+        "message": "変数:"
+    },
+    "Velocity": {
+        "message": "速度"
+    },
+    "Version": {
+        "message": "バージョン"
+    },
+    "Water": {
+        "message": "水域"
+    },
+    "Water:": {
+        "message": "水域:"
+    },
+    "X": {
+        "message": "X"
+    },
+    "X:": {
+        "message": "X:"
+    },
+    "Y": {
+        "message": "Y"
+    },
+    "Y:": {
+        "message": "Y:"
+    },
+    "You will have to fix the system before saving.": {
+        "message": "保存する前に星系を修正する必要があります"
+    },
+    "You will not be able to revert back and use standard editing controls.": {
+        "message": "もとに戻して、標準の編集コントロールを使用することはできません"
+    },
+    "Z": {
+        "message": "Z"
+    },
+    "Z:": {
+        "message": "Z:"
+    },
+    "Zones:": {
+        "message": "地帯:"
+    },
+    "biome": {
+        "message": "生物群系"
+    },
+    "edit asteroid belt": {
+        "message": "小惑星帯を編集"
+    },
+    "edit planet": {
+        "message": "惑星を編集"
+    },
+    "height": {
+        "message": "高さ"
+    },
+    "height range": {
+        "message": "高さの範囲"
+    },
+    "landing zone size": {
+        "message": "着陸地帯のサイズ"
+    },
+    "landing zones per army": {
+        "message": "着陸地帯/軍"
+    },
+    "metal clusters": {
+        "message": "金属クラスタ"
+    },
+    "metal density": {
+        "message": "金属密度"
+    },
+    "metal spots": {
+        "message": "金属スポット"
+    },
+    "metal spots on asteroids": {
+        "message": "小惑星の上に金属スポットあり"
+    },
+    "planet name": {
+        "message": "惑星名"
+    },
+    "preview landing zones by number of armies": {
+        "message": "兵の数で着陸地帯をプレビュー"
+    },
+    "radius": {
+        "message": "半径"
+    },
+    "seed": {
+        "message": "種子"
+    },
+    "start spots": {
+        "message": "開始スポット"
+    },
+    "symmetry type": {
+        "message": "シンメトリータイプ"
+    },
+    "temperature": {
+        "message": "気温"
+    },
+    "terrain": {
+        "message": "地形"
+    },
+    "terrain and gameplay": {
+        "message": "地形とゲームプレイ"
+    },
+    "thrusters required for attack": {
+        "message": "攻撃に必要なスラスタ"
+    },
+    "water coverage": {
+        "message": "水域範囲"
+    },
+    "water depth": {
+        "message": "水域の深さ"
+    }
+}

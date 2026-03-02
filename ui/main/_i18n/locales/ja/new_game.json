@@ -1,0 +1,218 @@
+{
+    "- Host": {
+        "message": "- ホスト"
+    },
+    "AI Commander": {
+        "message": "AI コマンダー"
+    },
+    "AI:": {
+        "message": "AI: "
+    },
+    "Add AI": {
+        "message": "AIを追加"
+    },
+    "Add AI Commander": {
+        "message": "AI コマンダーを追加"
+    },
+    "Add Slot": {
+        "message": "スロットを追加"
+    },
+    "Add Team": {
+        "message": "チームを追加"
+    },
+    "Alliance Victory": {
+        "message": "同盟 勝利"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": "プレイヤー同士が同盟を締結/破棄できるようになる。資源をシェアすることも可能となる"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": "プレイヤーが実験としてユニットのカット＆ペーストをできるようになる"
+    },
+    "Asteroid": {
+        "message": "小惑星"
+    },
+    "Bounty Mode": {
+        "message": "バウンティモード"
+    },
+    "Browse systems...": {
+        "message": "星系をブラウジング中…"
+    },
+    "Building planets": {
+        "message": "惑星群を建造中"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "サーバーとの接続が失われました"
+    },
+    "Chat": {
+        "message": "チャット"
+    },
+    "Default": {
+        "message": "デフォルト"
+    },
+    "Dynamic Alliances": {
+        "message": "ダイナミックアライアンス"
+    },
+    "Econ Rate": {
+        "message": "経済率"
+    },
+    "Empty": {
+        "message": "空き"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": "コマンダー1体を最初に倒したチームが勝利（最弱の味方プレイヤーを守れ）"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": "プレイヤーが敵軍を撃破するたびに、経済活動ボーナス指数が充当され、生産率がアップしていく"
+    },
+    "Free For All": {
+        "message": "フリー・フォー・オール"
+    },
+    "Friends": {
+        "message": "フレンド"
+    },
+    "Game Lobby": {
+        "message": "ゲームロビー"
+    },
+    "Game Mode": {
+        "message": "ゲームモード"
+    },
+    "Global Spectator Chat": {
+        "message": "グローバル観客チャット"
+    },
+    "Join": {
+        "message": "参加"
+    },
+    "Kick": {
+        "message": "キック"
+    },
+    "Large Planets": {
+        "message": "大惑星群"
+    },
+    "Leave": {
+        "message": "離脱"
+    },
+    "Multiple starting planets": {
+        "message": "開始惑星の複数化"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "ボーナス/アーミーキル:"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": "開始時グリーンゾーン未使用。プレイヤーは好きな場所からスタートできる"
+    },
+    "Open to:": {
+        "message": "オープン:"
+    },
+    "Password (optional)": {
+        "message": "パスワード（任意）"
+    },
+    "Player Slot": {
+        "message": "プレイヤースロット"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "プレイヤーは開始時惑星のスポットを選択"
+    },
+    "Players": {
+        "message": "プレイヤー"
+    },
+    "Private": {
+        "message": "プライベート"
+    },
+    "Public": {
+        "message": "パブリック"
+    },
+    "Random": {
+        "message": "ランダム"
+    },
+    "Ready": {
+        "message": "Ready"
+    },
+    "Remove": {
+        "message": "削除"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "SHARE ARMY": {
+        "message": "アーミーをシェア"
+    },
+    "SPECTATORS": {
+        "message": "観客"
+    },
+    "Sandbox": {
+        "message": "サンドボックス"
+    },
+    "Select System": {
+        "message": "星系を選択"
+    },
+    "Select a system": {
+        "message": "星系を選択"
+    },
+    "Shuffle landing zones": {
+        "message": "着陸地帯をシャッフル"
+    },
+    "Slot": {
+        "message": "スロット"
+    },
+    "Slot __slot_number__": {
+        "message": "スロット __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "スロットは空です"
+    },
+    "Spectate": {
+        "message": "観戦"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": "ゲーム内チャットに観客メッセージが表示される"
+    },
+    "Spectators": {
+        "message": "観客"
+    },
+    "Start Anywhere": {
+        "message": "ランダムスタート"
+    },
+    "Start Game": {
+        "message": "ゲーム開始"
+    },
+    "Start Nearby": {
+        "message": "近くからスタート"
+    },
+    "Start Offworld": {
+        "message": "別の惑星から開始"
+    },
+    "Sudden Death Mode": {
+        "message": "サドンデスモード"
+    },
+    "Symmetrical": {
+        "message": "対称"
+    },
+    "System": {
+        "message": "星系"
+    },
+    "Tag:": {
+        "message": "タグ:"
+    },
+    "Team": {
+        "message": "チーム"
+    },
+    "Team Armies": {
+        "message": "チームアーミー"
+    },
+    "Team __team_number__": {
+        "message": "チーム __team_number__"
+    },
+    "Title": {
+        "message": "名称"
+    },
+    "Waiting for system": {
+        "message": "星系設定を待っています…"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "フレンド限定ゲームをプレイするには複数人のフレンドが必要です"
+    },
+    "Started": {
+        "message": "開始:"
+    }
+}

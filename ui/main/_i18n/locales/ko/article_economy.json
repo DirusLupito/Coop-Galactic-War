@@ -1,0 +1,29 @@
+{
+    "As Efficiency percentage lowers, all fabbers, factories and Commanders build slower": {
+        "message": "효율이 낮아지면 모든 건설 유닛과 공장, 지휘관의 생산 및 건설 속도가 떨어집니다."
+    },
+    "Build Metal Storage and Energy Storage to stockpile more resources": {
+        "message": "금속 저장고와 에너지 저장고를 건설해 더 많은 자원을 비축할 수 있습니다."
+    },
+    "Economy and Resources": {
+        "message": "경제와 자원"
+    },
+    "Energy and Metal resources get consumed while building": {
+        "message": "건설이나 생산 중에는 에너지 및 금속 자원이 소비됩니다."
+    },
+    "If you’re consuming more than you are producing, build efficiency slows down": {
+        "message": "생산하는 자원보다 소모되는 자원이 더 많으면 건설 및 생산 효율이 낮아집니다."
+    },
+    "PA Guide: Economy": {
+        "message": "PA 가이드: 경제"
+    },
+    "Resources build up over time": {
+        "message": "자원은 시간이 지남에 따라 축적됩니다."
+    },
+    "To generate Energy, build Energy Plants": {
+        "message": "에너지를 생산하려면 발전소를 건설하십시오."
+    },
+    "To generate Metal, build Metal Extractors": {
+        "message": "금속을 생산하려면 금속 추출기를 건설하십시오."
+    }
+}

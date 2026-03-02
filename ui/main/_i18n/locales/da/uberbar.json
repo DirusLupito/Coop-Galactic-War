@@ -1,0 +1,59 @@
+{
+    "Accept": {
+        "message": "Accepter"
+    },
+    "Appear Offline": {
+        "message": "Vis Som Offline"
+    },
+    "Away": {
+        "message": "Væk"
+    },
+    "Block": {
+        "message": "Bloker"
+    },
+    "CANCEL": {
+        "message": "LUK"
+    },
+    "Change Display Name": {
+        "message": "Skift Kaldenavn"
+    },
+    "Do Not Disturb": {
+        "message": "Forstyr Venligst Ikke"
+    },
+    "Friends": {
+        "message": "Venner"
+    },
+    "Ignore": {
+        "message": "Ignorer"
+    },
+    "Invite to Chat": {
+        "message": "Inviter til Chat"
+    },
+    "Invite to game": {
+        "message": "Inviter til spil"
+    },
+    "Join Game": {
+        "message": "Deltag i Spil"
+    },
+    "New Display Name:": {
+        "message": "Nyt Kaldenavn:"
+    },
+    "No pending notifications.": {
+        "message": "Ingen ventende notifikationer."
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Recent": {
+        "message": "Nyligt"
+    },
+    "Remove": {
+        "message": "Fjern"
+    },
+    "Unfriend": {
+        "message": "Fjern fra venne-liste"
+    },
+    "Users": {
+        "message": "Brugere"
+    }
+}

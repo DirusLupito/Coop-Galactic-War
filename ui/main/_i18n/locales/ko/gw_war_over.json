@@ -1,0 +1,59 @@
+{
+    "Annihilated": {
+        "message": "전멸"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "정말 이 은하계 전쟁을 포기하시겠습니까?"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Congratulations Commander": {
+        "message": "축하합니다, 지휘관님"
+    },
+    "Delete War": {
+        "message": "전쟁 삭제"
+    },
+    "Discards": {
+        "message": "버림"
+    },
+    "Final Tech": {
+        "message": "최종 기술"
+    },
+    "GO TO MAIN MENU": {
+        "message": "메인 메뉴로 이동"
+    },
+    "Now go start a war. Annihilate everything.": {
+        "message": "이제 전쟁을 시작하여 모든 것을 섬멸하십시오."
+    },
+    "Please try again. There's still much to destroy.": {
+        "message": "다시 시도하십시오. 아직 파괴할 것이 남았습니다."
+    },
+    "Redo Tutorial": {
+        "message": "튜토리얼 다시 진행"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Start A Galactic War": {
+        "message": "은하계 전쟁 시작"
+    },
+    "Training Remains": {
+        "message": "남은 훈련"
+    },
+    "Turns:": {
+        "message": "턴 수:"
+    },
+    "Tutorial Complete": {
+        "message": "튜토리얼 완료"
+    },
+    "Tutorial Incomplete": {
+        "message": "튜토리얼 미완료"
+    },
+    "Victory": {
+        "message": "승리"
+    },
+    "Wins:": {
+        "message": "승리:"
+    }
+}

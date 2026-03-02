@@ -1,0 +1,134 @@
+{
+    "ABSURD": {
+        "message": "ABSURD"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Vernietig vijanden in geclaimde sterrenstelsels om hun Technologie te verkrijgen."
+    },
+    "Archived Wars": {
+        "message": "Gerachiveerde Oorlogen"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Kies een uitrusting om je Commandant verschillende start Technologieën te geven."
+    },
+    "Commander": {
+        "message": "Commandant"
+    },
+    "Difficulty:": {
+        "message": "Moeilijkheidsgraad:"
+    },
+    "EASY": {
+        "message": "GEMAKKELIJK"
+    },
+    "EPIC": {
+        "message": "EPISCH"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Verken ongeclaimde sterrenstelsels om Technologie te verkrijgen."
+    },
+    "Faction": {
+        "message": "Factie"
+    },
+    "Galactic War": {
+        "message": "Galactische oorlog"
+    },
+    "Game name": {
+        "message": "Spelnaam"
+    },
+    "Go to War": {
+        "message": "Ga ten Oorlog"
+    },
+    "HARD": {
+        "message": "MOEILIJK"
+    },
+    "Hardcore": {
+        "message": "Hardcore"
+    },
+    "How To Play": {
+        "message": "Speluitleg"
+    },
+    "How to Play": {
+        "message": "Hoe te Spelen"
+    },
+    "LARGE": {
+        "message": "GROOT"
+    },
+    "LOCKED": {
+        "message": "VERGRENDELD"
+    },
+    "Loadout": {
+        "message": "Uitrusting"
+    },
+    "MEDIUM": {
+        "message": "GEMIDDELD"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Beweeg van sterrenstelsel tot sterrenstel en verzamel technologie. Gebruik deze technologie om de vijandelijke factieleiders te verslaan en verover de melkweg."
+    },
+    "NORMAL": {
+        "message": "NORMAAL"
+    },
+    "Name": {
+        "message": "Naam"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Navigeer de galactische kaart door van sterrenstelsel naar sterrenstelsel te springen."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Door sterrenstelsel te verkennen kan je nieuwe Databanken vinden om technologieën te bewaren."
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "Permanente dood. Geen herstart wanneer je commandant wordt vernietigd."
+    },
+    "RELENTLESS": {
+        "message": "MEEDOGENLOOS"
+    },
+    "Random number for generating new galaxy": {
+        "message": "Willekeurig getal voor het genereren van een nieuw sterrenstelsel"
+    },
+    "SMALL": {
+        "message": "KLEIN"
+    },
+    "Saved Games": {
+        "message": "Opgeslagen spellen"
+    },
+    "Seed Value": {
+        "message": "Seed Waarde"
+    },
+    "Setup": {
+        "message": "Configuratie"
+    },
+    "Size:": {
+        "message": "Grootte:"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "Sommige commandanten vechten omdat ze niet anders kunnen, terwijl anderen op zoek zijn naar hun oorsprong. Strijdende motivatie en geloofsovertuiging drijven de commandanten tot een oorlog die het sterrenstelsel eeuwenlang aan stukken zou kunnen scheuren."
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Sommige sterrenstelsels bevatten verborgen uitrusting voor de Commandant. Verzamel deze voor volgende Galactische Oorlogen."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Technologie kan verwijderd worden om plaats te maken voor nieuwe technologie. Verwijderde en verworpen technologie gaan verloren voor de rest van de Galactische Oorlog."
+    },
+    "The Commanders": {
+        "message": "De commandanten"
+    },
+    "The Progenitors": {
+        "message": "De Progenitors"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "De commandanten hebben miljoenen jaren geslapen en ontwaken in een sterrenstelsel dat alleen echo's van beschaving bevat. Deze oude oorlogsmachines strijden nu door het hele stelsel en volgen alleen de richtlijnen die ze nog van lang geleden hebben weten vast te houden."
+    },
+    "Tip:": {
+        "message": "Tip:"
+    },
+    "Tips": {
+        "message": "Tips"
+    },
+    "War - __date__": {
+        "message": "Oorlog - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "Een van de dingen die we wél weten, is dat het sterrenstelsel ooit werd geregeerd door een enorm keizerrijk dat aan interne conflicten ten onder ging. De commandanten noemen deze wezens de Progenitors. Veel commandanten geloven dat de antwoorden op hun oorsprongsvragen in de ruïnes van deze ooit machtige beschaving liggen."
+    }
+}

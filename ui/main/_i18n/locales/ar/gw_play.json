@@ -1,0 +1,32 @@
+{
+    "Delete Tech": {
+        "message": "حذف التقنية"
+    },
+    "Duplicate Tech": {
+        "message": "تقنية مكررة"
+    },
+    "Explore": {
+        "message": "استكشاف"
+    },
+    "Fight": {
+        "message": "حارب"
+    },
+    "Jump": {
+        "message": "اقفز"
+    },
+    "Preparing for battle": {
+        "message": "الاستعداد للمعركة"
+    },
+    "Scanning System": {
+        "message": "فحص النظام"
+    },
+    "Settings": {
+        "message": "إعدادات"
+    },
+    "TECHS": {
+        "message": "تقنيات"
+    },
+    "Unlock Commander": {
+        "message": "إفتح القائد"
+    }
+}

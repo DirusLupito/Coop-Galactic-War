@@ -1,0 +1,86 @@
+{
+    "Accept": {
+        "message": "Elfogad"
+    },
+    "CLEAR SYSTEM": {
+        "message": "NAPRENDSZER KIÜRÍTÉSE"
+    },
+    "CLOSE": {
+        "message": "BEZÁRÁS"
+    },
+    "Cancel": {
+        "message": "Mégse"
+    },
+    "Discard": {
+        "message": "Elvetés"
+    },
+    "Do you want to save this system?": {
+        "message": "Szeretnéd elmenteni ezt a rendszert?"
+    },
+    "EDIT PLANET": {
+        "message": "BOLYGÓ SZERKESZTÉSE"
+    },
+    "HIDE": {
+        "message": "ELREJTÉS"
+    },
+    "MY PLANETS": {
+        "message": "BOLYGÓIM"
+    },
+    "Mass": {
+        "message": "TÖMEG"
+    },
+    "PREVIEW ALL": {
+        "message": "ÖSSZES ELŐNÉZETE"
+    },
+    "Position": {
+        "message": "POZÍCIÓ"
+    },
+    "RECENT": {
+        "message": "LEGUTÓBBI"
+    },
+    "REMOVE": {
+        "message": "ELTÁVOLÍTÁS"
+    },
+    "SAVE SYSTEM": {
+        "message": "NAPRENDSZER MENTÉSE"
+    },
+    "SHOW": {
+        "message": "MUTATÁS"
+    },
+    "SIMULATE": {
+        "message": "SZIMULÁCIÓ"
+    },
+    "Save": {
+        "message": "Mentés"
+    },
+    "System radius is too large.": {
+        "message": "A rendszer sugara túl nagy."
+    },
+    "System radius is too small.": {
+        "message": "A rendszer sugara túl kicsi."
+    },
+    "TEMPLATES": {
+        "message": "SABLONOK"
+    },
+    "Temp": {
+        "message": "Klíma"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "A bolygó töltődik. Ez eltarthat egy darabig."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "A program nem válaszol amíg a bolygó nincs kész."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "A rendszer megváltozott a legutolsó mentés óta."
+    },
+    "The system has not been saved.": {
+        "message": "A naprendszer nem lett elmentve."
+    },
+    "Velocity": {
+        "message": "SEBESSÉG"
+    },
+    "Water": {
+        "message": "Víz"
+    }
+}

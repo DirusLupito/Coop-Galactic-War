@@ -1,0 +1,617 @@
+{
+    "ALL": {
+        "message": "ALLE"
+    },
+    "ALWAYS": {
+        "message": "ALLTID"
+    },
+    "Audio": {
+        "message": "Lyd"
+    },
+    "Build Preview Behavior": {
+        "message": "Visning av byggerekkefølge"
+    },
+    "CUSTOM": {
+        "message": "TILPASSET"
+    },
+    "Camera": {
+        "message": "Kamera"
+    },
+    "Camera Friction": {
+        "message": "Kamerafriksjon"
+    },
+    "Cancel": {
+        "message": "Avbryt"
+    },
+    "Display Mode": {
+        "message": "Bildemodus"
+    },
+    "Edge Scroll Options": {
+        "message": "Scrolle-valg for kant"
+    },
+    "FULLSCREEN": {
+        "message": "FULLSKJERM"
+    },
+    "Graphics": {
+        "message": "Grafikk"
+    },
+    "HIGH": {
+        "message": "HØY"
+    },
+    "Headlights": {
+        "message": "Hodelys"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "DISTANSE FOR IKONVISNING"
+    },
+    "Key Pan Speed": {
+        "message": "Hastighet panoreringsknapp"
+    },
+    "Keyboard": {
+        "message": "Tastatur"
+    },
+    "LOW": {
+        "message": "LAV"
+    },
+    "Language": {
+        "message": "Språk"
+    },
+    "Master Volume": {
+        "message": "Hovedvolum"
+    },
+    "Mouse Pan Speed": {
+        "message": "Muse-panorerings-hastighet"
+    },
+    "Music Volume": {
+        "message": "Musikkvolum"
+    },
+    "NATIVE (100%)": {
+        "message": "STANDARD (100%)"
+    },
+    "NEVER": {
+        "message": "ALDRI"
+    },
+    "OFF": {
+        "message": "AV"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "AV (MUSELÅS)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "AV (IKKE LÅST MUS)"
+    },
+    "ON": {
+        "message": "PÅ"
+    },
+    "Orbital Shell": {
+        "message": "Lag for kretsløp"
+    },
+    "Order Preview Behavior": {
+        "message": "Oppførsel for forhåndsvisning av ordre "
+    },
+    "Pole Lock": {
+        "message": "Lås til pol"
+    },
+    "Quality Preset": {
+        "message": "Forhåndsinnstilling kvalitet"
+    },
+    "RANGE DEPENDENT": {
+        "message": "AVSTANDSAVHENGIG"
+    },
+    "Resolution Scaling": {
+        "message": "Oppløsning skalering"
+    },
+    "SELECTED": {
+        "message": "VALGT"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "SUBSAMPLING (50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "SUBSAMPLING (75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "SUPERSAMPLING (100%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "SUPERSAMPLING (150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "SUPERSAMPLING (175%)"
+    },
+    "Save": {
+        "message": "Lagre"
+    },
+    "Server": {
+        "message": "Sever"
+    },
+    "Settings": {
+        "message": "Innstillinger"
+    },
+    "Shadows": {
+        "message": "Skygger"
+    },
+    "Show Build Previews": {
+        "message": "Vis forhåndsvisning av bygg"
+    },
+    "Show Metal Spot Icons": {
+        "message": "Vis ikoner for metallmerker"
+    },
+    "Show Order Previews": {
+        "message": "Vis forhåndsvisning av ordre"
+    },
+    "Show Stat Bars": {
+        "message": "Vis statistikkgrafer"
+    },
+    "Show Unit Icons": {
+        "message": "Vis enheters ikoner"
+    },
+    "Show/Hide game stats": {
+        "message": "Vis/skjul spillstatistikk"
+    },
+    "Show/Hide pip": {
+        "message": "Vis/skjul pip"
+    },
+    "Sound Effects Volume": {
+        "message": "Volum på lydeffekter"
+    },
+    "VALUE DEPENDENT": {
+        "message": "VERDIAVHENGIG"
+    },
+    "Virtual Texture": {
+        "message": "Virtuell tekstur"
+    },
+    "Voice Volume": {
+        "message": "Stemmevolum"
+    },
+    "WINDOWED": {
+        "message": "VINDU"
+    },
+    "Zoom Speed": {
+        "message": "Zoomhastighet"
+    },
+    "abort": {
+        "message": "avbryt"
+    },
+    "alerts": {
+        "message": "advarsler"
+    },
+    "align to pole": {
+        "message": "Juster til pol"
+    },
+    "alt fire": {
+        "message": "alt skyt"
+    },
+    "assist": {
+        "message": "assistere"
+    },
+    "attack": {
+        "message": "angrep"
+    },
+    "bug report": {
+        "message": "feilrapportering"
+    },
+    "build": {
+        "message": "bygg"
+    },
+    "build avatar": {
+        "message": "bygg avatar"
+    },
+    "build avatar factory": {
+        "message": "Bygg avatarfabrikk"
+    },
+    "build bar groups": {
+        "message": "byggebar gruppe"
+    },
+    "build items": {
+        "message": "bygg element"
+    },
+    "build loop": {
+        "message": "byggeloop"
+    },
+    "build once": {
+        "message": "bygg en gang"
+    },
+    "build orders": {
+        "message": "byggeordre"
+    },
+    "capture anchor": {
+        "message": "Lag kameraanker"
+    },
+    "chronocam": {
+        "message": "chrono-kamera"
+    },
+    "communication": {
+        "message": "kommunikasjon"
+    },
+    "copy to pip": {
+        "message": "kopier til pip"
+    },
+    "copy unit": {
+        "message": "kopier enhet"
+    },
+    "crash": {
+        "message": "krasj"
+    },
+    "decrease camera pan speed": {
+        "message": "øk panoreringsfarten på kamera"
+    },
+    "dev mode": {
+        "message": "Utviklermodus"
+    },
+    "direction": {
+        "message": "retning"
+    },
+    "disable navigation debug info": {
+        "message": "Skru av navigasjons-debug-info"
+    },
+    "dismiss alert notification": {
+        "message": "Avslutt varsel"
+    },
+    "enable navigation debug info": {
+        "message": "muliggjør navigasjons-debug-info"
+    },
+    "energy off": {
+        "message": "energi av"
+    },
+    "energy on": {
+        "message": "energi på"
+    },
+    "fire at will": {
+        "message": "Skyt etter eget ønske"
+    },
+    "free move backward": {
+        "message": "fribevegelse bakover"
+    },
+    "free move down": {
+        "message": "fri bevegelse ned"
+    },
+    "free move forward": {
+        "message": "fri bevegelse forover"
+    },
+    "free move left": {
+        "message": "fri bevegelse venstre"
+    },
+    "free move right": {
+        "message": "trinnløs bevegelse høyre"
+    },
+    "free move up": {
+        "message": "fri bevegelse opp"
+    },
+    "free movement": {
+        "message": "fri bevegelse"
+    },
+    "free pitch backward": {
+        "message": "åpen tilt bakover"
+    },
+    "free pitch forward": {
+        "message": "fri bane forover"
+    },
+    "free roll left": {
+        "message": "trinnløs rulling venstre"
+    },
+    "free roll right": {
+        "message": "Trinnløs rulling høyre"
+    },
+    "free yaw left": {
+        "message": "fri rotasjon venstre"
+    },
+    "free yaw right": {
+        "message": "Fri rotering høyre"
+    },
+    "free zoom in": {
+        "message": "trinnløs zoom inn"
+    },
+    "free zoom out": {
+        "message": "trinnløs zoom ut"
+    },
+    "general": {
+        "message": "generelt"
+    },
+    "hold fire": {
+        "message": "stopp skyting"
+    },
+    "hold position": {
+        "message": "hold posisjon"
+    },
+    "increase camera pan speed": {
+        "message": "Øk farten på panoreringskameraet"
+    },
+    "jump to next planet": {
+        "message": "hopp til neste planet"
+    },
+    "jump to previous planet": {
+        "message": "hopp til forrige planet"
+    },
+    "last pseudo frame": {
+        "message": "siste pseudobilde"
+    },
+    "load": {
+        "message": "last"
+    },
+    "maneuver": {
+        "message": "manøvrer"
+    },
+    "modes": {
+        "message": "modus"
+    },
+    "move": {
+        "message": "flytt"
+    },
+    "move down": {
+        "message": "flytt ned"
+    },
+    "move left": {
+        "message": "flytt til venstre"
+    },
+    "move right": {
+        "message": "beveg mot høyre"
+    },
+    "move up": {
+        "message": "flytt opp"
+    },
+    "navigate back/exit": {
+        "message": "naviger tilbake/avslutt"
+    },
+    "next pseudo frame": {
+        "message": "neste pseudobilde"
+    },
+    "paste unit": {
+        "message": "sett inn enhet"
+    },
+    "patrol": {
+        "message": "patruljer"
+    },
+    "pause game": {
+        "message": "pause spillet"
+    },
+    "pause time": {
+        "message": "pausetid"
+    },
+    "picture-in-picture": {
+        "message": "bilde-i-bilde"
+    },
+    "ping": {
+        "message": "pling"
+    },
+    "planet jump": {
+        "message": "planethopp"
+    },
+    "play backwards at 100%": {
+        "message": "Spill av bakover 100%"
+    },
+    "play backwards at 50%": {
+        "message": "spill bakover i 50%"
+    },
+    "play forward at 100%": {
+        "message": "spill av med 100%"
+    },
+    "play forward at 50%": {
+        "message": "spill av i 50%"
+    },
+    "publish server mods": {
+        "message": "publiser servermods"
+    },
+    "quick profile": {
+        "message": "rask profil"
+    },
+    "recall anchor": {
+        "message": "hent kameraanker"
+    },
+    "reclaim": {
+        "message": "gjenvinn"
+    },
+    "reload view": {
+        "message": "last bilde på ny"
+    },
+    "repair": {
+        "message": "reparer"
+    },
+    "resume at latest time": {
+        "message": "tilbake til siste tid"
+    },
+    "return fire": {
+        "message": "returner ild"
+    },
+    "select air group": {
+        "message": "velg luftenheter"
+    },
+    "select all air combat units": {
+        "message": "velg alle luftfartøy"
+    },
+    "select all air combat units on screen": {
+        "message": "velg alle luftfartøy på skjermen"
+    },
+    "select all combat units": {
+        "message": "velg alle krigsenheter"
+    },
+    "select all combat units on screen": {
+        "message": "velg alle krigsfartøy på skjermen"
+    },
+    "select all factories": {
+        "message": "velg alle fabrikker"
+    },
+    "select all factories on screen": {
+        "message": "velg alle fabrikker på skjermen"
+    },
+    "select all idle factories": {
+        "message": "velg alle ledige fabrikker"
+    },
+    "select all idle factories on screen": {
+        "message": "velg alle ledige fabrikker på skjermen"
+    },
+    "select all land combat units": {
+        "message": "velg alle landkrigsenheter"
+    },
+    "select all land combat units on screen": {
+        "message": "velg alle landkrigsenheter på skjermen"
+    },
+    "select all matching units on screen": {
+        "message": "velg alle tilsvarende enheter på skjermen"
+    },
+    "select all naval combat units": {
+        "message": "velg alle sjøkrigsfartøy"
+    },
+    "select all naval combat units on screen": {
+        "message": "velg alle sjøkrigsfartøy på skjermen"
+    },
+    "select bot group": {
+        "message": "velg robotgruppe"
+    },
+    "select combat group": {
+        "message": "velg krigsgruppe"
+    },
+    "select commander": {
+        "message": "velg kommandør"
+    },
+    "select factory group": {
+        "message": "velg fabrikkgruppe"
+    },
+    "select idle fabbers": {
+        "message": "velg ledig ingeniør"
+    },
+    "select orbital group (buildings)": {
+        "message": "velg kretsende enheter (bygninger)"
+    },
+    "select orbital group (units)": {
+        "message": "velg kretsende enheter (fartøy)"
+    },
+    "select sea group": {
+        "message": "velg sjøenheter"
+    },
+    "select utility group": {
+        "message": "velg brukbare enheter"
+    },
+    "select vehicle group": {
+        "message": "velg kjøretøygruppe"
+    },
+    "self destruct selected unit": {
+        "message": "utslett valgt enhet"
+    },
+    "set army from hover": {
+        "message": "Angi hær manuelt"
+    },
+    "set debug camera": {
+        "message": "sett debug-kamera"
+    },
+    "set default camera": {
+        "message": "Sett vanlig kamera"
+    },
+    "set free camera": {
+        "message": "Opprett frikamera"
+    },
+    "set planet camera": {
+        "message": "Opprett planetkamera"
+    },
+    "show/hide UI": {
+        "message": "vis/skjul UI"
+    },
+    "show/hide performance panel": {
+        "message": "Vis/skjul ytelsespanel"
+    },
+    "show/hide visual aid overlays": {
+        "message": "vis/skjul visuell overlagsinformasjon"
+    },
+    "smooth zoom in": {
+        "message": "smooth innzooming"
+    },
+    "smooth zoom out": {
+        "message": "smooth utzooming"
+    },
+    "special move": {
+        "message": "spesialtrekk"
+    },
+    "swap pip": {
+        "message": "Bytt pip"
+    },
+    "team chat": {
+        "message": "lagchat"
+    },
+    "toggle FOW": {
+        "message": "på/av FOW"
+    },
+    "toggle audio logging": {
+        "message": "velg på/av lydlogging"
+    },
+    "toggle build orders": {
+        "message": "skift mellom byggeordre"
+    },
+    "toggle console": {
+        "message": "på/av konsoll"
+    },
+    "toggle debug camera": {
+        "message": "på/av debug-kamera"
+    },
+    "toggle energy orders": {
+        "message": "skift mellom energiordre"
+    },
+    "toggle fire orders": {
+        "message": "skift mellom skyteordre"
+    },
+    "toggle free camera": {
+        "message": "på/av frikamera"
+    },
+    "toggle fullscreen": {
+        "message": "På/av fullskjerm"
+    },
+    "toggle move orders": {
+        "message": "skift mellom flytteordre"
+    },
+    "toggle music": {
+        "message": "På/av musikk"
+    },
+    "toggle nav debug": {
+        "message": "skift til/fra nav-debug"
+    },
+    "toggle pip mirror": {
+        "message": "På/av pip speiling"
+    },
+    "track selection with camera": {
+        "message": "følg valgt enhet med kamera"
+    },
+    "tracking & alignment": {
+        "message": "sporing & innretting"
+    },
+    "tuning": {
+        "message": "instilling"
+    },
+    "unit capture groups": {
+        "message": "lag enhetsgruppe"
+    },
+    "unit commands": {
+        "message": "enhetsordre"
+    },
+    "unit orders": {
+        "message": "fartøyordre"
+    },
+    "unit recall groups": {
+        "message": "enhet tilkall gruppe"
+    },
+    "unit selection": {
+        "message": "markering av enheter"
+    },
+    "units": {
+        "message": "enheter"
+    },
+    "unload": {
+        "message": "loss av"
+    },
+    "zoom in": {
+        "message": "zoom inn"
+    },
+    "zoom out": {
+        "message": "zoom ut"
+    },
+    "zoom to air": {
+        "message": "zoom til luftskikt"
+    },
+    "zoom to celestial": {
+        "message": "zoom til rommet"
+    },
+    "zoom to orbital": {
+        "message": "zoom til kretsløp"
+    },
+    "zoom to surface": {
+        "message": "zoom til overflaten"
+    }
+}

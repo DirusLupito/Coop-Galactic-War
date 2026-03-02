@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "取消"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "正在下載伺服器模組"
+    },
+    "Loading Game": {
+        "message": "正在載入遊戲"
+    },
+    "Loading Replay": {
+        "message": "正在載入重播"
+    },
+    "Returning to Main Menu": {
+        "message": "回到主功能表"
+    },
+    "Returning to menu": {
+        "message": "返回功能表"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "重播伺服器啟動中，請耐心等候…"
+    },
+    "Unable to load replay": {
+        "message": "無法讀取重播"
+    },
+    "Unable to load save game": {
+        "message": "無法讀取遊戲存檔"
+    }
+}

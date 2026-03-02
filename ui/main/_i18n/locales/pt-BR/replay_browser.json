@@ -1,0 +1,50 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Atualizando...)"
+    },
+    "(no info available)": {
+        "message": "(não há informações disponíveis)"
+    },
+    "Duration": {
+        "message": "Duração"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "FALHA AO OBTER LISTA DE REPLAY"
+    },
+    "Game": {
+        "message": "Jogo"
+    },
+    "Lobby Id": {
+        "message": "Id da Sala"
+    },
+    "Longest Game Duration": {
+        "message": "Jogos de mais Longa Duração"
+    },
+    "Most Recent": {
+        "message": "Mais Recentes"
+    },
+    "Replays": {
+        "message": "Reprises"
+    },
+    "Returning to Main Menu": {
+        "message": "Retornando ao Menu Principal"
+    },
+    "Search": {
+        "message": "Pesquisar"
+    },
+    "Sorted By": {
+        "message": "Ordenado Por"
+    },
+    "View": {
+        "message": "Visualizar"
+    },
+    "Watch Replay": {
+        "message": "Assistir Replay"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "变态"
+    },
+    "Absurd Testing": {
+        "message": "变态 - 测试用"
+    },
+    "Easy": {
+        "message": "简单"
+    },
+    "Hard": {
+        "message": "困难"
+    },
+    "Idle": {
+        "message": "放置"
+    },
+    "Normal": {
+        "message": "普通"
+    },
+    "Relentless": {
+        "message": "残酷"
+    }
+}

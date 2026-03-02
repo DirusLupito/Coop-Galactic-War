@@ -1,0 +1,106 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": " (+ __aiCount__ ȂΪ)",
+        "original": " (+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": " (Ủ⍴ɗȃҭїƞɠ...)",
+        "original": " (Updating...)"
+    },
+    "(no info available)": {
+        "message": "(ƞȏ їƞғȏ ȃѷȃї⌊ȃБ⌊έ)",
+        "original": "(no info available)"
+    },
+    "Duration": {
+        "message": "Ɖմȓȃҭїȏƞ",
+        "original": "Duration"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "ϜȂΪ₤ƐƉ 丁Ѳ ℝƐ丁ℝΪƐѶƐ ℝƐṔ₤ȂУ ₤ΪṠ丁",
+        "original": "FAILED TO RETRIEVE REPLAY LIST"
+    },
+    "Filter": {
+        "message": "Ϝї⌊ҭέȓ",
+        "original": "Filter"
+    },
+    "Galactic War": {
+        "message": "Ǵȃ⌊ȃϲҭїϲ ₩ȃȓ",
+        "original": "Galactic War"
+    },
+    "Game": {
+        "message": "Ǵȃʍέ",
+        "original": "Game"
+    },
+    "Lobby Id": {
+        "message": "₤ȏББу Ϊɗ",
+        "original": "Lobby Id"
+    },
+    "Longest Game Duration": {
+        "message": "₤ȏƞɠέƨҭ Ǵȃʍέ Ɖմȓȃҭїȏƞ",
+        "original": "Longest Game Duration"
+    },
+    "Most Recent": {
+        "message": "Μȏƨҭ ℝέϲέƞҭ",
+        "original": "Most Recent"
+    },
+    "Multiplayer": {
+        "message": "Μմ⌊ҭї⍴⌊ȃуέȓ",
+        "original": "Multiplayer"
+    },
+    "Replays": {
+        "message": "ℝέ⍴⌊ȃуƨ",
+        "original": "Replays"
+    },
+    "Returning to Main Menu": {
+        "message": "ℝέҭմȓƞїƞɠ ҭȏ Μȃїƞ Μέƞմ",
+        "original": "Returning to Main Menu"
+    },
+    "Search": {
+        "message": "Ṡέȃȓϲн",
+        "original": "Search"
+    },
+    "Sorted By": {
+        "message": "Ṡȏȓҭέɗ ฿у",
+        "original": "Sorted By"
+    },
+    "Version": {
+        "message": "Ѷέȓƨїȏƞ",
+        "original": "Version"
+    },
+    "Versus AI": {
+        "message": "Ѷέȓƨմƨ ȂΪ",
+        "original": "Versus AI"
+    },
+    "View": {
+        "message": "Ѷїέῴ",
+        "original": "View"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "₩ȃҭϲн Ɖїȓέϲҭ ₤ȏББу Ϊɗ: __lobby_id__",
+        "original": "Watch Direct Lobby Id: __lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "₩ȃҭϲн ℝέ⍴⌊ȃу",
+        "original": "Watch Replay"
+    },
+    "Winner": {
+        "message": "₩їƞƞέȓ",
+        "original": "Winner"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": " __gwClientNames__: Ǵȃ⌊ȃϲҭїϲ ₩ȃȓ \"__gwWarName__\" (ҭմȓƞ __gwTurn__, __gwSystemName__), ѷƨ. __gwAiArmies__",
+        "original": " __gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1ѷ1 ℝȃƞќέɗ",
+        "original": "1v1 Ranked"
+    },
+    "All Recent Games": {
+        "message": "Ȃ⌊⌊ ℝέϲέƞҭ Ǵȃʍέƨ",
+        "original": "All Recent Games"
+    },
+    "My Games Only": {
+        "message": "Μу Ǵȃʍέƨ Ѳƞ⌊у",
+        "original": "My Games Only"
+    }
+}

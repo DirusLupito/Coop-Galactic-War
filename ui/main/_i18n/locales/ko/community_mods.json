@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "남은 시도 횟수: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "활성"
+    },
+    "Active Client": {
+        "message": "활성 클라이언트"
+    },
+    "Active Server": {
+        "message": "활성 서버"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "활성 모드는 게임 시작과 종료 후에 자동으로 업데이트됩니다."
+    },
+    "Active/Inactive": {
+        "message": "활성/비활성"
+    },
+    "Available": {
+        "message": "사용 가능"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "사용 가능한 모드가 다음 위치에 설치된 파일 시스템 모드와 충돌합니다:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "빅 게임 리플레이"
+    },
+    "Build:": {
+        "message": "제작:"
+    },
+    "By": {
+        "message": "제작:"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "파일 시스템 모드 검사 중"
+    },
+    "COMMUNITY MODS": {
+        "message": "커뮤니티 모드"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "커뮤니티 지원"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "서버에 연결하지 못했습니다."
+    },
+    "Client Mods": {
+        "message": "클라이언트 모드"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "클라이언트 모드는 사용자 본인의 클라이언트에만 적용되며, 다른 플레이어에게는 영향을 주지 않습니다."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "클라이언트 모드는 AI 대항전이나 멀티 플레이 게임에서 유닛이나 유닛 능력치를 변경시키지 못합니다."
+    },
+    "Community Mods": {
+        "message": "커뮤니티 모드"
+    },
+    "Companion Client Mods": {
+        "message": "컴패니언 클라이언트 모드"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "컴패니언 모드는 특별한 클라이언트 모드로, 서버 모드에서 필요로 할 경우 일시적으로 자동 적용됩니다."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "충돌하는 유닛 서버 모드:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "서버 모드 다운로드 중"
+    },
+    "Date:": {
+        "message": "날짜"
+    },
+    "Dependencies": {
+        "message": "종속"
+    },
+    "Details": {
+        "message": "세부 정보"
+    },
+    "Disable": {
+        "message": "비활성화"
+    },
+    "Disable Nukes": {
+        "message": "핵무기 비활성화"
+    },
+    "Disable Ragnaroks": {
+        "message": "라그나로크 비활성화"
+    },
+    "Disable Titans": {
+        "message": "타이탄 비활성화"
+    },
+    "Disabled": {
+        "message": "비활성화됨"
+    },
+    "Downloads": {
+        "message": "다운로드"
+    },
+    "Enable": {
+        "message": "활성화"
+    },
+    "Enable All": {
+        "message": "모두 활성화"
+    },
+    "Enabled Client": {
+        "message": "활성화된 클라이언트"
+    },
+    "Enabled Server": {
+        "message": "활성화된 서버"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "플레이 또는 관전하는 모든 게임에서 사용자 본인의 클라이언트에만 활성화되는 클라이언트 모드"
+    },
+    "Enabled/Disabled": {
+        "message": "활성화됨/비활성화됨"
+    },
+    "Filter": {
+        "message": "필터"
+    },
+    "Identifier:": {
+        "message": "ID:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "활성화되지 않은 경우에는 컴패니언 모드가 자동으로 다운로드/업데이트된 후, 플레이어가 AI 대항전 또는 멀티 플레이 게임에 참가하거나 관전하면 적용되고, 게임이 끝나면 적용 해제됩니다."
+    },
+    "Install": {
+        "message": "설치"
+    },
+    "Installed": {
+        "message": "설치됨"
+    },
+    "Installed Path:": {
+        "message": "설치된 경로:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "다운로드 캐시에 설치된 서버 & 클라이언트 모드"
+    },
+    "Installing Mods": {
+        "message": "모드 설치 중"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "모드를 설치하면 압축된 모드 zip 파일을 로컬 PA 다운로드 캐시에 다운로드합니다."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "군단 확장팩과 같은 대형 유닛 서버 모드는 컴패니언 모드를 사용하여, 서버 모드의 크기와 업로드/다운로드 시간을 줄입니다."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "인터넷 업로드/다운로드 속도가 느릴 경우, 대형 유닛 서버 모드의 업로드/다운로드 시간이 영향을 받을 수 있습니다."
+    },
+    "Local file system mod installed at:": {
+        "message": "로컬 파일 시스템 모드 설치 위치:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "다음에 의해 모드 비활성화됨 --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "클라이언트 모드 적용 중"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "오프라인으로 클라이언트 모드 적용 중"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "컴패니언 모드 탑재 중... 잠시 기다리세요"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "서버 모드 탑재 중"
+    },
+    "Merge (experimental)": {
+        "message": "통합(실험)"
+    },
+    "Mods available to install": {
+        "message": "모드 설치 가능"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "설치된 모드는 대부분 인터넷 없이 오프라인으로 사용할 수 있습니다. (일부 모드는 인터넷 연결 필요)"
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "다수의 유닛 서버 모드가 충돌하면 건설 바가 나타나지 않거나 서버가 충돌하는 등의 문제가 발생할 수 있습니다."
+    },
+    "Name": {
+        "message": "이름"
+    },
+    "No": {
+        "message": "아니요 "
+    },
+    "No __description__ mods match your criteria": {
+        "message": "조건에 맞는 __description__ 모드 없음"
+    },
+    "No units match your criteria": {
+        "message": "조건에 맞는 유닛 없음"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "공식 DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "공식 가이드"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "공식 지원"
+    },
+    "OK": {
+        "message": "확인"
+    },
+    "Offline Mode": {
+        "message": "오프라인 모드"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "AI 대항전이나 멀티 플레이 게임에서의 유닛 구성이나 능력치 변경은 서버 모드로만 가능합니다. 치트 방지를 위해, 서버 모드는 각 클라이언트에 의해 서버에서 다운로드됩니다."
+    },
+    "Priority": {
+        "message": "우선 순위"
+    },
+    "Priority:": {
+        "message": "우선 순위:"
+    },
+    "Privacy Policy": {
+        "message": "개인정보 취급방침"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "활성 클라이언트 모드 재적용 중"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "서버 모드 재설정 중"
+    },
+    "Recommended": {
+        "message": "추천"
+    },
+    "Recommended mods": {
+        "message": "추천 모드"
+    },
+    "Reload File System Mods": {
+        "message": "파일 시스템 모드 다시 불러오기"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "Season ends __date__": {
+        "message": "시즌 종료: __date__"
+    },
+    "Server Mods": {
+        "message": "서버 모드"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "사용자가 AI 대항전이나 멀티 플레이 게임을 만들면 서버 모드가 서버에 업로드되며, 이후 모든 플레이어와 관전자가 게임에 참여하면 각 클라이언트에서 다운로드해 적용됩니다."
+    },
+    "Size:": {
+        "message": "크기:"
+    },
+    "Sort": {
+        "message": "정렬"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "1V1 랭킹 게임을 즐기려면 커뮤니티 모드를 사용하여 문제를 방지하십시오.<br />위키의 설명에 따라 PAMM 파일 시스템 모드를 삭제해 주십시오."
+    },
+    "Type": {
+        "message": "유형"
+    },
+    "UI Scenes": {
+        "message": "UI 장면"
+    },
+    "UNIT DATABASE": {
+        "message": "유닛 데이터베이스"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "활성 모드 업데이트 중"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "활성 클라이언트 모드 업데이트 및 재적용 중"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "사용 가능한 모드 업데이트 중"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "커뮤니티 모드 파일 업데이트 중"
+    },
+    "Uninstall": {
+        "message": "삭제"
+    },
+    "Unit Restrictions": {
+        "message": "유닛 제한"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "은하계 전쟁에는 유닛 제한이 적용되지 않습니다."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "AI 대항전 또는 멀티 플레이 게임에서 특정 유닛을 사용할 수 없도록, 모든 플레이어에게 적용되는 유닛 제한"
+    },
+    "Units": {
+        "message": "유닛"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "모든 플레이어의 유닛은 비활성화가 가능합니다. 플레이어 본인이 생성한 AI 대항전이나 멀티 플레이 게임의 AI도 포함입니다."
+    },
+    "Units matching your criteria": {
+        "message": "조건에 맞는 유닛"
+    },
+    "Units:": {
+        "message": "유닛:"
+    },
+    "Updated": {
+        "message": "업데이트됨"
+    },
+    "Used By": {
+        "message": "다음에 의해 사용됨:"
+    },
+    "Version:": {
+        "message": "버전:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "조건에 맞는 __description__ 모드"
+    },
+    "about-community-mods": {
+        "message": "커뮤니티 모드는 <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a>에서 <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a>를 위해 제공하는 서비스로, <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">군단 확장팩<span class=\"community-mods-link-icon\">&#xe164;</span></a>과 같은 향상된 기능, 수정 및 수많은 커뮤니티 제작 모드를 통해 기본 게임을 더 풍부하게 만들어 줍니다."
+    },
+    "community-mods-intro": {
+        "message": "커뮤니티 모드와 커뮤니티 채팅은 <a class=\"link\" data-bind=\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\">palobby.com<span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>에서 <a class=\"link\" data-bind=\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\">Planetary Annihilation Inc<span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>를 위해 제공하는 서비스로, <a class=\"link\" data-bind=\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\">군단 확장팩<span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>과 같은 향상된 기능, 수정 및 수많은 커뮤니티 제작 모드를 통해 기본 게임을 더 풍부하게 만들어 줍니다."
+    },
+    "privacy policy": {
+        "message": "개인정보 취급방침"
+    },
+    "Companions": {
+        "message": "컴패니언"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Legion 커뮤니티 확장 AI 활성화"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ 랭크"
+    },
+    "Systems": {
+        "message": "행성계"
+    }
+}

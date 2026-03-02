@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "Akzeptieren"
+    },
+    "Back": {
+        "message": "Zurück"
+    },
+    "Banned": {
+        "message": "Gesperrt"
+    },
+    "Cancel": {
+        "message": "Abbrechen"
+    },
+    "Decline": {
+        "message": "Ablehnen"
+    },
+    "Enter Queue": {
+        "message": "Stell dich an"
+    },
+    "Failed to Join": {
+        "message": "Verbindung fehlgeschlagen"
+    },
+    "Failed to connect to match making server.": {
+        "message": "Verbindung zum Matchmaking-Server fehlgeschlagen"
+    },
+    "Failed to create game.": {
+        "message": "Spielerstellung fehlgeschlagen"
+    },
+    "Match Making Error": {
+        "message": "Matchmaking-Fehler"
+    },
+    "Match Making Penalty": {
+        "message": "Matchmaking-Strafzeit"
+    },
+    "Matchmaking found a match!": {
+        "message": "Es wurde ein Match gefunden!"
+    },
+    "Offline for Maintenance": {
+        "message": "Offline für Wartung"
+    },
+    "One or more other players declined or the match expired.": {
+        "message": "Einer oder mehr Spieler haben abgelehnt oder das Match ist abgelaufen."
+    },
+    "Opponent": {
+        "message": "Gegner"
+    },
+    "Reconnect": {
+        "message": "Erneut verbinden"
+    },
+    "Returning to Main Menu": {
+        "message": "Zurück zum Hauptmenü"
+    },
+    "Unable to connect to server.": {
+        "message": "Konnte nicht mit Server verbunden werden"
+    },
+    "We will be back soon!": {
+        "message": "Wir sind bald zurück!"
+    },
+    "You": {
+        "message": "Du"
+    },
+    "You are already assigned to a match.": {
+        "message": "Du nimmst bereits an einem Spiel teil."
+    },
+    "You have been penalized for abandoning a game, please try matchmaking again when your penalty has expired.": {
+        "message": "Du hast eine Strafe erhalten, da du ein Spiel aufgegeben hast. Bitte beginne das Matchmaking von Neuem, wenn deine Strafzeit abgelaufen ist."
+    },
+    "You have been penalized for abandoning a game.": {
+        "message": "Du wurdest bestraft, da du ein Spiel aufgegeben hast."
+    },
+    "You were penalized for abandoning, but your penalty has now expired.": {
+        "message": "Du wurdest aufgrund einer Spielaufgabe bestraft, aber deine Strafzeit ist nun abgelaufen."
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Dein Account wurde gesperrt. Falls es sich um einen Irrtum handelt, kontaktiere uns unter __email__"
+    },
+    "Your confirmation was not received in time.": {
+        "message": "Du hast nicht rechtzeitig bestätigt."
+    },
+    "average queue time": {
+        "message": "durchschnittliche Warteschlangenzeit"
+    },
+    "beginning match making": {
+        "message": "Matchmaking beginnen"
+    },
+    "connecting to matchmaker": {
+        "message": "Mit Matchmaker verbinden"
+    },
+    "finding game server": {
+        "message": "sucht nach Spielserver"
+    },
+    "idle": {
+        "message": "inaktiv"
+    },
+    "leaving match making": {
+        "message": "Matchmaking verlassen"
+    },
+    "leaving queue": {
+        "message": "Warteschlange verlassen"
+    },
+    "match expires in:": {
+        "message": "Matchmaking läuft ab in:"
+    },
+    "match found": {
+        "message": "Match gefunden"
+    },
+    "penalty expires in:": {
+        "message": "Strafe läuft ab in:"
+    },
+    "players in queue": {
+        "message": "Spieler in der Warteschlange"
+    },
+    "queue time": {
+        "message": "Warteschlangenzeit"
+    },
+    "reconnect": {
+        "message": "erneut verbinden"
+    },
+    "searching for opponent": {
+        "message": "nach Gegner suchen"
+    },
+    "searching for opponents": {
+        "message": "nach Gegnern suchen"
+    }
+}

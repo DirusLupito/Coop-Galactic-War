@@ -1,0 +1,221 @@
+{
+    "- Host": {
+        "message": "- 호스트"
+    },
+    "AI Commander": {
+        "message": "인공지능 지휘관"
+    },
+    "AI:": {
+        "message": "AI: "
+    },
+    "Add AI": {
+        "message": "AI 추가"
+    },
+    "Add AI Commander": {
+        "message": "AI 지휘관 추가"
+    },
+    "Add Slot": {
+        "message": "슬롯 추가"
+    },
+    "Add Team": {
+        "message": "팀 추가"
+    },
+    "Alliance Victory": {
+        "message": "동맹 승리"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " 플레이어들이 게임 안에서 동맹을 만들거나 파기하고 자원을 공유할 수 있게 해줍니다."
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " 플레이어들이 실험을 위해 유닛을 복수 및 붙여넣기할 수 있게 해줍니다."
+    },
+    "Bounty Mode": {
+        "message": "바운티 모드"
+    },
+    "Browse systems...": {
+        "message": "행성계 둘러보기..."
+    },
+    "Building planets": {
+        "message": "행성 구축 중"
+    },
+    "Building planets...": {
+        "message": "행성 구축 중..."
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "서버 연결 끊어짐"
+    },
+    "Chat": {
+        "message": "채팅"
+    },
+    "Default": {
+        "message": "기본"
+    },
+    "Dynamic Alliances": {
+        "message": "유동적 동맹"
+    },
+    "Econ Rate": {
+        "message": "경제 비율"
+    },
+    "Empty": {
+        "message": "비어 있음"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": " 지휘관을 먼저 처치하는 팀이 승리합니다. (같은 팀의 가장 약한 플레이어를 보호하십시오)"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " 플레이어가 적군을 처치할 때마다 경제 배율 보너스가 제공되어 생산 비율을 올려줍니다."
+    },
+    "Free For All": {
+        "message": "개인전"
+    },
+    "Friends": {
+        "message": "친구"
+    },
+    "Game Lobby": {
+        "message": "게임 로비"
+    },
+    "Game Mode": {
+        "message": "게임 모드"
+    },
+    "Global Spectator Chat": {
+        "message": "글로벌 관전자 채팅"
+    },
+    "Join": {
+        "message": "참가"
+    },
+    "Kick": {
+        "message": "강제 퇴장"
+    },
+    "Large Planets": {
+        "message": "대형 행성"
+    },
+    "Leave": {
+        "message": "떠나기"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "적군 처치당 배율 보너스"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " 녹색의 시작 지점이 사용되지 않습니다. 플레이어는 어디든 원하는 곳에서 시작할 수 있습니다."
+    },
+    "Open to:": {
+        "message": "공개 옵션:"
+    },
+    "Password (optional)": {
+        "message": "암호 (선택 사항)"
+    },
+    "Player Slot": {
+        "message": "플레이어 슬롯"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "플레이어는 커맨더를 투하 할 장소를 고르시길 바랍니다."
+    },
+    "Players": {
+        "message": "인 플레이어"
+    },
+    "Private": {
+        "message": "비공개"
+    },
+    "Public": {
+        "message": "공개"
+    },
+    "Random": {
+        "message": "무작위"
+    },
+    "Ready": {
+        "message": "준비"
+    },
+    "Remove": {
+        "message": "제거"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "SHARE ARMY": {
+        "message": "군대 공유"
+    },
+    "SPECTATORS": {
+        "message": "관전자"
+    },
+    "Sandbox": {
+        "message": "샌드박스"
+    },
+    "Select System": {
+        "message": "행성계 선택"
+    },
+    "Shuffle landing zones": {
+        "message": "착륙 지점 셔플"
+    },
+    "Slot": {
+        "message": "슬롯"
+    },
+    "Slot __slot_number__": {
+        "message": "슬롯 __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "슬롯이 비었습니다."
+    },
+    "Spectate": {
+        "message": "관전"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " 관전자 메시지는 게임 채팅에서 볼 수 있습니다."
+    },
+    "Spectators": {
+        "message": "관전자"
+    },
+    "Start Anywhere": {
+        "message": "아무 곳에서나 시작"
+    },
+    "Start Game": {
+        "message": "게임 시작"
+    },
+    "Start Nearby": {
+        "message": "근처에서 시작"
+    },
+    "Start Offworld": {
+        "message": "다른 행성에서 시작"
+    },
+    "Sudden Death Mode": {
+        "message": "서든데스 모드"
+    },
+    "Symmetrical": {
+        "message": "대칭"
+    },
+    "System": {
+        "message": "행성계"
+    },
+    "Tag:": {
+        "message": "태그:"
+    },
+    "Team": {
+        "message": "팀"
+    },
+    "Team Armies": {
+        "message": "팀 군대"
+    },
+    "Team __team_number__": {
+        "message": "팀 __team_number__"
+    },
+    "Title": {
+        "message": "제목"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "친구 전용 게임을 플레이하려면 친구가 있어야 합니다"
+    },
+    "Asteroid": {
+        "message": "소행성"
+    },
+    "Multiple starting planets": {
+        "message": "다수의 시작 행성"
+    },
+    "Select a system": {
+        "message": "행성계 선택"
+    },
+    "Started": {
+        "message": "시작함"
+    },
+    "Waiting for system": {
+        "message": "행성계 선택 대기 중"
+    }
+}

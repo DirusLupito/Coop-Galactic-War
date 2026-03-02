@@ -1,0 +1,86 @@
+{
+    "Accept": {
+        "message": "Přijmout"
+    },
+    "CLEAR SYSTEM": {
+        "message": "VYČISTIT SYSTÉM"
+    },
+    "CLOSE": {
+        "message": "ZAVŘÍT"
+    },
+    "Cancel": {
+        "message": "Zrušit"
+    },
+    "Discard": {
+        "message": "Odstranit"
+    },
+    "Do you want to save this system?": {
+        "message": "Chcete uložit tento systém?"
+    },
+    "EDIT PLANET": {
+        "message": "UPRAVIT PLANETU"
+    },
+    "HIDE": {
+        "message": "SCHOVAT"
+    },
+    "MY PLANETS": {
+        "message": "MOJE PLANETY"
+    },
+    "Mass": {
+        "message": "HMOTA"
+    },
+    "PREVIEW ALL": {
+        "message": "ZOBRAZIT VŠECHNY"
+    },
+    "Position": {
+        "message": "POZICE"
+    },
+    "RECENT": {
+        "message": "NEDÁVNÉ"
+    },
+    "REMOVE": {
+        "message": "ODSTRANIT"
+    },
+    "SAVE SYSTEM": {
+        "message": "ULOŽIT SYSTÉM"
+    },
+    "SHOW": {
+        "message": "UKÁZAT"
+    },
+    "SIMULATE": {
+        "message": "SIMULOVAT"
+    },
+    "Save": {
+        "message": "Uložit"
+    },
+    "System radius is too large.": {
+        "message": "Rádius systému je příliš velký."
+    },
+    "System radius is too small.": {
+        "message": "Rádius systému je příliš malý."
+    },
+    "TEMPLATES": {
+        "message": "ŠABLONY"
+    },
+    "Temp": {
+        "message": "Teplota"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Planeta se nahrává. To může trvat delší dobu."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Program nebude odpovídat dokud nebude planeta dokončena."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Systém byl pozměněn od posledního uložení."
+    },
+    "The system has not been saved.": {
+        "message": "Systém nebyl uložen."
+    },
+    "Velocity": {
+        "message": "RYCHLOST"
+    },
+    "Water": {
+        "message": "Voda"
+    }
+}

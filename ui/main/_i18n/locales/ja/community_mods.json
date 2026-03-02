@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "残り試み回数: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "アクティブ"
+    },
+    "Active Client": {
+        "message": "アクティブクライアント"
+    },
+    "Active Server": {
+        "message": "アクティブサーバー"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "アクティブなModsはゲーム開始時と終了時に自動的に更新されます"
+    },
+    "Active/Inactive": {
+        "message": "アクティブ/非アクティブ"
+    },
+    "Available": {
+        "message": "使用可能"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "ファイルシステムModと利用可能なModが干渉中。インストール先:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "ビッグゲーム リプレイ"
+    },
+    "Build:": {
+        "message": "建造:"
+    },
+    "By": {
+        "message": "By"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "ファイルシステムMODSをチェック中…"
+    },
+    "COMMUNITY MODS": {
+        "message": "コミュニティMODS"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "コミュニティサポート"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "サーバーへの接続が失敗しました"
+    },
+    "Client Mods": {
+        "message": "クライアントMODS"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "クライアントMODSはあなたのクライアントのみにマウント（ロード）されます、他のプレイヤーには影響しません"
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "クライアントModsはAIスカーミッシュやマルチプレイでユニットおよびユニットスペックの変更ができません"
+    },
+    "Community Mods": {
+        "message": "コミュニティ Mod"
+    },
+    "Companion Client Mods": {
+        "message": "コンパニオンクライアントMods"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "コンパニオンModsはスペシャルクライアントModsでサーバーModsが求めた時に自動的に一時的にマウントされます"
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "干渉中のユニットサーバーMODS:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "サーバーModをダウンロード中…"
+    },
+    "Date:": {
+        "message": "日付:"
+    },
+    "Dependencies": {
+        "message": "従属関係"
+    },
+    "Details": {
+        "message": "詳細"
+    },
+    "Disable": {
+        "message": "無効"
+    },
+    "Disable Nukes": {
+        "message": "核を無効にする"
+    },
+    "Disable Ragnaroks": {
+        "message": "Ragnaroksを無効にする"
+    },
+    "Disable Titans": {
+        "message": "Titansを無効にする"
+    },
+    "Disabled": {
+        "message": "無効"
+    },
+    "Downloads": {
+        "message": "ダウンロード"
+    },
+    "Enable": {
+        "message": "有効"
+    },
+    "Enable All": {
+        "message": "全て有効にする"
+    },
+    "Enabled Client": {
+        "message": "有効クライアント"
+    },
+    "Enabled Server": {
+        "message": "有効サーバー"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "プレイしたり観戦したりするゲームのクライアントのみでクライアントMODSを有効にする"
+    },
+    "Enabled/Disabled": {
+        "message": "有効/無効"
+    },
+    "Filter": {
+        "message": "フィルター"
+    },
+    "Identifier:": {
+        "message": "識別子:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "非アクティブの場合、コンパニオンModsは自動的にダウンロード/更新され、AIスカーミッシュやマルチプレイに参戦/観戦する場合にマウントされ、ゲームが終了するとアンマウントされます"
+    },
+    "Install": {
+        "message": "インストール"
+    },
+    "Installed": {
+        "message": "インストール済"
+    },
+    "Installed Path:": {
+        "message": "インストールパス:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "ダウンロードキャッシュ内のインストール済サーバー＆クライアントMODS"
+    },
+    "Installing Mods": {
+        "message": "Modsをインストール中"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "Modをインストールすると、Modの圧縮zipがローカルPAダウンロードキャッシュにダウンロードされます"
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Legion Expansionような大型ユニットサーバーModsは、サーバーModsのサイズを小さくしたりアップロード/ダウンロードの回数を減らすためにコンパニオンModsを使用します"
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "大型ユニットサーバーModsの場合、お使いのインターネット回線のアップロード/ダウンロード速度が遅いと時間がかかることがあります"
+    },
+    "Local file system mod installed at:": {
+        "message": "ローカルファイルシステムModインストール先:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "MODSは --NOMODS により無効"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "クライアントMODSをマウント中…"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "オフラインモードでクライアントMODSをマウント中…"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "コンパニオンModをマウント中…お待ちください"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "サーバーModをマウント中…"
+    },
+    "Merge (experimental)": {
+        "message": "マージ（実験）"
+    },
+    "Mods available to install": {
+        "message": "インストール可能なMODS"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "Modsの多くは、インストール後はオフラインモードでインターネット接続無しで使用できます（一部、接続が必要なModsもあります）"
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "複数のユニットサーバーModsの干渉がビルドバー消失やサーバークラッシュなどの原因となることがあります"
+    },
+    "Name": {
+        "message": "名前"
+    },
+    "No": {
+        "message": "いいえ"
+    },
+    "No __description__ mods match your criteria": {
+        "message": "条件に合致する __description__ Modsはありません"
+    },
+    "No units match your criteria": {
+        "message": "条件に合致するユニットはありません"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "公式Discord"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "公式ガイド"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "公式サポート"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Offline Mode": {
+        "message": "オフラインモード"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "サーバーModsだけが、AIスカーミッシュやマルチプレイのユニットのロースターやスペックを変更できます、チート行為を防ぐために各サーバーから各クライアントへダウンロードされます"
+    },
+    "Priority": {
+        "message": "優先度"
+    },
+    "Priority:": {
+        "message": "優先度:"
+    },
+    "Privacy Policy": {
+        "message": "プライバシーポリシー"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "アクティブなクライアントMODSを再マウント中…"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "サーバーMODSをリセット中…"
+    },
+    "Recommended": {
+        "message": "推奨"
+    },
+    "Recommended mods": {
+        "message": "推奨MODS"
+    },
+    "Reload File System Mods": {
+        "message": "ファイルシステムModsをリロード中…"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに戻ります…"
+    },
+    "Season ends __date__": {
+        "message": "シーズン終了 __date__"
+    },
+    "Server Mods": {
+        "message": "サーバー Mods"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "サーバーModsはAIスカーミッシュやマルチプレイを作成時にサーバーへとアップロードされます、それからプレイヤーや観客がゲームに参加する時にダウンロードされて各クライアントにマウント（ロード）されます"
+    },
+    "Size:": {
+        "message": "サイズ:"
+    },
+    "Sort": {
+        "message": "並替"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "1vs1ランクでのプレイを続けるには、コミュニティMODSを使用して問題の発生を避けてください。<br />Wikiのインストラクションに従ってPAMMとファイルシステムMODSを削除してください"
+    },
+    "Type": {
+        "message": "タイプ"
+    },
+    "UI Scenes": {
+        "message": "UIシーン"
+    },
+    "UNIT DATABASE": {
+        "message": "ユニットデータベース"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "アクティブMODSを更新中…"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "アクティブクライアンドMODSを更新＆リマウント中…"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "使用可能なMODSを更新中…"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "コミュニティMODSファイルを更新中…"
+    },
+    "Uninstall": {
+        "message": "アンインストール"
+    },
+    "Unit Restrictions": {
+        "message": "ユニット制限"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "ユニット制限は星系間戦争には適用されません"
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "プレイヤーが作成したAIスカーミッシュ＆マルチプレイで、全プレイヤーが特定のユニットを使用できなくするユニット制限"
+    },
+    "Units": {
+        "message": "ユニット"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "全プレイヤーが使用するユニットを無効とできます。AI スカーミッシュのAIやユーザー作成のマルチプレイゲームなども対象です"
+    },
+    "Units matching your criteria": {
+        "message": "条件に合致するユニット"
+    },
+    "Units:": {
+        "message": "ユニット:"
+    },
+    "Updated": {
+        "message": "更新済"
+    },
+    "Used By": {
+        "message": "使用:"
+    },
+    "Version:": {
+        "message": "バージョン:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "条件に合致する __description__ mods"
+    },
+    "about-community-mods": {
+        "message": "コミュニティModsは<a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a>により<a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a>向けに提供されているサービスで、基本ゲームに各種改造要素、修正、そして<a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">Legion Expansion <span class=\"community-mods-link-icon\">&#xe164;</span></a>のようなコミュニティ作成のModsの多くを利用することができます"
+    },
+    "community-mods-intro": {
+        "message": "コミュニティModsとコミュニティチャット<a class=\"link\" data-bind=\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\">palobby.com <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>によって<a class=\"link\" data-bind=\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\">Planetary Annihilation Inc <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>向けに提供されているサービスで、基本ゲームに各種改造要素、修正、そして<a class=\"link\" data-bind=\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\">Legion Expansion <span style=\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\">&#xe164;</span></a>のようなコミュニティ作成のModsの多くを利用することができます"
+    },
+    "privacy policy": {
+        "message": "プライバシーポリシー"
+    },
+    "Companions": {
+        "message": "コンパニオン"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Legion Community Expansion AIを有効にする"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ ランク"
+    },
+    "Systems": {
+        "message": "星系"
+    }
+}

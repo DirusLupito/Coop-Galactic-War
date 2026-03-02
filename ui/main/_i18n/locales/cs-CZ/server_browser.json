@@ -1,0 +1,101 @@
+{
+    "AI Battle": {
+        "message": "Bitva AI"
+    },
+    "Any": {
+        "message": "Libovolné"
+    },
+    "Can Join": {
+        "message": "Může se připojit"
+    },
+    "Can Play": {
+        "message": "Může hrát"
+    },
+    "Can Spectate": {
+        "message": "Může pozorovat"
+    },
+    "Casual": {
+        "message": "Neformální"
+    },
+    "Competitive": {
+        "message": "Soutěžní"
+    },
+    "Create Game": {
+        "message": "Vytvořit Hru"
+    },
+    "Free For All": {
+        "message": "Všichni proti všem"
+    },
+    "Game": {
+        "message": "Hra"
+    },
+    "Game State": {
+        "message": "Stav hry"
+    },
+    "In Lobby": {
+        "message": "V hale"
+    },
+    "In Progress": {
+        "message": "Probíhá"
+    },
+    "Join Game": {
+        "message": "Připojit se ke hře"
+    },
+    "Locked Game": {
+        "message": "Zamknutá hra"
+    },
+    "Mode": {
+        "message": "Mód"
+    },
+    "Mods": {
+        "message": "Mody"
+    },
+    "Multiplayer": {
+        "message": "Více hráčů"
+    },
+    "No max": {
+        "message": "Bez maxima"
+    },
+    "No min": {
+        "message": "Bez minima"
+    },
+    "Number of Planets": {
+        "message": "Počet planet"
+    },
+    "Number of Players": {
+        "message": "Počet hráčů"
+    },
+    "Password": {
+        "message": "Heslo"
+    },
+    "Planets": {
+        "message": "Planety"
+    },
+    "Players": {
+        "message": "Hráči"
+    },
+    "Region": {
+        "message": "Oblast"
+    },
+    "Slots": {
+        "message": "Místa"
+    },
+    "Spectate": {
+        "message": "Pozorovat"
+    },
+    "Spectators": {
+        "message": "Pozorovatelé"
+    },
+    "Status": {
+        "message": "Stav"
+    },
+    "Tag": {
+        "message": "Označit"
+    },
+    "Team Armies": {
+        "message": "Týmové armády"
+    },
+    "Testing": {
+        "message": "Testovací"
+    }
+}

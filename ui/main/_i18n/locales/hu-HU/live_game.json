@@ -1,0 +1,158 @@
+{
+    "ALLY": {
+        "message": "SZÖVETSÉGES"
+    },
+    "APS:": {
+        "message": "Művelet/ mp:"
+    },
+    "ARMY": {
+        "message": "SEREG"
+    },
+    "AT WILL": {
+        "message": "TETSZÉS SZERINT"
+    },
+    "Accept": {
+        "message": "Elfogad"
+    },
+    "Activate planetary laser": {
+        "message": "Planetáris lézer aktiválása"
+    },
+    "Alliance Request": {
+        "message": "Szövetség Kérelem"
+    },
+    "Alliance requested": {
+        "message": "Szövetkezés kérelmezve"
+    },
+    "Allied With:": {
+        "message": "Szövetségben vele:"
+    },
+    "BUILD MODE": {
+        "message": "ÉPÍTÉSI MÓD"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "MEGSZAKADT A KAPCSOLAT A SZERVERREL"
+    },
+    "CONTINUOUS": {
+        "message": "FOLYTONOS"
+    },
+    "Cancel": {
+        "message": "Mégse"
+    },
+    "Change orbit": {
+        "message": "Keringési pálya változtatása"
+    },
+    "Close": {
+        "message": "Bezárás"
+    },
+    "Count": {
+        "message": "Darab"
+    },
+    "DMG:": {
+        "message": "SEBZÉS:"
+    },
+    "ECONOMY": {
+        "message": "NYERSANYAG"
+    },
+    "ENERGY ORDERS": {
+        "message": "ENERGIA PARANCSOK"
+    },
+    "Efficiency": {
+        "message": "Hatékonyság"
+    },
+    "Enemy Contact!": {
+        "message": "Ellenséges Érintkezés!"
+    },
+    "Exit Game?": {
+        "message": "Kilépsz a játékból?"
+    },
+    "FIRE ORDERS": {
+        "message": "TŰZ PARANCSOK"
+    },
+    "Fabber": {
+        "message": "Gyártó"
+    },
+    "Factory": {
+        "message": "Gyár"
+    },
+    "GAME PAUSED": {
+        "message": "JÁTÉK SZÜNETELTETVE"
+    },
+    "HOLD": {
+        "message": "TART"
+    },
+    "HOLD POSITION": {
+        "message": "POZÍCIÓ TARTÁSA"
+    },
+    "Ignore": {
+        "message": "Figyelmen kívül hagy"
+    },
+    "MOVE ORDERS": {
+        "message": "MOZGÁSI PARANCSOK"
+    },
+    "Mobile": {
+        "message": "Mozgó"
+    },
+    "NORMAL": {
+        "message": "NORMÁL"
+    },
+    "OFF": {
+        "message": "KI"
+    },
+    "ON": {
+        "message": "BE"
+    },
+    "PLAYER": {
+        "message": "JÁTÉKOS"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Válassz egy helyet valamelyik zöld kör területén belül, hogy elhelyezd a Parancsnokod."
+    },
+    "Ping!": {
+        "message": "Jelölés!"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Pozíció célba véve. Kattints a jóváhagyáshoz."
+    },
+    "RETURN FIRE": {
+        "message": "TŰZ VISZONOZÁS"
+    },
+    "ROAM": {
+        "message": "KÓBORLÁS"
+    },
+    "Request pending": {
+        "message": "Függőben lévő kérelem"
+    },
+    "Returning to Main Menu": {
+        "message": "Visszatérés a főmenübe"
+    },
+    "START ANNIHILATION": {
+        "message": "MEGSEMMISÍTÉS INDÍTÁSA"
+    },
+    "Select a new gravity well.": {
+        "message": "Új gravitációs központ kiválasztása."
+    },
+    "Select a planet to attack.": {
+        "message": "Válassz egy megtámadni kívánt bolygót."
+    },
+    "Select a planet to destroy.": {
+        "message": "Válassz egy elpusztítani kívánt bolygót."
+    },
+    "Set course for annihilation": {
+        "message": "Pálya beállítása a megsemmisítéshez"
+    },
+    "Set target spot": {
+        "message": "Célterület kiválasztása"
+    },
+    "Then confirm destination to set course.": {
+        "message": "Majd erősítsd meg a célt, hogy beállítsd a pályát."
+    },
+    "Unknown": {
+        "message": "Ismeretlen"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Várakozás a többi játékosra míg kezdőhelyet nem találnak."
+    },
+    "Yes": {
+        "message": "Igen"
+    }
+}

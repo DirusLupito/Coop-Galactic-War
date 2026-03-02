@@ -1,0 +1,65 @@
+/* (C) COPYRIGHT 2016-2021 Planetary Annihilation Inc. All rights reserved. */
+
+#game-list .glyphicon-lock
+{
+    margin-right: 0!important;
+}
+
+div.one-game
+{
+    padding: 6px 0;
+}
+
+.one-game div
+{
+    padding: 0!important;
+}
+
+div.one-game > div
+{
+    padding-left: 10px!important;
+    padding-right: 4px!important;
+    margin: 0;
+}
+
+div.one-game div.game-icons
+{
+    /* float: right; */
+    position: absoloute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+div.one-game div.game-icons img
+{
+    margin-left: 4px;
+    width: 25px;
+    height: 25px;
+}
+
+#detail-pane-wrapper div.col-game-icons
+{
+    margin-bottom: 16px;
+}
+
+#detail-pane-wrapper div.col-game-icons div
+{
+    margin-bottom: 4px;
+}
+
+#detail-pane-wrapper div.col-game-icons span
+{
+    vertical-align: middle;
+}
+
+#detail-pane-wrapper div.col-game-icons img
+{
+    margin-right: 10px;
+}
+
+.lbl_legion
+{
+    display: none!important;
+}

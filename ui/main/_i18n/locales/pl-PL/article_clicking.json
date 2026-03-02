@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "Klikanie"
+    },
+    "PA Guide: Clicking": {
+        "message": "Przewodnik PA: Klikanie"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "[style=text_callout]Podwójne kliknięcie[/style] jednostki wybiera także bliźniacze jednostki"
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]Kliknij LPM i przeciągnij kursor[/style], by zaznaczyć więcej jednostek naraz"
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]Lewym przyciskiem myszy[/style] wybierasz jednostkę, a [style=text_callout]prawym[/style] wywołujesz działanie."
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Wciśnij Shift i klikaj PPM[/style], by dodać więcej rozkazów do kolejki"
+    }
+}

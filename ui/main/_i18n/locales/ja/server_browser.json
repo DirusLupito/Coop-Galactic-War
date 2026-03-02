@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "AI バトル"
+    },
+    "Any": {
+        "message": "すべて"
+    },
+    "Auto refresh": {
+        "message": "自動更新"
+    },
+    "Bounty Mode": {
+        "message": "バウンティモード"
+    },
+    "Buy Expansion": {
+        "message": "拡張パックを購入"
+    },
+    "Can Join": {
+        "message": "参加可能"
+    },
+    "Can Play": {
+        "message": "プレイ可能"
+    },
+    "Can Spectate": {
+        "message": "観戦可能"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Casual": {
+        "message": "カジュアル"
+    },
+    "Competitive": {
+        "message": "シリアス"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "ネットワーク接続が見つからないため、ゲームリストを取得できません"
+    },
+    "Create Game": {
+        "message": "ゲームを作成"
+    },
+    "Enter game password": {
+        "message": "ゲームパスワードを入力"
+    },
+    "Free For All": {
+        "message": "フリー・フォー・オール"
+    },
+    "Game": {
+        "message": "ゲーム"
+    },
+    "Game State": {
+        "message": "ゲーム状態"
+    },
+    "Host game locally": {
+        "message": "ローカルでゲームをホスト"
+    },
+    "In Lobby": {
+        "message": "ロビー内"
+    },
+    "In Progress": {
+        "message": "進行中"
+    },
+    "Join Game": {
+        "message": "ゲームに参加"
+    },
+    "LOCKED": {
+        "message": "ロック"
+    },
+    "Locked": {
+        "message": "ロック"
+    },
+    "Locked Game": {
+        "message": "ロックゲーム"
+    },
+    "Mod": {
+        "message": "Mod"
+    },
+    "Modded": {
+        "message": "Mod済"
+    },
+    "Mode": {
+        "message": "モード"
+    },
+    "Mods": {
+        "message": "Mods"
+    },
+    "Multiplayer": {
+        "message": "マルチプレイ"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "PAサーバーとの接続が見つかりません。新規ゲームはローカルでホストされます"
+    },
+    "No max": {
+        "message": "上限なし"
+    },
+    "No min": {
+        "message": "下限なし"
+    },
+    "Not Bounty Mode": {
+        "message": "バウンティモードなし"
+    },
+    "Not Modded": {
+        "message": "Modなし"
+    },
+    "Not Selected": {
+        "message": "未選択"
+    },
+    "Number of Planets": {
+        "message": "惑星の数"
+    },
+    "Number of Players": {
+        "message": "プレイヤー人数"
+    },
+    "Open": {
+        "message": "オープン"
+    },
+    "Open slot": {
+        "message": "スロットを開く"
+    },
+    "Password": {
+        "message": "パスワード"
+    },
+    "Planets": {
+        "message": "惑星"
+    },
+    "Players": {
+        "message": "プレイヤー"
+    },
+    "Radius __radius__": {
+        "message": "半径 __radius__"
+    },
+    "Refresh": {
+        "message": "更新"
+    },
+    "Region": {
+        "message": "リージョン"
+    },
+    "Rejoin Local Game": {
+        "message": "ローカルゲームに再参加"
+    },
+    "Required Expansion Pack": {
+        "message": "拡張パックが必要"
+    },
+    "Reset Filters": {
+        "message": "フィルターをリセット"
+    },
+    "Sandbox": {
+        "message": "サンドボックス"
+    },
+    "Slots": {
+        "message": "スロット"
+    },
+    "Spectate": {
+        "message": "観戦"
+    },
+    "Spectators": {
+        "message": "観客"
+    },
+    "Status": {
+        "message": "ステータス"
+    },
+    "Tag": {
+        "message": "タグ"
+    },
+    "Team Armies": {
+        "message": "チームアーミー"
+    },
+    "Testing": {
+        "message": "テスト"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "このゲームに参戦するには、Planetary Annihilationの[style=content_description]__expansion_name__[/style]拡張パックが必要です"
+    },
+    "This game is no longer available.": {
+        "message": "このゲームはもう参加できません"
+    }
+}

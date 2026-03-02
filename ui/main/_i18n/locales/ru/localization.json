@@ -1,0 +1,11 @@
+{
+    "No results match": {
+        "message": " Ничего не найдено"
+    },
+    "Nothing Selected": {
+        "message": "Ничего не выбрано"
+    },
+    "{0} of {1} selected": {
+        "message": "Выбрано {0} из {1}"
+    }
+}

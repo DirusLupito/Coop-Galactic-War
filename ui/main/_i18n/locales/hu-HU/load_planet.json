@@ -1,0 +1,26 @@
+{
+    "CANCEL": {
+        "message": "MÉGSE"
+    },
+    "Delete": {
+        "message": "TÖRLÉS"
+    },
+    "Delete this system?": {
+        "message": "Törlöd ezt a naprendszert?"
+    },
+    "Load System": {
+        "message": "Naprendszer betöltése"
+    },
+    "New system": {
+        "message": "Új naprendszer"
+    },
+    "SHOW PLANETS": {
+        "message": "BOLYGÓK MUTATÁSA"
+    },
+    "SHOW SYSTEMS": {
+        "message": "NAPRENDSZEREK MUTATÁSA"
+    },
+    "System Designer": {
+        "message": "Naprendszer tervező"
+    }
+}

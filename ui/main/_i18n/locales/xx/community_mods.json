@@ -1,0 +1,442 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "Ȃ丁丁ƐΜṔ丁Ṡ ℝƐΜȂΪƝΪƝǴ: __num_attempts_remaining__",
+        "original": "ATTEMPTS REMAINING: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Ȃϲҭїѷέ",
+        "original": "Active"
+    },
+    "Active Client": {
+        "message": "Ȃϲҭїѷέ Ҫ⌊їέƞҭ",
+        "original": "Active Client"
+    },
+    "Active Server": {
+        "message": "Ȃϲҭїѷέ Ṡέȓѷέȓ",
+        "original": "Active Server"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Ȃϲҭїѷέ ʍȏɗƨ ῴї⌊⌊ Бέ ȃմҭȏʍȃҭїϲȃ⌊⌊у մ⍴ɗȃҭέɗ ɗմȓїƞɠ ƨҭȃȓҭմ⍴ ȃƞɗ ȃғҭέȓ έȃϲн ɠȃʍέ.",
+        "original": "Active mods will be automatically updated during startup and after each game."
+    },
+    "Active/Inactive": {
+        "message": "Ȃϲҭїѷέ/Ϊƞȃϲҭїѷέ",
+        "original": "Active/Inactive"
+    },
+    "Available": {
+        "message": "Ȃѷȃї⌊ȃБ⌊έ",
+        "original": "Available"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Ȃѷȃї⌊ȃБ⌊έ ʍȏɗ ϲȏƞғ⌊їϲҭƨ ῴїҭн ғї⌊έ ƨуƨҭέʍ ʍȏɗ їƞƨҭȃ⌊⌊έɗ ȃҭ:",
+        "original": "Available mod conflicts with file system mod installed at:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "฿ΪǴ ǴȂΜƐ ℝƐṔ₤ȂУṠ",
+        "original": "BIG GAME REPLAYS"
+    },
+    "Build:": {
+        "message": "฿մї⌊ɗ:",
+        "original": "Build:"
+    },
+    "By": {
+        "message": "฿у",
+        "original": "By"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "ҪӇƐҪҠΪƝǴ ϜΪ₤Ɛ ṠУṠ丁ƐΜ ΜѲƉṠ",
+        "original": "CHECKING FILE SYSTEM MODS"
+    },
+    "COMMUNITY MODS": {
+        "message": "ҪѲΜΜỦƝΪ丁У ΜѲƉṠ",
+        "original": "COMMUNITY MODS"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "ҪѲΜΜỦƝΪ丁У ṠỦṔṔѲℝ丁",
+        "original": "COMMUNITY SUPPORT"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "ҪѲƝƝƐҪ丁ΪѲƝ 丁Ѳ ṠƐℝѶƐℝ ϜȂΪ₤ƐƉ",
+        "original": "CONNECTION TO SERVER FAILED"
+    },
+    "Client Mods": {
+        "message": "Ҫ⌊їέƞҭ Μȏɗƨ",
+        "original": "Client Mods"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Ҫ⌊їέƞҭ ʍȏɗƨ ȃȓέ ʍȏմƞҭέɗ (⌊ȏȃɗέɗ) ȏƞ⌊у ȏƞ уȏմȓ ϲ⌊їέƞҭ ȃƞɗ ɗȏ ƞȏҭ ȃғғέϲҭ ȏҭнέȓ ⍴⌊ȃуέȓƨ.",
+        "original": "Client mods are mounted (loaded) only on your client and do not affect other players."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Ҫ⌊їέƞҭ ʍȏɗƨ ϲȃƞƞȏҭ ϲнȃƞɠέ մƞїҭƨ ȏȓ մƞїҭ ƨ⍴έϲƨ їƞ ȂΪ ƨќїȓʍїƨн ȏȓ ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέƨ.",
+        "original": "Client mods cannot change units or unit specs in AI skirmish or multiplayer games."
+    },
+    "Community Mods": {
+        "message": "Ҫȏʍʍմƞїҭу Μȏɗƨ",
+        "original": "Community Mods"
+    },
+    "Companion Client Mods": {
+        "message": "Ҫȏʍ⍴ȃƞїȏƞ Ҫ⌊їέƞҭ Μȏɗƨ",
+        "original": "Companion Client Mods"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Ҫȏʍ⍴ȃƞїȏƞ ʍȏɗƨ ȃȓέ ƨ⍴έϲїȃ⌊ ϲ⌊їέƞҭ ʍȏɗƨ ҭнȃҭ ȃȓέ ҭέʍ⍴ȏȓȃȓї⌊у ʍȏմƞҭέɗ ȃմҭȏʍȃҭїϲȃ⌊⌊у ῴнέƞ ƞέέɗέɗ Бу ƨέȓѷέȓ ʍȏɗƨ.",
+        "original": "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "Ҫȏƞғ⌊їϲҭїƞɠ Ủƞїҭ Ṡέȓѷέȓ Μȏɗƨ:",
+        "original": "Conflicting Unit Server Mods:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "ƉѲ₩Ɲ₤ѲȂƉΪƝǴ ṠƐℝѶƐℝ ΜѲƉṠ",
+        "original": "DOWNLOADING SERVER MODS"
+    },
+    "Date:": {
+        "message": "Ɖȃҭέ:",
+        "original": "Date:"
+    },
+    "Dependencies": {
+        "message": "Ɖέ⍴έƞɗέƞϲїέƨ",
+        "original": "Dependencies"
+    },
+    "Details": {
+        "message": "Ɖέҭȃї⌊ƨ",
+        "original": "Details"
+    },
+    "Disable": {
+        "message": "ƉїƨȃБ⌊έ",
+        "original": "Disable"
+    },
+    "Disable Nukes": {
+        "message": "ƉїƨȃБ⌊έ Ɲմќέƨ",
+        "original": "Disable Nukes"
+    },
+    "Disable Ragnaroks": {
+        "message": "ƉїƨȃБ⌊έ ℝȃɠƞȃȓȏќƨ",
+        "original": "Disable Ragnaroks"
+    },
+    "Disable Titans": {
+        "message": "ƉїƨȃБ⌊έ 丁їҭȃƞƨ",
+        "original": "Disable Titans"
+    },
+    "Disabled": {
+        "message": "ƉїƨȃБ⌊έɗ",
+        "original": "Disabled"
+    },
+    "Downloads": {
+        "message": "Ɖȏῴƞ⌊ȏȃɗƨ",
+        "original": "Downloads"
+    },
+    "Enable": {
+        "message": "ƐƞȃБ⌊έ",
+        "original": "Enable"
+    },
+    "Enable All": {
+        "message": "ƐƞȃБ⌊έ Ȃ⌊⌊",
+        "original": "Enable All"
+    },
+    "Enabled Client": {
+        "message": "ƐƞȃБ⌊έɗ Ҫ⌊їέƞҭ",
+        "original": "Enabled Client"
+    },
+    "Enabled Server": {
+        "message": "ƐƞȃБ⌊έɗ Ṡέȓѷέȓ",
+        "original": "Enabled Server"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "ƐƞȃБ⌊έɗ ϲ⌊їέƞҭ ʍȏɗƨ ғȏȓ ȏƞ⌊у уȏմȓ ϲ⌊їέƞҭ їƞ ȃƞу ɠȃʍέƨ уȏմ ⍴⌊ȃу ȏȓ ƨ⍴έϲҭȃҭέ",
+        "original": "Enabled client mods for only your client in any games you play or spectate"
+    },
+    "Enabled/Disabled": {
+        "message": "ƐƞȃБ⌊έɗ/ƉїƨȃБ⌊έɗ",
+        "original": "Enabled/Disabled"
+    },
+    "Filter": {
+        "message": "Ϝї⌊ҭέȓ",
+        "original": "Filter"
+    },
+    "Identifier:": {
+        "message": "Ϊɗέƞҭїғїέȓ:",
+        "original": "Identifier:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "Ϊғ ƞȏҭ ȃϲҭїѷέ, ϲȏʍ⍴ȃƞїȏƞ ʍȏɗƨ ȃȓέ ȃմҭȏʍȃҭїϲȃ⌊⌊у ɗȏῴƞ⌊ȏȃɗέɗ / մ⍴ɗȃҭέɗ ҭнέƞ ʍȏմƞҭέɗ ῴнέƞ уȏմ لȏїƞ ȏȓ ƨ⍴έϲҭȃҭέ ȃƞ ȂΪ ƨќїȓʍїƨн ȏȓ ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέ ҭнέƞ մƞʍȏմƞҭέɗ ῴнέƞ ҭнέ ɠȃʍέ ғїƞїƨнέƨ.",
+        "original": "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes."
+    },
+    "Install": {
+        "message": "Ϊƞƨҭȃ⌊⌊",
+        "original": "Install"
+    },
+    "Installed": {
+        "message": "Ϊƞƨҭȃ⌊⌊έɗ",
+        "original": "Installed"
+    },
+    "Installed Path:": {
+        "message": "Ϊƞƨҭȃ⌊⌊έɗ Ṕȃҭн:",
+        "original": "Installed Path:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Ϊƞƨҭȃ⌊⌊έɗ ƨέȓѷέȓ & ϲ⌊їέƞҭ ʍȏɗƨ їƞ ҭнέ ɗȏῴƞ⌊ȏȃɗ ϲȃϲнέ",
+        "original": "Installed server & client mods in the download cache"
+    },
+    "Installing Mods": {
+        "message": "Ϊƞƨҭȃ⌊⌊їƞɠ Μȏɗƨ",
+        "original": "Installing Mods"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "Ϊƞƨҭȃ⌊⌊їƞɠ ȃ ʍȏɗ ῴї⌊⌊ ɗȏῴƞ⌊ȏȃɗ ȃ ϲȏʍ⍴ȓέƨƨέɗ ℤї⍴ ȏғ ҭнέ ʍȏɗ ҭȏ уȏմȓ ⌊ȏϲȃ⌊ ṔȂ ɗȏῴƞ⌊ȏȃɗ ϲȃϲнέ.",
+        "original": "Installing a mod will download a compressed zip of the mod to your local PA download cache."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "₤ȃȓɠέ մƞїҭ ƨέȓѷέȓ ʍȏɗƨ ⌊їќέ ₤έɠїȏƞ Ɛ⌧⍴ȃƞƨїȏƞ մƨέƨ ϲȏʍ⍴ȃƞїȏƞ ʍȏɗƨ ҭȏ ȓέɗմϲέ ҭнέ ƨїℤέ ȏғ ƨέȓѷέȓ ʍȏɗƨ ȃƞɗ ҭнέїȓ մ⍴⌊ȏȃɗ / ɗȏῴƞ⌊ȏȃɗ ҭїʍέƨ.",
+        "original": "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "₤ȃȓɠέ մƞїҭ ƨέȓѷέȓ ʍȏɗƨ ʍȃу ҭȃќέ ƨȏʍέ ҭїʍέ ҭȏ մ⍴⌊ȏȃɗ / ɗȏῴƞ⌊ȏȃɗ їғ уȏմ нȃѷέ ƨ⌊ȏῴ їƞҭέȓƞέҭ մ⍴⌊ȏȃɗ / ɗȏῴƞ⌊ȏȃɗ ƨ⍴έέɗƨ.",
+        "original": "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds."
+    },
+    "Local file system mod installed at:": {
+        "message": "₤ȏϲȃ⌊ ғї⌊έ ƨуƨҭέʍ ʍȏɗ їƞƨҭȃ⌊⌊έɗ ȃҭ:",
+        "original": "Local file system mod installed at:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "ΜѲƉṠ ƉΪṠȂ฿₤ƐƉ ฿У --ƝѲΜѲƉṠ",
+        "original": "MODS DISABLED BY --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "ΜѲỦƝ丁ΪƝǴ Ҫ₤ΪƐƝ丁 ΜѲƉṠ",
+        "original": "MOUNTING CLIENT MODS"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "ΜѲỦƝ丁ΪƝǴ Ҫ₤ΪƐƝ丁 ΜѲƉṠ ΪƝ ѲϜϜ₤ΪƝƐ ΜѲƉƐ",
+        "original": "MOUNTING CLIENT MODS IN OFFLINE MODE"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "ΜѲỦƝ丁ΪƝǴ ҪѲΜṔȂƝΪѲƝ ΜѲƉṠ... Ṕ₤ƐȂṠƐ ₩ȂΪ丁",
+        "original": "MOUNTING COMPANION MODS... PLEASE WAIT"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "ΜѲỦƝ丁ΪƝǴ ṠƐℝѶƐℝ ΜѲƉṠ",
+        "original": "MOUNTING SERVER MODS"
+    },
+    "Merge (experimental)": {
+        "message": "Μέȓɠέ (έ⌧⍴έȓїʍέƞҭȃ⌊)",
+        "original": "Merge (experimental)"
+    },
+    "Mods available to install": {
+        "message": "Μȏɗƨ ȃѷȃї⌊ȃБ⌊έ ҭȏ їƞƨҭȃ⌊⌊",
+        "original": "Mods available to install"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "Μȏƨҭ їƞƨҭȃ⌊⌊έɗ ʍȏɗƨ ϲȃƞ Бέ մƨέɗ їƞ ȏғғ⌊їƞέ ʍȏɗέ ῴїҭнȏմҭ ȃƞ їƞҭέȓƞέҭ ϲȏƞƞέϲҭїȏƞ (ƨȏʍέ ʍȏɗƨ ʍȃу ȓέԳմїȓέ ȃƞ їƞҭέȓƞέҭ ϲȏƞƞέϲҭїȏƞ).",
+        "original": "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Μմ⌊ҭї⍴⌊έ ϲȏƞғ⌊їϲҭїƞɠ մƞїҭ ƨέȓѷέȓ ʍȏɗƨ ʍȃу ϲȃմƨέ їƨƨմέƨ ⌊їќέ ƞȏ Бմї⌊ɗ Бȃȓ ȃƞɗ ƨέȓѷέȓ ϲȓȃƨнέƨ.",
+        "original": "Multiple conflicting unit server mods may cause issues like no build bar and server crashes."
+    },
+    "Name": {
+        "message": "Ɲȃʍέ",
+        "original": "Name"
+    },
+    "No": {
+        "message": "Ɲȏ ",
+        "original": "No "
+    },
+    "No __description__ mods match your criteria": {
+        "message": "Ɲȏ __description__ ʍȏɗƨ ʍȃҭϲн уȏմȓ ϲȓїҭέȓїȃ",
+        "original": "No __description__ mods match your criteria"
+    },
+    "No units match your criteria": {
+        "message": "Ɲȏ մƞїҭƨ ʍȃҭϲн уȏմȓ ϲȓїҭέȓїȃ",
+        "original": "No units match your criteria"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "ѲϜϜΪҪΪȂ₤ ƉΪṠҪѲℝƉ",
+        "original": "OFFICIAL DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "ѲϜϜΪҪΪȂ₤ ǴỦΪƉƐṠ",
+        "original": "OFFICIAL GUIDES"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "ѲϜϜΪҪΪȂ₤ ṠỦṔṔѲℝ丁",
+        "original": "OFFICIAL SUPPORT"
+    },
+    "OK": {
+        "message": "ѲҠ",
+        "original": "OK"
+    },
+    "Offline Mode": {
+        "message": "Ѳғғ⌊їƞέ Μȏɗέ",
+        "original": "Offline Mode"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Ѳƞ⌊у ƨέȓѷέȓ ʍȏɗƨ ϲȃƞ ϲнȃƞɠέ ҭнέ մƞїҭ ȓȏƨҭέȓ ȏȓ մƞїҭ ƨ⍴έϲƨ їƞ ȃƞ ȂΪ ƨќїȓʍїƨн ȏȓ ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέ ȃƞɗ ȃȓέ ɗȏῴƞ⌊ȏȃɗέɗ ғȓȏʍ ҭнέ ƨέȓѷέȓ Бу έȃϲн ϲ⌊їέƞҭ ҭȏ ⍴ȓέѷέƞҭ ϲнέȃҭїƞɠ.",
+        "original": "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating."
+    },
+    "Priority": {
+        "message": "Ṕȓїȏȓїҭу",
+        "original": "Priority"
+    },
+    "Priority:": {
+        "message": "Ṕȓїȏȓїҭу:",
+        "original": "Priority:"
+    },
+    "Privacy Policy": {
+        "message": "Ṕȓїѷȃϲу Ṕȏ⌊їϲу",
+        "original": "Privacy Policy"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ℝƐΜѲỦƝ丁ΪƝǴ ȂҪ丁ΪѶƐ Ҫ₤ΪƐƝ丁 ΜѲƉṠ",
+        "original": "REMOUNTING ACTIVE CLIENT MODS"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "ℝƐṠƐ丁丁ΪƝǴ ṠƐℝѶƐℝ ΜѲƉṠ",
+        "original": "RESETTING SERVER MODS"
+    },
+    "Recommended": {
+        "message": "ℝέϲȏʍʍέƞɗέɗ",
+        "original": "Recommended"
+    },
+    "Recommended mods": {
+        "message": "ℝέϲȏʍʍέƞɗέɗ ʍȏɗƨ",
+        "original": "Recommended mods"
+    },
+    "Reload File System Mods": {
+        "message": "ℝέ⌊ȏȃɗ Ϝї⌊έ Ṡуƨҭέʍ Μȏɗƨ",
+        "original": "Reload File System Mods"
+    },
+    "Returning to Main Menu": {
+        "message": "ℝέҭմȓƞїƞɠ ҭȏ Μȃїƞ Μέƞմ",
+        "original": "Returning to Main Menu"
+    },
+    "Season ends __date__": {
+        "message": "Ṡέȃƨȏƞ έƞɗƨ __date__",
+        "original": "Season ends __date__"
+    },
+    "Server Mods": {
+        "message": "Ṡέȓѷέȓ Μȏɗƨ",
+        "original": "Server Mods"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Ṡέȓѷέȓƨ ʍȏɗƨ ȃȓέ մ⍴⌊ȏȃɗέɗ ҭȏ ҭнέ ƨέȓѷέȓ ῴнέƞ уȏմ ϲȓέȃҭέ ȃƞ ȂΪ ƨќїȓʍїƨн ȏȓ ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέ ҭнέƞ ɗȏῴƞ⌊ȏȃɗέɗ ȃƞɗ ʍȏմƞҭέɗ (⌊ȏȃɗέɗ) ȏƞ έȃϲн ϲ⌊їέƞҭ ғȏȓ ȃ⌊⌊ ⍴⌊ȃуέȓƨ ȃƞɗ ƨ⍴έϲҭȃҭȏȓƨ ῴнέƞ ҭнέу لȏїƞ уȏմȓ ɠȃʍέ.",
+        "original": "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game."
+    },
+    "Size:": {
+        "message": "Ṡїℤέ:",
+        "original": "Size:"
+    },
+    "Sort": {
+        "message": "Ṡȏȓҭ",
+        "original": "Sort"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "丁Ѳ Ṕ₤ȂУ 1Ѷ1 ℝȂƝҠƐƉ ỦṠƐ ҪѲΜΜỦƝΪ丁У ΜѲƉṠ ȂƝƉ ȂѶѲΪƉ ΪṠṠỦƐṠ <Бȓ />Ṕ⌊έȃƨέ ғȏ⌊⌊ȏῴ ҭнέ ῴїќї їƞƨҭȓմϲҭїȏƞƨ ҭȏ ȓέʍȏѷέ ṔȂΜΜ ȃƞɗ уȏմȓ ғї⌊έƨуƨҭέʍ ʍȏɗƨ",
+        "original": "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods"
+    },
+    "Type": {
+        "message": "丁у⍴έ",
+        "original": "Type"
+    },
+    "UI Scenes": {
+        "message": "ỦΪ Ṡϲέƞέƨ",
+        "original": "UI Scenes"
+    },
+    "UNIT DATABASE": {
+        "message": "ỦƝΪ丁 ƉȂ丁Ȃ฿ȂṠƐ",
+        "original": "UNIT DATABASE"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "ỦṔƉȂ丁ΪƝǴ ȂҪ丁ΪѶƐ ΜѲƉṠ",
+        "original": "UPDATING ACTIVE MODS"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "ỦṔƉȂ丁ΪƝǴ ȂƝƉ ℝƐΜѲỦƝ丁ΪƝǴ ȂҪ丁ΪѶƐ Ҫ₤ΪƐƝ丁 ΜѲƉṠ",
+        "original": "UPDATING AND REMOUNTING ACTIVE CLIENT MODS"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "ỦṔƉȂ丁ΪƝǴ ȂѶȂΪ₤Ȃ฿₤Ɛ ΜѲƉṠ",
+        "original": "UPDATING AVAILABLE MODS"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "ỦṔƉȂ丁ΪƝǴ ҪѲΜΜỦƝΪ丁У ΜѲƉṠ ϜΪ₤ƐṠ",
+        "original": "UPDATING COMMUNITY MODS FILES"
+    },
+    "Uninstall": {
+        "message": "Ủƞїƞƨҭȃ⌊⌊",
+        "original": "Uninstall"
+    },
+    "Unit Restrictions": {
+        "message": "Ủƞїҭ ℝέƨҭȓїϲҭїȏƞƨ",
+        "original": "Unit Restrictions"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "Ủƞїҭ ȓέƨҭȓїϲҭїȏƞƨ ɗȏ ƞȏҭ ȃ⍴⍴⌊у ҭȏ Ǵȃ⌊ȃϲҭїϲ ₩ȃȓ.",
+        "original": "Unit restrictions do not apply to Galactic War."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Ủƞїҭ ȓέƨҭȓїϲҭїȏƞƨ ҭȏ ɗїƨȃБ⌊έ ƨ⍴έϲїғїϲ մƞїҭƨ ғȏȓ ȃ⌊⌊ ⍴⌊ȃуέȓƨ їƞ ȂΪ ƨќїȓʍїƨн & ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέƨ уȏմ ϲȓέȃҭέ",
+        "original": "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create"
+    },
+    "Units": {
+        "message": "Ủƞїҭƨ",
+        "original": "Units"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Ủƞїҭƨ ϲȃƞ Бέ ɗїƨȃБ⌊έɗ ғȏȓ ȃ⌊⌊ ⍴⌊ȃуέȓƨ їƞϲ⌊մɗїƞɠ ҭнέ ȂΪ їƞ ȂΪ ƨќїȓʍїƨн ȏȓ ʍմ⌊ҭї⍴⌊ȃуέȓ ɠȃʍέƨ уȏմ ϲȓέȃҭέ.",
+        "original": "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create."
+    },
+    "Units matching your criteria": {
+        "message": "Ủƞїҭƨ ʍȃҭϲнїƞɠ уȏմȓ ϲȓїҭέȓїȃ",
+        "original": "Units matching your criteria"
+    },
+    "Units:": {
+        "message": "Ủƞїҭƨ:",
+        "original": "Units:"
+    },
+    "Updated": {
+        "message": "Ủ⍴ɗȃҭέɗ",
+        "original": "Updated"
+    },
+    "Used By": {
+        "message": "Ủƨέɗ ฿у",
+        "original": "Used By"
+    },
+    "Version:": {
+        "message": "Ѷέȓƨїȏƞ:",
+        "original": "Version:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "__description__ ʍȏɗƨ ʍȃҭϲнїƞɠ уȏմȓ ϲȓїҭέȓїȃ",
+        "original": "__description__ mods matching your criteria"
+    },
+    "about-community-mods": {
+        "message": "Ҫȏʍʍմƞїҭу Μȏɗƨ їƨ ȃ ƨέȓѷїϲέ ⍴ȓȏѷїɗέɗ Бу <ȃ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ\" ɗȃҭȃ-Бїƞɗ=\"ϲ⌊їϲќ: ȏ⍴έƞṔȃ₤ȏББу\">⍴ȃ⌊ȏББу.ϲȏʍ <ƨ⍴ȃƞ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ-їϲȏƞ\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ> ғȏȓ <ȃ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ\" ɗȃҭȃ-Бїƞɗ=\"ϲ⌊їϲќ: ȏ⍴έƞ₩έБƨїҭέ\">Ṕ⌊ȃƞέҭȃȓу Ȃƞƞїнї⌊ȃҭїȏƞ Ϊƞϲ <ƨ⍴ȃƞ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ-їϲȏƞ\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ> ҭнȃҭ έ⌧ҭέƞɗƨ ҭнέ Бȃƨέ ɠȃʍέ ῴїҭн έƞнȃƞϲέʍέƞҭƨ, ғї⌧έƨ ȃƞɗ нմƞɗȓέɗƨ ȏғ ϲȏʍʍմƞїҭу ϲȓέȃҭέɗ ʍȏɗƨ ⌊їќέ <ȃ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ\" ɗȃҭȃ-Бїƞɗ=\"ϲ⌊їϲќ: ȏ⍴έƞ₤έɠїȏƞƐ⌧⍴ȃƞƨїȏƞ\">₤έɠїȏƞ Ɛ⌧⍴ȃƞƨїȏƞ <ƨ⍴ȃƞ ϲ⌊ȃƨƨ=\"ϲȏʍʍմƞїҭу-ʍȏɗƨ-⌊їƞќ-їϲȏƞ\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ>.",
+        "original": "Community Mods is a service provided by <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> for <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a> that extends the base game with enhancements, fixes and hundreds of community created mods like <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">Legion Expansion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Ҫȏʍʍմƞїҭу Μȏɗƨ ȃƞɗ Ҫȏʍʍմƞїҭу Ҫнȃҭ ȃȓέ ƨέȓѷїϲέƨ ⍴ȓȏѷїɗέɗ Бу <ȃ ϲ⌊ȃƨƨ=\\\"⌊їƞќ\\\" ɗȃҭȃ-Бїƞɗ=\\\"ϲ⌊їϲќ: ȏ⍴έƞṔȃ₤ȏББу, ϲ⌊їϲќ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ', ȓȏ⌊⌊ȏѷέȓ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ'\\\">⍴ȃ⌊ȏББу.ϲȏʍ <ƨ⍴ȃƞ ƨҭу⌊έ=\\\"⍴ȃɗɗїƞɠ-ȓїɠнҭ: 5⍴⌧; ғȏƞҭ-ƨїℤέ: 12⍴⌧; ғȏƞҭ-ғȃʍї⌊у:'Ǵ⌊у⍴нїϲȏƞƨ Ӈȃ⌊ғ⌊їƞɠƨ'\\\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ> ғȏȓ <ȃ ϲ⌊ȃƨƨ=\\\"⌊їƞќ\\\" ɗȃҭȃ-Бїƞɗ=\\\"ϲ⌊їϲќ: ȏ⍴έƞ₩έБƨїҭέ, ϲ⌊їϲќ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ', ȓȏ⌊⌊ȏѷέȓ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ'\\\">Ṕ⌊ȃƞέҭȃȓу Ȃƞƞїнї⌊ȃҭїȏƞ Ϊƞϲ <ƨ⍴ȃƞ ƨҭу⌊έ=\\\"⍴ȃɗɗїƞɠ-ȓїɠнҭ: 5⍴⌧; ғȏƞҭ-ƨїℤέ: 12⍴⌧; ғȏƞҭ-ғȃʍї⌊у:'Ǵ⌊у⍴нїϲȏƞƨ Ӈȃ⌊ғ⌊їƞɠƨ'\\\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ> ҭнȃҭ έ⌧ҭέƞɗ ҭнέ Бȃƨέ ɠȃʍέ ῴїҭн έƞнȃƞϲέʍέƞҭƨ, ғї⌧έƨ ȃƞɗ нմƞɗȓέɗƨ ȏғ ϲȏʍʍմƞїҭу ϲȓέȃҭέɗ ʍȏɗƨ ⌊їќέ <ȃ ϲ⌊ȃƨƨ=\\\"⌊їƞќ\\\" ɗȃҭȃ-Бїƞɗ=\\\"ϲ⌊їϲќ: ȏ⍴έƞ₤έɠїȏƞƐ⌧⍴ȃƞƨїȏƞ, ϲ⌊їϲќ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ', ȓȏ⌊⌊ȏѷέȓ_ƨȏմƞɗ: 'ɗέғȃմ⌊ҭ'\\\">₤έɠїȏƞ Ɛ⌧⍴ȃƞƨїȏƞ <ƨ⍴ȃƞ ƨҭу⌊έ=\\\"⍴ȃɗɗїƞɠ-ȓїɠнҭ: 5⍴⌧; ғȏƞҭ-ƨїℤέ: 12⍴⌧; ғȏƞҭ-ғȃʍї⌊у:'Ǵ⌊у⍴нїϲȏƞƨ Ӈȃ⌊ғ⌊їƞɠƨ'\\\">&#⌧έ164;</ƨ⍴ȃƞ></ȃ>",
+        "original": "Community Mods and Community Chat are services provided by <a class=\\\"link\\\" data-bind=\\\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\\\">palobby.com <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a> for <a class=\\\"link\\\" data-bind=\\\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\\\">Planetary Annihilation Inc <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a> that extend the base game with enhancements, fixes and hundreds of community created mods like <a class=\\\"link\\\" data-bind=\\\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\\\">Legion Expansion <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a>"
+    },
+    "privacy policy": {
+        "message": "⍴ȓїѷȃϲу ⍴ȏ⌊їϲу",
+        "original": "privacy policy"
+    },
+    "Companions": {
+        "message": "Ҫȏʍ⍴ȃƞїȏƞƨ",
+        "original": "Companions"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "ƐƞȃБ⌊έ ₤έɠїȏƞ Ҫȏʍʍմƞїҭу Ɛ⌧⍴ȃƞƨїȏƞ ȂΪ",
+        "original": "Enable Legion Community Expansion AI"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ ℝȃƞќ",
+        "original": "__rank_title__ Rank"
+    },
+    "Systems": {
+        "message": "Ṡуƨҭέʍƨ",
+        "original": "Systems"
+    }
+}

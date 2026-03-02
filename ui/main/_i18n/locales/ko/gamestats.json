@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "건설 및 생산 효율"
+    },
+    "CLOSE": {
+        "message": "닫기"
+    },
+    "Command Rate": {
+        "message": "지휘율"
+    },
+    "Draw": {
+        "message": "무승부"
+    },
+    "Energy Demand": {
+        "message": "에너지 수요"
+    },
+    "Energy Production": {
+        "message": "에너지 생산"
+    },
+    "Energy Wasted": {
+        "message": "잉여 에너지"
+    },
+    "GAME SUMMARY": {
+        "message": "게임 요약"
+    },
+    "In Progress": {
+        "message": "진행 중"
+    },
+    "Metal Demand": {
+        "message": "금속 수요"
+    },
+    "Metal Destruction Rate": {
+        "message": "금속 파괴율"
+    },
+    "Metal Loss Rate": {
+        "message": "금속 손실률"
+    },
+    "Metal Production": {
+        "message": "금속 생산"
+    },
+    "Metal Wasted": {
+        "message": "잉여 금속"
+    },
+    "Retrieving Stats...": {
+        "message": "통계 가져오는 중..."
+    },
+    "Total Units": {
+        "message": "총 유닛"
+    },
+    "Unit Build Rate": {
+        "message": "유닛 생산률"
+    },
+    "Unit Destruction Rate": {
+        "message": "유닛 파괴율"
+    },
+    "Unit Loss Rate": {
+        "message": "유닛 손실률"
+    },
+    "Units In Combat": {
+        "message": "전투 중 유닛"
+    },
+    "Units: Fabricators": {
+        "message": "유닛: 건설"
+    },
+    "Units: Factory": {
+        "message": "유닛: 공장"
+    },
+    "Units: Mobile": {
+        "message": "유닛: 기동"
+    },
+    "Winner:": {
+        "message": "승자:"
+    },
+    "Winners:": {
+        "message": "승자:"
+    }
+}

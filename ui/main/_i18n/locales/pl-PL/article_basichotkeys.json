@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "Ważne skróty klawiszowe"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "Przewodnik PA: Podstawowe skróty klawiszowe"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Wybór dowódcy"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Wybór tych jednostek spośród aktualnie wybranych, które są widoczne"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Wybór bezczynnych fabberów na ekranie"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Przełączanie trybów działania"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Przełączanie trybu produkcji"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] – Przybliżenie wybranej jednostki"
+    }
+}

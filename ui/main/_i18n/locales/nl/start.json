@@ -1,0 +1,491 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "#__position__ __league__ positie"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "1v1 MATCH MET CLASSIFICATIE"
+    },
+    "ABANDON": {
+        "message": "VERLATEN"
+    },
+    "AI Skirmish": {
+        "message": "Schermutseling met AI"
+    },
+    "Account created successfully.": {
+        "message": "Account is aangemaakt."
+    },
+    "Activate": {
+        "message": "Activeren"
+    },
+    "Activation Key": {
+        "message": "Activeringssleutel"
+    },
+    "An activation key is required to play online.": {
+        "message": "Een activeringssleutel is vereist om online te spelen."
+    },
+    "Armory": {
+        "message": "Arsenaal"
+    },
+    "Art": {
+        "message": "Art"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "Als dank voor je voortdurende steun, heb je de TITANS-uitbreiding gratis gekregen!"
+    },
+    "Audio": {
+        "message": "Geluid"
+    },
+    "Audio Engine:": {
+        "message": "Geluids-engine:"
+    },
+    "Battle Everyone.": {
+        "message": "Vecht tegen iedereen."
+    },
+    "Before you jump in...": {
+        "message": "Voordat je begint..."
+    },
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "Close": {
+        "message": "Sluiten"
+    },
+    "Community Videos": {
+        "message": "Community-video's"
+    },
+    "Confirm Password": {
+        "message": "Wachtwoord bevestigen"
+    },
+    "Connecting to PA": {
+        "message": "Verbinden met PA"
+    },
+    "Continue Tutorial": {
+        "message": "Doorgaan met speluitleg"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Cosmic Edition-commandanten"
+    },
+    "Create Account": {
+        "message": "Account aanmaken"
+    },
+    "Create an account to play online.": {
+        "message": "Maak een account aan om online te spelen."
+    },
+    "Credits": {
+        "message": "Credits"
+    },
+    "Custom": {
+        "message": "Aangepast"
+    },
+    "Design": {
+        "message": "Ontwerp"
+    },
+    "Dismiss": {
+        "message": "Afwijzen"
+    },
+    "EXIT": {
+        "message": "STOPPEN"
+    },
+    "Email": {
+        "message": "E-mailadres"
+    },
+    "Email already in use.": {
+        "message": "E-mailadres is al in gebruik."
+    },
+    "Email is invalid": {
+        "message": "E-mailadres is ongeldig"
+    },
+    "Enable Offline Play": {
+        "message": "Offline spelen inschakelen"
+    },
+    "Engineering": {
+        "message": "Engineering"
+    },
+    "Engineers": {
+        "message": "Engineers"
+    },
+    "Extra special thanks to our:": {
+        "message": "Speciale dank gaat uit naar:"
+    },
+    "Founding Commanders": {
+        "message": "Oorspronkelijke Commandanten"
+    },
+    "Galactic War": {
+        "message": "Galactische Oorlog"
+    },
+    "Gameplay Disabled": {
+        "message": "Spelverloop uitgeschakeld"
+    },
+    "Gameplay Unavailable": {
+        "message": "Spelverloop niet beschikbaar"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "Als je deze aanbeveling negeert door offline spelen in te schakelen, kunnen de prestaties verslechteren."
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "Als je Klassieke PA wilt spelen, raden we aan TITANS te runnen en je actieve uitbreiding in de speelstijlinstellingen te veranderen."
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "Al __inactive_days__ dagen niet actief"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Onjuiste gebruikersnaam of onjuist wachtwoord. Controleer je invoer en probeer het opnieuw."
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "Ongeldige sessie-ticket, log opnieuw in."
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "Het lijkt erop dat Planetary Annihilation de laatste keer dat je hebt gespeeld, is gecrasht. Deze crash komt door een probleem in de geïnstalleerde grafische stuurprogramma's."
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Het lijkt erop dat je de Steam Overlay hebt uitgeschakeld, hierdoor kunnen we niet doorgaan met je aankoop."
+    },
+    "LATER": {
+        "message": "LATER"
+    },
+    "Last match played": {
+        "message": "Laatst gespeelde wedstrijd"
+    },
+    "Latest News": {
+        "message": "Laatste nieuws"
+    },
+    "Leaderboards": {
+        "message": "Ranglijsten"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "Leer de basics. Bestuur een Titan. Smash een planeet."
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "Zo te zien is je speluitleg al actief."
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "Zo te zien voer je Klassieke PA uit vanuit je Steambibliotheek in plaats van TITANS."
+    },
+    "Minimize": {
+        "message": "Minimaliseren"
+    },
+    "More Info": {
+        "message": "Meer info"
+    },
+    "Multiplayer": {
+        "message": "Multiplayer"
+    },
+    "Music Composed by": {
+        "message": "Muziek gecomponeerd door"
+    },
+    "New Build Available:": {
+        "message": "Nieuwe build beschikbaar:"
+    },
+    "No thanks. I got this.": {
+        "message": "Nee bedankt. Het gaat wel lukken."
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Niets van dit alles was mogelijk geweest zonder jouw steun en we zijn dankbaar dat je de gok hebt gewaagd en in onze visie hebt geloofd."
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "Northwest Sinfonia and Chorale"
+    },
+    "Not right now": {
+        "message": "Niet nu"
+    },
+    "OK": {
+        "message": "OKÉ"
+    },
+    "OKAY": {
+        "message": "OKÉ"
+    },
+    "Official Discord": {
+        "message": "Officiële Discord"
+    },
+    "Official Guides": {
+        "message": "Officiële gidsen"
+    },
+    "Official Support": {
+        "message": "Officiële ondersteuning"
+    },
+    "Offline Play Disabled": {
+        "message": "Offline spelen uitgeschakeld"
+    },
+    "Offline Play Unavailable": {
+        "message": "Offline spelen niet beschikbaar"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "Vaak kunnen dit type crashes worden opgelost door ervoor te zorgen dat de stuurprogramma's van je grafische kaart van __vendor_name__ zijn bijgewerkt, en we [strong]raden sterk aan[/strong] dat je de laatste versie van de stuurprogramma's via hun website downloadt en installeert."
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "Oeps! We kunnen het spel niet vinden binnen je  account. Als je Steam gebruikt, start Steam dan opnieuw op en probeer het opnieuw. Als het probleem zich blijft voordoen, neem dan contact met ons op via __email__"
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "Oeps! Zo te zien heeft je account een ongeldige status. Als je Steam gebruikt, start Steam dan opnieuw op en probeer het opnieuw. Als het probleem zich blijft voordoen, neem dan contact met ons op via __email__"
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "De stuurprogrammawebsite van __vendor_name__ openen"
+    },
+    "Password": {
+        "message": "Wachtwoord"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "Wachtwoord moet tussen 6 en 20 tekens bevatten."
+    },
+    "Passwords do not match.": {
+        "message": "Wachtwoorden komen niet overeen."
+    },
+    "Play Tutorial": {
+        "message": "Speluitleg spelen"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "Speel online voor matchmaking, ranglijsten en speciale servers."
+    },
+    "Player Guide": {
+        "message": "Handleiding"
+    },
+    "Please choose a default region.": {
+        "message": "Kies een standaardregio."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "Maak gebruik van alle nieuwe eenheden, nieuwe werelden en nieuwe manieren om alles te vernietigen!"
+    },
+    "Please enter an activation key.": {
+        "message": "Voer een activeringssleutel in."
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "Verlaat het spel, zoek het spel vervolgens op in je Steambibliotheek, klik erop met de rechtermuisknop, selecteer Eigenschappen, zorg dat \"Steam Overlay\" is aangevinkt. Herstart het spel en probeer het opnieuw."
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Meld je aan om op PA-servers te spelen of stel onder [strong]Instellingen[/strong] de lokale server handmatig in op [strong]Aan[/strong]."
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "Probeer het later opnieuw. Neem contact op met de ondersteuning en/of raadpleeg de forums als deze fout aanhoudt."
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "Mogelijke crash van stuurprogramma van grafische kaart gedetecteerd"
+    },
+    "Production": {
+        "message": "Productie"
+    },
+    "Production Babies": {
+        "message": "Productiebaby's"
+    },
+    "QA": {
+        "message": "QA"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "SLUITEN & TITANS INSTALLEREN"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "SLUITEN & TITANS STARTEN"
+    },
+    "Quit": {
+        "message": "Afsluiten"
+    },
+    "RECONNECT": {
+        "message": "OPNIEUW VERBINDEN"
+    },
+    "Reconnect": {
+        "message": "Opnieuw verbinden"
+    },
+    "Replays": {
+        "message": "Herhalingen"
+    },
+    "Restart From Beginning": {
+        "message": "Opnieuw starten vanaf het begin"
+    },
+    "Resume last saved:": {
+        "message": "Hervatten vanaf laatst opgeslagen:"
+    },
+    "Saved Games": {
+        "message": "Opgeslagen spellen"
+    },
+    "Season ends __date__": {
+        "message": "Seizoen loopt af op __date__"
+    },
+    "Settings": {
+        "message": "Instellingen"
+    },
+    "Sign In": {
+        "message": "Aanmelden"
+    },
+    "Sign in": {
+        "message": "Aanmelden"
+    },
+    "Sign in with your PA account": {
+        "message": "Aanmelden met je PA-account"
+    },
+    "Single Player": {
+        "message": "Eén speler"
+    },
+    "Soundtrack Credits": {
+        "message": "Credits soundtrack"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam Overlay uitgeschakeld"
+    },
+    "Streams": {
+        "message": "Streams"
+    },
+    "System Designer": {
+        "message": "Systeemontwerper"
+    },
+    "The TITANS have arrived.": {
+        "message": "De TITANS zijn aangekomen."
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "De ingevoerde code is al gebruikt als Steamsleutel."
+    },
+    "The entered code has already been used.": {
+        "message": "De ingevoerde code is al gebruikt."
+    },
+    "The entered code was invalid.": {
+        "message": "De ingevoerde code was ongeldig."
+    },
+    "The game will require an internet connection to play.": {
+        "message": "Voor het spel is een internetverbinding vereist."
+    },
+    "The leaderboard is currently empty.": {
+        "message": "Deze ranglijst is momenteel leeg."
+    },
+    "There are no regions available for this build version.": {
+        "message": "Er zijn geen regio's beschikbaar voor deze buildversie."
+    },
+    "There are no streams currently.": {
+        "message": "Er zijn momenteel geen streams."
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "Er is een probleem met Steam. Start Steam opnieuw en probeer het opnieuw of neem contact met ons op via __email__"
+    },
+    "They're here for you.": {
+        "message": "Ze staan voor je klaar."
+    },
+    "This account already owns this title.": {
+        "message": "Deze titel is al in bezit van dit account."
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "Dit zou niet moeten gebeuren. Neem contact met ons op via  __email__"
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "We willen degenen die hebben bijgedragen aan onze Kickstarter-campagne allemaal hartelijk bedanken voor hun steun."
+    },
+    "Top Ranked Players": {
+        "message": "Topspelers"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "Probeer de TITANS-speluitleg"
+    },
+    "Tutorial": {
+        "message": "Speluitleg"
+    },
+    "Twitch": {
+        "message": "Twitch"
+    },
+    "UI Library:": {
+        "message": "UI-bibliotheek:"
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "Kon niet aanmelden"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "Neem contact met ons op via __email__ als je je Steam-account (e-mailadres al in gebruik) niet kunt koppelen."
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "Neem contact met ons op via __email__ als je je Steam-account (e-mailadres ongeldig) niet kunt koppelen."
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "Neem contact met ons op via __email__ als je je Steam-account (onbekende fout __code__) niet kunt koppelen."
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "Neem contact met ons op via __email__ als je je Steam-account (gebruikersnaam al in gebruik) niet kunt koppelen."
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "Herstart het spel of neem contact met ons op via __email__ als je je Steam-account niet kunt koppelen."
+    },
+    "Unknown": {
+        "message": "Onbekend"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "Onbekende foutverificatie, mogelijk gerelateerd aan firewall- of antivirusinstellingen. Neem contact op met ondersteuning als het probleem aanhoudt. (__error_code__)"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "Opwaarderen naar Titans met de nieuwe, permanente korting van 90%"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "Gebruikersnaam moet tussen 3 en 20 tekens bevatten."
+    },
+    "Username": {
+        "message": "Gebruikersnaam"
+    },
+    "Username already in use.": {
+        "message": "Gebruikersnaam is al in gebruik."
+    },
+    "Version:": {
+        "message": "Versie:"
+    },
+    "View Intro": {
+        "message": "Intro bekijken"
+    },
+    "View Leaderboards": {
+        "message": "Ranglijsten bekijken"
+    },
+    "View full column": {
+        "message": "Volledige kolom bekijken"
+    },
+    "Watch Replay": {
+        "message": "Herhaling bekijken"
+    },
+    "You are already assigned to a game.": {
+        "message": "Je bent al aan een spel toegewezen."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Je kunt de regio later in het instellingenmenu veranderen."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Je hebt een nieuwe client nodig om het spel te spelen. Steamgebruikers moeten wellicht Steam herstarten om de nieuwe client te krijgen."
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Je moet __number__ geclassificeerde spellen spelen om een positie op de ranglijst te krijgen"
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "Je vindt het in je Steam-bibliotheek direct naast Planetary Annihilation!"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "Je account is verbannen. Als je denkt dat dit een vergissing is, neem dan contact met ons op via __email__"
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "Je standaardregio is momenteel niet beschikbaar. Kies een andere regio."
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "Je machine voldoet niet aan de aanbevolen systeemvereisten voor offline spelen. Voor de offlinemodus bevelen we ten minste 8 gigabyte RAM en een Quad Core-processor aan."
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "Je machine kan Planetary Annihilation niet offline uitvoeren - de offlinemodus vereist een 64-bits processor en een 64-bits besturingssysteem."
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "Je systeem voldoet niet aan de vereisten voor offline spelen. Meld je aan om op PA-servers te spelen of stel onder [strong]Instellingen[/strong] handmatig de lokale server in op [strong]Aan[/strong]."
+    },
+    "Your username is: __username__": {
+        "message": "Je gebruikersnaam is: __username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ positie"
+    },
+    "__viewer_count__ viewers": {
+        "message": "__viewer_count__ kijkers"
+    },
+    "days": {
+        "message": "dagen"
+    },
+    "ending in": {
+        "message": "eindigt over"
+    },
+    "starting in": {
+        "message": "start over"
+    },
+    "LIVE": {
+        "message": "LIVE "
+    },
+    "View Replays": {
+        "message": "Herhalingen bekijken"
+    }
+}

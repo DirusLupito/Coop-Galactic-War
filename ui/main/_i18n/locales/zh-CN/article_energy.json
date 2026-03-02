@@ -1,0 +1,23 @@
+{
+    "Advanced Energy Plants generate 8x more energy": {
+        "message": "高级能源厂所生成的能源要多出8倍"
+    },
+    "Build Energy Plants to generate energy": {
+        "message": "建造能源厂以生成能源"
+    },
+    "Energy Resource": {
+        "message": "能源资源"
+    },
+    "Energy is required for building units, structures and some functionality": {
+        "message": "各种单位、建筑物和部分功能的建造均需要消耗能源"
+    },
+    "PA Guide: Energy": {
+        "message": "PA 指南：能源"
+    },
+    "Select Fabber, select [style=text_callout]Build Energy Plant Icon[/style].": {
+        "message": "点选建造兵，然后点选[style=text_callout]建造能量厂图标[/style]。"
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build multiple Energy Plants.": {
+        "message": "[style=text_callout]按住鼠标左键并拖动鼠标[/style]，即可同时建造多个能源厂。"
+    }
+}

@@ -1,0 +1,104 @@
+{
+    "APPROVE": {
+        "message": "承認"
+    },
+    "APPROVED USERS": {
+        "message": "承認したユーザー"
+    },
+    "Add": {
+        "message": "追加"
+    },
+    "Add Contacts": {
+        "message": "連絡先を追加"
+    },
+    "Add a Friend": {
+        "message": "フレンドを追加"
+    },
+    "BLOCK": {
+        "message": "ブロック"
+    },
+    "BLOCKED USERS": {
+        "message": "ブロックしたユーザー"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Close": {
+        "message": "閉じる"
+    },
+    "Contact List Updated": {
+        "message": "連絡先リストを更新"
+    },
+    "Contact Not Found": {
+        "message": "連絡先が見つかりません"
+    },
+    "Current Nickname:": {
+        "message": "現在のニックネーム:"
+    },
+    "Dismiss": {
+        "message": "閉じる"
+    },
+    "Filter contacts by tag:": {
+        "message": "タグで連絡先をフィルター:"
+    },
+    "Games you make will be hidden to these players.": {
+        "message": "あなたが作成したゲームはこれらのプレイヤーには見えません"
+    },
+    "Name:": {
+        "message": "名前: "
+    },
+    "New Nickname:": {
+        "message": "新しいニックネーム: "
+    },
+    "New Tag:": {
+        "message": "新しいタグ: "
+    },
+    "Players you have encountered recently.": {
+        "message": "最近出会ったプレイヤー"
+    },
+    "Private games you make will only be visible to these players.": {
+        "message": "あなたが作成したプライベートゲームはこれらのプレイヤーにしか見えません"
+    },
+    "RECENT": {
+        "message": "最近"
+    },
+    "REMOVE": {
+        "message": "削除"
+    },
+    "RENAME": {
+        "message": "名前変更"
+    },
+    "Refresh Contacts": {
+        "message": "連絡先を更新"
+    },
+    "Refreshing friends list.....": {
+        "message": "フレンドリストを更新中…"
+    },
+    "Rename": {
+        "message": "名前変更"
+    },
+    "Rename Friend": {
+        "message": "友達の名前を変更"
+    },
+    "SOCIAL": {
+        "message": "ソーシャル"
+    },
+    "Tag": {
+        "message": "タグ"
+    },
+    "Tag Friend:": {
+        "message": "フレンドにタグ付け: "
+    },
+    "Tags:": {
+        "message": "タグ: "
+    },
+    "UBERDEX": {
+        "message": "UBERDEX"
+    },
+    "Uber Name": {
+        "message": "ユーザー名"
+    },
+    "or": {
+        "message": "または"
+    }
+}

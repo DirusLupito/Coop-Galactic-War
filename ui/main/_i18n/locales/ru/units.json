@@ -1,0 +1,551 @@
+{
+    "Advanced Air Factory": {
+        "message": "Продвинутый авиазавод"
+    },
+    "Advanced Anti-Air - Overhead heavy damage. Only attacks air.": {
+        "message": "Продвинутая система ПВО - Наносит огромный урон угрозам с воздуха. Атакует только воздушные цели."
+    },
+    "Advanced Artillery - Extremely long range heavy damage. Can lay siege from very far away. Attacks land and sea targets.": {
+        "message": "Продвинутая артиллерия – Наносит огромный урон на очень большом расстоянии. Можно использовать как дальнобойное осадное орудие. Атакует наземные и морские цели."
+    },
+    "Advanced Bot Factory": {
+        "message": "Продвинутая фабрика ботов"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "Продвинутый боевой фабрикатор – Ремонтирует гораздо быстрее и автоматически собирает обломки. Помимо мин может также строить телепорты и оборонительные сооружения."
+    },
+    "Advanced Combat Fabricator - Repairs much faster. Can build teleporters and turrets in addition to mines.": {
+        "message": "Продвинутый боевой фабрикатор – Ремонтирует гораздо быстрее. Помимо мин может также строить турели и телепорты."
+    },
+    "Advanced Economy - Produces energy.": {
+        "message": "Продвинутая экономика – Производит энергию."
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "Продвинутая экономика – Производит металл, может размещаться только на залежах металла."
+    },
+    "Advanced Energy Plant": {
+        "message": "Продвинутая электростанция"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Продвинутый строительный самолёт"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Продвинутый строительный бот"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Продвинутый строительный корабль"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Продвинутая строительная машина"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "Продвинутые фабрикатор – Строит обычные и продвинутые здания."
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "Продвинутый фабрикатор – Строит обычные и продвинутые верфи."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "Продвинутый фабрикатор – Строит обычные и продвинутые здания."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "Продвинутый фабрикатор – Строит обычные и продвинутые здания. Устойчив к урону. Более мощный, чем другие фабрикаторы."
+    },
+    "Advanced Interplanetary Fighter - Stronger fighter. Can move between planets. Can only attack air targets.": {
+        "message": "Продвинутый межпланетный истребитель – Усиленный истребитель. Может перемещаться между планетами. Может атаковать только воздушные цели."
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Продвинутая лазерная башня"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "Продвинутый завод – Строит обычные и продвинутые воздушные юниты."
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "Продвинутый завод – Строит обычные и продвинутые боты."
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "Продвинутый завод – Строит обычную и продвинутую технику."
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "Продвинутый завод – Строит обычные и продвинутые морские единицы."
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "Продвинутый завод – Строит орбитальные спутники и космические корабли."
+    },
+    "Advanced Metal Extractor": {
+        "message": "Продвинутый добытчик металла"
+    },
+    "Advanced Naval Factory": {
+        "message": "Продвинутая верфь"
+    },
+    "Advanced Radar": {
+        "message": "Продвинутый радар"
+    },
+    "Advanced Radar - Detects a vast area for enemy land, sea, and air units.": {
+        "message": "Продвинутый радар – Обнаруживает наземные, морские и воздушные подразделения противника на обширной территории."
+    },
+    "Advanced Radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "Продвинутый радар – Обнаруживает ближайшие наземные, морские и воздушные подразделения противника."
+    },
+    "Advanced Radar Satellite": {
+        "message": "Продвинутый Спутник-Радар"
+    },
+    "Advanced Submarine - Radar stealth with very high damage. Attacks land, sea and undersea targets.": {
+        "message": "Продвинутая подлодка – Не обнаруживается радаром и наносит очень высокий урон. Атакует наземные, морские и подводные цели."
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "Продвинутая торпедная установка"
+    },
+    "Advanced Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "Продвинутая турель – Оборудована противовоздушной и противокорабельной обороной."
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Продвинутый Машинный Завод"
+    },
+    "Air Factory": {
+        "message": "Авиазавод"
+    },
+    "Air Transport - Load a land unit to transport for snipes or expansions.": {
+        "message": "Воздушный транспорт – Перевозит наземные единицы, которые будут уничтожать вражеских коммандеров и захватывать ресурсы."
+    },
+    "All Terrain Bot - Can crawl almost anywhere.": {
+        "message": "Вездеходный бот – Может вскарабкаться куда-угодно."
+    },
+    "Anti-Air Bot - Equipped with basic anti-air missiles.": {
+        "message": "Противовоздушный бот – Оснащен базовыми противовоздушными ракетами."
+    },
+    "Anti-Air Defense - Equipped with homing missiles. Only attacks air.": {
+        "message": "Средство ПВО – Оснащено самонаводящимися ракетами. Атакует только воздушные цели."
+    },
+    "Anti-Nuke - Builds advanced anti-nuclear missiles.": {
+        "message": "П.Р.О – Строит продвинутые ракеты, способные сбивать вражеские ядерные ракеты."
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Установка П.Р.О"
+    },
+    "Anti-Orbital Defense - Rapid fire with high damage. Attacks orbital targets and intercepts drop pods.": {
+        "message": "Комплекс ПКО – Скорострельное орудие, наносящие огромный урон. Атакует орбитальные цели и перехватывает десантные капсулы."
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "П.Р.О. - Сбивает ядерные ракеты противника"
+    },
+    "Artillery - Medium range for siege and area denial. Attacks land and sea targets.": {
+        "message": "Артиллерия – Оружие среднего радиуса действия, подходящее для осады и огня на воспрещение. Атакует наземные и морские цели."
+    },
+    "Assault Bot - Armoured with high damage guns and torpedoes. Amphibious. Attacks land and sea.": {
+        "message": "Штурмовой бот – Вооружен мощными пушками и торпедами. Десантный транспорт. Атакует наземные и морские цели."
+    },
+    "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets.": {
+        "message": "Штурмовой танк – Обладает тяжелой броней и наносит сокрушительный урон. Уязвим к атакам с флангов. Атакует наземные и морские цели."
+    },
+    "Attack Vehicle - Fast, adaptable, expendable. Attacks surface targets.": {
+        "message": "Штурмовая техника — Быстрая, легко адаптирующаяся расходная единица. Атакует наземные цели."
+    },
+    "Barrier - Blocks units and protects from incoming fire.": {
+        "message": "Преграда – Блокирует юниты и защищает от огня противника."
+    },
+    "Basic Economy - Produces energy.": {
+        "message": "Базовая экономика – Производит энергию."
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "Базовая экономика – Производит металл, может размещаться только на залежах металла."
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "Базовый фабрикатор – Строит базовые здания."
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "Базовый фабрикатор – Строит базовые здания. Слабее, чем другие фабрикаторы."
+    },
+    "Basic Fabricator - Builds basic naval structures.": {
+        "message": "Базовый фабрикатор – Строит базовые верфи."
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "Базовый фабрикатор – Строит базовые верфи. Парит над водой."
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "Базовый фабрикатор – Строит базовые здания. Устойчив к урону. Более мощный, чем другие фабрикаторы."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks land, air and sea targets when on land.": {
+        "message": "Базовая пехота – Быстрая, легко адаптирующаяся расходная единица. Десантный транспорт. Когда высаживается, атакует наземные, воздушные и морские цели."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks surface targets when on land.": {
+        "message": "Базовая пехота — Быстрая, легко адаптирующаяся расходная единица. Десантный транспорт. Когда высаживается, атакует наземные цели."
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "Базовый завод – Строит и запускает базовые орбитальные единицы."
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "Базовый завод – Строит базовые воздушные единицы."
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "Базовый завод – Строит базовых ботов."
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "Базовый завод – Строит базовые наземные единицы."
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "Базовый завод – Строит базовые морские единицы."
+    },
+    "Basic Radar - Detects a large area for enemy land, sea, and air units.": {
+        "message": "Базовый радар – Обнаруживает наземные, морские и воздушные подразделения противника на большой территории."
+    },
+    "Basic Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "Базовая турель – Оборудована противовоздушной и противокорабельной обороной."
+    },
+    "Basic radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "Базовый радар – Обнаруживает ближайшие наземные, морские и воздушные подразделения противника."
+    },
+    "Battleship - Long range advanced anti-ship, and anti-land guns.": {
+        "message": "Линкор – Оснащен передовыми дальнобойными орудиями для поражения наземных единиц и кораблей."
+    },
+    "Bluehawk Tactical Missile": {
+        "message": "Тактическая ракета «Синий ястреб»"
+    },
+    "Bomb Bot - Self destructs to deal very heavy damage over a nearby area. Extremely fast.": {
+        "message": "Взрывающийся бот – Самоуничтожается и наносит огромный урон по площади. Невероятно быстрый."
+    },
+    "Bot Factory": {
+        "message": "Завод ботов"
+    },
+    "Carpet Bomber - High damage over a wide area. Fragile and slow. Attacks land, sea and undersea targets.": {
+        "message": "Ковровый бомбардировщик – Высокий урон на обширной территории. Хрупкий и медленный. Атакует наземные, морские и подводные цели."
+    },
+    "Catapult Tactical Missile": {
+        "message": "Тактическая ракета «Катапульта»"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "Боевой фабрикатор – Ремонтирует поврежденные юниты. Может строить и обнаруживать мины. Может строить телепорты. Не помогает при строительстве других зданий."
+    },
+    "Commander Anti-Air Missile": {
+        "message": "Зенитная ракета коммандера"
+    },
+    "Deep Space Radar": {
+        "message": "Радар дальнего космоса"
+    },
+    "Deep Space Radar - System wide planetary radar.": {
+        "message": "Радар дальнего космоса — общесистемный планетарный радар."
+    },
+    "Deep Water Destroyer - Medium range with high damage. Very durable. Attacks land, sea and undersea targets.": {
+        "message": "Глубоководный эсминец – Оснащен мощными орудиями со средним радиусом поражения. Очень устойчив к урону. Атакует наземные, морские и подводные цели."
+    },
+    "Defense Satellite - Heavy orbital offensive and defensive platform with basic laser.": {
+        "message": "Защитный спутник – Тяжелая орбитальная наступательная и оборонительная платформа с базовым лазером."
+    },
+    "Delta V Engine - Used to move small to medium celestial bodies.": {
+        "message": "Delta V Engine – Используется для перемещения малых и средних небесных тел."
+    },
+    "Doomsday Titan - Destroys the planet it's built on once finished.": {
+        "message": "Титан Судного Дня – Как только завершается его строительство, он уничтожает планету, на которой он построен."
+    },
+    "Dox Launcher - Builds and fires Dox at nearby targets.": {
+        "message": "Пусковая установка Dox — Строит и запускает Dox в ближайшие цели."
+    },
+    "Drone Carrier - Builds and launches missile drones at enemies. Attacks land, air and sea targets.": {
+        "message": "Транспортер дронов – Строит и запускает в сторону врагов ракетные дроны. Атакует наземные, воздушные и морские цели."
+    },
+    "Economy - Orbital energy generation.": {
+        "message": "Экономика – Производит энергию на орбите."
+    },
+    "Energy Plant": {
+        "message": "Электростанция"
+    },
+    "Energy Storage": {
+        "message": "Энергохранилище"
+    },
+    "Fabrication Aircraft": {
+        "message": "Строительный самолёт"
+    },
+    "Fabrication Bot": {
+        "message": "Строительный бот"
+    },
+    "Fabrication Ship": {
+        "message": "Строительный корабль"
+    },
+    "Fabrication Vehicle": {
+        "message": "Строительная Машина"
+    },
+    "Fighter - Fast. High damage. Only attacks air targets.": {
+        "message": "Истребитель – Быстрый. Высокий урон. Атакует только воздушные цели."
+    },
+    "Fire Support - Medium range. Can fire over walls. Attacks land and sea targets.": {
+        "message": "Огневая поддержка – Средний радиус поражения. Может стрелять через стены. Атакует наземные и морские цели."
+    },
+    "Flak Tank - Damage over a very wide area. Only attacks air targets.": {
+        "message": "Зенитный танк – Высокий урон на обширной территории. Атакует только воздушные цели."
+    },
+    "Flame Tank - Short range, heavy armored vehicle.": {
+        "message": "Огнеметный танк – Тяжело бронированная техника с низкой дальностью стрельбы."
+    },
+    "Frigate - Durable. Rapid-fire. Attacks land, air, and sea targets.": {
+        "message": "Фрегат – Устойчив к урону. Скорострельный. Атакует наземные, воздушные и морские цели."
+    },
+    "Galata Anti-Air Missile": {
+        "message": "Зенитная ракета «Галата»"
+    },
+    "Gas Mining - Advanced energy and metal creation satellite. Only works above gas giant planets.": {
+        "message": "Добыча газа – Продвинутый спутник по добыче энергии и металла. Работает только над газовыми гигантами."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Attacks land and sea targets.": {
+        "message": "Артиллерийский катер - Дешевый. Быстрый. Расходный. Атакует наземные и морские цели."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Water hover. Attacks land and sea targets.": {
+        "message": "Артиллерийский катер - Дешевый. Быстрый. Расходный. Парит над водой. Атакует наземные и морские цели."
+    },
+    "Gunship - Fast. Cheap. Durable. Attacks land and sea targets.": {
+        "message": "Ударный вертолет – Быстрый. Дешевый. Устойчив к урону. Атакует наземные и морские цели."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle.": {
+        "message": "Тяжелый танк - Продвинутая тяжелая бронированная техника с низкой дальностью стрельбы."
+    },
+    "Hornet Tactical Missile": {
+        "message": "Тактическая ракета «Шершень»"
+    },
+    "Hover Destroyer - Long Range. Durable. Hover. Attacks land and sea targets.": {
+        "message": "Эсминец на воздушной подушке – Большой радиус поражения. Устойчив к урону. Парит в воздухе. Атакует наземные и морские цели."
+    },
+    "Hover Tank - Fast. Can cross water and lava. Attacks land and sea targets.": {
+        "message": "Танк на воздушной подушке – Быстрый. Может пересечь воду и лаву. Атакует наземные и морские цели."
+    },
+    "Hummingbird Air-To-Air Missile": {
+        "message": "Ракета «Колибри» класса «воздух-воздух»"
+    },
+    "Interplanetary Teleporter: Teleports units between linked Teleporters.": {
+        "message": "Межпланетный телепорт: Телепортирует юниты между связанными телепортами."
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "Межпланетный транспорт – Строит и запускает до 16юнитов одновременно в любой точке системы."
+    },
+    "Invasion Titan - Can link with a teleporter to send units directly to planet surface. Attacks everything.": {
+        "message": "Титан Вторжения – Может связываться с телепортом, чтобы отправлять юниты непосредственно на поверхность планеты. Атакует всё."
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 \"Успокаивающее\" - Ядерная ракета"
+    },
+    "LR-96 Pacifier Nuclear Missile": {
+        "message": "Ядерная ракета LR-96 Pacifier"
+    },
+    "Land Mine": {
+        "message": "Наземная мина"
+    },
+    "Land Mine - Detonates when enemy units are in proximity.": {
+        "message": "Наземная мина – Взрывается, когда враг находится в непосредственной близости."
+    },
+    "Laser Defense Tower": {
+        "message": "Защитная лазерная башня"
+    },
+    "Light Tank - Well-rounded. Reliable. Attacks land and sea targets.": {
+        "message": "Легкий танк – Универсальная единица. Надежный. Атакует наземные и морские цели."
+    },
+    "Lightning Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "Электрический Титан – Высокий урон на обширной территории. Атакует все цели, кроме орбитальных."
+    },
+    "Metal Extractor": {
+        "message": "Добытчик металла"
+    },
+    "Metal Storage": {
+        "message": "Хранилище металла"
+    },
+    "Missile Ship - Long range with radar. High damage anti-air and tactical missiles. Attacks land, sea, air, and orbital targets.": {
+        "message": "Ракетный корабль – Радар обеспечивает высокий радиус поражения. Мощные зенитные орудия и тактические ракеты. Атакует наземные, морские, воздушные и орбитальные цели."
+    },
+    "Missile and Torpedo Drone - Fast, fragile, attacks land, sea and air.": {
+        "message": "Ракетно-торпедный дрон — Быстрая и уязвимая единица. Атакует наземные, морские и воздушные цели."
+    },
+    "Mobile Anti-Air - Equipped with homing missiles. Only attacks air.": {
+        "message": "Подвижное средство ПВО – Оснащено самонаводящимися ракетами. Атакует только воздушные цели."
+    },
+    "Mobile Nuke - Detonates a nuke on death. Slow. Extremely durable. Self-destruct attack.": {
+        "message": "Мобильная ядерная бомба – Взрывает ядерную бомбу при уничтожении. Медленная. Чрезвычайно устойчива к урону. Самоуничтожается при атаке."
+    },
+    "Mobile Tactical Missile - Long range with heavy damage. Fires homing missiles. Attacks land, sea and orbital targets.": {
+        "message": "Мобильная тактическая ракета – Невероятно мощная ракета с большим радиусом поражения. Запускает самонаводящиеся ракеты. Атакует наземные, морские и орбитальные цели."
+    },
+    "Mortar tank - Advanced long range mobile artillery.": {
+        "message": "Минометный танк – Продвинутое мобильное артиллерийское орудие с большим радиусом поражения."
+    },
+    "Nanobot Swarm - Extremely Fast. Cheap. Close range. Devastating damage. Hover. Attacks land and sea targets.": {
+        "message": "Рой наноботов – Невероятно быстрый. Дешевый. Атакует с близкого расстояния. Разрушительный урон. Парит в воздухе. Атакует наземные и морские цели."
+    },
+    "Narwhal Anti-Air Missile": {
+        "message": "Зенитная ракета «Нарвал»"
+    },
+    "Naval Factory": {
+        "message": "Военно-морской завод"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Ядерная ракетная установка"
+    },
+    "Nuclear Missile Launcher - Builds interplanetary long range nuclear missile with large area damage.": {
+        "message": "Ядерная ракетная установка – Строит межпланетную ядерную ракету большой дальности с большой зоной поражения."
+    },
+    "Nuclear missile - Long range interplanetary, large area damage, projectile": {
+        "message": "Ядерная ракета — Межпланетный снаряд дальнего действия с большим уроном по площади"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "Ядерная ракета - Большая дальность, большая зона поражения, снаряд."
+    },
+    "Orbital Battleship - Rapid-Fire. Very durable. Heavy damage. Attacks everything.": {
+        "message": "Орбитальный линкор — Скорострельный. Очень устойчив к урону. Высокий урон. Атакует всё."
+    },
+    "Orbital Carrier - Can load up to 12 units.": {
+        "message": "Орбитальные перевозчик – Может загружать до 12 юнитов."
+    },
+    "Orbital Fabrication Bot": {
+        "message": "Орбитальный строительный бот"
+    },
+    "Orbital Fabricator - Builds orbital satellites and spaceships.": {
+        "message": "Орбитальный фабрикатор – Строит орбитальные спутники и космические корабли."
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "Орбитальный фабрикатор – Строит орбитальные спутники, космические корабли и ТИТАНОВ."
+    },
+    "Orbital Factory": {
+        "message": "Орбитальный завод"
+    },
+    "Orbital Fighter - Fast moving orbital fighter for offense and defense.": {
+        "message": "Орбитальный истребитель – Быстро передвигающийся орбитальный истребитель, предназначенный для атаки и защиты орбиты."
+    },
+    "Orbital Lander - Load it up and transport a unit to other planets.": {
+        "message": "Орбитальный транспорт – Загружает в себя единицы для транспортировки на другие планеты."
+    },
+    "Orbital Laser Platform - Rains death from above.": {
+        "message": "Орбитальная лазерная платформа – Сеет смерть сверху."
+    },
+    "Orbital Launcher": {
+        "message": "Космодром"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "Орбитальный и Космический Радар"
+    },
+    "Orbital and Deepspace Radar - Orbital and celestial radar telemetry.": {
+        "message": "Орбитальный и космический радар – Орбитальное и дистанционное сканирование небесных тел."
+    },
+    "Phoenix Air-To-Air Missile": {
+        "message": "Ракета «Феникс» класса «воздух-воздух»"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "Помощник Коммандера – Строит продвинутые здания. Десантный транспорт. Устойчив к урону. Высокий урон. Атакует все цели, кроме орбитальных."
+    },
+    "Radar": {
+        "message": "Радар"
+    },
+    "Railgun Platform - Long range with high damage. Very low rate of fire. Uses energy. Attacks orbital.": {
+        "message": "Рельсовое орудие – Оснащено мощной пушкой с высоким радиусом поражения. Очень низкая скорострельность. Использует энергию. Атакует орбитальные цели."
+    },
+    "Rolling Fortress - Near invincible. Long range. Heavy damage. Hover. Attacks land and sea targets.": {
+        "message": "Передвижная крепость – Практически неуязвимая. Большой радиус поражения. Высокий урон. Парит в воздухе. Атакует наземные и морские цели."
+    },
+    "SR-24 Shield Missile Defense": {
+        "message": "Система ПРО SR-24 Shield"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 - Лазерная платформа"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "Разведчик – Быстрый. Может видеть очень далеко и обнаруживает мины. Не атакует."
+    },
+    "Scout - Fast. Can see far away. Does not attack.": {
+        "message": "Разведчик – Быстрый. Может видеть очень далеко. Не атакует."
+    },
+    "Sea Mine - Detonates when ships are in proximity.": {
+        "message": "Морская мина – Взрывается, когда вражеские корабли находятся в непосредственной близости."
+    },
+    "Seismic Titan - Devastating damage to everything nearby. Amphibious. Attacks land, sea, and undersea targets.": {
+        "message": "Сейсмический Титан – Наносит сокрушительный урон всему, что находится поблизости. Десантный транспорт. Атакует наземные, морские и подводные цели."
+    },
+    "Siege Bomber - Durable. Slow. Devastating damage. Attacks land and sea targets.": {
+        "message": "Осадный бомбардировщик – Устойчив к урону. Медленный. Разрушительный урон. Атакует наземные и морские цели."
+    },
+    "Single Laser Defense Tower": {
+        "message": "Башня с одним Лазером"
+    },
+    "Sniper - Long range with high damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "Снайпер – Вооружен мощной пушкой с высоким радиусом поражения. Низкая скорострельность. Перехватывает ракеты. Атакует наземные, воздушные и морские цели."
+    },
+    "Sniper - Long range. High damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "Снайпер – Высокий радиус поражения. Высокий урон. Низкая скорострельность. Перехватывает ракеты. Атакует наземные, воздушные и морские цели."
+    },
+    "Solar Array": {
+        "message": "Солнечная матрица"
+    },
+    "Solar Drone - Produces energy. Mobile but slow. Weak. Attacks land, air, and sea targets.": {
+        "message": "Солнечный Дрон - Производит энергию. Мобильный, но медленный. Слабый. Атакует наземные, воздушные и морские цели."
+    },
+    "Space Probe - Fast. Cheap. Expendable. Provides ground vision. Does not attack.": {
+        "message": "Космический зонд – Быстрый. Дешевый. Расходный. Обеспечивает видимость на земле. Не атакует."
+    },
+    "Spinner Anti-Air Missile": {
+        "message": "Зенитная ракета «Прядильщик»"
+    },
+    "Stealth Sub - Radar stealth with very high damage. Attacks land, sea, and undersea targets.": {
+        "message": "Скрытная подлодка – Не обнаруживается радаром и наносит очень высокий урон. Атакует наземные, морские и подводные цели."
+    },
+    "Stingray Anti-Air Missile": {
+        "message": "Зенитная ракета «Электрический скат»"
+    },
+    "Stingray Tactical Missile": {
+        "message": "Тактическая ракета «Электрический скат»"
+    },
+    "Storage - Increases maximum energy storage capacity.": {
+        "message": "Хранилище – Увеличивает максимальное количество энергии."
+    },
+    "Storage - Increases maximum metal storage capacity.": {
+        "message": "Хранилище – Увеличивает максимальное количество металла."
+    },
+    "Strafer Aircraft - Loud and annoying. Attacks land and sea targets.": {
+        "message": "Самолет-штурмовик — Громкий и назойливый. Атакует наземные и морские цели."
+    },
+    "Submarine - High damage. Cannot be targeted by cannons. Attacks sea and undersea targets.": {
+        "message": "Подлодка – Очень высокий урон. Невозможно попасть пушкой. Атакует наземные и подводные цели."
+    },
+    "Submarine - Radar stealth. Attacks sea and undersea targets.": {
+        "message": "Подводная лодка – Не обнаруживается радаром. Атакует морские и подводные цели."
+    },
+    "Super Weapon - Build five on a metal planet to activate the Annihilazer.": {
+        "message": "Супероружие – Постройте пять юнитов на металлической планете, чтобы активировать Аннигилазер."
+    },
+    "Support Platform - Repairs nearby units and auto reclaims wreckage. Intercepts homing missiles. Does not attack.": {
+        "message": "Ремонтная платформа – Ремонтирует стоящие рядом юниты и автоматически собирает обломки. Перехватывает самонаводящиеся ракеты. Не атакует."
+    },
+    "Tactical Bomber - Long range. High damage tactical missiles. Attacks land and sea targets.": {
+        "message": "Тактический бомбардировщик - Большой радиус поражения. Мощные тактические ракеты. Атакует наземные и морские цели."
+    },
+    "Tactical Missile Launcher - Long range with very heavy damage. Attacks land, sea, and orbital targets.": {
+        "message": "Тактическая ракетная пусковая установка – Очень высокий урон и большой радиус поражения. Атакует наземные, морские и орбитальные цели."
+    },
+    "Teleporter": {
+        "message": "Телепорт"
+    },
+    "Tesla Bot - Very high damage over a short range area. Uses energy. Attacks land targets.": {
+        "message": "Бот Теслы – Наносит очень высокий урон по площади на небольшом расстоянии от него. Использует энергию. Атакует наземные цели."
+    },
+    "Torpedo Launcher": {
+        "message": "Торпедная Установка"
+    },
+    "Torpedo Launcher - Advanced anti-ship defense.": {
+        "message": "Торпедная установка – Продвинутая противокорабельная защита."
+    },
+    "Torpedo Launcher - Basic anti-ship defense.": {
+        "message": "Торпедная установка – Базовая противокорабельная защита."
+    },
+    "Unit Cannon": {
+        "message": "Пушка для боевых единиц"
+    },
+    "Vehicle Factory": {
+        "message": "Автозавод"
+    },
+    "Wall": {
+        "message": "Стена"
+    },
+    "Stinger Anti-Air Missile": {
+        "message": "Противовоздушная ракета Stinger"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "Тяжелый Танк - Продвинутая тяжеловооруженная техника. Стреляет на короткие дистанции. Оснащена мобильным радаром."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "Станция Помех - Скрывает союзные войска от вражеских радаров в радиусе вокруг себя. Потребляет энергию."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Баржа Поддержки - Ремонтирует поврежденные корабли и автоматически собирает обломки. Размещает и обнаруживает мины. Не может помогать в строительстве войск. Корабль парит над водой."
+    }
+}

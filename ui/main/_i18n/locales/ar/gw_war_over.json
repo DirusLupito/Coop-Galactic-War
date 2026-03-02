@@ -1,0 +1,23 @@
+{
+    "Annihilated": {
+        "message": "تم إبادته"
+    },
+    "Close": {
+        "message": "أغلق"
+    },
+    "Discards": {
+        "message": "المرتجع"
+    },
+    "Final Tech": {
+        "message": "آخر تقنية"
+    },
+    "Turns:": {
+        "message": "الأدوار:"
+    },
+    "Victory": {
+        "message": "النصر"
+    },
+    "Wins:": {
+        "message": "فاز:"
+    }
+}

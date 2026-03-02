@@ -1,0 +1,128 @@
+{
+    "1 day ago": {
+        "message": "1 день назад"
+    },
+    "1 hour ago": {
+        "message": "1 час назад"
+    },
+    "1 minute ago": {
+        "message": "1 минуту назад"
+    },
+    "1 second ago": {
+        "message": "1 секунду назад"
+    },
+    "1 week ago": {
+        "message": "1 неделю назад"
+    },
+    "Bronze": {
+        "message": "Бронза"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "Не удалось загрузить этот уровень списка лидеров."
+    },
+    "Games": {
+        "message": "Игры"
+    },
+    "Gold": {
+        "message": "Золото"
+    },
+    "Inactive": {
+        "message": "Неактивный"
+    },
+    "Just now": {
+        "message": "Только что"
+    },
+    "Last Match Played": {
+        "message": "Последний сыгранный матч"
+    },
+    "Last match played": {
+        "message": "Последний сыгранный матч"
+    },
+    "Leaderboards": {
+        "message": "Списки лидеров"
+    },
+    "Level rank": {
+        "message": "Ранг уровня"
+    },
+    "Loading Leaderboard": {
+        "message": "Загрузка списка лидеров"
+    },
+    "Match games played": {
+        "message": "Сыграно матчей"
+    },
+    "No ranked players at this level.": {
+        "message": "Нет игроков с рангом на этом уровне."
+    },
+    "No recent matches played.": {
+        "message": "Нет недавних сыгранных матчей."
+    },
+    "One ranked player at this level.": {
+        "message": "Один игрок с рангом на этом уровне."
+    },
+    "Platinum": {
+        "message": "Платина"
+    },
+    "Play ranked match": {
+        "message": "Сыграть ранговый матч"
+    },
+    "Player": {
+        "message": "Игрок"
+    },
+    "Provisional": {
+        "message": "Предварительный"
+    },
+    "Rank": {
+        "message": "Ранг"
+    },
+    "Rating": {
+        "message": "Рейтинг"
+    },
+    "Season ends __date__": {
+        "message": "Дата окончания сезона: __date__"
+    },
+    "Silver": {
+        "message": "Серебро"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "Этот уровень списка лидеров в настоящее время пуст."
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unranked": {
+        "message": "Без ранга"
+    },
+    "Watch Replay": {
+        "message": "Смотреть повтор"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Чтобы получить ранг, вам нужно сыграть __number__ игр(ы)"
+    },
+    "Your rank": {
+        "message": "Ваш ранг"
+    },
+    "__n__ days ago": {
+        "message": "__n__ дн назад"
+    },
+    "__n__ hours ago": {
+        "message": "__n__ ч назад"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__ мин назад"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__ сек назад"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__нед назад"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "Игроков с рангом на этом уровне: __num_players__."
+    },
+    "Star": {
+        "message": "Звезда"
+    },
+    "View Replays": {
+        "message": "Посмотреть повторы"
+    }
+}

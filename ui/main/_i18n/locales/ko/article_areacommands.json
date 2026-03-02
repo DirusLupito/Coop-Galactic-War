@@ -1,0 +1,20 @@
+{
+    "Area Commands": {
+        "message": "범위 명령"
+    },
+    "PA Guide: Area Commands": {
+        "message": "PA 가이드: 범위 명령"
+    },
+    "Select units, click [style=text_callout]Attack button[/style].": {
+        "message": "유닛을 선택하고 [style=text_callout]공격 버튼[/style]을 클릭하십시오."
+    },
+    "Select units, click [style=text_callout]Patrol button[/style].": {
+        "message": "유닛을 선택하고 [style=text_callout]순찰 버튼[/style]을 클릭하십시오."
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to attack": {
+        "message": "지역을 [style=text_callout]왼쪽 클릭 후 드래그[/style]하여 공격하십시오."
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to patrol": {
+        "message": "지역을 [style=text_callout]왼쪽 클릭 후 드래그[/style]하여 순찰하십시오."
+    }
+}

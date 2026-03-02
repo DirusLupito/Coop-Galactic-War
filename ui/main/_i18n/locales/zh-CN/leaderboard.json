@@ -1,0 +1,128 @@
+{
+    "1 day ago": {
+        "message": "1天前"
+    },
+    "1 hour ago": {
+        "message": "1小时前"
+    },
+    "1 minute ago": {
+        "message": "1分钟前"
+    },
+    "1 second ago": {
+        "message": "1秒前"
+    },
+    "1 week ago": {
+        "message": "1周前"
+    },
+    "Bronze": {
+        "message": "青铜"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "未能加载此排行榜级别。"
+    },
+    "Games": {
+        "message": "战局"
+    },
+    "Gold": {
+        "message": "黄金"
+    },
+    "Inactive": {
+        "message": "未启用"
+    },
+    "Just now": {
+        "message": "刚刚"
+    },
+    "Last Match Played": {
+        "message": "上次进行比赛"
+    },
+    "Last match played": {
+        "message": "上次进行比赛"
+    },
+    "Leaderboards": {
+        "message": "排行榜"
+    },
+    "Level rank": {
+        "message": "等级排位"
+    },
+    "Loading Leaderboard": {
+        "message": "正在载入排行榜"
+    },
+    "Match games played": {
+        "message": "总共进行比赛"
+    },
+    "No ranked players at this level.": {
+        "message": "没有该等级的排位赛玩家。"
+    },
+    "No recent matches played.": {
+        "message": "最近没有进行比赛。"
+    },
+    "One ranked player at this level.": {
+        "message": "有一名该等级的排位赛玩家。"
+    },
+    "Platinum": {
+        "message": "白金"
+    },
+    "Play ranked match": {
+        "message": "打排位赛"
+    },
+    "Player": {
+        "message": "玩家"
+    },
+    "Provisional": {
+        "message": "暂定"
+    },
+    "Rank": {
+        "message": "排位"
+    },
+    "Rating": {
+        "message": "评级"
+    },
+    "Season ends __date__": {
+        "message": "赛季结束日期为__date__"
+    },
+    "Silver": {
+        "message": "白银"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "此排行榜目前为空。"
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unranked": {
+        "message": "尚无排位"
+    },
+    "Watch Replay": {
+        "message": "观看回放"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "必须打满__number__场排位赛才能拿到排位"
+    },
+    "Your rank": {
+        "message": "您的排位"
+    },
+    "__n__ days ago": {
+        "message": "__n__天前"
+    },
+    "__n__ hours ago": {
+        "message": "__n__小时前"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__分钟前"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__秒前"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__周前"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "有__num_players__名该等级的排位赛玩家。"
+    },
+    "Star": {
+        "message": "星球"
+    },
+    "View Replays": {
+        "message": "观看回放"
+    }
+}

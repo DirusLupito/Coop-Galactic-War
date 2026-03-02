@@ -1,0 +1,74 @@
+{
+    "Ambient Occlusion": {
+        "message": "AMBIENT OCCLUSION"
+    },
+    "Anti-Aliasing": {
+        "message": "ЗГЛАДЖУВАННЯ"
+    },
+    "Audio": {
+        "message": "ЗВУК"
+    },
+    "Camera": {
+        "message": "КАМЕРА"
+    },
+    "Camera Friction": {
+        "message": "ЗСУВ КАМЕРИ"
+    },
+    "Cancel": {
+        "message": "СКАСУВАТИ"
+    },
+    "Display Mode": {
+        "message": "РЕЖИМ ВИВЕДЕННЯ"
+    },
+    "Graphics": {
+        "message": "ГРАФІКА"
+    },
+    "Headlights": {
+        "message": "ФАРИ"
+    },
+    "Key Pan Speed": {
+        "message": "ШВИДКІСТЬ КУРСОРА"
+    },
+    "Keyboard": {
+        "message": "КЛАВІАТУРА"
+    },
+    "Master Volume": {
+        "message": "ЗАГАЛЬНА ГУЧНІСТЬ"
+    },
+    "Mouse Pan Speed": {
+        "message": "ШВИДКІСТЬ КУРСОРА"
+    },
+    "Orbital Shell": {
+        "message": "ОРБІТАЛЬНИЙ ШАР"
+    },
+    "Quality Preset": {
+        "message": "ЯКІСТЬ"
+    },
+    "Resolution Scaling": {
+        "message": "МАСШТАБ РОЗДІЛЬНОСТІ"
+    },
+    "Settings": {
+        "message": "НАЛАШТУВАННЯ"
+    },
+    "Shadows": {
+        "message": "ТІНІ"
+    },
+    "Show Build Previews": {
+        "message": "ПЕРЕДОГЛЯД БІЛДІВ"
+    },
+    "Show Metal Spot Icons": {
+        "message": "ПОКАЗУВАТИ ЗНАЧКИ ТОЧОК МЕТАЛУ"
+    },
+    "Show Stat Bars": {
+        "message": "ПОКАЗУВАТИ СМУЖКИ ЖИТТЯ"
+    },
+    "Show Unit Icons": {
+        "message": "ПОКАЗУВАТИ ІКОНКИ ЮНІТІВ"
+    },
+    "Virtual Texture": {
+        "message": "ВІРТУАЛЬНІ ТЕКСТУРИ"
+    },
+    "Zoom Speed": {
+        "message": "ШВИДКІСТЬ ЗУМУ"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "無法與伺服器建立連線"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "與伺服器的連線已中斷"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "無法加入遊戲"
+    },
+    "FAILED TO START GAME": {
+        "message": "無法開始遊戲"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "無法撥放戰鬥錄影"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "接受登入"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "伺服器拒絕登入"
+    },
+    "Returning to Main Menu": {
+        "message": "返回主目錄"
+    }
+}

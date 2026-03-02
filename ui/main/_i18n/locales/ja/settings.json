@@ -1,0 +1,974 @@
+{
+    "ALL": {
+        "message": "すべて"
+    },
+    "ALWAYS": {
+        "message": "常に"
+    },
+    "AUTO": {
+        "message": "AUTO"
+    },
+    "Active Product": {
+        "message": "起動製品"
+    },
+    "Ambient Occlusion": {
+        "message": "アンビエントオクルージョン"
+    },
+    "Anti-Aliasing": {
+        "message": "アンチエイリアス"
+    },
+    "Arabic (Community translation)": {
+        "message": "アラビア語（コミュニティ翻訳）"
+    },
+    "Audio": {
+        "message": "オーディオ"
+    },
+    "Back": {
+        "message": "戻る"
+    },
+    "Build Bar Size": {
+        "message": "ビルドバー サイズ"
+    },
+    "Build Preview Behavior": {
+        "message": "建造プレビューの挙動"
+    },
+    "CUSTOM": {
+        "message": "カスタム"
+    },
+    "Camera": {
+        "message": "カメラ"
+    },
+    "Camera Friction": {
+        "message": "カメラフリクション"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Chinese (Simplified)": {
+        "message": "中国語（簡体字）"
+    },
+    "Chinese (Traditional)": {
+        "message": "中国語 （繁体字）"
+    },
+    "Chinese, Hong Kong": {
+        "message": "中国語（香港）"
+    },
+    "Classic": {
+        "message": "Classic"
+    },
+    "Close": {
+        "message": "閉じる"
+    },
+    "Conflict:": {
+        "message": "重複:"
+    },
+    "Czech (Community translation)": {
+        "message": "チェコ語（コミュニティ翻訳）"
+    },
+    "Danish (Community translation)": {
+        "message": "デンマーク語（コミュニティ翻訳）"
+    },
+    "Default": {
+        "message": "デフォルト"
+    },
+    "Default Audio Device": {
+        "message": "デフォルトのオーディオデバイス"
+    },
+    "Display Mode": {
+        "message": "ディスプレイモード"
+    },
+    "Dutch": {
+        "message": "オランダ語"
+    },
+    "Dutch, Belgium (Community translation)": {
+        "message": "ベルギーオランダ語（コミュニティ翻訳）"
+    },
+    "Edge Scroll Options": {
+        "message": "エッジスクロール オプション"
+    },
+    "English": {
+        "message": "英語"
+    },
+    "English, US": {
+        "message": "英語（アメリカ）"
+    },
+    "FOV": {
+        "message": "FOV"
+    },
+    "FULLSCREEN": {
+        "message": "フルスクリーン"
+    },
+    "FXAA": {
+        "message": "FXAA"
+    },
+    "Finnish (Community translation)": {
+        "message": "フィンランド語（コミュニティ翻訳）"
+    },
+    "Forward": {
+        "message": "先送"
+    },
+    "French": {
+        "message": "フランス語"
+    },
+    "GAMEPLAY": {
+        "message": "ゲームプレイ"
+    },
+    "GUI Size": {
+        "message": "GUI サイズ"
+    },
+    "German": {
+        "message": "ドイツ語"
+    },
+    "German, Austrian (Community translation)": {
+        "message": "オーストリアドイツ語（コミュニティ翻訳）"
+    },
+    "Graphics": {
+        "message": "グラフィック"
+    },
+    "HDR": {
+        "message": "HDR"
+    },
+    "HIGH": {
+        "message": "HIGH"
+    },
+    "Headlights": {
+        "message": "ヘッドライト"
+    },
+    "Hungarian (Community translation)": {
+        "message": "ハンガリー語（コミュニティ翻訳）"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "アイコン表示距離"
+    },
+    "Italian": {
+        "message": "イタリア語"
+    },
+    "Japanese": {
+        "message": "日本語"
+    },
+    "Key Pan Speed": {
+        "message": "キー パン速度"
+    },
+    "Keyboard": {
+        "message": "キーボード"
+    },
+    "Korean": {
+        "message": "韓国語"
+    },
+    "LOW": {
+        "message": "LOW"
+    },
+    "Language": {
+        "message": "言語"
+    },
+    "Local Server": {
+        "message": "ローカルサーバー"
+    },
+    "Local Server Multi-threading": {
+        "message": "ローカルサーバー マルチスレッド"
+    },
+    "Local server is not available on your configuration.  (64-bit OS required)": {
+        "message": "ローカルサーバーはお使いの設定/環境では使用できません（要64bit OS）"
+    },
+    "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)": {
+        "message": "お使いの設定/環境ではローカルサーバーの使用は推奨できません（4個のCPUコアと8GBのメモリを推奨）"
+    },
+    "Master Volume": {
+        "message": "マスター音量"
+    },
+    "Mouse Pan Speed": {
+        "message": "マウス パン速度"
+    },
+    "Music Volume": {
+        "message": "ミュージック音量"
+    },
+    "NATIVE (100%)": {
+        "message": "ネイティブ (100%)"
+    },
+    "NEVER": {
+        "message": "表示しない"
+    },
+    "Norwegian (Community translation)": {
+        "message": "ノルウェー語（コミュニティ翻訳）"
+    },
+    "OFF": {
+        "message": "OFF"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "OFF (マウスロック)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "OFF (マウスロックなし)"
+    },
+    "ON": {
+        "message": "ON"
+    },
+    "Orbital Shell": {
+        "message": "オービタルシェル"
+    },
+    "Order Preview Behavior": {
+        "message": "オーダープレビューの挙動"
+    },
+    "Pole Lock": {
+        "message": "ポールロック"
+    },
+    "Polish": {
+        "message": "ポーランド語"
+    },
+    "Portuguese, Brazil (Community translation)": {
+        "message": "ポルトガルブラジル語（コミュニティ翻訳）"
+    },
+    "Quality Preset": {
+        "message": "品質プリセット"
+    },
+    "RANGE DEPENDENT": {
+        "message": "距離に応じて表示"
+    },
+    "Resolution Scaling": {
+        "message": "解像度スケーリング"
+    },
+    "Restore All Defaults": {
+        "message": "全てデフォルトに戻す"
+    },
+    "Restore Tab Defaults": {
+        "message": "このタブをデフォルトに戻す"
+    },
+    "Romanian (Community translation)": {
+        "message": "ルーマニア語（コミュニティ翻訳）"
+    },
+    "Russian": {
+        "message": "ロシア語"
+    },
+    "SELECTED": {
+        "message": "選択済"
+    },
+    "SERVER": {
+        "message": "サーバー"
+    },
+    "SHIFT": {
+        "message": "SHIFT"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "サブサンプル（50％）"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "サブサンプル（75％）"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "スーパーサンプル（110％）"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "スーパーサンプル（150％）"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "スーパーサンプル（175％）"
+    },
+    "Save": {
+        "message": "セーブ"
+    },
+    "Server": {
+        "message": "サーバー"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Shadows": {
+        "message": "シャドウ"
+    },
+    "Show Build Previews": {
+        "message": "建造プレビューの表示"
+    },
+    "Show Metal Spot Icons": {
+        "message": "金属スポットアイコンの表示"
+    },
+    "Show Order Previews": {
+        "message": "オーダープレビューの表示"
+    },
+    "Show Stat Bars": {
+        "message": "データバーの表示"
+    },
+    "Show Unit Icons": {
+        "message": "ユニットアイコンの表示"
+    },
+    "Show/Hide game stats": {
+        "message": "ゲームデータの表示/非表示"
+    },
+    "Show/Hide pip": {
+        "message": "PIPの表示/非表示"
+    },
+    "Skybox": {
+        "message": "スカイボックス"
+    },
+    "Sound Effects Volume": {
+        "message": "サウンドエフェクト音量"
+    },
+    "Spanish": {
+        "message": "スペイン語"
+    },
+    "Swedish (Community translation)": {
+        "message": "スウェーデン語（コミュニティ翻訳）"
+    },
+    "Turkish (Community translation)": {
+        "message": "トルコ語（コミュニティ翻訳）"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "USE CUSTOM NAME": {
+        "message": "カスタム名を使用"
+    },
+    "USE STEAM NAME": {
+        "message": "Steam名を使用"
+    },
+    "Ukrainian (Community translation)": {
+        "message": "ウクライナ語（コミュニティ翻訳）"
+    },
+    "User": {
+        "message": "ユーザー"
+    },
+    "User Interface": {
+        "message": "ユーザーインターフェイス"
+    },
+    "Username Policy": {
+        "message": "ユーザー名ポリシー"
+    },
+    "VALUE DEPENDENT": {
+        "message": "値に応じて表示"
+    },
+    "Virtual Texture": {
+        "message": "バーチャルテクスチャ"
+    },
+    "Voice Volume": {
+        "message": "ボイス音量"
+    },
+    "WINDOWED": {
+        "message": "ウィンドウ"
+    },
+    "Zoom Speed": {
+        "message": "ズーム速度"
+    },
+    "abort": {
+        "message": "中断"
+    },
+    "add height adjustment": {
+        "message": "高さ調整を追加"
+    },
+    "add landing zone": {
+        "message": "着陸地帯を追加"
+    },
+    "add metal spot": {
+        "message": "金属スポットを追加"
+    },
+    "add/remove": {
+        "message": "追加/削除"
+    },
+    "alerts": {
+        "message": "アラート"
+    },
+    "align to pole": {
+        "message": "ポールに合わせる"
+    },
+    "all chat": {
+        "message": "全チャット"
+    },
+    "alt fire": {
+        "message": "サブ攻撃"
+    },
+    "assist": {
+        "message": "支援"
+    },
+    "attack": {
+        "message": "攻撃"
+    },
+    "bug report": {
+        "message": "バグ報告"
+    },
+    "build": {
+        "message": "建造"
+    },
+    "build avatar": {
+        "message": "アバターを建造"
+    },
+    "build avatar factory": {
+        "message": "アバター工場を建造"
+    },
+    "build bar groups": {
+        "message": "バーグループを建造"
+    },
+    "build item __item_number__": {
+        "message": "アイテム __item_number__ を建造"
+    },
+    "build items": {
+        "message": "建造アイテム"
+    },
+    "build loop": {
+        "message": "建造ループ"
+    },
+    "build once": {
+        "message": "建造（一度）"
+    },
+    "build orders": {
+        "message": "建造オーダー"
+    },
+    "camera": {
+        "message": "カメラ"
+    },
+    "capture anchor": {
+        "message": "アンカーをキャプチャ"
+    },
+    "capture anchor __anchor_number__": {
+        "message": "アンカー __anchor_number__ をキャプチャ"
+    },
+    "capture group __group_number__": {
+        "message": "キャプチャグループ __group_number__"
+    },
+    "chronocam": {
+        "message": "クロノカメラ"
+    },
+    "communication": {
+        "message": "コミュニケーション"
+    },
+    "copy selected": {
+        "message": "選択分をコピー"
+    },
+    "copy to pip": {
+        "message": "PIPにコピー"
+    },
+    "copy unit": {
+        "message": "ユニットをコピー"
+    },
+    "crash": {
+        "message": "クラッシュ"
+    },
+    "decrease camera pan speed": {
+        "message": "カメラのパン速度を遅くする"
+    },
+    "decrease sim speed": {
+        "message": "シムの速度を遅くする"
+    },
+    "delete selected": {
+        "message": "選択分を削除"
+    },
+    "dev mode": {
+        "message": "DEVモード"
+    },
+    "direction": {
+        "message": "方向"
+    },
+    "disable navigation debug info": {
+        "message": "ナビゲーションデバッグ情報を無効化"
+    },
+    "disconnect twin": {
+        "message": "非連携ツイン"
+    },
+    "dismiss alert notification": {
+        "message": "アラート通知を消す"
+    },
+    "enable navigation debug info": {
+        "message": "ナビゲーションデバッグ情報を有効化"
+    },
+    "energy off": {
+        "message": "エネルギー OFF"
+    },
+    "energy on": {
+        "message": "エネルギー オン"
+    },
+    "fire at will": {
+        "message": "任意攻撃"
+    },
+    "free move backward": {
+        "message": "フリームーブ 後方"
+    },
+    "free move down": {
+        "message": "フリームーブ 下"
+    },
+    "free move forward": {
+        "message": "フリームーブ 前"
+    },
+    "free move left": {
+        "message": "フリームーブ 左"
+    },
+    "free move right": {
+        "message": "フリームーブ 右"
+    },
+    "free move up": {
+        "message": "フリームーブ 上"
+    },
+    "free movement": {
+        "message": "フリームーブ"
+    },
+    "free pitch backward": {
+        "message": "フリーピッチ 後方"
+    },
+    "free pitch forward": {
+        "message": "フリーピッチ 前方"
+    },
+    "free roll left": {
+        "message": "フリーロール 左"
+    },
+    "free roll right": {
+        "message": "フリーロール 右"
+    },
+    "free yaw left": {
+        "message": "フリーヨー 左"
+    },
+    "free yaw right": {
+        "message": "フリーヨー 右"
+    },
+    "free zoom in": {
+        "message": "フリーズームイン"
+    },
+    "free zoom out": {
+        "message": "フリーズームアウト"
+    },
+    "general": {
+        "message": "一般"
+    },
+    "grab csg": {
+        "message": "CSGをつかむ"
+    },
+    "hold fire": {
+        "message": "射撃停止"
+    },
+    "hold position": {
+        "message": "現在地確保"
+    },
+    "increase camera pan speed": {
+        "message": "カメラのパン速度を速くする"
+    },
+    "increase sim speed": {
+        "message": "シムの速度を速くする"
+    },
+    "jump to next planet": {
+        "message": "次の惑星へジャンプ"
+    },
+    "jump to previous planet": {
+        "message": "前の惑星へジャンプ"
+    },
+    "last pseudo frame": {
+        "message": "直近のPseudoフレーム"
+    },
+    "load": {
+        "message": "積載"
+    },
+    "maneuver": {
+        "message": "settings > keyboard > units > unit orders > keybind"
+    },
+    "manipulate": {
+        "message": "操作"
+    },
+    "medium-quality": {
+        "message": "MEDIUM"
+    },
+    "mode": {
+        "message": "モード"
+    },
+    "modes": {
+        "message": "モード"
+    },
+    "move": {
+        "message": "移動"
+    },
+    "move csg down": {
+        "message": "CSG移動 下"
+    },
+    "move csg up": {
+        "message": "CSG移動 上"
+    },
+    "move down": {
+        "message": "移動 下"
+    },
+    "move left": {
+        "message": "移動 左"
+    },
+    "move right": {
+        "message": "移動 右"
+    },
+    "move up": {
+        "message": "移動 上"
+    },
+    "navigate back/exit": {
+        "message": "戻る/終了"
+    },
+    "next pseudo frame": {
+        "message": "次のPSEUDOフレーム"
+    },
+    "paste": {
+        "message": "ペースト"
+    },
+    "paste unit": {
+        "message": "ユニットをペースト"
+    },
+    "patrol": {
+        "message": "パトロール"
+    },
+    "pause game": {
+        "message": "ゲームポーズ"
+    },
+    "pause time": {
+        "message": "時を止める"
+    },
+    "picture-in-picture": {
+        "message": "picture-in-picture"
+    },
+    "ping": {
+        "message": "ping"
+    },
+    "planet jump": {
+        "message": "星系間ジャンプ"
+    },
+    "play backwards at 10%": {
+        "message": "逆再生（10％）"
+    },
+    "play backwards at 100%": {
+        "message": "逆再生（100％）"
+    },
+    "play backwards at 50%": {
+        "message": "逆再生（50％）"
+    },
+    "play forward at 100%": {
+        "message": "順再生（100%）"
+    },
+    "play forward at 50%": {
+        "message": "順再生（50%）"
+    },
+    "play forwards at 10%": {
+        "message": "順再生（10%）"
+    },
+    "publish server mods": {
+        "message": "サーバーMODを公開"
+    },
+    "quick profile": {
+        "message": "クイックプロフィール"
+    },
+    "recall anchor": {
+        "message": "リコールアンカー"
+    },
+    "recall anchor __anchor_number__": {
+        "message": "アンカーリコール __anchor_number__"
+    },
+    "recall group __group_number__": {
+        "message": "リコールグループ __group_number__"
+    },
+    "reclaim": {
+        "message": "取得"
+    },
+    "reload view": {
+        "message": "ビューをリロード"
+    },
+    "remove landing zone": {
+        "message": "着陸地帯を削除"
+    },
+    "remove metal spot": {
+        "message": "金属スポットを削除"
+    },
+    "repair": {
+        "message": "修復"
+    },
+    "resume at latest time": {
+        "message": "最新の時間から再開"
+    },
+    "return fire": {
+        "message": "反撃"
+    },
+    "roam": {
+        "message": "ローム"
+    },
+    "rotate csg ccw": {
+        "message": "CSG CCW回転"
+    },
+    "rotate csg cw": {
+        "message": "回転 CSG CW"
+    },
+    "scale csg down": {
+        "message": "CSGスケールダウン"
+    },
+    "scale csg horizontally down": {
+        "message": "CSGスケールダウン（水平方向）"
+    },
+    "scale csg horizontally up": {
+        "message": "CSGスケールアップ（水平方向）"
+    },
+    "scale csg up": {
+        "message": "CSGスケールアップ"
+    },
+    "scale csg vertically down": {
+        "message": "CSGスケールダウン（垂直方向）"
+    },
+    "scale csg vertically up": {
+        "message": "CSGスケールアップ（垂直方向）"
+    },
+    "select air group": {
+        "message": "飛行グループを選択"
+    },
+    "select all air combat units": {
+        "message": "全ての飛行戦闘ユニットを選択"
+    },
+    "select all air combat units on screen": {
+        "message": "画面上全ての飛行戦闘ユニットを選択"
+    },
+    "select all combat units": {
+        "message": "全ての戦闘ユニットを選択"
+    },
+    "select all combat units on screen": {
+        "message": "画面上全ての戦闘ユニットを選択"
+    },
+    "select all factories": {
+        "message": "全ての工場を選択"
+    },
+    "select all factories on screen": {
+        "message": "画面上全ての工場を選択"
+    },
+    "select all idle factories": {
+        "message": "全ての待機中の工場を選択"
+    },
+    "select all idle factories on screen": {
+        "message": "画面上全ての待機中の工場を選択"
+    },
+    "select all land combat units": {
+        "message": "全ての陸戦戦闘ユニットを選択"
+    },
+    "select all land combat units on screen": {
+        "message": "画面上全ての陸戦戦闘ユニットを選択"
+    },
+    "select all matching units on screen": {
+        "message": "画面上全ての条件に一致するユニットを選択"
+    },
+    "select all naval combat units": {
+        "message": "全ての海戦戦闘ユニットを選択"
+    },
+    "select all naval combat units on screen": {
+        "message": "画面上全ての海戦戦闘ユニットを選択"
+    },
+    "select all orbital combat units": {
+        "message": "全ての衛星軌道戦闘ユニットを選択"
+    },
+    "select all orbital combat units on screen": {
+        "message": "画面上全ての衛星軌道戦闘ユニットを選択"
+    },
+    "select ammo group": {
+        "message": "弾薬グループを選択"
+    },
+    "select bot group": {
+        "message": "ボットグループを選択"
+    },
+    "select combat group": {
+        "message": "戦闘グループを選択"
+    },
+    "select commander": {
+        "message": "コマンダーを選択"
+    },
+    "select factory group": {
+        "message": "工場グループを選択"
+    },
+    "select idle fabbers": {
+        "message": "待機中のファッバーを選択"
+    },
+    "select orbital group (buildings)": {
+        "message": "衛星軌道グループ（建造物）を選択"
+    },
+    "select orbital group (units)": {
+        "message": "衛星軌道グループ（ユニット）を選択"
+    },
+    "select sea group": {
+        "message": "海グループを選択"
+    },
+    "select utility group": {
+        "message": "施設グループを選択"
+    },
+    "select vehicle group": {
+        "message": "車両グループを選択"
+    },
+    "self destruct selected unit": {
+        "message": "選択したユニットを自爆"
+    },
+    "set army from hover": {
+        "message": "ホバーから軍を設定"
+    },
+    "set debug camera": {
+        "message": "デバッグカメラ設定"
+    },
+    "set default camera": {
+        "message": "デフォルトカメラ設定"
+    },
+    "set free camera": {
+        "message": "フリーカメラ設定"
+    },
+    "set pathable csg": {
+        "message": "パッチ可能CSG設定"
+    },
+    "set planet camera": {
+        "message": "惑星カメラ設定"
+    },
+    "set pov camera": {
+        "message": "POVカメラ設定"
+    },
+    "show player guide": {
+        "message": "プレーヤーガイドを表示"
+    },
+    "show/hide UI": {
+        "message": "UIの表示/非表示"
+    },
+    "show/hide performance panel": {
+        "message": "パフォーマンスパネルの表示/非表示"
+    },
+    "show/hide visual aid overlays": {
+        "message": "ビジュアル補助オーバーレイの表示/非表示"
+    },
+    "skip backward 1s": {
+        "message": "1秒 巻き戻し"
+    },
+    "skip forward 1s": {
+        "message": "1秒 早送り"
+    },
+    "smooth zoom in": {
+        "message": "スムーズ ズームイン"
+    },
+    "smooth zoom out": {
+        "message": "スムーズ ズームアウト"
+    },
+    "special move": {
+        "message": "スペシャルムーブ"
+    },
+    "stop": {
+        "message": "停止"
+    },
+    "swap pip": {
+        "message": "PIP入替"
+    },
+    "team chat": {
+        "message": "チームチャット"
+    },
+    "terrain editor": {
+        "message": "地形エディタ"
+    },
+    "toggle FOW": {
+        "message": "FOWの切替"
+    },
+    "toggle audio logging": {
+        "message": "オーディオロギングの切替"
+    },
+    "toggle build orders": {
+        "message": "建造オーダーの切替"
+    },
+    "toggle console": {
+        "message": "切替コンソール"
+    },
+    "toggle debug camera": {
+        "message": "デバッグカメラの切替"
+    },
+    "toggle edit metal spots": {
+        "message": "金属スポット編集の切替"
+    },
+    "toggle edit terrain mode": {
+        "message": "地形モード編集の切替"
+    },
+    "toggle energy orders": {
+        "message": "エネルギーオーダーの切替"
+    },
+    "toggle fire orders": {
+        "message": "発射オーダーの切替"
+    },
+    "toggle free camera": {
+        "message": "フリーカメラの切替"
+    },
+    "toggle fullscreen": {
+        "message": "フルスクリーンの切替"
+    },
+    "toggle move orders": {
+        "message": "移動オーダーの切替"
+    },
+    "toggle music": {
+        "message": "音楽の切替"
+    },
+    "toggle nav debug": {
+        "message": "ナビデバッグの切替"
+    },
+    "toggle pip mirror": {
+        "message": "PIPミラーの切替"
+    },
+    "toggle pov camera": {
+        "message": "POVカメラの切替"
+    },
+    "toggle show water": {
+        "message": "水の表示の切替"
+    },
+    "track add selection with camera": {
+        "message": "カメラトラッキング選択追加"
+    },
+    "track next unit with camera": {
+        "message": "次のユニットをカメラで追跡"
+    },
+    "track selection with camera": {
+        "message": "選択分をカメラで追跡"
+    },
+    "tracking & alignment": {
+        "message": "トラッキング＆アラインメント"
+    },
+    "tuning": {
+        "message": "チューニング"
+    },
+    "unit capture groups": {
+        "message": "ユニットキャプチャグループ"
+    },
+    "unit commands": {
+        "message": "ユニットコマンド"
+    },
+    "unit orders": {
+        "message": "ユニットオーダー"
+    },
+    "unit recall groups": {
+        "message": "ユニットリコールグループ"
+    },
+    "unit selection": {
+        "message": "ユニット選択"
+    },
+    "units": {
+        "message": "ユニット"
+    },
+    "unload": {
+        "message": "荷降"
+    },
+    "zoom": {
+        "message": "ズーム"
+    },
+    "zoom in": {
+        "message": "ズームイン"
+    },
+    "zoom out": {
+        "message": "ズームアウト"
+    },
+    "zoom to air": {
+        "message": "空中にズーム"
+    },
+    "zoom to celestial": {
+        "message": "宇宙にズーム"
+    },
+    "zoom to combat": {
+        "message": "戦闘にズーム"
+    },
+    "zoom to orbital": {
+        "message": "衛星軌道にズーム"
+    },
+    "zoom to surface": {
+        "message": "地表面にズーム"
+    },
+    "SELECTED OR ALL": {
+        "message": "選択済または全て"
+    },
+    "EXTRA MOUSE BUTTON 4": {
+        "message": "追加マウスボタン4"
+    },
+    "EXTRA MOUSE BUTTON 5": {
+        "message": "追加マウスボタン5"
+    },
+    "MIDDLE MOUSE BUTTON 3": {
+        "message": "中央マウスボタン3"
+    },
+    "MIDDLE MOUSE OR EXTRA BUTTONS": {
+        "message": "中央マウス/追加ボタン"
+    },
+    "Mouse Pan Button": {
+        "message": "マウスパンボタン"
+    }
+}

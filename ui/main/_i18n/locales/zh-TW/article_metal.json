@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "可以在同一個金屬點上建造基本和進階金屬提煉器"
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "請在金屬點上建造金屬提煉器"
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "建造金屬儲存空間以擴大資源容量"
+    },
+    "Metal Resource": {
+        "message": "金屬資源"
+    },
+    "Metal is required for building units and structures": {
+        "message": "建造單位和結構都需要金屬"
+    },
+    "PA Guide: Metal": {
+        "message": "PA指南：金屬"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "選取建造物，選取[style=text_callout]建造金屬提煉器圖示[/style]。"
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "在遊戲世界中[style=text_callout]按滑鼠左鍵並拖曳[/style]以在多個金屬點上建造。"
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": " (+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "（更新中…）"
+    },
+    "(no info available)": {
+        "message": "（情報なし）"
+    },
+    "Duration": {
+        "message": "プレイ時間"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "リプレイリストを取得できませんでした"
+    },
+    "Filter": {
+        "message": "フィルター"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "Game": {
+        "message": "ゲーム"
+    },
+    "Lobby Id": {
+        "message": "ロビー ID"
+    },
+    "Longest Game Duration": {
+        "message": "最長プレイ時間"
+    },
+    "Most Recent": {
+        "message": "直近"
+    },
+    "Multiplayer": {
+        "message": "マルチプレイ"
+    },
+    "Replays": {
+        "message": "リプレイ"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに帰還中…"
+    },
+    "Search": {
+        "message": "検索"
+    },
+    "Sorted By": {
+        "message": "並び替え: "
+    },
+    "Version": {
+        "message": "バージョン"
+    },
+    "Versus AI": {
+        "message": "対戦 AI"
+    },
+    "View": {
+        "message": "閲覧"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "観戦ロビー ID: __lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "リプレイを見る"
+    },
+    "Winner": {
+        "message": "勝者"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": " __gwClientNames__: 星系間戦争 \"__gwWarName__\" (ターン __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1vs1 ランク"
+    },
+    "All Recent Games": {
+        "message": "最近のゲーム（全て）"
+    },
+    "My Games Only": {
+        "message": "マイ ゲームのみ"
+    }
+}

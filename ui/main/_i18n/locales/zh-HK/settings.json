@@ -1,0 +1,77 @@
+{
+    "Ambient Occlusion": {
+        "message": "AMBIENT OCCLUSION"
+    },
+    "Anti-Aliasing": {
+        "message": "反鋸齒"
+    },
+    "Audio": {
+        "message": "音效"
+    },
+    "Camera": {
+        "message": "鏡頭"
+    },
+    "Camera Friction": {
+        "message": "鏡頭摩擦"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Display Mode": {
+        "message": "顯示模式"
+    },
+    "Graphics": {
+        "message": "畫質"
+    },
+    "HDR": {
+        "message": "高動態範圍"
+    },
+    "Headlights": {
+        "message": "車前燈"
+    },
+    "Key Pan Speed": {
+        "message": "KEY PAN SPEED"
+    },
+    "Keyboard": {
+        "message": "鍵盤"
+    },
+    "Master Volume": {
+        "message": "主音量"
+    },
+    "Mouse Pan Speed": {
+        "message": "滑鼠平移速度"
+    },
+    "Orbital Shell": {
+        "message": "ORBITAL SHELL"
+    },
+    "Quality Preset": {
+        "message": "質素預設檔"
+    },
+    "Resolution Scaling": {
+        "message": "解析度縮放"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Shadows": {
+        "message": "陰影"
+    },
+    "Show Build Previews": {
+        "message": "顯示建築預覽"
+    },
+    "Show Metal Spot Icons": {
+        "message": "顯示金屬礦位置圖示"
+    },
+    "Show Stat Bars": {
+        "message": "顯示統計列"
+    },
+    "Show Unit Icons": {
+        "message": "顯示單位圖示"
+    },
+    "Virtual Texture": {
+        "message": "虛擬材質"
+    },
+    "Zoom Speed": {
+        "message": "縮放速度"
+    }
+}

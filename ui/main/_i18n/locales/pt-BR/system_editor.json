@@ -1,0 +1,83 @@
+{
+    "Accept": {
+        "message": "Aceitar"
+    },
+    "CLEAR SYSTEM": {
+        "message": "LIMPAR SISTEMA"
+    },
+    "CLOSE": {
+        "message": "FECHAR"
+    },
+    "Cancel": {
+        "message": "Cancelar"
+    },
+    "Discard": {
+        "message": "Descartar"
+    },
+    "Do you want to save this system?": {
+        "message": "Deseja salvar esse sistema?"
+    },
+    "EDIT PLANET": {
+        "message": "EDITAR PLANETA"
+    },
+    "HIDE": {
+        "message": "ESCONDER"
+    },
+    "MY PLANETS": {
+        "message": "MEUS PLANETAS"
+    },
+    "Mass": {
+        "message": "MASSA"
+    },
+    "PREVIEW ALL": {
+        "message": "PRÉVIA DE TODOS"
+    },
+    "Position": {
+        "message": "POSIÇÃO"
+    },
+    "RECENT": {
+        "message": "RECENTE"
+    },
+    "REMOVE": {
+        "message": "REMOVER"
+    },
+    "SAVE SYSTEM": {
+        "message": "SALVAR SISTEMA"
+    },
+    "SHOW": {
+        "message": "MOSTRAR"
+    },
+    "SIMULATE": {
+        "message": "SIMULAR"
+    },
+    "Save": {
+        "message": "Salvar"
+    },
+    "System radius is too large.": {
+        "message": "O raio do sistema é muito grande."
+    },
+    "System radius is too small.": {
+        "message": "Raio do sistema é muito pequeno."
+    },
+    "TEMPLATES": {
+        "message": "MODELOS"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "O planeta está sendo carregado. Isso pode levar algum tempo."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "O programa não responderá bem até que o planeta esteja terminado."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "O sistema foi modificado desde a última vez em que foi salvo."
+    },
+    "The system has not been saved.": {
+        "message": "O sistema não foi salvo."
+    },
+    "Velocity": {
+        "message": "VELOCIDADE"
+    },
+    "Water": {
+        "message": "Água"
+    }
+}

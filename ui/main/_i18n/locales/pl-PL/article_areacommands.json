@@ -1,0 +1,20 @@
+{
+    "Area Commands": {
+        "message": "Komendy obszarowe"
+    },
+    "PA Guide: Area Commands": {
+        "message": "Przewodnik PA: Komendy obszarowe"
+    },
+    "Select units, click [style=text_callout]Attack button[/style].": {
+        "message": "Zaznacz jednostki i kliknij [style=text_callout]przycisk Atak[/style]."
+    },
+    "Select units, click [style=text_callout]Patrol button[/style].": {
+        "message": "Zaznacz jednostki i kliknij [style=text_callout]przycisk Patrol[/style]."
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to attack": {
+        "message": "[style=text_callout]Kliknij LPM i przeciągnij kursor[/style], by zaznaczyć obszar ataku"
+    },
+    "[style=text_callout]Left Click and drag[/style] an area to patrol": {
+        "message": "[style=text_callout]Kliknij LPM i przeciągnij kursor[/style], by zaznaczyć obszar patrolu"
+    }
+}

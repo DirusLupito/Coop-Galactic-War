@@ -1,0 +1,23 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Updating...)"
+    },
+    "(no info available)": {
+        "message": "(ingen info tilgængelig)"
+    },
+    "Game": {
+        "message": "Spillet"
+    },
+    "Returning to Main Menu": {
+        "message": "Går til Hovedmenu"
+    },
+    "Search": {
+        "message": "Søg"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

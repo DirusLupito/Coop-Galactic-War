@@ -1,0 +1,80 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __aiCount__ AI)"
+    },
+    "(Updating...)": {
+        "message": "(Обновление...)"
+    },
+    "(no info available)": {
+        "message": "Информация недоступна"
+    },
+    "Duration": {
+        "message": "Продолжительность"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "НЕ УДАЛОСЬ ПОЛУЧИТЬ СПИСОК ПОВТОРОВ"
+    },
+    "Filter": {
+        "message": "Фильтр"
+    },
+    "Galactic War": {
+        "message": "Галактическая Война"
+    },
+    "Game": {
+        "message": "Игра"
+    },
+    "Lobby Id": {
+        "message": "ID лобби"
+    },
+    "Longest Game Duration": {
+        "message": "Наибольшая продолжительность игры"
+    },
+    "Most Recent": {
+        "message": "Недавние"
+    },
+    "Multiplayer": {
+        "message": "Мультиплеер"
+    },
+    "Replays": {
+        "message": "Повторы"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращение в главное меню"
+    },
+    "Search": {
+        "message": "Поиск"
+    },
+    "Sorted By": {
+        "message": "Упорядочено по"
+    },
+    "Version": {
+        "message": "Версия"
+    },
+    "Versus AI": {
+        "message": "Против ИИ"
+    },
+    "View": {
+        "message": "Вид"
+    },
+    "Watch Direct Lobby Id: __lobby_id__": {
+        "message": "Смотреть повтор по ID лобби: __lobby_id__"
+    },
+    "Watch Replay": {
+        "message": "Просмотреть повтор"
+    },
+    "Winner": {
+        "message": "Победитель"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Галактическая Война \"__gwWarName__\" (ход __gwTurn__, __gwSystemName__), пр. __gwAiArmies__"
+    },
+    "1v1 Ranked": {
+        "message": "1 пр. 1 (ранг.)"
+    },
+    "All Recent Games": {
+        "message": "Все недавние игры"
+    },
+    "My Games Only": {
+        "message": "Только мои игры"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "CANCEL": {
+        "message": "取消"
+    },
+    "Delete": {
+        "message": "刪除"
+    },
+    "Delete this system?": {
+        "message": "刪除此星系？"
+    },
+    "Load System": {
+        "message": "載入星系"
+    },
+    "SHOW PLANETS": {
+        "message": "顯示星球"
+    },
+    "SHOW SYSTEMS": {
+        "message": "顯示星系"
+    },
+    "System Designer": {
+        "message": "SYSTEM DESIGNER"
+    }
+}

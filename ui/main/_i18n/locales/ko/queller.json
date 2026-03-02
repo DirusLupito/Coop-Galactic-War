@@ -1,0 +1,47 @@
+{
+    "Q-Bronze": {
+        "message": "Q-브론즈"
+    },
+    "Q-Casual": {
+        "message": "Q-캐주얼"
+    },
+    "Q-Gold": {
+        "message": "Q-골드"
+    },
+    "Q-Platinum": {
+        "message": "Q-플래티넘"
+    },
+    "Q-Silver": {
+        "message": "Q-실버"
+    },
+    "Q-Uber": {
+        "message": "Q-우버"
+    },
+    "Q-Uber 1v1": {
+        "message": "Q-우버 1v1"
+    },
+    "Q-Uber Bot": {
+        "message": "Q-우버 봇"
+    },
+    "Q-Uber Free-For-All": {
+        "message": "Q-우버 개인전"
+    },
+    "Q-Uber Platoon": {
+        "message": "Q-우버 소대"
+    },
+    "Q-Uber Rush": {
+        "message": "Q-우버 러쉬"
+    },
+    "Q-Uber Tank": {
+        "message": "Q-우버 탱크"
+    },
+    "Q-Uber Turtle": {
+        "message": "Q-우버 터틀"
+    },
+    "Queller AI": {
+        "message": "진압 AI"
+    },
+    "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion.": {
+        "message": "Quitch: 제 난이도에는 Q 접두사가 붙습니다. 인간 팀보다 큰 AI 팀을 만들지 말고, 대신 난이도나 경제력을 올리세요. 군단 확장팩이 지원됩니다."
+    }
+}

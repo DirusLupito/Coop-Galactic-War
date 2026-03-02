@@ -1,0 +1,74 @@
+{
+    "AI Commander": {
+        "message": "COMPUTERSPILLER"
+    },
+    "Add AI": {
+        "message": "Tilføj AI"
+    },
+    "Add AI Commander": {
+        "message": "Tilføj Virtuel Modstander"
+    },
+    "Add Slot": {
+        "message": "Tilføj plads"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "MISTET FORBINDELSE TIL SERVER"
+    },
+    "Empty": {
+        "message": "Tom"
+    },
+    "Free For All": {
+        "message": "Alle mod alle"
+    },
+    "Friends": {
+        "message": "Venner"
+    },
+    "Game Lobby": {
+        "message": "Spil Lobby"
+    },
+    "Join": {
+        "message": "Deltag"
+    },
+    "Kick": {
+        "message": "SMID UD"
+    },
+    "Leave": {
+        "message": "Forlad"
+    },
+    "Open to:": {
+        "message": "Åben for:"
+    },
+    "Player Slot": {
+        "message": "Spiller plads"
+    },
+    "Private": {
+        "message": "Privat"
+    },
+    "Public": {
+        "message": "Offentlig"
+    },
+    "Ready": {
+        "message": "Klar"
+    },
+    "Remove": {
+        "message": "Fjern"
+    },
+    "Returning to Main Menu": {
+        "message": "Går til Hovedmenu"
+    },
+    "SHARE ARMY": {
+        "message": "DEL HÆR"
+    },
+    "Spectate": {
+        "message": "Vær tilskuer"
+    },
+    "Spectators": {
+        "message": "Tilskuere"
+    },
+    "Start Game": {
+        "message": "Start Spil"
+    },
+    "Team Armies": {
+        "message": "Hold"
+    }
+}

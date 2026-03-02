@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP Aggressivo"
+    },
+    "AIP Air": {
+        "message": "AIP Aria"
+    },
+    "AIP Bot": {
+        "message": "AIP Bot"
+    },
+    "AIP Cautious": {
+        "message": "AIP Prudente"
+    },
+    "AIP Defender": {
+        "message": "AIP Difensore"
+    },
+    "AIP Economist": {
+        "message": "AIP Economista"
+    },
+    "AIP Fabber": {
+        "message": "AIP Fabbricatore"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP Tecnologia Rapida"
+    },
+    "AIP Foundation": {
+        "message": "AIP Fondazione"
+    },
+    "AIP Land": {
+        "message": "AIP Terra"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP Tecnologia Inferiore"
+    },
+    "AIP Naval": {
+        "message": "AIP Navale"
+    },
+    "AIP Orbital": {
+        "message": "AIP Orbitale"
+    },
+    "AIP Random": {
+        "message": "AIP casuale"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "AIP Corsa"
+    },
+    "AIP Swarm": {
+        "message": "AIP Sciame"
+    },
+    "AIP Synchronous": {
+        "message": "AIP Sincrono"
+    },
+    "AIP Tank": {
+        "message": "AIP Carro"
+    },
+    "AIP Turtle": {
+        "message": "AIP Tartaruga"
+    },
+    "AIP Amphibious": {
+        "message": "AIP Anfibio"
+    },
+    "AIP All-terrain": {
+        "message": "AIP Fuoristrada"
+    },
+    "AIP Artillery": {
+        "message": "AIP Artiglieria"
+    },
+    "AIP Assault": {
+        "message": "AIP Assalto"
+    },
+    "AIP Boomer": {
+        "message": "AIP Esploditore"
+    },
+    "AIP Fortress": {
+        "message": "AIP Fortezza"
+    },
+    "AIP Heavy": {
+        "message": "AIP pesante"
+    },
+    "AIP Infernodier": {
+        "message": "AIP Graninferno"
+    },
+    "AIP Micro": {
+        "message": "AIP Micro"
+    },
+    "AIP Nuker": {
+        "message": "AIP Nucleare"
+    },
+    "AIP Raider": {
+        "message": "AIP Raider"
+    },
+    "AIP Ranked": {
+        "message": "AIP Classificato"
+    },
+    "AIP Sniper": {
+        "message": "AIP Cecchino"
+    }
+}

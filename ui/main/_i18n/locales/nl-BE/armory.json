@@ -1,0 +1,230 @@
+{
+    "*Must meet Minimum System Requirements for offline play": {
+        "message": "* Moet voldoen aan de minimale systeemvereisten voor offline spelen"
+    },
+    "Account Name:": {
+        "message": "Accountnaam:"
+    },
+    "Add To Cart": {
+        "message": "Voeg toe aan winkelwagen"
+    },
+    "Advanced Command And Control": {
+        "message": "Geavanceerde commando's en besturing"
+    },
+    "Armory": {
+        "message": "Wapenkamer"
+    },
+    "Automate your armies with intuitive controls and features, allowing you to create and manage massive armies and production lines with ease across multiple fronts on multiple planets at once!": {
+        "message": "Automatiseer je legers met intuïtieve bedieningselementen en functies, zodat je met gemak meerdere legers en productielijnen tegelijkertijd op meerdere fronten en op meerdere planeten kunt maken en beheren!"
+    },
+    "Badges": {
+        "message": "Insignes"
+    },
+    "CHECKOUT": {
+        "message": "BETALEN"
+    },
+    "Cancel": {
+        "message": "Annuleer"
+    },
+    "Cart": {
+        "message": "Winkelwagen"
+    },
+    "Command armies with numbers in the thousands across multiple planets on land, sea, air, and even in orbit.": {
+        "message": "Bestuur legers met duizenden eenheden op meerdere planeten ter land, zee, lucht en zelfs in een baan om de planeet."
+    },
+    "Commander Name": {
+        "message": "Naam Commandant"
+    },
+    "Commanders": {
+        "message": "Commandanten"
+    },
+    "Confirmation code:": {
+        "message": "Bevestigingscode:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "De bevestiging van uw aankoop bevind zich onderaan."
+    },
+    "Continue Shopping": {
+        "message": "Verder Winkelen"
+    },
+    "Coupon code": {
+        "message": "Couponcode"
+    },
+    "Credit applied:": {
+        "message": "Fonds toegewezen:"
+    },
+    "Designed in collaboration with": {
+        "message": "Ontworpen in samenwerking met"
+    },
+    "Devastate your enemies with 5 massive Titan-class super units like the earth-shaking Atlas bot and lightning-wielding Zeus airship!": {
+        "message": "Verpletter je vijanden met 5 enorme supereenheden van de Titan-klasse zoals de wereldschokkende Atlas-bot en het bliksemschietende Zeus-luchtschip!"
+    },
+    "DirectX: Version 9.0c": {
+        "message": "DirectX: versie 9.0c"
+    },
+    "Dismiss": {
+        "message": "Afwijzen"
+    },
+    "Elevate your game with new planets that feature multi-level terrain available in both single and multiplayer. Get up to speed faster with a new, streamlined tutorial experience, then take your game to the next level with the new Bounty Mode option for AI skirmish and multiplayer.": {
+        "message": "Verbeter je spel met nieuwe planeten met terrein op meerdere hoogtes, beschikbaar in zowel single als multiplayer. Kom sneller op hoog niveau met een nieuwe, gestroomlijnde tutorial-ervaring, en til je spel naar het volgende niveau met de nieuwe Bounty-modusoptie voor AI skirmish en multiplayer."
+    },
+    "End games by destroying entire planets with giant lasers, asteroid collisions, and the new planet-splitting Ragnarok Titan!": {
+        "message": "Beëindig spellen door hele planeten te vernietigen met gigantische lasers, asteroïde botsingen en de nieuwe planetensplijter, de Ragnarok Titan!"
+    },
+    "Epic Multiplayer": {
+        "message": "Epische multiplayer"
+    },
+    "Epic Scale": {
+        "message": "Epische schaal"
+    },
+    "Epic Single-Player": {
+        "message": "Epische singleplayer"
+    },
+    "Expand your strategic arsenal with 16 new units such as versatile Hover Tanks, indomitable Orbital Battleships, and voracious Nanobot Swarms!": {
+        "message": "Breid je arsenaal uit met 16 nieuwe eenheden, zoals veelzijdige zweeftanks, ontembare ruimteslagschepen en vraatzuchtige nanobotzwermen!"
+    },
+    "Galactic War is a twist on traditional real-time strategy campaigns that has players battling across a dynamic galaxy filled with procedurally-generated content. Every playthrough is different.": {
+        "message": "Galactic War geeft een draai aan traditionele realtime strategie-campagnes waar spelers strijden om een dynamisch sterrenstelsel vol met procedureel gegenereerde content. Elke keer is het anders."
+    },
+    "Go to Main Menu": {
+        "message": "Terug naar Hoofdmenu"
+    },
+    "Graphics: 1 GB GPU RAM / OpenGL 3.2+": {
+        "message": "Grafische kaart: 1 GB GPU RAM / OpenGL 3.2+"
+    },
+    "Hard Drive: 5 GB available space": {
+        "message": "Harde schijf: 5 GB ruimte beschikbaar"
+    },
+    "Here's your receipt.": {
+        "message": "Hier is uw aankoopbon."
+    },
+    "Including everything you loved about Planetary Annihilation:": {
+        "message": "Bevat alles waarvan je hield in Planetary Annihilation:"
+    },
+    "Instant Replays": {
+        "message": "Instant replays"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Het lijkt erop dat je de Steam Overlay hebt uitgeschakeld; hierdoor kunnen we niet doorgaan met je aankoop."
+    },
+    "Item": {
+        "message": "Voorwerp"
+    },
+    "Item is already in cart.": {
+        "message": "Dit voorwerp bevind zich al in de winkelwagen."
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter Sponsor"
+    },
+    "Linux": {
+        "message": "Linux"
+    },
+    "Mac": {
+        "message": "Mac"
+    },
+    "Mac Mini \"Core i5\" (Late 2014)": {
+        "message": "Mac Mini \"Core i5\" (eind 2014)"
+    },
+    "Mac Pro \"Quad Core\" with 8GB Memory (2010)": {
+        "message": "Mac Pro \"Quad Core\" met 8GB geheugen (2010)"
+    },
+    "MacBook Air \"Core i5\" (Early 2015)": {
+        "message": "MacBook Air \"Core i5\" (begin 2015)"
+    },
+    "MacBook Pro \"Core i7\" with 8GB Memory (Mid 2012)": {
+        "message": "MacBook Pro \"Core i7\" met 8GB geheugen (medio 2012)"
+    },
+    "Memory: 8 GB RAM": {
+        "message": "Geheugen: 8 GB RAM"
+    },
+    "Minimum System Requirements": {
+        "message": "Minimale systeemvereisten"
+    },
+    "OS: Any Linux distribution supported by Steam": {
+        "message": "Besturingssysteem: elke Linux-distributie die wordt ondersteund door Steam"
+    },
+    "OS: Windows 7": {
+        "message": "Besturingssysteem: Windows 7"
+    },
+    "Play with up to ten friends (or enemies) in massive free-for-all and team-based matches. Or, compete in the 1v1 ranked play ladder.": {
+        "message": "Speel met maximaal tien vrienden (of vijanden) in gigantische free-for-all's en teamwedstrijden. Of speel in de 1-tegen-1 ranglijsten."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "Geniet van al de nieuwe eenheden, nieuwe werelden en nieuwe manieren om alles te vernietigen!"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "Verlaat het spel, zoek het spel vervolgens op in je Steambibliotheek, klik met de rechtermuisknop, selecteer Eigenschappen, zorg dat \"Steam Overlay\" is aangevinkt. Herstart het spel en probeer het opnieuw."
+    },
+    "Price": {
+        "message": "Prijs"
+    },
+    "Processor: 64-bit Quad Core": {
+        "message": "Processor: 64-bit Quad Core"
+    },
+    "Processor: Quad Core": {
+        "message": "Processor: Quad Core"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "SLUITEN & TITANS INSTALLEREN"
+    },
+    "REMOVE": {
+        "message": "VERWIJDER"
+    },
+    "RTS JUST GOT BIGGER": {
+        "message": "RTS IS NU NOG GROTER"
+    },
+    "Redeem": {
+        "message": "Inlossen"
+    },
+    "Reset Default Commander": {
+        "message": "De standaard commandant herstellen"
+    },
+    "Return to Armory": {
+        "message": "Terugkeren naar Wapenkamer"
+    },
+    "Set As Default Commander": {
+        "message": "Instellen als standaard Commander"
+    },
+    "Smash Planets": {
+        "message": "Ram planeten"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam Overlay uitgeschakeld"
+    },
+    "THE TITANS HAVE ARRIVED": {
+        "message": "DE TITANS ZIJN AANGEKOMEN"
+    },
+    "TITANS is the huge stand-alone expansion to the already massive-scale RTS Planetary Annihilation, which includes the base game and adds tons of new features:": {
+        "message": "TITANS is de enorme, op zichzelf staande uitbreiding van de toch al massale RTS Planetary Annihilation en omvat het basisspel en talloze nieuwe functies:"
+    },
+    "Thank you for purchasing TITANS! You'll find it in your Steam library right next to Planetary Annihilation!": {
+        "message": "Bedankt voor je aankoop van TITANS! Je vindt het in je Steambibliotheek vlak naast Planetary Annihilation!"
+    },
+    "Thank you for your purchase.": {
+        "message": "Bedankt voor uw aankoop"
+    },
+    "Total:": {
+        "message": "Totaal:"
+    },
+    "Updating...": {
+        "message": "Updaten..."
+    },
+    "Upgrade for:": {
+        "message": "Upgrade voor:"
+    },
+    "View in-match recordings in real-time while matches are in progress. See when a battle turned by rewinding the game to any point, and use Play From Here to turn it back in your favor.": {
+        "message": "Bekijk opnames in realtime terwijl wedstrijden aan de gang zijn. Zie wanneer een gevecht omsloeg door de game naar een willekeurig punt terug te spoelen en gebruik Play From Here om het in jouw voordeel terug te draaien."
+    },
+    "Windows": {
+        "message": "Windows"
+    },
+    "Your cart is empty.": {
+        "message": "Uw winkelwagen is leeg."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "De aangekochte voorwerpen zijn nu geregistreerd op uw account en zijn beschikbaar in het spel."
+    },
+    "iMac \"Core i5\" (Late 2012)": {
+        "message": "iMac \"Core i5\" (eind 2012)"
+    }
+}

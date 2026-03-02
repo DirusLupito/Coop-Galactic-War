@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "월드 시뮬레이션 접속 거부됨"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "월드 시뮬레이션 접속 중"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "남은 시도 횟수: __num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "서버 연결 중"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "서버 연결 취소됨"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "서버 연결 실패"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "서버 연결 끊어짐"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "월드 시뮬레이션 생성 중"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "서버 모드 다운로드 중"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "권한 획득 실패"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "게임 참가 실패"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "게임 불러오기 실패"
+    },
+    "FAILED TO START GAME": {
+        "message": "게임 시작 실패"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "리플레이 시작 실패"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "로그인 수락됨"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "서버 로그인 거부됨"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "서버 모드 재적용 중"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "권한 요청 중"
+    },
+    "Returning to Main Menu": {
+        "message": "메인 메뉴로 돌아가는 중"
+    },
+    "STARTING GAME": {
+        "message": "게임 시작 중"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "월드 시뮬레이션 접속 불가"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "서버 모드 업로드 중... 잠시 기다려 주십시오."
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "월드 시뮬레이션 연결 불가"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "오프라인 게임을 시작하는 중이지만 현재 시스템이 오프라인 플레이 권장 사양을 충족하지 않습니다. 게임 플레이에 부정적인 영향을 미칠 수 있습니다."
+    }
+}

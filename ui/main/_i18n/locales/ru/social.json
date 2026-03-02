@@ -1,0 +1,104 @@
+{
+    "APPROVE": {
+        "message": "УТВЕРДИТЬ"
+    },
+    "APPROVED USERS": {
+        "message": "УТВЕРЖДЕННЫЕ ПОЛЬЗОВАТЕЛИ"
+    },
+    "Add": {
+        "message": "Добавить"
+    },
+    "Add Contacts": {
+        "message": "Добавить контакты"
+    },
+    "Add a Friend": {
+        "message": "Добавить в друзья"
+    },
+    "BLOCK": {
+        "message": "ЗАБЛОКИРОВАТЬ"
+    },
+    "BLOCKED USERS": {
+        "message": "ЗАБЛОКИРОВАННЫЕ ПОЛЬЗОВАТЕЛИ"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Close": {
+        "message": "Закрыть"
+    },
+    "Contact List Updated": {
+        "message": "Список контактов обновлен"
+    },
+    "Contact Not Found": {
+        "message": "Контакт не найден"
+    },
+    "Current Nickname:": {
+        "message": "Текущий ник:"
+    },
+    "Dismiss": {
+        "message": "Закрыть"
+    },
+    "Filter contacts by tag:": {
+        "message": "Фильтровать контакты по тегу:"
+    },
+    "Games you make will be hidden to these players.": {
+        "message": "Ваши игры будут скрыты от этих игроков."
+    },
+    "Name:": {
+        "message": "Имя: "
+    },
+    "New Nickname:": {
+        "message": "Новый ник: "
+    },
+    "New Tag:": {
+        "message": "Новый тег: "
+    },
+    "Players you have encountered recently.": {
+        "message": "Игроки, с которыми вы столкнулись недавно."
+    },
+    "Private games you make will only be visible to these players.": {
+        "message": "Только эти игроки будут видеть ваши закрытые игры."
+    },
+    "RECENT": {
+        "message": "НЕДАВНИЕ"
+    },
+    "REMOVE": {
+        "message": "УДАЛИТЬ"
+    },
+    "RENAME": {
+        "message": "ПЕРЕИМЕНОВАТЬ"
+    },
+    "Refresh Contacts": {
+        "message": "Обновить контакты"
+    },
+    "Refreshing friends list.....": {
+        "message": "Обновление списка друзей....."
+    },
+    "Rename": {
+        "message": "Переименовать"
+    },
+    "Rename Friend": {
+        "message": "Переименовать друга"
+    },
+    "SOCIAL": {
+        "message": "ДРУЗЬЯ"
+    },
+    "Tag": {
+        "message": "Тег"
+    },
+    "Tag Friend:": {
+        "message": "Отметить друга: "
+    },
+    "Tags:": {
+        "message": "Теги: "
+    },
+    "UBERDEX": {
+        "message": "UBERDEX"
+    },
+    "Uber Name": {
+        "message": "Имя пользователя"
+    },
+    "or": {
+        "message": "или"
+    }
+}

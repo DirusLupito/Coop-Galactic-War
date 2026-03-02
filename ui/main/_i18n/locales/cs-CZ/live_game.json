@@ -1,0 +1,146 @@
+{
+    "ALLY": {
+        "message": "SPOJENEC"
+    },
+    "ARMY": {
+        "message": "ARMÁDA"
+    },
+    "AT WILL": {
+        "message": "NA PŘÁNÍ"
+    },
+    "Accept": {
+        "message": "Přijmout"
+    },
+    "Activate planetary laser": {
+        "message": "Aktivovat planetární laser"
+    },
+    "Alliance Request": {
+        "message": "Žádost o spojenectví"
+    },
+    "Alliance requested": {
+        "message": "Požádáno o spojenectví"
+    },
+    "Allied With:": {
+        "message": "Spojenectví s:"
+    },
+    "BUILD MODE": {
+        "message": "Budovatelský réžim"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "PŘIPOJENÍ K SERVERU ZTRACENO"
+    },
+    "CONTINUOUS": {
+        "message": "KONTINUÁLNÍ"
+    },
+    "Cancel": {
+        "message": "Zrušit"
+    },
+    "Change orbit": {
+        "message": "Změnit oběžnou dráhu"
+    },
+    "Close": {
+        "message": "Zavřít"
+    },
+    "Count": {
+        "message": "Počet"
+    },
+    "ECONOMY": {
+        "message": "EKONOMIKA"
+    },
+    "ENERGY ORDERS": {
+        "message": "Energetické příkazy"
+    },
+    "Efficiency": {
+        "message": "Efektivita"
+    },
+    "Enemy Contact!": {
+        "message": "Nepřátelský kontakt!"
+    },
+    "Exit Game?": {
+        "message": "Ukončit hru?"
+    },
+    "FIRE ORDERS": {
+        "message": "ROZKAZY PRO ÚTOK"
+    },
+    "Fabber": {
+        "message": "Konstruktér"
+    },
+    "Factory": {
+        "message": "Továrna"
+    },
+    "GAME PAUSED": {
+        "message": "Hra pozastavena"
+    },
+    "HOLD": {
+        "message": "DRŽET"
+    },
+    "HOLD POSITION": {
+        "message": "DRŽET POZICE"
+    },
+    "Ignore": {
+        "message": "Ignorovat"
+    },
+    "MOVE ORDERS": {
+        "message": "PŘESUN"
+    },
+    "Mobile": {
+        "message": "Mobilní"
+    },
+    "NORMAL": {
+        "message": "NORMÁLNÍ"
+    },
+    "PLAYER": {
+        "message": "HRÁČ"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Vyber pozici, ve které chceš začít se svým Velitelem."
+    },
+    "Ping!": {
+        "message": "Označit!"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Pozice zacílena. Klikni pro potvrzení."
+    },
+    "RETURN FIRE": {
+        "message": "OPĚTOVAT PALBU"
+    },
+    "ROAM": {
+        "message": "Toulat se"
+    },
+    "Request pending": {
+        "message": "Žádost se vyřizuje"
+    },
+    "Returning to Main Menu": {
+        "message": "Vracím se do hlavního menu"
+    },
+    "START ANNIHILATION": {
+        "message": "ZAČÍT HRU"
+    },
+    "Select a new gravity well.": {
+        "message": "Zvolte novou gravitační studnu."
+    },
+    "Select a planet to attack.": {
+        "message": "Zvolte planetu, na kterou chcete zaútočit."
+    },
+    "Select a planet to destroy.": {
+        "message": "Zvolte planetu, kterou chcete zničit."
+    },
+    "Set course for annihilation": {
+        "message": "Nastavit směr pro zničení"
+    },
+    "Set target spot": {
+        "message": "Nastavit cílový bod"
+    },
+    "Then confirm destination to set course.": {
+        "message": "Pak potvrďte cíl pro nastavení směru."
+    },
+    "Unknown": {
+        "message": "Neznámo"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Čekám na výběr místa ostatních hráčů."
+    },
+    "Yes": {
+        "message": "Ano"
+    }
+}

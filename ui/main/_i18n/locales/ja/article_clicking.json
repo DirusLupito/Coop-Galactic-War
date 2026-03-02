@@ -1,0 +1,20 @@
+{
+    "Clicking": {
+        "message": "クリック"
+    },
+    "PA Guide: Clicking": {
+        "message": "PAガイド: クリック"
+    },
+    "[style=text_callout]Double click[/style] a unit to select similar units": {
+        "message": "ユニットを[style=text_callout]ダブルクリック[/style]で同類のユニットを選択"
+    },
+    "[style=text_callout]Left Click and drag[/style] to select multiple units": {
+        "message": "[style=text_callout]左クリック＆ドラッグ[/style]で複数ユニットを選択"
+    },
+    "[style=text_callout]Left Click[/style] to select unit, [style=text_callout]Right Click[/style] for action.": {
+        "message": "[style=text_callout]左クリック[/style] でユニットを選択、[style=text_callout]右クリック[/style] で実行"
+    },
+    "[style=text_callout]Shift + Right Click[/style] to queue up multiple orders": {
+        "message": "[style=text_callout]Shift + 右クリック[/style]で複数オーダーをキュー列に入れる"
+    }
+}

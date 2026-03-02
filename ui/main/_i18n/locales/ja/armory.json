@@ -1,0 +1,230 @@
+{
+    "*Must meet Minimum System Requirements for offline play": {
+        "message": "*オフラインでプレイするには最小限のシステム要件を満たしている必要があります"
+    },
+    "Account Name:": {
+        "message": "アカウント名:"
+    },
+    "Add To Cart": {
+        "message": "カートに追加"
+    },
+    "Advanced Command And Control": {
+        "message": "上級コマンド＆コントロール"
+    },
+    "Armory": {
+        "message": "アーマリー"
+    },
+    "Automate your armies with intuitive controls and features, allowing you to create and manage massive armies and production lines with ease across multiple fronts on multiple planets at once!": {
+        "message": "直感的な操作と各種要素を駆使して軍拡を最適化/自動化せよ、大規模兵団/兵器/生産ラインを製造/管理/運営せよ。複数の惑星間に広がる無数の戦線を一元掌握！"
+    },
+    "Badges": {
+        "message": "バッジ"
+    },
+    "CHECKOUT": {
+        "message": "チェックアウト"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Cart": {
+        "message": "カート"
+    },
+    "Command armies with numbers in the thousands across multiple planets on land, sea, air, and even in orbit.": {
+        "message": "陸海空のみならず衛星軌道上にまで展開する無数の兵器を、複数の惑星に派遣された兵団を自在に操れ"
+    },
+    "Commander Name": {
+        "message": "コマンダー名"
+    },
+    "Commanders": {
+        "message": "コマンダー"
+    },
+    "Confirmation code:": {
+        "message": "確認コード:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "購入の確認は、以下の通りです"
+    },
+    "Continue Shopping": {
+        "message": "購入を続ける"
+    },
+    "Coupon code": {
+        "message": "クーポンコード"
+    },
+    "Credit applied:": {
+        "message": "適用クレジット: "
+    },
+    "Designed in collaboration with": {
+        "message": "コラボレーションデザイン with"
+    },
+    "Devastate your enemies with 5 massive Titan-class super units like the earth-shaking Atlas bot and lightning-wielding Zeus airship!": {
+        "message": "大地を揺るがすボットAtlas、驚異の飛空艦Zeus 、5種類のTitan級スーパーユニットで敵性勢力を恐怖におとしいれろ！"
+    },
+    "DirectX: Version 9.0c": {
+        "message": "DirectX: Version 9.0c"
+    },
+    "Dismiss": {
+        "message": "閉じる"
+    },
+    "Elevate your game with new planets that feature multi-level terrain available in both single and multiplayer. Get up to speed faster with a new, streamlined tutorial experience, then take your game to the next level with the new Bounty Mode option for AI skirmish and multiplayer.": {
+        "message": "複数の階層で構成される地形（シングルプレイ＆マルチプレイ対応）が導入された新たな惑星で、戦いをさらなる高みへ！分かりやすく再構築されたチュートリアルでまずはゲームのシステムを理解し、そして新規バウンティーモード（AI スカーミッシュ＆マルチプレイ対応）で未知の世界へ！"
+    },
+    "End games by destroying entire planets with giant lasers, asteroid collisions, and the new planet-splitting Ragnarok Titan!": {
+        "message": "巨大レーザー兵器で、隕石の衝突で、はたまた惑星をも切り裂く Ragnarok Titan をもって惑星を丸ごと破壊せよ、それで「ゲーム」は終了だ！"
+    },
+    "Epic Multiplayer": {
+        "message": "壮大なマルチプレイ"
+    },
+    "Epic Scale": {
+        "message": "壮大なスケール"
+    },
+    "Epic Single-Player": {
+        "message": "壮大なシングルプレイ"
+    },
+    "Expand your strategic arsenal with 16 new units such as versatile Hover Tanks, indomitable Orbital Battleships, and voracious Nanobot Swarms!": {
+        "message": "汎用性の高いホバータンク、他を圧倒する衛星軌道バトルシップ、飽くなき攻撃性を持つナノボットスワーム、16種にも及ぶ新ユニット群で戦略性はさらに拡大！"
+    },
+    "Galactic War is a twist on traditional real-time strategy campaigns that has players battling across a dynamic galaxy filled with procedurally-generated content. Every playthrough is different.": {
+        "message": "星系間戦争…それは従来型のRTS（リアルタイムストラテジー）とは一線を画す、銀河を舞台とした壮大な戦いだ。戦いの舞台となる惑星群はランダム生成となるため、プレイのたびにバトルは異なる様相を呈する"
+    },
+    "Go to Main Menu": {
+        "message": "メインメニューへ"
+    },
+    "Graphics: 1 GB GPU RAM / OpenGL 3.2+": {
+        "message": "グラフィック: 1 GB GPU RAM / OpenGL 3.2+"
+    },
+    "Hard Drive: 5 GB available space": {
+        "message": "ハードドライブ：5 GB以上の空き容量"
+    },
+    "Here's your receipt.": {
+        "message": "こちらが領収書です"
+    },
+    "Including everything you loved about Planetary Annihilation:": {
+        "message": "従来の「Planetary Annihilation」ももちろん全て網羅:"
+    },
+    "Instant Replays": {
+        "message": "インスタントリプレイ"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Steam オーバーレイ機能がオフになっているようです。オンにしないと購入を実行できません"
+    },
+    "Item": {
+        "message": "アイテム"
+    },
+    "Item is already in cart.": {
+        "message": "アイテムは既にカートに入っています"
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarter バッカー"
+    },
+    "Linux": {
+        "message": "Linux"
+    },
+    "Mac": {
+        "message": "Mac"
+    },
+    "Mac Mini \"Core i5\" (Late 2014)": {
+        "message": "Mac Mini \"Core i5\" (2014年後半)"
+    },
+    "Mac Pro \"Quad Core\" with 8GB Memory (2010)": {
+        "message": "8GBメモリ搭載のMac Pro \"Quad Core\"（2010）"
+    },
+    "MacBook Air \"Core i5\" (Early 2015)": {
+        "message": "MacBook Air \"Core i5\" (2015年前半)"
+    },
+    "MacBook Pro \"Core i7\" with 8GB Memory (Mid 2012)": {
+        "message": "8GBメモリ搭載のMacBook Pro \"Core i7\"(2012年半ば)"
+    },
+    "Memory: 8 GB RAM": {
+        "message": "メモリ：8 GB RAM"
+    },
+    "Minimum System Requirements": {
+        "message": "最小システム要件"
+    },
+    "OS: Any Linux distribution supported by Steam": {
+        "message": "OS：Steam対応のLinuxディストリビューション"
+    },
+    "OS: Windows 7": {
+        "message": "OS: Windows 7"
+    },
+    "Play with up to ten friends (or enemies) in massive free-for-all and team-based matches. Or, compete in the 1v1 ranked play ladder.": {
+        "message": "最大10人の友達（あるいは敵か…）でプレイ、全員を敵に回しての乱戦かチームベースの対戦か、ランク分けによる1vs1の戦いもオススメだ"
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "新登場のユニット、新たなワールド、そして新たな方法を存分にお楽しみあれ、そして全てを殲滅せよ！"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "いったんゲームを終了して、Steamライブラリを開いて、このゲームを右クリック、「プロパティ」を選択して「ゲーム中に Steam オーバーレイを有効にする」をチェックしてください。チェック後、ゲームを再起動してください"
+    },
+    "Price": {
+        "message": "価格"
+    },
+    "Processor: 64-bit Quad Core": {
+        "message": "プロセッサ: Processor: 64-bit Quad Core"
+    },
+    "Processor: Quad Core": {
+        "message": "プロセッサ: Quad Core"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "TITANSを終了してインストール"
+    },
+    "REMOVE": {
+        "message": "削除"
+    },
+    "RTS JUST GOT BIGGER": {
+        "message": "さらなる進化を遂げたRTS"
+    },
+    "Redeem": {
+        "message": "引換"
+    },
+    "Reset Default Commander": {
+        "message": "デフォルトのコマンダーをリセット"
+    },
+    "Return to Armory": {
+        "message": "アーマリーに戻る"
+    },
+    "Set As Default Commander": {
+        "message": "デフォルトのコマンダーに設定"
+    },
+    "Smash Planets": {
+        "message": "星々を破壊せよ"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam オーバーレイ無効"
+    },
+    "THE TITANS HAVE ARRIVED": {
+        "message": "TITANS 到来"
+    },
+    "TITANS is the huge stand-alone expansion to the already massive-scale RTS Planetary Annihilation, which includes the base game and adds tons of new features:": {
+        "message": "「TITANS」は、大規模なスケール感を誇るRTS「Planetary Annihilation」をさらに拡張する追加コンテンツである。ベースとなるゲームと無数の新規要素がTITANSには入っている"
+    },
+    "Thank you for purchasing TITANS! You'll find it in your Steam library right next to Planetary Annihilation!": {
+        "message": "TITANSを購入いただきありがとうございます！Steamライブラリの「Planetary Annihilation」のすぐ隣に「TITANS」があるはずです！"
+    },
+    "Thank you for your purchase.": {
+        "message": "ご購入いただきありがとうございます"
+    },
+    "Total:": {
+        "message": "合計: "
+    },
+    "Updating...": {
+        "message": "更新中…"
+    },
+    "Upgrade for:": {
+        "message": "アップグレード価格:"
+    },
+    "View in-match recordings in real-time while matches are in progress. See when a battle turned by rewinding the game to any point, and use Play From Here to turn it back in your favor.": {
+        "message": "対戦の録画映像を、マッチ進行中でもリアルタイムに視聴可能。ゲームの局面が変わったポイントを見極め、その地点までゲームを戻し、「ここから再プレイ」を使えば戦いの歴史を変えることだってできる"
+    },
+    "Windows": {
+        "message": "Windows"
+    },
+    "Your cart is empty.": {
+        "message": "カートは空です"
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "購入したアイテムはアカウントに登録され、ゲーム内から利用可能となります"
+    },
+    "iMac \"Core i5\" (Late 2012)": {
+        "message": "iMac \"Core i5\" (2012年後半)"
+    }
+}

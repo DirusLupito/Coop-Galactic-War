@@ -1,0 +1,974 @@
+{
+    "ALL": {
+        "message": "전체"
+    },
+    "ALWAYS": {
+        "message": "항상"
+    },
+    "AUTO": {
+        "message": "자동"
+    },
+    "Active Product": {
+        "message": "활성화된 제품"
+    },
+    "Ambient Occlusion": {
+        "message": "엠비언트 오클루전"
+    },
+    "Anti-Aliasing": {
+        "message": "안티 앨리어싱"
+    },
+    "Arabic (Community translation)": {
+        "message": "아랍어(커뮤니티 번역)"
+    },
+    "Audio": {
+        "message": "오디오"
+    },
+    "Back": {
+        "message": "뒤로"
+    },
+    "Build Bar Size": {
+        "message": "건설 바 크기"
+    },
+    "Build Preview Behavior": {
+        "message": "건설 미리 보기 스타일"
+    },
+    "CUSTOM": {
+        "message": "사용자 설정"
+    },
+    "Camera": {
+        "message": "카메라"
+    },
+    "Camera Friction": {
+        "message": "카메라 프릭션"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Chinese (Simplified)": {
+        "message": "중국어(간체)"
+    },
+    "Chinese (Traditional)": {
+        "message": "중국어(번체)"
+    },
+    "Chinese, Hong Kong": {
+        "message": "중국어(홍콩)"
+    },
+    "Classic": {
+        "message": "클래식"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Conflict:": {
+        "message": "충돌:"
+    },
+    "Czech (Community translation)": {
+        "message": "체코어(커뮤니티 번역)"
+    },
+    "Danish (Community translation)": {
+        "message": "덴마크어(커뮤니티 번역)"
+    },
+    "Default": {
+        "message": "기본"
+    },
+    "Default Audio Device": {
+        "message": "기본 오디오 장치"
+    },
+    "Display Mode": {
+        "message": "디스플레이 모드"
+    },
+    "Dutch": {
+        "message": "네덜란드어"
+    },
+    "Dutch, Belgium (Community translation)": {
+        "message": "벨기에 네덜란드어(커뮤니티 번역)"
+    },
+    "Edge Scroll Options": {
+        "message": "엣지 스크롤 옵션"
+    },
+    "English": {
+        "message": "영어"
+    },
+    "English, US": {
+        "message": "영어(미국)"
+    },
+    "FOV": {
+        "message": "FOV"
+    },
+    "FULLSCREEN": {
+        "message": "전체 화면"
+    },
+    "FXAA": {
+        "message": "FXAA"
+    },
+    "Finnish (Community translation)": {
+        "message": "핀란드어(커뮤니티 번역)"
+    },
+    "Forward": {
+        "message": "앞으로"
+    },
+    "French": {
+        "message": "프랑스어"
+    },
+    "GAMEPLAY": {
+        "message": "게임 플레이"
+    },
+    "GUI Size": {
+        "message": "GUI 크기"
+    },
+    "German": {
+        "message": "독일어"
+    },
+    "German, Austrian (Community translation)": {
+        "message": "오스트리아 독일어(커뮤니티 번역)"
+    },
+    "Graphics": {
+        "message": "그래픽"
+    },
+    "HDR": {
+        "message": "HDR"
+    },
+    "HIGH": {
+        "message": "높음"
+    },
+    "Headlights": {
+        "message": "헤드라이트"
+    },
+    "Hungarian (Community translation)": {
+        "message": "헝가리어(커뮤니티 번역)"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "아이콘 표시 거리"
+    },
+    "Italian": {
+        "message": "이탈리아어"
+    },
+    "Japanese": {
+        "message": "일본어"
+    },
+    "Key Pan Speed": {
+        "message": "키보드 이동 속도"
+    },
+    "Keyboard": {
+        "message": "키보드"
+    },
+    "Korean": {
+        "message": "한국어"
+    },
+    "LOW": {
+        "message": "낮음"
+    },
+    "Language": {
+        "message": "언어"
+    },
+    "Local Server": {
+        "message": "로컬 서버"
+    },
+    "Local Server Multi-threading": {
+        "message": "로컬 서버 멀티 스레딩"
+    },
+    "Local server is not available on your configuration.  (64-bit OS required)": {
+        "message": "현재 구성에서는 로컬 서버를 사용할 수 없습니다. (64 비트 OS 필요)"
+    },
+    "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)": {
+        "message": "현재 구성에서는 로컬 서버를 사용하지 않는 것이 좋습니다. (4개의 CPU 코어와 8GB 메모리 권장)"
+    },
+    "Master Volume": {
+        "message": "마스터 볼륨"
+    },
+    "Mouse Pan Speed": {
+        "message": "마우스 이동 속도"
+    },
+    "Music Volume": {
+        "message": "음악 볼륨"
+    },
+    "NATIVE (100%)": {
+        "message": "네이티브 (100%)"
+    },
+    "NEVER": {
+        "message": "안 함"
+    },
+    "Norwegian (Community translation)": {
+        "message": "노르웨이어(커뮤니티 번역)"
+    },
+    "OFF": {
+        "message": "끄기"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "끄기 (마우스락)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "끄기 (마우스락 없음)"
+    },
+    "ON": {
+        "message": "켜기"
+    },
+    "Orbital Shell": {
+        "message": "궤도 쉘"
+    },
+    "Order Preview Behavior": {
+        "message": "명령 미리 보기 스타일"
+    },
+    "Pole Lock": {
+        "message": "극점 고정"
+    },
+    "Polish": {
+        "message": "폴란드어"
+    },
+    "Portuguese, Brazil (Community translation)": {
+        "message": "브라질 포르투갈어(커뮤니티 번역)"
+    },
+    "Quality Preset": {
+        "message": "품질 프리셋"
+    },
+    "RANGE DEPENDENT": {
+        "message": "거리에 따라 조정"
+    },
+    "Resolution Scaling": {
+        "message": "해상도 조절"
+    },
+    "Restore All Defaults": {
+        "message": "모든 기본 설정 복원"
+    },
+    "Restore Tab Defaults": {
+        "message": "탭 기본 설정 복원"
+    },
+    "Romanian (Community translation)": {
+        "message": "루마니아어(커뮤니티 번역)"
+    },
+    "Russian": {
+        "message": "러시아어"
+    },
+    "SELECTED": {
+        "message": "선택됨"
+    },
+    "SERVER": {
+        "message": "서버"
+    },
+    "SHIFT": {
+        "message": "SHIFT"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "서브샘플(50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "서브샘플(75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "슈퍼샘플(110%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "슈퍼샘플(150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "슈퍼샘플(175%)"
+    },
+    "Save": {
+        "message": "저장"
+    },
+    "Server": {
+        "message": "서버"
+    },
+    "Settings": {
+        "message": "설정"
+    },
+    "Shadows": {
+        "message": "그림자"
+    },
+    "Show Build Previews": {
+        "message": "건설 미리 보기 표시"
+    },
+    "Show Metal Spot Icons": {
+        "message": "금속 매장지 아이콘 표시"
+    },
+    "Show Order Previews": {
+        "message": "명령 미리 보기"
+    },
+    "Show Stat Bars": {
+        "message": "상태 바 표시"
+    },
+    "Show Unit Icons": {
+        "message": "유닛 아이콘 표시"
+    },
+    "Show/Hide game stats": {
+        "message": "게임 통계 표시/숨김"
+    },
+    "Show/Hide pip": {
+        "message": "PIP 표시/숨김"
+    },
+    "Skybox": {
+        "message": "스카이박스"
+    },
+    "Sound Effects Volume": {
+        "message": "효과음 볼륨"
+    },
+    "Spanish": {
+        "message": "스페인어"
+    },
+    "Swedish (Community translation)": {
+        "message": "스웨덴어(커뮤니티 번역)"
+    },
+    "Turkish (Community translation)": {
+        "message": "터키어(커뮤니티 번역)"
+    },
+    "UBER": {
+        "message": "초대형"
+    },
+    "USE CUSTOM NAME": {
+        "message": "사용자 설정 이름 사용"
+    },
+    "USE STEAM NAME": {
+        "message": "STEAM 이름 사용"
+    },
+    "Ukrainian (Community translation)": {
+        "message": "우크라이나어(커뮤니티 번역)"
+    },
+    "User": {
+        "message": "사용자"
+    },
+    "User Interface": {
+        "message": "사용자 인터페이스"
+    },
+    "Username Policy": {
+        "message": "사용자 이름 정책"
+    },
+    "VALUE DEPENDENT": {
+        "message": "값에 따라 조정"
+    },
+    "Virtual Texture": {
+        "message": "버추얼 텍스처"
+    },
+    "Voice Volume": {
+        "message": "음성 볼륨"
+    },
+    "WINDOWED": {
+        "message": "창 모드"
+    },
+    "Zoom Speed": {
+        "message": "확대/축소 속도"
+    },
+    "abort": {
+        "message": "포기"
+    },
+    "add height adjustment": {
+        "message": "높이 조정 추가"
+    },
+    "add landing zone": {
+        "message": "착륙 지점 선택"
+    },
+    "add metal spot": {
+        "message": "금속 매장지 추가"
+    },
+    "add/remove": {
+        "message": "추가/제거"
+    },
+    "alerts": {
+        "message": "경고"
+    },
+    "align to pole": {
+        "message": "극점에 정렬"
+    },
+    "all chat": {
+        "message": "모든 채팅"
+    },
+    "alt fire": {
+        "message": "보조 공격"
+    },
+    "assist": {
+        "message": "지원"
+    },
+    "attack": {
+        "message": "공격"
+    },
+    "bug report": {
+        "message": "버그 신고"
+    },
+    "build": {
+        "message": "건설"
+    },
+    "build avatar": {
+        "message": "아바타 생산"
+    },
+    "build avatar factory": {
+        "message": "아바타 공장 건설"
+    },
+    "build bar groups": {
+        "message": "건설 바 그룹"
+    },
+    "build item __item_number__": {
+        "message": "아이템 __item_number__ 제작"
+    },
+    "build items": {
+        "message": "건설 아이템"
+    },
+    "build loop": {
+        "message": "건설 루프"
+    },
+    "build once": {
+        "message": "한 번만 건설"
+    },
+    "build orders": {
+        "message": "건설 명령"
+    },
+    "camera": {
+        "message": "카메라"
+    },
+    "capture anchor": {
+        "message": "고정 지점 캡처"
+    },
+    "capture anchor __anchor_number__": {
+        "message": "__anchor_number__번 시점 캡처"
+    },
+    "capture group __group_number__": {
+        "message": "__group_number__번 그룹 캡처"
+    },
+    "chronocam": {
+        "message": "크로노캠"
+    },
+    "communication": {
+        "message": "통신"
+    },
+    "copy selected": {
+        "message": "사본 선택됨"
+    },
+    "copy to pip": {
+        "message": "PIP에 복사"
+    },
+    "copy unit": {
+        "message": "유닛 복사"
+    },
+    "crash": {
+        "message": "충돌"
+    },
+    "decrease camera pan speed": {
+        "message": "카메라 이동 속도 감소"
+    },
+    "decrease sim speed": {
+        "message": "시뮬레이션 속도 낮추기"
+    },
+    "delete selected": {
+        "message": "선택 항목 삭제"
+    },
+    "dev mode": {
+        "message": "개발 모드"
+    },
+    "direction": {
+        "message": "방향"
+    },
+    "disable navigation debug info": {
+        "message": "네비게이션 디버그 정보 끄기"
+    },
+    "disconnect twin": {
+        "message": "양쪽 연결 끊기"
+    },
+    "dismiss alert notification": {
+        "message": "경고 알림 끄기"
+    },
+    "enable navigation debug info": {
+        "message": "네비게이션 디버그 정보 켜기"
+    },
+    "energy off": {
+        "message": "에너지 끄기"
+    },
+    "energy on": {
+        "message": "에너지 켜기"
+    },
+    "fire at will": {
+        "message": "자유롭게 사격"
+    },
+    "free move backward": {
+        "message": "자유롭게 뒤로 이동"
+    },
+    "free move down": {
+        "message": "자유롭게 아래로 이동"
+    },
+    "free move forward": {
+        "message": "자유롭게 앞으로 이동"
+    },
+    "free move left": {
+        "message": "자유롭게 왼쪽 이동"
+    },
+    "free move right": {
+        "message": "자유롭게 오른쪽 이동"
+    },
+    "free move up": {
+        "message": "자유롭게 위로 이동"
+    },
+    "free movement": {
+        "message": "자유롭게 이동"
+    },
+    "free pitch backward": {
+        "message": "자유롭게 후방 가로축 회전"
+    },
+    "free pitch forward": {
+        "message": "자유롭게 전방 가로축 회전"
+    },
+    "free roll left": {
+        "message": "자유롭게 왼쪽으로 세로축 회전"
+    },
+    "free roll right": {
+        "message": "자유롭게 오른쪽으로 세로축 회전"
+    },
+    "free yaw left": {
+        "message": "자유롭게 왼쪽으로 가로축 회전"
+    },
+    "free yaw right": {
+        "message": "자유롭게 오른쪽으로 가로축 회전"
+    },
+    "free zoom in": {
+        "message": "자유 확대"
+    },
+    "free zoom out": {
+        "message": "자유 축소"
+    },
+    "general": {
+        "message": "일반"
+    },
+    "grab csg": {
+        "message": "CSG 잡기"
+    },
+    "hold fire": {
+        "message": "사격 중지"
+    },
+    "hold position": {
+        "message": "위치 사수"
+    },
+    "increase camera pan speed": {
+        "message": "카메라 이동 속도 증가"
+    },
+    "increase sim speed": {
+        "message": "시뮬레이션 속도 높이기"
+    },
+    "jump to next planet": {
+        "message": "다음 행성으로 점프"
+    },
+    "jump to previous planet": {
+        "message": "이전 행성으로 점프"
+    },
+    "last pseudo frame": {
+        "message": "최종 모조 프레임"
+    },
+    "load": {
+        "message": "불러오기"
+    },
+    "maneuver": {
+        "message": "기동"
+    },
+    "manipulate": {
+        "message": "조작"
+    },
+    "medium-quality": {
+        "message": "보통"
+    },
+    "mode": {
+        "message": "모드"
+    },
+    "modes": {
+        "message": "모드"
+    },
+    "move": {
+        "message": "이동"
+    },
+    "move csg down": {
+        "message": "CSG 내리기"
+    },
+    "move csg up": {
+        "message": "CSG 올리기"
+    },
+    "move down": {
+        "message": "아래로 이동"
+    },
+    "move left": {
+        "message": "왼쪽으로 이동"
+    },
+    "move right": {
+        "message": "오른쪽으로 이동"
+    },
+    "move up": {
+        "message": "위로 이동"
+    },
+    "navigate back/exit": {
+        "message": "뒤로 탐색/종료"
+    },
+    "next pseudo frame": {
+        "message": "다음 모조 프레임"
+    },
+    "paste": {
+        "message": "붙여넣기"
+    },
+    "paste unit": {
+        "message": "유닛 붙여넣기"
+    },
+    "patrol": {
+        "message": "순찰"
+    },
+    "pause game": {
+        "message": "게임 일시 중지"
+    },
+    "pause time": {
+        "message": "일시 중지 시간"
+    },
+    "picture-in-picture": {
+        "message": "PIP"
+    },
+    "ping": {
+        "message": "핑"
+    },
+    "planet jump": {
+        "message": "행성 점프"
+    },
+    "play backwards at 10%": {
+        "message": "10%에서 역방향 재생"
+    },
+    "play backwards at 100%": {
+        "message": "100%에서 역방향 재생"
+    },
+    "play backwards at 50%": {
+        "message": "50%에서 역방향 재생"
+    },
+    "play forward at 100%": {
+        "message": "100%에서 순방향 재생"
+    },
+    "play forward at 50%": {
+        "message": "50%에서 순방향 재생"
+    },
+    "play forwards at 10%": {
+        "message": "10%에서 재생"
+    },
+    "publish server mods": {
+        "message": "서버 모드 배포"
+    },
+    "quick profile": {
+        "message": "빠른 프로필"
+    },
+    "recall anchor": {
+        "message": "앵커 호출"
+    },
+    "recall anchor __anchor_number__": {
+        "message": "__anchor_number__번 앵커 호출"
+    },
+    "recall group __group_number__": {
+        "message": "__group_number__번 그룹 호출"
+    },
+    "reclaim": {
+        "message": "회수"
+    },
+    "reload view": {
+        "message": "시점 새로 고침"
+    },
+    "remove landing zone": {
+        "message": "착륙 지점 제거"
+    },
+    "remove metal spot": {
+        "message": "금속 매장지 제거"
+    },
+    "repair": {
+        "message": "수리"
+    },
+    "resume at latest time": {
+        "message": "최근 시간에서 재개"
+    },
+    "return fire": {
+        "message": "대응 사격"
+    },
+    "roam": {
+        "message": "자율 이동"
+    },
+    "rotate csg ccw": {
+        "message": "csg ccw 회전"
+    },
+    "rotate csg cw": {
+        "message": "csg cw 회전"
+    },
+    "scale csg down": {
+        "message": "csg 스케일 줄이기"
+    },
+    "scale csg horizontally down": {
+        "message": "csg 스케일 가로 줄이기"
+    },
+    "scale csg horizontally up": {
+        "message": "csg 스케일 가로 늘이기"
+    },
+    "scale csg up": {
+        "message": "csg 스케일 늘이기"
+    },
+    "scale csg vertically down": {
+        "message": "csg 스케일 세로 줄이기"
+    },
+    "scale csg vertically up": {
+        "message": "csg 스케일 세로 늘이기"
+    },
+    "select air group": {
+        "message": "항공 그룹 선택"
+    },
+    "select all air combat units": {
+        "message": "모든 항공 전투 유닛 선택"
+    },
+    "select all air combat units on screen": {
+        "message": "화면의 모든 항공 전투 유닛 선택"
+    },
+    "select all combat units": {
+        "message": "모든 전투 유닛 선택"
+    },
+    "select all combat units on screen": {
+        "message": "화면의 모든 전투 유닛 선택"
+    },
+    "select all factories": {
+        "message": "모든 공장 선택"
+    },
+    "select all factories on screen": {
+        "message": "화면의 모든 공장 선택"
+    },
+    "select all idle factories": {
+        "message": "대기 중인 모든 공장 선택"
+    },
+    "select all idle factories on screen": {
+        "message": "화면의 대기 중인 모든 공장 선택"
+    },
+    "select all land combat units": {
+        "message": "모든 지상 전투 유닛 선택"
+    },
+    "select all land combat units on screen": {
+        "message": "화면의 모든 지상 전투 유닛 선택"
+    },
+    "select all matching units on screen": {
+        "message": "화면 안의 일치하는 유닛 모두 선택"
+    },
+    "select all naval combat units": {
+        "message": "모든 해양 전투 유닛 선택"
+    },
+    "select all naval combat units on screen": {
+        "message": "화면의 모든 해양 전투 유닛 선택"
+    },
+    "select all orbital combat units": {
+        "message": "모든 궤도 전투 유닛 선택"
+    },
+    "select all orbital combat units on screen": {
+        "message": "화면의 모든 궤도 전투 유닛 선택"
+    },
+    "select ammo group": {
+        "message": "탄약 그룹 선택"
+    },
+    "select bot group": {
+        "message": "로봇 그룹 선택"
+    },
+    "select combat group": {
+        "message": "전투 그룹 선택"
+    },
+    "select commander": {
+        "message": "지휘관 선택"
+    },
+    "select factory group": {
+        "message": "공장 그룹 선택"
+    },
+    "select idle fabbers": {
+        "message": "대기 중인 건설 유닛 선택"
+    },
+    "select orbital group (buildings)": {
+        "message": "궤도 그룹 선택 (시설)"
+    },
+    "select orbital group (units)": {
+        "message": "궤도 그룹 선택 (유닛)"
+    },
+    "select sea group": {
+        "message": "해양 그룹 선택"
+    },
+    "select utility group": {
+        "message": "보조 그룹 선택"
+    },
+    "select vehicle group": {
+        "message": "차량 그룹 선택"
+    },
+    "self destruct selected unit": {
+        "message": "선택된 유닛 자폭"
+    },
+    "set army from hover": {
+        "message": "커서 아래의 부대 설정"
+    },
+    "set debug camera": {
+        "message": "디버그 카메라 설정"
+    },
+    "set default camera": {
+        "message": "기본 카메라 설정"
+    },
+    "set free camera": {
+        "message": "자유 카메라 설정"
+    },
+    "set pathable csg": {
+        "message": "이동 가능 csg 설정"
+    },
+    "set planet camera": {
+        "message": "행성 카메라 설정"
+    },
+    "set pov camera": {
+        "message": "POV 카메라 설정"
+    },
+    "show player guide": {
+        "message": "플레이어 가이드 표시"
+    },
+    "show/hide UI": {
+        "message": "UI 표시/숨김"
+    },
+    "show/hide performance panel": {
+        "message": "퍼포먼스 패널 표시/숨김"
+    },
+    "show/hide visual aid overlays": {
+        "message": "시각 지원 오버레이 표시/숨김"
+    },
+    "skip backward 1s": {
+        "message": "역방향으로 1초 건너뛰기"
+    },
+    "skip forward 1s": {
+        "message": "순방향으로 1초 건너뛰기"
+    },
+    "smooth zoom in": {
+        "message": "부드러운 확대"
+    },
+    "smooth zoom out": {
+        "message": "부드러운 축소"
+    },
+    "special move": {
+        "message": "특수 이동"
+    },
+    "stop": {
+        "message": "정지"
+    },
+    "swap pip": {
+        "message": "PIP 전환"
+    },
+    "team chat": {
+        "message": "팀 채팅"
+    },
+    "terrain editor": {
+        "message": "지형 편집기"
+    },
+    "toggle FOW": {
+        "message": "FOW 전환"
+    },
+    "toggle audio logging": {
+        "message": "오디오 기록 전환"
+    },
+    "toggle build orders": {
+        "message": "건설 명령 전환"
+    },
+    "toggle console": {
+        "message": "콘솔 전환"
+    },
+    "toggle debug camera": {
+        "message": "디버그 카메라 전환"
+    },
+    "toggle edit metal spots": {
+        "message": "금속 매장지 편집 전환"
+    },
+    "toggle edit terrain mode": {
+        "message": "지형 모드 편집 전환"
+    },
+    "toggle energy orders": {
+        "message": "에너지 명령 전환"
+    },
+    "toggle fire orders": {
+        "message": "발사 명령 전환"
+    },
+    "toggle free camera": {
+        "message": "자유 카메라 전환"
+    },
+    "toggle fullscreen": {
+        "message": "전체 화면 전환"
+    },
+    "toggle move orders": {
+        "message": "이동 명령 전환"
+    },
+    "toggle music": {
+        "message": "음악 전환"
+    },
+    "toggle nav debug": {
+        "message": "탐색 디버그 전환"
+    },
+    "toggle pip mirror": {
+        "message": "PIP 미러 전환"
+    },
+    "toggle pov camera": {
+        "message": "POV 카메라 전환"
+    },
+    "toggle show water": {
+        "message": "물 표시 전환"
+    },
+    "track add selection with camera": {
+        "message": "추가된 선택 유닛을 카메라로 추적"
+    },
+    "track next unit with camera": {
+        "message": "다음 유닛을 카메라로 추적"
+    },
+    "track selection with camera": {
+        "message": "선택 유닛을 카메라로 추적"
+    },
+    "tracking & alignment": {
+        "message": "추적 & 정렬"
+    },
+    "tuning": {
+        "message": "튜닝"
+    },
+    "unit capture groups": {
+        "message": "유닛 캡처 그룹"
+    },
+    "unit commands": {
+        "message": "유닛 지휘"
+    },
+    "unit orders": {
+        "message": "유닛 명령"
+    },
+    "unit recall groups": {
+        "message": "유닛 호출 그룹"
+    },
+    "unit selection": {
+        "message": "유닛 선택"
+    },
+    "units": {
+        "message": "유닛"
+    },
+    "unload": {
+        "message": "내리기"
+    },
+    "zoom": {
+        "message": "확대/축소"
+    },
+    "zoom in": {
+        "message": "확대"
+    },
+    "zoom out": {
+        "message": "축소"
+    },
+    "zoom to air": {
+        "message": "공중에 확대"
+    },
+    "zoom to celestial": {
+        "message": "천체에 확대"
+    },
+    "zoom to combat": {
+        "message": "전투 지점에 확대"
+    },
+    "zoom to orbital": {
+        "message": "궤도에 확대"
+    },
+    "zoom to surface": {
+        "message": "행성 표면에 확대"
+    },
+    "SELECTED OR ALL": {
+        "message": "선택된 유닛 또는 전체"
+    },
+    "EXTRA MOUSE BUTTON 4": {
+        "message": "추가 마우스 버튼 4"
+    },
+    "EXTRA MOUSE BUTTON 5": {
+        "message": "추가 마우스 버튼 5"
+    },
+    "MIDDLE MOUSE BUTTON 3": {
+        "message": "가운데 마우스 버튼 3"
+    },
+    "MIDDLE MOUSE OR EXTRA BUTTONS": {
+        "message": "가운데 마우스 또는 추가 버튼"
+    },
+    "Mouse Pan Button": {
+        "message": "마우스 팬 버튼"
+    }
+}

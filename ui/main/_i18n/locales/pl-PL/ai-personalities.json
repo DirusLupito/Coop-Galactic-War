@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP Agresywna"
+    },
+    "AIP Air": {
+        "message": "AIP Powietrzna"
+    },
+    "AIP Bot": {
+        "message": "AIP Bot"
+    },
+    "AIP Cautious": {
+        "message": "AIP Ostrożna"
+    },
+    "AIP Defender": {
+        "message": "AIP Obrońca"
+    },
+    "AIP Economist": {
+        "message": "AIP Ekonomista"
+    },
+    "AIP Fabber": {
+        "message": "AIP Fabber"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP Szybka technologia"
+    },
+    "AIP Foundation": {
+        "message": "AIP Fundacja"
+    },
+    "AIP Land": {
+        "message": "AIP Lądowa"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP Prosta technika"
+    },
+    "AIP Naval": {
+        "message": "AIP Morska"
+    },
+    "AIP Orbital": {
+        "message": "AIP Orbitalna"
+    },
+    "AIP Random": {
+        "message": "AIP Losowa"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenanci"
+    },
+    "AIP Rush": {
+        "message": "AIP Rush"
+    },
+    "AIP Swarm": {
+        "message": "AIP Rój"
+    },
+    "AIP Synchronous": {
+        "message": "AIP Synchronousi"
+    },
+    "AIP Tank": {
+        "message": "AIP Czołgowa"
+    },
+    "AIP Turtle": {
+        "message": "AIP Żółwia"
+    },
+    "AIP Amphibious": {
+        "message": "AIP Lądowo-morska"
+    },
+    "AIP All-terrain": {
+        "message": "AIP Wszechstronna"
+    },
+    "AIP Artillery": {
+        "message": "AIP Artyleryjska"
+    },
+    "AIP Assault": {
+        "message": "AIP Szturmowa"
+    },
+    "AIP Boomer": {
+        "message": "AIP Boomowa"
+    },
+    "AIP Fortress": {
+        "message": "AIP Forteczna"
+    },
+    "AIP Heavy": {
+        "message": "AIP Ciężka"
+    },
+    "AIP Infernodier": {
+        "message": "AIP Inferno"
+    },
+    "AIP Micro": {
+        "message": "AIP Mikro"
+    },
+    "AIP Nuker": {
+        "message": "AIP Nuklearna"
+    },
+    "AIP Raider": {
+        "message": "AIP Najazdowa"
+    },
+    "AIP Ranked": {
+        "message": "AIP Rankingowa"
+    },
+    "AIP Sniper": {
+        "message": "AIP Snajperska"
+    }
+}

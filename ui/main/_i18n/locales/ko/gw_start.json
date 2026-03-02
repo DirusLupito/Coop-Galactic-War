@@ -1,0 +1,137 @@
+{
+    "ABSURD": {
+        "message": "극악"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "탐사한 시스템에서 적을 섬멸하면 그들의 기술을 입수할 수 있습니다."
+    },
+    "Archived Wars": {
+        "message": "전쟁 기록"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "로드아웃을 선택해 지휘관이 다양한 기술 구성 옵션 중 하나를 가지고 시작하게 하십시오."
+    },
+    "Commander": {
+        "message": "지휘관"
+    },
+    "Difficulty:": {
+        "message": "난이도:"
+    },
+    "EASY": {
+        "message": "쉬움"
+    },
+    "EPIC": {
+        "message": "특대형"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "미지의 행성계를 탐사해 기술을 획득하십시오."
+    },
+    "Faction": {
+        "message": "세력"
+    },
+    "Galactic War": {
+        "message": "은하계 전쟁"
+    },
+    "Game name": {
+        "message": "게임 이름"
+    },
+    "Go to War": {
+        "message": "전장으로"
+    },
+    "HARD": {
+        "message": "어려움"
+    },
+    "Hardcore": {
+        "message": "하드코어"
+    },
+    "How To Play": {
+        "message": "게임 방법"
+    },
+    "How to Play": {
+        "message": "게임 방법"
+    },
+    "LARGE": {
+        "message": "대형"
+    },
+    "LOCKED": {
+        "message": "잠김"
+    },
+    "Loadout": {
+        "message": "로드아웃"
+    },
+    "MEDIUM": {
+        "message": "중형"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "행성계를 돌아다니며 기술을 확보하십시오. 이 기술들로 적 세력의 수장을 무찌르고 은하계를 정복해야 합니다!"
+    },
+    "NORMAL": {
+        "message": "일반"
+    },
+    "Name": {
+        "message": "이름"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "행성계에서 행성계로 옮겨다니며 은하계 각지를 탐사하십시오."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "행성계를 탐사하다 보면 기술을 보관할 새로운 데이터 뱅크를 찾을 수 있습니다."
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "한 번 죽음은 영원한 죽음입니다. 지휘관이 파괴당하면 다시 시작할 수 없습니다."
+    },
+    "RELENTLESS": {
+        "message": "무자비"
+    },
+    "Random number for generating new galaxy": {
+        "message": "새 행성계 생성을 위한 무작위 숫자"
+    },
+    "SMALL": {
+        "message": "소형"
+    },
+    "Saved Games": {
+        "message": "저장된 게임"
+    },
+    "Seed Value": {
+        "message": "시드 값"
+    },
+    "Setup": {
+        "message": "설정"
+    },
+    "Size:": {
+        "message": "크기:"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "어떤 지휘관들은 그저 싸움밖에 모르기 때문에 싸우지만, 일부 지휘관들은 자신의 기원을 찾기 위해 싸웁니다. 동기와 신념의 충돌 속에서, 지휘관들은 수 세기 동안 은하계를 황폐하게 만들고 있는 전쟁터로 달려나갔습니다."
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "특정 행성계에는 숨겨진 지휘관 로드아웃이 있습니다. 이 기술들을 찾아 은하계 전쟁에 활용하십시오."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "습득한 기술을 삭제하여 새 기술을 다운로드할 자리를 만들 수 있습니다. 삭제하거나 습득을 포기한 기술은 손실되어, 이후의 은하계 전쟁에서 쓸 수 없게 됩니다."
+    },
+    "The Commanders": {
+        "message": "지휘관"
+    },
+    "The Progenitors": {
+        "message": "프로제니터"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "지휘관들은 수백만 년 동안이나 잠들었다가, 문명의 흔적만이 겨우 남은 은하계에서 깨어났습니다. 이 고대의 전쟁 기계들은 이제 오래 전 받은 명령의 잔재를 품고, 은하계에서 싸움을 벌이고 있습니다."
+    },
+    "Tip:": {
+        "message": "팁:"
+    },
+    "Tips": {
+        "message": "팁"
+    },
+    "UBER": {
+        "message": "초대형"
+    },
+    "War - __date__": {
+        "message": "전쟁 - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "은하계에는 한때 번영한 제국이 있었지만 분쟁에 의해 멸망한 것으로 보이며, 이에 대해서는 거의 알려진 바가 없습니다. 지휘관들은 이 과거의 존재를 \"프로제니터\"라고 부릅니다. 많은 지휘관들은 자신들의 기원에 대한 답이 위대했던 문명의 폐허 속에 숨어 있다고 믿습니다."
+    }
+}

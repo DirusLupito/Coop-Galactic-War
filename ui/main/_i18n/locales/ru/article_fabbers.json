@@ -1,0 +1,32 @@
+{
+    "Advanced Fabbers come from Advanced Factories and can build both basic and advanced structures": {
+        "message": "Продвинутые фабрикаторы можно получить на продвинутых фабриках. Они могут строить обычные и продвинутые здания"
+    },
+    "Basic Fabbers build basic structures and Advanced Factories": {
+        "message": "Базовые фабрикаторы строят обычные здания и продвинутые фабрики"
+    },
+    "Fabbers are built by Vehicle, Air, Naval, Bot, and Orbital Factories": {
+        "message": "Фабрикаторы строятся на автозаводах, авиазаводах, военно-морских заводах, заводах ботов и орбитальных заводах"
+    },
+    "Fabrication Units": {
+        "message": "Фабрикаторы"
+    },
+    "Hold Shift + Left Click to queue up multiple build orders": {
+        "message": "Удерживайте Shift и нажмите ЛКМ, чтобы добавить несколько строительных приказов в очередь"
+    },
+    "Left Click units on Build Bar and select a space in the world to build": {
+        "message": "Щелкните левой кнопкой мыши на юниты в панели строительства, а затем выберите, где вы их хотите построить"
+    },
+    "PA Guide: Fabbers": {
+        "message": "Руководство PA: Фабрикаторы"
+    },
+    "Select a Fabber to get access to Build Bar": {
+        "message": "Выберите фабрикатор, чтобы открыть панель строительства"
+    },
+    "[style=text_callout]Control + left click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Удерживайте Ctrl и щелкните ЛКМ[/style] по юниту, чтобы завод построил один юнит выбранного типа, а затем вернулся к очереди строительства."
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]Щелкните ПКМ[/style] или [style=text_callout]Shift + ПКМ[/style] по юнитам, чтобы уменьшить количество юнитов в очереди"
+    }
+}

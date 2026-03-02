@@ -1,0 +1,86 @@
+{
+    "Account Name:": {
+        "message": "Számla Megnevezése:"
+    },
+    "Add To Cart": {
+        "message": "Kosárba."
+    },
+    "Armory": {
+        "message": "Fegyvertár"
+    },
+    "Badges": {
+        "message": "Jelvények"
+    },
+    "CHECKOUT": {
+        "message": "PÉNZTÁR"
+    },
+    "Cancel": {
+        "message": "Mégse"
+    },
+    "Cart": {
+        "message": "Kosár"
+    },
+    "Commanders": {
+        "message": "Parancsnokok"
+    },
+    "Confirmation code:": {
+        "message": "Megerősítő kód:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "A vásárlásodról szóló nyugtát alább olvashatod."
+    },
+    "Continue Shopping": {
+        "message": "Vásárlás Folytatása"
+    },
+    "Credit applied:": {
+        "message": "Jóváírás a következőnek:"
+    },
+    "Designed in collaboration with": {
+        "message": "Készült a következő személy együttműködésével:"
+    },
+    "Go to Main Menu": {
+        "message": "Kilépés a Főmenübe"
+    },
+    "Here's your receipt.": {
+        "message": "Itt a számlád."
+    },
+    "Item": {
+        "message": "Tétel"
+    },
+    "Item is already in cart.": {
+        "message": "Az árucikk már a kosárban van."
+    },
+    "Kickstarter Backer": {
+        "message": "Kickstarteres Támogató"
+    },
+    "Price": {
+        "message": "Ár"
+    },
+    "REMOVE": {
+        "message": "ELTÁVOLÍTÁS"
+    },
+    "Redeem": {
+        "message": "Bevált"
+    },
+    "Return to Armory": {
+        "message": "Visszatérés a fegyvertárba."
+    },
+    "Set As Default Commander": {
+        "message": "Beállítás Alapértelmezett Parancsnokként"
+    },
+    "Thank you for your purchase.": {
+        "message": "Köszönjük a vásárlást."
+    },
+    "Total:": {
+        "message": "Végösszeg:"
+    },
+    "Updating...": {
+        "message": "Frissítés..."
+    },
+    "Your cart is empty.": {
+        "message": "A kosarad üres."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "A vásárolt tételeidet regisztráltuk a számládra és elérhetőek játékon belül."
+    }
+}

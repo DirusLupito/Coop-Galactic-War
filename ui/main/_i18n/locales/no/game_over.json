@@ -1,0 +1,38 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "UTSLETTING FULLFØRT"
+    },
+    "Average": {
+        "message": "Snitt"
+    },
+    "Built": {
+        "message": "Bygd"
+    },
+    "Destroyed": {
+        "message": "Ødelagt"
+    },
+    "Draw": {
+        "message": "UAVGJORT"
+    },
+    "Efficiency": {
+        "message": "Effektivitet"
+    },
+    "The game has ended.": {
+        "message": "Kampen er over."
+    },
+    "Used": {
+        "message": "Brukt"
+    },
+    "VICTORY IS YOURS": {
+        "message": "SEIEREN ER DIN"
+    },
+    "Winner:": {
+        "message": "Vinner:"
+    },
+    "Winners:": {
+        "message": "Vinnere:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "DU HAR BLITT UTSLETTET"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "CONNECTION TO SERVER FAILED": {
+        "message": "NEM SIKERÜLT KAPCSOLÓDNI A SZERVERHEZ"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "MEGSZAKADT A KAPCSOLAT A SZERVERREL"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "NEM SIKERÜLT CSATLAKOZNI A JÁTÉKHOZ"
+    },
+    "FAILED TO START GAME": {
+        "message": "A JÁTÉK INDÍTÁSA SIKERTELEN"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "A VISSZAJÁTSZÁS INDÍTÁSA SIKERTELEN"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "BEJELENTKEZÉS ELFOGADVA"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "SZERVERRE VALÓ BEJELENTKEZÉS ELUTASÍTVA"
+    },
+    "Returning to Main Menu": {
+        "message": "Visszatérés a főmenübe"
+    }
+}

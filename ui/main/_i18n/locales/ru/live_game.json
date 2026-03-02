@@ -1,0 +1,647 @@
+{
+    "ALL": {
+        "message": "ВСЕ"
+    },
+    "ALLIANCES": {
+        "message": "АЛЬЯНСЫ"
+    },
+    "ALLY": {
+        "message": "Союзник"
+    },
+    "ALT-FIRE": {
+        "message": "АЛЬТ. ОГОНЬ"
+    },
+    "ANNIHILATE EVERYTHING": {
+        "message": "УНИЧТОЖЬТЕ ВСЁ"
+    },
+    "ANNIHILATED": {
+        "message": "УНИЧТОЖЕН"
+    },
+    "APS:": {
+        "message": "APS:"
+    },
+    "ARMY": {
+        "message": "АРМИЯ"
+    },
+    "ASSIST": {
+        "message": "ПОМОГАТЬ"
+    },
+    "AT WILL": {
+        "message": "ПО УСМОТРЕНИЮ"
+    },
+    "ATTACK": {
+        "message": "АТАКА"
+    },
+    "ATTACKING": {
+        "message": "АТАКУЕТ"
+    },
+    "Abandon War": {
+        "message": "Покинуть войну"
+    },
+    "Accept": {
+        "message": "Принять"
+    },
+    "Activate planetary laser": {
+        "message": "Активировать планетный лазер"
+    },
+    "Add": {
+        "message": "Добавить"
+    },
+    "Advanced": {
+        "message": "Продвинутые"
+    },
+    "Air": {
+        "message": "Воздушные"
+    },
+    "All catalysts online on __planet_name__! Click here to annihilate!": {
+        "message": "Все катализаторы активны на планете: __planet_name__! Нажмите здесь, чтобы уничтожить!"
+    },
+    "Alliance Request": {
+        "message": "Запрос союза"
+    },
+    "Alliance requested": {
+        "message": "Союз запрошен"
+    },
+    "Allied With:": {
+        "message": "В союзе с:"
+    },
+    "Allied __unit_name__ lost.": {
+        "message": "Потерян союзный юнит: __unit_name__."
+    },
+    "Are you sure you want to abandon this Galactic War?[br](All progress and Tech will be lost.)": {
+        "message": "Вы уверены, что хотите покинуть эту Галактическую Войну?[br](Весь прогресс и технологии будут потеряны)."
+    },
+    "Army": {
+        "message": "Армия"
+    },
+    "Army Count": {
+        "message": "Размер армии"
+    },
+    "BUILD MODE": {
+        "message": "РЕЖИМ СТРОИТЕЛЬСТВА"
+    },
+    "Bot": {
+        "message": "Бот"
+    },
+    "Bounty Econ Multiplier": {
+        "message": "Множ. экон. Охоты"
+    },
+    "Bounty kill rewarded. Econ multipliers enabled.": {
+        "message": "Награда за убийство. Множ. экономики включены"
+    },
+    "Build Efficiency": {
+        "message": "Эффективность строительства"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "ПОТЕРЯНО СОЕДИНЕНИЕ С СЕРВЕРОМ"
+    },
+    "CONTINUOUS": {
+        "message": "Непрерывный цикл"
+    },
+    "Cancel": {
+        "message": "Отмена"
+    },
+    "Cancel Fire": {
+        "message": "Прекратить огонь"
+    },
+    "Cancel Move": {
+        "message": "Остановиться"
+    },
+    "Capture main view": {
+        "message": "Захватить основной вид"
+    },
+    "Change orbit": {
+        "message": "Сменить орбиту"
+    },
+    "Chrono Cam": {
+        "message": "Хрон. кам."
+    },
+    "Chrono Cam Replay": {
+        "message": "Повтор хрон. кам."
+    },
+    "Close": {
+        "message": "Закрыть"
+    },
+    "Commander": {
+        "message": "Коммандер"
+    },
+    "Continue Tutorial": {
+        "message": "Продолжить обучение"
+    },
+    "Continue War": {
+        "message": "Продолжить войну"
+    },
+    "Count": {
+        "message": "Количество"
+    },
+    "DMG": {
+        "message": "DMG"
+    },
+    "DMG:": {
+        "message": "Урон:"
+    },
+    "DPS": {
+        "message": "DPS"
+    },
+    "DPS:": {
+        "message": "DPS:"
+    },
+    "DRAW": {
+        "message": "РАСХОД"
+    },
+    "Destroy selected units?": {
+        "message": "Уничтожить выбранные юниты?"
+    },
+    "ECONOMY": {
+        "message": "Экономика"
+    },
+    "ENERGY ORDERS": {
+        "message": "Приказы энергоснабжения"
+    },
+    "Eff": {
+        "message": "Эффект."
+    },
+    "Efficiency": {
+        "message": "Эффективность "
+    },
+    "Enemy Contact!": {
+        "message": "Замечен противник!"
+    },
+    "Energy": {
+        "message": "Энергия"
+    },
+    "Energy Efficiency": {
+        "message": "Эффективность энергии"
+    },
+    "Energy Expended": {
+        "message": "Затраченная энергия"
+    },
+    "Energy Produced": {
+        "message": "Произведено энергии"
+    },
+    "Energy Storage": {
+        "message": "Хранилище энергии"
+    },
+    "Exit Game?": {
+        "message": "Покинуть игру?"
+    },
+    "FABRICATING": {
+        "message": "ИЗГОТАВЛИВАЕТ"
+    },
+    "FIRE ORDERS": {
+        "message": "Боевые приказы"
+    },
+    "Fab": {
+        "message": "Фабр."
+    },
+    "Fabber": {
+        "message": "Фабрикатор"
+    },
+    "Fabricator Count": {
+        "message": "Количество фабрикаторов"
+    },
+    "Fac": {
+        "message": "Зав."
+    },
+    "Factory": {
+        "message": "Фабрика"
+    },
+    "Factory Count": {
+        "message": "Количество заводов"
+    },
+    "Fire Weapon": {
+        "message": "Стрелять из оружия"
+    },
+    "Follow alerts": {
+        "message": "Следить за оповещениями"
+    },
+    "GAME PAUSED": {
+        "message": "ИГРА ПРИОСТАНОВЛЕНА"
+    },
+    "Game Menu": {
+        "message": "Игровое меню"
+    },
+    "Game Ready": {
+        "message": "Игра готова"
+    },
+    "Game Settings": {
+        "message": "Настройки игры"
+    },
+    "Game Stats": {
+        "message": "Статистика игры"
+    },
+    "Game has been paused. You will receive a victory if your opponent does not reconnect within 180 seconds.": {
+        "message": "Игра была поставлена на паузу. Вы победите, если ваш противник не восстановит соединение в течение 180 секунд."
+    },
+    "Game starts in": {
+        "message": "Игра начнется через"
+    },
+    "HEALTH": {
+        "message": "ЗДОРОВЬЕ"
+    },
+    "HOLD": {
+        "message": "Удерживать"
+    },
+    "HOLD POSITION": {
+        "message": "УДЕРЖИВАЙТЕ ПОЛОЖЕНИЕ"
+    },
+    "Halleys active on __planet_name__! Click here to annihilate!": {
+        "message": "Галлеи активны на планете: __planet_name__! Нажмите здесь, чтобы уничтожить!"
+    },
+    "Hold the mouse wheel down and drag to pan.": {
+        "message": "Удерживайте колесико и перетащите мышь, чтобы перемещаться по карте."
+    },
+    "Ignore": {
+        "message": "Игнорировать"
+    },
+    "LOAD": {
+        "message": "ЗАГРУЗИТЬ"
+    },
+    "MANEUVER": {
+        "message": "МАНЕВР"
+    },
+    "MOVE": {
+        "message": "ДВИГАТЬСЯ"
+    },
+    "MOVE ORDERS": {
+        "message": "Приказы перемещения"
+    },
+    "Metal": {
+        "message": "Металл"
+    },
+    "Metal Efficiency": {
+        "message": "Эффективность металла"
+    },
+    "Metal Expended": {
+        "message": "Потраченный металл"
+    },
+    "Metal Produced": {
+        "message": "Произведено металла"
+    },
+    "Metal Storage": {
+        "message": "Хранилище металла"
+    },
+    "Metal Value": {
+        "message": "Кол-во металла"
+    },
+    "Mobile": {
+        "message": "Мобильный"
+    },
+    "NORMAL": {
+        "message": "Нормальный"
+    },
+    "Names can only include letters [a-Z] and numbers [0-9].": {
+        "message": "Имена могут включать только буквы [a-Z] и цифры [0-9]."
+    },
+    "Naval": {
+        "message": "Флот"
+    },
+    "Net Energy Income": {
+        "message": "Чистый доход энергии"
+    },
+    "Net Metal Income": {
+        "message": "Чистый доход металла"
+    },
+    "Next": {
+        "message": "Дальше"
+    },
+    "No metal": {
+        "message": "Нет метала"
+    },
+    "Not enough energy": {
+        "message": "Не хватает энергии"
+    },
+    "Not enough metal": {
+        "message": "Не хватает металла"
+    },
+    "Not enough metal or energy": {
+        "message": "Не хватает металла или энергии"
+    },
+    "OFF": {
+        "message": "Выкл"
+    },
+    "ON": {
+        "message": "Вкл"
+    },
+    "Opponent disconnected": {
+        "message": "Противник отключился"
+    },
+    "Orbital": {
+        "message": "Орбитальные"
+    },
+    "PATROL": {
+        "message": "ПАТРУЛИРОВАТЬ"
+    },
+    "PLAYER": {
+        "message": "ИГРОК"
+    },
+    "POV Camera": {
+        "message": "Суб. камера"
+    },
+    "PROD": {
+        "message": "ПРОИЗВ."
+    },
+    "Pause Game": {
+        "message": "Поставить на паузу"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Выберите место внутри одной из зеленых зон чтобы разместить вашего Коммандера."
+    },
+    "Pin to opposite side": {
+        "message": "Прикрепить на другую сторону"
+    },
+    "Ping": {
+        "message": "Пинг"
+    },
+    "Ping!": {
+        "message": "Сигнал!"
+    },
+    "Play From Here": {
+        "message": "Играть отсюда"
+    },
+    "Player Guide": {
+        "message": "Руководство игрока"
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Позиция выбрана. Нажмите для подтверждения."
+    },
+    "Prev": {
+        "message": "Пред."
+    },
+    "Quit": {
+        "message": "Выйти"
+    },
+    "Quit Game": {
+        "message": "Выйти из игры"
+    },
+    "Quit to Main Menu": {
+        "message": "Выйти в главное меню"
+    },
+    "READY": {
+        "message": "ГОТОВО"
+    },
+    "RECLAIM": {
+        "message": "СОБИРАТЬ"
+    },
+    "RECLAIMING": {
+        "message": "СОБИРАЕТ"
+    },
+    "REPAIR": {
+        "message": "РЕМОНТ"
+    },
+    "RETURN FIRE": {
+        "message": "ОТВЕТНЫЙ ОГОНЬ"
+    },
+    "ROAM": {
+        "message": "Бродят"
+    },
+    "Radius": {
+        "message": "Радиус"
+    },
+    "Request pending": {
+        "message": "Ожидается ответ"
+    },
+    "Resume": {
+        "message": "Возобновить"
+    },
+    "Resume Game": {
+        "message": "Возобновить игру"
+    },
+    "Resume from here?": {
+        "message": "Возобновить отсюда?"
+    },
+    "Return to Galactic War": {
+        "message": "Вернуться к Галактической Войне"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращение в главное меню"
+    },
+    "Rewinding Time": {
+        "message": "Время перемотки"
+    },
+    "SELECTING": {
+        "message": "ВЫБИРАЕТ"
+    },
+    "SHARE ECO": {
+        "message": "ПОДЕЛИТЬСЯ ЭКОН."
+    },
+    "SHARED ENERGY:": {
+        "message": "ОБЩАЯ ЭНЕРГИЯ: "
+    },
+    "SHARED METAL:": {
+        "message": "ОБЩИЙ МЕТАЛЛ "
+    },
+    "SPECIAL-MOVE": {
+        "message": "СПЕЦ. ПРИЕМ"
+    },
+    "START ANNIHILATION": {
+        "message": "НАЧАТЬ АННИГИЛЯЦИЮ"
+    },
+    "STOP": {
+        "message": "СТОП"
+    },
+    "STORAGE": {
+        "message": "ХРАНИЛИЩЕ"
+    },
+    "Save": {
+        "message": "Сохранить"
+    },
+    "Save Game": {
+        "message": "Сохранить игру"
+    },
+    "Save complete": {
+        "message": "Игра сохранена"
+    },
+    "Save game?": {
+        "message": "Сохранить игру?"
+    },
+    "Saving game": {
+        "message": "Сохранение игры"
+    },
+    "Scroll mouse wheel to zoom in and out.": {
+        "message": "Крутите колесико мыши, чтобы изменять масштаб."
+    },
+    "Second Camera PIP": {
+        "message": "Вторая камера (кадр в кадре)"
+    },
+    "Select a new gravity well.": {
+        "message": "Выберите новый гравитационный колодец."
+    },
+    "Select a planet to attack.": {
+        "message": "Выберите планету для атаки."
+    },
+    "Select a planet to destroy.": {
+        "message": "Выберите планету для уничтожения."
+    },
+    "Select all advanced units in view": {
+        "message": "Выбрать все продвинутые юниты на экране"
+    },
+    "Select all air units in view": {
+        "message": "Выбрать все воздушные юниты на экране"
+    },
+    "Select all bot units in view": {
+        "message": "Выбрать всех ботов на экране"
+    },
+    "Select all fabber units in view": {
+        "message": "Выбрать все фабрикаторы на экране"
+    },
+    "Select all naval units in view": {
+        "message": "Выбрать все морские юниты на экране"
+    },
+    "Select all orbital units in view": {
+        "message": "Выбрать все орбитальные юниты на экране"
+    },
+    "Select all vehicle units in view": {
+        "message": "Выбрать все наземные юниты на экране"
+    },
+    "Select idle fabbers": {
+        "message": "Выбрать свободные фабрикаторы"
+    },
+    "Select idle factories": {
+        "message": "Выбрать свободные заводы"
+    },
+    "Send to Annihilate": {
+        "message": "Отправить на уничтожение"
+    },
+    "Set course for annihilation": {
+        "message": "Установите курс для аннигиляции"
+    },
+    "Set target spot": {
+        "message": "Выберите точку назначения"
+    },
+    "Sim Performance": {
+        "message": "Сим. производ."
+    },
+    "Social Bar": {
+        "message": "Социальная панель"
+    },
+    "Surrender": {
+        "message": "Сдаться"
+    },
+    "Surrender Game?": {
+        "message": "Сдаться?"
+    },
+    "Swap cameras": {
+        "message": "Поменять камеры"
+    },
+    "TRANSPORT": {
+        "message": "ТРАНСПОРТИРОВАТЬ"
+    },
+    "Then confirm destination to set course.": {
+        "message": "Затем подтвердите точку назначения, чтобы задать курс."
+    },
+    "This process can take a while.": {
+        "message": "Этот процесс может занять некоторое время."
+    },
+    "Toggle POV Camera": {
+        "message": "Вкл. суб. камеру"
+    },
+    "UNLOAD": {
+        "message": "ВЫГРУЗИТЬ"
+    },
+    "USE": {
+        "message": "ИСПОЛЬЗОВАТЬ"
+    },
+    "Unknown": {
+        "message": "Неизвестный"
+    },
+    "Vehicle": {
+        "message": "Техника"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "НЕ УДАЛОСЬ ЗАПУСТИТЬ СИМУЛЯЦИЮ МИРА"
+    },
+    "Waiting for other players to select a spawn location.": {
+        "message": "Ожидание высадки других игроков."
+    },
+    "Yes": {
+        "message": "Да"
+    },
+    "__metal_spots__ metal": {
+        "message": "Металл: __metal_spots__"
+    },
+    "__num_idle_fabbers__ Idle": {
+        "message": "Свободные фабрикаторы: __num_idle_fabbers__"
+    },
+    "__num_idle_factories__ Idle": {
+        "message": "Свободные заводы: __num_idle_factories__"
+    },
+    "__unit_name__ arrived.": {
+        "message": "Юнит __unit_name__ прибыл."
+    },
+    "__unit_name__ destroyed.": {
+        "message": "Юнит __unit_name__ уничтожен."
+    },
+    "__unit_name__ idle.": {
+        "message": "Юнит __unit_name__ свободен."
+    },
+    "__unit_name__ launched!": {
+        "message": "Юнит __unit_name__ запущен."
+    },
+    "__unit_name__ located.": {
+        "message": "Юнит __unit_name__ обнаружен."
+    },
+    "__unit_name__ lost.": {
+        "message": "Юнит __unit_name__ потерян."
+    },
+    "__unit_name__ ready.": {
+        "message": "Юнит __unit_name__ готов."
+    },
+    "__unit_name__ under attack.": {
+        "message": "Юнит __unit_name__ атакован."
+    },
+    "__victim_name__ has been annihilated.": {
+        "message": "__victim_name__ уничтожен(а)."
+    },
+    "__victim_name__ was annihilated by __killer_name__.": {
+        "message": "__killer_name__ уничтожил(а) __victim_name__."
+    },
+    "air": {
+        "message": "воздушные"
+    },
+    "ammo": {
+        "message": "боеприпасы"
+    },
+    "army": {
+        "message": "армия"
+    },
+    "bot": {
+        "message": "бот"
+    },
+    "combat": {
+        "message": "военные"
+    },
+    "factory": {
+        "message": "заводы"
+    },
+    "orbital": {
+        "message": "орбитальные"
+    },
+    "sea": {
+        "message": "морские"
+    },
+    "utility": {
+        "message": "обслуживающие"
+    },
+    "vehicle": {
+        "message": "техника"
+    },
+    "Alliance?": {
+        "message": "Союз?"
+    },
+    "Dynamic Alliance": {
+        "message": "Динамичный союз"
+    },
+    "Pending": {
+        "message": "В ожидании"
+    },
+    "Returning to Galactic War": {
+        "message": "Возвращение к Галактической Войне"
+    },
+    "SHARE": {
+        "message": "ПОДЕЛИТЬСЯ"
+    },
+    "Share Economy": {
+        "message": "Делиться доходом экономики"
+    }
+}

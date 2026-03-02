@@ -1,0 +1,29 @@
+{
+    "As Efficiency percentage lowers, all fabbers, factories and Commanders build slower": {
+        "message": "効率パーセンテージが低下すると、全てのファッバー、工場、コマンダーの建造速度が遅くなる"
+    },
+    "Build Metal Storage and Energy Storage to stockpile more resources": {
+        "message": "金属貯蔵場とエネルギー貯蔵場を建造して、資源を備蓄できるようにしよう"
+    },
+    "Economy and Resources": {
+        "message": "経済活動と資源"
+    },
+    "Energy and Metal resources get consumed while building": {
+        "message": "エネルギーと金属資源は建造で消費されていく"
+    },
+    "If you’re consuming more than you are producing, build efficiency slows down": {
+        "message": "各種資源を生産量以上に消費してしまうと、建造効率は低下する"
+    },
+    "PA Guide: Economy": {
+        "message": "PAガイド: 経済活動"
+    },
+    "Resources build up over time": {
+        "message": "資源は時間経過とともに蓄積されていく"
+    },
+    "To generate Energy, build Energy Plants": {
+        "message": "エネルギーを生成するには、エネルギープラントを建てよう"
+    },
+    "To generate Metal, build Metal Extractors": {
+        "message": "金属を生産するには、金属抽出場を建てよう"
+    }
+}

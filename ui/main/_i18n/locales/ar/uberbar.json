@@ -1,0 +1,83 @@
+{
+    "Accept": {
+        "message": "قبول"
+    },
+    "Appear Offline": {
+        "message": "الظهور كغير متصل"
+    },
+    "Away": {
+        "message": "بعيداً"
+    },
+    "Block": {
+        "message": "حجب"
+    },
+    "CANCEL": {
+        "message": "إلغاء"
+    },
+    "CHANGE": {
+        "message": "تغيير"
+    },
+    "Change Display Name": {
+        "message": "تغيير الأسم المعروض"
+    },
+    "Change your display name?": {
+        "message": "تغيير اسمك المعروض؟"
+    },
+    "Chat": {
+        "message": "دردشة"
+    },
+    "Do Not Disturb": {
+        "message": "عدم الإزعاج"
+    },
+    "Friends": {
+        "message": "أصدقاء"
+    },
+    "Ignore": {
+        "message": "تجاهل"
+    },
+    "Invite to Chat": {
+        "message": "دعوة للدردشة"
+    },
+    "Invite to game": {
+        "message": "دعوة للعبة"
+    },
+    "Join Game": {
+        "message": "الانضمام إلى لعبة"
+    },
+    "New Display Name:": {
+        "message": "اسمك المعروض الجديد:"
+    },
+    "No pending notifications.": {
+        "message": "لا إعلامات معلقة."
+    },
+    "Offline": {
+        "message": "غير متصل"
+    },
+    "Online": {
+        "message": "متصل"
+    },
+    "Pending Invite": {
+        "message": "دعوة معلقة"
+    },
+    "Recent": {
+        "message": "مؤخراً"
+    },
+    "Remove": {
+        "message": "إزالة"
+    },
+    "Search Results": {
+        "message": "نتائج البحث"
+    },
+    "Send Friend Request": {
+        "message": "إرسال طلب صديق"
+    },
+    "Unblock": {
+        "message": "إلغاء الحجب"
+    },
+    "Unfriend": {
+        "message": "إزالة الصداقة"
+    },
+    "Users": {
+        "message": "المستخدمين"
+    }
+}

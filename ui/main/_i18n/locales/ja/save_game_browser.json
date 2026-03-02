@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "AI スカーミッシュ"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Delete": {
+        "message": "削除"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "Game": {
+        "message": "ゲーム"
+    },
+    "Last Saved": {
+        "message": "直近のセーブ"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Resume Game": {
+        "message": "ゲームを再開"
+    },
+    "Saved Games": {
+        "message": "セーブデータ"
+    },
+    "Switch to": {
+        "message": "切替: "
+    },
+    "Type": {
+        "message": "タイプ"
+    },
+    "mode?": {
+        "message": "モード？"
+    }
+}

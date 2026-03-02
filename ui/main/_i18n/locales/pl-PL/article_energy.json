@@ -1,0 +1,23 @@
+{
+    "Advanced Energy Plants generate 8x more energy": {
+        "message": "Zaawansowane elektrownie generują 8x więcej energii"
+    },
+    "Build Energy Plants to generate energy": {
+        "message": "By ją generować, buduj elektrownie"
+    },
+    "Energy Resource": {
+        "message": "Zasoby energii"
+    },
+    "Energy is required for building units, structures and some functionality": {
+        "message": "Energia jest wymagana do budowy jednostek, struktur i różnych funkcji"
+    },
+    "PA Guide: Energy": {
+        "message": "Przewodnik PA: Energia"
+    },
+    "Select Fabber, select [style=text_callout]Build Energy Plant Icon[/style].": {
+        "message": "Wybierz fabbera i kliknij [style=text_callout]ikonę Wybuduj elektrownię[/style]."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build multiple Energy Plants.": {
+        "message": "[style=text_callout]Kliknij LPM i przeciągnij kursor[/style], by zaznaczyć obszar budowy wielu elektrowni."
+    }
+}

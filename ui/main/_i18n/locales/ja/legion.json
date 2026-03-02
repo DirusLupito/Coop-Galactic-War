@@ -1,0 +1,719 @@
+{
+    "Advanced Air Factory": {
+        "message": "上級飛行工場"
+    },
+    "Advanced Anti-Air Turret - Fires homing rockets which deal splash damage. Only attacks air targets.": {
+        "message": "上級対空タレット - 敵にスプラッシュダメージを与えるホーミングロケットを発射。空の標的のみ攻撃可能"
+    },
+    "Advanced Anti-Air Walker - High damage precision laser strikes. Only attacks air targets.": {
+        "message": "上級対空ウォーカー - 高精度かつ高ダメージのレーザー攻撃。空の標的のみ攻撃可能"
+    },
+    "Advanced Armour Fabricator": {
+        "message": "上級装甲ファブリケーター"
+    },
+    "Advanced Armour Foundry": {
+        "message": "上級装甲ファウンドリー"
+    },
+    "Advanced Artillery - Very accurate. High splash damage. Attacks land, sea and seabed targets.": {
+        "message": "上級迫撃砲 - 精密攻撃。高スプラッシュダメージ。陸、海、海底の標的を攻撃可能"
+    },
+    "Advanced Bot Factory": {
+        "message": "上級ボット工場"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds air titan. Very mobile. Vulnerable. Less efficient than other builders.": {
+        "message": "上級ビルダー - 基本および上級構造体を建造できる。Air Titan（空）を建造できる。機動性高。耐久力低。他のビルダーより効率性は低い"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds bot titan. Cheap. Less powerful than other builders.": {
+        "message": "上級ビルダー - 基本および上級構造体を建造できる。Bot Titan（ボット）を建造できる。安価で製造可能。他のビルダーよりパワーは低い"
+    },
+    "Advanced Builder - Builds basic and advanced structures. Builds vehicle titan. Durable. More powerful than other land and air builders.": {
+        "message": "上級ビルダー - 基本および上級構造体を建造できる。Vehicle Titan（車両）を建造できる。耐久力高。他の陸および空ビルダーよりパワーが高い"
+    },
+    "Advanced Builder - Builds orbital structures. Builds all titans.": {
+        "message": "上級ビルダー - 衛星軌道構造体を建造できる。全てのTitanを建造可能"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "上級戦闘ファブリケーター - 修復速度が高速。残骸を自動回収する。地雷に加えてテレポーターや防衛設備も建造できる"
+    },
+    "Advanced Economy - Fabricates black holes and harnesses their energy. Explodes on death, damaging friend and foe.": {
+        "message": "上級経済活動 - ブラックホールを創り出し、エネルギーを抽出する。破壊されると爆発し、敵のみならず友軍にもダメージを与える"
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "上級経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない"
+    },
+    "Advanced Economy - Produces metal. Can only be placed on metal deposits. Can share a metal deposit with a Mass Extractor.": {
+        "message": "上級経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない。金属埋蔵地の上に、上級大量抽出機と合わせて配置できる"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "上級ファブ飛行体"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "上級ファブリケーターボット"
+    },
+    "Advanced Fabrication Flyer": {
+        "message": "上級ファブリケーターフライヤー"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "上級ファブリケーターシップ"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "上級ファブリケーター陸戦車両"
+    },
+    "Advanced Fabrication Vessel": {
+        "message": "上級ファブリケーター船艦"
+    },
+    "Advanced Fabrication Walker": {
+        "message": "上級ファブリケーターウォーカー"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "上級ファブリケーター - 基本および上級の海戦構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる"
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "上級ファブリケーター - 基本および上級構造体を建造できる。耐久性高。他のファブリケーターよりもパワフル"
+    },
+    "Advanced Flyer Foundry": {
+        "message": "上級フライヤーファウンドリー"
+    },
+    "Advanced Frigate - Long range. High damage. Attacks land, air, sea, and orbital targets.": {
+        "message": "上級フリゲート - 長距離攻撃。攻撃力高。陸、空、海、衛星軌道の標的を攻撃可能"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "上級製造技術 - 基本および上級飛行ユニットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "上級製造技術 - 基本および上級ボットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "上級製造技術 - 基本および上級陸戦車両を建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "上級製造技術 - 基本および上級海戦ユニットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced orbital units.": {
+        "message": "上級製造技術 - 基本および上級衛星軌道ユニットを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced ships.": {
+        "message": "上級製造技術 - 基本および上級シップを建造できる"
+    },
+    "Advanced Manufacturing - Builds basic and advanced tanks.": {
+        "message": "上級製造技術 - 基本および上級タンクを建造できる"
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "上級製造技術 - 軌道衛星や宇宙船を建造できる"
+    },
+    "Advanced Mass Extractor": {
+        "message": "上級大量抽出機"
+    },
+    "Advanced Metal Extractor": {
+        "message": "上級金属抽出場"
+    },
+    "Advanced Naval Factory": {
+        "message": "上級海戦工場"
+    },
+    "Advanced Power Catalyst": {
+        "message": "上級パワーカタリスト"
+    },
+    "Advanced Radar - Long-range enemy unit detection. Requires energy.": {
+        "message": "上級レーダー - 長距離からの敵探知が可能。エネルギーを必要とする"
+    },
+    "Advanced Radar Satellite - Long-range enemy unit detection. Requires energy. Attacks land and sea targets.": {
+        "message": "上級レーダー衛生 - 長距離からの敵探知が可能。エネルギーを必要とする。陸、海の標的を攻撃可能"
+    },
+    "Advanced Ship Foundry": {
+        "message": "上級シップファウンドリー"
+    },
+    "Advanced Stealth Scout - Launches a sneaky spy camera. Invisible to radar. Consumes energy. Can move between planets.": {
+        "message": "上級ステルススカウト - 潜入スパイカメラ1機を発射可能。レーダーにかからない。エネルギーを消費する。惑星間を移動可能"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "上級陸戦車両工場"
+    },
+    "Advanced Walker Foundry": {
+        "message": "上級ウォーカーファウンドリー"
+    },
+    "Advanced Wave Turret - Attacks sea, seabed and undersea targets.": {
+        "message": "上級ウェーブタレット - 海、海底、海中の標的を攻撃可能"
+    },
+    "Air Factory": {
+        "message": "飛行工場"
+    },
+    "Anti-Air Turret - Equipped with homing tracer rounds. Only attacks air targets.": {
+        "message": "対空タレット - ホーミングトレーサー弾を搭載。空の標的のみ攻撃可能"
+    },
+    "Anti-Air Walker - Equipped with homing missiles. Only attacks air targets.": {
+        "message": "対空ウォーカー - ホーミングミサイルを搭載。空の標的のみ攻撃可能"
+    },
+    "Anti-Nuke Launcher - Space for four advanced anti-nuclear missile weapons.": {
+        "message": "対核ランチャー - 上級対核ミサイル兵器を4発収納可能"
+    },
+    "Anti-Nuke Missile - Intercepts and destroys incoming nuclear missiles.": {
+        "message": "対核ミサイル - 飛来していくる対核ミサイルを迎撃/破壊する"
+    },
+    "Anti-Orbital Turret - Attacks orbital targets and drop pods.": {
+        "message": "対衛星軌道タレット - 衛星軌道の標的とドロップポッドを攻撃可能"
+    },
+    "Armour Fabricator": {
+        "message": "装甲ファブリケーター"
+    },
+    "Armour Foundry": {
+        "message": "装甲ファウンドリー"
+    },
+    "Artillery - Medium range. Attacks land, sea, seabed and underwater targets.": {
+        "message": "迫撃砲 - 中距離攻撃。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Assault Tank - Heavily armored. Splash damage. Attacks land, sea and seabed targets.": {
+        "message": "アサルトタンク - 重装甲。スプラッシュダメージ。陸、海、海底の標的を攻撃可能"
+    },
+    "Assault Titan - High splash damage for dealing with large armies. Attacks land, air, sea and seabed targets.": {
+        "message": "Assault Titan - 大軍隊に対して高スプラッシュダメージを与える。陸、空、海、海底の標的を攻撃可能"
+    },
+    "Assault Walker - High DPS. Attacks land, sea and seabed targets.": {
+        "message": "アサルトウォーカー - 高DPS。陸、海、海底の標的を攻撃可能"
+    },
+    "Auxiliary Commander - Can build advanced structures. Heavily armored. High damage. Attacks any targets except orbital.": {
+        "message": "副コマンダー - 上級構造体を建造可能。重装甲。攻撃力高。衛星軌道以外の標的を全て攻撃可能"
+    },
+    "Basic Economy - Generates power.": {
+        "message": "基本経済活動 - パワーを生成する"
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "基本経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない"
+    },
+    "Basic Economy - Produces metal. Can only be placed on metal deposits. Can share a metal deposit with an Advanced Mass Extractor.": {
+        "message": "基本経済活動 - 金属を生産する。金属埋蔵地の上にしか配置できない。金属埋蔵地の上に、上級大量抽出機と合わせて配置できる"
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる"
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる。他のファブリケーターよりも弱い"
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "基本ファブリケーター - 基本海戦構造体を建造できる。水上をホバリングできる"
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "基本ファブリケーター - 基本構造体を建造できる。耐久性高。他のファブリケーターよりもパワフル"
+    },
+    "Basic Infantry - Durable. Amphibious. Attacks land, sea and seabed targets.": {
+        "message": "基本インファントリー - 耐久力高。水陸両用。陸、海、海底の標的を攻撃可能"
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "基本製造技術 - 基本衛星軌道ユニットを建造/発射できる"
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "基本製造技術 - 基本飛行ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "基本製造技術 - 基本ボットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "基本製造技術 - 基本陸戦車両ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "基本製造技術 - 基本海戦ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic orbital units.": {
+        "message": "基本製造技術 - 基本衛星軌道ユニットを建造できる"
+    },
+    "Basic Manufacturing - Builds basic ships.": {
+        "message": "基本製造技術 - 基本シップを建造できる"
+    },
+    "Basic Manufacturing - Builds basic tanks.": {
+        "message": "基本製造技術 - 基本タンクを建造できる"
+    },
+    "Basic Radar - Short-range enemy unit detection. Requires energy.": {
+        "message": "基本レーダー - 短距離からの敵探知が可能なユニット。エネルギーを必要とする"
+    },
+    "Basic Radar Satellite - Short-range enemy unit detection. Requires energy.": {
+        "message": "基本レーダー衛生 - 短距離からの敵探知が可能。エネルギーを必要とする"
+    },
+    "Battleship - High damage. Heavily armored. Long range. Attacks land and sea targets.": {
+        "message": "バトルシップ - 攻撃力高。重装甲。長距離攻撃。陸と海の標的を攻撃可能"
+    },
+    "Bomber - High damage to a single target. Attacks land, sea, seabed and undersea targets.": {
+        "message": "爆撃機 - 1つの標的に高ダメージを与える。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Bot Factory": {
+        "message": "ボット工場"
+    },
+    "Builder - Builds advanced structures. Most powerful fabricator.": {
+        "message": "ビルダー - 上級構造体を建造できる。最強のファブリケーター"
+    },
+    "Builder - Builds basic structures. Cheap. Less powerful than other builders.": {
+        "message": "ビルダー - 基本構造体を建造できる。安価。他のビルダーにはパワーで劣る"
+    },
+    "Builder - Builds basic structures. Durable. More powerful than other basic land and air builders.": {
+        "message": "ビルダー - 基本構造体を建造できる。耐久力高。他の基本陸/空ビルダーよりもパワーが高い"
+    },
+    "Builder - Builds basic structures. Most powerful basic planetary fabricator.": {
+        "message": "ビルダー - 基本構造体を建造できる。基本惑星ファブリケーターの中では最もパワフル"
+    },
+    "Builder - Builds basic structures. Very mobile. Vulnerable. Less efficient than other builders.": {
+        "message": "ビルダー - 基本構造体を建造できる。機動性高。耐久力低。他のビルダーより効率性は低い"
+    },
+    "Camera Target": {
+        "message": "カメラターゲット"
+    },
+    "Carrier - Launches fast-flying drones at enemies. Attacks land, air and sea targets.": {
+        "message": "キャリア - 高速飛行ドローンを敵に向かって発射できる。陸、空、海の標的を攻撃可能"
+    },
+    "Combat Builder - Builds mines, radar and teleporters. Detects mines. Repairs friendly units. Can't help build other structures.": {
+        "message": "戦闘ビルダー - 地雷、レーダー、テレポーターを建造できる。地雷を感知する。友軍ユニットの修復も可能。他の構造体の建造支援はできない"
+    },
+    "Combat Builder - Builds mines, shields and turrets. Detects mines. Repairs friendly units. Can't help build other structures.": {
+        "message": "戦闘ビルダー - 地雷、シールド、タレットを建造できる。地雷を感知する。友軍ユニットの修復も可能。他の構造体の建造支援はできない"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "戦闘ファブリケーター - 損傷したユニットを修復する。地雷を建造/感知できる。テレポーターも建造可能。他の構造体の建造支援はできない"
+    },
+    "Comet": {
+        "message": "コメット"
+    },
+    "Corsair": {
+        "message": "コルサール"
+    },
+    "Corvette - Fast. Cheap. Attacks land, sea, seabed and undersea targets.": {
+        "message": "コルヴェット - 高速移動。安価。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Dauntless": {
+        "message": "ダウントレス"
+    },
+    "Deathmark": {
+        "message": "デスマーク"
+    },
+    "Decimator": {
+        "message": "ディシメーター"
+    },
+    "Destroyer - High damage. Long range. Attacks land and sea targets.": {
+        "message": "デストロイヤー - 攻撃力高。長距離攻撃。陸と海の標的を攻撃可能"
+    },
+    "Diplomat": {
+        "message": "ディプロマット"
+    },
+    "Discuss": {
+        "message": "ディスカッション"
+    },
+    "Do not show this again": {
+        "message": "二度と表示しない"
+    },
+    "Doomsday Titan - Drops an explosive into the planet's core, breaking it apart from the inside.": {
+        "message": "Doomsday Titan - 破滅をもたらす者。惑星のコアに向け、内側から破壊分断する爆弾を落とすことができる"
+    },
+    "Drone - Fast. Fragile. Attacks land, sea and air targets.": {
+        "message": "ドローン - 高速移動。耐久力低。陸、海、空の標的を攻撃可能"
+    },
+    "Fabrication Aircraft": {
+        "message": "ファブリケーター飛行体"
+    },
+    "Fabrication Bot": {
+        "message": "ファブリケーターボット"
+    },
+    "Fabrication Flyer": {
+        "message": "ファブリケーターフライヤー"
+    },
+    "Fabrication Ship": {
+        "message": "ファブリケーターシップ"
+    },
+    "Fabrication Starship": {
+        "message": "ファブリケータースターシップ"
+    },
+    "Fabrication Vehicle": {
+        "message": "ファブリケーター陸戦車両"
+    },
+    "Fabrication Vessel": {
+        "message": "ファブリケーター船艦"
+    },
+    "Fabrication Walker": {
+        "message": "ファブリケーターウォーカー"
+    },
+    "Fighter - Fast. High damage. Forward firing only. Only attacks air targets.": {
+        "message": "戦闘機 - 高速。重ダメージ。前方への射撃のみ可能。空の標的のみ攻撃可能"
+    },
+    "Flame Turret - High splash damage. Attacks land and sea targets.": {
+        "message": "フレイムタレット - 高スプラッシュダメージ。陸、海の標的を攻撃可能"
+    },
+    "Flame Turret - Splash damage weapon. Attacks land and sea targets.": {
+        "message": "フレイムタレット - スプラッシュダメージ兵器。陸と海の標的を攻撃可能"
+    },
+    "Flyer Foundry": {
+        "message": "フライヤーファウンドリー"
+    },
+    "Flying Bomb - In the process of exploding. Deals very heavy damage over an area over time. Attacks air targets only.": {
+        "message": "飛行爆弾 - 爆発すると、一定範囲に絶大な時間経過ダメージをもたらす。空の標的のみ攻撃可能"
+    },
+    "Flying Bomb - Self-destructs to deal very heavy damage over an area over time. Attacks air targets only.": {
+        "message": "飛行爆弾 - 自爆して、一定範囲に絶大な時間経過ダメージをもたらす。空の標的のみ攻撃可能"
+    },
+    "Flying Fortress Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "Flying Fortress Titan - 飛行要塞。広範囲にわたって重ダメージを与える。衛星軌道以外の標的を攻撃可能"
+    },
+    "Frigate - High damage precision laser strikes. Only attacks air targets.": {
+        "message": "フリゲート - 高精度かつ高ダメージのレーザー攻撃。空の標的のみ攻撃可能"
+    },
+    "Gunship - Heavily armored. Attacks land, sea and seabed targets.": {
+        "message": "ガンシップ - 重装甲。陸、海、海底の標的を攻撃可能"
+    },
+    "Heavy Turret - High damage. Attacks land, sea and seabed targets.": {
+        "message": "ヘビータレット - 攻撃力高。陸、海、海底の標的を攻撃可能"
+    },
+    "Heavy Walker - Heavily armored. Long range. Attacks land, sea and seabed targets.": {
+        "message": "ヘビーウォーカー - 重装甲。長距離攻撃。陸、海、海底の標的を攻撃可能"
+    },
+    "Hover Artillery - Can cross water and lava. Attacks land, sea and seabed targets.": {
+        "message": "ホバー迫撃砲 - 水上と溶岩を横断可能。陸、海、海底の標的を攻撃可能"
+    },
+    "Hover Assault - Can cross water and lava. Fires in salvos. Attacks land, air, sea and orbital targets.": {
+        "message": "ホバーアサルト - 水上と溶岩を横断できる。一斉射撃。陸、空、海、衛星軌道の標的を攻撃可能"
+    },
+    "Hover Railgun - Fast. Long range. Can cross water and lava. Attacks land, air and sea targets.": {
+        "message": "ホバーレイルガン - 高速移動。長距離攻撃。海と溶岩を横断できる。陸、空、海の標的を攻撃可能"
+    },
+    "Imperator": {
+        "message": "インペレーター"
+    },
+    "Imperial Cyclops Commander": {
+        "message": "インペリアル サイクロプスコマンダー"
+    },
+    "Imperial Overwatch Commander": {
+        "message": "インペリアル オーバーウォッチコマンダー"
+    },
+    "Imperial Wasushi Commander": {
+        "message": "インペリアル ワスシコマンダー"
+    },
+    "Interplanetary Fighter - Fast. Can move between planets. Can only attack air targets.": {
+        "message": "惑星間戦闘機 - 高速移動。惑星間を移動できる。空の標的のみを攻撃可能"
+    },
+    "Interplanetary Teleporter - Can link with a teleporter and send units directly to a planet's surface. Can move between planets.": {
+        "message": "惑星間テレポーター - テレポーターとリンクして、惑星の地表面にユニットを直接送り込むことができる。惑星間を移動可能"
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "惑星間輸送 - 最大12のユニットを星系内の任意の場所に建造/起動する"
+    },
+    "Interplanetary Transport - Moves land and air units between planets.": {
+        "message": "惑星間輸送 - 陸戦および飛行ユニットを惑星間移動できる"
+    },
+    "Investigator Radar": {
+        "message": "インベスティゲーター レーダー"
+    },
+    "Investigator Radar Collision Check": {
+        "message": "インベスティゲーター レーダー 干渉チェック"
+    },
+    "Iron Dome Interceptor": {
+        "message": "アイアンドーム インターセプター"
+    },
+    "It looks like you don't have the Legion Expansion client mod\n            installed.": {
+        "message": "Legion Expansion クライアントMOD            がインストールされていないようです"
+    },
+    "KABOOM!": {
+        "message": "カブーム！"
+    },
+    "Kosmos": {
+        "message": "コスモス"
+    },
+    "Lancer": {
+        "message": "ランサー"
+    },
+    "Land Mine - Sprays shrapnel then explodes after four seconds. Can be detonated manually using alt fire. Invisible to most units.": {
+        "message": "地雷 - 金属片を撒き散らした4秒後に爆発する。「サブ攻撃」操作をすれば手動での爆破可能。ほとんどのユニットが感知できない"
+    },
+    "Laser Walker - Short range. High damage. Attacks land, sea and seabed targets.": {
+        "message": "レーザーウォーカー - 短距離攻撃。攻撃力高。陸、海、海底の標的を攻撃可能"
+    },
+    "Leaping Bomb Bot - Self-destructs. Leaps at enemies. Jumps with alt fire.  Attacks land and sea targets.": {
+        "message": "跳躍爆弾ボット - 自爆兵器。敵の頭上をジャンプできる。「サブ攻撃」操作でジャンプできる。陸と海の標的を攻撃可能"
+    },
+    "Learn More": {
+        "message": "もっと詳しく"
+    },
+    "Legion Commander Description - If you're seeing this, something is wrong in your commander.": {
+        "message": "Legion コマンダーの説明 - この文章が表示されている場合、コマンダーに何らかの問題があります"
+    },
+    "Legion Expansion": {
+        "message": "Legion Expansion"
+    },
+    "Legion Guides": {
+        "message": "Legion ガイド"
+    },
+    "Legion UI": {
+        "message": "Legion UI"
+    },
+    "Light Tank - Amphibious. Armed with torpedoes. Attacks land, sea, seabed and undersea targets.": {
+        "message": "ライトタンク - 水陸両用。魚雷を搭載。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Light Turret - Rapid fire. Attacks land, sea and seabed targets.": {
+        "message": "ライトタレット - 高速射撃。陸、海、海底の標的を攻撃可能"
+    },
+    "Lightning Tank - Shoots timed electric mines. Attacks land and sea targets.": {
+        "message": "ライトニングタンク - 時限電撃地雷を放つ。陸と海の標的を攻撃可能"
+    },
+    "Lockheed": {
+        "message": "ロックヒード"
+    },
+    "Loki": {
+        "message": "ロキ"
+    },
+    "Manta": {
+        "message": "マンタ"
+    },
+    "Marauder": {
+        "message": "マラウダー"
+    },
+    "Mass Extractor": {
+        "message": "大量抽出機"
+    },
+    "Maul": {
+        "message": "マウル"
+    },
+    "Medium Tank - Splash damage. Attacks land, sea and seabed targets.": {
+        "message": "ミドルタンク - スプラッシュダメージ。陸、海、海底の標的を攻撃可能"
+    },
+    "Metal Extractor": {
+        "message": "金属抽出機"
+    },
+    "Metal Parasite - Extremely fast. Close range. Devastating damage. Attacks land, sea and seabed targets.": {
+        "message": "金属パラサイト - 超高速移動。短距離攻撃。壊滅的なダメージを引き起こせる。陸、海、海底の標的を攻撃可能"
+    },
+    "Napalm Bomber - High damage over a wide area. Heavily armored. Deploys flamethrower turrets. Attacks land and sea targets.": {
+        "message": "ナパーム爆撃機 - 広範囲にわたって高ダメージを与える。重装甲。火炎放射タレットを展開可能。陸と海の標的を攻撃可能"
+    },
+    "Naval Factory": {
+        "message": "海戦工場"
+    },
+    "Nuclear Missile - Long range, high damage ballistic missile.": {
+        "message": "核ミサイル - 長距離攻撃、高ダメージの弾道ミサイル"
+    },
+    "Nuclear Missile Launcher - Builds and launches unlimited range, large splash damage, nuclear missiles. Can fire at other planets.": {
+        "message": "核ミサイルランチャー - 超長距離、大スプラッシュダメージの核ミサイルを建造/発射可能。他の惑星をも攻撃できる"
+    },
+    "OmniSilo Storage Device": {
+        "message": "オムニサイロ ストレージデバイス"
+    },
+    "Orbital Battleship - Launches drones at planetary enemies. Heavily armored. Attacks land, air, sea and orbital targets.": {
+        "message": "衛星軌道バトルシップ - 惑星上の敵へドローンを発射できる。重装甲。陸、空、海、衛星軌道の標的を攻撃可能"
+    },
+    "Orbital Economy - Produces metal and energy. Only buildable on gas giants.": {
+        "message": "衛星軌道経済活動 - 金属やエネルギーを生産する。ガス巨大惑星上にのみ建造可能"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "衛星軌道ファブリケーターボット"
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "衛星軌道ファブリケーター - 軌道衛星、スペースシップ、TITANSを建造する"
+    },
+    "Orbital Factory": {
+        "message": "衛星軌道工場"
+    },
+    "Orbital Fighter - Fast. Attacks orbital targets only.": {
+        "message": "衛星軌道戦闘機 - 高速移動。衛星軌道の標的のみ攻撃可能"
+    },
+    "Orbital Laser - High splash damage. Attacks land, air, sea and seabed targets.": {
+        "message": "衛星軌道レーザー - 高スプラッシュダメージ。陸、空、海、海底の標的を攻撃可能"
+    },
+    "Orbital Launcher": {
+        "message": "衛星軌道ランチャー"
+    },
+    "Orbital Mega-Laser - Purifies planetary surfaces of both enemies and allies. Attacks any targets except orbital.": {
+        "message": "衛星軌道メガレーザー - 惑星の地表面にいる敵のみならず友軍をも浄化する。衛星軌道以外の標的を全て攻撃可能"
+    },
+    "Orbital Scout - Fast. Provides small amount of vision of the planet below": {
+        "message": "衛星軌道スカウト - 高速移動。惑星下の映像情報を少量提供する"
+    },
+    "Orbital Siege - Long range. High damage. Attacks orbital targets only.": {
+        "message": "衛星軌道包囲機 - 長距離攻撃。高ダメージ。衛星軌道の標的のみ攻撃可能"
+    },
+    "Orbital Turret - Rapid fire. Attacks land, air, sea and orbital targets.": {
+        "message": "衛星軌道タレット - 高速射撃。陸、空、海、衛星軌道の標的を攻撃可能"
+    },
+    "Planet Engine - Used to smash celestial bodies into each other. Build as many as the planet requires.": {
+        "message": "惑星エンジン - 惑星体同士を衝突させるために使用する。その惑星が必要な数だけ建造可能。"
+    },
+    "Planetary Transport - Builds and launches up to 14 units at once to the planet below.": {
+        "message": "惑星間輸送 - 最大14のユニットを星系内の任意の場所に建造/起動する"
+    },
+    "Power Catalyst": {
+        "message": "パワーカタリスト"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "副コマンダー - 上級構造体を建造できる。水陸両用。耐久力高。攻撃力高。衛星軌道以外の標的を全て攻撃可能"
+    },
+    "Purifier Collision Check": {
+        "message": "ピュリファイアー干渉チェック"
+    },
+    "Radar": {
+        "message": "レーダー"
+    },
+    "Radar - Immobile. Use alt fire to change into a fast-moving mine detector.": {
+        "message": "レーダー - 移動不可能。「サブ攻撃」操作で高速移動の地雷検知器に切替可能"
+    },
+    "Raider - Fast. Can see far away. Attacks land and sea targets.": {
+        "message": "レイダー - 高速移動。遠方まで感知できる。陸と海の標的を攻撃可能"
+    },
+    "Rampart": {
+        "message": "ランパート"
+    },
+    "Rocket Turret - High damage. Attacks land and sea targets.": {
+        "message": "ロケットタレット - 攻撃力高。陸と海の標的を攻撃可能"
+    },
+    "Salamander": {
+        "message": "サラマンダー"
+    },
+    "Scarab": {
+        "message": "スカラベ"
+    },
+    "Scorpion": {
+        "message": "スコーピオン"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "スカウト - 高速移動。遠方まで感知して地雷を発見する。攻撃はできない"
+    },
+    "Scout - Fast. Detects mines. Use alt fire to change into a short-range radar detectable only by radar.": {
+        "message": "スカウト - 高速移動。地雷を感知する。「サブ攻撃」操作で、（敵）レーダーでしか感知されない短距離レーダーに変化"
+    },
+    "Scythe": {
+        "message": "サイス"
+    },
+    "Sea Mine - High damage. Invisible to most units.": {
+        "message": "機雷 - 攻撃力高。ほとんどのユニットが感知できない"
+    },
+    "Sea Urchin": {
+        "message": "シーウーチン"
+    },
+    "Seismic Tank - Heavily armored. Short range. Huge splash damage. Attacks land and sea targets.": {
+        "message": "セイズミックタンク - 重装甲。短距離攻撃。大スプラッシュダメージ。陸と海の標的を攻撃可能"
+    },
+    "Select a blue Commander for MLA and a red one for Legion.": {
+        "message": "MLAは青いコマンダーを、Legionは赤いコマンダーを選ぼう"
+    },
+    "Shank": {
+        "message": "シャンク"
+    },
+    "Shield - Blocks enemy projectiles. Requires energy. Overlapping Ramparts provides little benefit. Overwhelmed by rapid fire.": {
+        "message": "シールド - 敵のミサイルや弾頭をブロックする。エネルギーを必要とする。防壁を重ねてもメリットは少ない。高速射撃には弱い"
+    },
+    "Ship Foundry": {
+        "message": "シップファウンドリー"
+    },
+    "Shotgun Tank - Close range. Heavily armored. Attacks land, sea and seabed targets.": {
+        "message": "ショットガンタンク - 短距離攻撃。重装甲。陸、海、海底の標的を攻撃可能"
+    },
+    "Shredder": {
+        "message": "シュレッダー"
+    },
+    "Siege Tank - Long range. Attacks land, sea and seabed.": {
+        "message": "包囲タンク - 長距離攻撃。陸、海、海底の標的を攻撃可能"
+    },
+    "Siege Titan - Equipped with an arsenal of highly destructive weapons. Attacks land, sea, seabed and undersea targets.": {
+        "message": "Siege Titan - 超破壊兵器を無数に搭載。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Siege Walker - Long range. Launches timed sticky plasma mines. Attacks land, sea and seabed targets.": {
+        "message": "包囲ウォーカー - 長距離攻撃。時限粘着プラズマ地雷を発射できる。陸、海、海底の標的を攻撃可能"
+    },
+    "Siege Walker - Spawns Purgers. Can attack land targets only.": {
+        "message": "包囲ウォーカー - パージャーを展開する。陸の標的のみ攻撃可能"
+    },
+    "Sky Bridge": {
+        "message": "スカイブリッジ"
+    },
+    "Sneaky Spy Camera - Grants vision for a short time at the location.": {
+        "message": "潜入スパイカメラ - ある場所の映像を短い時間見ることができる"
+    },
+    "Spawns Purger": {
+        "message": "スポーンパージャー"
+    },
+    "Spectre": {
+        "message": "スペクター"
+    },
+    "Starship Foundry": {
+        "message": "スターシップファウンドリー"
+    },
+    "Starship Projector": {
+        "message": "スターシッププロジェクター"
+    },
+    "Storage - Increases maximum energy and metal storage capacity. Explodes on death, damaging friend and foe.": {
+        "message": "ストレージ - エネルギーと金属の最大貯蔵可能量を増加する。破壊されると爆発し、敵のみならず友軍にもダメージを与える"
+    },
+    "Submarine - Fast. Fires in salvos. Attacks sea, seabed and undersea targets.": {
+        "message": "潜水艦 - 高速移動。一斉射撃。海、海底、海底の標的を攻撃可能"
+    },
+    "Supernova Strategic Warhead": {
+        "message": "スーパーノバ戦略核弾頭"
+    },
+    "Support Barge - Repairs damaged ships. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "サポートバージ - 船の損傷を修復する。地雷を建造/感知できる。ユニットの建造の支援はできない。水上をホバリングできる"
+    },
+    "Swarm Turret - Spawns nanoswarms. Attacks land, sea and seabed targets.": {
+        "message": "スワームタレット - ナノスワームを展開する。陸、海、海底の標的を攻撃可能"
+    },
+    "Tank Rockteeth Commander": {
+        "message": "タンク ロックティース コマンダー"
+    },
+    "Teleporter - Link teleporters to move units around the system.": {
+        "message": "テレポーター - 複数テレポーターをリンクすることで星系間を移動できる"
+    },
+    "The Legion Expansion adds an entirely new faction in Planetary\n            Annihilation.": {
+        "message": "Legion Expansion はPlanetary\n            Annihilationに加わる新たなファクションです"
+    },
+    "To play as the Legion select one of the red Commanders.": {
+        "message": "Legionとしてプレイするには、赤いコマンダーの1人を選ぼう"
+    },
+    "Transport - Load a land unit for rapid long distance travel.": {
+        "message": "輸送機 - 陸戦ユニット1機を長距離高速輸送可能"
+    },
+    "Trireme - Rams enemy ships. Fast. Heavily armored. Attacks land, sea, seabed and undersea targets.": {
+        "message": "トライリーム - 敵船に激突攻撃する。高速移動。重装甲。陸、海、海底、海中の標的を攻撃可能"
+    },
+    "Unit Cannon": {
+        "message": "ユニットキャノン"
+    },
+    "Vehicle Factory": {
+        "message": "陸戦車両工場"
+    },
+    "Walker Foundry": {
+        "message": "ウォーカーファウンドリー"
+    },
+    "Wall - Very durable. Blocks enemy fire only.": {
+        "message": "耐壁 - 耐久力高。敵の攻撃のみをブロックする"
+    },
+    "Wave Turret - Attacks sea, seabed and undersea targets.": {
+        "message": "ウェーブタレット - 海、海底、海中の標的を攻撃可能"
+    },
+    "You won't be able to play without it, but installing is easy!": {
+        "message": "プレイにはインストールが必要ですが、プロセスは簡単です！"
+    },
+    "air": {
+        "message": "空"
+    },
+    "ammo": {
+        "message": "弾薬"
+    },
+    "bot": {
+        "message": "ボット"
+    },
+    "click or press space to close": {
+        "message": "クリックまたはSPACEで閉じる"
+    },
+    "combat": {
+        "message": "戦闘"
+    },
+    "factory": {
+        "message": "工場"
+    },
+    "orbital": {
+        "message": "衛星軌道"
+    },
+    "sea": {
+        "message": "海"
+    },
+    "utility": {
+        "message": "施設"
+    },
+    "vehicle": {
+        "message": "車両"
+    }
+}

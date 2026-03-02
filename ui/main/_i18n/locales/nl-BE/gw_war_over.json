@@ -1,0 +1,59 @@
+{
+    "Annihilated": {
+        "message": "Vernietigd"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Weet je zeker dat je deze Galactische Oorlog wilt opgeven?"
+    },
+    "Close": {
+        "message": "Sluit"
+    },
+    "Congratulations Commander": {
+        "message": "Gefeliciteerd, commandant"
+    },
+    "Delete War": {
+        "message": "Oorlog wissen"
+    },
+    "Discards": {
+        "message": "Verworpen"
+    },
+    "Final Tech": {
+        "message": "Eindtechnologie"
+    },
+    "GO TO MAIN MENU": {
+        "message": "NAAR HOOFDMENU"
+    },
+    "Now go start a war. Annihilate everything.": {
+        "message": "Ga nu een oorlog beginnen. Vernietig alles."
+    },
+    "Please try again. There's still much to destroy.": {
+        "message": "Probeer het opnieuw. Er is nog veel meer om te vernietigen."
+    },
+    "Redo Tutorial": {
+        "message": "Speluitleg opnieuw doorlopen"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu"
+    },
+    "Start A Galactic War": {
+        "message": "Start een Galactische Oorlog"
+    },
+    "Training Remains": {
+        "message": "Je zult nog wat moeten oefenen"
+    },
+    "Turns:": {
+        "message": "Beurten:"
+    },
+    "Tutorial Complete": {
+        "message": "Speluitleg is voltooid"
+    },
+    "Tutorial Incomplete": {
+        "message": "Speluitleg is nog niet voltooid"
+    },
+    "Victory": {
+        "message": "Overwinning"
+    },
+    "Wins:": {
+        "message": "Overwinningen:"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "Anuluj"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "POBIERANIE MODÓW SERWERA"
+    },
+    "Loading Game": {
+        "message": "Wczytywanie gry"
+    },
+    "Loading Replay": {
+        "message": "Wczytywanie powtórki"
+    },
+    "Returning to Main Menu": {
+        "message": "Powrót do menu głównego"
+    },
+    "Returning to menu": {
+        "message": "Powrót do menu"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "Uruchamianie serwera powtórek, prosimy o cierpliwość..."
+    },
+    "Unable to load replay": {
+        "message": "Wczytanie powtórki nieudane"
+    },
+    "Unable to load save game": {
+        "message": "Wczytanie zapisu gry nieudane"
+    }
+}

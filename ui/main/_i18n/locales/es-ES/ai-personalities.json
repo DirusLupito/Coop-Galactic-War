@@ -1,0 +1,68 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP agresivo"
+    },
+    "AIP Air": {
+        "message": "AIP aéreo"
+    },
+    "AIP Bot": {
+        "message": "AIP robot"
+    },
+    "AIP Cautious": {
+        "message": "AIP cauteloso"
+    },
+    "AIP Defender": {
+        "message": "AIP defensor"
+    },
+    "AIP Economist": {
+        "message": "AIP economista"
+    },
+    "AIP Fabber": {
+        "message": "Fabricante AIP"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP tecnología rápida"
+    },
+    "AIP Foundation": {
+        "message": "AIP fundación"
+    },
+    "AIP Land": {
+        "message": "AIP terrestre"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP tecnología simple"
+    },
+    "AIP Naval": {
+        "message": "AIP naval"
+    },
+    "AIP Orbital": {
+        "message": "AIP de órbita"
+    },
+    "AIP Random": {
+        "message": "AIP aleatorio"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "AIP estampida"
+    },
+    "AIP Swarm": {
+        "message": "AIP colonia"
+    },
+    "AIP Synchronous": {
+        "message": "AIP síncrono"
+    },
+    "AIP Tank": {
+        "message": "AIP tanque"
+    },
+    "AIP Turtle": {
+        "message": "AIP tortuga"
+    },
+    "AIP Amphibious": {
+        "message": "Anfibio AIP"
+    }
+}

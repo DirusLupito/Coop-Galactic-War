@@ -1,0 +1,20 @@
+{
+    "Arrow Keys to rotate around planet": {
+        "message": "矢印キーで星を回転"
+    },
+    "Basic Camera Controls": {
+        "message": "基本カメラ操作"
+    },
+    "Go between planets using planet menu (upper right of screen)": {
+        "message": "惑星メニューで惑星間を移動(画面の右上)"
+    },
+    "Hold Mouse Wheel, drag to pan view": {
+        "message": "マウスホイールを長押し＆ドラッグでパンビュー"
+    },
+    "PA Guide: Basic Controls": {
+        "message": "PAガイド: 基本操作"
+    },
+    "Scroll Mouse Wheel to zoom in and out": {
+        "message": "マウスホイールをスクロールでズームイン/アウト"
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "Armory": {
+        "message": "Зброярня"
+    },
+    "Connecting to PA": {
+        "message": "Підключення до ПА"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Неправильний логін або пароль. Будь ласка перевірте відповідні поля і спробуйте знову."
+    },
+    "New Build Available:": {
+        "message": "Доступно оновлення:"
+    },
+    "Password": {
+        "message": "Пароль"
+    },
+    "Please choose a default region.": {
+        "message": "Будь ласка виберіть регіон за замовчуванням."
+    },
+    "Quit": {
+        "message": "Вийти"
+    },
+    "Settings": {
+        "message": "Налаштування"
+    },
+    "Sign in": {
+        "message": "Увійти"
+    },
+    "System Designer": {
+        "message": "Дизайнер систем"
+    },
+    "Unable to Sign In": {
+        "message": "Неможливо увійти"
+    },
+    "Username": {
+        "message": "Ім'я користувача"
+    },
+    "You are already assigned to a game.": {
+        "message": "Ви вже приєднані до гри."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Вам потрібен новий клієнт для подальшої гри. Користувачам Steam можливо доведеться перезавантажити Steam, щоб почати нову гру."
+    }
+}

@@ -1,0 +1,374 @@
+{
+    "Accept": {
+        "message": "Принять"
+    },
+    "Advanced Edit": {
+        "message": "Расширенное редактирование"
+    },
+    "Advanced edit planet": {
+        "message": "Расширенное редактирование планеты"
+    },
+    "Auto": {
+        "message": "Авт."
+    },
+    "Base:": {
+        "message": "Баз.:"
+    },
+    "Biome:": {
+        "message": "Биом:"
+    },
+    "Brushes:": {
+        "message": "Кисти:"
+    },
+    "CLEAR SYSTEM": {
+        "message": "ОЧИСТИТЬ СИСТЕМУ"
+    },
+    "CLOSE": {
+        "message": "ЗАКРЫТЬ"
+    },
+    "CSG": {
+        "message": "CSG"
+    },
+    "Camera": {
+        "message": "Камера"
+    },
+    "Cancel": {
+        "message": "Отмена"
+    },
+    "Creator": {
+        "message": "Автор"
+    },
+    "Data": {
+        "message": "Данные"
+    },
+    "Description": {
+        "message": "Описание"
+    },
+    "Discard": {
+        "message": "Сброс"
+    },
+    "Do you want to save this system?": {
+        "message": "Хотите сохранить эту систему?"
+    },
+    "EDIT PLANET": {
+        "message": "РЕДАКТИРОВАТЬ"
+    },
+    "EXPORT SYSTEM": {
+        "message": "СИСТЕМА ЭКСПОРТА"
+    },
+    "Edit": {
+        "message": "Редактировать"
+    },
+    "Edit System Info": {
+        "message": "Изменить системную информацию"
+    },
+    "Flooded": {
+        "message": "Затопленная"
+    },
+    "GAMEPLAY": {
+        "message": "ГЕЙМПЛЕЙ"
+    },
+    "HIDE": {
+        "message": "СКРЫТЬ"
+    },
+    "Height:": {
+        "message": "Высота:"
+    },
+    "Include:": {
+        "message": "Включить:"
+    },
+    "Landing Zone Restrictions": {
+        "message": "Ограничения зоны высадки"
+    },
+    "Landing Zone Size": {
+        "message": "Размер зоны высадки"
+    },
+    "Landing Zones": {
+        "message": "Зоны высадки"
+    },
+    "Latitude:": {
+        "message": "Широта:"
+    },
+    "Longitude:": {
+        "message": "Долгота:"
+    },
+    "MY PLANETS": {
+        "message": "МОИ ПЛАНЕТЫ"
+    },
+    "Mass": {
+        "message": "МАССА"
+    },
+    "Max": {
+        "message": "Макс."
+    },
+    "Max Asteroid Count": {
+        "message": "Макс. кол-во астероидов"
+    },
+    "Mergeable": {
+        "message": "Объединяемая"
+    },
+    "Metal Spots": {
+        "message": "Залежи металла"
+    },
+    "Min": {
+        "message": "Мин."
+    },
+    "Mouse": {
+        "message": "Мышь"
+    },
+    "NONE": {
+        "message": "НЕТ"
+    },
+    "No Features": {
+        "message": "Без особенностей"
+    },
+    "Ok": {
+        "message": "Ок"
+    },
+    "Once in Advanced Edit mode, the planet will remain in this mode for future edits.": {
+        "message": "Как только планета будет открыта в режиме Расширенного редактирования, она останется в этом режиме."
+    },
+    "PREVIEW ALL": {
+        "message": "ПРЕДПРОСМОТР ВСЕГО"
+    },
+    "Pathable": {
+        "message": "Проходимая"
+    },
+    "Position": {
+        "message": "ПОЗИЦИЯ"
+    },
+    "Preview": {
+        "message": "Пред. просмотр"
+    },
+    "Preview planet": {
+        "message": "Пред. просмотр планеты"
+    },
+    "Preview to copy CSG": {
+        "message": "Пред. просмотр для копирования CSG"
+    },
+    "Properties": {
+        "message": "Свойства"
+    },
+    "RECENT": {
+        "message": "НЕДАВНИЕ"
+    },
+    "REMOVE": {
+        "message": "УДАЛИТЬ"
+    },
+    "REMOVE ASTEROID BELT": {
+        "message": "УБРАТЬ АСТЕРОИДНЫЙ ПОЯС"
+    },
+    "Radius:": {
+        "message": "Радиус:"
+    },
+    "SAVE SYSTEM": {
+        "message": "СОХРАНИТЬ СИСТЕМУ"
+    },
+    "SELECT CSG": {
+        "message": " ВЫБРАТЬ CSG"
+    },
+    "SHOW": {
+        "message": "ПОКАЗАТЬ"
+    },
+    "SIMULATE": {
+        "message": "СИМУЛЯЦИЯ"
+    },
+    "STOP": {
+        "message": "СТОП"
+    },
+    "Save": {
+        "message": "Сохранить"
+    },
+    "Save as template": {
+        "message": "Сохранить как шаблон"
+    },
+    "Seed:": {
+        "message": "Номер:"
+    },
+    "Selected CSG": {
+        "message": "Выбранная CSG"
+    },
+    "Shuffle Landing Zones": {
+        "message": "Рандомизировать зоны высадки"
+    },
+    "Spawn Delay (in seconds)": {
+        "message": "Задержка появления (в секундах)"
+    },
+    "Spots:": {
+        "message": "Залежи:"
+    },
+    "Starting Asteroid Count": {
+        "message": "Начальное кол-во астероидов"
+    },
+    "Starting planet options": {
+        "message": "Настройки начальной планеты"
+    },
+    "System Designer": {
+        "message": "Дизайнер системы"
+    },
+    "System Name:": {
+        "message": "Имя системы:"
+    },
+    "System radius is too large.": {
+        "message": "Радиус системы слишком велик."
+    },
+    "System radius is too small.": {
+        "message": "Радиус системы слишком мал."
+    },
+    "System requires at least one starting planet.": {
+        "message": "В системе должна быть хотя бы одна начальная планета."
+    },
+    "TEMPLATES": {
+        "message": "ШАБЛОНЫ"
+    },
+    "TERRAIN": {
+        "message": "РЕЛЬЕФ"
+    },
+    "TERRAIN AND CSG": {
+        "message": "РЕЛЬЕФ И CSG"
+    },
+    "Temp": {
+        "message": "Температура"
+    },
+    "Temp:": {
+        "message": "Темп.:"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "Планета загружается. Это может занять долгое время."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "Программа зависнет до окончания генерации планеты."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "Система была изменена после последнего сохранения."
+    },
+    "The system has not been saved.": {
+        "message": "Система не была сохранена."
+    },
+    "This planet has been customized. It must be fully built before modifying.": {
+        "message": "Эта планета была отредактирована. Планета должна быть полностью построена, прежде чем ее можно будет изменять."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to delete.": {
+        "message": "Нажмите [style=hotkey_title]__hotkey__[/style], чтобы удалить."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor.": {
+        "message": "Нажмите [style=hotkey_title]__hotkey__[/style], чтобы разместить зону высадки под курсором."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
+        "message": "Нажмите [style=hotkey_title]__hotkey__[/style], чтобы разместить залежи металла под курсором."
+    },
+    "Use as a starting planet": {
+        "message": "Использовать как начальную планету"
+    },
+    "Variance:": {
+        "message": "Отклонение:"
+    },
+    "Velocity": {
+        "message": "СКОРОСТЬ"
+    },
+    "Version": {
+        "message": "Версия"
+    },
+    "Water": {
+        "message": "Вода"
+    },
+    "Water:": {
+        "message": "Вода:"
+    },
+    "X": {
+        "message": "X"
+    },
+    "X:": {
+        "message": "X:"
+    },
+    "Y": {
+        "message": "Y"
+    },
+    "Y:": {
+        "message": "Y:"
+    },
+    "You will have to fix the system before saving.": {
+        "message": "Вам нужно исправить систему, прежде чем ее можно будет сохранить."
+    },
+    "You will not be able to revert back and use standard editing controls.": {
+        "message": "Вы не сможете вернуться назад и использовать стандартные средства редактирования."
+    },
+    "Z": {
+        "message": "Z"
+    },
+    "Z:": {
+        "message": "Z:"
+    },
+    "Zones:": {
+        "message": "Зоны:"
+    },
+    "biome": {
+        "message": "биом"
+    },
+    "edit asteroid belt": {
+        "message": "редактировать пояс астероидов"
+    },
+    "edit planet": {
+        "message": "редактировать планету"
+    },
+    "height": {
+        "message": "высота"
+    },
+    "height range": {
+        "message": "диапазон высоты"
+    },
+    "landing zone size": {
+        "message": "размер зоны высадки"
+    },
+    "landing zones per army": {
+        "message": "кол-во зон высадки на армию"
+    },
+    "metal clusters": {
+        "message": "скопления металла"
+    },
+    "metal density": {
+        "message": "плотность металла"
+    },
+    "metal spots": {
+        "message": "залежи металла"
+    },
+    "metal spots on asteroids": {
+        "message": "залежи металла на астероидах"
+    },
+    "planet name": {
+        "message": "название планеты"
+    },
+    "preview landing zones by number of armies": {
+        "message": "пред. просмотр зоны высадки по кол-ву армий"
+    },
+    "radius": {
+        "message": "радиус"
+    },
+    "seed": {
+        "message": "номер"
+    },
+    "start spots": {
+        "message": "начальные места"
+    },
+    "symmetry type": {
+        "message": "тип симметрии"
+    },
+    "temperature": {
+        "message": "температура"
+    },
+    "terrain": {
+        "message": "рельеф"
+    },
+    "terrain and gameplay": {
+        "message": "рельеф и геймплей"
+    },
+    "thrusters required for attack": {
+        "message": "для атаки требуются двигатели"
+    },
+    "water coverage": {
+        "message": "водное покрытие"
+    },
+    "water depth": {
+        "message": "глубина воды"
+    }
+}

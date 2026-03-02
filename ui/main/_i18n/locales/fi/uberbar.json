@@ -1,0 +1,56 @@
+{
+    "Accept": {
+        "message": "Hyväksy"
+    },
+    "Appear Offline": {
+        "message": "Appear Offline"
+    },
+    "Away": {
+        "message": "Poissa"
+    },
+    "Block": {
+        "message": "Estä"
+    },
+    "CANCEL": {
+        "message": "PERUUTA"
+    },
+    "Change Display Name": {
+        "message": "Change Display Name"
+    },
+    "Do Not Disturb": {
+        "message": "Älä häiritse"
+    },
+    "Friends": {
+        "message": "Kaverit"
+    },
+    "Invite to Chat": {
+        "message": "Kutsu chattiin"
+    },
+    "Invite to game": {
+        "message": "Kutsu peliin"
+    },
+    "Join Game": {
+        "message": "Liity peliin"
+    },
+    "No pending notifications.": {
+        "message": "Ei katsomattomia ilmoituksia."
+    },
+    "Online": {
+        "message": "Online"
+    },
+    "Remove": {
+        "message": "Poista"
+    },
+    "Send Friend Request": {
+        "message": "Lähetä ystäväpyyntö"
+    },
+    "Unblock": {
+        "message": "Pura esto"
+    },
+    "Unfriend": {
+        "message": "Poista ystävä"
+    },
+    "Users": {
+        "message": "Käyttäjät"
+    }
+}

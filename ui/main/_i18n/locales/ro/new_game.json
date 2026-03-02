@@ -1,0 +1,80 @@
+{
+    "- Host": {
+        "message": ": Gazdă"
+    },
+    "AI Commander": {
+        "message": "Comandant IA"
+    },
+    "Add AI Commander": {
+        "message": "Adaugă Comandant IA"
+    },
+    "Add Slot": {
+        "message": "Adaugă Slot"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "CONEXIUNEA CĂTRE SERVER A FOST PIERDUTĂ"
+    },
+    "Chat": {
+        "message": "Conversaţie"
+    },
+    "Empty": {
+        "message": "Gol"
+    },
+    "Free For All": {
+        "message": "Fiecare Pentru El"
+    },
+    "Friends": {
+        "message": "Prieteni"
+    },
+    "Game Lobby": {
+        "message": "Lobby de Joc"
+    },
+    "Game Mode": {
+        "message": "Mod de Joc:"
+    },
+    "Join": {
+        "message": "Alătură"
+    },
+    "Kick": {
+        "message": "Dă afară"
+    },
+    "Leave": {
+        "message": "Părăseşte"
+    },
+    "Open to:": {
+        "message": "Deschide pentru:"
+    },
+    "Player Slot": {
+        "message": "Slot de Jucator"
+    },
+    "Private": {
+        "message": "Privat"
+    },
+    "Ready": {
+        "message": "Gata"
+    },
+    "Remove": {
+        "message": "Elimină"
+    },
+    "Returning to Main Menu": {
+        "message": "Revenind la Meniul Principal"
+    },
+    "SHARE ARMY": {
+        "message": "ÎMPARTE ARMATA"
+    },
+    "Spectate": {
+        "message": "Observă"
+    },
+    "Spectators": {
+        "message": "SPECTATORI"
+    },
+    "Start Game": {
+        "message": "Începe Joc"
+    },
+    "System": {
+        "message": "Sistem:"
+    },
+    "Team Armies": {
+        "message": "Armatele Echipei"
+    }
+}

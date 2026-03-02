@@ -1,0 +1,248 @@
+{
+    "(Updating...)": {
+        "message": " （正在更新……）"
+    },
+    "1v1 Ranked Ladder Season 2": {
+        "message": "1对1天梯排位赛第二赛季"
+    },
+    "1v1 Ranked Ladder Season 3": {
+        "message": "1对1天梯排位赛第三赛季"
+    },
+    "Ask questions, get help, find a game": {
+        "message": "提问、求助、寻找战局"
+    },
+    "Big Game Replays": {
+        "message": "大型战局回放"
+    },
+    "Block": {
+        "message": "拉黑"
+    },
+    "Chat": {
+        "message": "聊天"
+    },
+    "Check Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "请检查是否关闭了不兼容的 Windows 软件（如禁用 GameFirst）"
+    },
+    "Check firewall / antivirus and Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "请检查是否关闭了防火墙 / 杀毒 / 不兼容的 Windows 软件（如禁用 GameFirst 服务）"
+    },
+    "Classic PA players upgrade to Titans for US$2.99 (90% off)": {
+        "message": "PA 老玩家只需2.99美元即可升级至《Titans》（一折特惠）"
+    },
+    "Classic PA players upgrade to Titans for US$3.99 (90% off)": {
+        "message": "PA 老玩家购买《Titans》只需3.99美元（一折特惠）"
+    },
+    "Community Chat Help": {
+        "message": "社区聊天帮助"
+    },
+    "Community Chat and Community Mods are hosted on private servers.": {
+        "message": "“社区聊天室”和“社区模组”服务均托管在专用服务器上。"
+    },
+    "Community Mods": {
+        "message": "社区模组"
+    },
+    "Community Rules and Guidelines": {
+        "message": "社区规则与指导方针"
+    },
+    "Custom / Local Servers and LAN / WAN Games": {
+        "message": "自定义 / 本地服务器与局域网 / 广域网游戏"
+    },
+    "DON'T BE A JERK": {
+        "message": "别搞事"
+    },
+    "DON'T BE A LOSER": {
+        "message": "别说酸话"
+    },
+    "Dedicated Servers": {
+        "message": "专用服务器"
+    },
+    "Default": {
+        "message": "默认"
+    },
+    "Disable Auto Join": {
+        "message": "禁用自动加入"
+    },
+    "Empty friends list try clicking on": {
+        "message": "如果好友列表变成空白，可尝试点击 "
+    },
+    "Firewall / Antivirus / Incompatible Windows Software": {
+        "message": "防火墙 / 杀毒 / 不兼容的 Windows 软件"
+    },
+    "Full Screen Desktop Resolution": {
+        "message": "全屏桌面分辨率"
+    },
+    "Galactic War": {
+        "message": "银河战争"
+    },
+    "General Discussion Forum": {
+        "message": "综合论坛"
+    },
+    "HELP": {
+        "message": "帮助"
+    },
+    "Hot Keys": {
+        "message": "热键"
+    },
+    "Incompatible Windows Software": {
+        "message": "不兼容的 Windows 软件"
+    },
+    "Invite to Chat": {
+        "message": "邀请参加聊天"
+    },
+    "Invite to game": {
+        "message": "邀请加入战局"
+    },
+    "Join Community Chat": {
+        "message": "进入社区聊天室"
+    },
+    "Join Tournaments": {
+        "message": "参加锦标赛"
+    },
+    "LINKS": {
+        "message": "链接"
+    },
+    "Learning to Play": {
+        "message": "玩法入门"
+    },
+    "Legion Expansion Overview": {
+        "message": "《Legion Expansion》概览"
+    },
+    "Lost Titans Ownership When Linking": {
+        "message": "关联账号时发生《Titans》所有权丢失问题"
+    },
+    "Mention": {
+        "message": "提及"
+    },
+    "Notify": {
+        "message": "通知"
+    },
+    "Official Planetary Annihilation Discord": {
+        "message": "《Planetary Annihilation》官方 Discord"
+    },
+    "Old PAMM Mods": {
+        "message": "旧的 PAMM 模组"
+    },
+    "PA Friends & Display Names": {
+        "message": "PA 好友及显示名称"
+    },
+    "PAnet Migration": {
+        "message": "迁移至 PAnet"
+    },
+    "Pending": {
+        "message": "等待中"
+    },
+    "Planetary Annihilation Vocabulary": {
+        "message": "《Planetary Annihilation》专用词汇一览"
+    },
+    "Planetary Annihilation community rules apply to community chat:": {
+        "message": "《Planetary Annihilation》社区规则同样适用于社区聊天室："
+    },
+    "Player Guides": {
+        "message": "玩家指南"
+    },
+    "Public Test Environments (PTE)": {
+        "message": "公测服（PTE）"
+    },
+    "Queller AI mod for Skirmish & Multiplayer": {
+        "message": "适用于散兵战和多人游戏的 Queller 电脑模组"
+    },
+    "Remember that you are here to play the game and not be a jerk. No spam, flaming, politics, abuse or hate speech.": {
+        "message": "请记住，您是来玩游戏的，不是来搞事的。不得发送垃圾信息，不得引战，不得讨论政治话题，不得发表不当言论或仇恨言论。"
+    },
+    "Replays": {
+        "message": "回放"
+    },
+    "Report game issues in the PA support forums:": {
+        "message": "去 PA 客服论坛报告游戏问题："
+    },
+    "Reporting Issues": {
+        "message": "正在报告问题"
+    },
+    "Right click on a name for more options.": {
+        "message": "右键单击参与者名称，即可看到更多选项。"
+    },
+    "Send Friend Request": {
+        "message": "发送好友申请"
+    },
+    "Server Sim Performance / Time Dilation / RAM Usage": {
+        "message": "服务器模拟表现 / 时间膨胀 / 内存用量"
+    },
+    "Skills Pyramid": {
+        "message": "技能金字塔"
+    },
+    "Special Characters in Display Name": {
+        "message": "显示名称中的特殊字符"
+    },
+    "TITANS 1v1 ranked": {
+        "message": "TITANS 1v1 排位赛"
+    },
+    "The notify checkbox on the top right of each chat enables or disables notifications when someone mentions you.": {
+        "message": "每个聊天室右上角都设有通知选择框，您可以自行决定被人提及时是否要向您发送通知。"
+    },
+    "Timeline of updates to Titans & Classic PA": {
+        "message": "《Titans》和经典版 PA 的更新时间表"
+    },
+    "Titans Overview": {
+        "message": "《Titans》概览"
+    },
+    "UI is Slow": {
+        "message": "操作界面反应慢"
+    },
+    "Unblock": {
+        "message": "取消拉黑"
+    },
+    "Unfriend": {
+        "message": "解除好友"
+    },
+    "Unit Database": {
+        "message": "单位资料库"
+    },
+    "User Interface Controls": {
+        "message": "界面操控方式"
+    },
+    "Web based Community Chat:": {
+        "message": "网页社区聊天室："
+    },
+    "When a chat window is minimised it will flash green for new messages and red when someone mentions you. Right click to clear the mention.": {
+        "message": "最小化聊天窗口后，收到新消息时会闪绿光，被人提及时会闪红光。右击即可清除提及通知。"
+    },
+    "Your Message Colour": {
+        "message": "发送信息颜色"
+    },
+    "Zero tolerance for backseat moderation or arguing with moderators.": {
+        "message": "绝不容忍对协调员的工作指手画脚或是与协调员发生争执的行为。"
+    },
+    "Zero tolerance for complainers and rants about PA.": {
+        "message": "绝不容忍抱怨或辱骂 PA 的行为。"
+    },
+    "click HELP on top right": {
+        "message": "请点击右上方的“帮助”"
+    },
+    "click title bar to minimise": {
+        "message": "单击标题栏即可最小化窗口"
+    },
+    "click to maximise": {
+        "message": "单击即可最大化窗口"
+    },
+    "community-chat-muted": {
+        "message": "如果您遭到<span data-bind=\"style: { color: $root.chatRoomMutedColour }\">禁言</span>，请与<span data-bind=\"style: { color: $root.chatRoomModeratorColour }\">协调员</span>或<span data-bind=\"style: { color: $root.chatRoomOwnerColour }\">房主</span>联系，让他们帮您解除禁言。"
+    },
+    "hello": {
+        "message": "你好"
+    },
+    "if you have plenty of RAM then you can download and watch big game replays": {
+        "message": "只要内存足够，就可以下载并观看大型战局回放"
+    },
+    "Classic PA players upgrade to TITANS for 90% off (US$2.99)": {
+        "message": "拥有经典版 PA 的玩家，购买《TITANS》时可享受一折特惠（2.99美元）"
+    },
+    "TITANS 1v1 Leaderboards": {
+        "message": "《TITANS》1对1排行榜"
+    },
+    "TITANS 1v1 Ranked Seasons": {
+        "message": "《TITANS》1对1排位赛各个赛季"
+    },
+    "Timeline of updates to TITANS & Classic PA": {
+        "message": "《TITANS》和经典版 PA 的更新时间表"
+    }
+}

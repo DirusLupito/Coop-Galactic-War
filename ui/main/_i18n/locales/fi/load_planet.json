@@ -1,0 +1,23 @@
+{
+    "CANCEL": {
+        "message": "PERUUTA"
+    },
+    "Delete": {
+        "message": "POISTA"
+    },
+    "Delete this system?": {
+        "message": "Haluatko poistaa tämän järjestelmän?"
+    },
+    "Load System": {
+        "message": "Lataa järjestelmä"
+    },
+    "SHOW PLANETS": {
+        "message": "NÄYTÄ PLANEETAT"
+    },
+    "SHOW SYSTEMS": {
+        "message": "NÄYTÄ JÄRJESTELMÄT"
+    },
+    "System Designer": {
+        "message": "Järjestelmän suunnittelija"
+    }
+}

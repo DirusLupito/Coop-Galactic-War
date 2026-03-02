@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "殲滅 完了"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "平均"
+    },
+    "Built": {
+        "message": "建造"
+    },
+    "Destroyed": {
+        "message": "破壊"
+    },
+    "Determining ladder rank...": {
+        "message": "ラダーランクを確定中…"
+    },
+    "Draw": {
+        "message": "Draw"
+    },
+    "Duration:": {
+        "message": "プレイ時間"
+    },
+    "Efficiency": {
+        "message": "効率"
+    },
+    "Energy": {
+        "message": "エネルギー"
+    },
+    "Metal": {
+        "message": "金属"
+    },
+    "Produced": {
+        "message": "生産"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "終了してメインメニューへ"
+    },
+    "REVIEW": {
+        "message": "レビュー"
+    },
+    "Requeue": {
+        "message": "再キュー"
+    },
+    "SPECTATE": {
+        "message": "観戦"
+    },
+    "The battle ended in a draw.": {
+        "message": "戦いはDraw(引き分け)となった…"
+    },
+    "The game has ended.": {
+        "message": "ゲームは終了となった"
+    },
+    "Total Oblivion": {
+        "message": "全滅"
+    },
+    "Units": {
+        "message": "ユニット"
+    },
+    "Used": {
+        "message": "使用"
+    },
+    "VICTORY IS YOURS": {
+        "message": "VICTORY IS YOURS"
+    },
+    "VIEW RESULTS": {
+        "message": "結果を確認"
+    },
+    "VIEW STATS": {
+        "message": "データ表示"
+    },
+    "Winner:": {
+        "message": "勝者:"
+    },
+    "Winners:": {
+        "message": "勝者:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "YOU'VE BEEN ANNIHILATED"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "現時点で、ランクステータスは未確定です。もう少しゲームをプレイして、自分のラダーランクを確定させましょう"
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "貴殿の1vs1ラダーランクは __rank_title__ だ"
+    }
+}

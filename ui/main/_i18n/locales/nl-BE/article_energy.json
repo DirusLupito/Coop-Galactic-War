@@ -1,0 +1,23 @@
+{
+    "Advanced Energy Plants generate 8x more energy": {
+        "message": "Geavanceerde energiecentrales wekken 8x zo veel energie op"
+    },
+    "Build Energy Plants to generate energy": {
+        "message": "Bouw energiecentrales om energie op te wekken"
+    },
+    "Energy Resource": {
+        "message": "Energiebronnen"
+    },
+    "Energy is required for building units, structures and some functionality": {
+        "message": "Energie is nodig voor het bouwen van eenheden, gebouwen en voor sommige functies"
+    },
+    "PA Guide: Energy": {
+        "message": "PA-handleiding: Energie"
+    },
+    "Select Fabber, select [style=text_callout]Build Energy Plant Icon[/style].": {
+        "message": "Selecteer een fabber, selecteer het [style=text_callout]bouw energiecentrale-pictogram[/style]."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build multiple Energy Plants.": {
+        "message": "[style=text_callout]Klik met de linkermuisknop + sleep[/style] over de planeet om meerdere energiecentrales te bouwen."
+    }
+}

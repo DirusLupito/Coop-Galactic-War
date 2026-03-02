@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "Dément"
+    },
+    "Absurd Testing": {
+        "message": "Test dément"
+    },
+    "Easy": {
+        "message": "Facile"
+    },
+    "Hard": {
+        "message": "Difficile"
+    },
+    "Idle": {
+        "message": "Détendu"
+    },
+    "Normal": {
+        "message": "Normal"
+    },
+    "Relentless": {
+        "message": "Impitoyable"
+    }
+}

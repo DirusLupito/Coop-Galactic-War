@@ -1,0 +1,59 @@
+{
+    "CANCEL": {
+        "message": "キャンセル"
+    },
+    "DELETE": {
+        "message": "削除"
+    },
+    "Delete": {
+        "message": "削除"
+    },
+    "Delete this system?": {
+        "message": "この星系を削除？"
+    },
+    "Edit System": {
+        "message": "星系を編集"
+    },
+    "Export": {
+        "message": "エクスポート"
+    },
+    "Import": {
+        "message": "インポート"
+    },
+    "Load System": {
+        "message": "星系をロード"
+    },
+    "Metal Spots: __num_metal_spots__": {
+        "message": "金属スポット: __num_metal_spots__"
+    },
+    "New system": {
+        "message": "新規星系"
+    },
+    "No Metal": {
+        "message": "金属なし"
+    },
+    "Radius: __radius__": {
+        "message": "半径: __radius__"
+    },
+    "SHOW PLANETS": {
+        "message": "惑星の表示"
+    },
+    "SHOW SYSTEMS": {
+        "message": "星系の表示"
+    },
+    "Starting Planet": {
+        "message": "惑星を開始中…"
+    },
+    "System Designer": {
+        "message": "星系デザイナー"
+    },
+    "Thrusters Required": {
+        "message": "必要なスラスタ"
+    },
+    "__min_players__-__max_players__ Players": {
+        "message": "プレイヤー数: __min_players__-__max_players__ 人"
+    },
+    "__num_players__ Players": {
+        "message": "プレイヤー数: __num_players__- 人"
+    }
+}

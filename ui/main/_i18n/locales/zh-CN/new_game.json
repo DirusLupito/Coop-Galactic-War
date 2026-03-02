@@ -1,0 +1,221 @@
+{
+    "- Host": {
+        "message": "- 主机"
+    },
+    "AI Commander": {
+        "message": "电脑指挥官"
+    },
+    "AI:": {
+        "message": "电脑："
+    },
+    "Add AI": {
+        "message": "添加电脑"
+    },
+    "Add AI Commander": {
+        "message": "添加电脑指挥官"
+    },
+    "Add Slot": {
+        "message": "添加栏位"
+    },
+    "Add Team": {
+        "message": "添加队伍"
+    },
+    "Alliance Victory": {
+        "message": "联盟胜利"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " 允许玩家创建或打破游戏内联盟，提供共享资源的选项。"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " 允许玩家剪切和粘贴单元进行实验"
+    },
+    "Bounty Mode": {
+        "message": "赏金模式"
+    },
+    "Browse systems...": {
+        "message": "浏览星系……"
+    },
+    "Building planets": {
+        "message": "正在建造星球"
+    },
+    "Building planets...": {
+        "message": "正在建造星球……"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "与服务器的连接丢失"
+    },
+    "Chat": {
+        "message": "聊天"
+    },
+    "Default": {
+        "message": "默认"
+    },
+    "Dynamic Alliances": {
+        "message": "动态联盟"
+    },
+    "Econ Rate": {
+        "message": "经济倍数"
+    },
+    "Empty": {
+        "message": "空"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": "最先杀死指挥官的团队获胜（请保护己方最弱的玩家）"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " 玩家每消灭一支军队，系统就会奖励玩家一个经济倍数，可加快玩家的生产速度"
+    },
+    "Free For All": {
+        "message": "混战"
+    },
+    "Friends": {
+        "message": "好友"
+    },
+    "Game Lobby": {
+        "message": "游戏大厅"
+    },
+    "Game Mode": {
+        "message": "游戏模式"
+    },
+    "Global Spectator Chat": {
+        "message": "全球观战者聊天室"
+    },
+    "Join": {
+        "message": "加入"
+    },
+    "Kick": {
+        "message": "踢出"
+    },
+    "Large Planets": {
+        "message": "大星球"
+    },
+    "Leave": {
+        "message": "离开"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "每消灭一支军队可得倍数："
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " 未使用绿色起始区域。玩家可以从任何地方开始。"
+    },
+    "Open to:": {
+        "message": "对谁开放："
+    },
+    "Password (optional)": {
+        "message": "密码（可选）"
+    },
+    "Player Slot": {
+        "message": "玩家栏位"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "玩家在起始星球上选择点位"
+    },
+    "Players": {
+        "message": "名玩家"
+    },
+    "Private": {
+        "message": "私人"
+    },
+    "Public": {
+        "message": "公开"
+    },
+    "Random": {
+        "message": "随机"
+    },
+    "Ready": {
+        "message": "就绪"
+    },
+    "Remove": {
+        "message": "移除"
+    },
+    "Returning to Main Menu": {
+        "message": "正在返回主菜单"
+    },
+    "SHARE ARMY": {
+        "message": "共享军队"
+    },
+    "SPECTATORS": {
+        "message": "观战者"
+    },
+    "Sandbox": {
+        "message": "沙盒"
+    },
+    "Select System": {
+        "message": "选择星系"
+    },
+    "Shuffle landing zones": {
+        "message": "随机选择着陆区"
+    },
+    "Slot": {
+        "message": "栏位"
+    },
+    "Slot __slot_number__": {
+        "message": "栏位__slot_number__"
+    },
+    "Slots are empty": {
+        "message": "栏位为空。"
+    },
+    "Spectate": {
+        "message": "观战"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " 观战者消息在游戏聊天中可见"
+    },
+    "Spectators": {
+        "message": "观战者"
+    },
+    "Start Anywhere": {
+        "message": "任意地方开局"
+    },
+    "Start Game": {
+        "message": "开始游戏"
+    },
+    "Start Nearby": {
+        "message": "附近开局"
+    },
+    "Start Offworld": {
+        "message": "外星开局"
+    },
+    "Sudden Death Mode": {
+        "message": "骤死赛模式"
+    },
+    "Symmetrical": {
+        "message": "对称"
+    },
+    "System": {
+        "message": "星系"
+    },
+    "Tag:": {
+        "message": "标签："
+    },
+    "Team": {
+        "message": "队伍"
+    },
+    "Team Armies": {
+        "message": "组队对战"
+    },
+    "Team __team_number__": {
+        "message": "队伍__team_number__"
+    },
+    "Title": {
+        "message": "标题"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "必须拥有好友才能进行“仅限好友参加”的游戏"
+    },
+    "Asteroid": {
+        "message": "小行星"
+    },
+    "Multiple starting planets": {
+        "message": "多个起始星球"
+    },
+    "Select a system": {
+        "message": "选择星系"
+    },
+    "Started": {
+        "message": "已开始"
+    },
+    "Waiting for system": {
+        "message": "正在等待星系"
+    }
+}

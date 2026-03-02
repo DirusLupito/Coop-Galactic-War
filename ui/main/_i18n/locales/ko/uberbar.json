@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "수락"
+    },
+    "Appear Offline": {
+        "message": "\n오프라인으로 표시                                                "
+    },
+    "Away": {
+        "message": "\n                                                    자리 비움\n                                                "
+    },
+    "Block": {
+        "message": "차단"
+    },
+    "Buy Expansion": {
+        "message": "확장팩 구매"
+    },
+    "CANCEL": {
+        "message": "취소"
+    },
+    "CHANGE": {
+        "message": "변경"
+    },
+    "CHAT": {
+        "message": "채팅"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Change Display Name": {
+        "message": "\n                                                    표시 이름 변경\n                                                "
+    },
+    "Change your display name?": {
+        "message": "표시 이름을 변경하시겠습니까?"
+    },
+    "Chat": {
+        "message": "채팅"
+    },
+    "Date": {
+        "message": "날짜"
+    },
+    "Do Not Disturb": {
+        "message": "\n                                                    방해 금지\n                                                "
+    },
+    "Enter a status message": {
+        "message": "상태 메시지 입력"
+    },
+    "Friends": {
+        "message": "친구"
+    },
+    "Ignore": {
+        "message": "무시하기"
+    },
+    "Invite to Chat": {
+        "message": "채팅에 초대"
+    },
+    "Invite to game": {
+        "message": "게임에 초대"
+    },
+    "Join Game": {
+        "message": "게임 참가"
+    },
+    "New Display Name:": {
+        "message": "새로운 표시 이름:"
+    },
+    "No pending notifications.": {
+        "message": "보류된 알림이 없습니다."
+    },
+    "Offline": {
+        "message": "오프라인"
+    },
+    "Online": {
+        "message": "\n                                                    온라인\n                                                "
+    },
+    "Pending Invite": {
+        "message": "초대 보류 중"
+    },
+    "REMOVE": {
+        "message": "제거"
+    },
+    "Recent": {
+        "message": "최근"
+    },
+    "Remove": {
+        "message": "제거"
+    },
+    "Replays": {
+        "message": "리플레이"
+    },
+    "Required Expansion Pack": {
+        "message": "확장팩 필요"
+    },
+    "Search Players": {
+        "message": "플레이어 검색"
+    },
+    "Search Results": {
+        "message": "검색 결과"
+    },
+    "Send Friend Request": {
+        "message": "친구 신청 보내기"
+    },
+    "Tags:": {
+        "message": "태그:"
+    },
+    "The game you are trying to join requires the [style=content_description]__content_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "참가하려는 게임에는 Planetary Annihilation의 [style=content_description]__content_name__[/style] 확장팩이 필요합니다."
+    },
+    "Unblock": {
+        "message": "차단 해제"
+    },
+    "Unfriend": {
+        "message": "친구 삭제"
+    },
+    "Users": {
+        "message": "사용자"
+    },
+    "__display_name__ invited you to a game.": {
+        "message": "__display_name__ 님이 게임에 초대했습니다."
+    },
+    "__display_name__ invited you to chat.": {
+        "message": "__display_name__ 님이 채팅에 초대했습니다."
+    },
+    "__display_name__ wants to be your friend.": {
+        "message": "__display_name__ 님이 친구가 되고 싶어 합니다."
+    }
+}

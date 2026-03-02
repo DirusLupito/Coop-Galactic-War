@@ -1,0 +1,59 @@
+{
+    "Annihilated": {
+        "message": "已歼灭"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "确定要放弃这场银河战争吗？"
+    },
+    "Close": {
+        "message": "关闭"
+    },
+    "Congratulations Commander": {
+        "message": "恭喜指挥官"
+    },
+    "Delete War": {
+        "message": "删除战争"
+    },
+    "Discards": {
+        "message": "丢弃"
+    },
+    "Final Tech": {
+        "message": "最终科技"
+    },
+    "GO TO MAIN MENU": {
+        "message": "前往主菜单"
+    },
+    "Now go start a war. Annihilate everything.": {
+        "message": "现在去发动一场战争吧。歼灭一切。"
+    },
+    "Please try again. There's still much to destroy.": {
+        "message": "请重试。需要摧毁的还有很多。"
+    },
+    "Redo Tutorial": {
+        "message": "重玩教程"
+    },
+    "Returning to Main Menu": {
+        "message": "正在返回主菜单"
+    },
+    "Start A Galactic War": {
+        "message": "开启银河战争"
+    },
+    "Training Remains": {
+        "message": "剩余训练"
+    },
+    "Turns:": {
+        "message": "回合数："
+    },
+    "Tutorial Complete": {
+        "message": "教程完成"
+    },
+    "Tutorial Incomplete": {
+        "message": "教程未完成"
+    },
+    "Victory": {
+        "message": "胜利"
+    },
+    "Wins:": {
+        "message": "胜场："
+    }
+}

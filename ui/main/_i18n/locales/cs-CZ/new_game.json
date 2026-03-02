@@ -1,0 +1,98 @@
+{
+    "- Host": {
+        "message": "- Hostitel"
+    },
+    "AI Commander": {
+        "message": "AI Velitel"
+    },
+    "Add AI": {
+        "message": "Přidat AI"
+    },
+    "Add AI Commander": {
+        "message": "Přidat AI Velitele"
+    },
+    "Add Slot": {
+        "message": "Přidat místo"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "PŘIPOJENÍ SE SERVEREM ZTRACENO"
+    },
+    "Dynamic Alliances": {
+        "message": "Dynamické aliance"
+    },
+    "Empty": {
+        "message": "Prázdný"
+    },
+    "Free For All": {
+        "message": "Všichni proti všem"
+    },
+    "Friends": {
+        "message": "Přátelé"
+    },
+    "Game Lobby": {
+        "message": "Herní Místnost"
+    },
+    "Game Mode": {
+        "message": "Herní režim"
+    },
+    "Global Spectator Chat": {
+        "message": "Globální chat diváků"
+    },
+    "Join": {
+        "message": "Připojit"
+    },
+    "Kick": {
+        "message": "Vyhodit"
+    },
+    "Leave": {
+        "message": "Odejít"
+    },
+    "Open to:": {
+        "message": "Otevřít pro:"
+    },
+    "Player Slot": {
+        "message": "Místo pro hráče"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Hráč si vybírá místo na začáteční planetě"
+    },
+    "Private": {
+        "message": "Soukromá"
+    },
+    "Public": {
+        "message": "Veřejná"
+    },
+    "Ready": {
+        "message": "Připraven"
+    },
+    "Remove": {
+        "message": "Odstranit"
+    },
+    "Returning to Main Menu": {
+        "message": "Návrat do Hlavního Menu"
+    },
+    "SHARE ARMY": {
+        "message": "SDÍLET ARMÁDU"
+    },
+    "Spectate": {
+        "message": "Pozorovat"
+    },
+    "Spectators": {
+        "message": "Pozorovatelé"
+    },
+    "Start Game": {
+        "message": "Spustit hru"
+    },
+    "System": {
+        "message": "Systém"
+    },
+    "Tag:": {
+        "message": "Označení:"
+    },
+    "Team Armies": {
+        "message": "Týmové armády"
+    },
+    "Title": {
+        "message": "Název"
+    }
+}

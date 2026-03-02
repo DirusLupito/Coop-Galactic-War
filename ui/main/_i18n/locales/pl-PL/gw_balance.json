@@ -1,0 +1,17 @@
+{
+    "Absurd": {
+        "message": "Absurdalny"
+    },
+    "Easy": {
+        "message": "Łatwy"
+    },
+    "Hard": {
+        "message": "Trudny"
+    },
+    "Normal": {
+        "message": "Normalny"
+    },
+    "Relentless": {
+        "message": "Bezlitosny"
+    }
+}

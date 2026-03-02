@@ -1,0 +1,62 @@
+{
+    "Q-Bronze": {
+        "message": "Ҩ-฿ȓȏƞℤέΩΩΩΩ",
+        "original": "Q-Bronze"
+    },
+    "Q-Casual": {
+        "message": "Ҩ-Ҫȃƨմȃ⌊ΩΩΩΩ",
+        "original": "Q-Casual"
+    },
+    "Q-Gold": {
+        "message": "Ҩ-Ǵȏ⌊ɗΩΩΩ",
+        "original": "Q-Gold"
+    },
+    "Q-Platinum": {
+        "message": "Ҩ-Ṕ⌊ȃҭїƞմʍΩΩΩΩΩ",
+        "original": "Q-Platinum"
+    },
+    "Q-Silver": {
+        "message": "Ҩ-Ṡї⌊ѷέȓΩΩΩΩ",
+        "original": "Q-Silver"
+    },
+    "Q-Uber": {
+        "message": "Ҩ-ỦБέȓΩΩΩ",
+        "original": "Q-Uber"
+    },
+    "Q-Uber 1v1": {
+        "message": "Ҩ-ỦБέȓ 1ѷ1ΩΩΩΩΩ",
+        "original": "Q-Uber 1v1"
+    },
+    "Q-Uber Bot": {
+        "message": "Ҩ-ỦБέȓ ฿ȏҭΩΩΩΩΩ",
+        "original": "Q-Uber Bot"
+    },
+    "Q-Uber Free-For-All": {
+        "message": "Ҩ-ỦБέȓ Ϝȓέέ-Ϝȏȓ-Ȃ⌊⌊ΩΩΩΩΩΩΩΩΩ",
+        "original": "Q-Uber Free-For-All"
+    },
+    "Q-Uber Platoon": {
+        "message": "Ҩ-ỦБέȓ Ṕ⌊ȃҭȏȏƞΩΩΩΩΩΩΩ",
+        "original": "Q-Uber Platoon"
+    },
+    "Q-Uber Rush": {
+        "message": "Ҩ-ỦБέȓ ℝմƨнΩΩΩΩΩ",
+        "original": "Q-Uber Rush"
+    },
+    "Q-Uber Tank": {
+        "message": "Ҩ-ỦБέȓ 丁ȃƞќΩΩΩΩΩ",
+        "original": "Q-Uber Tank"
+    },
+    "Q-Uber Turtle": {
+        "message": "Ҩ-ỦБέȓ 丁մȓҭ⌊έΩΩΩΩΩΩ",
+        "original": "Q-Uber Turtle"
+    },
+    "Queller AI": {
+        "message": "Ҩմέ⌊⌊έȓ ȂΪΩΩΩΩΩ",
+        "original": "Queller AI"
+    },
+    "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion.": {
+        "message": "Бу Ҩմїҭϲн. Μу ɗїғғїϲմ⌊ҭїέƨ ȃȓέ ⍴ȓέғї⌧έɗ ῴїҭн ȃ Ҩ. Ɖȏƞ'ҭ ʍȃќέ ȂΪ ҭέȃʍƨ ⌊ȃȓɠέȓ ҭнȃƞ нմʍȃƞ ҭέȃʍƨ, їƞϲȓέȃƨέ ҭнέ ɗїғғїϲմ⌊ҭу ȏȓ ҭнέ έϲȏƞ ȓȃҭέ їƞƨҭέȃɗ. Ϊ ƨմ⍴⍴ȏȓҭ ҭнέ ₤έɠїȏƞ Ɛ⌧⍴ȃƞƨїȏƞ.ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ",
+        "original": "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion."
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "Annuleren"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "SERVERMODS DOWNLOADEN…"
+    },
+    "Loading Game": {
+        "message": "Spel laden…"
+    },
+    "Loading Replay": {
+        "message": "Herhaling laden…"
+    },
+    "Returning to Main Menu": {
+        "message": "Terugkeren naar hoofdmenu…"
+    },
+    "Returning to menu": {
+        "message": "Terugkeren naar menu…"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "Herhalingsserver wordt gestart. Even geduld a.u.b..."
+    },
+    "Unable to load replay": {
+        "message": "Kon herhaling niet laden"
+    },
+    "Unable to load save game": {
+        "message": "Kon opgeslagen spel niet laden"
+    }
+}

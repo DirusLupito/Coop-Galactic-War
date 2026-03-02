@@ -1,0 +1,83 @@
+{
+    "Acquire": {
+        "message": "Pobierz"
+    },
+    "All progress and Tech will be lost.": {
+        "message": "Wszelkie postępy i technologie zostaną utracone."
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Czy na pewno chcesz opuścić trwającą wojnę galaktyczną?"
+    },
+    "Continue": {
+        "message": "Kontynuuj"
+    },
+    "Data Cache Discovered": {
+        "message": "Odkryto bazę danych"
+    },
+    "Delete Tech": {
+        "message": "Usuń technologię"
+    },
+    "Dismiss Tech": {
+        "message": "Odrzuć technologie"
+    },
+    "Duplicate Tech": {
+        "message": "Zduplikuj technologię"
+    },
+    "Explore": {
+        "message": "Eksploruj"
+    },
+    "Fight": {
+        "message": "Walcz"
+    },
+    "Game Menu": {
+        "message": "Menu gry"
+    },
+    "Jump": {
+        "message": "Skok"
+    },
+    "Loading...": {
+        "message": "Wczytywanie..."
+    },
+    "Preparing for battle": {
+        "message": "Przygotowanie do bitwy"
+    },
+    "Restart": {
+        "message": "Restartuj"
+    },
+    "Returning to Main Menu": {
+        "message": "Powrót do menu głównego"
+    },
+    "Save & Exit": {
+        "message": "Zapisz i wyjdź"
+    },
+    "Saving...": {
+        "message": "Zapisywanie..."
+    },
+    "Scanning System": {
+        "message": "Skanowanie systemu"
+    },
+    "Select a technology to develop using this data.": {
+        "message": "Wybierz technologię, którą chcesz rozwinąć dzięki zdobytym danym."
+    },
+    "Settings": {
+        "message": "Ustawienia"
+    },
+    "Social Bar": {
+        "message": "Pasek społeczności"
+    },
+    "TECHS": {
+        "message": "TECHNOLOGIE"
+    },
+    "Tech Bank is full. To develop new technology, select an existing tech and delete it to open a slot.": {
+        "message": "Bank technologii jest zapełniony. Aby rozwinąć nową technologię, wybierz istniejącą i usuń ją, żeby zwolnić miejsce."
+    },
+    "Turns:": {
+        "message": "Tury:"
+    },
+    "Unlock Commander": {
+        "message": "Odblokuj dowódcę"
+    },
+    "Wins:": {
+        "message": "Wygrane:"
+    }
+}

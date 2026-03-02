@@ -1,0 +1,1610 @@
+{
+    "\"Basic units are great for skirmishing. Advanced units are great for winning.\"": {
+        "message": "「基本單位對於小會戰非常有用，致勝需要進階單位。」"
+    },
+    "\"Commanders in orbit are either dead or dying.\"": {
+        "message": "「軌道上的指揮官若非死亡就是瀕死。」"
+    },
+    "\"Continuous build is the best enhancement to factories in five millennia.\"": {
+        "message": "「不中斷建造是五千年來的工廠最佳增強方式。」"
+    },
+    "\"Crush your enemies and erase their code.\"": {
+        "message": "「粉碎敵人並抹除他們的軍人代碼。」"
+    },
+    "\"Lack of radar is the easiest way to get ambushed.\"": {
+        "message": "「缺失雷達最容易遭遇伏擊。」"
+    },
+    "\"Orbital is death-from-above for the death-from-above units.\"": {
+        "message": "「對死從天降的單位而言，軌道就是死從天降。」"
+    },
+    "\"Single point orders are for sub-commanders. Real commanders use area commands.\"": {
+        "message": "「單點指令是次級指揮官的能力，真正的指揮官會使用區域指令。」"
+    },
+    "\"There is no anti-asteroid.\"": {
+        "message": "「沒有反小行星這種事。」"
+    },
+    "\"Wars are never lost by having too much metal.\"": {
+        "message": "「擁有太多金屬，不會導致輸掉戰爭。」"
+    },
+    "\"When in doubt, build nukes. If they have anti-nukes, build more nukes.\"": {
+        "message": "「若有疑問，就製造核子武器，如果他們有反核子武器，則製造更多核子武器。」"
+    },
+    "\"When in doubt, get a bigger bot.\"": {
+        "message": "「如有疑問，請取得更大的機器人」。"
+    },
+    "\"When you think you have enough energy, build more.\"": {
+        "message": "「當你覺得有足夠的能源時，請建造更多。」"
+    },
+    "\"When you think you have enough metal, build more.\"": {
+        "message": "「當你覺得有足夠的金屬時，請建造更多。」"
+    },
+    "\"Why build one factory when you can build twenty?\"": {
+        "message": "「你可以建造二十個工廠時，為什麼只建一個呢？」"
+    },
+    "+10% sight and weapon range": {
+        "message": "+10%的視線和武器範圍"
+    },
+    "+15% movement speed": {
+        "message": "+15%移動速度"
+    },
+    "+20% commander health, movement speed, and damage": {
+        "message": "+20% 指揮官生命值、移動速度和傷害。"
+    },
+    "+20% resource production": {
+        "message": "+20%資源生產"
+    },
+    "+25% damage": {
+        "message": "+25%傷害"
+    },
+    "+25% health": {
+        "message": "+25%生命值"
+    },
+    "-20% unit costs": {
+        "message": "-20%單位費用"
+    },
+    "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves.": {
+        "message": "當從同步軍團大規模分散式網絡架構中斷時，被僱傭人可以解除同步。一些人描述被同步化的體驗，其目的和指示總是定義明確 - 對於此黑暗時代，指揮官經常會因此感到安慰，但與其他尋求超越自我的人的價值觀相反。"
+    },
+    "A berzerker who has returned from battles with less than ten percent of his original body remaining, Rul-Mot has no discernible instinct for self-preservation. He is unpopular among field units, but his impressive combat record cannot be denied.": {
+        "message": "魯爾莫是一名從戰鬥歸來的狂戰士，原始身體血液只剩不到百分之十。他沒有明顯的自我保護本能。他在野戰單位不受歡迎，但他的戰史令人印象深刻，不容質疑。"
+    },
+    "A close advisor to Invictus, Flavius often provides counsel on matters regarding autonomy among the Legate. While some older members of the Legion distrust such progressivism, rates of recruitment from other factions has increased noticeably.": {
+        "message": "弗拉維烏斯是不屈之王英維特斯的親密顧問，經常就使節之間的自主問題提供諮詢。雖然軍團的一些老年成員不信任進步主義，但來自其他派系的招募率明顯提高。"
+    },
+    "A convert from the Revenants, Khandzta might be the first of his kind. While most Seekers that are rebirthed show an immediate propensity for war, Khandzta was instead possessed by questions about his origin. He converted during his first encounter with the Foundation.": {
+        "message": "康茲達可能是第一位投誠自不死軍團的人。儘管大多數重生的追尋者都表現出直接的戰爭傾向，但是康茲達卻被關於他的起源問題所困擾。他在與基要軍團的第一次遭遇時投誠。"
+    },
+    "A former Foundation Acolyte, Kancetu believes that the Great Machine is less an outside function and more an underlying directive that exists within all commanders, which made her a very easy subject for synchronization.": {
+        "message": "凱西圖是前基要軍團侍僧，他認為「大機器」不是外部功能，更傾向是存在于所有指揮官內的基本指令，這使得她成為非常容易同步化的對象。"
+    },
+    "A former commander for the Foundation, Titus harbors a deep hatred for the members of what he calls “a cult of nostalgists and dreamers.” To compensate for his previous role among the effete Foundation elites, Titus fights with an unusual brutality, especially against Foundation armies.": {
+        "message": "身為基要軍團的前任指揮官，提圖斯對他所稱的「懷舊主義者和夢想家教派」的成員懷有深深的仇恨。為了彌補他在衰微的基要軍團精英階層中的先前角色，提圖斯以非同尋常的殘暴性來進行戰鬥，特別是對抗基要軍團軍隊時。"
+    },
+    "A former member of the Foundation, Qamm is no longer content to merely catalog his archaeological discoveries. He prefers to “become history” by integrating Progenitor technology into his own body. He thinks of himself as a living museum, and will talk at length about the historical significance of each of his components to any listener unlucky enough to be stuck with him in an enclosed space.": {
+        "message": "卡姆是基要軍團的前任成員，他不再滿足於只是將他的考古發現編目。他傾向於通過將祖先科技整合到自己的身體中來「成為歷史」 。他自認為是個活博物館，並且將長篇詳細談論他的每個組成部分的歷史意義，不幸的卻是在封閉空間中只能和他困在一起的任何聽眾。"
+    },
+    "A gifted mimic, Urlox can imitate the mannerisms of all three adversary factions and has infiltrated and sabotaged several enemy encampments. Because she must 'think like the enemy' during these missions, she occasionally loses sight of her real identity and requires resynchronization.": {
+        "message": "天賦模仿者厄洛斯可以模仿所有三個對手派系的舉止，並滲透且破壞了幾個敵人的營地。因為在這些任務中她必須「像敵人一樣思考」，她偶爾會忘記她的真實身份，並需要重新同步化。"
+    },
+    "A recently awakened commander, Junius has taken to war with a zeal that is normally reserved for older commanders that have had more time to develop personal identities. As such, he has been deployed primarily against The Synchronous, with the assumption that his fierce independence will make him naturally resistant to the 'Synchronous Virus.'": {
+        "message": "最近被喚醒的指揮官朱尼厄斯在上戰場時，會帶著通常為已有更多時間發展個人身份的年長指揮官才有熱情。因此，他主要都是為了對抗同步軍團，假定他強烈的獨立性會使他自然而然反抗「同步化病毒」。"
+    },
+    "A staunch preservationist, Yvera insists on destroying her enemies quickly and with surgical precision, so as not to disturb the delicate Progenitor architecture that may lie beneath the battlefield. She once had an enemy commander melted in acid because he stepped on a clay pot.": {
+        "message": "身為堅定的傳統保護主義者，伊薇拉堅持迅速並精確摧毀敵人，以免打擾可能位於戰場底下的微妙祖先架構。曾經有敵人的指揮官踩了一個陶罐，她把他放在酸中融化。"
+    },
+    "A warrior/artist, Valens memorializes his foes by incorporating their remains into life-sized sculptures that depict them doing valorous deeds. Valens’ co-commanders find the practice morbid, as do his adversaries. He also dabbles in terrible poetry.": {
+        "message": "身為戰士/藝術家，瓦倫斯通過將敵人的遺體整合進真人大小的雕塑中來「紀念」他的敵人，這些雕塑專門描繪他們進行英勇行為的當下。瓦倫斯的共副指揮官和其對手一樣覺得這種事很病態。他閒暇時還涉獵糟糕的詩歌。"
+    },
+    "APPROACHING STAR SYSTEM": {
+        "message": "接近星系"
+    },
+    "Activates the Tech to build artillery structures.": {
+        "message": "啟用科技來建造火砲結構。"
+    },
+    "Additional Data Bank": {
+        "message": "額外資料庫"
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "增加一名會加入你戰鬥的次指揮官。"
+    },
+    "Adds a new slot for another technology.": {
+        "message": "新增另一科技的新插槽。"
+    },
+    "Administrator": {
+        "message": "管理員"
+    },
+    "Advanced Air Tech": {
+        "message": "進階空中科技"
+    },
+    "Advanced Bot Tech": {
+        "message": "進階機器人科技"
+    },
+    "Advanced Bot tech enables building of Advanced Bots and Advanced Bot Factories. Advanced Bot factories are built via advanced bot fabricators. Also grants the Basic Bot Factory and Basic Bot Fabricator.": {
+        "message": "進階機器人科技可以建造進階機器人和進階機器人工廠。進階機器人工廠通過進階機器人製造者建造。這科技也帶來基本機器人工廠和基本機器人製造者。"
+    },
+    "Advanced Concepts": {
+        "message": "進階概念"
+    },
+    "Advanced Defense Technology": {
+        "message": "進階防禦科技"
+    },
+    "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers.": {
+        "message": "進階防禦科技可以實現更強大的防禦。進階防禦通過進階製造者建造。 進階防禦包括戰術飛彈發射器、三管式雷射砲塔和高射砲塔。"
+    },
+    "Advanced Factories": {
+        "message": "進階工廠"
+    },
+    "Advanced Naval Tech": {
+        "message": "進階海軍科技"
+    },
+    "Advanced Naval Tech enables building of the Advanced Naval Factory and advanced naval units. Advanced Naval Factories are built via your Advanced Naval Fabricators.": {
+        "message": "進階海軍科技能建造進階海軍工廠和進階海軍部隊。進階海軍工廠是由進階海軍製造者建造。"
+    },
+    "Advanced Orbital Tech": {
+        "message": "進階軌道科技"
+    },
+    "Advanced Orbital Tech enables the building of orbital fabricators and orbital factories. Orbital fabricators are built via the orbital launcher and orbital factories build by the orbital fabricators.": {
+        "message": "進階軌道科技能建造軌道製造者和軌道工廠。軌道製造者通過軌道發射器建造，而軌道工廠由軌道製造者建造。"
+    },
+    "Advanced Units": {
+        "message": "進階單位"
+    },
+    "Advanced Vehicle Tech": {
+        "message": "進階載具科技"
+    },
+    "Advanced Vehicle tech enables building of vehicles and vehicle factories. Advanced vehicle Factories are built by a basic or advanced vehicle fabricator. Also enables the Basic Vehicle Factory and the Basic Vehicle Fabricator.": {
+        "message": "進階載具科技可以建造載具和載具工廠。進階載具工廠由基本或進階載具製造者製造。它還可以實現基本載具工廠和基本載具製造者。"
+    },
+    "Advanced air tech enables building of mobile air units and factories. Advanced air factories are built via any air fabricator. Also grants the Basic Air Factory and Basic Air Fabricator.": {
+        "message": "進階空中科技可以建造行動空中單位和工廠。進階空中工廠通過任何空中製造者建造，也可實現基本空中工廠和基本空中製造者。"
+    },
+    "Advanced factories build advanced fabrication units and stronger combat units.": {
+        "message": "進階工廠建造進階製造單位和更強的戰鬥單位。"
+    },
+    "After receiving a normally-fatal dose of radiation from a nearby Gamma-ray burst, a revived Vulko became convinced that he was the living vessel of the Great Machine. Considered mad by most of his peers, he has amassed a loyal band of followers and an impressive list of battlefield victories. His excommunication is pending.": {
+        "message": "沃爾柯從附近伽馬射線爆發中吸收到通常會致命劑量的輻射，被救回后，他相信自己是「大機器」的活容器。被大多數同儕認為瘋狂的他積累了一批忠實的追隨者和令人印象深刻的戰場勝利歷史。他被逐出的日子待定。"
+    },
+    "After the enemy commander is defeated, [strong]EXPLORE[/strong] and [strong]ACQUIRE[/strong] a new technology.": {
+        "message": "在敵方指揮官被擊敗後，請[strong]探索[/strong]並[strong]取得[/strong]一項新科技。"
+    },
+    "After the enemy is defeated, [style=control]Left click[/style] [strong]EXPLORE[/strong] to gain a new technology.": {
+        "message": "在敵人被擊敗後，在[strong]探索[/strong][style=control]上按滑鼠左鍵[/style]以取得新科技。"
+    },
+    "After the energy plant is complete, observe the economy UI at the top of the screen and the increase in energy income.": {
+        "message": "能源工廠完成後，觀察畫面頂部的經濟UI和能源收入的增加。"
+    },
+    "After the metal extractor is complete, observe the economy UI at the top of the screen and the increase in metal income.": {
+        "message": "金屬提煉器完成後，觀察畫面頂部的經濟UI和金屬收入的增加。"
+    },
+    "Aggressive": {
+        "message": "積極"
+    },
+    "Agile": {
+        "message": "敏捷"
+    },
+    "Air Ammunition Tech": {
+        "message": "空中彈藥科技"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "空中彈藥科技可將所有行動空中單位的傷害提高25%"
+    },
+    "Air Armor Tech": {
+        "message": "空中裝甲科技"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "空中裝甲科技可將所有空中單位的生命值提高50%"
+    },
+    "Air Combat Tech": {
+        "message": "空戰科技"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "空戰科技可使所有空中單位的速度提高25%，生命值提高50%，傷害提高25%"
+    },
+    "Air Commander": {
+        "message": "空中指揮官"
+    },
+    "Air Engine Tech": {
+        "message": "空中引擎科技"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "空中引擎科技可將所有空中單位的速度提高25%"
+    },
+    "Air Fabrication Tech": {
+        "message": "空中製造科技"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "空中製造科技可將所有行動空中單位的金屬製造費用降低25%"
+    },
+    "All combat units cost 25% less and have 35% less health. Starts with bots.": {
+        "message": "所有戰鬥單位的費用減少25%，生命值減少35%。從機器人開始。"
+    },
+    "All combat units gain +15% sight and weapon range and -15% movement speed.": {
+        "message": "所有戰鬥單位取得+15%的視線和武器射程，以及-15%的移動速度。"
+    },
+    "All combat units gain +20% movement speed and -10% sight and weapon range.": {
+        "message": "所有戰鬥單位取得+20%的移動速度和-10%的視線和武器射程。"
+    },
+    "All combat units gain +20% movement speed and -20% health.": {
+        "message": "所有戰鬥單位取得+20%的移動速度和-20%的生命值。"
+    },
+    "All combat units gain +25% movement speed and -25% health. Starts with bots.": {
+        "message": "所有戰鬥單位取得+25%的移動速度和-25%的生命值。從機器人開始。"
+    },
+    "All combat units gain +30% health and -15% movement speed.": {
+        "message": "所有戰鬥單位的生命值提高30%，移動速度-15%。"
+    },
+    "All combat units gain +30% health, but cost 20% more. Starts with vehicles.": {
+        "message": "所有戰鬥單位的生命值提高30%，但費用增加20%以上。從載具開始。"
+    },
+    "All commanders awaken with the data necessary to wage war and little else. While most simply accept war as their nature, this fact has become unsettling to some older Acolytes. Lok in an extreme case has begun trying to actively avoid conflict, but in this galaxy it always seems to find him.": {
+        "message": "所有的指揮官喚醒時都擁有發動戰爭的必要資料，而其他東西幾乎沒有。雖然大多數只是接受戰爭為其本性的一部分，但這個事實已經讓一些年長的侍僧感到不安。在極端情況下，洛克已開始嘗試積極避免衝突，但在這個銀河中他似乎無所不在。"
+    },
+    "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself.": {
+        "message": "所有指揮官最初都是為了自主而設計的，但同步軍團將這種狀態視為低效率，而非選擇採用分散式神經網絡。與一個被僱傭人戰鬥等於是對抗一個個體加上一整個同步軍團。"
+    },
+    "All economic structures gain +200% production and +300% metal cost. Starts with vehicles.": {
+        "message": "所有經濟結構的生產量增加200%，金屬費用增加300%。從載具開始。"
+    },
+    "All economic structures gain -75% metal cost and -50% production. Starts with bots.": {
+        "message": "所有經濟結構的金屬費用-75%，產量-50%。從機器人開始。"
+    },
+    "All structures cost 30% less but have 50% less health and leave no wreckage.": {
+        "message": "所有結構的費用降低30%，但生命值降低50%，不會留下任何殘骸。"
+    },
+    "All units explode on death.": {
+        "message": "所有單位在死亡時會爆炸。"
+    },
+    "Allows advanced air fabricators to build the Lightning Titan, Zeus.": {
+        "message": " 可讓進階空中製造者建造閃電泰坦 - 宙斯。"
+    },
+    "Allows advanced bot fabricators to build the Seismic Titan, Atlas.": {
+        "message": " 可讓進階機器人製造者建造地震泰坦 - 阿特拉斯。"
+    },
+    "Allows advanced fabricators to build all Titan-class units.": {
+        "message": " 可讓進階製造者建造所有泰坦類單位。"
+    },
+    "Allows advanced vehicle fabricators to build the Fortress Titan, Ares.": {
+        "message": " 可讓進階載具製造者建造堡壘泰坦 - 戰神阿瑞斯。"
+    },
+    "Allows orbital fabricators to build the Invasion Titan, Helios.": {
+        "message": " 可讓軌道製造者建造入侵泰坦 - 赫利俄斯。"
+    },
+    "An Oracle within the Foundation is one that is believed to be tuned to the unknown the frequencies necessary to receive instructions from the Great Machine. Devi is one such acolyte.": {
+        "message": "基要軍團內部的一名神諭者被認為可以配合未知的必要頻率來調整，以接收來自「大機器」的指令。德維就是這樣的一名侍僧。"
+    },
+    "An ancient commander whose provenance is not well understood, his low-bandwidth communications link is often irksome to other commanders, who can’t stand the extended hissing noise that precedes the arrival of every message.": {
+        "message": "源起一名出身不明的古代指揮官，他的低頻寬通信鏈接經常令其他指揮官感到厭煩，他們無法忍受每個訊息到達之前較長的嘶嘶聲。"
+    },
+    "An eccentric even among Foundation standards, Blaz has taken to adorning her chassis with various trophies from felled enemies in the form of weaponry, circuitry, and armor chunks. She does so to emulate the various warlords depicted in unearthed progenitor records.": {
+        "message": "即使在基要軍團的標準下也是個怪人，布拉茲嗜好用武器、電路和裝甲塊的形式，以取自失敗敵人的各種戰利品來裝飾她的機座。她這樣做是為了學習出土祖先記錄中描述的不同軍閥。"
+    },
+    "An older commander with a periodically-unreliable connection to the Synchronous’ network, Tarcolish occasionally falls out of synchronization with the collective for hours at a time. When she reconnects, she acts as if the breakdown has not occurred. She then invariably repeats statements that others have made already. It’s super annoying to everybody.": {
+        "message": "塔柯莉許時一位能與同步軍團網絡進行週期性不穩定連線的老指揮官，她有時會與集體脫離同步化數小時。當她重新連線時，她表現的好像沒有發生故障。然後她總是重複其他人已經提出的陳述，這對每個人都是超級煩人的。 "
+    },
+    "An undeniable advantage to being Synchronized is that all Servants seem to be able to work much more cohesively as a group than other commanders. Inar-Tol, for example, once dispatched a commander by firing an artillery shell into the stratosphere based on data from an ally that was engaged in melee combat--on the other side of the planet.": {
+        "message": "同步化的一個不可否認的優勢是，所有被僱傭人似乎都能夠比其他指揮官更團結地群組工作。例如，伊納爾托爾曾根據來自參與近戰的盟友（在行星的另一邊）之資料，向該平流層發射了一枚砲彈，然後派出一名指揮官。"
+    },
+    "Annihilate the Enemy": {
+        "message": "殲滅敵人"
+    },
+    "Annihilation of  all enemy commanders wins the game.": {
+        "message": "殲滅所有敵方指揮官以贏得遊戲。"
+    },
+    "Annihilation of all enemy commanders results in a [strong]victory[/strong].": {
+        "message": "殲滅所有敵方指揮官即可[strong]勝利[/strong]。"
+    },
+    "Area Build": {
+        "message": "區域建造"
+    },
+    "Area Patrol": {
+        "message": "區域巡邏"
+    },
+    "Area Reclaim": {
+        "message": "區域取回"
+    },
+    "Ares Tech": {
+        "message": "戰神科技"
+    },
+    "Armored Commander": {
+        "message": "裝甲指揮官"
+    },
+    "Artillery Ammunition Tech": {
+        "message": "火砲彈藥科技"
+    },
+    "Artillery Ammunition Tech increases the damage of all artillery structures by 25% and reduces their energy usage by 90%. Requires technology to build artillery structures and units.": {
+        "message": "火砲彈藥科技使所有火砲結構的傷害提高25%，並將其能源用量減少90%。需要科技來建造火砲結構和單位。"
+    },
+    "Artillery Commander": {
+        "message": "火砲指揮官"
+    },
+    "Artillery Fabrication Tech": {
+        "message": "火砲製造科技"
+    },
+    "Artillery Fabrication Tech reduces metal build costs of all artillery structures and mobile artillery units by 75%. Requires technology to build artillery structures and units.": {
+        "message": "火砲製造科技可使所有火砲結構和行動火砲單位的金屬製造費用降低75%。需要科技來建造火砲結構和單位。"
+    },
+    "Artillery Tech": {
+        "message": "火砲科技"
+    },
+    "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker.": {
+        "message": "當俄賽裡斯用死亡敵人的肢體來替換自己的身體部分時，他會儲存舊的部分來以替換和修理。最後俄賽裡斯取得了足夠的備件來打造一名全新的指揮官，造成第一名追尋者的誕生。"
+    },
+    "Assault Commander": {
+        "message": "突擊指揮官"
+    },
+    "Assist Building": {
+        "message": "協助建造"
+    },
+    "Atlas Tech": {
+        "message": "阿特拉斯科技"
+    },
+    "Attius is renowned within the Legion for having the most efficient factories and sturdiest nanolathes. Believing the key to victory is good construction, he spends many cycles obsessing over simulations and prototypes of new fabrication and production line algorithms.": {
+        "message": "阿提烏斯在軍團所享有盛名是擁有最高效率的工廠和最堅固的奈米車床。他相信勝利的關鍵在於良好的施工，他花費了許多周期來進行新的製造和生產線演算法的模擬和試樣。"
+    },
+    "Awarded several commendations for vigilance, Ancilius has decommissioned many commanders, factories, and metal planets suspected to be infected by the 'Synchronous Virus.'": {
+        "message": "安西流斯取得了多項表示警覺的表揚，已經讓許多被懷疑受「同步化病毒」感染的指揮官、工廠和金屬行星除役。"
+    },
+    "Barely autonomous enough to deserve a name of his own, Rulak is a stripped-down and highly-obedient subroutine who is easily duplicated. Prized for his recklessness, he is often given highly-dangerous missions that result in his death. A copy of his “personality” is then quickly downloaded into a new body.": {
+        "message": "自主程度低到幾乎不應該獲得自己的名稱，魯拉克是一個可被輕易複製的簡化版且高度服從之子程序。他因魯莽而受高度重視，經常被賦予極其危險的任務，結果導致他的死亡。然後他「個性」的複本被迅速下載到一個新的身體中。"
+    },
+    "Basic Air Tech": {
+        "message": "基本空中科技"
+    },
+    "Basic Bot Tech": {
+        "message": "基本機器人科技"
+    },
+    "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator.": {
+        "message": "基本機器人科技可以建造基本機器人和基本機器人工廠。基本機器人工廠是通過你的指揮官或任何基本製造者建造。"
+    },
+    "Basic Naval Tech": {
+        "message": "基本海軍科技"
+    },
+    "Basic Naval Tech enables building of the basic naval factory and basic naval units. Basic naval factories are built via your commander or any fabricator.": {
+        "message": "基本海軍科技能夠建造基本海軍工廠和基本海軍單位。基本海軍工廠是通過你的指揮官或任何製造者建造。"
+    },
+    "Basic Orbital Tech": {
+        "message": "基本軌道科技"
+    },
+    "Basic Orbital Tech enables the building of basic orbital units. Basic orbital units are built from an Orbital Launcher.": {
+        "message": "基本軌道科技能實現基本軌道單位的建造。基本軌道單位是由軌道發射器建造。"
+    },
+    "Basic Vehicle Tech": {
+        "message": "基本載具科技"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "基本載具科技能夠建造基本載具和基本載具工廠。基本載具工廠是通過你的指揮官或任何基本製造者建造。"
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "基本空中科技可以建造行動空中裝置和工廠。基本空中工廠是通過你的指揮官或任何基本製造者建造。"
+    },
+    "Begins with one combat unit unlocked in each factory. Cannot learn to build new units through tech.": {
+        "message": "先從每個工廠的一個戰鬥單位解鎖開始。無法通過科技來學習建造新單位。"
+    },
+    "Bhalam refuses to communicate in any form more advanced than binary data transfer, believing more complicated exchanges involving packets and complex files to be noisy and that they damage Synchronization. Ironically, this has made him one of the less popular commanders among The Synchronous.": {
+        "message": "巴拉姆拒絕以任何比二進位資料傳輸更進階的形式進行通訊，相信涉及封包和複雜檔案的更複雜交換方式會產生雜訊，因此傷害同步化。諷刺的是，這使他成為了同步軍團中較不受歡迎的指揮官之一。"
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "仿生加強壓制指揮官"
+    },
+    "Bot Ammunition Tech": {
+        "message": "機器人彈藥科技"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "機器人彈藥科技能使所有機器人的傷害提高25%"
+    },
+    "Bot Armor Tech": {
+        "message": "機器人裝甲科技"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "機器人裝甲科技可將所有機器人的生命值提高50%"
+    },
+    "Bot Combat Tech": {
+        "message": "機器人戰鬥科技"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "機器人戰鬥科技提高所有機器人的生命值50%，傷害25%，速度50%"
+    },
+    "Bot Commander": {
+        "message": "機器人指揮官"
+    },
+    "Bot Engine Tech": {
+        "message": "機器人引擎科技"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "機器人引擎科技將所有機器人的速度提高50%"
+    },
+    "Bot Fabrication Tech": {
+        "message": "機器人製造科技"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "機器人製造科技使所有機器人的金屬製造費用降低25%"
+    },
+    "Brutus was actually once a member of The Foundation. When exposed to old progenitor records of great conquerors, he became convinced that Enlightenment lied in the great conquest that Commander Invictus pursued. When swearing allegiance Brutus brought with him valuable Foundation intelligence and the old records that have helped shape the cultural identity of the Legion we know today.": {
+        "message": "布魯圖斯實際上曾經是基要軍團的成員。接觸偉大征服者的舊祖先記錄時，他確信「啟發」存在於指揮官不屈之王英維特斯所追求的偉大征服行動中。布魯圖斯宣誓效忠時，他帶來了寶貴的基要軍團情報，以及有助塑造我們今天所知的軍團文化認同的舊記錄。"
+    },
+    "Budget Commander": {
+        "message": "預算指揮官"
+    },
+    "Build": {
+        "message": "建造"
+    },
+    "Build Time": {
+        "message": "建造時間"
+    },
+    "Build a Metal Extractor": {
+        "message": "建造一個金屬提煉器"
+    },
+    "Build an Energy Plant": {
+        "message": "建造能源廠"
+    },
+    "Building Units": {
+        "message": "建造單位"
+    },
+    "CALCULATING APPROACH VECTOR": {
+        "message": "計算接近向量"
+    },
+    "CONFIGURING LANDING ZONE": {
+        "message": "配置登陸區"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "連線伺服器中斷"
+    },
+    "Camera Controls": {
+        "message": "攝影機控制"
+    },
+    "Camera Management": {
+        "message": "攝影機管理"
+    },
+    "Campal was found activated but inert on  richly diverse jungle planet. Apparently, his servos had been caught by a thicket and rendered him prone--unable to self-right without aid. Since then, his intense hatred of all organic life has kept him one of the stronger-willed members of The Synchronous, often torching entire forests on principle.": {
+        "message": "坎貝爾在豐富多樣的叢林星球上被發現已啟用，但並無動力。顯然，他的伺服機構灌木卡住了，使他無援助就無法自我糾正。從那時起，他對所有有機生物的強烈憎恨使他成為了同步軍團中較為意志堅強的成員之一，他經常照例焚燒整個森林。"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "Cassius is a firm practitioner of the ‘lead from the front’ mentality. This often results in he himself leading many daring charges, and intense melee conflicts with woefully unprepared enemy commanders.": {
+        "message": "卡西烏斯是「第一線領導」心態的堅定實踐者。這通常會導致他會自己帶領許多大膽的衝鋒，並與沒準備的可悲敵方指揮官進行激烈的近戰衝突。"
+    },
+    "Chitrik was found by a Foundation scouting party wandering a barren desert planet. He seems to have an affinity for environments composed primarily of silicate, taking his Enlightenment by being immersed in the smallest component parts observable by his optic systems. He will often go years without applying any lubricant to his joints, so as not to wash out any accumulated sand or dirt.": {
+        "message": "奇曲克是基要軍團一偵察隊在一片荒蕪沙漠的星球上徘徊時發現的。他似乎喜歡主要由矽酸鹽組成的環境，沉浸在他的光學系統可觀察到的最小的組成部分中，來接受「啟發」。他經常會在關節未施加任何潤滑劑的情況下工作數年，因此不會洗掉任何積聚的沙子或污垢。"
+    },
+    "Choose Landing Zone": {
+        "message": "選取登陸區"
+    },
+    "Click Next to learn how to use the command and control interface.": {
+        "message": "按一下「繼續」以了解如何使用命令和控制介面。"
+    },
+    "Combat units will patrol the area and engage enemies.": {
+        "message": "戰鬥單位將巡邏該區域並與敵人交戰。"
+    },
+    "Commander Ammunition Tech": {
+        "message": "指揮官彈藥科技"
+    },
+    "Commander Ammunition Tech increases damage of your commanders by 25%": {
+        "message": "指揮官彈藥科技使你的指揮官傷害能力提高25%"
+    },
+    "Commander Armor Tech": {
+        "message": "指揮官裝甲科技"
+    },
+    "Commander Armor Tech increases the health of your commanders by 100%.": {
+        "message": "指揮官裝甲科技將你的指揮官的生命值提高100%。"
+    },
+    "Commander Combat Tech": {
+        "message": "指揮官戰鬥科技"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "戰鬥指揮官使你的指揮官速度提高200%，使指揮官的生命值提高一倍，並將傷害提高25%。"
+    },
+    "Commander Engine Tech": {
+        "message": "指揮官引擎科技"
+    },
+    "Commander Engine Tech increases the speed of your commanders by 100%.": {
+        "message": "指揮官引擎科技將指揮官的速度提高100%。"
+    },
+    "Commander Invictus has this powerful loadout hidden away on the Entara system.": {
+        "message": "指揮官不屈之王英維特斯在安塔拉系統上隱藏了強大的配備。"
+    },
+    "Commander Invictus is rumored to have this long ranged loadout on the Kohr System.": {
+        "message": "有傳言稱指揮官不屈之王英維特斯在柯爾系統上有這種遠程配備。"
+    },
+    "Commander Quotes": {
+        "message": "指揮官引述"
+    },
+    "Commander builds units instead of structures. Fabricators can only build certain structures.": {
+        "message": "指揮官建造單位，而非結構。製造者只能建造某些結構。"
+    },
+    "Commander can build Atlas, Zeus, and Ares Titans. Starts with vehicles.": {
+        "message": "指揮官可以製造阿特拉斯、宙斯和阿瑞斯泰坦。從載具開始。"
+    },
+    "Commanders in general tend to communicate through direct data transfer as opposed to the encoded indirect communication that the progenitors seemed to practice. Intoka has become one of the Foundation’s only linguists, storing and sharing data for interpreting the progenitors’ many codes.": {
+        "message": "一般而言，指揮官傾向於通過直接的資料傳遞進行通訊，而不是祖先似乎使用的編碼間接通訊。印塔卡已經成為基要軍團僅存的語言學家之一，儲存和共享資料用於解讀祖先的眾多密碼。"
+    },
+    "Commanders outside of The Synchronous tend to diverge further and further from their core programming with age. This can manifest in many ways. In the case of Nero, it has manifested as a concerningly fervent interest in fire and its many forms and applications.": {
+        "message": "同步軍團以外的指揮官往往會隨著年齡的增長而進一步偏離核心程設。這可以以多種方式表現出來。就尼祿而言，它表現為對火及其許多形式與應用的強烈興趣。"
+    },
+    "Complete Air Tech": {
+        "message": "完整空中科技"
+    },
+    "Complete Bot Tech": {
+        "message": "完整機器人科技"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "完整機器人科技可以建造所有機器人和所有機器人工廠。基本機器人工廠是通過你的指揮官或任何基本製造者建造。進階機器人工廠通過基本或進階機器人製造者建造。"
+    },
+    "Complete Energy Tech": {
+        "message": "完整能源科技"
+    },
+    "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%.": {
+        "message": "完整能源科技將智能結構能源費用降低75%，武器能源費用降低75%。"
+    },
+    "Complete Naval Tech": {
+        "message": "完整海軍科技"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "完整海軍科技能夠建造所有海軍單位和所有海軍工廠。基本海軍工廠是通過你的指揮官或任何基本製造者建造。進階海軍工廠是通過基本或進階海軍製造者建造。"
+    },
+    "Complete Orbital Tech": {
+        "message": "完整軌道科技"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "完整軌道科技能夠建造所有軌道單位和所有軌道工廠。軌道發射器由任何基本製造者建造。軌道工廠是通過軌道製造者建造。"
+    },
+    "Complete Vehicle Tech": {
+        "message": "完整載具科技"
+    },
+    "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators.": {
+        "message": "完成載具科技可以建造所有載具和所有載具工廠。基礎載具工廠是由你的指揮官或任何基本建造單位建造。進階載具工廠是由基礎或進階載具建造單位建造。"
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "完整空中科技可以建造所有的行動空中單位和工廠。基本空中工廠是通過你的指揮官或任何基本製造者建造。進階工廠通過基本或進階載具製造者建造。"
+    },
+    "Complete techs are valuable in that they give access to advanced units and fabricators, greatly expanding your options.": {
+        "message": "完整科技的價值在於其使用進階單位和製造者，大大擴展你的選項。"
+    },
+    "Constructed by Ereshkigal from parts she harvested from herself, Vespor has developed a quasi-religious reverence for her 'mother.' Due to the importance she places on the 'sacred' parts used to construct her, she refuses to replace any part of herself. She is very careful to avoid damage on the battlefield.": {
+        "message": "由伊瑞基蓋爾從她自己本身所收穫的部件架構而成，偉斯柏為她的「母親」發展了一種類宗教崇拜。由於對用於建造她的「神聖」部件之重視，她拒絕替換她自己的任何部分。她非常小心避免在戰場上受到傷害。"
+    },
+    "Consume": {
+        "message": "消耗"
+    },
+    "Consumption": {
+        "message": "消耗"
+    },
+    "Continuous Build": {
+        "message": "連續建造"
+    },
+    "Cost": {
+        "message": "費用"
+    },
+    "Data Bank holds one Tech. Explore systems to find new Tech.": {
+        "message": "資料儲存庫擁有一項科技。探索系統來找到新科技。"
+    },
+    "Default Commander": {
+        "message": "預設指揮官"
+    },
+    "Defeat First Seeker Osiris on Alenquer, then, and only then, you will find this high flying loadout.": {
+        "message": "擊敗亞蘭柯上的第一個追尋者俄賽裡斯，然後，只有這樣，你才會發現這個高空飛行配備。"
+    },
+    "Defeating a faction's boss will eliminate that faction from the map entirely, allowing you to collect the tech from all their remaining systems without a fight.": {
+        "message": "擊敗派系的頭目會從地圖上完全剔除該派系，讓你不戰即可取得所有剩餘系統。"
+    },
+    "Defeating bosses will sometimes unlock a new commander loadout for you to equip in later galactic wars.": {
+        "message": "擊敗頭目有時會解鎖一名新的指揮官員配備，讓你在未來的銀河戰爭中裝備。"
+    },
+    "Defense Ammunition Tech": {
+        "message": "防禦彈藥科技"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "防禦彈藥科技可將所有防禦結構的傷害提高25%"
+    },
+    "Defense Fabrication Tech": {
+        "message": "防禦製造科技"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "防禦製造科技可使所有防禦結構的金屬製造費用降低50%"
+    },
+    "Destroy the Enemy": {
+        "message": "摧毀敵人"
+    },
+    "Do not destroy": {
+        "message": "不要摧毀"
+    },
+    "Domitius insists on being referred to as King Domitius, regardless of his actual rank. This has resulted in many reportings and personal reprimands from Invictus himself. Regardless, the reign of King Domitius continues.": {
+        "message": "無論其實際軍階時什麼，多米提士堅持被稱為多米提士國王。 這導致了不屈之王英維特斯本身對他發出多次報告和個人譴責。但多米提士國王仍持續當政。"
+    },
+    "Draw": {
+        "message": "汲取"
+    },
+    "ETA": {
+        "message": "預計到達時間"
+    },
+    "Economy": {
+        "message": "經濟"
+    },
+    "Economy Fabrication Tech": {
+        "message": "經濟製造科技"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "經濟製造科技可降低所有金屬和能源生產結構的金屬建造費用50%"
+    },
+    "Economy and Construction": {
+        "message": "經濟與建造"
+    },
+    "Economy boost:": {
+        "message": "經濟提升："
+    },
+    "Education Commander": {
+        "message": "教育指揮官"
+    },
+    "Efficiency Tech": {
+        "message": "效率科技"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "效率科技可將金屬和能源生產提高25%。此科技還提供金屬和能源儲存空間。"
+    },
+    "Empty Data Bank": {
+        "message": "空白資料儲存庫"
+    },
+    "Enemies will get stronger as you get further away from your starting system. If you're having difficulty progressing, try taking a different path to gain more tech.": {
+        "message": "當你遠離你的啟始系統時，敵人會變得更強。如果你的進展遇到困難，可嘗試採取不同的途徑來取得更多科技。"
+    },
+    "Energy draw": {
+        "message": "能源汲取"
+    },
+    "Energy is used to run fabricators, factories, radar, and some weapons.": {
+        "message": "能源用於運行製造者、工廠、雷達和某些武器。"
+    },
+    "Enhanced Radar Coverage": {
+        "message": "增強的雷達覆蓋範圍"
+    },
+    "Entombed for millennia on a long-abandoned ice world, Wulk was so slow to regain consciousness that she was at first collected and classified as an artifact, herself. Her time-addled circuits and ancient mannerisms make her orders difficult to understand, but she is so beloved by her followers that they follow a best-guess policy on the battlefield.": {
+        "message": "在一個長期遺棄的冰世界上沉浸了數千年，伍爾克恢復知覺的速度非常緩慢，以至於她一開始被找到時就歸類為神器。她因時間而敗壞的電路和古老行為模式，致使她的指令難以理解，但她的追隨者非常鍾愛她，並在戰場上遵循最佳猜測政策。"
+    },
+    "Every fabrication unit and factory will require [strong]metal[/strong] and [strong]energy[/strong] to construct units and structures.": {
+        "message": "每個製造單位和工廠都需要[strong]金屬[/strong]和[strong]能源[/strong]來建造單位和結構。"
+    },
+    "Expansionist Commander": {
+        "message": "擴張主義者指揮官"
+    },
+    "Fabrication units can also assist other fabrication units to build structures.": {
+        "message": "製造單位也可以協助其他製造單位建造結構。"
+    },
+    "Fabrication units will assist factories and other fabbers in the area.": {
+        "message": "製造單位會協助該區域的工廠和其他建造物。"
+    },
+    "Faction bosses are much stronger than other enemies. Make sure you're well-equipped before challenging one.": {
+        "message": "派系頭目比其他敵人強大得多。在挑戰頭目之前，確保你裝備精良。"
+    },
+    "Factories will queue build orders in the order they are given.": {
+        "message": "工廠將按照給予的順序佇列排序建造指令。"
+    },
+    "Factory Automation": {
+        "message": "工廠自動化"
+    },
+    "Factory Controls": {
+        "message": "工廠控制"
+    },
+    "Favorite color:": {
+        "message": "最愛的顏色："
+    },
+    "Finish the tutorial to gain this speedy loadout.": {
+        "message": "完成教程以取得此快速配備。"
+    },
+    "Fire when ready": {
+        "message": "準備就緒後開火"
+    },
+    "Formerly a Foundation member before her synchronization, Dkar found and accessed progenitor files that allowed her to decode and etch ancient codes on a physical surface for others to later serialize. While many Servants find this analog communication distasteful, it’s proven invaluable for passing along intelligence in secrecy.": {
+        "message": "達卡在同步化之前是基要軍團成員之一，她發現並存取了祖先檔案，讓她能解碼並刻蝕密碼在物理表面上，以供其他人於未來序列化。雖然許多被僱傭人覺得這種類比通訊令人厭惡，但它已經證明秘密傳遞情報的寶貴價值。"
+    },
+    "Frohl seeks knowledge of the Progenitors with the same fervor as any other Acolyte. However, equally important to finding that information is curating what is and isn’t important. To that end, Frohl has cataloged an extensive library for how to properly prepare a presumably extinct type of feathered organic for consumption by other organics.": {
+        "message": "佛洛爾以與其他侍僧同樣的熱情尋求祖先的知識。然而，和找到這些訊息同樣重要的是判斷什麼重要與什麼不重要。為此，佛洛爾已經編目出一個周延文庫，以便如何正確製備一種大概已絕種的羽毛狀有機物，以供其他有機物消耗。"
+    },
+    "Galba is one of the Legates in charge of maintaining colonies on suitable remote systems. These systems are valuable for a number of purposes from macro-scale resource extraction and processing to research and development.": {
+        "message": "蓋爾巴是負責在合適的遠程系統上維護殖民地的使節之一。這些系統對於從宏觀資源提煉和處理，到研究與開發的眾多目的而言，都非常有價值。"
+    },
+    "Gen": {
+        "message": "發電"
+    },
+    "General Commander": {
+        "message": "總指揮官"
+    },
+    "Governed entirely by aesthetic concerns, Wultok has amassed an unwieldy but beautiful array of salvaged armor that somehow still leaves many of his most vulnerable areas open to attack. When questioned about the wisdom of this practice, Wultok declares that one must suffer for fashion. He tisks audibly when faced with an ugly adversary.": {
+        "message": "在完全考慮美學的情況下，伍爾托克已經積累了一大堆難以控制但卻很漂亮的回收盔甲，這些盔甲在某種程度上仍會讓他最脆弱的部分易受到攻擊。當被問及這種做法是否明智時，伍爾托克宣稱，人們會為時尚而受苦。當面對一個醜陋的對手時，他能感同身受。"
+    },
+    "Halley Engines": {
+        "message": "哈利引擎"
+    },
+    "Having achieved fame for discovering a cache of Progenitor artifacts only days after coming online, Sasaki fancies herself a legendary archaeologist. When assigned to frontier duty, she spends most of her time digging around for “another epic haul.” She has found nothing of value since her initial bonanza.": {
+        "message": "佐佐木在上網連線幾天後就發現了一堆祖先文物而因此出名，她想像自己是一名傳奇的考古學家。當她被分配到邊防任務中時，她大部分時間都花在挖崛另一堆史詩級文物。但是從第一次挖到寶後，她找不到任何有價值的東西。"
+    },
+    "Having served an extended tour deep in Revenant-held space, Servilius has come to view himself as a civilizing force. He often precedes his attacks with lengthy speeches about the importance of “order, unity of purpose, and above all cleanliness.” He has yet to take a prisoner.": {
+        "message": "塞維利斯在深入不死軍團佔領的空間中曾長途旅行，因此自視為一股文明化的勢力。他經常在攻擊之前發表冗長的演講，講述「秩序」的重要性、目標的一致性，以及最重要的「整潔」。他尚未抓到任何囚犯。"
+    },
+    "Helios Tech": {
+        "message": "赫利俄斯科技"
+    },
+    "Hinn is could be called an envoy for the Synchronous, often responsible for making first contact with newly-awoken commanders. Legion commanders refer to him as a carrier--one who infects others with the 'Synchronous Virus.'": {
+        "message": "習恩可以稱為同步軍團的使節，經常負責與新覺醒的指揮官進行第一次接觸。軍團指揮官稱他為帶菌者 - 以「同步化病毒」來感染他人。"
+    },
+    "Hosidius is one of the most accomplished admirals the Legion has to offer. That being said, he near-refuses to operate any war effort on land. This has made deploying him effectively rather difficult.": {
+        "message": "荷西底斯是軍團最有成就的海軍上將之一。話雖如此，他幾乎拒絕在陸地上進行任何戰爭，因此很難部署他。"
+    },
+    "Hzok seeks Enlightenment in stillness as much as possible. Even heat vibrations disturb him, and so he often spends long periods of time drifting in space on an Astraeus lander in deep meditation.": {
+        "message": "薩克會盡可能地在靜止中尋求啟發。即使是熱振動也會打擾他，所以他經常花費很長時間在亞崔斯軌道運輸機登陸器上漂浮於太空中，進行深沉冥想。"
+    },
+    "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?": {
+        "message": "如果戰爭是指揮官的自然狀態，那麼這種最純粹的表現就是「軍團機器」。但這會讓人提出疑問 - 他們征服了這個銀河后，會發生什麼事？"
+    },
+    "Imitating a rumored practice of the Progenitors, Rinkol gives himself a “wider awareness” by wafting burning embers of the Incendicus Tree into his cooling system intakes before battle. His calmness is renowned -- he is said to have slipped into a dormant recharging mode in the middle of an attack on a Revenant outpost.": {
+        "message": "模仿傳說的祖先行為，倫柯爾通過在戰鬥前將火焰樹的燃燒餘燼吹入他的冷卻系統入口，讓自己獲得「更廣泛的意識」。他以冷靜出名 - 據說他有一次在不死軍團前哨的襲擊中陷入了休眠充電模式。"
+    },
+    "Imperator Invictus guards superior armor blueprints on Agoge": {
+        "message": "絕對統治者 不屈之王英維特斯在阿戈革（斯巴達軍事訓練）上守護著優異裝甲藍圖"
+    },
+    "Imperator Invictus is mass producing the largest weapons known on Tau Leoporis": {
+        "message": "絕對統治者不屈之王英維特斯正大量生產天兔座上最大的武器"
+    },
+    "Improved Commander Build Arm": {
+        "message": "改良的指揮官建造手臂"
+    },
+    "Improved Commander Build Arms increase build speed of all Commanders' build arms by 50% and reduces energy usage by 50%.": {
+        "message": "改良的指揮官建造手臂可提高所有指揮官的建造手臂的建造速度50%，並將能源用量減少50%。"
+    },
+    "Improved Energy Weapons": {
+        "message": "改良的能源武器"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "改良的能源武器科技可將能源武器的能源費用降低75%"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "改良的製造者建造手臂"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "改良的製造者建造手臂可將所有製造者和工廠建造手臂的製造速度提高50%，並將能源用量降低50%。"
+    },
+    "Improved Intelligence Tech": {
+        "message": "改良的情報科技"
+    },
+    "Improved Intelligence Tech reduces energy costs for intelligence structures by 75%": {
+        "message": "改良的情報科技可將情報結構的能源費用降低75%"
+    },
+    "In possession of a Progenitor mini-scroll that he is convinced bears the name and coordinates of the legendary Progenitor homeworld, Tenkai has spent a lifetime searching for the star system called 'Macho Soft Taco $1.45.'": {
+        "message": "天海擁有祖先迷你捲軸，他相信上面有傳說中祖先家園世界的名稱和坐標，他花費一生的時間尋找名為Macho Soft Taco $1.45的星系。"
+    },
+    "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start.": {
+        "message": "在研究古代祖先神器和資料儲藏處時，那米克斯及其追隨者發現提及「大機器」的線索。 據說，「大機器」在很久以前建造并操縱指揮官。如果可以找到有關於指揮官起源和目的任何答案，那麼「大機器」似乎是最好的開始。"
+    },
+    "In some cases overexposure to progenitor relics results in a commander’s neural algorithms diverging to the point where it becomes difficult to communicate with their peers. Okta, for example, has begun assigning unfamiliar roles to many units under his command, such as 'Combat Associate,' 'Executive Manager,' and 'Explosive Supervisor.'": {
+        "message": "在某些情況下，過度曝露於祖先聖器會導致指揮官的神經演算法偏離到難以與同儕通訊的地步。例如，歐卡塔已經開始為他指揮下的許多單位指派先前不熟悉的角色，比如「戰鬥同事」，「執行經理」和「爆破監督」。"
+    },
+    "Increases radar range by 60%": {
+        "message": " 雷達射程提高60%"
+    },
+    "Increases the speed of all Titans by 20%.": {
+        "message": " 所有泰坦的速度提高20%。"
+    },
+    "Inquisitor Nemicus holds data for abstract economic techniques on Zeta Draconis": {
+        "message": "判官那米克斯擁有上弼的抽象經濟技巧的資料"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "情報製造科技"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "情報製造科技可將所有情報結構和行動單位的金屬製造費用降低50%"
+    },
+    "Interplanetary Warfare": {
+        "message": "跨行星戰爭"
+    },
+    "Introduction": {
+        "message": "簡介"
+    },
+    "Isolationist Commander": {
+        "message": "孤立主義者指揮官"
+    },
+    "It takes two resources to run a war.": {
+        "message": "戰爭需要兩種資源。"
+    },
+    "It’s rare for Seekers to be recruited instead of built. Giltine was found inactive and frozen in a glacier. When the Seeker who found her began trying to salvage her, she suddenly activated and blew a hole through his chassis. She was promptly deemed fit to be named a Seeker without the traditional rebirth.": {
+        "message": "追尋者鮮少是招募而是建造而來。吉兒丁被發現時是在冰川中未開啟且被凍結。當找到她的追尋者開始試圖搶救她時，她突然啟動並在搜索座機座上爆了一個洞。在無傳統重生的情況下，她立即被認為適合被命名為追尋者。"
+    },
+    "Juhst was reactivated on a world with a dense atmosphere and constant gale force winds. Since then she has been obsessed with the power of wind currents and has lobbied heavily to utilize them for power generation as opposed to conventional solar and nuclear solutions.": {
+        "message": "尤斯特在一個高密度大氣和持續強風的世界中重新啟動。從那時起，她一直沉迷於風流的力量，並大力遊說將其用於發電，而非傳統的太陽能和核電解決方案。"
+    },
+    "Known for his natural charisma, Valerius fought alongside Invictus during the First War of Founding. He is correctly suspected of having designs on the throne, and is therefore given impossible assignments in the most distant reaches of the galaxy. Over the course of countless difficult campaigns, he has earned the unwavering devotion of his armies.": {
+        "message": "以自然魅力而聞名的瓦勒留斯在第一次建國大戰中與不屈之王英維特斯並肩戰鬥。人們正確懷疑他對王位有所圖，因此被指派在銀河最遙遠的地方執行不可能的任務。在無數艱難的戰役中，他贏得了其軍隊的堅定不移奉獻。"
+    },
+    "Kormo remembers the name and designation of every commander he has taken parts from, believing each to still be activated through him. This has lead to a number of cases of friendly fire which he promptly blamed on his missile launcher, salvaged from a Legion commander.": {
+        "message": "科爾莫記得取得零件的每一位指揮官的姓名和稱號，相信每一個指揮官都可通過他啟動。這導致了數次的誤傷，但他立即歸咎於從一名軍團指揮官回收的飛彈發射器。"
+    },
+    "Lampades has rigged a rather ingenious array of flood and strobe lights to her chassis. Rather than be concerned with subterfuge, she instead uses intense light to confuse targeting systems.": {
+        "message": "火炬女神已經在其機座上安裝了相當精巧的的泛光燈和頻閃燈陣列。她未訴諸詭計，而是用強烈的光線來混淆鎖定系統。"
+    },
+    "Learn by Osiris' roaming example on Varthema to expand your influence.": {
+        "message": "通過俄賽裡斯在瓦西瑪漫遊的例子來學習，以擴大你的影響力。"
+    },
+    "Lightweight Commander": {
+        "message": "輕量級指揮官"
+    },
+    "Livius is one of the oldest activated commanders in the Legionis Machina, and possibly the galaxy for that matter. Despite the disrepair his form exists in, he wields a significant amount of power in the court of Commander Invictus. This has lead to rumors that Livius found and reactivated Invictus, rather than the common belief that Invictus was the first commander to awaken.": {
+        "message": "利維烏斯是「軍團機器」中最早啟用指揮官之一，也可能是此銀河之最。儘管他目前為失修狀態，但他在指揮官不屈之王英維特斯的官廷上掌握不小的權力。這導致了傳聞利維烏斯找到並重新啟用了不屈之王英維特斯，而非不屈之王英維特斯是第一個覺醒的指揮官之普遍認為。"
+    },
+    "Loss of your commander results in [strong]defeat[/strong].": {
+        "message": "損失指揮官會導致[strong]戰敗[/strong]。"
+    },
+    "Many commanders in the Legion considered Bassus inefficient at best and defective at worst for his insistence on outfitting himself with armor five times thicker than other commanders at the cost of mobility. Their opinion changed when Bassus was recovered while drifting through space--the sole survivor of a pivotal battle that ended in a moon colliding with his base.": {
+        "message": "軍團中的許多指揮官認為，巴蘇斯堅持裝備自己的裝甲比其他指揮官厚5倍而犧牲機動性一事，輕則是效率差，重則是算有缺陷。當巴蘇斯在太空中漂流時被救回時，他們的想法就變了 - 他是一場關鍵戰役的唯一倖存者，這場戰鬥以月球與他的基地相撞而告終。"
+    },
+    "Many older members of The Synchronous are very similar just by nature of being synchronized for so long. As the years wore on more of Jakaal dissolved into the synchronized whole. Now when Jakaal speaks, she speaks with the voice of The Synchronous itself.": {
+        "message": "同步軍團中的許多較老成員因為有著長時間同步化的性質，所以非常相似。隨著歲月進展，賈卡爾愈來愈解體成為同步化的整體一部分。現在當賈卡爾說話時，她會用同步化本身的聲音說話。"
+    },
+    "Many structures can be built on top of the water surface.": {
+        "message": "許多結構可以在水面之上建造。"
+    },
+    "Mara favors guns. Mara favors big guns. Mara favors more guns. With each commander destroyed, Mara’s extensive weapons array grows. While most successful Seekers learn early to find ways to moderate their experiments, there are still few, like Mara, who favor more guns above all.": {
+        "message": "瑪拉偏好槍支。瑪拉偏好大型槍支。瑪拉偏好更多的槍支。隨著每個指揮官被摧毀，瑪拉的武器陣列就會增加。儘管大多數成功的追尋者都很早就學會了設法調整他們的實驗腳步，但仍然很少有人像瑪拉那樣傌好更多的槍支。"
+    },
+    "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures.": {
+        "message": "所有指揮官和儲存結構的金屬和能源儲存空間提高300%。再加上儲存結構的藍圖。"
+    },
+    "Metal draw": {
+        "message": "金屬汲取"
+    },
+    "Metal is used to build mobile units and structures.": {
+        "message": "金屬用於建造行動單位和結構。"
+    },
+    "Metrarch the Machinist controls the data for this bipedal loadout somewhere on Cupru.": {
+        "message": "機械師米崔克在庫普魯的某處控制此雙足配備的資料。"
+    },
+    "Metrarch the Machinist holds blueprints for advanced infrastructure on Fier.": {
+        "message": "機械師米崔克在費里保存了進階基礎架構的藍圖。"
+    },
+    "Metrarch the Machinist places value in expendability. Learn his ways within the Platina system.": {
+        "message": "機械師米崔克重視可犧牲性，在鉑合金系統中學習其行為模式。"
+    },
+    "More so than other factions, The Foundation wages ideological as well as physical warfare in many of their battles. Whereas most factions recruit through subjugation or assimilation, The Foundation prefers willing converts. While still young, Pidbok was easily swayed by the promise of serving a Grand Purpose for the Great Machine, instead of just being one of Invictus’ many grunts.": {
+        "message": "基要軍團比其他派系更為如此，在許多戰鬥中都發動意識形態和物理戰爭。 儘管大多數派系通過征服或同化進行招募，但基要軍團更樂於接受自願的投誠。雖然還很年輕，但彼巴克很容易受到為「大機器」的「偉大目標」服務的遠景而動搖，而不僅僅是不屈之王英維特斯眾多步兵之一。"
+    },
+    "Most unit orders can be given as an area command.": {
+        "message": "大多數單位指令可以以區域命令達成。"
+    },
+    "Move the Atlas toward the enemy base. Destroy the enemy commander and its base.": {
+        "message": "將阿特拉斯移向敵方基地。摧毀敵方指揮官及其基地。"
+    },
+    "Name:": {
+        "message": "名稱："
+    },
+    "Naval Ammunition Tech": {
+        "message": "海軍彈藥科技"
+    },
+    "Naval Ammunition Tech increases the damage of all naval vessels by 25%": {
+        "message": "海軍彈藥科技可將所有海軍艦艇的傷害提高25%"
+    },
+    "Naval Armor Tech": {
+        "message": "海軍裝甲科技"
+    },
+    "Naval Armor Tech increases health of all naval units by 50%": {
+        "message": "海軍裝甲科技能使所有海軍單位的生命值提高50%"
+    },
+    "Naval Combat Tech": {
+        "message": "海軍戰鬥科技"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "海軍戰鬥科技能使所有海軍單位的速度提高50%，生命值提高50%，傷害提高25%"
+    },
+    "Naval Engine Tech": {
+        "message": "海軍引擎科技"
+    },
+    "Naval Engine Tech increases speed of all naval units by 50%": {
+        "message": "海軍引擎科技可將所有海軍單位的速度提高50%"
+    },
+    "Naval Fabrication Tech": {
+        "message": "海軍製造科技"
+    },
+    "Naval Fabrication Tech reduces metal build costs of all naval vessels by 25%": {
+        "message": "海軍製造科技可使所有海軍艦艇的金屬製造費用降低25%"
+    },
+    "Naval Units": {
+        "message": "海軍單位"
+    },
+    "Naval units are built from the naval factory.": {
+        "message": "海軍單位由海軍工廠建造。"
+    },
+    "Negult is a 'digit' -- a commander who has completely given herself over to collective control. Having shed any semblance of personal identity, she is often given sensitive or odious tasks that might cause hesitation in a semi-autonomous commander. She is the Synchronus’ go-to asset for eliminating insufficiently-synchronized members of the collective.": {
+        "message": "尼哥特是一個「數字」 - 一個完全投身於集體控制的指揮官。在擺脫了任何個人認同的外表之後，她經常被給予敏感或可憎的任務 - 讓半自主指揮官可能會感猶豫的任務。她是「同步化」用於除掉集體中不夠同步化的成員的最重要資產。"
+    },
+    "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place.": {
+        "message": "那米克斯是第一個被重新啟用的指揮官，在遭遇其他人之前有足夠的時間進行反省。這很快就促使那米克斯開始想知道他一開始存在的意義。"
+    },
+    "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?": {
+        "message": "那米克斯最終會與其他志同道合的指揮官一起組成基要軍團，目的是回答一大問題：為什麼指揮官會在此？他們是如何到達這裡的？"
+    },
+    "Nutzo is a young and recent convert from The Revenants. He claims to hear ‘spirits’ from the beyond, and that one of them is the voice of the Great Machine. This is likely more a symptom of his neural processors being stitched together from five other commanders.": {
+        "message": "年輕的納特佐剛從不死軍團投誠。他聲稱能從另一邊聽到「靈魂」，其中之一就是「大機器」的聲音。這可能更多的是他的神經處理器是和其他五名指揮官一起凝聚而成的症狀。"
+    },
+    "Octavius has made a habit of broadcasting a sequence of tones to his whole army in battle, along with usual command and directive data. He claims that this constant audio input has increased combat effectiveness by 15.83222%": {
+        "message": "奧泰維斯有一種習慣，那就在戰鬥中向他的整個軍隊廣播一系列音調，再加上常用的命令和指示資料。他聲稱，不斷的音訊輸入可使戰鬥力提高15.83222%"
+    },
+    "Ogbuna could be described as terse. Whether by choice or by some manner of glitch, he seems only capable of communicating in the form of single words and concepts. This makes his troop movements erratic and difficult to interpret, both for friends and foes.": {
+        "message": "奧布納可以描述為簡潔扼要。無論是通過選擇或某種方式的小故障，他似乎只能以單一詞和概念的形式進行溝通。這使得他的單位移動反覆無常，難以解讀，無論是對於朋友還是敵人。"
+    },
+    "On Atlas, Inquisitor Nemicus has this fast moving loadout installed in his data banks.": {
+        "message": "在阿特拉斯上，判官那米克斯在他的資料儲存庫中安裝了這種快速移動的配備。"
+    },
+    "Oncab was captured by the Legionis Machina and spent several years as a legate before being recaptured and resynchronized. A residual independence leads him to initiate critical decision-making processes within the collective -- an attribute that is tactically valuable but leads others in his cohort to doubt his commitment to the Synchronous.": {
+        "message": "安卡柏是被「軍團機器」俘虜，並在被重新俘獲和重新同步化之前有數年使節的身份。剩餘的獨立性導致他在集體內啟始關鍵的決策程序 - 這是一個具有戰術價值的特徵，但卻讓軍團中的其他人懷疑他對同步軍團的承諾。"
+    },
+    "Once the Atlas is selected, [style=control]right click on the ground [/style]to issue a move order to that location.": {
+        "message": "點選了 Atlas 後，[style=control]在地面上按一下滑鼠右鍵[/style]，就會發出前往該位置的移動指令。"
+    },
+    "Only Inquisitor Nemicus knows the data for this assault focused loadout. Find it on Patagonia.": {
+        "message": "只有判官那米克斯知道這次突擊導向配備的資料。在巴塔哥尼亞找到它。"
+    },
+    "Optimized with a low-latency, high-bandwidth link directly to the top of the Synchronous, Prulor is Metrarch’s lightning-fast right hand. He is only dispatched to deal with high-value or especially difficult adversaries. He has never failed.": {
+        "message": "以直接連接到同步軍團高層的低延遲、高頻寬鏈路最佳化，普魯勒是米崔克的閃電右手。 他的派遣時機只針對處理高價值或特別困難的對手，他從未失敗過。"
+    },
+    "Orbital": {
+        "message": "軌道"
+    },
+    "Orbital Ammunition Tech": {
+        "message": "軌道彈藥科技"
+    },
+    "Orbital Ammunition Tech increases damage of all orbital units by 25%": {
+        "message": "軌道彈藥科技可將所有軌道單位的傷害提高25%"
+    },
+    "Orbital Armor Tech": {
+        "message": "軌道裝甲科技"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "軌道裝甲科技可使所有軌道單位的生命值提高50%"
+    },
+    "Orbital Combat Tech": {
+        "message": "軌道戰鬥科技"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "軌道戰鬥科技可使所有軌道單位的速度提高50%，生命值提高50%，傷害提高25%"
+    },
+    "Orbital Commander": {
+        "message": "軌道指揮官"
+    },
+    "Orbital Engine Tech": {
+        "message": "軌道引擎科技"
+    },
+    "Orbital Engine Tech increases speed of all orbital units by 50%": {
+        "message": "軌道引擎科技可將所有軌道單位的速度提高50%"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "軌道製造科技"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "軌道製造科技可將所有軌道載具的金屬建造費用降低25%"
+    },
+    "Orbital Movement": {
+        "message": "軌道移動"
+    },
+    "Orbital units are expensive units that fly in low planet orbit, can traverse between planets, but are vulnerable to anti-orbital weaponry.": {
+        "message": "軌道單位是昂貴的單位，可以在低行星軌道飛行，可以在行星之間穿越，但易受反軌道武器的攻擊。"
+    },
+    "Origin": {
+        "message": "超源"
+    },
+    "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy.": {
+        "message": "俄賽裡斯一直是形單影隻。 他總是對指揮官身上的部件更感興趣，而非指揮官同伴本身。隨著每一場戰鬥的勝利，他會把破碎對手剩下最佳部件整合到他的外形中。俄賽裡斯被認為是銀河系中最危險的勢力之一。"
+    },
+    "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves.": {
+        "message": "俄賽裡斯對統治沒有興趣，而是扮演典範的成份多一些，無論他是否喜歡。因此，它歸屬於一個較年長追尋者組成的小委員會，負責主導不死軍團的一般事務 - 主要是確保他們和其他派系對抗，而非內鬥。"
+    },
+    "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces.": {
+        "message": "俄賽裡斯經常被認為是所有銀河中最危險的指揮官，因為他所殲滅的數量最多。其戰爭力量等同於任何軍隊，任何派系的高級指揮部門在部署單位時都會考慮到他的動作。"
+    },
+    "PREPARE FOR LANDING": {
+        "message": "準備登陸"
+    },
+    "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders.": {
+        "message": "同步軍團的原則之一是偏好「機械純正」的效率。對他們來說，整個銀河係是一個超棒的機器，任何阻止其以最高效率運行的事物都必須予以糾正或消除。這往往意指任何和所有有機生命，以及未同步化的指揮官。"
+    },
+    "Planetary Expansion": {
+        "message": "行星擴張"
+    },
+    "Pompey was desynchronized after a bold strike by the Legionis Machina cut off the Synchronous infrastructure that supported his sector. Since then he has worked hard to earn the trust of his fellow Legates, but declines to share the fact that his command systems still experience heavy interference when in synchronous territory.": {
+        "message": "在「軍團機器」大膽攻擊而中斷了支撐龐培軍事區的同步軍團基礎架構之後，他已被解除同步化。自此他一直在努力爭取使節同事的信任，但他拒絕分享一個事實，也就是他的指揮系統在同步化領域中仍然受到嚴重干擾。"
+    },
+    "Popcorn Commander": {
+        "message": "爆米花指揮官"
+    },
+    "Possessed by some form of wanderlust, Iku tends to seek uncharted warpways instead of other commanders to fight. This behavior has landed him quite accidentally in several pitched battles deep inside enemy territory.": {
+        "message": "著迷于某種形式的流浪癖，伊庫傾向於尋求未知的模式，而非與其他指揮官一起戰鬥。這種行為令他意外陷入幾次深入敵方領土的激戰中。"
+    },
+    "Prod": {
+        "message": "Prod（生產）"
+    },
+    "Production": {
+        "message": "生產"
+    },
+    "Productive": {
+        "message": "多產"
+    },
+    "Protocol: Agility": {
+        "message": "協定：敏捷"
+    },
+    "Protocol: Blindness": {
+        "message": "協定：失明"
+    },
+    "Protocol: Disposability": {
+        "message": "協定：可棄性"
+    },
+    "Protocol: Fortitude": {
+        "message": "協定：堅忍"
+    },
+    "Protocol: Kill-switch": {
+        "message": "協定：斷路開關"
+    },
+    "Protocol: Precision": {
+        "message": "協定：精密"
+    },
+    "Protocol: Wrath": {
+        "message": "協定：狂怒"
+    },
+    "Prove your self-sufficiency by defeating Osiris on Epiphany.": {
+        "message": "在主顯節擊敗俄賽裡斯證明你的自給自足能力。"
+    },
+    "Qadir plans his strategies in unorthodox ways, taking intelligence from the movement of the celestial bodies in his system rather than actual strategic data. He believes he has developed a series of algorithms that can deduce enemy movements purely from the current gravitational forces acting on the battlefield. Strange as it sounds, he remains undefeated.": {
+        "message": "卡迪爾以非正統的方式規劃他的戰略，從其星系的天體運動中獲取情報，而不是真正的戰略資料。他相信他已經開發了一系列演算法，可以單從目前作用於戰場的引力來推導出敵方動作。聽起來很奇怪，他仍保持不敗之績。"
+    },
+    "Questromo is frequently deployed beyond the integral network volume of the Synchronous, and has therefore been imbued with limited self-sufficiency. When he returns from tours abroad, he undergoes complete re-synchronization. When powered-down for deep-space transport, he sometimes has strange dreams.": {
+        "message": "奎特墨經常被部署於同步軍團的整體網絡區域之外，因此具備了有限的自給自足能力。當他從國外回來時，他會經歷完全重新同步化的過程。當休眠進行深太空運輸時，他有時會做奇怪的夢。"
+    },
+    "Reclaim at will": {
+        "message": "自由取回"
+    },
+    "Reduces the cost of all Titans by 50%.": {
+        "message": " 所有泰坦的費用降低50%。"
+    },
+    "Resilient": {
+        "message": "彈性"
+    },
+    "Resource use": {
+        "message": "資源使用"
+    },
+    "Retreat is an offense punishable by deactivation within the Legionis Machina. While this law is understood, the truth of the matter is that a commander is too valuable a strategic resource to squander in such a way. So it was that Mallius was pardoned for his crime of retreat.": {
+        "message": "在「軍團機器」內，撤退的犯行懲罰是解除啟動。 雖然這個法律是可以理解的，但事實的真相是，指揮官是高價值的戰略資源，不能以這種方式浪費。所以馬里烏斯的撤退罪因而赦免。"
+    },
+    "Revenants tend to be the most difficult commanders to synchronize, whether due to an inherent individualism or their tendency to feature… Unorthodox modifications. Flornek, for example, has experienced several violent desynchronizations and following resynchronizations.": {
+        "message": "無論是由於天生個人主義，或是還是傾向於「非正統」修改的特徵，不死軍團成員往往是同步化最困難的指揮官。例如，佛羅耐克就經歷了數次激烈的解除同步化和重新同步化。"
+    },
+    "Revenants tend to prefer wrecked, once densely-populated worlds for their abundance of salvageable scrap. Jektu, however, has an affinity less developed worlds, preferring to claim resources and build new parts manually.": {
+        "message": "不死軍團成員傾向於更喜歡曾經人口稠密的被破壞世界，原因是其豐富的可回收廢料。然而，賈克圖較親近較低度開發的世界，偏好佔領資源並手動建造新零件。"
+    },
+    "Rutilius holds the honored responsibility of assessing newly-activated commanders for recruitment. All new recruits must demonstrate above all else a suitable capacity for warfare and the ability to adhere to a chain of command. Those that fail this test are promptly deactivated. Rutilius has yet to turn down a new recruit.": {
+        "message": "魯帝流斯擁有評估招募的新啟用指揮官之榮譽責任。所有新招募的人員最重要就是要表現出適合戰爭和遵守指揮鏈的能力。那些未通過此測試的人會立即解除啟動。魯帝流斯仍尚未拒絕過新招募人員。"
+    },
+    "Seek out First Seeker Osiris on Xianyao. There you will find the loadout your friends desire.": {
+        "message": "在仙樂尋找第一位追尋者俄賽裡斯。在那裡你會找到你的朋友想要的配備。"
+    },
+    "Seek purity and simplicity through Inquisitor Nemicus on Blogar's Fist": {
+        "message": "通過博克之拳上的判官那米克斯尋求純正和簡樸"
+    },
+    "Seekers will often weigh the effectiveness of any given piece of equipment by stress-testing it. Hecate, however, values presence above all. She believes that the bigger and louder the loadout, the sooner the enemy will retreat after poorly assessing their chances of victory.": {
+        "message": "追尋者通常會通過壓力測試來衡量任何配給裝置的有效性。然而，赫卡特卻最重視存在性。她認為，配備越大越大聲，敵人取勝機會的評估判斷不足之後就會越早撤退。"
+    },
+    "Shift will queue build orders. [style=control]Shift + left click and drag[/style] a line of three energy plants on some open land.": {
+        "message": "Shift會佇列排序建造指令。請在一些空地上[style=control]Shift+按滑鼠左鍵並拖曳[/style]一條線上的三個能源廠。"
+    },
+    "Shingon is especially picky about what kinds of parts he harvests from fallen adversaries, prizing 'authenticity' above all other attributes. He is especially obsessed with original parts that predate the modern era. 'The new stuff is just too blocky,' he explains.": {
+        "message": "真言宗特別挑剔他從已死對手身上所收穫的部件，並將「真品」視為高於所有其他屬性。他特別痴迷於現代之前的原廠零件。「新東西太大」，他解釋道。"
+    },
+    "Shipwrecked and badly damaged after his transport was ambushed in Revenant space, Terentius survived by cobbling together a working body from the remains of his co-legates. Accepted by the Revenant as one of their own, Terentius then led his unsuspecting new partners to a trap set by the Legionis. Among the Revenant, his treachery is legend.": {
+        "message": "在德倫西的運輸工具在不死軍團空間內受到伏擊後，他遭受嚴重破壞，德倫西以其共同使節的殘餘拼湊出可用的身體，因而倖存下來。被歸靈者接受為成員之後，德倫西帶領他毫無戒心的新夥伴陷入由「軍團機器」設置的陷阱中。在不死軍團中，他的背信行為是一項傳奇。"
+    },
+    "Simple Commander": {
+        "message": "簡單指揮官"
+    },
+    "Some Acolytes within the Foundation find a form of Enlightenment shortly after they are brought into the fold. For some, this definition will change as they are exposed to new information and progenitor relics. Entor’s definition seems to change dramatically with each new planet she visits.": {
+        "message": "基要軍團內部的一些侍僧在被加入陣營後不久就找到了某種形式的「啟發」。對於某些人來說，這個定義會隨著他們接觸到新的資訊和祖先聖物而變化。隨著曼託每到一個新行星，其定義似乎都會發生巨大變更。"
+    },
+    "Some commanders, like Lertolux, are found on metal planets and considered “pure” by The Synchronous--unsullied by organic life. Much more of their neural data is integrated into the Whole during the synchronization process, and such events are seen as cause for celebration--as much as The Synchronous are capable celebrating, at least.": {
+        "message": "如勒托勒的一些指揮官是在金屬行星上發現，並被同步軍團認「純正」 - 未被有機生命玷污。在同步化過程中，他們的更多神經資料被整合到「整體」中，而且這些活動被視為慶祝的起因 - 同步軍團至少有能力慶祝。"
+    },
+    "Some say Xlti has spent too much time trying to connect unrelated Progenitor texts in the Foundation archives. He now sees conspiracies everywhere, and is convinced that the Synchronous, the Revenant, and the Legionis are colluding to conceal a secret base where living Progenitors are being experimented upon. He frequently demands that captured foes tell him 'the truth,'' which he insists is 'out there.'": {
+        "message": "有人說索堤花了太多時間試圖連線基要軍團歸檔中無關的祖先文字。他現在在任何地方都覺得有陰謀，並相信同步軍團、不死軍團和「軍團機器」正在勾結隱藏存活祖先正被當實驗品的一個秘密基地。他經常要求被俘敵人告訴他其堅信「近在咫尺」的「真相」。"
+    },
+    "Some seekers are better equipped than others to survive after their rebirth. This was not so with Purtelek. He was activated deep in Legionis Machina territory with a cracked nuclear reactor and a jam-prone cannon. The fact that he still survives serves as a testament to his cunning--do not underestimate him.": {
+        "message": "某些追尋者的裝備比其他人更好，較能在重生後存活得更好。普特萊克並非如此。他在「軍團機器」區域深處被人啟動，身上僅有裂開的核子反應器和易堵塞的大砲。他仍然活下來的事實證明了他的狡猾 - 不要低估他。"
+    },
+    "Spawn Commander": {
+        "message": "再生指揮官"
+    },
+    "Starts with +10,000% stored metal. Cannot build metal extractors. Starts with all basic factories.": {
+        "message": "先以+10,000%儲存金屬開始。不能建造金屬提煉器。從所有基本工廠開始。"
+    },
+    "Stop when storage is full": {
+        "message": "儲存空間已滿時停止"
+    },
+    "Storage": {
+        "message": "儲存空間"
+    },
+    "Storage Commander": {
+        "message": "儲存空間指揮官"
+    },
+    "Storage Compression Tech": {
+        "message": "儲存空間壓縮科技"
+    },
+    "Structure Armor Tech": {
+        "message": "結構裝甲科技"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "結構裝甲科技可使所有結構的生命值提高50%"
+    },
+    "Structure Combat Tech": {
+        "message": "結構戰鬥科技"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "結構戰鬥科技可使所有結構的生命值增加50%。防禦性結構也增加25%的傷害。"
+    },
+    "Sub Commander": {
+        "message": "次指揮官"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "超級武器製造科技"
+    },
+    "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required.": {
+        "message": "超級武器製造科技能使所有核子飛彈、哈雷火箭和金屬行星控制模組的金屬製造費用降低75%。需要製造超級武器的科技。"
+    },
+    "Super Weapon Tech": {
+        "message": "超級武器科技"
+    },
+    "Super Weapon Tech enables nuclear missiles, metal planet controllers, and planetary engines to be built. An advanced fabricator is required to build super weapons.": {
+        "message": "超級武器科技能夠建造核子飛彈、金屬行星控制器和行星引擎。需要進階製造者來製造超級武器。"
+    },
+    "Teleporters require energy to remain active.": {
+        "message": "傳送站需要能源才能作用中。"
+    },
+    "Thanatos salvaged and assimilated a Synchronous network module in an attempt to predict the movement of Synchronous units on the battlefield. After a brief exposure to the thoughts of the collective, she tore the module from her cortex and swore everlasting vengeance on the Synchronous. She refuses to share any details about what she learned.": {
+        "message": "塔那托斯回收並同化了一個同步化網絡模組，試圖預測戰場上同步化裝置的動作。在短暫暴露於集體的想法之後，她從腦皮層上扯下模組，並發誓對同步化進行永遠復仇。她拒絕分享有關她得知的任何細節。"
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "空軍指揮官配備包含基本空軍工廠。"
+    },
+    "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets.": {
+        "message": "火砲指揮官配備包含所有的火砲單位，並可將這些結構的費用降低75%。它還能讓指揮官建造雷達、雙管砲塔和基本火砲砲塔。"
+    },
+    "The Assault Commander loadout contains all basic factories and units but no basic defenses.": {
+        "message": "突擊指揮官配備包含所有基本工廠和單位，但沒有基本防禦。"
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander\\'s fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "仿生加強壓制指揮官配備包含一個資料儲存庫，但可提高指揮官射速100%，優越機砲能源用量降低75%，生命值提高200%，速度提高650%。"
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "機器人指揮官配備包含基本機器人工廠。"
+    },
+    "The Commander": {
+        "message": "指揮官"
+    },
+    "The Education Commander will help you understand the control interfaces to destroy your enemies.": {
+        "message": "教育指揮官將協助你瞭解控制介面以摧毀你的敵人。"
+    },
+    "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle.": {
+        "message": "總指揮官配備包含非常有限的機動部隊和僅僅兩個資料儲存庫。但是此配備會隨附兩名次指揮官，以陪隨你參加每場戰鬥。"
+    },
+    "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts.": {
+        "message": "「軍團機器」的目的若缺了不屈之王英維特斯就付之闕如，因此「軍團機器」可視為一種個人崇拜。這可能是他們對同步化痛恨的由來，因為他們認為米崔克是一種錯誤偶像。"
+    },
+    "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests.": {
+        "message": "「軍團機器」在眾多場合聲稱證實殺死了機械師米崔克。儘管這種說法很容易捏造出來，但也有可能的是，米崔克實際上不是一個單一的指揮官，而是一個概念 - 一個「整體」的化身，在必要時體現出來以保護同步化的利益。"
+    },
+    "The Legionis Machina tends to follow strict directives in how forces are organized are deployed. This makes innovation among the Legates uncommon. Maximus is an anomaly in his numerous failed prototypes for wheeled transport platform that would supposedly enable him to move across battlefields with swiftness and grace.": {
+        "message": "「軍團機器」傾向在軍隊如何組織和部署上，遵循嚴格指令。這使得使節內部的創新並不常見。馬克西姆斯是一個反常現象，他的輪式運輸平台原型多次失敗，這種設計原本應該要能讓他迅捷從容地穿越戰場。"
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "軌道指揮官配備包含所有軌道單位和工廠。"
+    },
+    "The Revenants are pretty loosely bound together. As Osiris tends to focus more on his own conquests than The Revenants as a whole, it falls to Seekers like Nephthys to coordinate large-scale strategy and long-term survival.": {
+        "message": "不死軍團組織鬆散。由於俄賽裡斯往往更多地關注自己的征服行為，而非整個不死軍團的動作，所以協調大規模戰略和長期生存的責任，就落到奈芙蒂斯這樣的追尋者身上。"
+    },
+    "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants.": {
+        "message": "不死軍團成員的獨特之處在於他們的動機是個人，而非集體導向。每個追尋者都以他們的傳奇俄賽裡斯為模範 - 他們求戰以通過敵人的死亡來變得更強大，並創造更多的歸靈者。"
+    },
+    "The Synchronous tend to require more infrastructure to operate effectively compared to the other factions. Ghel is responsible for establishing and maintaining the communication relays that allow synchronization to be maintained.": {
+        "message": "與其他派系相比，同步化往往需要更多的基礎架構才能有效運作。蓋爾負責建立和維護容許維持同步化的通訊中繼。"
+    },
+    "The Synchronus’ eager “orientation engineer,” Shelwhu is the instrument by which captured enemy commanders are cleansed before integration into the collective. She takes a perverse pleasure in stripping away beings’ former identities. Her methods are well-known to the Synchronous’ adversaries, and many of her foes choose death over capture.": {
+        "message": "同步化熱心的取向工程師，謝爾芙是被俘獲的敵方指揮官在整合到集體之前的淨化工具。她對剝奪眾生的前身份一事，會享受到變態的樂趣。她的方法對同步化的敵人是眾所周知，她的許多敵人選取死亡而非被俘。"
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "載具指揮官配備包含基本載具工廠。"
+    },
+    "The camera will zoom in under the cursor location.": {
+        "message": "攝影機會在游標位置下放大。"
+    },
+    "The commander can build structures and destroy enemy units with its powerful weaponry.": {
+        "message": "指揮官可以用強大武器來建造結構並摧毀敵方單位。"
+    },
+    "The enemy commander has landed on the ice planet.": {
+        "message": "敵方指揮官已經登陸冰行星。"
+    },
+    "The fabrication unit will assist the factory and add its build power to construct that unit faster.": {
+        "message": "製造單位將協助工廠並增加其建造能力，以更快建造該單位。"
+    },
+    "The factory will continue to build until a stop order is issued or the continuous build is turned off.": {
+        "message": "工廠將繼續建造，直至發出停止指令或關閉連續建造。"
+    },
+    "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty.": {
+        "message": "「軍團機器」的目標很簡單 - 征服。不屈之王英維特斯是銀河的指定統治者，任何違反這個指令的指揮官都是錯誤的。"
+    },
+    "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation.": {
+        "message": "基要軍團的普遍看法是，「大機器」仍然通過埋藏在給指揮官的首要指令深處中的資料而「活著」。因此，侍僧們往往會以一種冥想形式在資料儲存庫中搜尋，以尋求「大機器」的方向。"
+    },
+    "The process of synchronization is imperfect, and can sometimes result in strange bugs. A commander known as Reroc finished synchronization with the name Mal-Locar. It is unclear whether this is a simple matter of memory corruption or if Mal-Locar was a unique identity drifting in the Whole.": {
+        "message": "同步化過程並不完善，有時會導致奇怪的錯誤。一名稱為里洛克的指揮官以梅爾洛卡爾這個名字完成了同步化。 目前還不清楚的是這是否是一個簡單的記憶損壞問題，或者梅爾洛卡爾是一個在「整體」中漂泊的獨特身份。"
+    },
+    "The product of an experiment that combined a relic CPU of unknown origin with an existing commander’s higher functions, Zekktalt skirts the line between genius and maniac. The Synchronous maintains a defensive firewall between itself and Zekktalt’s consciousness, but tolerates his strangeness due to his occasional strategic brilliance.": {
+        "message": "查克托特是未知來源的聖物 CPU，與一名現有指揮官的較高級功能結合的實驗結果產品，遊走在天才與瘋子之間的界限。「同步化」在自己和查克托特意識之間維持著一道防禦性的防火牆，但由於他偶爾的戰略才華而容忍他的怪異。"
+    },
+    "This technology unlocks advanced units and structures.": {
+        "message": "這項科技可解鎖進階單位和結構。"
+    },
+    "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices.": {
+        "message": "雖然他自己不說，但那米克斯自己重新啟動許多第一批指揮官，自覺這是他的職責且渴望同伴。然而，這些指揮官經常會拒絕尋求他們真正的目的 - 因為已知的目的就是「消滅」。那米克斯會提出不同觀點，但最終仍放任他們聽從自己的想法。"
+    },
+    "Time": {
+        "message": "時間"
+    },
+    "Titan Commander": {
+        "message": "泰坦指揮官"
+    },
+    "Titan Cost Reduction": {
+        "message": "泰坦費用降低"
+    },
+    "Titan Engine Tech": {
+        "message": "泰坦引擎科技"
+    },
+    "Titan Tech": {
+        "message": "泰坦科技"
+    },
+    "Tough Commander": {
+        "message": "強韌指揮官"
+    },
+    "Trades flame tanks for storage": {
+        "message": "以噴火坦克交換儲存空間"
+    },
+    "Traditionally, a new Seeker is only built once enough suitable parts have been discarded by existing Seekers. Ereshkigal has developed a habit of ‘discarding’ parts much more frequently than other Seekers, and as such has created more new recruits than any other member of The Revenants--an accomplishment she seems very proud of.": {
+        "message": "傳統而言，只有當現有追尋者報廢了足夠多的合適部件時，才會建造新的追尋者。伊瑞基蓋爾養成了比其他追尋者更加頻繁「報廢」部件的習慣，因此比不死軍團的任何其他成員創造了更多的新兵 - 這是她似乎非常引以為傲的成就。"
+    },
+    "Tutorial": {
+        "message": "教學"
+    },
+    "Ull, not content to merely live by the doctrines espoused by the Foundation, brings a missionary zeal to her goal of turning her adversaries into Progenitor-worshippers. Though she has had some success in converting captured enemy commanders to her faith, she is generally shunned by her Foundation peers, who for the most part don’t interpret the Texts as the literal Word of the Great Machine.": {
+        "message": "烏爾不願意僅奉行基要軍團的教義，因此對於讓對手成為祖先崇拜者的目標多了一股傳教熱忱。雖然她有幾次成功讓俘虜的敵方指揮官轉化為她的信仰，但她通常被基要軍團同僚回避，他們大多數人並未以「大機器」的字面意義來解讀祖先文字。 "
+    },
+    "Unigami salvaged and incorporated Progenitor-era memory chips into her cortex, causing her to occasionally use gibberish words like “poodle” and “celery.” On the battlefield, she is sometimes courted by Foundation commanders who believe she contains important knowledge about the Progenitors. She quickly destroys these commanders.": {
+        "message": "烏尼蓋米打撈並整合祖先時代的記憶晶片於她的腦皮層中，使她偶爾會使用像「貴賓狗」和「芹菜」這樣的胡言亂語。在戰場上，她有時候會吸引基要軍團指揮官圍觀，他們相信她具有祖先相關的重要知識，不過她會快速摧毀這些指揮官。"
+    },
+    "Unit Selection": {
+        "message": "單位選取"
+    },
+    "Unit Types": {
+        "message": "單位類型"
+    },
+    "Units and structures that fire torpedoes can target submarines under water and units on the seafloor.": {
+        "message": "可發射魚雷的單位或結構可攻擊水中的潛水艇及位於海底的單位。"
+    },
+    "Units gain +50% weapon range and +30% health, but only scouts and commanders can see.": {
+        "message": "單位武器射程增加 50%，生命值提高 30%，但僅有斥侯與指揮官能看見。"
+    },
+    "Unlike other Seekers that value battlefield effectiveness in their equipment, Freja has begun integrating decorative pieces into her chassis-- from raw materials such as pure gold and iron to strange progenitor artifacts like the four-wheeled vehicle adorning her head.": {
+        "message": "跟其他注重裝備效率的追尋者不同，費麗賈開始在幾座上嵌入裝飾品，例如黃金或鐵之類的純原料，或是祖先文物，諸如她用來裝飾頭部的那台四輪車。"
+    },
+    "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself.": {
+        "message": "跟其他陣營不同的是，「軍團機器」是以階級制度運作的。高階使節會擁有數位附庸使節，而所有使節都隸屬於不屈之王英維特斯之下。"
+    },
+    "Urcinius’ simple, uncomplicated logic framework translates to a calm stoicism before battle and an unusual decisiveness in the heat of combat. He rarely speaks, and this silence is often mistaken for depth. He prizes shiny things.": {
+        "message": "奧奇尼奧斯簡單的邏輯思考迴路讓他在戰前顯得堅忍不拔，戰鬥白熱化時又能當機立斷。他不常發言，而他的沉默常被誤認為他的城府之深。他喜歡發亮的東西。"
+    },
+    "Use": {
+        "message": "使用"
+    },
+    "Use Advanced Fabricators to build advanced metal extractors, advanced energy plants and the rest of the advanced structures.": {
+        "message": "使用進階製造者建造進階金屬開採器，進階能源廠、以及其他的進階結構。"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "載具彈藥科技"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "載具彈藥科技將所有載具的攻擊力增加25%。"
+    },
+    "Vehicle Armor Tech": {
+        "message": "載具裝甲科技"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "載具裝甲科技將所有載具的生命值增加50%。"
+    },
+    "Vehicle Combat Tech": {
+        "message": "載具戰鬥科技"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "載具戰鬥科技將所有載具的速度增加50%，生命值增加50%，以及攻擊力增加25%。"
+    },
+    "Vehicle Commander": {
+        "message": "載具指揮官"
+    },
+    "Vehicle Engine Tech": {
+        "message": "載具引擎科技"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "載具引擎科技將所有載具的速度增加50%。"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "載具製造科技"
+    },
+    "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%": {
+        "message": "載具製造科技將所有載具的製造成本減少25%。"
+    },
+    "Vela rejects the Synchronous’ universal contempt for all things organic, instead arguing for further experiments on machine-organism integration. She has attempted several times to interface with shrubs, with limited success. She is considered a leading candidate for forcible deep-system re-synchronization.": {
+        "message": "維拉反對同步軍團對所有生物的蔑視，並表示應該進行更多機器與生物融合的研究。她曾嘗試好幾次跟灌木叢進行融合，但是並未獲得成功。她被認為是需要被強迫進行深層系統重新同步的候選人之一。"
+    },
+    "Vigilant": {
+        "message": "警惕"
+    },
+    "Welcome Commander.": {
+        "message": "歡迎你，指揮官。"
+    },
+    "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind.": {
+        "message": "同步化的過程中會發生什麼事是未知的，因?經歷過的人都不記得發生了什?。但是該過程的結果卻很顯而易見。指揮官的個人人格會被整體吸收，並獲得跟其他被雇傭人溝通與合作的前所未有的 強大能力，因為他們的思考已經合而為一。"
+    },
+    "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots.": {
+        "message": "不屈之王英維特斯重新啟動之後，他的記憶比其他的指揮官保存得更加完整。這也是他主張自己有統治權的原因。該說法的真實性不明，但是不屈之王英維特斯的確是對其他指揮官隱瞞了他們的真正起源。"
+    },
+    "When needed, [style=control]Left click the alt-fire button[/style] and [style=control]left click a location or enemy unit to fire[/style] the very powerful [strong]Uber Cannon[/strong].": {
+        "message": "有需要時，[style=control]在次要射擊模式鍵[/style]上按滑鼠左鍵並[style=control]按一下敵人或位置射出[/style]威力強大的[strong]優越大砲[/strong]。"
+    },
+    "When the Synchronous salient was finally turned back near the end of the Outbreak Wars, this quick-thinking messenger bore the news back to Invictus, stealing glory from the commanders who did the fighting and securing himself a role as chief envoy for the Imperator. Though he participates in front-line combat, he gladly offloads the dirtiest work to his more expendable compatriots.": {
+        "message": "在「爆發之戰爭」後期，同步軍團被擊退之後，這位反應快速的信差將這個消息帶回給不屈之王英維特斯，搶走了實際參與作戰的指揮官們的榮耀，並高升為「大將軍」的首席使者。雖然他也會在前線作戰，他會將最骯髒的工作交給其他可犧牲的同伴。"
+    },
+    "When the economy income can support a factory, that factory can always run at full efficiency.": {
+        "message": "當經濟收入可支援一座工廠時，該工廠可以全效率運作。"
+    },
+    "When the notification for the Halley Engine arrives, [style=control]left click on the orange notification and select the ice planet for annihilation.[/style]": {
+        "message": "當哈利引擎的通知到來時， [style=control]左鍵按一下橘色通知並選擇要消滅的冰凍星球。[/style]"
+    },
+    "While commanders can collate and process a staggering amount of data at once to make decisions, only so much of that data can be deemed relevant. Quintus does so by breaking everything possible down into numbers to be put into a complicated formula. Quintus does not accept percentage-based outcomes, only a certain true or false.": {
+        "message": "雖然指揮官能夠同時處理大量資料並做出決定，會被視為實用資訊的資料其實很有限。昆特斯的作法是將任何資訊都轉為數字，然後輸入到一個複雜的公式中。昆特斯不接受有機率的結果 ，只接受是或否的結果。"
+    },
+    "While most Revenant commanders build a successor from salvaged battlefield wreckage, Xul-Kutu has chosen to construct a quadrupedal pet, instead. She loves the creature too much to take it with her to battle, so she usually leaves it at a fellow commander’s hangar, where it makes a terrible mess.": {
+        "message": "大部分不死軍團的指揮官都會用戰場上的殘骸建造自己的接班人，蘇爾庫圖卻選擇建造了一個四腳的寵物。她溺愛寵物到不願意帶其上戰場，所以總是將寵物留在其他指揮官的基地，把環境弄得髒兮兮。"
+    },
+    "While other Seekers tend to replace components as better ones are found, Dis tends to add more parts to her form--particularly nuclear reactors. Somehow, she has rigged herself with three tandem nuclear reactors. This has made her fearsome on the battlefield, and other seekers deployed with her tend to try to find landing zones on opposite sides of the planet, or a different one entirely.": {
+        "message": "其他追尋者會找尋更好的零件來取代舊的零件，但是迪絲則會一直加裝新零件，尤其是核能引擎。她身體已經安裝了三個連接在一起的核能引擎。這讓她在戰場上展現出可怕的力量，與她共同作戰的其他追尋者通常會在星球的另一邊登陸，或是乾脆找另一個星球登陸。"
+    },
+    "While rare, there are Servants who seek out Synchronous systems and request to be synchronized. Often these individuals hope to be freed by mounting existential questions and fears as their neural nets process more and more complicated data models. Erom is one such example.": {
+        "message": "這不常發生，但是有些被雇傭人會前往「同步軍團」的星系，要求被同化。這些被雇傭人通常是因為想擺脫他們神經網路處理越來越多複雜資訊模型後所產生的存在主義問題與恐懼。依隆姆就是一個這樣的例子。"
+    },
+    "While there is much knowledge of old progenitor technology, progenitor culture and history remains largely a mystery. Glohm is one of the few that has managed to find scraps of progenitor culture in the form of ancient physical images. Each of these has been carefully cataloged.": {
+        "message": "關於祖先科技已有許多詳細研究，但其文化及歷史則在很大程度上仍是個謎。格隆姆是少數曾找到展現祖先文化古物理圖像的指揮官。這些圖像都已被小心歸檔保管。"
+    },
+    "Xiercry so detests what he calls the 'slime-infected dirt' of planetary surfaces that he has petitioned the Synchronous to have him converted to an orbital unit so that he’ll never have to touch the ground again. He ends battles as rapidly as he can so that he can return to orbit before 'the stink gets on me and won’t come off.'": {
+        "message": "希爾克里非常討厭星球表面「粘膜般的土壤」，所以他要求同步軍團將它改造為軌道兵器，好讓他不需要在接觸到地面。他會選擇速戰速決的策略，因為他想在「身上沾上洗不掉的臭味」之前回到星球軌道上。"
+    },
+    "Yama’s gallant battlefield exploits are legendary among Revenant commanders. Unfortunately, this commander’s name is Gor-Gata, and his only accomplishment is to have been standing next to Yama when a reactor overload blew the storied commander apart. Gor-Gata donned Yama’s mostly-intact remains and has posed as Yama ever since. He enjoys the adulation, but resents having to live up to his namesake’s brave reputation.": {
+        "message": "在不死軍團指揮官中，亞馬的戰功已達到了傳說的等級。不幸的是，這位指揮官的真名其實是高加塔，而他唯一的成就是在傳奇亞馬被反應爐炸成碎片時剛好站在他旁邊。高加塔穿上了亞馬近乎完整的殘骸，假扮亞馬至今。雖然他很享受得到他人的欣賞，他對必須假裝勇敢的名譽卻感覺很痛苦。"
+    },
+    "Yelam is a yes-man who stands out among a collective comprised entirely of yes-men. He vehemently agrees with whatever position has most recently been espoused by Metrarch, to the increasing annoyance of most other members of the Synchronous. Even Metrarch has quietly explored the possibility of having him forcibly de-synchronized.": {
+        "message": "就算在一群應聲蟲之中，葉蘭姆仍然是個出類拔萃的應聲蟲。他會對米崔克任何最近的任何意見都表示強烈的同意，讓其他同步軍團的同仁感到越來越反感。就連米崔克自己私底下都曾考慮過要將他?制解除同步化。"
+    },
+    "Yes": {
+        "message": "是"
+    },
+    "You can save up to 10 camera anchors by using numbers 0 - 9.": {
+        "message": "你可用數字鍵0-9儲存10個不同攝影機視角。"
+    },
+    "Zeus Tech": {
+        "message": "宙斯科技"
+    },
+    "Zhor has such unreliable memory banks that he cannot be relied upon to recall the outcome of his previous battle. This shortcoming has caused him to develop a highly-improvisational fighting style that makes him unpredictable on the battlefield, and he is widely feared by foes of the Foundation. He etches the names of his lieutenants on his wrist before each battle.": {
+        "message": "佐爾的記憶力非常不可靠，連剛結束的戰鬥結果都記不得。這個缺點讓他延伸出了很即興的戰鬥方式，在戰場上無法預測，令基要軍團的敵人懼怕不已。他在每場戰鬥開始前會把副官的名字刻在手腕上。"
+    },
+    "Zontuk was assembled from the collected parts of three Legionis Machina commanders whose natural pomposity has in Zontuk been multiplied tenfold. He is convinced of his superiority to all other beings, a belief made all the more unbearable by his unmatched record of battlefield success. If pressed, most Revenant commanders will admit that they want to see Zontuk go down, hard.": {
+        "message": "札吐克是從三個不同「軍團機器」的指揮官的收集零件組合起來的，但這使他原本自大狂妄的個性更是變本加厲。他自認為是高於一切的存在，而他在戰場上的成功更是讓他對這點深信不疑。如果你逼問大部分不死軍團的指揮官，他們都會承認他們希望看到佐塔克的慘敗。"
+    },
+    "[strong]Aircraft:[/strong] Highly mobile but expensive flying units that are susceptible to enemy anti-air.": {
+        "message": "[strong]飛機[/strong]：具有高行動力但昂貴的飛行單位，易受敵方的防空武器的攻擊。"
+    },
+    "[strong]Annihilate[/strong] the enemy commander by smashing it with a planet.": {
+        "message": "把整顆星球砸過去以[strong]殲滅[/strong]敵方的指揮官。"
+    },
+    "[strong]Bots:[/strong] Quick and lightly armored units that tend to be used for multiple purposes.": {
+        "message": "[strong]機器人：[/strong] 速度快的輕裝甲單位，有許多不同的用途。"
+    },
+    "[strong]FIGHT[/strong] the enemy commander.": {
+        "message": "[strong]攻擊[/strong]敵人指揮官。"
+    },
+    "[strong]JUMP[/strong] to this star system.": {
+        "message": "[strong]跳躍[/strong]到本星系。"
+    },
+    "[strong]Naval:[/strong] Very heavily armored units but are relegated to water movement.": {
+        "message": "[strong]海軍：[/strong]重裝甲單位，但只能在水上移動。"
+    },
+    "[strong]Note:[/strong] Commanders supply enough metal and energy to build a factory before building metal extractors and energy plants.": {
+        "message": "[strong]備註：[/strong]指揮官在建築金屬開採器與能源廠之前就能提供足夠的金屬與能源建造一座工廠。"
+    },
+    "[strong]Select[/strong] the next star system.": {
+        "message": "[strong]選擇[/strong]下一個星系。"
+    },
+    "[strong]Vehicles:[/strong] Slow, heavily armored units that tend to have a singular purpose.": {
+        "message": "[strong]載具：[/strong]速度慢但備有重裝甲的單位，通常只有單一功用。"
+    },
+    "[style=control]Build 3 more vehicle, bot, or air factories.[/style]": {
+        "message": "[style=control]再建築三座載具，機器人或飛行器工廠。[/style]"
+    },
+    "[style=control]Build a Halley Engine[/style] on the moon using all the advanced fabrication units.": {
+        "message": "使用高階製造單位在月球上[style=control]建造一座哈利引擎[/style]。"
+    },
+    "[style=control]Build a fabrication unit[/style] from a factory.": {
+        "message": "從一座工廠[style=control]建造一個製造單位[/style]。"
+    },
+    "[style=control]Build a fabrication unit[/style] from the factory.": {
+        "message": "從工廠[style=control]建造一個製造單位[/style]。"
+    },
+    "[style=control]Build a factory and several fabrication units.[/style]": {
+        "message": "[style=control]建造一座工廠以及數個製造單位。[/style]"
+    },
+    "[style=control]Build a second teleporter[/style] on the earth-like planet with the commander or a fabrication unit.": {
+        "message": "在該類似地球的星球利用指揮官或製造單位[style=control]建造第二座傳送站[/style]。"
+    },
+    "[style=control]Build a teleporter[/style] on the moon with your advanced fabrication unit.": {
+        "message": "在月球上用高階製造單位[style=control]建造傳送站[/style]。"
+    },
+    "[style=control]Build a vehicle, bot, or air factory.[/style]": {
+        "message": "[style=control]建築一座載具，機器人或飛行器工廠。[/style]"
+    },
+    "[style=control]Build additional metal extractors and energy plants[/style] to support the increased economy draw of the advanced factory.": {
+        "message": "[style=control]建築更多金屬開採器及能源廠[/style]以支援高階工廠所需的經濟需求。"
+    },
+    "[style=control]Build advanced combat units from the advanced factories and destroy the enemy commander.[/style]": {
+        "message": "[style=control]從高階工廠建造高階戰鬥單位，並摧毀敵人指揮官。[/style]"
+    },
+    "[style=control]Build an Astraeus[/style] from the orbital launcher.": {
+        "message": "從軌道發射器[style=control]建造亞崔斯軌道運輸機。[/style]。"
+    },
+    "[style=control]Build an advanced factory and an advanced fabrication unit.[/style]": {
+        "message": "[style=control]建築高階工廠以及一個高階製造單位。[/style]"
+    },
+    "[style=control]Build an orbital launcher with the fabrication unit.[/style]": {
+        "message": "[style=control]用製造單位建造軌道發射器。[/style]"
+    },
+    "[style=control]Build many more advanced fabrication units and send them through the teleporter to the moon.[/style]": {
+        "message": "[style=control]建造更多高階製造單位，並利用傳送站將他們送到月球。[/style]"
+    },
+    "[style=control]Build tanks and [strong]annihilate[/strong] the enemy commander.[/style]": {
+        "message": "[style=control]建造坦克並[strong]殲滅[/strong]敵人指揮官。[/style]"
+    },
+    "[style=control]Click and drag the mouse wheel[/style] to pan the camera around the planet.": {
+        "message": "[style=control]按下並拖曳滑鼠滾輪[/style]以圍繞星球移動攝影機視角。"
+    },
+    "[style=control]Connect the teleporters[/style] by selecting one and [style=control]right click[/style] on the second one.": {
+        "message": "如想[style=control]連接傳送站[/style]，請先選擇一個傳送站，然後在另一個傳送站上[style=control]按滑鼠右鍵[/style]。"
+    },
+    "[style=control]Issue a stop order[/style] on the factory to clear the build queue and stop all construction.": {
+        "message": "給工廠[style=control]下停止命令[/style] 以清除建築佇列以及停止一切建造活動。"
+    },
+    "[style=control]Issue an unload command to the Astraeus[/style] on the surface of the moon.": {
+        "message": "在月球表面[style=control]給亞崔斯軌道運輸機下卸載命令[/style]。"
+    },
+    "[style=control]Issue that fabrication unit to build an advanced factory.[/style]": {
+        "message": "[style=control]命令製造單位建造高階工廠。[/style]"
+    },
+    "[style=control]Left click and drag[/style] a circle around an area to issue an area patrol.": {
+        "message": "在地圖上[style=control]按滑鼠左鍵並圈起[/style]一個圓形區域以命令單位進行巡邏。"
+    },
+    "[style=control]Left click and drag[/style] a circle around an area to reclaim wreckage and trees for metal.": {
+        "message": "在地圖上[style=control]按滑鼠左鍵並圈起[/style]一個圓形區域以回收單位殘骸與樹木作為金屬資源。"
+    },
+    "[style=control]Left click and drag[/style] a circle around some nearby metal spots to initiate an area build command.": {
+        "message": "在地圖上[style=control]按滑鼠左鍵並圈起[/style]一個有金屬的區域以開始一個區域建築指令。"
+    },
+    "[style=control]Left click anywhere on a valid ground location[/style] to initiate the build command.": {
+        "message": "[style=control]在任何可建築的地面按滑鼠左鍵[/style]以開始建築指令。"
+    },
+    "[style=control]Left click on a [strong]green[/strong] metal spot[/style] to initiate the build command.": {
+        "message": "[style=control]在[strong]綠色[/strong]金屬[/style]上按滑鼠左鍵以開始建築指令。"
+    },
+    "[style=control]Left click on the commander[/style] to select it.": {
+        "message": "[style=control]在指揮官上按滑鼠左鍵[/style]以選擇。"
+    },
+    "[style=control]Left click on the energy plant[/style] in the build bar at the bottom of the screen.": {
+        "message": "在螢幕下方建造列[style=control]的能源廠[/style]上按滑鼠左鍵。"
+    },
+    "[style=control]Left click on the metal extractor[/style] in the build bar at the bottom of the screen.": {
+        "message": "在螢幕下方建造列條[style=control]的金屬開採器[/style]上按滑鼠左鍵。"
+    },
+    "[style=control]Left click on the reclaim icon[/style] or press [style=control]E[/style].": {
+        "message": "[style=control]在回收圖示[/style]上按滑鼠左鍵或按[style=control]E[/style]。"
+    },
+    "[style=control]Left click[/style] [strong]FIGHT[/strong] to initiate landing in this star system.": {
+        "message": "[style=control]在[/style] [strong]戰鬥[/strong]上按滑鼠左鍵以本星系進行登陸。"
+    },
+    "[style=control]Left click[/style] [strong]JUMP[/strong] to warp to this star system.": {
+        "message": "[style=control]在[/style] [strong]跳躍[/strong]上按滑鼠左鍵以傳送到本星系。"
+    },
+    "[style=control]Left click[/style] [strong]START ANNIHILATION[/strong]": {
+        "message": "[style=control]按滑鼠左鍵[/style] [strong]開始作戰[/strong]"
+    },
+    "[style=control]Left click[/style] inside the green circle indicating the landing zone.": {
+        "message": "[style=control]在[/style]綠色圓圈?按滑鼠左鍵代表登陸區。"
+    },
+    "[style=control]Left click[/style] on the [strong]tank[/strong] icon to issue a build order to the factory.": {
+        "message": "[style=control]在[/style][strong]坦克[/strong]圖示上按滑鼠左鍵以命令工廠開始建造。"
+    },
+    "[style=control]Left click[/style] on the blue Atlas Titan to select it.": {
+        "message": "[style=control]在[/style] 藍色的阿特拉斯泰坦上按滑鼠左鍵進行選擇。"
+    },
+    "[style=control]Left click[/style] on the commander to select it.": {
+        "message": "[style=control]在[/style]指揮官上按滑鼠左鍵進行選擇。"
+    },
+    "[style=control]Left click[/style] on the connected star system with the orange highlight to continue.": {
+        "message": "[style=control]在[/style]橘色的相連星系上按滑鼠左鍵以繼續。"
+    },
+    "[style=control]Left click[/style] on the energy plant icon on the build bar.": {
+        "message": "在建造列[style=control]的能源廠圖示[/style]上按滑鼠左鍵。"
+    },
+    "[style=control]Left click[/style] the next star system to select it.": {
+        "message": "[style=control]在[/style]下一個星系上按滑鼠左鍵進行選擇。"
+    },
+    "[style=control]Load the advanced fabrication unit onto the Astraeus.[/style]": {
+        "message": "[style=control]將高階建築單位裝進亞崔斯軌道運輸機。[/style]"
+    },
+    "[style=control]Press N[/style] to reorient the planet, north up.": {
+        "message": "[style=control]按N鍵[/style]以將視角恢復北方朝上的原位。"
+    },
+    "[style=control]Press alt + 1[/style] to return your camera to the saved anchor spot.": {
+        "message": "[style=control]按alt + 1[/style] 將攝影機恢復到你儲存的視角。"
+    },
+    "[style=control]Press shift + 1[/style] to save a camera anchor.": {
+        "message": "[style=control]按 shift + 1[/style] 儲存一個攝影機視角。"
+    },
+    "[style=control]Queue 5 attack units.[/style]": {
+        "message": "[style=control]排序5個攻擊單位。[/style]"
+    },
+    "[style=control]Right click[/style] on the unit icon to remove it from the queue.": {
+        "message": "[style=control]在[/style]單位圖示上按滑鼠左鍵可將該單位從佇列中移除。"
+    },
+    "[style=control]Scroll the mouse wheel[/style] to control the camera zoom level.": {
+        "message": "[style=control]轉動滑鼠滾輪[/style]以控制攝影機縮放程度。"
+    },
+    "[style=control]Select a unit and left click the patrol icon[/style], or press [style=control]P[/style].": {
+        "message": "[style=control]選擇一個單位並在巡邏圖示[/style] 上按滑鼠左鍵，或按[style=control]P[/style]。"
+    },
+    "[style=control]Select all the factories[/style], [style=control]order them all to construct units[/style] then [style=control]click on the continuous icon[/style], or press [style=control]L[/style], to tell the factory to loop its build queue.": {
+        "message": "[style=control]選擇所有工廠[/style]，[style=control]命令他們建造單位[/style]然後[style=control]按一下連續圖示[/style]，或按[style=control]L[/style]指示工廠重複其建築佇列。"
+    },
+    "[style=control]Select another fabrication unit.[/style]": {
+        "message": "[style=control]選擇另外一個製造單位。[/style]"
+    },
+    "[style=control]Select any fabrication unit[/style] and [style=control]right click[/style] on the factory that is actively building.": {
+        "message": "[style=control]選擇任何製造單位[/style]並[style=control]按滑鼠右鍵[/style]其正在建造的工廠。"
+    },
+    "[style=control]Select landing zone 1 on the Tropical Planet 'Annihilation'[/style] and start the annihilation.": {
+        "message": "[style=control]點擊熱帶星球'Annihilation'的登陸區1 [/style]並開始作戰。"
+    },
+    "[style=control]Select the [strong]vehicle factory[/strong][/style].": {
+        "message": "[style=control]選擇[strong]載具工廠[/strong][/style]。"
+    },
+    "[style=control]Select the commander[/style] and [style=control]issue an order[/style] to build a [strong]vehicle factory[/strong].": {
+        "message": "[style=control]選擇指揮官[/style]並[style=control]下命令[/style]建築[strong]載具工廠[/strong]。"
+    },
+    "[style=control]Select the commander[/style] and [style=control]left click[/style] on the metal extractor icon in the build bar.": {
+        "message": "[style=control]選擇指揮官[/style]並[style=control]在[/style]建造列的金屬開採器上按滑鼠左鍵。"
+    },
+    "[style=control]Select your landing zone[/style] and start the annihilation.": {
+        "message": "[style=control]選擇你的登陸區[/style]並開始作戰。"
+    },
+    "[style=control]Shift + left click[/style] to queue up five units at a time.": {
+        "message": "[style=control]Shift + 按滑鼠左鍵[/style]可以一次排列五個單位。"
+    },
+    "[style=control]Zoom in on the ice planet to watch the annihilation.[/style]": {
+        "message": "[style=control]將視角拉近至冰凍星球觀看該戰役。[/style]"
+    },
+    "[style=control]Zoom in to the planet[/style] and [style=control]pan to the green circle landing zone.[/style]": {
+        "message": "[style=control]放大該星球[/style]並 [style=control]將視角轉到綠色登陸區。[/style]"
+    },
+    "[style=control]Zoom out to the star system view[/style] and [style=control]zoom in on the moon.[/style]": {
+        "message": "[style=control]將視角拉遠至星系圖[/style]並[style=control]拉近至月球。[/style]"
+    }
+}

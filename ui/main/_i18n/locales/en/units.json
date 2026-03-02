@@ -1,0 +1,20 @@
+{
+    "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets.": {
+        "message": "Assault Tank - Devastating damage with heavy armour. Vulnerable to flanking. Attacks land and sea targets."
+    },
+    "Flame Tank - Short range, heavy armored vehicle.": {
+        "message": "Flame Tank - Short range, heavy armoured vehicle."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle.": {
+        "message": "Heavy Tank - Advanced short range, heavily armoured vehicle."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "Heavy Tank - Advanced short range, heavily armoured vehicle with mobile radar."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover."
+    }
+}

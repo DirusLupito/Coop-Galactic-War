@@ -1,0 +1,32 @@
+{
+    "Advanced Fabbers come from Advanced Factories and can build both basic and advanced structures": {
+        "message": "高级建造兵由高级工厂建造，可以建造基础和高级建筑"
+    },
+    "Basic Fabbers build basic structures and Advanced Factories": {
+        "message": "基础建造兵可建造基础结构和高级工厂"
+    },
+    "Fabbers are built by Vehicle, Air, Naval, Bot, and Orbital Factories": {
+        "message": "建造兵由车辆、空军、海军、机器人和轨道工厂建造"
+    },
+    "Fabrication Units": {
+        "message": "建造兵单位"
+    },
+    "Hold Shift + Left Click to queue up multiple build orders": {
+        "message": "按住 Shift + 鼠标左键将多个建造指令放入队列"
+    },
+    "Left Click units on Build Bar and select a space in the world to build": {
+        "message": "鼠标左键点击建造栏上的单位，然后在世界中选择一个用于建造的空间"
+    },
+    "PA Guide: Fabbers": {
+        "message": "PA 指南：建造兵"
+    },
+    "Select a Fabber to get access to Build Bar": {
+        "message": "选择一个建造兵来访问建造栏"
+    },
+    "[style=text_callout]Control + left click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Control + 鼠标左键[/style]点击一个单位，以使工厂在继续余下的建造队列前生产一个此种单位。"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]鼠标右键点击[/style]或[style=text_callout]Shift + 鼠标右键点击[/style]单位来减少队列中单位的数量"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "Draw": {
+        "message": "رسم"
+    },
+    "GAME SUMMARY": {
+        "message": "ملخص اللعبة"
+    },
+    "In Progress": {
+        "message": "قيد الإنجاز"
+    },
+    "Retrieving Stats...": {
+        "message": "استرداد الإحصائيات..."
+    },
+    "Total Units": {
+        "message": "مجموع الوحدات"
+    },
+    "Winner:": {
+        "message": "الفائز:"
+    },
+    "Winners:": {
+        "message": "الفائزون:"
+    }
+}

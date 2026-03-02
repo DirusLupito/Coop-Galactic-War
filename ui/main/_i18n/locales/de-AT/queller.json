@@ -1,0 +1,47 @@
+{
+    "Q-Bronze": {
+        "message": "Q-Bronze"
+    },
+    "Q-Casual": {
+        "message": "Q-Casual"
+    },
+    "Q-Gold": {
+        "message": "Q-Gold"
+    },
+    "Q-Platinum": {
+        "message": "Q-Platin"
+    },
+    "Q-Silver": {
+        "message": "Q-Silber"
+    },
+    "Q-Uber": {
+        "message": "Q-Uber"
+    },
+    "Q-Uber 1v1": {
+        "message": "Q-Uber 1v1"
+    },
+    "Q-Uber Bot": {
+        "message": "Q-Uber Bot"
+    },
+    "Q-Uber Free-For-All": {
+        "message": "Q-Uber Jeder für sich"
+    },
+    "Q-Uber Platoon": {
+        "message": "Q-Uber Zug"
+    },
+    "Q-Uber Rush": {
+        "message": "Q-Uber Rush"
+    },
+    "Q-Uber Tank": {
+        "message": "Q-Uber Panzer"
+    },
+    "Q-Uber Turtle": {
+        "message": "Q-Uber Schildkröte"
+    },
+    "Queller AI": {
+        "message": "Queller KI"
+    },
+    "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion.": {
+        "message": "von Quitch. Meinen Schwierigkeiten wird ein Q vorangestellt. Mache die KI-Teams nicht größer als menschliche Teams, sondern erhöhe stattdessen die Schwierigkeit oder die Wirtschaftlichkeitsrate. Ich unterstütze die Legion Expansion."
+    }
+}

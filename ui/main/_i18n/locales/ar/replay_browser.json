@@ -1,0 +1,50 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+__عدد الحواسيب__AI)"
+    },
+    "(Updating...)": {
+        "message": "(...تحديث)"
+    },
+    "(no info available)": {
+        "message": "(لا توجد معلومات)"
+    },
+    "Duration": {
+        "message": "المدة"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "فشل في إستعادة قائمة الإعادة"
+    },
+    "Game": {
+        "message": "لعبة"
+    },
+    "Lobby Id": {
+        "message": "معرف الردهة"
+    },
+    "Longest Game Duration": {
+        "message": "أطول مدة لعب"
+    },
+    "Most Recent": {
+        "message": "جديد الأحداث"
+    },
+    "Replays": {
+        "message": "إعادة المشاهدة"
+    },
+    "Returning to Main Menu": {
+        "message": "جاري العودة للقائمة الرئيسة"
+    },
+    "Search": {
+        "message": "إبحث"
+    },
+    "Sorted By": {
+        "message": "فرز حسب"
+    },
+    "View": {
+        "message": "مشاهدة"
+    },
+    "Watch Replay": {
+        "message": "مشاهدة الإعادة"
+    },
+    "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__": {
+        "message": "__gwClientNames__: Galactic War \"__gwWarName__\" (turn __gwTurn__, __gwSystemName__), vs. __gwAiArmies__"
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "Build Efficiency": {
+        "message": "Baueffizienz"
+    },
+    "CLOSE": {
+        "message": "SCHLIEßEN"
+    },
+    "Command Rate": {
+        "message": "Kommandorate"
+    },
+    "Draw": {
+        "message": "Aus Lager"
+    },
+    "Energy Demand": {
+        "message": "Energiebedarf"
+    },
+    "Energy Production": {
+        "message": "Energiegenerierung"
+    },
+    "Energy Wasted": {
+        "message": "Verschwendete Energie"
+    },
+    "GAME SUMMARY": {
+        "message": "SPIELZUSAMMENFASSUNG"
+    },
+    "In Progress": {
+        "message": "Im Aufbau"
+    },
+    "Metal Demand": {
+        "message": "Metallbedarf"
+    },
+    "Metal Destruction Rate": {
+        "message": "Metall-Zerstörungsrate"
+    },
+    "Metal Loss Rate": {
+        "message": "Metall-Verlustrate"
+    },
+    "Metal Production": {
+        "message": "Metallproduktion"
+    },
+    "Metal Wasted": {
+        "message": "Verschwendetes Metall"
+    },
+    "Retrieving Stats...": {
+        "message": "Lädt Statistiken..."
+    },
+    "Total Units": {
+        "message": "Gesamteinheiten"
+    },
+    "Unit Build Rate": {
+        "message": "Baurate pro Einheit"
+    },
+    "Unit Destruction Rate": {
+        "message": "Zerstörungsrate pro Einheit"
+    },
+    "Unit Loss Rate": {
+        "message": "Verlustrate pro Einheit"
+    },
+    "Units In Combat": {
+        "message": "Einheiten im Kampf"
+    },
+    "Units: Fabricators": {
+        "message": "Einheiten: Fabrikatoren"
+    },
+    "Units: Factory": {
+        "message": "Einheiten: Fabrik"
+    },
+    "Units: Mobile": {
+        "message": "Einheiten: Mobil"
+    },
+    "Winner:": {
+        "message": "Sieger:"
+    },
+    "Winners:": {
+        "message": "Sieger:"
+    }
+}

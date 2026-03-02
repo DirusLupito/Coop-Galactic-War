@@ -1,0 +1,26 @@
+{
+    "CANCEL": {
+        "message": "CANCELAR"
+    },
+    "Delete": {
+        "message": "DELETAR"
+    },
+    "Delete this system?": {
+        "message": "Apagar esse sistema?"
+    },
+    "Load System": {
+        "message": "Carregar Sistema"
+    },
+    "New system": {
+        "message": "Novo sistema"
+    },
+    "SHOW PLANETS": {
+        "message": "MOSTRAR PLANETAS"
+    },
+    "SHOW SYSTEMS": {
+        "message": "MOSTRAR SISTEMAS"
+    },
+    "System Designer": {
+        "message": "Projetar Sistema"
+    }
+}

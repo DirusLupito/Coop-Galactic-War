@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP 好战"
+    },
+    "AIP Air": {
+        "message": "AIP 空军"
+    },
+    "AIP Bot": {
+        "message": "AIP 机器人"
+    },
+    "AIP Cautious": {
+        "message": "AIP 谨慎"
+    },
+    "AIP Defender": {
+        "message": "AIP 防卫者"
+    },
+    "AIP Economist": {
+        "message": "AIP 经济学家"
+    },
+    "AIP Fabber": {
+        "message": "AIP 建造兵"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP 快速科技"
+    },
+    "AIP Foundation": {
+        "message": "AIP 溯源教会"
+    },
+    "AIP Land": {
+        "message": "AIP 陆军"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP 机器军团"
+    },
+    "AIP Low Tech": {
+        "message": "AIP 低科技"
+    },
+    "AIP Naval": {
+        "message": "AIP 海军"
+    },
+    "AIP Orbital": {
+        "message": "AIP 轨道"
+    },
+    "AIP Random": {
+        "message": "AIP 随机"
+    },
+    "AIP Revenants": {
+        "message": "AIP 幽魂"
+    },
+    "AIP Rush": {
+        "message": "AIP 突袭"
+    },
+    "AIP Swarm": {
+        "message": "AIP 虫群"
+    },
+    "AIP Synchronous": {
+        "message": "AIP 共步卫军"
+    },
+    "AIP Tank": {
+        "message": "AIP 坦克"
+    },
+    "AIP Turtle": {
+        "message": "AIP 乌龟"
+    },
+    "AIP Amphibious": {
+        "message": "AIP 两栖"
+    },
+    "AIP All-terrain": {
+        "message": "AIP 全地形"
+    },
+    "AIP Artillery": {
+        "message": "AIP 火炮"
+    },
+    "AIP Assault": {
+        "message": "AIP 突击"
+    },
+    "AIP Boomer": {
+        "message": "AIP 轰炸"
+    },
+    "AIP Fortress": {
+        "message": "AIP 堡垒"
+    },
+    "AIP Heavy": {
+        "message": "AIP 重型"
+    },
+    "AIP Infernodier": {
+        "message": "AIP 炼狱"
+    },
+    "AIP Micro": {
+        "message": "AIP 微型"
+    },
+    "AIP Nuker": {
+        "message": "AIP 核弹"
+    },
+    "AIP Raider": {
+        "message": "AIP 突袭"
+    },
+    "AIP Ranked": {
+        "message": "AIP 排位"
+    },
+    "AIP Sniper": {
+        "message": "AIP 狙击手"
+    }
+}

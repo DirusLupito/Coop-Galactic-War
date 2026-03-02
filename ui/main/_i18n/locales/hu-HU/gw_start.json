@@ -1,0 +1,89 @@
+{
+    "ABSURD": {
+        "message": "ABSZURD"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Semmisítsd meg az ellenfeleidet az elfoglalt naprendszerekben, hogy begyűjthesd a Technológiájukat. "
+    },
+    "Archived Wars": {
+        "message": "Tárolt Háborúk"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Válassz egy felszerelést, hogy különböző technológiai konfigurációkat adhass a Parancsnokodnak."
+    },
+    "Commander": {
+        "message": "Parancsnok"
+    },
+    "Difficulty:": {
+        "message": "Nehézség:"
+    },
+    "EPIC": {
+        "message": "EPIKUS"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Kutass át gazdátlan naprendszereket, hogy szerezhess új Technológiákat."
+    },
+    "Faction": {
+        "message": "Frakció"
+    },
+    "Go to War": {
+        "message": "Indulás a Háborúba"
+    },
+    "HARD": {
+        "message": "NEHÉZ"
+    },
+    "How to Play": {
+        "message": "Súgó"
+    },
+    "LARGE": {
+        "message": "NAGY"
+    },
+    "LOCKED": {
+        "message": "ZÁROLVA"
+    },
+    "Loadout": {
+        "message": "Felszerelés"
+    },
+    "MEDIUM": {
+        "message": "KÖZEPES"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Haladj naprendszerről naprendszerre és gyűjts Technológiákat, valamint ezek segítségével hajtsd uralmad alá az ellenséges frakciók vezetőit és az egész galaxist!"
+    },
+    "Name": {
+        "message": "Név"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Naprenszerek közötti ugrálással navigáld a galaxist."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Új adatbankokat - melyeket Technológiák tárolására használhatsz - a naprendszerek felkutatásával szerezhetsz."
+    },
+    "RELENTLESS": {
+        "message": "KÖNYÖRTELEN"
+    },
+    "SMALL": {
+        "message": "KICSI"
+    },
+    "Seed Value": {
+        "message": "Kezdőérték"
+    },
+    "Setup": {
+        "message": "Beállítás"
+    },
+    "Size:": {
+        "message": "Méret:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Néhány naprendszerben elrejtett Parancsnoki felszerelések vannak. Szerezd meg őket későbbi Galaktikus Háborúk lebonyolításához."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Törölhetsz Technológiákat, hogy helyet csinálj az újabbaknak. A törölt vagy elutasított Technológiák nem állíthatóak már vissza a Galaktikus Háborúba."
+    },
+    "Tip:": {
+        "message": "Tipp:"
+    },
+    "Tips": {
+        "message": "Tippek"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "(+ __aiCount__ AI)": {
+        "message": "(+ __yzadedi__ YZ)"
+    },
+    "(Updating...)": {
+        "message": "(Güncelleniyor...)"
+    },
+    "(no info available)": {
+        "message": "(bilgi mevcut değil)"
+    },
+    "FAILED TO RETRIEVE REPLAY LIST": {
+        "message": "TEKRAR LİSTESİ ALINAMADI"
+    },
+    "Replays": {
+        "message": "TEKRARLAR"
+    },
+    "Returning to Main Menu": {
+        "message": "Ana Menüye Geri Dönülüyor"
+    },
+    "Search": {
+        "message": "Ara"
+    }
+}

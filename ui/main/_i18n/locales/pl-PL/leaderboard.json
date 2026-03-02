@@ -1,0 +1,128 @@
+{
+    "1 day ago": {
+        "message": "1 dzień temu"
+    },
+    "1 hour ago": {
+        "message": "1 godzinę temu"
+    },
+    "1 minute ago": {
+        "message": "1 minutę temu"
+    },
+    "1 second ago": {
+        "message": "1 sekundę temu"
+    },
+    "1 week ago": {
+        "message": "1 tydzień temu"
+    },
+    "Bronze": {
+        "message": "Brązowy"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "Nie udało się wczytać tego poziomu klasyfikacji."
+    },
+    "Games": {
+        "message": "Gry"
+    },
+    "Gold": {
+        "message": "Złoty"
+    },
+    "Inactive": {
+        "message": "Nieaktywny"
+    },
+    "Just now": {
+        "message": "W tej chwili"
+    },
+    "Last Match Played": {
+        "message": "Ostatni rozegrany mecz"
+    },
+    "Last match played": {
+        "message": "Ostatni rozegrany mecz"
+    },
+    "Leaderboards": {
+        "message": "Klasyfikacja"
+    },
+    "Level rank": {
+        "message": "Pozycja ligowa"
+    },
+    "Loading Leaderboard": {
+        "message": "Wczytywanie klasyfikacji"
+    },
+    "Match games played": {
+        "message": "Rozegrane mecze"
+    },
+    "No ranked players at this level.": {
+        "message": "Brak sklasyfikowanych graczy na tym poziomie."
+    },
+    "No recent matches played.": {
+        "message": "Nie rozegrano ostatnio żadnych meczów."
+    },
+    "One ranked player at this level.": {
+        "message": "Jeden sklasyfikowany gracz na tym poziomie."
+    },
+    "Platinum": {
+        "message": "Platynowy"
+    },
+    "Play ranked match": {
+        "message": "Zagraj w meczu rankingowym"
+    },
+    "Player": {
+        "message": "Gracz"
+    },
+    "Provisional": {
+        "message": "Tymczasowa"
+    },
+    "Rank": {
+        "message": "Pozycja"
+    },
+    "Rating": {
+        "message": "Punktacja"
+    },
+    "Season ends __date__": {
+        "message": "Koniec sezonu __date__"
+    },
+    "Silver": {
+        "message": "Srebrny"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "Ten poziom klasyfikacji jest aktualnie pusty."
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unranked": {
+        "message": "Niesklasyfikowany"
+    },
+    "Watch Replay": {
+        "message": "Obejrzyj powtórkę"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "Musisz rozegrać __number__ meczów rankingowych, by zostać sklasyfikowanym"
+    },
+    "Your rank": {
+        "message": "Twoja pozycja"
+    },
+    "__n__ days ago": {
+        "message": "__n__ d temu"
+    },
+    "__n__ hours ago": {
+        "message": "__n__ h temu"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__ m temu"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__ s temu"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__ tyg. temu"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "__num_players__ sklasyfikowanych graczy na tym poziomie."
+    },
+    "Star": {
+        "message": "Gwiazda"
+    },
+    "View Replays": {
+        "message": "Obejrzyj powtórki"
+    }
+}

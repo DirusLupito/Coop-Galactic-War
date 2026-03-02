@@ -1,0 +1,137 @@
+{
+    "ABSURD": {
+        "message": "Абсурд"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Аннигилируйте врагов в занятых ими системах, чтобы присвоить принадлежащие им Технологии."
+    },
+    "Archived Wars": {
+        "message": "Архивные Войны"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Выберите комплект стартовых технологий."
+    },
+    "Commander": {
+        "message": "Коммандер"
+    },
+    "Difficulty:": {
+        "message": "Сложность:"
+    },
+    "EASY": {
+        "message": "ЛЕГКО"
+    },
+    "EPIC": {
+        "message": "Эпический"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Исследуйте другие системы, чтобы получать новые технологии."
+    },
+    "Faction": {
+        "message": "Фракции"
+    },
+    "Galactic War": {
+        "message": "Галактическая Война"
+    },
+    "Game name": {
+        "message": "Название игры"
+    },
+    "Go to War": {
+        "message": "На Войну!"
+    },
+    "HARD": {
+        "message": "Тяжело"
+    },
+    "Hardcore": {
+        "message": "Очень тяжело"
+    },
+    "How To Play": {
+        "message": "Как играть"
+    },
+    "How to Play": {
+        "message": "Как играть"
+    },
+    "LARGE": {
+        "message": "Огромный"
+    },
+    "LOCKED": {
+        "message": "ЗАБЛОКИРОВАНО"
+    },
+    "Loadout": {
+        "message": "Снаряжение"
+    },
+    "MEDIUM": {
+        "message": "Средний"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Перемещайтесть между системами и собирайте технологии. Используйте их, чтобы победить противников и захватить галактику!"
+    },
+    "NORMAL": {
+        "message": "Нормальный"
+    },
+    "Name": {
+        "message": "Имя"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Передвигайтесь по галактической карте, прыгая из системы в систему."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Новые ячейки данных для хранилища Технологий могут быть найдены при исследовании систем."
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "Постоянная смерть. Не возможно начать заново, если ваш коммандер уничтожен."
+    },
+    "RELENTLESS": {
+        "message": "НЕУМОЛИМЫЙ"
+    },
+    "Random number for generating new galaxy": {
+        "message": "Случайное число для генерации новой галактики"
+    },
+    "SMALL": {
+        "message": "Небольшой"
+    },
+    "Saved Games": {
+        "message": "Сохраненные игры"
+    },
+    "Seed Value": {
+        "message": "Начальное Значение"
+    },
+    "Setup": {
+        "message": "Настройка"
+    },
+    "Size:": {
+        "message": "Размер:"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "Некоторые коммандеры сражаются, потому что это все, что они знают, в то время как другие хотят узнать о своем происхождении. Расхождения в мотивации и вероисповедании привели их на грань войны, которая может погрузить галактику в хаос на много веков вперед."
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Некоторые системы могут скрывать снаряжение Коммандеров. Находите их для использования в последующих Галактических Войнах."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Технология может быть удалена, чтобы освободить место для загрузки новых технологий. Удаленные и непринятые технологии будут утеряны до конца Галактической Войны."
+    },
+    "The Commanders": {
+        "message": "Коммандеры"
+    },
+    "The Progenitors": {
+        "message": "Прародители"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "Коммандеры спали на протяжении миллионов лет. Когда они пробудились, от прежней цивилизации остались лишь слабые отголоски. Теперь эти древние военные машины сражаются по всей галактике, следуя единственным приказам, которые они получили много лет назад."
+    },
+    "Tip:": {
+        "message": "Совет:"
+    },
+    "Tips": {
+        "message": "Советы"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "War - __date__": {
+        "message": "Война - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "Наверняка известно лишь то, что галактику некогда населяла огромная империя, которая была уничтожена в ходе конфликта. Коммандеры называют этих существ Прародителями. Многие коммандеры полагают, что ответ на вопрос их происхождения кроется среди руин этой некогда великой цивилизации."
+    }
+}

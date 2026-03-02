@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "Na zajętych złożach metalu można stawiać kolejne ekstraktory podstawowe lub zaawansowane"
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "Buduj ekstraktory metalu na złożach metalu"
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "Buduj magazyny metalu, by poszerzyć ilość dostępnych zasobów"
+    },
+    "Metal Resource": {
+        "message": "Zasoby metalu"
+    },
+    "Metal is required for building units and structures": {
+        "message": "Metal jest wymagany do budowy jednostek i struktur"
+    },
+    "PA Guide: Metal": {
+        "message": "Przewodnik PA: Metal"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "Wybierz fabbera i kliknij [style=text_callout]ikonę Wybuduj ekstraktor metalu[/style]."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "[style=text_callout]Kliknij LPM i przeciągnij kursor[/style], by zaznaczyć obszar budowy na wielu złożach metalu."
+    }
+}

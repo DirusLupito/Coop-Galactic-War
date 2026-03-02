@@ -1,0 +1,974 @@
+{
+    "ALL": {
+        "message": "ВСЕ"
+    },
+    "ALWAYS": {
+        "message": " ВСЕГДА"
+    },
+    "AUTO": {
+        "message": "АВТ."
+    },
+    "Active Product": {
+        "message": "Активный продукт"
+    },
+    "Ambient Occlusion": {
+        "message": "Непроходимые участки местности"
+    },
+    "Anti-Aliasing": {
+        "message": "Сглаживание"
+    },
+    "Arabic (Community translation)": {
+        "message": "Арабский (перевод сообщества)"
+    },
+    "Audio": {
+        "message": "Аудио"
+    },
+    "Back": {
+        "message": "Назад"
+    },
+    "Build Bar Size": {
+        "message": "Размер панели строительства"
+    },
+    "Build Preview Behavior": {
+        "message": "Предварительный Просмотр Строительства"
+    },
+    "CUSTOM": {
+        "message": "ВЫБОРОЧНО"
+    },
+    "Camera": {
+        "message": "Камера"
+    },
+    "Camera Friction": {
+        "message": "Трение камеры"
+    },
+    "Cancel": {
+        "message": "Отмена"
+    },
+    "Chinese (Simplified)": {
+        "message": "Китайский (упрощенный)"
+    },
+    "Chinese (Traditional)": {
+        "message": "Китайский (традиционный)"
+    },
+    "Chinese, Hong Kong": {
+        "message": "Китайский, Гонконг"
+    },
+    "Classic": {
+        "message": "Классическая"
+    },
+    "Close": {
+        "message": "Закрыть"
+    },
+    "Conflict:": {
+        "message": "Конфликт:"
+    },
+    "Czech (Community translation)": {
+        "message": "Чешский (перевод сообщества)"
+    },
+    "Danish (Community translation)": {
+        "message": "Датский (перевод сообщества)"
+    },
+    "Default": {
+        "message": "По умолчанию"
+    },
+    "Default Audio Device": {
+        "message": "Звуковое устройство по умолчанию"
+    },
+    "Display Mode": {
+        "message": "Режим отображения"
+    },
+    "Dutch": {
+        "message": "Голландский"
+    },
+    "Dutch, Belgium (Community translation)": {
+        "message": "Голландский, Бельгия (перевод сообщества)"
+    },
+    "Edge Scroll Options": {
+        "message": "Настройки краёв прокрутки"
+    },
+    "English": {
+        "message": "Английский"
+    },
+    "English, US": {
+        "message": "Английский, США"
+    },
+    "FOV": {
+        "message": "Поле зрения"
+    },
+    "FULLSCREEN": {
+        "message": "Полноэкранный режим"
+    },
+    "FXAA": {
+        "message": "FXAA"
+    },
+    "Finnish (Community translation)": {
+        "message": "Финский (перевод сообщества)"
+    },
+    "Forward": {
+        "message": "Вперед"
+    },
+    "French": {
+        "message": "Французский"
+    },
+    "GAMEPLAY": {
+        "message": "ГЕЙМПЛЕЙ"
+    },
+    "GUI Size": {
+        "message": "Размер GUI"
+    },
+    "German": {
+        "message": "Немецкий"
+    },
+    "German, Austrian (Community translation)": {
+        "message": "Немецкий, австрийский (перевод сообщества)"
+    },
+    "Graphics": {
+        "message": "Графические настройки"
+    },
+    "HDR": {
+        "message": "HDR"
+    },
+    "HIGH": {
+        "message": "Выс."
+    },
+    "Headlights": {
+        "message": "фары"
+    },
+    "Hungarian (Community translation)": {
+        "message": "Венгерский (перевод сообщества)"
+    },
+    "ICON DISPLAY DISTANCE": {
+        "message": "Дистанция прорисовки иконок юнитов"
+    },
+    "Italian": {
+        "message": "Итальянский"
+    },
+    "Japanese": {
+        "message": "Японский"
+    },
+    "Key Pan Speed": {
+        "message": "Скорость Прокрутки Клавишами"
+    },
+    "Keyboard": {
+        "message": "Клавиатура"
+    },
+    "Korean": {
+        "message": "Корейский"
+    },
+    "LOW": {
+        "message": "НИЗКОЕ"
+    },
+    "Language": {
+        "message": "Язык"
+    },
+    "Local Server": {
+        "message": "Локальный сервер"
+    },
+    "Local Server Multi-threading": {
+        "message": "Многопоточность локального сервера"
+    },
+    "Local server is not available on your configuration.  (64-bit OS required)": {
+        "message": "Локальный сервер недоступен в вашей конфигурации.  (Требуется 64-битная ОС)"
+    },
+    "Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)": {
+        "message": "Локальный сервер не рекомендуется в вашей конфигурации.  (Рекомендуется 4-ядерный процессор и 8 ГБ памяти)."
+    },
+    "Master Volume": {
+        "message": "Общая громкость"
+    },
+    "Mouse Pan Speed": {
+        "message": "Скорость прокрутки мышью"
+    },
+    "Music Volume": {
+        "message": "Громкость музыки"
+    },
+    "NATIVE (100%)": {
+        "message": "РОДНОЙ (100%)"
+    },
+    "NEVER": {
+        "message": "Никогда"
+    },
+    "Norwegian (Community translation)": {
+        "message": "Норвежский (перевод сообщества)"
+    },
+    "OFF": {
+        "message": "Выкл"
+    },
+    "OFF (MOUSELOCK)": {
+        "message": "ВЫКЛ (МЫШЬ ЗАБЛОКИРОВАНА)"
+    },
+    "OFF (NO MOUSELOCK)": {
+        "message": "ВЫКЛ (НЕТ БЛОКИРОВАНИЯ МЫШИ)"
+    },
+    "ON": {
+        "message": "Вкл"
+    },
+    "Orbital Shell": {
+        "message": "Орбитальный Снаряд"
+    },
+    "Order Preview Behavior": {
+        "message": "Предварительный Просмотр Приказов"
+    },
+    "Pole Lock": {
+        "message": "Заблокировать Полюс"
+    },
+    "Polish": {
+        "message": "Польский"
+    },
+    "Portuguese, Brazil (Community translation)": {
+        "message": "Португальский, Бразилия (перевод сообщества)"
+    },
+    "Quality Preset": {
+        "message": "Предустановка Качества"
+    },
+    "RANGE DEPENDENT": {
+        "message": "ЗАВИСИТ ОТ ОТДАЛЕНИЯ"
+    },
+    "Resolution Scaling": {
+        "message": "Масштаб разрешения"
+    },
+    "Restore All Defaults": {
+        "message": "Восстановить все настройки по умолчанию"
+    },
+    "Restore Tab Defaults": {
+        "message": "Восстановить вкладки по умолчанию"
+    },
+    "Romanian (Community translation)": {
+        "message": "Румынский (перевод сообщества)"
+    },
+    "Russian": {
+        "message": "Русский"
+    },
+    "SELECTED": {
+        "message": "ВЫБРАНО"
+    },
+    "SERVER": {
+        "message": "Сервер"
+    },
+    "SHIFT": {
+        "message": "ПЕРЕМЕЩАТЬ"
+    },
+    "SUBSAMPLE (50%)": {
+        "message": "ПОДВЫБОРКИ (50%)"
+    },
+    "SUBSAMPLE (75%)": {
+        "message": "ПОДВЫБОРКИ (75%)"
+    },
+    "SUPERSAMPLE (110%)": {
+        "message": "СУПЕРОБРАЗЕЦ (110%)"
+    },
+    "SUPERSAMPLE (150%)": {
+        "message": "СУПЕРОБРАЗЕЦ (150%)"
+    },
+    "SUPERSAMPLE (175%)": {
+        "message": "СУПЕРОБРАЗЕЦ (175%)"
+    },
+    "Save": {
+        "message": "Сохранить"
+    },
+    "Server": {
+        "message": "Сервер"
+    },
+    "Settings": {
+        "message": "Настройки"
+    },
+    "Shadows": {
+        "message": "Тени"
+    },
+    "Show Build Previews": {
+        "message": "Предпросмотр очереди строительства"
+    },
+    "Show Metal Spot Icons": {
+        "message": "Показ иконок расположений металла"
+    },
+    "Show Order Previews": {
+        "message": "Предпросмотр очереди приказов"
+    },
+    "Show Stat Bars": {
+        "message": "Показ панели статистики"
+    },
+    "Show Unit Icons": {
+        "message": "Показ иконок юнитов"
+    },
+    "Show/Hide game stats": {
+        "message": "Показать/Скрыть статистику игры"
+    },
+    "Show/Hide pip": {
+        "message": "Показать/Скрыть КВК"
+    },
+    "Skybox": {
+        "message": "Skybox"
+    },
+    "Sound Effects Volume": {
+        "message": "Громкость звуковых эффектов"
+    },
+    "Spanish": {
+        "message": "Испанский"
+    },
+    "Swedish (Community translation)": {
+        "message": "Шведский (перевод сообщества)"
+    },
+    "Turkish (Community translation)": {
+        "message": "Турецкий (перевод сообщества)"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "USE CUSTOM NAME": {
+        "message": "ИСПОЛЬЗОВАТЬ ПОЛЬЗОВАТЕЛЬСКОЕ ИМЯ"
+    },
+    "USE STEAM NAME": {
+        "message": "ИСПОЛЬЗОВАТЬ ИМЯ В STEAM"
+    },
+    "Ukrainian (Community translation)": {
+        "message": "Украинский (перевод сообщества)"
+    },
+    "User": {
+        "message": "Пользователь"
+    },
+    "User Interface": {
+        "message": "Пользовательский интерфейс"
+    },
+    "Username Policy": {
+        "message": "Политика в отношении имен пользователей"
+    },
+    "VALUE DEPENDENT": {
+        "message": "ЗАВИСИТ ОТ ЗНАЧЕНИЯ"
+    },
+    "Virtual Texture": {
+        "message": "Качество текстур "
+    },
+    "Voice Volume": {
+        "message": "Громкость голоса"
+    },
+    "WINDOWED": {
+        "message": "Оконный"
+    },
+    "Zoom Speed": {
+        "message": "Скорость приближения/отдаления"
+    },
+    "abort": {
+        "message": "Отмена"
+    },
+    "add height adjustment": {
+        "message": "добавить регулировку высоты"
+    },
+    "add landing zone": {
+        "message": "добавить зону высадки"
+    },
+    "add metal spot": {
+        "message": "добавить залежи металла"
+    },
+    "add/remove": {
+        "message": "добавить/удалить"
+    },
+    "alerts": {
+        "message": "оповещения"
+    },
+    "align to pole": {
+        "message": "выровнять до полюса"
+    },
+    "all chat": {
+        "message": "весь чат"
+    },
+    "alt fire": {
+        "message": "Альт. огонь"
+    },
+    "assist": {
+        "message": "помогать"
+    },
+    "attack": {
+        "message": "Атака"
+    },
+    "bug report": {
+        "message": "отчет об ошибке"
+    },
+    "build": {
+        "message": "Строения"
+    },
+    "build avatar": {
+        "message": " построить аватар"
+    },
+    "build avatar factory": {
+        "message": " построить аватар фабрику"
+    },
+    "build bar groups": {
+        "message": "построить значки групп"
+    },
+    "build item __item_number__": {
+        "message": "построить предмет __item_number__"
+    },
+    "build items": {
+        "message": "построить элементы"
+    },
+    "build loop": {
+        "message": "Цикл производства"
+    },
+    "build once": {
+        "message": "построить единажды"
+    },
+    "build orders": {
+        "message": "заказы строительства"
+    },
+    "camera": {
+        "message": "камера"
+    },
+    "capture anchor": {
+        "message": "закрепить якорь"
+    },
+    "capture anchor __anchor_number__": {
+        "message": "закрепить якорь __anchor_number__"
+    },
+    "capture group __group_number__": {
+        "message": "закрепить группу __group_number__"
+    },
+    "chronocam": {
+        "message": "Хронокамера"
+    },
+    "communication": {
+        "message": "Связь"
+    },
+    "copy selected": {
+        "message": "копировать выбранное"
+    },
+    "copy to pip": {
+        "message": "Перенести в КВК"
+    },
+    "copy unit": {
+        "message": "Скопировать юнит"
+    },
+    "crash": {
+        "message": "Ошибка с треском"
+    },
+    "decrease camera pan speed": {
+        "message": "Снизить скорость перемещения камеры"
+    },
+    "decrease sim speed": {
+        "message": "уменьшить скорость сим."
+    },
+    "delete selected": {
+        "message": "удалить выбранное"
+    },
+    "dev mode": {
+        "message": "Режим разработки"
+    },
+    "direction": {
+        "message": "Направление"
+    },
+    "disable navigation debug info": {
+        "message": "отключить информацию протоколирования навигации"
+    },
+    "disconnect twin": {
+        "message": "отключить двойную"
+    },
+    "dismiss alert notification": {
+        "message": "отключить оповещения"
+    },
+    "enable navigation debug info": {
+        "message": "включить информацию протоколирования навигации"
+    },
+    "energy off": {
+        "message": "энергия выкл"
+    },
+    "energy on": {
+        "message": "энергия ВКЛ"
+    },
+    "fire at will": {
+        "message": "Огонь по усмотрению"
+    },
+    "free move backward": {
+        "message": "Свободное движение назад"
+    },
+    "free move down": {
+        "message": "свободное передвижение вниз"
+    },
+    "free move forward": {
+        "message": "свободное перемещение вперед"
+    },
+    "free move left": {
+        "message": "свободно перемещение влево"
+    },
+    "free move right": {
+        "message": "свободное перемещение вправо"
+    },
+    "free move up": {
+        "message": "свободное перемещение вверх"
+    },
+    "free movement": {
+        "message": "свободное передвижение"
+    },
+    "free pitch backward": {
+        "message": "свободный шаг назад"
+    },
+    "free pitch forward": {
+        "message": "свободный шаг вперед"
+    },
+    "free roll left": {
+        "message": "свободное вращение влево"
+    },
+    "free roll right": {
+        "message": "свободное вращение вправо"
+    },
+    "free yaw left": {
+        "message": "свободное отклонение влево"
+    },
+    "free yaw right": {
+        "message": "свободное отклонение вправо"
+    },
+    "free zoom in": {
+        "message": "Свободное приближение"
+    },
+    "free zoom out": {
+        "message": "Свободный отъезд камеры"
+    },
+    "general": {
+        "message": "Общее"
+    },
+    "grab csg": {
+        "message": "взять csg"
+    },
+    "hold fire": {
+        "message": "Сдерживать огонь"
+    },
+    "hold position": {
+        "message": "Удерживать позицию"
+    },
+    "increase camera pan speed": {
+        "message": "Увеличить скорость перемещения камеры"
+    },
+    "increase sim speed": {
+        "message": "увеличить скорость сим."
+    },
+    "jump to next planet": {
+        "message": "К следующей планете"
+    },
+    "jump to previous planet": {
+        "message": "К предыдущей планете"
+    },
+    "last pseudo frame": {
+        "message": "Последний псевдо кадр"
+    },
+    "load": {
+        "message": "загрузка"
+    },
+    "maneuver": {
+        "message": "Манёвр"
+    },
+    "manipulate": {
+        "message": "манипулировать"
+    },
+    "medium-quality": {
+        "message": "СРЕДНЕЕ"
+    },
+    "mode": {
+        "message": "режим"
+    },
+    "modes": {
+        "message": "Режимы"
+    },
+    "move": {
+        "message": "двигаться"
+    },
+    "move csg down": {
+        "message": "переместить csg вниз"
+    },
+    "move csg up": {
+        "message": "переместить csg вверх"
+    },
+    "move down": {
+        "message": "двигаться вниз"
+    },
+    "move left": {
+        "message": "двигаться влево"
+    },
+    "move right": {
+        "message": "двигаться вправо"
+    },
+    "move up": {
+        "message": "движение вверх"
+    },
+    "navigate back/exit": {
+        "message": "вернуться обратно/выход"
+    },
+    "next pseudo frame": {
+        "message": "Следующий псевдо кадр"
+    },
+    "paste": {
+        "message": "вставить"
+    },
+    "paste unit": {
+        "message": "Вставить единицу"
+    },
+    "patrol": {
+        "message": "Патруль"
+    },
+    "pause game": {
+        "message": "Приостановить игру"
+    },
+    "pause time": {
+        "message": "Время паузы"
+    },
+    "picture-in-picture": {
+        "message": "картинка-в-картинке"
+    },
+    "ping": {
+        "message": "Сигнал"
+    },
+    "planet jump": {
+        "message": "планетарный прыжок"
+    },
+    "play backwards at 10%": {
+        "message": "играть обратно на 10%"
+    },
+    "play backwards at 100%": {
+        "message": "Скорость 100% назад"
+    },
+    "play backwards at 50%": {
+        "message": "играть обратно на 50%"
+    },
+    "play forward at 100%": {
+        "message": "играть вперед на 100%"
+    },
+    "play forward at 50%": {
+        "message": "Скорость 50% вперед"
+    },
+    "play forwards at 10%": {
+        "message": "играть вперед на 10%"
+    },
+    "publish server mods": {
+        "message": "опубликовать моды сервера"
+    },
+    "quick profile": {
+        "message": "быстрый профиль"
+    },
+    "recall anchor": {
+        "message": "вывести якорь"
+    },
+    "recall anchor __anchor_number__": {
+        "message": "отозвать якорь __anchor_number__"
+    },
+    "recall group __group_number__": {
+        "message": "отозвать группу __group_number__"
+    },
+    "reclaim": {
+        "message": "Переработать"
+    },
+    "reload view": {
+        "message": "обновить отображение экрана"
+    },
+    "remove landing zone": {
+        "message": "убрать зону высадки"
+    },
+    "remove metal spot": {
+        "message": "убрать месторождение металла"
+    },
+    "repair": {
+        "message": "Починка"
+    },
+    "resume at latest time": {
+        "message": "возобновить с последней точки"
+    },
+    "return fire": {
+        "message": "Ответный огонь"
+    },
+    "roam": {
+        "message": "бродить"
+    },
+    "rotate csg ccw": {
+        "message": "повернуть csg пр. час. стр."
+    },
+    "rotate csg cw": {
+        "message": "повернуть csg по час. стр."
+    },
+    "scale csg down": {
+        "message": "уменьшить масштаб csg"
+    },
+    "scale csg horizontally down": {
+        "message": "уменьшить масштаб csg по горизонтали"
+    },
+    "scale csg horizontally up": {
+        "message": "увеличить масштаб csg по горизонтали"
+    },
+    "scale csg up": {
+        "message": "увеличить масштаб csg"
+    },
+    "scale csg vertically down": {
+        "message": "уменьшить масштаб csg по вертикали"
+    },
+    "scale csg vertically up": {
+        "message": "увеличить масштаб csg по вертикали"
+    },
+    "select air group": {
+        "message": "Выбрать все воздушные единицы"
+    },
+    "select all air combat units": {
+        "message": "Выбрать все воздушные единицы"
+    },
+    "select all air combat units on screen": {
+        "message": "Выбрать все ВВС в пределах экрана"
+    },
+    "select all combat units": {
+        "message": "Выбрать все боевые единицы"
+    },
+    "select all combat units on screen": {
+        "message": "Выбрать всю армию в пределах экрана"
+    },
+    "select all factories": {
+        "message": "Выбрать все фабрики"
+    },
+    "select all factories on screen": {
+        "message": "Выбрать все фабрики в пределах экрана"
+    },
+    "select all idle factories": {
+        "message": "Выбрать все неработающие фабрики"
+    },
+    "select all idle factories on screen": {
+        "message": "выбрать все простаивающие заводы на экране"
+    },
+    "select all land combat units": {
+        "message": "Выбрать все наземные боевые единицы"
+    },
+    "select all land combat units on screen": {
+        "message": "Выбрать все наземные боевые единицы на экране"
+    },
+    "select all matching units on screen": {
+        "message": "Выбрать все аналогичные единицы в пределах экрана"
+    },
+    "select all naval combat units": {
+        "message": "Выбрать все ВМС"
+    },
+    "select all naval combat units on screen": {
+        "message": "выбрать все морские боевые единицы на экране"
+    },
+    "select all orbital combat units": {
+        "message": "выбрать все орбитальные боевые единицы"
+    },
+    "select all orbital combat units on screen": {
+        "message": "выбрать все орбитальные боевые единицы на экране"
+    },
+    "select ammo group": {
+        "message": "выбрать группу боеприпасов"
+    },
+    "select bot group": {
+        "message": "выбрать группу БОТы"
+    },
+    "select combat group": {
+        "message": "выбрать группу БОЙ"
+    },
+    "select commander": {
+        "message": "Выбрать коммандера"
+    },
+    "select factory group": {
+        "message": "выбрать группу заводы"
+    },
+    "select idle fabbers": {
+        "message": "выбор свободных фабрикаторов"
+    },
+    "select orbital group (buildings)": {
+        "message": "Выбрать все орбитальные строения"
+    },
+    "select orbital group (units)": {
+        "message": "Выбрать все орбитальные единицы"
+    },
+    "select sea group": {
+        "message": "Выбрать все морские единицы"
+    },
+    "select utility group": {
+        "message": "выбрать группу коммунальные строения"
+    },
+    "select vehicle group": {
+        "message": "выбрать группу Машины"
+    },
+    "self destruct selected unit": {
+        "message": "Уничтожить выбранные юниты"
+    },
+    "set army from hover": {
+        "message": "закрепить армию на месте"
+    },
+    "set debug camera": {
+        "message": "установить отладочную камеру"
+    },
+    "set default camera": {
+        "message": "установить камеру по умолчанию"
+    },
+    "set free camera": {
+        "message": "установить свободную камеру"
+    },
+    "set pathable csg": {
+        "message": "задать проходимую csg"
+    },
+    "set planet camera": {
+        "message": "установить камеру на планету"
+    },
+    "set pov camera": {
+        "message": "задать суб. камеру"
+    },
+    "show player guide": {
+        "message": "показать руководство игрока"
+    },
+    "show/hide UI": {
+        "message": "показать/скрыть интерфейс"
+    },
+    "show/hide performance panel": {
+        "message": "показать/скрыть панель производительности"
+    },
+    "show/hide visual aid overlays": {
+        "message": " показать/скрыть визуальные подсказки"
+    },
+    "skip backward 1s": {
+        "message": "пропустить на 1 сек назад"
+    },
+    "skip forward 1s": {
+        "message": "пропустить на 1 сек вперед"
+    },
+    "smooth zoom in": {
+        "message": "Гладкий наезд камеры"
+    },
+    "smooth zoom out": {
+        "message": "Гладкий отъезд камеры"
+    },
+    "special move": {
+        "message": "специальное движение"
+    },
+    "stop": {
+        "message": "Стоп"
+    },
+    "swap pip": {
+        "message": "Перестановка PIP"
+    },
+    "team chat": {
+        "message": "Командный чат"
+    },
+    "terrain editor": {
+        "message": "редактор рельефа"
+    },
+    "toggle FOW": {
+        "message": "переключить туман войны"
+    },
+    "toggle audio logging": {
+        "message": "включить/выключить аудио протоколирование"
+    },
+    "toggle build orders": {
+        "message": "Переключить показ очереди строительства"
+    },
+    "toggle console": {
+        "message": "Переключить показ консоли"
+    },
+    "toggle debug camera": {
+        "message": "включить/выключить отладочную камеру"
+    },
+    "toggle edit metal spots": {
+        "message": "переключить ред-ие залежей металла"
+    },
+    "toggle edit terrain mode": {
+        "message": "переключить режим ред-ия рельефа"
+    },
+    "toggle energy orders": {
+        "message": "переключатель распределения энергии"
+    },
+    "toggle fire orders": {
+        "message": "Переключить показ очереди атаки"
+    },
+    "toggle free camera": {
+        "message": "Переключить режим свободной камеры"
+    },
+    "toggle fullscreen": {
+        "message": "Переключить полноэкранный режим"
+    },
+    "toggle move orders": {
+        "message": "Переключить показ очереди приказов перемещения"
+    },
+    "toggle music": {
+        "message": "включить/выключить музыку"
+    },
+    "toggle nav debug": {
+        "message": "включить/выключить отладку навигации"
+    },
+    "toggle pip mirror": {
+        "message": "включить/выключить PIP окно"
+    },
+    "toggle pov camera": {
+        "message": "переключить суб. камеру"
+    },
+    "toggle show water": {
+        "message": "переключить воду"
+    },
+    "track add selection with camera": {
+        "message": "отслеживать выбор камерой"
+    },
+    "track next unit with camera": {
+        "message": "отслеживать следующий юнит камерой"
+    },
+    "track selection with camera": {
+        "message": "выбор трека с камерой"
+    },
+    "tracking & alignment": {
+        "message": "отслеживание и выравнивание"
+    },
+    "tuning": {
+        "message": "подстройка"
+    },
+    "unit capture groups": {
+        "message": "Объявление единиц в группы"
+    },
+    "unit commands": {
+        "message": "команды юнита"
+    },
+    "unit orders": {
+        "message": "Приказы"
+    },
+    "unit recall groups": {
+        "message": "Объединение единиц в группы"
+    },
+    "unit selection": {
+        "message": "Выбор юнита"
+    },
+    "units": {
+        "message": "Юниты"
+    },
+    "unload": {
+        "message": "выгрузить"
+    },
+    "zoom": {
+        "message": "Увеличение"
+    },
+    "zoom in": {
+        "message": "Наезд камеры"
+    },
+    "zoom out": {
+        "message": "Отъезд камеры"
+    },
+    "zoom to air": {
+        "message": "увеличение в воздухе"
+    },
+    "zoom to celestial": {
+        "message": "Приблизить к звезде"
+    },
+    "zoom to combat": {
+        "message": "приблизить сражение"
+    },
+    "zoom to orbital": {
+        "message": "Приблизить до уровня орбиты"
+    },
+    "zoom to surface": {
+        "message": "Приблизить до поверхности"
+    },
+    "SELECTED OR ALL": {
+        "message": "ВЫБРАННЫЕ ИЛИ ВСЕ"
+    },
+    "EXTRA MOUSE BUTTON 4": {
+        "message": "ДОПОЛНИТЕЛЬНАЯ КНОПКА МЫШИ 4"
+    },
+    "EXTRA MOUSE BUTTON 5": {
+        "message": "ДОПОЛНИТЕЛЬНАЯ КНОПКА МЫШИ 5"
+    },
+    "MIDDLE MOUSE BUTTON 3": {
+        "message": "СРЕДНЯЯ КНОПКА МЫШИ 3"
+    },
+    "MIDDLE MOUSE OR EXTRA BUTTONS": {
+        "message": "СРЕДНЯЯ ИЛИ ДОПОЛНИТЕЛЬНЫЕ КНОПКИ МЫШИ"
+    },
+    "Mouse Pan Button": {
+        "message": "Кнопка панорамирования мыши"
+    }
+}

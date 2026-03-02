@@ -1,0 +1,44 @@
+{
+    "Q-Bronze": {
+        "message": "Q-青銅"
+    },
+    "Q-Casual": {
+        "message": "Q-休閒"
+    },
+    "Q-Gold": {
+        "message": "Q-黃金"
+    },
+    "Q-Platinum": {
+        "message": "Q-白金"
+    },
+    "Q-Silver": {
+        "message": "Q-白銀"
+    },
+    "Q-Uber": {
+        "message": "Q-超人"
+    },
+    "Q-Uber 1v1": {
+        "message": "Q-超人（1v1）"
+    },
+    "Q-Uber Bot": {
+        "message": "Q-超人（機器人）"
+    },
+    "Q-Uber Free-For-All": {
+        "message": "Q-超人（混戰模式）"
+    },
+    "Q-Uber Rush": {
+        "message": "Q-超人（快攻）"
+    },
+    "Q-Uber Tank": {
+        "message": "Q-超人（坦克）"
+    },
+    "Q-Uber Turtle": {
+        "message": "Q-超人（固守）"
+    },
+    "Queller AI": {
+        "message": "Queller AI"
+    },
+    "by Quitch. My difficulties are prefixed with a Q. Don't make AI teams larger than human teams, increase the difficulty or the econ rate instead. I support the Legion Expansion.": {
+        "message": "由 Quitch 製作。提供眾多難度，皆以「Q」為名稱前綴。避免讓 AI 隊伍的人數多於玩家隊伍，請改為提高難度或經濟速率。支援 Legion Expansion。"
+    }
+}

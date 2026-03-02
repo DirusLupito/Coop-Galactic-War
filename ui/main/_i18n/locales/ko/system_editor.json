@@ -1,0 +1,377 @@
+{
+    "0.0.0": {
+        "message": "0.0.0"
+    },
+    "Accept": {
+        "message": "수락"
+    },
+    "Advanced Edit": {
+        "message": "고급 편집"
+    },
+    "Advanced edit planet": {
+        "message": "고급 행성 편집"
+    },
+    "Auto": {
+        "message": "자동"
+    },
+    "Base:": {
+        "message": "기본:"
+    },
+    "Biome:": {
+        "message": "생태계:"
+    },
+    "Brushes:": {
+        "message": "브러시:"
+    },
+    "CLEAR SYSTEM": {
+        "message": "행성계 비우기"
+    },
+    "CLOSE": {
+        "message": "닫기"
+    },
+    "CSG": {
+        "message": "CSG"
+    },
+    "Camera": {
+        "message": "카메라"
+    },
+    "Cancel": {
+        "message": "취소"
+    },
+    "Creator": {
+        "message": "제작자"
+    },
+    "Data": {
+        "message": "데이터"
+    },
+    "Description": {
+        "message": "설명"
+    },
+    "Discard": {
+        "message": "버리기"
+    },
+    "Do you want to save this system?": {
+        "message": "이 행성계를 저장하시겠습니까?"
+    },
+    "EDIT PLANET": {
+        "message": "행성 편집"
+    },
+    "EXPORT SYSTEM": {
+        "message": "시스템 내보내기"
+    },
+    "Edit": {
+        "message": "편집"
+    },
+    "Edit System Info": {
+        "message": "시스템 정보 수정"
+    },
+    "Flooded": {
+        "message": "침수"
+    },
+    "GAMEPLAY": {
+        "message": "게임 플레이"
+    },
+    "HIDE": {
+        "message": "숨기기"
+    },
+    "Height:": {
+        "message": "고도:"
+    },
+    "Include:": {
+        "message": "포함:"
+    },
+    "Landing Zone Restrictions": {
+        "message": "착륙 지점 제한"
+    },
+    "Landing Zone Size": {
+        "message": "착륙 지점 크기"
+    },
+    "Landing Zones": {
+        "message": "착륙 지점"
+    },
+    "Latitude:": {
+        "message": "위도:"
+    },
+    "Longitude:": {
+        "message": "경도:"
+    },
+    "MY PLANETS": {
+        "message": "내 행성"
+    },
+    "Mass": {
+        "message": "질량"
+    },
+    "Max": {
+        "message": "최대"
+    },
+    "Max Asteroid Count": {
+        "message": "최대 소행성 수"
+    },
+    "Mergeable": {
+        "message": "병합 가능"
+    },
+    "Metal Spots": {
+        "message": "금속 매장지"
+    },
+    "Min": {
+        "message": "최소"
+    },
+    "Mouse": {
+        "message": "마우스"
+    },
+    "NONE": {
+        "message": "없음"
+    },
+    "No Features": {
+        "message": "특징 없음"
+    },
+    "Ok": {
+        "message": "확인"
+    },
+    "Once in Advanced Edit mode, the planet will remain in this mode for future edits.": {
+        "message": "고급 편집 모드에 들어가면 행성은 차후 편집을 위해 이 모드로 유지됩니다."
+    },
+    "PREVIEW ALL": {
+        "message": "모두 미리 보기"
+    },
+    "Pathable": {
+        "message": "통과 가능"
+    },
+    "Position": {
+        "message": "위치"
+    },
+    "Preview": {
+        "message": "미리 보기"
+    },
+    "Preview planet": {
+        "message": "행성 미리 보기"
+    },
+    "Preview to copy CSG": {
+        "message": "CSG 복사 미리 보기"
+    },
+    "Properties": {
+        "message": "속성"
+    },
+    "RECENT": {
+        "message": "최근"
+    },
+    "REMOVE": {
+        "message": "제거"
+    },
+    "REMOVE ASTEROID BELT": {
+        "message": "소행성 벨트 제거"
+    },
+    "Radius:": {
+        "message": "반경:"
+    },
+    "SAVE SYSTEM": {
+        "message": "행성계 저장"
+    },
+    "SELECT CSG": {
+        "message": " CSG 선택"
+    },
+    "SHOW": {
+        "message": "보기"
+    },
+    "SIMULATE": {
+        "message": "시뮬레이트"
+    },
+    "STOP": {
+        "message": "중지"
+    },
+    "Save": {
+        "message": "저장"
+    },
+    "Save as template": {
+        "message": "템플릿으로 저장"
+    },
+    "Seed:": {
+        "message": "시드:"
+    },
+    "Selected CSG": {
+        "message": "선택된 CSG"
+    },
+    "Shuffle Landing Zones": {
+        "message": "착륙 지점 셔플"
+    },
+    "Spawn Delay (in seconds)": {
+        "message": "생성 지연(초 단위)"
+    },
+    "Spots:": {
+        "message": "매장지 수:"
+    },
+    "Starting Asteroid Count": {
+        "message": "시작 소행성 수"
+    },
+    "Starting planet options": {
+        "message": "시작 행성 옵션"
+    },
+    "System Designer": {
+        "message": "행성계 편집기"
+    },
+    "System Name:": {
+        "message": "행성계 이름:"
+    },
+    "System radius is too large.": {
+        "message": "행성계 반경이 너무 큽니다."
+    },
+    "System radius is too small.": {
+        "message": "행성계 반경이 너무 작습니다."
+    },
+    "System requires at least one starting planet.": {
+        "message": "행성계에 시작 행성이 최소 한 개 있어야 합니다."
+    },
+    "TEMPLATES": {
+        "message": "템플릿"
+    },
+    "TERRAIN": {
+        "message": "지형"
+    },
+    "TERRAIN AND CSG": {
+        "message": "지형 및 CSG"
+    },
+    "Temp": {
+        "message": "기온"
+    },
+    "Temp:": {
+        "message": "기온:"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "행성을 불러오는 중입니다. 시간이 오래 걸릴 수 있습니다."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "행성을 완성할 때까지 프로그램이 응답하지 않을 수 있습니다."
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "이 행성계는 마지막 저장 후 변경되었습니다."
+    },
+    "The system has not been saved.": {
+        "message": "이 행성계는 저장되지 않았습니다."
+    },
+    "This planet has been customized. It must be fully built before modifying.": {
+        "message": "이 행성은 사용자 설정되었습니다. 수정하기 전에 먼저 완성부터 해야 합니다."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to delete.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] 키로 삭제합니다."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a landing zone below the cursor.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] 키를 사용해 착륙 지점을 커서 아래에 놓습니다."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
+        "message": "[style=hotkey_title]__hotkey__[/style] 키를 사용해 금속 매장지를 커서 아래에 놓습니다."
+    },
+    "Use as a starting planet": {
+        "message": "시작 행성으로 사용"
+    },
+    "Variance:": {
+        "message": "변화:"
+    },
+    "Velocity": {
+        "message": "속도"
+    },
+    "Version": {
+        "message": "버전"
+    },
+    "Water": {
+        "message": "물"
+    },
+    "Water:": {
+        "message": "해수면:"
+    },
+    "X": {
+        "message": "X"
+    },
+    "X:": {
+        "message": "X:"
+    },
+    "Y": {
+        "message": "Y"
+    },
+    "Y:": {
+        "message": "Y:"
+    },
+    "You will have to fix the system before saving.": {
+        "message": "저장하기 전에 행성계를 수정해야 합니다."
+    },
+    "You will not be able to revert back and use standard editing controls.": {
+        "message": "되돌릴 수 없으며 기본 편집 컨트롤을 사용하게 됩니다."
+    },
+    "Z": {
+        "message": "Z"
+    },
+    "Z:": {
+        "message": "Z:"
+    },
+    "Zones:": {
+        "message": "지역 수:"
+    },
+    "biome": {
+        "message": "생태계"
+    },
+    "edit asteroid belt": {
+        "message": "소행성 벨트 편집"
+    },
+    "edit planet": {
+        "message": "행성 편집"
+    },
+    "height": {
+        "message": "고도"
+    },
+    "height range": {
+        "message": "고도 범위"
+    },
+    "landing zone size": {
+        "message": "착륙 지점 크기"
+    },
+    "landing zones per army": {
+        "message": "군대당 착륙 지점 수"
+    },
+    "metal clusters": {
+        "message": "금속 클러스터"
+    },
+    "metal density": {
+        "message": "금속 밀도"
+    },
+    "metal spots": {
+        "message": "금속 매장지"
+    },
+    "metal spots on asteroids": {
+        "message": "소행성의 금속 매장지"
+    },
+    "planet name": {
+        "message": "행성 이름"
+    },
+    "preview landing zones by number of armies": {
+        "message": "군대 수에 따른 착륙 지점 미리 보기"
+    },
+    "radius": {
+        "message": "반경"
+    },
+    "seed": {
+        "message": "시드"
+    },
+    "start spots": {
+        "message": "시작 지점"
+    },
+    "symmetry type": {
+        "message": "대칭 유형"
+    },
+    "temperature": {
+        "message": "온도"
+    },
+    "terrain": {
+        "message": "지형"
+    },
+    "terrain and gameplay": {
+        "message": "지형 및 게임 플레이"
+    },
+    "thrusters required for attack": {
+        "message": "공격 시 추진기 필요"
+    },
+    "water coverage": {
+        "message": "수면 범위"
+    },
+    "water depth": {
+        "message": "수심"
+    }
+}

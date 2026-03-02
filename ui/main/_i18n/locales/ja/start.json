@@ -1,0 +1,491 @@
+{
+    "#__position__ __league__ Rank": {
+        "message": "#__position__ __league__ ランク"
+    },
+    "1v1 RANKED MATCH": {
+        "message": "1vs1 ランクマッチ"
+    },
+    "ABANDON": {
+        "message": "中止"
+    },
+    "AI Skirmish": {
+        "message": "AI スカーミッシュ"
+    },
+    "Account created successfully.": {
+        "message": "アカウントの作成が完了しました"
+    },
+    "Activate": {
+        "message": "アクティベート"
+    },
+    "Activation Key": {
+        "message": "アクティベーションキー"
+    },
+    "An activation key is required to play online.": {
+        "message": "オンラインでプレイするにはアクティベーションキーが必要です"
+    },
+    "Armory": {
+        "message": "アーマリー"
+    },
+    "Art": {
+        "message": "Art"
+    },
+    "As thanks for your continued support, you have been given the new TITANS expansion for free!": {
+        "message": "継続的なご支援への感謝の印として、あなたには新規コンテンツであるTITANS拡張パックを無料でプレゼントします！"
+    },
+    "Audio": {
+        "message": "Audio"
+    },
+    "Audio Engine:": {
+        "message": "オーディオエンジン:"
+    },
+    "Battle Everyone.": {
+        "message": "世界を敵に回せ"
+    },
+    "Before you jump in...": {
+        "message": "参戦する前に…"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Close": {
+        "message": "閉じる"
+    },
+    "Community Videos": {
+        "message": "コミュニティビデオ"
+    },
+    "Confirm Password": {
+        "message": "パスワードを確認"
+    },
+    "Connecting to PA": {
+        "message": "PAに接続中…"
+    },
+    "Continue Tutorial": {
+        "message": "続きから"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Cosmic Edition Commanders"
+    },
+    "Create Account": {
+        "message": "アカウントを作成"
+    },
+    "Create an account to play online.": {
+        "message": "オンラインでプレイするにはアカウントを作成してください"
+    },
+    "Credits": {
+        "message": "Credits"
+    },
+    "Custom": {
+        "message": "カスタム"
+    },
+    "Design": {
+        "message": "Design"
+    },
+    "Dismiss": {
+        "message": "閉じる"
+    },
+    "EXIT": {
+        "message": "終了"
+    },
+    "Email": {
+        "message": "Email"
+    },
+    "Email already in use.": {
+        "message": "登録済のEmailです"
+    },
+    "Email is invalid": {
+        "message": "無効なEmailです"
+    },
+    "Enable Offline Play": {
+        "message": "オフラインプレイを有効化"
+    },
+    "Engineering": {
+        "message": "Engineering"
+    },
+    "Engineers": {
+        "message": "Engineers"
+    },
+    "Extra special thanks to our:": {
+        "message": "Extra special thanks to our:"
+    },
+    "Founding Commanders": {
+        "message": "創始のコマンダー"
+    },
+    "Galactic War": {
+        "message": "星系間戦争"
+    },
+    "Gameplay Disabled": {
+        "message": "ゲームプレイ無効"
+    },
+    "Gameplay Unavailable": {
+        "message": "ゲームプレイ使用不可"
+    },
+    "If you ignore this recommendation by enabling offline play, you may experience degraded performance.": {
+        "message": "オフラインプレイの有効化を実行しない場合、ゲームのパフォーマンスが低下する場合があります"
+    },
+    "If you want to play Classic PA, it's recommended you run TITANS and simply change your Active Expansion in the gameplay settings.": {
+        "message": "オリジナルのPlanetary Annihilationをプレイしたい場合は、TITANSを起動してゲームプレイ設定内で有効な拡張パックを変更するのが一番オススメです"
+    },
+    "Inactive for __inactive_days__ days": {
+        "message": "__inactive_days__ 日間、非アクティブ状態です"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "ユーザー名またはパスワードが間違っています。入力を確認してもう一度やり直してください"
+    },
+    "Invalid session ticket, please log in again.": {
+        "message": "無効なシーズンチケットです。再ログインしてください"
+    },
+    "It appears that Planetary Annihilation crashed the last time you played it. This crash might be due to a problem in the installed graphics drivers.": {
+        "message": "前回プレイした時にPlanetary Annihilationがクラッシュして終了したようです。クラッシュの原因はグラフィックドライバが原因である可能性があります"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Steam オーバーレイ機能がオフになっているようです。オンにしないと購入を実行できません"
+    },
+    "LATER": {
+        "message": "後で"
+    },
+    "Last match played": {
+        "message": "前回のマッチ"
+    },
+    "Latest News": {
+        "message": "最新ニュース"
+    },
+    "Leaderboards": {
+        "message": "ランキング"
+    },
+    "Learn the basics. Command a Titan. Smash a planet.": {
+        "message": "まずは基本を学び、Titanを操り、そして惑星を破壊せよ"
+    },
+    "Looks like you have a tutorial already in progress.": {
+        "message": "チュートリアルを途中まで進めているようです"
+    },
+    "Looks like you're running Classic PA from your Steam Library, instead of TITANS.": {
+        "message": "Steam ライブラリ上でTITANSではなく、オリジナルのPlanetary Annihilationを起動したようです"
+    },
+    "Minimize": {
+        "message": "最小化"
+    },
+    "More Info": {
+        "message": "詳しい情報"
+    },
+    "Multiplayer": {
+        "message": "マルチプレイ"
+    },
+    "Music Composed by": {
+        "message": "Music Composed by"
+    },
+    "New Build Available:": {
+        "message": "新規ビルド:"
+    },
+    "No thanks. I got this.": {
+        "message": "スキップ"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "皆さんの寛大さなしには決して実現しませんでした、我々のヴィジョンに共鳴してくれて、そして賭けてくださってありがとうございます"
+    },
+    "Northwest Sinfonia and Chorale": {
+        "message": "Northwest Sinfonia and Chorale"
+    },
+    "Not right now": {
+        "message": "今はしない"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "OKAY": {
+        "message": "OK"
+    },
+    "Official Discord": {
+        "message": "公式Discord"
+    },
+    "Official Guides": {
+        "message": "公式ガイド"
+    },
+    "Official Support": {
+        "message": "公式サポート"
+    },
+    "Offline Play Disabled": {
+        "message": "オフラインプレイ 無効"
+    },
+    "Offline Play Unavailable": {
+        "message": "オフラインプレイ 不可"
+    },
+    "Often these types of crashes can be resolved by making sure you have the latest graphics driver from __vendor_name__ — and we [strong]strongly recommend[/strong] that you visit their driver website to download and install the latest version.": {
+        "message": "このタイプのクラッシュは __vendor_name__ から最新のグラフィックドライバをインストールすることで解決することがあります — ドライバのウェブサイトを開いて最新バージョンをダウンロード＆インストールすることを[strong]強く推奨[/strong]します"
+    },
+    "Oops! We can't find the game in your account.  If you are a Steam user, please restart Steam and try again.  If the problem persists, contact us at __email__": {
+        "message": "このゲームがお使いのアカウント内に無いようです。Steamユーザーである場合はSteamを再起動してやり直してみてください。問題が解決しない場合はお手数ですが以下に問い合わせください: __email__"
+    },
+    "Oops! Your account seems to be in an invalid state. If you are a Steam user, please restart Steam and try again. If the problem persists, contact us at __email__": {
+        "message": "お使いのアカウントが無効な状態にあるようです。Steamユーザーである場合はSteamを再起動してやり直してみてください。問題が解決しない場合はお手数ですが以下に問い合わせください: __email__"
+    },
+    "Open __vendor_name__'s Driver Website": {
+        "message": "__vendor_name__ のドライバウェブサイトを開く"
+    },
+    "Password": {
+        "message": "パスワード"
+    },
+    "Password must be between 6 and 20 characters.": {
+        "message": "パスワードは6～20文字にしてください"
+    },
+    "Passwords do not match.": {
+        "message": "パスワードが一致しません"
+    },
+    "Play Tutorial": {
+        "message": "チュートリアルをプレイ"
+    },
+    "Play online for matchmaking, leaderboards, & dedicated servers.": {
+        "message": "マッチメイキング、ランキング、専用サーバーで楽しめるオンラインでプレイしよう"
+    },
+    "Player Guide": {
+        "message": "プレイヤーガイド"
+    },
+    "Please choose a default region.": {
+        "message": "別のリージョンを選択してください"
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "新たに導入されたユニット、ワールド、そして戦い方をお楽しみあれ、そして全てを殲滅せよ！"
+    },
+    "Please enter an activation key.": {
+        "message": "アクティベーションキーを入力してください"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "ゲームを終了してSteamライブラリを開き、このゲームを右クリック。「プロパティ」を選択して「ゲーム中に Steam オーバーレイを有効にする」にチェックを入れる。その後ゲームを起動してください"
+    },
+    "Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "PAサーバー上でプレイするにはサインインしてください、または[strong]設定[/strong]内でローカルサーバーを[strong]On[/strong]にしてください"
+    },
+    "Please try again later.  If this error persists, please contact support and check the forums.": {
+        "message": "しばらく時間を置いてやり直してください。エラーが続く場合はサポートに問い合わせるかフォーラムをご確認ください"
+    },
+    "Possible Graphics Driver Crash Detected": {
+        "message": "グラフィックドライバのクラッシュ検出の可能性"
+    },
+    "Production": {
+        "message": "Production"
+    },
+    "Production Babies": {
+        "message": "Production Babies"
+    },
+    "QA": {
+        "message": "QA"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "終了してTITANSをインストール"
+    },
+    "QUIT & LAUNCH TITANS": {
+        "message": "終了してTITANSを起動"
+    },
+    "Quit": {
+        "message": "終了"
+    },
+    "RECONNECT": {
+        "message": "再接続"
+    },
+    "Reconnect": {
+        "message": "再接続"
+    },
+    "Replays": {
+        "message": "リプレイ"
+    },
+    "Restart From Beginning": {
+        "message": "最初からやり直す"
+    },
+    "Resume last saved:": {
+        "message": "前回のセーブから再開:"
+    },
+    "Saved Games": {
+        "message": "セーブゲーム"
+    },
+    "Season ends __date__": {
+        "message": "シーズン終了: __date__"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Sign In": {
+        "message": "サインイン"
+    },
+    "Sign in": {
+        "message": "サインイン"
+    },
+    "Sign in with your PA account": {
+        "message": "PAアカウントでサインイン"
+    },
+    "Single Player": {
+        "message": "シングルプレイ"
+    },
+    "Soundtrack Credits": {
+        "message": "Soundtrack Credits"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Steam オーバーレイ無効"
+    },
+    "Streams": {
+        "message": "ストリーム"
+    },
+    "System Designer": {
+        "message": "星系デザイナー"
+    },
+    "The TITANS have arrived.": {
+        "message": "TITANS 到来"
+    },
+    "The entered code has already been converted to a steam key.": {
+        "message": "入力していただいたコードは、すでにSteamキーに変換済です"
+    },
+    "The entered code has already been used.": {
+        "message": "入力していただいたコードは、すでに使用済です"
+    },
+    "The entered code was invalid.": {
+        "message": "入力していただいたコードが無効です"
+    },
+    "The game will require an internet connection to play.": {
+        "message": "ゲームをプレイするにはインターネット接続環境が必要です"
+    },
+    "The leaderboard is currently empty.": {
+        "message": "ランキングは現在、空きの状態です"
+    },
+    "There are no regions available for this build version.": {
+        "message": "このビルドバージョンで利用できるリージョンはありません"
+    },
+    "There are no streams currently.": {
+        "message": "現在ストリームはありません"
+    },
+    "There is a problem with Steam. Please restart Steam and try again, or contact us at __email__": {
+        "message": "Steamに問題があります。Steamを再起動してやり直してください。もしくは以下に問い合わせください: __email__"
+    },
+    "They're here for you.": {
+        "message": "ソレは此処にやって来た"
+    },
+    "This account already owns this title.": {
+        "message": "このアカウントは既にこのゲームを所有しています"
+    },
+    "This shouldn't happen. Please contact us at  __email__": {
+        "message": "不明なエラーです。お手数ですが以下に問い合わせください: __email__"
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Kickstarterのキャンペーンに協力してくれた皆さんへ、心からの感謝を申し上げます"
+    },
+    "Top Ranked Players": {
+        "message": "トップランク プレイヤー"
+    },
+    "Try the TITANS Tutorial": {
+        "message": "TITANSチュートリアルをお試し"
+    },
+    "Tutorial": {
+        "message": "チュートリアル"
+    },
+    "Twitch": {
+        "message": "Twitch"
+    },
+    "UI Library:": {
+        "message": "UIライブラリ:"
+    },
+    "Uber Entertainment Team 2014": {
+        "message": "Uber Entertainment Team 2014"
+    },
+    "Unable to Sign In": {
+        "message": "サインインできません"
+    },
+    "Unable to link your Steam account (email address in use), contact us at __email__": {
+        "message": "お使いのSteamアカウント（メールアドレスが使用済）を連携できません。お手数ですが以下に問い合わせください: __email__"
+    },
+    "Unable to link your Steam account (email address invalid), contact us at __email__": {
+        "message": "お使いのSteamアカウント（メールアドレスが無効）を連携できません。お手数ですが以下に問い合わせください: __email__"
+    },
+    "Unable to link your Steam account (unknown error __code__), contact us at __email__": {
+        "message": "お使いのSteamアカウント（不明なエラー: __code__）を連携できません。お手数ですが以下に問い合わせください: __email__"
+    },
+    "Unable to link your Steam account (username in use), contact us at __email__": {
+        "message": "お使いのSteamアカウント（ユーザー名使用済）を連携できません。お手数ですが以下に問い合わせください: __email__"
+    },
+    "Unable to link your Steam account, try restarting the game or contact us at __email__": {
+        "message": "お使いのSteamアカウントを連携できません。ゲームを再起動してみるか、以下に問い合わせください: __email__"
+    },
+    "Unknown": {
+        "message": "不明"
+    },
+    "Unknown Error authenticating, possibly related to firewall or antivirus settings.  Please contact support if problem persists. (__error_code__)": {
+        "message": "不明な認証エラーが発生しました。ファイアウォールやウイルス対策の設定が原因かもしれません。問題が解決しない場合は、お手数ですがサポートに問い合わせください（__error_code__）"
+    },
+    "Upgrade to Titans at the new permamenent discount of 90%": {
+        "message": "驚異の恒久90%オフで新たなTITANSへアップグレード"
+    },
+    "UserName must be between 3 and 20 characters.": {
+        "message": "ユーザー名は3～20文字にしてください"
+    },
+    "Username": {
+        "message": "ユーザー名"
+    },
+    "Username already in use.": {
+        "message": "使用済のユーザー名です"
+    },
+    "Version:": {
+        "message": "バージョン:"
+    },
+    "View Intro": {
+        "message": "イントロを見る"
+    },
+    "View Leaderboards": {
+        "message": "ランキングを表示"
+    },
+    "View full column": {
+        "message": "全文を表示"
+    },
+    "Watch Replay": {
+        "message": "リプレイを見る"
+    },
+    "You are already assigned to a game.": {
+        "message": "このゲームに既にアサインしています"
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "リージョンは設定メニューで後から変更できます"
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "ゲームをプレイするには新規クライアントが必要です。Steamユーザーは、新規クライアントを取得するのにSteamの再起動が必要かもしれません"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "ランクを獲得するにはランクゲームを __number__ 回以上プレイしてください"
+    },
+    "You'll find it waiting in your Steam library right next to Planetary Annihilation!": {
+        "message": "Steamライブラリのリスト上にあるPlanetary Annihilationのすぐ隣にソレはあるはずです！"
+    },
+    "Your account has been banned. If you believe this is in error, contact us at __email__": {
+        "message": "お使いのアカウントはBAN処置になっています。異議がある場合は、お手数ですが以下に問い合わせください: __email__"
+    },
+    "Your default region is currently unavailable.  Please choose a different region.": {
+        "message": "デフォルトのリージョンが現在利用できません。別のリージョンを選んでください"
+    },
+    "Your machine does not meet the recommended system requirements for offline play — for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.": {
+        "message": "お使いのマシンが、オフラインプレイに必要な推奨システム要件を満たしていないようです。オフラインモードには、最低8ギガバイトのRAMとQuad Coreプロセッサを推奨しています"
+    },
+    "Your machine is not capable of running Planetary Annihilation offline — offline mode requires a 64-bit processor as well as a 64-bit operating system.": {
+        "message": "お使いのマシンはPlanetary Annihilationをオフラインで運用できる能力がないようです。オフラインモードを稼働させるには64bitプロセッサと64bitのOSが必要です"
+    },
+    "Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].": {
+        "message": "お使いのシステムが、オフラインプレイに必要な推奨システム要件を満たしていないようです。PAサーバー上でプレイするにはサインインしてください、または[strong]設定[/strong]内でローカルサーバーを[strong]On[/strong]にしてください"
+    },
+    "Your username is: __username__": {
+        "message": "あなたのユーザー名： __username__"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ ランク"
+    },
+    "__viewer_count__ viewers": {
+        "message": "視聴者: __viewer_count__ 人"
+    },
+    "days": {
+        "message": "日"
+    },
+    "ending in": {
+        "message": "終了まで: "
+    },
+    "starting in": {
+        "message": "開始まで: "
+    },
+    "LIVE": {
+        "message": "LIVE"
+    },
+    "View Replays": {
+        "message": "リプレイを見る"
+    }
+}

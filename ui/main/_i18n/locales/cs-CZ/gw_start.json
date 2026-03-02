@@ -1,0 +1,86 @@
+{
+    "ABSURD": {
+        "message": "ABSURDNÍ"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "Zlikviduj nepřítele v zabraných systémech abys získal jejich technologii."
+    },
+    "Archived Wars": {
+        "message": "Archivované války"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "Abyste získali jinou startovní technologickou konfiguraci vyberte jinou výzbroj."
+    },
+    "Commander": {
+        "message": "Velitel"
+    },
+    "Difficulty:": {
+        "message": "Obtížnost:"
+    },
+    "EPIC": {
+        "message": "EPICKÁ"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "Prozkoumejte nezabrané systémy k získání technologie."
+    },
+    "Faction": {
+        "message": "Frakce"
+    },
+    "Go to War": {
+        "message": "Přejít na válku"
+    },
+    "HARD": {
+        "message": "TĚŽKÁ"
+    },
+    "How to Play": {
+        "message": "Jak hrát"
+    },
+    "LARGE": {
+        "message": "VELKÁ"
+    },
+    "LOCKED": {
+        "message": "UZAMČENO"
+    },
+    "Loadout": {
+        "message": "Výzbroj"
+    },
+    "MEDIUM": {
+        "message": "STŘEDNÍ"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "Přesuň se z hvězdné soustavy do další, abys sbíral další technologie. Použij tyto technologie k zlikvidování velitelů nepřátelských frakcí a dobij galaxii."
+    },
+    "Name": {
+        "message": "Jméno"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "Přejděte galaktickou mapu skokem ze systému do systému."
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "Nové disky s technickými daty  mohou být nalezeny při prohledávání systému."
+    },
+    "RELENTLESS": {
+        "message": "NELÍTOSTNÝ"
+    },
+    "SMALL": {
+        "message": "MALÁ"
+    },
+    "Seed Value": {
+        "message": "Počateční hodnota"
+    },
+    "Setup": {
+        "message": "Nastavení"
+    },
+    "Size:": {
+        "message": "Velikost:"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "Některé systémy skrývají výstroj pro Komandéra. Získej je pro budoucí galaktické války."
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "Abyste mohly udělat místo pro novou technologii můžete smazat starou. Smazané a odmítnute technologie jsou ztraceny pro zbytek galaktické války."
+    },
+    "Tips": {
+        "message": "Tipy"
+    }
+}

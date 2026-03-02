@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "访问世界模拟被拒绝"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "正在访问世界模拟"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "剩余尝试次数：__num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "正在连接服务器"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "与服务器的连接已取消"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "连接服务器失败"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "与服务器的连接已丢失"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "正在创建模拟世界"
+    },
+    "Cancel": {
+        "message": "取消"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "正在下载服务器模组"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "许可获取失败"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "加入战局失败"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "载入战局失败"
+    },
+    "FAILED TO START GAME": {
+        "message": "开始战局失败"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "开始回放失败"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "登录已接受"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "登录服务器被拒绝"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "正在重新安装服务器模组"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "正在请求许可"
+    },
+    "Returning to Main Menu": {
+        "message": "正在返回主菜单"
+    },
+    "STARTING GAME": {
+        "message": "正在开始战局"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "无法访问世界模拟"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "正在上传服务器模组……请稍等"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "模拟世界消失了"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "您即将开始离线游戏，但您的系统并未达到离线游戏的推荐配置。您的游戏体验可能会因此受到负面影响。"
+    }
+}

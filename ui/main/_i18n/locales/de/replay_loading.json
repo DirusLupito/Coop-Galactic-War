@@ -1,0 +1,29 @@
+{
+    "Cancel": {
+        "message": "Abbrechen"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "SERVERMODIFIKATIONEN WERDEN HERUNTERGELADEN"
+    },
+    "Loading Game": {
+        "message": "Spiel laden"
+    },
+    "Loading Replay": {
+        "message": "Wiederholungsspiel laden..."
+    },
+    "Returning to Main Menu": {
+        "message": "Zurück zum Hauptmenü"
+    },
+    "Returning to menu": {
+        "message": "Zurück zum Menü"
+    },
+    "Starting replay server, please be patient...": {
+        "message": "Wiederholungsspiel-Server startet, bitte habe etwas Geduld..."
+    },
+    "Unable to load replay": {
+        "message": "Replay kann nicht geladen werden"
+    },
+    "Unable to load save game": {
+        "message": "Spiel speichern kann nicht geladen werden"
+    }
+}

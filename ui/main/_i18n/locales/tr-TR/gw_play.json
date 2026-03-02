@@ -1,0 +1,23 @@
+{
+    "Delete Tech": {
+        "message": "Teknolojiyi Sil"
+    },
+    "Explore": {
+        "message": "Araştır"
+    },
+    "Fight": {
+        "message": "Savas"
+    },
+    "Jump": {
+        "message": "Gözat"
+    },
+    "Preparing for battle": {
+        "message": "Savaş hazırlanıyor"
+    },
+    "Scanning System": {
+        "message": "Sistemi Tara"
+    },
+    "Unlock Commander": {
+        "message": "Kumandan Kilidini Aç"
+    }
+}

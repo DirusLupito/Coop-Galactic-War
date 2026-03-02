@@ -1,0 +1,11 @@
+{
+    "No results match": {
+        "message": "合致する結果がありません"
+    },
+    "Nothing Selected": {
+        "message": "何も選択されていません"
+    },
+    "{0} of {1} selected": {
+        "message": "{0} / {1} 選択済み"
+    }
+}

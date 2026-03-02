@@ -1,0 +1,17 @@
+{
+    "Commander Basics": {
+        "message": "コマンダーの基本"
+    },
+    "Commander starts with energy and metal resources": {
+        "message": "コマンダーが一定のエネルギーと金属資源を携えた状態で開始"
+    },
+    "Keep your Commander alive or the match is over": {
+        "message": "コマンダーを倒されればマッチは終了となる"
+    },
+    "PA Guide: Commander Basics": {
+        "message": "PAガイド: コマンダーの基本"
+    },
+    "Select a landing zone near metal spots": {
+        "message": "金属スポット近くの着陸地帯を選択"
+    }
+}

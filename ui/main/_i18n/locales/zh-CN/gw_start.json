@@ -1,0 +1,137 @@
+{
+    "ABSURD": {
+        "message": "变态"
+    },
+    "Annihilate enemies on claimed systems to collect their Tech.": {
+        "message": "在已被占领的星系中消灭敌人来收集他们的科技。"
+    },
+    "Archived Wars": {
+        "message": "已归档战争"
+    },
+    "Choose a loadout to give your Commander different starting Tech configurations.": {
+        "message": "选择一个配装，给你的指挥官不同的初始科技配置。"
+    },
+    "Commander": {
+        "message": "指挥官"
+    },
+    "Difficulty:": {
+        "message": "难度："
+    },
+    "EASY": {
+        "message": "简单"
+    },
+    "EPIC": {
+        "message": "史诗"
+    },
+    "Explore unclaimed systems to recover Tech.": {
+        "message": "探索未被占领的星系来回收科技。"
+    },
+    "Faction": {
+        "message": "派系"
+    },
+    "Galactic War": {
+        "message": "银河战争"
+    },
+    "Game name": {
+        "message": "战局名称"
+    },
+    "Go to War": {
+        "message": "开战"
+    },
+    "HARD": {
+        "message": "困难"
+    },
+    "Hardcore": {
+        "message": "硬核"
+    },
+    "How To Play": {
+        "message": "游戏说明"
+    },
+    "How to Play": {
+        "message": "游戏说明"
+    },
+    "LARGE": {
+        "message": "较大"
+    },
+    "LOCKED": {
+        "message": "锁定"
+    },
+    "Loadout": {
+        "message": "配装"
+    },
+    "MEDIUM": {
+        "message": "中"
+    },
+    "Move from star system to star system collecting Techs. Use those Techs to defeat the enemy faction leaders and conquer the galaxy!": {
+        "message": "从各个星系收集科技，再用这些科技击败敌方派系首领，征服整个银河系！"
+    },
+    "NORMAL": {
+        "message": "普通"
+    },
+    "Name": {
+        "message": "名称"
+    },
+    "Navigate the galaxy map by jumping from system to system.": {
+        "message": "通过星系跃迁来在银河地图上移动。"
+    },
+    "New Data Banks to store Techs can be found by exploring systems.": {
+        "message": "通过探索星系可以找到存储科技的新数据库。"
+    },
+    "Permanent death. No restarts when your commander is annihilated.": {
+        "message": "永久性死亡。当你的指挥官被歼灭时，无法重新开始。"
+    },
+    "RELENTLESS": {
+        "message": "无情"
+    },
+    "Random number for generating new galaxy": {
+        "message": "生成新银河的随机数字"
+    },
+    "SMALL": {
+        "message": "较小"
+    },
+    "Saved Games": {
+        "message": "游戏存档"
+    },
+    "Seed Value": {
+        "message": "种子值"
+    },
+    "Setup": {
+        "message": "设置"
+    },
+    "Size:": {
+        "message": "大小："
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "一些指挥官战斗，是因为他们只懂得战斗，而另一些则在试图解答自身的由来。动机和信条的冲撞激起了一场必将肆虐银河数个世纪的指挥官之战。"
+    },
+    "Some systems have hidden Commander loadouts. Recover them for future Galactic Wars.": {
+        "message": "有些星系存在隐藏的指挥官配装。回收他们，助力之后的银河战争。"
+    },
+    "Tech can be deleted to make room for new ones to download. Deleted and rejected Techs are lost for the remainder of the Galactic War.": {
+        "message": "科技可以被删除，腾出空间下载新科技。被删除和被拒绝的将在接下来的银河战争中丢失。"
+    },
+    "The Commanders": {
+        "message": "指挥官"
+    },
+    "The Progenitors": {
+        "message": "先祖"
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "指挥官们沉睡了数百万年，苏醒时，整个银河只剩下文明的回音。这些古老的战争机器现在在银河系中战斗，遵循着他们从很久以前就一直持有的唯一指令。"
+    },
+    "Tip:": {
+        "message": "小窍门："
+    },
+    "Tips": {
+        "message": "小窍门"
+    },
+    "UBER": {
+        "message": "UBER"
+    },
+    "War - __date__": {
+        "message": "战争 - __date__"
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "至少有一点是清晰的，那就是银河系曾经居住着一个庞大的帝国，似乎因为冲突而覆灭。指挥官们把这些生物称为先祖。许多指挥官相信，解开他们起源之谜的答案就在这个曾经伟大的文明所遗留的废墟之中。"
+    }
+}

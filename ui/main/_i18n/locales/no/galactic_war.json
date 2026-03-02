@@ -1,0 +1,110 @@
+{
+    "Advanced Bot Tech": {
+        "message": "Avansert robotteknologi"
+    },
+    "Advanced Defense Technology": {
+        "message": "Avansert forsvarsteknologi"
+    },
+    "Advanced Naval Tech": {
+        "message": "Avansert sjøkrigsteknologi"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "Luftstyrketeknologi øker hastigheten til alle fly med 25%, alle fly får 25% mer helse og alle flyvåpen blir 25% kraftigere"
+    },
+    "Artillery Ammunition Tech": {
+        "message": "Artilleri-ammunisjonsteknologi"
+    },
+    "Artillery Ammunition Tech increases the damage of all artillery structures by 25% and reduces their energy usage by 90%. Requires technology to build artillery structures and units.": {
+        "message": "Artillerivåpenteknologi øker ødeleggelseskraften til alle artilleribygninger med 25% samtidig som energibruken minskes med 90%. Du må allerede ha teknologi til å bygge artillerienheter for å benytte deg av denne."
+    },
+    "Artillery Tech": {
+        "message": "Artilleriteknologi"
+    },
+    "Assault Commander": {
+        "message": "Angrepskommandør"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "Standard landkjøretøysteknologi gir deg grunnleggende landbaserte kjøretøy med tilhørende fabrikker. Disse fabrikkene kan bygges av din kommandør eller av en av dine standard ingeniører."
+    },
+    "Bot Combat Tech": {
+        "message": "Robotkrigsteknologi"
+    },
+    "Bot Commander": {
+        "message": "Robotkomandør"
+    },
+    "Bot Engine Tech": {
+        "message": "Robotteknologi"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "Alle roboter blir 50% raskere"
+    },
+    "Commander Invictus has this powerful loadout hidden away on the Entara system.": {
+        "message": "Invictus-kommandøren har sin kraftpakke gjemt i Entara-systemet. "
+    },
+    "Complete Bot Tech": {
+        "message": "Fullstendig roborteknologi"
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "Komplett flyteknologi gir deg muligheten til å bygge alle flyenheter og fabrikker. Standard flyfabrikker blir bygget av din kommandør eller av en av dine standard ingeniører. Avanserte flyfabrikker blir bygget av dine avanserte ingeniører."
+    },
+    "Defense Fabrication Tech": {
+        "message": "Forsvarfabrikasjonsteknologi"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "Forsvarsbyggeteknologi reduserer behovet for metall med 50% når du bygger forsvarsbygninger "
+    },
+    "Economy boost:": {
+        "message": "Economy boost:"
+    },
+    "Favorite color:": {
+        "message": "Favorite color:"
+    },
+    "Improved Energy Weapons": {
+        "message": "Forbedrede energivåpen"
+    },
+    "Metrarch the Machinist controls the data for this bipedal loadout somewhere on Cupru.": {
+        "message": "Metrarch-maskinisten kontrollerer dataen for sin tobente kraftpakke ett eller annet sted på Cupru."
+    },
+    "Name:": {
+        "message": "Navn:"
+    },
+    "Naval Ammunition Tech": {
+        "message": "Sjøvåpenteknologi"
+    },
+    "Naval Fabrication Tech": {
+        "message": "Sjøvåpenteknologi"
+    },
+    "Orbital Commander": {
+        "message": "Romkommandør"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "Du får 25% reduksjon på metallkostnaden på romteknologienheter"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "Supervåpen fabrikasjonsteknologi"
+    },
+    "Super Weapon Tech enables nuclear missiles, metal planet controllers, and planetary engines to be built. An advanced fabricator is required to build super weapons.": {
+        "message": "Supervåpenteknologi gir deg muligheten til å bygge atomvåpenmissiler, metallplanetlaserkanoner og planetrakettmotorer.  En avansert ingeniør må til for å bygge disse supervåpnene."
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "Romteknologi-kommandørens kraftpakke inneholder all romteknologienheter og fabrikker."
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "Kraftpakken til kjøretøyskommandøren inneholder standardfabrikker som lager standardkjøretøy"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "Landbaserte kjøretøys ammunisjonsteknologi"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "Ammunisjonen til Landbaserte kjøretøy får økt skadeomfang med 25%"
+    },
+    "Vehicle Armor Tech": {
+        "message": "Landkjøretøy-skjoldteknologi"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "Alle landsbaserte kjøretøy blir 50% raskere"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "Landkjøretøyteknologi"
+    }
+}

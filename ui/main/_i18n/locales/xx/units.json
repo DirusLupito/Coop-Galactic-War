@@ -1,0 +1,730 @@
+{
+    "Advanced Air Factory": {
+        "message": "Ȃɗѷȃƞϲέɗ Ȃїȓ Ϝȃϲҭȏȓу",
+        "original": "Advanced Air Factory"
+    },
+    "Advanced Anti-Air - Overhead heavy damage. Only attacks air.": {
+        "message": "Ȃɗѷȃƞϲέɗ Ȃƞҭї-Ȃїȓ - Ѳѷέȓнέȃɗ нέȃѷу ɗȃʍȃɠέ. Ѳƞ⌊у ȃҭҭȃϲќƨ ȃїȓ.",
+        "original": "Advanced Anti-Air - Overhead heavy damage. Only attacks air."
+    },
+    "Advanced Artillery - Extremely long range heavy damage. Can lay siege from very far away. Attacks land and sea targets.": {
+        "message": "Ȃɗѷȃƞϲέɗ Ȃȓҭї⌊⌊έȓу - Ɛ⌧ҭȓέʍέ⌊у ⌊ȏƞɠ ȓȃƞɠέ нέȃѷу ɗȃʍȃɠέ. Ҫȃƞ ⌊ȃу ƨїέɠέ ғȓȏʍ ѷέȓу ғȃȓ ȃῴȃу. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Advanced Artillery - Extremely long range heavy damage. Can lay siege from very far away. Attacks land and sea targets."
+    },
+    "Advanced Bot Factory": {
+        "message": "Ȃɗѷȃƞϲέɗ ฿ȏҭ Ϝȃϲҭȏȓу",
+        "original": "Advanced Bot Factory"
+    },
+    "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines.": {
+        "message": "Ȃɗѷȃƞϲέɗ ҪȏʍБȃҭ ϜȃБȓїϲȃҭȏȓ - ℝέ⍴ȃїȓƨ ʍմϲн ғȃƨҭέȓ ȃƞɗ ȃմҭȏ ȓέϲ⌊ȃїʍƨ ῴȓέϲќȃɠέ. Ҫȃƞ Бմї⌊ɗ ҭέ⌊έ⍴ȏȓҭέȓƨ ȃƞɗ ɗέғέƞϲέƨ їƞ ȃɗɗїҭїȏƞ ҭȏ ʍїƞέƨ.",
+        "original": "Advanced Combat Fabricator - Repairs much faster and auto reclaims wreckage. Can build teleporters and defences in addition to mines."
+    },
+    "Advanced Combat Fabricator - Repairs much faster. Can build teleporters and turrets in addition to mines.": {
+        "message": "Ȃɗѷȃƞϲέɗ ҪȏʍБȃҭ ϜȃБȓїϲȃҭȏȓ - ℝέ⍴ȃїȓƨ ʍմϲн ғȃƨҭέȓ. Ҫȃƞ Бմї⌊ɗ ҭέ⌊έ⍴ȏȓҭέȓƨ ȃƞɗ ҭմȓȓέҭƨ їƞ ȃɗɗїҭїȏƞ ҭȏ ʍїƞέƨ.",
+        "original": "Advanced Combat Fabricator - Repairs much faster. Can build teleporters and turrets in addition to mines."
+    },
+    "Advanced Economy - Produces energy.": {
+        "message": "Ȃɗѷȃƞϲέɗ Ɛϲȏƞȏʍу - Ṕȓȏɗմϲέƨ έƞέȓɠу.",
+        "original": "Advanced Economy - Produces energy."
+    },
+    "Advanced Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "Ȃɗѷȃƞϲέɗ Ɛϲȏƞȏʍу - Ṕȓȏɗմϲέƨ ʍέҭȃ⌊, ϲȃƞ ȏƞ⌊у Бέ ⍴⌊ȃϲέɗ ȏƞ ʍέҭȃ⌊ ɗέ⍴ȏƨїҭƨ.",
+        "original": "Advanced Economy - Produces metal, can only be placed on metal deposits."
+    },
+    "Advanced Energy Plant": {
+        "message": "Ȃɗѷȃƞϲέɗ Ɛƞέȓɠу Ṕ⌊ȃƞҭ",
+        "original": "Advanced Energy Plant"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБ Ȃїȓϲȓȃғҭ",
+        "original": "Advanced Fab Aircraft"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭїȏƞ ฿ȏҭ",
+        "original": "Advanced Fabrication Bot"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭїȏƞ Ṡнї⍴",
+        "original": "Advanced Fabrication Ship"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭїȏƞ Ѷέнїϲ⌊έ",
+        "original": "Advanced Fabrication Vehicle"
+    },
+    "Advanced Fabricator - Build basic and advanced structures.": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Advanced Fabricator - Build basic and advanced structures."
+    },
+    "Advanced Fabricator - Builds basic and advanced naval structures.": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ƞȃѷȃ⌊ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Advanced Fabricator - Builds basic and advanced naval structures."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures.": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Advanced Fabricator - Builds basic and advanced structures."
+    },
+    "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators.": {
+        "message": "Ȃɗѷȃƞϲέɗ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ƨҭȓմϲҭմȓέƨ. ƉմȓȃБ⌊έ. Μȏȓέ ⍴ȏῴέȓғմ⌊ ҭнȃƞ ȏҭнέȓ ғȃБȓїϲȃҭȏȓƨ.",
+        "original": "Advanced Fabricator - Builds basic and advanced structures. Durable. More powerful than other fabricators."
+    },
+    "Advanced Interplanetary Fighter - Stronger fighter. Can move between planets. Can only attack air targets.": {
+        "message": "Ȃɗѷȃƞϲέɗ Ϊƞҭέȓ⍴⌊ȃƞέҭȃȓу Ϝїɠнҭέȓ - Ṡҭȓȏƞɠέȓ ғїɠнҭέȓ. Ҫȃƞ ʍȏѷέ Бέҭῴέέƞ ⍴⌊ȃƞέҭƨ. Ҫȃƞ ȏƞ⌊у ȃҭҭȃϲќ ȃїȓ ҭȃȓɠέҭƨ.",
+        "original": "Advanced Interplanetary Fighter - Stronger fighter. Can move between planets. Can only attack air targets."
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Ȃɗѷȃƞϲέɗ ₤ȃƨέȓ Ɖέғέƞƨέ 丁ȏῴέȓ",
+        "original": "Advanced Laser Defense Tower"
+    },
+    "Advanced Manufacturing - Builds basic and advanced air units.": {
+        "message": "Ȃɗѷȃƞϲέɗ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ȃїȓ մƞїҭƨ.",
+        "original": "Advanced Manufacturing - Builds basic and advanced air units."
+    },
+    "Advanced Manufacturing - Builds basic and advanced bots.": {
+        "message": "Ȃɗѷȃƞϲέɗ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ Бȏҭƨ.",
+        "original": "Advanced Manufacturing - Builds basic and advanced bots."
+    },
+    "Advanced Manufacturing - Builds basic and advanced land vehicles.": {
+        "message": "Ȃɗѷȃƞϲέɗ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ⌊ȃƞɗ ѷέнїϲ⌊έƨ.",
+        "original": "Advanced Manufacturing - Builds basic and advanced land vehicles."
+    },
+    "Advanced Manufacturing - Builds basic and advanced naval units.": {
+        "message": "Ȃɗѷȃƞϲέɗ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ȃƞɗ ȃɗѷȃƞϲέɗ ƞȃѷȃ⌊ մƞїҭƨ.",
+        "original": "Advanced Manufacturing - Builds basic and advanced naval units."
+    },
+    "Advanced Manufacturing - Builds orbital satellites and spaceships.": {
+        "message": "Ȃɗѷȃƞϲέɗ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ ȏȓБїҭȃ⌊ ƨȃҭέ⌊⌊їҭέƨ ȃƞɗ ƨ⍴ȃϲέƨнї⍴ƨ.",
+        "original": "Advanced Manufacturing - Builds orbital satellites and spaceships."
+    },
+    "Advanced Metal Extractor": {
+        "message": "Ȃɗѷȃƞϲέɗ Μέҭȃ⌊ Ɛ⌧ҭȓȃϲҭȏȓ",
+        "original": "Advanced Metal Extractor"
+    },
+    "Advanced Naval Factory": {
+        "message": "Ȃɗѷȃƞϲέɗ Ɲȃѷȃ⌊ Ϝȃϲҭȏȓу",
+        "original": "Advanced Naval Factory"
+    },
+    "Advanced Radar": {
+        "message": "Ȃɗѷȃƞϲέɗ ℝȃɗȃȓ",
+        "original": "Advanced Radar"
+    },
+    "Advanced Radar - Detects a vast area for enemy land, sea, and air units.": {
+        "message": "Ȃɗѷȃƞϲέɗ ℝȃɗȃȓ - Ɖέҭέϲҭƨ ȃ ѷȃƨҭ ȃȓέȃ ғȏȓ έƞέʍу ⌊ȃƞɗ, ƨέȃ, ȃƞɗ ȃїȓ մƞїҭƨ.",
+        "original": "Advanced Radar - Detects a vast area for enemy land, sea, and air units."
+    },
+    "Advanced Radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "Ȃɗѷȃƞϲέɗ ℝȃɗȃȓ - Ɖέҭέϲҭƨ ƞέȃȓБу έƞέʍу ⌊ȃƞɗ, ƨέȃ, ȃƞɗ ȃїȓ մƞїҭƨ.",
+        "original": "Advanced Radar - Detects nearby enemy land, sea, and air units."
+    },
+    "Advanced Radar Satellite": {
+        "message": "Ȃɗѷȃƞϲέɗ ℝȃɗȃȓ Ṡȃҭέ⌊⌊їҭέ",
+        "original": "Advanced Radar Satellite"
+    },
+    "Advanced Submarine - Radar stealth with very high damage. Attacks land, sea and undersea targets.": {
+        "message": "Ȃɗѷȃƞϲέɗ ṠմБʍȃȓїƞέ - ℝȃɗȃȓ ƨҭέȃ⌊ҭн ῴїҭн ѷέȓу нїɠн ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Advanced Submarine - Radar stealth with very high damage. Attacks land, sea and undersea targets."
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "Ȃɗѷȃƞϲέɗ 丁ȏȓ⍴έɗȏ ₤ȃմƞϲнέȓ",
+        "original": "Advanced Torpedo Launcher"
+    },
+    "Advanced Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "Ȃɗѷȃƞϲέɗ 丁մȓȓέҭ - ƐԳմї⍴⍴έɗ ῴїҭн ɗїȓέϲҭ ғїȓέ ȃƞҭї-⌊ȃƞɗ, ȃƞɗ ȃƞҭї-ƨнї⍴ ɗέғέƞƨέƨ.",
+        "original": "Advanced Turret - Equipped with direct fire anti-land, and anti-ship defenses."
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Ȃɗѷȃƞϲέɗ Ѷέнїϲ⌊έ Ϝȃϲҭȏȓу",
+        "original": "Advanced Vehicle Factory"
+    },
+    "Air Factory": {
+        "message": "Ȃїȓ Ϝȃϲҭȏȓу",
+        "original": "Air Factory"
+    },
+    "Air Transport - Load a land unit to transport for snipes or expansions.": {
+        "message": "Ȃїȓ 丁ȓȃƞƨ⍴ȏȓҭ - ₤ȏȃɗ ȃ ⌊ȃƞɗ մƞїҭ ҭȏ ҭȓȃƞƨ⍴ȏȓҭ ғȏȓ ƨƞї⍴έƨ ȏȓ έ⌧⍴ȃƞƨїȏƞƨ.",
+        "original": "Air Transport - Load a land unit to transport for snipes or expansions."
+    },
+    "All Terrain Bot - Can crawl almost anywhere.": {
+        "message": "Ȃ⌊⌊ 丁έȓȓȃїƞ ฿ȏҭ - Ҫȃƞ ϲȓȃῴ⌊ ȃ⌊ʍȏƨҭ ȃƞуῴнέȓέ.",
+        "original": "All Terrain Bot - Can crawl almost anywhere."
+    },
+    "Anti-Air Bot - Equipped with basic anti-air missiles.": {
+        "message": "Ȃƞҭї-Ȃїȓ ฿ȏҭ - ƐԳմї⍴⍴έɗ ῴїҭн Бȃƨїϲ ȃƞҭї-ȃїȓ ʍїƨƨї⌊έƨ.",
+        "original": "Anti-Air Bot - Equipped with basic anti-air missiles."
+    },
+    "Anti-Air Defense - Equipped with homing missiles. Only attacks air.": {
+        "message": "Ȃƞҭї-Ȃїȓ Ɖέғέƞƨέ - ƐԳմї⍴⍴έɗ ῴїҭн нȏʍїƞɠ ʍїƨƨї⌊έƨ. Ѳƞ⌊у ȃҭҭȃϲќƨ ȃїȓ.",
+        "original": "Anti-Air Defense - Equipped with homing missiles. Only attacks air."
+    },
+    "Anti-Nuke - Builds advanced anti-nuclear missiles.": {
+        "message": "Ȃƞҭї-Ɲմќέ - ฿մї⌊ɗƨ ȃɗѷȃƞϲέɗ ȃƞҭї-ƞմϲ⌊έȃȓ ʍїƨƨї⌊έƨ.",
+        "original": "Anti-Nuke - Builds advanced anti-nuclear missiles."
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Ȃƞҭї-Ɲմќέ ₤ȃմƞϲнέȓ",
+        "original": "Anti-Nuke Launcher"
+    },
+    "Anti-Orbital Defense - Rapid fire with high damage. Attacks orbital targets and intercepts drop pods.": {
+        "message": "Ȃƞҭї-ѲȓБїҭȃ⌊ Ɖέғέƞƨέ - ℝȃ⍴їɗ ғїȓέ ῴїҭн нїɠн ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ ȏȓБїҭȃ⌊ ҭȃȓɠέҭƨ ȃƞɗ їƞҭέȓϲέ⍴ҭƨ ɗȓȏ⍴ ⍴ȏɗƨ.",
+        "original": "Anti-Orbital Defense - Rapid fire with high damage. Attacks orbital targets and intercepts drop pods."
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "Ȃƞҭї-ƞմќέ - Ϊƞҭέȓϲέ⍴ҭƨ їƞϲȏʍїƞɠ ƞմϲ⌊έȃȓ ʍїƨƨї⌊έƨ.",
+        "original": "Anti-nuke - Intercepts incoming nuclear missiles."
+    },
+    "Artillery - Medium range for siege and area denial. Attacks land and sea targets.": {
+        "message": "Ȃȓҭї⌊⌊έȓу - Μέɗїմʍ ȓȃƞɠέ ғȏȓ ƨїέɠέ ȃƞɗ ȃȓέȃ ɗέƞїȃ⌊. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Artillery - Medium range for siege and area denial. Attacks land and sea targets."
+    },
+    "Assault Bot - Armoured with high damage guns and torpedoes. Amphibious. Attacks land and sea.": {
+        "message": "Ȃƨƨȃմ⌊ҭ ฿ȏҭ - Ȃȓʍȏմȓέɗ ῴїҭн нїɠн ɗȃʍȃɠέ ɠմƞƨ ȃƞɗ ҭȏȓ⍴έɗȏέƨ. Ȃʍ⍴нїБїȏմƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ.",
+        "original": "Assault Bot - Armoured with high damage guns and torpedoes. Amphibious. Attacks land and sea."
+    },
+    "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets.": {
+        "message": "Ȃƨƨȃմ⌊ҭ 丁ȃƞќ - Ɖέѷȃƨҭȃҭїƞɠ ɗȃʍȃɠέ ῴїҭн нέȃѷу ȃȓʍȏȓ. Ѷմ⌊ƞέȓȃБ⌊έ ҭȏ ғ⌊ȃƞќїƞɠ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Assault Tank - Devastating damage with heavy armor. Vulnerable to flanking. Attacks land and sea targets."
+    },
+    "Attack Vehicle - Fast, adaptable, expendable. Attacks surface targets.": {
+        "message": "Ȃҭҭȃϲќ Ѷέнїϲ⌊έ - Ϝȃƨҭ, ȃɗȃ⍴ҭȃБ⌊έ, έ⌧⍴έƞɗȃБ⌊έ. Ȃҭҭȃϲќƨ ƨմȓғȃϲέ ҭȃȓɠέҭƨ.",
+        "original": "Attack Vehicle - Fast, adaptable, expendable. Attacks surface targets."
+    },
+    "Barrier - Blocks units and protects from incoming fire.": {
+        "message": "฿ȃȓȓїέȓ - ฿⌊ȏϲќƨ մƞїҭƨ ȃƞɗ ⍴ȓȏҭέϲҭƨ ғȓȏʍ їƞϲȏʍїƞɠ ғїȓέ.",
+        "original": "Barrier - Blocks units and protects from incoming fire."
+    },
+    "Basic Economy - Produces energy.": {
+        "message": "฿ȃƨїϲ Ɛϲȏƞȏʍу - Ṕȓȏɗմϲέƨ έƞέȓɠу.",
+        "original": "Basic Economy - Produces energy."
+    },
+    "Basic Economy - Produces metal, can only be placed on metal deposits.": {
+        "message": "฿ȃƨїϲ Ɛϲȏƞȏʍу - Ṕȓȏɗմϲέƨ ʍέҭȃ⌊, ϲȃƞ ȏƞ⌊у Бέ ⍴⌊ȃϲέɗ ȏƞ ʍέҭȃ⌊ ɗέ⍴ȏƨїҭƨ.",
+        "original": "Basic Economy - Produces metal, can only be placed on metal deposits."
+    },
+    "Basic Fabricator - Build basic structures.": {
+        "message": "฿ȃƨїϲ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗ Бȃƨїϲ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Basic Fabricator - Build basic structures."
+    },
+    "Basic Fabricator - Build basic structures. Weaker than other fabricators.": {
+        "message": "฿ȃƨїϲ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗ Бȃƨїϲ ƨҭȓմϲҭմȓέƨ. ₩έȃќέȓ ҭнȃƞ ȏҭнέȓ ғȃБȓїϲȃҭȏȓƨ.",
+        "original": "Basic Fabricator - Build basic structures. Weaker than other fabricators."
+    },
+    "Basic Fabricator - Builds basic naval structures.": {
+        "message": "฿ȃƨїϲ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ƞȃѷȃ⌊ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Basic Fabricator - Builds basic naval structures."
+    },
+    "Basic Fabricator - Builds basic naval structures. Water hover.": {
+        "message": "฿ȃƨїϲ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ƞȃѷȃ⌊ ƨҭȓմϲҭմȓέƨ. ₩ȃҭέȓ нȏѷέȓ.",
+        "original": "Basic Fabricator - Builds basic naval structures. Water hover."
+    },
+    "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators.": {
+        "message": "฿ȃƨїϲ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ Бȃƨїϲ ƨҭȓմϲҭմȓέƨ. ƉմȓȃБ⌊έ. Μȏȓέ ⍴ȏῴέȓғմ⌊ ҭнȃƞ ȏҭнέȓ ғȃБȓїϲȃҭȏȓƨ.",
+        "original": "Basic Fabricator - Builds basic structures. Durable. More powerful than other fabricators."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks land, air and sea targets when on land.": {
+        "message": "฿ȃƨїϲ Ϊƞғȃƞҭȓу - Ϝȃƨҭ, ȃɗȃ⍴ҭȃБ⌊έ, έ⌧⍴έƞɗȃБ⌊έ. Ȃʍ⍴нїБїȏմƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ ῴнέƞ ȏƞ ⌊ȃƞɗ.",
+        "original": "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks land, air and sea targets when on land."
+    },
+    "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks surface targets when on land.": {
+        "message": "฿ȃƨїϲ Ϊƞғȃƞҭȓу - Ϝȃƨҭ, ȃɗȃ⍴ҭȃБ⌊έ, έ⌧⍴έƞɗȃБ⌊έ. Ȃʍ⍴нїБїȏմƨ. Ȃҭҭȃϲќƨ ƨմȓғȃϲέ ҭȃȓɠέҭƨ ῴнέƞ ȏƞ ⌊ȃƞɗ.",
+        "original": "Basic Infantry - Fast, adaptable, expendable. Amphibious. Attacks surface targets when on land."
+    },
+    "Basic Manufacturing - Builds and launches basic orbital units.": {
+        "message": "฿ȃƨїϲ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ ȃƞɗ ⌊ȃմƞϲнέƨ Бȃƨїϲ ȏȓБїҭȃ⌊ մƞїҭƨ.",
+        "original": "Basic Manufacturing - Builds and launches basic orbital units."
+    },
+    "Basic Manufacturing - Builds basic air units.": {
+        "message": "฿ȃƨїϲ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ȃїȓ մƞїҭƨ.",
+        "original": "Basic Manufacturing - Builds basic air units."
+    },
+    "Basic Manufacturing - Builds basic bots.": {
+        "message": "฿ȃƨїϲ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ Бȏҭƨ.",
+        "original": "Basic Manufacturing - Builds basic bots."
+    },
+    "Basic Manufacturing - Builds basic land vehicles.": {
+        "message": "฿ȃƨїϲ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ⌊ȃƞɗ ѷέнїϲ⌊έƨ.",
+        "original": "Basic Manufacturing - Builds basic land vehicles."
+    },
+    "Basic Manufacturing - Builds basic naval units.": {
+        "message": "฿ȃƨїϲ Μȃƞմғȃϲҭմȓїƞɠ - ฿մї⌊ɗƨ Бȃƨїϲ ƞȃѷȃ⌊ մƞїҭƨ.",
+        "original": "Basic Manufacturing - Builds basic naval units."
+    },
+    "Basic Radar - Detects a large area for enemy land, sea, and air units.": {
+        "message": "฿ȃƨїϲ ℝȃɗȃȓ - Ɖέҭέϲҭƨ ȃ ⌊ȃȓɠέ ȃȓέȃ ғȏȓ έƞέʍу ⌊ȃƞɗ, ƨέȃ, ȃƞɗ ȃїȓ մƞїҭƨ.",
+        "original": "Basic Radar - Detects a large area for enemy land, sea, and air units."
+    },
+    "Basic Turret - Equipped with direct fire anti-land, and anti-ship defenses.": {
+        "message": "฿ȃƨїϲ 丁մȓȓέҭ - ƐԳմї⍴⍴έɗ ῴїҭн ɗїȓέϲҭ ғїȓέ ȃƞҭї-⌊ȃƞɗ, ȃƞɗ ȃƞҭї-ƨнї⍴ ɗέғέƞƨέƨ.",
+        "original": "Basic Turret - Equipped with direct fire anti-land, and anti-ship defenses."
+    },
+    "Basic radar - Detects nearby enemy land, sea, and air units.": {
+        "message": "฿ȃƨїϲ ȓȃɗȃȓ - Ɖέҭέϲҭƨ ƞέȃȓБу έƞέʍу ⌊ȃƞɗ, ƨέȃ, ȃƞɗ ȃїȓ մƞїҭƨ.",
+        "original": "Basic radar - Detects nearby enemy land, sea, and air units."
+    },
+    "Battleship - Long range advanced anti-ship, and anti-land guns.": {
+        "message": "฿ȃҭҭ⌊έƨнї⍴ - ₤ȏƞɠ ȓȃƞɠέ ȃɗѷȃƞϲέɗ ȃƞҭї-ƨнї⍴, ȃƞɗ ȃƞҭї-⌊ȃƞɗ ɠմƞƨ.",
+        "original": "Battleship - Long range advanced anti-ship, and anti-land guns."
+    },
+    "Bluehawk Tactical Missile": {
+        "message": "฿⌊մέнȃῴќ 丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ",
+        "original": "Bluehawk Tactical Missile"
+    },
+    "Bomb Bot - Self destructs to deal very heavy damage over a nearby area. Extremely fast.": {
+        "message": "฿ȏʍБ ฿ȏҭ - Ṡέ⌊ғ ɗέƨҭȓմϲҭƨ ҭȏ ɗέȃ⌊ ѷέȓу нέȃѷу ɗȃʍȃɠέ ȏѷέȓ ȃ ƞέȃȓБу ȃȓέȃ. Ɛ⌧ҭȓέʍέ⌊у ғȃƨҭ.",
+        "original": "Bomb Bot - Self destructs to deal very heavy damage over a nearby area. Extremely fast."
+    },
+    "Bot Factory": {
+        "message": "฿ȏҭ Ϝȃϲҭȏȓу",
+        "original": "Bot Factory"
+    },
+    "Carpet Bomber - High damage over a wide area. Fragile and slow. Attacks land, sea and undersea targets.": {
+        "message": "Ҫȃȓ⍴έҭ ฿ȏʍБέȓ - Ӈїɠн ɗȃʍȃɠέ ȏѷέȓ ȃ ῴїɗέ ȃȓέȃ. Ϝȓȃɠї⌊έ ȃƞɗ ƨ⌊ȏῴ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Carpet Bomber - High damage over a wide area. Fragile and slow. Attacks land, sea and undersea targets."
+    },
+    "Catapult Tactical Missile": {
+        "message": "Ҫȃҭȃ⍴մ⌊ҭ 丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ",
+        "original": "Catapult Tactical Missile"
+    },
+    "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures.": {
+        "message": "ҪȏʍБȃҭ ϜȃБȓїϲȃҭȏȓ - ℝέ⍴ȃїȓƨ ɗȃʍȃɠέɗ մƞїҭƨ. Ҫȃƞ Бմї⌊ɗ ȃƞɗ ɗέҭέϲҭ ʍїƞέƨ. Ҫȃƞ Бմї⌊ɗ ҭέ⌊έ⍴ȏȓҭέȓƨ. Ҫȃƞ'ҭ нέ⌊⍴ Бմї⌊ɗ ȏҭнέȓ ƨҭȓմϲҭմȓέƨ.",
+        "original": "Combat Fabricator - Repairs damaged units. Can build and detect mines. Can build teleporters. Can't help build other structures."
+    },
+    "Commander Anti-Air Missile": {
+        "message": "Ҫȏʍʍȃƞɗέȓ Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Commander Anti-Air Missile"
+    },
+    "Deep Space Radar": {
+        "message": "Ɖέέ⍴ Ṡ⍴ȃϲέ ℝȃɗȃȓ",
+        "original": "Deep Space Radar"
+    },
+    "Deep Space Radar - System wide planetary radar.": {
+        "message": "Ɖέέ⍴ Ṡ⍴ȃϲέ ℝȃɗȃȓ - Ṡуƨҭέʍ ῴїɗέ ⍴⌊ȃƞέҭȃȓу ȓȃɗȃȓ.",
+        "original": "Deep Space Radar - System wide planetary radar."
+    },
+    "Deep Water Destroyer - Medium range with high damage. Very durable. Attacks land, sea and undersea targets.": {
+        "message": "Ɖέέ⍴ ₩ȃҭέȓ Ɖέƨҭȓȏуέȓ - Μέɗїմʍ ȓȃƞɠέ ῴїҭн нїɠн ɗȃʍȃɠέ. Ѷέȓу ɗմȓȃБ⌊έ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Deep Water Destroyer - Medium range with high damage. Very durable. Attacks land, sea and undersea targets."
+    },
+    "Defense Satellite - Heavy orbital offensive and defensive platform with basic laser.": {
+        "message": "Ɖέғέƞƨέ Ṡȃҭέ⌊⌊їҭέ - Ӈέȃѷу ȏȓБїҭȃ⌊ ȏғғέƞƨїѷέ ȃƞɗ ɗέғέƞƨїѷέ ⍴⌊ȃҭғȏȓʍ ῴїҭн Бȃƨїϲ ⌊ȃƨέȓ.",
+        "original": "Defense Satellite - Heavy orbital offensive and defensive platform with basic laser."
+    },
+    "Delta V Engine - Used to move small to medium celestial bodies.": {
+        "message": "Ɖέ⌊ҭȃ Ѷ Ɛƞɠїƞέ - Ủƨέɗ ҭȏ ʍȏѷέ ƨʍȃ⌊⌊ ҭȏ ʍέɗїմʍ ϲέ⌊έƨҭїȃ⌊ Бȏɗїέƨ.",
+        "original": "Delta V Engine - Used to move small to medium celestial bodies."
+    },
+    "Doomsday Titan - Destroys the planet it's built on once finished.": {
+        "message": "Ɖȏȏʍƨɗȃу 丁їҭȃƞ - Ɖέƨҭȓȏуƨ ҭнέ ⍴⌊ȃƞέҭ їҭ'ƨ Бմї⌊ҭ ȏƞ ȏƞϲέ ғїƞїƨнέɗ.",
+        "original": "Doomsday Titan - Destroys the planet it's built on once finished."
+    },
+    "Dox Launcher - Builds and fires Dox at nearby targets.": {
+        "message": "Ɖȏ⌧ ₤ȃմƞϲнέȓ - ฿մї⌊ɗƨ ȃƞɗ ғїȓέƨ Ɖȏ⌧ ȃҭ ƞέȃȓБу ҭȃȓɠέҭƨ.",
+        "original": "Dox Launcher - Builds and fires Dox at nearby targets."
+    },
+    "Drone Carrier - Builds and launches missile drones at enemies. Attacks land, air and sea targets.": {
+        "message": "Ɖȓȏƞέ Ҫȃȓȓїέȓ - ฿մї⌊ɗƨ ȃƞɗ ⌊ȃմƞϲнέƨ ʍїƨƨї⌊έ ɗȓȏƞέƨ ȃҭ έƞέʍїέƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Drone Carrier - Builds and launches missile drones at enemies. Attacks land, air and sea targets."
+    },
+    "Economy - Orbital energy generation.": {
+        "message": "Ɛϲȏƞȏʍу - ѲȓБїҭȃ⌊ έƞέȓɠу ɠέƞέȓȃҭїȏƞ.",
+        "original": "Economy - Orbital energy generation."
+    },
+    "Energy Plant": {
+        "message": "Ɛƞέȓɠу Ṕ⌊ȃƞҭ",
+        "original": "Energy Plant"
+    },
+    "Energy Storage": {
+        "message": "Ɛƞέȓɠу Ṡҭȏȓȃɠέ",
+        "original": "Energy Storage"
+    },
+    "Fabrication Aircraft": {
+        "message": "ϜȃБȓїϲȃҭїȏƞ Ȃїȓϲȓȃғҭ",
+        "original": "Fabrication Aircraft"
+    },
+    "Fabrication Bot": {
+        "message": "ϜȃБȓїϲȃҭїȏƞ ฿ȏҭ",
+        "original": "Fabrication Bot"
+    },
+    "Fabrication Ship": {
+        "message": "ϜȃБȓїϲȃҭїȏƞ Ṡнї⍴",
+        "original": "Fabrication Ship"
+    },
+    "Fabrication Vehicle": {
+        "message": "ϜȃБȓїϲȃҭїȏƞ Ѷέнїϲ⌊έ",
+        "original": "Fabrication Vehicle"
+    },
+    "Fighter - Fast. High damage. Only attacks air targets.": {
+        "message": "Ϝїɠнҭέȓ - Ϝȃƨҭ. Ӈїɠн ɗȃʍȃɠέ. Ѳƞ⌊у ȃҭҭȃϲќƨ ȃїȓ ҭȃȓɠέҭƨ.",
+        "original": "Fighter - Fast. High damage. Only attacks air targets."
+    },
+    "Fire Support - Medium range. Can fire over walls. Attacks land and sea targets.": {
+        "message": "Ϝїȓέ Ṡմ⍴⍴ȏȓҭ - Μέɗїմʍ ȓȃƞɠέ. Ҫȃƞ ғїȓέ ȏѷέȓ ῴȃ⌊⌊ƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Fire Support - Medium range. Can fire over walls. Attacks land and sea targets."
+    },
+    "Flak Tank - Damage over a very wide area. Only attacks air targets.": {
+        "message": "Ϝ⌊ȃќ 丁ȃƞќ - Ɖȃʍȃɠέ ȏѷέȓ ȃ ѷέȓу ῴїɗέ ȃȓέȃ. Ѳƞ⌊у ȃҭҭȃϲќƨ ȃїȓ ҭȃȓɠέҭƨ.",
+        "original": "Flak Tank - Damage over a very wide area. Only attacks air targets."
+    },
+    "Flame Tank - Short range, heavy armored vehicle.": {
+        "message": "Ϝ⌊ȃʍέ 丁ȃƞќ - Ṡнȏȓҭ ȓȃƞɠέ, нέȃѷу ȃȓʍȏȓέɗ ѷέнїϲ⌊έ.",
+        "original": "Flame Tank - Short range, heavy armored vehicle."
+    },
+    "Frigate - Durable. Rapid-fire. Attacks land, air, and sea targets.": {
+        "message": "Ϝȓїɠȃҭέ - ƉմȓȃБ⌊έ. ℝȃ⍴їɗ-ғїȓέ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ, ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Frigate - Durable. Rapid-fire. Attacks land, air, and sea targets."
+    },
+    "Galata Anti-Air Missile": {
+        "message": "Ǵȃ⌊ȃҭȃ Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Galata Anti-Air Missile"
+    },
+    "Gas Mining - Advanced energy and metal creation satellite. Only works above gas giant planets.": {
+        "message": "Ǵȃƨ Μїƞїƞɠ - Ȃɗѷȃƞϲέɗ έƞέȓɠу ȃƞɗ ʍέҭȃ⌊ ϲȓέȃҭїȏƞ ƨȃҭέ⌊⌊їҭέ. Ѳƞ⌊у ῴȏȓќƨ ȃБȏѷέ ɠȃƨ ɠїȃƞҭ ⍴⌊ȃƞέҭƨ.",
+        "original": "Gas Mining - Advanced energy and metal creation satellite. Only works above gas giant planets."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Attacks land and sea targets.": {
+        "message": "ǴմƞБȏȃҭ - Ҫнέȃ⍴. Ϝȃƨҭ. Ɛ⌧⍴έƞɗȃБ⌊έ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Gunboat - Cheap. Fast. Expendable. Attacks land and sea targets."
+    },
+    "Gunboat - Cheap. Fast. Expendable. Water hover. Attacks land and sea targets.": {
+        "message": "ǴմƞБȏȃҭ - Ҫнέȃ⍴. Ϝȃƨҭ. Ɛ⌧⍴έƞɗȃБ⌊έ. ₩ȃҭέȓ нȏѷέȓ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Gunboat - Cheap. Fast. Expendable. Water hover. Attacks land and sea targets."
+    },
+    "Gunship - Fast. Cheap. Durable. Attacks land and sea targets.": {
+        "message": "Ǵմƞƨнї⍴ - Ϝȃƨҭ. Ҫнέȃ⍴. ƉմȓȃБ⌊έ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Gunship - Fast. Cheap. Durable. Attacks land and sea targets."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar and radar jamming.": {
+        "message": "Ӈέȃѷу 丁ȃƞќ - Ȃɗѷȃƞϲέɗ ƨнȏȓҭ ȓȃƞɠέ, нέȃѷї⌊у ȃȓʍȏȓέɗ ѷέнїϲ⌊έ ῴїҭн ʍȏБї⌊έ ȓȃɗȃȓ ȃƞɗ ȓȃɗȃȓ لȃʍʍїƞɠ.",
+        "original": "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar and radar jamming."
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle.": {
+        "message": "Ӈέȃѷу 丁ȃƞќ - Ȃɗѷȃƞϲέɗ ƨнȏȓҭ ȓȃƞɠέ, нέȃѷї⌊у ȃȓʍȏȓέɗ ѷέнїϲ⌊έ.",
+        "original": "Heavy Tank - Advanced short range, heavily armored vehicle."
+    },
+    "Hornet Tactical Missile": {
+        "message": "Ӈȏȓƞέҭ 丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ",
+        "original": "Hornet Tactical Missile"
+    },
+    "Hover Destroyer - Long Range. Durable. Hover. Attacks land and sea targets.": {
+        "message": "Ӈȏѷέȓ Ɖέƨҭȓȏуέȓ - ₤ȏƞɠ ℝȃƞɠέ. ƉմȓȃБ⌊έ. Ӈȏѷέȓ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Hover Destroyer - Long Range. Durable. Hover. Attacks land and sea targets."
+    },
+    "Hover Tank - Fast. Can cross water and lava. Attacks land and sea targets.": {
+        "message": "Ӈȏѷέȓ 丁ȃƞќ - Ϝȃƨҭ. Ҫȃƞ ϲȓȏƨƨ ῴȃҭέȓ ȃƞɗ ⌊ȃѷȃ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Hover Tank - Fast. Can cross water and lava. Attacks land and sea targets."
+    },
+    "Hummingbird Air-To-Air Missile": {
+        "message": "ӇմʍʍїƞɠБїȓɗ Ȃїȓ-丁ȏ-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Hummingbird Air-To-Air Missile"
+    },
+    "Interplanetary Teleporter: Teleports units between linked Teleporters.": {
+        "message": "Ϊƞҭέȓ⍴⌊ȃƞέҭȃȓу 丁έ⌊έ⍴ȏȓҭέȓ: 丁έ⌊έ⍴ȏȓҭƨ մƞїҭƨ Бέҭῴέέƞ ⌊їƞќέɗ 丁έ⌊έ⍴ȏȓҭέȓƨ.",
+        "original": "Interplanetary Teleporter: Teleports units between linked Teleporters."
+    },
+    "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system.": {
+        "message": "Ϊƞҭέȓ⍴⌊ȃƞέҭȃȓу 丁ȓȃƞƨ⍴ȏȓҭ - ฿մї⌊ɗƨ ȃƞɗ ⌊ȃմƞϲнέƨ մ⍴ ҭȏ 16մƞїҭƨ ȃҭ ȏƞϲέ ȃƞуῴнέȓέ їƞ ҭнέ ƨуƨҭέʍ.",
+        "original": "Interplanetary Transport - Builds and launches up to 16units at once anywhere in the system."
+    },
+    "Invasion Titan - Can link with a teleporter to send units directly to planet surface. Attacks everything.": {
+        "message": "Ϊƞѷȃƨїȏƞ 丁їҭȃƞ - Ҫȃƞ ⌊їƞќ ῴїҭн ȃ ҭέ⌊έ⍴ȏȓҭέȓ ҭȏ ƨέƞɗ մƞїҭƨ ɗїȓέϲҭ⌊у ҭȏ ⍴⌊ȃƞέҭ ƨմȓғȃϲέ. Ȃҭҭȃϲќƨ έѷέȓуҭнїƞɠ.",
+        "original": "Invasion Titan - Can link with a teleporter to send units directly to planet surface. Attacks everything."
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "₤ℝ-96 -Ṕȃϲїғїέȓ- Μїƨƨї⌊έ",
+        "original": "LR-96 -Pacifier- Missile"
+    },
+    "LR-96 Pacifier Nuclear Missile": {
+        "message": "₤ℝ-96 Ṕȃϲїғїέȓ Ɲմϲ⌊έȃȓ Μїƨƨї⌊έ",
+        "original": "LR-96 Pacifier Nuclear Missile"
+    },
+    "Land Mine": {
+        "message": "₤ȃƞɗ Μїƞέ",
+        "original": "Land Mine"
+    },
+    "Land Mine - Detonates when enemy units are in proximity.": {
+        "message": "₤ȃƞɗ Μїƞέ - Ɖέҭȏƞȃҭέƨ ῴнέƞ έƞέʍу մƞїҭƨ ȃȓέ їƞ ⍴ȓȏ⌧їʍїҭу.",
+        "original": "Land Mine - Detonates when enemy units are in proximity."
+    },
+    "Laser Defense Tower": {
+        "message": "₤ȃƨέȓ Ɖέғέƞƨέ 丁ȏῴέȓ",
+        "original": "Laser Defense Tower"
+    },
+    "Light Tank - Well-rounded. Reliable. Attacks land and sea targets.": {
+        "message": "₤їɠнҭ 丁ȃƞќ - ₩έ⌊⌊-ȓȏմƞɗέɗ. ℝέ⌊їȃБ⌊έ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Light Tank - Well-rounded. Reliable. Attacks land and sea targets."
+    },
+    "Lightning Titan - Heavy damage over a wide area. Attacks any targets except orbital.": {
+        "message": "₤їɠнҭƞїƞɠ 丁їҭȃƞ - Ӈέȃѷу ɗȃʍȃɠέ ȏѷέȓ ȃ ῴїɗέ ȃȓέȃ. Ȃҭҭȃϲќƨ ȃƞу ҭȃȓɠέҭƨ έ⌧ϲέ⍴ҭ ȏȓБїҭȃ⌊.",
+        "original": "Lightning Titan - Heavy damage over a wide area. Attacks any targets except orbital."
+    },
+    "Metal Extractor": {
+        "message": "Μέҭȃ⌊ Ɛ⌧ҭȓȃϲҭȏȓ",
+        "original": "Metal Extractor"
+    },
+    "Metal Storage": {
+        "message": "Μέҭȃ⌊ Ṡҭȏȓȃɠέ",
+        "original": "Metal Storage"
+    },
+    "Missile Ship - Long range with radar. High damage anti-air and tactical missiles. Attacks land, sea, air, and orbital targets.": {
+        "message": "Μїƨƨї⌊έ Ṡнї⍴ - ₤ȏƞɠ ȓȃƞɠέ ῴїҭн ȓȃɗȃȓ. Ӈїɠн ɗȃʍȃɠέ ȃƞҭї-ȃїȓ ȃƞɗ ҭȃϲҭїϲȃ⌊ ʍїƨƨї⌊έƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ, ȃїȓ, ȃƞɗ ȏȓБїҭȃ⌊ ҭȃȓɠέҭƨ.",
+        "original": "Missile Ship - Long range with radar. High damage anti-air and tactical missiles. Attacks land, sea, air, and orbital targets."
+    },
+    "Missile and Torpedo Drone - Fast, fragile, attacks land, sea and air.": {
+        "message": "Μїƨƨї⌊έ ȃƞɗ 丁ȏȓ⍴έɗȏ Ɖȓȏƞέ - Ϝȃƨҭ, ғȓȃɠї⌊έ, ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ ȃƞɗ ȃїȓ.",
+        "original": "Missile and Torpedo Drone - Fast, fragile, attacks land, sea and air."
+    },
+    "Mobile Anti-Air - Equipped with homing missiles. Only attacks air.": {
+        "message": "ΜȏБї⌊έ Ȃƞҭї-Ȃїȓ - ƐԳմї⍴⍴έɗ ῴїҭн нȏʍїƞɠ ʍїƨƨї⌊έƨ. Ѳƞ⌊у ȃҭҭȃϲќƨ ȃїȓ.",
+        "original": "Mobile Anti-Air - Equipped with homing missiles. Only attacks air."
+    },
+    "Mobile Nuke - Detonates a nuke on death. Slow. Extremely durable. Self-destruct attack.": {
+        "message": "ΜȏБї⌊έ Ɲմќέ - Ɖέҭȏƞȃҭέƨ ȃ ƞմќέ ȏƞ ɗέȃҭн. Ṡ⌊ȏῴ. Ɛ⌧ҭȓέʍέ⌊у ɗմȓȃБ⌊έ. Ṡέ⌊ғ-ɗέƨҭȓմϲҭ ȃҭҭȃϲќ.",
+        "original": "Mobile Nuke - Detonates a nuke on death. Slow. Extremely durable. Self-destruct attack."
+    },
+    "Mobile Tactical Missile - Long range with heavy damage. Fires homing missiles. Attacks land, sea and orbital targets.": {
+        "message": "ΜȏБї⌊έ 丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ - ₤ȏƞɠ ȓȃƞɠέ ῴїҭн нέȃѷу ɗȃʍȃɠέ. Ϝїȓέƨ нȏʍїƞɠ ʍїƨƨї⌊έƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ ȃƞɗ ȏȓБїҭȃ⌊ ҭȃȓɠέҭƨ.",
+        "original": "Mobile Tactical Missile - Long range with heavy damage. Fires homing missiles. Attacks land, sea and orbital targets."
+    },
+    "Mortar tank - Advanced long range mobile artillery.": {
+        "message": "Μȏȓҭȃȓ ҭȃƞќ - Ȃɗѷȃƞϲέɗ ⌊ȏƞɠ ȓȃƞɠέ ʍȏБї⌊έ ȃȓҭї⌊⌊έȓу.",
+        "original": "Mortar tank - Advanced long range mobile artillery."
+    },
+    "Nanobot Swarm - Extremely Fast. Cheap. Close range. Devastating damage. Hover. Attacks land and sea targets.": {
+        "message": "ƝȃƞȏБȏҭ Ṡῴȃȓʍ - Ɛ⌧ҭȓέʍέ⌊у Ϝȃƨҭ. Ҫнέȃ⍴. Ҫ⌊ȏƨέ ȓȃƞɠέ. Ɖέѷȃƨҭȃҭїƞɠ ɗȃʍȃɠέ. Ӈȏѷέȓ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Nanobot Swarm - Extremely Fast. Cheap. Close range. Devastating damage. Hover. Attacks land and sea targets."
+    },
+    "Narwhal Anti-Air Missile": {
+        "message": "Ɲȃȓῴнȃ⌊ Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Narwhal Anti-Air Missile"
+    },
+    "Naval Factory": {
+        "message": "Ɲȃѷȃ⌊ Ϝȃϲҭȏȓу",
+        "original": "Naval Factory"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Ɲմϲ⌊έȃȓ Μїƨƨї⌊έ ₤ȃմƞϲнέȓ",
+        "original": "Nuclear Missile Launcher"
+    },
+    "Nuclear Missile Launcher - Builds interplanetary long range nuclear missile with large area damage.": {
+        "message": "Ɲմϲ⌊έȃȓ Μїƨƨї⌊έ ₤ȃմƞϲнέȓ - ฿մї⌊ɗƨ їƞҭέȓ⍴⌊ȃƞέҭȃȓу ⌊ȏƞɠ ȓȃƞɠέ ƞմϲ⌊έȃȓ ʍїƨƨї⌊έ ῴїҭн ⌊ȃȓɠέ ȃȓέȃ ɗȃʍȃɠέ.",
+        "original": "Nuclear Missile Launcher - Builds interplanetary long range nuclear missile with large area damage."
+    },
+    "Nuclear missile - Long range interplanetary, large area damage, projectile": {
+        "message": "Ɲմϲ⌊έȃȓ ʍїƨƨї⌊έ - ₤ȏƞɠ ȓȃƞɠέ їƞҭέȓ⍴⌊ȃƞέҭȃȓу, ⌊ȃȓɠέ ȃȓέȃ ɗȃʍȃɠέ, ⍴ȓȏلέϲҭї⌊έ",
+        "original": "Nuclear missile - Long range interplanetary, large area damage, projectile"
+    },
+    "Nuclear missile - Long range, large area damage, projectile": {
+        "message": "Ɲմϲ⌊έȃȓ ʍїƨƨї⌊έ - ₤ȏƞɠ ȓȃƞɠέ, ⌊ȃȓɠέ ȃȓέȃ ɗȃʍȃɠέ, ⍴ȓȏلέϲҭї⌊έ",
+        "original": "Nuclear missile - Long range, large area damage, projectile"
+    },
+    "Orbital Battleship - Rapid-Fire. Very durable. Heavy damage. Attacks everything.": {
+        "message": "ѲȓБїҭȃ⌊ ฿ȃҭҭ⌊έƨнї⍴ - ℝȃ⍴їɗ-Ϝїȓέ. Ѷέȓу ɗմȓȃБ⌊έ. Ӈέȃѷу ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ έѷέȓуҭнїƞɠ.",
+        "original": "Orbital Battleship - Rapid-Fire. Very durable. Heavy damage. Attacks everything."
+    },
+    "Orbital Carrier - Can load up to 12 units.": {
+        "message": "ѲȓБїҭȃ⌊ Ҫȃȓȓїέȓ - Ҫȃƞ ⌊ȏȃɗ մ⍴ ҭȏ 12 մƞїҭƨ.",
+        "original": "Orbital Carrier - Can load up to 12 units."
+    },
+    "Orbital Fabrication Bot": {
+        "message": "ѲȓБїҭȃ⌊ ϜȃБȓїϲȃҭїȏƞ ฿ȏҭ",
+        "original": "Orbital Fabrication Bot"
+    },
+    "Orbital Fabricator - Builds orbital satellites and spaceships.": {
+        "message": "ѲȓБїҭȃ⌊ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ ȏȓБїҭȃ⌊ ƨȃҭέ⌊⌊їҭέƨ ȃƞɗ ƨ⍴ȃϲέƨнї⍴ƨ.",
+        "original": "Orbital Fabricator - Builds orbital satellites and spaceships."
+    },
+    "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS.": {
+        "message": "ѲȓБїҭȃ⌊ ϜȃБȓїϲȃҭȏȓ - ฿մї⌊ɗƨ ȏȓБїҭȃ⌊ ƨȃҭέ⌊⌊їҭέƨ, ƨ⍴ȃϲέƨнї⍴ƨ ȃƞɗ 丁Ϊ丁ȂƝṠ.",
+        "original": "Orbital Fabricator - Builds orbital satellites, spaceships and TITANS."
+    },
+    "Orbital Factory": {
+        "message": "ѲȓБїҭȃ⌊ Ϝȃϲҭȏȓу",
+        "original": "Orbital Factory"
+    },
+    "Orbital Fighter - Fast moving orbital fighter for offense and defense.": {
+        "message": "ѲȓБїҭȃ⌊ Ϝїɠнҭέȓ - Ϝȃƨҭ ʍȏѷїƞɠ ȏȓБїҭȃ⌊ ғїɠнҭέȓ ғȏȓ ȏғғέƞƨέ ȃƞɗ ɗέғέƞƨέ.",
+        "original": "Orbital Fighter - Fast moving orbital fighter for offense and defense."
+    },
+    "Orbital Lander - Load it up and transport a unit to other planets.": {
+        "message": "ѲȓБїҭȃ⌊ ₤ȃƞɗέȓ - ₤ȏȃɗ їҭ մ⍴ ȃƞɗ ҭȓȃƞƨ⍴ȏȓҭ ȃ մƞїҭ ҭȏ ȏҭнέȓ ⍴⌊ȃƞέҭƨ.",
+        "original": "Orbital Lander - Load it up and transport a unit to other planets."
+    },
+    "Orbital Laser Platform - Rains death from above.": {
+        "message": "ѲȓБїҭȃ⌊ ₤ȃƨέȓ Ṕ⌊ȃҭғȏȓʍ - ℝȃїƞƨ ɗέȃҭн ғȓȏʍ ȃБȏѷέ.",
+        "original": "Orbital Laser Platform - Rains death from above."
+    },
+    "Orbital Launcher": {
+        "message": "ѲȓБїҭȃ⌊ ₤ȃմƞϲнέȓ",
+        "original": "Orbital Launcher"
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "ѲȓБїҭȃ⌊ ȃƞɗ Ɖέέ⍴ƨ⍴ȃϲέ ℝȃɗȃȓ",
+        "original": "Orbital and Deepspace Radar"
+    },
+    "Orbital and Deepspace Radar - Orbital and celestial radar telemetry.": {
+        "message": "ѲȓБїҭȃ⌊ ȃƞɗ Ɖέέ⍴ƨ⍴ȃϲέ ℝȃɗȃȓ - ѲȓБїҭȃ⌊ ȃƞɗ ϲέ⌊έƨҭїȃ⌊ ȓȃɗȃȓ ҭέ⌊έʍέҭȓу.",
+        "original": "Orbital and Deepspace Radar - Orbital and celestial radar telemetry."
+    },
+    "Phoenix Air-To-Air Missile": {
+        "message": "Ṕнȏέƞї⌧ Ȃїȓ-丁ȏ-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Phoenix Air-To-Air Missile"
+    },
+    "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital.": {
+        "message": "Ṕȓȏ⌧у Ҫȏʍʍȃƞɗέȓ - ฿մї⌊ɗƨ ȃɗѷȃƞϲέɗ ƨҭȓմϲҭմȓέƨ. Ȃʍ⍴нїБїȏմƨ. ƉմȓȃБ⌊έ. Ӈїɠн ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ έѷέȓуҭнїƞɠ Бմҭ ȏȓБїҭȃ⌊.",
+        "original": "Proxy Commander - Builds advanced structures. Amphibious. Durable. High damage. Attacks everything but orbital."
+    },
+    "Radar": {
+        "message": "ℝȃɗȃȓ",
+        "original": "Radar"
+    },
+    "Railgun Platform - Long range with high damage. Very low rate of fire. Uses energy. Attacks orbital.": {
+        "message": "ℝȃї⌊ɠմƞ Ṕ⌊ȃҭғȏȓʍ - ₤ȏƞɠ ȓȃƞɠέ ῴїҭн нїɠн ɗȃʍȃɠέ. Ѷέȓу ⌊ȏῴ ȓȃҭέ ȏғ ғїȓέ. Ủƨέƨ έƞέȓɠу. Ȃҭҭȃϲќƨ ȏȓБїҭȃ⌊.",
+        "original": "Railgun Platform - Long range with high damage. Very low rate of fire. Uses energy. Attacks orbital."
+    },
+    "Rolling Fortress - Near invincible. Long range. Heavy damage. Hover. Attacks land and sea targets.": {
+        "message": "ℝȏ⌊⌊їƞɠ Ϝȏȓҭȓέƨƨ - Ɲέȃȓ їƞѷїƞϲїБ⌊έ. ₤ȏƞɠ ȓȃƞɠέ. Ӈέȃѷу ɗȃʍȃɠέ. Ӈȏѷέȓ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Rolling Fortress - Near invincible. Long range. Heavy damage. Hover. Attacks land and sea targets."
+    },
+    "SR-24 Shield Missile Defense": {
+        "message": "Ṡℝ-24 Ṡнїέ⌊ɗ Μїƨƨї⌊έ Ɖέғέƞƨέ",
+        "original": "SR-24 Shield Missile Defense"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "ṠҲҲ-1304 ₤ȃƨέȓ Ṕ⌊ȃҭғȏȓʍ",
+        "original": "SXX-1304 Laser Platform"
+    },
+    "Scout - Fast. Can see far away and detects mines. Does not attack.": {
+        "message": "Ṡϲȏմҭ - Ϝȃƨҭ. Ҫȃƞ ƨέέ ғȃȓ ȃῴȃу ȃƞɗ ɗέҭέϲҭƨ ʍїƞέƨ. Ɖȏέƨ ƞȏҭ ȃҭҭȃϲќ.",
+        "original": "Scout - Fast. Can see far away and detects mines. Does not attack."
+    },
+    "Scout - Fast. Can see far away. Does not attack.": {
+        "message": "Ṡϲȏմҭ - Ϝȃƨҭ. Ҫȃƞ ƨέέ ғȃȓ ȃῴȃу. Ɖȏέƨ ƞȏҭ ȃҭҭȃϲќ.",
+        "original": "Scout - Fast. Can see far away. Does not attack."
+    },
+    "Sea Mine - Detonates when ships are in proximity.": {
+        "message": "Ṡέȃ Μїƞέ - Ɖέҭȏƞȃҭέƨ ῴнέƞ ƨнї⍴ƨ ȃȓέ їƞ ⍴ȓȏ⌧їʍїҭу.",
+        "original": "Sea Mine - Detonates when ships are in proximity."
+    },
+    "Seismic Titan - Devastating damage to everything nearby. Amphibious. Attacks land, sea, and undersea targets.": {
+        "message": "Ṡέїƨʍїϲ 丁їҭȃƞ - Ɖέѷȃƨҭȃҭїƞɠ ɗȃʍȃɠέ ҭȏ έѷέȓуҭнїƞɠ ƞέȃȓБу. Ȃʍ⍴нїБїȏմƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ, ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Seismic Titan - Devastating damage to everything nearby. Amphibious. Attacks land, sea, and undersea targets."
+    },
+    "Siege Bomber - Durable. Slow. Devastating damage. Attacks land and sea targets.": {
+        "message": "Ṡїέɠέ ฿ȏʍБέȓ - ƉմȓȃБ⌊έ. Ṡ⌊ȏῴ. Ɖέѷȃƨҭȃҭїƞɠ ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Siege Bomber - Durable. Slow. Devastating damage. Attacks land and sea targets."
+    },
+    "Single Laser Defense Tower": {
+        "message": "Ṡїƞɠ⌊έ ₤ȃƨέȓ Ɖέғέƞƨέ 丁ȏῴέȓ",
+        "original": "Single Laser Defense Tower"
+    },
+    "Sniper - Long range with high damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "Ṡƞї⍴έȓ - ₤ȏƞɠ ȓȃƞɠέ ῴїҭн нїɠн ɗȃʍȃɠέ. Ṡ⌊ȏῴ ȓȃҭέ ȏғ ғїȓέ. Ϊƞҭέȓϲέ⍴ҭƨ ʍїƨƨї⌊έƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Sniper - Long range with high damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets."
+    },
+    "Sniper - Long range. High damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets.": {
+        "message": "Ṡƞї⍴έȓ - ₤ȏƞɠ ȓȃƞɠέ. Ӈїɠн ɗȃʍȃɠέ. Ṡ⌊ȏῴ ȓȃҭέ ȏғ ғїȓέ. Ϊƞҭέȓϲέ⍴ҭƨ ʍїƨƨї⌊έƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Sniper - Long range. High damage. Slow rate of fire. Intercepts missiles. Attacks land, air and sea targets."
+    },
+    "Solar Array": {
+        "message": "Ṡȏ⌊ȃȓ Ȃȓȓȃу",
+        "original": "Solar Array"
+    },
+    "Solar Drone - Produces energy. Mobile but slow. Weak. Attacks land, air, and sea targets.": {
+        "message": "Ṡȏ⌊ȃȓ Ɖȓȏƞέ - Ṕȓȏɗմϲέƨ έƞέȓɠу. ΜȏБї⌊έ Бմҭ ƨ⌊ȏῴ. ₩έȃќ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ȃїȓ, ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Solar Drone - Produces energy. Mobile but slow. Weak. Attacks land, air, and sea targets."
+    },
+    "Space Probe - Fast. Cheap. Expendable. Provides ground vision. Does not attack.": {
+        "message": "Ṡ⍴ȃϲέ ṔȓȏБέ - Ϝȃƨҭ. Ҫнέȃ⍴. Ɛ⌧⍴έƞɗȃБ⌊έ. Ṕȓȏѷїɗέƨ ɠȓȏմƞɗ ѷїƨїȏƞ. Ɖȏέƨ ƞȏҭ ȃҭҭȃϲќ.",
+        "original": "Space Probe - Fast. Cheap. Expendable. Provides ground vision. Does not attack."
+    },
+    "Spinner Anti-Air Missile": {
+        "message": "Ṡ⍴їƞƞέȓ Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Spinner Anti-Air Missile"
+    },
+    "Stealth Sub - Radar stealth with very high damage. Attacks land, sea, and undersea targets.": {
+        "message": "Ṡҭέȃ⌊ҭн ṠմБ - ℝȃɗȃȓ ƨҭέȃ⌊ҭн ῴїҭн ѷέȓу нїɠн ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ, ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Stealth Sub - Radar stealth with very high damage. Attacks land, sea, and undersea targets."
+    },
+    "Stingray Anti-Air Missile": {
+        "message": "Ṡҭїƞɠȓȃу Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Stingray Anti-Air Missile"
+    },
+    "Stingray Tactical Missile": {
+        "message": "Ṡҭїƞɠȓȃу 丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ",
+        "original": "Stingray Tactical Missile"
+    },
+    "Storage - Increases maximum energy storage capacity.": {
+        "message": "Ṡҭȏȓȃɠέ - Ϊƞϲȓέȃƨέƨ ʍȃ⌧їʍմʍ έƞέȓɠу ƨҭȏȓȃɠέ ϲȃ⍴ȃϲїҭу.",
+        "original": "Storage - Increases maximum energy storage capacity."
+    },
+    "Storage - Increases maximum metal storage capacity.": {
+        "message": "Ṡҭȏȓȃɠέ - Ϊƞϲȓέȃƨέƨ ʍȃ⌧їʍմʍ ʍέҭȃ⌊ ƨҭȏȓȃɠέ ϲȃ⍴ȃϲїҭу.",
+        "original": "Storage - Increases maximum metal storage capacity."
+    },
+    "Strafer Aircraft - Loud and annoying. Attacks land and sea targets.": {
+        "message": "Ṡҭȓȃғέȓ Ȃїȓϲȓȃғҭ - ₤ȏմɗ ȃƞɗ ȃƞƞȏуїƞɠ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Strafer Aircraft - Loud and annoying. Attacks land and sea targets."
+    },
+    "Submarine - High damage. Cannot be targeted by cannons. Attacks sea and undersea targets.": {
+        "message": "ṠմБʍȃȓїƞέ - Ӈїɠн ɗȃʍȃɠέ. Ҫȃƞƞȏҭ Бέ ҭȃȓɠέҭέɗ Бу ϲȃƞƞȏƞƨ. Ȃҭҭȃϲќƨ ƨέȃ ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Submarine - High damage. Cannot be targeted by cannons. Attacks sea and undersea targets."
+    },
+    "Submarine - Radar stealth. Attacks sea and undersea targets.": {
+        "message": "ṠմБʍȃȓїƞέ - ℝȃɗȃȓ ƨҭέȃ⌊ҭн. Ȃҭҭȃϲќƨ ƨέȃ ȃƞɗ մƞɗέȓƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Submarine - Radar stealth. Attacks sea and undersea targets."
+    },
+    "Super Weapon - Build five on a metal planet to activate the Annihilazer.": {
+        "message": "Ṡմ⍴έȓ ₩έȃ⍴ȏƞ - ฿մї⌊ɗ ғїѷέ ȏƞ ȃ ʍέҭȃ⌊ ⍴⌊ȃƞέҭ ҭȏ ȃϲҭїѷȃҭέ ҭнέ Ȃƞƞїнї⌊ȃℤέȓ.",
+        "original": "Super Weapon - Build five on a metal planet to activate the Annihilazer."
+    },
+    "Support Barge - Repairs damaged ships. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Ṡմ⍴⍴ȏȓҭ ฿ȃȓɠέ - ℝέ⍴ȃїȓƨ ɗȃʍȃɠέɗ ƨнї⍴ƨ. ฿մї⌊ɗƨ ȃƞɗ ɗέҭέϲҭƨ ʍїƞέƨ. Ҫȃƞƞȏҭ нέ⌊⍴ Бմї⌊ɗ մƞїҭƨ. ₩ȃҭέȓ нȏѷέȓ.",
+        "original": "Support Barge - Repairs damaged ships. Builds and detects mines. Cannot help build units. Water hover."
+    },
+    "Support Platform - Repairs nearby units and auto reclaims wreckage. Intercepts homing missiles. Does not attack.": {
+        "message": "Ṡմ⍴⍴ȏȓҭ Ṕ⌊ȃҭғȏȓʍ - ℝέ⍴ȃїȓƨ ƞέȃȓБу մƞїҭƨ ȃƞɗ ȃմҭȏ ȓέϲ⌊ȃїʍƨ ῴȓέϲќȃɠέ. Ϊƞҭέȓϲέ⍴ҭƨ нȏʍїƞɠ ʍїƨƨї⌊έƨ. Ɖȏέƨ ƞȏҭ ȃҭҭȃϲќ.",
+        "original": "Support Platform - Repairs nearby units and auto reclaims wreckage. Intercepts homing missiles. Does not attack."
+    },
+    "Tactical Bomber - Long range. High damage tactical missiles. Attacks land and sea targets.": {
+        "message": "丁ȃϲҭїϲȃ⌊ ฿ȏʍБέȓ - ₤ȏƞɠ ȓȃƞɠέ. Ӈїɠн ɗȃʍȃɠέ ҭȃϲҭїϲȃ⌊ ʍїƨƨї⌊έƨ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ȃƞɗ ƨέȃ ҭȃȓɠέҭƨ.",
+        "original": "Tactical Bomber - Long range. High damage tactical missiles. Attacks land and sea targets."
+    },
+    "Tactical Missile Launcher - Long range with very heavy damage. Attacks land, sea, and orbital targets.": {
+        "message": "丁ȃϲҭїϲȃ⌊ Μїƨƨї⌊έ ₤ȃմƞϲнέȓ - ₤ȏƞɠ ȓȃƞɠέ ῴїҭн ѷέȓу нέȃѷу ɗȃʍȃɠέ. Ȃҭҭȃϲќƨ ⌊ȃƞɗ, ƨέȃ, ȃƞɗ ȏȓБїҭȃ⌊ ҭȃȓɠέҭƨ.",
+        "original": "Tactical Missile Launcher - Long range with very heavy damage. Attacks land, sea, and orbital targets."
+    },
+    "Teleporter": {
+        "message": "丁έ⌊έ⍴ȏȓҭέȓ",
+        "original": "Teleporter"
+    },
+    "Tesla Bot - Very high damage over a short range area. Uses energy. Attacks land targets.": {
+        "message": "丁έƨ⌊ȃ ฿ȏҭ - Ѷέȓу нїɠн ɗȃʍȃɠέ ȏѷέȓ ȃ ƨнȏȓҭ ȓȃƞɠέ ȃȓέȃ. Ủƨέƨ έƞέȓɠу. Ȃҭҭȃϲќƨ ⌊ȃƞɗ ҭȃȓɠέҭƨ.",
+        "original": "Tesla Bot - Very high damage over a short range area. Uses energy. Attacks land targets."
+    },
+    "Torpedo Launcher": {
+        "message": "丁ȏȓ⍴έɗȏ ₤ȃմƞϲнέȓ",
+        "original": "Torpedo Launcher"
+    },
+    "Torpedo Launcher - Advanced anti-ship defense.": {
+        "message": "丁ȏȓ⍴έɗȏ ₤ȃմƞϲнέȓ - Ȃɗѷȃƞϲέɗ ȃƞҭї-ƨнї⍴ ɗέғέƞƨέ.",
+        "original": "Torpedo Launcher - Advanced anti-ship defense."
+    },
+    "Torpedo Launcher - Basic anti-ship defense.": {
+        "message": "丁ȏȓ⍴έɗȏ ₤ȃմƞϲнέȓ - ฿ȃƨїϲ ȃƞҭї-ƨнї⍴ ɗέғέƞƨέ.",
+        "original": "Torpedo Launcher - Basic anti-ship defense."
+    },
+    "Unit Cannon": {
+        "message": "Ủƞїҭ Ҫȃƞƞȏƞ",
+        "original": "Unit Cannon"
+    },
+    "Vehicle Factory": {
+        "message": "Ѷέнїϲ⌊έ Ϝȃϲҭȏȓу",
+        "original": "Vehicle Factory"
+    },
+    "Wall": {
+        "message": "₩ȃ⌊⌊",
+        "original": "Wall"
+    },
+    "Stinger Anti-Air Missile": {
+        "message": "Ṡҭїƞɠέȓ Ȃƞҭї-Ȃїȓ Μїƨƨї⌊έ",
+        "original": "Stinger Anti-Air Missile"
+    }
+}

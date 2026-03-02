@@ -1,0 +1,128 @@
+{
+    "1 day ago": {
+        "message": "1 日前"
+    },
+    "1 hour ago": {
+        "message": "1 時間前"
+    },
+    "1 minute ago": {
+        "message": "1 分前"
+    },
+    "1 second ago": {
+        "message": "1 秒前"
+    },
+    "1 week ago": {
+        "message": "1 週間前"
+    },
+    "Bronze": {
+        "message": "Bronze"
+    },
+    "Failed to load this leaderboard level.": {
+        "message": "このランキングレベルをロードできませんでした"
+    },
+    "Games": {
+        "message": "ゲーム"
+    },
+    "Gold": {
+        "message": "Gold"
+    },
+    "Inactive": {
+        "message": "Inactive"
+    },
+    "Just now": {
+        "message": "たった今"
+    },
+    "Last Match Played": {
+        "message": "前回のマッチ"
+    },
+    "Last match played": {
+        "message": "前回のマッチ"
+    },
+    "Leaderboards": {
+        "message": "ランキング"
+    },
+    "Level rank": {
+        "message": "レベルランク"
+    },
+    "Loading Leaderboard": {
+        "message": "ランキングをロード中…"
+    },
+    "Match games played": {
+        "message": "マッチプレイ数"
+    },
+    "No ranked players at this level.": {
+        "message": "このレベルにはランクプレイヤーがいません"
+    },
+    "No recent matches played.": {
+        "message": "最近のマッチがありません"
+    },
+    "One ranked player at this level.": {
+        "message": "このレベルには1人のランクプレイヤーがいます"
+    },
+    "Platinum": {
+        "message": "Platinum"
+    },
+    "Play ranked match": {
+        "message": "ランクマッチをプレイ"
+    },
+    "Player": {
+        "message": "プレイヤー"
+    },
+    "Provisional": {
+        "message": "暫定"
+    },
+    "Rank": {
+        "message": "ランク"
+    },
+    "Rating": {
+        "message": "レーティング"
+    },
+    "Season ends __date__": {
+        "message": "シーズン終了: __date__"
+    },
+    "Silver": {
+        "message": "Silver"
+    },
+    "This leaderboard level is currently empty.": {
+        "message": "このランキングレベルは現在無人です"
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unranked": {
+        "message": "未ランク"
+    },
+    "Watch Replay": {
+        "message": "リプレイを見る"
+    },
+    "You need to play __number__ ranked games to receive a rank": {
+        "message": "ランクを獲得するにはランクゲームを __number__ 回以上プレイしてください"
+    },
+    "Your rank": {
+        "message": "あなたのランク"
+    },
+    "__n__ days ago": {
+        "message": "__n__ 日前"
+    },
+    "__n__ hours ago": {
+        "message": "__n__ 時間前"
+    },
+    "__n__ minutes ago": {
+        "message": "__n__ 分前"
+    },
+    "__n__ seconds ago": {
+        "message": "__n__ 秒前"
+    },
+    "__n__ weeks ago": {
+        "message": "__n__ 週間前"
+    },
+    "__num_players__ ranked players at this level.": {
+        "message": "このレベルには __num_players__ 人のランクプレイヤーがいます"
+    },
+    "Star": {
+        "message": "スター"
+    },
+    "View Replays": {
+        "message": "リプレイを見る"
+    }
+}

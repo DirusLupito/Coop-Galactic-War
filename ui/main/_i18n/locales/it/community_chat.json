@@ -1,0 +1,248 @@
+{
+    "(Updating...)": {
+        "message": " (Aggiornamento in corso...)"
+    },
+    "1v1 Ranked Ladder Season 2": {
+        "message": "Graduatoria partite classificate 1v1 stagione 2"
+    },
+    "1v1 Ranked Ladder Season 3": {
+        "message": "Graduatoria partite classificate 1v1 stagione 3"
+    },
+    "Ask questions, get help, find a game": {
+        "message": "Fai domande, ottieni aiuto, trova una partita"
+    },
+    "Big Game Replays": {
+        "message": "Replay partite grandi"
+    },
+    "Block": {
+        "message": "Blocca"
+    },
+    "Chat": {
+        "message": "Chat"
+    },
+    "Check Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "Controlla i programmi per Windows non compatibili (per esempio, disattiva GameFirst)"
+    },
+    "Check firewall / antivirus and Incompatible Windows Software (eg disable GameFirst)": {
+        "message": "Controlla firewall, antivirus e programmi per Windows non compatibili (per esempio, disattiva GameFirst)"
+    },
+    "Classic PA players upgrade to Titans for US$2.99 (90% off)": {
+        "message": "I giocatori di PA Classic possono aggiornare il gioco a Titans per US$2.99 (90% di sconto)"
+    },
+    "Classic PA players upgrade to Titans for US$3.99 (90% off)": {
+        "message": "I giocatori di PA possono aggiornare il gioco a Titans per US$3.99 (90% di sconto)"
+    },
+    "Community Chat Help": {
+        "message": "Guida chat della community"
+    },
+    "Community Chat and Community Mods are hosted on private servers.": {
+        "message": "La chat e i mod della community sono ospitati su server privati."
+    },
+    "Community Mods": {
+        "message": "Mod della community"
+    },
+    "Community Rules and Guidelines": {
+        "message": "Regole e linee guida della community"
+    },
+    "Custom / Local Servers and LAN / WAN Games": {
+        "message": "Server personalizzati/locali e partite via LAN/WAN"
+    },
+    "DON'T BE A JERK": {
+        "message": "NON FARE L'IDIOTA"
+    },
+    "DON'T BE A LOSER": {
+        "message": "NON ESSERE UN FALLITO"
+    },
+    "Dedicated Servers": {
+        "message": "Server dedicati"
+    },
+    "Default": {
+        "message": "Predefinito"
+    },
+    "Disable Auto Join": {
+        "message": "Disattiva partecipazione automatica"
+    },
+    "Empty friends list try clicking on": {
+        "message": "Svuota la lista amici cliccando su "
+    },
+    "Firewall / Antivirus / Incompatible Windows Software": {
+        "message": "Firewall / Antivirus / Programmi per Windows non compatibili"
+    },
+    "Full Screen Desktop Resolution": {
+        "message": "Risoluzione a schermo interno"
+    },
+    "Galactic War": {
+        "message": "Guerra galattica"
+    },
+    "General Discussion Forum": {
+        "message": "Forum - Discussioni generali"
+    },
+    "HELP": {
+        "message": "GUIDA"
+    },
+    "Hot Keys": {
+        "message": "Scorciatoie da tastiera"
+    },
+    "Incompatible Windows Software": {
+        "message": "Programmi per Windows non compatibili"
+    },
+    "Invite to Chat": {
+        "message": "Invita nella chat"
+    },
+    "Invite to game": {
+        "message": "Invita a giocare"
+    },
+    "Join Community Chat": {
+        "message": "Partecipa alla chat della community"
+    },
+    "Join Tournaments": {
+        "message": "Partecipa ai tornei"
+    },
+    "LINKS": {
+        "message": "COLLEGAMENTI"
+    },
+    "Learning to Play": {
+        "message": "Come si gioca"
+    },
+    "Legion Expansion Overview": {
+        "message": "Panoramica Legion Expansion"
+    },
+    "Lost Titans Ownership When Linking": {
+        "message": "Persa la proprietà di Titans quando ci si collega"
+    },
+    "Mention": {
+        "message": "Menziona"
+    },
+    "Notify": {
+        "message": "Notifica"
+    },
+    "Official Planetary Annihilation Discord": {
+        "message": "Canale ufficiale Discord di Planetary Annihilation"
+    },
+    "Old PAMM Mods": {
+        "message": "Vecchi mod PAMM"
+    },
+    "PA Friends & Display Names": {
+        "message": "Amici su PA e nomi visualizzati"
+    },
+    "PAnet Migration": {
+        "message": "Migrazione su PAnet"
+    },
+    "Pending": {
+        "message": "In attesa"
+    },
+    "Planetary Annihilation Vocabulary": {
+        "message": "Vocabolario di Planetary Annihilation"
+    },
+    "Planetary Annihilation community rules apply to community chat:": {
+        "message": "Le regole della community di Planetary Annihilation si applicano alle chat della community:"
+    },
+    "Player Guides": {
+        "message": "Guide per il giocatore"
+    },
+    "Public Test Environments (PTE)": {
+        "message": "Public Test Environments (PTE)"
+    },
+    "Queller AI mod for Skirmish & Multiplayer": {
+        "message": "Mod Queller dell'IA per le schermaglie e le partite multigiocatore"
+    },
+    "Remember that you are here to play the game and not be a jerk. No spam, flaming, politics, abuse or hate speech.": {
+        "message": "Ricorda che sei qui per giocare, non per fare l'idiota. Niente spam, flame, politica, insulti o discorsi che incitano all'odio."
+    },
+    "Replays": {
+        "message": "Replay"
+    },
+    "Report game issues in the PA support forums:": {
+        "message": "Segnala i problemi col gioco nel forum di supporto di PA:"
+    },
+    "Reporting Issues": {
+        "message": "Segnalazione problemi"
+    },
+    "Right click on a name for more options.": {
+        "message": "Clicca su un nome col pulsante destro del mouse per far apparire altre opzioni."
+    },
+    "Send Friend Request": {
+        "message": "Invia richiesta d'amicizia"
+    },
+    "Server Sim Performance / Time Dilation / RAM Usage": {
+        "message": "Prestazioni simulazione server/Dilatazione tempo/Utilizzo RAM"
+    },
+    "Skills Pyramid": {
+        "message": "Piramide abilità"
+    },
+    "Special Characters in Display Name": {
+        "message": "Caratteri speciali nel nome visualizzato"
+    },
+    "TITANS 1v1 ranked": {
+        "message": "TITANS 1v1 classificata"
+    },
+    "The notify checkbox on the top right of each chat enables or disables notifications when someone mentions you.": {
+        "message": "La casella di spunta nell'angolo superiore destro di ogni chat attiva o disattiva le notifiche quando qualcuno ti menziona."
+    },
+    "Timeline of updates to Titans & Classic PA": {
+        "message": "Cronologia degli aggiornamenti di Titans e PA"
+    },
+    "Titans Overview": {
+        "message": "Panoramica Titans"
+    },
+    "UI is Slow": {
+        "message": "L'interfaccia è lenta"
+    },
+    "Unblock": {
+        "message": "Sblocca"
+    },
+    "Unfriend": {
+        "message": "Rimuovi l'amicizia"
+    },
+    "Unit Database": {
+        "message": "Database unità"
+    },
+    "User Interface Controls": {
+        "message": "Comandi Interfaccia utente"
+    },
+    "Web based Community Chat:": {
+        "message": "Chat della community su Internet:"
+    },
+    "When a chat window is minimised it will flash green for new messages and red when someone mentions you. Right click to clear the mention.": {
+        "message": "Una finestra di chat ridotta a icona lampeggia verde per i nuovi messaggi e rosso quando qualcuno ti menziona. Clicca col pulsante destro del mouse per cancellare la menzione."
+    },
+    "Your Message Colour": {
+        "message": "Colore dei tuoi messaggi"
+    },
+    "Zero tolerance for backseat moderation or arguing with moderators.": {
+        "message": "La moderazione arbitraria e i litigi coi moderatori non verranno tollerati."
+    },
+    "Zero tolerance for complainers and rants about PA.": {
+        "message": "Le lamentele e le invettive contro PA non saranno tollerate."
+    },
+    "click HELP on top right": {
+        "message": "seleziona GUIDA nell'angolo superiore destro"
+    },
+    "click title bar to minimise": {
+        "message": "clicca sulla barra del titolo per ridurre a icona"
+    },
+    "click to maximise": {
+        "message": "clicca per ingrandire"
+    },
+    "community-chat-muted": {
+        "message": "Se ti hanno <span data-bind=\"style: { color: $root.chatRoomMutedColour }\">silenziato</span>, contatta un<span data-bind=\"style: { color: $root.chatRoomModeratorColour }\">moderatore</span> o un <span data-bind=\"style: { color: $root.chatRoomOwnerColour }\">proprietario</span> per far togliere la limitazione."
+    },
+    "hello": {
+        "message": "ciao"
+    },
+    "if you have plenty of RAM then you can download and watch big game replays": {
+        "message": "se hai molta RAM, puoi scaricare e guardare i replay delle partite grandi"
+    },
+    "Classic PA players upgrade to TITANS for 90% off (US$2.99)": {
+        "message": "I giocatori di Classic PA possono aggiornare il gioco a TITANS col 90% di sconto (US$ 2,99)"
+    },
+    "TITANS 1v1 Leaderboards": {
+        "message": "Classifica TITANS 1v1"
+    },
+    "TITANS 1v1 Ranked Seasons": {
+        "message": "TITANS 1v1 stagioni classificate"
+    },
+    "Timeline of updates to TITANS & Classic PA": {
+        "message": "Cronologia degli aggiornamenti di TITANS e Classic PA"
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "Acquire": {
+        "message": "Приобрести"
+    },
+    "All progress and Tech will be lost.": {
+        "message": "Весь прогресс и технологии будут потеряны."
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Вы уверены, что хотите покинуть эту Галактическую Войну?"
+    },
+    "Continue": {
+        "message": "Продолжить"
+    },
+    "Data Cache Discovered": {
+        "message": "Обнаружен кэш данных"
+    },
+    "Delete Tech": {
+        "message": "Удалить технологию"
+    },
+    "Dismiss Tech": {
+        "message": "Отклонить технологию"
+    },
+    "Duplicate Tech": {
+        "message": "Дубликат!"
+    },
+    "Explore": {
+        "message": "Исследовать"
+    },
+    "Fight": {
+        "message": "Битва"
+    },
+    "Game Menu": {
+        "message": "Игровое меню"
+    },
+    "Jump": {
+        "message": "Прыжок"
+    },
+    "Loading...": {
+        "message": "Загрузка..."
+    },
+    "Preparing for battle": {
+        "message": "Подготовка к бою"
+    },
+    "Restart": {
+        "message": "Перезапустить"
+    },
+    "Returning to Main Menu": {
+        "message": "Возвращаемся в главное меню"
+    },
+    "Save & Exit": {
+        "message": "Сохранить и выйти"
+    },
+    "Saving...": {
+        "message": "Сохранение..."
+    },
+    "Scanning System": {
+        "message": "Сканирование системы"
+    },
+    "Select a technology to develop using this data.": {
+        "message": "Выберите технологию для разработки с использованием этих данных."
+    },
+    "Settings": {
+        "message": "Настройки"
+    },
+    "Social Bar": {
+        "message": "Социальная панель"
+    },
+    "TECHS": {
+        "message": "ТЕХНОЛОГИИ"
+    },
+    "Tech Bank is full. To develop new technology, select an existing tech and delete it to open a slot.": {
+        "message": "Банк технологий полон. Чтобы разработать новую технологию, выберите существующую технологию и удалите ее, чтобы открыть слот."
+    },
+    "Turns:": {
+        "message": "Ходы:"
+    },
+    "Unlock Commander": {
+        "message": "Разблокировать Командира"
+    },
+    "Wins:": {
+        "message": "Победы:"
+    }
+}

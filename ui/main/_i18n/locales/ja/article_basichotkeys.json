@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "よく使うホットキー"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "PAガイド: 基本ホットキー"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - コマンダーの選択"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 現在選択しているユニットタイプを、表示されている範囲で全て選択"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 画面上のファッバーを選択"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - エネルギー使用の切替"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 生産の切替"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - 選択ユニットにズーム"
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "OK"
+    },
+    "Appear Offline": {
+        "message": "\n                                                    隠れ身の術（オフライン表示）                                                "
+    },
+    "Away": {
+        "message": "\n                                                    離席\n                                                "
+    },
+    "Block": {
+        "message": "ブロック"
+    },
+    "Buy Expansion": {
+        "message": "拡張パックを購入"
+    },
+    "CANCEL": {
+        "message": "キャンセル"
+    },
+    "CHANGE": {
+        "message": "変更"
+    },
+    "CHAT": {
+        "message": "チャット"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "Change Display Name": {
+        "message": "\n                                                    表示名を変更\n                                                "
+    },
+    "Change your display name?": {
+        "message": "表示名を変更しますか？"
+    },
+    "Chat": {
+        "message": "チャット"
+    },
+    "Date": {
+        "message": "日付"
+    },
+    "Do Not Disturb": {
+        "message": "\n                                                    Do Not Disturb\n                                                "
+    },
+    "Enter a status message": {
+        "message": "ステータスメッセージを入力"
+    },
+    "Friends": {
+        "message": "フレンド"
+    },
+    "Ignore": {
+        "message": "無視"
+    },
+    "Invite to Chat": {
+        "message": "チャットに招待"
+    },
+    "Invite to game": {
+        "message": "ゲームに招待"
+    },
+    "Join Game": {
+        "message": "ゲームに参加"
+    },
+    "New Display Name:": {
+        "message": "新規表示名:"
+    },
+    "No pending notifications.": {
+        "message": "保留中の通知はありません"
+    },
+    "Offline": {
+        "message": "オフライン"
+    },
+    "Online": {
+        "message": "\n                                                    オンライン\n                                                "
+    },
+    "Pending Invite": {
+        "message": "招待を保留"
+    },
+    "REMOVE": {
+        "message": "削除"
+    },
+    "Recent": {
+        "message": "最近"
+    },
+    "Remove": {
+        "message": "削除"
+    },
+    "Replays": {
+        "message": "リプレイ"
+    },
+    "Required Expansion Pack": {
+        "message": "必要な拡張パック"
+    },
+    "Search Players": {
+        "message": "プレイヤーを検索"
+    },
+    "Search Results": {
+        "message": "結果を検索"
+    },
+    "Send Friend Request": {
+        "message": "フレンドリクエストを送信"
+    },
+    "Tags:": {
+        "message": "タグ:"
+    },
+    "The game you are trying to join requires the [style=content_description]__content_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "参加しようとしているゲームでプレイするには、Planetary Annihilationの[style=content_description]__content_name__[/style] 拡張パックが必要です"
+    },
+    "Unblock": {
+        "message": "ブロック解除"
+    },
+    "Unfriend": {
+        "message": "フレンド解除"
+    },
+    "Users": {
+        "message": "ユーザー"
+    },
+    "__display_name__ invited you to a game.": {
+        "message": "__display_name__ があなたをゲームに招待しました"
+    },
+    "__display_name__ invited you to chat.": {
+        "message": "__display_name__ があなたをチャットに招待しました"
+    },
+    "__display_name__ wants to be your friend.": {
+        "message": "__display_name__ があなたと友達になりたいようです"
+    }
+}

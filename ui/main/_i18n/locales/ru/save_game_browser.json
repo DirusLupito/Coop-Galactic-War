@@ -1,0 +1,38 @@
+{
+    "AI Skirmish": {
+        "message": "ИИ Схватка"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Delete": {
+        "message": "Удалить"
+    },
+    "Galactic War": {
+        "message": "Галактическая Война"
+    },
+    "Game": {
+        "message": "Игра"
+    },
+    "Last Saved": {
+        "message": "Последняя сохраненная"
+    },
+    "OK": {
+        "message": "ОК"
+    },
+    "Resume Game": {
+        "message": "Возобновить игру"
+    },
+    "Saved Games": {
+        "message": "Сохраненные игры"
+    },
+    "Switch to": {
+        "message": "Переключиться на "
+    },
+    "Type": {
+        "message": "Тип"
+    },
+    "mode?": {
+        "message": "режим?"
+    }
+}

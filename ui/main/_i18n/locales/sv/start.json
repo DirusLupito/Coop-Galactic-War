@@ -1,0 +1,44 @@
+{
+    "Armory": {
+        "message": "Vapenförråd"
+    },
+    "Connecting to PA": {
+        "message": "Anslutning till PA"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Felaktigt användarnamn eller lösenord. Kontrollera dina uppgifter och försök igen."
+    },
+    "New Build Available:": {
+        "message": "Ny version är tillgänglig."
+    },
+    "Password": {
+        "message": "Lösenord"
+    },
+    "Please choose a default region.": {
+        "message": "Välja en standard region."
+    },
+    "Quit": {
+        "message": "Avsluta"
+    },
+    "Settings": {
+        "message": "Inställningar"
+    },
+    "Sign in": {
+        "message": "Logga in"
+    },
+    "Unable to Sign In": {
+        "message": "Det går inte att Logga in"
+    },
+    "Username": {
+        "message": "Användarnamn"
+    },
+    "You are already assigned to a game.": {
+        "message": "Du har redan tilldelats ett spel."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Du kan byta region senare i inställningar."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Du behöver en ny klient för att spela spelet. Steam-användare kan behöva starta om Steam för att hämta den nya klienten."
+    }
+}

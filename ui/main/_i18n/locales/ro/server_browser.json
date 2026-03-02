@@ -1,0 +1,38 @@
+{
+    "Create Game": {
+        "message": "Creează Joc"
+    },
+    "Game": {
+        "message": "Joc"
+    },
+    "In Lobby": {
+        "message": "În Lobby"
+    },
+    "In Progress": {
+        "message": "În Progres"
+    },
+    "Join Game": {
+        "message": "Alătură-te Jocului"
+    },
+    "Locked Game": {
+        "message": "Joc Încuiat"
+    },
+    "Mode": {
+        "message": "Mod"
+    },
+    "Password": {
+        "message": "Parola"
+    },
+    "Planets": {
+        "message": "Planete"
+    },
+    "Region": {
+        "message": "Regiune"
+    },
+    "Slots": {
+        "message": "Sloturi"
+    },
+    "Spectate": {
+        "message": "Observă"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "Area Commands": {
+        "message": "범위 명령"
+    },
+    "Basic Camera Controls": {
+        "message": "기본 카메라 컨트롤"
+    },
+    "Clicking": {
+        "message": "클릭"
+    },
+    "Close": {
+        "message": "닫기"
+    },
+    "Commander Basics": {
+        "message": "지휘관 기본 사항"
+    },
+    "Economy and Resources": {
+        "message": "경제와 자원"
+    },
+    "Energy Resources": {
+        "message": "에너지 자원"
+    },
+    "Fabrication Units": {
+        "message": "건설 유닛"
+    },
+    "Factories": {
+        "message": "공장"
+    },
+    "Important Hotkeys": {
+        "message": "중요 단축키"
+    },
+    "Metal Resources": {
+        "message": "금속 자원"
+    },
+    "Player Guide": {
+        "message": "플레이어 가이드"
+    }
+}

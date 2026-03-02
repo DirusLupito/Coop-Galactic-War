@@ -1,0 +1,89 @@
+{
+    "Accept": {
+        "message": "قبول"
+    },
+    "CLEAR SYSTEM": {
+        "message": "إخلاء النظام"
+    },
+    "CLOSE": {
+        "message": "إغلاق"
+    },
+    "Cancel": {
+        "message": "إلغاء"
+    },
+    "Discard": {
+        "message": "التخلص"
+    },
+    "Do you want to save this system?": {
+        "message": "هل تريد حفظ هذا النظام؟"
+    },
+    "EDIT PLANET": {
+        "message": "تحرير الكوكب"
+    },
+    "HIDE": {
+        "message": "إخفاء"
+    },
+    "MY PLANETS": {
+        "message": "كواكبي"
+    },
+    "Mass": {
+        "message": "كتلة"
+    },
+    "PREVIEW ALL": {
+        "message": "معاينة الجميع"
+    },
+    "Position": {
+        "message": "الموقف"
+    },
+    "RECENT": {
+        "message": "مؤخراً"
+    },
+    "REMOVE": {
+        "message": "إزالة"
+    },
+    "SAVE SYSTEM": {
+        "message": "حفظ النظام"
+    },
+    "SHOW": {
+        "message": "إظهار"
+    },
+    "SIMULATE": {
+        "message": "محاكاة"
+    },
+    "Save": {
+        "message": "إحفظ"
+    },
+    "System radius is too large.": {
+        "message": "قُطر النظام كبير جداً"
+    },
+    "System radius is too small.": {
+        "message": "قطر النظام صغير جداً"
+    },
+    "TEMPLATES": {
+        "message": "قوالب"
+    },
+    "Temp": {
+        "message": "الدرجة"
+    },
+    "The planet is loading. This can take a long time.": {
+        "message": "يتم تحميل هذا الكوكب. وهذا يمكن أن يستغرق وقتاً طويلاً."
+    },
+    "The program will be unresponsive until the planet has finished.": {
+        "message": "البرنامج سيكون غير مستجيب حتى انتهاء توليد هذا الكوكب"
+    },
+    "The system has been changed since it was last saved.": {
+        "message": "النظام تم تغييره منذ آخر مرة تم حفظه. "
+    },
+    "The system has not been saved.": {
+        "message": "لم يتم حفظ النظام."
+    },
+    "Velocity": {
+        "message": "السرعة"
+    },
+    "Water": {
+        "message": "ماء"
+    },
+    "Y:": {
+        "message": "غ:"
+    }
+}

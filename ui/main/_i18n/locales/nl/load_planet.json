@@ -1,0 +1,59 @@
+{
+    "CANCEL": {
+        "message": "ANNULEREN"
+    },
+    "DELETE": {
+        "message": "VERWIJDEREN"
+    },
+    "Delete": {
+        "message": "Verwijderen"
+    },
+    "Delete this system?": {
+        "message": "Dit stelsel verwijderen?"
+    },
+    "Edit System": {
+        "message": "Stelsel bewerken"
+    },
+    "Export": {
+        "message": "Exporteren"
+    },
+    "Import": {
+        "message": "Importeren"
+    },
+    "Load System": {
+        "message": "Stelsel laden"
+    },
+    "Metal Spots: __num_metal_spots__": {
+        "message": "Metaalafzettingen: __num_metal_spots__"
+    },
+    "New system": {
+        "message": "Nieuw stelsel"
+    },
+    "No Metal": {
+        "message": "Geen metaal"
+    },
+    "Radius: __radius__": {
+        "message": "Straal: __radius__"
+    },
+    "SHOW PLANETS": {
+        "message": "PLANETEN TONEN"
+    },
+    "SHOW SYSTEMS": {
+        "message": "STELSELS TONEN"
+    },
+    "Starting Planet": {
+        "message": "Startplaneet"
+    },
+    "System Designer": {
+        "message": "Stelselontwerper"
+    },
+    "Thrusters Required": {
+        "message": "Aandrijving vereist"
+    },
+    "__min_players__-__max_players__ Players": {
+        "message": "__min_players__-__max_players__ spelers"
+    },
+    "__num_players__ Players": {
+        "message": "__num_players__ spelers"
+    }
+}

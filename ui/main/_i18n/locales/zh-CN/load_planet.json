@@ -1,0 +1,59 @@
+{
+    "CANCEL": {
+        "message": "取消"
+    },
+    "DELETE": {
+        "message": "删除"
+    },
+    "Delete": {
+        "message": "删除"
+    },
+    "Delete this system?": {
+        "message": "删除此星系？"
+    },
+    "Edit System": {
+        "message": "编辑星系"
+    },
+    "Export": {
+        "message": "导出"
+    },
+    "Import": {
+        "message": "导入"
+    },
+    "Load System": {
+        "message": "载入星球系统"
+    },
+    "Metal Spots: __num_metal_spots__": {
+        "message": "金属储藏点：__num_metal_spots__"
+    },
+    "New system": {
+        "message": "新的星系"
+    },
+    "No Metal": {
+        "message": "无金属"
+    },
+    "Radius: __radius__": {
+        "message": "半径：__radius__"
+    },
+    "SHOW PLANETS": {
+        "message": "显示星球"
+    },
+    "SHOW SYSTEMS": {
+        "message": "显示星系"
+    },
+    "Starting Planet": {
+        "message": "初始星球"
+    },
+    "System Designer": {
+        "message": "星系设计器"
+    },
+    "Thrusters Required": {
+        "message": "需要推进器"
+    },
+    "__min_players__-__max_players__ Players": {
+        "message": "__min_players__-__max_players__名玩家"
+    },
+    "__num_players__ Players": {
+        "message": "__num_players__名玩家"
+    }
+}

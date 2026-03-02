@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "적군 섬멸 완료"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "평균"
+    },
+    "Built": {
+        "message": "생산됨"
+    },
+    "Destroyed": {
+        "message": "파괴됨"
+    },
+    "Determining ladder rank...": {
+        "message": "래더 랭크 계산 중..."
+    },
+    "Draw": {
+        "message": "무승부"
+    },
+    "Duration:": {
+        "message": "소요 시간:"
+    },
+    "Efficiency": {
+        "message": "효율"
+    },
+    "Energy": {
+        "message": "에너지"
+    },
+    "Metal": {
+        "message": "금속"
+    },
+    "Produced": {
+        "message": "생산"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "메인 메뉴로 나가기"
+    },
+    "REVIEW": {
+        "message": "검토"
+    },
+    "Requeue": {
+        "message": "다시 대기"
+    },
+    "SPECTATE": {
+        "message": "관전"
+    },
+    "The battle ended in a draw.": {
+        "message": "전투가 무승부로 끝났습니다."
+    },
+    "The game has ended.": {
+        "message": "게임이 종료되었습니다."
+    },
+    "Total Oblivion": {
+        "message": "완전 전멸"
+    },
+    "Units": {
+        "message": "유닛"
+    },
+    "Used": {
+        "message": "사용됨"
+    },
+    "VICTORY IS YOURS": {
+        "message": "당신이 승리했습니다"
+    },
+    "VIEW RESULTS": {
+        "message": "결과 보기"
+    },
+    "VIEW STATS": {
+        "message": "통계 보기"
+    },
+    "Winner:": {
+        "message": "승자:"
+    },
+    "Winners:": {
+        "message": "승자:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "당신은 섬멸당했습니다"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "현재 랭크 상태를 파악할 수 없습니다. 게임을 더 진행 및 완료하여 래더 랭킹을 확정받으십시오."
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "당신의 1v1 래더 랭크는 __rank_title__입니다."
+    }
+}

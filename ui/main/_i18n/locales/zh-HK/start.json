@@ -1,0 +1,35 @@
+{
+    "Connecting to PA": {
+        "message": "正在連線至PA"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "錯誤的帳號或密碼。請確認你輸入的內容並再試一次。"
+    },
+    "New Build Available:": {
+        "message": "新版本釋出："
+    },
+    "Password": {
+        "message": "密碼"
+    },
+    "Please choose a default region.": {
+        "message": "請選擇一個預設地區。"
+    },
+    "Quit": {
+        "message": "離開"
+    },
+    "Settings": {
+        "message": "設定"
+    },
+    "Sign in": {
+        "message": "登入"
+    },
+    "Unable to Sign In": {
+        "message": "不能登入"
+    },
+    "Username": {
+        "message": "用戶名"
+    },
+    "You are already assigned to a game.": {
+        "message": "你已分配至一個遊戲。"
+    }
+}

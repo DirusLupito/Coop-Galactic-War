@@ -1,0 +1,299 @@
+﻿/* (C) COPYRIGHT 2016-2021 Planetary Annihilation Inc. All rights reserved. */
+
+.nav_text_item
+{
+    text-shadow: none;
+}
+
+div.community-nav, .legion div.community-nav
+{
+    color: #0d0!important;
+}
+
+div.community-nav:hover, #nav_mods:hover, #nav_promo:hover, #nav_guides:hover, .legion div.community-nav:hover
+{
+    color: #fff!important;
+    background: #007800!important;
+    border: 1px solid #0d0!important;
+    box-shadow: inset 0px 0px 10px #0d0!important;
+}
+
+div.div_community_content
+{
+    z-index: 99;
+}
+
+div.global_message_content
+{
+    margin-right: 20px;
+}
+
+#community-mods-messages .community-mods-message
+{
+    color: white;
+    line-height: 1.3;
+    /* background: linear-gradient(to top, #E0B300 0%, #FFC200 100%); */
+    padding: 8px 12px;
+    /* border: 2px solid #FFE000; */
+    /* box-shadow: 0 0 20px #FC0; */
+    display: inline-block;
+    font-size:16px;
+    margin-top: 15px;
+    display: flex;
+    background-color: rgba(0,0,0,0.6);
+}
+
+#community-mods-messages .community-mods-message:hover
+{
+    background: linear-gradient(to top, #060 0%, #090 100%);
+}
+
+#community-mods-messages .community-mods-message .link
+{
+    color: white;
+}
+
+#community-mods-messages .community-mods-message .link:hover
+{
+    color: black;
+}
+
+#community-mods-messages .community-mods-message.palobby
+{
+    flex-direction: column;
+}
+
+#community-mods-messages .community-mods-message.important
+{
+    background: linear-gradient(to top, #060 0%, #090 100%);
+    border: 2px solid #090;
+    box-shadow: 0 0 20px #090;
+}
+
+#community-mods-messages .community-mods-message.error
+{
+    background: linear-gradient(to top, #E00000 0%, #FF0000 100%);
+    color: white;
+    border: 2px solid #F00;
+    box-shadow: 0px 0px 20px #F00;
+}
+
+#community-mods-messages .community-mods-link-icon
+{
+    padding-left: 10px;
+    font-family: "Glyphicons Halflings";
+    vertical-align: middle;
+}
+
+#community-mods-messages .community-mods-text-block
+{
+    flex-grow: 1;
+}
+
+#community-mods-messages .community-mods-status-block
+{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    flex-shrink: 1;
+    flex-grow: 0;
+}
+
+#community-mods-messages .community-mods-status-text
+{
+    margin-right: 10px;
+}
+
+#community-mods-messages .community-mods-status-timer
+{
+    font-family: "Arial Unicode", "Arial Unicode MS", "Lucida Console", "Courier New", "Courier", monospace;
+    font-weight: bold;
+}
+
+#community-mods-messages .community-mods-message-logo
+{
+    flex-shrink: 0;
+    min-width: 50px;
+    max-height: 50px;
+    margin-right: 10px
+}
+
+#community-mods-messages .community-mods-message-stream-logo
+{
+    flex-shrink: 0;
+    max-height: 50px;
+    margin-left: 10px
+}
+
+#community-mods-messages .community-mods-message-block
+{
+    align-self: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#community-mods-messages .community-mods-message-text
+{
+    margin-right: 10px;
+    flex-shrink: 1;
+}
+
+#community-videos
+{
+    flex-grow: 1;
+    height: 100%;
+    overflow: auto;
+}
+
+#community-videos .one-video
+{
+    display: flex;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+#community-videos .video-thumbnail
+{
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+#community-videos .video-title
+{
+    padding-left: 10px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+/*
+#user_info #user-details
+{
+    display: block;
+}
+
+#ladder-details
+{
+    display: flex;
+    margin-top: 5px;
+    padding: 5px;
+    padding-right: 0;
+    color: #fff;
+}
+
+#ladder-text
+{
+    margin-left: 5px;
+    font-size: 18px;
+    line-height: 28px;
+    vertical-align: bottom;
+}
+
+div#ladder-badge
+{
+    flex-shrink: 0;
+}
+
+div#player-display-name
+{
+    margin: 0;
+} */
+
+#menu
+{
+    width: 250px;
+    overflow: visible;
+}
+
+div#menu_cont
+{
+    height: 100%;
+    overflow: auto;
+    width: 500px;
+}
+
+#menu_cont::-webkit-scrollbar
+{
+    display: none;
+}
+
+#user_info
+{
+    width: 250px;
+}
+
+div.nav_sub_item
+{
+    z-index: 999;
+}
+
+.update_content ul
+{
+    margin-left: 20px;
+    list-style-type: square;
+    list-style-position: outside;
+}
+
+.update_content img
+{
+    max-width: 100%;
+}
+
+.full_update
+{
+    height: 100%;
+}
+
+ul.wp-block-gallery
+{
+    display: flex;
+    list-style: none!important;
+}
+
+#tabs-content
+{
+    max-width: 100%;
+}
+
+#news
+{
+    max-width: 100%;
+}
+
+#news img
+{
+    max-height: 500px;
+}
+
+@-webkit-keyframes community_mods_pulse
+{
+	0%
+    {
+        color: white;
+        background-color: #007800
+    }
+
+	70%
+    {
+        color: #0d0;
+        background-color: transparent;
+    }
+
+	100%
+    {
+        color: white;
+        background-color: #007800
+    }
+}
+
+#nav-community-mods
+{
+    -webkit-animation: community_mods_pulse 5s infinite;
+}
+
+#nav-community-mods:hover
+{
+    -webkit-animation: none;
+}

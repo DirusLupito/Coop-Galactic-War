@@ -1,0 +1,277 @@
+
+<!-- (C)COPYRIGHT 2016-2021 Planetary Annihilation Inc. All rights reserved. -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <noloc><title>Community Mods</title></noloc>
+    <link href="bundle://boot/boot.css" rel="stylesheet" type="text/css" />
+    <link href="coui://ui/main/shared/css/landing_page.css" rel="stylesheet" type="text/css" />
+    <link href="css/community-mods.css" rel="stylesheet" type="text/css" />
+
+    <script src="bundle://boot/boot.js" type="text/javascript"></script>
+    <script src="community-mods-new.js" type="text/javascript"></script>
+    <script src="community-mods-manager.js"  type="text/javascript"></script>
+    
+</head>
+
+<body>
+
+<meta locns="community_mods"/>
+
+    <div class="background_glow"></div>
+    <div class="section_title">
+        <div class="content">
+            <div id="back" class="btn_std_ix btn_back_small" data-bind="click: back, css: { busy: showCommunityModsBusy }" onclick="window.history.back()">
+                <span class="glyphicon glyphicon-chevron-left carat"></span>
+                <img id="community-mods-busy" data-bind="visible: showCommunityModsBusy" class="img_loading_animation working std" src="coui://ui/main/shared/img/working.svg"/>
+            </div>
+            <div class="title"><loc>Community Mods</loc></div>
+        </div>
+    </div>
+    <!-- CONTENT -->
+    <div class="section_content_top_bar"> <!-- FOR TABS -->
+    </div>
+    <div class="section_content">
+        <div class="section_content_table">
+            <div class="section_wrapper">
+                <div class="col_1">
+                    <div class="section_controls">
+                        <div class="form-group">
+                            <label for="mod-search"><loc>Filter</loc></label> <input id="mod-search-type-or" class="mod-search-type" type="radio" data-bind="checkedValue: false, checked: searchUsingAnd"/> <label class="mod-search-type" for="mod-search-type-or"><noloc>OR</noloc></label> <input id="mod-search-type-and" class="mod-search-type" type="radio" data-bind="checkedValue: true, checked: searchUsingAnd"/>  <label class="mod-search-type" for="mod-search-type-and"><noloc>AND</noloc></label>
+                            <input type="text" class="form-control" id="mod-search" placeholder="Filter" data-bind="value: searchFilter, valueUpdate: 'input', tooltip: 'Try map, classic, titans, author, etc'" data-placement="top" data-container="body"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="mod-sort"><loc>Sort</loc></label>
+                            <select class="form-control" id="mod-sort" data-bind="options: sortOptions, optionsText: 'text', optionsValue: 'value', selectPicker2: sortKey"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mod-context"><loc>Type</loc></label>
+                            <select class="form-control" id="mod-context" data-bind="options: contextOptions, optionsText: 'text', optionsValue: 'value', selectPicker: contextKey"></select>
+                        </div>
+                        <button id="reload-file-system-mods-button" data-bind="enable: canReloadFileSystemMods, click: reloadFileSystemMods"><loc>Reload File System Mods</loc></button>
+                    </div>
+                    <!-- Auto merge conflicting mods
+                    <div id="conflicting-unit-server-mods" style="display: none" data-bind="visible: hasMultipleUnitServerMods">
+                        <div data-placement="right" data-bind="tooltip: activeUnitServerModTooltip"><loc>Conflicting Unit Server Mods:</loc> <span data-bind="text: activeUnitServerModsCount"></span></div>
+                    </div>
+                    <div class="form-group" data-placement="right" data-bind="visible: hasMultipleUnitServerMods, tooltip: '<loc>Merging the conflicing unit lists may cause issues (use at your own risk)'">
+                        <label for="merge-units-checkbox"><loc>Merge (experimental)</loc></label>
+                        <input class="form-control" id="merge-units-checkbox" type="checkbox" data-bind="checkedValue: true, checked: mergeUnitServerMods"/>
+                    </div>
+                    -->
+                    <div id="unit-group-buttons" style="display: none" data-bind="visible: selectedTabIsUnits">
+                        <button data-bind="click: disableTitans"><loc>Disable Titans</loc></button>
+                        <button data-bind="click: disableRanaroks"><loc>Disable Ragnaroks</loc></button>
+                        <button data-bind="click: disableNukes"><loc>Disable Nukes</loc></button>
+                        <button data-bind="click: enableAllUnits"><loc>Enable All</loc></button>
+                        </div>
+                    <div id="downloads" data-bind="visible: hasDownloads">
+                        <h3><loc>Downloads</loc></h3>
+                        <div id="downloads-queue" data-bind="foreach: $root.downloadsStatus">
+                            <div class="one-download" data-bind="style: $root.downloadStyles( $data )">
+                                <div class="one-download-name" data-bind="text: file"></div>
+                                <div class="one-download-progress" data-bind="style: $root.downloadProgressStyles( $data )"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col_2">
+                    <div class="tab-wrapper">
+                        <div class="tab-content">
+                            <ul id='tabs' data-bind="foreach: tabs">
+                                <li data-bind="css: { selected: key == $root.selectedTabIndex() }, tooltip: tooltip" data-placement="top" data-container='body'>
+                                    <a data-bind='text: name, attr: { href: "#" + key}, click: $root.showTab'></a>
+                                </li>
+                            </ul>
+                            <!-- ko if: selectedTabIsUnits -->
+                            <div id="units" class="tab-pane active" data-bind="event: { scroll: $root.loadUnitImagesDelayed }">
+                                <div id="units-list-message" data-bind="visible: unitsMessage, text: unitsMessage"></div>
+                                <div id="units-list" data-bind="foreach: sortedFilteredUnits">
+                                    <div class="one-unit btn_std_ix" data-bind="css: { 'ui-selected': unit == $root.selectedUnitKey(), enabled: ! disabled, disabled: disabled, noMods: unavailable || window.gNoMods }, click: $root.selectUnit">
+                                        <div class="unit-icon"><img data-bind="visible: buildBarImageURL, attr: { 'data-src': buildBarImageURL }" src=""/></div>
+                                        <div class="col-xs-5 unit-name"><span data-bind="text: infoDisplayName"></span></div>
+                                        <div class="col-xs-7 unit-description"><span data-bind="text: infoDescription"></span></div>
+                                        <div class="unit-status"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: selectedTabIsUnits -->
+                            <div id="mods" class="tab-pane active" data-bind="event: { scroll: $root.loadModImagesDelayed }">
+                                <div id="mods-list-message" data-bind="visible: selectedTabMessage, text: selectedTabMessage"></div>
+                                <div id="mods-list" data-bind="foreach: selectedTabMods">
+                                       <!-- ko if: $root.selectedTabIsMaps -->
+                                             <!-- ko if: $data.systems-->
+                                              <!-- ko if: $data.systems.length>0-->
+                                                <div class="one-mod btn_std_ix" data-bind="css: { 'ui-selected': identifier == $root.selectedModIdentifier(), enabled: enabled, disabled: installed && enabled == false, noMods: window.gNoMods }, click: $root.selectMod">
+                                                <div class="mod-icon"><img data-bind="visible: icon, attr: { 'data-src': icon }" src=""/></div>
+                                                <div class="col-xs-8 mod-name"><span data-bind="text: display_name"></span></div>
+                                                <div class="col-xs-2 mod-context">
+                                                <!-- ko if: $data.fileSystem -->
+                                                    <span>Local Mod</span>
+                                                <!-- /ko -->
+                                                </div>
+                                                    <div class="col-xs-3 mod-author"><span data-bind="text: author"></span></div>
+                                                    <div class="col-xs-2 mod-context"><span data-bind="text: context"></span></div>
+                                                    <div class="mod-status"></div>
+                                                </div>
+                                                  <!-- /ko -->
+                                             <!-- /ko -->
+                                         <!-- /ko -->
+                                        <!-- ko ifnot: $root.selectedTabIsMaps -->    
+                                        <div class="one-mod btn_std_ix" data-bind="css: { 'ui-selected': identifier == $root.selectedModIdentifier(), enabled: enabled, disabled: installed && enabled == false, noMods: window.gNoMods }, click: $root.selectMod">
+                                            <div class="mod-icon"><img data-bind="visible: icon, attr: { 'data-src': icon }" src=""/></div>
+                                            <div class="col-xs-8 mod-name"><span data-bind="text: display_name"></span></div>
+                                            <div class="col-xs-2 mod-context">
+                                                <!-- ko if: $data.fileSystem -->
+                                                <span>Local Mod</span>
+                                                        <!-- /ko -->
+                                            </div>
+                                            <div class="col-xs-3 mod-author"><span data-bind="text: author"></span></div>
+                                            <div class="col-xs-2 mod-context"><span data-bind="text: context"></span></div>
+                                            <div class="mod-status"></div>
+                                        </div>
+                                          <!-- /ko -->
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col_3">
+                    <div id="detail-pane-wrapper">
+                        <div class="detail-pane help" style="display: none" data-bind="visible: showHelp">
+                            <p><loc id="about-community-mods-new" data-loc-id="about-community-mods-new" data-loc-no-style>Community Mods is a service provided by <a class="community-mods-link" data-bind="click: openWebsite">Planetary Annihilation Inc <span class="community-mods-link-icon">&#xe164;</span></a> that extends the base game with enhancements, fixes and hundreds of community created mods like <a class="community-mods-link" data-bind="click: openLegionExpansion">Legion Expansion <span class="community-mods-link-icon">&#xe164;</span></a>.</loc></p>
+                            <h3><loc>Unit Restrictions</loc></h3>
+                            <p><loc>Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.</loc></p>
+                            <p><loc>Unit restrictions do not apply to Galactic War.</loc></p>
+                            <h3><loc>Server Mods</loc></h3>
+                            <p><loc>Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.</loc></p>
+                            <p><loc>Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.</loc></p>
+                            <p><loc>Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.</loc></p>
+                            <p class="warning"><loc>Multiple conflicting unit server mods may cause issues like no build bar and server crashes.</loc></p>
+                            <h3><loc>Client Mods</loc></h3>
+                            <p><loc>Client mods are mounted (loaded) only on your client and do not affect other players.</loc></p>
+                            <p><loc>Client mods cannot change units or unit specs in AI skirmish or multiplayer games.</loc></p>
+                            <h3><loc>Companion Client Mods</loc></h3>
+                            <p><loc>Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.</loc></p>
+                            <p><loc>If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.</loc></p>
+                            <p><loc>Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.</loc></p>
+                            <h3><loc>Installing Mods</loc></h3>
+                            <p><loc>Installing a mod will download a compressed zip of the mod to your local PA download cache.</loc></p>
+                            <p><loc>Active mods will be automatically updated during startup and after each game.</loc></p>
+                            <h3><loc>Offline Mode</loc></h3>
+                            <p><loc>Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).</loc></p>
+                        </div>
+                        <div class="detail-pane" style="display: none" data-bind="visible: selectedUnit, with: selectedUnit">
+                            <div class="unit-detail-info">
+                                <div class="unit-detail-icon-wrapper">
+                                    <img class="unit-detail-icon" data-bind="visible: buildBarImageURL, attr: { src: buildBarImageURL }"/>
+                                </div>
+                                <div class="unit-detail-info-wrapper">
+                                    <img class="unit-detail-product-icon" data-placement="bottom" data-bind="visible: classic, tooltip: 'Classic'" src="coui://ui/main/game/community_mods/img/community-mods-classic-icon.png"/>
+                                    <img class="unit-detail-product-icon" data-placement="bottom" data-bind="visible: titans, tooltip: 'Titans'" src="coui://ui/main/game/community_mods/img/community-mods-titans-icon.png"/>
+                                    <h3 class="unit-detail-name" data-bind="text: infoDisplayName"></h3>
+                                </div>
+                            </div>
+                            <div class="unit-detail-description" data-bind="text: infoDescription"></div>
+                        </div>
+                        <div class="detail-pane" style="display: none" data-bind="visible: selectedMod, with: selectedMod">
+                            <div class="mod-detail-info">
+                                <div class="mod-detail-icon-wrapper">
+                                    <img class="mod-detail-icon" data-bind="visible: icon, attr: { src: icon }"/>
+                                </div>
+                                <div class="mod-detail-info-wrapper">
+                                    <img class="mod-detail-product-icon" data-placement="bottom" data-bind="visible: classic, tooltip: 'Classic'" src="coui://ui/main/game/community_mods/img/community-mods-classic-icon.png"/>
+                                    <img class="mod-detail-product-icon" data-placement="bottom" data-bind="visible: titans, tooltip: 'Titans'" src="coui://ui/main/game/community_mods/img/community-mods-titans-icon.png"/>
+                                    <h3 class="mod-detail-name" data-bind="text: display_name"></h3>
+                                    <div class="mod-detail-by"><loc>By</loc> <span data-bind="text: author"></span></div>
+                                </div>
+                            </div>
+                            <div class="mod-detail-description" data-bind="text: description"></div>
+                            <div id="mod-conflict" style="display:none" data-bind="visible: $root.selectedModConflictsWithFileSystem"><loc>Available mod conflicts with file system mod installed at:</loc> <span data-bind="text: installedPath"></span></div>
+                            <div id="mod-local" style="display:none" data-bind="visible: $root.selectedModIsFileSystemOnly"><loc>Local file system mod installed at:</loc> <span data-bind="text: installedPath"></span></div>
+                            <h4><loc>Details</loc></h4>
+                            <div id="mod-forum" data-bind="visble: forum"><a target="_blank" data-bind="text: forum, attr: { href: forum }, click: $root.selectedModForumLinkClicked"></a></div>
+                            <div id="mod-github" data-bind="visble: github"><a target="_blank" data-bind="text: github, attr: { href: github }, click: $root.selectedModGithubLinkClicked"></a></div>
+                            <div class="mod-details"><loc>Date:</loc> <span data-bind="text: date"></span></div>
+                            <!-- ko if: $data.build -->
+                            <div class="mod-details"><loc>Build:</loc> <span data-bind="text: build"></span></div>
+                            <!-- /ko -->
+                            <div class="mod-details"><loc>Version:</loc> <span data-bind="text: version"></span></div>
+                            <div class="mod-details" data-bind="visible: $root.selectedModSize"><loc>Size:</loc> <span data-bind="text: $root.selectedModSize"></span></div>
+                            <div class="mod-details"><loc>Identifier:</loc> <span data-bind="text: identifier"></span></div>
+                            <!-- ko if: $data.priority -->
+                            <div class="mod-details"><loc>Priority:</loc> <span data-bind="text: priority"></span></div>
+                            <!-- /ko -->
+                            <div class="mod-details" data-bind="visible: installedPath"><loc>Installed Path:</loc> <span data-bind="text: installedPath"></span></div>
+                            <div class="mod-details" data-bind="visible: $root.selectedModUnitCount"><loc>Units:</loc> <span data-bind="text: $root.selectedModUnitCount"></span></div>
+                            <div id="mod-companions" data-bind="visible: $root.selectedModHasCompanions">
+                                <h5><loc>Companions</loc></h5>
+                                <div id="mod-companions-list" data-bind="foreach: $root.selectedModCompanionsStatus">
+                                    <div class="mod-companion" data-bind="tooltip: description" data-placement="left">
+                                        <div class="mod-companion-name col-md-8" data-bind="text: display_name"></div>
+                                        <div class="mod-companion-status col-md-2" data-bind="text: status"></div>
+                                        <div class="mod-companion-status col-md-2" data-bind="text: size"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="mod-dependencies" data-bind="visible: $root.selectedModHasDependencies">
+                                <h5><loc>Dependencies</loc></h5>
+                                <div id="mod-dependencies-list" data-bind="foreach: $root.selectedModDependenciesStatus">
+                                    <div class="mod-dependency" data-bind="tooltip: description" data-placement="left">
+                                        <div class="mod-dependency-name col-md-8" data-bind="text: display_name"></div>
+                                        <div class="mod-dependency-status col-md-2" data-bind="text: status"></div>
+                                        <div class="mod-dependency-status col-md-2" data-bind="text: size"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="mod-consumers" data-bind="visible: $root.selectedModHasConsumers">
+                                <h5><loc>Used By</loc></h5>
+                                <div id="mod-consumers-list" data-bind="foreach: $root.selectedModConsumersStatus">
+                                    <div class="mod-dependency">
+                                        <div class="mod-consumer-name col-md-8" data-bind="text: display_name"></div>
+                                        <div class="mod-consumer-status col-md-4" data-bind="text: status"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="mod-scenes" data-bind="visible: $root.selectedModHasScenes">
+                                <h5><loc>UI Scenes</loc></h5>
+                                <div id="mod-scenes-list" data-bind="foreach: $root.selectedModScenes">
+                                    <div class="mod-scene">
+                                        <div class="mod-consumer-name col-md-12" data-bind="text: $data"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="mod-systems" data-bind="visible: $root.selectedModHasSystems">
+                                <h5><loc>Systems</loc></h5>
+                                <div id="mod-system-list" data-bind="foreach: $root.selectedModSystems">
+                                    <div class="mod-system">
+                                        <div class="mod-system-name col-md-12" data-placement="left" data-bind="text: name, tooltip: description"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="unit-buttons" style="display: none" data-bind="visible: selectedTabIsUnits">
+                        <button style="display: none" data-bind="visible: canEnableUnit, click: enableSelectedUnit"><loc>Enable</loc></button>
+                        <button style="display: none" data-bind="visible: canDisableUnit, click: disableSelectedUnit"><loc>Disable</loc></button>
+                    </div>
+                    <div id="mod-buttons" style="display: none" data-bind="visible: selectedTabIsMods">
+                        <button style="display: none" data-bind="visible: selectedModIdentifier, visible: canEnableMod, click: enableSelectedMod"><loc>Enable</loc></button>
+                        <button style="display: none" data-bind="visible: selectedModIdentifier, visible: canDisableMod, click: disableSelectedMod"><loc>Disable</loc></button>
+                        <button style="display: none" data-bind="visible: selectedModIdentifier, visible: canInstall, click: installSelectedMod"><loc>Install</loc></button>
+                        <button style="display: none" data-bind="visible: selectedModIdentifier, visible: canUninstall, click: uninstallSelectedMod"><loc>Uninstall</loc></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

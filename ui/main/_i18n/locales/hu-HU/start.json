@@ -1,0 +1,86 @@
+{
+    "AI Skirmish": {
+        "message": "AI Harc"
+    },
+    "Armory": {
+        "message": "Fegyvertár"
+    },
+    "Audio Engine:": {
+        "message": "Audio Motor:"
+    },
+    "Connecting to PA": {
+        "message": "Csatlakozás a PA-hez"
+    },
+    "Cosmic Edition Commanders": {
+        "message": "Cosmic Edition Parancsnokok"
+    },
+    "Extra special thanks to our:": {
+        "message": "Külön hatalmas köszönet: "
+    },
+    "Founding Commanders": {
+        "message": "Parancsnokok Keresése"
+    },
+    "Galactic War": {
+        "message": "Galaktikus Háború"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Hibás felhasználónév vagy jelszó. Kérjük ellenőrizd a bevitelt, és próbáld újra."
+    },
+    "Multiplayer": {
+        "message": "Többjátékos"
+    },
+    "New Build Available:": {
+        "message": "Új Frissítés Elérhető:"
+    },
+    "None of this would have been possible without your generosity, and we are grateful that you took the chance and believed in our vision.": {
+        "message": "Mindez nem lett volna lehetséges a nagylelkűséged nélkül, és hálásak vagyunk, hogy esélyt adtál nekünk és hittél a koncepciónkban."
+    },
+    "Password": {
+        "message": "Jelszó"
+    },
+    "Please choose a default region.": {
+        "message": "Kérjük válassz egy alapértelmezett régiót."
+    },
+    "Quit": {
+        "message": "Kilépés"
+    },
+    "Replays": {
+        "message": "Visszajátszások"
+    },
+    "Settings": {
+        "message": "Beállítások"
+    },
+    "Sign in": {
+        "message": "Bejelentkezés"
+    },
+    "Single Player": {
+        "message": "Egyszemélyes Játék"
+    },
+    "System Designer": {
+        "message": "Naprendszer tervező"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Nincs elérhető régió ehhez a  játékverzióhoz."
+    },
+    "To those who contributed to our Kickstarter campaign, we'd like to thank you for all the support.": {
+        "message": "Szeretnénk megköszönni mindazok támogatását, akik hozzájárultak a Kickstarter kampányunkhoz."
+    },
+    "Unable to Sign In": {
+        "message": "Sikertelen bejelentkezés"
+    },
+    "Username": {
+        "message": "Felhasználónév"
+    },
+    "Version:": {
+        "message": "Verzió:"
+    },
+    "You are already assigned to a game.": {
+        "message": "Jelenleg hozzá vagy rendelve egy folyamatban lévő játékhoz."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "A régiódat megváltoztathatod később a beállításokban."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Új kliensre lesz szükség a játék futtatásához. A Steam felhasználóknak lehet, hogy újra kell indítaniuk a Steamet, hogy megkapják az új klienst."
+    }
+}

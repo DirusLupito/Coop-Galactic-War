@@ -1,0 +1,122 @@
+{
+    "ALWAYS": {
+        "message": "MINDIG"
+    },
+    "CUSTOM": {
+        "message": "EGYEDI"
+    },
+    "Camera": {
+        "message": "Kamera"
+    },
+    "Cancel": {
+        "message": "Mégse"
+    },
+    "LOW": {
+        "message": "ALACSONY"
+    },
+    "Language": {
+        "message": "Nyelv"
+    },
+    "Master Volume": {
+        "message": "Főhangerő"
+    },
+    "Music Volume": {
+        "message": "Zene Hangereje"
+    },
+    "NEVER": {
+        "message": "SOHA"
+    },
+    "OFF": {
+        "message": "KI"
+    },
+    "ON": {
+        "message": "BE"
+    },
+    "Pole Lock": {
+        "message": "Pólus Zár"
+    },
+    "Resolution Scaling": {
+        "message": "Felbontás Aránya a Monitorhoz Képest"
+    },
+    "SERVER": {
+        "message": "SZERVER"
+    },
+    "Save": {
+        "message": "Mentés"
+    },
+    "Server": {
+        "message": "Szerver"
+    },
+    "Settings": {
+        "message": "Beállítások"
+    },
+    "Shadows": {
+        "message": "Árnyékok"
+    },
+    "Show Unit Icons": {
+        "message": "Egység Ikonok Mutatása"
+    },
+    "WINDOWED": {
+        "message": "ABLAKOS"
+    },
+    "Zoom Speed": {
+        "message": "Közelítési Sebesség"
+    },
+    "align to pole": {
+        "message": "pólusokhoz igazítás"
+    },
+    "alt fire": {
+        "message": "másodlagos tűz"
+    },
+    "assist": {
+        "message": "támogat"
+    },
+    "attack": {
+        "message": "támadás"
+    },
+    "bug report": {
+        "message": "hibajelentés"
+    },
+    "build avatar": {
+        "message": "avatár építése"
+    },
+    "build avatar factory": {
+        "message": "avatár gyár építése"
+    },
+    "communication": {
+        "message": "kommunikáció"
+    },
+    "crash": {
+        "message": "összeomlás"
+    },
+    "energy off": {
+        "message": "energia fogyasztás kikapcsolása"
+    },
+    "pause game": {
+        "message": "játék szüneteltetése"
+    },
+    "repair": {
+        "message": "javítás"
+    },
+    "select all factories": {
+        "message": "összes gyár kiválasztása"
+    },
+    "stop": {
+        "message": "állj"
+    },
+    "toggle music": {
+        "message": "zene ki/be kapcsolása"
+    },
+    "units": {
+        "message": "egységek"
+    },
+    "zoom": {
+        "message": "közelítés"
+    },
+    "zoom in": {
+        "message": "ráközelítés"
+    },
+    "zoom to surface": {
+        "message": "közelítés felszínre"
+    }
+}

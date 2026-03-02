@@ -1,0 +1,59 @@
+{
+    "Annihilated": {
+        "message": "Vernichtet"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Bist du sicher, dass du diesen Galaktischen Krieg abbrechen möchtest?"
+    },
+    "Close": {
+        "message": "Schließen"
+    },
+    "Congratulations Commander": {
+        "message": "Glückwunsch, Kommandant"
+    },
+    "Delete War": {
+        "message": "Krieg löschen"
+    },
+    "Discards": {
+        "message": "Gelöschtes"
+    },
+    "Final Tech": {
+        "message": "Endgültige Technologie"
+    },
+    "GO TO MAIN MENU": {
+        "message": "ZUM HAUPTMENÜ"
+    },
+    "Now go start a war. Annihilate everything.": {
+        "message": "Starte jetzt einen Krieg. Vernichte alles."
+    },
+    "Please try again. There's still much to destroy.": {
+        "message": "Bitte versuche es erneut. Es gibt noch viel zu zerstören."
+    },
+    "Redo Tutorial": {
+        "message": "Tutorial wiederholen"
+    },
+    "Returning to Main Menu": {
+        "message": "Zurück zum Hauptmenü"
+    },
+    "Start A Galactic War": {
+        "message": "Starte einen galaktischen Krieg"
+    },
+    "Training Remains": {
+        "message": "Das Training dauert an"
+    },
+    "Turns:": {
+        "message": "Runden:"
+    },
+    "Tutorial Complete": {
+        "message": "Tutorial abgeschlossen"
+    },
+    "Tutorial Incomplete": {
+        "message": "Tutorial unvollständig"
+    },
+    "Victory": {
+        "message": "Sieg"
+    },
+    "Wins:": {
+        "message": "Siege:"
+    }
+}

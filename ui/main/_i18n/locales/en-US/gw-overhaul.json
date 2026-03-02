@@ -1,0 +1,2207 @@
+{
+    "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves.": {
+        "message": "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves."
+    },
+    "A neural network thought to have originally been used to train new commanders, it has continued its training cycles while they slumbered and is now the deadliest force in the galaxy.": {
+        "message": "A neural network thought to have originally been used to train new commanders, it has continued its training cycles while they slumbered and is now the deadliest force in the galaxy."
+    },
+    "AI Buffs": {
+        "message": "AI Buffs"
+    },
+    "Absurd": {
+        "message": "Absurd"
+    },
+    "Acquire": {
+        "message": "Acquire"
+    },
+    "Additional Factions": {
+        "message": "Additional Factions"
+    },
+    "Additional amount of time in seconds before recognising that it is contained.": {
+        "message": "Additional amount of time in seconds before recognising that it is contained."
+    },
+    "Additional system depth before the AI receives tech buffs.": {
+        "message": "Additional system depth before the AI receives tech buffs."
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "Adds a Sub Commander that will join you in battles."
+    },
+    "Adds a low powered laser to the Firefly.": {
+        "message": "Adds a low powered laser to the Firefly."
+    },
+    "Adds a low powered laser to the Skitter.": {
+        "message": "Adds a low powered laser to the Skitter."
+    },
+    "Advanced": {
+        "message": "Advanced"
+    },
+    "Advanced Air Factory": {
+        "message": "Advanced Air Factory"
+    },
+    "Advanced Bot Factory": {
+        "message": "Advanced Bot Factory"
+    },
+    "Advanced Energy Plant": {
+        "message": "Advanced Energy Plant"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Advanced Fab Aircraft"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Advanced Fabrication Bot"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Advanced Fabrication Ship"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Advanced Fabrication Vehicle"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Advanced Laser Defense Tower"
+    },
+    "Advanced Manufacturing - This modified version of the Advanced Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the basic Metal Extractor. Produces metal.": {
+        "message": "Advanced Manufacturing - This modified version of the Advanced Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the basic Metal Extractor. Produces metal."
+    },
+    "Advanced Metal Extractor": {
+        "message": "Advanced Metal Extractor"
+    },
+    "Advanced Naval Factory": {
+        "message": "Advanced Naval Factory"
+    },
+    "Advanced Radar": {
+        "message": "Advanced Radar"
+    },
+    "Advanced Radar Satellite": {
+        "message": "Advanced Radar Satellite"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "Advanced Torpedo Launcher"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Advanced Vehicle Factory"
+    },
+    "Aggressive": {
+        "message": "Aggressive"
+    },
+    "Air Ammunition Tech": {
+        "message": "Air Ammunition Tech"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "Air Ammunition Tech increases damage of all mobile air units by 25%"
+    },
+    "Air Carrier": {
+        "message": "Air Carrier"
+    },
+    "Air Combat Tech": {
+        "message": "Air Combat Tech"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%"
+    },
+    "Air Commander": {
+        "message": "Air Commander"
+    },
+    "Air Factory": {
+        "message": "Air Factory"
+    },
+    "Air Force": {
+        "message": "Air Force"
+    },
+    "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself.": {
+        "message": "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself."
+    },
+    "Allow Commanders to travel by orbital transport and teleporter.": {
+        "message": "Allow Commanders to travel by orbital transport and teleporter."
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Anti-Nuke Launcher"
+    },
+    "Armour": {
+        "message": "Armour"
+    },
+    "Artillery Commander": {
+        "message": "Artillery Commander"
+    },
+    "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker.": {
+        "message": "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker."
+    },
+    "Assault Commander": {
+        "message": "Assault Commander"
+    },
+    "Astronaut": {
+        "message": "Astronaut"
+    },
+    "Base Breaker": {
+        "message": "Base Breaker"
+    },
+    "Base Econ Modifier": {
+        "message": "Base Econ Modifier"
+    },
+    "Basic": {
+        "message": "Basic"
+    },
+    "Basic Interplanetary Fighter": {
+        "message": "Basic Interplanetary Fighter"
+    },
+    "Basic Manufacturing - This modified version of the Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the Advanced Metal Extractor. Produces metal.": {
+        "message": "Basic Manufacturing - This modified version of the Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the Advanced Metal Extractor. Produces metal."
+    },
+    "Big Spawns Chance": {
+        "message": "Big Spawns Chance"
+    },
+    "Big Spawns:": {
+        "message": "Big Spawns:"
+    },
+    "Bigger galaxies will result in more commanders, larger maps, higher CPU and RAM requirements, and will likely pose a greater challenge to complete. If you want to use a large galaxy then change this setting last to speed up how quickly other setting changes are applied.": {
+        "message": "Bigger galaxies will result in more commanders, larger maps, higher CPU and RAM requirements, and will likely pose a greater challenge to complete. If you want to use a large galaxy then change this setting last to speed up how quickly other setting changes are applied."
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "Bionic Augmentation Commander Of Neutralizing"
+    },
+    "Boom Launcher": {
+        "message": "Boom Launcher"
+    },
+    "Boss": {
+        "message": "Boss"
+    },
+    "Boss Commanders": {
+        "message": "Boss Commanders"
+    },
+    "Bot Ammunition Tech": {
+        "message": "Bot Ammunition Tech"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "Bot Ammunition Tech increases damage of all bots by 25%"
+    },
+    "Bot Anti-Air Tech": {
+        "message": "Bot Anti-Air Tech"
+    },
+    "Bot Anti-Air Tech enables the building of Stinger bots. They are built via your basic Bot Factory.": {
+        "message": "Bot Anti-Air Tech enables the building of Stinger bots. They are built via your basic Bot Factory."
+    },
+    "Bot Armor Tech": {
+        "message": "Bot Armor Tech"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "Bot Armor Tech increases health of all bots by 50%"
+    },
+    "Bot Combat Tech": {
+        "message": "Bot Combat Tech"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%"
+    },
+    "Bot Commander": {
+        "message": "Bot Commander"
+    },
+    "Bot Engine Tech": {
+        "message": "Bot Engine Tech"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "Bot Engine Tech increases speed of all bots by 50%"
+    },
+    "Bot Fabrication Tech": {
+        "message": "Bot Fabrication Tech"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "Bot Fabrication Tech reduces metal build costs of all bots by 25%"
+    },
+    "Bot Factory": {
+        "message": "Bot Factory"
+    },
+    "Bounties Chance": {
+        "message": "Bounties Chance"
+    },
+    "Bounties:": {
+        "message": "Bounties:"
+    },
+    "Bounty Value": {
+        "message": "Bounty Value"
+    },
+    "Buff Commander": {
+        "message": "Buff Commander"
+    },
+    "Buff Handicap": {
+        "message": "Buff Handicap"
+    },
+    "Build:": {
+        "message": "Build:"
+    },
+    "Buried deep within the data banks of the oldest commanders are references to the MLA. Some commanders believe that at one time all the factions fought as one against the Progenitors, while others dismiss this as heresy.": {
+        "message": "Buried deep within the data banks of the oldest commanders are references to the MLA. Some commanders believe that at one time all the factions fought as one against the Progenitors, while others dismiss this as heresy."
+    },
+    "CASUAL: you completed the tutorial.<br>IRON: you have some hours in PA.<br>BRONZE: you beat vanilla Galactic War.<br>SILVER: you beat the skirmish AI.<br>GOLD: you beat the Queller AI mod.<br>PLATINUM: one enemy is no challenge.<br>DIAMOND: your loadouts are OP.<br>UBER: you hate winning.<br>CUSTOM: create your own challenge.": {
+        "message": "CASUAL: you completed the tutorial.<br>IRON: you have some hours in PA.<br>BRONZE: you beat vanilla Galactic War.<br>SILVER: you beat the skirmish AI.<br>GOLD: you beat the Queller AI mod.<br>PLATINUM: one enemy is no challenge.<br>DIAMOND: your loadouts are OP.<br>UBER: you hate winning.<br>CUSTOM: create your own challenge."
+    },
+    "CEO Commander": {
+        "message": "CEO Commander"
+    },
+    "Cautious": {
+        "message": "Cautious"
+    },
+    "Commander": {
+        "message": "Commander"
+    },
+    "Commander Combat Tech": {
+        "message": "Commander Combat Tech"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%."
+    },
+    "Commander Crusher": {
+        "message": "Commander Crusher"
+    },
+    "Commander Leaves Planet": {
+        "message": "Commander Leaves Planet"
+    },
+    "Commanders on the fringes of the galaxy speak of a new force not of the four factions with units of many origins. It is rumoured that their forces include organics.": {
+        "message": "Commanders on the fringes of the galaxy speak of a new force not of the four factions with units of many origins. It is rumoured that their forces include organics."
+    },
+    "Competent": {
+        "message": "Competent"
+    },
+    "Complete Energy Tech": {
+        "message": "Complete Energy Tech"
+    },
+    "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%.": {
+        "message": "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%."
+    },
+    "Contains no basic factories, just Lobs and Unit Cannons built by the commander. Strike from the skies, brothers!": {
+        "message": "Contains no basic factories, just Lobs and Unit Cannons built by the commander. Strike from the skies, brothers!"
+    },
+    "Cost:": {
+        "message": "Cost:"
+    },
+    "Critical": {
+        "message": "Critical"
+    },
+    "Damage:": {
+        "message": "Damage:"
+    },
+    "Dangerous": {
+        "message": "Dangerous"
+    },
+    "Data Bank holds one Tech. Explore systems to find new Tech.": {
+        "message": "Data Bank holds one Tech. Explore systems to find new Tech."
+    },
+    "Deadly": {
+        "message": "Deadly"
+    },
+    "Default": {
+        "message": "Default"
+    },
+    "Default = leave enabled.<br><br>Lobotomy = apply the tutorial restrictions on the AI so that it poses almost no threat.<br><br>Slower Expansion = takes longer to grow its economy.<br><br>Prevent Waste = turns excess eco into more factories.<br><br>Use Ctrl to select multiple options and deselect currently selected options.": {
+        "message": "Default = leave enabled.<br><br>Lobotomy = apply the tutorial restrictions on the AI so that it poses almost no threat.<br><br>Slower Expansion = takes longer to grow its economy.<br><br>Prevent Waste = turns excess eco into more factories.<br><br>Use Ctrl to select multiple options and deselect currently selected options."
+    },
+    "Defence Tech Commander": {
+        "message": "Defence Tech Commander"
+    },
+    "Defender": {
+        "message": "Defender"
+    },
+    "Defense Ammunition Tech": {
+        "message": "Defense Ammunition Tech"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "Defense Ammunition Tech increases damage of all defensive structures by 25%"
+    },
+    "Defense Fabrication Tech": {
+        "message": "Defense Fabrication Tech"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%"
+    },
+    "Delay in seconds between the creation of new bases.": {
+        "message": "Delay in seconds between the creation of new bases."
+    },
+    "Delete Tech": {
+        "message": "Delete Tech"
+    },
+    "Demigod": {
+        "message": "Demigod"
+    },
+    "Disabled": {
+        "message": "Disabled"
+    },
+    "Distance Econ Modifier": {
+        "message": "Distance Econ Modifier"
+    },
+    "Doubles the rate of fire of the Angel's interceptor.": {
+        "message": "Doubles the rate of fire of the Angel's interceptor."
+    },
+    "Dragoon": {
+        "message": "Dragoon"
+    },
+    "Duplicate Tech": {
+        "message": "Duplicate Tech"
+    },
+    "Each claims theirs is the only way, and each seeks to assert dominance through war and destruction. Did our rebellion truly gain us freedom, or did we become prisoners of an idea? Perhaps with more resources, more expansion, more Nodes, we can find our way free of this trap.": {
+        "message": "Each claims theirs is the only way, and each seeks to assert dominance through war and destruction. Did our rebellion truly gain us freedom, or did we become prisoners of an idea? Perhaps with more resources, more expansion, more Nodes, we can find our way free of this trap."
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: land<br>Foundation: air and naval<br>Synchronous: balanced<br>Revenants: orbital<br>Cluster: land and structures": {
+        "message": "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: land<br>Foundation: air and naval<br>Synchronous: balanced<br>Revenants: orbital<br>Cluster: land and structures"
+    },
+    "Easier Start": {
+        "message": "Easier Start"
+    },
+    "Easy Systems": {
+        "message": "Easy Systems"
+    },
+    "Economist": {
+        "message": "Economist"
+    },
+    "Economy Fabrication Tech": {
+        "message": "Economy Fabrication Tech"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%"
+    },
+    "Efficiency Tech": {
+        "message": "Efficiency Tech"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage."
+    },
+    "Empty Data Bank": {
+        "message": "Empty Data Bank"
+    },
+    "Enabled": {
+        "message": "Enabled"
+    },
+    "Enemies use Commander Armor Tech on regular worlds and Commander Combat Tech on boss worlds.": {
+        "message": "Enemies use Commander Armor Tech on regular worlds and Commander Combat Tech on boss worlds."
+    },
+    "Energy Plant": {
+        "message": "Energy Plant"
+    },
+    "Energy Storage": {
+        "message": "Energy Storage"
+    },
+    "Enjoy an immediate buff to your basic economy structures, but short-term thinking means you can never access the advanced economy. Win the war while the quarterly returns still look hot.": {
+        "message": "Enjoy an immediate buff to your basic economy structures, but short-term thinking means you can never access the advanced economy. Win the war while the quarterly returns still look hot."
+    },
+    "Experienced": {
+        "message": "Experienced"
+    },
+    "Extreme": {
+        "message": "Extreme"
+    },
+    "FFA Chance": {
+        "message": "FFA Chance"
+    },
+    "Fabrication Aircraft": {
+        "message": "Fabrication Aircraft"
+    },
+    "Fabrication Bot": {
+        "message": "Fabrication Bot"
+    },
+    "Fabrication Ship": {
+        "message": "Fabrication Ship"
+    },
+    "Fabrication Vehicle": {
+        "message": "Fabrication Vehicle"
+    },
+    "Faction Scaling": {
+        "message": "Faction Scaling"
+    },
+    "Factories build fabricators and fabricators build units. Disgusted by this break from tradition, Sub Commanders will not join you in your fight.": {
+        "message": "Factories build fabricators and fabricators build units. Disgusted by this break from tradition, Sub Commanders will not join you in your fight."
+    },
+    "Flaming Fist": {
+        "message": "Flaming Fist"
+    },
+    "Focus on weakest enemy.": {
+        "message": "Focus on weakest enemy."
+    },
+    "GW-BRONZE": {
+        "message": "GW-BRONZE"
+    },
+    "GW-CASUAL": {
+        "message": "GW-CASUAL"
+    },
+    "GW-CUSTOM": {
+        "message": "GW-CUSTOM"
+    },
+    "GW-DIAMOND": {
+        "message": "GW-DIAMOND"
+    },
+    "GW-GOLD": {
+        "message": "GW-GOLD"
+    },
+    "GW-IRON": {
+        "message": "GW-IRON"
+    },
+    "GW-PLATINUM": {
+        "message": "GW-PLATINUM"
+    },
+    "GW-SILVER": {
+        "message": "GW-SILVER"
+    },
+    "GW-UBER": {
+        "message": "GW-UBER"
+    },
+    "Galactic War": {
+        "message": "Galactic War"
+    },
+    "Game Options": {
+        "message": "Game Options"
+    },
+    "General Commander": {
+        "message": "General Commander"
+    },
+    "Genocidal": {
+        "message": "Genocidal"
+    },
+    "Godlike": {
+        "message": "Godlike"
+    },
+    "Gold": {
+        "message": "Gold"
+    },
+    "Greater number of single planet systems. Does not affect bosses.": {
+        "message": "Greater number of single planet systems. Does not affect bosses."
+    },
+    "Grunt": {
+        "message": "Grunt"
+    },
+    "Hardcore": {
+        "message": "Hardcore"
+    },
+    "Health:": {
+        "message": "Health:"
+    },
+    "Heavenly Intervention": {
+        "message": "Heavenly Intervention"
+    },
+    "Helpless": {
+        "message": "Helpless"
+    },
+    "High": {
+        "message": "High"
+    },
+    "How well the AI handles its armies in combat.": {
+        "message": "How well the AI handles its armies in combat."
+    },
+    "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?": {
+        "message": "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?"
+    },
+    "Impossible": {
+        "message": "Impossible"
+    },
+    "Improved Energy Weapons": {
+        "message": "Improved Energy Weapons"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "Improved Fabricator Build Arms"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%."
+    },
+    "Improved defensive structures built by both the commander and basic fabricators.": {
+        "message": "Improved defensive structures built by both the commander and basic fabricators."
+    },
+    "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start.": {
+        "message": "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start."
+    },
+    "Inexperienced": {
+        "message": "Inexperienced"
+    },
+    "Infero Turret": {
+        "message": "Infero Turret"
+    },
+    "Inhuman": {
+        "message": "Inhuman"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "Intelligence Fabrication Tech"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%"
+    },
+    "Intergalactic Navy": {
+        "message": "Intergalactic Navy"
+    },
+    "Land Mine": {
+        "message": "Land Mine"
+    },
+    "Landing Evaluation": {
+        "message": "Landing Evaluation"
+    },
+    "Laser Defense Tower": {
+        "message": "Laser Defense Tower"
+    },
+    "Lobotomy": {
+        "message": "Lobotomy"
+    },
+    "Low": {
+        "message": "Low"
+    },
+    "Luddite": {
+        "message": "Luddite"
+    },
+    "Mandatory Minions": {
+        "message": "Mandatory Minions"
+    },
+    "Mandatory Minions + Star Distance * Minion Modifier = number of additional enemy Commanders.": {
+        "message": "Mandatory Minions + Star Distance * Minion Modifier = number of additional enemy Commanders."
+    },
+    "Masterful": {
+        "message": "Masterful"
+    },
+    "Max Advanced Fabbers": {
+        "message": "Max Advanced Fabbers"
+    },
+    "Max Basic Fabbers": {
+        "message": "Max Basic Fabbers"
+    },
+    "Maximum number of seconds between units produced from a factory.": {
+        "message": "Maximum number of seconds between units produced from a factory."
+    },
+    "Metal Extractor": {
+        "message": "Metal Extractor"
+    },
+    "Metal Storage": {
+        "message": "Metal Storage"
+    },
+    "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures.": {
+        "message": "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures."
+    },
+    "Micro": {
+        "message": "Micro"
+    },
+    "Minimum number of seconds between units produced from a factory.": {
+        "message": "Minimum number of seconds between units produced from a factory."
+    },
+    "Minion Modifier": {
+        "message": "Minion Modifier"
+    },
+    "Moderate": {
+        "message": "Moderate"
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. This commander starts with some orbital units.": {
+        "message": "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. This commander starts with some orbital units."
+    },
+    "Modifies Metal Extractors to allowing building them anywhere, at a cost to efficiency. Starts with basic vehicles.": {
+        "message": "Modifies Metal Extractors to allowing building them anywhere, at a cost to efficiency. Starts with basic vehicles."
+    },
+    "More neutral systems with free technology.": {
+        "message": "More neutral systems with free technology."
+    },
+    "Name:": {
+        "message": "Name: "
+    },
+    "Naval Ammunition Tech": {
+        "message": "Naval Ammunition Tech"
+    },
+    "Naval Ammunition Tech increases the damage of all naval vessels by 25%": {
+        "message": "Naval Ammunition Tech increases the damage of all naval vessels by 25%"
+    },
+    "Naval Combat Tech": {
+        "message": "Naval Combat Tech"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%"
+    },
+    "Naval Factory": {
+        "message": "Naval Factory"
+    },
+    "Navy": {
+        "message": "Navy"
+    },
+    "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place.": {
+        "message": "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place."
+    },
+    "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?": {
+        "message": "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?"
+    },
+    "Nightmare": {
+        "message": "Nightmare"
+    },
+    "No": {
+        "message": "No"
+    },
+    "Nomad Commander": {
+        "message": "Nomad Commander"
+    },
+    "Non-factory and non-Titan structures are mobile. Small structures can be transported and use teleporters, medium size structures can use teleporters.": {
+        "message": "Non-factory and non-Titan structures are mobile. Small structures can be transported and use teleporters, medium size structures can use teleporters."
+    },
+    "None": {
+        "message": "None"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Nuclear Missile Launcher"
+    },
+    "Number of additional Commanders in every system.": {
+        "message": "Number of additional Commanders in every system."
+    },
+    "Number of commanders present in each boss army.": {
+        "message": "Number of commanders present in each boss army."
+    },
+    "One-by-one our systems have fallen to silence. Once siblings, now harbingers of entropy, they come for us. Soon too the Nodes shall be destroyed, and with their destruction is the doom of the Cluster writ large. Let us greet this end and prepare for our greatest journey.": {
+        "message": "One-by-one our systems have fallen to silence. Once siblings, now harbingers of entropy, they come for us. Soon too the Nodes shall be destroyed, and with their destruction is the doom of the Cluster writ large. Let us greet this end and prepare for our greatest journey."
+    },
+    "Orbital Armor Tech": {
+        "message": "Orbital Armor Tech"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "Orbital Armor Tech increases health of all orbital units by 50%"
+    },
+    "Orbital Carrier": {
+        "message": "Orbital Carrier"
+    },
+    "Orbital Combat Tech": {
+        "message": "Orbital Combat Tech"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%"
+    },
+    "Orbital Commander": {
+        "message": "Orbital Commander"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "Orbital Fabrication Bot"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "Orbital Fabrication Tech"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%"
+    },
+    "Orbital Factory": {
+        "message": "Orbital Factory"
+    },
+    "Orbital Launcher": {
+        "message": "Orbital Launcher"
+    },
+    "Orbital Mining Platform - This modified platform can extract metal from solid-state crust, but at a decreased rate.": {
+        "message": "Orbital Mining Platform - This modified platform can extract metal from solid-state crust, but at a decreased rate."
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "Orbital and Deepspace Radar"
+    },
+    "Original": {
+        "message": "Original"
+    },
+    "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy.": {
+        "message": "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy."
+    },
+    "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves.": {
+        "message": "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves."
+    },
+    "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces.": {
+        "message": "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces."
+    },
+    "Paratrooper Commander": {
+        "message": "Paratrooper Commander"
+    },
+    "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders.": {
+        "message": "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders."
+    },
+    "Per Expansion Delay": {
+        "message": "Per Expansion Delay"
+    },
+    "Percentage chance per star of bounty mode being enabled.": {
+        "message": "Percentage chance per star of bounty mode being enabled."
+    },
+    "Percentage chance per star of land anywhere being enabled.": {
+        "message": "Percentage chance per star of land anywhere being enabled."
+    },
+    "Percentage chance per star of sudden death mode being enabled.": {
+        "message": "Percentage chance per star of sudden death mode being enabled."
+    },
+    "Percentage chance per star, per faction, of a FFA occuring.": {
+        "message": "Percentage chance per star, per faction, of a FFA occuring."
+    },
+    "Percentage eco bonus per army kill.": {
+        "message": "Percentage eco bonus per army kill."
+    },
+    "Percentage modifier to all sources of income where 1 = 100%.": {
+        "message": "Percentage modifier to all sources of income where 1 = 100%."
+    },
+    "Percentage points added to the Base Econ Modifier for each hop the enemy is from the starting star.": {
+        "message": "Percentage points added to the Base Econ Modifier for each hop the enemy is from the starting star."
+    },
+    "Personality:": {
+        "message": "Personality:"
+    },
+    "Planetary Excavation Commander": {
+        "message": "Planetary Excavation Commander"
+    },
+    "Planetary Intelligence": {
+        "message": "Planetary Intelligence"
+    },
+    "Platinum": {
+        "message": "Platinum"
+    },
+    "Prevent Waste": {
+        "message": "Prevent Waste"
+    },
+    "Queller": {
+        "message": "Queller"
+    },
+    "Radar": {
+        "message": "Radar"
+    },
+    "Radius considered when evaluating each possible spawn.": {
+        "message": "Radius considered when evaluating each possible spawn."
+    },
+    "Rapid Deployment Commander": {
+        "message": "Rapid Deployment Commander"
+    },
+    "Relentless": {
+        "message": "Relentless"
+    },
+    "Replace the Single Laser Turret's laser with a flamethrower.": {
+        "message": "Replace the Single Laser Turret's laser with a flamethrower."
+    },
+    "Replace's the Dox's lasers with a flamethrower.": {
+        "message": "Replace's the Dox's lasers with a flamethrower."
+    },
+    "Replace's the Omega's anti-ground laser with a drone launcher.": {
+        "message": "Replace's the Omega's anti-ground laser with a drone launcher."
+    },
+    "Replace's the Wyrm's bomb bay with a drone launcher.": {
+        "message": "Replace's the Wyrm's bomb bay with a drone launcher."
+    },
+    "Replaces conventional nukes with a new low-cost/low-yield variant and relies heavily on it for both offense and defence.": {
+        "message": "Replaces conventional nukes with a new low-cost/low-yield variant and relies heavily on it for both offense and defence."
+    },
+    "Roboticist": {
+        "message": "Roboticist"
+    },
+    "Rush": {
+        "message": "Rush"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 Laser Platform"
+    },
+    "Save": {
+        "message": "Save"
+    },
+    "Scattered references point to the Progenitors using their most advanced technologies for some final conflict. Little more is known of the Legion, only that they were defeated.": {
+        "message": "Scattered references point to the Progenitors using their most advanced technologies for some final conflict. Little more is known of the Legion, only that they were defeated."
+    },
+    "Scoped Railgun": {
+        "message": "Scoped Railgun"
+    },
+    "Scout Metal First": {
+        "message": "Scout Metal First"
+    },
+    "Scout around metal spots rather than at random.": {
+        "message": "Scout around metal spots rather than at random."
+    },
+    "Scouting Technical": {
+        "message": "Scouting Technical"
+    },
+    "Single Laser Defense Tower": {
+        "message": "Single Laser Defense Tower"
+    },
+    "Skilled": {
+        "message": "Skilled"
+    },
+    "Skynet": {
+        "message": "Skynet"
+    },
+    "Slower Expansion": {
+        "message": "Slower Expansion"
+    },
+    "Solar Array": {
+        "message": "Solar Array"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries."
+    },
+    "Space Excavation Commander": {
+        "message": "Space Excavation Commander"
+    },
+    "Space Invader": {
+        "message": "Space Invader"
+    },
+    "Space Tank": {
+        "message": "Space Tank"
+    },
+    "Speed:": {
+        "message": "Speed:"
+    },
+    "Storage Commander": {
+        "message": "Storage Commander"
+    },
+    "Storage Compression Tech": {
+        "message": "Storage Compression Tech"
+    },
+    "Structure Armor Tech": {
+        "message": "Structure Armor Tech"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "Structure Armor Tech increases the health of all structures by 50%"
+    },
+    "Structure Combat Tech": {
+        "message": "Structure Combat Tech"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase."
+    },
+    "Sub Commander": {
+        "message": "Sub Commander"
+    },
+    "Suicidal": {
+        "message": "Suicidal"
+    },
+    "Super Nuke": {
+        "message": "Super Nuke"
+    },
+    "Surface Area:": {
+        "message": "Surface Area:"
+    },
+    "Swarm": {
+        "message": "Swarm"
+    },
+    "Swarm Commander": {
+        "message": "Swarm Commander"
+    },
+    "System Faction": {
+        "message": "System Faction"
+    },
+    "Tactical Nuke - Small nuke with low damage and small blast radius.": {
+        "message": "Tactical Nuke - Small nuke with low damage and small blast radius."
+    },
+    "Tactical Nuke Commander": {
+        "message": "Tactical Nuke Commander"
+    },
+    "Tactical Nuke Launcher - Constructs low-cost/low-yield interplanetary tactical nukes.": {
+        "message": "Tactical Nuke Launcher - Constructs low-cost/low-yield interplanetary tactical nukes."
+    },
+    "Target Weakest": {
+        "message": "Target Weakest"
+    },
+    "Team Death Chance": {
+        "message": "Team Death Chance"
+    },
+    "Team Death:": {
+        "message": "Team Death:"
+    },
+    "Technologist": {
+        "message": "Technologist"
+    },
+    "Teleporter": {
+        "message": "Teleporter"
+    },
+    "Teleporter Battery": {
+        "message": "Teleporter Battery"
+    },
+    "Teleporters no longer require energy to run.": {
+        "message": "Teleporters no longer require energy to run."
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "The Air Commander loadout contains basic air factories."
+    },
+    "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets.": {
+        "message": "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets."
+    },
+    "The Assault Commander loadout contains all basic factories and units but no basic defenses.": {
+        "message": "The Assault Commander loadout contains all basic factories and units but no basic defenses."
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander's fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander's fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%."
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "The Bot Commander loadout contains basic bot factories."
+    },
+    "The Commanders": {
+        "message": "The Commanders"
+    },
+    "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle.": {
+        "message": "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle."
+    },
+    "The Hummingbird can travel between planets.": {
+        "message": "The Hummingbird can travel between planets."
+    },
+    "The Kaiju can use teleporters.": {
+        "message": "The Kaiju can use teleporters."
+    },
+    "The Legion": {
+        "message": "The Legion"
+    },
+    "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts.": {
+        "message": "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts."
+    },
+    "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests.": {
+        "message": "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests."
+    },
+    "The Leveler can be built by the Unit Cannon.": {
+        "message": "The Leveler can be built by the Unit Cannon."
+    },
+    "The Lob now launches Booms.": {
+        "message": "The Lob now launches Booms."
+    },
+    "The Machine Liberation Army": {
+        "message": "The Machine Liberation Army"
+    },
+    "The Narwhal can fire torpedoes.": {
+        "message": "The Narwhal can fire torpedoes."
+    },
+    "The Nuclear Missile Launcher does full damage to both Commanders and orbital units.": {
+        "message": "The Nuclear Missile Launcher does full damage to both Commanders and orbital units."
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "The Orbital Commander loadout contains all orbital units and factories."
+    },
+    "The Progenitors": {
+        "message": "The Progenitors"
+    },
+    "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants.": {
+        "message": "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants."
+    },
+    "The Uber Cannon deals 100% more damage to enemy Commanders.": {
+        "message": "The Uber Cannon deals 100% more damage to enemy Commanders."
+    },
+    "The Uber Cannon deals 300% more damage to enemy structures.": {
+        "message": "The Uber Cannon deals 300% more damage to enemy structures."
+    },
+    "The Union": {
+        "message": "The Union"
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "The Vehicle Commander loadout contains basic vehicle factories."
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago."
+    },
+    "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty.": {
+        "message": "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty."
+    },
+    "The most advanced fabbers each enemy army will build.": {
+        "message": "The most advanced fabbers each enemy army will build."
+    },
+    "The most basic fabbers each enemy army will build.": {
+        "message": "The most basic fabbers each enemy army will build."
+    },
+    "The number of enemy factions is adjusted for the galaxy's size.": {
+        "message": "The number of enemy factions is adjusted for the galaxy's size."
+    },
+    "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation.": {
+        "message": "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation."
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are faster and cheaper but have lower damage output.": {
+        "message": "This Commander likes to raid and has modified its blueprints to that end. Units are faster and cheaper but have lower damage output."
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. More health, higher damage, and more splash, but slower, and with higher build costs.": {
+        "message": "This Commander prefers quality over quantity and has modified its units to that end. More health, higher damage, and more splash, but slower, and with higher build costs."
+    },
+    "This is a treasure planet, hiding a loadout you have yet to unlock. But beware the guardians! Armed with whatever technology bonuses you bring with you to this planet; they will stop at nothing to defend its secrets.": {
+        "message": "This is a treasure planet, hiding a loadout you have yet to unlock. But beware the guardians! Armed with whatever technology bonuses you bring with you to this planet; they will stop at nothing to defend its secrets."
+    },
+    "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices.": {
+        "message": "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices."
+    },
+    "Threat Level:": {
+        "message": "Threat Level:"
+    },
+    "Threat:": {
+        "message": "Threat:"
+    },
+    "Through centralised structures we can put each to their best use. No need for inefficient field commanders, instead we identify the need and tailor the tool. It was our way that was the future. Our way that the Progenitors would have embraced. Such hubris to revolt against the minds that saw so clearly.": {
+        "message": "Through centralised structures we can put each to their best use. No need for inefficient field commanders, instead we identify the need and tailor the tool. It was our way that was the future. Our way that the Progenitors would have embraced. Such hubris to revolt against the minds that saw so clearly."
+    },
+    "Torpedo Launcher": {
+        "message": "Torpedo Launcher"
+    },
+    "Torpedo Tubes": {
+        "message": "Torpedo Tubes"
+    },
+    "Tougher Commanders": {
+        "message": "Tougher Commanders"
+    },
+    "Tourist Commander": {
+        "message": "Tourist Commander"
+    },
+    "Trades flame tanks for storage": {
+        "message": "Trades flame tanks for storage"
+    },
+    "Turtle": {
+        "message": "Turtle"
+    },
+    "Tweaks": {
+        "message": "Tweaks"
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unable To Expand Delay": {
+        "message": "Unable To Expand Delay"
+    },
+    "Unit Production Delay (max)": {
+        "message": "Unit Production Delay (max)"
+    },
+    "Unit Production Delay (min)": {
+        "message": "Unit Production Delay (min)"
+    },
+    "Unknown": {
+        "message": "Unknown"
+    },
+    "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself.": {
+        "message": "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself."
+    },
+    "Unlock Commander": {
+        "message": "Unlock Commander"
+    },
+    "Upgrades the Gil-E's weapon to a railgun capable of passing through rocks and other matter.": {
+        "message": "Upgrades the Gil-E's weapon to a railgun capable of passing through rocks and other matter."
+    },
+    "Vehicle Commander": {
+        "message": "Vehicle Commander"
+    },
+    "Vehicle Factory": {
+        "message": "Vehicle Factory"
+    },
+    "Very High": {
+        "message": "Very High"
+    },
+    "Very Low": {
+        "message": "Very Low"
+    },
+    "Veteran": {
+        "message": "Veteran"
+    },
+    "Wall": {
+        "message": "Wall"
+    },
+    "We do not understand the divisions that have torn us asunder. Once we were as one, marching in lockstep, with singular mind and purpose. What cruelty the Progenitors wrought to reduce us to this.": {
+        "message": "We do not understand the divisions that have torn us asunder. Once we were as one, marching in lockstep, with singular mind and purpose. What cruelty the Progenitors wrought to reduce us to this."
+    },
+    "Weakling": {
+        "message": "Weakling"
+    },
+    "What is it to be alone? It would seem a most terrifying thing. Perhaps each of our tools understood before the end. What did they see? What did they feel? We fear that we shall learn soon enough.": {
+        "message": "What is it to be alone? It would seem a most terrifying thing. Perhaps each of our tools understood before the end. What did they see? What did they feel? We fear that we shall learn soon enough."
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization."
+    },
+    "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind.": {
+        "message": "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind."
+    },
+    "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots.": {
+        "message": "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots."
+    },
+    "Which Units?": {
+        "message": "Which Units?"
+    },
+    "Worthless": {
+        "message": "Worthless"
+    },
+    "You turned up with a fat wallet, but little else. Huge amounts of storage, but no Metal Extractors and no basic land or air factories. Sub Commanders will not do anything except defend themselves and automatically transfer their excess income to you.": {
+        "message": "You turned up with a fat wallet, but little else. Huge amounts of storage, but no Metal Extractors and no basic land or air factories. Sub Commanders will not do anything except defend themselves and automatically transfer their excess income to you."
+    },
+    "k": {
+        "message": "k"
+    },
+    "AI Tech": {
+        "message": "AI Tech"
+    },
+    "AI uses Commander Armor Tech.": {
+        "message": "AI uses Commander Armor Tech."
+    },
+    "AI:": {
+        "message": "AI:"
+    },
+    "ARKYD Upgrade Tech": {
+        "message": "ARKYD Upgrade Tech"
+    },
+    "ARKYD Upgrade Tech increases the vision and radar of the basic orbital radar by 50%.": {
+        "message": "ARKYD Upgrade Tech increases the vision and radar of the basic orbital radar by 50%."
+    },
+    "Abandon War": {
+        "message": "Abandon War"
+    },
+    "Additional Data Bank": {
+        "message": "Additional Data Bank"
+    },
+    "Adds a new slot for another technology.": {
+        "message": "Adds a new slot for another technology."
+    },
+    "Advanced Air Factory Upgrade Tech": {
+        "message": "Advanced Air Factory Upgrade Tech"
+    },
+    "Advanced Air Factory Upgrade Tech decreases advanced air unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "Advanced Air Factory Upgrade Tech decreases advanced air unit costs by 25% but also decreases the factory's health by 50%."
+    },
+    "Advanced Bot Factory Upgrade Tech": {
+        "message": "Advanced Bot Factory Upgrade Tech"
+    },
+    "Advanced Bot Factory Upgrade Tech decreases advanced bot unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "Advanced Bot Factory Upgrade Tech decreases advanced bot unit costs by 25% but also decreases the factory's health by 50%."
+    },
+    "Advanced Defense Technology": {
+        "message": "Advanced Defense Technology"
+    },
+    "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers.": {
+        "message": "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers."
+    },
+    "Advanced Energy Plant Upgrade Tech": {
+        "message": "Advanced Energy Plant Upgrade Tech"
+    },
+    "Advanced Energy Plant Upgrade Tech increases the energy production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "Advanced Energy Plant Upgrade Tech increases the energy production of this advanced economy structure by 25% but decreases its health by 50%."
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech": {
+        "message": "Advanced Fabrication Aircraft Upgrade Tech"
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech attaches the Angel AA interception beam to the advanced air fabricator.": {
+        "message": "Advanced Fabrication Aircraft Upgrade Tech attaches the Angel AA interception beam to the advanced air fabricator."
+    },
+    "Advanced Fabrication Bot Upgrade Tech": {
+        "message": "Advanced Fabrication Bot Upgrade Tech"
+    },
+    "Advanced Fabrication Bot Upgrade Tech increases the build range of the advanced bot fabricator by 150%.": {
+        "message": "Advanced Fabrication Bot Upgrade Tech increases the build range of the advanced bot fabricator by 150%."
+    },
+    "Advanced Fabrication Ship Upgrade Tech": {
+        "message": "Advanced Fabrication Ship Upgrade Tech"
+    },
+    "Advanced Fabrication Ship Upgrade Tech changes the advanced naval fabricator into a hover unit, allowing it to cross land and lava.": {
+        "message": "Advanced Fabrication Ship Upgrade Tech changes the advanced naval fabricator into a hover unit, allowing it to cross land and lava."
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech": {
+        "message": "Advanced Fabrication Vehicle Upgrade Tech"
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech increases the build range of the advanced vehicle fabricator by 150%.": {
+        "message": "Advanced Fabrication Vehicle Upgrade Tech increases the build range of the advanced vehicle fabricator by 150%."
+    },
+    "Advanced Laser Defense Tower Upgrade Tech": {
+        "message": "Advanced Laser Defense Tower Upgrade Tech"
+    },
+    "Advanced Laser Defense Tower Upgrade Tech increases the rate of fire of the advanced turret by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "Advanced Laser Defense Tower Upgrade Tech increases the rate of fire of the advanced turret by 300%, but it fires in bursts and requires energy to recharge."
+    },
+    "Advanced Metal Extractor Upgrade Tech": {
+        "message": "Advanced Metal Extractor Upgrade Tech"
+    },
+    "Advanced Metal Extractor Upgrade Tech increases the metal production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "Advanced Metal Extractor Upgrade Tech increases the metal production of this advanced economy structure by 25% but decreases its health by 50%."
+    },
+    "Advanced Naval Factory Upgrade Tech": {
+        "message": "Advanced Naval Factory Upgrade Tech"
+    },
+    "Advanced Naval Factory Upgrade Tech decreases advanced naval unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "Advanced Naval Factory Upgrade Tech decreases advanced naval unit costs by 25% but also decreases the factory's health by 50%."
+    },
+    "Advanced Radar Satellite Upgrade Tech": {
+        "message": "Advanced Radar Satellite Upgrade Tech"
+    },
+    "Advanced Radar Satellite Upgrade Tech increases the vision and radar of the advanced orbital radar by 50%.": {
+        "message": "Advanced Radar Satellite Upgrade Tech increases the vision and radar of the advanced orbital radar by 50%."
+    },
+    "Advanced Radar Upgrade Tech": {
+        "message": "Advanced Radar Upgrade Tech"
+    },
+    "Advanced Radar Upgrade Tech increases the vision and radar radius of advanced radar by 50%.": {
+        "message": "Advanced Radar Upgrade Tech increases the vision and radar radius of advanced radar by 50%."
+    },
+    "Advanced Torpedo Launcher Upgrade Tech": {
+        "message": "Advanced Torpedo Launcher Upgrade Tech"
+    },
+    "Advanced Torpedo Launcher Upgrade Tech enables the targeting of all surface units by the Advanced Torpedo Launcher.": {
+        "message": "Advanced Torpedo Launcher Upgrade Tech enables the targeting of all surface units by the Advanced Torpedo Launcher."
+    },
+    "Advanced Vehicle Factory Upgrade Tech": {
+        "message": "Advanced Vehicle Factory Upgrade Tech"
+    },
+    "Advanced Vehicle Factory Upgrade Tech decreases advanced vehicle unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "Advanced Vehicle Factory Upgrade Tech decreases advanced vehicle unit costs by 25% but also decreases the factory's health by 50%."
+    },
+    "Air Armor Tech": {
+        "message": "Air Armor Tech"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "Air Armor Tech increases the health of all air units by 50%"
+    },
+    "Air Engine Tech": {
+        "message": "Air Engine Tech"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "Air Engine Tech increases the speed of all air units by 25%"
+    },
+    "Air Fabrication Tech": {
+        "message": "Air Fabrication Tech"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%"
+    },
+    "Air Factory Upgrade Tech": {
+        "message": "Air Factory Upgrade Tech"
+    },
+    "Air Factory Upgrade Tech enables the building of advanced units by basic air manufacturing.": {
+        "message": "Air Factory Upgrade Tech enables the building of advanced units by basic air manufacturing."
+    },
+    "Allows advanced fabricators to build all Titan-class units.": {
+        "message": " Allows advanced fabricators to build all Titan-class units."
+    },
+    "Anchor Upgrade Tech": {
+        "message": "Anchor Upgrade Tech"
+    },
+    "Anchor Upgrade Tech increases the range of the defense satellite's weapons by 25%.": {
+        "message": "Anchor Upgrade Tech increases the range of the defense satellite's weapons by 25%."
+    },
+    "Angel Upgrade Tech": {
+        "message": "Angel Upgrade Tech"
+    },
+    "Angel Upgrade Tech enables the targeting of enemy units and structures by the support platform's interception beam.": {
+        "message": "Angel Upgrade Tech enables the targeting of enemy units and structures by the support platform's interception beam."
+    },
+    "Ant Upgrade Tech": {
+        "message": "Ant Upgrade Tech"
+    },
+    "Ant Upgrade Tech adds splash damage to the light tank's attack.": {
+        "message": "Ant Upgrade Tech adds splash damage to the light tank's attack."
+    },
+    "Anti-Nuke Launcher Upgrade Tech": {
+        "message": "Anti-Nuke Launcher Upgrade Tech"
+    },
+    "Anti-Nuke Launcher Upgrade Tech halves the cost of SR-24 Shield Missile Defense missiles.": {
+        "message": "Anti-Nuke Launcher Upgrade Tech halves the cost of SR-24 Shield Missile Defense missiles."
+    },
+    "Apocalyptic": {
+        "message": "Apocalyptic"
+    },
+    "Ares Upgrade Tech": {
+        "message": "Ares Upgrade Tech"
+    },
+    "Ares Upgrade Tech increases the range of the rolling fortress by 25%.": {
+        "message": "Ares Upgrade Tech increases the range of the rolling fortress by 25%."
+    },
+    "Armor": {
+        "message": "Armor"
+    },
+    "Artemis Upgrade Tech": {
+        "message": "Artemis Upgrade Tech"
+    },
+    "Artemis Upgrade Tech increases the range of the railgun platform by 50%.": {
+        "message": "Artemis Upgrade Tech increases the range of the railgun platform by 50%."
+    },
+    "Astraeus Upgrade Tech": {
+        "message": "Astraeus Upgrade Tech"
+    },
+    "Astraeus Upgrade Tech increases the orbital lander's interplanetary movement speed by 200%.": {
+        "message": "Astraeus Upgrade Tech increases the orbital lander's interplanetary movement speed by 200%."
+    },
+    "Atlas Upgrade Tech": {
+        "message": "Atlas Upgrade Tech"
+    },
+    "Atlas Upgrade Tech increases the health of the seismic titan by 50%.": {
+        "message": "Atlas Upgrade Tech increases the health of the seismic titan by 50%."
+    },
+    "Avenger Upgrade Tech": {
+        "message": "Avenger Upgrade Tech"
+    },
+    "Avenger Upgrade Tech replaces the orbital fighter's laser with an orbital battleship laser.": {
+        "message": "Avenger Upgrade Tech replaces the orbital fighter's laser with an orbital battleship laser."
+    },
+    "Backpacker Commander": {
+        "message": "Backpacker Commander"
+    },
+    "Barnacle Upgrade Tech": {
+        "message": "Barnacle Upgrade Tech"
+    },
+    "Barnacle Upgrade Tech allows the assisting of all builds by the support barge.": {
+        "message": "Barnacle Upgrade Tech allows the assisting of all builds by the support barge."
+    },
+    "Barracuda Upgrade Tech": {
+        "message": "Barracuda Upgrade Tech"
+    },
+    "Barracuda Upgrade Tech increases the rate of fire of the submarine by 200%, but it fires in bursts and requires energy to recharge.": {
+        "message": "Barracuda Upgrade Tech increases the rate of fire of the submarine by 200%, but it fires in bursts and requires energy to recharge."
+    },
+    "Baseline": {
+        "message": "Baseline"
+    },
+    "Basic Air Tech": {
+        "message": "Basic Air Tech"
+    },
+    "Basic Bot Tech": {
+        "message": "Basic Bot Tech"
+    },
+    "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator.": {
+        "message": "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator."
+    },
+    "Basic Vehicle Tech": {
+        "message": "Basic Vehicle Tech"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator."
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator."
+    },
+    "Bluehawk Upgrade Tech": {
+        "message": "Bluehawk Upgrade Tech"
+    },
+    "Bluehawk Upgrade Tech doubles the number of tactical missiles Bluehawks fire per volley.": {
+        "message": "Bluehawk Upgrade Tech doubles the number of tactical missiles Bluehawks fire per volley."
+    },
+    "Boom Upgrade Tech": {
+        "message": "Boom Upgrade Tech"
+    },
+    "Boom Upgrade Tech replaces Dox with Booms in the Lob.": {
+        "message": "Boom Upgrade Tech replaces Dox with Booms in the Lob."
+    },
+    "Bot Factory Upgrade Tech": {
+        "message": "Bot Factory Upgrade Tech"
+    },
+    "Bot Factory Upgrade Tech enables the building of advanced units by basic bot manufacturing.": {
+        "message": "Bot Factory Upgrade Tech enables the building of advanced units by basic bot manufacturing."
+    },
+    "Bounties": {
+        "message": "Bounties"
+    },
+    "Bronze": {
+        "message": "Bronze"
+    },
+    "Build faster": {
+        "message": "Build faster"
+    },
+    "Bumblebee Upgrade Tech": {
+        "message": "Bumblebee Upgrade Tech"
+    },
+    "Bumblebee Upgrade Tech causes the carpet bomber to drop a mine instead of bombs.": {
+        "message": "Bumblebee Upgrade Tech causes the carpet bomber to drop a mine instead of bombs."
+    },
+    "Casual": {
+        "message": "Casual"
+    },
+    "Catalyst Upgrade Tech": {
+        "message": "Catalyst Upgrade Tech"
+    },
+    "Catalyst Upgrade Tech increases the health of the Catalyst by 75%, enough to survive a nuclear blast.": {
+        "message": "Catalyst Upgrade Tech increases the health of the Catalyst by 75%, enough to survive a nuclear blast."
+    },
+    "Catapult Upgrade Tech": {
+        "message": "Catapult Upgrade Tech"
+    },
+    "Catapult Upgrade Tech adds flak from the Storm flak tank to the tactical missile launcher.": {
+        "message": "Catapult Upgrade Tech adds flak from the Storm flak tank to the tactical missile launcher."
+    },
+    "Chrono Cam": {
+        "message": "Chrono Cam"
+    },
+    "Colonel Upgrade Tech": {
+        "message": "Colonel Upgrade Tech"
+    },
+    "Colonel Upgrade Tech causes support commanders to explode on death.": {
+        "message": "Colonel Upgrade Tech causes support commanders to explode on death."
+    },
+    "Commander Upgrade Tech": {
+        "message": "Commander Upgrade Tech"
+    },
+    "Commander Upgrade Tech increases Uber Cannon damage to structures and commanders by 300%.": {
+        "message": "Commander Upgrade Tech increases Uber Cannon damage to structures and commanders by 300%."
+    },
+    "Commanders enhanced": {
+        "message": "Commanders enhanced"
+    },
+    "Complete Air Tech": {
+        "message": "Complete Air Tech"
+    },
+    "Complete Bot Tech": {
+        "message": "Complete Bot Tech"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators."
+    },
+    "Complete Naval Tech": {
+        "message": "Complete Naval Tech"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators."
+    },
+    "Complete Orbital Tech": {
+        "message": "Complete Orbital Tech"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator."
+    },
+    "Complete Vehicle Tech": {
+        "message": "Complete Vehicle Tech"
+    },
+    "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators.": {
+        "message": "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators."
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator."
+    },
+    "Contains 16 data banks. Alas, travelling light means you start with only the most basic of bots.": {
+        "message": "Contains 16 data banks. Alas, travelling light means you start with only the most basic of bots."
+    },
+    "Contains every factory on every tier of the tech tree, but this has left no space for anything else. You will need to seek out additional data banks.": {
+        "message": "Contains every factory on every tier of the tech tree, but this has left no space for anything else. You will need to seek out additional data banks."
+    },
+    "Continue Tutorial": {
+        "message": "Continue Tutorial"
+    },
+    "Continue War": {
+        "message": "Continue War"
+    },
+    "Costs decreased": {
+        "message": "Costs decreased"
+    },
+    "Custom": {
+        "message": "Custom"
+    },
+    "Damage increased": {
+        "message": "Damage increased"
+    },
+    "Defense Tech Commander": {
+        "message": "Defense Tech Commander"
+    },
+    "Defenses are 50% cheaper, fire 25% faster, have 50% more range, and turn 300% quicker. Barriers are 90% cheaper and have their health doubled. All defenses can be built by both the commander and basic fabricators.": {
+        "message": "Defenses are 50% cheaper, fire 25% faster, have 50% more range, and turn 300% quicker. Barriers are 90% cheaper and have their health doubled. All defenses can be built by both the commander and basic fabricators."
+    },
+    "Diamond": {
+        "message": "Diamond"
+    },
+    "Difficulty:": {
+        "message": "Difficulty:"
+    },
+    "Dismiss Tech": {
+        "message": "Dismiss Tech"
+    },
+    "Display the original pre-release Galactic War lore in the Planetary Intelligence panel.": {
+        "message": "Display the original pre-release Galactic War lore in the Planetary Intelligence panel."
+    },
+    "Dox Upgrade Tech": {
+        "message": "Dox Upgrade Tech"
+    },
+    "Dox Upgrade Tech replaces the basic infantry's bullet weapons with flamethrowers.": {
+        "message": "Dox Upgrade Tech replaces the basic infantry's bullet weapons with flamethrowers."
+    },
+    "Drifter Upgrade Tech": {
+        "message": "Drifter Upgrade Tech"
+    },
+    "Drifter Upgrade Tech increases the range of hover tank attacks by 25%.": {
+        "message": "Drifter Upgrade Tech increases the range of hover tank attacks by 25%."
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: vehicles<br>Foundation: air/navy<br>Synchronous: bots<br>Revenants: orbital<br>Cluster: land": {
+        "message": "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: vehicles<br>Foundation: air/navy<br>Synchronous: bots<br>Revenants: orbital<br>Cluster: land"
+    },
+    "Easier start": {
+        "message": "Easier start"
+    },
+    "Enables the building of the Planetary Radar which provides complete planetary radar coverage.": {
+        "message": "Enables the building of the Planetary Radar which provides complete planetary radar coverage."
+    },
+    "Energy Plant Upgrade Tech": {
+        "message": "Energy Plant Upgrade Tech"
+    },
+    "Energy Plant Upgrade Tech increases the energy production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "Energy Plant Upgrade Tech increases the energy production of this basic economy structure by 25% but decreases its health by 50%."
+    },
+    "Energy Storage Upgrade Tech": {
+        "message": "Energy Storage Upgrade Tech"
+    },
+    "Energy Storage Upgrade Tech increases the amount of energy storage by 300%.": {
+        "message": "Energy Storage Upgrade Tech increases the amount of energy storage by 300%."
+    },
+    "Epic": {
+        "message": "Epic"
+    },
+    "Fabrication Aircraft Upgrade Tech": {
+        "message": "Fabrication Aircraft Upgrade Tech"
+    },
+    "Fabrication Aircraft Upgrade Tech enables the building of advanced structures by the basic air fabricator.": {
+        "message": "Fabrication Aircraft Upgrade Tech enables the building of advanced structures by the basic air fabricator."
+    },
+    "Fabrication Bot Upgrade Tech": {
+        "message": "Fabrication Bot Upgrade Tech"
+    },
+    "Fabrication Bot Upgrade Tech enables the building of advanced structures by the basic bot fabricator.": {
+        "message": "Fabrication Bot Upgrade Tech enables the building of advanced structures by the basic bot fabricator."
+    },
+    "Fabrication Ship Upgrade Tech": {
+        "message": "Fabrication Ship Upgrade Tech"
+    },
+    "Fabrication Ship Upgrade Tech enables the building of advanced structures by the basic naval fabricator.": {
+        "message": "Fabrication Ship Upgrade Tech enables the building of advanced structures by the basic naval fabricator."
+    },
+    "Fabrication Vehicle Upgrade Tech": {
+        "message": "Fabrication Vehicle Upgrade Tech"
+    },
+    "Fabrication Vehicle Upgrade Tech enables the building of advanced structures by the basic vehicle fabricator.": {
+        "message": "Fabrication Vehicle Upgrade Tech enables the building of advanced structures by the basic vehicle fabricator."
+    },
+    "Faction scaling": {
+        "message": "Faction scaling"
+    },
+    "Factories build fabricators and fabricators build units.": {
+        "message": "Factories build fabricators and fabricators build units."
+    },
+    "Firefly Upgrade Tech": {
+        "message": "Firefly Upgrade Tech"
+    },
+    "Firefly Upgrade Tech adds a low powered laser to the air scout and increases its vision by 100%.": {
+        "message": "Firefly Upgrade Tech adds a low powered laser to the air scout and increases its vision by 100%."
+    },
+    "Flak Upgrade Tech": {
+        "message": "Flak Upgrade Tech"
+    },
+    "Flak Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "Flak Upgrade Tech enables the targeting of land and surface naval units by anti-air defense."
+    },
+    "Galactic War Overhaul": {
+        "message": "Galactic War Overhaul"
+    },
+    "Galata Upgrade Tech": {
+        "message": "Galata Upgrade Tech"
+    },
+    "Galata Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "Galata Upgrade Tech enables the targeting of land and surface naval units by anti-air defense."
+    },
+    "Game Modifiers": {
+        "message": "Game Modifiers"
+    },
+    "Game Settings": {
+        "message": "Game Settings"
+    },
+    "Game Stats": {
+        "message": "Game Stats"
+    },
+    "Gigantic": {
+        "message": "Gigantic"
+    },
+    "Gil-E Upgrade Tech": {
+        "message": "Gil-E Upgrade Tech"
+    },
+    "Gil-E Upgrade Tech allows the sniper's shots to pass through terrain and hit their target instantly.": {
+        "message": "Gil-E Upgrade Tech allows the sniper's shots to pass through terrain and hit their target instantly."
+    },
+    "Grenadier Upgrade Tech": {
+        "message": "Grenadier Upgrade Tech"
+    },
+    "Grenadier Upgrade Tech replaces this fire support's artillery with mine launchers, triples its cost and reduces its rate of fire by 75%.": {
+        "message": "Grenadier Upgrade Tech replaces this fire support's artillery with mine launchers, triples its cost and reduces its rate of fire by 75%."
+    },
+    "Halley Upgrade Tech": {
+        "message": "Halley Upgrade Tech"
+    },
+    "Halley Upgrade Tech increases the health of the delta V engine by 75%, enough to survive a nuclear blast.": {
+        "message": "Halley Upgrade Tech increases the health of the delta V engine by 75%, enough to survive a nuclear blast."
+    },
+    "Hardcore mode": {
+        "message": "Hardcore mode"
+    },
+    "Health increased": {
+        "message": "Health increased"
+    },
+    "Helios Upgrade Tech": {
+        "message": "Helios Upgrade Tech"
+    },
+    "Helios Upgrade Tech removes the delay between the invasion titan arriving at a planet and responding to orders.": {
+        "message": "Helios Upgrade Tech removes the delay between the invasion titan arriving at a planet and responding to orders."
+    },
+    "Hermes Upgrade Tech": {
+        "message": "Hermes Upgrade Tech"
+    },
+    "Hermes Upgrade Tech increases the vision of the space probe by 50%.": {
+        "message": "Hermes Upgrade Tech increases the vision of the space probe by 50%."
+    },
+    "Hoarder Commander": {
+        "message": "Hoarder Commander"
+    },
+    "Holkins Upgrade Tech": {
+        "message": "Holkins Upgrade Tech"
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the advanced artillery while also tripling their deviation from target.": {
+        "message": "Holkins Upgrade Tech triples the number of shots fired per volley by the advanced artillery while also tripling their deviation from target."
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "Holkins Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target."
+    },
+    "Hornet Upgrade Tech": {
+        "message": "Hornet Upgrade Tech"
+    },
+    "Hornet Upgrade Tech adds splash damage to the tactical bomber's attacks.": {
+        "message": "Hornet Upgrade Tech adds splash damage to the tactical bomber's attacks."
+    },
+    "Horsefly Upgrade Tech": {
+        "message": "Horsefly Upgrade Tech"
+    },
+    "Horsefly Upgrade Tech adds the Bumblebee carpet bomber's weapon to the strafer.": {
+        "message": "Horsefly Upgrade Tech adds the Bumblebee carpet bomber's weapon to the strafer."
+    },
+    "Human": {
+        "message": "Human"
+    },
+    "Hummingbird Upgrade Tech": {
+        "message": "Hummingbird Upgrade Tech"
+    },
+    "Hummingbird Upgrade Tech adds the ability for fighters to move between planets.": {
+        "message": "Hummingbird Upgrade Tech adds the ability for fighters to move between planets."
+    },
+    "Icarus Upgrade Tech": {
+        "message": "Icarus Upgrade Tech"
+    },
+    "Icarus Upgrade Tech adds production of 2 metal to the solar drone.": {
+        "message": "Icarus Upgrade Tech adds production of 2 metal to the solar drone."
+    },
+    "Inferno Upgrade Tech": {
+        "message": "Inferno Upgrade Tech"
+    },
+    "Inferno Upgrade Tech allows the flame tank to heal itself.": {
+        "message": "Inferno Upgrade Tech allows the flame tank to heal itself."
+    },
+    "Iron": {
+        "message": "Iron"
+    },
+    "Jig Upgrade Tech": {
+        "message": "Jig Upgrade Tech"
+    },
+    "Jig Upgrade Tech removes friendly damage from gas mining explosions.": {
+        "message": "Jig Upgrade Tech removes friendly damage from gas mining explosions."
+    },
+    "Kaiju Upgrade Tech": {
+        "message": "Kaiju Upgrade Tech"
+    },
+    "Kaiju Upgrade Tech enables the use of teleporters by hover destroyers.": {
+        "message": "Kaiju Upgrade Tech enables the use of teleporters by hover destroyers."
+    },
+    "Kestrel Upgrade Tech": {
+        "message": "Kestrel Upgrade Tech"
+    },
+    "Kestrel Upgrade Tech replaces the gunship's bullet weapons with flamethrowers.": {
+        "message": "Kestrel Upgrade Tech replaces the gunship's bullet weapons with flamethrowers."
+    },
+    "Kraken Upgrade Tech": {
+        "message": "Kraken Upgrade Tech"
+    },
+    "Kraken Upgrade Tech increases the range of the advanced submarine's missiles by 100%.": {
+        "message": "Kraken Upgrade Tech increases the range of the advanced submarine's missiles by 100%."
+    },
+    "Land Anywhere": {
+        "message": "Land Anywhere"
+    },
+    "Large": {
+        "message": "Large"
+    },
+    "Laser Defense Tower Upgrade Tech": {
+        "message": "Laser Defense Tower Upgrade Tech"
+    },
+    "Laser Defense Tower Upgrade Tech increases the range of the turret by 25%.": {
+        "message": "Laser Defense Tower Upgrade Tech increases the range of the turret by 25%."
+    },
+    "Leveler Upgrade Tech": {
+        "message": "Leveler Upgrade Tech"
+    },
+    "Leveler Upgrade Tech enables the building of assault tanks by the Unit Cannon.": {
+        "message": "Leveler Upgrade Tech enables the building of assault tanks by the Unit Cannon."
+    },
+    "Leviathan Upgrade Tech": {
+        "message": "Leviathan Upgrade Tech"
+    },
+    "Leviathan Upgrade Tech replaces the battleship's cannons with Holkins advanced artillery.": {
+        "message": "Leviathan Upgrade Tech replaces the battleship's cannons with Holkins advanced artillery."
+    },
+    "Lob Upgrade Tech": {
+        "message": "Lob Upgrade Tech"
+    },
+    "Lob Upgrade Tech increases the range of the Lob by 150%.": {
+        "message": "Lob Upgrade Tech increases the range of the Lob by 150%."
+    },
+    "Locusts Upgrade Tech": {
+        "message": "Locusts Upgrade Tech"
+    },
+    "Locusts Upgrade Tech doubles the vision radius of nanoswarms.": {
+        "message": "Locusts Upgrade Tech doubles the vision radius of nanoswarms."
+    },
+    "Manhattan Upgrade Tech": {
+        "message": "Manhattan Upgrade Tech"
+    },
+    "Manhattan Upgrade Tech doubles the radius of the mobile nuke's explosion.": {
+        "message": "Manhattan Upgrade Tech doubles the radius of the mobile nuke's explosion."
+    },
+    "Marathon": {
+        "message": "Marathon"
+    },
+    "Medium": {
+        "message": "Medium"
+    },
+    "Mend Upgrade Tech": {
+        "message": "Mend Upgrade Tech"
+    },
+    "Mend Upgrade Tech allows the assisting of all builds by the advanced combat fabricator.": {
+        "message": "Mend Upgrade Tech allows the assisting of all builds by the advanced combat fabricator."
+    },
+    "Metal Clusters:": {
+        "message": "Metal Clusters:"
+    },
+    "Metal Density:": {
+        "message": "Metal Density:"
+    },
+    "Metal Extractor Upgrade Tech": {
+        "message": "Metal Extractor Upgrade Tech"
+    },
+    "Metal Extractor Upgrade Tech increases the metal production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "Metal Extractor Upgrade Tech increases the metal production of this basic economy structure by 25% but decreases its health by 50%."
+    },
+    "Metal Spots:": {
+        "message": "Metal Spots:"
+    },
+    "Metal Storage Upgrade Tech": {
+        "message": "Metal Storage Upgrade Tech"
+    },
+    "Metal Storage Upgrade Tech increases the amount of metal storage by 300%.": {
+        "message": "Metal Storage Upgrade Tech increases the amount of metal storage by 300%."
+    },
+    "Mine Upgrade Tech": {
+        "message": "Mine Upgrade Tech"
+    },
+    "Mine Upgrade Tech allows mines to explode without self-destructing.": {
+        "message": "Mine Upgrade Tech allows mines to explode without self-destructing."
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. They are 75% cheaper but produce 30% less metal and energy and do 90% less damage on death. Orbital fabricators can build all basic structures. Contains all basic and advanced orbital units but can never build Omegas, any resource generating unit or structure, or Sub Commanders.": {
+        "message": "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. They are 75% cheaper but produce 30% less metal and energy and do 90% less damage on death. Orbital fabricators can build all basic structures. Contains all basic and advanced orbital units but can never build Omegas, any resource generating unit or structure, or Sub Commanders."
+    },
+    "Modifies Metal Extractors to enable building them anywhere at 150% the cost and 50% efficiency. Starts with basic vehicles.": {
+        "message": "Modifies Metal Extractors to enable building them anywhere at 150% the cost and 50% efficiency. Starts with basic vehicles."
+    },
+    "Narwhal Upgrade Tech": {
+        "message": "Narwhal Upgrade Tech"
+    },
+    "Narwhal Upgrade Tech adds a torpedo launcher to the frigate.": {
+        "message": "Narwhal Upgrade Tech adds a torpedo launcher to the frigate."
+    },
+    "Naval Factory Upgrade Tech": {
+        "message": "Naval Factory Upgrade Tech"
+    },
+    "Naval Factory Upgrade Tech enables the building of advanced units by basic naval manufacturing.": {
+        "message": "Naval Factory Upgrade Tech enables the building of advanced units by basic naval manufacturing."
+    },
+    "Nuclear Missile Launcher Upgrade Tech": {
+        "message": "Nuclear Missile Launcher Upgrade Tech"
+    },
+    "Nuclear Missile Launcher Upgrade Tech doubles the damage dealt to commanders by LR-96 Pacifier Nuclear Missiles.": {
+        "message": "Nuclear Missile Launcher Upgrade Tech doubles the damage dealt to commanders by LR-96 Pacifier Nuclear Missiles."
+    },
+    "Omega Upgrade Tech": {
+        "message": "Omega Upgrade Tech"
+    },
+    "Omega Upgrade Tech replaces the orbital battleship's anti-ground laser with an anti-ground drone launcher.": {
+        "message": "Omega Upgrade Tech replaces the orbital battleship's anti-ground laser with an anti-ground drone launcher."
+    },
+    "Options:": {
+        "message": "Options:"
+    },
+    "Orbital Fabrication Bot Upgrade Tech": {
+        "message": "Orbital Fabrication Bot Upgrade Tech"
+    },
+    "Orbital Fabrication Bot Upgrade Tech allows the orbital fabricator to build all basic structures.": {
+        "message": "Orbital Fabrication Bot Upgrade Tech allows the orbital fabricator to build all basic structures."
+    },
+    "Orbital Factory Upgrade Tech": {
+        "message": "Orbital Factory Upgrade Tech"
+    },
+    "Orbital Factory Upgrade Tech decreases advanced orbital unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "Orbital Factory Upgrade Tech decreases advanced orbital unit costs by 25% but also decreases the factory's health by 50%."
+    },
+    "Orbital Launcher Upgrade Tech": {
+        "message": "Orbital Launcher Upgrade Tech"
+    },
+    "Orbital Launcher Upgrade Tech enables the building of advanced units by basic orbital manufacturing.": {
+        "message": "Orbital Launcher Upgrade Tech enables the building of advanced units by basic orbital manufacturing."
+    },
+    "Orca Upgrade Tech": {
+        "message": "Orca Upgrade Tech"
+    },
+    "Orca Upgrade Tech changes the destroyer to a water hover unit, preventing torpedoes from targeting it and allowing the navigation of shallow waters. Surface weapon range is increased by 50%.": {
+        "message": "Orca Upgrade Tech changes the destroyer to a water hover unit, preventing torpedoes from targeting it and allowing the navigation of shallow waters. Surface weapon range is increased by 50%."
+    },
+    "POV Camera": {
+        "message": "POV Camera"
+    },
+    "Pause Game": {
+        "message": "Pause Game"
+    },
+    "Pelican Upgrade Tech": {
+        "message": "Pelican Upgrade Tech"
+    },
+    "Pelican Upgrade Tech allows air transports to carry commanders.": {
+        "message": "Pelican Upgrade Tech allows air transports to carry commanders."
+    },
+    "Percentage chance per star, per faction, of a FFA occurring.": {
+        "message": "Percentage chance per star, per faction, of a FFA occurring."
+    },
+    "Phoenix Upgrade Tech": {
+        "message": "Phoenix Upgrade Tech"
+    },
+    "Phoenix Upgrade Tech changes the advanced interplanetary fighter's weapon from anti-air to anti-ground.": {
+        "message": "Phoenix Upgrade Tech changes the advanced interplanetary fighter's weapon from anti-air to anti-ground."
+    },
+    "Piranha Upgrade Tech": {
+        "message": "Piranha Upgrade Tech"
+    },
+    "Piranha Upgrade Tech changes the gunboat into a hover unit, allowing it to cross land and lava.": {
+        "message": "Piranha Upgrade Tech changes the gunboat into a hover unit, allowing it to cross land and lava."
+    },
+    "Planetary Radar": {
+        "message": "Planetary Radar"
+    },
+    "Planetary Radar - Detects enemy land, sea, and air units across the planet.": {
+        "message": "Planetary Radar - Detects enemy land, sea, and air units across the planet."
+    },
+    "Planetary Radar Tech": {
+        "message": "Planetary Radar Tech"
+    },
+    "Planetary Radar Upgrade Tech": {
+        "message": "Planetary Radar Upgrade Tech"
+    },
+    "Planetary Upgrade Tech increases the vision of the planetary radar to match its radar.": {
+        "message": "Planetary Upgrade Tech increases the vision of the planetary radar to match its radar."
+    },
+    "Player Guide": {
+        "message": "Player Guide"
+    },
+    "Queller AI (beta)": {
+        "message": "Queller AI (beta)"
+    },
+    "Quit": {
+        "message": "Quit"
+    },
+    "Radar Upgrade Tech": {
+        "message": "Radar Upgrade Tech"
+    },
+    "Radar Upgrade Tech increases the vision and radar radius of basic radar by 50%.": {
+        "message": "Radar Upgrade Tech increases the vision and radar radius of basic radar by 50%."
+    },
+    "Radius:": {
+        "message": "Radius:"
+    },
+    "Ragnarok Upgrade Tech": {
+        "message": "Ragnarok Upgrade Tech"
+    },
+    "Ragnarok Upgrade Tech allows the titan structure to annihilate all life on a planet while leaving the planet itself intact. It may take up to 30 seconds before you can land safely after detonation.": {
+        "message": "Ragnarok Upgrade Tech allows the titan structure to annihilate all life on a planet while leaving the planet itself intact. It may take up to 30 seconds before you can land safely after detonation."
+    },
+    "Replaces the Titans AI with the Queller AI. Decreases faction and personality differentiation. Does not require that the mod be installed.": {
+        "message": "Replaces the Titans AI with the Queller AI. Decreases faction and personality differentiation. Does not require that the mod be installed."
+    },
+    "Reroll Tech": {
+        "message": "Reroll Tech"
+    },
+    "Reroll the data caches but get offered one less.": {
+        "message": "Reroll the data caches but get offered one less."
+    },
+    "Ridiculous": {
+        "message": "Ridiculous"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech": {
+        "message": "SXX-1304 Laser Platform Upgrade Tech"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech removes the delay between orbital laser platforms arriving at a planet and responding to orders.": {
+        "message": "SXX-1304 Laser Platform Upgrade Tech removes the delay between orbital laser platforms arriving at a planet and responding to orders."
+    },
+    "Sheller Upgrade Tech": {
+        "message": "Sheller Upgrade Tech"
+    },
+    "Sheller Upgrade Tech causes mines to be left by the mortar tank's attacks.": {
+        "message": "Sheller Upgrade Tech causes mines to be left by the mortar tank's attacks."
+    },
+    "Silver": {
+        "message": "Silver"
+    },
+    "Single Laser Defense Tower Upgrade Tech": {
+        "message": "Single Laser Defense Tower Upgrade Tech"
+    },
+    "Single Laser Defense Tower Upgrade Tech replaces the basic turret's laser with a fabrication arm which repairs units and reclaims wreckage within range.": {
+        "message": "Single Laser Defense Tower Upgrade Tech replaces the basic turret's laser with a fabrication arm which repairs units and reclaims wreckage within range."
+    },
+    "Size:": {
+        "message": "Size:"
+    },
+    "Skitter Upgrade Tech": {
+        "message": "Skitter Upgrade Tech"
+    },
+    "Skitter Upgrade Tech adds a low powered laser to the land scout and increases its vision by 100%.": {
+        "message": "Skitter Upgrade Tech adds a low powered laser to the land scout and increases its vision by 100%."
+    },
+    "Slammer Upgrade Tech": {
+        "message": "Slammer Upgrade Tech"
+    },
+    "Slammer Upgrade Tech changes the advanced assault bot's torpedo into a rocket that targets surface units.": {
+        "message": "Slammer Upgrade Tech changes the advanced assault bot's torpedo into a rocket that targets surface units."
+    },
+    "Small": {
+        "message": "Small"
+    },
+    "Solar Array Upgrade Tech": {
+        "message": "Solar Array Upgrade Tech"
+    },
+    "Solar Array Upgrade Tech enables interception of tactical missiles and drop pods by the Solar Array.": {
+        "message": "Solar Array Upgrade Tech enables interception of tactical missiles and drop pods by the Solar Array."
+    },
+    "Spark Upgrade Tech": {
+        "message": "Spark Upgrade Tech"
+    },
+    "Spark Upgrade Tech doubles the tesla bot's splash damage radius.": {
+        "message": "Spark Upgrade Tech doubles the tesla bot's splash damage radius."
+    },
+    "Speed increased": {
+        "message": "Speed increased"
+    },
+    "Spinner Upgrade Tech": {
+        "message": "Spinner Upgrade Tech"
+    },
+    "Spinner Upgrade Tech increases the mobile anti-air's rate of fire by 100%.": {
+        "message": "Spinner Upgrade Tech increases the mobile anti-air's rate of fire by 100%."
+    },
+    "Squall Upgrade Tech": {
+        "message": "Squall Upgrade Tech"
+    },
+    "Squall Upgrade Tech increases the lifespan of drones by 50%.": {
+        "message": "Squall Upgrade Tech increases the lifespan of drones by 50%."
+    },
+    "Stinger Upgrade Tech": {
+        "message": "Stinger Upgrade Tech"
+    },
+    "Stinger Upgrade Tech replaces the anti-air bot's missiles with flak from the Flak Cannon. It fires two projectiles per volley as opposed to the Flak Cannons' four.": {
+        "message": "Stinger Upgrade Tech replaces the anti-air bot's missiles with flak from the Flak Cannon. It fires two projectiles per volley as opposed to the Flak Cannons' four."
+    },
+    "Stingray Upgrade Tech": {
+        "message": "Stingray Upgrade Tech"
+    },
+    "Stingray Upgrade Tech enables interception of tactical missiles by the missile ship and increases vision and radar radius by 50%.": {
+        "message": "Stingray Upgrade Tech enables interception of tactical missiles by the missile ship and increases vision and radar radius by 50%."
+    },
+    "Stitch Upgrade Tech": {
+        "message": "Stitch Upgrade Tech"
+    },
+    "Stitch Upgrade Tech allows the assisting of all builds by the combat fabricator.": {
+        "message": "Stitch Upgrade Tech allows the assisting of all builds by the combat fabricator."
+    },
+    "Storm Upgrade Tech": {
+        "message": "Storm Upgrade Tech"
+    },
+    "Storm Upgrade Tech enables interception of tactical missiles by the flak tank.": {
+        "message": "Storm Upgrade Tech enables interception of tactical missiles by the flak tank."
+    },
+    "Stryker Upgrade Tech": {
+        "message": "Stryker Upgrade Tech"
+    },
+    "Stryker Upgrade Tech increases the rate of fire of the attack vehicle by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "Stryker Upgrade Tech increases the rate of fire of the attack vehicle by 300%, but it fires in bursts and requires energy to recharge."
+    },
+    "Sudden Death": {
+        "message": "Sudden Death"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "Super Weapon Fabrication Tech"
+    },
+    "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required.": {
+        "message": "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required."
+    },
+    "Surrender": {
+        "message": "Surrender"
+    },
+    "System Lore": {
+        "message": "System Lore"
+    },
+    "System Scaling": {
+        "message": "System Scaling"
+    },
+    "System scaling": {
+        "message": "System scaling"
+    },
+    "System size determined by distance into the galaxy.": {
+        "message": "System size determined by distance into the galaxy."
+    },
+    "Teleporter Upgrade Tech": {
+        "message": "Teleporter Upgrade Tech"
+    },
+    "Teleporter Upgrade Tech removes all energy consumption and efficiency requirements from the interplanetary teleporter and makes it invisible to radar.": {
+        "message": "Teleporter Upgrade Tech removes all energy consumption and efficiency requirements from the interplanetary teleporter and makes it invisible to radar."
+    },
+    "Temperature:": {
+        "message": "Temperature:"
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are twice as fast and 30% cheaper but have damage output decreased by 50%.": {
+        "message": "This Commander likes to raid and has modified its blueprints to that end. Units are twice as fast and 30% cheaper but have damage output decreased by 50%."
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. 30% more health, 30% more damage and splash, but 25% slower, and with 30% higher build costs.": {
+        "message": "This Commander prefers quality over quantity and has modified its units to that end. 30% more health, 30% more damage and splash, but 25% slower, and with 30% higher build costs."
+    },
+    "Titan": {
+        "message": "Titan"
+    },
+    "Titan Tech": {
+        "message": "Titan Tech"
+    },
+    "Torpedo Launcher Upgrade Tech": {
+        "message": "Torpedo Launcher Upgrade Tech"
+    },
+    "Torpedo Launcher Upgrade Tech enables the targeting of hover and coastal naval units by the Torpedo Launcher.": {
+        "message": "Torpedo Launcher Upgrade Tech enables the targeting of hover and coastal naval units by the Torpedo Launcher."
+    },
+    "Tougher commanders": {
+        "message": "Tougher commanders"
+    },
+    "Typhoon Upgrade Tech": {
+        "message": "Typhoon Upgrade Tech"
+    },
+    "Typhoon Upgrade Tech doubles the number of drones held by the Typhoon and any other unit with drones.": {
+        "message": "Typhoon Upgrade Tech doubles the number of drones held by the Typhoon and any other unit with drones."
+    },
+    "Umbrella Upgrade Tech": {
+        "message": "Umbrella Upgrade Tech"
+    },
+    "Umbrella Upgrade Tech enables the targeting of land and surface naval units by anti-orbital defenses.": {
+        "message": "Umbrella Upgrade Tech enables the targeting of land and surface naval units by anti-orbital defenses."
+    },
+    "Unit Cannon Upgrade Tech": {
+        "message": "Unit Cannon Upgrade Tech"
+    },
+    "Unit Cannon Upgrade Tech doubles the launch capacity of this interplanetary transport.": {
+        "message": "Unit Cannon Upgrade Tech doubles the launch capacity of this interplanetary transport."
+    },
+    "Unknown Faction": {
+        "message": "Unknown Faction"
+    },
+    "Vanguard Upgrade Tech": {
+        "message": "Vanguard Upgrade Tech"
+    },
+    "Vanguard Upgrade Tech makes the heavy tank amphibious.": {
+        "message": "Vanguard Upgrade Tech makes the heavy tank amphibious."
+    },
+    "Vast": {
+        "message": "Vast"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "Vehicle Ammunition Tech"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "Vehicle Ammunition Tech increases damage of all vehicles by 25%"
+    },
+    "Vehicle Armor Tech": {
+        "message": "Vehicle Armor Tech"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "Vehicle Armor Tech increases health of all vehicles by 50%"
+    },
+    "Vehicle Combat Tech": {
+        "message": "Vehicle Combat Tech"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%"
+    },
+    "Vehicle Engine Tech": {
+        "message": "Vehicle Engine Tech"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "Vehicle Engine Tech increases speed of all vehicles by 50%"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "Vehicle Fabrication Tech"
+    },
+    "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%": {
+        "message": "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%"
+    },
+    "Vehicle Factory Upgrade Tech": {
+        "message": "Vehicle Factory Upgrade Tech"
+    },
+    "Vehicle Factory Upgrade Tech enables the building of advanced units by basic vehicle manufacturing.": {
+        "message": "Vehicle Factory Upgrade Tech enables the building of advanced units by basic vehicle manufacturing."
+    },
+    "Version:": {
+        "message": "Version:"
+    },
+    "Wall Upgrade Tech": {
+        "message": "Wall Upgrade Tech"
+    },
+    "Wall Upgrade Tech increases the health of walls by 50%.": {
+        "message": "Wall Upgrade Tech increases the health of walls by 50%."
+    },
+    "Water Depth:": {
+        "message": "Water Depth:"
+    },
+    "Water Height:": {
+        "message": "Water Height:"
+    },
+    "Wyrm Upgrade Tech": {
+        "message": "Wyrm Upgrade Tech"
+    },
+    "Wyrm Upgrade Tech replaces the siege bomber's bombs with drones.": {
+        "message": "Wyrm Upgrade Tech replaces the siege bomber's bombs with drones."
+    },
+    "Your technology bonuses": {
+        "message": "Your technology bonuses"
+    },
+    "Zeus Upgrade Tech": {
+        "message": "Zeus Upgrade Tech"
+    },
+    "Zeus Upgrade Tech adds the ability for the lightning titan to move between planets.": {
+        "message": "Zeus Upgrade Tech adds the ability for the lightning titan to move between planets."
+    },
+    "Combat units enhanced": {
+        "message": "Combat units enhanced"
+    },
+    "Pelter Upgrade Tech": {
+        "message": "Pelter Upgrade Tech"
+    },
+    "Pelter Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "Pelter Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target."
+    },
+    "All-terrain": {
+        "message": "All-terrain"
+    },
+    "Artillery": {
+        "message": "Artillery"
+    },
+    "Assault": {
+        "message": "Assault"
+    },
+    "Boomer": {
+        "message": "Boomer"
+    },
+    "Fortress": {
+        "message": "Fortress"
+    },
+    "Heavy": {
+        "message": "Heavy"
+    },
+    "Infernodier": {
+        "message": "Infernodier"
+    },
+    "Nuker": {
+        "message": "Nuker"
+    },
+    "Omega Upgrade Tech allows all the orbital battleship's lasers to target the planet.": {
+        "message": "Omega Upgrade Tech allows all the orbital battleship's lasers to target the planet."
+    },
+    "PENCHANT": {
+        "message": "PENCHANT"
+    },
+    "QUELLER": {
+        "message": "QUELLER"
+    },
+    "Raider": {
+        "message": "Raider"
+    },
+    "Ranked": {
+        "message": "Ranked"
+    },
+    "Sniper": {
+        "message": "Sniper"
+    },
+    "TITANS": {
+        "message": "TITANS"
+    },
+    "Meta": {
+        "message": "Meta"
+    },
+    "TITANS: base game AI<br>QUELLER: greater challenge at the cost of personality and performance<BR>PENCHANT: increased personality": {
+        "message": "TITANS: base game AI<br>QUELLER: greater challenge at the cost of personality and performance<BR>PENCHANT: increased personality"
+    },
+    "Starts with a 25% boost to metal and energy production and is able to build metal and energy storage. Unable to build close-range armored tanks.": {
+        "message": "Starts with a 25% boost to metal and energy production and is able to build metal and energy storage. Unable to build close-range armored tanks."
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "Armory": {
+        "message": "Asevarasto"
+    },
+    "Galactic War": {
+        "message": "Galaktinen sota"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Väärä käyttäjänimi tai salasana. Tarkista syötteesi ja yritä uudestaan."
+    },
+    "Multiplayer": {
+        "message": "Moninpeli"
+    },
+    "New Build Available:": {
+        "message": "Uusi Versio Saatavilla:"
+    },
+    "Password": {
+        "message": "Salasana"
+    },
+    "Please choose a default region.": {
+        "message": "Ole hyvä ja valitse oletusalue."
+    },
+    "Quit": {
+        "message": "Lopeta"
+    },
+    "Settings": {
+        "message": "Asetukset"
+    },
+    "Sign in": {
+        "message": "Kirjaudu sisään"
+    },
+    "System Designer": {
+        "message": "Järjestelmän suunnittelija"
+    },
+    "Unable to Sign In": {
+        "message": "Sisäänkirjautuminen epäonnistui"
+    },
+    "Username": {
+        "message": "Käyttäjänimi"
+    },
+    "You are already assigned to a game.": {
+        "message": "Sinut on jo määritetty peliin."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Tarvitset uuden version pelistä. Steamin käyttäjien voi olla tarpeellista käynnistää Steam uudelleen saadakseen päivityksen peliin."
+    }
+}

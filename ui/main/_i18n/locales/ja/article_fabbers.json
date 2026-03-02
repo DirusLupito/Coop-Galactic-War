@@ -1,0 +1,32 @@
+{
+    "Advanced Fabbers come from Advanced Factories and can build both basic and advanced structures": {
+        "message": "上級ファッバーは上級工場から生産され、基本構造体と上級構造体の両方を建造可能"
+    },
+    "Basic Fabbers build basic structures and Advanced Factories": {
+        "message": "基本ファッバーは基本構造体と上級工場を建造できる"
+    },
+    "Fabbers are built by Vehicle, Air, Naval, Bot, and Orbital Factories": {
+        "message": "ファッバーは陸戦車両/飛行兵器/海戦兵器/ボット/衛星兵器工場で生産できる"
+    },
+    "Fabrication Units": {
+        "message": "ファブリケーター（製造）ユニット"
+    },
+    "Hold Shift + Left Click to queue up multiple build orders": {
+        "message": "Shift + 左クリックを長押しで複数の建造オーダーをキュー"
+    },
+    "Left Click units on Build Bar and select a space in the world to build": {
+        "message": "ビルドバー上のユニットを左クリックして、ワールド上の任意のスペースを選択で建造開始"
+    },
+    "PA Guide: Fabbers": {
+        "message": "PAガイド: ファッバー"
+    },
+    "Select a Fabber to get access to Build Bar": {
+        "message": "ファッバーを選択してビルドバーにアクセス"
+    },
+    "[style=text_callout]Control + left click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "ユニットを [style=text_callout]Control + 左クリック[/style] で、残りの建造キューの前に割り込みで、そのユニットを1体造らせることができる"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "ユニットを [style=text_callout]右クリック[/style] か [style=text_callout]Shift + 右クリック[/style] でキュー上にあるユニットの数を減らす"
+    }
+}

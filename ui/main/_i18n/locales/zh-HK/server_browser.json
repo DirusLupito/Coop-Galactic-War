@@ -1,0 +1,47 @@
+{
+    "Create Game": {
+        "message": "建立遊戲"
+    },
+    "Game": {
+        "message": "遊戲"
+    },
+    "In Lobby": {
+        "message": "在大廳中"
+    },
+    "In Progress": {
+        "message": "正在進行"
+    },
+    "Join Game": {
+        "message": "加入遊戲"
+    },
+    "Locked Game": {
+        "message": "上鎖的遊戲"
+    },
+    "Mode": {
+        "message": "模式"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "無法連線至PA伺服器。新遊戲會在本機主持。"
+    },
+    "Password": {
+        "message": "密碼"
+    },
+    "Planets": {
+        "message": "星球"
+    },
+    "Players": {
+        "message": "玩家"
+    },
+    "Region": {
+        "message": "地區"
+    },
+    "Slots": {
+        "message": "欄位"
+    },
+    "Spectate": {
+        "message": "觀戰"
+    },
+    "Spectators": {
+        "message": "觀戰者"
+    }
+}

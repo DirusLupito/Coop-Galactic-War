@@ -1,0 +1,35 @@
+{
+    "CONNECTION TO SERVER LOST": {
+        "message": "ANSLUTNING TILL SERVER FÖRLORAD"
+    },
+    "Cancel": {
+        "message": "Avbryt"
+    },
+    "Chrono Cam": {
+        "message": "CHRONO CAM"
+    },
+    "Exit Game?": {
+        "message": "Avsluta Spelet?"
+    },
+    "Game Settings": {
+        "message": "SPELINSTÄLLNINGAR"
+    },
+    "Pick a location inside one of the green zones to spawn your Commander.": {
+        "message": "Välj en position inom den gröna zonen för att landa din Befälhavare."
+    },
+    "Position targeted. Click to confirm.": {
+        "message": "Position vald. Klicka för att bekräfta."
+    },
+    "Quit": {
+        "message": "AVSLUTA"
+    },
+    "Returning to Main Menu": {
+        "message": "Återgår till Huvudmeny"
+    },
+    "START ANNIHILATION": {
+        "message": "BÖRJA FÖRINTELSEN"
+    },
+    "Yes": {
+        "message": "Ja"
+    }
+}

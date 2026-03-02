@@ -1,0 +1,332 @@
+{
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "ATTEMPTS REMAINING: __num_attempts_remaining__"
+    },
+    "Active": {
+        "message": "Active"
+    },
+    "Active Client": {
+        "message": "Active Client"
+    },
+    "Active Server": {
+        "message": "Active Server"
+    },
+    "Active mods will be automatically updated during startup and after each game.": {
+        "message": "Active mods will be automatically updated during startup and after each game."
+    },
+    "Active/Inactive": {
+        "message": "Active/Inactive"
+    },
+    "Available": {
+        "message": "Available"
+    },
+    "Available mod conflicts with file system mod installed at:": {
+        "message": "Available mod conflicts with file system mod installed at:"
+    },
+    "BIG GAME REPLAYS": {
+        "message": "BIG GAME REPLAYS"
+    },
+    "Build:": {
+        "message": "Build:"
+    },
+    "By": {
+        "message": "By"
+    },
+    "CHECKING FILE SYSTEM MODS": {
+        "message": "CHECKING FILE SYSTEM MODS"
+    },
+    "COMMUNITY MODS": {
+        "message": "COMMUNITY MODS"
+    },
+    "COMMUNITY SUPPORT": {
+        "message": "COMMUNITY SUPPORT"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "CONNECTION TO SERVER FAILED"
+    },
+    "Client Mods": {
+        "message": "Client Mods"
+    },
+    "Client mods are mounted (loaded) only on your client and do not affect other players.": {
+        "message": "Client mods are mounted (loaded) only on your client and do not affect other players."
+    },
+    "Client mods cannot change units or unit specs in AI skirmish or multiplayer games.": {
+        "message": "Client mods cannot change units or unit specs in AI skirmish or multiplayer games."
+    },
+    "Community Mods": {
+        "message": "Community Mods"
+    },
+    "Companion Client Mods": {
+        "message": "Companion Client Mods"
+    },
+    "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods.": {
+        "message": "Companion mods are special client mods that are temporarily mounted automatically when needed by server mods."
+    },
+    "Conflicting Unit Server Mods:": {
+        "message": "Conflicting Unit Server Mods:"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "DOWNLOADING SERVER MODS"
+    },
+    "Date:": {
+        "message": "Date:"
+    },
+    "Dependencies": {
+        "message": "Dependencies"
+    },
+    "Details": {
+        "message": "Details"
+    },
+    "Disable": {
+        "message": "Disable"
+    },
+    "Disable Nukes": {
+        "message": "Disable Nukes"
+    },
+    "Disable Ragnaroks": {
+        "message": "Disable Ragnaroks"
+    },
+    "Disable Titans": {
+        "message": "Disable Titans"
+    },
+    "Disabled": {
+        "message": "Disabled"
+    },
+    "Downloads": {
+        "message": "Downloads"
+    },
+    "Enable": {
+        "message": "Enable"
+    },
+    "Enable All": {
+        "message": "Enable All"
+    },
+    "Enabled Client": {
+        "message": "Enabled Client"
+    },
+    "Enabled Server": {
+        "message": "Enabled Server"
+    },
+    "Enabled client mods for only your client in any games you play or spectate": {
+        "message": "Enabled client mods for only your client in any games you play or spectate"
+    },
+    "Enabled/Disabled": {
+        "message": "Enabled/Disabled"
+    },
+    "Filter": {
+        "message": "Filter"
+    },
+    "Identifier:": {
+        "message": "Identifier:"
+    },
+    "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes.": {
+        "message": "If not active, companion mods are automatically downloaded / updated then mounted when you join or spectate an AI skirmish or multiplayer game then unmounted when the game finishes."
+    },
+    "Install": {
+        "message": "Install"
+    },
+    "Installed": {
+        "message": "Installed"
+    },
+    "Installed Path:": {
+        "message": "Installed Path:"
+    },
+    "Installed server & client mods in the download cache": {
+        "message": "Installed server & client mods in the download cache"
+    },
+    "Installing Mods": {
+        "message": "Installing Mods"
+    },
+    "Installing a mod will download a compressed zip of the mod to your local PA download cache.": {
+        "message": "Installing a mod will download a compressed zip of the mod to your local PA download cache."
+    },
+    "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times.": {
+        "message": "Large unit server mods like Legion Expansion uses companion mods to reduce the size of server mods and their upload / download times."
+    },
+    "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds.": {
+        "message": "Large unit server mods may take some time to upload / download if you have slow internet upload / download speeds."
+    },
+    "Local file system mod installed at:": {
+        "message": "Local file system mod installed at:"
+    },
+    "MODS DISABLED BY --NOMODS": {
+        "message": "MODS DISABLED BY --NOMODS"
+    },
+    "MOUNTING CLIENT MODS": {
+        "message": "MOUNTING CLIENT MODS"
+    },
+    "MOUNTING CLIENT MODS IN OFFLINE MODE": {
+        "message": "MOUNTING CLIENT MODS IN OFFLINE MODE"
+    },
+    "MOUNTING COMPANION MODS... PLEASE WAIT": {
+        "message": "MOUNTING COMPANION MODS... PLEASE WAIT"
+    },
+    "MOUNTING SERVER MODS": {
+        "message": "MOUNTING SERVER MODS"
+    },
+    "Merge (experimental)": {
+        "message": "Merge (experimental)"
+    },
+    "Mods available to install": {
+        "message": "Mods available to install"
+    },
+    "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection).": {
+        "message": "Most installed mods can be used in offline mode without an internet connection (some mods may require an internet connection)."
+    },
+    "Multiple conflicting unit server mods may cause issues like no build bar and server crashes.": {
+        "message": "Multiple conflicting unit server mods may cause issues like no build bar and server crashes."
+    },
+    "Name": {
+        "message": "Name"
+    },
+    "No": {
+        "message": "No "
+    },
+    "No __description__ mods match your criteria": {
+        "message": "No __description__ mods match your criteria"
+    },
+    "No units match your criteria": {
+        "message": "No units match your criteria"
+    },
+    "OFFICIAL DISCORD": {
+        "message": "OFFICIAL DISCORD"
+    },
+    "OFFICIAL GUIDES": {
+        "message": "OFFICIAL GUIDES"
+    },
+    "OFFICIAL SUPPORT": {
+        "message": "OFFICIAL SUPPORT"
+    },
+    "OK": {
+        "message": "OK"
+    },
+    "Offline Mode": {
+        "message": "Offline Mode"
+    },
+    "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating.": {
+        "message": "Only server mods can change the unit roster or unit specs in an AI skirmish or multiplayer game and are downloaded from the server by each client to prevent cheating."
+    },
+    "Priority": {
+        "message": "Priority"
+    },
+    "Priority:": {
+        "message": "Priority:"
+    },
+    "Privacy Policy": {
+        "message": "Privacy Policy"
+    },
+    "REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "REMOUNTING ACTIVE CLIENT MODS"
+    },
+    "RESETTING SERVER MODS": {
+        "message": "RESETTING SERVER MODS"
+    },
+    "Recommended": {
+        "message": "Recommended"
+    },
+    "Recommended mods": {
+        "message": "Recommended mods"
+    },
+    "Reload File System Mods": {
+        "message": "Reload File System Mods"
+    },
+    "Returning to Main Menu": {
+        "message": "Returning to Main Menu"
+    },
+    "Season ends __date__": {
+        "message": "Season ends __date__"
+    },
+    "Server Mods": {
+        "message": "Server Mods"
+    },
+    "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game.": {
+        "message": "Servers mods are uploaded to the server when you create an AI skirmish or multiplayer game then downloaded and mounted (loaded) on each client for all players and spectators when they join your game."
+    },
+    "Size:": {
+        "message": "Size:"
+    },
+    "Sort": {
+        "message": "Sort"
+    },
+    "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods": {
+        "message": "TO PLAY 1V1 RANKED USE COMMUNITY MODS AND AVOID ISSUES <br />Please follow the wiki instructions to remove PAMM and your filesystem mods"
+    },
+    "Type": {
+        "message": "Type"
+    },
+    "UI Scenes": {
+        "message": "UI Scenes"
+    },
+    "UNIT DATABASE": {
+        "message": "UNIT DATABASE"
+    },
+    "UPDATING ACTIVE MODS": {
+        "message": "UPDATING ACTIVE MODS"
+    },
+    "UPDATING AND REMOUNTING ACTIVE CLIENT MODS": {
+        "message": "UPDATING AND REMOUNTING ACTIVE CLIENT MODS"
+    },
+    "UPDATING AVAILABLE MODS": {
+        "message": "UPDATING AVAILABLE MODS"
+    },
+    "UPDATING COMMUNITY MODS FILES": {
+        "message": "UPDATING COMMUNITY MODS FILES"
+    },
+    "Uninstall": {
+        "message": "Uninstall"
+    },
+    "Unit Restrictions": {
+        "message": "Unit Restrictions"
+    },
+    "Unit restrictions do not apply to Galactic War.": {
+        "message": "Unit restrictions do not apply to Galactic War."
+    },
+    "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create": {
+        "message": "Unit restrictions to disable specific units for all players in AI skirmish & multiplayer games you create"
+    },
+    "Units": {
+        "message": "Units"
+    },
+    "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create.": {
+        "message": "Units can be disabled for all players including the AI in AI skirmish or multiplayer games you create."
+    },
+    "Units matching your criteria": {
+        "message": "Units matching your criteria"
+    },
+    "Units:": {
+        "message": "Units:"
+    },
+    "Updated": {
+        "message": "Updated"
+    },
+    "Used By": {
+        "message": "Used By"
+    },
+    "Version:": {
+        "message": "Version:"
+    },
+    "__description__ mods matching your criteria": {
+        "message": "__description__ mods matching your criteria"
+    },
+    "about-community-mods": {
+        "message": "Community Mods is a service provided by <a class=\"community-mods-link\" data-bind=\"click: openPaLobby\">palobby.com <span class=\"community-mods-link-icon\">&#xe164;</span></a> for <a class=\"community-mods-link\" data-bind=\"click: openWebsite\">Planetary Annihilation Inc <span class=\"community-mods-link-icon\">&#xe164;</span></a> that extends the base game with enhancements, fixes and hundreds of community created mods like <a class=\"community-mods-link\" data-bind=\"click: openLegionExpansion\">Legion Expansion <span class=\"community-mods-link-icon\">&#xe164;</span></a>."
+    },
+    "community-mods-intro": {
+        "message": "Community Mods and Community Chat are services provided by <a class=\\\"link\\\" data-bind=\\\"click: openPaLobby, click_sound: 'default', rollover_sound: 'default'\\\">palobby.com <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a> for <a class=\\\"link\\\" data-bind=\\\"click: openWebsite, click_sound: 'default', rollover_sound: 'default'\\\">Planetary Annihilation Inc <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a> that extend the base game with enhancements, fixes and hundreds of community created mods like <a class=\\\"link\\\" data-bind=\\\"click: openLegionExpansion, click_sound: 'default', rollover_sound: 'default'\\\">Legion Expansion <span style=\\\"padding-right: 5px; font-size: 12px; font-family:'Glyphicons Halflings'\\\">&#xe164;</span></a>"
+    },
+    "privacy policy": {
+        "message": "privacy policy"
+    },
+    "Companions": {
+        "message": "Companions"
+    },
+    "Enable Legion Community Expansion AI": {
+        "message": "Enable Legion Community Expansion AI"
+    },
+    "__rank_title__ Rank": {
+        "message": "__rank_title__ Rank"
+    },
+    "Systems": {
+        "message": "Systems"
+    }
+}

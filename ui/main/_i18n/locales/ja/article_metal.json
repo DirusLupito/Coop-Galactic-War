@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "基本＆上級金属抽出場を同じ金属スポットの上にひとつずつ建造できる"
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "金属スポット上への金属抽出場の建造"
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "金属貯蔵場を造って資源保有可能量を増やそう"
+    },
+    "Metal Resource": {
+        "message": "金属資源"
+    },
+    "Metal is required for building units and structures": {
+        "message": "金属は、ユニットや構造体の建造に必要となる"
+    },
+    "PA Guide: Metal": {
+        "message": "PAガイド: 金属類"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "ファッバーを選択してから [style=text_callout]金属抽出場建造[/style] アイコンを選択する"
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "ワールド上を [style=text_callout]左クリック + ドラッグ[/style] で、複数の金属スポット上に建造開始"
+    }
+}

@@ -1,0 +1,221 @@
+{
+    "- Host": {
+        "message": "- Host"
+    },
+    "AI Commander": {
+        "message": "AI Commandant"
+    },
+    "AI:": {
+        "message": "AI: "
+    },
+    "Add AI": {
+        "message": "AI toevoegen"
+    },
+    "Add AI Commander": {
+        "message": "Voeg AI Commandant toe"
+    },
+    "Add Slot": {
+        "message": "Voeg slot toe"
+    },
+    "Add Team": {
+        "message": "Team toevoegen"
+    },
+    "Alliance Victory": {
+        "message": "Overwinning alliantie"
+    },
+    "Allow for players to make and break in-game alliances and the option to share resources": {
+        "message": " Laat spelers allianties in het spel maken en breken met de mogelijkheid om grondstoffen te delen"
+    },
+    "Allows for players to cut and paste units for experimenting": {
+        "message": " Hiermee kunnen spelers eenheden knippen en plakken om te experimenteren"
+    },
+    "Bounty Mode": {
+        "message": "Premie-modus"
+    },
+    "Browse systems...": {
+        "message": "Stelsels zoeken..."
+    },
+    "Building planets": {
+        "message": "Planeten bouwen"
+    },
+    "Building planets...": {
+        "message": "Planeten bouwen..."
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "VERBINDING MET SERVER VERLOREN"
+    },
+    "Chat": {
+        "message": "Chatten"
+    },
+    "Default": {
+        "message": "Standaard"
+    },
+    "Dynamic Alliances": {
+        "message": "Dynamische Allianties"
+    },
+    "Econ Rate": {
+        "message": "Econ. bonus"
+    },
+    "Empty": {
+        "message": "Leeg"
+    },
+    "First team to kill a commander wins (protect your weakest player)": {
+        "message": " Het eerste team dat een commandant doodt, wint (bescherm je zwakste speler)"
+    },
+    "For every army a player kills, an economy multiplier is awarded to them that boosts their rate of production": {
+        "message": " Voor elk leger dat een speler doodt, wordt een economievermenigvuldiger toegekend die hun productiesnelheid verhoogt"
+    },
+    "Free For All": {
+        "message": "Iedereen Voor Zich"
+    },
+    "Friends": {
+        "message": "Vrienden"
+    },
+    "Game Lobby": {
+        "message": "Spel Lobby"
+    },
+    "Game Mode": {
+        "message": "Spel Modus"
+    },
+    "Global Spectator Chat": {
+        "message": "Gobale Toeschouwers Chat"
+    },
+    "Join": {
+        "message": "Doe mee"
+    },
+    "Kick": {
+        "message": "Verwijderen"
+    },
+    "Large Planets": {
+        "message": "Grote planeten"
+    },
+    "Leave": {
+        "message": "Verlaat"
+    },
+    "Multiplier Per Army Kill:": {
+        "message": "Vermenigvuldiger per gedood leger:"
+    },
+    "No green starting zones used. Players can start anywhere they pick.": {
+        "message": " Geen groene startzones. Spelers kunnen overal beginnen."
+    },
+    "Open to:": {
+        "message": "Open voor:"
+    },
+    "Password (optional)": {
+        "message": "Wachtwoord (optioneel)"
+    },
+    "Player Slot": {
+        "message": "Speler slot"
+    },
+    "Player chooses spot on starting planet": {
+        "message": "Speler kiest een beginpositie op een startplaneet"
+    },
+    "Players": {
+        "message": "Spelers"
+    },
+    "Private": {
+        "message": "Privé"
+    },
+    "Public": {
+        "message": "Publiek"
+    },
+    "Random": {
+        "message": "Willekeurig"
+    },
+    "Ready": {
+        "message": "Klaar"
+    },
+    "Remove": {
+        "message": "Verwijder"
+    },
+    "Returning to Main Menu": {
+        "message": "Aand het terugkeren naar het Hoofdmenu"
+    },
+    "SHARE ARMY": {
+        "message": "DEEL LEGER"
+    },
+    "SPECTATORS": {
+        "message": "TOESCHOUWERS"
+    },
+    "Sandbox": {
+        "message": "Vrij spel"
+    },
+    "Select System": {
+        "message": "Stelsel selecteren"
+    },
+    "Shuffle landing zones": {
+        "message": "Landingszones wisselen"
+    },
+    "Slot": {
+        "message": "Opening"
+    },
+    "Slot __slot_number__": {
+        "message": "Opening __slot_number__"
+    },
+    "Slots are empty": {
+        "message": "Openingen zijn leeg"
+    },
+    "Spectate": {
+        "message": "TOESCHOUWEN"
+    },
+    "Spectator messages are visible during in-game chat": {
+        "message": " Berichten van toeschouwers zijn zichtbaar in de chat in het spel"
+    },
+    "Spectators": {
+        "message": "Toeschouwers"
+    },
+    "Start Anywhere": {
+        "message": "Waar dan ook beginnen"
+    },
+    "Start Game": {
+        "message": "Start Spel"
+    },
+    "Start Nearby": {
+        "message": "In de buurt beginnen"
+    },
+    "Start Offworld": {
+        "message": "Extraplanetair begin"
+    },
+    "Sudden Death Mode": {
+        "message": "Uitschakelingsmodus"
+    },
+    "Symmetrical": {
+        "message": "Symmetrisch"
+    },
+    "System": {
+        "message": "Stelsel"
+    },
+    "Tag:": {
+        "message": "Label:"
+    },
+    "Team": {
+        "message": "Team"
+    },
+    "Team Armies": {
+        "message": "Team Legers"
+    },
+    "Team __team_number__": {
+        "message": "Team __team_number__"
+    },
+    "Title": {
+        "message": "Titel"
+    },
+    "You must have friends to play a friends-only game": {
+        "message": "Je moet vrienden hebben om een spel alleen voor vrienden te spelen"
+    },
+    "Asteroid": {
+        "message": "Asteroïde"
+    },
+    "Multiple starting planets": {
+        "message": "Meerdere startplaneten"
+    },
+    "Select a system": {
+        "message": "Selecteer een stelsel"
+    },
+    "Started": {
+        "message": "Begonnen"
+    },
+    "Waiting for system": {
+        "message": "Wachten op systeem"
+    }
+}

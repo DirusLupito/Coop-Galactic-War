@@ -1,0 +1,59 @@
+{
+    "Armory": {
+        "message": "Cephanelik "
+    },
+    "Connecting to PA": {
+        "message": "PA için bağlanma"
+    },
+    "Galactic War": {
+        "message": "Galaktik Savaş"
+    },
+    "Incorrect username or password. Please check your entry and try again.": {
+        "message": "Yanlış kullanıcı ismi veya şifresi. Lütfen bilgilerinizi kontrol edip tekrar deneyiniz."
+    },
+    "Multiplayer": {
+        "message": "Çok Oyunculu"
+    },
+    "New Build Available:": {
+        "message": "Yeni version mevcut:"
+    },
+    "Password": {
+        "message": "Şifre"
+    },
+    "Please choose a default region.": {
+        "message": "Lütfen varsayılan bölgeyi seçin."
+    },
+    "Quit": {
+        "message": "Çık"
+    },
+    "Replays": {
+        "message": "Tekrarlar"
+    },
+    "Settings": {
+        "message": "Ayarlar"
+    },
+    "Sign in": {
+        "message": "Giriş Yapın"
+    },
+    "System Designer": {
+        "message": "Sistem Tasarımcısı"
+    },
+    "There are no regions available for this build version.": {
+        "message": "Bu versiyon için bölgeler mevcut değildir."
+    },
+    "Unable to Sign In": {
+        "message": "Giriş yapılamıyor"
+    },
+    "Username": {
+        "message": "Kullanıcı adı"
+    },
+    "You are already assigned to a game.": {
+        "message": "Şu anda zaten bir oyuna atanmış durumdasınız."
+    },
+    "You can change the region later in the settings menu.": {
+        "message": "Bölgeyi daha sonra ana menüden değiştirebilirsiniz."
+    },
+    "You need a new client to play the game. Steam users may need to restart Steam to get the new client.": {
+        "message": "Oyunu oynamak için yeni bir istemciye ihtiyacınız var.Steam kullanıcılarının yeni istemciyi almaları icin Steam'i yeniden başlatmaları gerekebilir."
+    }
+}

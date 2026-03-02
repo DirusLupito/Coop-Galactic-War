@@ -1,0 +1,11 @@
+{
+    "No results match": {
+        "message": "无匹配结果"
+    },
+    "Nothing Selected": {
+        "message": "未选中任何一项"
+    },
+    "{0} of {1} selected": {
+        "message": "已选中{1}项中的{0}项"
+    }
+}

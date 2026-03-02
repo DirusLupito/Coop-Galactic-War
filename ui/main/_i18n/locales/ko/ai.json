@@ -1,0 +1,23 @@
+{
+    "Absurd": {
+        "message": "극악"
+    },
+    "Absurd Testing": {
+        "message": "극악 난이도 테스트"
+    },
+    "Easy": {
+        "message": "쉬움"
+    },
+    "Hard": {
+        "message": "어려움"
+    },
+    "Idle": {
+        "message": "비활성"
+    },
+    "Normal": {
+        "message": "일반"
+    },
+    "Relentless": {
+        "message": "무자비"
+    }
+}

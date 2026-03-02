@@ -1,0 +1,26 @@
+{
+    "Both Basic and Advanced Metal Extractors can be built on top of the same Metal Spot": {
+        "message": "Вы можете построить как обычные, так и продвинутые добытчики металла на одном и том же месторождении"
+    },
+    "Build Metal Extractors on Metal Spots": {
+        "message": "Стройте добытчики металла на залежах металла"
+    },
+    "Build Metal Storage to expand resource capacity": {
+        "message": "Постройте хранилище металла, чтобы хранить больше ресурсов"
+    },
+    "Metal Resource": {
+        "message": "Металл"
+    },
+    "Metal is required for building units and structures": {
+        "message": "Металл необходим для строительства юнитов и зданий"
+    },
+    "PA Guide: Metal": {
+        "message": "Руководство PA: Металл"
+    },
+    "Select Fabber, select [style=text_callout]Build Metal Extractor Icon[/style].": {
+        "message": "Выберите фабрикатор, а затем нажмите на [style=text_callout]значок Построить добытчик металла[/style]."
+    },
+    "[style=text_callout]Left Click + drag[/style] in the world to build over multiple Metal Spots.": {
+        "message": "[style=text_callout]Удерживайте ЛКМ и перетаскивайте мышь,[/style] чтобы построить здания сразу над несколькими залежами металла."
+    }
+}

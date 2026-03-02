@@ -1,0 +1,125 @@
+{
+    "Accept": {
+        "message": "Принять"
+    },
+    "Appear Offline": {
+        "message": "Отключён"
+    },
+    "Away": {
+        "message": "Далеко"
+    },
+    "Block": {
+        "message": "Блок"
+    },
+    "Buy Expansion": {
+        "message": "Купить Расширение"
+    },
+    "CANCEL": {
+        "message": "ОТМЕНА"
+    },
+    "CHANGE": {
+        "message": "Изменить"
+    },
+    "CHAT": {
+        "message": "ЧАТ"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Change Display Name": {
+        "message": "Изменить отображаемое имя"
+    },
+    "Change your display name?": {
+        "message": "Изменить отображаемое имя ?"
+    },
+    "Chat": {
+        "message": "Чат"
+    },
+    "Date": {
+        "message": "Дата"
+    },
+    "Do Not Disturb": {
+        "message": "Не беспокоить"
+    },
+    "Enter a status message": {
+        "message": "Введите сообщение о статусе"
+    },
+    "Friends": {
+        "message": "Друзья"
+    },
+    "Ignore": {
+        "message": "Игнорировать"
+    },
+    "Invite to Chat": {
+        "message": "Пригласить в чат"
+    },
+    "Invite to game": {
+        "message": "Пригласить в игру"
+    },
+    "Join Game": {
+        "message": "Присоединиться"
+    },
+    "New Display Name:": {
+        "message": "Новое Отображаемое Имя:"
+    },
+    "No pending notifications.": {
+        "message": "Нет уведомлений"
+    },
+    "Offline": {
+        "message": "Оффлайн"
+    },
+    "Online": {
+        "message": "Онлайн"
+    },
+    "Pending Invite": {
+        "message": "Статус  приглашения"
+    },
+    "REMOVE": {
+        "message": "УДАЛИТЬ"
+    },
+    "Recent": {
+        "message": "Недавние"
+    },
+    "Remove": {
+        "message": "Удалить"
+    },
+    "Replays": {
+        "message": "Повторы"
+    },
+    "Required Expansion Pack": {
+        "message": "Требуется Расширение"
+    },
+    "Search Players": {
+        "message": "Поиск игроков"
+    },
+    "Search Results": {
+        "message": "Результаты поиска"
+    },
+    "Send Friend Request": {
+        "message": "Добавить в друзья"
+    },
+    "Tags:": {
+        "message": "Теги:"
+    },
+    "The game you are trying to join requires the [style=content_description]__content_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "Чтобы присоединиться к этой игре, вам нужно установить расширение [style=content_description]__content_name__[/style] для Planetary Annihilation."
+    },
+    "Unblock": {
+        "message": "Разблокировать"
+    },
+    "Unfriend": {
+        "message": "Удалить из друзей"
+    },
+    "Users": {
+        "message": "Пользователи"
+    },
+    "__display_name__ invited you to a game.": {
+        "message": "__display_name__ пригласил(а) вас в игру."
+    },
+    "__display_name__ invited you to chat.": {
+        "message": "__display_name__ пригласил(а) вас в чат."
+    },
+    "__display_name__ wants to be your friend.": {
+        "message": "__display_name__ хочет добавить вас в друзья."
+    }
+}

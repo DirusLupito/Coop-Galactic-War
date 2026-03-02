@@ -1,0 +1,23 @@
+{
+    "Factories": {
+        "message": "Заводы"
+    },
+    "PA Guide: Factories": {
+        "message": "Руководство PA: Заводы"
+    },
+    "Select a Factory to get access to Build Bar": {
+        "message": "Выберите завод, чтобы открыть панель строительства"
+    },
+    "[style=text_callout]Control + Left Click[/style] a unit to make a factory produce a single one of that unit before continuing with the rest of the build queue.": {
+        "message": "[style=text_callout]Удерживайте Ctrl и щелкните ЛКМ[/style] по юниту, чтобы завод построил один юнит выбранного типа, а затем вернулся к очереди строительства."
+    },
+    "[style=text_callout]Left Click[/style] units on Build Bar to build": {
+        "message": "[style=text_callout]Щелкните ЛКМ[/style] по юнитам на панели строительства, чтобы построить их"
+    },
+    "[style=text_callout]Right Click[/style] or [style=text_callout]Shift + Right Click[/style] on units to reduce number of units in queue": {
+        "message": "[style=text_callout]Щелкните ПКМ[/style] или [style=text_callout]Shift + ПКМ[/style] по юнитам, чтобы уменьшить количество юнитов в очереди"
+    },
+    "[style=text_callout]Shift + Left Click[/style] units on Build Bar to build multiple": {
+        "message": "[style=text_callout]Удерживайте Shift и щелкните ЛКМ[/style] по юнитам на панели строительства, чтобы построить несколько юнитов"
+    }
+}

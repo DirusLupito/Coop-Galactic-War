@@ -1,0 +1,59 @@
+{
+    "Annihilated": {
+        "message": "Annihilé"
+    },
+    "Are you sure you want to abandon this Galactic War?": {
+        "message": "Êtes-vous sûr de vouloir abandonner cette Guerre galactique ?"
+    },
+    "Close": {
+        "message": "Fermer"
+    },
+    "Congratulations Commander": {
+        "message": "Félicitations Commandeur"
+    },
+    "Delete War": {
+        "message": "Effacer la guerre"
+    },
+    "Discards": {
+        "message": "Rejets"
+    },
+    "Final Tech": {
+        "message": "Technologie finale"
+    },
+    "GO TO MAIN MENU": {
+        "message": "ALLER AU MENU PRINCIPAL"
+    },
+    "Now go start a war. Annihilate everything.": {
+        "message": "Maintenant, commandez une guerre. Annihilez tout."
+    },
+    "Please try again. There's still much to destroy.": {
+        "message": "Veuillez réessayer. Il y a encore beaucoup à détruire."
+    },
+    "Redo Tutorial": {
+        "message": "Refaire le didacticiel"
+    },
+    "Returning to Main Menu": {
+        "message": "Retour au menu principal"
+    },
+    "Start A Galactic War": {
+        "message": "Commencer une Guerre galactique"
+    },
+    "Training Remains": {
+        "message": "Entraînement nécessaire"
+    },
+    "Turns:": {
+        "message": "Tours :"
+    },
+    "Tutorial Complete": {
+        "message": "Didacticiel terminé"
+    },
+    "Tutorial Incomplete": {
+        "message": "Didacticiel incomplet"
+    },
+    "Victory": {
+        "message": "Victoire"
+    },
+    "Wins:": {
+        "message": "Victoires :"
+    }
+}

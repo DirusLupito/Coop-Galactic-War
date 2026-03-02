@@ -1,0 +1,20 @@
+{
+    "Annihilated": {
+        "message": "전멸"
+    },
+    "Archived Wars": {
+        "message": "전쟁 기록"
+    },
+    "Details": {
+        "message": "세부 내용"
+    },
+    "Turns:": {
+        "message": "턴 수:"
+    },
+    "Victory": {
+        "message": "승리"
+    },
+    "Wins:": {
+        "message": "승리:"
+    }
+}

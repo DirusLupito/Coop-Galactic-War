@@ -1,0 +1,26 @@
+{
+    "Important Hotkeys": {
+        "message": "Важные горячие клавиши"
+    },
+    "PA Guide: Basic Hotkeys": {
+        "message": "Руководство PA: Основные горячие клавиши"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select Commander": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Выбрать коммандера"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select all of currently-selected unit(s) that are visible": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Выбрать все юниты этого типа, которые видны на экране"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Select idle fabbers on screen": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Выбрать свободные фабрикаторы на экране"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle energy orders": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Переключение распределения энергии"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Toggle production": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Переключить производство"
+    },
+    "[style=hotkey_title]__hotkey__[/style] - Zoom to selected unit": {
+        "message": "[style=hotkey_title]__hotkey__[/style] - Приблизить выбранный юнит"
+    }
+}

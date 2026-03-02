@@ -1,0 +1,230 @@
+{
+    "*Must meet Minimum System Requirements for offline play": {
+        "message": "*Se deben cumplir los requisitos mínimos del sistema para jugar sin conexión"
+    },
+    "Account Name:": {
+        "message": "Nombre de usuario:"
+    },
+    "Add To Cart": {
+        "message": "Añadir al carro"
+    },
+    "Advanced Command And Control": {
+        "message": "Comandos y controles avanzados"
+    },
+    "Armory": {
+        "message": "Armería"
+    },
+    "Automate your armies with intuitive controls and features, allowing you to create and manage massive armies and production lines with ease across multiple fronts on multiple planets at once!": {
+        "message": "¡Automatiza tus ejércitos con controles y funciones intuitivas que te permiten crear y gestionar ejércitos y cadenas de producción enormes con facilidad en varios frentes y varios planetas al mismo tiempo!"
+    },
+    "Badges": {
+        "message": "Medallas"
+    },
+    "CHECKOUT": {
+        "message": "COMPRAR"
+    },
+    "Cancel": {
+        "message": "Cancelar"
+    },
+    "Cart": {
+        "message": "Carro"
+    },
+    "Command armies with numbers in the thousands across multiple planets on land, sea, air, and even in orbit.": {
+        "message": "Dirige ejércitos con miles de personas en varios planetas por tierra, mar, aire e incluso órbita."
+    },
+    "Commander Name": {
+        "message": "Nombre del comandante"
+    },
+    "Commanders": {
+        "message": "Comandantes"
+    },
+    "Confirmation code:": {
+        "message": "Código de confirmación:"
+    },
+    "Confirmation of your purchase is provided below.": {
+        "message": "A continuación encontrarás la confirmación de la compra."
+    },
+    "Continue Shopping": {
+        "message": "Seguir comprando"
+    },
+    "Coupon code": {
+        "message": "Código del cupón"
+    },
+    "Credit applied:": {
+        "message": "Fondos añadidos: "
+    },
+    "Designed in collaboration with": {
+        "message": "Diseñado en colaboración con"
+    },
+    "Devastate your enemies with 5 massive Titan-class super units like the earth-shaking Atlas bot and lightning-wielding Zeus airship!": {
+        "message": "¡Destruye a tus enemigos con cinco superunidades gigantes de clase Titan, como el robot sísmico Atlas y la nave Zeus, tan rápida como el rayo!"
+    },
+    "DirectX: Version 9.0c": {
+        "message": "DirectX: versión 9.0c"
+    },
+    "Dismiss": {
+        "message": "Descartar"
+    },
+    "Elevate your game with new planets that feature multi-level terrain available in both single and multiplayer. Get up to speed faster with a new, streamlined tutorial experience, then take your game to the next level with the new Bounty Mode option for AI skirmish and multiplayer.": {
+        "message": "Mejora tus partidas con nuevos planetas con terrenos a varios niveles tanto en el modo de un jugador como en el multijugador. Ponte al día con el nuevo tutorial simplificado y lleva tus partidas al siguiente nivel con el nuevo modo Recompensa en las escaramuzas IA y multijugador."
+    },
+    "End games by destroying entire planets with giant lasers, asteroid collisions, and the new planet-splitting Ragnarok Titan!": {
+        "message": "¡Ponle fin a tus partidas destruyendo planetas con láseres gigantes, colisiones de asteroides y Ragnarok, el nuevo titán destructor de planetas!"
+    },
+    "Epic Multiplayer": {
+        "message": "Multijugador épico"
+    },
+    "Epic Scale": {
+        "message": "Dimensiones épicas"
+    },
+    "Epic Single-Player": {
+        "message": "Modo un jugador épico"
+    },
+    "Expand your strategic arsenal with 16 new units such as versatile Hover Tanks, indomitable Orbital Battleships, and voracious Nanobot Swarms!": {
+        "message": "¡Amplía tu arsenal estratégico con 16 unidades nuevas, como los versátiles tanques planeadores, las indomables naves orbitales y el insaciable enjambre de nanobots!"
+    },
+    "Galactic War is a twist on traditional real-time strategy campaigns that has players battling across a dynamic galaxy filled with procedurally-generated content. Every playthrough is different.": {
+        "message": "La guerra galáctica es una variante de las campañas tradicionales de estrategia real que permite que los jugadores se enfrenten en una galaxia dinámica, repleta de contenido generado de manera procedimental. Cada partida es diferente."
+    },
+    "Go to Main Menu": {
+        "message": "Ir al menú principal"
+    },
+    "Graphics: 1 GB GPU RAM / OpenGL 3.2+": {
+        "message": "Gráficos: GPU con 1 GB de RAM/OpenGL 3.2+"
+    },
+    "Hard Drive: 5 GB available space": {
+        "message": "Disco duro: 5 GB de espacio disponible"
+    },
+    "Here's your receipt.": {
+        "message": "Aquí tienes tu recibo."
+    },
+    "Including everything you loved about Planetary Annihilation:": {
+        "message": "Incluye todo lo que te encanta de Planetary Annihilation:"
+    },
+    "Instant Replays": {
+        "message": "Repeticiones instantáneas"
+    },
+    "It appears that you have turned off the Steam Overlay, and we are unable to initiate your purchase without it.": {
+        "message": "Parece que has desactivado la interfaz de Steam y no podemos iniciar la compra sin esta opción."
+    },
+    "Item": {
+        "message": "Artículo"
+    },
+    "Item is already in cart.": {
+        "message": "Este artículo ya está en el carro."
+    },
+    "Kickstarter Backer": {
+        "message": "Patrocinador en Kickstarter"
+    },
+    "Linux": {
+        "message": "Linux"
+    },
+    "Mac": {
+        "message": "Mac"
+    },
+    "Mac Mini \"Core i5\" (Late 2014)": {
+        "message": "Mac Mini \"Core i5\" (finales de 2014)"
+    },
+    "Mac Pro \"Quad Core\" with 8GB Memory (2010)": {
+        "message": "Mac Pro \"Quad Core\" con 8 GB de memoria (2010)"
+    },
+    "MacBook Air \"Core i5\" (Early 2015)": {
+        "message": "MacBook Air \"Core i5\" (principios de 2015)"
+    },
+    "MacBook Pro \"Core i7\" with 8GB Memory (Mid 2012)": {
+        "message": "MacBook Pro \"Core i7\" con 8 GB de memoria (mediados de 2012)"
+    },
+    "Memory: 8 GB RAM": {
+        "message": "Memoria: 8 GB de RAM"
+    },
+    "Minimum System Requirements": {
+        "message": "Requisitos mínimos del sistema"
+    },
+    "OS: Any Linux distribution supported by Steam": {
+        "message": "SO: cualquier distribución de Linux compatible con Steam"
+    },
+    "OS: Windows 7": {
+        "message": "SO: Windows 7"
+    },
+    "Play with up to ten friends (or enemies) in massive free-for-all and team-based matches. Or, compete in the 1v1 ranked play ladder.": {
+        "message": "Juega con un máximo de diez amigos (o enemigos) en un grandes partidas todos contra todos o por equipos. También puedes competir en partidas con rango de 1 contra 1."
+    },
+    "Please enjoy all the new units, new worlds, and new ways to annihilate everything!": {
+        "message": "¡Disfruta de todas las unidades nuevas, los mundos nuevos y las formas nuevas de aniquilarlo todo!"
+    },
+    "Please exit the game, find it in your Steam library, right click it, select Properties, and make sure that \"Enable the Steam Overlay while in-game\" is checked. After doing so, start the game and try again.": {
+        "message": "Cierra el juego, búscalo en tu biblioteca de Steam, haz clic sobre el juego con el botón derecho, selecciona Propiedades y asegúrate que la opción \"Habilitar la interfaz de Steam\" está activada. Después de esto, abre el juego y vuelve a intentarlo."
+    },
+    "Price": {
+        "message": "Precio"
+    },
+    "Processor: 64-bit Quad Core": {
+        "message": "Procesador: Quad Core de 64 bits"
+    },
+    "Processor: Quad Core": {
+        "message": "Procesador: Quad Core"
+    },
+    "QUIT & INSTALL TITANS": {
+        "message": "SALIR E INSTALAR TITANS"
+    },
+    "REMOVE": {
+        "message": "ELIMINAR"
+    },
+    "RTS JUST GOT BIGGER": {
+        "message": "ESTRATEGIA EN TIEMPO REAL A LO GRANDE"
+    },
+    "Redeem": {
+        "message": "Canjear"
+    },
+    "Reset Default Commander": {
+        "message": "Restablecer comandante por defecto"
+    },
+    "Return to Armory": {
+        "message": "Volver a la armería"
+    },
+    "Set As Default Commander": {
+        "message": "Seleccionar como comandante por defecto"
+    },
+    "Smash Planets": {
+        "message": "Destruye planetas"
+    },
+    "Steam Overlay Disabled": {
+        "message": "Interfaz de Steam desactivada"
+    },
+    "THE TITANS HAVE ARRIVED": {
+        "message": "HAN LLEGADO LOS TITANS"
+    },
+    "TITANS is the huge stand-alone expansion to the already massive-scale RTS Planetary Annihilation, which includes the base game and adds tons of new features:": {
+        "message": "TITANS es la enorme expansión independiente del juego de estrategia en tiempo real Planetary Annihiliation, que incluye el juego básico y añade un montón de funciones nuevas:"
+    },
+    "Thank you for purchasing TITANS! You'll find it in your Steam library right next to Planetary Annihilation!": {
+        "message": "¡Gracias por comprar TITANS! ¡Lo encontrarás en tu biblioteca de Steam junto a Planetary Annihilation!"
+    },
+    "Thank you for your purchase.": {
+        "message": "Gracias por tu compra."
+    },
+    "Total:": {
+        "message": "Total: "
+    },
+    "Updating...": {
+        "message": "Actualizando..."
+    },
+    "Upgrade for:": {
+        "message": "Actualiza por solo:"
+    },
+    "View in-match recordings in real-time while matches are in progress. See when a battle turned by rewinding the game to any point, and use Play From Here to turn it back in your favor.": {
+        "message": "Ve las grabaciones de la partida en tiempo real mientras la partida está en curso. Ver cuándo la batalla ha dado un giro al rebobinar la partida a cualquier punto y usar la función Jugar desde aquí para darle un giro a tu favor."
+    },
+    "Windows": {
+        "message": "Windows"
+    },
+    "Your cart is empty.": {
+        "message": "El carro está vacío."
+    },
+    "Your purchased items are now registered to your account and are accessible in the game.": {
+        "message": "Se han registrado los artículos adquiridos en tu cuenta. Ya puedes acceder a ellos desde el juego."
+    },
+    "iMac \"Core i5\" (Late 2012)": {
+        "message": "iMac \"Core i5\" (finales de 2012)"
+    }
+}

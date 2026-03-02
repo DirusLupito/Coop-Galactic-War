@@ -1,0 +1,113 @@
+{
+    "Advanced Air Factory": {
+        "message": "Pokročilá letecká továrna"
+    },
+    "Advanced Bot Factory": {
+        "message": "Pokročile bojový výrobní bot"
+    },
+    "Advanced Energy Plant": {
+        "message": "Pokročilá elektrárna"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Pokročile bojový výrobní bot"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Pokročilá výrobní loď"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Pokročilé výrobní vozidlo"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Pokročilá laserová obranná věž"
+    },
+    "Advanced Metal Extractor": {
+        "message": "Pokročilý extraktor kovu"
+    },
+    "Advanced Naval Factory": {
+        "message": "Pokročilá námořní továrna"
+    },
+    "Advanced Radar": {
+        "message": "Pokročilý radar"
+    },
+    "Advanced Radar Satellite": {
+        "message": "Pokročilý radarový satelit"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Pokročilá továrna pro vozidla"
+    },
+    "Air Factory": {
+        "message": "Letecká továrna"
+    },
+    "Anti-nuke - Intercepts incoming nuclear missiles.": {
+        "message": "Anti-nuke - Zachycuje příchozí jaderné hlavice"
+    },
+    "Bot Factory": {
+        "message": "Továrna pro Boty"
+    },
+    "Energy Plant": {
+        "message": "Elektrárna"
+    },
+    "Energy Storage": {
+        "message": "Sklad Energie"
+    },
+    "Fabrication Aircraft": {
+        "message": "Výrobní letadlo"
+    },
+    "Fabrication Bot": {
+        "message": "Výrobní bot"
+    },
+    "Fabrication Ship": {
+        "message": "Výrobní loď"
+    },
+    "Fabrication Vehicle": {
+        "message": "Výrobní vozidlo"
+    },
+    "LR-96 -Pacifier- Missile": {
+        "message": "LR-96 -Pacifier- Střela"
+    },
+    "Land Mine": {
+        "message": "Pozemní mina"
+    },
+    "Laser Defense Tower": {
+        "message": "Laserová obranná věž"
+    },
+    "Metal Extractor": {
+        "message": "Extraktor kovu"
+    },
+    "Metal Storage": {
+        "message": "Skladiště kovu"
+    },
+    "Naval Factory": {
+        "message": "Námořní Továrna"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "Orbitální výrobní bot"
+    },
+    "Orbital Factory": {
+        "message": "Orbitální továrna"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "SXX-1304 Laserová Platforma"
+    },
+    "Single Laser Defense Tower": {
+        "message": "Laserová obranná věž"
+    },
+    "Solar Array": {
+        "message": "Solární panel"
+    },
+    "Vehicle Factory": {
+        "message": "Továrna pro vozidla"
+    },
+    "Wall": {
+        "message": "Zeď"
+    },
+    "Heavy Tank - Advanced short range, heavily armored vehicle with mobile radar.": {
+        "message": "Těžký tank - pokročilé těžce obrněné vozidlo s krátkým dojezdem a mobilním radarem."
+    },
+    "Radar Jammer - Hides allied units from enemy radar in a radius around itself. Consumes power.": {
+        "message": "Radar Jammer - Skrývá spojenecké jednotky před nepřátelskými radary v okruhu kolem sebe. Spotřebovává energii."
+    },
+    "Support Barge - Repairs damaged ships and auto reclaims wreckage. Builds and detects mines. Cannot help build units. Water hover.": {
+        "message": "Podpůrný člun - Opravuje poškozené lodě a automaticky vyzvedává vraky. Staví a detekuje miny. Nemůže pomáhat stavět jednotky. Vodní vznášedlo."
+    }
+}

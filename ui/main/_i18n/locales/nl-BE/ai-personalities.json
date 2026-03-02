@@ -1,0 +1,104 @@
+{
+    "AIP Aggressive": {
+        "message": "AIP Agressief"
+    },
+    "AIP Air": {
+        "message": "AIP Lucht"
+    },
+    "AIP Bot": {
+        "message": "AIP Bot"
+    },
+    "AIP Cautious": {
+        "message": "AIP Voorzichtig"
+    },
+    "AIP Defender": {
+        "message": "AIP Verdediger"
+    },
+    "AIP Economist": {
+        "message": "AIP Econoom"
+    },
+    "AIP Fabber": {
+        "message": "AIP Fabber"
+    },
+    "AIP Fast Tech": {
+        "message": "AIP Snelle tech"
+    },
+    "AIP Foundation": {
+        "message": "AIP Foundation"
+    },
+    "AIP Land": {
+        "message": "AIP Land"
+    },
+    "AIP Legonis Machina": {
+        "message": "AIP Legonis Machina"
+    },
+    "AIP Low Tech": {
+        "message": "AIP Simpele tech"
+    },
+    "AIP Naval": {
+        "message": "AIP Marine"
+    },
+    "AIP Orbital": {
+        "message": "AIP Orbitaal"
+    },
+    "AIP Random": {
+        "message": "AIP Willekeurig"
+    },
+    "AIP Revenants": {
+        "message": "AIP Revenants"
+    },
+    "AIP Rush": {
+        "message": "AIP Stormaanval"
+    },
+    "AIP Swarm": {
+        "message": "AIP Zwerm"
+    },
+    "AIP Synchronous": {
+        "message": "AIP Synchronous"
+    },
+    "AIP Tank": {
+        "message": "AIP Tanks"
+    },
+    "AIP Turtle": {
+        "message": "AIP Schildpad"
+    },
+    "AIP Amphibious": {
+        "message": "AIP Amfibisch"
+    },
+    "AIP All-terrain": {
+        "message": "AIP All-terrain"
+    },
+    "AIP Artillery": {
+        "message": "AIP-artillerie"
+    },
+    "AIP Assault": {
+        "message": "AIP-aanval"
+    },
+    "AIP Boomer": {
+        "message": "AIP-Boomer"
+    },
+    "AIP Fortress": {
+        "message": "AIP-fort"
+    },
+    "AIP Heavy": {
+        "message": "AIP-Heavy"
+    },
+    "AIP Infernodier": {
+        "message": "AIP-Infernodier"
+    },
+    "AIP Micro": {
+        "message": "AIP-Micro"
+    },
+    "AIP Nuker": {
+        "message": "AIP-Nuker"
+    },
+    "AIP Raider": {
+        "message": "AIP-Raider"
+    },
+    "AIP Ranked": {
+        "message": "AIP-Ranglijst"
+    },
+    "AIP Sniper": {
+        "message": "AIP-Scherpschutter"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Delete Tech": {
+        "message": "Excluir tecnologia"
+    },
+    "Explore": {
+        "message": "Explorar"
+    },
+    "Fight": {
+        "message": "Lutar"
+    },
+    "Jump": {
+        "message": "Saltar"
+    },
+    "Preparing for battle": {
+        "message": "Preparando para a batalha"
+    },
+    "Scanning System": {
+        "message": "Escaneando o sistema"
+    },
+    "Settings": {
+        "message": "CONFIGURAÇÕES"
+    },
+    "TECHS": {
+        "message": "TECNOLOGIAS"
+    },
+    "Unlock Commander": {
+        "message": "Desbloquear comandante"
+    }
+}

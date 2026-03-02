@@ -1,0 +1,41 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "MEGSEMMISÍTÉS BEFEJEZVE"
+    },
+    "APM": {
+        "message": "Művelet/ perc"
+    },
+    "Average": {
+        "message": "Átlag"
+    },
+    "Built": {
+        "message": "Épített"
+    },
+    "Destroyed": {
+        "message": "Elpusztítva"
+    },
+    "Draw": {
+        "message": "DÖNTETLEN"
+    },
+    "Efficiency": {
+        "message": "Hatékonyság"
+    },
+    "The game has ended.": {
+        "message": "A játék véget ért."
+    },
+    "Used": {
+        "message": "Felhasználva"
+    },
+    "VICTORY IS YOURS": {
+        "message": "TIÉD A GYŐZELEM"
+    },
+    "Winner:": {
+        "message": "Győztes:"
+    },
+    "Winners:": {
+        "message": "Győztesek:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "MEGSEMMISÜLTÉL"
+    }
+}

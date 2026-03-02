@@ -1,0 +1,77 @@
+{
+    "ACCESS TO WORLD SIMULATION DENIED": {
+        "message": "ワールドシミュレーションへのアクセスが拒否されました"
+    },
+    "ACCESSING WORLD SIMULATION": {
+        "message": "ワールドシミュレーションにアクセス中…"
+    },
+    "ATTEMPTS REMAINING: __num_attempts_remaining__": {
+        "message": "残り試み回数: __num_attempts_remaining__"
+    },
+    "CONNECTING TO SERVER": {
+        "message": "サーバーに接続中…"
+    },
+    "CONNECTION TO SERVER CANCELED": {
+        "message": "サーバーへの接続がキャンセルされました"
+    },
+    "CONNECTION TO SERVER FAILED": {
+        "message": "サーバーへの接続が失敗しました"
+    },
+    "CONNECTION TO SERVER LOST": {
+        "message": "サーバーとの接続が失われました"
+    },
+    "CREATING WORLD SIMULATION": {
+        "message": "ワールドシミュレーションを生成中…"
+    },
+    "Cancel": {
+        "message": "キャンセル"
+    },
+    "DOWNLOADING SERVER MODS": {
+        "message": "サーバーModをダウンロード中…"
+    },
+    "FAILED TO GET PERMISSION": {
+        "message": "許可の取得に失敗しました"
+    },
+    "FAILED TO JOIN GAME": {
+        "message": "ゲームに参加できませんでした"
+    },
+    "FAILED TO LOAD GAME": {
+        "message": "ゲームをロードできませんでした"
+    },
+    "FAILED TO START GAME": {
+        "message": "ゲームを開始できませんでした"
+    },
+    "FAILED TO START REPLAY": {
+        "message": "リプレイを再生できませんでした"
+    },
+    "LOGIN ACCEPTED": {
+        "message": "ログインに成功しました"
+    },
+    "LOGIN TO SERVER REJECTED": {
+        "message": "サーバーへのログインが拒否されました"
+    },
+    "REMOUNTING SERVER MODS": {
+        "message": "サーバーModを再設定中…"
+    },
+    "REQUESTING PERMISSION": {
+        "message": "許可をリクエスト中…"
+    },
+    "Returning to Main Menu": {
+        "message": "メインメニューに戻ります…"
+    },
+    "STARTING GAME": {
+        "message": "ゲームを開始…"
+    },
+    "UNABLE TO ACCESS WORLD SIMULATION": {
+        "message": "ワールドシミュレーションにアクセスできません"
+    },
+    "UPLOADING SERVER MODS... PLEASE WAIT": {
+        "message": "サーバーModをアップロード中…お待ちください"
+    },
+    "WORLD SIMULATION WENT AWAY": {
+        "message": "ワールドシミュレーションを開始できません"
+    },
+    "You are starting an offline game, but your system does not meet the recommended specifications for offline play. Your gameplay experience may be negatively affected.": {
+        "message": "オフラインゲームを開始しようとしましたが、お使いのシステムがオフラインプレイするために必要な仕様を満たしていないようです。ゲームプレイに支障が生じる可能性があります"
+    }
+}

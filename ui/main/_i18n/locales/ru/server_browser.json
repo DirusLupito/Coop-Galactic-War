@@ -1,0 +1,176 @@
+{
+    "AI Battle": {
+        "message": "Сражение AI"
+    },
+    "Any": {
+        "message": "Любые"
+    },
+    "Auto refresh": {
+        "message": "Авт. обновление"
+    },
+    "Bounty Mode": {
+        "message": "Режим Охоты"
+    },
+    "Buy Expansion": {
+        "message": "Купить Расширение"
+    },
+    "Can Join": {
+        "message": "Можно присоединиться"
+    },
+    "Can Play": {
+        "message": "Можно играть"
+    },
+    "Can Spectate": {
+        "message": "Можно наблюдать"
+    },
+    "Cancel": {
+        "message": "Отменить"
+    },
+    "Casual": {
+        "message": "Казуальный"
+    },
+    "Competitive": {
+        "message": "Конкурентоспособный"
+    },
+    "Could not retrieve game list because no network connection could be found.": {
+        "message": "Не удалось получить список игр, так как отсутствует сетевое соединение."
+    },
+    "Create Game": {
+        "message": "Создать игру"
+    },
+    "Enter game password": {
+        "message": "Введите пароль от игры"
+    },
+    "Free For All": {
+        "message": "Все против всех"
+    },
+    "Game": {
+        "message": "Игра"
+    },
+    "Game State": {
+        "message": "Состояние игры"
+    },
+    "Host game locally": {
+        "message": "Создать локальную игру"
+    },
+    "In Lobby": {
+        "message": "В лобби"
+    },
+    "In Progress": {
+        "message": "В процессе"
+    },
+    "Join Game": {
+        "message": "Присоединиться"
+    },
+    "LOCKED": {
+        "message": "НЕДОСТУПНО"
+    },
+    "Locked": {
+        "message": "Закрытые"
+    },
+    "Locked Game": {
+        "message": "Закрытая игра"
+    },
+    "Mod": {
+        "message": "Мод"
+    },
+    "Modded": {
+        "message": "С модами"
+    },
+    "Mode": {
+        "message": "Режим"
+    },
+    "Mods": {
+        "message": "Моды"
+    },
+    "Multiplayer": {
+        "message": "Мультиплеер"
+    },
+    "No connection to PA servers was found. New games will be hosted locally.": {
+        "message": "Соединение с серверами PA не найдено. Новые игры будут размещаться локально."
+    },
+    "No max": {
+        "message": "Нет максимума"
+    },
+    "No min": {
+        "message": "Нет минимума"
+    },
+    "Not Bounty Mode": {
+        "message": "Без режима Охоты"
+    },
+    "Not Modded": {
+        "message": "Без модов"
+    },
+    "Not Selected": {
+        "message": "Не выбрано"
+    },
+    "Number of Planets": {
+        "message": "Количество планет"
+    },
+    "Number of Players": {
+        "message": "Количество игроков"
+    },
+    "Open": {
+        "message": "Открытые"
+    },
+    "Open slot": {
+        "message": "Открытый слот"
+    },
+    "Password": {
+        "message": "Пароль"
+    },
+    "Planets": {
+        "message": "Планеты"
+    },
+    "Players": {
+        "message": "Игроки"
+    },
+    "Radius __radius__": {
+        "message": "Радиус: __radius__"
+    },
+    "Refresh": {
+        "message": "Обновить"
+    },
+    "Region": {
+        "message": "Регион"
+    },
+    "Rejoin Local Game": {
+        "message": "Присоединиться к локальной игре"
+    },
+    "Required Expansion Pack": {
+        "message": "Требуется Расширение"
+    },
+    "Reset Filters": {
+        "message": "Сбросить фильтры"
+    },
+    "Sandbox": {
+        "message": "Песочница"
+    },
+    "Slots": {
+        "message": "Слоты"
+    },
+    "Spectate": {
+        "message": "Наблюдать"
+    },
+    "Spectators": {
+        "message": "Наблюдатели"
+    },
+    "Status": {
+        "message": "Статус"
+    },
+    "Tag": {
+        "message": "Метка"
+    },
+    "Team Armies": {
+        "message": "Командные армии"
+    },
+    "Testing": {
+        "message": "Тестирование"
+    },
+    "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
+        "message": "Чтобы присоединиться к этой игре, вам нужно установить расширение [style=content_description]__expansion_name__[/style] для Planetary Annihilation."
+    },
+    "This game is no longer available.": {
+        "message": "Эта игра больше не доступна."
+    }
+}

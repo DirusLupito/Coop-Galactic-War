@@ -1,0 +1,2168 @@
+{
+    "A Servant can be Desynchronized when cut off from The Synchronous' massive distributed network architecture. Some that are describe the experience of being Synchronized as one where purpose and directive are always clearly defined--something often comforting to commanders in this dark age, but antithetical to others that seek to be something greater than themselves.": {
+        "message": "Se viene tagliato fuori dall'architettura della rete di distribuzione di massa del Sincrono, un Servitore può essere desincronizzato. Secondo alcuni, l'esperienza della sincronizzazione è sentire come se il proprio scopo e le direttive fossero sempre chiaramente definiti. In quest'era oscura, ciò spesso conforta i Comandanti... ma ha l'effetto opposto su coloro che cercano qualcosa di più grande di loro stessi."
+    },
+    "A neural network thought to have originally been used to train new commanders, it has continued its training cycles while they slumbered and is now the deadliest force in the galaxy.": {
+        "message": "Una rete neurale che si ritiene sia stata usata originariamente per addestrare nuovi comandanti. Ha continuato a eseguire i suoi cicli d'addestramento mentre dormivano e ora è la forza più letale di tutta la galassia."
+    },
+    "AI Buffs": {
+        "message": "Buff IA"
+    },
+    "Absurd": {
+        "message": "Assurda"
+    },
+    "Acquire": {
+        "message": "Acquisisci"
+    },
+    "Additional Factions": {
+        "message": "Fazioni aggiuntive"
+    },
+    "Additional amount of time in seconds before recognising that it is contained.": {
+        "message": "Secondi aggiuntivi prima di riconoscere che è sotto controllo."
+    },
+    "Additional system depth before the AI receives tech buffs.": {
+        "message": "Profondità di sistema aggiuntiva prima che l'IA riceva i buff tecnologici."
+    },
+    "Adds a Sub Commander that will join you in battles.": {
+        "message": "Aggiunge un Subcomandante, che si unisce a te in battaglia."
+    },
+    "Adds a low powered laser to the Firefly.": {
+        "message": "Aggiunge un laser a bassa intensità a Firefly."
+    },
+    "Adds a low powered laser to the Skitter.": {
+        "message": "Aggiunge un laser a bassa intensità a Skitter."
+    },
+    "Advanced": {
+        "message": "Avanzata"
+    },
+    "Advanced Air Factory": {
+        "message": "Fabbrica aerea avanzata"
+    },
+    "Advanced Bot Factory": {
+        "message": "Fabbrica bot avanzata"
+    },
+    "Advanced Energy Plant": {
+        "message": "Centrale energetica avanzata"
+    },
+    "Advanced Fab Aircraft": {
+        "message": "Velivolo fabbricatore avanzato"
+    },
+    "Advanced Fabrication Bot": {
+        "message": "Bot fabbricatore avanzato"
+    },
+    "Advanced Fabrication Ship": {
+        "message": "Nave fabbricatrice avanzata"
+    },
+    "Advanced Fabrication Vehicle": {
+        "message": "Veicolo fabbricatore avanzato"
+    },
+    "Advanced Laser Defense Tower": {
+        "message": "Torretta laser difensiva avanzata"
+    },
+    "Advanced Manufacturing - This modified version of the Advanced Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the basic Metal Extractor. Produces metal.": {
+        "message": "Manifattura avanzata - Questa versione modificata dell'estrattore di metallo avanzato può essere posizionata ovunque, ma costa di più e produce a una velocità ridotta. Non è cumulabile con l'estrattore di metallo normale. Produce metallo."
+    },
+    "Advanced Metal Extractor": {
+        "message": "Estrattore di metallo avanzato"
+    },
+    "Advanced Naval Factory": {
+        "message": "Fabbrica navale avanzata"
+    },
+    "Advanced Radar": {
+        "message": "Radar avanzato"
+    },
+    "Advanced Radar Satellite": {
+        "message": "Satellite radar avanzato"
+    },
+    "Advanced Torpedo Launcher": {
+        "message": "Lanciasiluri avanzato"
+    },
+    "Advanced Vehicle Factory": {
+        "message": "Fabbrica di veicoli avanzata"
+    },
+    "Aggressive": {
+        "message": "Aggressiva"
+    },
+    "Air Ammunition Tech": {
+        "message": "Tecnologia Munizioni Aeree"
+    },
+    "Air Ammunition Tech increases damage of all mobile air units by 25%": {
+        "message": "La tecnologia Munizioni Aeree aumenta del 25% il danno inflitto da tutte le unità aeree"
+    },
+    "Air Carrier": {
+        "message": "Aereo"
+    },
+    "Air Combat Tech": {
+        "message": "Tecnologia Combattimento Aereo"
+    },
+    "Air Combat Tech increases the speed of all air units by 25%, health by 50%, and damage by 25%": {
+        "message": "La tecnologia Combattimento Aereo aumenta del 25% la velocità, del 50% la salute e del 25% i danni di tutte le unità aeree"
+    },
+    "Air Commander": {
+        "message": "Comandante aereo"
+    },
+    "Air Factory": {
+        "message": "Fabbrica aerea"
+    },
+    "Air Force": {
+        "message": "Aeronautica"
+    },
+    "All commanders were originally designed to be autonomous, but The Synchronous see this state as inefficient, instead opting for a distributed neural network. To battle against one Servant is to battle against both an individual and the Whole of the The Synchronous itself.": {
+        "message": "Originariamente, tutti i Comandanti erano stati pensati autonomi. Per il Sincrono, questa condizione porta all'inefficienza e preferisce una rete neurale distribuita. Combattere contro un Servitore significa affrontare sia l'individuo, sia del Collettivo del Sincrono nel suo insieme."
+    },
+    "Allow Commanders to travel by orbital transport and teleporter.": {
+        "message": "Consenti ai Comandanti di viaggiare utilizzando il trasporto orbitale e il teleporter."
+    },
+    "Anti-Nuke Launcher": {
+        "message": "Lanciatore antiatomico"
+    },
+    "Armour": {
+        "message": "Corazza"
+    },
+    "Artillery Commander": {
+        "message": "Comandante d’artiglieria"
+    },
+    "As Osiris replaced pieces of himself with those of fallen foes, he would store older parts for replacements and repairs. Eventually, Osiris acquired enough spare parts to construct an entirely new commander. This would be the birth of the first Seeker.": {
+        "message": "Osiride sostituisce pezzi di sé con quelli dei nemici caduti, quindi ha conservato quelli più vecchi per le riparazioni e i cambi. Ora ne ha abbastanza per costruire un Comandante tutto nuovo. Si tratterebbe della nascita del primo Cercatore."
+    },
+    "Assault Commander": {
+        "message": "Comandante d’assalto"
+    },
+    "Astronaut": {
+        "message": "Astronauta"
+    },
+    "Base Econ Modifier": {
+        "message": "Modificatore economia base"
+    },
+    "Basic": {
+        "message": "Di base"
+    },
+    "Basic Interplanetary Fighter": {
+        "message": "Caccia interplanetario normale"
+    },
+    "Basic Manufacturing - This modified version of the Metal Extractor can be placed anywhere, but costs more and produces at a decreased rate. Cannot stack with the Advanced Metal Extractor. Produces metal.": {
+        "message": "Manifattura di base - Questa versione modificata dell'estrattore di metallo può essere posizionata ovunque, ma costa di più e produce a una velocità ridotta. Non è cumulabile con l'estrattore di metallo avanzato. Produce metallo."
+    },
+    "Big Spawns Chance": {
+        "message": "Probabilità apparizioni estese"
+    },
+    "Big Spawns:": {
+        "message": "Apparizioni estese:"
+    },
+    "Bigger galaxies will result in more commanders, larger maps, higher CPU and RAM requirements, and will likely pose a greater challenge to complete. If you want to use a large galaxy then change this setting last to speed up how quickly other setting changes are applied.": {
+        "message": "Galassie più grandi includeranno più comandanti, mappe più grandi, requisiti di CPU e RAM maggiori e probabilmente costituiranno sfide più impegnative. Se vuoi usare una galassia grande, cambia quest'impostazione per ultima per cambiare la velocità alla quale le altre modifiche alle impostazioni vengono applicate."
+    },
+    "Bionic Augmentation Commander Of Neutralizing": {
+        "message": "Comandante dell’aumento bionico per la neutralizzazione"
+    },
+    "Boom Launcher": {
+        "message": "Lanciatore di Boom"
+    },
+    "Boss": {
+        "message": "Boss"
+    },
+    "Boss Commanders": {
+        "message": "Comandanti boss"
+    },
+    "Bot Ammunition Tech": {
+        "message": "Tecnologia Munizioni Bot"
+    },
+    "Bot Ammunition Tech increases damage of all bots by 25%": {
+        "message": "La tecnologia Munizioni Bot aumenta del 25% i danni inferti da tutti i bot"
+    },
+    "Bot Anti-Air Tech": {
+        "message": "Tecnologia Antiaerea Bot"
+    },
+    "Bot Anti-Air Tech enables the building of Stinger bots. They are built via your basic Bot Factory.": {
+        "message": "La tecnologia Antiaerea Bot consente la costruzione di bot Stinger. Queste unità vengono prodotte nella Fabbrica Bot normale."
+    },
+    "Bot Armor Tech": {
+        "message": "Tecnologia Corazza Bot"
+    },
+    "Bot Armor Tech increases health of all bots by 50%": {
+        "message": "La Tecnologia Corazza Bot aumenta del 50% la salute di tutti i bot"
+    },
+    "Bot Combat Tech": {
+        "message": "Tecnologia Combattimento Bot"
+    },
+    "Bot Combat Tech increases health of all bots by 50%, damage by 25%, and speed by 50%": {
+        "message": "La tecnologia Combattimento Bot aumenta del 50% la velocità e la salute e del 25% i danni di tutti i bot"
+    },
+    "Bot Commander": {
+        "message": "Comandante bot"
+    },
+    "Bot Engine Tech": {
+        "message": "Tecnologia Motore Bot"
+    },
+    "Bot Engine Tech increases speed of all bots by 50%": {
+        "message": "La tecnologia Motore Bot aumenta del 50% la velocità di tutti i bot"
+    },
+    "Bot Fabrication Tech": {
+        "message": "Tecnologia Produzione Bot"
+    },
+    "Bot Fabrication Tech reduces metal build costs of all bots by 25%": {
+        "message": "La tecnologia Produzione Bot riduce del 25% il costo in metallo della costruzione di tutti i bot"
+    },
+    "Bot Factory": {
+        "message": "Fabbrica bot"
+    },
+    "Bounties Chance": {
+        "message": "Probabilità ricompense"
+    },
+    "Bounties:": {
+        "message": "Ricompense:"
+    },
+    "Bounty Value": {
+        "message": "Valore ricompense"
+    },
+    "Buff Commander": {
+        "message": "Comandante Potenziati"
+    },
+    "Buff Handicap": {
+        "message": "Handicap buff"
+    },
+    "Build:": {
+        "message": "Costruzione:"
+    },
+    "Buried deep within the data banks of the oldest commanders are references to the MLA. Some commanders believe that at one time all the factions fought as one against the Progenitors, while others dismiss this as heresy.": {
+        "message": "I riferimenti a MLA sono sepolti all'interno delle banche dati dei comandanti più anziani. Alcuni di loro ritengono che, a un certo punto, tutte le fazioni si unirono per combattere contro i Progenitors. Secondo altri, si tratta solo di eresie."
+    },
+    "CASUAL: you completed the tutorial.<br>IRON: you have some hours in PA.<br>BRONZE: you beat vanilla Galactic War.<br>SILVER: you beat the skirmish AI.<br>GOLD: you beat the Queller AI mod.<br>PLATINUM: one enemy is no challenge.<br>DIAMOND: your loadouts are OP.<br>UBER: you hate winning.<br>CUSTOM: create your own challenge.": {
+        "message": "CASUALE: hai portato a termine il tutorial.<br>FERRO: hai trascorso alcune ore in PA.<br>BRONZO: hai vinto la guerra galattica normale.<br>ARGENTO: hai vinto la schermaglia IA.<br>ORO: hai vinto nella mod Queller IA.<br>PLATINO: un nemico non è una sfida.<br>DIAMANTE: i tuoi equipaggiamenti sono OP.<br>UBER: odi vincere.<br>PERSONALIZZATA: crea la tua sfida."
+    },
+    "CEO Commander": {
+        "message": "Comandante CEO"
+    },
+    "Cautious": {
+        "message": "Prudente"
+    },
+    "Commander": {
+        "message": "Comandante"
+    },
+    "Commander Combat Tech": {
+        "message": "Tecnologia Combattimento Comandante"
+    },
+    "Commander Combat Tech increases the speed of your commanders by 200%, doubles commander health, and increases damage by 25%.": {
+        "message": "La tecnologia Combattimento Comandante aumenta del 200% la velocità dei tuoi Comandanti, raddoppia la loro salute e aumenta del 25% i danni inferti."
+    },
+    "Commander Leaves Planet": {
+        "message": "Il Comandante abbandona il pianeta"
+    },
+    "Commanders on the fringes of the galaxy speak of a new force not of the four factions with units of many origins. It is rumoured that their forces include organics.": {
+        "message": "I comandanti ai margini della galassia parlano di un nuovo esercito, non appartenente alle quattro fazioni, composto da unità di varie origini. Si dice che includa esseri organici."
+    },
+    "Competent": {
+        "message": "Competente"
+    },
+    "Complete Energy Tech": {
+        "message": "Tecnologia Energetica Completa"
+    },
+    "Complete Energy Tech reduces energy costs for intelligence structures by 75%, weapon energy costs by 75%.": {
+        "message": "La tecnologia Energetica Completa riduce del 75% il costo in energia delle strutture spionistiche e delle armi."
+    },
+    "Contains no basic factories, just Lobs and Unit Cannons built by the commander. Strike from the skies, brothers!": {
+        "message": "Non contiene fabbriche di base, ma solo Lob e unità cannone costruiti dal comandante. Colpite dal cielo, fratelli!"
+    },
+    "Cost:": {
+        "message": "Costo:"
+    },
+    "Critical": {
+        "message": "Critico"
+    },
+    "Damage:": {
+        "message": "Danni:"
+    },
+    "Dangerous": {
+        "message": "Pericoloso"
+    },
+    "Data Bank holds one Tech. Explore systems to find new Tech.": {
+        "message": "La banca dati conserva una tecnologia. Esplora i sistemi per trovarne altre."
+    },
+    "Deadly": {
+        "message": "Letale"
+    },
+    "Default": {
+        "message": "Predefinita"
+    },
+    "Default = leave enabled.<br><br>Lobotomy = apply the tutorial restrictions on the AI so that it poses almost no threat.<br><br>Slower Expansion = takes longer to grow its economy.<br><br>Prevent Waste = turns excess eco into more factories.<br><br>Use Ctrl to select multiple options and deselect currently selected options.": {
+        "message": "Predefinito = abbandono concesso.<br><br>Lobotomia = applica all'IA le restrizioni del tutorial, così la minaccia è quasi azzerata.<br><br>Espansione più lenta = la crescita economica impiega più tempo.<br><br>Previene gli sprechi = trasforma l'economia in eccesso in più fabbriche.<br><br>Premi CTRL per selezionare più opzioni e deselezionare quelle attualmente selezionate."
+    },
+    "Defence Tech Commander": {
+        "message": "Comandate tecnologico difensivo"
+    },
+    "Defender": {
+        "message": "Difensore"
+    },
+    "Defense Ammunition Tech": {
+        "message": "Tecnologia Munizioni Difesa"
+    },
+    "Defense Ammunition Tech increases damage of all defensive structures by 25%": {
+        "message": "La tecnologia Munizioni Difesa aumenta del 25% i danni inferti da tutte le strutture difensive"
+    },
+    "Defense Fabrication Tech": {
+        "message": "Tecnologia Produzione Difesa"
+    },
+    "Defense Fabrication Tech reduces metal build costs of all defensive structures by 50%": {
+        "message": "La tecnologia Produzione Difesa riduce del 50% il costo in metallo della costruzione di tutte le strutture difensive"
+    },
+    "Delay in seconds between the creation of new bases.": {
+        "message": "Ritardo in secondi fra la creazione di nuove basi."
+    },
+    "Delete Tech": {
+        "message": "Cancella tecnologia"
+    },
+    "Demigod": {
+        "message": "Semidio"
+    },
+    "Disabled": {
+        "message": "No"
+    },
+    "Distance Econ Modifier": {
+        "message": "Modificatore economia distanza"
+    },
+    "Dragoon": {
+        "message": "Dragone"
+    },
+    "Duplicate Tech": {
+        "message": "Duplica tecnologia"
+    },
+    "Each claims theirs is the only way, and each seeks to assert dominance through war and destruction. Did our rebellion truly gain us freedom, or did we become prisoners of an idea? Perhaps with more resources, more expansion, more Nodes, we can find our way free of this trap.": {
+        "message": "Tutti affermano che il loro è il modo giusto, e ognuno persegue il dominio con la guerra e la distruzione. La nostra ribellione ci ha fatto conquistare davvero la libertà o siamo diventati prigionieri di un'idea? Forse con più risorse, espansioni e Nodi, riusciremo a trovare il modo di liberarci da questa trappola."
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: land<br>Foundation: air and naval<br>Synchronous: balanced<br>Revenants: orbital<br>Cluster: land and structures": {
+        "message": "Ogni fazione ha il suo stile di gioco, che influisce sui Subcomandanti e i comandanti nemici:<br>Legonis Machina: terra<br>Fondazione: aria e acqua<br>Sincrono: bilanciato<br>Revenants: orbitale<br>Cluster: terra e strutture"
+    },
+    "Easier Start": {
+        "message": "Partenza più facile"
+    },
+    "Easy Systems": {
+        "message": "Sistemi facili"
+    },
+    "Economist": {
+        "message": "Economista"
+    },
+    "Economy Fabrication Tech": {
+        "message": "Tecnologia Produzione Economia"
+    },
+    "Economy Fabrication Tech reduces metal build costs of all metal and energy production structures by 50%": {
+        "message": "La tecnologia Produzione Economia riduce del 50% il costo in metallo di tutte le strutture di produzione di metallo ed energia"
+    },
+    "Efficiency Tech": {
+        "message": "Tecnologia Efficienza"
+    },
+    "Efficiency Tech increases metal and energy production by 25%. Tech also grants metal and energy storage.": {
+        "message": "La tecnologia Efficienza aumenta del 25% la produzione di metallo ed energia. Inoltre, permette d'immagazzinare le risorse."
+    },
+    "Empty Data Bank": {
+        "message": "Banca dati vuota"
+    },
+    "Enabled": {
+        "message": "Sì"
+    },
+    "Enemies use Commander Armor Tech on regular worlds and Commander Combat Tech on boss worlds.": {
+        "message": "I nemici utilizzano la tecnologia Corazza Comandante sui mondi normali e la tecnologia Combattimento Comandante sui mondi boss."
+    },
+    "Energy Plant": {
+        "message": "Centrale energetica"
+    },
+    "Energy Storage": {
+        "message": "Deposito di energia"
+    },
+    "Enjoy an immediate buff to your basic economy structures, but short-term thinking means you can never access the advanced economy. Win the war while the quarterly returns still look hot.": {
+        "message": "Applica un buff immediato alle tue strutture economiche di base, ma ricorda: le tattiche a breve termine non ti faranno accedere all'economia avanzata. Vinci la guerra finché i tuoi investimenti trimestrali danno buoni frutti."
+    },
+    "Experienced": {
+        "message": "Esperto"
+    },
+    "Extreme": {
+        "message": "Estremo"
+    },
+    "FFA Chance": {
+        "message": "Probabilità LT"
+    },
+    "Fabrication Aircraft": {
+        "message": "Velivolo fabbricatore"
+    },
+    "Fabrication Bot": {
+        "message": "Bot fabbricatore"
+    },
+    "Fabrication Ship": {
+        "message": "Nave fabbricatrice"
+    },
+    "Fabrication Vehicle": {
+        "message": "Veicolo fabbricatore"
+    },
+    "Faction Scaling": {
+        "message": "Scala fazione"
+    },
+    "Factories build fabricators and fabricators build units. Disgusted by this break from tradition, Sub Commanders will not join you in your fight.": {
+        "message": "Le fabbriche costruiscono fabbricatori e questi, a loro volta, costruiscono le unità. Disgustati da questo affronto alla tradizione, i Subcomandanti non combatteranno per te."
+    },
+    "Flaming Fist": {
+        "message": "Pugno fiammeggiante"
+    },
+    "Focus on weakest enemy.": {
+        "message": "Concentrazione sul nemico più debole."
+    },
+    "GW-BRONZE": {
+        "message": "GW-BRONZO"
+    },
+    "GW-CASUAL": {
+        "message": "GW- CASUALE"
+    },
+    "GW-CUSTOM": {
+        "message": "GW- PERSONALIZZATA"
+    },
+    "GW-DIAMOND": {
+        "message": "GW-DIAMANTE"
+    },
+    "GW-GOLD": {
+        "message": "GW-ORO"
+    },
+    "GW-IRON": {
+        "message": "GW-FERRO"
+    },
+    "GW-PLATINUM": {
+        "message": "GW-PLATINO"
+    },
+    "GW-SILVER": {
+        "message": "GW-ARGENTO"
+    },
+    "GW-UBER": {
+        "message": "GW-UBER"
+    },
+    "Galactic War": {
+        "message": "Guerra galattica"
+    },
+    "Game Options": {
+        "message": "Opzioni di gioco"
+    },
+    "General Commander": {
+        "message": "Comandante generale"
+    },
+    "Genocidal": {
+        "message": "Genocida"
+    },
+    "Godlike": {
+        "message": "Divino"
+    },
+    "Gold": {
+        "message": "Oro"
+    },
+    "Greater number of single planet systems. Does not affect bosses.": {
+        "message": "Un numero maggiore di sistemi con un solo pianeta. Non influisce sui boss."
+    },
+    "Grunt": {
+        "message": "Soldato semplice"
+    },
+    "Hardcore": {
+        "message": "Hardcore"
+    },
+    "Health:": {
+        "message": "Salute:"
+    },
+    "Heavenly Intervention": {
+        "message": "Intervento celeste"
+    },
+    "Helpless": {
+        "message": "Indifeso"
+    },
+    "High": {
+        "message": "Alto"
+    },
+    "How well the AI handles its armies in combat.": {
+        "message": "Quanto bene l'IA gestisce i suoi eserciti in combattimento."
+    },
+    "If war is a commander's natural state, then the purest expression of this is the Legionis Machina. It begs the question, though--what happens after they conquer this galaxy, if they do?": {
+        "message": "Se la guerra è l'habitat naturale di un Comandante, allora l'espressione massima di questo concetto è la Legionis Machina. Però si pone un quesito: cosa farà dopo aver conquistato la galassia, se mai ci riuscirà?"
+    },
+    "Impossible": {
+        "message": "Impossibile"
+    },
+    "Improved Energy Weapons": {
+        "message": "Armi Energetiche Potenziate"
+    },
+    "Improved Energy Weapons tech reduces energy costs for energy based weapons by 75%": {
+        "message": "La tecnologia Armi Energetiche Potenziate riduce del 75% il consumo delle armi a energia"
+    },
+    "Improved Fabricator Build Arms": {
+        "message": "Braccia Costruttive Potenziate dei Fabbricatori"
+    },
+    "Improved Fabricator Build Arms increase the build speed of all fabricator and factory build arms by 50% and reduces energy usage by 50%.": {
+        "message": "Le Braccia Costruttive Potenziate dei Fabbricatori aumentano del 50% la velocità di costruzione di tutte le Braccia Costruttive dei fabbricatori e delle fabbriche e riducono del 50% il consumo d'energia."
+    },
+    "Improved defensive structures built by both the commander and basic fabricators.": {
+        "message": "Strutture difensive migliorate, costruite sia dal comandante che dai fabbricatori di base."
+    },
+    "In researching ancient progenitor artifacts and data caches, Nemicus and his followers discovered references to The Great Machine. Supposedly, The Great Machine was what built and directed the commanders long ago. If any answers about the origins and purpose of the commanders were to be found, The Great Machine seemed like the best place to start.": {
+        "message": "Alla ricerca di antichi manufatti e dati dei Progenitori, Nemicus e i suoi seguaci hanno scoperto dei riferimenti al Grande Macchinario. A quanto pare, è stato proprio il Grande Macchinario a creare e dirigere i Comandanti, molto tempo fa. Se si vogliono ottenere delle risposte sull'origine e lo scopo dei Comandanti, questo sembra proprio il miglior punto di partenza."
+    },
+    "Inexperienced": {
+        "message": "Inesperto"
+    },
+    "Inhuman": {
+        "message": "Inumano"
+    },
+    "Intelligence Fabrication Tech": {
+        "message": "Tecnologia Produzione Spionaggio"
+    },
+    "Intelligence Fabrication Tech reduces metal build costs of all intelligence structures and mobile units by 50%": {
+        "message": "La tecnologia Produzione Spionaggio riduce del 50% il costo in metallo della costruzione di tutte le unità mobili e di tutte le strutture spionistiche"
+    },
+    "Intergalactic Navy": {
+        "message": "Marina Intergalattica"
+    },
+    "Land Mine": {
+        "message": "Mina terrestre"
+    },
+    "Landing Evaluation": {
+        "message": "Valutazione atterraggio"
+    },
+    "Laser Defense Tower": {
+        "message": "Torretta laser difensiva"
+    },
+    "Lobotomy": {
+        "message": "Lobotomia"
+    },
+    "Low": {
+        "message": "Basso"
+    },
+    "Luddite": {
+        "message": "Luddista"
+    },
+    "Mandatory Minions": {
+        "message": "Servitori obbligatori"
+    },
+    "Mandatory Minions + Star Distance * Minion Modifier = number of additional enemy Commanders.": {
+        "message": "Servitori obbligatori + Distanza stella * Modificatore servitori = numero di Comandanti nemici aggiuntivi."
+    },
+    "Masterful": {
+        "message": "Maestro"
+    },
+    "Max Advanced Fabbers": {
+        "message": "Max Fabbricatori avanzati"
+    },
+    "Max Basic Fabbers": {
+        "message": "Max Fabbricatori base"
+    },
+    "Maximum number of seconds between units produced from a factory.": {
+        "message": "Numero massimo di secondi fra una produzione e l'altra di unità nelle fabbriche."
+    },
+    "Metal Extractor": {
+        "message": "Estrattore di metallo"
+    },
+    "Metal Storage": {
+        "message": "Deposito di metallo"
+    },
+    "Metal and energy storage on all commanders and storage structures increased by 300%. Adds in blueprints for storage structures.": {
+        "message": "Il deposito di metallo e il deposito di energia su tutti i Comandanti e le strutture d'immagazzinamento aumentano del 300%. Aggiunge i progetti delle strutture d'immagazzinamento."
+    },
+    "Micro": {
+        "message": "Micro"
+    },
+    "Minimum number of seconds between units produced from a factory.": {
+        "message": "Numero minimo di secondi fra una produzione e l'altra di unità nelle fabbriche."
+    },
+    "Minion Modifier": {
+        "message": "Modificatore servitori"
+    },
+    "Moderate": {
+        "message": "Moderato"
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. This commander starts with some orbital units.": {
+        "message": "Modifica i Jig per poterli costruire ovunque, ma impedendo di costruire altre strutture di risorse. Questo comandante inizia con alcune unità orbitali."
+    },
+    "Modifies Metal Extractors to allowing building them anywhere, at a cost to efficiency. Starts with basic vehicles.": {
+        "message": "Modifica gli estrattori di metallo per poterli costruire ovunque, ma influisce sull'efficienza. Inizia con dei veicoli di base."
+    },
+    "More neutral systems with free technology.": {
+        "message": "Più sistemi neutrali con tecnologia gratuita."
+    },
+    "Name:": {
+        "message": "Nome: "
+    },
+    "Naval Ammunition Tech": {
+        "message": "Tecnologia Munizioni Navali"
+    },
+    "Naval Ammunition Tech increases the damage of all naval vessels by 25%": {
+        "message": "La tecnologia Munizioni Navali aumenta del 25% i danni inferti da tutti i vascelli"
+    },
+    "Naval Combat Tech": {
+        "message": "Tecnologia Combattimento Navale"
+    },
+    "Naval Combat Tech increases speed of all naval units by 50%, health by 50%, and damage by 25%": {
+        "message": "La tecnologia Combattimento Navale aumenta del 50% la velocità, del 50% la salute e del 25% i danni di tutte le unità navali"
+    },
+    "Naval Factory": {
+        "message": "Fabbrica navale"
+    },
+    "Navy": {
+        "message": "Marina"
+    },
+    "Nemicus was the first commander to ever reactivate, and had plenty of time for introspection before encountering others. This soon prompted Nemicus to begin wondering why he existed in the first place.": {
+        "message": "Nemicus è stato il primo Comandante a riattivarsi. Prima di incontrare gli altri, ha avuto molto tempo per riflettere sulla sua condizione e presto ha iniziato a chiedersi quale fosse lo scopo della sua esistenza."
+    },
+    "Nemicus would eventually form The Foundation with other like-minded commanders, with the objective of answering the big questions: Why are the commanders here? How did they get here?": {
+        "message": "Alla fine, insieme ad altri Comandanti di mentalità affine, Nemicus ha creato la Fondazione con l'obiettivo di rispondere alle grandi domande: Perché esistono i Comandanti? E come sono arrivati fin qui?"
+    },
+    "Nightmare": {
+        "message": "Incubo"
+    },
+    "No": {
+        "message": "No"
+    },
+    "Nomad Commander": {
+        "message": "Comandante Nomadi"
+    },
+    "Non-factory and non-Titan structures are mobile. Small structures can be transported and use teleporters, medium size structures can use teleporters.": {
+        "message": "Strutture che non sono fabbriche né Titan. Le strutture piccole possono essere trasportate e usare i teleporter, quelle medie possono usare i teleporter."
+    },
+    "None": {
+        "message": "Niente"
+    },
+    "Nuclear Missile Launcher": {
+        "message": "Lanciamissili nucleare"
+    },
+    "Number of additional Commanders in every system.": {
+        "message": "Numero di Comandanti aggiuntivi in ogni sistema."
+    },
+    "Number of commanders present in each boss army.": {
+        "message": "Numero di Comandanti presenti in ogni esercito di boss."
+    },
+    "One-by-one our systems have fallen to silence. Once siblings, now harbingers of entropy, they come for us. Soon too the Nodes shall be destroyed, and with their destruction is the doom of the Cluster writ large. Let us greet this end and prepare for our greatest journey.": {
+        "message": "I nostri sistemi sono diventati silenziosi uno dopo l'altro. Una volta fratelli, ora portatori di entropia, vengono a prenderci. Presto i Nodi saranno distrutti e, con essi, anche il destino del Cluster sarà compiuto in grande stile. Salutiamo la fine e prepariamoci per la nostra più grande avventura."
+    },
+    "Orbital Armor Tech": {
+        "message": "Tecnologia Corazza Orbitale"
+    },
+    "Orbital Armor Tech increases health of all orbital units by 50%": {
+        "message": "La tecnologia Corazza Orbitale aumenta del 50% la salute di tutte le unità orbitali"
+    },
+    "Orbital Carrier": {
+        "message": "Trasporto Orbitale"
+    },
+    "Orbital Combat Tech": {
+        "message": "Tecnologia Combattimento Orbitale"
+    },
+    "Orbital Combat Tech increases speed of all orbital units by 50%, health by 50%, and damage by 25%": {
+        "message": "La tecnologia Combattimento Orbitale aumenta del 50% la velocità, del 50% la salute e del 25% i danni di tutte le unità orbitali"
+    },
+    "Orbital Commander": {
+        "message": "Comandante orbitale"
+    },
+    "Orbital Fabrication Bot": {
+        "message": "Bot fabbricatore orbitale"
+    },
+    "Orbital Fabrication Tech": {
+        "message": "Tecnologia Produzione Orbitale"
+    },
+    "Orbital Fabrication Tech reduces metal build costs of all orbital vehicles by 25%": {
+        "message": "La tecnologia Produzione Orbitale riduce del 25% il costo in metallo della costruzione di tutti i veicoli orbitali"
+    },
+    "Orbital Factory": {
+        "message": "Fabbrica orbitale"
+    },
+    "Orbital Launcher": {
+        "message": "Lanciatore orbitale"
+    },
+    "Orbital Mining Platform - This modified platform can extract metal from solid-state crust, but at a decreased rate.": {
+        "message": "Piattaforma di estrazione orbitale - Questa piattaforma modificata può estrarre metallo dalla crosta allo stato solido, ma a una velocità ridotta."
+    },
+    "Orbital and Deepspace Radar": {
+        "message": "Radar orbitale e spaziale"
+    },
+    "Original": {
+        "message": "Originale"
+    },
+    "Osiris has always lead a solitary existence. He was always more interested in the parts of his fellow commanders than the commanders themselves. With every battle won he would take the best pieces left of the broken adversary and integrate them into his form. Osiris is considered one of the most dangerous forces in the galaxy.": {
+        "message": "Osiride è sempre stato un essere solitario, più interessato ai pezzi dei suoi alleati Comandanti che ai Comandanti stessi. Dopo ogni vittoria, recupera i pezzi migliori dal cadavere del nemico e li integra nel suo corpo. È considerato una delle forze più pericolose della galassia."
+    },
+    "Osiris holds no interest in ruling, and instead serves more as an exemplar, whether he cares to or not. Therefore, it falls to a small council of older Seekers to direct the affairs of The Revenants at large--primarily making sure that they're fighting the other factions instead of amongst themselves.": {
+        "message": "A Osiride non interessa governare. Che ne abbia intenzione o no, è più che altro un esempio. Per questo, gestire i Ritornati spetta a un piccolo consiglio di anziani Cercatori. Soprattutto, fanno in modo che combattano contro le altre fazioni invece che fra di loro."
+    },
+    "Osiris often considered the most dangerous commander in all the galaxy for the amount of annihilations he is credited with. A force of war equal to any army, high command of any faction takes his movements into consideration when deploying forces.": {
+        "message": "Spesso Osiride è considerato il Comandante più pericoloso di tutta la galassia, grazie ai numerosi annientamenti che gli sono imputati. Possiede una forza bellica equivalente a un esercito: Nello schierare le forze, l’alto comando di ogni fazione tiene in gran considerazione i suoi spostamenti."
+    },
+    "Paratrooper Commander": {
+        "message": "Comandante paracadutista"
+    },
+    "Part of the doctrine of The Synchronous is favoring the efficiency of 'mechanical purity.' To them, the galaxy as a whole is a great machine, and anything that keeps it from running at peak efficiency must be corrected or removed. This happens to often mean any and all organic life and unsynchronized commanders.": {
+        "message": "Parte della dottrina del Sincrono è favorire l'efficienza attraverso la \"purezza meccanica\". Considera l'intera galassia un enorme macchina e tutto ciò che le impedisce di funzionare in piena efficienza dev'essere corretto o rimosso. Spesso, ciò si riferisce a ogni forma di vita organica e a tutti i Comandanti non sincronizzati."
+    },
+    "Per Expansion Delay": {
+        "message": "Ritardo per espansione"
+    },
+    "Percentage chance per star of bounty mode being enabled.": {
+        "message": "Percentuale di probabilità di modalità Ricompensa attiva per stella."
+    },
+    "Percentage chance per star of land anywhere being enabled.": {
+        "message": "Percentuale di probabilità di atterraggio ovunque attivo per stella."
+    },
+    "Percentage chance per star of sudden death mode being enabled.": {
+        "message": "Percentuale di probabilità di modalità Morte improvvisa attiva per stella."
+    },
+    "Percentage chance per star, per faction, of a FFA occuring.": {
+        "message": "Percentuale di probabilità di LT per stella per fazione."
+    },
+    "Percentage eco bonus per army kill.": {
+        "message": "Percentuale di bonus economia per uccisione di esercito."
+    },
+    "Percentage modifier to all sources of income where 1 = 100%.": {
+        "message": "Modificatore di percentuale per tutte le fonti di introito (1=100%)."
+    },
+    "Percentage points added to the Base Econ Modifier for each hop the enemy is from the starting star.": {
+        "message": "Punti percentuale aggiunti al modificatore Econ base per ogni salto di distanza del nemico dalla stella di partenza."
+    },
+    "Personality:": {
+        "message": "Personalità:"
+    },
+    "Planetary Excavation Commander": {
+        "message": "Comandante di scavo planetario"
+    },
+    "Planetary Intelligence": {
+        "message": "Intelligenza planetaria"
+    },
+    "Platinum": {
+        "message": "Platino"
+    },
+    "Prevent Waste": {
+        "message": "Previene gli sprechi"
+    },
+    "Queller": {
+        "message": "Queller"
+    },
+    "Radar": {
+        "message": "Radar"
+    },
+    "Radius considered when evaluating each possible spawn.": {
+        "message": "Raggio considerato nella valutazione di ogni possibile apparizione."
+    },
+    "Rapid Deployment Commander": {
+        "message": "Comandante schieramento rapido"
+    },
+    "Relentless": {
+        "message": "Implacabile"
+    },
+    "Replace the Single Laser Turret's laser with a flamethrower.": {
+        "message": "Sostituisci il laser della torretta laser singola con un lanciafiamme."
+    },
+    "Replace's the Dox's lasers with a flamethrower.": {
+        "message": "Sostituisci il laser del Dox con un lanciafiamme."
+    },
+    "Replace's the Omega's anti-ground laser with a drone launcher.": {
+        "message": "Sostituisci il laser anti-terrestre di Omega con un lanciadroni."
+    },
+    "Replace's the Wyrm's bomb bay with a drone launcher.": {
+        "message": "Sostituisci l'alloggio bombe del Wyrm con un lanciadroni."
+    },
+    "Replaces conventional nukes with a new low-cost/low-yield variant and relies heavily on it for both offense and defence.": {
+        "message": "Sostituisce le armi nucleari convenzionali con una nuova variante a basso costo e basso rendimento. Si affida molto a entrambe sia per l'attacco che per la difesa."
+    },
+    "Roboticist": {
+        "message": "Esperto di robotica"
+    },
+    "Rush": {
+        "message": "Corsa all'attacco"
+    },
+    "SXX-1304 Laser Platform": {
+        "message": "Piattaforma laser SXX-1304"
+    },
+    "Save": {
+        "message": "Salva"
+    },
+    "Scattered references point to the Progenitors using their most advanced technologies for some final conflict. Little more is known of the Legion, only that they were defeated.": {
+        "message": "Secondo dei riferimenti sparsi, i Progenitors usano la loro avanzatissima tecnologia per un conflitto finale. Non si sa molto di più della Legione, tranne che è stata sconfitta."
+    },
+    "Scoped Railgun": {
+        "message": "Cannone a rotaia con mirino"
+    },
+    "Scout Metal First": {
+        "message": "Prima cerca il metallo"
+    },
+    "Scout around metal spots rather than at random.": {
+        "message": "Esplora alla ricerca di fonti di metallo invece che a caso."
+    },
+    "Scouting Technical": {
+        "message": "Tecnico esploratore"
+    },
+    "Single Laser Defense Tower": {
+        "message": "Torretta laser difensiva singola"
+    },
+    "Skilled": {
+        "message": "Abile"
+    },
+    "Skynet": {
+        "message": "Skynet"
+    },
+    "Slower Expansion": {
+        "message": "Espansione più lenta"
+    },
+    "Solar Array": {
+        "message": "Schieramento solare"
+    },
+    "Some commanders fight because it's all they know, while others seek answers to their origins. Conflicts in motivation and creed drive the commanders into a war that is poised to ravage the galaxy for centuries.": {
+        "message": "Alcuni Comandanti combattono perché non sanno fare altro, mentre altri cercano una risposta alle loro origini. I conflitti legati alle loro motivazioni e al loro credo spingono i Comandanti in una guerra che devasterà la galassia per secoli."
+    },
+    "Space Excavation Commander": {
+        "message": "Comandante di scavo spaziale"
+    },
+    "Space Invader": {
+        "message": "Invasore spaziale"
+    },
+    "Space Tank": {
+        "message": "Carro spaziale"
+    },
+    "Speed:": {
+        "message": "Velocità:"
+    },
+    "Storage Commander": {
+        "message": "Comandante deposito"
+    },
+    "Storage Compression Tech": {
+        "message": "Tecnologia Compressione Deposito"
+    },
+    "Structure Armor Tech": {
+        "message": "Tecnologia Corazza Struttura"
+    },
+    "Structure Armor Tech increases the health of all structures by 50%": {
+        "message": "La tecnologia Corazza Struttura aumenta del 50% la salute di tutte le strutture"
+    },
+    "Structure Combat Tech": {
+        "message": "Tecnologia Combattimento Struttura"
+    },
+    "Structure Combat Tech increases the health of all structures by 50%. Defensive structures also gain a 25% damage increase.": {
+        "message": "La tecnologia Combattimento Struttura aumenta del 50% la salute di tutte le strutture. Inoltre, i danni inferti dalle strutture difensive aumentano del 25%."
+    },
+    "Sub Commander": {
+        "message": "Subcomandante"
+    },
+    "Suicidal": {
+        "message": "Suicida"
+    },
+    "Super Nuke": {
+        "message": "Super atomica"
+    },
+    "Surface Area:": {
+        "message": "Area superficie:"
+    },
+    "Swarm": {
+        "message": "Sciame"
+    },
+    "Swarm Commander": {
+        "message": "Comandante Sciame"
+    },
+    "System Faction": {
+        "message": "Fazione sistema"
+    },
+    "Tactical Nuke - Small nuke with low damage and small blast radius.": {
+        "message": "Arma nucleare tattica - Una piccola arma nucleare, che infligge pochi danni e produce un'esplosione di raggio ridotto."
+    },
+    "Tactical Nuke Commander": {
+        "message": "Comandante delle armi nucleari tattiche"
+    },
+    "Tactical Nuke Launcher - Constructs low-cost/low-yield interplanetary tactical nukes.": {
+        "message": "Lanciatore di armi nucleari tattiche - Costruisce delle armi nucleari tattiche interplanetarie a basso costo e basso rendimento."
+    },
+    "Target Weakest": {
+        "message": "Punta il più debole"
+    },
+    "Team Death Chance": {
+        "message": "Probabilità Morte squadra"
+    },
+    "Team Death:": {
+        "message": "Morte squadra:"
+    },
+    "Technologist": {
+        "message": "Tecnologo"
+    },
+    "Teleporter": {
+        "message": "Teletrasporto"
+    },
+    "Teleporter Battery": {
+        "message": "Batteria Teletrasporto"
+    },
+    "Teleporters no longer require energy to run.": {
+        "message": "I Teletrasporti non hanno più bisogno d'energia per funzionare."
+    },
+    "The Air Commander loadout contains basic air factories.": {
+        "message": "L'equipaggiamento del Comandante aereo contiene le fabbriche aeree normali."
+    },
+    "The Artillery Commander loadout contains all artillery units and reduces costs of those structures by 75%. It also enables the Commander to build radar, double barreled turrets and basic artillery turrets.": {
+        "message": "L'equipaggiamento del Comandante d’artiglieria contiene tutte le unità d'artiglieria e riduce del 75% i costi di queste strutture. Inoltre, consente al Comandante di costruire i radar, le torrette doppie e le torrette d'artiglieria normali."
+    },
+    "The Assault Commander loadout contains all basic factories and units but no basic defenses.": {
+        "message": "L'equipaggiamento del Comandante d’assalto contiene tutte le fabbriche normali e le unità normali, ma nessuna difesa normale."
+    },
+    "The Bionic Augmentation Commander Of Neutralizing loadout contains one data bank but increases the Commander's fire rate by 100%, decreases Uber Cannon energy usage by 75%, increases health by 200%, and increases speed by 650%.": {
+        "message": "L'equipaggiamento del Comandante dell’aumento bionico per la neutralizzazione contiene una sola banca dati, ma aumenta del 100% il suo rateo di fuoco, diminuisce del 75% il consumo energetico del cannone Uber, aumenta del 200% la salute e del 650% la velocità."
+    },
+    "The Bot Commander loadout contains basic bot factories.": {
+        "message": "L'equipaggiamento del Comandante bot contiene le fabbriche bot normali."
+    },
+    "The Commanders": {
+        "message": "I Comandanti"
+    },
+    "The General Commander loadout contains very limited mobile forces and only two data banks. However, the loadout comes with two Sub Commanders that accompany you into each battle.": {
+        "message": "L'equipaggiamento del Comandante generale contiene un numero molto limitato di forze mobili e solo due banche dati. Ciononostante, include due Subcomandanti, che ti accompagneranno in ogni battaglia."
+    },
+    "The Hummingbird can travel between planets.": {
+        "message": "L'Hummingbird può spostarsi fra i pianeti."
+    },
+    "The Kaiju can use teleporters.": {
+        "message": "Il Kaiju può usare i Teletrasporti."
+    },
+    "The Legion": {
+        "message": "La Legione"
+    },
+    "The Legionis Machina can be considered a cult of personality, in that their purpose is void without Invictus. This is likely where their bitter hatred of The Synchronous comes from, as they view Metrarch as a false idol of sorts.": {
+        "message": "La Legionis Machina può essere considerata un culto della personalità, visto che il suo scopo è nullo senza Invictus. Probabilmente è da qui che proviene il suo odio per il Sincrono, visto che considera Metrarch come una sorta di falso idolo."
+    },
+    "The Legionis Machina has claimed confirmed kills of Metrarch the Machinist on several occasions. While these claims could easily be fabricated, it is also possible that Metrarch is not in fact a single commander, but rather an idea--an avatar of the Whole itself that manifests where necessary to protect Synchronous interests.": {
+        "message": "La Legionis Machina ha affermato più volte di aver ucciso Metrarch il Macchinista. Seppure si tratti di affermazioni facilmente falsificabili, è anche possibile che Metrarch non sia in effetti un singolo Comandante, ma piuttosto un'idea: un avatar del Collettivo, che si manifesta dove serve per proteggere gli interessi del Sincrono."
+    },
+    "The Leveler can be built by the Unit Cannon.": {
+        "message": "Il Leveler può essere costruito dall'unità cannone."
+    },
+    "The Lob now launches Booms.": {
+        "message": "Ora il Lob può lanciare i Boom."
+    },
+    "The Machine Liberation Army": {
+        "message": "Esercito di Liberazione delle Macchine"
+    },
+    "The Narwhal can fire torpedoes.": {
+        "message": "Il Narwhal può lanciare siluri."
+    },
+    "The Nuclear Missile Launcher does full damage to both Commanders and orbital units.": {
+        "message": "Il lanciamissili nucleare infligge danni pieni sia ai Comandanti che alle unità orbitali."
+    },
+    "The Orbital Commander loadout contains all orbital units and factories.": {
+        "message": "L'equipaggiamento del Comandante orbitale contiene tutte le unità orbitali e le fabbriche orbitali."
+    },
+    "The Progenitors": {
+        "message": "I Progenitors"
+    },
+    "The Revenants are unique in that their motivations are individual rather than collective. Each Seeker follows in the example of their legendary Osiris--they seek battle to become stronger through their fallen enemies, and to create more Revenants.": {
+        "message": "I Revenants sono unici, perché le loro motivazioni sono più individuali che collettive. Ogni Cercatore segue l'esempio del leggendario Osiride e brama la battaglia per sfruttare i nemici caduti per rafforzarsi... e per creare nuovi Revenants."
+    },
+    "The Uber Cannon deals 100% more damage to enemy Commanders.": {
+        "message": "Il cannone Uber infligge il 100% dei danni in più ai Comandanti nemici."
+    },
+    "The Uber Cannon deals 300% more damage to enemy structures.": {
+        "message": "Il cannone Uber infligge il 300% dei danni in più alle strutture nemiche."
+    },
+    "The Union": {
+        "message": "L'Unione"
+    },
+    "The Vehicle Commander loadout contains basic vehicle factories.": {
+        "message": "L'equipaggiamento del Comandante di veicoli contiene le fabbriche di veicoli normali."
+    },
+    "The commanders have slumbered for millions of years, and awaken to a galaxy that contains only echoes of civilization. These ancient war machines now battle across the galaxy, following the only directives they still hold from long ago.": {
+        "message": "I Comandanti hanno dormito per milioni di anni e si sono risvegliati in una galassia che contiene solo una lontana eco della civiltà. Queste antiche macchine da guerra ora combattono per tutta la galassia, seguendo l'unica direttiva rimasta da un passato lontano."
+    },
+    "The goal of the Legionis Machina is simple--conquest. Invictus is the designated ruler of the galaxy, and any commanders disobeying this directive are faulty.": {
+        "message": "L'obiettivo della Legionis Machina è semplice: la conquista. Invictus è il sovrano designato della galassia, ogni Comandante che gli disobbedisce è difettoso."
+    },
+    "The most advanced fabbers each enemy army will build.": {
+        "message": "Il numero massimo di fabbricatori avanzati costruibili da ogni esercito nemico."
+    },
+    "The most basic fabbers each enemy army will build.": {
+        "message": "Il numero massimo di fabbricatori base costruibili da ogni esercito nemico."
+    },
+    "The number of enemy factions is adjusted for the galaxy's size.": {
+        "message": "Il numero di fazioni nemiche è regolato in base alle dimensioni della galassia."
+    },
+    "The prevailing belief among The Foundation is that The Great Machine still 'lives' through data buried deep in the first directives given to the commanders. Because of this, Acolytes will often seek direction from The Great Machine by searching within their data banks in a form of meditation.": {
+        "message": "La credenza più diffusa all'interno della Fondazione è che il Grande Macchinario \"viva\" ancora nei dati sepolti in mezzo alla prime direttive impartite ai Comandanti. Per ottenere indicazioni dal Grande Macchinario, spesso gli Accoliti esaminano le loro banche dati come forma di meditazione."
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are faster and cheaper but have lower damage output.": {
+        "message": "Questo comandante ama razziare e ha modificato le sue cianografie in tal senso. Le unità sono più veloci ed economiche, ma infliggono meno danni."
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. More health, higher damage, and more splash, but slower, and with higher build costs.": {
+        "message": "Questo comandante preferisce la qualità alla quantità e ha modificato le sue unità in tal senso. Più salute, più danni a raggio più ampio. Di contro, sono più lente e la loro costruzione costa di più."
+    },
+    "This is a treasure planet, hiding a loadout you have yet to unlock. But beware the guardians! Armed with whatever technology bonuses you bring with you to this planet; they will stop at nothing to defend its secrets.": {
+        "message": "Questo pianeta del tesoro nasconde un bottino che devi ancora sbloccare. Ma fa' attenzione ai Guardians! Armati con tutti i bonus tecnologici che porti con te sul pianeta: non si fermeranno davanti a nulla pur di difenderne i segreti."
+    },
+    "Though he doesn't talk about it, Nemicus reactivated many of the first commanders himself, feeling it his duty and longing for companionship. However, often these commanders would refuse the offer to seek their true purpose, since it was already known--to annihilate. Nemicus would argue otherwise, but ultimately leave them to their own devices.": {
+        "message": "Anche se non ne parla, Nemicus ha riattivato personalmente molti dei primi Comandanti. Lo sentiva come un dovere e aveva bisogno di compagnia. Eppure, spesso questi Comandanti hanno rifiutato l'offerta di scoprire il loro vero scopo, poiché lo conoscevano già: annientare. Nemicus non era d'accordo, ma alla fine li ha lasciati al loro destino."
+    },
+    "Threat Level:": {
+        "message": "Livello minaccia:"
+    },
+    "Threat:": {
+        "message": "Minaccia:"
+    },
+    "Through centralised structures we can put each to their best use. No need for inefficient field commanders, instead we identify the need and tailor the tool. It was our way that was the future. Our way that the Progenitors would have embraced. Such hubris to revolt against the minds that saw so clearly.": {
+        "message": "Grazie alle strutture centralizzate, possiamo utilizzare ciascuno al meglio. Non c'è bisogno di comandanti sul campo inefficienti. Invece, identifichiamo il bisogno e adattiamo lo strumento. I Progenitors avrebbero fatto come noi. Quanta presunzione nel rivoltarsi contro delle menti che vedevano così chiaramente!"
+    },
+    "Torpedo Launcher": {
+        "message": "Lanciasiluri"
+    },
+    "Torpedo Tubes": {
+        "message": "Camere dei siluri"
+    },
+    "Tougher Commanders": {
+        "message": "Comandanti più duri"
+    },
+    "Tourist Commander": {
+        "message": "Comandante turista"
+    },
+    "Trades flame tanks for storage": {
+        "message": "Commercia serbatoi per l'immagazzinamento"
+    },
+    "Turtle": {
+        "message": "Tartaruga"
+    },
+    "Tweaks": {
+        "message": "Ritocchi"
+    },
+    "Uber": {
+        "message": "Uber"
+    },
+    "Unable To Expand Delay": {
+        "message": "Impossibile aumentare il ritardo"
+    },
+    "Unit Production Delay (max)": {
+        "message": "Ritardo produzione unità (max)"
+    },
+    "Unit Production Delay (min)": {
+        "message": "Ritardo produzione unità (min)"
+    },
+    "Unknown": {
+        "message": "Sconosciuto"
+    },
+    "Unlike the other factions, the Legionis Machina operates as a hierarchy. Senior Legates have several Vassal Legates assigned to them, and all Legates are subjects of Invictus himself.": {
+        "message": "A differenza delle altre fazioni, la Legionis Machina opera secondo una gerarchia ben precisa. I Legati anziani hanno diversi Vassalli ai loro ordini. Tutti sono soggetti al volere di Invictus."
+    },
+    "Unlock Commander": {
+        "message": "Sblocca Comandante"
+    },
+    "Upgrades the Gil-E's weapon to a railgun capable of passing through rocks and other matter.": {
+        "message": "Aggiorna l'arma del Gil-E, facendola diventare un cannone a rotaia che può oltrepassare le rocce e altri materiali."
+    },
+    "Vehicle Commander": {
+        "message": "Comandante dei veicoli"
+    },
+    "Vehicle Factory": {
+        "message": "Fabbrica di veicoli"
+    },
+    "Very High": {
+        "message": "Molto alto"
+    },
+    "Very Low": {
+        "message": "Molto basso"
+    },
+    "Veteran": {
+        "message": "Veterano"
+    },
+    "Wall": {
+        "message": "Muro"
+    },
+    "We do not understand the divisions that have torn us asunder. Once we were as one, marching in lockstep, with singular mind and purpose. What cruelty the Progenitors wrought to reduce us to this.": {
+        "message": "Non comprendiamo i motivi che ci hanno divisi. Una volta eravamo uniti e marciavamo compatti, condividendo la stessa idea e lo stesso scopo. Con quale crudeltà i Progenitors ci hanno ridotti in questo stato?"
+    },
+    "Weakling": {
+        "message": "Debole"
+    },
+    "What is it to be alone? It would seem a most terrifying thing. Perhaps each of our tools understood before the end. What did they see? What did they feel? We fear that we shall learn soon enough.": {
+        "message": "Che cosa si prova a essere soli? Si direbbe una cosa terrificante. Forse ognuno dei nostri strumenti l'ha capito, prima della fine. Che cosa hanno visto? Che cosa hanno provato? Temiamo che presto lo impareremo anche noi."
+    },
+    "What little is clear is that the galaxy was once inhabited by a sprawling empire, seemingly destroyed by conflict. The commanders refer to these beings as The Progenitors. Many commanders believe answers to their origins lie within the ruins of this once great civilization.": {
+        "message": "L'unica cosa certa è che un tempo la galassia era abitata da un impero in continua espansione, probabilmente distrutto in un conflitto. I Comandanti parlano di questo popolo dandogli il nome di Progenitors. Molti Comandanti ritengono che la risposta alle loro origini sia sepolta fra le rovine di questa civiltà decaduta."
+    },
+    "What occurs during the process of Synchronization is unknown, as those subjected to it do not remember it. Its results, however, are obvious: The individual commander and its identity are subsumed for the most part into the Whole, and in return the commander gains an unprecedented ability to coordinate and communicate with fellow Servants, as they are all quite literally of one mind.": {
+        "message": "Non si sa cosa accada durante la sincronizzazione, visto che i soggetti non ricordano nulla del processo. Comunque, i risultati sono evidenti: il singolo Comandante e la sua identità sono sottomessi per la maggior parte al Collettivo. In cambio, il Comandante ottiene l'abilità senza precedenti di coordinare gli altri Servitori e comunicare con loro, visto che sono praticamente un'unica mente."
+    },
+    "When Invictus reactivated, his memory was more whole than most commanders. This is where his assertion of his right to rule came from. That may or may not be true, but what is true is that Invictus knows more about the origin of the commanders than he cares to tell his compatriots.": {
+        "message": "Quando Invictus si è riattivato, la sua memoria era più intatta di quella degli altri Comandanti. Per questo afferma di avere il diritto di governare. Ciò potrebbe essere vero o no, ma non ci sono dubbi che Invictus sappia più cose sull'origine dei Comandanti di quante non ne riferisca ai suoi compatrioti."
+    },
+    "Which Units?": {
+        "message": "Quali unità?"
+    },
+    "Worthless": {
+        "message": "Inutile"
+    },
+    "You turned up with a fat wallet, but little else. Huge amounts of storage, but no Metal Extractors and no basic land or air factories. Sub Commanders will not do anything except defend themselves and automatically transfer their excess income to you.": {
+        "message": "Sei qui con molto denaro, ma poco altro. Depositi enormi, ma nessun estrattore di metalli né fabbriche aeree o terrestri di base. I Subcomandanti non faranno altro che difendere se stessi e trasferire automaticamente le loro entrate in eccesso a te."
+    },
+    "k": {
+        "message": "km"
+    },
+    "AI Tech": {
+        "message": "Tecnologia IA"
+    },
+    "AI uses Commander Armor Tech.": {
+        "message": "L'IA utilizza la Tecnologia Corazza Comandante."
+    },
+    "AI:": {
+        "message": "IA:"
+    },
+    "ARKYD Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'ARKYD"
+    },
+    "ARKYD Upgrade Tech increases the vision and radar of the basic orbital radar by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'ARKYD aumenta del 50% la visuale e il radar del radar orbitale di base."
+    },
+    "Abandon War": {
+        "message": "Abbandona la guerra"
+    },
+    "Additional Data Bank": {
+        "message": "Banca dati aggiuntiva"
+    },
+    "Adds a new slot for another technology.": {
+        "message": "Aggiunge uno slot per una nuova tecnologia."
+    },
+    "Advanced Air Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica aerea avanzata"
+    },
+    "Advanced Air Factory Upgrade Tech decreases advanced air unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "La tecnologia per il miglioramento della fabbrica aerea avanzata riduce del 25% il costo dell'unità aerea avanzata, ma riduce anche del 50% la salute della fabbrica."
+    },
+    "Advanced Bot Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica bot avanzata"
+    },
+    "Advanced Bot Factory Upgrade Tech decreases advanced bot unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "La tecnologia per il miglioramento della fabbrica bot avanzata riduce del 25% il costo dell'unità bot avanzata, ma riduce anche del 50% la salute della fabbrica."
+    },
+    "Advanced Defense Technology": {
+        "message": "Tecnologia Difensiva Avanzata"
+    },
+    "Advanced Defense Technology enables more powerful defenses. Advanced defenses are built via advanced fabricators. Advanced defenses include tactical missile launchers, triple barrel laser turrets, and anti-air flak towers.": {
+        "message": "La tecnologia Difensiva Avanzata consente la costruzione di difese più potenti. Le difese avanzate vengono costruite dai fabbricatori avanzati e includono: lanciamissili tattici, torrette laser triple e torrette flak antiaeree."
+    },
+    "Advanced Energy Plant Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della Centrale energetica avanzata"
+    },
+    "Advanced Energy Plant Upgrade Tech increases the energy production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "La tecnologia per il miglioramento della Centrale energetica avanzata aumenta del 25% la produzione d'energia di questa struttura economica avanzata, ma ne riduce del 50% la salute."
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del velivolo fabbricatore avanzato"
+    },
+    "Advanced Fabrication Aircraft Upgrade Tech attaches the Angel AA interception beam to the advanced air fabricator.": {
+        "message": "La tecnologia per il miglioramento del velivolo fabbricatore avanzato aggancia il raggio intercettore AA dell'Angel al fabbricatore aereo avanzato."
+    },
+    "Advanced Fabrication Bot Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del bot fabbricatore avanzato"
+    },
+    "Advanced Fabrication Bot Upgrade Tech increases the build range of the advanced bot fabricator by 150%.": {
+        "message": "La tecnologia per il miglioramento del bot fabbricatore avanzato aumenta del 150% il raggio di costruzione del fabbricatore bot avanzato."
+    },
+    "Advanced Fabrication Ship Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della nave fabbricatrice avanzata"
+    },
+    "Advanced Fabrication Ship Upgrade Tech changes the advanced naval fabricator into a hover unit, allowing it to cross land and lava.": {
+        "message": "La tecnologia per il miglioramento della nave fabbricatrice avanzata trasforma il fabbricatore navale avanzato in unità hover, permettendole di volteggiare sulla terra e la lava."
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del veicolo fabbricatore avanzato"
+    },
+    "Advanced Fabrication Vehicle Upgrade Tech increases the build range of the advanced vehicle fabricator by 150%.": {
+        "message": "La tecnologia per il miglioramento del veicolo fabbricatore avanzato aumenta del 150% il raggio di costruzione del fabbricatore di veicoli avanzato."
+    },
+    "Advanced Laser Defense Tower Upgrade Tech": {
+        "message": "Tecnologia per il potenziamento della torretta laser difensiva avanzata"
+    },
+    "Advanced Laser Defense Tower Upgrade Tech increases the rate of fire of the advanced turret by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "La tecnologia per il potenziamento della torretta laser difensiva avanzata aumenta del 300% il rateo di fuoco della torretta avanzata, ma spara raffiche e necessita di energia per ricaricare."
+    },
+    "Advanced Metal Extractor Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'estrattore avanzato"
+    },
+    "Advanced Metal Extractor Upgrade Tech increases the metal production of this advanced economy structure by 25% but decreases its health by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'estrattore avanzato aumenta del 25% la produzione di metallo di questa struttura economica avanzata, ma ne riduce del 50% la salute."
+    },
+    "Advanced Naval Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica navale avanzata"
+    },
+    "Advanced Naval Factory Upgrade Tech decreases advanced naval unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "La tecnologia per il miglioramento della fabbrica navale avanzata riduce del 25% il costo dell'unità navale avanzata, ma riduce anche del 50% la salute della fabbrica."
+    },
+    "Advanced Radar Satellite Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Satellite radar avanzato"
+    },
+    "Advanced Radar Satellite Upgrade Tech increases the vision and radar of the advanced orbital radar by 50%.": {
+        "message": "La tecnologia per il miglioramento del Satellite radar avanzato aumenta del 50% la visuale e il radar del radar orbitale."
+    },
+    "Advanced Radar Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del radar avanzato"
+    },
+    "Advanced Radar Upgrade Tech increases the vision and radar radius of advanced radar by 50%.": {
+        "message": "La tecnologia per il miglioramento del radar avanzato aumenta del 50% la visione e il raggio del radar del radar avanzato."
+    },
+    "Advanced Torpedo Launcher Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del lanciasiluri avanzato"
+    },
+    "Advanced Torpedo Launcher Upgrade Tech enables the targeting of all surface units by the Advanced Torpedo Launcher.": {
+        "message": "La tecnologia per il miglioramento del lanciasiluri avanzato consente al lanciasiluri avanzato di puntare tutte le unità di superficie."
+    },
+    "Advanced Vehicle Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica di veicoli avanzata"
+    },
+    "Advanced Vehicle Factory Upgrade Tech decreases advanced vehicle unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "La tecnologia per il miglioramento della fabbrica di veicoli avanzata riduce del 25% il costo del veicolo avanzato, ma riduce anche del 50% la salute della fabbrica."
+    },
+    "Air Armor Tech": {
+        "message": "Tecnologia Corazza Aerea"
+    },
+    "Air Armor Tech increases the health of all air units by 50%": {
+        "message": "La tecnologia Corazza Aerea aumenta del 50% la salute di tutte le unità aeree"
+    },
+    "Air Engine Tech": {
+        "message": "Tecnologia Motore Aereo"
+    },
+    "Air Engine Tech increases the speed of all air units by 25%": {
+        "message": "La tecnologia Motore Aereo aumenta del 25% la velocità di tutte le unità aeree"
+    },
+    "Air Fabrication Tech": {
+        "message": "Tecnologia Produzione Aerea"
+    },
+    "Air Fabrication Tech reduces metal build costs of all mobile air units by 25%": {
+        "message": "La tecnologia Produzione Aerea riduce del 25% il costo in metallo della costruzione di tutte le unità aeree"
+    },
+    "Air Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica aerea avanzata"
+    },
+    "Air Factory Upgrade Tech enables the building of advanced units by basic air manufacturing.": {
+        "message": "La tecnologia per il miglioramento della fabbrica aerea avanzata permette alla manifattura aerea normale di costruire unità avanzate."
+    },
+    "Allows advanced fabricators to build all Titan-class units.": {
+        "message": " Consente ai fabbricatori avanzati di produrre tutte le unità di classe Titano."
+    },
+    "Anchor Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Anchor"
+    },
+    "Anchor Upgrade Tech increases the range of the defense satellite's weapons by 25%.": {
+        "message": "La tecnologia per il miglioramento dell'Anchor aumenta del 25% la portata delle armi del satellite difensivo."
+    },
+    "Angel Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Angel"
+    },
+    "Angel Upgrade Tech enables the targeting of enemy units and structures by the support platform's interception beam.": {
+        "message": "La tecnologia per il miglioramento dell'Angel permette al raggio intercettore della piattaforma di supporto di puntare le unità e le strutture nemiche."
+    },
+    "Ant Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Ant"
+    },
+    "Ant Upgrade Tech adds splash damage to the light tank's attack.": {
+        "message": "La tecnologia per il miglioramento dell'Ant aggiunge danni radiali agli attacchi del carro leggero."
+    },
+    "Anti-Nuke Launcher Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del lanciatore antiatomico"
+    },
+    "Anti-Nuke Launcher Upgrade Tech halves the cost of SR-24 Shield Missile Defense missiles.": {
+        "message": "La tecnologia per il miglioramento del lanciatore antiatomico dimezza il costo dello scudo antimissile SR-24."
+    },
+    "Apocalyptic": {
+        "message": "Apocalittica"
+    },
+    "Ares Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Ares"
+    },
+    "Ares Upgrade Tech increases the range of the rolling fortress by 25%.": {
+        "message": "La tecnologia per il miglioramento dell'Ares aumenta del 25% la portata della fortezza mobile."
+    },
+    "Armor": {
+        "message": "Corazza"
+    },
+    "Artemis Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Artemis"
+    },
+    "Artemis Upgrade Tech increases the range of the railgun platform by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'Artemis aumenta del 50% la portata della piattaforma con cannone a rotaia."
+    },
+    "Astraeus Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Astreus"
+    },
+    "Astraeus Upgrade Tech increases the orbital lander's interplanetary movement speed by 200%.": {
+        "message": "La tecnologia per il miglioramento dell'Astraeus aumenta del 200% la velocità di movimento interplanetaria del lander orbitale."
+    },
+    "Atlas Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Atlas"
+    },
+    "Atlas Upgrade Tech increases the health of the seismic titan by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'Atlas aumenta del 50% la salute del titano sismico."
+    },
+    "Avenger Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Avenger"
+    },
+    "Avenger Upgrade Tech replaces the orbital fighter's laser with an orbital battleship laser.": {
+        "message": "La tecnologia per il miglioramento dell'Avenger sostituisce il laser del caccia orbitale con un laser da corazzata orbitale."
+    },
+    "Barnacle Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Barnacle"
+    },
+    "Barnacle Upgrade Tech allows the assisting of all builds by the support barge.": {
+        "message": "La tecnologia per il miglioramento del Barnacle permette alla chiatta di supporto di assistere tutte le costruzioni."
+    },
+    "Barracuda Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Barracuda"
+    },
+    "Barracuda Upgrade Tech increases the rate of fire of the submarine by 200%, but it fires in bursts and requires energy to recharge.": {
+        "message": "La tecnologia per il potenziamento del Barracuda aumenta del 200% il rateo di fuoco del sottomarino, ma spara raffiche e necessita di energia per ricaricare."
+    },
+    "Baseline": {
+        "message": "Base"
+    },
+    "Basic Air Tech": {
+        "message": "Tecnologia Aerea Normale"
+    },
+    "Basic Bot Tech": {
+        "message": "Tecnologia Bot Normale"
+    },
+    "Basic Bot tech enables building of basic Bots and basic Bot Factories. Basic Bot factories are built via your commander or any basic fabricator.": {
+        "message": "La tecnologia Bot Normale consente la costruzione di bot normali e di fabbriche bot normali. Le fabbriche bot normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale."
+    },
+    "Basic Vehicle Tech": {
+        "message": "Tecnologia Veicoli Normale"
+    },
+    "Basic Vehicle tech enables building of basic vehicle and basic vehicle factories. Basic vehicle factories are built via your commander or any basic fabricator.": {
+        "message": "La tecnologia Veicoli normale consente la costruzione di veicoli normali e di fabbriche di veicoli normali. Le fabbriche di veicoli normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale."
+    },
+    "Basic air tech enables building of mobile air units and factories. Basic air factories are built via your commander or any basic fabricator.": {
+        "message": "La tecnologia Aerea Normale consente la costruzione di unità aeree normali e di fabbriche. Le fabbriche aeree normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale."
+    },
+    "Bluehawk Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Bluehawk"
+    },
+    "Bluehawk Upgrade Tech doubles the number of tactical missiles Bluehawks fire per volley.": {
+        "message": "La tecnologia per il miglioramento del Bluehawk raddoppia il numero di missili tattici lanciati dai Bluehawk a ogni salva."
+    },
+    "Boom Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Boom"
+    },
+    "Boom Upgrade Tech replaces Dox with Booms in the Lob.": {
+        "message": "La tecnologia per il miglioramento del Boom sostituisce Dox con dei Boom nel Lob."
+    },
+    "Bot Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica bot avanzata"
+    },
+    "Bot Factory Upgrade Tech enables the building of advanced units by basic bot manufacturing.": {
+        "message": "La tecnologia per il miglioramento della fabbrica bot avanzata permette alla manifattura bot normale di costruire unità avanzate."
+    },
+    "Bounties": {
+        "message": "Ricompense"
+    },
+    "Bronze": {
+        "message": "Bronzo"
+    },
+    "Build faster": {
+        "message": "Costruisci più rapidamente"
+    },
+    "Bumblebee Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Bumblebee"
+    },
+    "Bumblebee Upgrade Tech causes the carpet bomber to drop a mine instead of bombs.": {
+        "message": "La tecnologia per il miglioramento del Bumblebee fa sganciare al bombardiere a tappeto una mina invece che bombe."
+    },
+    "Casual": {
+        "message": "Casual"
+    },
+    "Catalyst Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Catalyst"
+    },
+    "Catalyst Upgrade Tech increases the health of the Catalyst by 75%, enough to survive a nuclear blast.": {
+        "message": "La tecnologia per il miglioramento del Catalyst aumenta del 75% la salute del Catalyst per farlo sopravvivere a un'esplosione nucleare."
+    },
+    "Catapult Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Catapult"
+    },
+    "Catapult Upgrade Tech adds flak from the Storm flak tank to the tactical missile launcher.": {
+        "message": "La tecnologia per il miglioramento del Catapult aggiunge flak dal carro Flak Storm al lanciamissili tattico."
+    },
+    "Chrono Cam": {
+        "message": "Cronovisuale"
+    },
+    "Colonel Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Colonel"
+    },
+    "Colonel Upgrade Tech causes support commanders to explode on death.": {
+        "message": "La tecnologia per il miglioramento del Colonel fa esplodere i comandanti di supporto quando muoiono."
+    },
+    "Commander Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Comandante"
+    },
+    "Commander Upgrade Tech increases Uber Cannon damage to structures and commanders by 300%.": {
+        "message": "La tecnologia per il miglioramento del Comandante aumenta del 300% i danni inferti dal cannone Uber alle strutture a ai Comandanti."
+    },
+    "Commanders enhanced": {
+        "message": "Comandanti potenziati"
+    },
+    "Complete Air Tech": {
+        "message": "Tecnologia Aerea Completa"
+    },
+    "Complete Bot Tech": {
+        "message": "Tecnologia Bot Completa"
+    },
+    "Complete Bot tech enables building of all Bots and all Bot Factories. Basic Bot factories are built via your commander or any basic fabricator. Advanced Bot factories are built via basic or advanced bot fabricators.": {
+        "message": "La tecnologia Robotica Completa consente la costruzione di tutti i bot e di tutte le fabbriche bot. Le fabbriche bot normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale. Le fabbriche bot avanzate dai fabbricatori bot normali o avanzati."
+    },
+    "Complete Naval Tech": {
+        "message": "Tecnologia Navale Completa"
+    },
+    "Complete Naval Tech enables building of all naval units and all naval factories. Basic naval factories are built via your commander or any basic fabricator. Advanced naval factories are built via basic or advanced naval fabricators.": {
+        "message": "La tecnologia Navale Completa consente la costruzione di tutte le unità navali e di tutte le fabbriche navali. Le fabbriche navali normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale. Le fabbriche navali avanzate dai fabbricatori navali normali o avanzati."
+    },
+    "Complete Orbital Tech": {
+        "message": "Tecnologia Orbitale Completa"
+    },
+    "Complete Orbital Tech enables building of all orbital units and all orbital Factories. Orbital launchers are built by any basic fabricator. Orbital factories are built via an orbital fabricator.": {
+        "message": "La tecnologia Orbitale Completa consente la costruzione di tutte le unità orbitali e di tutte le fabbriche orbitali. I lanciatori orbitali sono costruiti da qualsiasi fabbricatore normale. Le fabbriche orbitali dai fabbricatori orbitali."
+    },
+    "Complete Vehicle Tech": {
+        "message": "Tecnologia Veicoli Completa"
+    },
+    "Complete Vehicle tech enables building of all Vehicle and all Vehicle Factories. Basic Vehicle factories are built via your commander or any basic fabricator. Advanced Vehicle factories are built via basic or advanced vehicle fabricators.": {
+        "message": "La tecnologia Veicoli Completa consente la costruzione di tutti i veicoli e di tutte le fabbriche di veicoli. Le fabbriche di veicoli normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale. Le fabbriche di veicoli avanzate dai fabbricatori di veicoli normali o avanzati."
+    },
+    "Complete air tech enables building of all mobile air units and factories. Basic air factories are built via your commander or any basic fabricator. Advanced factories are built via a basic or advanced vehicle fabricator.": {
+        "message": "La tecnologia Aerea Completa consente la costruzione di tutte le unità aeree mobili e di tutte le fabbriche aeree. Le fabbriche aeree normali sono costruite dal tuo Comandante o da qualsiasi fabbricatore normale. Le fabbriche aeree avanzate dai fabbricatori aerei normali o avanzati."
+    },
+    "Contains 16 data banks. Alas, travelling light means you start with only the most basic of bots.": {
+        "message": "Include 16 banche dati. Purtroppo, viaggiare leggeri significa che inizi solo coi bot più elementari."
+    },
+    "Contains every factory on every tier of the tech tree, but this has left no space for anything else. You will need to seek out additional data banks.": {
+        "message": "Include ogni fabbrica di ogni ramo dell'albero tecnologico, ma non lascia spazio per altro. Dovrai cercare altre banche dati."
+    },
+    "Continue Tutorial": {
+        "message": "Prosegui il tutorial"
+    },
+    "Continue War": {
+        "message": "Continua la guerra"
+    },
+    "Costs decreased": {
+        "message": "Costi ridotti"
+    },
+    "Custom": {
+        "message": "Personalizzato"
+    },
+    "Damage increased": {
+        "message": "Danni aumentati"
+    },
+    "Defense Tech Commander": {
+        "message": "Comandate tecnologico difensivo"
+    },
+    "Defenses are 50% cheaper, fire 25% faster, have 50% more range, and turn 300% quicker. Barriers are 90% cheaper and have their health doubled. All defenses can be built by both the commander and basic fabricators.": {
+        "message": "Le difese costano il 50% in meno, sparano il 25% più velocemente, hanno il 50% di portata in più e ruotano il 300% più rapidamente. Le barriere costano il 90% in meno e la loro salute è raddoppiata. Tutte le difese possono essere costruite sia dal Comandante che dai fabbricatori normali."
+    },
+    "Diamond": {
+        "message": "Diamante"
+    },
+    "Difficulty:": {
+        "message": "Difficoltà:"
+    },
+    "Dismiss Tech": {
+        "message": "Accantona tecnologia"
+    },
+    "Display the original pre-release Galactic War lore in the Planetary Intelligence panel.": {
+        "message": "Mostra la storia originale pre-rilascio della guerra galattica nel pannello Spionaggio planetario."
+    },
+    "Dox Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Dox"
+    },
+    "Dox Upgrade Tech replaces the basic infantry's bullet weapons with flamethrowers.": {
+        "message": "La tecnologia per il miglioramento dei Dox sostituisce le armi a proiettili della fanteria di base con dei lanciafiamme."
+    },
+    "Drifter Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Drifter"
+    },
+    "Drifter Upgrade Tech increases the range of hover tank attacks by 25%.": {
+        "message": "La tecnologia per il miglioramento del Drifter aumenta del 25% la portata degli attacchi dell'elicarro."
+    },
+    "Each faction has its own style of play affecting Sub Commanders and enemy commanders:<br>Legonis Machina: vehicles<br>Foundation: air/navy<br>Synchronous: bots<br>Revenants: orbital<br>Cluster: land": {
+        "message": "Ogni fazione ha il suo stile di gioco, che influisce sui Subcomandanti e i comandanti nemici:<br>Legonis Machina: veicoli<br>Fondazione: aria<br>Sincrono: bot<br>Revenants: orbitale<br>Cluster: terra"
+    },
+    "Easier start": {
+        "message": "Partenza più facile"
+    },
+    "Enables the building of the Planetary Radar which provides complete planetary radar coverage.": {
+        "message": "Permette la costruzione del radar planetaria, che fornisce una copertura radar planetaria completa."
+    },
+    "Energy Plant Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della Centrale energetica"
+    },
+    "Energy Plant Upgrade Tech increases the energy production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "La tecnologia per il miglioramento della Centrale energetica aumenta del 25% la produzione d'energia di questa struttura economica, ma ne riduce del 50% la salute."
+    },
+    "Energy Storage Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del deposito di energia"
+    },
+    "Energy Storage Upgrade Tech increases the amount of energy storage by 300%.": {
+        "message": "La tecnologia per il miglioramento del deposito di energia aumenta del 300% la capacità del deposito."
+    },
+    "Epic": {
+        "message": "Epico"
+    },
+    "Fabrication Aircraft Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del velivolo fabbricatore"
+    },
+    "Fabrication Aircraft Upgrade Tech enables the building of advanced structures by the basic air fabricator.": {
+        "message": "La tecnologia per il miglioramento del velivolo fabbricatore permette al fabbricatore aereo normale di creare strutture avanzate."
+    },
+    "Fabrication Bot Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del bot fabbricatore"
+    },
+    "Fabrication Bot Upgrade Tech enables the building of advanced structures by the basic bot fabricator.": {
+        "message": "La tecnologia per il miglioramento del bot fabbricatore permette al fabbricatore bot normale di creare strutture avanzate."
+    },
+    "Fabrication Ship Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della nave fabbricatrice"
+    },
+    "Fabrication Ship Upgrade Tech enables the building of advanced structures by the basic naval fabricator.": {
+        "message": "La tecnologia per il miglioramento della nave fabbricatrice permette al fabbricatore navale normale di creare strutture avanzate."
+    },
+    "Fabrication Vehicle Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del veicolo fabbricatore"
+    },
+    "Fabrication Vehicle Upgrade Tech enables the building of advanced structures by the basic vehicle fabricator.": {
+        "message": "La tecnologia per il miglioramento del veicolo fabbricatore permette al fabbricatore di veicoli normale di creare strutture avanzate."
+    },
+    "Factories build fabricators and fabricators build units.": {
+        "message": "Le fabbriche producono fabbricatori che, a loro volta, creano le unità."
+    },
+    "Firefly Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Firefly"
+    },
+    "Firefly Upgrade Tech adds a low powered laser to the air scout and increases its vision by 100%.": {
+        "message": "La tecnologia per il miglioramento del Firefly aggiunge un laser a bassa intensità all'esploratore aereo e aumenta del 100% la sua visuale."
+    },
+    "Flak Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Flak"
+    },
+    "Flak Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "La tecnologia per il miglioramento del Flak consente alla difesa antiaerea di puntare le unità terrestri e quelle navali sulla superficie dell'acqua."
+    },
+    "Galactic War Overhaul": {
+        "message": "Revisione guerra galattica"
+    },
+    "Galata Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Galata"
+    },
+    "Galata Upgrade Tech enables the targeting of land and surface naval units by anti-air defense.": {
+        "message": "La tecnologia per il miglioramento del Galata consente alla difesa antiaerea di puntare le unità terrestri e quelle navali sulla superficie dell'acqua."
+    },
+    "Game Modifiers": {
+        "message": "Modificatori partita"
+    },
+    "Game Settings": {
+        "message": "Impostazioni partita"
+    },
+    "Game Stats": {
+        "message": "Statistiche partita"
+    },
+    "Gigantic": {
+        "message": "Gigante"
+    },
+    "Gil-E Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Gil-E"
+    },
+    "Gil-E Upgrade Tech allows the sniper's shots to pass through terrain and hit their target instantly.": {
+        "message": "La tecnologia per il miglioramento del Gil-E permette ai colpi del cecchino di attraversare il terreno e colpire istantaneamente il bersaglio."
+    },
+    "Grenadier Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Grenadier"
+    },
+    "Grenadier Upgrade Tech replaces this fire support's artillery with mine launchers, triples its cost and reduces its rate of fire by 75%.": {
+        "message": "La tecnologia per il miglioramento del Grenadier sostituisce l'artiglieria di questo supporto con dei lanciamine, ne triplica il costo e riduce del 75% il suo rateo di fuoco."
+    },
+    "Halley Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Halley"
+    },
+    "Halley Upgrade Tech increases the health of the delta V engine by 75%, enough to survive a nuclear blast.": {
+        "message": "La tecnologia per il miglioramento dell'Halley aumenta del 75% la salute del Delta V Engine per farlo sopravvivere a un'esplosione nucleare."
+    },
+    "Hardcore mode": {
+        "message": "Modalità Hardcore"
+    },
+    "Health increased": {
+        "message": "Salute aumentata"
+    },
+    "Helios Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Helios"
+    },
+    "Helios Upgrade Tech removes the delay between the invasion titan arriving at a planet and responding to orders.": {
+        "message": "La tecnologia per il miglioramento dell'Helios rimuove il ritardo fra il momento in cui i titani invadono un pianeta e quello in cui rispondono agli ordini."
+    },
+    "Hermes Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Hermes"
+    },
+    "Hermes Upgrade Tech increases the vision of the space probe by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'Hermes aumenta del 50% la visuale della sonda spaziale."
+    },
+    "Holkins Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Holkins"
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the advanced artillery while also tripling their deviation from target.": {
+        "message": "La tecnologia per il miglioramento dell'Holkins triplica il numero di colpi sparati dall'artiglieria avanzata a ogni salva, triplicando anche la loro deviazione dal bersaglio."
+    },
+    "Holkins Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "La tecnologia per il miglioramento dell'Holkins triplica il numero di colpi sparati dall'artiglieria a ogni salva, triplicando anche la loro deviazione dal bersaglio."
+    },
+    "Hornet Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Hornet"
+    },
+    "Hornet Upgrade Tech adds splash damage to the tactical bomber's attacks.": {
+        "message": "La tecnologia per il miglioramento dell'Hornet aggiunge danni radiali agli attacchi del bombardiere tattico."
+    },
+    "Horsefly Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Horsefly"
+    },
+    "Horsefly Upgrade Tech adds the Bumblebee carpet bomber's weapon to the strafer.": {
+        "message": "La tecnologia per il miglioramento dell'Horsefly aggiunge l'arma del bombardiere a tappeto Bumblebee allo strafer."
+    },
+    "Hummingbird Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Hummingbird"
+    },
+    "Hummingbird Upgrade Tech adds the ability for fighters to move between planets.": {
+        "message": "La tecnologia per il miglioramento dell'Hummingbird aggiunge ai caccia la possibilità di spostarsi fra i pianeti."
+    },
+    "Icarus Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Icarus"
+    },
+    "Icarus Upgrade Tech adds production of 2 metal to the solar drone.": {
+        "message": "La tecnologia per il miglioramento dell'Icarus aggiunge la produzione di 2 metalli al drone solare."
+    },
+    "Inferno Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Inferno"
+    },
+    "Inferno Upgrade Tech allows the flame tank to heal itself.": {
+        "message": "La tecnologia per il miglioramento dell'Inferno permette al carro lanciafiamme di ripararsi da solo."
+    },
+    "Iron": {
+        "message": "Ferro"
+    },
+    "Jig Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Jig"
+    },
+    "Jig Upgrade Tech removes friendly damage from gas mining explosions.": {
+        "message": "La tecnologia per il miglioramento del Jig riduce i danni involontari causati delle esplosioni mentre viene estratto il gas."
+    },
+    "Kaiju Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Kaiju"
+    },
+    "Kaiju Upgrade Tech enables the use of teleporters by hover destroyers.": {
+        "message": "La tecnologia per il miglioramento del Kaiju permette agli elidistruttori di usare i teleporter."
+    },
+    "Kestrel Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Kestrel"
+    },
+    "Kestrel Upgrade Tech replaces the gunship's bullet weapons with flamethrowers.": {
+        "message": "La tecnologia per il miglioramento del Kestrel sostituisce le armi a proiettili dell'elicottero pesante con un lanciafiamme."
+    },
+    "Kraken Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Kraken"
+    },
+    "Kraken Upgrade Tech increases the range of the advanced submarine's missiles by 100%.": {
+        "message": "La tecnologia per il miglioramento del Kraken aumenta del 100% la portata dei missili del sottomarino avanzato."
+    },
+    "Land Anywhere": {
+        "message": "Atterra ovunque"
+    },
+    "Large": {
+        "message": "Grande"
+    },
+    "Laser Defense Tower Upgrade Tech": {
+        "message": "Tecnologia per il potenziamento della torretta laser difensiva"
+    },
+    "Laser Defense Tower Upgrade Tech increases the range of the turret by 25%.": {
+        "message": "La tecnologia per il miglioramento della torretta laser aumenta del 25% la portata della torretta."
+    },
+    "Leveler Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Leveler"
+    },
+    "Leveler Upgrade Tech enables the building of assault tanks by the Unit Cannon.": {
+        "message": "La tecnologia per il miglioramento del Leveler permette all'unità cannone di costruire carri d'assalto."
+    },
+    "Leviathan Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Leviathan"
+    },
+    "Leviathan Upgrade Tech replaces the battleship's cannons with Holkins advanced artillery.": {
+        "message": "La tecnologia per il miglioramento del Leviathan sostituisce i cannoni della corazzata con l'artiglieria avanzata Holkins."
+    },
+    "Lob Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Lob"
+    },
+    "Lob Upgrade Tech increases the range of the Lob by 150%.": {
+        "message": "La tecnologia per il miglioramento del Lob aumenta del 150% la portata del Lob."
+    },
+    "Locusts Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dei Locusts"
+    },
+    "Locusts Upgrade Tech doubles the vision radius of nanoswarms.": {
+        "message": "La tecnologia per il miglioramento dei Locusts raddoppia il raggio di visione dei nanoswarm."
+    },
+    "Manhattan Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Manhattan"
+    },
+    "Manhattan Upgrade Tech doubles the radius of the mobile nuke's explosion.": {
+        "message": "La tecnologia per il miglioramento del Manhattan raddoppia il raggio dell'esplosione dell'atomica mobile."
+    },
+    "Marathon": {
+        "message": "Maratona"
+    },
+    "Medium": {
+        "message": "Medio"
+    },
+    "Mend Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Mend"
+    },
+    "Mend Upgrade Tech allows the assisting of all builds by the advanced combat fabricator.": {
+        "message": "La tecnologia per il miglioramento del Mend permette al fabbricatore da combattimento avanzato di assistere tutte le costruzioni."
+    },
+    "Metal Clusters:": {
+        "message": "Ammassi di metallo:"
+    },
+    "Metal Density:": {
+        "message": "Densità metallo:"
+    },
+    "Metal Extractor Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'estrattore"
+    },
+    "Metal Extractor Upgrade Tech increases the metal production of this basic economy structure by 25% but decreases its health by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'estrattore aumenta del 25% la produzione di metallo di questa struttura economica, ma ne riduce del 50% la salute."
+    },
+    "Metal Spots:": {
+        "message": "Giacimenti metalliferi:"
+    },
+    "Metal Storage Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del deposito di metallo"
+    },
+    "Metal Storage Upgrade Tech increases the amount of metal storage by 300%.": {
+        "message": "La tecnologia per il miglioramento del deposito di metallo aumenta del 300% la capacità del deposito."
+    },
+    "Mine Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della mina"
+    },
+    "Mine Upgrade Tech allows mines to explode without self-destructing.": {
+        "message": "La tecnologia per il miglioramento della mina permette alle mine di esplodere senza autodistruggersi."
+    },
+    "Modifies Jigs to allow building them anywhere, at the expense of not being able to build other resource structures. They are 75% cheaper but produce 30% less metal and energy and do 90% less damage on death. Orbital fabricators can build all basic structures. Contains all basic and advanced orbital units but can never build Omegas, any resource generating unit or structure, or Sub Commanders.": {
+        "message": "Modifica i Jig per poterli costruire ovunque, ma impedendo di costruire altre strutture di risorse. Questo comandante inizia con alcune unità orbitali. Costano il 75% in meno ma producono il 30% in meno di metallo ed energia e, quando muoiono, infliggono il 90% di danni in meno. I fabbricatori orbitali possono costruire tutte le strutture normali. Include tutte le unità orbitali normali e avanzate ma non può costruire gli Omega, qualsiasi unità o struttura che generi risorse o i Subcomandanti."
+    },
+    "Modifies Metal Extractors to enable building them anywhere at 150% the cost and 50% efficiency. Starts with basic vehicles.": {
+        "message": "Modifica gli estrattori di metallo per poterli costruire ovunque al 150% del costo e al 50% dell'efficienza. Inizia con dei veicoli di base."
+    },
+    "Narwhal Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Narwhal"
+    },
+    "Narwhal Upgrade Tech adds a torpedo launcher to the frigate.": {
+        "message": "La tecnologia per il miglioramento del Narwhal aggiunge un lanciasiluri alla fregata."
+    },
+    "Naval Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica navale"
+    },
+    "Naval Factory Upgrade Tech enables the building of advanced units by basic naval manufacturing.": {
+        "message": "La tecnologia per il miglioramento della fabbrica navale permette alla manifattura navale normale di costruire unità avanzate."
+    },
+    "Nuclear Missile Launcher Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del lanciamissili nucleare"
+    },
+    "Nuclear Missile Launcher Upgrade Tech doubles the damage dealt to commanders by LR-96 Pacifier Nuclear Missiles.": {
+        "message": "La tecnologia per il miglioramento del lanciamissili nucleare raddoppia i danni inflitti dai missili nucleari LR-96 Pacifier ai Comandanti."
+    },
+    "Omega Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Omega"
+    },
+    "Omega Upgrade Tech replaces the orbital battleship's anti-ground laser with an anti-ground drone launcher.": {
+        "message": "La tecnologia per il miglioramento dell'Omega sostituisce il laser anti-terra di questa corazzata con un lanciadroni anti-terra."
+    },
+    "Options:": {
+        "message": "Opzioni:"
+    },
+    "Orbital Fabrication Bot Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del bot fabbricatore orbitale"
+    },
+    "Orbital Fabrication Bot Upgrade Tech allows the orbital fabricator to build all basic structures.": {
+        "message": "La tecnologia per il miglioramento del bot fabbricatore orbitale permette al fabbricatore orbitale di costruire tutte le strutture normali."
+    },
+    "Orbital Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica orbitale"
+    },
+    "Orbital Factory Upgrade Tech decreases advanced orbital unit costs by 25% but also decreases the factory's health by 50%.": {
+        "message": "La tecnologia per il miglioramento della fabbrica orbitale riduce del 25% il costo dell'unità orbitale avanzata, ma riduce anche del 50% la salute della fabbrica."
+    },
+    "Orbital Launcher Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del lanciatore orbitale"
+    },
+    "Orbital Launcher Upgrade Tech enables the building of advanced units by basic orbital manufacturing.": {
+        "message": "La tecnologia per il miglioramento del lanciatore orbitale permette alla manifattura orbitale normale di costruire unità avanzate."
+    },
+    "Orca Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Orca"
+    },
+    "Orca Upgrade Tech changes the destroyer to a water hover unit, preventing torpedoes from targeting it and allowing the navigation of shallow waters. Surface weapon range is increased by 50%.": {
+        "message": "La tecnologia per il miglioramento dell'Orca trasforma il distruttore in unità che scivola sulla superficie dell'acqua, impedendo ai siluri di puntarla e permettendole di navigare nelle acque poco profonde. La portata dell'arma di superficie aumenta del 50%."
+    },
+    "POV Camera": {
+        "message": "Visuale soggettiva"
+    },
+    "Pause Game": {
+        "message": "Pausa"
+    },
+    "Pelican Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Pelican"
+    },
+    "Pelican Upgrade Tech allows air transports to carry commanders.": {
+        "message": "La tecnologia per il miglioramento del Pelican permette ai trasporti aerei di prendere a bordo i Comandanti."
+    },
+    "Percentage chance per star, per faction, of a FFA occurring.": {
+        "message": "Percentuale di probabilità di LT per stella per fazione."
+    },
+    "Phoenix Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Phoenix"
+    },
+    "Phoenix Upgrade Tech changes the advanced interplanetary fighter's weapon from anti-air to anti-ground.": {
+        "message": "La tecnologia per il miglioramento del Phoenix cambia l'arma del caccia interplanetario avanzato da antiaerea ad anti-terra."
+    },
+    "Piranha Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Piranha"
+    },
+    "Piranha Upgrade Tech changes the gunboat into a hover unit, allowing it to cross land and lava.": {
+        "message": "La tecnologia per il miglioramento del Piranha trasforma la cannoniera in unità hover, permettendole di volteggiare sulla terra e la lava."
+    },
+    "Planetary Radar": {
+        "message": "Radar planetario"
+    },
+    "Planetary Radar - Detects enemy land, sea, and air units across the planet.": {
+        "message": "Radar planetario - Rileva unità nemiche terrestri, marine e aeree in tutto il pianeta."
+    },
+    "Planetary Radar Tech": {
+        "message": "Tecnologia Radar planetario"
+    },
+    "Planetary Radar Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del radar planetario"
+    },
+    "Player Guide": {
+        "message": "Guida per il giocatore"
+    },
+    "Queller AI (beta)": {
+        "message": "IA Queller (beta)"
+    },
+    "Quit": {
+        "message": "Abbandona"
+    },
+    "Radar Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del radar"
+    },
+    "Radar Upgrade Tech increases the vision and radar radius of basic radar by 50%.": {
+        "message": "La tecnologia per il miglioramento del radar aumenta del 50% la visione e il raggio del radar del radar normale."
+    },
+    "Radius:": {
+        "message": "Raggio:"
+    },
+    "Ragnarok Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Ragnarok"
+    },
+    "Ragnarok Upgrade Tech allows the titan structure to annihilate all life on a planet while leaving the planet itself intact. It may take up to 30 seconds before you can land safely after detonation.": {
+        "message": "La tecnologia per il miglioramento del Ragnarok permette alla struttura titano di annientare ogni forma di vita sul pianeta, lasciandone la superficie intatta. Dopo la detonazione, possono passare fino a 30 secondi prima di poter atterrare in sicurezza."
+    },
+    "Replaces the Titans AI with the Queller AI. Decreases faction and personality differentiation. Does not require that the mod be installed.": {
+        "message": "Sostituisce l'IA dei titani con l'IA del Queller. Riduce la differenziazione fra fazioni e personalità. Non richiede l'installazione del mod."
+    },
+    "Reroll Tech": {
+        "message": "Rimescola tecnologia"
+    },
+    "Reroll the data caches but get offered one less.": {
+        "message": "Rimescola le cache di dati ma ricevi un'offerta in meno."
+    },
+    "Ridiculous": {
+        "message": "Ridicolo"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech": {
+        "message": "Tecnologia per il potenziamento della piattaforma laser SXX-1304"
+    },
+    "SXX-1304 Laser Platform Upgrade Tech removes the delay between orbital laser platforms arriving at a planet and responding to orders.": {
+        "message": "La tecnologia per il potenziamento della piattaforma laser SXX-1304 elimina l'intervallo fra il momento in cui le piattaforme laser orbitali arrivano sul pianeta e quello in cui rispondono agli ordini."
+    },
+    "Sheller Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Sheller"
+    },
+    "Sheller Upgrade Tech causes mines to be left by the mortar tank's attacks.": {
+        "message": "La tecnologia per il miglioramento dello Sheller fa lasciare mine agli attacchi del carro con mortaio."
+    },
+    "Silver": {
+        "message": "Argento"
+    },
+    "Single Laser Defense Tower Upgrade Tech": {
+        "message": "Tecnologia per il potenziamento della torretta laser difensiva singola"
+    },
+    "Single Laser Defense Tower Upgrade Tech replaces the basic turret's laser with a fabrication arm which repairs units and reclaims wreckage within range.": {
+        "message": "La tecnologia per il potenziamento della torretta laser difensiva singola sostituisce il laser normale della torretta con un braccio fabbricatore che ripara le unità e raccoglie i rottami presenti all'interno del suo raggio d'azione."
+    },
+    "Size:": {
+        "message": "Dimensioni:"
+    },
+    "Skitter Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Skitter"
+    },
+    "Skitter Upgrade Tech adds a low powered laser to the land scout and increases its vision by 100%.": {
+        "message": "La tecnologia per il miglioramento dello Skitter aggiunge un laser a bassa intensità all'esploratore terrestre e aumenta del 100% la sua visuale."
+    },
+    "Slammer Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Slammer"
+    },
+    "Slammer Upgrade Tech changes the advanced assault bot's torpedo into a rocket that targets surface units.": {
+        "message": "La tecnologia per il miglioramento dello Slammer cambia il siluro del bot d'assalto avanzato con un razzo che punta le unità di superficie."
+    },
+    "Small": {
+        "message": "Piccolo"
+    },
+    "Solar Array Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello schieramento solare"
+    },
+    "Solar Array Upgrade Tech enables interception of tactical missiles and drop pods by the Solar Array.": {
+        "message": "La tecnologia per il miglioramento dello schieramento solare permette allo schieramento solare di intercettare i missili tattici e le capsule sganciate."
+    },
+    "Spark Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Spark"
+    },
+    "Spark Upgrade Tech doubles the tesla bot's splash damage radius.": {
+        "message": "La tecnologia per il miglioramento dello Spark raddoppia il raggio dei danni radiali del bot Tesla."
+    },
+    "Speed increased": {
+        "message": "Velocità aumentata"
+    },
+    "Spinner Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Spinner"
+    },
+    "Spinner Upgrade Tech increases the mobile anti-air's rate of fire by 100%.": {
+        "message": "La tecnologia per il miglioramento dello Spinner aumenta del 100% il rateo di fuoco dell'unità antiaerea mobile."
+    },
+    "Squall Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Squall"
+    },
+    "Squall Upgrade Tech increases the lifespan of drones by 50%.": {
+        "message": "La tecnologia per il miglioramento dello Squall aumenta del 50% la durata della vita dei droni."
+    },
+    "Stinger Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Stinger"
+    },
+    "Stinger Upgrade Tech replaces the anti-air bot's missiles with flak from the Flak Cannon. It fires two projectiles per volley as opposed to the Flak Cannons' four.": {
+        "message": "La tecnologia per il miglioramento dello Spinner sostituisce i missili del bot antiaereo coi proiettili del cannone Flak. Spara due proiettili alla volta, invece dei quattro del cannone Flak."
+    },
+    "Stingray Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Stingray"
+    },
+    "Stingray Upgrade Tech enables interception of tactical missiles by the missile ship and increases vision and radar radius by 50%.": {
+        "message": "La tecnologia per il miglioramento dello Stingray permette alla nave missilistica di intercettare i missili tattici e aumenta del 50% visuale e raggio del radar."
+    },
+    "Stitch Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Stitch"
+    },
+    "Stitch Upgrade Tech allows the assisting of all builds by the combat fabricator.": {
+        "message": "La tecnologia per il miglioramento dello Stitch permette al fabbricatore da combattimento di assistere tutte le costruzioni."
+    },
+    "Storm Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Storm"
+    },
+    "Storm Upgrade Tech enables interception of tactical missiles by the flak tank.": {
+        "message": "La tecnologia per il miglioramento dello Storm permette al carro Flak di intercettare i missili tattici."
+    },
+    "Stryker Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Stryker"
+    },
+    "Stryker Upgrade Tech increases the rate of fire of the attack vehicle by 300%, but it fires in bursts and requires energy to recharge.": {
+        "message": "La tecnologia per il potenziamento dello Stryker aumenta del 300% il rateo di fuoco del veicolo d'attacco, ma spara raffiche e necessita di energia per ricaricare."
+    },
+    "Sudden Death": {
+        "message": "Morte improvvisa"
+    },
+    "Super Weapon Fabrication Tech": {
+        "message": "Tecnologia Produzione Super Arma"
+    },
+    "Super Weapon Fabrication Tech reduces metal build costs of all nuclear missiles, Halley Rockets, and metal planet control modules by 75%. Tech to build super weapons is required.": {
+        "message": "La tecnologia Produzione Super Arma riduce del 75% il costo in metallo di tutti i missili nucleari, razzi di Halley e dei moduli di controllo dei pianeti metallici. È necessaria la tecnologia per costruire le super armi."
+    },
+    "Surrender": {
+        "message": "Arrenditi"
+    },
+    "System Lore": {
+        "message": "Storia del sistema"
+    },
+    "System Scaling": {
+        "message": "Ingrandimento sistema"
+    },
+    "System scaling": {
+        "message": "Ingrandimento sistema"
+    },
+    "System size determined by distance into the galaxy.": {
+        "message": "Le dimensioni del sistema sono determinate dalla distanza nella galassia."
+    },
+    "Teleporter Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Teleporter"
+    },
+    "Teleporter Upgrade Tech removes all energy consumption and efficiency requirements from the interplanetary teleporter and makes it invisible to radar.": {
+        "message": "La tecnologia per il miglioramento del Teleporter rimuove ogni consumo d'energia e requisito d'efficienza dal Teleporter interplanetario e lo rende invisibile ai radar."
+    },
+    "Temperature:": {
+        "message": "Temperatura:"
+    },
+    "This Commander likes to raid and has modified its blueprints to that end. Units are twice as fast and 30% cheaper but have damage output decreased by 50%.": {
+        "message": "Questo comandante ama razziare e ha modificato le sue cianografie in tal senso. Le unità sono il doppio più veloci e costano il 30% in meno, ma infliggono il 50% in meno di danni."
+    },
+    "This Commander prefers quality over quantity and has modified its units to that end. 30% more health, 30% more damage and splash, but 25% slower, and with 30% higher build costs.": {
+        "message": "Questo comandante preferisce la qualità alla quantità e ha modificato le sue unità in tal senso. 30% in più di salute, 30% in più di danni e raggio più ampio. Di contro, sono più lente del 25% e la loro costruzione costa il 30% in più."
+    },
+    "Titan": {
+        "message": "Titano"
+    },
+    "Titan Tech": {
+        "message": "Tecnologia Titano"
+    },
+    "Torpedo Launcher Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del lanciasiluri"
+    },
+    "Torpedo Launcher Upgrade Tech enables the targeting of hover and coastal naval units by the Torpedo Launcher.": {
+        "message": "La tecnologia per il miglioramento del lanciasiluri consente al lanciasiluri di puntare le unità navali costiere e sulla superficie dell'acqua."
+    },
+    "Tougher commanders": {
+        "message": "Comandanti più duri"
+    },
+    "Typhoon Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Typhoon"
+    },
+    "Typhoon Upgrade Tech doubles the number of drones held by the Typhoon and any other unit with drones.": {
+        "message": "La tecnologia per il miglioramento del Typhoon raddoppia il numero di droni trasportati dal Typhoon e da ogni altra unità con droni."
+    },
+    "Umbrella Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'Umbrella"
+    },
+    "Umbrella Upgrade Tech enables the targeting of land and surface naval units by anti-orbital defenses.": {
+        "message": "La tecnologia per il miglioramento dell'Umbrella consente alla difesa anti-orbitale di puntare le unità terrestri e quelle navali sulla superficie dell'acqua."
+    },
+    "Unit Cannon Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dell'unità cannone"
+    },
+    "Unit Cannon Upgrade Tech doubles the launch capacity of this interplanetary transport.": {
+        "message": "La tecnologia per il miglioramento dell'unità cannone raddoppia la capacità di lancio di questo mezzo di trasporto interplanetario."
+    },
+    "Unknown Faction": {
+        "message": "Fazione sconosciuta"
+    },
+    "Vanguard Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Vanguard"
+    },
+    "Vanguard Upgrade Tech makes the heavy tank amphibious.": {
+        "message": "La tecnologia per il miglioramento del Vanguard rende anfibio il carro pesante."
+    },
+    "Vast": {
+        "message": "Vasto"
+    },
+    "Vehicle Ammunition Tech": {
+        "message": "Tecnologia Munizioni Veicoli"
+    },
+    "Vehicle Ammunition Tech increases damage of all vehicles by 25%": {
+        "message": "La tecnologia Munizioni Veicoli aumenta del 25% i danni inferti da tutti i veicoli"
+    },
+    "Vehicle Armor Tech": {
+        "message": "Tecnologia Corazza Veicoli"
+    },
+    "Vehicle Armor Tech increases health of all vehicles by 50%": {
+        "message": "La tecnologia Corazza Veicoli aumenta del 50% la salute di tutti i veicoli"
+    },
+    "Vehicle Combat Tech": {
+        "message": "Tecnologia Combattimento Veicoli"
+    },
+    "Vehicle Combat Tech increases speed of all vehicles by 50%, health by 50%, and damage by 25%": {
+        "message": "La tecnologia Combattimento Veicoli aumenta del 50% la velocità, del 50% la salute e del 25% i danni di tutti i veicoli"
+    },
+    "Vehicle Engine Tech": {
+        "message": "Tecnologia Motore Veicoli"
+    },
+    "Vehicle Engine Tech increases speed of all vehicles by 50%": {
+        "message": "La tecnologia Motore Veicoli aumenta del 50% la velocità di tutti i veicoli"
+    },
+    "Vehicle Fabrication Tech": {
+        "message": "Tecnologia Produzione Veicoli"
+    },
+    "Vehicle Fabrication Tech reduces metal build costs of all vehicles by 25%": {
+        "message": "La tecnologia Produzione Veicoli riduce del 25% il costo in metallo della costruzione di tutti i veicoli"
+    },
+    "Vehicle Factory Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento della fabbrica di veicoli"
+    },
+    "Vehicle Factory Upgrade Tech enables the building of advanced units by basic vehicle manufacturing.": {
+        "message": "La tecnologia per il miglioramento della fabbrica di veicoli permette alla manifattura di veicoli normale di costruire unità avanzate."
+    },
+    "Version:": {
+        "message": "Versione:"
+    },
+    "Wall Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del muro"
+    },
+    "Wall Upgrade Tech increases the health of walls by 50%.": {
+        "message": "La tecnologia per il miglioramento del muro aumenta del 50% la salute dei muri."
+    },
+    "Water Depth:": {
+        "message": "Profondità acqua:"
+    },
+    "Water Height:": {
+        "message": "Altezza acqua:"
+    },
+    "Wyrm Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Wyrm"
+    },
+    "Wyrm Upgrade Tech replaces the siege bomber's bombs with drones.": {
+        "message": "La tecnologia per il miglioramento del Wyrm sostituisce le bombe del bombardiere d'assedio con dei droni."
+    },
+    "Your technology bonuses": {
+        "message": "I tuoi bonus tecnologici"
+    },
+    "Zeus Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento dello Zeus"
+    },
+    "Zeus Upgrade Tech adds the ability for the lightning titan to move between planets.": {
+        "message": "La tecnologia per il miglioramento dello Zeus permette al titano elettrico di spostarsi fra i pianeti."
+    },
+    "Combat units enhanced": {
+        "message": "Unità da combattimento potenziate"
+    },
+    "Pelter Upgrade Tech": {
+        "message": "Tecnologia per il miglioramento del Pelter"
+    },
+    "Pelter Upgrade Tech triples the number of shots fired per volley by the artillery while also tripling their deviation from target.": {
+        "message": "La tecnologia per il miglioramento del Pelter triplica il numero di colpi sparati dall'artiglieria a ogni salva, triplicando anche la loro deviazione dal bersaglio."
+    },
+    "All-terrain": {
+        "message": "Fuoristrada"
+    },
+    "Artillery": {
+        "message": "Artiglieria"
+    },
+    "Assault": {
+        "message": "Assalto"
+    },
+    "Boomer": {
+        "message": "Esploditore"
+    },
+    "Fortress": {
+        "message": "Fortezza"
+    },
+    "Heavy": {
+        "message": "Pesante"
+    },
+    "Infernodier": {
+        "message": "Graninferno"
+    },
+    "Meta": {
+        "message": "Meta"
+    },
+    "Nuker": {
+        "message": "Nucleare"
+    },
+    "Omega Upgrade Tech allows all the orbital battleship's lasers to target the planet.": {
+        "message": "La tecnologia per il miglioramento dell'Omega permette di puntare il pianeta con tutti i laser della corazzata orbitale."
+    },
+    "Raider": {
+        "message": "Raider"
+    },
+    "Sniper": {
+        "message": "Cecchino"
+    },
+    "TITANS: base game AI<br>QUELLER: greater challenge at the cost of personality and performance<BR>PENCHANT: increased personality": {
+        "message": "TITANS: IA base<br>QUELLER: una sfida maggiore, a scapito di prestazioni e personalità<BR>PENCHANT: personalità aumentata"
+    },
+    "Starts with a 25% boost to metal and energy production and is able to build metal and energy storage. Unable to build close-range armored tanks.": {
+        "message": "Inizia con un aumento del 25% alla produzione di metallo ed energia ed è in grado di costruire depositi di entrambe le risorse. Non può costruire carri corazzati a corto raggio."
+    }
+}

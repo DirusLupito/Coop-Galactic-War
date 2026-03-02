@@ -1,0 +1,89 @@
+{
+    "ANNIHILATION COMPLETE": {
+        "message": "VERNIETIGING VOLTOOID"
+    },
+    "APM": {
+        "message": "APM"
+    },
+    "Average": {
+        "message": "Gemiddelde"
+    },
+    "Built": {
+        "message": "Gebouwd"
+    },
+    "Destroyed": {
+        "message": "Vernietigd"
+    },
+    "Determining ladder rank...": {
+        "message": "Ladderpositie bepalen..."
+    },
+    "Draw": {
+        "message": "Gelijk spel"
+    },
+    "Duration:": {
+        "message": "Duur:"
+    },
+    "Efficiency": {
+        "message": "Efficiëntie"
+    },
+    "Energy": {
+        "message": "Energie"
+    },
+    "Metal": {
+        "message": "Metaal"
+    },
+    "Produced": {
+        "message": "Geproduceerd"
+    },
+    "QUIT TO MAIN MENU": {
+        "message": "TERUG NAAR HOOFDMENU"
+    },
+    "REVIEW": {
+        "message": "BEKIJKEN"
+    },
+    "Requeue": {
+        "message": "Wachtrij opnieuw betreden"
+    },
+    "SPECTATE": {
+        "message": "TOESCHOUWEN"
+    },
+    "The battle ended in a draw.": {
+        "message": "De strijd eindigde in een gelijkspel."
+    },
+    "The game has ended.": {
+        "message": "Het spel is afgelopen."
+    },
+    "Total Oblivion": {
+        "message": "Totale vernietiging"
+    },
+    "Units": {
+        "message": "Eenheden"
+    },
+    "Used": {
+        "message": "Gebruikt"
+    },
+    "VICTORY IS YOURS": {
+        "message": "U BENT DE WINNAAR"
+    },
+    "VIEW RESULTS": {
+        "message": "RESULTATEN BEKIJKEN"
+    },
+    "VIEW STATS": {
+        "message": "STATISTIEKEN BEKIJKEN"
+    },
+    "Winner:": {
+        "message": "Winnaar:"
+    },
+    "Winners:": {
+        "message": "Winnaars:"
+    },
+    "YOU'VE BEEN ANNIHILATED": {
+        "message": "JE BENT VERNIETIGD"
+    },
+    "You currently have an unknown rank status. Complete more games to determine your ladder ranking.": {
+        "message": "Je positie in de ranglijst is momenteel onbekend. Voltooi meer spellen om je positie op de ladder te bepalen."
+    },
+    "Your 1v1 Ladder rank is __rank_title__.": {
+        "message": "Je positie op de 1v1-ranglijst is __rank_title__."
+    }
+}
