@@ -2599,6 +2599,9 @@ $(document).ready(function () {
 
             self.refreshSettings();
 
+            if (gwCoopMode())
+                api.game.setUnitSpecTag('.player');
+
             ko.observable().extend({ session: 'has_entered_game' })(true);
 
             engine.call('push_mouse_constraint_flag', true);

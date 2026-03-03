@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     // Mark this client session as running through GW coop lobby flow.
     ko.observable(true).extend({ session: 'gw_coop_mode' });
+    api.game.setUnitSpecTag('.player');
 
     // Proof log: helps determine whether this script runs on a client that joined
     // via the multiplayer browser. Look for the string `GW_LOBBY_CLIENT_STARTED`.
@@ -123,6 +124,7 @@ $(document).ready(function() {
 
         api.file.mountMemoryFiles(cookedFiles).then(function() {
             model.gwConfigMounted(true);
+            api.game.setUnitSpecTag('.player');
             console.log('gw_lobby: mounted synced GW files (' + _.keys(cookedFiles).length + ')');
             model.send_message('gw_config_ready', {});
         });
