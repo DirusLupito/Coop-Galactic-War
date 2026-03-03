@@ -39,9 +39,26 @@ function LobbyModel(creator) {
     self.creator = creator.id;
     self.creatorReady = ko.observable();
     self.creatorReady.subscribe(function() {
-        self.changeControl({starting: true});
+        self.tryStart();
     });
     self.creatorDisconnectTimeout = undefined;
+
+    self.tryStart = function() {
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+        var hasCoopPartner = connectedClients.length >= 2;
+        var control = self.control();
+        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && hasCoopPartner;
+
+        if (readyToStart && !control.starting)
+            self.changeControl({ starting: true });
+        else if (!readyToStart && control.starting)
+            self.changeControl({ starting: false });
+
+        if (!!self.creatorReady() && !hasCoopPartner)
+            console.log('GW - Waiting for second player before start');
+    };
 
     self.updateBeacon = function() {
         console.log('Updating beacon');
@@ -308,6 +325,7 @@ function LobbyModel(creator) {
             debug_log('sim.planets.onReady');
             sim.create();
             self.changeControl({ system_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.planets.onReady.pop(); });
@@ -315,6 +333,7 @@ function LobbyModel(creator) {
         utils.pushCallback(sim, 'onReady', function (onReady) {
             debug_log('sim.onReady');
             self.changeControl({ sim_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.onReady.pop(); });
@@ -350,10 +369,12 @@ function LobbyModel(creator) {
 
         utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
             self.updateBeacon();
+            self.tryStart();
             return onDisconnect;
         });
 
         self.updateBeacon();
+        self.tryStart();
         return onConnect;
     });
 
