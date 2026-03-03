@@ -139,18 +139,54 @@ function LobbyModel(creator) {
 
     self.startGame = function() {
         var config = self.config();
-        // Point the non-AI slots at the player
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+
+        // Collect all human-controllable slots from non-AI armies.
+        var humanSlots = [];
+        var firstHumanArmy = null;
         _.forEach(config.armies, function(army) {
-            var ai = _.any(army.slots, 'ai');
-            if (!ai) {
+            var aiArmy = _.any(army.slots, 'ai');
+            if (!aiArmy) {
+                if (!firstHumanArmy)
+                    firstHumanArmy = army;
                 _.forEach(army.slots, function(slot) {
-                    slot.client = creator;
+                    if (!slot.ai)
+                        humanSlots.push(slot);
                 });
             }
         });
+
+        // Ensure enough human slots exist for all connected clients.
+        if (firstHumanArmy && humanSlots.length < connectedClients.length) {
+            var baseSlot = humanSlots[0] || { name: 'Player' };
+            while (humanSlots.length < connectedClients.length) {
+                var extraSlot = _.clone(baseSlot);
+                delete extraSlot.client;
+                delete extraSlot.ai;
+                firstHumanArmy.slots.push(extraSlot);
+                humanSlots.push(extraSlot);
+            }
+        }
+
+        // Map connected humans into human slots.
+        _.forEach(humanSlots, function(slot, index) {
+            if (index < connectedClients.length)
+                slot.client = connectedClients[index];
+            else
+                delete slot.client;
+        });
+
         // Set up the players array for the landing state
         var players = {};
-        players[self.creator] = config.player;
+        _.forEach(connectedClients, function(client) {
+            players[client.id] = _.clone(config.player);
+        });
+
+        console.log('GW - mapped clients to player slots: ' + _.map(connectedClients, function(client) {
+            return client.name + ' (' + client.id + ')';
+        }).join(', '));
 
         var landingConfig =
         {
