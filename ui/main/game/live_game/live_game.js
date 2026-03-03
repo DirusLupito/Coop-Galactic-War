@@ -14,6 +14,7 @@ catch (e) {
 }
 
 $(document).ready(function () {
+    var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
     var idleTime = 0;
 
     api.game.releaseKeyboard(true);
@@ -870,7 +871,7 @@ $(document).ready(function () {
 
         self.player = ko.computed(function () {
             var player = '';
-            if (self.players() && self.players().length && self.armyId()) {
+            if (self.players() && self.players().length && self.armyId() !== undefined) {
                 player = _.find(self.players(), function (player) {
                     return player.id === self.armyId();
                 });
@@ -1402,7 +1403,7 @@ $(document).ready(function () {
         self.armyCount = ko.observable();
 
         self.isSpectator = ko.computed(function () {
-            return !self.armyId() || self.defeated() || self.viewReplay();
+            return self.armyId() === undefined || self.defeated() || self.viewReplay();
         });
 
         // allow spectators to use control groups
@@ -1971,6 +1972,28 @@ $(document).ready(function () {
             var tabs = {};
             var selectionCanBuild = false;
 
+            var resolveUnitSpec = function(id) {
+                var unit = self.unitSpecs[id];
+                if (unit)
+                    return unit;
+
+                // Fallback across tagged/untagged ids:
+                // foo/bar/unit.json.player <-> foo/bar/unit.json
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    unit = self.unitSpecs[strip[1]];
+                    if (unit)
+                        return unit;
+                }
+
+                // If id is untagged, also try common GW tags.
+                unit = self.unitSpecs[id + '.player'] || self.unitSpecs[id + '.ai'];
+                if (unit)
+                    return unit;
+
+                return null;
+            };
+
             self.allowedCommands = {};
 
             self.buildItemMinIndex(0);
@@ -1979,7 +2002,7 @@ $(document).ready(function () {
             self.selectionTypes([]);
 
             for (var id in payload.spec_ids) {
-                var unit = self.unitSpecs[id];
+                var unit = resolveUnitSpec(id);
                 if (!unit)
                     continue;
 
@@ -2540,7 +2563,7 @@ $(document).ready(function () {
                     model.toggleMenu();
                 }
             }
-            else if (model.mode().startsWith('command_'))
+            else if ((model.mode() || '').indexOf('command_') === 0)
                 model.endCommandMode();
             else
                 model.mode('default');
@@ -4055,6 +4078,8 @@ $(document).ready(function () {
             else
                 model.armyId(undefined);
 
+            console.log('LIVE_GAME_ARMY_DEBUG', 'state=' + msg.state, 'armyId=' + model.armyId(), 'viewReplay=' + model.viewReplay());
+
             if (msg.data.client && msg.data.client.vision_bits)
                 handlers.vision_bits(msg.data.client.vision_bits)
 
@@ -4070,7 +4095,7 @@ $(document).ready(function () {
             if (msg.data.armies) {
                 if ((msg.state !== 'replay') && (msg.state !== 'load_replay')) {
                     engine.call('execute', 'army_id', JSON.stringify({
-                        army_id: !!model.armyId() ? model.armyId() : -1,
+                        army_id: model.armyId() === undefined ? -1 : model.armyId(),
                         army_list: _.map(msg.data.armies, function (army) { return army.id; })
                     }));
                 }
@@ -4208,7 +4233,7 @@ $(document).ready(function () {
                 model.itemDetails[id] = new UnitDetailModel(element);
 
                 // If this id has a spec tag, add it as a generic version without a spec tag
-                if (!id.endsWith('.json')) {
+                if (id.slice(-5) !== '.json') {
                     var strip = /.*\.json/.exec(id);
                     if (strip) {
                         var strippedSpecId = strip.pop();
@@ -4719,7 +4744,7 @@ api.debug.log('live_game mount_mod_file_data ' + JSON.stringify(payload));
     api.camera.injectHandlers(handlers);
 
     // inject per scene mods
-    if (scene_mod_list['live_game'])
+    if (scene_mod_list['live_game'] && !gwCoopMode())
         loadMods(scene_mod_list['live_game']);
 
     // setup send/recv messages and signals

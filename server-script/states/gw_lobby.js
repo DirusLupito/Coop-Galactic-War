@@ -37,6 +37,7 @@ function LobbyModel(creator) {
     self.config = ko.observable();
 
     self.creator = creator.id;
+    self.clientConfigReady = {};
     self.creatorReady = ko.observable();
     self.creatorReady.subscribe(function() {
         self.tryStart();
@@ -48,8 +49,11 @@ function LobbyModel(creator) {
             return client.connected;
         });
         var hasCoopPartner = connectedClients.length >= 2;
+        var allConfigReady = _.every(connectedClients, function(client) {
+            return !!self.clientConfigReady[client.id];
+        });
         var control = self.control();
-        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && hasCoopPartner;
+        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && hasCoopPartner && allConfigReady;
 
         if (readyToStart && !control.starting)
             self.changeControl({ starting: true });
@@ -58,6 +62,8 @@ function LobbyModel(creator) {
 
         if (!!self.creatorReady() && !hasCoopPartner)
             console.log('GW - Waiting for second player before start');
+        else if (!!self.creatorReady() && hasCoopPartner && !allConfigReady)
+            console.log('GW - Waiting for all clients to mount GW config before start');
     };
 
     self.updateBeacon = function() {
@@ -135,6 +141,35 @@ function LobbyModel(creator) {
                     slot.name = getAIName();
             });
         });
+    };
+
+    self.sendGWConfigToClient = function(client) {
+        var config = self.config();
+        if (!config || !config.files)
+            return;
+
+        var message = {
+            message_type: 'gw_config',
+            payload: {
+                files: config.files
+            }
+        };
+
+        if (client && client.connected)
+            client.message(message);
+        else
+            server.broadcast(message);
+
+        if (client && client.id)
+            self.clientConfigReady[client.id] = false;
+        else {
+            _.forEach(server.clients, function(c) {
+                if (c.connected)
+                    self.clientConfigReady[c.id] = false;
+            });
+        }
+
+        self.tryStart();
     };
 
     self.startGame = function() {
@@ -310,6 +345,8 @@ function LobbyModel(creator) {
         sim.shutdown(false);
         sim.systemName = newConfig.system.name;
         sim.planets = newConfig.system.planets;
+
+        self.sendGWConfigToClient();
     });
 
     var playerMsg = {
@@ -339,13 +376,23 @@ function LobbyModel(creator) {
         set_ready: function(msg, response) {
             self.creatorReady(true);
             response.succeed();
+        },
+        request_gw_config: function(msg, response) {
+            self.sendGWConfigToClient(msg.client);
+            response.succeed();
+        },
+        gw_config_ready: function(msg, response) {
+            self.clientConfigReady[msg.client.id] = true;
+            self.tryStart();
+            response.succeed();
         }
     };
     playerMsg = _.mapValues(playerMsg, function(handler, key) {
         return function(msg) {
             debug_log('playerMsg.' + key);
             var response = server.respond(msg);
-            if (msg.client.id !== self.creator)
+            var creatorOnly = key === 'set_config' || key === 'set_ready';
+            if (creatorOnly && msg.client.id !== self.creator)
                 return response.fail("Invalid message");
             return handler(msg, response);
         };
@@ -403,13 +450,17 @@ function LobbyModel(creator) {
             self.creatorReady(false);
         }
 
+        self.clientConfigReady[client.id] = false;
+
         utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
+            delete self.clientConfigReady[client.id];
             self.updateBeacon();
             self.tryStart();
             return onDisconnect;
         });
 
         self.updateBeacon();
+        self.sendGWConfigToClient(client);
         self.tryStart();
         return onConnect;
     });

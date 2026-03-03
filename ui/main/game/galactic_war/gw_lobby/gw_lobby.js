@@ -3,12 +3,25 @@ var model;
 
 $(document).ready(function() {
 
+    // Mark this client session as running through GW coop lobby flow.
+    ko.observable(true).extend({ session: 'gw_coop_mode' });
+
+    // Proof log: helps determine whether this script runs on a client that joined
+    // via the multiplayer browser. Look for the string `GW_LOBBY_CLIENT_STARTED`.
+    try {
+        console.log('GW_LOBBY_CLIENT_STARTED', (new Date()).toISOString(), 'URL', window.location.href);
+    }
+    catch (e) {
+        console.log('GW_LOBBY_CLIENT_STARTED - error obtaining location', e);
+    }
+
     function GWLobbyViewModel() {
         var self = this;
 
         self.serverLoading = ko.observable(true);
         self.clientLoading = ko.observable(true);
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
+        self.gwConfigMounted = ko.observable(false);
         self.ready = ko.computed(function() {
             return !self.clientLoading() && !self.serverLoading();
         })
@@ -91,9 +104,28 @@ $(document).ready(function() {
         model.serverLoading(!control.sim_ready);
         if (!control.has_config) {
             var config = model.config();
-            config.sandbox = !!model.devMode();
-            model.send_message('set_config', model.config());
+            if (config && typeof config === 'object') {
+                config.sandbox = !!model.devMode();
+                model.send_message('set_config', config);
+            }
         }
+    };
+
+    handlers.gw_config = function(payload) {
+        if (!payload || !payload.files)
+            return;
+
+        var cookedFiles = _.mapValues(payload.files, function(value) {
+            if (typeof value !== 'string')
+                return JSON.stringify(value);
+            return value;
+        });
+
+        api.file.mountMemoryFiles(cookedFiles).then(function() {
+            model.gwConfigMounted(true);
+            console.log('gw_lobby: mounted synced GW files (' + _.keys(cookedFiles).length + ')');
+            model.send_message('gw_config_ready', {});
+        });
     };
 
     handlers.server_state = function(payload) {
@@ -111,27 +143,8 @@ $(document).ready(function() {
                 control = payload.data.client.control;
         }
         
-        // Recursively search every object in the payload and print it out
-        function printObject(obj, indent) {
-            for (var key in obj) {
-                if (obj.hasOwnProperty(key)) {
-                    var value = obj[key];
-                    if (typeof value === 'object' && value !== null) {
-                        console.log(indent + key + ':');
-                        printObject(value, indent + '  ');
-                    } else {
-                        console.log(indent + key + ': ' + value);
-                    }
-                }
-            }
-        }
-        printObject(payload, '');
-
-        if (control) {
-            console.log('gw_lobby: received control update', control);
-            console.log('gw_lobby: Payload was', payload);
+        if (control)
             handlers.control(control);
-        }
         else
             console.log('gw_lobby: server_state missing control payload', payload);
     };
@@ -159,6 +172,16 @@ $(document).ready(function() {
     ko.applyBindings(model);
 
     app.hello(handlers.server_state, handlers.connection_disconnected);
+
+    // Browser-join clients may enter this scene after the server first sent gw_config.
+    // Explicitly request the GW config and keep trying briefly until mounted.
+    var requestGWConfig = function() {
+        if (!model.gwConfigMounted()) {
+            model.send_message('request_gw_config', {});
+            setTimeout(requestGWConfig, 1000);
+        }
+    };
+    requestGWConfig();
 
     var testLoading = function() {
         var worldView = api.getWorldView(0);

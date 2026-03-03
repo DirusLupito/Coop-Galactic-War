@@ -59,8 +59,30 @@ $(document).ready(function () {
             var payload = self.selection();
             var unitSpecs = self.parsedUnitSpecs();
 
-            for (var id in payload.spec_ids) {
+            var resolveUnitSpec = function(id) {
                 var unit = unitSpecs[id];
+                if (unit)
+                    return unit;
+
+                // Fallback across tagged/untagged ids:
+                // foo/bar/unit.json.player <-> foo/bar/unit.json
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    unit = unitSpecs[strip[1]];
+                    if (unit)
+                        return unit;
+                }
+
+                // If id is untagged, also try common GW tags.
+                unit = unitSpecs[id + '.player'] || unitSpecs[id + '.ai'];
+                if (unit)
+                    return unit;
+
+                return null;
+            };
+
+            for (var id in payload.spec_ids) {
+                var unit = resolveUnitSpec(id);
                 if (!unit)
                     continue;
 
