@@ -102,7 +102,38 @@ $(document).ready(function() {
             return;
         }
 
-        handlers.control(payload.data.control);
+        // Accept either a broadcast-style `data.control` or a per-client `data.client.control`.
+        var control = null;
+        if (payload && payload.data) {
+            if (payload.data.control)
+                control = payload.data.control;
+            else if (payload.data.client && payload.data.client.control)
+                control = payload.data.client.control;
+        }
+        
+        // Recursively search every object in the payload and print it out
+        function printObject(obj, indent) {
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    var value = obj[key];
+                    if (typeof value === 'object' && value !== null) {
+                        console.log(indent + key + ':');
+                        printObject(value, indent + '  ');
+                    } else {
+                        console.log(indent + key + ': ' + value);
+                    }
+                }
+            }
+        }
+        printObject(payload, '');
+
+        if (control) {
+            console.log('gw_lobby: received control update', control);
+            console.log('gw_lobby: Payload was', payload);
+            handlers.control(control);
+        }
+        else
+            console.log('gw_lobby: server_state missing control payload', payload);
     };
 
     handlers.connection_disconnected = function(payload) {

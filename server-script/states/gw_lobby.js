@@ -3,11 +3,15 @@ var main = require('main');
 var sim_utils = require('sim_utils');
 var utils = require('utils');
 var file = require('file');
+var content_manager = require('content_manager');
 var _ = require('thirdparty/lodash');
 var ko = require('thirdparty/knockout');
 
+console.log('gw_lobby server script: loaded');
+
 // Note: GW does not currently support reconnect.
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
+var MAX_GW_PLAYERS = 2;
 
 var debugging = false;
 
@@ -39,6 +43,47 @@ function LobbyModel(creator) {
     });
     self.creatorDisconnectTimeout = undefined;
 
+    self.updateBeacon = function() {
+        console.log('Updating beacon');
+        var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
+        var modsData = server.getModsForBeacon();
+        var config = self.config();
+        var gameSystem = (config && config.system) ? config.system : { planets: [] };
+
+        console.log('Connected clients: ' + connectedClients.length);
+        server.beacon = {
+            state: 'lobby',
+            uuid: server.uuid(),
+            full: connectedClients.length >= server.maxClients,
+            started: !!self.control().starting,
+            players: connectedClients.length,
+            creator: creator.name,
+            max_players: MAX_GW_PLAYERS,
+            spectators: 0,
+            max_spectators: 0,
+            mode: 'GalacticWar',
+            mod_names: modsData.names,
+            mod_identifiers: modsData.identifiers,
+            cheat_config: main.cheats,
+            player_names: _.map(connectedClients, function(client) { return client.name; }),
+            spectator_names: [],
+            require_password: false,
+            whitelist: [],
+            blacklist: [],
+            tag: 'GW',
+            game: {
+                system: gameSystem,
+                name: 'Galactic War'
+            },
+            required_content: content_manager.getRequiredContent(),
+            bounty_mode: false,
+            bounty_value: 0.5,
+            sandbox: !!(config && config.sandbox)
+        };
+
+        debug_log(server.beacon);
+    };
+
     self.clientState = ko.computed(function() {
         if (!_.isEqual(client_state.control, self.control())) {
             client_state.control = self.control();
@@ -47,6 +92,9 @@ function LobbyModel(creator) {
                 payload: client_state.control
             });
         }
+
+        console.log('clientState', client_state);
+        self.updateBeacon();
     });
 
     self.changeControl = function(updateFlags) {
@@ -253,6 +301,9 @@ function LobbyModel(creator) {
     var cleanup = [];
 
     self.enter = function() {
+        server.maxClients = MAX_GW_PLAYERS;
+        self.updateBeacon();
+
         utils.pushCallback(sim.planets, 'onReady', function (onReady) {
             debug_log('sim.planets.onReady');
             sim.create();
@@ -275,6 +326,7 @@ function LobbyModel(creator) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+        server.beacon = null;
     };
 
     utils.pushCallback(creator, 'onDisconnect', function(onDisconnect) {
@@ -287,17 +339,21 @@ function LobbyModel(creator) {
     });
 
     utils.pushCallback(server, 'onConnect', function (onConnect, client, reconnect) {
-        if (!client.id !== self.creator) {
-            server.rejectClient(client, 'GW mode is currently single player');
-            return onConnect;
+        if (client.id === self.creator) {
+            if (self.creatorDisconnectTimeout) {
+                clearTimeout(self.creatorDisconnectTimeout);
+                delete self.creatorDisconnectTimeout;
+            }
+
+            self.creatorReady(false);
         }
 
-        if (self.creatorDisconnectTimeout) {
-            clearTimeout(self.creatorDisconnectTimeout);
-            delete self.creatorDisconnectTimeout;
-        }
+        utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
+            self.updateBeacon();
+            return onDisconnect;
+        });
 
-        self.creatorReady(false);
+        self.updateBeacon();
         return onConnect;
     });
 
@@ -318,6 +374,13 @@ exports.enter = function (owner) {
 
     lobbyModel = new LobbyModel(owner);
     lobbyModel.enter();
+
+    try {
+        console.log('GW_Lobby: entering, client_state = ' + JSON.stringify(client_state));
+    }
+    catch (e) {
+        console.log('GW_Lobby: entering, client_state stringify failed', e);
+    }
 
     return client_state;
 };
