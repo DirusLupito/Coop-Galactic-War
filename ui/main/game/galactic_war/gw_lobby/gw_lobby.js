@@ -16,6 +16,17 @@ $(document).ready(function() {
         console.log('GW_LOBBY_CLIENT_STARTED - error obtaining location', e);
     }
 
+    function debugPrintFullPayloadClient(label, payload) {
+        try {
+            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' BEGIN');
+            console.log(JSON.stringify(payload, null, '\t'));
+            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' END');
+        }
+        catch (e) {
+            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' STRINGIFY_FAILED', e);
+        }
+    }
+
     function GWLobbyViewModel() {
         var self = this;
 
@@ -115,6 +126,8 @@ $(document).ready(function() {
     handlers.gw_config = function(payload) {
         if (!payload || !payload.files)
             return;
+
+        debugPrintFullPayloadClient('gw_config_received', payload);
 
         var cookedFiles = _.mapValues(payload.files, function(value) {
             if (typeof value !== 'string')

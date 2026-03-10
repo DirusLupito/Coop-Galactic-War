@@ -20,6 +20,17 @@ function debug_log(object) {
         console.log(JSON.stringify(object,null,'\t'));
 }
 
+function debugPrintFullPayloadServer(label, payload) {
+    try {
+        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' BEGIN');
+        console.log(JSON.stringify(payload, null, '\t'));
+        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' END');
+    }
+    catch (e) {
+        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' STRINGIFY_FAILED', e);
+    }
+}
+
 var client_state = {
     control: {}
 };
@@ -154,6 +165,8 @@ function LobbyModel(creator) {
                 files: config.files
             }
         };
+
+        debugPrintFullPayloadServer('gw_config_to_' + ((client && client.name) ? client.name : 'all_clients'), message.payload);
 
         if (client && client.connected)
             client.message(message);
@@ -355,6 +368,8 @@ function LobbyModel(creator) {
             if (self.control().has_config) {
                 return response.fail('Configuration already set');
             }
+
+            debugPrintFullPayloadServer('set_config_from_' + msg.client.name, msg.payload);
 
             var validResult = self.validateConfig(msg.payload);
             var validResponse = function(valid) {
