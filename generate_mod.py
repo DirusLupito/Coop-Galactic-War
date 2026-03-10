@@ -16,6 +16,14 @@ FILES_TO_COPY = [
      "ui/main/game/galactic_war/gw_lobby/gw_lobby.js"),
     ("ui/main/game/live_game/live_game_action_bar.js",
      "ui/main/game/live_game/live_game_action_bar.js"),
+    ("ui/main/game/connect_to_game/connect_to_game.js",
+     "ui/main/game/connect_to_game/connect_to_game.js"),
+    ("ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html",
+     "ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html"),
+    ("ui/main/game/gw_reconnect_loading/gw_reconnect_loading.css",
+     "ui/main/game/gw_reconnect_loading/gw_reconnect_loading.css"),
+    ("ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js",
+     "ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js"),
     ("ui/main/game/live_game/live_game.js",
      "ui/main/game/live_game/live_game.js"),
     ("ui/main/game/live_game/live_game_build_bar.js",
@@ -23,6 +31,10 @@ FILES_TO_COPY = [
     # Server script files
     ("server-script/states/gw_lobby.js",
      "server-script/states/gw_lobby.js"),
+    ("server-script/states/landing.js",
+     "server-script/states/landing.js"),
+    ("server-script/states/playing.js",
+     "server-script/states/playing.js"),
 ]
 
 
