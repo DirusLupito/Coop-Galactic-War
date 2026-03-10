@@ -2,17 +2,6 @@
 
 $(document).ready(function () {
 
-    function debugPrintFullPayloadClient(label, payload) {
-        try {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' BEGIN');
-            console.log(JSON.stringify(payload, null, '\t'));
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' END');
-        }
-        catch (e) {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' STRINGIFY_FAILED', e);
-        }
-    }
-
     function isGalacticWarForConnect(payload) {
         var serverGameType = payload
             && payload.data
@@ -416,12 +405,6 @@ $(document).ready(function () {
             && previousReconnectToGameInfo.game_hostname === gameInfo.game_hostname
             && previousReconnectToGameInfo.game_port === gameInfo.game_port);
 
-        debugPrintFullPayloadClient('connect_to_game_login_accepted', {
-            reconnecting_to_existing_game: model.reconnectingToExistingGame(),
-            previous_reconnect_to_game_info: previousReconnectToGameInfo,
-            game_info: _.omit(gameInfo, 'game_password')
-        });
-
         model.reconnectToGameInfo(gameInfo);
 
 // can't invite to localhost, replays or resumed games
@@ -485,18 +468,6 @@ $(document).ready(function () {
 
         if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
             var stagingUrl = 'coui://ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
-
-            debugPrintFullPayloadClient('connect_to_game_redirecting_reconnect_staging', {
-                original_url: url,
-                staging_url: stagingUrl,
-                game_type: payload
-                    && payload.data
-                    && payload.data.client
-                    && payload.data.client.game_options
-                    && payload.data.client.game_options.game_type,
-                reconnecting_to_existing_game: model.reconnectingToExistingGame(),
-                reconnect_to_game_info: model.reconnectToGameInfo()
-            });
 
             url = stagingUrl;
         }

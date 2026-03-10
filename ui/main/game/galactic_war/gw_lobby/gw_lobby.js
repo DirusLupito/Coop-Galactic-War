@@ -7,26 +7,6 @@ $(document).ready(function() {
     ko.observable(true).extend({ session: 'gw_coop_mode' });
     api.game.setUnitSpecTag('.player');
 
-    // Proof log: helps determine whether this script runs on a client that joined
-    // via the multiplayer browser. Look for the string `GW_LOBBY_CLIENT_STARTED`.
-    try {
-        console.log('GW_LOBBY_CLIENT_STARTED', (new Date()).toISOString(), 'URL', window.location.href);
-    }
-    catch (e) {
-        console.log('GW_LOBBY_CLIENT_STARTED - error obtaining location', e);
-    }
-
-    function debugPrintFullPayloadClient(label, payload) {
-        try {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' BEGIN');
-            console.log(JSON.stringify(payload, null, '\t'));
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' END');
-        }
-        catch (e) {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' STRINGIFY_FAILED', e);
-        }
-    }
-
     function GWLobbyViewModel() {
         var self = this;
 
@@ -126,8 +106,6 @@ $(document).ready(function() {
     handlers.gw_config = function(payload) {
         if (!payload || !payload.files)
             return;
-
-        debugPrintFullPayloadClient('gw_config_received', payload);
 
         var cookedFiles = _.mapValues(payload.files, function(value) {
             if (typeof value !== 'string')

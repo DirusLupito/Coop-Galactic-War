@@ -47,17 +47,6 @@ function debug_log(object) {
         console.log(JSON.stringify(object, null, '\t'));
 }
 
-function debugPrintFullPayloadServer(label, payload) {
-    try {
-        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' BEGIN');
-        console.log(JSON.stringify(payload, null, '\t'));
-        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' END');
-    }
-    catch (e) {
-        console.log('DEBUG_PRINTING_FULL_PAYLOAD_SERVER ' + label + ' STRINGIFY_FAILED', e);
-    }
-}
-
 function getReconnectReplayFiles() {
     var fullReplayConfig = server.getFullReplayConfig && server.getFullReplayConfig();
     if (!fullReplayConfig || !fullReplayConfig.files)
@@ -68,16 +57,10 @@ function getReconnectReplayFiles() {
 
 function sendReconnectMemoryFilesToClient(client, reason) {
     var reconnectReplayFiles = getReconnectReplayFiles();
-    debugPrintFullPayloadServer('playing_reconnect_replay_file_summary_' + client.name, {
-        reason: reason,
-        has_files: !!reconnectReplayFiles,
-        file_count: reconnectReplayFiles ? _.keys(reconnectReplayFiles).length : 0
-    });
 
     if (!reconnectReplayFiles)
         return false;
 
-    debugPrintFullPayloadServer('playing_reconnect_memory_files_to_' + client.name, reconnectReplayFiles);
     client.message({
         message_type: 'memory_files',
         payload: reconnectReplayFiles
@@ -573,17 +556,6 @@ function watchPlayerDisconnects() {
         if (!reconnect)
             return onConnect;
 
-        debugPrintFullPayloadServer('playing_reconnect_context_' + client.name, {
-            game_type: game_options && game_options.game_type,
-            reconnect: reconnect,
-            client_id: client.id,
-            client_name: client.name,
-            has_player: !!players[client.id],
-            has_army: !!(players[client.id] && players[client.id].army),
-            gw_payload_resent_here: false,
-            note: 'Reconnect path now waits for an explicit client-side request before resending GW memory files. The running match is not paused for this.'
-        });
-
         var player = players[client.id];
         if (!player)
             return onConnect;
@@ -827,13 +799,6 @@ exports.enter = function (config) {
             var response = server.respond(msg);
             var sent = false;
 
-            debugPrintFullPayloadServer('playing_request_memory_files_' + msg.client.name, {
-                client_id: msg.client.id,
-                client_name: msg.client.name,
-                game_type: game_options && game_options.game_type,
-                reconnect_request: true
-            });
-
             if (isGalacticWar())
                 sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request');
 
@@ -844,12 +809,6 @@ exports.enter = function (config) {
         },
         memory_files_received: function (msg) {
             var response = server.respond(msg);
-
-            debugPrintFullPayloadServer('playing_memory_files_received_' + msg.client.name, {
-                client_id: msg.client.id,
-                client_name: msg.client.name,
-                game_type: game_options && game_options.game_type
-            });
 
             response.succeed({
                 acknowledged: true,

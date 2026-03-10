@@ -17,59 +17,6 @@ $(document).ready(function () {
     var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
     var idleTime = 0;
 
-    function buildDebugSpecCandidates(files) {
-        var fileKeys = _.keys(files || {});
-        var commanderSpecs = _.filter(fileKeys, function (key) {
-            return /\/pa\/units\/commanders\/.*\.json\.(player|ai)$/.test(key);
-        }).slice(0, 6);
-        var unitLists = _.filter(fileKeys, function (key) {
-            return /\/pa\/units\/unit_list\.json(\.(player|ai))?$/.test(key);
-        }).slice(0, 3);
-        var sampleUnits = _.filter(fileKeys, function (key) {
-            return /\/pa\/units\/.*\.json\.(player|ai)$/.test(key) && !/\/pa\/units\/commanders\//.test(key);
-        }).slice(0, 6);
-
-        return _.uniq(unitLists.concat(commanderSpecs).concat(sampleUnits));
-    }
-
-    function debugProbeSpecPath(path, label) {
-        $.get(path).then(function (result) {
-            debugPrintFullPayloadClient(label + '_success', {
-                path: path,
-                top_level_keys: _.keys(result || {}).slice(0, 20)
-            });
-        }, function (jqXHR, textStatus, errorThrown) {
-            debugPrintFullPayloadClient(label + '_failure', {
-                path: path,
-                text_status: textStatus,
-                error_thrown: errorThrown,
-                http_status: jqXHR && jqXHR.status
-            });
-        });
-    }
-
-    function debugProbeSpecs(paths, label) {
-        _.forEach(paths || [], function (path, index) {
-            debugProbeSpecPath(path, label + '_' + index);
-        });
-    }
-
-    function debugPrintFullPayloadClient(label, payload) {
-        try {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' BEGIN');
-            console.log(JSON.stringify(payload, null, '\t'));
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' END');
-        }
-        catch (e) {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' STRINGIFY_FAILED', e);
-        }
-    }
-
-    debugPrintFullPayloadClient('live_game_document_ready', {
-        url: window.location.href,
-        gw_coop_mode: gwCoopMode()
-    });
-
     api.game.releaseKeyboard(true);
 
     var start = /[^\/]*$/;  // ^ : start , \/ : '/', $ : end // as wildcard: /*.json
@@ -2652,19 +2599,6 @@ $(document).ready(function () {
 
             self.refreshSettings();
 
-            debugPrintFullPayloadClient('live_game_setup_context', {
-                url: window.location.href,
-                gw_coop_mode: gwCoopMode(),
-                reconnect_to_game_info: self.reconnectToGameInfo()
-            });
-
-            api.game.getUnitSpecTag().then(function (tag) {
-                debugPrintFullPayloadClient('live_game_unit_spec_tag_before_setup', {
-                    gw_coop_mode: gwCoopMode(),
-                    unit_spec_tag: tag
-                });
-            });
-
             if (gwCoopMode())
                 api.game.setUnitSpecTag('.player');
 
@@ -4147,8 +4081,6 @@ $(document).ready(function () {
             else
                 model.armyId(undefined);
 
-            console.log('LIVE_GAME_ARMY_DEBUG', 'state=' + msg.state, 'armyId=' + model.armyId(), 'viewReplay=' + model.viewReplay());
-
             if (msg.data.client && msg.data.client.vision_bits)
                 handlers.vision_bits(msg.data.client.vision_bits)
 
@@ -4258,8 +4190,6 @@ $(document).ready(function () {
     };
 
     handlers.memory_files = function (payload) {
-        debugPrintFullPayloadClient('live_game_memory_files_received', payload);
-
         if (!payload)
             return;
 
@@ -4270,42 +4200,18 @@ $(document).ready(function () {
             payload['/pa/units/unit_list.json'] = { units: units };
         }
 
-        var debugSpecCandidates = buildDebugSpecCandidates(payload);
-        debugPrintFullPayloadClient('live_game_memory_files_probe_targets', {
-            count: debugSpecCandidates.length,
-            targets: debugSpecCandidates
-        });
-
         var cookedFiles = _.mapValues(payload, function (value) {
             if (typeof value !== 'string')
                 return JSON.stringify(value);
             return value;
         });
 
-        api.game.getUnitSpecTag().then(function (tag) {
-            debugPrintFullPayloadClient('live_game_memory_files_pre_mount_tag', {
-                unit_spec_tag: tag,
-                gw_coop_mode: gwCoopMode()
-            });
+        api.file.unmountAllMemoryFiles().always(function () {
+            api.file.mountMemoryFiles(cookedFiles).always(function () {
+                api.game.setUnitSpecTag('.player');
+                engine.call('request_spec_data', -1);
 
-            api.file.unmountAllMemoryFiles().always(function () {
-                api.file.mountMemoryFiles(cookedFiles).always(function () {
-                    api.game.setUnitSpecTag('.player');
-                    engine.call('request_spec_data', -1);
-
-                    debugPrintFullPayloadClient('live_game_memory_files_mounted', {
-                        mounted_file_count: _.keys(cookedFiles).length,
-                        unit_spec_tag_forced_to: '.player'
-                    });
-
-                    debugProbeSpecs(debugSpecCandidates, 'live_game_memory_file_spec_probe');
-
-                    model.send_message('memory_files_received', {}, function (success, response) {
-                        debugPrintFullPayloadClient('live_game_memory_files_ack', {
-                            success: success,
-                            response: response
-                        });
-                    });
+                model.send_message('memory_files_received', {}, function (success, response) {
                 });
             });
         });

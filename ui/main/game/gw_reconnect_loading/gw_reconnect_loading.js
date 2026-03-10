@@ -3,17 +3,6 @@ var handlers = {};
 
 $(document).ready(function () {
 
-    function debugPrintFullPayloadClient(label, payload) {
-        try {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' BEGIN');
-            console.log(JSON.stringify(payload, null, '\t'));
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' END');
-        }
-        catch (e) {
-            console.log('DEBUG_PRINTING_FULL_PAYLOAD_CLIENT ' + label + ' STRINGIFY_FAILED', e);
-        }
-    }
-
     var gwReconnectTarget = $.url().param('target') || 'coui://ui/main/game/live_game/live_game.html';
     var gwReconnectFilesRequested = false;
     var gwReconnectFilesReady = false;
@@ -23,21 +12,11 @@ $(document).ready(function () {
             return;
 
         gwReconnectFilesRequested = true;
-        debugPrintFullPayloadClient('gw_reconnect_loading_request_memory_files', {
-            reason: reason,
-            target: gwReconnectTarget,
-            reconnect_to_game_info: model.reconnectToGameInfo && model.reconnectToGameInfo()
-        });
 
         model.send_message('request_memory_files', {
             reason: reason,
             reconnect_to_game_info: model.reconnectToGameInfo && model.reconnectToGameInfo()
         }, function (success, response) {
-            debugPrintFullPayloadClient('gw_reconnect_loading_request_memory_files_response', {
-                success: success,
-                response: response
-            });
-
             if (!success || !(response && response.sent))
                 gwReconnectFilesRequested = false;
         });
@@ -83,13 +62,6 @@ $(document).ready(function () {
             && msg.data.client.game_options
             && msg.data.client.game_options.game_type;
 
-        debugPrintFullPayloadClient('gw_reconnect_loading_server_state', {
-            url: msg && msg.url,
-            game_type: serverGameType,
-            files_requested: gwReconnectFilesRequested,
-            files_ready: gwReconnectFilesReady
-        });
-
         if (msg && msg.url === gwReconnectTarget && serverGameType === 'Galactic War' && !gwReconnectFilesReady) {
             model.pageSubTitle(loc('!LOC:Restoring Galactic War unit specs...'));
             requestReconnectMemoryFiles('gw_reconnect_server_state');
@@ -103,11 +75,6 @@ $(document).ready(function () {
     };
 
     handlers.memory_files = function (msg) {
-        debugPrintFullPayloadClient('gw_reconnect_loading_memory_files_received', {
-            file_count: _.keys(msg || {}).length,
-            keys_sample: _.keys(msg || {}).slice(0, 20)
-        });
-
         if (!msg)
             return;
 
@@ -131,12 +98,6 @@ $(document).ready(function () {
                 model.pageSubTitle(loc('!LOC:Entering game...'));
 
                 model.send_message('memory_files_received', {}, function (success, response) {
-                    debugPrintFullPayloadClient('gw_reconnect_loading_memory_files_ack', {
-                        success: success,
-                        response: response,
-                        target: gwReconnectTarget
-                    });
-
                     window.location.href = gwReconnectTarget;
                 });
             });
