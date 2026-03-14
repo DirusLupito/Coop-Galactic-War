@@ -225,6 +225,19 @@ $(document).ready(function () {
         });
 
         self.buildLists = buildLists;
+        self.gwCoopResolutionLogSeen = {};
+
+        self.logGwCoopResolutionOnce = function(kind, fromId, toId) {
+            var key = kind + '|' + fromId + '|' + (toId || '');
+            if (self.gwCoopResolutionLogSeen[key])
+                return;
+            self.gwCoopResolutionLogSeen[key] = true;
+
+            if (toId)
+                console.log('[GW_COOP] build_bar ' + kind + ' ' + fromId + ' -> ' + toId);
+            else
+                console.log('[GW_COOP] build_bar ' + kind + ' ' + fromId);
+        };
 
         self.parseSelection = function(selection)
         {
@@ -239,13 +252,36 @@ $(document).ready(function () {
                 // Fallback across tagged/untagged ids:
                 // foo/bar/unit.json.player <-> foo/bar/unit.json
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    if (self.buildLists[strip[1] + '.player']) {
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.player');
+                        return strip[1] + '.player';
+                    }
+                    if (self.buildLists[strip[1] + '.ai']) {
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.ai');
+                        return strip[1] + '.ai';
+                    }
+                }
+
                 if (strip && strip[1] && self.buildLists[strip[1]])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, strip[1]);
                     return strip[1];
+                }
 
                 if (self.buildLists[id + '.player'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.player');
                     return id + '.player';
+                }
                 if (self.buildLists[id + '.ai'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.ai');
                     return id + '.ai';
+
+                }
+
+                self.logGwCoopResolutionOnce('resolveBuildSpecId unresolved', 'id=' + id);
 
                 return null;
             };
@@ -255,13 +291,36 @@ $(document).ready(function () {
                     return id;
 
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    if (items[strip[1] + '.player']) {
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.player');
+                        return strip[1] + '.player';
+                    }
+                    if (items[strip[1] + '.ai']) {
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.ai');
+                        return strip[1] + '.ai';
+                    }
+                }
+
                 if (strip && strip[1] && items[strip[1]])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, strip[1]);
                     return strip[1];
+                }
 
                 if (items[id + '.player'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.player');
                     return id + '.player';
+                }
                 if (items[id + '.ai'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.ai');
                     return id + '.ai';
+
+                }
+
+                self.logGwCoopResolutionOnce('resolveBuildItemId unresolved', 'id=' + id);
 
                 return null;
             };
@@ -346,6 +405,8 @@ $(document).ready(function () {
         self.unitSpecs = $.Deferred();
         self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
             self.specTag = self.gwCoopMode() ? '.player' : tag;
+            if (self.gwCoopMode() && self.specTag !== '.player')
+                console.log('[GW_COOP] build_bar expected .player spec tag but resolved tag=' + self.specTag);
         });
 
         self.buildSet = ko.observable();

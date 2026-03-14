@@ -1656,6 +1656,20 @@ $(document).ready(function () {
         });
         self.setBuildHover = function (id) {
             var details = self.itemDetails[id];
+            if (!details && id) {
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                var canonicalId = strip && strip[1];
+                details = self.itemDetails[id + '.player'] || self.itemDetails[id + '.ai'];
+
+                if (!details && canonicalId)
+                    details = self.itemDetails[canonicalId + '.player'] || self.itemDetails[canonicalId + '.ai'];
+
+                if (!details && canonicalId)
+                    details = self.itemDetails[canonicalId];
+
+                if (!details)
+                    console.log('[GW_COOP] setBuildHover unresolved id=' + id + ' canonical=' + canonicalId);
+            }
             self.buildHover(details);
         };
         self.clearBuildHover = function () { self.setBuildHover(''); };
@@ -1703,6 +1717,22 @@ $(document).ready(function () {
 
         self.buildItemBySpec = function (spec_id) {
             var item = self.unitSpecs[spec_id];
+            if (!item && spec_id) {
+                var strip = /(.*\.json)[^\/]*$/.exec(spec_id);
+                var canonicalId = strip && strip[1];
+                item = self.unitSpecs[spec_id + '.player'] || self.unitSpecs[spec_id + '.ai'];
+
+                if (!item && canonicalId)
+                    item = self.unitSpecs[canonicalId + '.player'] || self.unitSpecs[canonicalId + '.ai'];
+
+                if (!item && canonicalId)
+                    item = self.unitSpecs[canonicalId];
+
+                if (item)
+                    console.log('[GW_COOP] buildItemBySpec fallback resolved spec=' + spec_id + ' -> ' + item.id);
+                else
+                    console.log('[GW_COOP] buildItemBySpec unresolved spec=' + spec_id + ' canonical=' + canonicalId);
+            }
             if (item)
                 self.buildItem(item);
         }
@@ -4266,9 +4296,20 @@ $(document).ready(function () {
                     var strip = /.*\.json/.exec(id);
                     if (strip) {
                         var strippedSpecId = strip.pop();
-                        if (!model.itemDetails[strippedSpecId])
+                        if (!model.itemDetails[strippedSpecId] || /\.player$/.test(id))
                             model.itemDetails[strippedSpecId] = model.itemDetails[id];
+
+                        if (!model.itemDetails[strippedSpecId + '.player'] || /\.player$/.test(id))
+                            model.itemDetails[strippedSpecId + '.player'] = model.itemDetails[id];
+                        if (!model.itemDetails[strippedSpecId + '.ai'])
+                            model.itemDetails[strippedSpecId + '.ai'] = model.itemDetails[id];
                     }
+                }
+                else {
+                    if (!model.itemDetails[id + '.player'])
+                        model.itemDetails[id + '.player'] = model.itemDetails[id];
+                    if (!model.itemDetails[id + '.ai'])
+                        model.itemDetails[id + '.ai'] = model.itemDetails[id];
                 }
             });
 
@@ -4294,6 +4335,8 @@ $(document).ready(function () {
                 id = strip.pop();
             var target = model.buildHotkeyModel.SpecIdToGridMap()[id];
             if (!target) {
+                if (/\.(player|ai)$/.test(unit.id || id))
+                    console.log('[GW_COOP] addBuildInfo missing grid mapping for tagged id=' + (unit.id || id) + ' canonical=' + id);
                 target = ['misc', misc_unit_count, Math.floor(misc_unit_count / 6), misc_unit_count % 6];
                 misc_unit_count++;
             }

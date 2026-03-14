@@ -5,7 +5,6 @@ $(document).ready(function() {
 
     // Mark this client session as running through GW coop lobby flow.
     ko.observable(true).extend({ session: 'gw_coop_mode' });
-    api.game.setUnitSpecTag('.player');
 
     function GWLobbyViewModel() {
         var self = this;
@@ -107,17 +106,32 @@ $(document).ready(function() {
         if (!payload || !payload.files)
             return;
 
+        if (!payload.files['/pa/units/unit_list.json']) {
+            var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
+            var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
+            var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
+            payload.files['/pa/units/unit_list.json'] = { units: units };
+            console.log('[GW_COOP] gw_lobby synthesized /pa/units/unit_list.json from tagged lists; unit_count=' + units.length);
+        }
+
+        if (!payload.files['/pa/units/unit_list.json.player'])
+            console.log('[GW_COOP] gw_lobby missing /pa/units/unit_list.json.player in synced GW payload');
+        if (!payload.files['/pa/units/unit_list.json.ai'])
+            console.log('[GW_COOP] gw_lobby missing /pa/units/unit_list.json.ai in synced GW payload');
+
         var cookedFiles = _.mapValues(payload.files, function(value) {
             if (typeof value !== 'string')
                 return JSON.stringify(value);
             return value;
         });
 
-        api.file.mountMemoryFiles(cookedFiles).then(function() {
-            model.gwConfigMounted(true);
-            api.game.setUnitSpecTag('.player');
-            console.log('gw_lobby: mounted synced GW files (' + _.keys(cookedFiles).length + ')');
-            model.send_message('gw_config_ready', {});
+        api.file.unmountAllMemoryFiles().always(function() {
+            api.file.mountMemoryFiles(cookedFiles).then(function() {
+                model.gwConfigMounted(true);
+                api.game.setUnitSpecTag('.player');
+                console.log('[GW_COOP] gw_lobby mounted synced GW files; count=' + _.keys(cookedFiles).length);
+                model.send_message('gw_config_ready', {});
+            });
         });
     };
 

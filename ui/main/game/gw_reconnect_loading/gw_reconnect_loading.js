@@ -17,8 +17,9 @@ $(document).ready(function () {
             reason: reason,
             reconnect_to_game_info: model.reconnectToGameInfo && model.reconnectToGameInfo()
         }, function (success, response) {
-            if (!success || !(response && response.sent))
+            if (!success || !(response && response.sent)) {
                 gwReconnectFilesRequested = false;
+            }
         });
     }
 
@@ -94,6 +95,8 @@ $(document).ready(function () {
         api.file.unmountAllMemoryFiles().always(function () {
             api.file.mountMemoryFiles(cookedFiles).always(function () {
                 api.game.setUnitSpecTag('.player');
+                engine.call('request_spec_data', -1);
+                console.log('[GW_COOP] reconnect mounted memory files and requested spec data refresh; file_count=' + _.keys(cookedFiles).length);
                 gwReconnectFilesReady = true;
                 model.pageSubTitle(loc('!LOC:Entering game...'));
 
