@@ -15,6 +15,9 @@ The intent is to preserve the reasoning behind these changes so future contribut
 - Reconnect fix commits:
   - `c55f52b` `Co-op player no longer crashes on reconnect.`
   - `49a653b` `Removed GW related reconnect logging.`
+- Co-op build and action UI fixes:
+  - `acd428d` `Several fixes for Co-op player unit UI.`
+  - `e48d3ec` `Removed logging related to build/action UI bugfixes.`
 
 ## High-Level Summary
 
