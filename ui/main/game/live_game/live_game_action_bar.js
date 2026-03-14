@@ -66,11 +66,6 @@ $(document).ready(function () {
                     if (self.gwCoopResolutionLogSeen[key])
                         return;
                     self.gwCoopResolutionLogSeen[key] = true;
-
-                    if (toId)
-                        console.log('[GW_COOP] action_bar resolveUnitSpec ' + kind + ' ' + fromId + ' -> ' + toId);
-                    else
-                        console.log('[GW_COOP] action_bar resolveUnitSpec unresolved id=' + fromId);
                 };
 
                 var unit = unitSpecs[id];

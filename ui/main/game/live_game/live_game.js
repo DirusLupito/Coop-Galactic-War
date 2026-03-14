@@ -1666,9 +1666,6 @@ $(document).ready(function () {
 
                 if (!details && canonicalId)
                     details = self.itemDetails[canonicalId];
-
-                if (!details)
-                    console.log('[GW_COOP] setBuildHover unresolved id=' + id + ' canonical=' + canonicalId);
             }
             self.buildHover(details);
         };
@@ -1727,11 +1724,6 @@ $(document).ready(function () {
 
                 if (!item && canonicalId)
                     item = self.unitSpecs[canonicalId];
-
-                if (item)
-                    console.log('[GW_COOP] buildItemBySpec fallback resolved spec=' + spec_id + ' -> ' + item.id);
-                else
-                    console.log('[GW_COOP] buildItemBySpec unresolved spec=' + spec_id + ' canonical=' + canonicalId);
             }
             if (item)
                 self.buildItem(item);
@@ -4335,8 +4327,6 @@ $(document).ready(function () {
                 id = strip.pop();
             var target = model.buildHotkeyModel.SpecIdToGridMap()[id];
             if (!target) {
-                if (/\.(player|ai)$/.test(unit.id || id))
-                    console.log('[GW_COOP] addBuildInfo missing grid mapping for tagged id=' + (unit.id || id) + ' canonical=' + id);
                 target = ['misc', misc_unit_count, Math.floor(misc_unit_count / 6), misc_unit_count % 6];
                 misc_unit_count++;
             }

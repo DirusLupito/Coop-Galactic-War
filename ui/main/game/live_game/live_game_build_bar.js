@@ -232,11 +232,6 @@ $(document).ready(function () {
             if (self.gwCoopResolutionLogSeen[key])
                 return;
             self.gwCoopResolutionLogSeen[key] = true;
-
-            if (toId)
-                console.log('[GW_COOP] build_bar ' + kind + ' ' + fromId + ' -> ' + toId);
-            else
-                console.log('[GW_COOP] build_bar ' + kind + ' ' + fromId);
         };
 
         self.parseSelection = function(selection)
@@ -405,8 +400,6 @@ $(document).ready(function () {
         self.unitSpecs = $.Deferred();
         self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
             self.specTag = self.gwCoopMode() ? '.player' : tag;
-            if (self.gwCoopMode() && self.specTag !== '.player')
-                console.log('[GW_COOP] build_bar expected .player spec tag but resolved tag=' + self.specTag);
         });
 
         self.buildSet = ko.observable();

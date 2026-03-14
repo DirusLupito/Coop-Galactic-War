@@ -96,7 +96,6 @@ $(document).ready(function () {
             api.file.mountMemoryFiles(cookedFiles).always(function () {
                 api.game.setUnitSpecTag('.player');
                 engine.call('request_spec_data', -1);
-                console.log('[GW_COOP] reconnect mounted memory files and requested spec data refresh; file_count=' + _.keys(cookedFiles).length);
                 gwReconnectFilesReady = true;
                 model.pageSubTitle(loc('!LOC:Entering game...'));
 

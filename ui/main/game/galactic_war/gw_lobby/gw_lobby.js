@@ -111,13 +111,7 @@ $(document).ready(function() {
             var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
             var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
             payload.files['/pa/units/unit_list.json'] = { units: units };
-            console.log('[GW_COOP] gw_lobby synthesized /pa/units/unit_list.json from tagged lists; unit_count=' + units.length);
         }
-
-        if (!payload.files['/pa/units/unit_list.json.player'])
-            console.log('[GW_COOP] gw_lobby missing /pa/units/unit_list.json.player in synced GW payload');
-        if (!payload.files['/pa/units/unit_list.json.ai'])
-            console.log('[GW_COOP] gw_lobby missing /pa/units/unit_list.json.ai in synced GW payload');
 
         var cookedFiles = _.mapValues(payload.files, function(value) {
             if (typeof value !== 'string')
@@ -129,7 +123,6 @@ $(document).ready(function() {
             api.file.mountMemoryFiles(cookedFiles).then(function() {
                 model.gwConfigMounted(true);
                 api.game.setUnitSpecTag('.player');
-                console.log('[GW_COOP] gw_lobby mounted synced GW files; count=' + _.keys(cookedFiles).length);
                 model.send_message('gw_config_ready', {});
             });
         });
