@@ -507,3 +507,204 @@ If modifying Galactic War coop or reconnect behavior, start with:
 - [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js)
 - [server-script/states/load_save.js](server-script/states/load_save.js)
 - [ui/main/game/replay_loading/replay_loading.js](ui/main/game/replay_loading/replay_loading.js)
+
+---
+
+## Post-Reconnect UI Parity Fixes (Commits `acd428d` and `e48d3ec`)
+
+After reconnect was stabilized, a separate coop-client-only defect cluster remained in live gameplay UI behavior. That work landed in two back-to-back commits:
+
+- `acd428d` `Several fixes for Co-op player unit UI.`
+- `e48d3ec` `Removed logging related to build/action UI bugfixes.`
+
+These commits are tightly coupled: the first introduces functional fixes plus targeted diagnostics, and the second removes temporary diagnostics once behavior was validated.
+
+## Problem Profile
+
+The unresolved issue was not “coop cannot control units” in a broad sense. It was narrower and UI-path-specific:
+
+1. Coop client could not ever see build-bar tooltips.
+2. Coop client could not issue load/unload commands from the action UI.
+3. Coop client hotkey sequences for build selection (category + slot) failed or appeared to do nothing.
+
+Important observation:
+
+- The host could still perform these actions in many cases.
+- Core army/control assignment and reconnect transport were already functional. Or put in a not AI slop way, the client could issue commands like pick up a unit, its just that they had to do it with a workaround, as right clicking a unit with a transport unit selected would still work, but the UI buttons and hotkeys for those actions were broken.
+
+That pointed to a client-side spec-lookup and UI data-shape problem, not a primary server authority or control-bits problem.
+
+## Root Cause: Spec-ID Namespace Mismatch Across UI Subsystems
+
+Galactic War coop runs with tagged unit specs (`.player`, `.ai`).
+
+Many legacy UI systems still think in canonical untagged IDs (`.../foo.json`).
+
+The failing behavior came from inconsistent normalization of spec IDs across different code paths:
+
+- Some paths expected tagged IDs and looked up tagged data.
+- Some paths expected untagged IDs and looked up untagged data.
+- Some had one-way fallback (tagged -> untagged) but not the opposite.
+- Some produced untagged references for hotkey/grid lookups while runtime payloads stayed tagged.
+
+Result:
+
+- Data existed, but lookups frequently missed because keys did not match exactly.
+- UI then silently dropped behavior (no tooltip payload, missing command enablement, unresolved hotkey selection target).
+
+## Where the Break Happened in Practice
+
+### 1) Tooltip path
+
+In `live_game.js`, build-hover and item-detail maps could receive a tagged ID while the currently indexed entry was only available in a different form.
+
+Without bidirectional aliasing and fallback:
+
+- Hover event carries `unit.json.player`
+- details map has only `unit.json`
+- lookup misses
+- tooltip appears blank or missing
+
+### 2) Action-bar command derivation (load/unload)
+
+In `live_game_action_bar.js`, command availability comes from selected unit specs.
+
+If selection reports one ID form and `unitSpecs` is keyed by another form, unit resolution fails.
+
+When resolution fails, command extraction has nothing to inspect, so `Load`/`Unload` flags may never appear even though selected units support those commands.
+
+### 3) Build-bar/hotkey selection
+
+In `live_game_build_bar.js`, build-list and build-order resolution depended on exact-key hits that were vulnerable to tagged/untagged divergence.
+
+If a hotkey-selected item resolves to one ID form while build structures are indexed in another, the action may look like a transient input stall (brief UI reaction, then no build placement state).
+
+## Additional Compatibility Hazard Identified During Fixing
+
+One mid-fix regression exposed another critical assumption:
+
+- GW lobby remounting of synced memory files must preserve the compatibility untagged `/pa/units/unit_list.json`.
+
+Why this matters:
+
+- Some UI systems still probe the untagged list even in tagged GW modes.
+- If remount flow only carries tagged lists and no synthesized untagged superset, unrelated UI queries can degrade in surprising ways.
+
+The fix therefore restored synthesis of untagged unit list from `.player` + `.ai` when missing in GW lobby sync.
+
+## Commit `acd428d`: Functional Fixes + Temporary Diagnostics
+
+This commit fixed behavior by normalizing lookup behavior and hardening mount sequencing, while adding temporary `[GW_COOP]` logs to verify assumptions.
+
+### A) GW lobby sequencing and compatibility restoration
+
+Changes in `ui/main/game/galactic_war/gw_lobby/gw_lobby.js`:
+
+- Removed eager `setUnitSpecTag('.player')` at scene startup.
+- On `gw_config` receive:
+  - Synthesize untagged `/pa/units/unit_list.json` from tagged lists if absent.
+  - Unmount previous memory files before remounting synced GW files.
+  - Apply `.player` tag only after mount succeeds.
+
+This ensures the tag points to mounted content and legacy untagged assumptions are still satisfied.
+
+### B) Reconnect staging parity with live-game refresh behavior
+
+Changes in `ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js`:
+
+- After mounting incoming memory files, call `engine.call('request_spec_data', -1)` before transitioning.
+
+That aligns reconnect staging with live-game spec refresh expectations and prevents stale spec cache behavior after remount.
+
+### C) Tooltip and build-item resolution hardening
+
+Changes in `ui/main/game/live_game/live_game.js`:
+
+- `setBuildHover` now resolves across:
+  - exact ID
+  - tagged variants
+  - canonical stripped ID
+- `buildItemBySpec` now resolves across the same tagged/untagged combinations.
+- Item detail indexing creates richer alias coverage so both tagged and untagged lookups can find the same detail model.
+
+### D) Action-bar selected-unit resolution hardening
+
+Changes in `ui/main/game/live_game/live_game_action_bar.js`:
+
+- `resolveUnitSpec` expanded to robustly bridge tagged and untagged ID forms.
+- Resolution order favored practical GW correctness while still supporting canonical fallback behavior.
+
+### E) Build-bar resolution hardening
+
+Changes in `ui/main/game/live_game/live_game_build_bar.js`:
+
+- `resolveBuildSpecId` and `resolveBuildItemId` expanded with canonical+tag fallback paths.
+- Added one-time logging guard to avoid repeated spam for the same fallback case.
+
+## Why the “missing grid mapping” logs appeared even when behavior worked
+
+The diagnostics included messages like:
+
+- `[GW_COOP] addBuildInfo missing grid mapping for tagged id=... canonical=...`
+
+This line does **not** mean the game is broken by itself.
+
+It indicates:
+
+1. Build hotkey map (`Build.HotkeyModel.SpecIdToGridMap`) is static and intentionally incomplete.
+2. Many tagged specs in GW payloads (especially `.ai`, commander variants, base templates, helper units) are not expected to have dedicated grid entries.
+3. The code falls back to `misc` grouping for unmapped entries.
+
+So during a healthy run, it is normal to see many “missing grid mapping” messages for specs that are not intended to occupy a first-class hotkey slot.
+
+In other words: this diagnostic was a visibility aid, not a hard error.
+
+## Commit `e48d3ec`: Logging Cleanup
+
+After validating that tooltip/load-unload/hotkey behavior was fixed, temporary diagnostic logs were removed while preserving functional changes.
+
+What was removed:
+
+- Most `[GW_COOP]` fallback and unresolved logs in live_game, action_bar, build_bar.
+- GW lobby sync completeness logs.
+- Reconnect staging mount-refresh success log.
+
+What remained:
+
+- The actual fallback logic and ordering.
+- The GW lobby remount ordering and untagged unit-list synthesis.
+- Reconnect staging spec-data refresh call.
+
+This is the intended lifecycle:
+
+1. Add narrow logs for uncertain assumptions.
+2. Confirm runtime behavior and isolate edge cases.
+3. Remove high-volume logs once stable.
+
+## Final Technical Summary of the Issue and Resolution
+
+### The issue
+
+A set of coop-client UI features failed because multiple UI subsystems resolved unit specs using inconsistent key namespaces (`tagged` vs `untagged`) and partial fallback logic.
+
+### The fix pattern
+
+1. Normalize spec-ID resolution in every affected client path (tooltip, action-bar, build-bar).
+2. Preserve compatibility untagged unit list when remounting synced GW files.
+3. Ensure spec cache refresh occurs after reconnect memory-file remount.
+4. Validate with temporary scoped diagnostics, then remove noise.
+
+### Why this solved all three symptoms together
+
+Tooltip rendering, command availability, and build hotkey selection all consume different projections of the same underlying unit-spec graph. Once that graph was consistently discoverable from tagged and untagged identifiers, all three features recovered without requiring separate game-rule changes.
+
+## Practical Guidance for Future Similar Bugs
+
+When a dynamic-content mode shows multiple "UI-only" failures at once, check for namespace drift before changing gameplay logic:
+
+1. Verify whether lookups are mixing canonical and mode-tagged spec IDs.
+2. Verify whether compatibility aggregate files (like untagged unit lists) are still synthesized after remount operations.
+3. Verify whether spec caches are refreshed after memory file updates.
+4. Prefer targeted, assumption-check logs with a unique prefix during diagnosis, then remove them after stabilization.
+
+This pair of commits is a concrete template for diagnosing and fixing those conditions.
