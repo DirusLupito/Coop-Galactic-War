@@ -119,12 +119,13 @@ $(document).ready(function() {
             return value;
         });
 
-        api.file.unmountAllMemoryFiles().always(function() {
-            api.file.mountMemoryFiles(cookedFiles).then(function() {
-                model.gwConfigMounted(true);
-                api.game.setUnitSpecTag('.player');
-                model.send_message('gw_config_ready', {});
-            });
+        // Do not globally unmount memory files here. Community mod hooks on
+        // unmountAllMemoryFiles can trigger broad remount activity and race
+        // with GW lobby startup on some machines.
+        api.file.mountMemoryFiles(cookedFiles).then(function() {
+            model.gwConfigMounted(true);
+            api.game.setUnitSpecTag('.player');
+            model.send_message('gw_config_ready', {});
         });
     };
 
