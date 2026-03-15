@@ -18,6 +18,9 @@ The intent is to preserve the reasoning behind these changes so future contribut
 - Co-op build and action UI fixes:
   - `acd428d` `Several fixes for Co-op player unit UI.`
   - `e48d3ec` `Removed logging related to build/action UI bugfixes.`
+- GW lobby discovery visibility fixes:
+  - `bd7227b` `gw lobby beacon now shows up on LAN more consistently.`
+  - `8e3b814` `gw lobby is now visible in the server browser`
 
 ## High-Level Summary
 
@@ -711,3 +714,94 @@ When a dynamic-content mode shows multiple "UI-only" failures at once, check for
 4. Prefer targeted, assumption-check logs with a unique prefix during diagnosis, then remove them after stabilization.
 
 This pair of commits is a concrete template for diagnosing and fixing those conditions.
+
+---
+
+## GW Lobby Discovery Visibility Fixes (Commits `bd7227b` and `8e3b814`)
+
+After reconnect and UI parity were stable, a separate discovery problem remained:
+
+- GW coop lobby beacons were unstable or short-lived in LAN browser visibility.
+- GW coop lobby beacons were not visible at all from non-LAN machines through server-browser discovery.
+- Direct connect by `ip:port` still worked, proving game hosting and transport were functional.
+
+That symptom profile strongly indicated a beacon publication/ingestion compatibility issue rather than a core networking issue.
+
+## Commit `bd7227b`
+
+This commit made GW beacons significantly more stable on LAN by reducing beacon payload size and matching normal lobby beacon structure more closely.
+
+Changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Changed `game.system` beacon payload from full `config.system` to:
+  - `utils.getMinimalSystemDescription(config.system)`
+
+Effect in practice:
+
+- GW lobby listings stopped disappearing as frequently on LAN.
+- Beacon behavior became closer to standard lobbies, which already use minimal system summaries.
+
+Why this helped:
+
+- Full system payloads can be large and noisy.
+- Minimal summaries are less likely to hit message-size, parsing, or update-thrashing edge cases in beacon pipelines.
+
+## Commit `8e3b814`
+
+This commit resolved non-LAN server-browser visibility by applying two practical compatibility changes.
+
+### A) GW beacon `mode` changed to a canonical value
+
+In [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- `mode: 'GalacticWar'` was changed to `mode: 'FreeForAll'`.
+
+Observed effect:
+
+- GW lobby became visible through the remote server-browser discovery path.
+
+### B) GW startup no longer forces UPnP disable
+
+In [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- Removed forced `disable_upnp: true` from GW game start params.
+
+Observed effect:
+
+- GW startup behavior became consistent with other lobby creation paths.
+
+### C) Mod packaging now includes the changed GW play file
+
+In [generate_mod.py](generate_mod.py):
+
+- Added `ui/main/game/galactic_war/gw_play/gw_play.js` to the explicit copy list.
+
+Why this matters:
+
+- Prevents “changed in source but not shipped in built mod” drift for this critical launch file.
+
+## Most Plausible Explanation for the “FreeForAll fixed remote discovery” behavior
+
+The best current explanation is that non-LAN discovery applies stricter normalization/validation than LAN beacon rendering.
+
+Likely model:
+
+1. LAN browser path consumes local beacons directly and is permissive about custom `mode` values.
+2. Non-LAN discovery path (service-backed or community index backed) likely expects canonical mode values (for example `FreeForAll`, `TeamArmies`, `Waiting`) or relies on those values for indexing/filtering.
+3. A non-canonical value like `GalacticWar` may be dropped, ignored, or fail indexing in that upstream path.
+4. Replacing with `FreeForAll` passes compatibility checks, so the entry becomes discoverable remotely.
+
+This is not proven from service internals, but it matches the observed behavior very closely:
+
+- LAN visibility improved with payload-shape fixes.
+- Remote visibility only recovered once the mode string switched to a canonical token.
+
+## Practical Lesson
+
+If a lobby is visible on LAN but not remotely while direct connect still works, suspect beacon schema compatibility in the remote indexing path before suspecting transport.
+
+Specifically validate:
+
+- Beacon field sizes and shape (`game.system` summary vs full object).
+- Canonical enum-like fields (`mode`, possibly region/type metadata).
+- Packaging/deploy paths so launch-side changes are actually shipped.
