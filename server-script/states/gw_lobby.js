@@ -71,7 +71,9 @@ function LobbyModel(creator) {
         var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
         var modsData = server.getModsForBeacon();
         var config = self.config();
-        var gameSystem = (config && config.system) ? config.system : { planets: [] };
+        var gameSystem = (config && config.system)
+            ? utils.getMinimalSystemDescription(config.system)
+            : { planets: [] };
 
         console.log('Connected clients: ' + connectedClients.length);
         server.beacon = {
@@ -93,14 +95,14 @@ function LobbyModel(creator) {
             require_password: false,
             whitelist: [],
             blacklist: [],
-            tag: 'GW',
+            tag: 'Testing',
             game: {
                 system: gameSystem,
                 name: 'Galactic War'
             },
             required_content: content_manager.getRequiredContent(),
             bounty_mode: false,
-            bounty_value: 0.5,
+            bounty_value: 1.0,
             sandbox: !!(config && config.sandbox)
         };
 
