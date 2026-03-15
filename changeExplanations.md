@@ -21,6 +21,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
 - GW lobby discovery visibility fixes:
   - `bd7227b` `gw lobby beacon now shows up on LAN more consistently.`
   - `8e3b814` `gw lobby is now visible in the server browser`
+- Fixing an issue with unmounting memory files in the GW lobby:
+  - `9f594ae` `Fixed a race condition that could appear causing a crash on some PCs but not others.`
 
 ## High-Level Summary
 
@@ -805,3 +807,96 @@ Specifically validate:
 - Beacon field sizes and shape (`game.system` summary vs full object).
 - Canonical enum-like fields (`mode`, possibly region/type metadata).
 - Packaging/deploy paths so launch-side changes are actually shipped.
+
+---
+
+## Cross-Machine Crash Fix (Commit `9f594ae`)
+
+After the UI parity fixes were stable on some machines, a new severe regression appeared on at least one other machine:
+
+- GW coop startup could crash during/just after lobby handoff into sim creation.
+- The crash did not reproduce reliably on every machine.
+- The first visible fatal line in the crashing log was often a missing archetype/spec read, for example:
+  - `Error opening struct PlanetArchetypeSpec spec "/pa/terrain/sun.json", file failed to load`
+- The same file could be present and valid on disk, and non-GW paths could still load normal games.
+
+That profile is a classic race/timing signature, not a literal "file deleted from disk" signature.
+
+## What Changed That Introduced the Risk
+
+The regression window started with commit `acd428d`, specifically in:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+That commit changed GW lobby config mounting from a direct mount to:
+
+1. `api.file.unmountAllMemoryFiles()`
+2. then `api.file.mountMemoryFiles(cookedFiles)`
+
+On paper, this looked safe and even hygienic (clear stale memory files, then mount fresh synced GW files). In isolation, that pattern is valid and appears elsewhere in GW/replay flows.
+
+## Why `unmountAllMemoryFiles` Existed in the First Place
+
+This call was not necessarily bad. It came from a legitimate historical pattern used in dynamic-content modes:
+
+1. Avoid stale memory-file overlays from previous scenes.
+2. Ensure a clean memory FS before mounting a generated namespace.
+3. Keep behavior deterministic when switching between content sets.
+
+That logic appears in existing code such as GW referee generation/mount paths and replay-style restore paths. So the motivation was defensive correctness.
+
+## Why It Became Unsafe in GW Lobby Specifically
+
+In this codebase, `unmountAllMemoryFiles` is not just a low-level file operation. It can be hooked/overridden by community-mod integration logic.
+
+Key point:
+
+- Community mods attach behavior to unmount/remount cycles (for example reloading client-mod mounts after unmount).
+
+So in GW lobby startup, this sequence happened on affected machines:
+
+1. GW lobby receives synced GW memory files.
+2. GW lobby calls global `unmountAllMemoryFiles`.
+3. Community-mod hook machinery reacts and triggers broader remount/reload activity.
+4. GW startup proceeds toward `connection_GameConfig` / `connection_SimCreated` while mount state is still in flux.
+5. A spec/archetype request during that window fails transiently (`/pa/terrain/sun.json` in observed logs), causing crash.
+
+Why only some machines:
+
+- Race depends on timing, thread scheduling, IO speed, GPU/driver timing, and mod load behavior.
+- Faster or differently loaded machines can miss the bad window entirely.
+
+## Commit `9f594ae` Resolution
+
+Commit `9f594ae` made a minimal, targeted fix in:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+Behavioral change:
+
+- Removed the GW lobby call to `api.file.unmountAllMemoryFiles()`.
+- Kept direct `api.file.mountMemoryFiles(cookedFiles)`.
+- Kept `.player` spec-tag application and ready signaling.
+- Kept untagged `/pa/units/unit_list.json` synthesis compatibility logic introduced earlier.
+
+This preserves all intended GW coop UI fixes while removing the race-prone global unmount trigger in this sensitive startup path.
+
+## Why This Did Not Regress Functional Behavior
+
+No regressions were observed after removing unmount in GW lobby because:
+
+1. The critical functional requirement was mounting the synced GW files and setting `.player` tag.
+2. The compatibility requirement (untagged unit list synthesis) stayed intact.
+3. The removed step was a cleanliness step, not a gameplay requirement, and in this path it had become actively harmful due to hook side effects.
+
+## Practical Engineering Lesson from `9f594ae`
+
+In this project, treat `unmountAllMemoryFiles` as a high-impact operation with ecosystem side effects, not a purely local cleanup utility.
+
+Before using it in a hot transition path (lobby startup, scene handoff, reconnect staging), verify:
+
+1. Whether community-mod hooks attach additional remount behavior.
+2. Whether the path is timing-sensitive around server-state transitions.
+3. Whether direct mount/update is sufficient for correctness.
+
+In short: the call was historically reasonable, but context changed. `9f594ae` corrected that context mismatch by removing global unmount from GW lobby sync, which eliminated a machine-dependent startup race.
