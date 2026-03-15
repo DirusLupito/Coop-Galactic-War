@@ -86,7 +86,7 @@ function LobbyModel(creator) {
             max_players: MAX_GW_PLAYERS,
             spectators: 0,
             max_spectators: 0,
-            mode: 'GalacticWar',
+            mode: 'FreeForAll',
             mod_names: modsData.names,
             mod_identifiers: modsData.identifiers,
             cheat_config: main.cheats,

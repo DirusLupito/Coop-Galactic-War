@@ -1368,8 +1368,7 @@ requireGW([
                     var params = {
                         action: 'start',
                         mode: 'gw',
-                        content: game.content(),
-                        disable_upnp: true
+                        content: game.content()
                     };
 
                     if (self.useLocalServer()) {
