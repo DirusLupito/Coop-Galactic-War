@@ -3,11 +3,15 @@ var main = require('main');
 var sim_utils = require('sim_utils');
 var utils = require('utils');
 var file = require('file');
+var content_manager = require('content_manager');
 var _ = require('thirdparty/lodash');
 var ko = require('thirdparty/knockout');
 
+console.log('gw_lobby server script: loaded');
+
 // Note: GW does not currently support reconnect.
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
+var MAX_GW_PLAYERS = 2;
 
 var debugging = false;
 
@@ -33,11 +37,77 @@ function LobbyModel(creator) {
     self.config = ko.observable();
 
     self.creator = creator.id;
+    self.clientConfigReady = {};
     self.creatorReady = ko.observable();
     self.creatorReady.subscribe(function() {
-        self.changeControl({starting: true});
+        self.tryStart();
     });
     self.creatorDisconnectTimeout = undefined;
+
+    self.tryStart = function() {
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+        var hasCoopPartner = connectedClients.length >= 2;
+        var allConfigReady = _.every(connectedClients, function(client) {
+            return !!self.clientConfigReady[client.id];
+        });
+        var control = self.control();
+        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && hasCoopPartner && allConfigReady;
+
+        if (readyToStart && !control.starting)
+            self.changeControl({ starting: true });
+        else if (!readyToStart && control.starting)
+            self.changeControl({ starting: false });
+
+        if (!!self.creatorReady() && !hasCoopPartner)
+            console.log('GW - Waiting for second player before start');
+        else if (!!self.creatorReady() && hasCoopPartner && !allConfigReady)
+            console.log('GW - Waiting for all clients to mount GW config before start');
+    };
+
+    self.updateBeacon = function() {
+        console.log('Updating beacon');
+        var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
+        var modsData = server.getModsForBeacon();
+        var config = self.config();
+        var gameSystem = (config && config.system)
+            ? utils.getMinimalSystemDescription(config.system)
+            : { planets: [] };
+
+        console.log('Connected clients: ' + connectedClients.length);
+        server.beacon = {
+            state: 'lobby',
+            uuid: server.uuid(),
+            full: connectedClients.length >= server.maxClients,
+            started: !!self.control().starting,
+            players: connectedClients.length,
+            creator: creator.name,
+            max_players: MAX_GW_PLAYERS,
+            spectators: 0,
+            max_spectators: 0,
+            mode: 'FreeForAll',
+            mod_names: modsData.names,
+            mod_identifiers: modsData.identifiers,
+            cheat_config: main.cheats,
+            player_names: _.map(connectedClients, function(client) { return client.name; }),
+            spectator_names: [],
+            require_password: false,
+            whitelist: [],
+            blacklist: [],
+            tag: 'Testing',
+            game: {
+                system: gameSystem,
+                name: 'Galactic War'
+            },
+            required_content: content_manager.getRequiredContent(),
+            bounty_mode: false,
+            bounty_value: 1.0,
+            sandbox: !!(config && config.sandbox)
+        };
+
+        debug_log(server.beacon);
+    };
 
     self.clientState = ko.computed(function() {
         if (!_.isEqual(client_state.control, self.control())) {
@@ -47,6 +117,9 @@ function LobbyModel(creator) {
                 payload: client_state.control
             });
         }
+
+        console.log('clientState', client_state);
+        self.updateBeacon();
     });
 
     self.changeControl = function(updateFlags) {
@@ -72,20 +145,85 @@ function LobbyModel(creator) {
         });
     };
 
+    self.sendGWConfigToClient = function(client) {
+        var config = self.config();
+        if (!config || !config.files)
+            return;
+
+        var message = {
+            message_type: 'gw_config',
+            payload: {
+                files: config.files
+            }
+        };
+
+        if (client && client.connected)
+            client.message(message);
+        else
+            server.broadcast(message);
+
+        if (client && client.id)
+            self.clientConfigReady[client.id] = false;
+        else {
+            _.forEach(server.clients, function(c) {
+                if (c.connected)
+                    self.clientConfigReady[c.id] = false;
+            });
+        }
+
+        self.tryStart();
+    };
+
     self.startGame = function() {
         var config = self.config();
-        // Point the non-AI slots at the player
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+
+        // Collect all human-controllable slots from non-AI armies.
+        var humanSlots = [];
+        var firstHumanArmy = null;
         _.forEach(config.armies, function(army) {
-            var ai = _.any(army.slots, 'ai');
-            if (!ai) {
+            var aiArmy = _.any(army.slots, 'ai');
+            if (!aiArmy) {
+                if (!firstHumanArmy)
+                    firstHumanArmy = army;
                 _.forEach(army.slots, function(slot) {
-                    slot.client = creator;
+                    if (!slot.ai)
+                        humanSlots.push(slot);
                 });
             }
         });
+
+        // Ensure enough human slots exist for all connected clients.
+        if (firstHumanArmy && humanSlots.length < connectedClients.length) {
+            var baseSlot = humanSlots[0] || { name: 'Player' };
+            while (humanSlots.length < connectedClients.length) {
+                var extraSlot = _.clone(baseSlot);
+                delete extraSlot.client;
+                delete extraSlot.ai;
+                firstHumanArmy.slots.push(extraSlot);
+                humanSlots.push(extraSlot);
+            }
+        }
+
+        // Map connected humans into human slots.
+        _.forEach(humanSlots, function(slot, index) {
+            if (index < connectedClients.length)
+                slot.client = connectedClients[index];
+            else
+                delete slot.client;
+        });
+
         // Set up the players array for the landing state
         var players = {};
-        players[self.creator] = config.player;
+        _.forEach(connectedClients, function(client) {
+            players[client.id] = _.clone(config.player);
+        });
+
+        console.log('GW - mapped clients to player slots: ' + _.map(connectedClients, function(client) {
+            return client.name + ' (' + client.id + ')';
+        }).join(', '));
 
         var landingConfig =
         {
@@ -209,6 +347,8 @@ function LobbyModel(creator) {
         sim.shutdown(false);
         sim.systemName = newConfig.system.name;
         sim.planets = newConfig.system.planets;
+
+        self.sendGWConfigToClient();
     });
 
     var playerMsg = {
@@ -238,13 +378,23 @@ function LobbyModel(creator) {
         set_ready: function(msg, response) {
             self.creatorReady(true);
             response.succeed();
+        },
+        request_gw_config: function(msg, response) {
+            self.sendGWConfigToClient(msg.client);
+            response.succeed();
+        },
+        gw_config_ready: function(msg, response) {
+            self.clientConfigReady[msg.client.id] = true;
+            self.tryStart();
+            response.succeed();
         }
     };
     playerMsg = _.mapValues(playerMsg, function(handler, key) {
         return function(msg) {
             debug_log('playerMsg.' + key);
             var response = server.respond(msg);
-            if (msg.client.id !== self.creator)
+            var creatorOnly = key === 'set_config' || key === 'set_ready';
+            if (creatorOnly && msg.client.id !== self.creator)
                 return response.fail("Invalid message");
             return handler(msg, response);
         };
@@ -253,10 +403,14 @@ function LobbyModel(creator) {
     var cleanup = [];
 
     self.enter = function() {
+        server.maxClients = MAX_GW_PLAYERS;
+        self.updateBeacon();
+
         utils.pushCallback(sim.planets, 'onReady', function (onReady) {
             debug_log('sim.planets.onReady');
             sim.create();
             self.changeControl({ system_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.planets.onReady.pop(); });
@@ -264,6 +418,7 @@ function LobbyModel(creator) {
         utils.pushCallback(sim, 'onReady', function (onReady) {
             debug_log('sim.onReady');
             self.changeControl({ sim_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.onReady.pop(); });
@@ -275,6 +430,7 @@ function LobbyModel(creator) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+        server.beacon = null;
     };
 
     utils.pushCallback(creator, 'onDisconnect', function(onDisconnect) {
@@ -287,17 +443,27 @@ function LobbyModel(creator) {
     });
 
     utils.pushCallback(server, 'onConnect', function (onConnect, client, reconnect) {
-        if (!client.id !== self.creator) {
-            server.rejectClient(client, 'GW mode is currently single player');
-            return onConnect;
+        if (client.id === self.creator) {
+            if (self.creatorDisconnectTimeout) {
+                clearTimeout(self.creatorDisconnectTimeout);
+                delete self.creatorDisconnectTimeout;
+            }
+
+            self.creatorReady(false);
         }
 
-        if (self.creatorDisconnectTimeout) {
-            clearTimeout(self.creatorDisconnectTimeout);
-            delete self.creatorDisconnectTimeout;
-        }
+        self.clientConfigReady[client.id] = false;
 
-        self.creatorReady(false);
+        utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
+            delete self.clientConfigReady[client.id];
+            self.updateBeacon();
+            self.tryStart();
+            return onDisconnect;
+        });
+
+        self.updateBeacon();
+        self.sendGWConfigToClient(client);
+        self.tryStart();
         return onConnect;
     });
 
@@ -318,6 +484,13 @@ exports.enter = function (owner) {
 
     lobbyModel = new LobbyModel(owner);
     lobbyModel.enter();
+
+    try {
+        console.log('GW_Lobby: entering, client_state = ' + JSON.stringify(client_state));
+    }
+    catch (e) {
+        console.log('GW_Lobby: entering, client_state stringify failed', e);
+    }
 
     return client_state;
 };

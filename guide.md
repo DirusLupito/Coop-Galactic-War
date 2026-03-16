@@ -9,6 +9,10 @@ This guide explains what the subfolders generally do, based on reading represent
 - For each meaningful code subfolder, I read 1–2 representative files.
 - Some folders are asset-only (images, fonts, videos, icons); for those, purpose is inferred from structure/file names.
 
+## Notes:
+- This code uses ES5 Javascript, with the Coherent structure.
+- Many hidden functions and scenes and styles are used; not everything can be figured out as the actual game's source code is not present.
+
 ---
 
 ## `ui/` (client UI)

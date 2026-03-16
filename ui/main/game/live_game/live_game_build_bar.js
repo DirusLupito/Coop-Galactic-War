@@ -225,6 +225,14 @@ $(document).ready(function () {
         });
 
         self.buildLists = buildLists;
+        self.gwCoopResolutionLogSeen = {};
+
+        self.logGwCoopResolutionOnce = function(kind, fromId, toId) {
+            var key = kind + '|' + fromId + '|' + (toId || '');
+            if (self.gwCoopResolutionLogSeen[key])
+                return;
+            self.gwCoopResolutionLogSeen[key] = true;
+        };
 
         self.parseSelection = function(selection)
         {
@@ -232,17 +240,100 @@ $(document).ready(function () {
             var removeSpecs = _.clone(curSpecs);
             var addSpecs = {};
 
+            var resolveBuildSpecId = function(id) {
+                if (self.buildLists[id])
+                    return id;
+
+                // Fallback across tagged/untagged ids:
+                // foo/bar/unit.json.player <-> foo/bar/unit.json
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    if (self.buildLists[strip[1] + '.player']) {
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.player');
+                        return strip[1] + '.player';
+                    }
+                    if (self.buildLists[strip[1] + '.ai']) {
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.ai');
+                        return strip[1] + '.ai';
+                    }
+                }
+
+                if (strip && strip[1] && self.buildLists[strip[1]])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, strip[1]);
+                    return strip[1];
+                }
+
+                if (self.buildLists[id + '.player'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.player');
+                    return id + '.player';
+                }
+                if (self.buildLists[id + '.ai'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.ai');
+                    return id + '.ai';
+
+                }
+
+                self.logGwCoopResolutionOnce('resolveBuildSpecId unresolved', 'id=' + id);
+
+                return null;
+            };
+
+            var resolveBuildItemId = function(id, items) {
+                if (items[id])
+                    return id;
+
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                if (strip && strip[1]) {
+                    if (items[strip[1] + '.player']) {
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.player');
+                        return strip[1] + '.player';
+                    }
+                    if (items[strip[1] + '.ai']) {
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.ai');
+                        return strip[1] + '.ai';
+                    }
+                }
+
+                if (strip && strip[1] && items[strip[1]])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, strip[1]);
+                    return strip[1];
+                }
+
+                if (items[id + '.player'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.player');
+                    return id + '.player';
+                }
+                if (items[id + '.ai'])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.ai');
+                    return id + '.ai';
+
+                }
+
+                self.logGwCoopResolutionOnce('resolveBuildItemId unresolved', 'id=' + id);
+
+                return null;
+            };
+
             // Calculate the spec delta
             _.forIn(selection.spec_ids, function(count, id)
             {
-                if (removeSpecs[id] || curSpecs[id])
+                var resolvedId = resolveBuildSpecId(id);
+                if (!resolvedId)
+                    return;
+
+                if (removeSpecs[resolvedId] || curSpecs[resolvedId])
                 {
-                    delete removeSpecs[id];
+                    delete removeSpecs[resolvedId];
                     return;
                 }
 
-                if (self.buildLists[id])
-                    addSpecs[id] = self.buildLists[id];
+                addSpecs[resolvedId] = self.buildLists[resolvedId];
             });
 
             var addEmpty = _.isEmpty(addSpecs);
@@ -268,10 +359,13 @@ $(document).ready(function () {
             var clears = _.transform(buildItems, function(result, item, id) { result[id] = item.count(); });
             _.forIn(selection.build_orders, function(count, id)
             {
+                var resolvedBuildId = resolveBuildItemId(id, buildItems);
+                if (!resolvedBuildId)
+                    return;
+
                 if (count)
-                    delete clears[id];
-                if (buildItems[id])
-                    buildItems[id].count(count);
+                    delete clears[resolvedBuildId];
+                buildItems[resolvedBuildId].count(count);
             });
             _.forIn(clears, function(value, id)
             {
@@ -301,9 +395,12 @@ $(document).ready(function () {
 
     function BuildBarViewModel() {
         var self = this;
+        self.gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
 
         self.unitSpecs = $.Deferred();
-        self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) { self.specTag = tag; });
+        self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
+            self.specTag = self.gwCoopMode() ? '.player' : tag;
+        });
 
         self.buildSet = ko.observable();
 
@@ -445,7 +542,7 @@ $(document).ready(function () {
             {
                 _.forIn(input_maps[group].keymap, function (name, hotkey)
                 {
-                    if (name.endsWith('_unit'))
+                    if (/_unit$/.test(name))
                         name = name.replace('_unit', '');
                     result['tab_' + /start_build_(.*)/.exec(name).pop()] = hotkey;
                 });

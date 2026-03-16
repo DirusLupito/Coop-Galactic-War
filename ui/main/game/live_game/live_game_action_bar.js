@@ -22,6 +22,7 @@ $(document).ready(function () {
         self.unitSpecs = ko.observable({});
         self.selection = ko.observable({});
         self.changingSelection = ko.observable(false); /* raises to true while we're binding a new selection to suppress sound effect subscriptions */
+        self.gwCoopResolutionLogSeen = {};
 
         self.parsedUnitSpecs = ko.computed(function() {
             var unitSpecs = self.unitSpecs();
@@ -59,8 +60,54 @@ $(document).ready(function () {
             var payload = self.selection();
             var unitSpecs = self.parsedUnitSpecs();
 
-            for (var id in payload.spec_ids) {
+            var resolveUnitSpec = function(id) {
+                var logOnce = function(kind, fromId, toId) {
+                    var key = kind + '|' + fromId + '|' + (toId || '');
+                    if (self.gwCoopResolutionLogSeen[key])
+                        return;
+                    self.gwCoopResolutionLogSeen[key] = true;
+                };
+
                 var unit = unitSpecs[id];
+                if (unit)
+                    return unit;
+
+                // Fallback across tagged/untagged ids:
+                // foo/bar/unit.json.player <-> foo/bar/unit.json
+                var strip = /(.*\.json)[^\/]*$/.exec(id);
+                var canonicalId = strip && strip[1];
+                if (canonicalId) {
+                    unit = unitSpecs[canonicalId + '.player'] || unitSpecs[canonicalId + '.ai'];
+                    if (unit) {
+                        logOnce('canonical+tag fallback', id, unit.id);
+                        return unit;
+                    }
+                }
+
+                if (strip && strip[1]) {
+                    unit = unitSpecs[strip[1]];
+                    if (unit)
+                    {
+                        logOnce('fallback', id, strip[1]);
+                        return unit;
+                    }
+                }
+
+                // If id is untagged, also try common GW tags.
+                unit = unitSpecs[id + '.player'] || unitSpecs[id + '.ai'];
+                if (unit)
+                {
+                    logOnce('fallback', id, unit.id);
+                    return unit;
+                }
+
+                logOnce('unresolved', id + ' canonical=' + canonicalId);
+
+                return null;
+            };
+
+            for (var id in payload.spec_ids) {
+                var unit = resolveUnitSpec(id);
                 if (!unit)
                     continue;
 

@@ -2,6 +2,19 @@
 
 $(document).ready(function () {
 
+    function isGalacticWarForConnect(payload) {
+        var serverGameType = payload
+            && payload.data
+            && payload.data.client
+            && payload.data.client.game_options
+            && payload.data.client.game_options.game_type;
+        var reconnectGameType = model.reconnectToGameInfo() && model.reconnectToGameInfo().game;
+
+        return serverGameType === 'Galactic War'
+            || reconnectGameType === 'GalacticWar'
+            || reconnectGameType === 'Galactic War';
+    }
+
     var DEFAULT_CONNECTION_ATTEMPTS = 5;
     var DEFAULT_CONNECT_DELAY = 2;
     var DEFAULT_RETRY_DELAY = 5;
@@ -54,6 +67,7 @@ $(document).ready(function () {
         self.gameModIdentifiers = ko.observableArray().extend({ session: 'game_mod_identifiers' });
 
         self.reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
+        self.reconnectingToExistingGame = ko.observable(false);
 
         self.gameInfo = ko.computed( function() {
             var result = {
@@ -374,7 +388,22 @@ $(document).ready(function () {
         model.connecting(false);
         model.showCancel(false);
 
+        var previousReconnectToGameInfo = model.reconnectToGameInfo();
         var gameInfo = model.gameInfo();
+
+        if (previousReconnectToGameInfo) {
+            gameInfo.game = gameInfo.game || previousReconnectToGameInfo.game;
+            gameInfo.setup = gameInfo.setup || previousReconnectToGameInfo.setup;
+            gameInfo.mods = (gameInfo.mods && gameInfo.mods.length) ? gameInfo.mods : (previousReconnectToGameInfo.mods || []);
+            gameInfo.content = gameInfo.content || previousReconnectToGameInfo.content;
+        }
+
+        model.reconnectingToExistingGame(!!previousReconnectToGameInfo
+            && previousReconnectToGameInfo.lobby_id === gameInfo.lobby_id
+            && previousReconnectToGameInfo.uberId === gameInfo.uberId
+            && previousReconnectToGameInfo.uuid === gameInfo.uuid
+            && previousReconnectToGameInfo.game_hostname === gameInfo.game_hostname
+            && previousReconnectToGameInfo.game_port === gameInfo.game_port);
 
         model.reconnectToGameInfo(gameInfo);
 
@@ -436,6 +465,12 @@ $(document).ready(function () {
     handlers.server_state = function (payload) {
 
         var url = payload.url;
+
+        if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
+            var stagingUrl = 'coui://ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
+
+            url = stagingUrl;
+        }
 
 // ignore server state messages not redirecting to a new scene
 
