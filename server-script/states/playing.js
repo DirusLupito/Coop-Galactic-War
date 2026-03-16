@@ -600,15 +600,8 @@ function playerMsg_setSimSpeedMultiplier(msg) {
 
 // players here are always real players as set based on sim.players in landing state
 // for now sim speed can only be set for single player local server live games
-    if ( checkControlState('view_replay') || client_state.ranked || msg.client.isUbernetUser)
+    if (_.size(players) > 1 || checkControlState('view_replay') || client_state.ranked || msg.client.isUbernetUser)
         return response.fail("Changing sim speed not allowed");
-
-    // Fail if the first player (ideally lobby host) is not the one changing speed
-    if (msg.client.id !== server.clients[0].id)
-        return response.fail("Only the lobby host can change sim speed");
-
-    // debug, print out the client's id
-    console.log("Client ID:", msg.client.id);
 
     if (!msg.payload || !msg.payload.sim_speed_multiplier)
         return response.fail("No sim speed provided");

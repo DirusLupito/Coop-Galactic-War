@@ -164,6 +164,9 @@
     "Radius:": {
         "message": "Radius:"
     },
+    "Resource Spots": {
+        "message": "Resource Spots"
+    },
     "SAVE SYSTEM": {
         "message": "SAVE SYSTEM"
     },
@@ -259,6 +262,9 @@
     },
     "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.": {
         "message": "Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor."
+    },
+    "Use [style=hotkey_title]__hotkey__[/style] to place an energy spot below the cursor.": {
+        "message": "Use [style=hotkey_title]__hotkey__[/style] to place an energy spot below the cursor."
     },
     "Use as a starting planet": {
         "message": "Use as a starting planet"

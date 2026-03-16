@@ -11,6 +11,7 @@ $(document).ready(function () {
             'blip',
             'metal_splat_02',
             'control_point_01',
+            'energy_spot_01',
             'artillery_short',
             'artillery_long',
             'land_barrier',

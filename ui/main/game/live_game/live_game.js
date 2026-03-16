@@ -2791,7 +2791,15 @@ $(document).ready(function () {
         self.pips = [];
         $holodeck.each(function () {
             var $this = $(this);
-            var holodeck = new api.Holodeck($this, {}, holodeckReady);
+            var holodeckConfig = {};
+            if ($this.is('.primary'))
+                holodeckConfig.role = 'primary';
+            else if ($this.is('.pip'))
+                holodeckConfig.role = 'pip';
+            else if ($this.is('.preview'))
+                holodeckConfig.role = 'preview';
+
+            var holodeck = new api.Holodeck($this, holodeckConfig, holodeckReady);
 
             if ($this.is('.primary')) {
                 holodeck.isPrimary = true;
@@ -3002,6 +3010,11 @@ $(document).ready(function () {
         {
             self.uiScale(api.settings.getSynchronous('ui', 'ui_scale') || 1.0);
             api.ar_system.changeSkyBoxSpec(api.settings.getSynchronous('graphics', 'skybox'));
+
+            // Ensure display-state options are applied whenever a live_game view is created.
+            // This keeps holodeck/UI behavior in sync with saved settings without requiring
+            // the settings panel to be opened in-session.
+            engine.call('game.updateDisplaySettings', JSON.stringify(api.settings.displaySettingsPayload()));
         }
 
         var scaleMouseEvent = function (mdevent) {
