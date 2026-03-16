@@ -287,6 +287,9 @@
     "Show Stat Bars": {
         "message": "Show Stat Bars"
     },
+    "Show Stat Bars in PiP": {
+        "message": "Show Stat Bars in PiP"
+    },
     "Show Unit Icons": {
         "message": "Show Unit Icons"
     },
@@ -358,6 +361,9 @@
     },
     "add metal spot": {
         "message": "add metal spot"
+    },
+    "add energy spot": {
+        "message": "add energy spot"
     },
     "add/remove": {
         "message": "add/remove"
@@ -659,8 +665,8 @@
     "remove landing zone": {
         "message": "remove landing zone"
     },
-    "remove metal spot": {
-        "message": "remove metal spot"
+    "remove resource spot": {
+        "message": "remove resource spot"
     },
     "repair": {
         "message": "repair"

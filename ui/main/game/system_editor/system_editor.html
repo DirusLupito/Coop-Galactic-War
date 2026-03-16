@@ -368,10 +368,10 @@
                                         </div>
                                         <div class="div_planet_info_square">
                                             <div class="title">
-                                                <loc>Metal Spots</loc>
+                                                <loc>Resource Spots</loc>
                                             </div>
                                             <div class="count">
-                                                <span class="div_planet_info_label"><loc>Spots:</loc> </span><span data-bind="text: customMetalSpotCount">000</span>
+                                                <span class="div_planet_info_label"><loc>Spots:</loc> </span><span data-bind="text: customResourceSpotCount">000</span>
                                             </div>
                                             <div class="btn_toggle" data-bind="css: { live: api.terrain_editor.editingMetalSpots(), btn_toggle_disabled: planetUnderConstruction}, click: toggleEditMetalSpots">
                                                 <div class="btn_std_label btn_toggle_label">
@@ -1150,12 +1150,22 @@
         </div>
     </div>
 
-    <!-- ko if: api.terrain_editor.editingMetalSpots() && !!keybindFor('add_metal_spot') -->
+    <!-- ko if: api.terrain_editor.editingMetalSpots() && (!!keybindFor('add_metal_spot') || !!keybindFor('add_energy_spot')) -->
     <div class="div_keyboard_msg" data-bind="visible: true" style="display: none">
+        <!-- ko if: !!keybindFor('add_metal_spot') -->
         <span data-bind="vars: { hotkey: keybindFor('add_metal_spot') }">
             <loc>Use [style=hotkey_title]__hotkey__[/style] to place a metal spot below the cursor.</loc>
         </span>
-        <!-- ko if: !!keybindFor('delete_metal_spot')-->
+        <!-- /ko -->
+        <!-- ko if: !!keybindFor('add_metal_spot') && !!keybindFor('add_energy_spot') -->
+        <span>&nbsp;</span>
+        <!-- /ko -->
+        <!-- ko if: !!keybindFor('add_energy_spot') -->
+        <span data-bind="vars: { hotkey: keybindFor('add_energy_spot') }">
+            <loc>Use [style=hotkey_title]__hotkey__[/style] to place an energy spot below the cursor.</loc>
+        </span>
+        <!-- /ko -->
+        <!-- ko if: !!keybindFor('delete_metal_spot') -->
         <span>&nbsp;</span>
         <span data-bind="vars: { hotkey: keybindFor('delete_metal_spot') }">
             <loc>Use [style=hotkey_title]__hotkey__[/style] to delete.</loc>

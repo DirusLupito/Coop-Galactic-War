@@ -105,6 +105,7 @@ require(["api"], function (api) {
     self.max_spawn_delay = spec.max_spawn_delay;
     self.planetCSG = spec.planetCSG;
     self.metal_spots = spec.metal_spots;
+    self.energy_spots = spec.energy_spots;
     self.landing_zones = spec.landing_zones;
     self.planet = new PlanetModel(spec.planet);
   }
@@ -746,6 +747,20 @@ require(["api"], function (api) {
       return selectedPlanet.metal_spots.length;
     });
 
+    self.customEnergySpotCount = ko.computed(function () {
+      var selectedPlanet = self.selectedPlanet();
+
+      if (!selectedPlanet || !selectedPlanet.energy_spots) {
+        return 0;
+      }
+
+      return selectedPlanet.energy_spots.length;
+    });
+
+    self.customResourceSpotCount = ko.computed(function () {
+      return self.customMetalSpotCount() + self.customEnergySpotCount();
+    });
+
     self.customLandingZoneCount = ko.computed(function () {
       var selectedPlanet = self.selectedPlanet();
 
@@ -765,7 +780,7 @@ require(["api"], function (api) {
       return (
         self.isAdvancedEditing() ||
         self.customBrushCount() > 0 ||
-        self.customMetalSpotCount() > 0 ||
+        self.customResourceSpotCount() > 0 ||
         self.customLandingZoneCount() > 0
       );
     });
@@ -1279,6 +1294,9 @@ require(["api"], function (api) {
         if (planetSpec.metal_spots) {
           source.metal_spots = planetSpec.metal_spots;
         }
+        if (planetSpec.energy_spots) {
+          source.energy_spots = planetSpec.energy_spots;
+        }
         if (planetSpec.landing_zones) {
           source.landing_zones = planetSpec.landing_zones;
         }
@@ -1286,13 +1304,15 @@ require(["api"], function (api) {
         planetSpec.source = {
           brushes: planetSpec.planetCSG,
           metal_spots: planetSpec.metal_spots,
+          energy_spots: planetSpec.energy_spots,
           landing_zones: planetSpec.landing_zones,
         };
       }
       planetSpec = _.omit(planetSpec, [
         "planetCSG",
         "metal_spots",
-        "landing_zone",
+        "energy_spots",
+        "landing_zones",
       ]);
       return planetSpec;
     };
@@ -1307,6 +1327,9 @@ require(["api"], function (api) {
 
       if (!planetSpec.metal_spots && source.metal_spots)
         planetSpec.metal_spots = source.metal_spots;
+
+      if (!planetSpec.energy_spots && source.energy_spots)
+        planetSpec.energy_spots = source.energy_spots;
 
       if (!planetSpec.landing_zones && source.landing_zones)
         planetSpec.landing_zones = source.landing_zones;
@@ -1659,7 +1682,7 @@ require(["api"], function (api) {
           tooltip = "!LOC:Preview to copy CSG";
           break;
         case "terrain":
-          tooltip = "Preview gameplay to copy metal spots and landing zones";
+          tooltip = "Preview gameplay to copy resource spots and landing zones";
           break;
         case "full":
           tooltip = "Preview terrain to copy only CSG ";
@@ -1942,11 +1965,18 @@ require(["api"], function (api) {
         ).then(function (second) {
           UberUtility.waitForAttributeLoad(
             second,
-            "landing_zones_key",
-            "landing_zones",
-            constants.PLANET_LANDING_ZONES_DATABASE
+            "energy_spots_key",
+            "energy_spots",
+            constants.PLANET_ENERGY_SPOTS_DATABASE
           ).then(function (third) {
-            deferred.resolve(third);
+            UberUtility.waitForAttributeLoad(
+              third,
+              "landing_zones_key",
+              "landing_zones",
+              constants.PLANET_LANDING_ZONES_DATABASE
+            ).then(function (fourth) {
+              deferred.resolve(fourth);
+            });
           });
         });
       });
@@ -1973,11 +2003,18 @@ require(["api"], function (api) {
         ).then(function (second) {
           UberUtility.waitForAttributeSave(
             second,
-            "landing_zones_key",
-            "landing_zones",
-            constants.PLANET_LANDING_ZONES_DATABASE
+            "energy_spots_key",
+            "energy_spots",
+            constants.PLANET_ENERGY_SPOTS_DATABASE
           ).then(function (third) {
-            deferred.resolve(third);
+            UberUtility.waitForAttributeSave(
+              third,
+              "landing_zones_key",
+              "landing_zones",
+              constants.PLANET_LANDING_ZONES_DATABASE
+            ).then(function (fourth) {
+              deferred.resolve(fourth);
+            });
           });
         });
       });
@@ -2678,6 +2715,22 @@ require(["api"], function (api) {
       model.systemUpdated();
     };
 
+    handlers.planet_energy_spots = function (payload) {
+      var index = payload.index;
+      var energy_spots = payload.energy_spots;
+
+      if (model.selectedPlanetIndex() != payload.index) {
+        console.error("planet_energy_spots for different planet");
+      }
+
+      var planet = model.system().planets[index];
+
+      if (_.isEqual(planet.energy_spots, energy_spots)) return;
+
+      planet.energy_spots = energy_spots;
+      model.systemUpdated();
+    };
+
     handlers.planet_landing_zones = function (payload) {
       var index = payload.index;
       var landing_zones = payload.landing_zones;
@@ -2714,11 +2767,12 @@ require(["api"], function (api) {
 
     handlers.system_blueprint = function (payload) {
       // copy updated source from engine
-      _.forEach(payload.system.planet_specs, function (planet, index) {
+      _.forEach(payload.system.planet_specs, function (planet) {
         var source = planet.source;
         if (source) {
           planet.planetCSG = source.brushes;
           planet.metal_spots = source.metal_spots;
+          planet.energy_spots = source.energy_spots;
           planet.landing_zones = source.landing_zones;
         }
       });
