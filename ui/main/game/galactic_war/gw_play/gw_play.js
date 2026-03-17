@@ -828,9 +828,211 @@ requireGW([
         self.gameModIdentifiers = ko.observableArray().extend({ session: 'game_mod_identifiers' });
         self.serverType = ko.observable().extend({ session: 'game_server_type' });
         self.serverSetup = ko.observable().extend({ session: 'game_server_setup' });
+        self.displayName = ko.observable().extend({ session: 'displayName' });
 
         self.gameModIdentifiers(undefined);
         self.gameType('Galactic War');
+
+        self.gwCampaignEnabled = ko.observable(false).extend({ session: 'gw_campaign_enabled' });
+        self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
+        self.gwCampaignConnected = ko.observable(false);
+        self.gwCampaignControl = ko.observable({});
+        self.gwCampaignSnapshotSeq = 0;
+        self.gwCampaignApplyingSnapshot = false;
+        self.gwCampaignHeartbeatHandle = undefined;
+        self.gwCampaignLastSnapshotSentAt = 0;
+        self.gwCampaignSnapshotCooldownMs = 1500;
+
+        var getQueryParam = function(name) {
+            var query = window.location.search || '';
+            if (!query.length || query.charAt(0) !== '?')
+                return undefined;
+
+            var pairs = query.substring(1).split('&');
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].split('=');
+                if (decodeURIComponent(pair[0] || '') === name)
+                    return decodeURIComponent(pair[1] || '');
+            }
+            return undefined;
+        };
+
+        var gwCampaignParam = getQueryParam('gw_campaign');
+        if (!_.isUndefined(gwCampaignParam))
+            self.gwCampaignEnabled(gwCampaignParam === '1' || gwCampaignParam === 'true');
+        else {
+            self.gwCampaignEnabled(false);
+            self.gwCampaignRole('solo');
+        }
+
+        self.isCampaignHost = ko.computed(function() {
+            return self.gwCampaignEnabled() && self.gwCampaignRole() === 'host';
+        });
+        self.isCampaignViewer = ko.computed(function() {
+            return self.gwCampaignEnabled() && self.gwCampaignRole() === 'viewer';
+        });
+        self.gwCampaignActive = ko.computed(function() {
+            return self.gwCampaignEnabled() && self.gwCampaignConnected();
+        });
+        self.canOpenCoopSession = ko.computed(function() {
+            return !self.gwCampaignActive() && !self.gwCampaignEnabled() && !game.isTutorial();
+        });
+        self.gwCampaignStatusText = ko.computed(function() {
+            if (!self.gwCampaignEnabled())
+                return '';
+            if (!self.gwCampaignConnected())
+                return loc('!LOC:GW Co-op session: connecting...');
+            if (self.isCampaignHost())
+                return loc('!LOC:GW Co-op session open (Host)');
+            if (self.isCampaignViewer())
+                return loc('!LOC:GW Co-op session open (Viewer)');
+            return loc('!LOC:GW Co-op session open');
+        });
+
+        self.openToCoop = function() {
+            if (!self.canOpenCoopSession())
+                return;
+
+            self.connectFailDestination(window.location.href);
+
+            var params = {
+                action: 'start',
+                mode: 'gw_campaign',
+                content: game.content()
+            };
+
+            if (self.useLocalServer()) {
+                self.serverType('local');
+                params.local = true;
+            }
+            else {
+                self.serverType('uber');
+            }
+
+            self.serverSetup('gw_campaign');
+            self.gwCampaignEnabled(true);
+            window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
+        };
+
+        self.leaveCoopSession = function() {
+            if (!self.gwCampaignEnabled())
+                return;
+
+            // Ask gw_campaign server state to terminate immediately for host.
+            self.send_message('leave_gw_campaign', {});
+
+            self.transitPrimaryMessage(loc('!LOC:Leaving GW Co-op Session'));
+            self.transitSecondaryMessage('');
+            self.transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
+            self.transitDelay(0);
+            window.location.href = 'coui://ui/main/game/transit/transit.html';
+        };
+
+        self.getCampaignSnapshotPayload = function() {
+            return {
+                game: game.save(),
+                ui: {
+                    selectedStar: self.selection.star(),
+                    hoverStar: self.hoverSystem.star(),
+                    stageOffset: self.galaxy.stageOffset(),
+                    zoom: self.galaxy.zoom(),
+                    timestamp: _.now()
+                }
+            };
+        };
+
+        self.sendCampaignSnapshot = function(reason) {
+            if (!self.isCampaignHost() || !self.gwCampaignConnected() || self.gwCampaignApplyingSnapshot)
+                return;
+
+            var control = self.gwCampaignControl() || {};
+            var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
+            var hasViewer = _.some(connectedClients, function(client) {
+                return client && client.role === 'viewer';
+            });
+
+            // Avoid emitting massive snapshots when host is alone.
+            if (!hasViewer)
+                return;
+
+            var now = _.now();
+            var highPriorityReason = reason === 'viewer_joined' || reason === 'host_role_assigned';
+            if (!highPriorityReason && (now - self.gwCampaignLastSnapshotSentAt) < self.gwCampaignSnapshotCooldownMs)
+                return;
+
+            self.gwCampaignLastSnapshotSentAt = now;
+
+            self.gwCampaignSnapshotSeq += 1;
+            self.send_message('gw_campaign_snapshot', {
+                seq: self.gwCampaignSnapshotSeq,
+                reason: reason || 'update',
+                snapshot: self.getCampaignSnapshotPayload()
+            });
+        };
+
+        self.requestCampaignSnapshot = function() {
+            if (!self.gwCampaignActive())
+                return;
+            self.send_message('request_gw_campaign_snapshot', {});
+        };
+
+        self.applyCampaignSnapshot = function(payload) {
+            if (!self.isCampaignViewer() || !payload || !payload.snapshot || !payload.snapshot.game)
+                return;
+
+            var snapshot = payload.snapshot;
+            var ui = snapshot.ui || {};
+
+            self.gwCampaignApplyingSnapshot = true;
+            game.load(snapshot.game).always(function() {
+                if (_.isNumber(ui.selectedStar))
+                    self.selection.star(ui.selectedStar);
+
+                if (_.isNumber(ui.hoverStar))
+                    self.hoverSystem.star(ui.hoverStar);
+
+                if (_.isArray(ui.stageOffset) && ui.stageOffset.length === 2) {
+                    self.galaxy.stage.x = ui.stageOffset[0];
+                    self.galaxy.stage.y = ui.stageOffset[1];
+                    self.galaxy.stageOffset([ui.stageOffset[0], ui.stageOffset[1]]);
+                }
+
+                if (_.isNumber(ui.zoom))
+                    self.galaxy.zoom(ui.zoom);
+
+                self.gwCampaignApplyingSnapshot = false;
+            });
+        };
+
+        self.updateCampaignConnectionState = function(payload) {
+            if (!payload || payload.state !== 'gw_campaign')
+                return;
+
+            console.log('[GW_COOP] server_state gw_campaign url=' + payload.url);
+            self.gwCampaignEnabled(true);
+            self.gwCampaignConnected(true);
+
+            var data = payload.data || {};
+            var clientData = data.client || {};
+            var role = clientData.role;
+            if (!role && data.host_name && self.displayName() && data.host_name === self.displayName())
+                role = 'host';
+
+            if (!role && _.isArray(data.connected_clients) && data.connected_clients.length === 1 && data.connected_clients[0].role === 'host')
+                role = 'host';
+
+            if (role)
+                self.gwCampaignRole(role);
+
+            self.gwCampaignControl(clientData.control || data.control || {});
+
+            console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
+
+            if (self.isCampaignViewer())
+                self.requestCampaignSnapshot();
+            else if (self.isCampaignHost())
+                self.sendCampaignSnapshot('host_joined');
+        };
 
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
         self.mode = ko.observable(game.mode());
@@ -1020,6 +1222,9 @@ requireGW([
 
         self.canFight = ko.computed(function()
         {
+            if (self.isCampaignViewer())
+                return false;
+
             if (self.player.moving())
                 return false;
 
@@ -1067,6 +1272,9 @@ requireGW([
 
         self.canExplore = ko.computed(function()
         {
+            if (self.isCampaignViewer())
+                return false;
+
             if (self.player.moving() || self.scanning())
                 return false;
 
@@ -1103,6 +1311,9 @@ requireGW([
 
         self.canSelect = function(star)
         {
+            if (self.isCampaignViewer())
+                return false;
+
             var game = self.game();
             var cheats = self.cheats;
 
@@ -1119,6 +1330,9 @@ requireGW([
 
         self.canMove = ko.computed(function()
         {
+            if (self.isCampaignViewer())
+                return false;
+
             if (self.player.moving())
                 return false;
 
@@ -1168,6 +1382,9 @@ requireGW([
 
         self.move = function()
         {
+            if (self.isCampaignViewer())
+                return;
+
             var star = self.selection.star();
             var path = self.game().galaxy().pathBetween(game.currentStar(), star, self.cheats.noFog());
 
@@ -1177,6 +1394,7 @@ requireGW([
                 path.shift();
 
                 self.moveStep(path);
+                self.sendCampaignSnapshot('move');
             }
             else
                 console.error("Unable to find path for move command", game.currentStar(), star);
@@ -1192,6 +1410,9 @@ requireGW([
         });
 
         self.explore = function() {
+            if (self.isCampaignViewer())
+                return;
+
             if (!game || !game.explore())
                 return;
 
@@ -1226,16 +1447,23 @@ requireGW([
 
                 _.delay(function() {
                     self.scanning(false);
+                    self.sendCampaignSnapshot('explore');
                 }, 2000);
             });
         };
 
         self.dismissTech = function() {
+            if (self.isCampaignViewer())
+                return;
+
             self.win(-1);
             api.audio.playSound('/VO/Computer/gw/board_tech_dismissed');
         };
 
         self.win = function(selected_card_index) {
+            if (self.isCampaignViewer())
+                return;
+
             self.exitGate($.Deferred());
             var oldSlots = game.inventory().maxCards() - game.inventory().cards().length;
 
@@ -1265,6 +1493,7 @@ requireGW([
                         }
                         else {
                             self.exitGate().resolve();
+                            self.sendCampaignSnapshot('win');
 
                             if (play_tech_audio) {
                                 if (!tech_audio)
@@ -1279,6 +1508,9 @@ requireGW([
         };
 
         self.lose = function() {
+            if (self.isCampaignViewer())
+                return;
+
             self.exitGate($.Deferred());
             if (game.loseTurn()) {
                 $.when([
@@ -1286,6 +1518,7 @@ requireGW([
                     api.tally.incStatInt('gw_war_loss')
                 ]).then(function() {
                     self.exitGate().resolve();
+                    self.sendCampaignSnapshot('lose');
                 });
             }
             else
@@ -1293,6 +1526,9 @@ requireGW([
         };
 
         self.restartFight = function(model, event, cheat) {
+            if (self.isCampaignViewer())
+                return;
+
             game.replayName(null);
             game.replayLobbyId(null);
             game.replayStar(null);
@@ -1300,6 +1536,9 @@ requireGW([
         }
 
         self.fight = function(model, event, cheat) {
+            if (self.isCampaignViewer())
+                return;
+
             if (self.launchingFight() || (!self.fighting() && !game.fight())) {
                 return;
             }
@@ -1385,6 +1624,11 @@ requireGW([
                         window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
                     }
 
+                    if (self.gwCampaignActive() && self.isCampaignHost()) {
+                        self.send_message('launch_gw_battle', { current_star: game.currentStar() });
+                        return;
+                    }
+
                     if (!self.allowLoad())
                         connect();
                     else if (self.useLocalServer()) {
@@ -1443,6 +1687,9 @@ requireGW([
             self.hoverCard(card);
         };
         self.discardHoverCard = function(card) {
+            if (self.isCampaignViewer())
+                return;
+
             var discard = self.hoverCard();
             if (!discard)
                 return;
@@ -1803,6 +2050,41 @@ requireGW([
             });
 
             _.defer(self.updateSocialVisibility);
+
+            self.selection.star.subscribe(function() {
+                self.sendCampaignSnapshot('selection');
+            });
+
+            game.turnState.subscribe(function() {
+                self.sendCampaignSnapshot('turn_state');
+            });
+
+            game.currentStar.subscribe(function() {
+                self.sendCampaignSnapshot('current_star');
+            });
+
+            game.inventory().cards.subscribe(function() {
+                self.sendCampaignSnapshot('cards');
+            });
+
+            ko.computed(function() {
+                if (self.gwCampaignHeartbeatHandle) {
+                    clearInterval(self.gwCampaignHeartbeatHandle);
+                    self.gwCampaignHeartbeatHandle = undefined;
+                }
+
+                var control = self.gwCampaignControl() || {};
+                var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
+                var hasViewer = _.some(connectedClients, function(client) {
+                    return client && client.role === 'viewer';
+                });
+
+                if (self.isCampaignHost() && self.gwCampaignConnected() && hasViewer) {
+                    self.gwCampaignHeartbeatHandle = setInterval(function() {
+                        self.sendCampaignSnapshot('heartbeat');
+                    }, 30000);
+                }
+            });
         }
 
         self.activeGameId = ko.observable().extend({ local: 'gw_active_game' });
@@ -1810,7 +2092,31 @@ requireGW([
 
     // Start loading the game & document
     var activeGameId = ko.observable().extend({ local: 'gw_active_game'});
-    var gameLoader = GW.manifest.loadGame(activeGameId());
+    var gwCampaignMode = (function() {
+        var query = window.location.search || '';
+        if (!query.length || query.charAt(0) !== '?')
+            return false;
+
+        var pairs = query.substring(1).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+            var pair = pairs[i].split('=');
+            if (decodeURIComponent(pair[0] || '') !== 'gw_campaign')
+                continue;
+
+            var value = decodeURIComponent(pair[1] || '');
+            return value === '1' || value === 'true';
+        }
+
+        return false;
+    })();
+
+    var gameLoader = GW.manifest.loadGame(activeGameId()).then(function(game) {
+        if (game || !gwCampaignMode)
+            return game;
+
+        console.log('[GW_COOP] no local gw_active_game found, creating temporary co-op placeholder');
+        return new GW.Game();
+    });
     var documentLoader = $(document).ready();
 
     // We can start when both are ready
@@ -1873,6 +2179,66 @@ requireGW([
             model.showIntro(false);
         };
 
+        handlers.server_state = function(payload) {
+            if (payload && payload.url && payload.url !== window.location.href) {
+                window.location.href = payload.url;
+                return;
+            }
+
+            model.updateCampaignConnectionState(payload);
+        };
+
+        handlers.gw_campaign_control = function(payload) {
+            console.log('[GW_COOP] gw_campaign_control seq=' + (payload && payload.snapshot_seq) + ' hasSnapshot=' + !!(payload && payload.has_snapshot));
+            model.gwCampaignControl(payload || {});
+
+            if (model.isCampaignHost() && payload && payload.has_snapshot === false) {
+                var connectedClients = _.isArray(payload.connected_clients) ? payload.connected_clients : [];
+                var hasViewer = _.some(connectedClients, function(client) {
+                    return client && client.role === 'viewer';
+                });
+
+                if (hasViewer)
+                    model.sendCampaignSnapshot('viewer_joined');
+            }
+        };
+
+        handlers.gw_campaign_role = function(payload) {
+            if (!payload || !payload.role)
+                return;
+
+            console.log('[GW_COOP] gw_campaign_role=' + payload.role + ' host=' + payload.host_name);
+            var previousRole = model.gwCampaignRole();
+            model.gwCampaignEnabled(true);
+            model.gwCampaignConnected(true);
+            model.gwCampaignRole(payload.role);
+
+            if (payload.role === 'viewer')
+                model.requestCampaignSnapshot();
+            else if (payload.role === 'host' && previousRole !== 'host')
+                model.sendCampaignSnapshot('host_role_assigned');
+        };
+
+        handlers.gw_campaign_snapshot = function(payload) {
+            model.applyCampaignSnapshot(payload);
+        };
+
+        handlers.connection_disconnected = function(payload) {
+            if (!model.gwCampaignEnabled())
+                return;
+
+            var transitPrimaryMessage = ko.observable().extend({ session: 'transit_primary_message' });
+            var transitSecondaryMessage = ko.observable().extend({ session: 'transit_secondary_message' });
+            var transitDestination = ko.observable().extend({ session: 'transit_destination' });
+            var transitDelay = ko.observable().extend({ session: 'transit_delay' });
+
+            transitPrimaryMessage(loc('!LOC:GW Co-op session disconnected'));
+            transitSecondaryMessage('');
+            transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
+            transitDelay(3000);
+            window.location.href = 'coui://ui/main/game/transit/transit.html';
+        };
+
         handlers.unit_specs = function(payload)
         {
             model.unitSpecs(payload);
@@ -1887,6 +2253,9 @@ requireGW([
 
         // setup send/recv messages and signals
         app.registerWithCoherent(model, handlers);
+
+        if (model.gwCampaignEnabled())
+            app.hello(handlers.server_state, handlers.connection_disconnected);
 
         // Activates knockout.js
         ko.applyBindings(model);

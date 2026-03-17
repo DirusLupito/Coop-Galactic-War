@@ -29,6 +29,12 @@
     <div id="game_menu" class="ignoremouse" data-bind="visible: showSideBar, css: { show_social: showSocial }" style="display: none">
         <div class="div_game_menu">
             <div class="div_game_menu_cont">
+                <div class="div_game_menu_item" data-bind="click: openToCoop, click_sound: 'default', rollover_sound: 'default', visible: canOpenCoopSession" style="display: none">
+                    <loc>Open to Co-op</loc>
+                </div>
+                <div class="div_game_menu_item" data-bind="click: leaveCoopSession, click_sound: 'default', rollover_sound: 'default', visible: gwCampaignActive" style="display: none">
+                    <loc>Leave Co-op Session</loc>
+                </div>
                 <div class="div_game_menu_item" data-bind="click: menuSettings, click_sound: 'default', rollover_sound: 'default'">
                     <loc>Settings</loc>
                 </div>
@@ -94,6 +100,10 @@
             </div>
         </div>
         <div id="header-center" class="ignoremouse">
+            <div class="attendmouse" data-bind="visible: gwCampaignEnabled" style="display:none; margin-top: 12px; text-align: center;">
+                <div data-bind="text: gwCampaignStatusText"></div>
+                <div data-bind="visible: isCampaignViewer" style="opacity: 0.85;"><loc>Read-only viewer mode</loc></div>
+            </div>
         </div>
     </div>
 
