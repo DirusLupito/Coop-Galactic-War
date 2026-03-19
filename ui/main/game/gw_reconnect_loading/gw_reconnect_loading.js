@@ -92,16 +92,17 @@ $(document).ready(function () {
             return value;
         });
 
-        api.file.unmountAllMemoryFiles().always(function () {
-            api.file.mountMemoryFiles(cookedFiles).always(function () {
-                api.game.setUnitSpecTag('.player');
-                engine.call('request_spec_data', -1);
-                gwReconnectFilesReady = true;
-                model.pageSubTitle(loc('!LOC:Entering game...'));
+        // Do not globally unmount memory files here. Reconnect can run before
+        // scene-specific mod remount hooks are active, which can drop client-mod
+        // assets required by GW specs.
+        api.file.mountMemoryFiles(cookedFiles).always(function () {
+            api.game.setUnitSpecTag('.player');
+            engine.call('request_spec_data', -1);
+            gwReconnectFilesReady = true;
+            model.pageSubTitle(loc('!LOC:Entering game...'));
 
-                model.send_message('memory_files_received', {}, function (success, response) {
-                    window.location.href = gwReconnectTarget;
-                });
+            model.send_message('memory_files_received', {}, function (success, response) {
+                window.location.href = gwReconnectTarget;
             });
         });
     };

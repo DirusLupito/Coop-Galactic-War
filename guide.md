@@ -166,3 +166,6 @@ Practical checklist before touching reconnect code:
 Guideline for future fixes:
 - Prefer isolating host client-mod effects so they do not become required by remote coop clients.
 - Add explicit troubleshooting notes in bug reports: active client mods, exact missing file paths, and whether issue reproduces with all client mods disabled.
+
+### Additional note about client mods:
+It seems that upon further testing and investigation, if both the host and the client have the same client mod installed, the main game works fine, but upon reconnecting to the game, the client have an unmountAllMemoryFiles call, which will cause them to lose some of the client mod files, and in turn cause a crash. This has been fixed via modifications to reconnect, and now it seems like the above issue can be resolved not only by removing client mods, but also by having all clients have the same client mods installed.

@@ -79,7 +79,7 @@ def main():
         print("\nCopying files:")
         copy_files()
 
-        print("\nDistribution package generated successfully!")
+        print(f"\nDistribution package with {len(FILES_TO_COPY)} files generated successfully.")
         print(f"\nPackage location: {DIST_ROOT}")
         print(f"\nTo use this package:")
         print(f"1. Copy all files and folders from '{DIST_FOLDER_NAME}' to your PA Titans installation directory:")

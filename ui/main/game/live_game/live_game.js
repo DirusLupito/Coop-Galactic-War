@@ -4241,13 +4241,13 @@ $(document).ready(function () {
             return value;
         });
 
-        api.file.unmountAllMemoryFiles().always(function () {
-            api.file.mountMemoryFiles(cookedFiles).always(function () {
-                api.game.setUnitSpecTag('.player');
-                engine.call('request_spec_data', -1);
+        // Reconnect restore should not globally unmount first, otherwise
+        // client-mod mounted assets can be lost before remount hooks run.
+        api.file.mountMemoryFiles(cookedFiles).always(function () {
+            api.game.setUnitSpecTag('.player');
+            engine.call('request_spec_data', -1);
 
-                model.send_message('memory_files_received', {}, function (success, response) {
-                });
+            model.send_message('memory_files_received', {}, function (success, response) {
             });
         });
     };
