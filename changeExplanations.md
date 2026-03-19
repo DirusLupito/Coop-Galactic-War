@@ -23,6 +23,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `8e3b814` `gw lobby is now visible in the server browser`
 - Fixing an issue with unmounting memory files in the GW lobby:
   - `9f594ae` `Fixed a race condition that could appear causing a crash on some PCs but not others.`
+- Fixing client mod-related crashes:
+  - `cf85a22` `Fixed reconnect unmounting potentially essential client mods.`
 
 ## High-Level Summary
 
@@ -900,3 +902,37 @@ Before using it in a hot transition path (lobby startup, scene handoff, reconnec
 3. Whether direct mount/update is sufficient for correctness.
 
 In short: the call was historically reasonable, but context changed. `9f594ae` corrected that context mismatch by removing global unmount from GW lobby sync, which eliminated a machine-dependent startup race.
+
+## Commit `cf85a22`
+
+This follow-up reconnect hardening commit removed a fragile remount sequence that could drop client-mod assets during reconnect restoration.
+
+### What changed
+
+Changes in [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js):
+
+- In `handlers.memory_files`, removed the global `api.file.unmountAllMemoryFiles()` call before mounting reconnect GW memory files.
+- Kept direct `api.file.mountMemoryFiles(cookedFiles)` followed by:
+  - `api.game.setUnitSpecTag('.player')`
+  - `engine.call('request_spec_data', -1)`
+  - `memory_files_received` ack and transition into `live_game`.
+
+Changes in [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js):
+
+- In `handlers.memory_files`, removed the global `api.file.unmountAllMemoryFiles()` call.
+- Kept direct memory-file mount plus spec-tag/spec-data refresh.
+
+### Why this matters
+
+On reconnect, the coop client can enter memory-file restore paths before all scene-specific client-mod remount assumptions are stable. A global unmount at that point can temporarily drop client-mod-provided assets that GW-generated specs reference.
+
+When that happens, reconnect may appear to succeed until simulation resumes, then crash on missing assets such as:
+
+- `/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx`
+
+Removing the unmount step preserves currently mounted client-mod assets while still overlaying reconnect GW memory files.
+
+### Practical outcome
+
+- If host and coop player have matching required client mods installed, reconnect now remains stable through unpause.
+- If the reconnecting client lacks a required client mod, crash behavior remains expected because required assets are genuinely unavailable.
