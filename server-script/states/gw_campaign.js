@@ -236,6 +236,25 @@ function GWCampaignModel(creator) {
 
                 server.respond(msg).succeed({ seq: self.lastSnapshotSeq });
             },
+            gw_campaign_action: function(msg) {
+                if (msg.client.id !== self.creatorId)
+                    return server.respond(msg).fail('Only host can publish campaign actions');
+
+                var payload = msg.payload || {};
+                console.log('[GW_COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
+
+                _.forEach(self.getConnectedClients(), function(client) {
+                    if (client.id === self.creatorId)
+                        return;
+
+                    client.message({
+                        message_type: 'gw_campaign_action',
+                        payload: payload
+                    });
+                });
+
+                server.respond(msg).succeed();
+            },
             launch_gw_battle: function(msg) {
                 if (msg.client.id !== self.creatorId)
                     return server.respond(msg).fail('Only host can launch battle');

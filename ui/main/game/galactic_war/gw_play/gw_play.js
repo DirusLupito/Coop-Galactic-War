@@ -375,7 +375,11 @@ requireGW([
             return galaxy.systems()[self.currentStar()];
         });
         scopeComputed(function() {
-            var container = self.currentSystem().systemDisplay;
+            var currentSystem = self.currentSystem();
+            if (!currentSystem || !currentSystem.systemDisplay)
+                return;
+
+            var container = currentSystem.systemDisplay;
             container.addChild(self.container);
             sortContainer(container);
         });
@@ -572,6 +576,28 @@ requireGW([
     function GalaxyViewModel(data) {
         var self = this;
 
+        var readValue = function(container, field, fallback) {
+            if (!container)
+                return fallback;
+
+            var value = container[field];
+            if (_.isFunction(value))
+                value = value.call(container);
+
+            return _.isUndefined(value) ? fallback : value;
+        };
+
+        var stars = readValue(data, 'stars', []);
+        var gates = readValue(data, 'gates', []);
+        var radiusData = readValue(data, 'radius', [0.2, 0.2]);
+
+        if (!_.isArray(stars))
+            stars = [];
+        if (!_.isArray(gates))
+            gates = [];
+        if (!_.isArray(radiusData) || !radiusData.length)
+            radiusData = [0.2, 0.2];
+
         self.systems = ko.observableArray();
         self.addSystem = function(star, index) {
             var result = new SystemViewModel({
@@ -590,7 +616,7 @@ requireGW([
             self.systems()[second].connectTo(self.systems()[first], second < first);
         }
 
-        self.radius = ko.observable(_.max(data.radius()));
+        self.radius = ko.observable(_.max(radiusData));
 
         self.canvasSize = ko.observable([0,0]);
         self.canvasWidth = ko.computed(function() { return self.canvasSize()[0]; });
@@ -753,9 +779,9 @@ requireGW([
             $('body').mouseup(stopMoving);
         });
 
-        _.forEach(data.stars(), self.addSystem);
+        _.forEach(stars, self.addSystem);
 
-        _.forEach(data.gates(), function(gate) {
+        _.forEach(gates, function(gate) {
             self.joinSystems(gate[0], gate[1]);
         });
 
@@ -839,9 +865,11 @@ requireGW([
         self.gwCampaignControl = ko.observable({});
         self.gwCampaignSnapshotSeq = 0;
         self.gwCampaignApplyingSnapshot = false;
+        self.gwCampaignPendingSnapshot = undefined;
         self.gwCampaignHeartbeatHandle = undefined;
         self.gwCampaignLastSnapshotSentAt = 0;
         self.gwCampaignSnapshotCooldownMs = 1500;
+        self.gwCampaignHydrationInProgress = false;
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -976,12 +1004,80 @@ requireGW([
             self.send_message('request_gw_campaign_snapshot', {});
         };
 
+        self.sendCampaignAction = function(type, payload) {
+            if (!self.isCampaignHost() || !self.gwCampaignConnected())
+                return;
+
+            self.send_message('gw_campaign_action', {
+                type: type,
+                payload: payload || {},
+                timestamp: _.now()
+            });
+        };
+
+        self.getGalaxySignature = function(galaxyData) {
+            if (!galaxyData)
+                return '';
+
+            var stars = galaxyData.stars;
+            if (_.isFunction(stars))
+                stars = stars();
+
+            var gates = galaxyData.gates;
+            if (_.isFunction(gates))
+                gates = gates();
+
+            var origin = galaxyData.origin;
+            if (_.isFunction(origin))
+                origin = origin();
+
+            if (!_.isArray(stars) || !_.isArray(gates))
+                return '';
+
+            var first = stars[0] || {};
+            var coords = first.coordinates;
+            if (_.isFunction(coords))
+                coords = coords();
+
+            var coordSig = _.isArray(coords) ? coords.join(',') : '';
+            return [stars.length, gates.length, _.isNumber(origin) ? origin : -1, coordSig].join('|');
+        };
+
         self.applyCampaignSnapshot = function(payload) {
             if (!self.isCampaignViewer() || !payload || !payload.snapshot || !payload.snapshot.game)
                 return;
 
+            if (self.gwCampaignHydrationInProgress)
+                return;
+
+            if (self.gwCampaignApplyingSnapshot) {
+                self.gwCampaignPendingSnapshot = payload;
+                return;
+            }
+
             var snapshot = payload.snapshot;
             var ui = snapshot.ui || {};
+
+            var localGalaxy = game.galaxy && game.galaxy();
+            var localSignature = self.getGalaxySignature(localGalaxy);
+            var snapshotSignature = self.getGalaxySignature(snapshot.game && snapshot.game.galaxy);
+
+            if (!self.gwCampaignHydrationInProgress && snapshotSignature && localSignature !== snapshotSignature) {
+                self.gwCampaignHydrationInProgress = true;
+                console.log('[GW_COOP] snapshot galaxy mismatch local=' + localSignature + ' remote=' + snapshotSignature + ', forcing full rehydrate');
+
+                var hydratedGame = new GW.Game();
+                hydratedGame.load(snapshot.game).always(function() {
+                    GW.manifest.saveGame(hydratedGame).then(function() {
+                        ko.observable().extend({ local: 'gw_active_game' })(hydratedGame.id);
+                        window.location.reload();
+                    }, function(err) {
+                        self.gwCampaignHydrationInProgress = false;
+                        console.error('[GW_COOP] failed to save hydrated game', err);
+                    });
+                });
+                return;
+            }
 
             self.gwCampaignApplyingSnapshot = true;
             game.load(snapshot.game).always(function() {
@@ -1001,7 +1097,34 @@ requireGW([
                     self.galaxy.zoom(ui.zoom);
 
                 self.gwCampaignApplyingSnapshot = false;
+
+                if (self.gwCampaignPendingSnapshot) {
+                    var pendingSnapshot = self.gwCampaignPendingSnapshot;
+                    self.gwCampaignPendingSnapshot = undefined;
+                    self.applyCampaignSnapshot(pendingSnapshot);
+                }
             });
+        };
+
+        self.applyCampaignAction = function(action) {
+            if (!self.isCampaignViewer() || !action || !action.type)
+                return;
+
+            var payload = action.payload || {};
+
+            if (action.type === 'select_star' && _.isNumber(payload.star)) {
+                self.selection.star(payload.star);
+                return;
+            }
+
+            if (action.type === 'move_to_star' && _.isNumber(payload.star)) {
+                var from = game.currentStar();
+                var path = game.galaxy().pathBetween(from, payload.star, self.cheats.noFog());
+                if (path && path.length > 1) {
+                    path.shift();
+                    self.moveStep(path);
+                }
+            }
         };
 
         self.updateCampaignConnectionState = function(payload) {
@@ -1228,9 +1351,13 @@ requireGW([
             if (self.player.moving())
                 return false;
 
+            var currentStar = self.currentStar();
+            if (!currentStar)
+                return false;
+
             var isBegin = self.game().turnState() === GW.Game.turnStates.begin;
 
-            return (isBegin || self.fighting() && !self.launchingFight()) && !!self.currentStar().ai();
+            return (isBegin || self.fighting() && !self.launchingFight()) && !!currentStar.ai();
         });
 
         self.allowLoad = function()
@@ -1278,7 +1405,11 @@ requireGW([
             if (self.player.moving() || self.scanning())
                 return false;
 
-            return self.testGameState({begin: function() { return !!self.currentStar().hasCard() && !self.currentStar().ai(); }}, false);
+            var currentStar = self.currentStar();
+            if (!currentStar)
+                return false;
+
+            return self.testGameState({begin: function() { return !!currentStar.hasCard() && !currentStar.ai(); }}, false);
         });
 
         self.displayExplore = ko.computed(function()
@@ -1393,6 +1524,7 @@ requireGW([
                 // Discard the source node.
                 path.shift();
 
+                self.sendCampaignAction('move_to_star', { star: star });
                 self.moveStep(path);
                 self.sendCampaignSnapshot('move');
             }
@@ -1404,8 +1536,10 @@ requireGW([
         _.forEach(self.galaxy.systems(), function(system, star)
         {
             system.click.subscribe(function() {
-                if (self.canSelect(star))
+                if (self.canSelect(star)) {
                     self.selection.star(star);
+                    self.sendCampaignAction('select_star', { star: star });
+                }
             });
         });
 
@@ -1737,6 +1871,13 @@ requireGW([
             if (self.cardsDirty)
                 return;
             self.cardsDirty = true;
+
+            if (!game.busy || !_.isFunction(game.busy.then)) {
+                self.cardsDirty = false;
+                self.updateCards();
+                return;
+            }
+
             game.busy.then(function()
             {
                 self.cardsDirty = false;
@@ -1749,8 +1890,12 @@ requireGW([
         self.updateCards();
 
         self.currentSystemCardList = ko.computed(function() {
+            var currentStar = self.currentStar();
+            if (!currentStar || !_.isFunction(currentStar.cardList))
+                return null;
+
             var ok = true;
-            var result = _.map(self.currentStar().cardList(), function(card) {
+            var result = _.map(currentStar.cardList(), function(card) {
                 if (!card)
                     ok = false;
                 return card && new CardViewModel(card);
@@ -1857,7 +2002,11 @@ requireGW([
         self.centerOnPlayer = function() {
             var galaxy = game.galaxy();
             var home = game.currentStar();
-            var coords = self.currentStar().coordinates();
+            var currentStar = self.currentStar();
+            if (!currentStar || !_.isFunction(currentStar.coordinates))
+                return;
+
+            var coords = currentStar.coordinates();
             var bounds = [coords.slice(0), coords.slice(0)];
             _.forEach(galaxy.stars(), function(star, s) {
                 if (s === home || !galaxy.areNeighbors(s, home))
@@ -1906,9 +2055,14 @@ requireGW([
         });
 
         self.maybePlayCaptureSound = function() {
-            if (self.currentStar().ai())
+            var currentStar = self.currentStar();
+            if (!currentStar)
                 return false;
-            var history = self.currentStar().history();
+
+            if (currentStar.ai())
+                return false;
+
+            var history = currentStar.history();
             var last = history[history.length - 1];
             if (!last || !last.details || !last.details.win || !last.details.win.ai)
                 return false;
@@ -2221,6 +2375,10 @@ requireGW([
 
         handlers.gw_campaign_snapshot = function(payload) {
             model.applyCampaignSnapshot(payload);
+        };
+
+        handlers.gw_campaign_action = function(payload) {
+            model.applyCampaignAction(payload);
         };
 
         handlers.connection_disconnected = function(payload) {
