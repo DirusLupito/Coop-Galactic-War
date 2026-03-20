@@ -23,12 +23,25 @@ requireGW([
 ) {
     p = PopUp;
     self.exitGame = function() {
-        model.transitPrimaryMessage(loc('!LOC:Returning to Main Menu'));
-        model.transitSecondaryMessage('');
-        model.transitDestination('coui://ui/main/game/start/start.html');
-        model.transitDelay(0);
-        window.location.href = 'coui://ui/main/game/transit/transit.html';
-        return; /* window.location.href will not stop execution. */
+        
+        // In the case that the player is in a co-op campaign session, we need to make
+        // sure that they save a local copy of their campaign before exiting so they can keep playing in single player mode.
+        model.persistCampaignLocalCopy('exit_game').always(function() {
+            model.transitPrimaryMessage(loc('!LOC:Returning to Main Menu'));
+            model.transitSecondaryMessage('');
+            model.transitDestination('coui://ui/main/game/start/start.html');
+            model.transitDelay(0);
+            window.location.href = 'coui://ui/main/game/transit/transit.html';
+        });
+
+        // No need to check if they are actually in a co-op campaign session since persistCampaignLocalCopy's
+        // lines:
+        // if (!self.gwCampaignEnabled()) {
+        //     done.resolve();
+        //     return done.promise();
+        // }
+        // should already handle that case and resolve immediately if they are not in a co-op campaign session.
+
     };
 
     // Convenience function for setting up easeljs bitmaps
@@ -958,6 +971,11 @@ requireGW([
             // Ask gw_campaign server state to terminate immediately for host.
             self.send_message('leave_gw_campaign', {});
 
+            // When the player disconnects from a campaign session or if the sessions
+            // is closed thereby forcing a disconnect, we save a local copy of the campaign
+            // so the co-op player can keep playing even in single player mode.
+
+            // This section handles the voluntary leave case.
             self.persistCampaignLocalCopy('leave_session').always(function() {
                 self.transitPrimaryMessage(loc('!LOC:Leaving GW Co-op Session'));
                 self.transitSecondaryMessage('');
@@ -2951,6 +2969,11 @@ requireGW([
             var transitDestination = ko.observable().extend({ session: 'transit_destination' });
             var transitDelay = ko.observable().extend({ session: 'transit_delay' });
 
+            // When the player disconnects from a campaign session or if the sessions
+            // is closed thereby forcing a disconnect, we save a local copy of the campaign
+            // so the co-op player can keep playing even in single player mode.
+
+            // This section handles the forcible disconnect case.
             model.persistCampaignLocalCopy('disconnect').always(function() {
                 transitPrimaryMessage(loc('!LOC:GW Co-op session disconnected'));
                 transitSecondaryMessage('');
