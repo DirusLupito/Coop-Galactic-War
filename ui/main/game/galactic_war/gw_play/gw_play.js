@@ -957,14 +957,80 @@ requireGW([
             // Ask gw_campaign server state to terminate immediately for host.
             self.send_message('leave_gw_campaign', {});
 
-            self.transitPrimaryMessage(loc('!LOC:Leaving GW Co-op Session'));
-            self.transitSecondaryMessage('');
-            self.transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
-            self.transitDelay(0);
-            window.location.href = 'coui://ui/main/game/transit/transit.html';
+            self.persistCampaignLocalCopy('leave_session').always(function() {
+                self.transitPrimaryMessage(loc('!LOC:Leaving GW Co-op Session'));
+                self.transitSecondaryMessage('');
+                self.transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
+                self.transitDelay(0);
+                window.location.href = 'coui://ui/main/game/transit/transit.html';
+            });
+        };
+
+        self.enrichCampaignGameSystems = function(reason) {
+            var gameGalaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var gameStars = gameGalaxy && _.isFunction(gameGalaxy.stars) ? gameGalaxy.stars() : undefined;
+            var viewSystems = self.galaxy && _.isFunction(self.galaxy.systems) ? self.galaxy.systems() : undefined;
+            var enrichedSystems = 0;
+
+            if (!_.isArray(gameStars))
+                return 0;
+
+            _.forEach(gameStars, function(gameStar, index) {
+                if (!gameStar || !_.isFunction(gameStar.system))
+                    return;
+
+                if (gameStar.system())
+                    return;
+
+                var viewSystem = _.isArray(viewSystems) ? viewSystems[index] : undefined;
+                var fallbackSystem = viewSystem && viewSystem.star && _.isFunction(viewSystem.star.system) ? viewSystem.star.system() : undefined;
+                if (!fallbackSystem)
+                    return;
+
+                gameStar.system(_.cloneDeep(fallbackSystem));
+                enrichedSystems += 1;
+            });
+
+            if (enrichedSystems > 0)
+                console.log('[GW_COOP] enrichCampaignGameSystems reason=' + reason + ' enriched=' + enrichedSystems);
+
+            return enrichedSystems;
+        };
+
+        self.persistCampaignLocalCopy = function(reason) {
+            var done = $.Deferred();
+
+            if (!self.gwCampaignEnabled()) {
+                done.resolve();
+                return done.promise();
+            }
+
+            self.enrichCampaignGameSystems(reason || 'persist');
+
+            var gameGalaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            if (gameGalaxy && _.isFunction(gameGalaxy.saved))
+                gameGalaxy.saved(false);
+
+            var saving = GW.manifest.saveGame(game);
+            if (!saving || !_.isFunction(saving.then)) {
+                done.resolve();
+                return done.promise();
+            }
+
+            saving.then(function() {
+                console.log('[GW_COOP] persistCampaignLocalCopy saved reason=' + reason);
+                done.resolve();
+            }, function(err) {
+                console.error('[GW_COOP] persistCampaignLocalCopy failed reason=' + reason, err);
+                done.resolve();
+            });
+
+            return done.promise();
         };
 
         self.getCampaignSnapshotPayload = function() {
+            self.enrichCampaignGameSystems('snapshot_payload');
+
             var gameSave = game.save();
             var saveStars = gameSave && gameSave.galaxy && gameSave.galaxy.stars;
             var runtimeGalaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
@@ -2791,11 +2857,13 @@ requireGW([
             var transitDestination = ko.observable().extend({ session: 'transit_destination' });
             var transitDelay = ko.observable().extend({ session: 'transit_delay' });
 
-            transitPrimaryMessage(loc('!LOC:GW Co-op session disconnected'));
-            transitSecondaryMessage('');
-            transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
-            transitDelay(3000);
-            window.location.href = 'coui://ui/main/game/transit/transit.html';
+            model.persistCampaignLocalCopy('disconnect').always(function() {
+                transitPrimaryMessage(loc('!LOC:GW Co-op session disconnected'));
+                transitSecondaryMessage('');
+                transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
+                transitDelay(3000);
+                window.location.href = 'coui://ui/main/game/transit/transit.html';
+            });
         };
 
         handlers.unit_specs = function(payload)
