@@ -833,7 +833,7 @@ requireGW([
         };
     }
 
-    function GameViewModel(game) {
+    function GameViewModel(game, startupBattleResult) {
         var self = this;
 
         self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
@@ -875,6 +875,9 @@ requireGW([
         self.gwCampaignSnapshotCooldownMs = 1500;
         self.gwCampaignHydrationInProgress = false;
         self.gwCampaignReplayingAction = false;
+        self.gwCampaignOwnerStateDebug = {};
+        self.gwCampaignStartupBattleResult = startupBattleResult || null;
+        self.gwCampaignStartupResultSent = false;
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -1029,6 +1032,81 @@ requireGW([
             });
         };
 
+        self.syncViewerStarFromGame = function(starIndex, reason) {
+            if (!self.isCampaignViewer())
+                return false;
+
+            if (!_.isNumber(starIndex))
+                return false;
+
+            var viewSystems = self.galaxy && _.isFunction(self.galaxy.systems) ? self.galaxy.systems() : undefined;
+            var gameGalaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var gameStars = gameGalaxy && _.isFunction(gameGalaxy.stars) ? gameGalaxy.stars() : undefined;
+
+            if (!viewSystems || !gameStars || starIndex < 0 || starIndex >= viewSystems.length || starIndex >= gameStars.length)
+                return false;
+
+            var viewSystem = viewSystems[starIndex];
+            var viewStar = viewSystem && viewSystem.star;
+            var gameStar = gameStars[starIndex];
+            if (!viewStar || !gameStar)
+                return false;
+
+            var changed = false;
+            var copyObservable = function(name, cloneValue) {
+                var viewObs = viewStar[name];
+                var gameObs = gameStar[name];
+                if (!_.isFunction(viewObs) || !_.isFunction(gameObs))
+                    return;
+
+                var gameValue = gameObs();
+                var nextValue = cloneValue ? _.cloneDeep(gameValue) : gameValue;
+                var currentValue = viewObs();
+                if (!_.isEqual(currentValue, nextValue)) {
+                    viewObs(nextValue);
+                    changed = true;
+                }
+            };
+
+            // These fields drive visited/connected/owner color and system tooltip content.
+            copyObservable('history', true);
+            copyObservable('explored', false);
+            copyObservable('cardList', true);
+            copyObservable('ai', true);
+            copyObservable('system', true);
+            copyObservable('biome', false);
+            copyObservable('distance', false);
+            copyObservable('coordinates', true);
+
+            if (changed)
+                console.log('[GW_COOP] syncViewerStarFromGame star=' + starIndex + ' reason=' + reason);
+
+            return changed;
+        };
+
+        self.syncViewerStarsFromGame = function(reason, starsHint) {
+            if (!self.isCampaignViewer())
+                return;
+
+            var changedCount = 0;
+            if (_.isArray(starsHint) && starsHint.length) {
+                _.forEach(_.uniq(starsHint), function(starIndex) {
+                    if (self.syncViewerStarFromGame(starIndex, reason))
+                        changedCount += 1;
+                });
+            }
+            else {
+                var totalStars = self.galaxy && _.isFunction(self.galaxy.systems) ? self.galaxy.systems().length : 0;
+                _.times(totalStars, function(starIndex) {
+                    if (self.syncViewerStarFromGame(starIndex, reason))
+                        changedCount += 1;
+                });
+            }
+
+            if (changedCount > 0)
+                console.log('[GW_COOP] syncViewerStarsFromGame reason=' + reason + ' changed=' + changedCount);
+        };
+
         self.getGalaxySignature = function(galaxyData) {
             if (!galaxyData)
                 return '';
@@ -1101,6 +1179,7 @@ requireGW([
             game.load(snapshot.game).always(function() {
                 self.gwCampaignReceivedSnapshot = true;
                 self.gwCampaignInitialSyncRequested = false;
+                self.syncViewerStarsFromGame('snapshot_seq_' + incomingSeq);
                 if (incomingSeq > self.gwCampaignAppliedSnapshotSeq)
                     self.gwCampaignAppliedSnapshotSeq = incomingSeq;
 
@@ -1136,10 +1215,38 @@ requireGW([
                 return;
 
             var payload = action.payload || {};
+            var currentStarBeforeAction = game.currentStar();
+            var currentSystemBeforeAction = _.isNumber(currentStarBeforeAction) ? self.galaxy.systems()[currentStarBeforeAction] : undefined;
+            var aiBeforeAction = currentSystemBeforeAction && currentSystemBeforeAction.star && _.isFunction(currentSystemBeforeAction.star.ai) ? currentSystemBeforeAction.star.ai() : undefined;
+            var hasCardBeforeAction = currentSystemBeforeAction && currentSystemBeforeAction.star && _.isFunction(currentSystemBeforeAction.star.hasCard) ? currentSystemBeforeAction.star.hasCard() : undefined;
+            var historyBeforeAction = currentSystemBeforeAction && currentSystemBeforeAction.star && _.isFunction(currentSystemBeforeAction.star.history) ? (currentSystemBeforeAction.star.history() || []).length : undefined;
+
+            console.log('[GW_COOP] applyCampaignAction recv type=' + action.type + ' currentStar=' + currentStarBeforeAction + ' hasAi=' + !!aiBeforeAction + ' hasCard=' + hasCardBeforeAction + ' history=' + historyBeforeAction);
+            self.syncViewerStarsFromGame('before_action_' + action.type, [currentStarBeforeAction]);
             self.gwCampaignReplayingAction = true;
+
+            if (action.type === 'startup_battle_result' && payload && payload.result) {
+                if (payload.result === 'win') {
+                    game.winTurn().then(function(didWin) {
+                        console.log('[GW_COOP] applyCampaignAction startup_battle_result win didWin=' + didWin + ' currentStar=' + game.currentStar());
+                        GW.manifest.saveGame(game);
+                    });
+                }
+                else if (payload.result === 'loss') {
+                    var didLose = game.loseTurn();
+                    if (game.isTutorial())
+                        game.turnState(GW.Game.turnStates.begin);
+                    console.log('[GW_COOP] applyCampaignAction startup_battle_result loss didLose=' + didLose + ' currentStar=' + game.currentStar());
+                    GW.manifest.saveGame(game);
+                }
+
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
 
             if (action.type === 'select_star' && _.isNumber(payload.star)) {
                 self.selection.star(payload.star);
+                self.syncViewerStarsFromGame('after_action_select_star', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -1147,6 +1254,9 @@ requireGW([
             if (action.type === 'move_to_star' && _.isNumber(payload.star)) {
                 self.selection.star(payload.star);
                 self.move();
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_move_to_star', [payload.star, game.currentStar()]);
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -1154,18 +1264,28 @@ requireGW([
             if (action.type === 'move_path' && _.isArray(payload.path) && payload.path.length) {
                 self.selection.star(payload.destination);
                 self.move();
+                _.defer(function() {
+                    var changedStars = _.isArray(payload.path) ? payload.path.concat([payload.destination, game.currentStar()]) : [payload.destination, game.currentStar()];
+                    self.syncViewerStarsFromGame('after_action_move_path', changedStars);
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
 
             if (action.type === 'explore_begin') {
                 self.explore();
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_explore_begin', [game.currentStar()]);
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
 
             if (action.type === 'explore') {
                 self.explore();
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_explore', [game.currentStar()]);
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -1176,6 +1296,7 @@ requireGW([
                 if (star && _.isFunction(star.cardList) && _.isArray(payload.cards))
                     star.cardList(payload.cards);
                 self.scanning(false);
+                self.syncViewerStarsFromGame('after_action_explore_cards', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -1185,12 +1306,14 @@ requireGW([
                 var syncStar = _.isNumber(payload.star) ? syncStars[payload.star] : undefined;
                 if (syncStar && _.isFunction(syncStar.cardList) && _.isArray(payload.cards))
                     syncStar.cardList(payload.cards);
+                self.syncViewerStarsFromGame('after_action_sync_star_cards', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
                 return;
             }
 
             if (action.type === 'win_turn') {
                 // Viewer can be out of the precise turn micro-state; use snapshot correction instead.
+                console.log('[GW_COOP] applyCampaignAction win_turn fallback->snapshot');
                 self.requestCampaignSnapshot();
                 self.gwCampaignReplayingAction = false;
                 return;
@@ -1198,12 +1321,18 @@ requireGW([
 
             if (action.type === 'win_choice') {
                 self.win(payload.selected_card_index);
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_win_choice');
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
 
             if (action.type === 'lose_turn') {
                 self.lose();
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_lose_turn');
+                });
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -1327,21 +1456,41 @@ requireGW([
             ko.computed(function() {
                 var ai = system.star.ai();
                 var boss;
+                var ownerSource = 'none';
                 if (ai && ai.color) {
                     var normalizedColor = _.map(ai.color[0], function(c) { return c / 255; });
                     if (system.connected() || cheats.noFog()) {
                         boss = ai.boss;
                     }
                     system.ownerColor(normalizedColor.concat(3));
+                    ownerSource = 'ai';
                 }
                 else {
                     if (!system.star.hasCard()) {
                         system.ownerColor(self.player.color().concat(3));
+                        ownerSource = 'player';
                     }
                     else {
                         system.ownerColor(undefined);
+                        ownerSource = 'hidden_card';
                     }
                 }
+
+                var owner = system.ownerColor();
+                var historyCount = _.isFunction(system.star.history) ? (system.star.history() || []).length : 0;
+                var ownerKey = [
+                    ownerSource,
+                    system.connected() ? 1 : 0,
+                    ai ? 1 : 0,
+                    system.star.hasCard() ? 1 : 0,
+                    historyCount,
+                    owner ? owner.join(',') : 'none'
+                ].join('|');
+                if (self.gwCampaignOwnerStateDebug[star] !== ownerKey) {
+                    self.gwCampaignOwnerStateDebug[star] = ownerKey;
+                    console.log('[GW_COOP] ownerColorState star=' + star + ' source=' + ownerSource + ' connected=' + system.connected() + ' hasAi=' + !!ai + ' hasCard=' + system.star.hasCard() + ' history=' + historyCount + ' owner=' + (owner ? owner.join(',') : 'none') + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                }
+
                 if (boss && !bossModel) {
                     bossModel = new CommanderViewModel({
                         game: game,
@@ -1605,6 +1754,17 @@ requireGW([
                     }
                 }
 
+                if (self.isCampaignViewer()) {
+                    var moveSyncStars = [star, game.currentStar()];
+                    if (system && _.isFunction(system.neighbors)) {
+                        _.forEach(system.neighbors(), function(neighbor) {
+                            if (neighbor && _.isNumber(neighbor.index))
+                                moveSyncStars.push(neighbor.index);
+                        });
+                    }
+                    self.syncViewerStarsFromGame('move_step_' + star, moveSyncStars);
+                }
+
                 self.driveAccessInProgress(true);
                 GW.manifest.saveGame(game).then(function() {
                     self.driveAccessInProgress(false);
@@ -1712,6 +1872,8 @@ requireGW([
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
+            console.log('[GW_COOP] win start selected=' + selected_card_index + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+
             if (!self.gwCampaignReplayingAction)
                 self.sendCampaignAction('win_choice', { selected_card_index: selected_card_index });
 
@@ -1728,8 +1890,18 @@ requireGW([
             game.winTurn(selected_card_index).then(function(didWin) {
                 if (!didWin) {
                     console.error('Failed winning turn', game);
+                    console.log('[GW_COOP] win failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
                     return;
                 }
+
+                var winStar = game.galaxy().stars()[game.currentStar()];
+                var winAi = winStar && _.isFunction(winStar.ai) ? winStar.ai() : undefined;
+                var winHasCard = winStar && _.isFunction(winStar.hasCard) ? winStar.hasCard() : undefined;
+                var winHistory = winStar && _.isFunction(winStar.history) ? (winStar.history() || []).length : undefined;
+                console.log('[GW_COOP] win applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!winAi + ' hasCard=' + winHasCard + ' history=' + winHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+
+                if (self.isCampaignViewer())
+                    self.syncViewerStarsFromGame('win_applied');
 
                 self.maybePlayCaptureSound();
                 self.driveAccessInProgress(true);
@@ -1761,11 +1933,22 @@ requireGW([
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
+            console.log('[GW_COOP] lose start role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+
             if (!self.gwCampaignReplayingAction)
                 self.sendCampaignAction('lose_turn', {});
 
             self.exitGate($.Deferred());
             if (game.loseTurn()) {
+                var loseStar = game.galaxy().stars()[game.currentStar()];
+                var loseAi = loseStar && _.isFunction(loseStar.ai) ? loseStar.ai() : undefined;
+                var loseHasCard = loseStar && _.isFunction(loseStar.hasCard) ? loseStar.hasCard() : undefined;
+                var loseHistory = loseStar && _.isFunction(loseStar.history) ? (loseStar.history() || []).length : undefined;
+                console.log('[GW_COOP] lose applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!loseAi + ' hasCard=' + loseHasCard + ' history=' + loseHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+
+                if (self.isCampaignViewer())
+                    self.syncViewerStarsFromGame('lose_applied');
+
                 $.when([
                     GW.manifest.saveGame(game),
                     api.tally.incStatInt('gw_war_loss')
@@ -1773,8 +1956,10 @@ requireGW([
                     self.exitGate().resolve();
                 });
             }
-            else
+            else {
+                console.log('[GW_COOP] lose failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
                 self.exitGate().resolve();
+            }
         };
 
         self.restartFight = function(model, event, cheat) {
@@ -2273,6 +2458,12 @@ requireGW([
         {
             self.hasEnteredGame(true);
 
+            if (self.isCampaignHost() && self.gwCampaignConnected() && self.gwCampaignStartupBattleResult && !self.gwCampaignStartupResultSent) {
+                self.gwCampaignStartupResultSent = true;
+                console.log('[GW_COOP] host relaying startup_battle_result=' + self.gwCampaignStartupBattleResult);
+                self.sendCampaignAction('startup_battle_result', { result: self.gwCampaignStartupBattleResult });
+            }
+
             // Set up resize event for window so we can update the canvas resolution
             $(window).resize(self.resize);
             self.resize();
@@ -2404,17 +2595,22 @@ requireGW([
 
         // process any battle results.
         var battleResult = game.lastBattleResult();
+        var startupBattleResult = null;
+        console.log('[GW_COOP] startup battleResult=' + battleResult + ' currentStar=' + game.currentStar());
 
         if (battleResult)
         {
             game.lastBattleResult(null);
+            startupBattleResult = battleResult;
             if (battleResult === 'win')
                 game.winTurn().then(function() {
+                    console.log('[GW_COOP] startup battleResult winTurn applied currentStar=' + game.currentStar());
                     GW.manifest.saveGame(game);
                 });
 
             if (battleResult === 'loss') {
                 game.loseTurn();
+                console.log('[GW_COOP] startup battleResult loseTurn applied currentStar=' + game.currentStar());
                 if (game.isTutorial()) {
                     game.turnState(GW.Game.turnStates.begin);
                 }
@@ -2422,7 +2618,7 @@ requireGW([
             }
         }
 
-        model = new GameViewModel(game);
+        model = new GameViewModel(game, startupBattleResult);
 
         model.setup();
 
