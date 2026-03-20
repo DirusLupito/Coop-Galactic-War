@@ -965,8 +965,32 @@ requireGW([
         };
 
         self.getCampaignSnapshotPayload = function() {
+            var gameSave = game.save();
+            var saveStars = gameSave && gameSave.galaxy && gameSave.galaxy.stars;
+            var runtimeGalaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var runtimeStars = runtimeGalaxy && _.isFunction(runtimeGalaxy.stars) ? runtimeGalaxy.stars() : undefined;
+            var enrichedSystems = 0;
+
+            if (_.isArray(saveStars) && _.isArray(runtimeStars)) {
+                _.forEach(saveStars, function(saveStar, index) {
+                    if (!saveStar || saveStar.system)
+                        return;
+
+                    var runtimeStar = runtimeStars[index];
+                    var runtimeSystem = runtimeStar && _.isFunction(runtimeStar.system) ? runtimeStar.system() : undefined;
+                    if (!runtimeSystem)
+                        return;
+
+                    saveStar.system = _.cloneDeep(runtimeSystem);
+                    enrichedSystems += 1;
+                });
+            }
+
+            if (enrichedSystems > 0)
+                console.log('[GW_COOP] snapshot enriched missing systems=' + enrichedSystems);
+
             return {
-                game: game.save(),
+                game: gameSave,
                 ui: {
                     selectedStar: self.selection.star(),
                     hoverStar: self.hoverSystem.star(),
@@ -2546,6 +2570,52 @@ requireGW([
 
     // Start loading the game & document
     var activeGameId = ko.observable().extend({ local: 'gw_active_game'});
+    var safeStorageGet = function(storage, key) {
+        try {
+            return storage && _.isFunction(storage.getItem) ? storage.getItem(key) : undefined;
+        }
+        catch (e) {
+            return undefined;
+        }
+    };
+
+    var parseStoredValue = function(value) {
+        var parsed = value;
+        var maxDepth = 4;
+
+        while (maxDepth-- > 0) {
+            if (_.isString(parsed)) {
+                try {
+                    parsed = JSON.parse(parsed);
+                    continue;
+                }
+                catch (e) {
+                    return parsed;
+                }
+            }
+
+            if (parsed && _.isObject(parsed) && _.has(parsed, 'value')) {
+                parsed = parsed.value;
+                continue;
+            }
+
+            break;
+        }
+
+        return parsed;
+    };
+
+    var isTruthyStorageValue = function(value) {
+        if (value === true || value === 1)
+            return true;
+
+        if (!_.isString(value))
+            return false;
+
+        var normalized = value.toLowerCase();
+        return normalized === '1' || normalized === 'true' || normalized === 'yes';
+    };
+
     var gwCampaignMode = (function() {
         var query = window.location.search || '';
         if (!query.length || query.charAt(0) !== '?')
@@ -2564,11 +2634,31 @@ requireGW([
         return false;
     })();
 
+    var gwCampaignReconnectMode = (function() {
+        if (gwCampaignMode)
+            return true;
+
+        var setup = safeStorageGet(window.sessionStorage, 'game_server_setup');
+        if (setup === 'gw_campaign')
+            return true;
+
+        var enabled = safeStorageGet(window.sessionStorage, 'gw_campaign_enabled');
+        if (isTruthyStorageValue(enabled))
+            return true;
+
+        var reconnectInfoRaw = safeStorageGet(window.localStorage, 'reconnect_to_game_info');
+        var reconnectInfo = parseStoredValue(reconnectInfoRaw);
+        if (reconnectInfo && reconnectInfo.setup === 'gw_campaign')
+            return true;
+
+        return false;
+    })();
+
     var gameLoader = GW.manifest.loadGame(activeGameId()).then(function(game) {
-        if (game || !gwCampaignMode)
+        if (game || !gwCampaignReconnectMode)
             return game;
 
-        console.log('[GW_COOP] no local gw_active_game found, creating temporary co-op placeholder');
+        console.log('[GW_COOP] no local gw_active_game found, creating temporary co-op placeholder reconnectMode=' + gwCampaignReconnectMode + ' queryMode=' + gwCampaignMode);
         return new GW.Game();
     });
     var documentLoader = $(document).ready();
