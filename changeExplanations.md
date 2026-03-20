@@ -33,6 +33,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `359550e` `Fixed 2 issues, one with reconnect and one with co-op player's system view.`
   - `60438a2` `Fixed the co-op player's copy of the GW save being corrupted.`
   - `cf423b0` `Fixed compatibility with GW affecting mods like GWO.`
+  - `b7e3759` `Removed tag causing gw co-op lobbies to not show up outside of LAN.`
+  - `d8591c8` `Fixed an issue where saving and quitting from GW would corrupt co-op player's save.`
 
 ## High-Level Summary
 
@@ -1234,3 +1236,13 @@ If you tried to read this and thought it was all stupid math gibberish slop I wo
 - [generate_mod.py](generate_mod.py)
 
 These are the primary files future contributors should inspect before changing campaign coop synchronization behavior.
+
+## Additional small bugfixes (commits `b7e3759` and `d8591c8`)
+
+### Removed tag causing gw co-op lobbies to not show up outside of LAN.
+
+Very simple change, I just changed the beacon tag from `'GW Co-op'` to `'Testing'` as `'GW Co-op'` is not a tag that exists anywhere else while testing is and seems to (somewhat) fit.
+
+### Fixed an issue where saving and quitting from GW would corrupt co-op player's save.
+
+Another simple fix, I just took the campaign persistence function that was being called on forced and voluntary disconnect from the co-op session and also called it on voluntary saving and quitting of the entire galactic war game.
