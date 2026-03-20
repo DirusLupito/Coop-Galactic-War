@@ -25,6 +25,14 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `9f594ae` `Fixed a race condition that could appear causing a crash on some PCs but not others.`
 - Fixing client mod-related crashes:
   - `cf85a22` `Fixed reconnect unmounting potentially essential client mods.`
+- Galactic War galaxy map co-op mode and synchronization:
+  - `7874487` `Added WIP galactic war campaign multiplayer netcode.`
+  - `654d94a` `Fixed an issue where coop player has a UI crash if they have no pre existing GW save.`
+  - `3e276f8` `Fixed a bug where tech cards acquired were not immediately visible for Co-op player.`
+  - `fde5b17` `Fixed an issue where Co-op player's GW Map view would not update to show system ownership.`
+  - `359550e` `Fixed 2 issues, one with reconnect and one with co-op player's system view.`
+  - `60438a2` `Fixed the co-op player's copy of the GW save being corrupted.`
+  - `cf423b0` `Fixed compatibility with GW affecting mods like GWO.`
 
 ## High-Level Summary
 
@@ -936,3 +944,280 @@ Removing the unmount step preserves currently mounted client-mod assets while st
 
 - If host and coop player have matching required client mods installed, reconnect now remains stable through unpause.
 - If the reconnecting client lacks a required client mod, crash behavior remains expected because required assets are genuinely unavailable.
+
+---
+
+## GW Campaign Co-op Expansion and Stabilization (Commits `7874487` through `cf423b0`)
+
+This phase introduced a second coop architecture layer on top of the earlier live-battle coop work:
+
+1. A dedicated coop-capable Galactic War campaign server state (`gw_campaign`) and entry flow in GW play.
+2. Host/viewer campaign-map synchronization while both players remain in the campaign scene.
+3. Hardening for reconnect, no-local-save users, session teardown persistence, and compatibility with large GW-overhaul client mods (notably GWO).
+
+This was the most iteration-heavy part of the project so far, because the failure modes were mostly "state drift" issues rather than immediate hard crashes.
+
+## Scope of This Commit Chain
+
+The `7874487 -> cf423b0` chain should be treated as one coherent body of work. Although the commits are split by symptom, they all address one root objective:
+
+- make campaign-map coop deterministic enough that host and viewer see the same campaign state transitions
+- preserve local GW save integrity when entering/leaving coop
+- keep behavior stable for users with no prior local GW save
+- avoid regressions with GW-overhaul mods that replace core GW play methods after scene load
+
+Without all commits in this chain, the feature works only partially.
+
+## What Was Added in the Initial Campaign Co-op Cut (`7874487`)
+
+### Server-side campaign authority state
+
+New file:
+
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+
+Key responsibilities introduced:
+
+- host/viewer role assignment
+- control payload broadcast (`gw_campaign_control`)
+- snapshot storage and sequencing (`gw_campaign_snapshot`)
+- join/reconnect lifecycle handling and viewer reconnect timeout
+- lobby beacon publication for campaign sessions
+- host-only campaign exit / launch control
+
+Registration change:
+
+- [server-script/main.js](server-script/main.js) now includes `gw_campaign` in the state list.
+
+### Client-side campaign coop UI and session controls
+
+Changes in:
+
+- [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html)
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+
+New user-facing behaviors:
+
+- "Open to Co-op" action for host
+- "Leave Co-op Session" action
+- header status text showing campaign coop role/connection state
+- viewer read-only mode presentation
+
+Early synchronization model in this first cut:
+
+- host periodically pushed campaign snapshots
+- viewer applied snapshots to local GW game model
+- incremental actions were not yet the primary synchronization mechanism
+
+This first cut established infrastructure but exposed several subtle desync classes in real use.
+
+## Problem Cluster 1: No-local-save Viewer Crashes (`654d94a`)
+
+### Symptom
+
+A viewer with no pre-existing local GW save could crash on campaign scene load/reconnect paths.
+
+### Root issue
+
+Several code paths assumed `GW.manifest.loadGame(activeGameId())` always returns a valid local game for campaign UI binding. That assumption was true for hosts and returning players, but false for first-time viewers or viewers who had no prior galactic war saves.
+
+### Fix direction
+
+The code was hardened to:
+
+- tolerate missing local game at startup
+- request/apply host sync state rather than requiring local save bootstrap to already exist
+- avoid immediate null-object cascades in computed bindings that expected complete star/system data
+
+## Problem Cluster 2: Cards and Immediate Feedback Lag (`3e276f8`)
+
+### Symptom
+
+- tech cards acquired by host were not immediately visible for viewer
+- associated audio cue behavior was not playing
+
+### What made it hard
+
+Snapshot delivery was eventually consistent but not synchronized to the exact point when card lists changed in gameplay flow.
+
+### Initial bad avenue
+
+The early tendency was to rely on more frequent snapshots to catch the missed update window. That reduced some lag but did not eliminate race windows and added complexity/noise.
+
+### Effective fix
+
+`gw_campaign_action` was used as a first-class incremental channel, with explicit action types for:
+
+- selection/movement intent
+- explore lifecycle
+- card-list synchronization (`sync_star_cards`)
+- win/lose turn transitions
+
+Viewer replay guards were added so viewer-local actions are blocked in normal mode but allowed when replaying host actions.
+
+This was the inflection point where campaign coop moved from "snapshot-only correction" to "action-first replay + snapshot correction".
+
+## Problem Cluster 3: Map Ownership/Reveal Drift (`fde5b17`)
+
+### Symptom
+
+Even when action replay logs looked correct, viewer map ownership coloring and reveal status would still diverge from host.
+
+### Root cause (critical)
+
+The campaign UI map model and the loaded game model did not always share the same effective star object references after snapshot/hydration and replay timing.
+
+That means:
+
+- host-driven game state changed
+- viewer replay ran
+- but map rendering still read stale star observables
+
+### False start that consumed time
+
+Movement replay/path handling was initially suspected as the primary source of ownership drift. While movement timing did matter in some cases, it was not the full root cause for ownership color mismatch.
+
+### Final resolution
+
+Added explicit viewer star bridging utilities in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- `syncViewerStarFromGame`
+- `syncViewerStarsFromGame`
+
+These copy ownership-driving observables (`history`, `explored`, `cardList`, `ai`, `system`, and related fields) from runtime game stars into map-view stars after snapshots and high-impact actions.
+
+Result:
+
+- ownership color, reveal state, and map-level metadata updates became consistent with host progression.
+
+## Problem Cluster 4: Missing Flavor Text/Planet Preview + Reconnect Edge (`359550e`)
+
+### Symptoms
+
+- some already-owned systems had missing flavor text/planet preview for viewer
+- reconnecting viewers with no save still had a crash path in specific reconnect scenarios
+
+### Root issue
+
+Some snapshot/save stars arrived without complete `star.system` payloads; viewer UI components that depend on system metadata then had nothing to render.
+
+### Fix
+
+Snapshot payload enrichment was added:
+
+- when save stars lacked `system`, data is backfilled from runtime stars before snapshot publication
+
+Reconnect detection was broadened beyond query-param-only mode:
+
+- session/local storage reconnect metadata is parsed safely
+- reconnect mode can create a placeholder `new GW.Game()` when no local active game exists
+
+This closed the remaining no-save reconnect crash path and restored system preview rendering.
+
+## Problem Cluster 5: Save Corruption on Session End / Leaving Coop (`60438a2`)
+
+### Symptom
+
+When viewer left coop (or was disconnected), their local GW save would be left corrupted for subsequent single-player use.
+
+### Why this happened
+
+Transit away from coop would happen before local game persistence had a fully enriched, stable campaign object graph.
+
+### Fix
+
+Added explicit persistence workflow before transit/disconnect handoff:
+
+- `enrichCampaignGameSystems(reason)`
+- `persistCampaignLocalCopy(reason)`
+
+and invoked it during:
+
+- `leaveCoopSession`
+- connection-disconnect handling
+
+This ensures system payloads are enriched and `GW.manifest.saveGame(game)` completes (or at least is attempted) before moving scenes.
+
+## Problem Cluster 6: GWO Compatibility Breakage (`cf423b0`)
+
+### Symptom
+
+With the Galactic War Overhaul mod (and presumably other mods which affected Galactic War) enabled on both host and viewer, movement/ownership/card synchronization regressed.
+
+### Why this was uniquely tricky
+
+GWO does not just tweak data; it replaces core `gw_play` methods after load (for example `model.explore`, `model.win`, and selection/canMove behavior). That can silently overwrite coop wrappers/guards introduced earlier.
+
+### False assumption corrected
+
+At first glance it seemed "both players have same mod, so behavior should stay synchronized." In practice, synchronization still fails if external method replacement bypasses coop relay/replay hooks.
+
+### Fix strategy (without changing GWO)
+
+Implemented runtime compatibility wrappers in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- `wrapCampaignOverrideIfNeeded`
+- `ensureCampaignCompatibilityHooks`
+- native markers (`__gwCampaignNative`) on coop-owned base methods
+- periodic re-hook watcher to catch async post-load overrides
+
+Wrapper behavior preserves:
+
+- viewer input gating outside replay
+- host action relay for overridden `explore`/`win`/`lose`
+- additional `sync_star_cards` relay for modded explore paths that bypass original card sync timing
+
+This solved the conflict at integration boundaries without modifying GWO itself.
+
+## Key Challenges Across the Whole Chain
+
+1. Most bugs were eventually-consistent state drift, not immediate exceptions.
+2. The campaign scene has overlapping models (game model vs map/view model), so "state changed" did not guarantee "UI consumed changed state."
+3. Reconnect behavior depends on storage/query/session contexts and could not rely on one signal.
+4. Coop hooks could be overwritten at runtime by third-party scene mods loaded after our initialization.
+
+## Most Important False Starts and Why They Were Wrong
+
+1. Snapshot-frequency-first thinking as a universal fix:
+It reduced some symptoms but did not address stale model-reference bridging.
+
+2. Treating movement replay as the sole ownership bug source:
+Movement path variance existed, but primary ownership drift was stale star observables in map view.
+
+3. Query-parameter-only reconnect detection:
+Worked for direct entry but missed reconnect paths where state is carried through storage metadata.
+
+4. Assuming our wrappers persist once installed:
+External GW mods can override functions later, requiring active re-hooking.
+
+## Why the Final Architecture Works Better
+
+The chain converged to a hybrid model:
+
+1. Action-first synchronization for low-latency deterministic replay.
+2. Snapshot correction as safety net and hydration mechanism.
+3. Explicit game->view star synchronization bridge for ownership/reveal rendering.
+4. Persistence hardening before transit/disconnect to protect local saves.
+5. Runtime compatibility wrapping for post-load mod overrides.
+
+Each layer addresses a different failure class. Removing any single layer reopens at least one historical bug category from this chain.
+
+HUMAN NOTE: In a not AI slop way, I like to view this architecture as being centered around the following idea: Galactic War is like a state machine. We're in some state $X$. Whenever anything changes, its like we apply a function representing that change $F$ to $X$ to get $F(X)$. In the initial phase of this code, what we were doing was measuring $X$, and measuring $F(X)$ and basically computing 
+$$
+\delta = F(X) \ominus X,
+$$
+then sending $\delta$ to the client, so then they would do
+$$
+X \oplus \delta = X \oplus (F(X) \ominus X) = X \ominus X \oplus F(X) = F(X).
+$$
+Of course, viewing it through this sort of lense is a bit of an oversimplification, as the set of possible states which Galactic War can be in $\{X\}$ does not really form a group under the $\oplus$ operation, and $\oplus$ isn't even going to be abelian. Just look at the action of fighting in a system and winning. That's not invertible :). 
+
+## Files Most Relevant to This Scope
+
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+- [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html)
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/main.js](server-script/main.js)
+- [generate_mod.py](generate_mod.py)
+
+These are the primary files future contributors should inspect before changing campaign coop synchronization behavior.
