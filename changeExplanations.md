@@ -1210,7 +1210,20 @@ then sending $\delta$ to the client, so then they would do
 $$
 X \oplus \delta = X \oplus (F(X) \ominus X) = X \ominus X \oplus F(X) = F(X).
 $$
-Of course, viewing it through this sort of lense is a bit of an oversimplification, as the set of possible states which Galactic War can be in $\{X\}$ does not really form a group under the $\oplus$ operation, and $\oplus$ isn't even going to be abelian. Just look at the action of fighting in a system and winning. That's not invertible :). 
+Of course, viewing it through this sort of lense is a bit of an oversimplification, as the set of possible states which Galactic War can be in $\{X\}$ does not really form a group under the $\oplus$ operation, and $\oplus$ isn't even going to be abelian. Just look at the action of fighting in a system and winning. That's not invertible, so there's no way this is a group :). 
+
+But anyways, back to my abstract algebraic view, this was an approach I despised. I figured that if we could just define a set of operators on the state of galactic war $\{F, G, \ldots\}$, and then just send the operator to each client when the host performed that operation, we could guarantee that the clients would always be in sync with the host, provided we have the same initial conditions (this assumes my set of operators is wholly comprised of deterministic operators, which I figured was true). Basically, we do one big broadcast at the start where the host's state $X$ is sent to all the clients. Then as an example let's represent moving to a system as the operator $F$, and exploring it as the operator $G$. Then all we need to do is send $F$ to the clients when the host moves, and send $G$ to the clients when the host explores, as on the host side we're going from state $X$ to state $F(X)$ to state $G(F(X))$. So all the clients need to do is 
+
+1. track the current state, and 
+2. listen for operator broadcasts, and when they receive an operator, apply it to their current state to get the next state.
+
+So in the end everyone winds up in state $G(F(X))$, and we never have to do some outrageously massive $\delta$ broadcast. I am assuming that the cost of sending $\delta$ to the clients as measured by some cost operator (maybe packet size? maybe computation time? IMO a mixture of both) $\|\cdot\|$ satisfies 
+$$
+\|\delta\| \gg \|F\|
+$$
+for any and all operators $F$. The only time I broadcast a snapshot is if I detect that somehow a client's state has gotten totally out of sync.
+
+If you tried to read this and thought it was all stupid math gibberish slop I wouldn't be surprised. I just wanted to share my thought process for how I came up with the general idea of keeping the clients in sync with the host. TL;DR do clientside prediction, and only send packets from the host to the clients when the host does something that changes the game state, like moving to a new system or exploring, or fighting, etc.
 
 ## Files Most Relevant to This Scope
 
