@@ -141,7 +141,7 @@ function GWCampaignModel(creator) {
             require_password: false,
             whitelist: [],
             blacklist: [],
-            tag: 'GW Co-op',
+            tag: 'Testing',
             game: {
                 system: self.tryGetBeaconSystem(),
                 name: 'GW Co-op Campaign'
