@@ -866,10 +866,15 @@ requireGW([
         self.gwCampaignSnapshotSeq = 0;
         self.gwCampaignApplyingSnapshot = false;
         self.gwCampaignPendingSnapshot = undefined;
+        self.gwCampaignReceivedSnapshot = false;
+        self.gwCampaignInitialSyncRequested = false;
+        self.gwCampaignAppliedSnapshotSeq = 0;
         self.gwCampaignHeartbeatHandle = undefined;
         self.gwCampaignLastSnapshotSentAt = 0;
+        self.gwCampaignLastSnapshotRequestAt = 0;
         self.gwCampaignSnapshotCooldownMs = 1500;
         self.gwCampaignHydrationInProgress = false;
+        self.gwCampaignReplayingAction = false;
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -998,9 +1003,18 @@ requireGW([
             });
         };
 
-        self.requestCampaignSnapshot = function() {
+        self.requestCampaignSnapshot = function(force) {
             if (!self.gwCampaignActive())
                 return;
+
+            if (!force && self.gwCampaignReceivedSnapshot)
+                return;
+
+            var now = _.now();
+            if ((now - self.gwCampaignLastSnapshotRequestAt) < 500)
+                return;
+
+            self.gwCampaignLastSnapshotRequestAt = now;
             self.send_message('request_gw_campaign_snapshot', {});
         };
 
@@ -1057,6 +1071,8 @@ requireGW([
 
             var snapshot = payload.snapshot;
             var ui = snapshot.ui || {};
+            var incomingSeq = _.isNumber(payload.seq) ? payload.seq : 0;
+            console.log('[GW_COOP] applyCampaignSnapshot start seq=' + incomingSeq + ' applying=' + self.gwCampaignApplyingSnapshot);
 
             var localGalaxy = game.galaxy && game.galaxy();
             var localSignature = self.getGalaxySignature(localGalaxy);
@@ -1069,6 +1085,8 @@ requireGW([
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(snapshot.game).always(function() {
                     GW.manifest.saveGame(hydratedGame).then(function() {
+                        self.gwCampaignReceivedSnapshot = true;
+                        self.gwCampaignInitialSyncRequested = false;
                         ko.observable().extend({ local: 'gw_active_game' })(hydratedGame.id);
                         window.location.reload();
                     }, function(err) {
@@ -1081,6 +1099,11 @@ requireGW([
 
             self.gwCampaignApplyingSnapshot = true;
             game.load(snapshot.game).always(function() {
+                self.gwCampaignReceivedSnapshot = true;
+                self.gwCampaignInitialSyncRequested = false;
+                if (incomingSeq > self.gwCampaignAppliedSnapshotSeq)
+                    self.gwCampaignAppliedSnapshotSeq = incomingSeq;
+
                 if (_.isNumber(ui.selectedStar))
                     self.selection.star(ui.selectedStar);
 
@@ -1095,6 +1118,8 @@ requireGW([
 
                 if (_.isNumber(ui.zoom))
                     self.galaxy.zoom(ui.zoom);
+
+                console.log('[GW_COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
 
                 self.gwCampaignApplyingSnapshot = false;
 
@@ -1111,20 +1136,79 @@ requireGW([
                 return;
 
             var payload = action.payload || {};
+            self.gwCampaignReplayingAction = true;
 
             if (action.type === 'select_star' && _.isNumber(payload.star)) {
                 self.selection.star(payload.star);
+                self.gwCampaignReplayingAction = false;
                 return;
             }
 
             if (action.type === 'move_to_star' && _.isNumber(payload.star)) {
-                var from = game.currentStar();
-                var path = game.galaxy().pathBetween(from, payload.star, self.cheats.noFog());
-                if (path && path.length > 1) {
-                    path.shift();
-                    self.moveStep(path);
-                }
+                self.selection.star(payload.star);
+                self.move();
+                self.gwCampaignReplayingAction = false;
+                return;
             }
+
+            if (action.type === 'move_path' && _.isArray(payload.path) && payload.path.length) {
+                self.selection.star(payload.destination);
+                self.move();
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'explore_begin') {
+                self.explore();
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'explore') {
+                self.explore();
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'explore_cards') {
+                var stars = game.galaxy().stars();
+                var star = _.isNumber(payload.star) ? stars[payload.star] : undefined;
+                if (star && _.isFunction(star.cardList) && _.isArray(payload.cards))
+                    star.cardList(payload.cards);
+                self.scanning(false);
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'sync_star_cards') {
+                var syncStars = game.galaxy().stars();
+                var syncStar = _.isNumber(payload.star) ? syncStars[payload.star] : undefined;
+                if (syncStar && _.isFunction(syncStar.cardList) && _.isArray(payload.cards))
+                    syncStar.cardList(payload.cards);
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'win_turn') {
+                // Viewer can be out of the precise turn micro-state; use snapshot correction instead.
+                self.requestCampaignSnapshot();
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'win_choice') {
+                self.win(payload.selected_card_index);
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            if (action.type === 'lose_turn') {
+                self.lose();
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
+            self.gwCampaignReplayingAction = false;
         };
 
         self.updateCampaignConnectionState = function(payload) {
@@ -1144,6 +1228,9 @@ requireGW([
             if (!role && _.isArray(data.connected_clients) && data.connected_clients.length === 1 && data.connected_clients[0].role === 'host')
                 role = 'host';
 
+            if (!role && data.host_name && self.displayName() && data.host_name !== self.displayName())
+                role = 'viewer';
+
             if (role)
                 self.gwCampaignRole(role);
 
@@ -1151,10 +1238,10 @@ requireGW([
 
             console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
 
-            if (self.isCampaignViewer())
-                self.requestCampaignSnapshot();
-            else if (self.isCampaignHost())
-                self.sendCampaignSnapshot('host_joined');
+            if (self.isCampaignViewer() && !self.gwCampaignReceivedSnapshot && !self.gwCampaignInitialSyncRequested) {
+                self.gwCampaignInitialSyncRequested = true;
+                self.requestCampaignSnapshot(true);
+            }
         };
 
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
@@ -1442,7 +1529,7 @@ requireGW([
 
         self.canSelect = function(star)
         {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return false;
 
             var game = self.game();
@@ -1461,7 +1548,7 @@ requireGW([
 
         self.canMove = ko.computed(function()
         {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return false;
 
             if (self.player.moving())
@@ -1494,10 +1581,29 @@ requireGW([
             var star = path[0];
             var system = self.galaxy.systems()[star];
             self.player.moveTo(star, function() {
-                if (!system.visited())
+                var visitedBeforeMove = system.visited();
+
+                if (!system.visited()) {
+                    console.log('[GW_COOP] revealSystem trigger star=' + star + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                     self.revealSystem(system);
+                }
 
                 game.move(star);
+
+                // Some viewer replays can miss the internal move mutation. Force minimal sync fallback.
+                if (self.isCampaignViewer() && game.currentStar() !== star) {
+                    console.log('[GW_COOP] viewer move fallback set currentStar from=' + game.currentStar() + ' to=' + star);
+                    game.currentStar(star);
+                }
+
+                if (self.isCampaignViewer() && !system.visited() && visitedBeforeMove === false) {
+                    var replayStar = game.galaxy().stars()[star];
+                    if (replayStar && _.isFunction(replayStar.history)) {
+                        var history = replayStar.history() || [];
+                        replayStar.history(history.concat([{ coop_replay: true, t: _.now() }]));
+                        console.log('[GW_COOP] viewer move fallback marked visited star=' + star);
+                    }
+                }
 
                 self.driveAccessInProgress(true);
                 GW.manifest.saveGame(game).then(function() {
@@ -1513,7 +1619,7 @@ requireGW([
 
         self.move = function()
         {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
             var star = self.selection.star();
@@ -1526,7 +1632,6 @@ requireGW([
 
                 self.sendCampaignAction('move_to_star', { star: star });
                 self.moveStep(path);
-                self.sendCampaignSnapshot('move');
             }
             else
                 console.error("Unable to find path for move command", game.currentStar(), star);
@@ -1544,11 +1649,14 @@ requireGW([
         });
 
         self.explore = function() {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
             if (!game || !game.explore())
                 return;
+
+            if (!self.gwCampaignReplayingAction)
+                self.sendCampaignAction('explore', { star: game.currentStar() });
 
             self.scanning(true);
 
@@ -1572,6 +1680,13 @@ requireGW([
 
                 if (ok)
                     star.cardList(result);
+
+                if (!self.gwCampaignReplayingAction) {
+                    self.sendCampaignAction('sync_star_cards', {
+                        star: game.currentStar(),
+                        cards: star.cardList()
+                    });
+                }
             });
             $.when(dealStarCards).then(function() {
                 self.driveAccessInProgress(true);
@@ -1581,13 +1696,12 @@ requireGW([
 
                 _.delay(function() {
                     self.scanning(false);
-                    self.sendCampaignSnapshot('explore');
                 }, 2000);
             });
         };
 
         self.dismissTech = function() {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
             self.win(-1);
@@ -1595,8 +1709,11 @@ requireGW([
         };
 
         self.win = function(selected_card_index) {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
+
+            if (!self.gwCampaignReplayingAction)
+                self.sendCampaignAction('win_choice', { selected_card_index: selected_card_index });
 
             self.exitGate($.Deferred());
             var oldSlots = game.inventory().maxCards() - game.inventory().cards().length;
@@ -1627,7 +1744,6 @@ requireGW([
                         }
                         else {
                             self.exitGate().resolve();
-                            self.sendCampaignSnapshot('win');
 
                             if (play_tech_audio) {
                                 if (!tech_audio)
@@ -1642,8 +1758,11 @@ requireGW([
         };
 
         self.lose = function() {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
+
+            if (!self.gwCampaignReplayingAction)
+                self.sendCampaignAction('lose_turn', {});
 
             self.exitGate($.Deferred());
             if (game.loseTurn()) {
@@ -1652,7 +1771,6 @@ requireGW([
                     api.tally.incStatInt('gw_war_loss')
                 ]).then(function() {
                     self.exitGate().resolve();
-                    self.sendCampaignSnapshot('lose');
                 });
             }
             else
@@ -2037,14 +2155,27 @@ requireGW([
         };
 
         self.revealSystem = function(system) {
+            if (!system) {
+                console.log('[GW_COOP] revealSystem skipped: no system role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                return;
+            }
+
             var newNeighbors = _.filter(system.neighbors(), function(neighbor) { return !neighbor.connected(); });
             var newBoss = _.some(newNeighbors, function(neighbor) {
                 return neighbor.star.ai() && neighbor.star.ai().boss;
             });
-            if (newBoss)
+            var hasAi = !!(system.star.ai && system.star.ai());
+            var hasBoss = !!(hasAi && system.star.ai().boss);
+            console.log('[GW_COOP] revealSystem role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' newNeighbors=' + newNeighbors.length + ' hasAi=' + hasAi + ' hasBoss=' + hasBoss);
+
+            if (newBoss) {
+                console.log('[GW_COOP] cue board_commander_factionleader_discovered');
                 api.audio.playSound('/VO/Computer/gw/board_commander_factionleader_discovered');
-            else if (system.star.ai() && !system.star.ai().boss)
+            }
+            else if (system.star.ai() && !system.star.ai().boss) {
+                console.log('[GW_COOP] cue board_commander_discovered');
                 api.audio.playSound('/VO/Computer/gw/board_commander_discovered');
+            }
         };
 
         self.introVideoId = ko.observable('Tfg18BseBUY');
@@ -2056,16 +2187,24 @@ requireGW([
 
         self.maybePlayCaptureSound = function() {
             var currentStar = self.currentStar();
-            if (!currentStar)
+            if (!currentStar) {
+                console.log('[GW_COOP] maybePlayCaptureSound no currentStar role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                 return false;
+            }
 
-            if (currentStar.ai())
+            if (currentStar.ai()) {
+                console.log('[GW_COOP] maybePlayCaptureSound blocked: ai present star=' + game.currentStar());
                 return false;
+            }
 
             var history = currentStar.history();
             var last = history[history.length - 1];
-            if (!last || !last.details || !last.details.win || !last.details.win.ai)
+            if (!last || !last.details || !last.details.win || !last.details.win.ai) {
+                console.log('[GW_COOP] maybePlayCaptureSound blocked: no capture history star=' + game.currentStar() + ' history=' + history.length);
                 return false;
+            }
+
+            console.log('[GW_COOP] cue board_system_capture star=' + game.currentStar() + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
             api.audio.playSound('/VO/Computer/gw/board_system_capture');
             return true;
         };
@@ -2205,40 +2344,10 @@ requireGW([
 
             _.defer(self.updateSocialVisibility);
 
-            self.selection.star.subscribe(function() {
-                self.sendCampaignSnapshot('selection');
-            });
-
-            game.turnState.subscribe(function() {
-                self.sendCampaignSnapshot('turn_state');
-            });
-
-            game.currentStar.subscribe(function() {
-                self.sendCampaignSnapshot('current_star');
-            });
-
-            game.inventory().cards.subscribe(function() {
-                self.sendCampaignSnapshot('cards');
-            });
-
-            ko.computed(function() {
-                if (self.gwCampaignHeartbeatHandle) {
-                    clearInterval(self.gwCampaignHeartbeatHandle);
-                    self.gwCampaignHeartbeatHandle = undefined;
-                }
-
-                var control = self.gwCampaignControl() || {};
-                var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
-                var hasViewer = _.some(connectedClients, function(client) {
-                    return client && client.role === 'viewer';
-                });
-
-                if (self.isCampaignHost() && self.gwCampaignConnected() && hasViewer) {
-                    self.gwCampaignHeartbeatHandle = setInterval(function() {
-                        self.sendCampaignSnapshot('heartbeat');
-                    }, 30000);
-                }
-            });
+            if (self.gwCampaignHeartbeatHandle) {
+                clearInterval(self.gwCampaignHeartbeatHandle);
+                self.gwCampaignHeartbeatHandle = undefined;
+            }
         }
 
         self.activeGameId = ko.observable().extend({ local: 'gw_active_game' });
@@ -2355,6 +2464,11 @@ requireGW([
                 if (hasViewer)
                     model.sendCampaignSnapshot('viewer_joined');
             }
+
+            if (model.isCampaignViewer() && payload && payload.has_snapshot && !model.gwCampaignReceivedSnapshot && !model.gwCampaignInitialSyncRequested) {
+                model.gwCampaignInitialSyncRequested = true;
+                model.requestCampaignSnapshot(true);
+            }
         };
 
         handlers.gw_campaign_role = function(payload) {
@@ -2367,13 +2481,14 @@ requireGW([
             model.gwCampaignConnected(true);
             model.gwCampaignRole(payload.role);
 
-            if (payload.role === 'viewer')
-                model.requestCampaignSnapshot();
-            else if (payload.role === 'host' && previousRole !== 'host')
-                model.sendCampaignSnapshot('host_role_assigned');
+            if (payload.role === 'viewer' && previousRole !== 'viewer' && !model.gwCampaignReceivedSnapshot && !model.gwCampaignInitialSyncRequested) {
+                model.gwCampaignInitialSyncRequested = true;
+                model.requestCampaignSnapshot(true);
+            }
         };
 
         handlers.gw_campaign_snapshot = function(payload) {
+            console.log('[GW_COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.applyCampaignSnapshot(payload);
         };
 
