@@ -2,10 +2,12 @@ var console = require('console'); // temporary workaround
 var main = require('main');
 var utils = require('utils');
 var content_manager = require('content_manager');
+var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
 
 var MAX_GW_CAMPAIGN_PLAYERS = 2;
 var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
+var MAX_LOBBY_CHAT_HISTORY = 100;
 
 var model;
 
@@ -17,6 +19,18 @@ function GWCampaignModel(creator) {
     self.viewerReconnectTimers = {};
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
+    self.lobbyChatHistory = [];
+
+    // Default settings.
+    // Note that for now the default tag should be one of 'Testing', 'Casual', 'Competitive', or 'AI Battle'
+    // since otherwise for some reason the beacon won't show up outside of a local area network.
+    self.settings = {
+        game_name: 'GW Co-op Campaign',
+        tag: 'Testing',
+        public: true,
+        friends: false,
+        hidden: false
+    };
 
     self.control = {
         host_id: self.creatorId,
@@ -24,7 +38,47 @@ function GWCampaignModel(creator) {
         max_clients: MAX_GW_CAMPAIGN_PLAYERS,
         connected_clients: [],
         has_snapshot: false,
-        snapshot_seq: 0
+        snapshot_seq: 0,
+        settings: _.cloneDeep(self.settings),
+        require_password: false
+    };
+
+    // Updates lobby visibility and access
+    self.updateBouncer = function(config) {
+        var data = config || {};
+
+        if (_.has(data, 'password') || bouncer.doesGameRequirePassword())
+            bouncer.setPassword(data.password);
+
+        bouncer.clearWhitelist();
+        if (_.isArray(data.friends) && data.friends.length)
+            _.forEach(data.friends, function(id) { bouncer.addPlayerToWhitelist(id); });
+
+        bouncer.clearBlacklist();
+        if (_.isArray(data.blocked) && data.blocked.length)
+            _.forEach(data.blocked, function(id) { bouncer.addPlayerToBlacklist(id); });
+    };
+
+    // Applies specifically settings to the co-op campaign lobby; 
+    // that is, the game's title/name, the tag, and what kind
+    // of visibility it should have on the beacon.
+    self.applySettings = function(config) {
+        var data = config || {};
+
+        if (_.isString(data.game_name))
+            self.settings.game_name = data.game_name.substring(0, Math.min(data.game_name.length, 128));
+
+        if (_.isString(data.tag))
+            self.settings.tag = data.tag;
+
+        if (_.isBoolean(data.public))
+            self.settings.public = data.public;
+
+        self.updateBouncer(data);
+
+        var hasFriendsList = bouncer.getWhitelist().length > 0;
+        self.settings.friends = hasFriendsList;
+        self.settings.hidden = (!self.settings.public && !hasFriendsList);
     };
 
     self.getConnectedClients = function() {
@@ -81,6 +135,8 @@ function GWCampaignModel(creator) {
         });
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
+        self.control.settings = _.cloneDeep(self.settings);
+        self.control.require_password = !!bouncer.doesGameRequirePassword();
 
         self.updateBeacon();
         console.log('[GW_COOP] gw_campaign updateControl clients=' + connectedClients.length + ' seq=' + self.lastSnapshotSeq + ' hasSnapshot=' + (!!self.lastSnapshot));
@@ -121,6 +177,18 @@ function GWCampaignModel(creator) {
     self.updateBeacon = function() {
         var connectedClients = self.getConnectedClients();
         var modsData = server.getModsForBeacon();
+        var hasFriendsList = bouncer.getWhitelist().length > 0;
+
+        // So if this lobby is PRIVATE in the sense that you don't
+        // want anyone to join, or if you're forever alone
+        // but mark it as friends only (thereby excluding everyone)
+        // then there's no point in publishing it on the beacon since no one can join anyway.
+        var publish = self.settings.public || hasFriendsList;
+
+        if (!publish) {
+            server.beacon = null;
+            return;
+        }
 
         server.beacon = {
             state: 'lobby',
@@ -138,13 +206,13 @@ function GWCampaignModel(creator) {
             cheat_config: main.cheats,
             player_names: _.map(connectedClients, function(client) { return client.name; }),
             spectator_names: [],
-            require_password: false,
-            whitelist: [],
-            blacklist: [],
-            tag: 'Testing',
+            require_password: !!bouncer.doesGameRequirePassword(),
+            whitelist: bouncer.getWhitelist(),
+            blacklist: bouncer.getBlacklist(),
+            tag: self.settings.tag,
             game: {
                 system: self.tryGetBeaconSystem(),
-                name: 'GW Co-op Campaign'
+                name: self.settings.game_name
             },
             required_content: content_manager.getRequiredContent(),
             bounty_mode: false,
@@ -203,9 +271,18 @@ function GWCampaignModel(creator) {
         self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
     };
 
+    // Called when the server first enters the gw_campaign state. 
+    // Sets up message handlers and connection lifecycle for the campaign lobby.
     self.enter = function() {
         server.maxClients = MAX_GW_CAMPAIGN_PLAYERS;
         console.log('[GW_COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
+
+        // No password by default, but clear any that might be lingering from previous sessions just in case, along with whitelist/blacklist
+        // (which would correspond to the friends list unless there's some system I've never heard of before which also sets up
+        // white/blacklists for lobbies).
+        bouncer.setPassword('');
+        bouncer.clearWhitelist();
+        bouncer.clearBlacklist();
 
         var handlers = {
             request_gw_campaign_snapshot: function(msg) {
@@ -274,6 +351,61 @@ function GWCampaignModel(creator) {
 
                 // Non-host leave requests are acknowledged; disconnect lifecycle handles cleanup.
                 server.respond(msg).succeed();
+            },
+            // Handler for when host modifies settings from the lobby panel. 
+            // Validates and applies new settings, then updates the lobby and beacon accordingly.
+            modify_settings: function(msg) {
+                // Only the host is allowed to modify lobby settings
+                if (msg.client.id !== self.creatorId)
+                    return server.respond(msg).fail('Only host can modify campaign lobby settings');
+
+                // applySettings will validate and apply the new settings, and update the bouncer configuration 
+                // (password, whitelist, blacklist) as needed
+                self.applySettings(msg.payload || {});
+
+                // updateControl will update the control object that gets sent to clients, and also update the beacon with the new settings
+                // Note that by the control object, I am referring to self.control, which is what gets sent to clients in the 
+                // gw_campaign_control message and contains the lobby settings that the UI panels use to display lobby info and configure 
+                // the join process (e.g. whether a password is required).
+                self.updateControl();
+                server.respond(msg).succeed({ settings: _.cloneDeep(self.settings) });
+            },
+            // Handler for chat messages sent by clients in the lobby. 
+            // Validates the message, updates the lobby chat history, and broadcasts the message to all clients.
+            chat_message: function(msg) {
+                // No point in sending an empty message, is there?
+                if (!msg.payload || !_.isString(msg.payload.message) || !msg.payload.message.length)
+                    return server.respond(msg).fail('Invalid message');
+
+                // Only things we need for a chat message are who the sender is and what they said.
+                var payload = {
+                    player_name: msg.client.name,
+                    message: msg.payload.message
+                };
+
+                // Push the message into our array of strings representing the lobby chat history
+                // so that new clients can be sent the recent chat history when they join. 
+                // 
+                // We limit the number of messages we keep around to avoid unbounded memory growth
+                // by slicing the array if it exceeds a certain length after pushing the new message.
+                self.lobbyChatHistory.push(payload);
+                if (self.lobbyChatHistory.length > MAX_LOBBY_CHAT_HISTORY)
+                    self.lobbyChatHistory = self.lobbyChatHistory.slice(-MAX_LOBBY_CHAT_HISTORY);
+
+                // Actually tell all the other clients about the new chat message by broadcasting it to everyone 
+                // (including the sender, since they can't see their own message until the server acknowledges it and broadcasts it back out).
+                server.broadcast({
+                    message_type: 'chat_message',
+                    payload: payload
+                });
+
+                server.respond(msg).succeed();
+            },
+            // Handler for when a client requests the recent lobby chat history, 
+            // which should happen when they first join the lobby and need to be 
+            // brought up to speed on what was recently discussed in chat.
+            chat_history: function(msg) {
+                server.respond(msg).succeed({ chat_history: self.lobbyChatHistory });
             }
         };
 
@@ -306,6 +438,14 @@ function GWCampaignModel(creator) {
             clearTimeout(timeout);
         });
         self.viewerReconnectTimers = {};
+
+        // For safety's sake, we shouldn't assume that every other view
+        // is going to clean up all the things it needs proactively, 
+        // so for the sake of defensive programming we clean up the bouncer
+        // back to its default state when leaving the campaign lobby.
+        bouncer.setPassword('');
+        bouncer.clearWhitelist();
+        bouncer.clearBlacklist();
 
         server.beacon = null;
     };
