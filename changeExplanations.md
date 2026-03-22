@@ -35,6 +35,10 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `cf423b0` `Fixed compatibility with GW affecting mods like GWO.`
   - `b7e3759` `Removed tag causing gw co-op lobbies to not show up outside of LAN.`
   - `d8591c8` `Fixed an issue where saving and quitting from GW would corrupt co-op player's save.`
+- Campaign lobby/chat UX and dynamic player-count commits:
+  - `a70eb09` `Implemented basic lobby controls in co-op GW to address [#6](https://github.com/DirusLupito/Coop-Galactic-War/issues/6).`
+  - `5a79c85` `UI improvements, GW now supports variable player counts.`
+  - `39af2b8` `Fixed an issue where clients would see default/empty lobby data on join.`
 
 ## High-Level Summary
 
@@ -1246,3 +1250,104 @@ Very simple change, I just changed the beacon tag from `'GW Co-op'` to `'Testing
 ### Fixed an issue where saving and quitting from GW would corrupt co-op player's save.
 
 Another simple fix, I just took the campaign persistence function that was being called on forced and voluntary disconnect from the co-op session and also called it on voluntary saving and quitting of the entire galactic war game.
+
+---
+
+## Campaign Lobby UX and Dynamic Slot Work (Commits `a70eb09`, `5a79c85`, `39af2b8`, plus follow-ups)
+
+This scope introduced a dedicated in-campaign co-op lobby UI in `gw_play`, made campaign party size adjustable, and then fixed several first-load synchronization bugs that caused host-side placeholders/defaults to appear briefly.
+
+## Commit `a70eb09`
+
+This commit introduced the first complete campaign-side lobby/settings/chat surface.
+
+### Server-side changes in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+
+- Added campaign lobby settings state (`game_name`, `public/friends/hidden`, `tag`) and bouncer integration.
+- Added `modify_settings` handler (host-only) to apply settings and rebroadcast control state.
+- Added lobby chat support with `chat_message` broadcast and bounded `chat_history` retrieval.
+- Extended control payload with `settings` and `require_password` so UI can render canonical lobby settings.
+
+### Client-side changes in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js), [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html), and [ui/main/game/galactic_war/gw_play/gw_play.css](ui/main/game/galactic_war/gw_play/gw_play.css)
+
+- Added campaign settings panel (title, privacy mode, optional password).
+- Added in-panel campaign chat (history fetch + send).
+- Added an initial slot list rendered from `connected_clients` (still fixed-size at this stage).
+
+Effect in practice:
+
+- Campaign sessions could now be configured from inside GW play itself.
+- Co-op users could communicate via campaign-local chat.
+- UI now had a reliable, server-driven settings/control surface instead of implicit defaults.
+
+## Commit `5a79c85`
+
+This commit evolved the initial lobby into a dynamic, more production-ready flow.
+
+### Major server changes
+
+- `gw_campaign.js`:
+  - Added dynamic campaign max-client handling (`max_clients`, `max_clients_limit`) and clamped updates.
+  - Included control payload in role messages to improve first-paint synchronization.
+  - Exposed max-player values in `modify_settings` responses.
+  - Switched campaign max-player limit discovery to launch-arg/env lookup.
+- `gw_lobby.js`:
+  - Shifted from hardcoded 2-player assumptions to env-driven max player count.
+  - Removed mandatory second-player wait in start gating; readiness now depends on creator/system/sim/config readiness.
+
+### Major client changes in `gw_play`
+
+- Chat UI/UX updates:
+  - Increased chat width, standardized 13px message text, and added unread/flash visual states.
+  - Added timed flash sequence tied to `gwChatFlashActive` and CSS transitions.
+- Dynamic slot control updates:
+  - Replaced fixed two-slot rendering with `gwCampaignMaxClients`-driven list generation.
+  - Added add/remove slot controls and modify_settings wiring for max-client changes.
+- Role/control initialization updates:
+  - Applied role payload control immediately when present.
+  - Added fallback connected-client seeding when control had not arrived yet.
+
+Effect in practice:
+
+- Host could scale campaign lobby slots up/down within configured limits.
+- Campaign chat became easier to read and gave clear unread feedback when collapsed.
+- Lobby start behavior no longer blocked on an arbitrary two-player assumption.
+
+## Commit `39af2b8`
+
+This commit targeted a first-load desync where users briefly saw default settings and empty slots.
+
+### Core fixes
+
+- `gw_play.js` `applyCampaignLobbyControl` no longer overwrote current UI values when a partial payload omitted keys.
+- `gw_play.js` `updateCampaignConnectionState` stopped blindly setting empty control and only applied incoming control when present.
+- `gw_campaign.js` added host-presence fallback in connected-client derivation and safer client-name fallback in control mapping.
+
+Effect in practice:
+
+- Most join paths stopped flashing default/empty campaign lobby state before real control data appeared.
+- Co-op viewer-side initialization became significantly more stable.
+
+## Another fix: flattened `server_state` payload parsing
+
+A remaining host-only issue persisted: logs showed host name present in server control broadcasts, but host UI still rendered empty slots until any later control-changing action.
+
+Root cause:
+
+- Host `server_state` payloads sometimes delivered control fields directly under `payload.data` instead of nested `data.control`.
+- Client init logic only checked `data.client.control`/`data.control`, so initial control apply could be skipped despite valid data being present.
+
+Final fix in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- In `updateCampaignConnectionState`, when nested control is absent but `payload.data` has control-like keys (`connected_clients`, `max_clients`, `settings`, etc.), treat `payload.data` itself as incoming control.
+
+Effect in practice:
+
+- Host slot names/settings now populate correctly on first render without requiring any follow-up interaction (`modify_settings`, player join/leave, etc.).
+
+## Practical lessons from this scope
+
+1. Do not treat missing keys in early control payloads as instructions to reset UI state.
+2. Normalize control extraction across nested and flattened payload forms (`client.control`, `control`, and top-level `data` fallback).
+3. For lobby UI initialization, first-paint correctness matters as much as eventual consistency; users interpret first frame as authoritative.
+4. Role payloads are useful for fast initial hydration, but should still be merged with subsequent full control broadcasts.
