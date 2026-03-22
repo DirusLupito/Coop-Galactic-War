@@ -107,6 +107,71 @@
         </div>
     </div>
 
+    <div id="gw-campaign-chat" class="attendmouse" data-bind="visible: showGwCampaignLobbyUi, css: { 'gw-chat-unread': gwChatHasUnread, 'gw-chat-flash': gwChatFlashActive }" style="display: none;">
+        <div class="gw-campaign-panel-header">
+            <span class="section_header"><loc>Chat</loc></span>
+            <div class="gw-panel-collapse-button top" data-bind="click: toggleGwChatPanel, text: showGwChatPanel() ? 'v' : '^', click_sound: 'default', rollover_sound: 'default'"></div>
+        </div>
+        <div class="gw-campaign-chat-body" data-bind="visible: showGwChatPanel">
+            <div class="chat_container" id="gw-chat-bar">
+                <!-- ko foreach: chatMessages -->
+                <!-- ko if: ($data.type === 'lobby') -->
+                <div class="chat_message">
+                    <span class="player-name" data-bind="text: username"></span>
+                    <span class="separator">: </span>
+                    <span class="chat-msg" data-bind="text: payload"></span>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <span data-bind="autoscroll: chatMessages"></span>
+            </div>
+            <form data-bind="submit: sendChat" id="gw-send-chat">
+                <input type="text" maxLength="200" class="input_text gw_input_chat_text" data-bind="value: chatDraft, valueUpdate: 'afterkeydown', hasfocus: chatSelected" />
+            </form>
+        </div>
+    </div>
+
+    <div id="gw-campaign-settings" class="attendmouse" data-bind="visible: showGwCampaignLobbyUi" style="display: none;">
+        <div class="gw-panel-collapse-button side" data-bind="click: toggleGwSettingsPanel, text: showGwSettingsPanel() ? '>' : '<', click_sound: 'default', rollover_sound: 'default'"></div>
+        <div class="gw-campaign-settings-body" data-bind="visible: showGwSettingsPanel">
+            <div class="gw-settings-title-row">
+                <div class="section_header"><loc>Title</loc></div>
+                <input class="input_text" type="text" maxLength="128" data-bind="value: gwLobbyTitle, valueUpdate: 'afterkeydown', enable: canEditGwCampaignLobby, event: { change: pushCampaignLobbySettings }" />
+            </div>
+
+            <div class="gw-settings-privacy-row">
+                <span class="gw-settings-label"><loc>Open to:</loc></span>
+                <div class="btn_toggle" data-bind="css: { live: visibilityMode() === 'private', btn_toggle_disabled: !canEditGwCampaignLobby() }, click: setPrivateGame, click_sound: 'default', rollover_sound: 'default'">
+                    <div class="btn_std_label btn_toggle_label"><loc>Private</loc></div>
+                </div>
+                <div class="btn_toggle" data-bind="css: { live: visibilityMode() === 'friends', btn_toggle_disabled: !canEditGwCampaignLobby() }, click: setFriendsOnlyGame, click_sound: 'default', rollover_sound: 'default'">
+                    <div class="btn_std_label btn_toggle_label"><loc>Friends</loc></div>
+                </div>
+                <div class="btn_toggle" data-bind="css: { live: visibilityMode() === 'public', btn_toggle_disabled: !canEditGwCampaignLobby() }, click: setPublicGame, click_sound: 'default', rollover_sound: 'default'">
+                    <div class="btn_std_label btn_toggle_label"><loc>Public</loc></div>
+                </div>
+                <input type="password" placeholder="Password (optional)" class="gw-input-password" data-bind="textInput: privateGamePassword, attr: { type: passwordInputType }, enable: canEditGwCampaignLobby, event: { change: pushCampaignLobbySettings }" />
+                <div class="gw-password-reveal btn_std_ix" data-bind="click: togglePasswordReveal, click_sound: 'default', rollover_sound: 'default'">
+                    <span class="glyphicon glyphicon-eye-open" data-bind="visible: passwordInputType() === 'password'"></span>
+                    <span class="glyphicon glyphicon-eye-close" data-bind="visible: passwordInputType() !== 'password'"></span>
+                </div>
+            </div>
+
+            <div class="gw-campaign-slot-list" data-bind="foreach: gwCampaignSlots">
+                <div class="gw-campaign-slot-row">
+                    <div class="gw-slot-label"><loc>Slot</loc> <span data-bind="text: index"></span></div>
+                    <div class="gw-slot-name">
+                        <span data-bind="text: name"></span>
+                        <span class="gw-slot-host" data-bind="visible: host"><loc> - Host</loc></span>
+                    </div>
+                    <div class="gw-slot-remove" data-bind="visible: canRemove && $root.canEditGwCampaignLobby(), click: function() { $root.removeGwCampaignSlot($data); }, click_sound: 'default', rollover_sound: 'default'">-</div>
+                </div>
+            </div>
+
+            <div class="gw-campaign-slot-add" data-bind="visible: canAddGwCampaignSlot, click: addGwCampaignSlot, click_sound: 'default', rollover_sound: 'default'">+</div>
+        </div>
+    </div>
+
     <div id="footer" class="ignoremouse" data-bind="css: { show_social: showSocial }">
         <!-- Note: we often add display none to prevent elements from appearing before the model has loaded;
              however, this is a loading icon, so it makes sense for it to appear early. -->

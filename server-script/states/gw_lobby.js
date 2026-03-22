@@ -1,5 +1,6 @@
 var console = require('console'); // temporary workaround
 var main = require('main');
+var env = require('env');
 var sim_utils = require('sim_utils');
 var utils = require('utils');
 var file = require('file');
@@ -11,7 +12,17 @@ console.log('gw_lobby server script: loaded');
 
 // Note: GW does not currently support reconnect.
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
-var MAX_GW_PLAYERS = 2;
+var DEFAULT_GW_PLAYERS = 6;
+var getGWMaxPlayers = function() {
+    var envIndex = env.indexOf('--max-players');
+    if (envIndex !== -1) {
+        var envValue = parseInt(env[envIndex + 1]);
+        if (_.isFinite(envValue) && envValue > 0)
+            return envValue;
+    }
+    return DEFAULT_GW_PLAYERS;
+};
+var MAX_GW_PLAYERS = getGWMaxPlayers();
 
 var debugging = false;
 
@@ -48,21 +59,18 @@ function LobbyModel(creator) {
         var connectedClients = _.filter(server.clients, function(client) {
             return client.connected;
         });
-        var hasCoopPartner = connectedClients.length >= 2;
         var allConfigReady = _.every(connectedClients, function(client) {
             return !!self.clientConfigReady[client.id];
         });
         var control = self.control();
-        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && hasCoopPartner && allConfigReady;
+        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && allConfigReady;
 
         if (readyToStart && !control.starting)
             self.changeControl({ starting: true });
         else if (!readyToStart && control.starting)
             self.changeControl({ starting: false });
 
-        if (!!self.creatorReady() && !hasCoopPartner)
-            console.log('GW - Waiting for second player before start');
-        else if (!!self.creatorReady() && hasCoopPartner && !allConfigReady)
+        if (!!self.creatorReady() && !allConfigReady)
             console.log('GW - Waiting for all clients to mount GW config before start');
     };
 
