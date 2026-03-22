@@ -1132,28 +1132,40 @@ requireGW([
 
         self.applyCampaignLobbyControl = function(control) {
             var data = control || {};
-            self.gwCampaignConnectedClients(_.isArray(data.connected_clients) ? data.connected_clients : []);
 
-            var maxClients = parseInt(data.max_clients);
-            if (_.isFinite(maxClients) && maxClients > 0)
-                self.gwCampaignMaxClients(maxClients);
+            // Some server_state payloads omit control fields; avoid clobbering UI with defaults.
+            if (_.has(data, 'connected_clients') && _.isArray(data.connected_clients))
+                self.gwCampaignConnectedClients(data.connected_clients);
 
-            var maxClientsLimit = parseInt(data.max_clients_limit);
-            if (_.isFinite(maxClientsLimit) && maxClientsLimit > 0)
-                self.gwCampaignMaxClientsLimit(maxClientsLimit);
+            if (_.has(data, 'max_clients')) {
+                var maxClients = parseInt(data.max_clients);
+                if (_.isFinite(maxClients) && maxClients > 0)
+                    self.gwCampaignMaxClients(maxClients);
+            }
 
-            var settings = data.settings || {};
+            if (_.has(data, 'max_clients_limit')) {
+                var maxClientsLimit = parseInt(data.max_clients_limit);
+                if (_.isFinite(maxClientsLimit) && maxClientsLimit > 0)
+                    self.gwCampaignMaxClientsLimit(maxClientsLimit);
+            }
+
+            if (!_.has(data, 'settings') || !data.settings)
+                return;
+
+            var settings = data.settings;
             self.campaignLobbySettingsSync = true;
 
             if (_.isString(settings.game_name))
                 self.gwLobbyTitle(settings.game_name);
 
-            if (settings.friends)
-                self.visibilityMode('friends');
-            else if (settings.public)
-                self.visibilityMode('public');
-            else
-                self.visibilityMode('private');
+            if (_.has(settings, 'friends') || _.has(settings, 'public')) {
+                if (settings.friends)
+                    self.visibilityMode('friends');
+                else if (settings.public)
+                    self.visibilityMode('public');
+                else
+                    self.visibilityMode('private');
+            }
 
             self.campaignLobbySettingsSync = false;
         };
@@ -1817,11 +1829,28 @@ requireGW([
             if (role)
                 self.gwCampaignRole(role);
 
-            self.gwCampaignControl(clientData.control || data.control || {});
+            var incomingControl = clientData.control || data.control;
 
-            // We apply the lobby control settings sent by the server upon connection to ensure our UI reflects the actual state of the campaign lobby, 
-            // especially in cases where the host might have changed some settings while we were connecting.
-            self.applyCampaignLobbyControl(self.gwCampaignControl());
+            // In case the server_state payload doesn't nest control under client, 
+            // but it does include other campaign lobby fields, treat the top-level data as control to avoid missing important lobby state.
+            if (!incomingControl && (
+                _.has(data, 'connected_clients') ||
+                _.has(data, 'max_clients') ||
+                _.has(data, 'max_clients_limit') ||
+                _.has(data, 'settings') ||
+                _.has(data, 'host_id') ||
+                _.has(data, 'host_name')
+            )) {
+                incomingControl = data;
+            }
+
+            if (incomingControl) {
+                self.gwCampaignControl(incomingControl);
+
+                // We apply the lobby control settings sent by the server upon connection to ensure our UI reflects the actual state of the campaign lobby,
+                // especially in cases where the host might have changed some settings while we were connecting.
+                self.applyCampaignLobbyControl(incomingControl);
+            }
             self.requestCampaignChatHistory();
 
             console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));

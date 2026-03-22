@@ -116,9 +116,28 @@ function GWCampaignModel(creator) {
     };
 
     self.getConnectedClients = function() {
-        return _.filter(server.clients, function(client) {
+        var connectedClients = _.filter(server.clients, function(client) {
             return client.connected;
         });
+
+        // We want to make sure the host is always included in the list of 
+        // connected clients that gets sent to the UI, even if for some reason their 
+        // client object isn't showing up as connected in server.clients 
+        // (which is the source of truth for who's connected and who isn't).
+        var hostPresent = _.some(connectedClients, function(client) {
+            return client && client.id === self.creatorId;
+        });
+
+        if (!hostPresent) {
+            var hostClient = _.find(server.clients, function(client) {
+                return client && client.id === self.creatorId;
+            });
+
+            if (hostClient)
+                connectedClients.unshift(hostClient);
+        }
+
+        return connectedClients;
     };
 
     self.getRoleForClient = function(client) {
@@ -162,9 +181,15 @@ function GWCampaignModel(creator) {
     self.updateControl = function() {
         var connectedClients = self.getConnectedClients();
         self.control.connected_clients = _.map(connectedClients, function(client) {
+            // Debug, print out name of client that we're sending control info for. 
+            // This is helpful to verify that the host is actually included in the list of connected clients 
+            // that gets sent to the UI, since the host client object can sometimes be in a weird state where 
+            // it's not showing up as connected in server.clients even though the host is definitely connected 
+            // and should be included in the list of clients that gets sent to the UI.
+            console.log('[GW_COOP] gw_campaign updateControl client=' + client.name + ' id=' + client.id + ' connected=' + client.connected);
             return {
                 id: client.id,
-                name: client.name,
+                name: client.name || (client.id === self.creatorId ? self.creatorName : 'Player'),
                 role: self.getRoleForClient(client)
             };
         });
