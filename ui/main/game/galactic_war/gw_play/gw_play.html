@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div id="gw-campaign-chat" class="attendmouse" data-bind="visible: showGwCampaignLobbyUi" style="display: none;">
+    <div id="gw-campaign-chat" class="attendmouse" data-bind="visible: showGwCampaignLobbyUi, css: { 'gw-chat-unread': gwChatHasUnread, 'gw-chat-flash': gwChatFlashActive }" style="display: none;">
         <div class="gw-campaign-panel-header">
             <span class="section_header"><loc>Chat</loc></span>
             <div class="gw-panel-collapse-button top" data-bind="click: toggleGwChatPanel, text: showGwChatPanel() ? 'v' : '^', click_sound: 'default', rollover_sound: 'default'"></div>
@@ -164,8 +164,11 @@
                         <span data-bind="text: name"></span>
                         <span class="gw-slot-host" data-bind="visible: host"><loc> - Host</loc></span>
                     </div>
+                    <div class="gw-slot-remove" data-bind="visible: canRemove && $root.canEditGwCampaignLobby(), click: function() { $root.removeGwCampaignSlot($data); }, click_sound: 'default', rollover_sound: 'default'">-</div>
                 </div>
             </div>
+
+            <div class="gw-campaign-slot-add" data-bind="visible: canAddGwCampaignSlot, click: addGwCampaignSlot, click_sound: 'default', rollover_sound: 'default'">+</div>
         </div>
     </div>
 

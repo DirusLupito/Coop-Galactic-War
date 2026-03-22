@@ -911,6 +911,9 @@ requireGW([
         self.chatSelected = ko.observable(false);
         self.chatMessages = ko.observableArray([]);
         self.chatDraft = ko.observable('');
+        self.gwChatHasUnread = ko.observable(false);
+        self.gwChatFlashActive = ko.observable(false);
+        self.gwChatFlashTimers = [];
 
         self.friends = ko.observableArray([]).extend({ session: 'friends' });
         self.visibilityMode = ko.observable('public');
@@ -918,6 +921,12 @@ requireGW([
         self.privateGamePassword = ko.observable('').extend({ session: 'private_game_password' });
         self.passwordInputType = ko.observable('password');
         self.campaignLobbySettingsSync = false;
+        // gwCampaignMaxClients is the number of clients that can currently connect to the current campaign session.
+        // This can be raised or lowered by the host adding or removing slots in the lobby controls.
+        self.gwCampaignMaxClients = ko.observable(2);
+        // gwCampaignMaxClientsLimit is the maximum number of clients that can possibly connect to a campaign session. 
+        // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
+        self.gwCampaignMaxClientsLimit = ko.observable(6);
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -960,8 +969,48 @@ requireGW([
             return self.isCampaignHost();
         });
 
+        // I wanted to make chat flash similar to how PA Chat (the mod) does flashes, 
+        // so I figured that I could just lerp 3 times.
+        // When a new message comes in, instead of just setting the chat window to green, 
+        // I instead have this little function set gwChatFlashActive to true and false
+        // to trigger changes in the CSS that cause the chat button to flash.
+        // Note that if you want to change the timing or duration of the flashes, 
+        // you MUST also change the transition times in the #gw-campaign-chat CSS class to match, 
+        // otherwise the flashes will look off. 
+        // You should be able to find that class in the file ui\main\game\galactic_war\gw_play\gw_play.css
+        self.queueClosedChatFlash = function() {
+            _.forEach(self.gwChatFlashTimers, function(timer) {
+                clearTimeout(timer);
+            });
+            self.gwChatFlashTimers = [];
+
+            self.gwChatFlashActive(true);
+            self.gwChatFlashTimers.push(setTimeout(function() {
+                self.gwChatFlashActive(false);
+            }, 200));
+            self.gwChatFlashTimers.push(setTimeout(function() {
+                self.gwChatFlashActive(true);
+            }, 400));
+            self.gwChatFlashTimers.push(setTimeout(function() {
+                self.gwChatFlashActive(false);
+            }, 600));
+        };
+
+        self.addCampaignChatMessage = function(playerName, message, markUnread) {
+            self.chatMessages.push(new ChatMessageViewModel(playerName, 'lobby', message));
+            if (markUnread && !self.showGwChatPanel()) {
+                self.gwChatHasUnread(true);
+                self.queueClosedChatFlash();
+            }
+        };
+
         self.toggleGwChatPanel = function() {
-            self.showGwChatPanel(!self.showGwChatPanel());
+            var opening = !self.showGwChatPanel();
+            self.showGwChatPanel(opening);
+            if (opening) {
+                self.gwChatHasUnread(false);
+                self.gwChatFlashActive(false);
+            }
         };
 
         self.toggleGwSettingsPanel = function() {
@@ -972,22 +1021,81 @@ requireGW([
             self.passwordInputType(self.passwordInputType() === 'password' ? 'text' : 'password');
         };
 
-        // This will create a knockout computed observable that returns an array of length 2 representing 
-        // the two possible campaign slots in a co-op session, and the client information for who is occupying those slots (if anyone).
-        // TODO: Update this to support more than 2 clients. 
-        // Should be very simple, just need to change the hardcoded '2' to a variable representing max clients, 
-        // and make sure the server is sending down enough client info to fill those slots.
+        // This will create a knockout computed observable that returns an array representing 
+        // the possible campaign slots in a co-op session, and the client information for who is occupying those slots (if anyone).
         self.gwCampaignSlots = ko.computed(function() {
             var connected = _.isArray(self.gwCampaignConnectedClients()) ? self.gwCampaignConnectedClients() : [];
-            return _.map(_.range(0, 2), function(index) {
+            var maxClients = parseInt(self.gwCampaignMaxClients());
+            if (!_.isFinite(maxClients) || maxClients < 1)
+                maxClients = 1;
+
+            return _.map(_.range(0, maxClients), function(index) {
                 var client = connected[index];
                 return {
                     index: index + 1,
                     name: client ? client.name : loc('!LOC:Empty Slot'),
-                    host: !!(client && client.role === 'host')
+                    host: !!(client && client.role === 'host'),
+                    empty: !client,
+                    canRemove: !client && maxClients > 1
                 };
             });
         });
+
+        // Helper for checking if we can addi slots to the campaign lobby.
+        // Basic process is that we check if the user can even edit the lobby, 
+        // and if so, we check if the current number of slots is less than the maximum allowed number of slots.
+        self.canAddGwCampaignSlot = ko.computed(function() {
+            if (!self.canEditGwCampaignLobby() || !self.gwCampaignActive())
+                return false;
+
+            var maxClients = parseInt(self.gwCampaignMaxClients());
+            var limit = parseInt(self.gwCampaignMaxClientsLimit());
+
+            if (!_.isFinite(maxClients))
+                maxClients = 1;
+            if (!_.isFinite(limit) || limit < 1)
+                limit = 6;
+
+            return maxClients < limit;
+        });
+
+        // Helper for adding a client slot to the campaign lobby. 
+        // This will only succeed if canAddGwCampaignSlot returns true.
+        self.addGwCampaignSlot = function() {
+            if (!self.canAddGwCampaignSlot())
+                return;
+
+            var mode = self.visibilityMode();
+
+            self.send_message('modify_settings', {
+                game_name: self.gwLobbyTitle(),
+                public: mode === 'public',
+                friends: mode === 'friends' ? self.friends() : [],
+                password: self.privateGamePassword(),
+                tag: 'Testing',
+                max_clients: parseInt(self.gwCampaignMaxClients()) + 1
+            });
+        };
+
+        // Helper for removing a client slot from the campaign lobby. 
+        // This will only succeed if the slot is empty isn't the last non-host slot.
+        // If you want to remove all the slots, you can just quit out of co-op and go
+        // back to singpleplayer.
+        self.removeGwCampaignSlot = function(slot) {
+            if (!slot || !slot.canRemove || !self.canEditGwCampaignLobby() || !self.gwCampaignActive())
+                return;
+
+            var mode = self.visibilityMode();
+
+            self.send_message('modify_settings', {
+                game_name: self.gwLobbyTitle(),
+                public: mode === 'public',
+                friends: mode === 'friends' ? self.friends() : [],
+                password: self.privateGamePassword(),
+                tag: 'Testing',
+                max_clients: parseInt(self.gwCampaignMaxClients()) - 1
+            });
+        };
 
         // Handles asking the server for the lobby's chat history.
         self.requestCampaignChatHistory = function() {
@@ -1001,12 +1109,9 @@ requireGW([
             self.send_message('chat_history', {}, function(success, response) {
                 if (!success || !response || !response.chat_history)
                     return;
-
-                // Little bit more complex than appending the string messages we get back from the server to the chat history,
-                // as we also want the message sender's name and the message type (lobby, server, settings, mod) 
-                // to be part of the chat message view model so that we can display them differently in the UI.
+                
                 _.forEach(response.chat_history, function(msg) {
-                    self.chatMessages.push(new ChatMessageViewModel(msg.player_name, 'lobby', msg.message));
+                    self.addCampaignChatMessage(msg.player_name, msg.message, false);
                 });
             });
         };
@@ -1028,6 +1133,14 @@ requireGW([
         self.applyCampaignLobbyControl = function(control) {
             var data = control || {};
             self.gwCampaignConnectedClients(_.isArray(data.connected_clients) ? data.connected_clients : []);
+
+            var maxClients = parseInt(data.max_clients);
+            if (_.isFinite(maxClients) && maxClients > 0)
+                self.gwCampaignMaxClients(maxClients);
+
+            var maxClientsLimit = parseInt(data.max_clients_limit);
+            if (_.isFinite(maxClientsLimit) && maxClientsLimit > 0)
+                self.gwCampaignMaxClientsLimit(maxClientsLimit);
 
             var settings = data.settings || {};
             self.campaignLobbySettingsSync = true;
@@ -1058,7 +1171,8 @@ requireGW([
                 public: mode === 'public',
                 friends: mode === 'friends' ? self.friends() : [],
                 password: self.privateGamePassword(),
-                tag: 'Testing'
+                tag: 'Testing',
+                max_clients: self.gwCampaignMaxClients()
             });
         };
 
@@ -3108,6 +3222,40 @@ requireGW([
             model.gwCampaignConnected(true);
             model.gwCampaignRole(payload.role);
 
+            // If the payload (which here should be a bit of information containing the player's role and 
+            // possibly some information about the host and other clients) contains campaign control information, apply it.  
+            // If not, and we don't have any connected clients yet, seed the connected clients with the information from this payload, 
+            // since this is likely the first message we're receiving about the campaign session and we don't want
+            // to have all our connected clients information be blank until we receive the campaign control message.
+            if (payload.control) {
+                model.gwCampaignControl(payload.control);
+                model.applyCampaignLobbyControl(payload.control);
+            }
+            else if (!model.gwCampaignConnectedClients().length) {
+                var fallbackName = model.displayName() || payload.host_name || loc('!LOC:Player');
+                var seeded = [];
+                if (payload.role === 'host') {
+                    seeded.push({
+                        id: payload.host_id,
+                        name: payload.host_name || fallbackName,
+                        role: 'host'
+                    });
+                }
+                else {
+                    seeded.push({
+                        id: payload.host_id,
+                        name: payload.host_name || loc('!LOC:Host'),
+                        role: 'host'
+                    });
+                    seeded.push({
+                        id: model.uberId && _.isFunction(model.uberId) ? model.uberId() : undefined,
+                        name: fallbackName,
+                        role: 'viewer'
+                    });
+                }
+                model.gwCampaignConnectedClients(seeded);
+            }
+
             if (payload.role === 'viewer' && previousRole !== 'viewer' && !model.gwCampaignReceivedSnapshot && !model.gwCampaignInitialSyncRequested) {
                 model.gwCampaignInitialSyncRequested = true;
                 model.requestCampaignSnapshot(true);
@@ -3125,7 +3273,7 @@ requireGW([
 
         // Handles incoming individual chat messages for the campaign chat. 
         handlers.chat_message = function(msg) {
-            model.chatMessages.push(new ChatMessageViewModel(msg.player_name, 'lobby', msg.message));
+            model.addCampaignChatMessage(msg.player_name, msg.message, true);
         };
 
         // Handler to update the friends list in the uberbar. 

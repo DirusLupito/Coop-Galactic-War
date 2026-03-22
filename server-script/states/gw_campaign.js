@@ -1,18 +1,35 @@
 var console = require('console'); // temporary workaround
 var main = require('main');
+var env = require('env');
 var utils = require('utils');
 var content_manager = require('content_manager');
 var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
 
-var MAX_GW_CAMPAIGN_PLAYERS = 2;
+var DEFAULT_GW_CAMPAIGN_PLAYERS = 2;
+var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 6;
 var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
 var MAX_LOBBY_CHAT_HISTORY = 100;
+
+// We determine the max players limit for the campaign lobby in a two stage process;
+// first we see if the launch option (in steam, --local-server-max-players=N) is present and valid, and if so we use that; 
+// otherwise, we fall back to a hardcoded default.
+var getCampaignMaxPlayersLimit = function() {
+    var envIndex = env.indexOf('--max-players');
+    if (envIndex !== -1) {
+        var envValue = parseInt(env[envIndex + 1]);
+        if (_.isFinite(envValue) && envValue > 0)
+            return envValue;
+    }
+    return DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT;
+};
 
 var model;
 
 function GWCampaignModel(creator) {
     var self = this;
+    self.maxClientsLimit = getCampaignMaxPlayersLimit();
+    self.maxClients = Math.max(1, Math.min(DEFAULT_GW_CAMPAIGN_PLAYERS, self.maxClientsLimit));
 
     self.creatorId = creator.id;
     self.creatorName = creator.name;
@@ -35,7 +52,8 @@ function GWCampaignModel(creator) {
     self.control = {
         host_id: self.creatorId,
         host_name: self.creatorName,
-        max_clients: MAX_GW_CAMPAIGN_PLAYERS,
+        max_clients: self.maxClients,
+        max_clients_limit: self.maxClientsLimit,
         connected_clients: [],
         has_snapshot: false,
         snapshot_seq: 0,
@@ -47,21 +65,27 @@ function GWCampaignModel(creator) {
     self.updateBouncer = function(config) {
         var data = config || {};
 
-        if (_.has(data, 'password') || bouncer.doesGameRequirePassword())
+        if (_.has(data, 'password'))
             bouncer.setPassword(data.password);
 
-        bouncer.clearWhitelist();
-        if (_.isArray(data.friends) && data.friends.length)
-            _.forEach(data.friends, function(id) { bouncer.addPlayerToWhitelist(id); });
+        if (_.has(data, 'friends')) {
+            bouncer.clearWhitelist();
+            if (_.isArray(data.friends) && data.friends.length)
+                _.forEach(data.friends, function(id) { bouncer.addPlayerToWhitelist(id); });
+        }
 
-        bouncer.clearBlacklist();
-        if (_.isArray(data.blocked) && data.blocked.length)
-            _.forEach(data.blocked, function(id) { bouncer.addPlayerToBlacklist(id); });
+        if (_.has(data, 'blocked')) {
+            bouncer.clearBlacklist();
+            if (_.isArray(data.blocked) && data.blocked.length)
+                _.forEach(data.blocked, function(id) { bouncer.addPlayerToBlacklist(id); });
+        }
     };
 
     // Applies specifically settings to the co-op campaign lobby; 
     // that is, the game's title/name, the tag, and what kind
     // of visibility it should have on the beacon.
+    // Also the max players setting, which is a bit more involved since it requires validating 
+    // the input and also making sure we don't set the max players to be less than the number of currently connected clients.
     self.applySettings = function(config) {
         var data = config || {};
 
@@ -73,6 +97,16 @@ function GWCampaignModel(creator) {
 
         if (_.isBoolean(data.public))
             self.settings.public = data.public;
+
+        if (_.has(data, 'max_clients')) {
+            var connectedCount = self.getConnectedClients().length;
+            var requestedMax = parseInt(data.max_clients);
+            if (_.isFinite(requestedMax)) {
+                requestedMax = Math.floor(requestedMax);
+                self.maxClients = Math.max(Math.max(1, connectedCount), Math.min(requestedMax, self.maxClientsLimit));
+                server.maxClients = self.maxClients;
+            }
+        }
 
         self.updateBouncer(data);
 
@@ -112,7 +146,8 @@ function GWCampaignModel(creator) {
             payload: {
                 role: role,
                 host_id: self.creatorId,
-                host_name: self.creatorName
+                host_name: self.creatorName,
+                control: self.control
             }
         });
     };
@@ -133,6 +168,9 @@ function GWCampaignModel(creator) {
                 role: self.getRoleForClient(client)
             };
         });
+        self.maxClients = Math.max(1, Math.min(self.maxClients, self.maxClientsLimit));
+        self.control.max_clients = self.maxClients;
+        self.control.max_clients_limit = self.maxClientsLimit;
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
         self.control.settings = _.cloneDeep(self.settings);
@@ -197,7 +235,7 @@ function GWCampaignModel(creator) {
             started: false,
             players: connectedClients.length,
             creator: self.creatorName,
-            max_players: MAX_GW_CAMPAIGN_PLAYERS,
+            max_players: self.maxClients,
             spectators: 0,
             max_spectators: 0,
             mode: 'FreeForAll',
@@ -274,7 +312,7 @@ function GWCampaignModel(creator) {
     // Called when the server first enters the gw_campaign state. 
     // Sets up message handlers and connection lifecycle for the campaign lobby.
     self.enter = function() {
-        server.maxClients = MAX_GW_CAMPAIGN_PLAYERS;
+        server.maxClients = self.maxClients;
         console.log('[GW_COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
 
         // No password by default, but clear any that might be lingering from previous sessions just in case, along with whitelist/blacklist
@@ -368,7 +406,11 @@ function GWCampaignModel(creator) {
                 // gw_campaign_control message and contains the lobby settings that the UI panels use to display lobby info and configure 
                 // the join process (e.g. whether a password is required).
                 self.updateControl();
-                server.respond(msg).succeed({ settings: _.cloneDeep(self.settings) });
+                server.respond(msg).succeed({
+                    settings: _.cloneDeep(self.settings),
+                    max_clients: self.maxClients,
+                    max_clients_limit: self.maxClientsLimit
+                });
             },
             // Handler for chat messages sent by clients in the lobby. 
             // Validates the message, updates the lobby chat history, and broadcasts the message to all clients.
