@@ -39,6 +39,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `a70eb09` `Implemented basic lobby controls in co-op GW to address [#6](https://github.com/DirusLupito/Coop-Galactic-War/issues/6).`
   - `5a79c85` `UI improvements, GW now supports variable player counts.`
   - `39af2b8` `Fixed an issue where clients would see default/empty lobby data on join.`
+- Single-player beacon suppression and campaign-launch context commit:
+  - `2e5ec38` `Single player galactic war no longer broadcasts a server beacon.`
 
 ## High-Level Summary
 
@@ -1351,3 +1353,50 @@ Effect in practice:
 2. Normalize control extraction across nested and flattened payload forms (`client.control`, `control`, and top-level `data` fallback).
 3. For lobby UI initialization, first-paint correctness matters as much as eventual consistency; users interpret first frame as authoritative.
 4. Role payloads are useful for fast initial hydration, but should still be merged with subsequent full control broadcasts.
+
+---
+
+## Single-Player Beacon Suppression + Campaign Launch Context (Commit `2e5ec38`)
+
+This commit tightens GW lobby visibility behavior so solo Galactic War sessions are no longer published as multiplayer beacons, while preserving campaign-coop lobby metadata when transitioning into `gw_lobby`.
+
+### Server-side campaign context handoff (`server-script/states/gw_campaign.js`)
+
+- Added persistent `access` tracking (`password`, `friends`, `blocked`) in `GWCampaignModel`.
+- `updateBouncer` now mirrors incoming access settings into that tracked model state.
+- Added `buildGwLobbyLaunchContext(payload)` that packages:
+  - `gw_campaign_active`
+  - current star
+  - campaign lobby settings (`game_name`, `tag`, visibility flags)
+  - `max_clients`
+  - access control data from bouncer whitelist/blacklist/password
+- `launch_gw_battle` now transitions with context:
+  - `main.setState(main.states.gw_lobby, msg.client, self.buildGwLobbyLaunchContext(msg.payload))`
+
+### Server-side GW lobby behavior (`server-script/states/gw_lobby.js`)
+
+- `LobbyModel` now accepts a `launchContext` and distinguishes:
+  - campaign-coop launch (`gw_campaign_active: true`)
+  - solo GW launch (default when no campaign context)
+- Added `applyLaunchAccessControl()` to rehydrate password/whitelist/blacklist in `gw_lobby` from campaign context.
+- Added `getSessionMaxClients()` so solo GW is forced to `1` client, while campaign-coop can use campaign-defined player limits.
+- `updateBeacon()` now explicitly suppresses publishing when:
+  - session is solo GW, or
+  - lobby is hidden, or
+  - lobby is private/friends-only with no friend whitelist
+- Beacon payload now mirrors active access/settings:
+  - `max_players` uses `server.maxClients`
+  - password/whitelist/blacklist/tag/game name come from campaign-derived state
+
+### Client-side launch metadata propagation (`ui/main/game/galactic_war/gw_play/gw_play.js`)
+
+- On battle launch, GW now persists campaign context into battle config:
+  - `gw_campaign_active`
+  - `gw_campaign_settings` (`game_name`, `tag`, visibility flags, `max_clients`)
+- When campaign host launches battle, `launch_gw_battle` now includes that context payload so server-side `gw_campaign` can pass it forward to `gw_lobby`.
+
+### Practical outcome
+
+1. Single-player Galactic War no longer appears in LAN/server-browser listings as a joinable lobby.
+2. Campaign-coop launches keep lobby identity and access policy consistent across `gw_campaign` -> `gw_lobby` transition.
+3. GW battle lobby beacon publication is now conditional and intentional, instead of always-on.

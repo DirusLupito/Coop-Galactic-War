@@ -2518,7 +2518,25 @@ requireGW([
                 {
                     referee.tagGame();
 
-                    self.battleConfig(referee.config());
+                    // Persist campaign context into the battle config so gw_lobby can
+                    // infer whether this launch is solo GW or campaign-coop GW.
+                    var battleConfig = referee.config();
+                    battleConfig.gw_campaign_active = !!self.gwCampaignActive();
+
+                    // Mirror current campaign lobby presentation settings so the
+                    // battle lobby beacon can continue the same identity.
+                    var campaignControl = self.gwCampaignControl() || {};
+                    var campaignSettings = campaignControl.settings || {};
+                    battleConfig.gw_campaign_settings = {
+                        game_name: _.isString(campaignSettings.game_name) ? campaignSettings.game_name : 'GW Co-op Campaign',
+                        tag: _.isString(campaignSettings.tag) ? campaignSettings.tag : 'Testing',
+                        public: _.isBoolean(campaignSettings.public) ? campaignSettings.public : true,
+                        friends: !!campaignSettings.friends,
+                        hidden: !!campaignSettings.hidden,
+                        max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
+                    };
+
+                    self.battleConfig(battleConfig);
 
                     // Come back if we fail.
                     self.connectFailDestination(window.location.href);
@@ -2553,7 +2571,11 @@ requireGW([
                     }
 
                     if (self.gwCampaignActive() && self.isCampaignHost()) {
-                        self.send_message('launch_gw_battle', { current_star: game.currentStar() });
+                        self.send_message('launch_gw_battle', {
+                            current_star: game.currentStar(),
+                            gw_campaign_active: true,
+                            gw_campaign_settings: battleConfig.gw_campaign_settings
+                        });
                         return;
                     }
 

@@ -37,6 +37,11 @@ function GWCampaignModel(creator) {
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
     self.lobbyChatHistory = [];
+    self.access = {
+        password: '',
+        friends: [],
+        blocked: []
+    };
 
     // Default settings.
     // Note that for now the default tag should be one of 'Testing', 'Casual', 'Competitive', or 'AI Battle'
@@ -65,20 +70,58 @@ function GWCampaignModel(creator) {
     self.updateBouncer = function(config) {
         var data = config || {};
 
-        if (_.has(data, 'password'))
+        if (_.has(data, 'password')) {
             bouncer.setPassword(data.password);
+            self.access.password = _.isString(data.password) ? data.password : '';
+        }
 
         if (_.has(data, 'friends')) {
             bouncer.clearWhitelist();
             if (_.isArray(data.friends) && data.friends.length)
                 _.forEach(data.friends, function(id) { bouncer.addPlayerToWhitelist(id); });
+            self.access.friends = _.isArray(data.friends) ? _.cloneDeep(data.friends) : [];
         }
 
         if (_.has(data, 'blocked')) {
             bouncer.clearBlacklist();
             if (_.isArray(data.blocked) && data.blocked.length)
                 _.forEach(data.blocked, function(id) { bouncer.addPlayerToBlacklist(id); });
+            self.access.blocked = _.isArray(data.blocked) ? _.cloneDeep(data.blocked) : [];
         }
+    };
+
+    // Builds the launch context for the gw_lobby state based on the current campaign lobby settings 
+    // and an optional payload provided by the host client when they click "Play" from the campaign lobby panel.
+    // This will let the in-game lobby know that it's launching from a co-op campaign lobby and apply 
+    // any relevant settings or metadata that the host client provided when launching.
+    self.buildGwLobbyLaunchContext = function(payload) {
+        var data = payload || {};
+        var payloadSettings = data.gw_campaign_settings || {};
+        var settings = {
+            game_name: _.isString(self.settings.game_name) ? self.settings.game_name : 'GW Co-op Campaign',
+            tag: _.isString(self.settings.tag) ? self.settings.tag : 'Testing',
+            public: _.isBoolean(self.settings.public) ? self.settings.public : true,
+            friends: !!self.settings.friends,
+            hidden: !!self.settings.hidden
+        };
+
+        // Host payload is optional fallback metadata; authoritative values come from self.settings.
+        if (!_.isString(settings.game_name) && _.isString(payloadSettings.game_name))
+            settings.game_name = payloadSettings.game_name;
+        if (!_.isString(settings.tag) && _.isString(payloadSettings.tag))
+            settings.tag = payloadSettings.tag;
+
+        return {
+            gw_campaign_active: true,
+            current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
+            settings: settings,
+            max_clients: self.maxClients,
+            access: {
+                password: _.isString(self.access.password) ? self.access.password : '',
+                friends: _.cloneDeep(bouncer.getWhitelist()),
+                blocked: _.cloneDeep(bouncer.getBlacklist())
+            }
+        };
     };
 
     // Applies specifically settings to the co-op campaign lobby; 
@@ -401,7 +444,7 @@ function GWCampaignModel(creator) {
 
                 console.log('[GW_COOP] launch_gw_battle by host=' + msg.client.name);
                 server.respond(msg).succeed();
-                main.setState(main.states.gw_lobby, msg.client);
+                main.setState(main.states.gw_lobby, msg.client, self.buildGwLobbyLaunchContext(msg.payload));
             },
             leave_gw_campaign: function(msg) {
                 console.log('[GW_COOP] leave_gw_campaign from=' + msg.client.name + ' id=' + msg.client.id);

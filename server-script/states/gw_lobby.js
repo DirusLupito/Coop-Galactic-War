@@ -5,12 +5,12 @@ var sim_utils = require('sim_utils');
 var utils = require('utils');
 var file = require('file');
 var content_manager = require('content_manager');
+var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
 var ko = require('thirdparty/knockout');
 
 console.log('gw_lobby server script: loaded');
 
-// Note: GW does not currently support reconnect.
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
 var DEFAULT_GW_PLAYERS = 6;
 var getGWMaxPlayers = function() {
@@ -35,8 +35,92 @@ var client_state = {
     control: {}
 };
 
-function LobbyModel(creator) {
+function LobbyModel(creator, launchContext) {
     var self = this;
+
+    self.launchContext = launchContext || {};
+    self.campaignActive = !!self.launchContext.gw_campaign_active;
+    self.isSingleplayerGW = !self.campaignActive;
+    self.beaconSettings = {
+        game_name: 'Galactic War',
+        tag: 'Testing',
+        public: true,
+        friends: false,
+        hidden: false
+    };
+
+    if (self.launchContext.settings) {
+        var launchSettings = self.launchContext.settings;
+        if (_.isString(launchSettings.game_name))
+            self.beaconSettings.game_name = launchSettings.game_name;
+        if (_.isString(launchSettings.tag))
+            self.beaconSettings.tag = launchSettings.tag;
+        if (_.isBoolean(launchSettings.public))
+            self.beaconSettings.public = launchSettings.public;
+        if (_.has(launchSettings, 'friends'))
+            self.beaconSettings.friends = !!launchSettings.friends;
+        if (_.has(launchSettings, 'hidden'))
+            self.beaconSettings.hidden = !!launchSettings.hidden;
+    }
+
+    self.applyLaunchAccessControl = function() {
+        var access = self.launchContext.access || {};
+
+        // Rehydrate campaign lobby access settings (password/whitelist/blacklist)
+        // so gw_lobby and its beacon continue to mirror gw_campaign visibility.
+        bouncer.setPassword(_.isString(access.password) ? access.password : '');
+        bouncer.clearWhitelist();
+        bouncer.clearBlacklist();
+
+        if (_.isArray(access.friends)) {
+            _.forEach(access.friends, function(id) {
+                bouncer.addPlayerToWhitelist(id);
+            });
+        }
+
+        if (_.isArray(access.blocked)) {
+            _.forEach(access.blocked, function(id) {
+                bouncer.addPlayerToBlacklist(id);
+            });
+        }
+    };
+
+    self.getSessionMaxClients = function() {
+        if (self.isSingleplayerGW)
+            return 1;
+
+        if (_.isFinite(self.launchContext.max_clients) && self.launchContext.max_clients > 1)
+            return Math.floor(self.launchContext.max_clients);
+
+        return Math.max(2, MAX_GW_PLAYERS);
+    };
+
+    self.refreshCampaignContextFromConfig = function(config) {
+        if (!config || !_.has(config, 'gw_campaign_active'))
+            return;
+
+        self.campaignActive = !!config.gw_campaign_active;
+        self.isSingleplayerGW = !self.campaignActive;
+
+        // Keep beacon identity aligned if the host provided runtime lobby settings.
+        if (config.gw_campaign_settings) {
+            var settings = config.gw_campaign_settings;
+            if (_.isString(settings.game_name))
+                self.beaconSettings.game_name = settings.game_name;
+            if (_.isString(settings.tag))
+                self.beaconSettings.tag = settings.tag;
+            if (_.isBoolean(settings.public))
+                self.beaconSettings.public = settings.public;
+            if (_.has(settings, 'friends'))
+                self.beaconSettings.friends = !!settings.friends;
+            if (_.has(settings, 'hidden'))
+                self.beaconSettings.hidden = !!settings.hidden;
+            if (_.isFinite(settings.max_clients) && settings.max_clients > 0)
+                self.launchContext.max_clients = Math.floor(settings.max_clients);
+        }
+
+        server.maxClients = self.getSessionMaxClients();
+    };
 
     self.control = ko.observable({
         has_config: false,
@@ -75,6 +159,22 @@ function LobbyModel(creator) {
     };
 
     self.updateBeacon = function() {
+        // Never publish or update GW beacons for single-player sessions.
+        // This prevents solo campaigns from being exposed as joinable lobbies.
+        if (self.isSingleplayerGW) {
+            server.beacon = null;
+            return;
+        }
+
+        // Likewise, even if it is published, but set to either private or friends-only without a friends list, 
+        // the beacon would be useless, so we don't publish in that case either.
+        var hasFriendsList = bouncer.getWhitelist().length > 0;
+        var publish = !self.beaconSettings.hidden && (self.beaconSettings.public || hasFriendsList);
+        if (!publish) {
+            server.beacon = null;
+            return;
+        }
+
         console.log('Updating beacon');
         var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
         var modsData = server.getModsForBeacon();
@@ -91,7 +191,7 @@ function LobbyModel(creator) {
             started: !!self.control().starting,
             players: connectedClients.length,
             creator: creator.name,
-            max_players: MAX_GW_PLAYERS,
+            max_players: server.maxClients,
             spectators: 0,
             max_spectators: 0,
             mode: 'FreeForAll',
@@ -100,13 +200,13 @@ function LobbyModel(creator) {
             cheat_config: main.cheats,
             player_names: _.map(connectedClients, function(client) { return client.name; }),
             spectator_names: [],
-            require_password: false,
-            whitelist: [],
-            blacklist: [],
-            tag: 'Testing',
+            require_password: !!bouncer.doesGameRequirePassword(),
+            whitelist: bouncer.getWhitelist(),
+            blacklist: bouncer.getBlacklist(),
+            tag: self.beaconSettings.tag,
             game: {
                 system: gameSystem,
-                name: 'Galactic War'
+                name: self.beaconSettings.game_name
             },
             required_content: content_manager.getRequiredContent(),
             bounty_mode: false,
@@ -336,6 +436,8 @@ function LobbyModel(creator) {
     };
 
     self.config.subscribe(function(newConfig) {
+        self.refreshCampaignContextFromConfig(newConfig);
+
         self.changeControl({
             has_config: true,
             system_ready: false,
@@ -365,6 +467,8 @@ function LobbyModel(creator) {
             if (self.control().has_config) {
                 return response.fail('Configuration already set');
             }
+
+            self.refreshCampaignContextFromConfig(msg.payload);
 
             var validResult = self.validateConfig(msg.payload);
             var validResponse = function(valid) {
@@ -411,7 +515,8 @@ function LobbyModel(creator) {
     var cleanup = [];
 
     self.enter = function() {
-        server.maxClients = MAX_GW_PLAYERS;
+        self.applyLaunchAccessControl();
+        server.maxClients = self.getSessionMaxClients();
         self.updateBeacon();
 
         utils.pushCallback(sim.planets, 'onReady', function (onReady) {
@@ -438,6 +543,7 @@ function LobbyModel(creator) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+        // Keep beacon cleared for single-player sessions.
         server.beacon = null;
     };
 
@@ -483,14 +589,14 @@ function LobbyModel(creator) {
 var lobbyModel;
 
 exports.url = 'coui://ui/main/game/galactic_war/gw_lobby/gw_lobby.html';
-exports.enter = function (owner) {
+exports.enter = function (owner, launchContext) {
 
     if (lobbyModel) {
         lobbyModel.shutdown();
         lobbyModel = undefined;
     }
 
-    lobbyModel = new LobbyModel(owner);
+    lobbyModel = new LobbyModel(owner, launchContext);
     lobbyModel.enter();
 
     try {
