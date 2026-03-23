@@ -1033,13 +1033,22 @@ requireGW([
                 var client = connected[index];
                 return {
                     index: index + 1,
+                    id: client ? client.id : undefined,
                     name: client ? client.name : loc('!LOC:Empty Slot'),
                     host: !!(client && client.role === 'host'),
                     empty: !client,
-                    canRemove: !client && maxClients > 1
+                    canRemove: !client && maxClients > 1,
+                    canKick: !!(client && client.role !== 'host')
                 };
             });
         });
+
+        self.kickGwCampaignClient = function(slot) {
+            if (!slot || !slot.canKick || !self.canEditGwCampaignLobby() || !self.gwCampaignActive())
+                return;
+
+            self.send_message('kick', { id: slot.id });
+        };
 
         // Helper for checking if we can addi slots to the campaign lobby.
         // Basic process is that we check if the user can even edit the lobby, 

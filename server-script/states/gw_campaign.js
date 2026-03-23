@@ -458,6 +458,29 @@ function GWCampaignModel(creator) {
                 // Non-host leave requests are acknowledged; disconnect lifecycle handles cleanup.
                 server.respond(msg).succeed();
             },
+            // Analog of function playerMsg_kick(msg) in lobby.js.
+            kick: function(msg) {
+                if (msg.client.id !== self.creatorId)
+                    return server.respond(msg).fail('Only host can kick.');
+
+                var payload = msg.payload || {};
+                var id = payload.id;
+                var targetClient = _.find(server.clients, function(client) {
+                    return client && client.id === id;
+                });
+
+                if (bouncer.isPlayerMod(id))
+                    return server.respond(msg).fail('Mods cannot be kicked.');
+
+                if (!targetClient || !targetClient.connected)
+                    return server.respond(msg).fail('Already left');
+
+                // In both lobbies and here, it seems like the blacklist doesn't actually do anything.
+                bouncer.addPlayerToBlacklist(id);
+                targetClient.kill();
+
+                server.respond(msg).succeed();
+            },
             // Handler for when host modifies settings from the lobby panel. 
             // Validates and applies new settings, then updates the lobby and beacon accordingly.
             modify_settings: function(msg) {

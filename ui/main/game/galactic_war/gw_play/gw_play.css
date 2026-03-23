@@ -665,6 +665,20 @@ Otherwise things will look off.
     user-select: none;
 }
 
+.gw-slot-kick {
+    min-width: 54px;
+    margin: 0 8px 0 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
+    color: #ffb0b0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(64, 0, 0, 0.35);
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+}
+
 .gw-slot-remove {
     margin: 0 8px;
 }
