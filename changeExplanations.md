@@ -39,8 +39,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `a70eb09` `Implemented basic lobby controls in co-op GW to address [#6](https://github.com/DirusLupito/Coop-Galactic-War/issues/6).`
   - `5a79c85` `UI improvements, GW now supports variable player counts.`
   - `39af2b8` `Fixed an issue where clients would see default/empty lobby data on join.`
-- Single-player beacon suppression and campaign-launch context commit:
   - `2e5ec38` `Single player galactic war no longer broadcasts a server beacon.`
+  - `54430b9` `Host can now kick players.`
 
 ## High-Level Summary
 
@@ -1400,3 +1400,10 @@ This commit tightens GW lobby visibility behavior so solo Galactic War sessions 
 1. Single-player Galactic War no longer appears in LAN/server-browser listings as a joinable lobby.
 2. Campaign-coop launches keep lobby identity and access policy consistent across `gw_campaign` -> `gw_lobby` transition.
 3. GW battle lobby beacon publication is now conditional and intentional, instead of always-on.
+
+---
+
+## Commit `54430b9`: `Host can now kick players.`
+For this commit, I simply looked at how kicking was done with function `playerMsg_kick(msg)` in `lobby.js` and
+basically copied that code over to `gw_campaign` along with the extra CSS/HTML/Client side kick message sending JS code needed. 
+Pretty simple to implement.
