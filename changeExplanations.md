@@ -44,18 +44,16 @@ The intent is to preserve the reasoning behind these changes so future contribut
 
 ## High-Level Summary
 
-Galactic War coop works by adapting a single-player Galactic War battle into a temporary multiplayer-compatible flow.
+Galactic War coop works by adapting a single-player Galactic War battle into a temporary multiplayer-compatible flow, then extending the same pattern to reconnect, campaign-map coop, and lobby UX hardening.
 
-The implementation does four main things:
+At a high level, the codebase now does all of the following:
 
-1. Advertises the normally hidden Galactic War battle lobby in the regular multiplayer server browser.
-2. Holds the GW lobby open until a second client has joined and mounted the same generated GW file set.
-3. Maps both connected clients into the same human army before entering landing and playing states.
-4. Patches the in-game UI so the second client can operate against Galactic War's tagged unit specs such as `.player` and `.ai`.
-
-The reconnect fix later adds a fifth thing:
-
+1. Advertises the normally hidden Galactic War battle lobby in the regular multiplayer server browser, while later suppressing solo GW beacons and preserving campaign launch metadata.
+3. Maps connected clients into shared human control for the live battle and later syncs campaign-map coop state through snapshots, actions, and persistence.
+4. Patches the in-game UI so clients can operate against Galactic War's tagged unit specs such as `.player` and `.ai`, including build, action, tooltip, and reconnect refresh paths.
 5. Reconstructs the reconnecting client's Galactic War in-memory file system before allowing it to enter `live_game` again.
+6. Keeps GW campaign coop stable across save/load, reconnect, and third-party mod overrides by preserving local campaign state and re-hooking overridden methods when needed.
+7. Hardens lobby discovery, slot management, chat/settings UX, and startup sequencing so the coop flow stays visible and does not race memory-file mounts.
 
 ## Original Single-Player Galactic War File Model
 
