@@ -35,6 +35,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `cf423b0` `Fixed compatibility with GW affecting mods like GWO.`
   - `b7e3759` `Removed tag causing gw co-op lobbies to not show up outside of LAN.`
   - `d8591c8` `Fixed an issue where saving and quitting from GW would corrupt co-op player's save.`
+  - `7f9543d` `Tech card deletions now apply to co-op players.`
 - Campaign lobby/chat UX and dynamic player-count commits:
   - `a70eb09` `Implemented basic lobby controls in co-op GW to address [#6](https://github.com/DirusLupito/Coop-Galactic-War/issues/6).`
   - `5a79c85` `UI improvements, GW now supports variable player counts.`
@@ -1405,3 +1406,8 @@ This commit tightens GW lobby visibility behavior so solo Galactic War sessions 
 For this commit, I simply looked at how kicking was done with function `playerMsg_kick(msg)` in `lobby.js` and
 basically copied that code over to `gw_campaign` along with the extra CSS/HTML/Client side kick message sending JS code needed. 
 Pretty simple to implement.
+
+---
+
+## Commit `7f9543d`: `Tech card deletions now apply to co-op players.`
+A quick fix which I applied to `gw_play.js`. I updated `applyCampaignAction` to have a new handler for a new `'discard_card'` action type. This action type was broadcast from the host every time a card was deleted from the `discardHoverCard` function. Inside of that function, I noticed that the card parameter was never used, so I decided to co-opt it for my purposes and use it as the index of the card to be deleted. While the host figured out what card to delete based on what card was being hovered over, the clients would recieve the card index the host derived as part of the action payload, and then when they were simulating the deletion action they would simply use that index from the payload to know what card to delete. On the host side the only change necessary was to add a call to `sendCampaignAction` with the action type set to the new `'discard_card'` type and the payload set to the index of the card to be discarded.
