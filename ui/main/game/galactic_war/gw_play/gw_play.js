@@ -1765,6 +1765,15 @@ requireGW([
                 return;
             }
 
+            if (action.type === 'discard_card') {
+                self.discardHoverCard(payload.discard_index);
+                _.defer(function() {
+                    self.syncViewerStarsFromGame('after_action_discard_card', [game.currentStar()]);
+                });
+                self.gwCampaignReplayingAction = false;
+                return;
+            }
+
             if (action.type === 'explore_cards') {
                 var stars = game.galaxy().stars();
                 var star = _.isNumber(payload.star) ? stars[payload.star] : undefined;
@@ -2646,8 +2655,29 @@ requireGW([
             self.hoverCard(card);
         };
         self.discardHoverCard = function(card) {
-            if (self.isCampaignViewer())
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
+
+            // Since some earlier programmer was nice enough to have this card
+            // variable passed to this function and never actually used, 
+            // I shall repurpose it to avoid having to add any more parameters to the function
+            // so that it can be used as a discard index in the case that this function
+            // is being called from applyCampaignSnapshot to do a clientside discard of a card that was
+            // ordered to be discarded from the host.
+            if (self.gwCampaignReplayingAction) {
+                var discardIndex = parseInt(card);
+                if (!isNaN(discardIndex) && discardIndex >= 0 && discardIndex < self.cards().length) {
+                    var discard = self.cards()[discardIndex];
+                    game.inventory().cards.splice(discardIndex, 1);
+                    game.inventory().applyCards(function() {
+                        GW.manifest.saveGame(game).then(function() {
+                            api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
+                        });
+                    });
+                }
+
+                return;
+            }
 
             var discard = self.hoverCard();
             if (!discard)
@@ -2655,6 +2685,12 @@ requireGW([
             self.hoverCard(undefined);
 
             var discardIndex = self.cards().indexOf(discard);
+
+            // Since we didn't return earlier from the if self.gwCampaignReplayingAction block, 
+            // this discard is coming from the host. So we have a responsibility
+            // to apply the discard on the clientside as well, to keep everyone in sync. 
+            self.sendCampaignAction('discard_card', { discard_index: discardIndex });
+
             if (discardIndex >= 0) {
                 game.inventory().cards.splice(discardIndex, 1);
 
