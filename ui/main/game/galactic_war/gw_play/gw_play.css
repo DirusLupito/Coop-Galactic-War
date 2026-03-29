@@ -258,6 +258,19 @@ html, body {
     pointer-events: all;
 }
 
+/* Viewers in co-op are read-only; hide tech action controls that can cause local-only mutations. */
+.container.gw-campaign-viewer .div_panel_bar_background.tech #system-card .exploring.card_action {
+    display: none !important;
+}
+
+.container.gw-campaign-viewer .div_panel_bar_background.tech .div_options_bar {
+    display: none !important;
+}
+
+.container.gw-campaign-viewer #hover-card .card_action {
+    display: none !important;
+}
+
 
 
 .div_game_menu_panel {

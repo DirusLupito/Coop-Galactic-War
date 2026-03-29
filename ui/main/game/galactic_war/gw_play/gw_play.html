@@ -22,7 +22,7 @@
     app.loadTemplate("coui://ui/main/game/galactic_war/shared/template/gwt_card");
 </script>
 
-<div class="container" data-bind="visible: !hidingUI()" style="display: none">
+<div class="container" data-bind="visible: !hidingUI(), css: { 'gw-campaign-viewer': isCampaignViewer }" style="display: none">
 
     <canvas id="galaxy-map" height="800" width="800" data-bind="attr: { height: galaxy.canvasHeight(), width: galaxy.canvasWidth(), visible: !hidingUI() }"></canvas>
 
