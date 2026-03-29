@@ -42,6 +42,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `39af2b8` `Fixed an issue where clients would see default/empty lobby data on join.`
   - `2e5ec38` `Single player galactic war no longer broadcasts a server beacon.`
   - `54430b9` `Host can now kick players.`
+  - `8b4ae20` `Co-op player no longer sees controls for things they cannot control.`
 
 ## High-Level Summary
 
@@ -1411,3 +1412,13 @@ Pretty simple to implement.
 
 ## Commit `7f9543d`: `Tech card deletions now apply to co-op players.`
 A quick fix which I applied to `gw_play.js`. I updated `applyCampaignAction` to have a new handler for a new `'discard_card'` action type. This action type was broadcast from the host every time a card was deleted from the `discardHoverCard` function. Inside of that function, I noticed that the card parameter was never used, so I decided to co-opt it for my purposes and use it as the index of the card to be deleted. While the host figured out what card to delete based on what card was being hovered over, the clients would recieve the card index the host derived as part of the action payload, and then when they were simulating the deletion action they would simply use that index from the payload to know what card to delete. On the host side the only change necessary was to add a call to `sendCampaignAction` with the action type set to the new `'discard_card'` type and the payload set to the index of the card to be discarded.
+
+---
+
+## Commit `8b4ae20`: `Co-op player no longer sees controls for things they cannot control.`
+During playtesting I came across what is now issue #13: 
+```
+GWO Re-roll on co-op player side causes a desync. #13
+This desync continues even after the re-roll, and seemingly the only way to recover from it is to leave the session, then delete the local GW save, and finally rejoin.
+```
+My solution was very simple, I decided to hide the UI elements for the controls for acquiring, deleting, and dismissing tech cards on the co-op player's side. Since Galactic War Overhaul reused the dismiss tech UI element, by hiding dismiss tech on the co-op player's side I also wound up hiding the reroll tech button. As a result the co-op player no longer had the ability to click said buggy button and thus the bug could no longer arise. All I had to do was change `gw_play.css` and `gw_play.html`.
