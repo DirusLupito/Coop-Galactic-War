@@ -342,6 +342,13 @@ function LobbyModel(creator, launchContext) {
                 game_options:
                 {
                     game_type: 'Galactic War',
+                    // Persist campaign identity and lobby settings into the battle so
+                    // game_over can run a co-op-specific Continue War restart flow
+                    // without affecting single-player Galactic War behavior.
+                    gw_campaign_active: !!self.campaignActive,
+                    gw_campaign_host_id: self.creator,
+                    gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
+                    gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,

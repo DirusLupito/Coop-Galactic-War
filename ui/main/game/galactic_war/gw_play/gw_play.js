@@ -885,6 +885,10 @@ requireGW([
 
         self.gwCampaignEnabled = ko.observable(false).extend({ session: 'gw_campaign_enabled' });
         self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
+        // Local context written by live_game Continue War restart flow.
+        // Host uses this once the fresh gw_campaign server is up to reapply
+        // lobby visibility/password/slots from the previous co-op session.
+        self.gwCampaignRestartContext = ko.observable().extend({ local: 'gw_campaign_restart_context' });
         self.gwCampaignConnected = ko.observable(false);
         self.gwCampaignControl = ko.observable({});
         self.gwCampaignSnapshotSeq = 0;
@@ -1195,6 +1199,34 @@ requireGW([
                 tag: 'Testing',
                 max_clients: self.gwCampaignMaxClients()
             });
+        };
+
+        // Applies one-time restart context after host reconnects to a newly
+        // started gw_campaign process. This keeps co-op lobby settings stable
+        // across process-level Continue War restarts.
+        self.applyPendingGwCampaignRestartContext = function() {
+            var context = self.gwCampaignRestartContext();
+            if (!context || !context.pending_reapply)
+                return;
+
+            if (!self.isCampaignHost() || !self.gwCampaignConnected())
+                return;
+
+            var settings = context.settings || {};
+            var access = context.access || {};
+
+            self.send_message('modify_settings', {
+                game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
+                tag: _.isString(settings.tag) ? settings.tag : 'Testing',
+                public: _.isBoolean(settings.public) ? settings.public : true,
+                max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
+                password: _.isString(access.password) ? access.password : self.privateGamePassword(),
+                friends: _.isArray(access.friends) ? access.friends : [],
+                blocked: _.isArray(access.blocked) ? access.blocked : []
+            });
+
+            context.pending_reapply = false;
+            self.gwCampaignRestartContext(context);
         };
 
         self.setPrivateGame = function() {
@@ -1872,6 +1904,8 @@ requireGW([
             self.requestCampaignChatHistory();
 
             console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
+
+            self.applyPendingGwCampaignRestartContext();
 
             if (self.isCampaignViewer() && !self.gwCampaignReceivedSnapshot && !self.gwCampaignInitialSyncRequested) {
                 self.gwCampaignInitialSyncRequested = true;
@@ -3291,6 +3325,7 @@ requireGW([
             // we want to re-apply the lobby controls since the campaign state may have changed in a way that affects them.
             model.applyCampaignLobbyControl(model.gwCampaignControl());
             model.requestCampaignChatHistory();
+            model.applyPendingGwCampaignRestartContext();
 
             if (model.isCampaignHost() && payload && payload.has_snapshot === false) {
                 var connectedClients = _.isArray(payload.connected_clients) ? payload.connected_clients : [];
@@ -3356,6 +3391,8 @@ requireGW([
                 model.gwCampaignInitialSyncRequested = true;
                 model.requestCampaignSnapshot(true);
             }
+
+            model.applyPendingGwCampaignRestartContext();
         };
 
         handlers.gw_campaign_snapshot = function(payload) {
