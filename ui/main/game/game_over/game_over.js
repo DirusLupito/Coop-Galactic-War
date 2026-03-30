@@ -84,6 +84,23 @@ $(document).ready(function () {
 
         self.victors = ko.observableArray([]);
         self.playerIsWinner = ko.observable(false);
+        self.gwCampaignActive = ko.observable(false);
+        self.gwCampaignRole = ko.observable('solo');
+        self.reconnectNavStarted = ko.observable(false);
+
+        self.isGwCampaignViewer = ko.computed(function () {
+            return self.gwCampaignActive() && self.gwCampaignRole() === 'viewer';
+        });
+
+        self.filterMenuButtonsForRole = function(menu) {
+            if (!self.isGwCampaignViewer())
+                return menu;
+
+            // Viewer should never be offered Continue War in co-op GW.
+            return _.filter(menu, function(button) {
+                return button.action !== 'menuReturnToWar';
+            });
+        };
 
         self.showPlayerDefeated = ko.computed(function () {
             return !self.showVictorStats() && self.defeated() && !self.playerIsWinner();
@@ -375,6 +392,7 @@ $(document).ready(function () {
                 self.hasSignaledGameOver(false);
                 self.playerStats({});
                 self.victorStats({});
+                self.reconnectNavStarted(false);
 
                 hasPlayedNavVO = false;
                 hasClosedPanel = false;
@@ -562,7 +580,8 @@ $(document).ready(function () {
             parentQuery('playerData').then(self.handlePlayerData);
 
             parentQuery('menuConfig').then(function (menu) {
-                var menuButtons = _.map(_.filter(menu, 'game_over'), function(button) {
+                var filteredMenu = self.filterMenuButtonsForRole(menu || []);
+                var menuButtons = _.map(_.filter(filteredMenu, 'game_over'), function(button) {
                     return new MenuButtonModel(button);
                 });
                 self.menuButtons(menuButtons);
@@ -573,6 +592,16 @@ $(document).ready(function () {
     model = new GameOverViewModel();
 
     handlers.connection_disconnected = function() {
+        if (model.isGwCampaignViewer() && !model.reconnectNavStarted()) {
+            model.reconnectNavStarted(true);
+            api.debug.log('[GW_COOP] game_over viewer disconnected, entering restart loading');
+            api.Panel.message(api.Panel.parentId, 'game_over.nav', {
+                url: 'coui://ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.html?role=viewer',
+                disconnect: false
+            });
+            return;
+        }
+
         model.connected(false);
     };
 
@@ -587,8 +616,17 @@ $(document).ready(function () {
         if (msg.data)
         {
             model.connected(true);
+            model.reconnectNavStarted(false);
             model.playerIsWinner(!!msg.data.client.winner);
             model.draw(false);
+
+            if (msg.data.client) {
+                if (_.has(msg.data.client, 'gw_campaign_active'))
+                    model.gwCampaignActive(!!msg.data.client.gw_campaign_active);
+
+                if (_.isString(msg.data.client.gw_campaign_role))
+                    model.gwCampaignRole(msg.data.client.gw_campaign_role);
+            }
 
             gameOverMsg = msg.data.game_over;
             gameOverText = "";
@@ -642,8 +680,9 @@ $(document).ready(function () {
     };
 
     handlers.menu_config = function (payload) {
+        var filteredPayload = model.filterMenuButtonsForRole(payload || []);
 
-        var list = _.map(_.filter(payload, 'game_over'), function (button) {
+        var list = _.map(_.filter(filteredPayload, 'game_over'), function (button) {
             return new MenuButtonModel(button);
         });
 

@@ -38,6 +38,8 @@ FILES_TO_COPY = [
      "ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.css"),
     ("ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.js",
      "ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.js"),
+    ("ui/main/game/game_over/game_over.js",
+     "ui/main/game/game_over/game_over.js"),
     ("ui/main/game/live_game/live_game.js",
      "ui/main/game/live_game/live_game.js"),
     ("ui/main/game/live_game/live_game_build_bar.js",

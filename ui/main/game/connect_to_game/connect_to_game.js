@@ -209,6 +209,18 @@ $(document).ready(function () {
 
             var start = action === 'start';
 
+            // Reconnect flows that navigate to connect_to_game without explicit
+            // URL params still need content mounted before api.net.connect.
+            // Use saved reconnect context as fallback, and default GW reconnects
+            // to PAExpansion1 when no content is explicitly provided.
+            if (_.isEmpty(content)) {
+                var reconnectInfo = self.reconnectToGameInfo() || {};
+                if (_.isString(reconnectInfo.content) && reconnectInfo.content.length)
+                    content = reconnectInfo.content;
+                else if (reconnectInfo.game === 'GalacticWar' || reconnectInfo.game === 'Galactic War')
+                    content = 'PAExpansion1';
+            }
+
             if (loadtime) {
                 loadpath = loadpath + "#" + loadtime;
             }

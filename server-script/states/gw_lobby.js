@@ -138,6 +138,34 @@ function LobbyModel(creator, launchContext) {
         self.tryStart();
     });
     self.creatorDisconnectTimeout = undefined;
+    self.callbackCleanup = [];
+
+    self.clearCreatorDisconnectTimeout = function() {
+        if (!self.creatorDisconnectTimeout)
+            return;
+
+        clearTimeout(self.creatorDisconnectTimeout);
+        delete self.creatorDisconnectTimeout;
+    };
+
+    // Track callback-stack registrations so gw_lobby does not leak disconnect
+    // handlers into later states where they can trigger unintended server exits.
+    var registerCallback = function(target, callbackName, callback) {
+        utils.pushCallback(target, callbackName, callback);
+
+        var removed = false;
+        var remove = function() {
+            if (removed)
+                return;
+
+            removed = true;
+            if (target && target[callbackName] && _.isFunction(target[callbackName].pop))
+                target[callbackName].pop();
+        };
+
+        self.callbackCleanup.push(remove);
+        return remove;
+    };
 
     self.tryStart = function() {
         var connectedClients = _.filter(server.clients, function(client) {
@@ -550,11 +578,18 @@ function LobbyModel(creator, launchContext) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+
+        self.clearCreatorDisconnectTimeout();
+        _.forEachRight(self.callbackCleanup, function(remove) {
+            remove();
+        });
+        self.callbackCleanup = [];
+
         // Keep beacon cleared for single-player sessions.
         server.beacon = null;
     };
 
-    utils.pushCallback(creator, 'onDisconnect', function(onDisconnect) {
+    registerCallback(creator, 'onDisconnect', function(onDisconnect) {
         self.creatorDisconnectTimeout = setTimeout(function() {
             delete self.creatorDisconnectTimeout;
             console.log('GW - Creator timed out');
@@ -563,19 +598,16 @@ function LobbyModel(creator, launchContext) {
         return onDisconnect;
     });
 
-    utils.pushCallback(server, 'onConnect', function (onConnect, client, reconnect) {
+    registerCallback(server, 'onConnect', function (onConnect, client, reconnect) {
         if (client.id === self.creator) {
-            if (self.creatorDisconnectTimeout) {
-                clearTimeout(self.creatorDisconnectTimeout);
-                delete self.creatorDisconnectTimeout;
-            }
+            self.clearCreatorDisconnectTimeout();
 
             self.creatorReady(false);
         }
 
         self.clientConfigReady[client.id] = false;
 
-        utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
+        registerCallback(client, 'onDisconnect', function(onDisconnect) {
             delete self.clientConfigReady[client.id];
             self.updateBeacon();
             self.tryStart();
@@ -589,7 +621,7 @@ function LobbyModel(creator, launchContext) {
     });
 
     self.shutdown = function() {
-        server.onConnect.pop();
+        self.exit();
     };
 };
 

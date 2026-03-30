@@ -16,6 +16,7 @@ $(document).ready(function () {
 
         self.gwCampaignRestartContext = ko.observable().extend({ local: 'gw_campaign_restart_context' });
         self.reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
+        self.gameContent = ko.observable().extend({ session: 'game_content' });
 
         self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
         self.serverType = ko.observable().extend({ session: 'game_server_type' });
@@ -69,6 +70,7 @@ $(document).ready(function () {
             self.connectionRetryDelaySeconds(2);
             self.gwCampaignEnabled(true);
             self.gwCampaignRestartPending(false);
+            self.gameContent(content);
 
             if (role === ROLE_HOST) {
                 self.pageSubTitle(loc('!LOC:Restarting server and reopening co-op campaign...'));
@@ -117,7 +119,7 @@ $(document).ready(function () {
 
                 console.log('[GW_COOP] restart_loading viewer entering reconnect flow');
 
-                window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html';
+                window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?content=' + encodeURIComponent(content);
             }, viewerReconnectDelay);
         };
     }
