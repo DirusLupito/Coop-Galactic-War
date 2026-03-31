@@ -15,45 +15,7 @@ catch (e) {
 
 $(document).ready(function () {
     var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
-    var gwCampaignEnabled = ko.observable(false).extend({ session: 'gw_campaign_enabled' });
-    var gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
-    var gwCampaignRestartPending = ko.observable(false).extend({ local: 'gw_campaign_restart_pending' });
-    var gwCampaignRestartContext = ko.observable().extend({ local: 'gw_campaign_restart_context' });
-    var gwCampaignRestartLoadingUrl = 'coui://ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.html';
     var idleTime = 0;
-
-    // Fallback reconnect path for co-op GW viewers when the battle server shuts
-    // down after Continue War restart. This keeps viewers out of main-menu
-    // transit even if custom GW live-game patch hooks do not run.
-    var tryNavigateGwCampaignViewerReconnect = function(reason) {
-        if (!model)
-            return false;
-
-        if (!gwCampaignEnabled() || gwCampaignRole() !== 'viewer')
-            return false;
-
-        if (model.serverMode() !== 'game_over' && !model.gameOver())
-            return false;
-
-        if (gwCampaignRestartPending())
-            return true;
-
-        gwCampaignRestartPending(true);
-
-        var gameOptions = model.gameOptions || {};
-        var reconnectInfo = model.reconnectToGameInfo() || {};
-        gwCampaignRestartContext(_.assign({}, gwCampaignRestartContext() || {}, {
-            host_id: gameOptions.gw_campaign_host_id,
-            settings: _.cloneDeep(gameOptions.gw_campaign_settings || {}),
-            access: _.cloneDeep(gameOptions.gw_campaign_access || {}),
-            content: reconnectInfo.content,
-            pending_reapply: false
-        }));
-
-        console.log('[GW_COOP] live_game fallback reconnect for viewer reason=' + reason);
-        model.navToUrl(gwCampaignRestartLoadingUrl + '?role=viewer');
-        return true;
-    };
 
     api.game.releaseKeyboard(true);
 
@@ -4139,14 +4101,6 @@ $(document).ready(function () {
             model.reviewMode(false);
             model.forceResumeAfterReview(false);
 
-            if (msg.data.client) {
-                if (_.has(msg.data.client, 'gw_campaign_active'))
-                    gwCampaignEnabled(!!msg.data.client.gw_campaign_active);
-
-                if (_.isString(msg.data.client.gw_campaign_role))
-                    gwCampaignRole(msg.data.client.gw_campaign_role);
-            }
-
             var oldServerMode = model.serverMode();
             model.serverMode(msg.state);
             if (!_.isUndefined(oldServerMode) && oldServerMode !== model.serverMode() && model.serverMode() === 'game_over') {
@@ -4168,9 +4122,6 @@ $(document).ready(function () {
             if (msg.data.client && msg.data.client.game_options) {
                 // update existing game options
                 model.updateGameOptions(msg.data.client.game_options);
-
-                if (_.has(msg.data.client.game_options, 'gw_campaign_active'))
-                    gwCampaignEnabled(!!msg.data.client.game_options.gw_campaign_active);
             }
 
             if (msg.data.client && msg.data.client.commander && msg.data.client.commander.id) {
@@ -4495,9 +4446,6 @@ $(document).ready(function () {
     }
 
     handlers.sim_terminated = function (payload) {
-        if (tryNavigateGwCampaignViewerReconnect('sim_terminated'))
-            return;
-
         if (model.isLocalGame())
             model.transitPrimaryMessage(loc('!LOC:WORLD SIMULATION WENT AWAY'));
         else
@@ -4509,9 +4457,6 @@ $(document).ready(function () {
         model.navToTransit();
     }
     handlers.connection_disconnected = function (payload) {
-
-        if (tryNavigateGwCampaignViewerReconnect('connection_disconnected'))
-            return;
 
         if (model.userTriggeredDisconnect())
             return;

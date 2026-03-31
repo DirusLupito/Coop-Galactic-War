@@ -1,5 +1,6 @@
 var console = require('console'); // temporary workaround
 var main = require('main');
+var utils = require('utils');
 var _ = require('thirdparty/lodash');
 var chat_utils = require('chat_utils');
 var content_manager = require('content_manager');
@@ -30,7 +31,7 @@ var gwCampaignRestartRequested = false;
 
 // Delay before shutdown gives all connected clients enough time to receive
 // the restart-prepare broadcast and switch into reconnect behavior.
-var GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS = 10000;
+var GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS = 3000;
 
 function playerMsg_surrender(msg) {
     return server.respond(msg).fail("Game has already ended");
@@ -236,6 +237,46 @@ exports.enter = function (game_over_data)
             server.writeReplay();
         }
     });
+
+    // In co-op GW, continuing the war will restart the server,
+    // but this means that we also need to think about when to actually
+    // shut it down since saving and exiting will also trigger shutdown
+    // albeit one that we don't want to restart from. 
+    // 
+    // Moreover, we delay the shutdown until the end of the restart flow, 
+    // which should not happen when players just want to save and exit.
+    // So we want to track whether we are in the middle of a co-op restart flow, 
+    // and if so, delay the shutdown until the end of that flow.
+    // Otherwise we want to shut down immediately on game over if the host saves and exits.
+    
+    var shutdownForCoopHostDisconnect = _.once(function(reason) {
+        if (gwCampaignRestartRequested || !isGwCampaignCoopMatch())
+            return;
+
+        console.log('[GW_COOP] game_over host disconnect shutdown reason=' + reason);
+        writeReplay();
+        sim.onShutdown = server.exit;
+        sim.shutdown(true);
+    });
+
+    if (isGwCampaignCoopMatch()) {
+        var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+        var hostClient = _.find(server.clients, function(client) {
+            return client && normalizeClientId(client.id) === hostId;
+        });
+
+        if (hostId && hostClient) {
+            utils.pushCallback(hostClient, 'onDisconnect', function(onDisconnect) {
+                shutdownForCoopHostDisconnect('host_onDisconnect');
+                return onDisconnect;
+            });
+
+            cleanup.push(function() {
+                if (hostClient.onDisconnect && hostClient.onDisconnect.length)
+                    hostClient.onDisconnect.pop();
+            });
+        }
+    }
 
     _.delay(function () {
         sim.paused = true;

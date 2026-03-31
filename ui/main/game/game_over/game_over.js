@@ -86,7 +86,6 @@ $(document).ready(function () {
         self.playerIsWinner = ko.observable(false);
         self.gwCampaignActive = ko.observable(false);
         self.gwCampaignRole = ko.observable('solo');
-        self.reconnectNavStarted = ko.observable(false);
 
         self.isGwCampaignViewer = ko.computed(function () {
             return self.gwCampaignActive() && self.gwCampaignRole() === 'viewer';
@@ -392,7 +391,6 @@ $(document).ready(function () {
                 self.hasSignaledGameOver(false);
                 self.playerStats({});
                 self.victorStats({});
-                self.reconnectNavStarted(false);
 
                 hasPlayedNavVO = false;
                 hasClosedPanel = false;
@@ -592,16 +590,6 @@ $(document).ready(function () {
     model = new GameOverViewModel();
 
     handlers.connection_disconnected = function() {
-        if (model.isGwCampaignViewer() && !model.reconnectNavStarted()) {
-            model.reconnectNavStarted(true);
-            api.debug.log('[GW_COOP] game_over viewer disconnected, entering restart loading');
-            api.Panel.message(api.Panel.parentId, 'game_over.nav', {
-                url: 'coui://ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.html?role=viewer',
-                disconnect: false
-            });
-            return;
-        }
-
         model.connected(false);
     };
 
@@ -616,7 +604,6 @@ $(document).ready(function () {
         if (msg.data)
         {
             model.connected(true);
-            model.reconnectNavStarted(false);
             model.playerIsWinner(!!msg.data.client.winner);
             model.draw(false);
 

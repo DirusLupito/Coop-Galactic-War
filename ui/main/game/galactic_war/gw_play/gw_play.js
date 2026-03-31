@@ -1202,7 +1202,7 @@ requireGW([
         };
 
         // Applies one-time restart context after host reconnects to a newly
-        // started gw_campaign process. This keeps co-op lobby settings stable
+        // started gw_campaign server process. This keeps co-op lobby settings stable
         // across process-level Continue War restarts.
         self.applyPendingGwCampaignRestartContext = function() {
             var context = self.gwCampaignRestartContext();
@@ -1905,6 +1905,9 @@ requireGW([
 
             console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
 
+            // In case we are continuing a war and thereby restarting an earlier
+            // campaign session, we might already have campaign lobby state that 
+            // we want to re-apply after the new session is ready.
             self.applyPendingGwCampaignRestartContext();
 
             if (self.isCampaignViewer() && !self.gwCampaignReceivedSnapshot && !self.gwCampaignInitialSyncRequested) {
@@ -3333,6 +3336,10 @@ requireGW([
             // we want to re-apply the lobby controls since the campaign state may have changed in a way that affects them.
             model.applyCampaignLobbyControl(model.gwCampaignControl());
             model.requestCampaignChatHistory();
+
+            // In case we restarted the server after continuing the war, 
+            // we want to keep the same lobby controls and other information
+            // from before the restart.
             model.applyPendingGwCampaignRestartContext();
 
             if (model.isCampaignHost() && payload && payload.has_snapshot === false) {
@@ -3400,6 +3407,9 @@ requireGW([
                 model.requestCampaignSnapshot(true);
             }
 
+            // In case we restarted the server after continuing the war, 
+            // we want to keep the same lobby controls and other information
+            // from before the restart.
             model.applyPendingGwCampaignRestartContext();
         };
 

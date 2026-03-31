@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     var ROLE_HOST = 'host';
     var ROLE_VIEWER = 'viewer';
-    var DEFAULT_HOST_START_DELAY_MS = 10000;
+    var DEFAULT_HOST_START_DELAY_MS = 3000;
     var HOST_START_MARGIN_MS = 2000;
     var VIEWER_RECONNECT_MARGIN_MS = 500;
 
@@ -66,6 +66,9 @@ $(document).ready(function () {
                 ? Math.max(0, Date.now() - restartToken)
                 // No token means we likely arrived from disconnect fallback, so
                 // treat shutdown as already complete and avoid re-waiting.
+                // NOTE: This fallback was removed. But I didn't feel like removing this logic. 
+                // So this code probably does nothing, and will probably never do anything again.
+                // wow thanks dirus for this slop!
                 : shutdownDelay;
             var remainingShutdownDelay = Math.max(0, shutdownDelay - elapsedSincePrepare);
             var hostStartDelay = Math.max(0, remainingShutdownDelay + HOST_START_MARGIN_MS);

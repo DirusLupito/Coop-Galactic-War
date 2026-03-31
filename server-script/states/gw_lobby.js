@@ -579,6 +579,9 @@ function LobbyModel(creator, launchContext) {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
 
+        // We clear the disconnect timeout and client handlers here to prevent a creator disconnect from 
+        // triggering after the lobby has been exited, which would cause unintended server exits 
+        // if the next state also has a creator disconnect handler (like gw_campaign_restart_loading).
         self.clearCreatorDisconnectTimeout();
         _.forEachRight(self.callbackCleanup, function(remove) {
             remove();
@@ -621,6 +624,9 @@ function LobbyModel(creator, launchContext) {
     });
 
     self.shutdown = function() {
+        // Rather than just do server.onConnect.pop(); here, 
+        // we need to clear all the disconnect hooks and timeouts,
+        // and server.onConnect.pop would only clear one callback.
         self.exit();
     };
 };

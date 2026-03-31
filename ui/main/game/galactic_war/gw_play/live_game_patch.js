@@ -54,7 +54,8 @@
 
         // During restart we force clients off live_game immediately, before the
         // server emits SimTerminated. This avoids default live_game disconnect
-        // behavior pushing users to main menu.
+        // behavior which would force users to the main menu rather than let them
+        // reconnect to the new campaign server.
         var navigateForCampaignRestart = function() {
             if (!gwCampaignRestartPending())
                 return false;
@@ -65,8 +66,8 @@
             var context = _.assign({}, buildCampaignRestartContext(), gwCampaignRestartContext() || {});
             var role = gwCampaignRole();
 
-            connectionAttempts(30);
-            connectionRetryDelaySeconds(2);
+            connectionAttempts(5);
+            connectionRetryDelaySeconds(3);
 
             // Persist context so the restart-loading scene can either launch a
             // fresh gw_campaign (host) or start reconnect retries (viewer).
@@ -84,24 +85,6 @@
 
             window.location.href = restartLoadingUrl + '?role=' + encodeURIComponent(role || 'viewer');
             return true;
-        };
-
-        // If a client misses the explicit restart-prepare message but is in
-        // co-op GW game_over when sim termination occurs, derive restart mode
-        // from cached game_over metadata so we do not fall back to main menu.
-        var seedRestartPendingFromGameOver = function() {
-            if (gwCampaignRestartPending() || gwCampaignRestartNavigating)
-                return;
-
-            if (!model.gameOver() || !gwCampaignEnabled())
-                return;
-
-            if (!lastGameOverClientState || !lastGameOverClientState.gw_campaign_active)
-                return;
-
-            gwCampaignRestartPending(true);
-            gwCampaignRestartContext(_.assign({}, buildCampaignRestartContext(), gwCampaignRestartContext() || {}));
-            console.log('[GW_COOP] restart fallback seeded from game_over metadata');
         };
 
         var deleteSavedGame = function() { };
@@ -198,7 +181,7 @@
         }
 
         model.menuReturnToWar = function() {
-            // Co-op GW game_over uses a coordinated process restart path instead
+            // Co-op GW game_over uses a coordinated restart path instead
             // of direct navToGalacticWar so all clients can reconnect together.
             if (model.gameOver() && gwCampaignEnabled()) {
                 if (!isCampaignHost())
@@ -279,7 +262,11 @@
             var over_string = tutorial() ? '!LOC:Continue Tutorial' : '!LOC:Continue War';
             var exit_string = hardcore() ? '!LOC:Abandon War' : '!LOC:Surrender';
             // In co-op campaign game_over, only host can continue war.
-            var hideContinueForViewer = model.gameOver() && gwCampaignEnabled() && !isCampaignHost();
+            // Prefer role from latest server_state metadata, then session role.
+            var gameOverClient = lastGameOverClientState || {};
+            var gameOverCampaignActive = !!(model.gameOver() && (gwCampaignEnabled() || gameOverClient.gw_campaign_active));
+            var isViewer = (gameOverClient.gw_campaign_role === 'viewer') || gwCampaignRole() === 'viewer';
+            var hideContinueForViewer = gameOverCampaignActive && isViewer;
 
             var list = [
                 {
@@ -342,7 +329,7 @@
         // by design, don't show handicaps in GW
         handlers.economy_handicaps = function() {};
 
-        // Server tells all clients to prepare for full process restart.
+        // Server tells all clients to prepare for full server process restart.
         handlers.gw_return_to_campaign_restart_prepare = function(payload) {
             console.log('[GW_COOP] gw_return_to_campaign_restart_prepare received payload=' + JSON.stringify(payload));
             var preparePayload = payload || {};
@@ -389,8 +376,6 @@
             if (_.isFunction(model.userTriggeredDisconnect) && model.userTriggeredDisconnect())
                 return false;
 
-            seedRestartPendingFromGameOver();
-
             if (navigateForCampaignRestart())
                 return true;
 
@@ -398,6 +383,10 @@
             model.transitDestination(exitDestination());
             return false;
         };
+
+        // oldSimTerminated and oldConnectionDisconnected handlers will trigger if the server process 
+        // goes down before we can navigate away from live_game, so we need to hook them to avoid getting 
+        // bounced to the main menu in that case.
         var oldSimTerminated = handlers.sim_terminated;
         handlers.sim_terminated = function(payload) {
             if (hookTransit())
@@ -418,7 +407,7 @@
         handlers.server_state = function(msg) {
 
             // Capture per-client campaign role metadata from game_over so we can
-            // hide Continue War for viewers and enforce host-only restart trigger.
+            // hide Continue War for viewers and enforce host-only restarts.
             if (msg && msg.state === 'game_over' && msg.data && msg.data.client) {
                 lastGameOverClientState = msg.data.client;
 
