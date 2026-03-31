@@ -31,7 +31,6 @@ var gwCampaignRestartRequested = false;
 // Delay before shutdown gives all connected clients enough time to receive
 // the restart-prepare broadcast and switch into reconnect behavior.
 var GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS = 10000;
-var GW_CAMPAIGN_RESTART_REBROADCAST_INTERVAL_MS = 1000;
 
 function playerMsg_surrender(msg) {
     return server.respond(msg).fail("Game has already ended");
@@ -131,7 +130,7 @@ function buildGwCampaignRestartPreparePayload() {
     };
 }
 
-// Orchestrates the "full process restart" strategy requested for co-op GW:
+// Performs a full server restart for co-op GW:
 // 1) broadcast restart prep to all clients
 // 2) shut down sim/server process so host can start a fresh campaign server
 // 3) clients reconnect through UI-side retry logic
@@ -156,7 +155,7 @@ function beginGwCampaignProcessRestart() {
             payload: preparePayload
         });
 
-        // Direct-send to each connected client as a belt-and-suspenders fallback
+        // Direct-send to each connected client as a fallback
         // in case some clients miss a broadcast while changing UI state.
         _.forEach(server.clients, function(client) {
             if (!client || !client.connected)
@@ -175,14 +174,12 @@ function beginGwCampaignProcessRestart() {
         });
     };
 
-    // Broadcast immediately and a few times after, so clients that are busy
-    // processing game_over UI transitions still receive the restart directive.
+    // Broadcast the restart preparation message to all clients so 
+    // they can begin showing the appropriate UI and reconnect logic for the upcoming restart. 
     broadcastPrepare();
-    var rebroadcastCount = Math.max(1, Math.floor(GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS / GW_CAMPAIGN_RESTART_REBROADCAST_INTERVAL_MS) - 1);
-    for (var i = 1; i <= rebroadcastCount; i++) {
-        _.delay(broadcastPrepare, GW_CAMPAIGN_RESTART_REBROADCAST_INTERVAL_MS * i);
-    }
 
+    // Now we delay the process shutdown to give clients enough time to receive the restart message and 
+    // switch into reconnect mode before we kill the server. 
     _.delay(function() {
         console.log('[GW_COOP] Executing process-level restart from game_over after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
         // Ensure process exits after sim shutdown so clients can reconnect to a

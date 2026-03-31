@@ -20,7 +20,6 @@
         var reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
         var useLocalServer = ko.observable().extend({ session: 'use_local_server' });
         var gameContent = ko.observable().extend({ session: 'game_content' });
-        var serverType = ko.observable().extend({ session: 'game_server_type' });
         var connectionAttempts = ko.observable().extend({ session: 'connection_attempts' });
         var connectionRetryDelaySeconds = ko.observable().extend({ session: 'connection_retry_delay_seconds' });
         var uberId = ko.observable().extend({ session: 'uberId' });
@@ -345,6 +344,7 @@
 
         // Server tells all clients to prepare for full process restart.
         handlers.gw_return_to_campaign_restart_prepare = function(payload) {
+            console.log('[GW_COOP] gw_return_to_campaign_restart_prepare received payload=' + JSON.stringify(payload));
             var preparePayload = payload || {};
             var inferredRole = gwCampaignRole();
 

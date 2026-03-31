@@ -6,7 +6,7 @@ $(document).ready(function () {
     var ROLE_VIEWER = 'viewer';
     var DEFAULT_HOST_START_DELAY_MS = 10000;
     var HOST_START_MARGIN_MS = 2000;
-    var DEFAULT_VIEWER_RECONNECT_DELAY_MS = 12000;
+    var VIEWER_RECONNECT_MARGIN_MS = 500;
 
     function GwCampaignRestartLoadingViewModel() {
         var self = this;
@@ -61,10 +61,17 @@ $(document).ready(function () {
             var role = self.role() === ROLE_HOST ? ROLE_HOST : ROLE_VIEWER;
             var content = context.content || reconnectInfo.content || 'PAExpansion1';
             var shutdownDelay = _.isFinite(context.shutdown_delay_ms) ? context.shutdown_delay_ms : DEFAULT_HOST_START_DELAY_MS;
-            var hostStartDelay = Math.max(DEFAULT_HOST_START_DELAY_MS, shutdownDelay + HOST_START_MARGIN_MS);
-            var viewerReconnectDelay = Math.max(DEFAULT_VIEWER_RECONNECT_DELAY_MS, hostStartDelay + 2000);
+            var restartToken = _.isFinite(context.restart_token) ? context.restart_token : undefined;
+            var elapsedSincePrepare = _.isFinite(restartToken)
+                ? Math.max(0, Date.now() - restartToken)
+                // No token means we likely arrived from disconnect fallback, so
+                // treat shutdown as already complete and avoid re-waiting.
+                : shutdownDelay;
+            var remainingShutdownDelay = Math.max(0, shutdownDelay - elapsedSincePrepare);
+            var hostStartDelay = Math.max(0, remainingShutdownDelay + HOST_START_MARGIN_MS);
+            var viewerReconnectDelay = Math.max(0, remainingShutdownDelay + VIEWER_RECONNECT_MARGIN_MS);
 
-            console.log('[GW_COOP] restart_loading begin role=' + role + ' shutdownDelay=' + shutdownDelay + ' hostStartDelay=' + hostStartDelay + ' viewerDelay=' + viewerReconnectDelay);
+            console.log('[GW_COOP] restart_loading begin role=' + role + ' shutdownDelay=' + shutdownDelay + ' remainingShutdown=' + remainingShutdownDelay + ' hostStartDelay=' + hostStartDelay + ' viewerDelay=' + viewerReconnectDelay + ' token=' + restartToken);
 
             self.connectionAttempts(30);
             self.connectionRetryDelaySeconds(2);

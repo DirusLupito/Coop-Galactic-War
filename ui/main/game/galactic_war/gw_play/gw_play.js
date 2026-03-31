@@ -2561,8 +2561,10 @@ requireGW([
                 liveGameScriptGet,
                 liveGameScriptPatchGet
             ) {
+                var patchedLiveGameScript = liveGameScriptGet[0] + liveGameScriptPatchGet[0];
+
                 referee.localFiles({
-                    '/ui/main/game/live_game/live_game.js': liveGameScriptGet[0] + liveGameScriptPatchGet[0]
+                    '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
                 });
 
                 referee.stripSystems();
@@ -2573,6 +2575,12 @@ requireGW([
                     // Persist campaign context into the battle config so gw_lobby can
                     // infer whether this launch is solo GW or campaign-coop GW.
                     var battleConfig = referee.config();
+                    // localFiles are host-local memory mounts only; include the
+                    // patch in config.files so reconnecting/remote clients mount
+                    // the same live_game override.
+                    battleConfig.files = _.assign({}, battleConfig.files || {}, {
+                        '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
+                    });
                     battleConfig.gw_campaign_active = !!self.gwCampaignActive();
 
                     // Mirror current campaign lobby presentation settings so the
