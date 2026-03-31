@@ -138,6 +138,34 @@ function LobbyModel(creator, launchContext) {
         self.tryStart();
     });
     self.creatorDisconnectTimeout = undefined;
+    self.callbackCleanup = [];
+
+    self.clearCreatorDisconnectTimeout = function() {
+        if (!self.creatorDisconnectTimeout)
+            return;
+
+        clearTimeout(self.creatorDisconnectTimeout);
+        delete self.creatorDisconnectTimeout;
+    };
+
+    // Track callback-stack registrations so gw_lobby does not leak disconnect
+    // handlers into later states where they can trigger unintended server exits.
+    var registerCallback = function(target, callbackName, callback) {
+        utils.pushCallback(target, callbackName, callback);
+
+        var removed = false;
+        var remove = function() {
+            if (removed)
+                return;
+
+            removed = true;
+            if (target && target[callbackName] && _.isFunction(target[callbackName].pop))
+                target[callbackName].pop();
+        };
+
+        self.callbackCleanup.push(remove);
+        return remove;
+    };
 
     self.tryStart = function() {
         var connectedClients = _.filter(server.clients, function(client) {
@@ -342,6 +370,13 @@ function LobbyModel(creator, launchContext) {
                 game_options:
                 {
                     game_type: 'Galactic War',
+                    // Persist campaign identity and lobby settings into the battle so
+                    // game_over can run a co-op-specific Continue War restart flow
+                    // without affecting single-player Galactic War behavior.
+                    gw_campaign_active: !!self.campaignActive,
+                    gw_campaign_host_id: self.creator,
+                    gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
+                    gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,
@@ -543,11 +578,21 @@ function LobbyModel(creator, launchContext) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+
+        // We clear the disconnect timeout and client handlers here to prevent a creator disconnect from 
+        // triggering after the lobby has been exited, which would cause unintended server exits 
+        // if the next state also has a creator disconnect handler (like gw_campaign_restart_loading).
+        self.clearCreatorDisconnectTimeout();
+        _.forEachRight(self.callbackCleanup, function(remove) {
+            remove();
+        });
+        self.callbackCleanup = [];
+
         // Keep beacon cleared for single-player sessions.
         server.beacon = null;
     };
 
-    utils.pushCallback(creator, 'onDisconnect', function(onDisconnect) {
+    registerCallback(creator, 'onDisconnect', function(onDisconnect) {
         self.creatorDisconnectTimeout = setTimeout(function() {
             delete self.creatorDisconnectTimeout;
             console.log('GW - Creator timed out');
@@ -556,19 +601,16 @@ function LobbyModel(creator, launchContext) {
         return onDisconnect;
     });
 
-    utils.pushCallback(server, 'onConnect', function (onConnect, client, reconnect) {
+    registerCallback(server, 'onConnect', function (onConnect, client, reconnect) {
         if (client.id === self.creator) {
-            if (self.creatorDisconnectTimeout) {
-                clearTimeout(self.creatorDisconnectTimeout);
-                delete self.creatorDisconnectTimeout;
-            }
+            self.clearCreatorDisconnectTimeout();
 
             self.creatorReady(false);
         }
 
         self.clientConfigReady[client.id] = false;
 
-        utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
+        registerCallback(client, 'onDisconnect', function(onDisconnect) {
             delete self.clientConfigReady[client.id];
             self.updateBeacon();
             self.tryStart();
@@ -582,7 +624,10 @@ function LobbyModel(creator, launchContext) {
     });
 
     self.shutdown = function() {
-        server.onConnect.pop();
+        // Rather than just do server.onConnect.pop(); here, 
+        // we need to clear all the disconnect hooks and timeouts,
+        // and server.onConnect.pop would only clear one callback.
+        self.exit();
     };
 };
 

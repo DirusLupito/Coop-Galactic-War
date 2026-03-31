@@ -34,6 +34,7 @@ function GWCampaignModel(creator) {
     self.creatorId = creator.id;
     self.creatorName = creator.name;
     self.viewerReconnectTimers = {};
+    self.disconnectCleanup = [];
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
     self.lobbyChatHistory = [];
@@ -351,6 +352,7 @@ function GWCampaignModel(creator) {
 
         if (!client._gwCampaignDisconnectAttached) {
             client._gwCampaignDisconnectAttached = true;
+            client._gwCampaignDisconnectCleanupApplied = false;
             utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
                 console.log('[GW_COOP] gw_campaign onDisconnect client=' + client.name + ' id=' + client.id);
 
@@ -370,6 +372,23 @@ function GWCampaignModel(creator) {
                 self.updateControl();
                 return onDisconnect;
             });
+
+            // Keep a deterministic cleanup hook so gw_campaign callbacks do not
+            // leak into later states (e.g. battle/game_over), which can cause
+            // unexpected server.exit() when clients disconnect.
+            var removeDisconnectHook = function() {
+                if (client._gwCampaignDisconnectCleanupApplied)
+                    return;
+
+                client._gwCampaignDisconnectCleanupApplied = true;
+                if (client.onDisconnect && _.isFunction(client.onDisconnect.pop))
+                    client.onDisconnect.pop();
+
+                client._gwCampaignDisconnectAttached = false;
+                delete client._gwCampaignDisconnectCleanup;
+            };
+            client._gwCampaignDisconnectCleanup = removeDisconnectHook;
+            self.disconnectCleanup.push(removeDisconnectHook);
         }
 
         self.updateControl();
@@ -571,6 +590,11 @@ function GWCampaignModel(creator) {
             clearTimeout(timeout);
         });
         self.viewerReconnectTimers = {};
+
+        _.forEachRight(self.disconnectCleanup, function(removeDisconnectHook) {
+            removeDisconnectHook();
+        });
+        self.disconnectCleanup = [];
 
         // For safety's sake, we shouldn't assume that every other view
         // is going to clean up all the things it needs proactively, 
