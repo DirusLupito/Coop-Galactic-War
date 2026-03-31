@@ -1,6 +1,6 @@
 # Coop Galactic War Change Explanations
 
-This document captures how rough-but-working Galactic War coop was introduced, how Galactic War's generated in-memory files work, and how reconnect was later fixed.
+This document captures how rough-but-working Galactic War coop was introduced, how Galactic War's generated in-memory files work, how reconnect was later fixed, how Continue War ultimately stabilized around full server-process restart, and how the galactic war lobby was implemented.
 
 The intent is to preserve the reasoning behind these changes so future contributors and LLMs can follow the same patterns instead of rediscovering them from scratch.
 
@@ -43,6 +43,12 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `2e5ec38` `Single player galactic war no longer broadcasts a server beacon.`
   - `54430b9` `Host can now kick players.`
   - `8b4ae20` `Co-op player no longer sees controls for things they cannot control.`
+- Continue War restart and automatic reconnect commit chain:
+  - `c2da1d3` `Continue war from the host now automatically reopens a lobby.`
+  - `7039a84` `Co-op players now automatically reconnect with the host when continuing the war.`
+  - `36ce3a4` `Fixed an issue where the live game patch wouldn't apply to the co-op players.`
+  - `d32e569` `Saving and exiting once again immediately closes the server.`
+  - `cddd2ca` `Co-op player no longer sees the continue war button.`
 
 ## High-Level Summary
 
@@ -51,11 +57,13 @@ Galactic War coop works by adapting a single-player Galactic War battle into a t
 At a high level, the codebase now does all of the following:
 
 1. Advertises the normally hidden Galactic War battle lobby in the regular multiplayer server browser, while later suppressing solo GW beacons and preserving campaign launch metadata.
-3. Maps connected clients into shared human control for the live battle and later syncs campaign-map coop state through snapshots, actions, and persistence.
-4. Patches the in-game UI so clients can operate against Galactic War's tagged unit specs such as `.player` and `.ai`, including build, action, tooltip, and reconnect refresh paths.
-5. Reconstructs the reconnecting client's Galactic War in-memory file system before allowing it to enter `live_game` again.
-6. Keeps GW campaign coop stable across save/load, reconnect, and third-party mod overrides by preserving local campaign state and re-hooking overridden methods when needed.
-7. Hardens lobby discovery, slot management, chat/settings UX, and startup sequencing so the coop flow stays visible and does not race memory-file mounts.
+2. Maps connected clients into shared human control for the live battle and later syncs campaign-map coop state through snapshots, actions, and persistence.
+3. Patches the in-game UI so clients can operate against Galactic War's tagged unit specs such as `.player` and `.ai`, including build, action, tooltip, and reconnect refresh paths.
+4. Reconstructs the reconnecting client's Galactic War in-memory file system before allowing it to enter `live_game` again.
+5. Keeps GW campaign coop stable across save/load, reconnect, and third-party mod overrides by preserving local campaign state and re-hooking overridden methods when needed.
+6. Hardens lobby discovery, slot management, chat/settings UX, and startup sequencing so the coop flow stays visible and does not race memory-file mounts.
+7. Implements Continue War as an explicit host-triggered restart protocol (`restart_prepare` + process shutdown + reconnect staging), rather than implicit reconnect-on-disconnect fallbacks.
+8. Ensures expected Save-and-Exit semantics by shutting down immediately when host exits in `game_over`, while keeping restart-only behavior isolated to the Continue War path.
 
 ## Original Single-Player Galactic War File Model
 
@@ -1422,3 +1430,100 @@ GWO Re-roll on co-op player side causes a desync. #13
 This desync continues even after the re-roll, and seemingly the only way to recover from it is to leave the session, then delete the local GW save, and finally rejoin.
 ```
 My solution was very simple, I decided to hide the UI elements for the controls for acquiring, deleting, and dismissing tech cards on the co-op player's side. Since Galactic War Overhaul reused the dismiss tech UI element, by hiding dismiss tech on the co-op player's side I also wound up hiding the reroll tech button. As a result the co-op player no longer had the ability to click said buggy button and thus the bug could no longer arise. All I had to do was change `gw_play.css` and `gw_play.html`.
+
+---
+
+## Continue War Process-Restart and Auto-Reconnect Stabilization (Commits `c2da1d3`, `7039a84`, `36ce3a4`, `d32e569`, `cddd2ca`)
+
+This commit chain introduced, stress-tested, and then hardened the final co-op Continue War architecture that is now merged into `main`.
+
+The key architectural decision was:
+
+- **Do not** try to continue campaign flow by reusing the ended battle server process.
+- **Do** treat Continue War as a coordinated full process restart.
+
+### Earlier failed direction: reusing the same process
+
+During early implementation, there was an attempt to implement these changes by reusing the same server process. That is, the server would not be closed, and instead it would just stay open and return to handling the lobby when continue war was pressed.
+
+That approach had many failings and was ultimately fully reverted. Nothing else in the game reuses a single server process for multiple games as far as I know, so it seemed likely that such an approach would be very error prone.
+
+### Final direction: explicit restart protocol
+
+The stable path is now explicit and message-driven:
+
+1. Host clicks Continue War.
+2. Server in `game_over` sends `gw_return_to_campaign_restart_prepare` with role/context metadata.
+3. Clients transition to restart-loading flow by explicit restart intent.
+4. Server performs full shutdown and exits battle process.
+5. Host starts fresh `gw_campaign` process; viewers reconnect via normal connect/retry flow.
+
+This makes Continue War intent unambiguous and keeps normal Save-and-Exit behavior separate.
+
+### Commit `c2da1d3`: first end-to-end restart flow
+
+Introduced the initial full restart flow:
+
+- New host-only server message handler in `game_over` to trigger restart.
+- `restart_prepare` payload broadcast/direct-send with role and campaign metadata.
+- New restart-loading scene (`gw_campaign_restart_loading`) to coordinate host start and viewer reconnect timing.
+- Added campaign metadata into game-over client state so UI can determine host/viewer behavior.
+- Added initial UI-side role-aware Continue War handling and viewer safeguards.
+
+### Commit `7039a84`: reconnect reliability and callback lifecycle cleanup
+
+Hardened state transitions and cleanup:
+
+- Cleaned callback stacks in `gw_lobby` so creator/server/client disconnect hooks do not leak into later states.
+- Reworked `shutdown()` in `gw_lobby` to call full state `exit()` instead of only popping one callback.
+- Added connect-time content fallback for GW reconnects in `connect_to_game`.
+- Added initial game_over menu filtering and reconnect-path adjustments.
+
+### Commit `36ce3a4`: root cause fix for host-only live-game patch execution
+
+Fixed the patch propagation bug where only host executed `live_game_patch`:
+
+- Previously, merged `live_game.js + live_game_patch.js` was mounted only via `referee.localFiles()` (host-local mount).
+- Reconnecting/remote clients restore from replay-config `files`, so they missed the patch.
+- Fix: write patched live game script into `battleConfig.files['/ui/main/game/live_game/live_game.js']` as well.
+
+This resolved several downstream symptoms at once:
+
+- co-op clients now process restart packets through patched handler,
+- co-op clients no longer show host-only econ/behavior anomalies tied to missing patch logic.
+
+### Commit `d32e569`: remove implicit reconnect fallback and restore Save-and-Exit shutdown
+
+This commit separated restart flow from normal exit flow:
+
+- Added explicit host-disconnect shutdown handling in `game_over` for non-restart exits.
+- Removed fallback reconnect-on-disconnect behavior from base `live_game` and `game_over` paths.
+- Removed seed-from-game_over fallback in `live_game_patch`.
+- Kept restart flow only when explicit restart intent was set.
+
+Result:
+
+- Save-and-Exit once again immediately closes server process.
+- Host intentional exit no longer causes viewers to chase a nonexistent resumed session.
+
+### Commit `cddd2ca`: final Continue War button visibility race fix
+
+Addressed a UI ordering race where viewer role metadata could arrive after initial menu generation:
+
+- Cached raw menu payload in `game_over`.
+- Rebuilt menu buttons when role metadata arrives from `server_state`.
+- Reapplied role filtering on each rebuild.
+
+Result:
+
+- co-op viewer no longer sees Continue War once role metadata is applied,
+- host retains control over Continue War action.
+
+### Practical lesson from this chain
+
+For co-op GW Continue War, explicit orchestration beats inference:
+
+1. Use explicit restart messages and role metadata.
+2. Keep normal disconnect/exit paths simple and non-reconnecting.
+3. Ensure any host-side runtime patch is propagated through replay-config file sources, not only local mounts.
+4. Treat UI menu generation as eventually-consistent with role metadata and support rebuilds when authoritative state arrives.
