@@ -210,6 +210,7 @@ _.forEach([
         'playing',
         'game_over',
         'gw_lobby',
+        'gw_campaign',
         'load_replay',
         'load_save',
         'replay',

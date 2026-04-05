@@ -1,5 +1,6 @@
 var console = require('console'); // temporary workaround
 var main = require('main');
+var utils = require('utils');
 var _ = require('thirdparty/lodash');
 var chat_utils = require('chat_utils');
 var content_manager = require('content_manager');
@@ -26,6 +27,11 @@ var armies = [];
 var game_options = {};
 var diplomaticStates = {};
 var client_state;
+var gwCampaignRestartRequested = false;
+
+// Delay before shutdown gives all connected clients enough time to receive
+// the restart-prepare broadcast and switch into reconnect behavior.
+var GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS = 3000;
 
 function playerMsg_surrender(msg) {
     return server.respond(msg).fail("Game has already ended");
@@ -84,6 +90,129 @@ function playerMsg_controlSim(msg) {
         server.writeReplay(msg.payload.name, 'replay');
 };
 
+// Helper that gates restart behavior to co-op GW battles only so we do not
+// alter non-co-op or non-GW game-over behavior.
+function isGwCampaignCoopMatch() {
+    return !!(game_options && game_options.gw_campaign_active);
+}
+
+// IDs can be numeric in some environments and strings in others.
+// We normalize both sides to strings before comparing.
+function normalizeClientId(id) {
+    if (_.isUndefined(id) || id === null)
+        return undefined;
+
+    return String(id);
+}
+
+function isCampaignHostClient(client) {
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+    var clientId = normalizeClientId(client && client.id);
+
+    return !!hostId && !!clientId && hostId === clientId;
+}
+
+// Build the payload that tells clients to enter reconnect mode.
+// This payload is intentionally host-agnostic enough that both host and viewers
+// can use it to coordinate the same restart sequence.
+function buildGwCampaignRestartPreparePayload() {
+    var settings = _.cloneDeep(game_options && game_options.gw_campaign_settings || {});
+    var access = _.cloneDeep(game_options && game_options.gw_campaign_access || {});
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+
+    return {
+        host_id: hostId,
+        settings: settings,
+        access: access,
+        shutdown_delay_ms: GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS,
+        // A timestamp token lets clients ignore stale restart-prep messages
+        // if they ever receive delayed messages from a previous attempt.
+        restart_token: Date.now()
+    };
+}
+
+// Performs a full server restart for co-op GW:
+// 1) broadcast restart prep to all clients
+// 2) shut down sim/server process so host can start a fresh campaign server
+// 3) clients reconnect through UI-side retry logic
+function beginGwCampaignProcessRestart() {
+    if (gwCampaignRestartRequested)
+        return false;
+
+    gwCampaignRestartRequested = true;
+    var preparePayload = buildGwCampaignRestartPreparePayload();
+
+    var broadcastPrepare = function() {
+        var recipients = _.map(_.filter(server.clients, function(client) {
+            return client && client.connected;
+        }), function(client) {
+            return client.id;
+        });
+
+        console.log('[GW_COOP] sending restart_prepare to connected clients=' + JSON.stringify(recipients));
+
+        server.broadcast({
+            message_type: 'gw_return_to_campaign_restart_prepare',
+            payload: preparePayload
+        });
+
+        // Direct-send to each connected client as a fallback
+        // in case some clients miss a broadcast while changing UI state.
+        _.forEach(server.clients, function(client) {
+            if (!client || !client.connected)
+                return;
+
+            var role = isCampaignHostClient(client) ? 'host' : 'viewer';
+
+            client.message({
+                message_type: 'gw_return_to_campaign_restart_prepare',
+                // Include per-client role so UI never has to infer host/viewer
+                // from potentially inconsistent identity fields.
+                payload: _.assign({}, preparePayload, {
+                    role: role
+                })
+            });
+        });
+    };
+
+    // Broadcast the restart preparation message to all clients so 
+    // they can begin showing the appropriate UI and reconnect logic for the upcoming restart. 
+    broadcastPrepare();
+
+    // Now we delay the process shutdown to give clients enough time to receive the restart message and 
+    // switch into reconnect mode before we kill the server. 
+    _.delay(function() {
+        console.log('[GW_COOP] Executing process-level restart from game_over after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
+        // Ensure process exits after sim shutdown so clients can reconnect to a
+        // newly-started campaign server instead of reusing this ended battle process.
+        sim.onShutdown = server.exit;
+        sim.shutdown(true);
+
+        // Fallback exit in case shutdown callback does not fire.
+        _.delay(server.exit, 5000);
+    }, GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS);
+
+    return true;
+}
+
+// Host-only message used by Continue War in co-op GW game_over to trigger a
+// full process restart and reconnect flow.
+function playerMsg_gwReturnToCampaignRestart(msg) {
+    var response = server.respond(msg);
+
+    if (!isGwCampaignCoopMatch())
+        return response.fail('Co-op GW restart is only available for co-op GW matches');
+
+    if (!isCampaignHostClient(msg.client))
+        return response.fail('Only the co-op host can trigger Continue War restart');
+
+    var started = beginGwCampaignProcessRestart();
+    return response.succeed({
+        restarting: true,
+        already_requested: !started
+    });
+}
+
 // game over state should still redirect to live_game eg spectator joining
 exports.url = 'coui://ui/main/game/live_game/live_game.html';
 exports.enter = function (game_over_data)
@@ -93,6 +222,7 @@ exports.enter = function (game_over_data)
     game_options = game_over_data.game_options;
     diplomaticStates = game_over_data.diplomaticStates;
     client_state = game_over_data.client_state;
+    gwCampaignRestartRequested = false;
 
     var GAMEOVER_SHUTDOWN_TIMEOUT = main.GAMEOVER_SHUTDOWN_TIMEOUT;
 
@@ -107,6 +237,46 @@ exports.enter = function (game_over_data)
             server.writeReplay();
         }
     });
+
+    // In co-op GW, continuing the war will restart the server,
+    // but this means that we also need to think about when to actually
+    // shut it down since saving and exiting will also trigger shutdown
+    // albeit one that we don't want to restart from. 
+    // 
+    // Moreover, we delay the shutdown until the end of the restart flow, 
+    // which should not happen when players just want to save and exit.
+    // So we want to track whether we are in the middle of a co-op restart flow, 
+    // and if so, delay the shutdown until the end of that flow.
+    // Otherwise we want to shut down immediately on game over if the host saves and exits.
+    
+    var shutdownForCoopHostDisconnect = _.once(function(reason) {
+        if (gwCampaignRestartRequested || !isGwCampaignCoopMatch())
+            return;
+
+        console.log('[GW_COOP] game_over host disconnect shutdown reason=' + reason);
+        writeReplay();
+        sim.onShutdown = server.exit;
+        sim.shutdown(true);
+    });
+
+    if (isGwCampaignCoopMatch()) {
+        var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+        var hostClient = _.find(server.clients, function(client) {
+            return client && normalizeClientId(client.id) === hostId;
+        });
+
+        if (hostId && hostClient) {
+            utils.pushCallback(hostClient, 'onDisconnect', function(onDisconnect) {
+                shutdownForCoopHostDisconnect('host_onDisconnect');
+                return onDisconnect;
+            });
+
+            cleanup.push(function() {
+                if (hostClient.onDisconnect && hostClient.onDisconnect.length)
+                    hostClient.onDisconnect.pop();
+            });
+        }
+    }
 
     _.delay(function () {
         sim.paused = true;
@@ -146,6 +316,12 @@ exports.enter = function (game_over_data)
         }, GAMEOVER_SHUTDOWN_TIMEOUT * 1000);
 
         timeouts.connectionPolling = setInterval(function () {
+            // Co-op restart intentionally disconnects players from the ended
+            // battle server before scheduled shutdown. Do not let empty-server
+            // polling short-circuit the restart delay window.
+            if (gwCampaignRestartRequested)
+                return;
+
             if (!server.connected) {
                 writeReplay();
                 sim.onShutdown = server.exit;
@@ -236,7 +412,9 @@ exports.enter = function (game_over_data)
         surrender: playerMsg_surrender,
         trim_history_and_restart: playerMsg_trim_history_and_restart,
         control_sim: playerMsg_controlSim,
-        write_replay: playerMsg_writeReplay
+        write_replay: playerMsg_writeReplay,
+        // Host-only co-op GW "Continue War" handler for full process restart.
+        gw_return_to_campaign_restart: playerMsg_gwReturnToCampaignRestart
     };
     _.assign(transientHandlers, chat_utils.getChatHandlers(game_over_data.players, { listen_to_spectators: true, ignore_defeated_state: true }));
     cleanup.push(server.setHandlers(transientHandlers));
@@ -247,6 +425,7 @@ exports.enter = function (game_over_data)
 exports.exit = function(newState) {
     _.forEachRight(cleanup, function(c) { c(); });
     cleanup = [];
+    gwCampaignRestartRequested = false;
     return true;
 };
 
@@ -262,6 +441,16 @@ exports.getClientState = function(client) {
         payload.winner = true;
     else if (losers[client.id])
         payload.loser = true;
+
+    // Per-client co-op role metadata is attached at game_over so the live_game
+    // UI can hide Continue War for viewers and only allow host-triggered restart.
+    payload.gw_campaign_active = isGwCampaignCoopMatch();
+    payload.gw_campaign_host_id = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+    payload.gw_campaign_settings = _.cloneDeep(game_options && game_options.gw_campaign_settings || {});
+    payload.gw_campaign_access = _.cloneDeep(game_options && game_options.gw_campaign_access || {});
+    payload.gw_campaign_role = payload.gw_campaign_active
+        ? (isCampaignHostClient(client) ? 'host' : 'viewer')
+        : 'solo';
 
     return payload;
 };

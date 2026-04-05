@@ -47,6 +47,27 @@ function debug_log(object) {
         console.log(JSON.stringify(object, null, '\t'));
 }
 
+function getReconnectReplayFiles() {
+    var fullReplayConfig = server.getFullReplayConfig && server.getFullReplayConfig();
+    if (!fullReplayConfig || !fullReplayConfig.files)
+        return undefined;
+
+    return fullReplayConfig.files;
+}
+
+function sendReconnectMemoryFilesToClient(client, reason) {
+    var reconnectReplayFiles = getReconnectReplayFiles();
+
+    if (!reconnectReplayFiles)
+        return false;
+
+    client.message({
+        message_type: 'memory_files',
+        payload: reconnectReplayFiles
+    });
+    return true;
+}
+
 function isGalacticWar() {
     var result = game_options ? game_options.game_type === 'Galactic War' : false;
     return result;
@@ -767,6 +788,26 @@ exports.enter = function (config) {
         control_sim: playerMsg_controlSim,
         set_sim_speed_multiplier: playerMsg_setSimSpeedMultiplier,
         surrender: playerMsg_surrender,
+        request_memory_files: function (msg) {
+            var response = server.respond(msg);
+            var sent = false;
+
+            if (isGalacticWar())
+                sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request');
+
+            response.succeed({
+                sent: sent,
+                game_type: game_options && game_options.game_type
+            });
+        },
+        memory_files_received: function (msg) {
+            var response = server.respond(msg);
+
+            response.succeed({
+                acknowledged: true,
+                game_type: game_options && game_options.game_type
+            });
+        }
     };
     _.assign(transientHandlers, chat_utils.getChatHandlers(players, { listen_to_spectators: game_options.listen_to_spectators }));
 
