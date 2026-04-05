@@ -25,6 +25,7 @@ var forceLandingTimeout;
 
 var cleanup = [];
 var cleanupOnEntry = [];
+var mapArmies = {};
 
 var FORCE_START_TIMEOUT = 2 * 60 * 1000; /* in ms */
 var START_PLAYING_DELAY = 5; /* in seconds */
@@ -265,17 +266,127 @@ function forceLanding() {
     }
 }
 
+var MAP_ARMY_NEUTRAL = -1;
+var MAP_ARMY_HOSTILE = -2;
+
+function getGameplayArmyCount() {
+    // These are the only armies that represent players/AI slots.
+    // Special map armies (-1 neutral, -2 hostile) are intentionally excluded.
+    return armies.length;
+}
+
+function createMapArmy(armyType) {
+    var armyDesc;
+    if (armyType === MAP_ARMY_NEUTRAL) {
+        armyDesc = {
+            name: "Neutral Army",
+            primary_color: [255, 255, 255],
+            secondary_color: [0, 0, 0],
+            alliance_group: 0,
+            ai: false,
+            econ_rate: 1
+        };
+    }
+    else if (armyType === MAP_ARMY_HOSTILE) {
+        armyDesc = {
+            name: "Hostile Army",
+            primary_color: [168, 160, 88],
+            secondary_color: [8, 56, 68],
+            alliance_group: 0,
+            ai: false,
+            econ_rate: 1
+        };
+    }
+    else
+        return undefined;
+
+    var creationCheck = sim.armies.length;
+    sim.armies.push(armyDesc);
+    if (creationCheck === sim.armies.length) {
+        console.error("Failed creating special map army", armyType);
+        return undefined;
+    }
+
+    var simArmy = _.last(sim.armies);
+    if (!simArmy)
+        return undefined;
+
+    return {
+        sim: simArmy,
+        id: simArmy.id,
+        index: simArmy.index,
+        special: true
+    };
+}
+
+function updateMapArmyDiplomacy() {
+    var neutralArmy = mapArmies[MAP_ARMY_NEUTRAL];
+    var hostileArmy = mapArmies[MAP_ARMY_HOSTILE];
+
+    _.forEach(armies, function (army) {
+        if (neutralArmy) {
+            // Player armies can attack/reclaim neutral units, but neutral units stay passive.
+            sim.setDiplomaticState(army.id, neutralArmy.id, "neutral");
+            sim.setDiplomaticState(neutralArmy.id, army.id, "neutral");
+        }
+
+        if (hostileArmy) {
+            sim.setDiplomaticState(army.id, hostileArmy.id, "hostile");
+            sim.setDiplomaticState(hostileArmy.id, army.id, "hostile");
+        }
+    });
+
+    if (neutralArmy && hostileArmy) {
+        // Keep map-only neutral factions non-hostile to each other.
+        sim.setDiplomaticState(neutralArmy.id, hostileArmy.id, "allied");
+        sim.setDiplomaticState(hostileArmy.id, neutralArmy.id, "allied");
+    }
+}
+
+function getUnitArmy(armyIndex) {
+    if (armyIndex === MAP_ARMY_NEUTRAL || armyIndex === MAP_ARMY_HOSTILE) {
+        if (!mapArmies[armyIndex]) {
+            mapArmies[armyIndex] = createMapArmy(armyIndex);
+            updateMapArmyDiplomacy();
+        }
+        return mapArmies[armyIndex];
+    }
+
+    return armies[armyIndex];
+}
+
 function setupPlanets(system) {
     _.forEach(system.planets, function (planet, index) {
         _.forEach(planet.units, function (unit) {
-            var armyIndex = _.has(unit, 'army') ? unit.army : 0;
-            var army = armyIndex == -1 ? undefined : armies[armyIndex];
+            var armyIndex = _.has(unit, 'army') ? Number(unit.army) : 0;
+            if (!_.isFinite(armyIndex))
+                armyIndex = 0;
+
+            armyIndex = armyIndex < 0 ? Math.ceil(armyIndex) : Math.floor(armyIndex);
+
+            var army = getUnitArmy(armyIndex);
+            if (!army) {
+                console.error("Invalid army index for map unit", armyIndex, unit.unit_spec);
+                return;
+            }
+
+            var hpFraction = _.has(unit, 'hp_fraction') ? Number(unit.hp_fraction) : undefined;
+            if (_.isFinite(hpFraction)) {
+                if (hpFraction < -1)
+                    hpFraction = -1;
+                else if (hpFraction > 1)
+                    hpFraction = 1;
+            }
+            else
+                hpFraction = undefined;
+
             spawnUnit({
                 army: army,
                 spec: unit.unit_spec,
                 planet: sim.planets[index],
                 position: unit.pos,
-                orientation: unit.orient
+                orientation: unit.orient,
+                hp_fraction: hpFraction
             });
         });
     });
@@ -283,6 +394,8 @@ function setupPlanets(system) {
 
 exports.url = 'coui://ui/main/game/live_game/live_game.html';
 exports.enter = function(config) {
+    mapArmies = {};
+
     if (main.spectators) {
         if (server.beacon)
             server.beacon.state = 'landing';
@@ -387,7 +500,7 @@ exports.enter = function(config) {
     utils.pushCallback(server, 'onConnect', updateConnectionState);
     cleanup.push(function() { server.onConnect.pop(); });
 
-    console.log("Created", sim.armies.length, "armies and", sim.players.length, "players");
+    console.log("Created", getGameplayArmyCount(), "gameplay armies and", sim.players.length, "players");
 
     var planet_zones = {};
     var total_zones = 0;
@@ -415,7 +528,7 @@ exports.enter = function(config) {
             planet_zones[index] = planet.genMetalAndLandingSpots(maxZonesPerArmy,
                                                                  zoneRadius,
                                                                  bufferRadius,
-                                                                 sim.armies.length,
+                                                                 getGameplayArmyCount(),
                                                                  force_random);
             total_zones = total_zones + planet_zones[index].positions.length;
         }
@@ -429,7 +542,7 @@ exports.enter = function(config) {
     _.forEach(sim.planets, processPlanet);
 
     // check that we have enough zones for each army, and regerate if required
-    if (total_zones < sim.armies.length)
+    if (total_zones < getGameplayArmyCount())
     {
         planet_zones = {};
         force_random = true;

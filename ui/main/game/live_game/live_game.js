@@ -1355,7 +1355,8 @@ $(document).ready(function () {
                                            'fire_secondary_weapon',
                                            'ping',
 
-                                           'mass_teleport'
+                                           'mass_teleport',
+                                           'capture'
         ]);
 
         self.targetableCommands = ko.observableArray([false,
@@ -1375,7 +1376,10 @@ $(document).ready(function () {
                                                       true,
 
                                                       false,
-                                                      false]);
+                                                      false,
+
+                                                      false,
+                                                      true]);
 
         self.toPascalCase = function (command) {
             if (!command || !command.length)
@@ -2730,7 +2734,9 @@ $(document).ready(function () {
                         'special move',
                         'unload',
                         'load',
-                        'ping'];
+                        'ping',
+                        'capture',
+                        'mass teleport'];
             var active = active_actionmap();
 
 
