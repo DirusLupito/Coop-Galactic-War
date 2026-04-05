@@ -155,6 +155,7 @@ $(document).ready(function () {
 
         self.allowMove = ko.computed(function() { return self.allowedCommands()['Move']; });
         self.allowAttack = ko.computed(function() { return self.allowedCommands()['Attack']; });
+        self.allowCapture = ko.computed(function() { return self.allowedCommands()['Capture']; });
         self.allowAssist = ko.computed(function() { return self.allowedCommands()['Assist']; });
         self.allowRepair = ko.computed(function() { return self.allowedCommands()['Repair']; });
         self.allowReclaim = ko.computed(function() { return self.allowedCommands()['Reclaim']; });
@@ -192,6 +193,7 @@ $(document).ready(function () {
 
         self.tooltipMove = ko.observable('!LOC:MOVE');
         self.tooltipAttack = ko.observable('!LOC:ATTACK');
+        self.tooltipCapture = ko.observable('!LOC:CAPTURE');
         self.tooltipAltFire = ko.observable('!LOC:ALT-FIRE');
         self.tooltipMassTeleport = ko.observable('MASS-TELEPORT')
         self.tooltipAssist = ko.observable('!LOC:ASSIST');
@@ -206,6 +208,7 @@ $(document).ready(function () {
 
         self.isMove = ko.computed(function () { return self.cmdIndex() === 0; });
         self.isAttack = ko.computed(function () { return self.cmdIndex() === 1; });
+        self.isCapture = ko.computed(function () { return self.cmdIndex() === 15; });
         self.isAssist = ko.computed(function () { return self.cmdIndex() === 2; });
         self.isRepair = ko.computed(function () { return self.cmdIndex() === 3; });
         self.isReclaim = ko.computed(function () { return self.cmdIndex() === 4; });

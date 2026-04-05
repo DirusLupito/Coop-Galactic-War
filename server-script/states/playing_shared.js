@@ -139,15 +139,20 @@ exports.import = function(context) {
         var planet = config.planet;
         var position = config.position;
         var orientation = config.orientation;
+        var hpFraction = config.hp_fraction;
 
         var creationCheck = sim.units.length;
-        sim.units.push({
+        var unitDesc = {
             army: army,
             spec: spec,
             planet: planet,
             position: position,
             orientation: orientation
-        });
+        };
+        if (_.isNumber(hpFraction))
+            unitDesc.hp_fraction = hpFraction;
+
+        sim.units.push(unitDesc);
         if (creationCheck !== sim.units.length) {
             return _.last(sim.units);
         }

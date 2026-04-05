@@ -392,11 +392,22 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+                                        <div class="div_planet_info_square">
+                                            <div class="title">
+                                                <loc>Units</loc>
+                                            </div>
+                                            <div class="count">
+                                                <span class="div_planet_info_label"><loc>Units:</loc> </span><span data-bind="text: customUnitCount">000</span>
+                                            </div>
+                                            <div class="btn_toggle" data-bind="css: { live: api.terrain_editor.editingUnits(), btn_toggle_disabled: planetUnderConstruction }, click: toggleEditUnits">
+                                                <div class="btn_std_label btn_toggle_label">
+                                                    <loc>Edit</loc>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
                                 </div>
-                             
+
                                 <div class="div_planet_info" style="border: 0">
                                     <div class="div_planet_info_title">
                                         <loc>Camera</loc>
@@ -528,6 +539,72 @@
                                             </div>
                                         </div>
                                     </div>-->
+                                </div>
+
+                                <div class="div_planet_info" style="display: none" data-bind="visible: api.terrain_editor.editingUnits()">
+                                    <div class="div_planet_info_title selected_csg">
+                                        <loc>Unit Rendering</loc>
+                                    </div>
+                                    <div class="div_settings_control">
+                                        <div class="div_settings_control_lbl text_input">
+                                            <loc>display mode</loc>
+                                        </div>
+                                        <div class="div_settings_control_form">
+                                            <select class="form-control" data-bind="options: unitRenderModes, optionsText: 'name', optionsValue: 'id', value: unitRenderMode"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="div_planet_info" style="display: none" data-bind="visible: selectedUnitPanelVisible">
+                                    <div class="div_planet_info_title selected_csg">
+                                        <loc>Selected Unit</loc>
+                                    </div>
+                                    <div data-bind="with: selectedUnit">
+                                        <div class="div_planet_info_row" style="align-items: center;">
+                                            <!-- ko if: $data.hasImage() !== false -->
+                                                <img src="" class="img_build_unit" style="margin: 6px 12px 6px 0;" data-bind="attr: { src: image, title: title }, event: { error: function () { $root.onUnitImageError($data); } }" />
+                                            <!-- /ko -->
+                                            <!-- ko if: $data.hasImage() == false -->
+                                                <loc class="img_build_unit" id="noImage" data-bind="text: title"></loc>
+                                            <!-- /ko -->
+                                            <div class="div_planet_info_col" style="flex-grow: 1;">
+                                                <span class="div_planet_info_label"><loc>Spec:</loc> </span><span data-bind="text: unit_spec"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_settings_control">
+                                        <div class="div_settings_control_lbl text_input">
+                                            <loc>army</loc>
+                                        </div>
+                                        <div class="div_settings_control_input">
+                                            <form data-bind="submit: updateSelectedUnitArmy">
+                                                <select class="form-control" data-bind="options: unitArmyModes, optionsText: 'name', optionsValue: 'id', value: selectedUnitArmyMode, event: { change: updateSelectedUnitArmy }"></select>
+                                                <div style="margin-top: 8px;" data-bind="visible: selectedUnitArmyMode() === 'army'">
+                                                    <input class="input_value" type="number" min="0" max="127" data-bind="value: selectedUnitArmyValue, event: { change: updateSelectedUnitArmy }" />
+                                                </div>
+                                                <button type="submit" style="display: none"></button>
+                                            </form>
+                                            <label>
+                                                <input type="checkbox" data-bind="checked: applyArmyToMirroredTwin" />
+                                                <loc>apply to mirrored twin</loc>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="div_settings_control">
+                                        <div class="div_settings_control_lbl text_input">
+                                            <loc>hp fraction</loc>
+                                        </div>
+                                        <div class="div_settings_control_input">
+                                            <form data-bind="submit: updateSelectedUnitHpFraction">
+                                                <input class="input_value" type="number" step="0.01" min="-1" max="1" data-bind="value: selectedUnitHpFraction, event: { change: updateSelectedUnitHpFraction }" />
+                                                <button type="submit" style="display: none"></button>
+                                            </form>
+                                            <label>
+                                                <input type="checkbox" data-bind="checked: applyHpToMirroredTwin" />
+                                                <loc>apply to mirrored twin</loc>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="div_planet_info div_advanced_landing_zones" style="display: none" data-bind="visible: api.terrain_editor.editingLandingZones()">
@@ -1147,6 +1224,75 @@
             <!-- ko foreach: csgCommands -->
                 <span class="csg_command" data-bind="click: $root.handleCsgCommandClick"><span data-bind="text: keyBinding"></span><span data-bind="text: title"></span></span>
             <!-- /ko -->
+        </div>
+    </div>
+
+    <div id="unit_build_bar" class="div_bottom_bar" style="display: none" data-bind="visible: showUnitBuildBar">
+        <div class="div_build_grp">
+            <div id="unit_thumbs">
+                <div class="div_build_bar_menu_cont">
+                    <div class="div_build_bar_menu_tabs receiveMouse">
+                        <!-- ko if: $root.unitSubCategories().length -->
+                        <div class="div_build_bar_sub_tabs">
+                            <!-- ko foreach: $root.unitSubCategories -->
+                            <div class="btn_std_ix" style="text-transform: capitalize"
+                                data-bind="text: $root.unitSubCategoryLabel($data), click_sound: 'default', rollover_sound: 'default', css: { span_build_bar_tab_active: $root.selectedUnitSubCategory() === $data }, click: function () { $root.selectedUnitSubCategory($data); }">
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                        <div class="div_build_bar_page">
+                            <div class="div_build_bar_cont" data-bind="foreach: $root.availableUnits">
+                                <div class="div_build_item" data-bind="click: $root.setTargetUnitSpec, css: { div_active_item: $root.selectedUnitSpec() === spec }">
+                                    <!-- ko if: $data.hasImage() !== false -->
+                                        <img src="" class="img_build_unit" data-bind="attr: { src: image, title: title }, event: { error: function () { $root.onUnitImageError($data); } }" />
+                                    <!-- /ko -->
+                                    <!-- ko if: $data.hasImage() == false -->
+                                        <loc class="img_build_unit" id="noImage" data-bind="text: title"></loc>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div_build_bar_tab_cont receiveMouse">
+                <div class="div_build_bar_tab_background">
+                    <div class="div_build_bar_tab_background_inner">
+                        <span class="tab_grp">
+                            <span class="tab_grp_body">
+                                <!-- ko foreach: $root.unitFactions -->
+                                <span class="span_build_bar_tab"
+                                    data-bind="click_sound: 'default', rollover_sound: 'default', css: { span_build_bar_tab_active: $root.selectedUnitFaction() === $data }, click: function () { $root.selectedUnitFaction($data); }">
+                                    <span class="span_build_bar_tab_label" data-bind="text: $root.unitFactionLabel($data)"></span>
+                                </span>
+                                <!-- /ko -->
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="div_unit_commands">
+            <span>
+                <loc>Select a unit in the palette to grab it, then left click to place it.</loc>
+            </span>
+            <span data-bind="vars: { hotkey: keybindFor('unit_grab_selected') }">
+                <loc>[style=hotkey_title]__hotkey__[/style] grab/move</loc>
+            </span>
+            <span data-bind="vars: { hotkey: keybindFor('unit_delete_selected') }">
+                <loc>[style=hotkey_title]__hotkey__[/style] delete</loc>
+            </span>
+            <span data-bind="vars: { cw: keybindFor('unit_rotate_selected_cw'), ccw: keybindFor('unit_rotate_selected_ccw') }">
+                <loc>[style=hotkey_title]__cw__[/style]/[style=hotkey_title]__ccw__[/style] rotate</loc>
+            </span>
+            <span data-bind="vars: { docile: keybindFor('unit_set_selected_docile'), hostile: keybindFor('unit_set_selected_hostile'), army: keybindFor('unit_set_selected_player_army') }">
+                <loc>[style=hotkey_title]__docile__[/style] docile, [style=hotkey_title]__hostile__[/style] hostile, [style=hotkey_title]__army__[/style] army</loc>
+            </span>
+            <span>
+                <loc>[style=hotkey_title]0-9[/style] set army number</loc>
+            </span>
         </div>
     </div>
 
