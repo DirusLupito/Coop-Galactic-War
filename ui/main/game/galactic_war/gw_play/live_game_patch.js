@@ -12,7 +12,8 @@
         var exitDestination = ko.observable(exitToPlay);
 
         // Session/local state used for the co-op GW "Continue War" restart flow.
-        // This state is only consumed when we are in a co-op campaign game_over.
+        // This must work both in game_over and in defeated-while-playing cases
+        // (for example GWO FFA scenarios where other factions are still alive).
         var gwCampaignEnabled = ko.observable(false).extend({ session: 'gw_campaign_enabled' });
         var gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
         var gwCampaignRestartPending = ko.observable(false).extend({ local: 'gw_campaign_restart_pending' });
@@ -183,7 +184,10 @@
         model.menuReturnToWar = function() {
             // Co-op GW game_over uses a coordinated restart path instead
             // of direct navToGalacticWar so all clients can reconnect together.
-            if (model.gameOver() && gwCampaignEnabled()) {
+            // We also allow this when the human side has been defeated but the
+            // match has not yet transitioned to server game_over.
+            var canUseCampaignRestart = gwCampaignEnabled() && (model.gameOver() || model.isSpectator());
+            if (canUseCampaignRestart) {
                 if (!isCampaignHost())
                     return;
 
@@ -261,12 +265,16 @@
         model.menuConfigGenerator(function() {
             var over_string = tutorial() ? '!LOC:Continue Tutorial' : '!LOC:Continue War';
             var exit_string = hardcore() ? '!LOC:Abandon War' : '!LOC:Surrender';
-            // In co-op campaign game_over, only host can continue war.
+            // In co-op campaign end/defeat flows, only host can continue war.
             // Prefer role from latest server_state metadata, then session role.
             var gameOverClient = lastGameOverClientState || {};
-            var gameOverCampaignActive = !!(model.gameOver() && (gwCampaignEnabled() || gameOverClient.gw_campaign_active));
+            var campaignContinueContext = !!(gwCampaignEnabled() || gameOverClient.gw_campaign_active);
+            var gameOverCampaignActive = campaignContinueContext && (model.gameOver() || model.isSpectator());
             var isViewer = (gameOverClient.gw_campaign_role === 'viewer') || gwCampaignRole() === 'viewer';
             var hideContinueForViewer = gameOverCampaignActive && isViewer;
+            var continueAction = gameOverCampaignActive
+                ? 'menuReturnToWar'
+                : (model.gameOver() ? 'menuReturnToWar' : (hardcore() ? 'menuAbandonWar' : 'menuSurrender'));
 
             var list = [
                 {
@@ -302,8 +310,8 @@
 
             if (!hideContinueForViewer) {
                 list.splice(6, 0, {
-                    label: model.gameOver() ? over_string : exit_string,
-                    action: model.gameOver() ? 'menuReturnToWar' : (hardcore() ? 'menuAbandonWar' : 'menuSurrender'),
+                    label: gameOverCampaignActive || model.gameOver() ? over_string : exit_string,
+                    action: continueAction,
                     game_over: over_string
                 });
             }
@@ -406,16 +414,25 @@
         var oldServerState = handlers.server_state
         handlers.server_state = function(msg) {
 
-            // Capture per-client campaign role metadata from game_over so we can
-            // hide Continue War for viewers and enforce host-only restarts.
-            if (msg && msg.state === 'game_over' && msg.data && msg.data.client) {
-                lastGameOverClientState = msg.data.client;
+            // Capture per-client campaign metadata from both playing and
+            // game_over states so defeated clients in still-running matches can
+            // still use host-only Continue War restart logic correctly.
+            if (msg && msg.data && msg.data.client) {
+                var clientData = msg.data.client;
 
-                if (_.has(msg.data.client, 'gw_campaign_active'))
-                    gwCampaignEnabled(!!msg.data.client.gw_campaign_active);
+                if (_.has(clientData, 'gw_campaign_active')
+                        || _.has(clientData, 'gw_campaign_host_id')
+                        || _.has(clientData, 'gw_campaign_settings')
+                        || _.has(clientData, 'gw_campaign_access')
+                        || _.has(clientData, 'gw_campaign_role')) {
+                    lastGameOverClientState = _.assign({}, lastGameOverClientState || {}, clientData);
+                }
 
-                if (_.isString(msg.data.client.gw_campaign_role))
-                    gwCampaignRole(msg.data.client.gw_campaign_role);
+                if (_.has(clientData, 'gw_campaign_active'))
+                    gwCampaignEnabled(!!clientData.gw_campaign_active);
+
+                if (_.isString(clientData.gw_campaign_role))
+                    gwCampaignRole(clientData.gw_campaign_role);
             }
 
             if (msg.data && msg.state && msg.state === 'game_over') {

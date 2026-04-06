@@ -34,6 +34,11 @@ var players = {};
 var armies = [];
 var game_options = {};
 var diplomaticStates = {};
+var gwCampaignRestartRequested = false;
+
+// Delay before shutdown gives all connected clients enough time to receive
+// the restart-prepare broadcast and switch into reconnect behavior.
+var GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS = 3000;
 
 var cleanup = [];
 
@@ -71,6 +76,120 @@ function sendReconnectMemoryFilesToClient(client, reason) {
 function isGalacticWar() {
     var result = game_options ? game_options.game_type === 'Galactic War' : false;
     return result;
+}
+
+// Co-op campaign restart behavior is intentionally scoped to GW campaign battles
+// so normal matches keep their existing playing-state semantics.
+function isGwCampaignCoopMatch() {
+    return !!(game_options && game_options.gw_campaign_active);
+}
+
+// IDs can be numeric in some environments and strings in others?
+// Normalize before comparing host/client identity across server and UI payloads.
+function normalizeClientId(id) {
+    if (_.isUndefined(id) || id === null)
+        return undefined;
+
+    return String(id);
+}
+
+function isCampaignHostClient(client) {
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+    var clientId = normalizeClientId(client && client.id);
+
+    return !!hostId && !!clientId && hostId === clientId;
+}
+
+// Build a payload that allows both host and viewers to follow a coordinated
+// reconnect timeline after Continue War is triggered mid-match.
+function buildGwCampaignRestartPreparePayload() {
+    var settings = _.cloneDeep(game_options && game_options.gw_campaign_settings || {});
+    var access = _.cloneDeep(game_options && game_options.gw_campaign_access || {});
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+
+    return {
+        host_id: hostId,
+        settings: settings,
+        access: access,
+        shutdown_delay_ms: GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS,
+        // A timestamp token lets clients derive remaining wait time and ignore
+        // stale restart directives from an older attempt.
+        restart_token: Date.now()
+    };
+}
+
+// Performs the same process-level restart strategy used in game_over, but from
+// playing state. This is required for FFA/GWO cases where players are defeated
+// while other factions remain alive and the server never transitions to game_over.
+function beginGwCampaignProcessRestart() {
+    if (gwCampaignRestartRequested)
+        return false;
+
+    gwCampaignRestartRequested = true;
+    var preparePayload = buildGwCampaignRestartPreparePayload();
+
+    var broadcastPrepare = function() {
+        var recipients = _.map(_.filter(server.clients, function(client) {
+            return client && client.connected;
+        }), function(client) {
+            return client.id;
+        });
+
+        console.log('[GW_COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
+
+        server.broadcast({
+            message_type: 'gw_return_to_campaign_restart_prepare',
+            payload: preparePayload
+        });
+
+        // Direct-send as a fallback in case some clients are mid-transition and
+        // miss the broadcast packet while swapping UI panels.
+        _.forEach(server.clients, function(client) {
+            if (!client || !client.connected)
+                return;
+
+            var role = isCampaignHostClient(client) ? 'host' : 'viewer';
+
+            client.message({
+                message_type: 'gw_return_to_campaign_restart_prepare',
+                payload: _.assign({}, preparePayload, {
+                    role: role
+                })
+            });
+        });
+    };
+
+    broadcastPrepare();
+
+    _.delay(function() {
+        console.log('[GW_COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
+
+        sim.onShutdown = server.exit;
+        sim.shutdown(true);
+
+        // Fallback exit in case shutdown callback does not fire.
+        _.delay(server.exit, 5000);
+    }, GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS);
+
+    return true;
+}
+
+// Host-only Continue War trigger that works even when the match is still in
+// playing state (for example, defeated co-op humans with surviving AI factions).
+function playerMsg_gwReturnToCampaignRestart(msg) {
+    var response = server.respond(msg);
+
+    if (!isGwCampaignCoopMatch())
+        return response.fail('Co-op GW restart is only available for co-op GW matches');
+
+    if (!isCampaignHostClient(msg.client))
+        return response.fail('Only the co-op host can trigger Continue War restart');
+
+    var started = beginGwCampaignProcessRestart();
+    return response.succeed({
+        restarting: true,
+        already_requested: !started
+    });
 }
 
 function isAlly(army, targetArmy) {
@@ -733,6 +852,7 @@ exports.enter = function (config) {
         client_state.control.valid_time_range = sim.getValidTimeRange();
 
     game_options = config.game_options;
+    gwCampaignRestartRequested = false;
 
     modifyControlState({ 'malformed': malformed });
 
@@ -784,10 +904,42 @@ exports.enter = function (config) {
     armies = config.armies;
     diplomaticStates = config.diplomaticStates || {};
 
+    // Outside Continue War restart mode, host disconnect should immediately end
+    // locally-hosted co-op GW battle servers so viewers are not left connected
+    // to an orphaned match process.
+    if (isGwCampaignCoopMatch()) {
+        var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+        var hostClient = _.find(server.clients, function(client) {
+            return client && normalizeClientId(client.id) === hostId;
+        });
+
+        if (hostId && hostClient) {
+            var shutdownForCoopHostDisconnect = _.once(function(reason) {
+                if (gwCampaignRestartRequested)
+                    return;
+
+                console.log('[GW_COOP] playing host disconnect shutdown reason=' + reason);
+                sim.onShutdown = server.exit;
+                sim.shutdown(true);
+            });
+
+            utils.pushCallback(hostClient, 'onDisconnect', function(onDisconnect) {
+                shutdownForCoopHostDisconnect('host_onDisconnect');
+                return onDisconnect;
+            });
+
+            cleanup.push(function() {
+                if (hostClient.onDisconnect && hostClient.onDisconnect.length)
+                    hostClient.onDisconnect.pop();
+            });
+        }
+    }
+
     var transientHandlers = {
         control_sim: playerMsg_controlSim,
         set_sim_speed_multiplier: playerMsg_setSimSpeedMultiplier,
         surrender: playerMsg_surrender,
+        gw_return_to_campaign_restart: playerMsg_gwReturnToCampaignRestart,
         request_memory_files: function (msg) {
             var response = server.respond(msg);
             var sent = false;
@@ -1132,24 +1284,35 @@ exports.enter = function (config) {
 exports.exit = function (newState) {
     _.forEachRight(cleanup, function (c) { c(); });
     cleanup = [];
+    gwCampaignRestartRequested = false;
     return true;
 };
 
 exports.getClientState = function (client) {
 
+    var gwCampaignPayload = {
+        gw_campaign_active: isGwCampaignCoopMatch(),
+        gw_campaign_host_id: normalizeClientId(game_options && game_options.gw_campaign_host_id),
+        gw_campaign_settings: _.cloneDeep(game_options && game_options.gw_campaign_settings || {}),
+        gw_campaign_access: _.cloneDeep(game_options && game_options.gw_campaign_access || {}),
+        gw_campaign_role: isGwCampaignCoopMatch()
+            ? (isCampaignHostClient(client) ? 'host' : 'viewer')
+            : 'solo'
+    };
+
     var player = players[client.id];
     if (!player) { //if there is no player you are a spectator
-        return {
+        return _.assign({
             vision_bits: sim.armies.getVisionBits(client),
             game_options: game_options
-        };
+        }, gwCampaignPayload);
     }
     var army = player.army;
-    return {
+    return _.assign({
         // Was { army_id : army.desc.id }  Not sure if change works in 100% of cases or not...
         army_id: army ? army.id : null,
         vision_bits: sim.armies.getVisionBits(client),
         game_options: game_options,
         commander: player.commander
-    };
+    }, gwCampaignPayload);
 };
