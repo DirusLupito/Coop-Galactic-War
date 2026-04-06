@@ -30,14 +30,6 @@
                         </a>
                         <span class="span_hotkey" id="key_attack" data-bind="text: model.keybindsForCommandModes()[1], visible: (model.keybindsForCommandModes()[1] && model.keybindsForCommandModes()[1].length)"></span>
                     </div>
-                    <div class="div_command_item" data-placement="left" data-cmd-idx="15" data-bind="css: {show: allowCapture}, click: function () { setCommandIndex(15) }">
-                        <a href="#" id="cmd_capture" data-placement="left" data-tooltipkey="command_mode_capture" data-bind="tooltip: tooltipCapture, css: { div_command_item_active: isCapture() },
-                            click_sound: 'default',
-                            rollover_sound: 'default'">
-                            <img class="icon_command" src="coui://ui/main/shared/img/icons/icons_command_capture.png" />
-                        </a>
-                        <span class="span_hotkey" id="key_capture" data-bind="text: model.keybindsForCommandModes()[12], visible: (model.keybindsForCommandModes()[12] && model.keybindsForCommandModes()[12].length)"></span>
-                    </div>
                     <div class="div_command_item" data-placement="left" data-cmd-idx="12" data-bind="css: {show: allowFireSecondaryWeapon}, click: function () { setCommandIndex(12) }">
                         <a href="#" id="cmd_fire2nd" data-placement="left" data-tooltipkey="command_mode_alt_fire" data-bind="tooltip: tooltipAltFire, css: { div_command_item_active: isFireSecondaryWeapon() },
                             click_sound: 'default',
@@ -52,7 +44,7 @@
                             rollover_sound: 'default'">
                             <img class="icon_command" src="coui://ui/main/shared/img/icons/icons_command_mass_teleport.png" />
                         </a>
-                        <span class="span_hotkey" id="key_mass_teleport" data-bind="text: model.keybindsForCommandModes()[13], visible: (model.keybindsForCommandModes()[13] && model.keybindsForCommandModes()[13].length)"></span>
+                        <span class="span_hotkey" id="key_mass_teleport" data-bind="text: model.keybindsForCommandModes()[14], visible: (model.keybindsForCommandModes()[14] && model.keybindsForCommandModes()[14].length)"></span>
                     </div>
                     <div class="div_command_item" data-placement="left" data-cmd-idx="2" data-bind="css: {show: allowAssist}, click: function () { setCommandIndex(2) }">
                         <a href="#" id="cmd_assist" data-placement="left" data-tooltipkey="command_mode_assist" data-bind="tooltip: tooltipAssist, css: { div_command_item_active: isAssist() },
@@ -124,7 +116,7 @@
                                 rollover_sound: 'default'">
                             <img class="icon_command" src="coui://ui/main/shared/img/icons/icons_command_stop.png" />
                         </a>
-                        <span class="span_hotkey" id="key_stop" data-bind="text: model.keybindsForCommandModes()[14], visible: (model.keybindsForCommandModes()[14] && model.keybindsForCommandModes()[14].length)"></span>
+                        <span class="span_hotkey" id="key_stop" data-bind="text: model.keybindsForCommandModes()[12], visible: (model.keybindsForCommandModes()[12] && model.keybindsForCommandModes()[12].length)"></span>
                     </div>
                 </div>
             </div>

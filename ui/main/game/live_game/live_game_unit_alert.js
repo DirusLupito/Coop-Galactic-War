@@ -394,7 +394,7 @@ $(document).ready(function () {
                     finalizeAlert();
                 } else {
                     /* wait until we actually have unit data and then show the alert */
-                    var subscription = hasUnitData.subscribe(function() {
+                    var subscription = self.hasUnitData.subscribe(function() {
                         subscription.dispose();
                         finalizeAlert();
                     });
