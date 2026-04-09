@@ -49,6 +49,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `36ce3a4` `Fixed an issue where the live game patch wouldn't apply to the co-op players.`
   - `d32e569` `Saving and exiting once again immediately closes the server.`
   - `cddd2ca` `Co-op player no longer sees the continue war button.`
+  - `46206f1` `Fixed issue with continue war from GWO FFAs.`
+  - `43e243e` `Fixed another issue where co-op players could see the continue war button.`
 
 ## High-Level Summary
 
@@ -1433,7 +1435,7 @@ My solution was very simple, I decided to hide the UI elements for the controls 
 
 ---
 
-## Continue War Process-Restart and Auto-Reconnect Stabilization (Commits `c2da1d3`, `7039a84`, `36ce3a4`, `d32e569`, `cddd2ca`)
+## Continue War Process-Restart and Auto-Reconnect Stabilization (Commits `c2da1d3`, `7039a84`, `36ce3a4`, `d32e569`, `cddd2ca`, `46206f1`, `43e243e`)
 
 This commit chain introduced, stress-tested, and then hardened the final co-op Continue War architecture that is now merged into `main`.
 
@@ -1519,6 +1521,39 @@ Result:
 - co-op viewer no longer sees Continue War once role metadata is applied,
 - host retains control over Continue War action.
 
+### Commit `46206f1`: Continue War for defeated-in-playing (GWO FFA) cases
+
+This commit extended the Continue War restart protocol to work even when the match never transitions to server `game_over`.
+
+What changed:
+
+- Added a host-only `gw_return_to_campaign_restart` handler in `playing.js`.
+- Added `beginGwCampaignProcessRestart()` in `playing.js` so restart-prepare + delayed process shutdown can run from `playing` state.
+- Added host-disconnect immediate shutdown in co-op GW `playing` state (outside explicit restart mode), so orphaned local battle servers do not linger.
+- Added co-op campaign payload (`gw_campaign_active`, `gw_campaign_host_id`, `gw_campaign_role`, settings/access) to `playing.getClientState`, so clients receive role/intent metadata in ongoing matches.
+- Updated `live_game_patch.menuReturnToWar` / menu logic to treat defeated-while-playing spectator contexts the same as game-over for Continue War visibility and action routing.
+
+Why this mattered:
+
+- In GWO FFA-style cases, the human side can be eliminated while AI factions keep fighting, so `game_over` never fires for the defeated clients.
+- Continue War must still function there, which means restart orchestration and role metadata must exist in `playing`, not only `game_over`.
+
+### Commit `43e243e`: role-driven Continue War filtering in both menu surfaces
+
+This commit fixed a follow-up UI inconsistency where viewer filtering was correct in one panel but not the other.
+
+What changed:
+
+- `game_over.js`: made role/session usage explicit and updated role metadata handling before the `game_over`-only branch, so filtering still updates in defeated-while-playing flows.
+- `live_game.js`: persisted `gwCampaignRole` in session and updated it from `server_state` client payload.
+- `live_game_menu.js`: filtered Continue War by role and refreshed role from parent `live_game` model while applying menu state.
+- `generate_mod.py`: added `ui/main/game/live_game/live_game_menu.js` to copy list so menu filtering changes are actually shipped in generated builds.
+
+Why this mattered:
+
+- Fixing only one panel left the other path stale because role propagation timing and panel data sources were different.
+- Shipping pipeline coverage was part of the bug: if `live_game_menu.js` is not included in build copy lists, source fixes can look correct locally but never reach runtime.
+
 ### Practical lesson from this chain
 
 For co-op GW Continue War, explicit orchestration beats inference:
@@ -1527,3 +1562,5 @@ For co-op GW Continue War, explicit orchestration beats inference:
 2. Keep normal disconnect/exit paths simple and non-reconnecting.
 3. Ensure any host-side runtime patch is propagated through replay-config file sources, not only local mounts.
 4. Treat UI menu generation as eventually-consistent with role metadata and support rebuilds when authoritative state arrives.
+5. If Continue War should exist in defeated-but-not-game-over contexts, implement role/restart logic in `playing` as first-class behavior, not as a `game_over` side effect.
+6. For multi-panel UI fixes, verify both data flow and packaging flow (for example `generate_mod.py` copy list), otherwise one panel can remain unfixed at runtime.
