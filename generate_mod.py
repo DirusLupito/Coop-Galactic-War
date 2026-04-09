@@ -44,6 +44,8 @@ FILES_TO_COPY = [
      "ui/main/game/live_game/live_game.js"),
     ("ui/main/game/live_game/live_game_build_bar.js",
      "ui/main/game/live_game/live_game_build_bar.js"),
+    ("ui/main/game/live_game/live_game_menu.js",
+     "ui/main/game/live_game/live_game_menu.js"),
     # Server script files
     ("server-script/states/gw_lobby.js",
      "server-script/states/gw_lobby.js"),

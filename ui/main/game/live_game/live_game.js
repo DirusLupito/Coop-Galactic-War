@@ -770,6 +770,7 @@ $(document).ready(function () {
         self.cheatAllowCreateUnit = ko.observable(false).extend({ session: 'cheat_allow_create_unit' });
         self.cheatAllowModDataUpdates = ko.observable(false).extend({ session: 'cheat_allow_mod_data_updates' });
 
+        self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
         self.uberId = ko.observable().extend({ session: 'uberId' });
         self.haveUberNet = ko.computed(function () {
             return !!self.uberId();
@@ -4115,6 +4116,9 @@ $(document).ready(function () {
                 model.armyId(msg.data.client.army_id);
             else
                 model.armyId(undefined);
+
+            if (msg.data.client && _.isString(msg.data.client.gw_campaign_role))
+                model.gwCampaignRole(msg.data.client.gw_campaign_role);
 
             if (msg.data.client && msg.data.client.vision_bits)
                 handlers.vision_bits(msg.data.client.vision_bits)

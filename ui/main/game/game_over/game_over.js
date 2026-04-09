@@ -85,14 +85,15 @@ $(document).ready(function () {
         self.victors = ko.observableArray([]);
         self.playerIsWinner = ko.observable(false);
         self.gwCampaignActive = ko.observable(false);
-        self.gwCampaignRole = ko.observable('solo');
+        self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
         self.rawMenuConfig = [];
 
         self.isGwCampaignViewer = ko.computed(function () {
-            return self.gwCampaignActive() && self.gwCampaignRole() === 'viewer';
+            return self.gwCampaignRole() === 'viewer';
         });
 
         self.filterMenuButtonsForRole = function(menu) {
+            console.log("[GW_COOP] filterMenuButtonsForRole function called with role: " + self.gwCampaignRole() + " and menu: ", menu);
             if (!self.isGwCampaignViewer())
                 return menu;
 
@@ -607,6 +608,18 @@ $(document).ready(function () {
     };
 
     handlers.server_state = function (msg) {
+        if (msg && msg.data && msg.data.client) {
+            if (_.has(msg.data.client, 'gw_campaign_active'))
+                model.gwCampaignActive(!!msg.data.client.gw_campaign_active);
+
+            if (_.isString(msg.data.client.gw_campaign_role))
+                model.gwCampaignRole(msg.data.client.gw_campaign_role);
+
+            // Role metadata may arrive before game_over state; keep menu
+            // filtering up-to-date in defeated-while-playing flows.
+            model.rebuildMenuButtons();
+        }
+
         if (!msg.state.endsWith('game_over'))
             return;
 
@@ -617,20 +630,8 @@ $(document).ready(function () {
         if (msg.data)
         {
             model.connected(true);
-            model.playerIsWinner(!!msg.data.client.winner);
+            model.playerIsWinner(!!(msg.data.client && msg.data.client.winner));
             model.draw(false);
-
-            if (msg.data.client) {
-                if (_.has(msg.data.client, 'gw_campaign_active'))
-                    model.gwCampaignActive(!!msg.data.client.gw_campaign_active);
-
-                if (_.isString(msg.data.client.gw_campaign_role))
-                    model.gwCampaignRole(msg.data.client.gw_campaign_role);
-
-                // Role metadata can arrive after initial menuConfig query; rebuild
-                // button list to enforce viewer-side Continue War filtering.
-                model.rebuildMenuButtons();
-            }
 
             gameOverMsg = msg.data.game_over;
             gameOverText = "";
