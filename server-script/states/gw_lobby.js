@@ -496,6 +496,23 @@ function LobbyModel(creator, launchContext) {
         self.sendGWConfigToClient();
     });
 
+    var normalizeCampaignSyncedFilePath = function(filePath) {
+        if (!_.isString(filePath) || !filePath.length)
+            return '';
+
+        var normalizedPath = filePath.replace(/\\/g, '/');
+        if (normalizedPath.charAt(0) !== '/')
+            normalizedPath = '/' + normalizedPath;
+
+        if (normalizedPath.indexOf('/client_mods/') === 0) {
+            var paIndex = normalizedPath.indexOf('/pa/');
+            if (paIndex >= 0)
+                return normalizedPath.substring(paIndex);
+        }
+
+        return normalizedPath;
+    };
+
     var playerMsg = {
         set_config : function(msg, response)
         {
@@ -503,12 +520,50 @@ function LobbyModel(creator, launchContext) {
                 return response.fail('Configuration already set');
             }
 
-            self.refreshCampaignContextFromConfig(msg.payload);
+            var incomingConfig = msg.payload || {};
+            var syncedFiles = self.launchContext.gw_campaign_synced_client_files;
+            if (self.campaignActive && _.isObject(syncedFiles) && _.keys(syncedFiles).length) {
+                var remappedSyncedFiles = {};
+                var remappedSyncedCount = 0;
+                _.forEach(syncedFiles, function(content, filePath) {
+                    var normalizedPath = normalizeCampaignSyncedFilePath(filePath);
+                    if (!normalizedPath.length)
+                        return;
 
-            var validResult = self.validateConfig(msg.payload);
+                    if (normalizedPath !== filePath)
+                        remappedSyncedCount += 1;
+
+                    remappedSyncedFiles[normalizedPath] = content;
+                });
+
+                var canonicalSyncedKeys = _.keys(remappedSyncedFiles);
+                var canonicalClientModsPrefixCount = _.filter(canonicalSyncedKeys, function(filePath) {
+                    return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
+                }).length;
+
+                incomingConfig = _.cloneDeep(incomingConfig);
+                incomingConfig.files = _.assign({}, _.cloneDeep(remappedSyncedFiles), incomingConfig.files || {});
+
+                var hasGrenadierHit = _.has(incomingConfig.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx');
+                var hasGrenadierTrail = _.has(incomingConfig.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_trail.pfx');
+                var hasSupportCommanderTrail = _.has(incomingConfig.files, '/pa/units/land/bot_support_commander/bot_support_commander_ammo_trail.pfx');
+                var missingCritical = [];
+                if (!hasGrenadierHit)
+                    missingCritical.push('/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx');
+                if (!hasGrenadierTrail)
+                    missingCritical.push('/pa/units/land/bot_grenadier/bot_grenadier_ammo_trail.pfx');
+                if (!hasSupportCommanderTrail)
+                    missingCritical.push('/pa/units/land/bot_support_commander/bot_support_commander_ammo_trail.pfx');
+
+                console.log('[GW_COOP] gw_lobby merged synced campaign client files raw_count=' + _.keys(syncedFiles).length + ' canonical_count=' + canonicalSyncedKeys.length + ' remapped_count=' + remappedSyncedCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' total_files=' + _.keys(incomingConfig.files).length + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail + ' missing_critical_count=' + missingCritical.length + ' missing_critical_paths=' + (missingCritical.length ? missingCritical.join('|') : 'none'));
+            }
+
+            self.refreshCampaignContextFromConfig(incomingConfig);
+
+            var validResult = self.validateConfig(incomingConfig);
             var validResponse = function(valid) {
                 if (valid) {
-                    self.config(msg.payload);
+                    self.config(incomingConfig);
                     response.succeed();
                 }
                 else {

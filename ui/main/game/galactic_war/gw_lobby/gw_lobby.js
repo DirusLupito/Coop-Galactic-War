@@ -106,6 +106,27 @@ $(document).ready(function() {
         if (!payload || !payload.files)
             return;
 
+        var payloadFileKeys = _.keys(payload.files);
+        var payloadClientModsPrefixCount = _.filter(payloadFileKeys, function(path) {
+            return _.isString(path) && path.indexOf('/client_mods/') === 0;
+        }).length;
+        var payloadPaPrefixCount = _.filter(payloadFileKeys, function(path) {
+            return _.isString(path) && path.indexOf('/pa/') === 0;
+        }).length;
+
+        var hasGrenadierHit = _.has(payload.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx');
+        var hasGrenadierTrail = _.has(payload.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_trail.pfx');
+        var hasSupportCommanderTrail = _.has(payload.files, '/pa/units/land/bot_support_commander/bot_support_commander_ammo_trail.pfx');
+
+        if (payloadClientModsPrefixCount) {
+            var clientModsSamples = _.take(_.filter(payloadFileKeys, function(path) {
+                return _.isString(path) && path.indexOf('/client_mods/') === 0;
+            }), 5);
+            console.warn('[GW_COOP] gw_lobby.gw_config still has /client_mods/ paths count=' + payloadClientModsPrefixCount + ' samples=' + clientModsSamples.join('|'));
+        }
+
+        console.log('[GW_COOP] gw_lobby.gw_config received files=' + payloadFileKeys.length + ' pa_prefix_count=' + payloadPaPrefixCount + ' client_mods_prefix_count=' + payloadClientModsPrefixCount + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail);
+
         if (!payload.files['/pa/units/unit_list.json']) {
             var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
             var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
@@ -122,11 +143,17 @@ $(document).ready(function() {
         // Do not globally unmount memory files here. Community mod hooks on
         // unmountAllMemoryFiles can trigger broad remount activity and race
         // with GW lobby startup on some machines.
-        api.file.mountMemoryFiles(cookedFiles).then(function() {
-            model.gwConfigMounted(true);
-            api.game.setUnitSpecTag('.player');
-            model.send_message('gw_config_ready', {});
-        });
+        api.file.mountMemoryFiles(cookedFiles).then(
+            function() {
+                console.log('[GW_COOP] gw_lobby.gw_config mountMemoryFiles complete mounted_files=' + _.keys(cookedFiles).length);
+                model.gwConfigMounted(true);
+                api.game.setUnitSpecTag('.player');
+                model.send_message('gw_config_ready', {});
+            },
+            function(err) {
+                console.error('[GW_COOP] gw_lobby.gw_config mountMemoryFiles failed', err);
+            }
+        );
     };
 
     handlers.server_state = function(payload) {

@@ -37,6 +37,8 @@ function GWCampaignModel(creator) {
     self.disconnectCleanup = [];
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
+    self.firstClientModPayload = undefined;
+    self.clientModPayloadByIndex = {};
     self.lobbyChatHistory = [];
     self.access = {
         password: '',
@@ -98,6 +100,65 @@ function GWCampaignModel(creator) {
     self.buildGwLobbyLaunchContext = function(payload) {
         var data = payload || {};
         var payloadSettings = data.gw_campaign_settings || {};
+        var syncedModIndex = 6;
+        var syncedPayload = self.clientModPayloadByIndex[syncedModIndex] || {};
+        var normalizeMountedFilePath = function(filePath, mountPath) {
+            if (!_.isString(filePath) || !filePath.length)
+                return '';
+
+            var normalizedPath = filePath.replace(/\\/g, '/');
+            if (normalizedPath.charAt(0) !== '/')
+                normalizedPath = '/' + normalizedPath;
+
+            var normalizedMountPath = _.isString(mountPath) ? mountPath.replace(/\\/g, '/') : '';
+            if (normalizedMountPath.length) {
+                if (normalizedMountPath.charAt(0) !== '/')
+                    normalizedMountPath = '/' + normalizedMountPath;
+                if (normalizedMountPath.charAt(normalizedMountPath.length - 1) !== '/')
+                    normalizedMountPath += '/';
+
+                if (normalizedPath.indexOf(normalizedMountPath) === 0)
+                    return '/' + normalizedPath.substring(normalizedMountPath.length);
+            }
+
+            var paIndex = normalizedPath.indexOf('/pa/');
+            if (paIndex >= 0)
+                return normalizedPath.substring(paIndex);
+
+            return normalizedPath;
+        };
+
+        var rawSyncedFiles = _.isObject(syncedPayload.files) ? syncedPayload.files : {};
+        var syncedFiles = {};
+        var remappedFileCount = 0;
+        var duplicateCanonicalPathCount = 0;
+        _.forEach(rawSyncedFiles, function(content, filePath) {
+            var normalizedPath = normalizeMountedFilePath(filePath, syncedPayload.mount_path);
+            if (!normalizedPath.length)
+                return;
+
+            if (normalizedPath !== filePath)
+                remappedFileCount += 1;
+
+            if (_.has(syncedFiles, normalizedPath) && syncedFiles[normalizedPath] !== content)
+                duplicateCanonicalPathCount += 1;
+
+            syncedFiles[normalizedPath] = content;
+        });
+        var syncedFileCount = _.keys(syncedFiles).length;
+        var rawSyncedFileCount = _.keys(rawSyncedFiles).length;
+        var canonicalClientModsPrefixCount = _.filter(_.keys(syncedFiles), function(filePath) {
+            return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
+        }).length;
+
+        var expectedCriticalPaths = [
+            '/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx',
+            '/pa/units/land/bot_grenadier/bot_grenadier_ammo_trail.pfx',
+            '/pa/units/land/bot_support_commander/bot_support_commander_ammo_trail.pfx'
+        ];
+        var missingCriticalPaths = _.filter(expectedCriticalPaths, function(path) {
+            return !_.has(syncedFiles, path);
+        });
         var settings = {
             game_name: _.isString(self.settings.game_name) ? self.settings.game_name : 'GW Co-op Campaign',
             tag: _.isString(self.settings.tag) ? self.settings.tag : 'Testing',
@@ -112,11 +173,15 @@ function GWCampaignModel(creator) {
         if (!_.isString(settings.tag) && _.isString(payloadSettings.tag))
             settings.tag = payloadSettings.tag;
 
+        console.log('[GW_COOP] gw_campaign buildGwLobbyLaunchContext synced_mod_index=' + syncedModIndex + ' raw_synced_file_count=' + rawSyncedFileCount + ' canonical_synced_file_count=' + syncedFileCount + ' remapped_file_count=' + remappedFileCount + ' duplicate_canonical_count=' + duplicateCanonicalPathCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' missing_critical_count=' + missingCriticalPaths.length + ' missing_critical_paths=' + (missingCriticalPaths.length ? missingCriticalPaths.join('|') : 'none'));
+
         return {
             gw_campaign_active: true,
             current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
             settings: settings,
             max_clients: self.maxClients,
+            gw_campaign_synced_client_mod_index: syncedModIndex,
+            gw_campaign_synced_client_files: syncedFiles,
             access: {
                 password: _.isString(self.access.password) ? self.access.password : '',
                 friends: _.cloneDeep(bouncer.getWhitelist()),
@@ -340,6 +405,107 @@ function GWCampaignModel(creator) {
         });
     };
 
+    self.sendClientModDataToClient = function(client, reason) {
+        if (!client || !client.connected)
+            return;
+
+        if (self.getRoleForClient(client) !== 'viewer')
+            return;
+
+        var MAX_PART_CHARS = 60000;
+        var keys = _.keys(self.clientModPayloadByIndex);
+        if (!keys.length) {
+            console.log('[GW_COOP] gw_campaign mod_sync skipped for client=' + client.name + ' id=' + client.id + ' reason=' + (reason || 'join') + ' no_stored_payload');
+            return;
+        }
+
+        var indexes = _.chain(keys)
+            .map(function(key) {
+                var parsed = parseInt(key, 10);
+                return _.isFinite(parsed) ? parsed : undefined;
+            })
+            .filter(function(index) {
+                return !_.isUndefined(index);
+            })
+            .sortBy()
+            .value();
+
+        _.forEach(indexes, function(index) {
+            var stored = self.clientModPayloadByIndex[index];
+            if (!stored)
+                return;
+
+            var filePaths = _.keys(stored.files || {}).sort();
+            var missingFiles = _.isArray(stored.missing_files) ? stored.missing_files : [];
+            var sentParts = 0;
+
+            client.message({
+                message_type: 'gw_campaign_client_mod_sync',
+                payload: {
+                    index: index,
+                    phase: 'begin',
+                    reason: reason || 'join',
+                    timestamp: Date.now(),
+                    mod: _.cloneDeep(stored.meta),
+                    mount_path: stored.mount_path || '',
+                    roots: _.cloneDeep(stored.roots || []),
+                    file_count: filePaths.length
+                }
+            });
+
+            _.forEach(filePaths, function(filePath) {
+                var rawText = stored.files[filePath];
+                if (!_.isString(rawText))
+                    rawText = '';
+
+                var partCount = Math.max(1, Math.ceil(rawText.length / MAX_PART_CHARS));
+                var partIndex;
+                for (partIndex = 0; partIndex < partCount; partIndex++) {
+                    var startIndex = partIndex * MAX_PART_CHARS;
+                    var endIndex = Math.min(rawText.length, startIndex + MAX_PART_CHARS);
+                    client.message({
+                        message_type: 'gw_campaign_client_mod_sync',
+                        payload: {
+                            index: index,
+                            phase: 'file_part',
+                            file_path: filePath,
+                            file_part_index: partIndex,
+                            file_part_count: partCount,
+                            data: rawText.substring(startIndex, endIndex)
+                        }
+                    });
+                    sentParts += 1;
+                }
+            });
+
+            _.forEach(missingFiles, function(missingPath) {
+                client.message({
+                    message_type: 'gw_campaign_client_mod_sync',
+                    payload: {
+                        index: index,
+                        phase: 'file_missing',
+                        file_path: missingPath
+                    }
+                });
+            });
+
+            client.message({
+                message_type: 'gw_campaign_client_mod_sync',
+                payload: {
+                    index: index,
+                    phase: 'complete',
+                    reason: reason || 'join',
+                    timestamp: Date.now(),
+                    file_count: filePaths.length,
+                    missing_file_count: missingFiles.length,
+                    sent_part_count: sentParts
+                }
+            });
+
+            console.log('[GW_COOP] gw_campaign mod_sync sent to client=' + client.name + ' id=' + client.id + ' index=' + index + ' files=' + filePaths.length + ' missing=' + missingFiles.length + ' parts=' + sentParts + ' reason=' + (reason || 'join'));
+        });
+    };
+
     self.attachClientLifecycle = function(client, reconnect) {
         if (!client)
             return;
@@ -394,6 +560,7 @@ function GWCampaignModel(creator) {
         self.updateControl();
         self.sendRoleToClient(client);
         self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
+        self.sendClientModDataToClient(client, reconnect ? 'reconnect' : 'join');
     };
 
     // Called when the server first enters the gw_campaign state. 
@@ -456,6 +623,133 @@ function GWCampaignModel(creator) {
                 });
 
                 server.respond(msg).succeed();
+            },
+            gw_campaign_client_mod_payload: function(msg) {
+                if (msg.client.id !== self.creatorId)
+                    return server.respond(msg).fail('Only host can publish client mod payload');
+
+                var payload = msg.payload || {};
+                var index = _.isNumber(payload.index) ? payload.index : -1;
+                var phase = _.isString(payload.phase) ? payload.phase : 'single';
+                var stored = self.clientModPayloadByIndex[index];
+                if (!stored || phase === 'begin' || phase === 'single') {
+                    stored = {
+                        index: index,
+                        phase: phase,
+                        meta: undefined,
+                        mount_path: '',
+                        roots: [],
+                        expected_file_count: 0,
+                        files: {},
+                        file_parts: {},
+                        missing_files: [],
+                        received_part_count: 0,
+                        complete: false,
+                        started_at: Date.now(),
+                        updated_at: Date.now()
+                    };
+                    self.clientModPayloadByIndex[index] = stored;
+                }
+
+                stored.phase = phase;
+                stored.updated_at = Date.now();
+
+                var isFirstReceipt = !self.firstClientModPayload;
+                if (isFirstReceipt) {
+                    self.firstClientModPayload = {
+                        from_id: msg.client.id,
+                        from_name: msg.client.name,
+                        received_at: Date.now(),
+                        payload: _.cloneDeep(payload)
+                    };
+
+                    var payloadText;
+                    try {
+                        payloadText = JSON.stringify(payload);
+                    }
+                    catch (e) {
+                        payloadText = '[unserializable]';
+                    }
+
+                    console.log('[GW_COOP] gw_campaign first_client_mod_payload from=' + msg.client.name + ' id=' + msg.client.id + ' index=' + index + ' payload=' + payloadText);
+                }
+
+                if (phase === 'single' || phase === 'begin') {
+                    stored.meta = _.cloneDeep(payload.mod);
+                    stored.mount_path = _.isString(payload.mount_path) ? payload.mount_path : stored.mount_path;
+                    stored.roots = _.isArray(payload.roots) ? _.cloneDeep(payload.roots) : [];
+                    stored.expected_file_count = _.isNumber(payload.file_count) ? payload.file_count : 0;
+                    stored.files = {};
+                    stored.file_parts = {};
+                    stored.missing_files = [];
+                    stored.received_part_count = 0;
+                    stored.complete = (phase === 'single');
+
+                    console.log('[GW_COOP] gw_campaign mod_payload_begin index=' + index + ' expected_files=' + stored.expected_file_count + ' phase=' + phase);
+                }
+
+                if (phase === 'file_part') {
+                    var filePath = _.isString(payload.file_path) ? payload.file_path : '';
+                    var partIndex = _.isNumber(payload.file_part_index) ? payload.file_part_index : -1;
+                    var partCount = _.isNumber(payload.file_part_count) ? payload.file_part_count : 0;
+                    var data = _.isString(payload.data) ? payload.data : '';
+
+                    if (filePath.length && partIndex >= 0 && partCount > 0 && partIndex < partCount) {
+                        if (!stored.file_parts[filePath]) {
+                            stored.file_parts[filePath] = {
+                                part_count: partCount,
+                                received_count: 0,
+                                parts: new Array(partCount)
+                            };
+                        }
+
+                        var filePartState = stored.file_parts[filePath];
+                        if (!_.isString(filePartState.parts[partIndex]))
+                            filePartState.received_count += 1;
+
+                        filePartState.parts[partIndex] = data;
+                        stored.received_part_count += 1;
+
+                        if (filePartState.received_count >= filePartState.part_count) {
+                            stored.files[filePath] = filePartState.parts.join('');
+                            delete stored.file_parts[filePath];
+                        }
+                    }
+                }
+
+                if (phase === 'file_missing') {
+                    var missingPath = _.isString(payload.file_path) ? payload.file_path : '';
+                    if (missingPath.length && stored.missing_files.indexOf(missingPath) === -1)
+                        stored.missing_files.push(missingPath);
+                }
+
+                if (phase === 'complete') {
+                    stored.complete = true;
+                    stored.reported_sent_part_count = _.isNumber(payload.sent_part_count) ? payload.sent_part_count : stored.received_part_count;
+                    stored.reported_missing_file_count = _.isNumber(payload.missing_file_count) ? payload.missing_file_count : stored.missing_files.length;
+                    stored.reported_unserializable_file_count = _.isNumber(payload.unserializable_file_count) ? payload.unserializable_file_count : 0;
+                    stored.completed_at = Date.now();
+
+                    var storedFileKeys = _.keys(stored.files);
+                    var storedClientModsPrefixCount = _.filter(storedFileKeys, function(filePath) {
+                        return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
+                    }).length;
+                    var storedPaPrefixCount = _.filter(storedFileKeys, function(filePath) {
+                        return _.isString(filePath) && filePath.indexOf('/pa/') === 0;
+                    }).length;
+
+                    console.log('[GW_COOP] gw_campaign mod_payload_complete index=' + index + ' files=' + storedFileKeys.length + ' missing=' + stored.missing_files.length + ' received_parts=' + stored.received_part_count + ' reported_parts=' + stored.reported_sent_part_count + ' mount_path=' + (stored.mount_path || '') + ' stored_client_mods_prefix_count=' + storedClientModsPrefixCount + ' stored_pa_prefix_count=' + storedPaPrefixCount);
+                }
+
+                server.respond(msg).succeed({
+                    stored: true,
+                    first: isFirstReceipt,
+                    index: index,
+                    phase: phase,
+                    file_count: _.keys(stored.files).length,
+                    missing_file_count: stored.missing_files.length,
+                    complete: stored.complete
+                });
             },
             launch_gw_battle: function(msg) {
                 if (msg.client.id !== self.creatorId)

@@ -188,7 +188,373 @@ $(document).ready(function () {
 
         self.needsServerModsUpload = ko.observable(false);
         self.serverModsUploading = ko.observable(false);
+        self.needsGwCampaignMod6Upload = ko.observable(false);
+        self.gwCampaignMod6Uploading = ko.observable(false);
         self.redirectURL = ko.observable(undefined);
+
+        self.uploadGwCampaignMod6ToServer = function(done) {
+            var complete = _.isFunction(done) ? done : function() {};
+
+            var resolveActiveClientMods = function(doneResolve, attempt) {
+                var nextAttempt = _.isNumber(attempt) ? attempt : 0;
+                var manager = window.CommunityModsManager;
+                if (!manager) {
+                    if (nextAttempt >= 100) {
+                        console.log('[GW_COOP] connect_to_game mod6 upload unavailable: CommunityModsManager missing after wait');
+                        doneResolve([]);
+                        return;
+                    }
+
+                    _.delay(function() {
+                        resolveActiveClientMods(doneResolve, nextAttempt + 1);
+                    }, 100);
+                    return;
+                }
+
+                try {
+                    if (_.isFunction(manager.activeClientMods)) {
+                        doneResolve(manager.activeClientMods() || []);
+                        return;
+                    }
+
+                    if (_.isFunction(manager.activeClientZipMods)) {
+                        doneResolve(manager.activeClientZipMods() || []);
+                        return;
+                    }
+                }
+                catch (e) {
+                    console.log('[GW_COOP] connect_to_game mod6 upload unavailable: failed to read active client mods');
+                }
+
+                doneResolve([]);
+            };
+
+            resolveActiveClientMods(function(activeClientMods) {
+                if (!_.isArray(activeClientMods))
+                    activeClientMods = [];
+
+                var targetIndex = 6;
+                var mod = activeClientMods[targetIndex];
+                if (!mod) {
+                    console.log('[GW_COOP] connect_to_game mod6 upload skipped: mod index ' + targetIndex + ' missing');
+                    complete(false);
+                    return;
+                }
+
+                var mountPath = _.isString(mod.mountPath) ? mod.mountPath : '';
+                if (!mountPath.length) {
+                    console.log('[GW_COOP] connect_to_game mod6 upload skipped: mountPath missing');
+                    complete(false);
+                    return;
+                }
+
+                if (mountPath.charAt(mountPath.length - 1) !== '/')
+                    mountPath += '/';
+
+                var modPayload;
+                try {
+                    modPayload = JSON.parse(JSON.stringify(mod));
+                }
+                catch (e) {
+                    console.log('[GW_COOP] connect_to_game mod6 upload skipped: metadata unserializable');
+                    complete(false);
+                    return;
+                }
+
+            var relevantRoots = [
+                'pa/units/',
+                'pa/effects/',
+                'pa/terrain/',
+                'pa/ammo/'
+            ];
+
+            var normalizePathKey = function(path) {
+                if (!_.isString(path))
+                    return '';
+
+                if (path.length > 1 && path.charAt(path.length - 1) === '/')
+                    return path.substring(0, path.length - 1);
+
+                return path;
+            };
+
+            var looksLikeFilePath = function(path) {
+                var normalized = normalizePathKey(path);
+                if (!normalized.length)
+                    return false;
+
+                var slashIndex = normalized.lastIndexOf('/');
+                var leaf = slashIndex >= 0 ? normalized.substring(slashIndex + 1) : normalized;
+                return leaf.indexOf('.') !== -1;
+            };
+
+            var listAsDirectory = function(path) {
+                var listingDeferred = $.Deferred();
+                var slashPath = path.charAt(path.length - 1) === '/' ? path : path + '/';
+
+                var resolveIfDirectory = function(candidatePath, listing) {
+                    if (_.isArray(listing)) {
+                        listingDeferred.resolve({
+                            path: candidatePath,
+                            listing: listing
+                        });
+                        return true;
+                    }
+                    return false;
+                };
+
+                var trySlashPath = function() {
+                    if (slashPath === path) {
+                        listingDeferred.reject();
+                        return;
+                    }
+
+                    api.file.list(slashPath, false).then(function(listing) {
+                        if (!resolveIfDirectory(slashPath, listing))
+                            listingDeferred.reject();
+                    }, function() {
+                        listingDeferred.reject();
+                    });
+                };
+
+                api.file.list(path, false).then(function(listing) {
+                    if (!resolveIfDirectory(path, listing))
+                        trySlashPath();
+                }, function() {
+                    trySlashPath();
+                });
+
+                return listingDeferred.promise();
+            };
+
+            var recursiveListFiles = function(rootPath) {
+                var deferred = $.Deferred();
+                var pendingPaths = [rootPath];
+                var queuedPaths = {};
+                var visitedDirectories = {};
+                var visitedFiles = {};
+                var files = [];
+
+                queuedPaths[normalizePathKey(rootPath)] = true;
+
+                var enqueuePath = function(path) {
+                    if (!_.isString(path) || !path.length)
+                        return;
+
+                    var key = normalizePathKey(path);
+                    if (!key.length || queuedPaths[key])
+                        return;
+
+                    queuedPaths[key] = true;
+                    pendingPaths.push(path);
+                };
+
+                var drain = function() {
+                    if (!pendingPaths.length) {
+                        deferred.resolve(files);
+                        return;
+                    }
+
+                    var nextPath = pendingPaths.shift();
+                    if (!_.isString(nextPath) || !nextPath.length) {
+                        drain();
+                        return;
+                    }
+
+                    if (looksLikeFilePath(nextPath)) {
+                        var directFilePath = normalizePathKey(nextPath);
+                        if (!visitedFiles[directFilePath]) {
+                            visitedFiles[directFilePath] = true;
+                            files.push(directFilePath);
+                        }
+                        drain();
+                        return;
+                    }
+
+                    listAsDirectory(nextPath).then(function(directoryResult) {
+                        var directoryPath = directoryResult.path;
+                        var listing = directoryResult.listing;
+                        var directoryKey = normalizePathKey(directoryPath);
+
+                        if (visitedDirectories[directoryKey]) {
+                            drain();
+                            return;
+                        }
+                        visitedDirectories[directoryKey] = true;
+
+                        _.forEach(listing, function(entryPath) {
+                            if (!_.isString(entryPath) || !entryPath.length)
+                                return;
+
+                            if (entryPath.charAt(entryPath.length - 1) === '/') {
+                                enqueuePath(entryPath);
+                                return;
+                            }
+
+                            if (looksLikeFilePath(entryPath)) {
+                                var listedFilePath = normalizePathKey(entryPath);
+                                if (!visitedFiles[listedFilePath]) {
+                                    visitedFiles[listedFilePath] = true;
+                                    files.push(listedFilePath);
+                                }
+                                return;
+                            }
+
+                            enqueuePath(entryPath);
+                        });
+
+                        drain();
+                    }, function() {
+                        var filePath = normalizePathKey(nextPath);
+                        var rootKey = normalizePathKey(rootPath);
+                        if (filePath !== rootKey && !visitedFiles[filePath]) {
+                            visitedFiles[filePath] = true;
+                            files.push(filePath);
+                        }
+                        drain();
+                    });
+                };
+
+                drain();
+                return deferred.promise();
+            };
+
+                var rootFileLists = [];
+                var pendingRoots = relevantRoots.length;
+
+                var finalizeSendWithFiles = function(filePaths) {
+                    var MAX_PART_CHARS = 60000;
+                    var files = _.isArray(filePaths) ? filePaths : [];
+                    var totalFiles = files.length;
+                    var sentParts = 0;
+                    var missingFiles = 0;
+                    var unserializableFiles = 0;
+
+                    model.send_message('gw_campaign_client_mod_payload', {
+                        index: targetIndex,
+                        phase: 'begin',
+                        reason: 'connect_to_game_host_startup',
+                        timestamp: _.now(),
+                        mod: modPayload,
+                        mount_path: mountPath,
+                        roots: relevantRoots,
+                        file_count: totalFiles
+                    });
+
+                    var finishSend = function() {
+                        model.send_message('gw_campaign_client_mod_payload', {
+                            index: targetIndex,
+                            phase: 'complete',
+                            reason: 'connect_to_game_host_startup',
+                            timestamp: _.now(),
+                            file_count: totalFiles,
+                            missing_file_count: missingFiles,
+                            unserializable_file_count: unserializableFiles,
+                            sent_part_count: sentParts
+                        });
+
+                        console.log('[GW_COOP] connect_to_game mod6 upload complete file_count=' + totalFiles + ' missing=' + missingFiles + ' unserializable=' + unserializableFiles + ' parts=' + sentParts);
+                        complete(true);
+                    };
+
+                    if (!totalFiles) {
+                        finishSend();
+                        return;
+                    }
+
+                    var cursor = 0;
+                    var sendNextFile = function() {
+                        if (cursor >= totalFiles) {
+                            finishSend();
+                            return;
+                        }
+
+                        var filePath = files[cursor];
+                        cursor += 1;
+
+                        var fileUrl = 'coui:/' + filePath;
+                        $.get(fileUrl).done(function(raw) {
+                        var rawText = raw;
+                        if (!_.isString(rawText)) {
+                            try {
+                                rawText = JSON.stringify(raw);
+                            }
+                            catch (e) {
+                                rawText = '[unserializable non-string data]';
+                                unserializableFiles += 1;
+                            }
+                        }
+
+                        var partCount = Math.max(1, Math.ceil(rawText.length / MAX_PART_CHARS));
+                        var partIndex;
+                        for (partIndex = 0; partIndex < partCount; partIndex++) {
+                            var startIndex = partIndex * MAX_PART_CHARS;
+                            var endIndex = Math.min(rawText.length, startIndex + MAX_PART_CHARS);
+                            model.send_message('gw_campaign_client_mod_payload', {
+                                index: targetIndex,
+                                phase: 'file_part',
+                                file_path: filePath,
+                                file_part_index: partIndex,
+                                file_part_count: partCount,
+                                data: rawText.substring(startIndex, endIndex)
+                            });
+                            sentParts += 1;
+                        }
+                        }).fail(function() {
+                        missingFiles += 1;
+                        model.send_message('gw_campaign_client_mod_payload', {
+                            index: targetIndex,
+                            phase: 'file_missing',
+                            file_path: filePath
+                        });
+                        }).always(function() {
+                            if (cursor % 25 === 0 || cursor === totalFiles)
+                                console.log('[GW_COOP] connect_to_game mod6 upload progress sent=' + cursor + '/' + totalFiles + ' parts=' + sentParts);
+
+                            _.defer(sendNextFile);
+                        });
+                    };
+
+                    sendNextFile();
+                };
+
+                if (!pendingRoots) {
+                    finalizeSendWithFiles([]);
+                    return;
+                }
+
+                _.forEach(relevantRoots, function(relativeRoot) {
+                    var rootPath = mountPath + relativeRoot;
+                    recursiveListFiles(rootPath).then(function(filePaths) {
+                        rootFileLists.push(filePaths || []);
+                        console.log('[GW_COOP] connect_to_game mod6 root=' + rootPath + ' file_count=' + (filePaths ? filePaths.length : 0));
+                    }, function() {
+                        console.log('[GW_COOP] connect_to_game mod6 root_list_failed=' + rootPath);
+                    }).always(function() {
+                        pendingRoots -= 1;
+                        if (pendingRoots > 0)
+                            return;
+
+                        var unique = {};
+                        var allFilePaths = [];
+                        _.forEach(rootFileLists, function(paths) {
+                            _.forEach(paths, function(path) {
+                                var normalizedPath = normalizePathKey(path);
+                                if (!normalizedPath.length || unique[normalizedPath])
+                                    return;
+
+                                unique[normalizedPath] = true;
+                                allFilePaths.push(normalizedPath);
+                            });
+                        });
+
+                        allFilePaths.sort();
+                        console.log('[GW_COOP] connect_to_game mod6 total_relevant_files=' + allFilePaths.length);
+                        finalizeSendWithFiles(allFilePaths);
+                    });
+                });
+            });
+        };
 
         self.setup = function () {
 
@@ -200,6 +566,7 @@ $(document).ready(function () {
 
             var action = $.url().param('action');
             var mode = $.url().param('mode') || 'Config';
+            var requestedMode = mode;
             var content = $.url().param('content') || '';
             var replayid = $.url().param('replayid');
             var local = $.url().param('local') === 'true';
@@ -254,6 +621,8 @@ $(document).ready(function () {
 
             if (mode && !_.isEmpty(self.gameContent()))
                 mode = self.gameContent() + ':' + mode;
+
+            self.needsGwCampaignMod6Upload(start && requestedMode === 'gw_campaign');
 
             var connectDelay = DEFAULT_CONNECT_DELAY;
 
@@ -474,6 +843,26 @@ $(document).ready(function () {
        });
     }
 
+    handlers.gw_campaign_client_mod_sync = function(payload) {
+        var data = payload || {};
+        var phase = _.isString(data.phase) ? data.phase : 'unknown';
+
+        if (phase === 'file_part') {
+            console.log('[GW_COOP] connect_to_game gw_campaign_client_mod_sync index=' + data.index + ' phase=file_part file=' + data.file_path + ' part=' + data.file_part_index + '/' + data.file_part_count + ' data=' + (data.data || ''));
+            return;
+        }
+
+        var payloadText;
+        try {
+            payloadText = JSON.stringify(data);
+        }
+        catch (e) {
+            payloadText = '[unserializable]';
+        }
+
+        console.log('[GW_COOP] connect_to_game gw_campaign_client_mod_sync payload=' + payloadText);
+    }
+
     handlers.server_state = function (payload) {
 
         var url = payload.url;
@@ -493,6 +882,28 @@ $(document).ready(function () {
 // if we are uploading server mods then ignore server state messages
 
             if (model.serverModsUploading()) {
+                return;
+            }
+
+// if we are uploading gw campaign host mod data then ignore server state messages
+
+            if (model.gwCampaignMod6Uploading()) {
+                return;
+            }
+
+// if redirecting to gw campaign play as host, upload mod6 before redirect
+
+            if (url == 'coui://ui/main/game/galactic_war/gw_play/gw_play.html?gw_campaign=1' && model.needsGwCampaignMod6Upload()) {
+
+                model.needsGwCampaignMod6Upload(false);
+                model.gwCampaignMod6Uploading(true);
+                model.pageSubTitle(loc('!LOC:UPLOADING GW CO-OP MOD DATA... PLEASE WAIT'));
+
+                model.uploadGwCampaignMod6ToServer(function() {
+                    model.gwCampaignMod6Uploading(false);
+                    window.location.href = url;
+                    return; /* window.location.href will not stop execution. */
+                });
                 return;
             }
 
