@@ -3463,6 +3463,43 @@ requireGW([
 
         api.Panel.message('uberbar', 'visible', { 'value': false });
 
+        var mergeGwCampaignSyncedSceneMods = function(sceneName) {
+            if (!_.isString(sceneName) || !sceneName.length)
+                return;
+
+            var mergedCount = 0;
+            var key = 'gw_campaign_synced_scene_mods';
+            try {
+                var raw = sessionStorage.getItem(key);
+                if (!raw)
+                    return;
+
+                var syncedSceneMods = JSON.parse(raw);
+                if (!syncedSceneMods || !_.isObject(syncedSceneMods))
+                    return;
+
+                var sceneUrls = _.isArray(syncedSceneMods[sceneName]) ? syncedSceneMods[sceneName] : [];
+                if (!sceneUrls.length)
+                    return;
+
+                if (!_.isObject(scene_mod_list))
+                    scene_mod_list = {};
+
+                var existingSceneUrls = _.isArray(scene_mod_list[sceneName]) ? scene_mod_list[sceneName] : [];
+                var mergedSceneUrls = _.union(existingSceneUrls, sceneUrls);
+                mergedCount = Math.max(0, mergedSceneUrls.length - existingSceneUrls.length);
+                scene_mod_list[sceneName] = mergedSceneUrls;
+            }
+            catch (e) {
+                console.log('[GW_COOP] gw_play failed to merge synced scene mods scene=' + sceneName);
+                return;
+            }
+
+            console.log('[GW_COOP] gw_play merged synced scene mods scene=' + sceneName + ' added=' + mergedCount + ' total=' + (scene_mod_list[sceneName] ? scene_mod_list[sceneName].length : 0));
+        };
+
+        mergeGwCampaignSyncedSceneMods('gw_play');
+
        // inject per scene mods
         if (scene_mod_list['gw_play']) {
             loadMods(scene_mod_list['gw_play']);

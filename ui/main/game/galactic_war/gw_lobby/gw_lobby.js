@@ -88,6 +88,8 @@ $(document).ready(function() {
         $loadingPage.attr('src', newLoadingUrl);
     }
     model = new GWLobbyViewModel();
+    var GW_SYNCED_ICON_CACHE_BUSTER_KEY = 'gw_campaign_synced_icon_cache_buster';
+    var GW_SYNCED_ICON_BASE64_MAP_KEY = 'gw_campaign_synced_icon_base64_map';
 
     handlers = {};
 
@@ -106,12 +108,50 @@ $(document).ready(function() {
         if (!payload || !payload.files)
             return;
 
+        var hasValidPngSignature = function(value) {
+            return _.isString(value)
+                && value.length >= 8
+                && value.charCodeAt(0) === 137
+                && value.charCodeAt(1) === 80
+                && value.charCodeAt(2) === 78
+                && value.charCodeAt(3) === 71
+                && value.charCodeAt(4) === 13
+                && value.charCodeAt(5) === 10
+                && value.charCodeAt(6) === 26
+                && value.charCodeAt(7) === 10;
+        };
+
+        var payloadFileEncodings = _.isObject(payload.file_encodings) ? payload.file_encodings : {};
+
+        var decodePayloadFile = function(rawData, encoding) {
+            var text = _.isString(rawData) ? rawData : '';
+            var normalizedEncoding = _.isString(encoding) ? encoding.toLowerCase() : '';
+
+            if (normalizedEncoding === 'base64') {
+                try {
+                    return atob(text);
+                }
+                catch (e) {
+                    console.warn('[GW_COOP] gw_lobby.gw_config failed to decode base64 file reason=' + e);
+                    return '';
+                }
+            }
+
+            return text;
+        };
+
         var payloadFileKeys = _.keys(payload.files);
         var payloadClientModsPrefixCount = _.filter(payloadFileKeys, function(path) {
             return _.isString(path) && path.indexOf('/client_mods/') === 0;
         }).length;
         var payloadPaPrefixCount = _.filter(payloadFileKeys, function(path) {
             return _.isString(path) && path.indexOf('/pa/') === 0;
+        }).length;
+        var payloadUiPrefixCount = _.filter(payloadFileKeys, function(path) {
+            return _.isString(path) && path.indexOf('/ui/') === 0;
+        }).length;
+        var payloadImagesPrefixCount = _.filter(payloadFileKeys, function(path) {
+            return _.isString(path) && path.indexOf('/images/') === 0;
         }).length;
 
         var hasGrenadierHit = _.has(payload.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx');
@@ -125,7 +165,25 @@ $(document).ready(function() {
             console.warn('[GW_COOP] gw_lobby.gw_config still has /client_mods/ paths count=' + payloadClientModsPrefixCount + ' samples=' + clientModsSamples.join('|'));
         }
 
-        console.log('[GW_COOP] gw_lobby.gw_config received files=' + payloadFileKeys.length + ' pa_prefix_count=' + payloadPaPrefixCount + ' client_mods_prefix_count=' + payloadClientModsPrefixCount + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail);
+        console.log('[GW_COOP] gw_lobby.gw_config received files=' + payloadFileKeys.length + ' pa_prefix_count=' + payloadPaPrefixCount + ' ui_prefix_count=' + payloadUiPrefixCount + ' images_prefix_count=' + payloadImagesPrefixCount + ' client_mods_prefix_count=' + payloadClientModsPrefixCount + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail);
+
+        var decodedBase64Count = 0;
+        var base64DecodeFailureCount = 0;
+        _.forEach(payloadFileKeys, function(path) {
+            var encoding = _.isString(payloadFileEncodings[path]) ? payloadFileEncodings[path] : '';
+            if (!encoding.length)
+                return;
+
+            var decoded = decodePayloadFile(payload.files[path], encoding);
+            if (_.isString(decoded) && decoded.length)
+                decodedBase64Count += 1;
+            else
+                base64DecodeFailureCount += 1;
+
+            payload.files[path] = decoded;
+        });
+        if (decodedBase64Count || base64DecodeFailureCount)
+            console.log('[GW_COOP] gw_lobby.gw_config decoded_files=' + decodedBase64Count + ' decode_failures=' + base64DecodeFailureCount);
 
         if (!payload.files['/pa/units/unit_list.json']) {
             var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
@@ -133,6 +191,63 @@ $(document).ready(function() {
             var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
             payload.files['/pa/units/unit_list.json'] = { units: units };
         }
+
+        var gwPlayImageAliasCount = 0;
+        var modsAliasCount = 0;
+        _.forEach(_.keys(payload.files), function(path) {
+            if (!_.isString(path))
+                return;
+
+            var marker = '/ui/mods/';
+            if (path.indexOf(marker) !== 0)
+                return;
+
+            var remainder = path.substring(marker.length);
+            var modNameSeparator = remainder.indexOf('/');
+            if (modNameSeparator < 0 || modNameSeparator + 1 >= remainder.length)
+                return;
+
+            var modName = remainder.substring(0, modNameSeparator);
+            var modRelativePath = remainder.substring(modNameSeparator + 1);
+
+            var modsAliasPath = '/mods/' + modName + '/' + modRelativePath;
+            if (!_.has(payload.files, modsAliasPath)) {
+                payload.files[modsAliasPath] = payload.files[path];
+                modsAliasCount += 1;
+            }
+
+            if (modRelativePath.indexOf('gw_play/img/') !== 0)
+                return;
+
+            var aliasPath = '/ui/main/game/galactic_war/' + modRelativePath;
+            if (!_.has(payload.files, aliasPath)) {
+                payload.files[aliasPath] = payload.files[path];
+                gwPlayImageAliasCount += 1;
+            }
+        });
+        if (gwPlayImageAliasCount || modsAliasCount)
+            console.log('[GW_COOP] gw_lobby.gw_config applied aliases gw_play_img_count=' + gwPlayImageAliasCount + ' mods_count=' + modsAliasCount);
+
+        var syncedIconBase64Map = {};
+        _.forEach(_.keys(payload.files), function(path) {
+            if (!_.isString(path)
+                || path.indexOf('/ui/mods/') !== 0
+                || path.indexOf('/gw_play/img/tech/') < 0
+                || !/\.png$/i.test(path))
+                return;
+
+            var content = payload.files[path];
+            if (!hasValidPngSignature(content))
+                return;
+
+            try {
+                syncedIconBase64Map[path] = btoa(content);
+            }
+            catch (e) {
+                console.warn('[GW_COOP] gw_lobby.gw_config failed to base64 encode synced icon path=' + path + ' reason=' + e);
+            }
+        });
+        var syncedIconBase64Count = _.keys(syncedIconBase64Map).length;
 
         var cookedFiles = _.mapValues(payload.files, function(value) {
             if (typeof value !== 'string')
@@ -145,6 +260,19 @@ $(document).ready(function() {
         // with GW lobby startup on some machines.
         api.file.mountMemoryFiles(cookedFiles).then(
             function() {
+                try {
+                    sessionStorage.setItem(GW_SYNCED_ICON_CACHE_BUSTER_KEY, String(_.now()));
+                }
+                catch (e) {
+                    console.log('[GW_COOP] gw_lobby.gw_config failed to persist icon cache buster');
+                }
+                try {
+                    sessionStorage.setItem(GW_SYNCED_ICON_BASE64_MAP_KEY, JSON.stringify(syncedIconBase64Map));
+                }
+                catch (e) {
+                    console.log('[GW_COOP] gw_lobby.gw_config failed to persist synced icon base64 map');
+                }
+                console.log('[GW_COOP] gw_lobby.gw_config persisted synced icon base64 entries=' + syncedIconBase64Count);
                 console.log('[GW_COOP] gw_lobby.gw_config mountMemoryFiles complete mounted_files=' + _.keys(cookedFiles).length);
                 model.gwConfigMounted(true);
                 api.game.setUnitSpecTag('.player');
@@ -189,6 +317,43 @@ $(document).ready(function() {
         transitDelay(5000);
         window.location.href = 'coui://ui/main/game/transit/transit.html';
     }
+
+    var mergeGwCampaignSyncedSceneMods = function(sceneName) {
+        if (!_.isString(sceneName) || !sceneName.length)
+            return;
+
+        var mergedCount = 0;
+        var key = 'gw_campaign_synced_scene_mods';
+        try {
+            var raw = sessionStorage.getItem(key);
+            if (!raw)
+                return;
+
+            var syncedSceneMods = JSON.parse(raw);
+            if (!syncedSceneMods || !_.isObject(syncedSceneMods))
+                return;
+
+            var sceneUrls = _.isArray(syncedSceneMods[sceneName]) ? syncedSceneMods[sceneName] : [];
+            if (!sceneUrls.length)
+                return;
+
+            if (!_.isObject(scene_mod_list))
+                scene_mod_list = {};
+
+            var existingSceneUrls = _.isArray(scene_mod_list[sceneName]) ? scene_mod_list[sceneName] : [];
+            var mergedSceneUrls = _.union(existingSceneUrls, sceneUrls);
+            mergedCount = Math.max(0, mergedSceneUrls.length - existingSceneUrls.length);
+            scene_mod_list[sceneName] = mergedSceneUrls;
+        }
+        catch (e) {
+            console.log('[GW_COOP] gw_lobby failed to merge synced scene mods scene=' + sceneName);
+            return;
+        }
+
+        console.log('[GW_COOP] gw_lobby merged synced scene mods scene=' + sceneName + ' added=' + mergedCount + ' total=' + (scene_mod_list[sceneName] ? scene_mod_list[sceneName].length : 0));
+    };
+
+    mergeGwCampaignSyncedSceneMods('gw_lobby');
 
     // inject per scene mods
     if (scene_mod_list['gw_lobby'])

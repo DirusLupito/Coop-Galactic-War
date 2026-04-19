@@ -289,7 +289,8 @@ function LobbyModel(creator, launchContext) {
         var message = {
             message_type: 'gw_config',
             payload: {
-                files: config.files
+                files: config.files,
+                file_encodings: _.isObject(config.file_encodings) ? config.file_encodings : {}
             }
         };
 
@@ -505,9 +506,9 @@ function LobbyModel(creator, launchContext) {
             normalizedPath = '/' + normalizedPath;
 
         if (normalizedPath.indexOf('/client_mods/') === 0) {
-            var paIndex = normalizedPath.indexOf('/pa/');
-            if (paIndex >= 0)
-                return normalizedPath.substring(paIndex);
+            var modNameSlashIndex = normalizedPath.indexOf('/', '/client_mods/'.length);
+            if (modNameSlashIndex >= 0 && modNameSlashIndex + 1 < normalizedPath.length)
+                return normalizedPath.substring(modNameSlashIndex);
         }
 
         return normalizedPath;
@@ -522,27 +523,47 @@ function LobbyModel(creator, launchContext) {
 
             var incomingConfig = msg.payload || {};
             var syncedFiles = self.launchContext.gw_campaign_synced_client_files;
+            var syncedFileEncodings = self.launchContext.gw_campaign_synced_client_file_encodings;
             if (self.campaignActive && _.isObject(syncedFiles) && _.keys(syncedFiles).length) {
                 var remappedSyncedFiles = {};
+                var remappedSyncedFileEncodings = {};
                 var remappedSyncedCount = 0;
                 _.forEach(syncedFiles, function(content, filePath) {
                     var normalizedPath = normalizeCampaignSyncedFilePath(filePath);
                     if (!normalizedPath.length)
                         return;
 
+                    var fileEncoding = _.isObject(syncedFileEncodings) && _.isString(syncedFileEncodings[filePath])
+                        ? syncedFileEncodings[filePath]
+                        : '';
+
                     if (normalizedPath !== filePath)
                         remappedSyncedCount += 1;
 
                     remappedSyncedFiles[normalizedPath] = content;
+                    if (fileEncoding.length)
+                        remappedSyncedFileEncodings[normalizedPath] = fileEncoding;
+                    else
+                        delete remappedSyncedFileEncodings[normalizedPath];
                 });
 
                 var canonicalSyncedKeys = _.keys(remappedSyncedFiles);
                 var canonicalClientModsPrefixCount = _.filter(canonicalSyncedKeys, function(filePath) {
                     return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
                 }).length;
+                var canonicalUiPrefixCount = _.filter(canonicalSyncedKeys, function(filePath) {
+                    return _.isString(filePath) && filePath.indexOf('/ui/') === 0;
+                }).length;
+                var canonicalImagesPrefixCount = _.filter(canonicalSyncedKeys, function(filePath) {
+                    return _.isString(filePath) && filePath.indexOf('/images/') === 0;
+                }).length;
+                var syncedIndices = _.isArray(self.launchContext.gw_campaign_synced_client_mod_indices)
+                    ? self.launchContext.gw_campaign_synced_client_mod_indices.join(',')
+                    : 'none';
 
                 incomingConfig = _.cloneDeep(incomingConfig);
                 incomingConfig.files = _.assign({}, _.cloneDeep(remappedSyncedFiles), incomingConfig.files || {});
+                incomingConfig.file_encodings = _.assign({}, _.cloneDeep(remappedSyncedFileEncodings), incomingConfig.file_encodings || {});
 
                 var hasGrenadierHit = _.has(incomingConfig.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx');
                 var hasGrenadierTrail = _.has(incomingConfig.files, '/pa/units/land/bot_grenadier/bot_grenadier_ammo_trail.pfx');
@@ -555,7 +576,7 @@ function LobbyModel(creator, launchContext) {
                 if (!hasSupportCommanderTrail)
                     missingCritical.push('/pa/units/land/bot_support_commander/bot_support_commander_ammo_trail.pfx');
 
-                console.log('[GW_COOP] gw_lobby merged synced campaign client files raw_count=' + _.keys(syncedFiles).length + ' canonical_count=' + canonicalSyncedKeys.length + ' remapped_count=' + remappedSyncedCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' total_files=' + _.keys(incomingConfig.files).length + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail + ' missing_critical_count=' + missingCritical.length + ' missing_critical_paths=' + (missingCritical.length ? missingCritical.join('|') : 'none'));
+                console.log('[GW_COOP] gw_lobby merged synced campaign client files indices=' + syncedIndices + ' raw_count=' + _.keys(syncedFiles).length + ' canonical_count=' + canonicalSyncedKeys.length + ' remapped_count=' + remappedSyncedCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' canonical_ui_prefix_count=' + canonicalUiPrefixCount + ' canonical_images_prefix_count=' + canonicalImagesPrefixCount + ' total_files=' + _.keys(incomingConfig.files).length + ' has_grenadier_hit=' + hasGrenadierHit + ' has_grenadier_trail=' + hasGrenadierTrail + ' has_support_commander_trail=' + hasSupportCommanderTrail + ' missing_critical_count=' + missingCritical.length + ' missing_critical_paths=' + (missingCritical.length ? missingCritical.join('|') : 'none'));
             }
 
             self.refreshCampaignContextFromConfig(incomingConfig);

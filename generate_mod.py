@@ -22,6 +22,8 @@ FILES_TO_COPY = [
      "ui/main/game/galactic_war/gw_play/gw_play.html"),
     ("ui/main/game/galactic_war/gw_play/live_game_patch.js",
      "ui/main/game/galactic_war/gw_play/live_game_patch.js"),
+    ("ui/main/game/galactic_war/shared/template/gwt_card.js",
+     "ui/main/game/galactic_war/shared/template/gwt_card.js"),
     ("ui/main/game/live_game/live_game_action_bar.js",
      "ui/main/game/live_game/live_game_action_bar.js"),
     ("ui/main/game/connect_to_game/connect_to_game.js",

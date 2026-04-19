@@ -100,8 +100,6 @@ function GWCampaignModel(creator) {
     self.buildGwLobbyLaunchContext = function(payload) {
         var data = payload || {};
         var payloadSettings = data.gw_campaign_settings || {};
-        var syncedModIndex = 6;
-        var syncedPayload = self.clientModPayloadByIndex[syncedModIndex] || {};
         var normalizeMountedFilePath = function(filePath, mountPath) {
             if (!_.isString(filePath) || !filePath.length)
                 return '';
@@ -121,6 +119,12 @@ function GWCampaignModel(creator) {
                     return '/' + normalizedPath.substring(normalizedMountPath.length);
             }
 
+            if (normalizedPath.indexOf('/client_mods/') === 0) {
+                var modNameSlashIndex = normalizedPath.indexOf('/', '/client_mods/'.length);
+                if (modNameSlashIndex >= 0 && modNameSlashIndex + 1 < normalizedPath.length)
+                    return normalizedPath.substring(modNameSlashIndex);
+            }
+
             var paIndex = normalizedPath.indexOf('/pa/');
             if (paIndex >= 0)
                 return normalizedPath.substring(paIndex);
@@ -128,27 +132,78 @@ function GWCampaignModel(creator) {
             return normalizedPath;
         };
 
-        var rawSyncedFiles = _.isObject(syncedPayload.files) ? syncedPayload.files : {};
+        var syncedModIndices = _.chain(_.keys(self.clientModPayloadByIndex || {}))
+            .map(function(indexKey) {
+                return parseInt(indexKey, 10);
+            })
+            .filter(function(index) {
+                return _.isFinite(index) && index >= 0;
+            })
+            .sortBy()
+            .value();
+
+        var rawSyncedFileCount = 0;
         var syncedFiles = {};
+        var syncedFileEncodings = {};
         var remappedFileCount = 0;
         var duplicateCanonicalPathCount = 0;
-        _.forEach(rawSyncedFiles, function(content, filePath) {
-            var normalizedPath = normalizeMountedFilePath(filePath, syncedPayload.mount_path);
-            if (!normalizedPath.length)
-                return;
+        var perModSummaries = [];
 
-            if (normalizedPath !== filePath)
-                remappedFileCount += 1;
+        _.forEach(syncedModIndices, function(syncedModIndex) {
+            var syncedPayload = self.clientModPayloadByIndex[syncedModIndex] || {};
+            var rawSyncedFiles = _.isObject(syncedPayload.files) ? syncedPayload.files : {};
+            var modRawFileCount = _.keys(rawSyncedFiles).length;
+            var modCanonicalFileCount = 0;
+            var modRemappedFileCount = 0;
 
-            if (_.has(syncedFiles, normalizedPath) && syncedFiles[normalizedPath] !== content)
-                duplicateCanonicalPathCount += 1;
+            rawSyncedFileCount += modRawFileCount;
 
-            syncedFiles[normalizedPath] = content;
+            _.forEach(rawSyncedFiles, function(content, filePath) {
+                var normalizedPath = normalizeMountedFilePath(filePath, syncedPayload.mount_path);
+                if (!normalizedPath.length)
+                    return;
+
+                var fileEncoding = _.isObject(syncedPayload.file_encodings) && _.isString(syncedPayload.file_encodings[filePath])
+                    ? syncedPayload.file_encodings[filePath]
+                    : '';
+
+                modCanonicalFileCount += 1;
+                if (normalizedPath !== filePath) {
+                    remappedFileCount += 1;
+                    modRemappedFileCount += 1;
+                }
+
+                if (_.has(syncedFiles, normalizedPath) && syncedFiles[normalizedPath] !== content)
+                    duplicateCanonicalPathCount += 1;
+
+                syncedFiles[normalizedPath] = content;
+                if (fileEncoding.length)
+                    syncedFileEncodings[normalizedPath] = fileEncoding;
+                else
+                    delete syncedFileEncodings[normalizedPath];
+            });
+
+            perModSummaries.push(
+                syncedModIndex
+                + ':complete=' + (!!syncedPayload.complete)
+                + ':raw=' + modRawFileCount
+                + ':canonical=' + modCanonicalFileCount
+                + ':remapped=' + modRemappedFileCount
+                + ':mount=' + (syncedPayload.mount_path || '')
+            );
         });
+
         var syncedFileCount = _.keys(syncedFiles).length;
-        var rawSyncedFileCount = _.keys(rawSyncedFiles).length;
-        var canonicalClientModsPrefixCount = _.filter(_.keys(syncedFiles), function(filePath) {
+        var encodedSyncedFileCount = _.keys(syncedFileEncodings).length;
+        var canonicalFileKeys = _.keys(syncedFiles);
+        var canonicalClientModsPrefixCount = _.filter(canonicalFileKeys, function(filePath) {
             return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
+        }).length;
+        var canonicalUiPrefixCount = _.filter(canonicalFileKeys, function(filePath) {
+            return _.isString(filePath) && filePath.indexOf('/ui/') === 0;
+        }).length;
+        var canonicalImagesPrefixCount = _.filter(canonicalFileKeys, function(filePath) {
+            return _.isString(filePath) && filePath.indexOf('/images/') === 0;
         }).length;
 
         var expectedCriticalPaths = [
@@ -173,15 +228,16 @@ function GWCampaignModel(creator) {
         if (!_.isString(settings.tag) && _.isString(payloadSettings.tag))
             settings.tag = payloadSettings.tag;
 
-        console.log('[GW_COOP] gw_campaign buildGwLobbyLaunchContext synced_mod_index=' + syncedModIndex + ' raw_synced_file_count=' + rawSyncedFileCount + ' canonical_synced_file_count=' + syncedFileCount + ' remapped_file_count=' + remappedFileCount + ' duplicate_canonical_count=' + duplicateCanonicalPathCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' missing_critical_count=' + missingCriticalPaths.length + ' missing_critical_paths=' + (missingCriticalPaths.length ? missingCriticalPaths.join('|') : 'none'));
+        console.log('[GW_COOP] gw_campaign buildGwLobbyLaunchContext synced_mod_indices=' + (syncedModIndices.length ? syncedModIndices.join(',') : 'none') + ' raw_synced_file_count=' + rawSyncedFileCount + ' canonical_synced_file_count=' + syncedFileCount + ' encoded_synced_file_count=' + encodedSyncedFileCount + ' remapped_file_count=' + remappedFileCount + ' duplicate_canonical_count=' + duplicateCanonicalPathCount + ' canonical_client_mods_prefix_count=' + canonicalClientModsPrefixCount + ' canonical_ui_prefix_count=' + canonicalUiPrefixCount + ' canonical_images_prefix_count=' + canonicalImagesPrefixCount + ' missing_critical_count=' + missingCriticalPaths.length + ' missing_critical_paths=' + (missingCriticalPaths.length ? missingCriticalPaths.join('|') : 'none') + ' per_mod=' + perModSummaries.join('|'));
 
         return {
             gw_campaign_active: true,
             current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
             settings: settings,
             max_clients: self.maxClients,
-            gw_campaign_synced_client_mod_index: syncedModIndex,
+            gw_campaign_synced_client_mod_indices: syncedModIndices,
             gw_campaign_synced_client_files: syncedFiles,
+            gw_campaign_synced_client_file_encodings: syncedFileEncodings,
             access: {
                 password: _.isString(self.access.password) ? self.access.password : '',
                 friends: _.cloneDeep(bouncer.getWhitelist()),
@@ -436,6 +492,11 @@ function GWCampaignModel(creator) {
                 return;
 
             var filePaths = _.keys(stored.files || {}).sort();
+            var encodedFileCount = _.filter(filePaths, function(filePath) {
+                return _.isObject(stored.file_encodings)
+                    && _.isString(stored.file_encodings[filePath])
+                    && stored.file_encodings[filePath].length;
+            }).length;
             var missingFiles = _.isArray(stored.missing_files) ? stored.missing_files : [];
             var sentParts = 0;
 
@@ -457,6 +518,9 @@ function GWCampaignModel(creator) {
                 var rawText = stored.files[filePath];
                 if (!_.isString(rawText))
                     rawText = '';
+                var fileEncoding = _.isObject(stored.file_encodings) && _.isString(stored.file_encodings[filePath])
+                    ? stored.file_encodings[filePath]
+                    : '';
 
                 var partCount = Math.max(1, Math.ceil(rawText.length / MAX_PART_CHARS));
                 var partIndex;
@@ -471,6 +535,7 @@ function GWCampaignModel(creator) {
                             file_path: filePath,
                             file_part_index: partIndex,
                             file_part_count: partCount,
+                            file_encoding: fileEncoding,
                             data: rawText.substring(startIndex, endIndex)
                         }
                     });
@@ -502,7 +567,7 @@ function GWCampaignModel(creator) {
                 }
             });
 
-            console.log('[GW_COOP] gw_campaign mod_sync sent to client=' + client.name + ' id=' + client.id + ' index=' + index + ' files=' + filePaths.length + ' missing=' + missingFiles.length + ' parts=' + sentParts + ' reason=' + (reason || 'join'));
+            console.log('[GW_COOP] gw_campaign mod_sync sent to client=' + client.name + ' id=' + client.id + ' index=' + index + ' files=' + filePaths.length + ' encoded_files=' + encodedFileCount + ' missing=' + missingFiles.length + ' parts=' + sentParts + ' reason=' + (reason || 'join'));
         });
     };
 
@@ -641,6 +706,7 @@ function GWCampaignModel(creator) {
                         roots: [],
                         expected_file_count: 0,
                         files: {},
+                        file_encodings: {},
                         file_parts: {},
                         missing_files: [],
                         received_part_count: 0,
@@ -680,6 +746,7 @@ function GWCampaignModel(creator) {
                     stored.roots = _.isArray(payload.roots) ? _.cloneDeep(payload.roots) : [];
                     stored.expected_file_count = _.isNumber(payload.file_count) ? payload.file_count : 0;
                     stored.files = {};
+                    stored.file_encodings = {};
                     stored.file_parts = {};
                     stored.missing_files = [];
                     stored.received_part_count = 0;
@@ -692,14 +759,18 @@ function GWCampaignModel(creator) {
                     var filePath = _.isString(payload.file_path) ? payload.file_path : '';
                     var partIndex = _.isNumber(payload.file_part_index) ? payload.file_part_index : -1;
                     var partCount = _.isNumber(payload.file_part_count) ? payload.file_part_count : 0;
+                    var fileEncoding = _.isString(payload.file_encoding) ? payload.file_encoding : '';
                     var data = _.isString(payload.data) ? payload.data : '';
 
                     if (filePath.length && partIndex >= 0 && partCount > 0 && partIndex < partCount) {
-                        if (!stored.file_parts[filePath]) {
+                        if (!stored.file_parts[filePath]
+                            || stored.file_parts[filePath].part_count !== partCount
+                            || stored.file_parts[filePath].file_encoding !== fileEncoding) {
                             stored.file_parts[filePath] = {
                                 part_count: partCount,
                                 received_count: 0,
-                                parts: new Array(partCount)
+                                parts: new Array(partCount),
+                                file_encoding: fileEncoding
                             };
                         }
 
@@ -712,6 +783,12 @@ function GWCampaignModel(creator) {
 
                         if (filePartState.received_count >= filePartState.part_count) {
                             stored.files[filePath] = filePartState.parts.join('');
+                            if (!_.isObject(stored.file_encodings))
+                                stored.file_encodings = {};
+                            if (_.isString(filePartState.file_encoding) && filePartState.file_encoding.length)
+                                stored.file_encodings[filePath] = filePartState.file_encoding;
+                            else
+                                delete stored.file_encodings[filePath];
                             delete stored.file_parts[filePath];
                         }
                     }
@@ -731,6 +808,11 @@ function GWCampaignModel(creator) {
                     stored.completed_at = Date.now();
 
                     var storedFileKeys = _.keys(stored.files);
+                    var storedEncodedFileCount = _.filter(storedFileKeys, function(filePath) {
+                        return _.isObject(stored.file_encodings)
+                            && _.isString(stored.file_encodings[filePath])
+                            && stored.file_encodings[filePath].length;
+                    }).length;
                     var storedClientModsPrefixCount = _.filter(storedFileKeys, function(filePath) {
                         return _.isString(filePath) && filePath.indexOf('/client_mods/') === 0;
                     }).length;
@@ -738,7 +820,7 @@ function GWCampaignModel(creator) {
                         return _.isString(filePath) && filePath.indexOf('/pa/') === 0;
                     }).length;
 
-                    console.log('[GW_COOP] gw_campaign mod_payload_complete index=' + index + ' files=' + storedFileKeys.length + ' missing=' + stored.missing_files.length + ' received_parts=' + stored.received_part_count + ' reported_parts=' + stored.reported_sent_part_count + ' mount_path=' + (stored.mount_path || '') + ' stored_client_mods_prefix_count=' + storedClientModsPrefixCount + ' stored_pa_prefix_count=' + storedPaPrefixCount);
+                    console.log('[GW_COOP] gw_campaign mod_payload_complete index=' + index + ' files=' + storedFileKeys.length + ' encoded_files=' + storedEncodedFileCount + ' missing=' + stored.missing_files.length + ' received_parts=' + stored.received_part_count + ' reported_parts=' + stored.reported_sent_part_count + ' mount_path=' + (stored.mount_path || '') + ' stored_client_mods_prefix_count=' + storedClientModsPrefixCount + ' stored_pa_prefix_count=' + storedPaPrefixCount);
                 }
 
                 server.respond(msg).succeed({
