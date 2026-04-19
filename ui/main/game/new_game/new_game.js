@@ -728,6 +728,10 @@ $(document).ready(function()
             if (!self.isGameCreator() || self.returnFromLoad())
                 return;
 
+            // Skip UPnP polling when UPnP is disabled or Steam networking is active
+            if (api.net.disableUPNP() || ko.observable().extend({ session: 'lobby_enable_steam_networking' })())
+                return;
+
             model.send_message('upnp_status', {}, function (success, response) {
                 if (success)
                     self.handleUPNPStatus(response);

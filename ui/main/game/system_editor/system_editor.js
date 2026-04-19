@@ -105,9 +105,7 @@ require(["api"], function (api) {
     self.max_spawn_delay = spec.max_spawn_delay;
     self.planetCSG = spec.planetCSG;
     self.metal_spots = spec.metal_spots;
-    self.energy_spots = spec.energy_spots;
     self.landing_zones = spec.landing_zones;
-    self.units = spec.units;
     self.planet = new PlanetModel(spec.planet);
   }
 
@@ -343,493 +341,6 @@ require(["api"], function (api) {
       if (!map) return null;
 
       return map[self.selectedBrushGroup()];
-    });
-
-    self.unitMap = ko.observable({});
-    self.unitFactionOrder = ko.observableArray([]);
-    self.unitFactionLabelMap = ko.observable({});
-    self.unitSubCategoryOrder = ["land", "air", "naval", "orbital", "commanders"];
-    self.unitSubCategoryLabelMap = {
-      land: "Land",
-      air: "Air",
-      naval: "Naval",
-      orbital: "Orbital",
-      commanders: "Commanders",
-    };
-    self.unitSpecsPayload = ko.observable({});
-    self.unitListSpecs = ko.observableArray([]);
-    self.selectedUnitFaction = ko.observable();
-    self.selectedUnitSubCategory = ko.observable();
-    self.unitFactions = ko.computed(function () {
-      return self.unitFactionOrder().length
-        ? self.unitFactionOrder()
-        : _.keys(self.unitMap());
-    });
-    self.unitFactionLabel = function (faction) {
-      return self.unitFactionLabelMap()[faction] || faction;
-    };
-    self.unitSubCategoryLabel = function (subCategory) {
-      return self.unitSubCategoryLabelMap[subCategory] || subCategory;
-    };
-    self.unitSubCategories = ko.computed(function () {
-      var factionMap = self.unitMap()[self.selectedUnitFaction()];
-      if (!factionMap) return [];
-
-      return _.filter(self.unitSubCategoryOrder, function (subCategory) {
-        var list = factionMap[subCategory];
-        return _.isArray(list) && list.length > 0;
-      });
-    });
-    self.availableUnits = ko.computed(function () {
-      var factionMap = self.unitMap()[self.selectedUnitFaction()];
-      if (!factionMap) return [];
-
-      return factionMap[self.selectedUnitSubCategory()] || [];
-    });
-    self.selectedUnitSpec = ko.observable("");
-    self.selectedUnit = ko.observable(null);
-    self.selectedUnitArmyMode = ko.observable("army");
-    self.selectedUnitArmyValue = ko.observable(0).extend({ numeric: 0 });
-    self.selectedUnitHpFraction = ko.observable(1).extend({ precision: 3 });
-    self.unitRenderModes = ko.observableArray([
-      { id: "icon", name: "Strategic Icons" },
-      { id: "model", name: "Unit Models" },
-      { id: "both", name: "Both" },
-    ]);
-    self.unitArmyModes = ko.observableArray([
-      { id: "docile", name: "Docile Neutral" },
-      { id: "hostile", name: "Hostile Neutral" },
-      { id: "army", name: "Player Army" },
-    ]);
-    self.unitRenderMode = ko.observable("icon");
-    self.suppressUnitRenderModeSync = false;
-    self.applyArmyToMirroredTwin = ko.observable(false);
-    self.applyHpToMirroredTwin = ko.observable(true);
-    self.selectedUnitPanelVisible = ko.computed(function () {
-      return api.terrain_editor.editingUnits() && !!self.selectedUnit();
-    });
-
-    self.applyUnitRenderModeFromEngine = function (mode) {
-      if (!_.isString(mode) || !_.contains(["icon", "model", "both"], mode))
-        mode = "icon";
-
-      if (self.unitRenderMode() === mode) return;
-
-      self.suppressUnitRenderModeSync = true;
-      self.unitRenderMode(mode);
-      self.suppressUnitRenderModeSync = false;
-    };
-
-    self.unitRenderMode.subscribe(function (mode) {
-      if (self.suppressUnitRenderModeSync) return;
-      if (!_.contains(["icon", "model", "both"], mode)) return;
-      api.terrain_editor.setUnitRenderMode(mode);
-    });
-
-    self.unitTitleForSpec = function (spec) {
-      if (!_.isString(spec)) return "";
-
-      var start = spec.lastIndexOf("/") + 1;
-      var end = spec.lastIndexOf(".json");
-      var key = spec.substring(start, end > start ? end : spec.length);
-      return key.replace(/_/g, " ");
-    };
-
-    self.unitBuildbarIconForSpec = function (spec) {
-      if (!_.isString(spec)) return "";
-
-      var imageSpec = spec.replace(/\.json$/i, "_icon_buildbar.png");
-      if (imageSpec.charAt(0) === "/") imageSpec = imageSpec.substring(1);
-      return "coui://" + imageSpec;
-    };
-
-    self.makeUnitPaletteEntry = function (spec) {
-      var start = spec.lastIndexOf("/") + 1;
-      var end = spec.lastIndexOf(".json");
-      var key = spec.substring(start, end > start ? end : spec.length);
-      return {
-        spec: spec,
-        key: key,
-        title: self.unitTitleForSpec(spec),
-        image: self.unitBuildbarIconForSpec(spec),
-        hasImage: ko.observable(true),
-      };
-    };
-
-    self.isRootUnitSpecPath = function (spec) {
-      if (!_.isString(spec)) return false;
-
-      // Keep the palette to top-level unit specs:
-      // /pa/units/<category>/<unit>/<unit>.json
-      // /server_mods/<mod>/pa/units/<category>/<unit>/<unit>.json
-      // /client_mods/<mod>/pa/units/<category>/<unit>/<unit>.json
-      var match = spec.match(
-        /^\/(?:(?:pa\/units)|(?:server_mods\/[^\/]+\/pa\/units)|(?:client_mods\/[^\/]+\/pa\/units))\/[^\/]+\/([^\/]+)\/([^\/]+)\.json$/i
-      );
-      if (!match) return false;
-
-      return match[1] === match[2];
-    };
-
-    self.isPaletteCandidateSpec = function (spec, unitSpec) {
-      if (!self.isRootUnitSpecPath(spec)) return false;
-      var types =
-        unitSpec &&
-        (_.isArray(unitSpec.types)
-          ? unitSpec.types
-          : _.isArray(unitSpec.unit_types)
-          ? unitSpec.unit_types
-          : null);
-
-      if (!types || !types.length)
-        return false;
-
-      return _.some(types, function (typeName) {
-        return _.isString(typeName) && /^UNITTYPE_/i.test(typeName);
-      });
-    };
-
-    self.getUnitTypesForSpec = function (spec) {
-      var payload = self.unitSpecsPayload() || {};
-      var unitSpec = payload[spec];
-      if (unitSpec) {
-        if (_.isArray(unitSpec.types)) return unitSpec.types;
-        if (_.isArray(unitSpec.unit_types)) return unitSpec.unit_types;
-      }
-
-      return null;
-    };
-
-    self.customTypeIndexForSpec = function (spec) {
-      var types = self.getUnitTypesForSpec(spec);
-      if (!_.isArray(types)) return null;
-
-      var best = null;
-      _.forEach(types, function (typeName) {
-        if (!_.isString(typeName)) return;
-
-        var normalized = typeName.replace(/^UNITTYPE_/i, "");
-        var match = normalized.match(/^Custom(\d+)$/i);
-        if (!match) return;
-
-        var index = parseInt(match[1], 10);
-        if (_.isNaN(index)) return;
-
-        if (best === null || index < best) best = index;
-      });
-
-      return best;
-    };
-
-    self.unitFactionIdForSpec = function (spec) {
-      var customTypeIndex = self.customTypeIndexForSpec(spec);
-      if (customTypeIndex === null) return "core";
-      return "custom_" + customTypeIndex;
-    };
-
-    self.unitFactionLabelForId = function (id) {
-      if (id === "core") return "Other";
-
-      var match = _.isString(id) ? id.match(/^custom_(\d+)$/) : null;
-      if (!match) return id;
-
-      var index = parseInt(match[1], 10);
-      if (_.isNaN(index)) return id;
-
-      if (index === 58) return "MLA";
-      if (index === 1) return "Legion";
-      return "Custom" + index;
-    };
-
-    self.unitSubCategoryForSpec = function (spec) {
-      var types = self.getUnitTypesForSpec(spec);
-      if (!_.isArray(types)) return "land";
-
-      var hasType = function (unitType) {
-        return _.some(types, function (typeName) {
-          if (!_.isString(typeName)) return false;
-          return typeName.toUpperCase() === ("UNITTYPE_" + unitType).toUpperCase();
-        });
-      };
-
-      if (hasType("Commander") || hasType("SupportCommander"))
-        return "commanders";
-      if (hasType("Orbital")) return "orbital";
-      if (hasType("Air")) return "air";
-      if (hasType("Naval")) return "naval";
-      return "land";
-    };
-
-    self.syncUnitPaletteSelection = function () {
-      var factions = self.unitFactions();
-      if (!factions.length) {
-        self.selectedUnitFaction(undefined);
-        self.selectedUnitSubCategory(undefined);
-        self.selectedUnitSpec("");
-        return;
-      }
-
-      var currentFaction = self.selectedUnitFaction();
-      var factionMap = self.unitMap()[currentFaction];
-      if (!factionMap) {
-        currentFaction = factions[0];
-        self.selectedUnitFaction(currentFaction);
-        factionMap = self.unitMap()[currentFaction];
-      }
-
-      var subCategories = self.unitSubCategories();
-      if (!subCategories.length) {
-        self.selectedUnitSubCategory(undefined);
-        self.selectedUnitSpec("");
-        return;
-      }
-
-      var currentSubCategory = self.selectedUnitSubCategory();
-      if (!factionMap[currentSubCategory] || !factionMap[currentSubCategory].length) {
-        currentSubCategory = subCategories[0];
-        self.selectedUnitSubCategory(currentSubCategory);
-      }
-
-      var availableUnits = self.availableUnits();
-      if (!availableUnits.length) {
-        self.selectedUnitSpec("");
-        return;
-      }
-
-      var selected = _.find(availableUnits, function (unit) {
-        return unit.spec === self.selectedUnitSpec();
-      });
-
-      if (!selected) self.setTargetUnitSpec(availableUnits[0]);
-    };
-
-    self.rebuildUnitPalette = function () {
-      var unitSpecs = _.clone(self.unitListSpecs() || []);
-      var payload = self.unitSpecsPayload() || {};
-      var listed = {};
-      var prepared = [];
-
-      _.forEach(unitSpecs, function (spec) {
-        listed[spec] = true;
-      });
-
-      if (!unitSpecs.length) {
-        _.forIn(payload, function (unitSpec, spec) {
-          if (listed[spec]) return;
-          if (!self.isPaletteCandidateSpec(spec, unitSpec)) return;
-
-          unitSpecs.push(spec);
-        });
-      }
-
-      _.forEach(unitSpecs, function (spec) {
-        if (!_.isString(spec)) return;
-
-        var entry = self.makeUnitPaletteEntry(spec);
-        entry.factionId = self.unitFactionIdForSpec(spec);
-        entry.subCategory = self.unitSubCategoryForSpec(spec);
-
-        prepared.push(entry);
-      });
-
-      var map = {};
-      var labels = {};
-      var ensureFaction = function (id) {
-        if (map[id]) return;
-        map[id] = {
-          land: [],
-          air: [],
-          naval: [],
-          orbital: [],
-          commanders: [],
-        };
-        labels[id] = self.unitFactionLabelForId(id);
-      };
-
-      _.forEach(prepared, function (unit) {
-        ensureFaction(unit.factionId);
-        if (!map[unit.factionId][unit.subCategory])
-          map[unit.factionId][unit.subCategory] = [];
-        map[unit.factionId][unit.subCategory].push(unit);
-      });
-
-      _.forIn(map, function (subCategoryMap) {
-        _.forIn(subCategoryMap, function (list) {
-          if (!_.isArray(list)) return;
-          list.sort(function (a, b) {
-            return a.title.localeCompare(b.title);
-          });
-        });
-      });
-
-      var factionIds = _.keys(map);
-      factionIds.sort(function (a, b) {
-        if (a === "core") return -1;
-        if (b === "core") return 1;
-
-        var aMatch = a.match(/^custom_(\d+)$/);
-        var bMatch = b.match(/^custom_(\d+)$/);
-        if (aMatch && bMatch) return parseInt(aMatch[1], 10) - parseInt(bMatch[1], 10);
-        if (aMatch) return -1;
-        if (bMatch) return 1;
-        return a.localeCompare(b);
-      });
-
-      self.unitMap(map);
-      self.unitFactionLabelMap(labels);
-      self.unitFactionOrder(factionIds);
-      self.syncUnitPaletteSelection();
-    };
-
-    self.tryDecodeJson = function (contents) {
-      if (_.isUndefined(contents) || _.isNull(contents)) return null;
-
-      try {
-        if (_.isString(contents)) contents = decode(contents);
-      } catch (e) {
-        return null;
-      }
-
-      return _.isObject(contents) ? contents : null;
-    };
-
-    self.readUnitListFromUrl = function (url) {
-      var deferred = $.Deferred();
-
-      $.get(url)
-        .done(function (contents) {
-          var parsed = self.tryDecodeJson(contents);
-          var units = (parsed && parsed.units) || [];
-          if (!_.isArray(units)) units = [];
-
-          units = _.filter(units, function (spec) {
-            return _.isString(spec) && !!spec.length;
-          });
-
-          deferred.resolve(units);
-        })
-        .fail(function () {
-          deferred.resolve([]);
-        });
-
-      return deferred.promise();
-    };
-
-    self.refreshUnitPaletteSources = function () {
-      var deferred = $.Deferred();
-
-      self.readUnitListFromUrl("coui://pa/units/unit_list.json").always(function (units) {
-        self.unitListSpecs(units);
-        self.rebuildUnitPalette();
-        deferred.resolve();
-      });
-
-      return deferred.promise();
-    };
-
-    self.onUnitImageError = function (unit) {
-      if (unit && unit.hasImage) unit.hasImage(false);
-      return true;
-    };
-
-    self.applySelectedUnitPayload = function (selected) {
-      if (!selected || !selected.unit) {
-        self.selectedUnit(null);
-        return;
-      }
-
-      var unit = _.clone(selected.unit, true) || {};
-      var spec = unit.unit_spec || "";
-      var army = parseInt(unit.army, 10);
-      var hpFraction = parseFloat(unit.hp_fraction);
-
-      if (_.isNaN(army)) army = 0;
-      if (_.isNaN(hpFraction)) hpFraction = 1;
-
-      unit.index = selected.index;
-      unit.spec = spec;
-      unit.title = self.unitTitleForSpec(spec);
-      unit.image = self.unitBuildbarIconForSpec(spec);
-      unit.hasImage = ko.observable(true);
-      unit.army = army;
-      unit.hp_fraction = hpFraction;
-
-      self.selectedUnit(unit);
-    };
-
-    self.selectedUnit.subscribe(function (unit) {
-      if (!unit) {
-        self.selectedUnitArmyMode("army");
-        self.selectedUnitArmyValue(0);
-        return;
-      }
-
-      var army = parseInt(unit.army, 10);
-      if (_.isNaN(army)) army = 0;
-
-      if (army === -1) {
-        self.selectedUnitArmyMode("docile");
-      } else if (army === -2) {
-        self.selectedUnitArmyMode("hostile");
-      } else {
-        self.selectedUnitArmyMode("army");
-        army = Math.max(0, Math.min(127, army));
-        self.selectedUnitArmyValue(army);
-      }
-
-      self.selectedUnitHpFraction(unit.hp_fraction);
-    });
-
-    self.updateSelectedUnitArmy = function () {
-      if (!self.selectedUnit()) return;
-
-      var mode = self.selectedUnitArmyMode();
-      if (!_.contains(["docile", "hostile", "army"], mode)) mode = "army";
-
-      var army = 0;
-      if (mode === "docile") army = -1;
-      else if (mode === "hostile") army = -2;
-      else {
-        var parsed = parseInt(self.selectedUnitArmyValue(), 10);
-        if (_.isNaN(parsed)) parsed = 0;
-        parsed = Math.max(0, Math.min(127, parsed));
-        self.selectedUnitArmyValue(parsed);
-        army = parsed;
-      }
-
-      api.terrain_editor.setSelectedUnitArmy(
-        army,
-        self.applyArmyToMirroredTwin()
-      );
-    };
-
-    self.updateSelectedUnitHpFraction = function () {
-      if (!self.selectedUnit()) return;
-
-      var hpFraction = parseFloat(self.selectedUnitHpFraction());
-      if (_.isNaN(hpFraction)) hpFraction = 1;
-      hpFraction = Math.max(-1, Math.min(1, hpFraction));
-      self.selectedUnitHpFraction(hpFraction);
-
-      api.terrain_editor.setSelectedUnitHpFraction(
-        hpFraction,
-        self.applyHpToMirroredTwin()
-      );
-    };
-
-    self.setTargetUnitSpec = function (unit) {
-      if (!unit || !unit.spec) return;
-
-      self.selectedUnitSpec(unit.spec);
-      api.terrain_editor.setTargetUnitSpec(unit.spec);
-    };
-
-    self.selectedUnitFaction.subscribe(function () {
-      self.syncUnitPaletteSelection();
-    });
-
-    self.selectedUnitSubCategory.subscribe(function () {
-      self.syncUnitPaletteSelection();
     });
 
     self.biomes = ko.observableArray([
@@ -1088,8 +599,7 @@ require(["api"], function (api) {
         self.advancedEditMode() &&
         (api.terrain_editor.editingTerrain() ||
           api.terrain_editor.editingMetalSpots() ||
-          api.terrain_editor.editingLandingZones() ||
-          api.terrain_editor.editingUnits())
+          api.terrain_editor.editingLandingZones())
       );
     });
 
@@ -1110,12 +620,10 @@ require(["api"], function (api) {
       self.selectedPlanetStatus(payload.status);
 
       var editing = payload.editing;
-      self.applyUnitRenderModeFromEngine(payload.unit_render_mode);
 
       var editingCsg = editing == "csg";
       var editingMetalSpots = editing == "metal_spots";
       var editingLandingZones = editing == "landing_zones";
-      var editingUnits = editing == "units";
 
       if (editingCsg != api.terrain_editor.editingTerrain())
         api.terrain_editor.editingTerrain(editingCsg);
@@ -1126,16 +634,6 @@ require(["api"], function (api) {
       if (editingLandingZones != api.terrain_editor.editingLandingZones())
         api.terrain_editor.editingLandingZones(editingLandingZones);
 
-      if (editingUnits != api.terrain_editor.editingUnits())
-        api.terrain_editor.editingUnits(editingUnits);
-
-      modify_keybinds({
-        add: editingUnits ? ["terrain editor units"] : [],
-        remove: editingUnits ? [] : ["terrain editor units"],
-      });
-
-      if (!editingUnits) self.selectedUnit(null);
-
       self.advancedEditMode(editing || self.selectedPlanetIsCustom());
 
       _.defer(self.checkResize);
@@ -1143,10 +641,6 @@ require(["api"], function (api) {
 
     self.showCsgBuildBar = ko.computed(function () {
       return api.terrain_editor.editingTerrain() && self.showPlanetEditor();
-    });
-
-    self.showUnitBuildBar = ko.computed(function () {
-      return api.terrain_editor.editingUnits() && self.showPlanetEditor();
     });
 
     self.selectedCsg = ko.observable(false);
@@ -1252,20 +746,6 @@ require(["api"], function (api) {
       return selectedPlanet.metal_spots.length;
     });
 
-    self.customEnergySpotCount = ko.computed(function () {
-      var selectedPlanet = self.selectedPlanet();
-
-      if (!selectedPlanet || !selectedPlanet.energy_spots) {
-        return 0;
-      }
-
-      return selectedPlanet.energy_spots.length;
-    });
-
-    self.customResourceSpotCount = ko.computed(function () {
-      return self.customMetalSpotCount() + self.customEnergySpotCount();
-    });
-
     self.customLandingZoneCount = ko.computed(function () {
       var selectedPlanet = self.selectedPlanet();
 
@@ -1281,23 +761,12 @@ require(["api"], function (api) {
             0;
     });
 
-    self.customUnitCount = ko.computed(function () {
-      var selectedPlanet = self.selectedPlanet();
-
-      if (!selectedPlanet || !selectedPlanet.units) {
-        return 0;
-      }
-
-      return selectedPlanet.units.length;
-    });
-
     self.selectedPlanetIsCustom = ko.computed(function () {
       return (
         self.isAdvancedEditing() ||
         self.customBrushCount() > 0 ||
-        self.customResourceSpotCount() > 0 ||
-        self.customLandingZoneCount() > 0 ||
-        self.customUnitCount() > 0
+        self.customMetalSpotCount() > 0 ||
+        self.customLandingZoneCount() > 0
       );
     });
 
@@ -1810,30 +1279,20 @@ require(["api"], function (api) {
         if (planetSpec.metal_spots) {
           source.metal_spots = planetSpec.metal_spots;
         }
-        if (planetSpec.energy_spots) {
-          source.energy_spots = planetSpec.energy_spots;
-        }
         if (planetSpec.landing_zones) {
           source.landing_zones = planetSpec.landing_zones;
-        }
-        if (planetSpec.units) {
-          source.units = planetSpec.units;
         }
       } else {
         planetSpec.source = {
           brushes: planetSpec.planetCSG,
           metal_spots: planetSpec.metal_spots,
-          energy_spots: planetSpec.energy_spots,
           landing_zones: planetSpec.landing_zones,
-          units: planetSpec.units,
         };
       }
       planetSpec = _.omit(planetSpec, [
         "planetCSG",
         "metal_spots",
-        "energy_spots",
-        "landing_zones",
-        "units",
+        "landing_zone",
       ]);
       return planetSpec;
     };
@@ -1849,14 +1308,8 @@ require(["api"], function (api) {
       if (!planetSpec.metal_spots && source.metal_spots)
         planetSpec.metal_spots = source.metal_spots;
 
-      if (!planetSpec.energy_spots && source.energy_spots)
-        planetSpec.energy_spots = source.energy_spots;
-
       if (!planetSpec.landing_zones && source.landing_zones)
         planetSpec.landing_zones = source.landing_zones;
-
-      if (!planetSpec.units && source.units)
-        planetSpec.units = source.units;
 
       delete planetSpec.source;
 
@@ -2206,8 +1659,7 @@ require(["api"], function (api) {
           tooltip = "!LOC:Preview to copy CSG";
           break;
         case "terrain":
-          tooltip =
-            "Preview gameplay to copy resource spots, landing zones, and units";
+          tooltip = "Preview gameplay to copy metal spots and landing zones";
           break;
         case "full":
           tooltip = "Preview terrain to copy only CSG ";
@@ -2490,18 +1942,11 @@ require(["api"], function (api) {
         ).then(function (second) {
           UberUtility.waitForAttributeLoad(
             second,
-            "energy_spots_key",
-            "energy_spots",
-            constants.PLANET_ENERGY_SPOTS_DATABASE
+            "landing_zones_key",
+            "landing_zones",
+            constants.PLANET_LANDING_ZONES_DATABASE
           ).then(function (third) {
-            UberUtility.waitForAttributeLoad(
-              third,
-              "landing_zones_key",
-              "landing_zones",
-              constants.PLANET_LANDING_ZONES_DATABASE
-            ).then(function (fourth) {
-              deferred.resolve(fourth);
-            });
+            deferred.resolve(third);
           });
         });
       });
@@ -2528,18 +1973,11 @@ require(["api"], function (api) {
         ).then(function (second) {
           UberUtility.waitForAttributeSave(
             second,
-            "energy_spots_key",
-            "energy_spots",
-            constants.PLANET_ENERGY_SPOTS_DATABASE
+            "landing_zones_key",
+            "landing_zones",
+            constants.PLANET_LANDING_ZONES_DATABASE
           ).then(function (third) {
-            UberUtility.waitForAttributeSave(
-              third,
-              "landing_zones_key",
-              "landing_zones",
-              constants.PLANET_LANDING_ZONES_DATABASE
-            ).then(function (fourth) {
-              deferred.resolve(fourth);
-            });
+            deferred.resolve(third);
           });
         });
       });
@@ -2858,7 +2296,6 @@ require(["api"], function (api) {
 
     self.changeSelectedPlanet = function (index) {
       self.selectedPlanetIndex(index);
-      self.selectedUnit(null);
 
       if (index != -1) {
         self.showAstroidBeltPanel(false);
@@ -3005,12 +2442,6 @@ require(["api"], function (api) {
       }
     };
 
-    self.toggleEditUnits = function () {
-      if (self.planetUnderConstruction()) return;
-
-      api.terrain_editor.toggleEditUnits();
-    };
-
     self.advancedLandingZonesDisabled = ko.computed(function () {
       return self.planetUnderConstruction() || !self.starting_planet();
     });
@@ -3018,10 +2449,7 @@ require(["api"], function (api) {
     self.checkResize = function () {
       var $editor_controls = $("#editor_controls");
 
-      var bottom =
-        api.terrain_editor.editingTerrain() || api.terrain_editor.editingUnits()
-          ? 300
-          : 140;
+      var bottom = api.terrain_editor.editingTerrain() ? 300 : 140;
 
       if ($(window).width() > 2140) bottom = 140;
 
@@ -3137,8 +2565,6 @@ require(["api"], function (api) {
 
     self.setup = function () {
       api.systemEditor.start();
-      engine.call("request_spec_data", api.Panel.pageId);
-      self.refreshUnitPaletteSources();
 
       model.handleLoad();
 
@@ -3252,22 +2678,6 @@ require(["api"], function (api) {
       model.systemUpdated();
     };
 
-    handlers.planet_energy_spots = function (payload) {
-      var index = payload.index;
-      var energy_spots = payload.energy_spots;
-
-      if (model.selectedPlanetIndex() != payload.index) {
-        console.error("planet_energy_spots for different planet");
-      }
-
-      var planet = model.system().planets[index];
-
-      if (_.isEqual(planet.energy_spots, energy_spots)) return;
-
-      planet.energy_spots = energy_spots;
-      model.systemUpdated();
-    };
-
     handlers.planet_landing_zones = function (payload) {
       var index = payload.index;
       var landing_zones = payload.landing_zones;
@@ -3284,25 +2694,6 @@ require(["api"], function (api) {
       model.systemUpdated();
 
       model.checkResize();
-    };
-
-    handlers.planet_units = function (payload) {
-      var index = payload.index;
-      var units = payload.units;
-      var selected = payload.selected;
-
-      if (model.selectedPlanetIndex() != payload.index) {
-        console.error("planet_units for different planet");
-      }
-
-      model.applySelectedUnitPayload(selected);
-
-      var planet = model.system().planets[index];
-
-      if (_.isEqual(planet.units, units)) return;
-
-      planet.units = units;
-      model.systemUpdated();
     };
 
     handlers.camera_type = function (payload) {
@@ -3323,14 +2714,12 @@ require(["api"], function (api) {
 
     handlers.system_blueprint = function (payload) {
       // copy updated source from engine
-      _.forEach(payload.system.planet_specs, function (planet) {
+      _.forEach(payload.system.planet_specs, function (planet, index) {
         var source = planet.source;
         if (source) {
           planet.planetCSG = source.brushes;
           planet.metal_spots = source.metal_spots;
-          planet.energy_spots = source.energy_spots;
           planet.landing_zones = source.landing_zones;
-          planet.units = source.units;
         }
       });
 
@@ -3351,14 +2740,6 @@ require(["api"], function (api) {
       model.saveDirty(dirty);
 
       handlers.selected_planet_index(payload);
-    };
-
-    handlers.unit_specs = function (payload) {
-      if (!_.isObject(payload)) payload = {};
-      else delete payload.message_type;
-
-      model.unitSpecsPayload(payload);
-      model.rebuildUnitPalette();
     };
 
     handlers.selected_planet_index = function (payload) {

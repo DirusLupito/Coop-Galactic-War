@@ -41,10 +41,9 @@ exports = {
 
         var copy = _.omit(system, 'planets');
         copy.planets = _.map(system.planets, function (element) {
-            var summary = _.omit(element, ['planetCSG', 'landing_zones', 'metal_spots', 'energy_spots', 'source']);
+            var summary = _.omit(element, ['planetCSG', 'landing_zones', 'metal_spots', 'source']);
 
             summary.metal_spots_count = element.metal_spots ? element.metal_spots.length : 0;
-            summary.energy_spots_count = element.energy_spots ? element.energy_spots.length : 0;
             summary.planetCSG_count = element.planetCSG ? element.planetCSG.length : 0;
             summary.landing_zones_count = element.landing_zones ? ( element.landing_zones.list ? element.landing_zones.list.length : element.landing_zones.length ) : 0;
             return summary;

@@ -208,9 +208,9 @@
         "original": "Spectators"
     }, 
     "Status": {
-        "message": "\u1e60\u04ad\u0203\u04ad\u0574\u01a8", 
+        "message": "\u1e60\u04ad\u0203\u04ad\u0574\u01a8",
         "original": "Status"
-    }, 
+    },
     "Tag": {
         "message": "\u4e01\u0203\u0260", 
         "original": "Tag"
@@ -228,7 +228,11 @@
         "original": "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation."
     }, 
     "This game is no longer available.": {
-        "message": "\u4e01\u043d\u0457\u01a8 \u0260\u0203\u028d\u1f73 \u0457\u01a8 \u019e\u020f \u230a\u020f\u019e\u0260\u1f73\u0213 \u0203\u0477\u0203\u0457\u230a\u0203\u0411\u230a\u1f73.", 
+        "message": "\u4e01\u043d\u0457\u01a8 \u0260\u0203\u028d\u1f73 \u0457\u01a8 \u019e\u020f \u230a\u020f\u019e\u0260\u1f73\u0213 \u0203\u0477\u0203\u0457\u230a\u0203\u0411\u230a\u1f73.",
         "original": "This game is no longer available."
+    },
+    "Use Steam Networking": {
+        "message": "\u1ee6\u01a8\u1f73 \u1e60\u04ad\u1f73\u0203\u028d \u019d\u1f73\u04ad\u1ff4\u020f\u0213\u045c\u0457\u019e\u0260",
+        "original": "Use Steam Networking"
     }
 }

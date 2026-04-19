@@ -74,6 +74,9 @@
     "Default Audio Device": {
         "message": "Default Audio Device"
     },
+    "Steam P2P Networking": {
+        "message": "Steam P2P Networking"
+    },
     "Display Mode": {
         "message": "Display Mode"
     },
@@ -287,9 +290,6 @@
     "Show Stat Bars": {
         "message": "Show Stat Bars"
     },
-    "Show Stat Bars in PiP": {
-        "message": "Show Stat Bars in PiP"
-    },
     "Show Unit Icons": {
         "message": "Show Unit Icons"
     },
@@ -361,9 +361,6 @@
     },
     "add metal spot": {
         "message": "add metal spot"
-    },
-    "add energy spot": {
-        "message": "add energy spot"
     },
     "add/remove": {
         "message": "add/remove"
@@ -665,8 +662,8 @@
     "remove landing zone": {
         "message": "remove landing zone"
     },
-    "remove resource spot": {
-        "message": "remove resource spot"
+    "remove metal spot": {
+        "message": "remove metal spot"
     },
     "repair": {
         "message": "repair"

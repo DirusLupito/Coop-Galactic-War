@@ -83,7 +83,8 @@ function CommunityMods() {
                 ticket: model.gameTicket(),
                 clientData: model.clientData(),
                 content: model.gameContent(),
-                lobby_id: model.lobbyId()
+                lobby_id: model.lobbyId(),
+                steamId: model.gameSteamId()
             });
     };
 
@@ -142,7 +143,19 @@ function CommunityModsSetup() {
                 if (startParams && startParams['disable_upnp'])
                     localDisableUPNP = true;
 
-                return engine.asyncCall('localserver.startGame', mode, localMultiThread(), localDisableUPNP, data);
+                var localSteamNetworking = false;
+                if (startParams && startParams['enable_steam_networking'])
+                    localSteamNetworking = true;
+                var lobbyEnableSteam = ko.observable().extend({ session: 'lobby_enable_steam_networking' })();
+                if (lobbyEnableSteam)
+                    localSteamNetworking = true;
+
+                // If Steam P2P is disabled in settings, force it off
+                if (!api.net.enableSteamP2P())
+                    localSteamNetworking = false;
+
+                var networkFlags = (localDisableUPNP ? 1 : 0) | (localSteamNetworking ? 2 : 0);
+                return engine.asyncCall('localserver.startGame', mode, localMultiThread(), networkFlags, data);
             });
         }
         else
