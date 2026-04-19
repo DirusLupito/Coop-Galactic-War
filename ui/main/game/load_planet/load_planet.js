@@ -60,12 +60,10 @@ $(document).ready(function () {
 
             UberUtility.waitForAttributeLoad(planet_spec, 'csg_key', 'planetCSG', constants.PLANET_CSG_DATABASE).then(function (first) {
                 UberUtility.waitForAttributeLoad(first, 'metal_spots_key', 'metal_spots', constants.PLANET_METAL_SPOTS_DATABASE).then(function (second) {
-                    UberUtility.waitForAttributeLoad(second, 'energy_spots_key', 'energy_spots', constants.PLANET_ENERGY_SPOTS_DATABASE).then(function (third) {
-                        UberUtility.waitForAttributeLoad(third, 'landing_zones_key', 'landing_zones', constants.PLANET_LANDING_ZONES_DATABASE).then(function (fourth) {
-                            _.omit(fourth, 'source');
-                            deferred.resolve(fourth);
-                        });
-                    });
+                    UberUtility.waitForAttributeLoad(second, 'landing_zones_key', 'landing_zones', constants.PLANET_LANDING_ZONES_DATABASE).then(function (third) {
+                        _.omit(third, 'source');
+                        deferred.resolve(third);
+                    });;
                 });
             });
 
@@ -82,7 +80,7 @@ $(document).ready(function () {
 
                 if (options.omit_keys)
                     system.planets = _.map(system.planets, function (element) {
-                        return _.omit(element, ['csg_key', 'metal_spots_key', 'energy_spots_key', 'landing_zones_key']);
+                        return _.omit(element, ['csg_key', 'metal_spots_key', 'landing_zones_key']);
                     });
 
                 deferred.resolve(system);
@@ -266,11 +264,9 @@ $(document).ready(function () {
 
             UberUtility.waitForAttributeSave(planet_spec, 'csg_key', 'planetCSG', constants.PLANET_CSG_DATABASE).then(function (first) {
                 UberUtility.waitForAttributeSave(first, 'metal_spots_key', 'metal_spots', constants.PLANET_METAL_SPOTS_DATABASE).then(function (second) {
-                    UberUtility.waitForAttributeSave(second, 'energy_spots_key', 'energy_spots', constants.PLANET_ENERGY_SPOTS_DATABASE).then(function (third) {
-                        UberUtility.waitForAttributeSave(third, 'landing_zones_key', 'landing_zones', constants.PLANET_LANDING_ZONES_DATABASE).then(function (fourth) {
-                            _.omit(fourth, 'source');
-                            deferred.resolve(fourth);
-                        });
+                    UberUtility.waitForAttributeSave(second, 'landing_zones_key', 'landing_zones', constants.PLANET_LANDING_ZONES_DATABASE).then(function (third) {
+                        _.omit(third, 'source');
+                        deferred.resolve(third);
                     });
                 });
             });

@@ -888,7 +888,9 @@ function LobbyModel(creator) {
                 required_content: content_manager.getRequiredContent(),
                 bounty_mode: self.settings.game_options ? !!self.settings.game_options.bounty_mode : false,
                 bounty_value: self.settings.game_options ? self.settings.game_options.bounty_value : 0.2,
-                sandbox: self.settings.game_options ? !!self.settings.game_options.sandbox : false
+                sandbox: self.settings.game_options ? !!self.settings.game_options.sandbox : false,
+                steam_networking: !!server.steam_networking_enabled,
+                steam_id: server.steam_networking_enabled ? server.steam_id : undefined
             };
 
             debug_log(server.beacon);
@@ -1571,6 +1573,13 @@ function playerMsg_upnpStatus(msg)
     debug_log('playerMsg_upnpStatus');
     var response = server.respond(msg);
     response.succeed(server.uPNPStatus);
+}
+
+function playerMsg_steamNetworkingStatus(msg)
+{
+    debug_log('playerMsg_steamNetworkingStatus');
+    var response = server.respond(msg);
+    response.succeed(server.steam_networking_enabled ? 'active' : 'inactive');
 }
 
 function maybeStartLandingState()
@@ -2354,6 +2363,7 @@ exports.enter = function (owner) {
         modify_bouncer: playerMsg_modifyBouncer,
         modify_settings: playerMsg_modifySettings,
         upnp_status: playerMsg_upnpStatus,
+        steam_networking_status: playerMsg_steamNetworkingStatus,
         start_game: playerMsg_startCountdown,
         set_primary_color_index: playerMsg_setPrimaryColorIndex,
         set_primary_color_index_for_ai: playerMsg_setPrimaryColorIndexForAI,

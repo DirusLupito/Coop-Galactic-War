@@ -178,6 +178,18 @@ $(document).ready(function () {
             localStorage.setItem('server_browser_create_local_game', value.toString());
         });
 
+        self.doUseSteamNetworking = ko.observable(false);
+        // Clear any stale session value so a previous Steam P2P game
+        // doesn't silently force Steam networking on the next game.
+        ko.observable().extend({ session: 'lobby_enable_steam_networking' })(false);
+        self.doUseSteamNetworking.subscribe(function (value) {
+            ko.observable().extend({ session: 'lobby_enable_steam_networking' })(value);
+        });
+
+        self.showUseSteamNetworking = ko.pureComputed(function () {
+            return self.doCreateLocalGame() && !!api.net.enableSteamP2P();
+        });
+
         self.canCreateGame = ko.computed(function () {
             return self.remoteServerAvailable() || self.useLocalServer();
         });
@@ -500,14 +512,18 @@ $(document).ready(function () {
         self.joinGame = function (game) {
 
             self.lobbyId(game.lobby_id);
-            self.gameHostname(game.host);
-            self.gamePort(game.port);
+            // When using Steam P2P, don't pass the host IP — connection goes through steam_id
+            self.gameHostname(game.steam_id ? '' : game.host);
+            self.gamePort(game.steam_id ? '' : game.port);
             self.isLocalGame(game.server_type == 'local');
             self.uuid(game.uuid);
             self.serverType(game.server_type);
             self.serverSetup('game');
             self.gameType(game.mode);
             self.gameModIdentifiers(game.mod_identifiers);
+
+            var gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
+            gameSteamId(game.steam_id || '');
 
             var params = {};
             if (_.has(game, 'required_content'))
@@ -613,6 +629,8 @@ $(document).ready(function () {
                 var name = beacon.creator + " : " + beacon.tag;
                 if (!_.isEmpty(gameData.name))
                     name = gameData.name;
+                if (beacon.steam_networking)
+                    name = "\uD83E\uDDEA " + name;
 
                 var map = self.knownLobbyIds();
                 if (!map[lobby_id]) {
@@ -706,7 +724,9 @@ $(document).ready(function () {
                     'is_missing_content': !_.isEmpty(missingContent),
                     'bounty_mode': beacon.bounty_mode,
                     'bounty_value': beacon.bounty_value,
-                    'sandbox': beacon.sandbox
+                    'sandbox': beacon.sandbox,
+                    'steam_networking': beacon.steam_networking,
+                    'steam_id': beacon.steam_id
                 };
 
                 return game;

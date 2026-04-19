@@ -49,8 +49,6 @@ $(document).ready(function () {
 
         self.showAmmo = ko.observable(false);
         self.ammoFraction = ko.observable(1.0).extend({ numeric: 2 });
-        self.showShield = ko.observable(false);
-        self.shieldFraction = ko.observable(1.0).extend({ numeric: 2 });
         self.isDead = ko.observable(false);
         self.isAlive = ko.computed(function () { return !self.isDead() });
 
@@ -91,12 +89,6 @@ $(document).ready(function () {
         self.ammoWidthString = ko.computed(function () { return '' + (self.ammoFraction() * 100) + '%' });
         self.ammoPercentString = ko.computed(function () { return '' + Math.round(self.ammoFraction() * 100) + '%' });
 
-        self.shieldWidthString = ko.computed(function () { return '' + (self.shieldFraction() * 100) + '%' });
-        self.shieldPercentString = ko.computed(function () { return '' + Math.round(self.shieldFraction() * 100) + '%' });
-        self.shieldColor = ko.computed(function () {
-            return 'rgb(255, 255, 255)';
-        });
-
         self.actionIsAttacking = ko.observable(false);
         self.actionIsBuilding = ko.observable(false);
         self.actionIsReclaiming = ko.observable(false);
@@ -115,10 +107,8 @@ $(document).ready(function () {
         self.healthFraction((object && object.health && object.health.max) ? object.health.current / object.health.max : 0);
 
         self.showAmmo(!_.isUndefined(object.ammo_fraction));
-        self.ammoFraction(object && object.ammo_fraction);
 
-        self.showShield(!_.isUndefined(object.shield_fraction));
-        self.shieldFraction(object && object.shield_fraction);
+        self.ammoFraction(object && object.ammo_fraction);
         self.isDead(self.healthFraction() <= 0 || self.isFeature());
 
         if (self.isDead())

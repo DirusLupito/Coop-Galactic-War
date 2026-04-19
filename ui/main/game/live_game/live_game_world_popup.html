@@ -42,11 +42,6 @@ __________________________________________________________________________-->
                     <div class="content health">
                         <!-- HEALTH BAR -->
                         <div class="div_health_bar_grp">
-                            <!-- ko if: showShield -->
-                            <div class="div_unit_shield_bar" data-bind="style: { width: shieldWidthString(), 'background': shieldColor }">
-                                <div class="bar_blend"></div>
-                            </div>
-                            <!-- /ko -->
                             <div class="div_unit_health" data-bind="visible: showHealth">
                                 <div  data-bind="css: { div_unit_health_bar: isAlive(), div_unit_metal_bar: isDead() }, style: { width: healthWidthString(), 'background': healthColor }, visible: showHealth"></div>
                                 <div class="bar_blend"></div>
@@ -59,9 +54,6 @@ __________________________________________________________________________-->
                         </div>
                         <!-- HEALTH PERCENTAGES -->
                         <div class="div_health_percentages">
-                            <!-- ko if: showShield -->
-                            <div class="stat shield" data-bind="text: shieldPercentString"></div>
-                            <!-- /ko -->
                             <div class="stat health" data-bind="text: healthPercentString, visible: showHealth"></div>
                             <!-- ko if: showAmmo -->
                             <div class="stat secondary" data-bind="text: ammoPercentString"></div>
@@ -126,11 +118,6 @@ __________________________________________________________________________-->
                     <div class="content health">
                         <!-- HEALTH BAR -->
                         <div class="div_health_bar_grp">
-                            <!-- ko if: showShield -->
-                            <div class="div_unit_shield_bar" data-bind="style: { width: shieldWidthString(), 'background': shieldColor }">
-                                <div class="bar_blend"></div>
-                            </div>
-                            <!-- /ko -->
                             <div class="div_unit_health">
                                 <div data-bind="css: { div_unit_health_bar: isAlive(), div_unit_metal_bar: isDead() }, style: { width: healthWidthString(), 'background': healthColor }, visible: showHealth"></div>
                                 <div class="bar_blend"></div>
@@ -143,9 +130,6 @@ __________________________________________________________________________-->
                         </div>
                         <!-- HEALTH PERCENTAGES -->
                         <div class="div_health_percentages">
-                            <!-- ko if: showShield -->
-                            <div class="stat shield" data-bind="text: shieldPercentString"></div>
-                            <!-- /ko -->
                             <div class="stat health" data-bind="text: healthPercentString, visible: showHealth"></div>
                             <!-- ko if: showAmmo -->
                             <div class="stat secondary" data-bind="text: ammoPercentString"></div>

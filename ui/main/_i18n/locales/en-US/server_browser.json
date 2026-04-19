@@ -157,7 +157,7 @@
     }, 
     "Status": {
         "message": "Status"
-    }, 
+    },
     "Tag": {
         "message": "Tag"
     }, 
@@ -172,5 +172,8 @@
     }, 
     "This game is no longer available.": {
         "message": "This game is no longer available."
+    },
+    "Use Steam Networking": {
+        "message": "Use Steam Networking"
     }
 }

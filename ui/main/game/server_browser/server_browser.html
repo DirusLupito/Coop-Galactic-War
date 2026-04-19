@@ -61,6 +61,13 @@
                         </label>
                         <!-- /ko -->
 
+                        <!-- ko if: showUseSteamNetworking -->
+                        <label class="label_checkbox" data-bind="click_sound: 'default', rollover_sound: 'default'">
+                            <input type="checkbox" data-bind="checked: doUseSteamNetworking"/>
+                                <loc>Use Steam Networking</loc>
+                        </label>
+                        <!-- /ko -->
+
                     </div>
 
                     <div class="form-group" data-bind="visible: hasUberNetRegions">

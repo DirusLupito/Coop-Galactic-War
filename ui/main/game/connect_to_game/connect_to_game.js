@@ -41,6 +41,7 @@ $(document).ready(function () {
         self.gameContent = ko.observable().extend({ session: 'game_content' });
         self.isLocalGame = ko.observable().extend({ session: 'is_local_game' });
         self.gameType = ko.observable().extend({ session: 'game_type' });
+        self.gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
 
         self.connectionAttempts = ko.observable(DEFAULT_CONNECTION_ATTEMPTS).extend({ session: 'connection_attempts' });
         self.connectionRetryDelaySeconds = ko.observable(DEFAULT_RETRY_DELAY).extend({ session: 'connection_retry_delay_seconds' })
@@ -83,6 +84,7 @@ $(document).ready(function () {
                 setup: self.serverSetup(),
                 game: self.gameType(),
                 mods: self.gameModIdentifiers(),
+                steam_id: self.gameSteamId(),
                 timestamp: Date.now()
 // excludes ticket
             };
@@ -164,6 +166,7 @@ $(document).ready(function () {
                 self.pageSubTitle('');
             self.connectionAttemptsRemaining--;
             self.connecting(true);
+            var steamId = self.gameSteamId();
             return api.net.connect(
             {
                 host: self.gameHostname(),
@@ -172,7 +175,8 @@ $(document).ready(function () {
                 ticket: self.gameTicket(),
                 clientData: self.clientData(),
                 content: self.gameContent(),
-                lobby_id: self.lobbyId()
+                lobby_id: self.lobbyId(),
+                steamId: steamId
             });
         };
 
@@ -281,6 +285,12 @@ $(document).ready(function () {
                     var disableUPNP = $.url().param('disable_upnp');
                     if (disableUPNP)
                         parsedParams['disable_upnp'] = true;
+                    var enableSteamNetworking = $.url().param('enable_steam_networking');
+                    if (enableSteamNetworking)
+                        parsedParams['enable_steam_networking'] = true;
+                    var lobbyEnableSteam = ko.observable().extend({ session: 'lobby_enable_steam_networking' })();
+                    if (lobbyEnableSteam)
+                        parsedParams['enable_steam_networking'] = true;
 
                     startCall = api.net.startGame(region, mode, parsedParams);
                     self.needsServerModsUpload(!window.gNoMods);
@@ -329,7 +339,7 @@ $(document).ready(function () {
                     data = parse(data);
                     self.handleStartError(data);
                 });
-            } else if ( ! needsJoinGame && self.gameHostname() && self.gamePort()) {
+            } else if ( ! needsJoinGame && ((self.gameHostname() && self.gamePort()) || self.gameSteamId())) {
 
 // check for custom servers and manually started local servers
                 if (serverType != 'uber' && gameType == 'Waiting' ) {

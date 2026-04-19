@@ -177,7 +177,6 @@
                             </div>
                             <div class="sub-group">
                                 <div class="option" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['ui.show_stat_bars'] }"></div>
-                                <div class="option" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['ui.show_stat_bars_in_pip'] }"></div>
                             </div>
                             <div class="sub-group">
                                 <div class="option" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['ui.show_orders'] }"></div>
@@ -214,6 +213,7 @@
                                 <loc>Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)</loc>
                             </div>
                             <div class="option" style="display: none" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['server.disable_upnp'] }, visible: showDisableUPNP"></div>
+                            <div class="option" style="display: none" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['server.enable_steam_p2p'] }, visible: localServerAvailable"></div>
                         </div>
                     </div>
 

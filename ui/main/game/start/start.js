@@ -591,6 +591,15 @@ $(document).ready(function ()
         self.disableUPNPRule.subscribe(self.disableUPNP);
         self.disableUPNP(self.disableUPNPRule());
 
+        self.enableSteamP2PSetting = ko.observable().extend({ setting: { group: 'server', key: 'enable_steam_p2p' } });
+        self.enableSteamP2P = ko.observable().extend({ session: 'server_enable_steam_p2p' });
+        self.enableSteamP2PRule = ko.computed(function () {
+            var setting = self.enableSteamP2PSetting();
+            return setting === 'ON';
+        });
+        self.enableSteamP2PRule.subscribe(self.enableSteamP2P);
+        self.enableSteamP2P(self.enableSteamP2PRule());
+
         self.aiSkirmish = ko.observable().extend({ session: 'ai_skirmish' });
 
         self.signedInToUbernet = ko.observable().extend({ session: 'signed_in_to_ubernet' });
@@ -2126,6 +2135,9 @@ console.log(JSON.stringify(self.reconnectToGameInfo()));
 
             self.gameHostname( reconnectToGameInfo.game_hostname );
             self.gamePort( reconnectToGameInfo.game_port );
+
+            var gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
+            gameSteamId( reconnectToGameInfo.steam_id || '' );
 
             self.gameModIdentifiers( reconnectToGameInfo.mods );
 

@@ -114,7 +114,7 @@ $(document).ready(function () {
                 for (i = 0; i < unit.commands.length; i++)
                     allowedCommands[unit.commands[i]] = true;
 
-                if (unit.consumption.energy > 0 || unit.energy_efficiency_requirement > 0)
+                if (unit.consumption.energy > 0)
                     selectionConsumesEnergy = true;
 
                 selectionCanBuild |= unit.canBuild;
