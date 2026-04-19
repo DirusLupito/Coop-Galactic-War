@@ -1,0 +1,1566 @@
+# Coop Galactic War Change Explanations
+
+This document captures how rough-but-working Galactic War coop was introduced, how Galactic War's generated in-memory files work, how reconnect was later fixed, how Continue War ultimately stabilized around full server-process restart, and how the galactic war lobby was implemented.
+
+The intent is to preserve the reasoning behind these changes so future contributors and LLMs can follow the same patterns instead of rediscovering them from scratch.
+
+## Scope
+
+- Original coop-enabling commit chain:
+  - `b12ebaf` `Added code to make any galactic war game broadcast a server beacon.`
+  - `c6abda3` `GW Lobby now waits for the co op player to join before proceeding.`
+  - `6bc1378` `CO-op player is now assigned a human slot with shared control with the host.`
+  - `9040d43` `Co-op player can now join game and issue actions`
+  - `0ce8884` `Co-op player can now build structures.`
+- Reconnect fix commits:
+  - `c55f52b` `Co-op player no longer crashes on reconnect.`
+  - `49a653b` `Removed GW related reconnect logging.`
+- Co-op build and action UI fixes:
+  - `acd428d` `Several fixes for Co-op player unit UI.`
+  - `e48d3ec` `Removed logging related to build/action UI bugfixes.`
+- GW lobby discovery visibility fixes:
+  - `bd7227b` `gw lobby beacon now shows up on LAN more consistently.`
+  - `8e3b814` `gw lobby is now visible in the server browser`
+- Fixing an issue with unmounting memory files in the GW lobby:
+  - `9f594ae` `Fixed a race condition that could appear causing a crash on some PCs but not others.`
+- Fixing client mod-related crashes:
+  - `cf85a22` `Fixed reconnect unmounting potentially essential client mods.`
+- Galactic War galaxy map co-op mode and synchronization:
+  - `7874487` `Added WIP galactic war campaign multiplayer netcode.`
+  - `654d94a` `Fixed an issue where coop player has a UI crash if they have no pre existing GW save.`
+  - `3e276f8` `Fixed a bug where tech cards acquired were not immediately visible for Co-op player.`
+  - `fde5b17` `Fixed an issue where Co-op player's GW Map view would not update to show system ownership.`
+  - `359550e` `Fixed 2 issues, one with reconnect and one with co-op player's system view.`
+  - `60438a2` `Fixed the co-op player's copy of the GW save being corrupted.`
+  - `cf423b0` `Fixed compatibility with GW affecting mods like GWO.`
+  - `b7e3759` `Removed tag causing gw co-op lobbies to not show up outside of LAN.`
+  - `d8591c8` `Fixed an issue where saving and quitting from GW would corrupt co-op player's save.`
+  - `7f9543d` `Tech card deletions now apply to co-op players.`
+- Campaign lobby/chat UX and dynamic player-count commits:
+  - `a70eb09` `Implemented basic lobby controls in co-op GW to address [#6](https://github.com/DirusLupito/Coop-Galactic-War/issues/6).`
+  - `5a79c85` `UI improvements, GW now supports variable player counts.`
+  - `39af2b8` `Fixed an issue where clients would see default/empty lobby data on join.`
+  - `2e5ec38` `Single player galactic war no longer broadcasts a server beacon.`
+  - `54430b9` `Host can now kick players.`
+  - `8b4ae20` `Co-op player no longer sees controls for things they cannot control.`
+- Continue War restart and automatic reconnect commit chain:
+  - `c2da1d3` `Continue war from the host now automatically reopens a lobby.`
+  - `7039a84` `Co-op players now automatically reconnect with the host when continuing the war.`
+  - `36ce3a4` `Fixed an issue where the live game patch wouldn't apply to the co-op players.`
+  - `d32e569` `Saving and exiting once again immediately closes the server.`
+  - `cddd2ca` `Co-op player no longer sees the continue war button.`
+  - `46206f1` `Fixed issue with continue war from GWO FFAs.`
+  - `43e243e` `Fixed another issue where co-op players could see the continue war button.`
+
+## High-Level Summary
+
+Galactic War coop works by adapting a single-player Galactic War battle into a temporary multiplayer-compatible flow, then extending the same pattern to reconnect, campaign-map coop, and lobby UX hardening.
+
+At a high level, the codebase now does all of the following:
+
+1. Advertises the normally hidden Galactic War battle lobby in the regular multiplayer server browser, while later suppressing solo GW beacons and preserving campaign launch metadata.
+2. Maps connected clients into shared human control for the live battle and later syncs campaign-map coop state through snapshots, actions, and persistence.
+3. Patches the in-game UI so clients can operate against Galactic War's tagged unit specs such as `.player` and `.ai`, including build, action, tooltip, and reconnect refresh paths.
+4. Reconstructs the reconnecting client's Galactic War in-memory file system before allowing it to enter `live_game` again.
+5. Keeps GW campaign coop stable across save/load, reconnect, and third-party mod overrides by preserving local campaign state and re-hooking overridden methods when needed.
+6. Hardens lobby discovery, slot management, chat/settings UX, and startup sequencing so the coop flow stays visible and does not race memory-file mounts.
+7. Implements Continue War as an explicit host-triggered restart protocol (`restart_prepare` + process shutdown + reconnect staging), rather than implicit reconnect-on-disconnect fallbacks.
+8. Ensures expected Save-and-Exit semantics by shutting down immediately when host exits in `game_over`, while keeping restart-only behavior isolated to the Continue War path.
+
+## Original Single-Player Galactic War File Model
+
+The most important fact about Galactic War is that it does not run on the stock file set alone. It generates a virtual file tree at runtime.
+
+Those generated files include paths like:
+
+- `/pa/units/unit_list.json.player`
+- `/pa/units/unit_list.json.ai`
+- `/pa/units/.../*.json.player`
+- `/pa/units/.../*.json.ai`
+- `/pa/ai/unit_maps/ai_unit_map.json.player`
+- `/pa/ai/unit_maps/ai_unit_map.json.ai`
+
+These files are mounted with `api.file.mountMemoryFiles` on the client and `file.mountMemoryFiles` on the server. They never need to exist on disk.
+
+### Where the files are generated
+
+The generator lives in [ui/main/game/galactic_war/shared/gw_specs.js](ui/main/game/galactic_war/shared/gw_specs.js).
+
+Important functions:
+
+- `genUnitSpecs(units, tag)`:
+  - Loads each root unit spec.
+  - Recursively follows references like `base_spec`, tool specs, ammo, replacement units, factory initial build specs, death weapons, and spawn-on-death references.
+  - Rewrites those references so they point at the tagged namespace.
+  - Emits a full tagged spec tree and a matching tagged `unit_list.json`.
+- `genAIUnitMap(unitMap, tag)`:
+  - Rewrites every referenced `spec_id` in the AI unit map to the tagged namespace.
+- `modSpecs(specs, mods, specTag)`:
+  - Applies Galactic War card modifications after generation.
+  - Supports operations such as `multiply`, `add`, `replace`, `merge`, `push`, `clone`, `tag`, `pull`, and `eval`.
+
+### Where generation is orchestrated
+
+The orchestrator is [ui/main/game/galactic_war/gw_play/gw_referee.js](ui/main/game/galactic_war/gw_play/gw_referee.js).
+
+`generateGameFiles` does the following:
+
+1. Unmounts old memory files first.
+2. Loads the base unit list and base AI unit maps from the shipped game content.
+3. Generates a complete `.ai` namespace from the base unit list.
+4. Generates a `.player` namespace only from the player's GW inventory unlocks.
+5. Applies GW inventory mods to the `.player` spec set.
+6. Produces tagged AI unit maps for both `.player` and `.ai`.
+7. Merges everything into `self.files()`.
+
+### Where the inventory comes from
+
+Galactic War cards and campaign state rebuild the player's effective inventory in:
+
+- [ui/main/game/galactic_war/shared/js/gw_inventory.js](ui/main/game/galactic_war/shared/js/gw_inventory.js)
+- [ui/main/game/galactic_war/shared/js/gw_game.js](ui/main/game/galactic_war/shared/js/gw_game.js)
+
+The inventory contains:
+
+- `units`: unlocked player units
+- `mods`: spec mutations granted by cards
+- `minions`: allied helper commanders and their settings
+- `tags`: commander, faction, player color, and other campaign metadata
+
+That inventory is why Galactic War needs generated files at all. Each battle can have a different unit universe.
+
+### How single-player GW launches a battle
+
+The fight path is in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js).
+
+When the player starts a fight:
+
+1. `GWReferee.hire(game)` generates the files and battle config.
+2. `referee.mountFiles()` mounts the generated file tree locally.
+3. `referee.tagGame()` calls `api.game.setUnitSpecTag('.player')`.
+4. The generated battle config is stored in `gw_battle_config`.
+5. The UI then transitions to `connect_to_game` and starts the server.
+
+The `gw_battle_config` observable is backed by the knockout `memory` extender in [ui/main/shared/js/ko_utility.js](ui/main/shared/js/ko_utility.js). That makes it scene-persistent client memory, not a server-owned authoritative data store.
+
+### How the generated files affect the battle config
+
+The referee-generated config includes:
+
+- `files`: the full generated in-memory file map
+- `armies`: GW battle armies with `spec_tag` values of `.player` or `.ai`
+- `player.commander`: explicitly rewritten to a `.player` spec
+- AI commanders: explicitly rewritten to `.player` or `.ai` tagged specs based on alliance
+
+That config is what the GW lobby eventually sends to the server.
+
+### Why an untagged unit list is still synthesized
+
+In [ui/main/game/galactic_war/gw_play/gw_referee.js](ui/main/game/galactic_war/gw_play/gw_referee.js), `mountFiles` also creates an untagged `/pa/units/unit_list.json` as the superset of the `.player` and `.ai` unit lists.
+
+That is a compatibility shim for UI systems that still assume an untagged master unit list exists.
+
+## Original Coop Implementation
+
+## Commit `b12ebaf`
+
+This commit made Galactic War visible and joinable from the normal multiplayer browser.
+
+Server-side changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Added beacon generation so the GW lobby appears in the multiplayer server browser.
+- Set `server.maxClients` to `2` for the GW lobby.
+- Stopped rejecting a second client from joining the GW lobby.
+- Updated the beacon continuously as clients connected or the control state changed.
+
+Client-side changes in [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js):
+
+- Made the GW lobby UI accept either the broadcast-style control payload or the per-client control payload form.
+
+Effect in practice:
+
+- The hidden single-player GW battle lobby became discoverable in the server browser.
+- A second player could now connect to the GW lobby instead of being hard-rejected.
+- The GW lobby was still functionally single-player after that point, but the join window existed.
+
+## Commit `c6abda3`
+
+This commit stopped the host from immediately launching the battle before the second player joined.
+
+Changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Replaced the old `creatorReady -> starting=true` behavior with `tryStart()`.
+- `tryStart()` requires:
+  - creator ready
+  - system ready
+  - sim ready
+  - at least two connected clients
+
+Effect in practice:
+
+- The GW lobby stopped auto-starting as soon as the host was ready.
+- The lobby now behaved like a waiting room for coop.
+
+## Commit `6bc1378`
+
+This commit made the second player part of the human side instead of just a passive observer.
+
+Changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Rewrote `startGame()`.
+- Collected all human-controllable slots from non-AI armies.
+- Added extra human slots if not enough existed for all connected clients.
+- Assigned connected clients into those human slots.
+- Built the `players` table with one cloned GW player config per connected client.
+
+Effect in practice:
+
+- Both clients were inserted into the same human army with shared control.
+- So Coop worked by shared control of a single GW side, not by creating two separate campaign factions.
+
+## Commit `9040d43`
+
+This commit solved the next major problem: the joining client needed the host's generated Galactic War files.
+
+Server-side changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Added `clientConfigReady` tracking.
+- Added `sendGWConfigToClient()`.
+- Added `request_gw_config` and `gw_config_ready` messages.
+- Extended `tryStart()` so the game would not start until every connected client had mounted the GW config.
+
+Client-side changes in [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js):
+
+- Added a `gw_config` handler that mounts `payload.files` using `api.file.mountMemoryFiles`.
+- Added a polling request loop so browser-join clients could request GW config if they missed the original broadcast.
+- Sent `gw_config_ready` back to the server after mounting succeeded.
+
+Live game changes:
+
+- Fixed army-id checks that treated army `0` as “no army”.
+- Added tagged/untagged spec-resolution fallbacks so action parsing and control worked on the coop client.
+
+Effect in practice:
+
+- The second client now joined with the same generated GW file tree as the host.
+- The second client could issue actions once in the live match.
+- Building still remained broken due to further spec-tag/UI issues.
+
+## Commit `0ce8884`
+
+This commit fixed structure building and solidified the `.player` tag behavior.
+
+Changes:
+
+- Forced `api.game.setUnitSpecTag('.player')` in the GW lobby and again in live_game.
+- Added tagged/untagged build-spec resolution logic to the build bar.
+- Added more tagged/untagged resolution logic to action and selection paths.
+
+Files involved:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+- [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js)
+- [ui/main/game/live_game/live_game_build_bar.js](ui/main/game/live_game/live_game_build_bar.js)
+- [ui/main/game/live_game/live_game_action_bar.js](ui/main/game/live_game/live_game_action_bar.js)
+
+Effect in practice:
+
+- The coop client could now build structures.
+- Tooltips and other unit-info paths still remained fragile because many stock UI paths still assumed an untagged canonical spec namespace.
+
+## Why the Original Reconnect Theory Pointed at Missing Memory Files
+
+Before reconnect was fixed, the most likely failure mode was:
+
+1. A running GW coop match already referenced `.player` and `.ai` specs.
+2. A reconnecting client re-entered the match without re-mounting the generated GW file tree.
+3. The client then tried to resolve `.player` or `.ai` files that did not exist locally.
+4. The client crashed or failed as soon as those tagged unit specs were touched.
+
+That theory was based on two facts:
+
+- save/load and replay restore already had an explicit `memory_files` handshake in [server-script/states/load_save.js](server-script/states/load_save.js) and [ui/main/game/replay_loading/replay_loading.js](ui/main/game/replay_loading/replay_loading.js)
+- normal in-progress reconnect in `playing.js` had no equivalent GW-specific memory-file restore mechanism
+
+That theory turned out to be directionally correct, but the final implementation made a few practical choices that are important to preserve.
+
+## Reconnect Fix Implementation
+
+## Commit `c55f52b`
+
+This commit fixed reconnect by adding a dedicated reconnect staging path and an explicit client-requested memory-file restore protocol for live Galactic War matches.
+
+The logging added in this commit was removed one commit later, but the actual behavior remained.
+
+### Server-side: expose a live-match memory-file resend API
+
+Changes in [server-script/states/playing.js](ui/main/game/live_game/live_game.js):
+
+The real server-side behavior added was:
+
+- `getReconnectReplayFiles()`:
+  - Reads `server.getFullReplayConfig()`.
+  - Returns `fullReplayConfig.files` if present.
+- `sendReconnectMemoryFilesToClient(client, reason)`:
+  - Sends a `memory_files` message to a specific client.
+- New transient message handlers in `exports.enter`:
+  - `request_memory_files`
+  - `memory_files_received`
+
+Important practical detail:
+
+- The reconnect payload is sourced from `server.getFullReplayConfig().files`, not from `gw_battle_config`, not from a fresh client-side regeneration, and not from the running lobby state.
+
+That means the live match is relying on the full replay config as its authoritative copy of the generated GW file tree.
+
+### Server-side: reconnect does not proactively resend on `onConnect`
+
+This is the biggest practical difference from a naive replay-loading-style model.
+
+The reconnect fix does **not** immediately push GW files during the `server.onConnect` reconnect hook.
+
+Instead, the reconnect hook still mainly does connection accounting and timeout cleanup. The real GW resend happens only when the client explicitly sends `request_memory_files`.
+
+That means the server-side design is:
+
+- keep reconnect cheap and non-blocking at the transport level
+- let the client decide when it is in the right scene to restore GW files
+- answer that request only for GW matches
+
+### Client-side: intercept the normal live_game redirect
+
+Changes in [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js):
+
+- Added `isGalacticWarForConnect(payload)`.
+- Added `reconnectingToExistingGame` state and logic to preserve reconnect metadata.
+- In `handlers.server_state`, if the server tries to redirect directly to `coui://ui/main/game/live_game/live_game.html` for a GW match, the client rewrites that redirect to:
+  - `coui://ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html?target=<live_game_url>`
+
+Effect in practice:
+
+- Reconnecting GW clients no longer go straight into `live_game`.
+- They are detoured through a small staging scene first.
+
+### Client-side: new GW reconnect staging scene
+
+New files:
+
+- [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html)
+- [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.css](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.css)
+- [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js)
+
+Behavior of `gw_reconnect_loading.js`:
+
+1. Wait for `server_state`.
+2. If the server wants to send the client to the real `live_game` target, and the match type is `Galactic War`, and GW files have not yet been restored:
+   - do not enter `live_game` yet
+   - send `request_memory_files`
+3. When `memory_files` arrives:
+   - synthesize untagged `/pa/units/unit_list.json` if needed from `.player` and `.ai`
+   - unmount old memory files
+   - mount the incoming GW memory files
+   - force `api.game.setUnitSpecTag('.player')`
+   - send `memory_files_received`
+   - finally redirect to the real `live_game` URL
+
+This means reconnect now has an explicit pre-live-game restore phase.
+
+### Client-side: live_game also gained a `memory_files` handler
+
+Changes in [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js):
+
+- Added `handlers.memory_files`.
+- The handler:
+  - synthesizes untagged `/pa/units/unit_list.json` if missing
+  - unmounts old memory files
+  - mounts the incoming file set
+  - forces `api.game.setUnitSpecTag('.player')`
+  - calls `engine.call('request_spec_data', -1)`
+  - sends `memory_files_received`
+
+This acts as a second safety net.
+
+In practice, the intended reconnect path is the staging scene, but `live_game` is now also capable of consuming a late `memory_files` message directly.
+
+### Why `engine.call('request_spec_data', -1)` matters
+
+This call was added in the live_game `memory_files` handler and is a practical enhancement beyond the earlier theory.
+
+It means the reconnect fix does not only remount the files. It also forces the engine/UI to refresh spec data after the new virtual file tree is present.
+
+That is a strong hint that just mounting the files was not always enough once `live_game` had already started loading UI/model state.
+
+### Why the fix uses replay config instead of regenerating files
+
+This is another important practical choice.
+
+The reconnect fix does not attempt to rebuild the GW file tree from campaign state on reconnect. Instead it reuses the full replay config already stored on the server.
+
+That is safer because:
+
+- the running match already uses that exact file tree
+- reconnect should restore the same effective unit universe, not regenerate a potentially different one
+- the server already keeps replay config around for other recovery and replay-related flows
+
+## Commit `49a653b`
+
+This follow-up commit removed the temporary debug logging added during reconnect investigation.
+
+It did **not** remove the reconnect mechanism itself.
+
+What remained after `49a653b`:
+
+- `getReconnectReplayFiles()` in `playing.js`
+- `sendReconnectMemoryFilesToClient()` in `playing.js`
+- `request_memory_files` and `memory_files_received` handlers in `playing.js`
+- GW redirect interception in `connect_to_game.js`
+- the new `gw_reconnect_loading` scene
+- the `live_game` `memory_files` handler
+
+So the stable reconnect design is the behavior from `c55f52b` minus the payload-logging helpers.
+
+## Theory vs Practice: What Changed from the Earlier Analysis
+
+The earlier analysis was broadly correct about the root cause, but the final implementation differs in several important ways.
+
+### Correct prediction: reconnect needed a GW memory-file restore handshake
+
+This part was correct.
+
+The crash really was solved by reintroducing a `memory_files`-style restore path for live Galactic War reconnects.
+
+### Difference 1: restore happens in a new staging scene, not only inside `live_game`
+
+Earlier theory suggested a replay-loading-style handshake before entering the game. The real implementation does exactly that, but by inserting a dedicated reconnect scene:
+
+- [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js)
+
+That is more explicit and safer than trying to force all restore logic to happen after `live_game` has already started booting.
+
+### Difference 2: the server does not proactively resend on reconnect
+
+Earlier theory suggested the server might send files as part of reconnect handling. In practice, it does not.
+
+Instead:
+
+- reconnect reaches a stable connected state first
+- the staging client requests GW files explicitly
+- the server answers only when asked
+
+That is a more pull-based protocol than expected.
+
+### Difference 3: the authoritative source is `server.getFullReplayConfig()`
+
+Earlier theory treated replay-loading as a good template. The final implementation goes further and directly reuses replay config as the source of truth for reconnect too.
+
+That means the working mental model is:
+
+- the generated GW file tree becomes part of the replay/full-match config
+- reconnect restoration is effectively replay-config restoration for a live client
+
+### Difference 4: `live_game` itself can now consume `memory_files`
+
+Earlier theory focused on pre-entry restoration. In practice, the final implementation does both:
+
+- staged restoration before live_game
+- in-scene restoration support inside `live_game`
+
+That extra handler likely makes the system more resilient to timing or scene-order edge cases.
+
+### Difference 5: spec data is explicitly refreshed after mounting
+
+The earlier analysis focused on missing files and spec tags. The final implementation additionally calls:
+
+- `engine.call('request_spec_data', -1)`
+
+inside `live_game` after mounting.
+
+That is evidence that some reconnect failures were also related to stale spec caches or incomplete spec reloads after the new memory files appeared.
+
+### Difference 6: reconnect metadata preservation in `connect_to_game`
+
+The reconnect fix also preserves and merges previous reconnect info when login is accepted in [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js).
+
+That was not part of the earlier theory, but it matters because reconnect routing and GW detection may need:
+
+- prior `game` type
+- prior `setup`
+- prior `mods`
+- prior `content`
+
+without depending entirely on the new login payload.
+
+## End-to-End Reconnect Flow After the Fix
+
+For a GW coop reconnect, the effective flow is now:
+
+1. The client reconnects through `connect_to_game`.
+2. Login succeeds and reconnect metadata is refreshed.
+3. The server tries to redirect the client toward `live_game`.
+4. `connect_to_game.js` detects that this is a Galactic War live-game redirect and rewrites it to the GW reconnect staging scene instead.
+5. `gw_reconnect_loading.js` waits until it sees the intended `live_game` target for a GW match.
+6. The staging scene sends `request_memory_files`.
+7. `playing.js` answers with the GW file tree from `server.getFullReplayConfig().files`.
+8. The staging scene unmounts old memory files, mounts the restored GW file tree, forces unit spec tag `.player`, acknowledges with `memory_files_received`, and only then enters `live_game`.
+9. If a late or repeated `memory_files` message arrives inside `live_game`, `live_game.js` can now consume it too and request fresh spec data from the engine.
+
+This is the main practical pattern to reuse for any future reconnect-safe dynamic-content mode.
+
+## Important Design Lessons
+
+### 1. Dynamic-content game modes need an explicit reconnect restore protocol
+
+If a mode depends on `mountMemoryFiles`, reconnect must restore those files before the normal gameplay scene expects them.
+
+### 2. The server should keep an authoritative copy of the generated file set
+
+For GW, that copy effectively lives inside full replay config. Reconnect succeeds because the server can resend the exact file tree used by the match.
+
+### 3. Scene routing is part of the fix, not just data transport
+
+The `gw_reconnect_loading` scene is not cosmetic. It creates a safe staging area to rebuild virtual files before `live_game` starts touching tagged specs.
+
+### 4. Spec tag restoration and spec cache refresh are both required
+
+Restoring files alone is not enough. The reconnecting client must also restore the active unit spec tag, and in some cases explicitly request fresh spec data.
+
+### 5. Fallback compatibility layers remain important
+
+Synthesizing untagged `/pa/units/unit_list.json` from `.player` and `.ai` remains necessary in reconnect and replay flows because many legacy UI paths still assume an untagged unit list exists.
+
+## Files Most Important for Future Work
+
+If modifying Galactic War coop or reconnect behavior, start with:
+
+- [ui/main/game/galactic_war/shared/gw_specs.js](ui/main/game/galactic_war/shared/gw_specs.js)
+- [ui/main/game/galactic_war/gw_play/gw_referee.js](ui/main/game/galactic_war/gw_play/gw_referee.js)
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+- [server-script/states/playing.js](server-script/states/playing.js)
+- [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+- [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js)
+- [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js)
+- [server-script/states/load_save.js](server-script/states/load_save.js)
+- [ui/main/game/replay_loading/replay_loading.js](ui/main/game/replay_loading/replay_loading.js)
+
+---
+
+## Post-Reconnect UI Parity Fixes (Commits `acd428d` and `e48d3ec`)
+
+After reconnect was stabilized, a separate coop-client-only defect cluster remained in live gameplay UI behavior. That work landed in two back-to-back commits:
+
+- `acd428d` `Several fixes for Co-op player unit UI.`
+- `e48d3ec` `Removed logging related to build/action UI bugfixes.`
+
+These commits are tightly coupled: the first introduces functional fixes plus targeted diagnostics, and the second removes temporary diagnostics once behavior was validated.
+
+## Problem Profile
+
+The unresolved issue was not “coop cannot control units” in a broad sense. It was narrower and UI-path-specific:
+
+1. Coop client could not ever see build-bar tooltips.
+2. Coop client could not issue load/unload commands from the action UI.
+3. Coop client hotkey sequences for build selection (category + slot) failed or appeared to do nothing.
+
+Important observation:
+
+- The host could still perform these actions in many cases.
+- Core army/control assignment and reconnect transport were already functional. Or put in a not AI slop way, the client could issue commands like pick up a unit, its just that they had to do it with a workaround, as right clicking a unit with a transport unit selected would still work, but the UI buttons and hotkeys for those actions were broken.
+
+That pointed to a client-side spec-lookup and UI data-shape problem, not a primary server authority or control-bits problem.
+
+## Root Cause: Spec-ID Namespace Mismatch Across UI Subsystems
+
+Galactic War coop runs with tagged unit specs (`.player`, `.ai`).
+
+Many legacy UI systems still think in canonical untagged IDs (`.../foo.json`).
+
+The failing behavior came from inconsistent normalization of spec IDs across different code paths:
+
+- Some paths expected tagged IDs and looked up tagged data.
+- Some paths expected untagged IDs and looked up untagged data.
+- Some had one-way fallback (tagged -> untagged) but not the opposite.
+- Some produced untagged references for hotkey/grid lookups while runtime payloads stayed tagged.
+
+Result:
+
+- Data existed, but lookups frequently missed because keys did not match exactly.
+- UI then silently dropped behavior (no tooltip payload, missing command enablement, unresolved hotkey selection target).
+
+## Where the Break Happened in Practice
+
+### 1) Tooltip path
+
+In `live_game.js`, build-hover and item-detail maps could receive a tagged ID while the currently indexed entry was only available in a different form.
+
+Without bidirectional aliasing and fallback:
+
+- Hover event carries `unit.json.player`
+- details map has only `unit.json`
+- lookup misses
+- tooltip appears blank or missing
+
+### 2) Action-bar command derivation (load/unload)
+
+In `live_game_action_bar.js`, command availability comes from selected unit specs.
+
+If selection reports one ID form and `unitSpecs` is keyed by another form, unit resolution fails.
+
+When resolution fails, command extraction has nothing to inspect, so `Load`/`Unload` flags may never appear even though selected units support those commands.
+
+### 3) Build-bar/hotkey selection
+
+In `live_game_build_bar.js`, build-list and build-order resolution depended on exact-key hits that were vulnerable to tagged/untagged divergence.
+
+If a hotkey-selected item resolves to one ID form while build structures are indexed in another, the action may look like a transient input stall (brief UI reaction, then no build placement state).
+
+## Additional Compatibility Hazard Identified During Fixing
+
+One mid-fix regression exposed another critical assumption:
+
+- GW lobby remounting of synced memory files must preserve the compatibility untagged `/pa/units/unit_list.json`.
+
+Why this matters:
+
+- Some UI systems still probe the untagged list even in tagged GW modes.
+- If remount flow only carries tagged lists and no synthesized untagged superset, unrelated UI queries can degrade in surprising ways.
+
+The fix therefore restored synthesis of untagged unit list from `.player` + `.ai` when missing in GW lobby sync.
+
+## Commit `acd428d`: Functional Fixes + Temporary Diagnostics
+
+This commit fixed behavior by normalizing lookup behavior and hardening mount sequencing, while adding temporary `[GW_COOP]` logs to verify assumptions.
+
+### A) GW lobby sequencing and compatibility restoration
+
+Changes in `ui/main/game/galactic_war/gw_lobby/gw_lobby.js`:
+
+- Removed eager `setUnitSpecTag('.player')` at scene startup.
+- On `gw_config` receive:
+  - Synthesize untagged `/pa/units/unit_list.json` from tagged lists if absent.
+  - Unmount previous memory files before remounting synced GW files.
+  - Apply `.player` tag only after mount succeeds.
+
+This ensures the tag points to mounted content and legacy untagged assumptions are still satisfied.
+
+### B) Reconnect staging parity with live-game refresh behavior
+
+Changes in `ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js`:
+
+- After mounting incoming memory files, call `engine.call('request_spec_data', -1)` before transitioning.
+
+That aligns reconnect staging with live-game spec refresh expectations and prevents stale spec cache behavior after remount.
+
+### C) Tooltip and build-item resolution hardening
+
+Changes in `ui/main/game/live_game/live_game.js`:
+
+- `setBuildHover` now resolves across:
+  - exact ID
+  - tagged variants
+  - canonical stripped ID
+- `buildItemBySpec` now resolves across the same tagged/untagged combinations.
+- Item detail indexing creates richer alias coverage so both tagged and untagged lookups can find the same detail model.
+
+### D) Action-bar selected-unit resolution hardening
+
+Changes in `ui/main/game/live_game/live_game_action_bar.js`:
+
+- `resolveUnitSpec` expanded to robustly bridge tagged and untagged ID forms.
+- Resolution order favored practical GW correctness while still supporting canonical fallback behavior.
+
+### E) Build-bar resolution hardening
+
+Changes in `ui/main/game/live_game/live_game_build_bar.js`:
+
+- `resolveBuildSpecId` and `resolveBuildItemId` expanded with canonical+tag fallback paths.
+- Added one-time logging guard to avoid repeated spam for the same fallback case.
+
+## Why the “missing grid mapping” logs appeared even when behavior worked
+
+The diagnostics included messages like:
+
+- `[GW_COOP] addBuildInfo missing grid mapping for tagged id=... canonical=...`
+
+This line does **not** mean the game is broken by itself.
+
+It indicates:
+
+1. Build hotkey map (`Build.HotkeyModel.SpecIdToGridMap`) is static and intentionally incomplete.
+2. Many tagged specs in GW payloads (especially `.ai`, commander variants, base templates, helper units) are not expected to have dedicated grid entries.
+3. The code falls back to `misc` grouping for unmapped entries.
+
+So during a healthy run, it is normal to see many “missing grid mapping” messages for specs that are not intended to occupy a first-class hotkey slot.
+
+In other words: this diagnostic was a visibility aid, not a hard error.
+
+## Commit `e48d3ec`: Logging Cleanup
+
+After validating that tooltip/load-unload/hotkey behavior was fixed, temporary diagnostic logs were removed while preserving functional changes.
+
+What was removed:
+
+- Most `[GW_COOP]` fallback and unresolved logs in live_game, action_bar, build_bar.
+- GW lobby sync completeness logs.
+- Reconnect staging mount-refresh success log.
+
+What remained:
+
+- The actual fallback logic and ordering.
+- The GW lobby remount ordering and untagged unit-list synthesis.
+- Reconnect staging spec-data refresh call.
+
+This is the intended lifecycle:
+
+1. Add narrow logs for uncertain assumptions.
+2. Confirm runtime behavior and isolate edge cases.
+3. Remove high-volume logs once stable.
+
+## Final Technical Summary of the Issue and Resolution
+
+### The issue
+
+A set of coop-client UI features failed because multiple UI subsystems resolved unit specs using inconsistent key namespaces (`tagged` vs `untagged`) and partial fallback logic.
+
+### The fix pattern
+
+1. Normalize spec-ID resolution in every affected client path (tooltip, action-bar, build-bar).
+2. Preserve compatibility untagged unit list when remounting synced GW files.
+3. Ensure spec cache refresh occurs after reconnect memory-file remount.
+4. Validate with temporary scoped diagnostics, then remove noise.
+
+### Why this solved all three symptoms together
+
+Tooltip rendering, command availability, and build hotkey selection all consume different projections of the same underlying unit-spec graph. Once that graph was consistently discoverable from tagged and untagged identifiers, all three features recovered without requiring separate game-rule changes.
+
+## Practical Guidance for Future Similar Bugs
+
+When a dynamic-content mode shows multiple "UI-only" failures at once, check for namespace drift before changing gameplay logic:
+
+1. Verify whether lookups are mixing canonical and mode-tagged spec IDs.
+2. Verify whether compatibility aggregate files (like untagged unit lists) are still synthesized after remount operations.
+3. Verify whether spec caches are refreshed after memory file updates.
+4. Prefer targeted, assumption-check logs with a unique prefix during diagnosis, then remove them after stabilization.
+
+This pair of commits is a concrete template for diagnosing and fixing those conditions.
+
+---
+
+## GW Lobby Discovery Visibility Fixes (Commits `bd7227b` and `8e3b814`)
+
+After reconnect and UI parity were stable, a separate discovery problem remained:
+
+- GW coop lobby beacons were unstable or short-lived in LAN browser visibility.
+- GW coop lobby beacons were not visible at all from non-LAN machines through server-browser discovery.
+- Direct connect by `ip:port` still worked, proving game hosting and transport were functional.
+
+That symptom profile strongly indicated a beacon publication/ingestion compatibility issue rather than a core networking issue.
+
+## Commit `bd7227b`
+
+This commit made GW beacons significantly more stable on LAN by reducing beacon payload size and matching normal lobby beacon structure more closely.
+
+Changes in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- Changed `game.system` beacon payload from full `config.system` to:
+  - `utils.getMinimalSystemDescription(config.system)`
+
+Effect in practice:
+
+- GW lobby listings stopped disappearing as frequently on LAN.
+- Beacon behavior became closer to standard lobbies, which already use minimal system summaries.
+
+Why this helped:
+
+- Full system payloads can be large and noisy.
+- Minimal summaries are less likely to hit message-size, parsing, or update-thrashing edge cases in beacon pipelines.
+
+## Commit `8e3b814`
+
+This commit resolved non-LAN server-browser visibility by applying two practical compatibility changes.
+
+### A) GW beacon `mode` changed to a canonical value
+
+In [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- `mode: 'GalacticWar'` was changed to `mode: 'FreeForAll'`.
+
+Observed effect:
+
+- GW lobby became visible through the remote server-browser discovery path.
+
+### B) GW startup no longer forces UPnP disable
+
+In [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- Removed forced `disable_upnp: true` from GW game start params.
+
+Observed effect:
+
+- GW startup behavior became consistent with other lobby creation paths.
+
+### C) Mod packaging now includes the changed GW play file
+
+In [generate_mod.py](generate_mod.py):
+
+- Added `ui/main/game/galactic_war/gw_play/gw_play.js` to the explicit copy list.
+
+Why this matters:
+
+- Prevents “changed in source but not shipped in built mod” drift for this critical launch file.
+
+## Most Plausible Explanation for the “FreeForAll fixed remote discovery” behavior
+
+The best current explanation is that non-LAN discovery applies stricter normalization/validation than LAN beacon rendering.
+
+Likely model:
+
+1. LAN browser path consumes local beacons directly and is permissive about custom `mode` values.
+2. Non-LAN discovery path (service-backed or community index backed) likely expects canonical mode values (for example `FreeForAll`, `TeamArmies`, `Waiting`) or relies on those values for indexing/filtering.
+3. A non-canonical value like `GalacticWar` may be dropped, ignored, or fail indexing in that upstream path.
+4. Replacing with `FreeForAll` passes compatibility checks, so the entry becomes discoverable remotely.
+
+This is not proven from service internals, but it matches the observed behavior very closely:
+
+- LAN visibility improved with payload-shape fixes.
+- Remote visibility only recovered once the mode string switched to a canonical token.
+
+## Practical Lesson
+
+If a lobby is visible on LAN but not remotely while direct connect still works, suspect beacon schema compatibility in the remote indexing path before suspecting transport.
+
+Specifically validate:
+
+- Beacon field sizes and shape (`game.system` summary vs full object).
+- Canonical enum-like fields (`mode`, possibly region/type metadata).
+- Packaging/deploy paths so launch-side changes are actually shipped.
+
+---
+
+## Cross-Machine Crash Fix (Commit `9f594ae`)
+
+After the UI parity fixes were stable on some machines, a new severe regression appeared on at least one other machine:
+
+- GW coop startup could crash during/just after lobby handoff into sim creation.
+- The crash did not reproduce reliably on every machine.
+- The first visible fatal line in the crashing log was often a missing archetype/spec read, for example:
+  - `Error opening struct PlanetArchetypeSpec spec "/pa/terrain/sun.json", file failed to load`
+- The same file could be present and valid on disk, and non-GW paths could still load normal games.
+
+That profile is a classic race/timing signature, not a literal "file deleted from disk" signature.
+
+## What Changed That Introduced the Risk
+
+The regression window started with commit `acd428d`, specifically in:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+That commit changed GW lobby config mounting from a direct mount to:
+
+1. `api.file.unmountAllMemoryFiles()`
+2. then `api.file.mountMemoryFiles(cookedFiles)`
+
+On paper, this looked safe and even hygienic (clear stale memory files, then mount fresh synced GW files). In isolation, that pattern is valid and appears elsewhere in GW/replay flows.
+
+## Why `unmountAllMemoryFiles` Existed in the First Place
+
+This call was not necessarily bad. It came from a legitimate historical pattern used in dynamic-content modes:
+
+1. Avoid stale memory-file overlays from previous scenes.
+2. Ensure a clean memory FS before mounting a generated namespace.
+3. Keep behavior deterministic when switching between content sets.
+
+That logic appears in existing code such as GW referee generation/mount paths and replay-style restore paths. So the motivation was defensive correctness.
+
+## Why It Became Unsafe in GW Lobby Specifically
+
+In this codebase, `unmountAllMemoryFiles` is not just a low-level file operation. It can be hooked/overridden by community-mod integration logic.
+
+Key point:
+
+- Community mods attach behavior to unmount/remount cycles (for example reloading client-mod mounts after unmount).
+
+So in GW lobby startup, this sequence happened on affected machines:
+
+1. GW lobby receives synced GW memory files.
+2. GW lobby calls global `unmountAllMemoryFiles`.
+3. Community-mod hook machinery reacts and triggers broader remount/reload activity.
+4. GW startup proceeds toward `connection_GameConfig` / `connection_SimCreated` while mount state is still in flux.
+5. A spec/archetype request during that window fails transiently (`/pa/terrain/sun.json` in observed logs), causing crash.
+
+Why only some machines:
+
+- Race depends on timing, thread scheduling, IO speed, GPU/driver timing, and mod load behavior.
+- Faster or differently loaded machines can miss the bad window entirely.
+
+## Commit `9f594ae` Resolution
+
+Commit `9f594ae` made a minimal, targeted fix in:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+Behavioral change:
+
+- Removed the GW lobby call to `api.file.unmountAllMemoryFiles()`.
+- Kept direct `api.file.mountMemoryFiles(cookedFiles)`.
+- Kept `.player` spec-tag application and ready signaling.
+- Kept untagged `/pa/units/unit_list.json` synthesis compatibility logic introduced earlier.
+
+This preserves all intended GW coop UI fixes while removing the race-prone global unmount trigger in this sensitive startup path.
+
+## Why This Did Not Regress Functional Behavior
+
+No regressions were observed after removing unmount in GW lobby because:
+
+1. The critical functional requirement was mounting the synced GW files and setting `.player` tag.
+2. The compatibility requirement (untagged unit list synthesis) stayed intact.
+3. The removed step was a cleanliness step, not a gameplay requirement, and in this path it had become actively harmful due to hook side effects.
+
+## Practical Engineering Lesson from `9f594ae`
+
+In this project, treat `unmountAllMemoryFiles` as a high-impact operation with ecosystem side effects, not a purely local cleanup utility.
+
+Before using it in a hot transition path (lobby startup, scene handoff, reconnect staging), verify:
+
+1. Whether community-mod hooks attach additional remount behavior.
+2. Whether the path is timing-sensitive around server-state transitions.
+3. Whether direct mount/update is sufficient for correctness.
+
+In short: the call was historically reasonable, but context changed. `9f594ae` corrected that context mismatch by removing global unmount from GW lobby sync, which eliminated a machine-dependent startup race.
+
+## Commit `cf85a22`
+
+This follow-up reconnect hardening commit removed a fragile remount sequence that could drop client-mod assets during reconnect restoration.
+
+### What changed
+
+Changes in [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js):
+
+- In `handlers.memory_files`, removed the global `api.file.unmountAllMemoryFiles()` call before mounting reconnect GW memory files.
+- Kept direct `api.file.mountMemoryFiles(cookedFiles)` followed by:
+  - `api.game.setUnitSpecTag('.player')`
+  - `engine.call('request_spec_data', -1)`
+  - `memory_files_received` ack and transition into `live_game`.
+
+Changes in [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js):
+
+- In `handlers.memory_files`, removed the global `api.file.unmountAllMemoryFiles()` call.
+- Kept direct memory-file mount plus spec-tag/spec-data refresh.
+
+### Why this matters
+
+On reconnect, the coop client can enter memory-file restore paths before all scene-specific client-mod remount assumptions are stable. A global unmount at that point can temporarily drop client-mod-provided assets that GW-generated specs reference.
+
+When that happens, reconnect may appear to succeed until simulation resumes, then crash on missing assets such as:
+
+- `/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx`
+
+Removing the unmount step preserves currently mounted client-mod assets while still overlaying reconnect GW memory files.
+
+### Practical outcome
+
+- If host and coop player have matching required client mods installed, reconnect now remains stable through unpause.
+- If the reconnecting client lacks a required client mod, crash behavior remains expected because required assets are genuinely unavailable.
+
+---
+
+## GW Campaign Co-op Expansion and Stabilization (Commits `7874487` through `cf423b0`)
+
+This phase introduced a second coop architecture layer on top of the earlier live-battle coop work:
+
+1. A dedicated coop-capable Galactic War campaign server state (`gw_campaign`) and entry flow in GW play.
+2. Host/viewer campaign-map synchronization while both players remain in the campaign scene.
+3. Hardening for reconnect, no-local-save users, session teardown persistence, and compatibility with large GW-overhaul client mods (notably GWO).
+
+This was the most iteration-heavy part of the project so far, because the failure modes were mostly "state drift" issues rather than immediate hard crashes.
+
+## Scope of This Commit Chain
+
+The `7874487 -> cf423b0` chain should be treated as one coherent body of work. Although the commits are split by symptom, they all address one root objective:
+
+- make campaign-map coop deterministic enough that host and viewer see the same campaign state transitions
+- preserve local GW save integrity when entering/leaving coop
+- keep behavior stable for users with no prior local GW save
+- avoid regressions with GW-overhaul mods that replace core GW play methods after scene load
+
+Without all commits in this chain, the feature works only partially.
+
+## What Was Added in the Initial Campaign Co-op Cut (`7874487`)
+
+### Server-side campaign authority state
+
+New file:
+
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+
+Key responsibilities introduced:
+
+- host/viewer role assignment
+- control payload broadcast (`gw_campaign_control`)
+- snapshot storage and sequencing (`gw_campaign_snapshot`)
+- join/reconnect lifecycle handling and viewer reconnect timeout
+- lobby beacon publication for campaign sessions
+- host-only campaign exit / launch control
+
+Registration change:
+
+- [server-script/main.js](server-script/main.js) now includes `gw_campaign` in the state list.
+
+### Client-side campaign coop UI and session controls
+
+Changes in:
+
+- [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html)
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+
+New user-facing behaviors:
+
+- "Open to Co-op" action for host
+- "Leave Co-op Session" action
+- header status text showing campaign coop role/connection state
+- viewer read-only mode presentation
+
+Early synchronization model in this first cut:
+
+- host periodically pushed campaign snapshots
+- viewer applied snapshots to local GW game model
+- incremental actions were not yet the primary synchronization mechanism
+
+This first cut established infrastructure but exposed several subtle desync classes in real use.
+
+## Problem Cluster 1: No-local-save Viewer Crashes (`654d94a`)
+
+### Symptom
+
+A viewer with no pre-existing local GW save could crash on campaign scene load/reconnect paths.
+
+### Root issue
+
+Several code paths assumed `GW.manifest.loadGame(activeGameId())` always returns a valid local game for campaign UI binding. That assumption was true for hosts and returning players, but false for first-time viewers or viewers who had no prior galactic war saves.
+
+### Fix direction
+
+The code was hardened to:
+
+- tolerate missing local game at startup
+- request/apply host sync state rather than requiring local save bootstrap to already exist
+- avoid immediate null-object cascades in computed bindings that expected complete star/system data
+
+## Problem Cluster 2: Cards and Immediate Feedback Lag (`3e276f8`)
+
+### Symptom
+
+- tech cards acquired by host were not immediately visible for viewer
+- associated audio cue behavior was not playing
+
+### What made it hard
+
+Snapshot delivery was eventually consistent but not synchronized to the exact point when card lists changed in gameplay flow.
+
+### Initial bad avenue
+
+The early tendency was to rely on more frequent snapshots to catch the missed update window. That reduced some lag but did not eliminate race windows and added complexity/noise.
+
+### Effective fix
+
+`gw_campaign_action` was used as a first-class incremental channel, with explicit action types for:
+
+- selection/movement intent
+- explore lifecycle
+- card-list synchronization (`sync_star_cards`)
+- win/lose turn transitions
+
+Viewer replay guards were added so viewer-local actions are blocked in normal mode but allowed when replaying host actions.
+
+This was the inflection point where campaign coop moved from "snapshot-only correction" to "action-first replay + snapshot correction".
+
+## Problem Cluster 3: Map Ownership/Reveal Drift (`fde5b17`)
+
+### Symptom
+
+Even when action replay logs looked correct, viewer map ownership coloring and reveal status would still diverge from host.
+
+### Root cause (critical)
+
+The campaign UI map model and the loaded game model did not always share the same effective star object references after snapshot/hydration and replay timing.
+
+That means:
+
+- host-driven game state changed
+- viewer replay ran
+- but map rendering still read stale star observables
+
+### False start that consumed time
+
+Movement replay/path handling was initially suspected as the primary source of ownership drift. While movement timing did matter in some cases, it was not the full root cause for ownership color mismatch.
+
+### Final resolution
+
+Added explicit viewer star bridging utilities in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- `syncViewerStarFromGame`
+- `syncViewerStarsFromGame`
+
+These copy ownership-driving observables (`history`, `explored`, `cardList`, `ai`, `system`, and related fields) from runtime game stars into map-view stars after snapshots and high-impact actions.
+
+Result:
+
+- ownership color, reveal state, and map-level metadata updates became consistent with host progression.
+
+## Problem Cluster 4: Missing Flavor Text/Planet Preview + Reconnect Edge (`359550e`)
+
+### Symptoms
+
+- some already-owned systems had missing flavor text/planet preview for viewer
+- reconnecting viewers with no save still had a crash path in specific reconnect scenarios
+
+### Root issue
+
+Some snapshot/save stars arrived without complete `star.system` payloads; viewer UI components that depend on system metadata then had nothing to render.
+
+### Fix
+
+Snapshot payload enrichment was added:
+
+- when save stars lacked `system`, data is backfilled from runtime stars before snapshot publication
+
+Reconnect detection was broadened beyond query-param-only mode:
+
+- session/local storage reconnect metadata is parsed safely
+- reconnect mode can create a placeholder `new GW.Game()` when no local active game exists
+
+This closed the remaining no-save reconnect crash path and restored system preview rendering.
+
+## Problem Cluster 5: Save Corruption on Session End / Leaving Coop (`60438a2`)
+
+### Symptom
+
+When viewer left coop (or was disconnected), their local GW save would be left corrupted for subsequent single-player use.
+
+### Why this happened
+
+Transit away from coop would happen before local game persistence had a fully enriched, stable campaign object graph.
+
+### Fix
+
+Added explicit persistence workflow before transit/disconnect handoff:
+
+- `enrichCampaignGameSystems(reason)`
+- `persistCampaignLocalCopy(reason)`
+
+and invoked it during:
+
+- `leaveCoopSession`
+- connection-disconnect handling
+
+This ensures system payloads are enriched and `GW.manifest.saveGame(game)` completes (or at least is attempted) before moving scenes.
+
+## Problem Cluster 6: GWO Compatibility Breakage (`cf423b0`)
+
+### Symptom
+
+With the Galactic War Overhaul mod (and presumably other mods which affected Galactic War) enabled on both host and viewer, movement/ownership/card synchronization regressed.
+
+### Why this was uniquely tricky
+
+GWO does not just tweak data; it replaces core `gw_play` methods after load (for example `model.explore`, `model.win`, and selection/canMove behavior). That can silently overwrite coop wrappers/guards introduced earlier.
+
+### False assumption corrected
+
+At first glance it seemed "both players have same mod, so behavior should stay synchronized." In practice, synchronization still fails if external method replacement bypasses coop relay/replay hooks.
+
+### Fix strategy (without changing GWO)
+
+Implemented runtime compatibility wrappers in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- `wrapCampaignOverrideIfNeeded`
+- `ensureCampaignCompatibilityHooks`
+- native markers (`__gwCampaignNative`) on coop-owned base methods
+- periodic re-hook watcher to catch async post-load overrides
+
+Wrapper behavior preserves:
+
+- viewer input gating outside replay
+- host action relay for overridden `explore`/`win`/`lose`
+- additional `sync_star_cards` relay for modded explore paths that bypass original card sync timing
+
+This solved the conflict at integration boundaries without modifying GWO itself.
+
+## Key Challenges Across the Whole Chain
+
+1. Most bugs were eventually-consistent state drift, not immediate exceptions.
+2. The campaign scene has overlapping models (game model vs map/view model), so "state changed" did not guarantee "UI consumed changed state."
+3. Reconnect behavior depends on storage/query/session contexts and could not rely on one signal.
+4. Coop hooks could be overwritten at runtime by third-party scene mods loaded after our initialization.
+
+## Most Important False Starts and Why They Were Wrong
+
+1. Snapshot-frequency-first thinking as a universal fix:
+It reduced some symptoms but did not address stale model-reference bridging.
+
+2. Treating movement replay as the sole ownership bug source:
+Movement path variance existed, but primary ownership drift was stale star observables in map view.
+
+3. Query-parameter-only reconnect detection:
+Worked for direct entry but missed reconnect paths where state is carried through storage metadata.
+
+4. Assuming our wrappers persist once installed:
+External GW mods can override functions later, requiring active re-hooking.
+
+## Why the Final Architecture Works Better
+
+The chain converged to a hybrid model:
+
+1. Action-first synchronization for low-latency deterministic replay.
+2. Snapshot correction as safety net and hydration mechanism.
+3. Explicit game->view star synchronization bridge for ownership/reveal rendering.
+4. Persistence hardening before transit/disconnect to protect local saves.
+5. Runtime compatibility wrapping for post-load mod overrides.
+
+Each layer addresses a different failure class. Removing any single layer reopens at least one historical bug category from this chain.
+
+HUMAN NOTE: In a not AI slop way, I like to view this architecture as being centered around the following idea: Galactic War is like a state machine. We're in some state $X$. Whenever anything changes, its like we apply a function representing that change $F$ to $X$ to get $F(X)$. In the initial phase of this code, what we were doing was measuring $X$, and measuring $F(X)$ and basically computing 
+$$
+\delta = F(X) \ominus X,
+$$
+then sending $\delta$ to the client, so then they would do
+$$
+X \oplus \delta = X \oplus (F(X) \ominus X) = X \ominus X \oplus F(X) = F(X).
+$$
+Of course, viewing it through this sort of lense is a bit of an oversimplification, as the set of possible states which Galactic War can be in $\{X\}$ does not really form a group under the $\oplus$ operation, and $\oplus$ isn't even going to be abelian. Just look at the action of fighting in a system and winning. That's not invertible, so there's no way this is a group :). 
+
+But anyways, back to my abstract algebraic view, this was an approach I despised. I figured that if we could just define a set of operators on the state of galactic war $\{F, G, \ldots\}$, and then just send the operator to each client when the host performed that operation, we could guarantee that the clients would always be in sync with the host, provided we have the same initial conditions (this assumes my set of operators is wholly comprised of deterministic operators, which I figured was true). Basically, we do one big broadcast at the start where the host's state $X$ is sent to all the clients. Then as an example let's represent moving to a system as the operator $F$, and exploring it as the operator $G$. Then all we need to do is send $F$ to the clients when the host moves, and send $G$ to the clients when the host explores, as on the host side we're going from state $X$ to state $F(X)$ to state $G(F(X))$. So all the clients need to do is 
+
+1. track the current state, and 
+2. listen for operator broadcasts, and when they receive an operator, apply it to their current state to get the next state.
+
+So in the end everyone winds up in state $G(F(X))$, and we never have to do some outrageously massive $\delta$ broadcast. I am assuming that the cost of sending $\delta$ to the clients as measured by some cost operator (maybe packet size? maybe computation time? IMO a mixture of both) $\|\cdot\|$ satisfies 
+$$
+\|\delta\| \gg \|F\|
+$$
+for any and all operators $F$. The only time I broadcast a snapshot is if I detect that somehow a client's state has gotten totally out of sync.
+
+If you tried to read this and thought it was all stupid math gibberish slop I wouldn't be surprised. I just wanted to share my thought process for how I came up with the general idea of keeping the clients in sync with the host. TL;DR do clientside prediction, and only send packets from the host to the clients when the host does something that changes the game state, like moving to a new system or exploring, or fighting, etc.
+
+## Files Most Relevant to This Scope
+
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+- [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html)
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/main.js](server-script/main.js)
+- [generate_mod.py](generate_mod.py)
+
+These are the primary files future contributors should inspect before changing campaign coop synchronization behavior.
+
+## Additional small bugfixes (commits `b7e3759` and `d8591c8`)
+
+### Removed tag causing gw co-op lobbies to not show up outside of LAN.
+
+Very simple change, I just changed the beacon tag from `'GW Co-op'` to `'Testing'` as `'GW Co-op'` is not a tag that exists anywhere else while testing is and seems to (somewhat) fit.
+
+### Fixed an issue where saving and quitting from GW would corrupt co-op player's save.
+
+Another simple fix, I just took the campaign persistence function that was being called on forced and voluntary disconnect from the co-op session and also called it on voluntary saving and quitting of the entire galactic war game.
+
+---
+
+## Campaign Lobby UX and Dynamic Slot Work (Commits `a70eb09`, `5a79c85`, `39af2b8`, plus follow-ups)
+
+This scope introduced a dedicated in-campaign co-op lobby UI in `gw_play`, made campaign party size adjustable, and then fixed several first-load synchronization bugs that caused host-side placeholders/defaults to appear briefly.
+
+## Commit `a70eb09`
+
+This commit introduced the first complete campaign-side lobby/settings/chat surface.
+
+### Server-side changes in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+
+- Added campaign lobby settings state (`game_name`, `public/friends/hidden`, `tag`) and bouncer integration.
+- Added `modify_settings` handler (host-only) to apply settings and rebroadcast control state.
+- Added lobby chat support with `chat_message` broadcast and bounded `chat_history` retrieval.
+- Extended control payload with `settings` and `require_password` so UI can render canonical lobby settings.
+
+### Client-side changes in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js), [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html), and [ui/main/game/galactic_war/gw_play/gw_play.css](ui/main/game/galactic_war/gw_play/gw_play.css)
+
+- Added campaign settings panel (title, privacy mode, optional password).
+- Added in-panel campaign chat (history fetch + send).
+- Added an initial slot list rendered from `connected_clients` (still fixed-size at this stage).
+
+Effect in practice:
+
+- Campaign sessions could now be configured from inside GW play itself.
+- Co-op users could communicate via campaign-local chat.
+- UI now had a reliable, server-driven settings/control surface instead of implicit defaults.
+
+## Commit `5a79c85`
+
+This commit evolved the initial lobby into a dynamic, more production-ready flow.
+
+### Major server changes
+
+- `gw_campaign.js`:
+  - Added dynamic campaign max-client handling (`max_clients`, `max_clients_limit`) and clamped updates.
+  - Included control payload in role messages to improve first-paint synchronization.
+  - Exposed max-player values in `modify_settings` responses.
+  - Switched campaign max-player limit discovery to launch-arg/env lookup.
+- `gw_lobby.js`:
+  - Shifted from hardcoded 2-player assumptions to env-driven max player count.
+  - Removed mandatory second-player wait in start gating; readiness now depends on creator/system/sim/config readiness.
+
+### Major client changes in `gw_play`
+
+- Chat UI/UX updates:
+  - Increased chat width, standardized 13px message text, and added unread/flash visual states.
+  - Added timed flash sequence tied to `gwChatFlashActive` and CSS transitions.
+- Dynamic slot control updates:
+  - Replaced fixed two-slot rendering with `gwCampaignMaxClients`-driven list generation.
+  - Added add/remove slot controls and modify_settings wiring for max-client changes.
+- Role/control initialization updates:
+  - Applied role payload control immediately when present.
+  - Added fallback connected-client seeding when control had not arrived yet.
+
+Effect in practice:
+
+- Host could scale campaign lobby slots up/down within configured limits.
+- Campaign chat became easier to read and gave clear unread feedback when collapsed.
+- Lobby start behavior no longer blocked on an arbitrary two-player assumption.
+
+## Commit `39af2b8`
+
+This commit targeted a first-load desync where users briefly saw default settings and empty slots.
+
+### Core fixes
+
+- `gw_play.js` `applyCampaignLobbyControl` no longer overwrote current UI values when a partial payload omitted keys.
+- `gw_play.js` `updateCampaignConnectionState` stopped blindly setting empty control and only applied incoming control when present.
+- `gw_campaign.js` added host-presence fallback in connected-client derivation and safer client-name fallback in control mapping.
+
+Effect in practice:
+
+- Most join paths stopped flashing default/empty campaign lobby state before real control data appeared.
+- Co-op viewer-side initialization became significantly more stable.
+
+## Another fix: flattened `server_state` payload parsing
+
+A remaining host-only issue persisted: logs showed host name present in server control broadcasts, but host UI still rendered empty slots until any later control-changing action.
+
+Root cause:
+
+- Host `server_state` payloads sometimes delivered control fields directly under `payload.data` instead of nested `data.control`.
+- Client init logic only checked `data.client.control`/`data.control`, so initial control apply could be skipped despite valid data being present.
+
+Final fix in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- In `updateCampaignConnectionState`, when nested control is absent but `payload.data` has control-like keys (`connected_clients`, `max_clients`, `settings`, etc.), treat `payload.data` itself as incoming control.
+
+Effect in practice:
+
+- Host slot names/settings now populate correctly on first render without requiring any follow-up interaction (`modify_settings`, player join/leave, etc.).
+
+## Practical lessons from this scope
+
+1. Do not treat missing keys in early control payloads as instructions to reset UI state.
+2. Normalize control extraction across nested and flattened payload forms (`client.control`, `control`, and top-level `data` fallback).
+3. For lobby UI initialization, first-paint correctness matters as much as eventual consistency; users interpret first frame as authoritative.
+4. Role payloads are useful for fast initial hydration, but should still be merged with subsequent full control broadcasts.
+
+---
+
+## Single-Player Beacon Suppression + Campaign Launch Context (Commit `2e5ec38`)
+
+This commit tightens GW lobby visibility behavior so solo Galactic War sessions are no longer published as multiplayer beacons, while preserving campaign-coop lobby metadata when transitioning into `gw_lobby`.
+
+### Server-side campaign context handoff (`server-script/states/gw_campaign.js`)
+
+- Added persistent `access` tracking (`password`, `friends`, `blocked`) in `GWCampaignModel`.
+- `updateBouncer` now mirrors incoming access settings into that tracked model state.
+- Added `buildGwLobbyLaunchContext(payload)` that packages:
+  - `gw_campaign_active`
+  - current star
+  - campaign lobby settings (`game_name`, `tag`, visibility flags)
+  - `max_clients`
+  - access control data from bouncer whitelist/blacklist/password
+- `launch_gw_battle` now transitions with context:
+  - `main.setState(main.states.gw_lobby, msg.client, self.buildGwLobbyLaunchContext(msg.payload))`
+
+### Server-side GW lobby behavior (`server-script/states/gw_lobby.js`)
+
+- `LobbyModel` now accepts a `launchContext` and distinguishes:
+  - campaign-coop launch (`gw_campaign_active: true`)
+  - solo GW launch (default when no campaign context)
+- Added `applyLaunchAccessControl()` to rehydrate password/whitelist/blacklist in `gw_lobby` from campaign context.
+- Added `getSessionMaxClients()` so solo GW is forced to `1` client, while campaign-coop can use campaign-defined player limits.
+- `updateBeacon()` now explicitly suppresses publishing when:
+  - session is solo GW, or
+  - lobby is hidden, or
+  - lobby is private/friends-only with no friend whitelist
+- Beacon payload now mirrors active access/settings:
+  - `max_players` uses `server.maxClients`
+  - password/whitelist/blacklist/tag/game name come from campaign-derived state
+
+### Client-side launch metadata propagation (`ui/main/game/galactic_war/gw_play/gw_play.js`)
+
+- On battle launch, GW now persists campaign context into battle config:
+  - `gw_campaign_active`
+  - `gw_campaign_settings` (`game_name`, `tag`, visibility flags, `max_clients`)
+- When campaign host launches battle, `launch_gw_battle` now includes that context payload so server-side `gw_campaign` can pass it forward to `gw_lobby`.
+
+### Practical outcome
+
+1. Single-player Galactic War no longer appears in LAN/server-browser listings as a joinable lobby.
+2. Campaign-coop launches keep lobby identity and access policy consistent across `gw_campaign` -> `gw_lobby` transition.
+3. GW battle lobby beacon publication is now conditional and intentional, instead of always-on.
+
+---
+
+## Commit `54430b9`: `Host can now kick players.`
+For this commit, I simply looked at how kicking was done with function `playerMsg_kick(msg)` in `lobby.js` and
+basically copied that code over to `gw_campaign` along with the extra CSS/HTML/Client side kick message sending JS code needed. 
+Pretty simple to implement.
+
+---
+
+## Commit `7f9543d`: `Tech card deletions now apply to co-op players.`
+A quick fix which I applied to `gw_play.js`. I updated `applyCampaignAction` to have a new handler for a new `'discard_card'` action type. This action type was broadcast from the host every time a card was deleted from the `discardHoverCard` function. Inside of that function, I noticed that the card parameter was never used, so I decided to co-opt it for my purposes and use it as the index of the card to be deleted. While the host figured out what card to delete based on what card was being hovered over, the clients would recieve the card index the host derived as part of the action payload, and then when they were simulating the deletion action they would simply use that index from the payload to know what card to delete. On the host side the only change necessary was to add a call to `sendCampaignAction` with the action type set to the new `'discard_card'` type and the payload set to the index of the card to be discarded.
+
+---
+
+## Commit `8b4ae20`: `Co-op player no longer sees controls for things they cannot control.`
+During playtesting I came across what is now issue #13: 
+```
+GWO Re-roll on co-op player side causes a desync. #13
+This desync continues even after the re-roll, and seemingly the only way to recover from it is to leave the session, then delete the local GW save, and finally rejoin.
+```
+My solution was very simple, I decided to hide the UI elements for the controls for acquiring, deleting, and dismissing tech cards on the co-op player's side. Since Galactic War Overhaul reused the dismiss tech UI element, by hiding dismiss tech on the co-op player's side I also wound up hiding the reroll tech button. As a result the co-op player no longer had the ability to click said buggy button and thus the bug could no longer arise. All I had to do was change `gw_play.css` and `gw_play.html`.
+
+---
+
+## Continue War Process-Restart and Auto-Reconnect Stabilization (Commits `c2da1d3`, `7039a84`, `36ce3a4`, `d32e569`, `cddd2ca`, `46206f1`, `43e243e`)
+
+This commit chain introduced, stress-tested, and then hardened the final co-op Continue War architecture that is now merged into `main`.
+
+The key architectural decision was:
+
+- **Do not** try to continue campaign flow by reusing the ended battle server process.
+- **Do** treat Continue War as a coordinated full process restart.
+
+### Earlier failed direction: reusing the same process
+
+During early implementation, there was an attempt to implement these changes by reusing the same server process. That is, the server would not be closed, and instead it would just stay open and return to handling the lobby when continue war was pressed.
+
+That approach had many failings and was ultimately fully reverted. Nothing else in the game reuses a single server process for multiple games as far as I know, so it seemed likely that such an approach would be very error prone.
+
+### Final direction: explicit restart protocol
+
+The stable path is now explicit and message-driven:
+
+1. Host clicks Continue War.
+2. Server in `game_over` sends `gw_return_to_campaign_restart_prepare` with role/context metadata.
+3. Clients transition to restart-loading flow by explicit restart intent.
+4. Server performs full shutdown and exits battle process.
+5. Host starts fresh `gw_campaign` process; viewers reconnect via normal connect/retry flow.
+
+This makes Continue War intent unambiguous and keeps normal Save-and-Exit behavior separate.
+
+### Commit `c2da1d3`: first end-to-end restart flow
+
+Introduced the initial full restart flow:
+
+- New host-only server message handler in `game_over` to trigger restart.
+- `restart_prepare` payload broadcast/direct-send with role and campaign metadata.
+- New restart-loading scene (`gw_campaign_restart_loading`) to coordinate host start and viewer reconnect timing.
+- Added campaign metadata into game-over client state so UI can determine host/viewer behavior.
+- Added initial UI-side role-aware Continue War handling and viewer safeguards.
+
+### Commit `7039a84`: reconnect reliability and callback lifecycle cleanup
+
+Hardened state transitions and cleanup:
+
+- Cleaned callback stacks in `gw_lobby` so creator/server/client disconnect hooks do not leak into later states.
+- Reworked `shutdown()` in `gw_lobby` to call full state `exit()` instead of only popping one callback.
+- Added connect-time content fallback for GW reconnects in `connect_to_game`.
+- Added initial game_over menu filtering and reconnect-path adjustments.
+
+### Commit `36ce3a4`: root cause fix for host-only live-game patch execution
+
+Fixed the patch propagation bug where only host executed `live_game_patch`:
+
+- Previously, merged `live_game.js + live_game_patch.js` was mounted only via `referee.localFiles()` (host-local mount).
+- Reconnecting/remote clients restore from replay-config `files`, so they missed the patch.
+- Fix: write patched live game script into `battleConfig.files['/ui/main/game/live_game/live_game.js']` as well.
+
+This resolved several downstream symptoms at once:
+
+- co-op clients now process restart packets through patched handler,
+- co-op clients no longer show host-only econ/behavior anomalies tied to missing patch logic.
+
+### Commit `d32e569`: remove implicit reconnect fallback and restore Save-and-Exit shutdown
+
+This commit separated restart flow from normal exit flow:
+
+- Added explicit host-disconnect shutdown handling in `game_over` for non-restart exits.
+- Removed fallback reconnect-on-disconnect behavior from base `live_game` and `game_over` paths.
+- Removed seed-from-game_over fallback in `live_game_patch`.
+- Kept restart flow only when explicit restart intent was set.
+
+Result:
+
+- Save-and-Exit once again immediately closes server process.
+- Host intentional exit no longer causes viewers to chase a nonexistent resumed session.
+
+### Commit `cddd2ca`: final Continue War button visibility race fix
+
+Addressed a UI ordering race where viewer role metadata could arrive after initial menu generation:
+
+- Cached raw menu payload in `game_over`.
+- Rebuilt menu buttons when role metadata arrives from `server_state`.
+- Reapplied role filtering on each rebuild.
+
+Result:
+
+- co-op viewer no longer sees Continue War once role metadata is applied,
+- host retains control over Continue War action.
+
+### Commit `46206f1`: Continue War for defeated-in-playing (GWO FFA) cases
+
+This commit extended the Continue War restart protocol to work even when the match never transitions to server `game_over`.
+
+What changed:
+
+- Added a host-only `gw_return_to_campaign_restart` handler in `playing.js`.
+- Added `beginGwCampaignProcessRestart()` in `playing.js` so restart-prepare + delayed process shutdown can run from `playing` state.
+- Added host-disconnect immediate shutdown in co-op GW `playing` state (outside explicit restart mode), so orphaned local battle servers do not linger.
+- Added co-op campaign payload (`gw_campaign_active`, `gw_campaign_host_id`, `gw_campaign_role`, settings/access) to `playing.getClientState`, so clients receive role/intent metadata in ongoing matches.
+- Updated `live_game_patch.menuReturnToWar` / menu logic to treat defeated-while-playing spectator contexts the same as game-over for Continue War visibility and action routing.
+
+Why this mattered:
+
+- In GWO FFA-style cases, the human side can be eliminated while AI factions keep fighting, so `game_over` never fires for the defeated clients.
+- Continue War must still function there, which means restart orchestration and role metadata must exist in `playing`, not only `game_over`.
+
+### Commit `43e243e`: role-driven Continue War filtering in both menu surfaces
+
+This commit fixed a follow-up UI inconsistency where viewer filtering was correct in one panel but not the other.
+
+What changed:
+
+- `game_over.js`: made role/session usage explicit and updated role metadata handling before the `game_over`-only branch, so filtering still updates in defeated-while-playing flows.
+- `live_game.js`: persisted `gwCampaignRole` in session and updated it from `server_state` client payload.
+- `live_game_menu.js`: filtered Continue War by role and refreshed role from parent `live_game` model while applying menu state.
+- `generate_mod.py`: added `ui/main/game/live_game/live_game_menu.js` to copy list so menu filtering changes are actually shipped in generated builds.
+
+Why this mattered:
+
+- Fixing only one panel left the other path stale because role propagation timing and panel data sources were different.
+- Shipping pipeline coverage was part of the bug: if `live_game_menu.js` is not included in build copy lists, source fixes can look correct locally but never reach runtime.
+
+### Practical lesson from this chain
+
+For co-op GW Continue War, explicit orchestration beats inference:
+
+1. Use explicit restart messages and role metadata.
+2. Keep normal disconnect/exit paths simple and non-reconnecting.
+3. Ensure any host-side runtime patch is propagated through replay-config file sources, not only local mounts.
+4. Treat UI menu generation as eventually-consistent with role metadata and support rebuilds when authoritative state arrives.
+5. If Continue War should exist in defeated-but-not-game-over contexts, implement role/restart logic in `playing` as first-class behavior, not as a `game_over` side effect.
+6. For multi-panel UI fixes, verify both data flow and packaging flow (for example `generate_mod.py` copy list), otherwise one panel can remain unfixed at runtime.

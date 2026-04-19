@@ -9,6 +9,10 @@ This guide explains what the subfolders generally do, based on reading represent
 - For each meaningful code subfolder, I read 1–2 representative files.
 - Some folders are asset-only (images, fonts, videos, icons); for those, purpose is inferred from structure/file names.
 
+## Notes:
+- This code uses ES5 Javascript, with the Coherent structure.
+- Many hidden functions and scenes and styles are used; not everything can be figured out as the actual game's source code is not present.
+
 ---
 
 ## `ui/` (client UI)
@@ -128,3 +132,40 @@ Bundled third-party libraries.
 ## Notes
 - This is a general architectural guide, not a strict API contract.
 - File names and patterns are stable enough to use as navigation heuristics for new contributors or AI tools.
+
+
+## Additional notes about...
+
+### The client mod incident:
+Summary:
+- Reconnect instability and coop crashes were chased through multiple reconnect code paths, but the underlying trigger in this case was a host-side client mod, not server-script GW reconnect logic.
+
+What happened:
+- The more pew pew mod (projectile trail/impact changes) was installed on the host.
+- The mod supplied assets such as `/pa/units/land/bot_grenadier/bot_grenadier_ammo_hit.pfx`.
+- Another client without that mod hit missing asset behavior during coop sessions.
+- Massive regressions in reconnect and coop stability were caused by hamfisted attempts to patch reconnect code, but the root cause was the client mod's assets being required by runtime data.  (probably? As of writing it isn't entirely clear whether this is true, but it does line up.)
+- Reverting code changes and removing the client mod restored expected reconnect behavior.
+
+Why this is dangerous:
+- Server mods are intended to define shared gameplay-visible data for all clients.
+- Client mods are intended to be local presentation changes only.
+- If runtime/cooked data ends up referencing host-only client-mod assets, other players can be forced to resolve files they do not have.
+- This can look like GW reconnect or memory-file transport bugs even when the reconnect path is correct.
+
+Observed debugging trap:
+- Matching mod installs on both machines did not immediately disprove the mod as culprit.
+- The reliable signal was checking whether referenced files actually exist in base media versus only inside the client mod.
+
+Practical checklist before touching reconnect code:
+1. Disable all client mods on host and client, then retest.
+2. Verify suspect file paths exist in base game media (for example, check whether a referenced `.pfx` exists without mods).
+3. If crashes disappear with client mods off, treat this as client-mod contamination first, not reconnect-state logic failure.
+4. Only after a clean no-client-mod repro should reconnect flow code be changed.
+
+Guideline for future fixes:
+- Prefer isolating host client-mod effects so they do not become required by remote coop clients.
+- Add explicit troubleshooting notes in bug reports: active client mods, exact missing file paths, and whether issue reproduces with all client mods disabled.
+
+### Additional note about client mods:
+It seems that upon further testing and investigation, if both the host and the client have the same client mod installed, the main game works fine, but upon reconnecting to the game, the client have an unmountAllMemoryFiles call, which will cause them to lose some of the client mod files, and in turn cause a crash. This has been fixed via modifications to reconnect, and now it seems like the above issue can be resolved not only by removing client mods, but also by having all clients have the same client mods installed.

@@ -3,12 +3,16 @@ var model;
 
 $(document).ready(function() {
 
+    // Mark this client session as running through GW coop lobby flow.
+    ko.observable(true).extend({ session: 'gw_coop_mode' });
+
     function GWLobbyViewModel() {
         var self = this;
 
         self.serverLoading = ko.observable(true);
         self.clientLoading = ko.observable(true);
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
+        self.gwConfigMounted = ko.observable(false);
         self.ready = ko.computed(function() {
             return !self.clientLoading() && !self.serverLoading();
         })
@@ -91,9 +95,38 @@ $(document).ready(function() {
         model.serverLoading(!control.sim_ready);
         if (!control.has_config) {
             var config = model.config();
-            config.sandbox = !!model.devMode();
-            model.send_message('set_config', model.config());
+            if (config && typeof config === 'object') {
+                config.sandbox = !!model.devMode();
+                model.send_message('set_config', config);
+            }
         }
+    };
+
+    handlers.gw_config = function(payload) {
+        if (!payload || !payload.files)
+            return;
+
+        if (!payload.files['/pa/units/unit_list.json']) {
+            var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
+            var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
+            var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
+            payload.files['/pa/units/unit_list.json'] = { units: units };
+        }
+
+        var cookedFiles = _.mapValues(payload.files, function(value) {
+            if (typeof value !== 'string')
+                return JSON.stringify(value);
+            return value;
+        });
+
+        // Do not globally unmount memory files here. Community mod hooks on
+        // unmountAllMemoryFiles can trigger broad remount activity and race
+        // with GW lobby startup on some machines.
+        api.file.mountMemoryFiles(cookedFiles).then(function() {
+            model.gwConfigMounted(true);
+            api.game.setUnitSpecTag('.player');
+            model.send_message('gw_config_ready', {});
+        });
     };
 
     handlers.server_state = function(payload) {
@@ -102,7 +135,19 @@ $(document).ready(function() {
             return;
         }
 
-        handlers.control(payload.data.control);
+        // Accept either a broadcast-style `data.control` or a per-client `data.client.control`.
+        var control = null;
+        if (payload && payload.data) {
+            if (payload.data.control)
+                control = payload.data.control;
+            else if (payload.data.client && payload.data.client.control)
+                control = payload.data.client.control;
+        }
+        
+        if (control)
+            handlers.control(control);
+        else
+            console.log('gw_lobby: server_state missing control payload', payload);
     };
 
     handlers.connection_disconnected = function(payload) {
@@ -128,6 +173,16 @@ $(document).ready(function() {
     ko.applyBindings(model);
 
     app.hello(handlers.server_state, handlers.connection_disconnected);
+
+    // Browser-join clients may enter this scene after the server first sent gw_config.
+    // Explicitly request the GW config and keep trying briefly until mounted.
+    var requestGWConfig = function() {
+        if (!model.gwConfigMounted()) {
+            model.send_message('request_gw_config', {});
+            setTimeout(requestGWConfig, 1000);
+        }
+    };
+    requestGWConfig();
 
     var testLoading = function() {
         var worldView = api.getWorldView(0);

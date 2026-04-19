@@ -1,13 +1,28 @@
 var console = require('console'); // temporary workaround
 var main = require('main');
+var env = require('env');
 var sim_utils = require('sim_utils');
 var utils = require('utils');
 var file = require('file');
+var content_manager = require('content_manager');
+var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
 var ko = require('thirdparty/knockout');
 
-// Note: GW does not currently support reconnect.
+console.log('gw_lobby server script: loaded');
+
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
+var DEFAULT_GW_PLAYERS = 6;
+var getGWMaxPlayers = function() {
+    var envIndex = env.indexOf('--max-players');
+    if (envIndex !== -1) {
+        var envValue = parseInt(env[envIndex + 1]);
+        if (_.isFinite(envValue) && envValue > 0)
+            return envValue;
+    }
+    return DEFAULT_GW_PLAYERS;
+};
+var MAX_GW_PLAYERS = getGWMaxPlayers();
 
 var debugging = false;
 
@@ -20,8 +35,92 @@ var client_state = {
     control: {}
 };
 
-function LobbyModel(creator) {
+function LobbyModel(creator, launchContext) {
     var self = this;
+
+    self.launchContext = launchContext || {};
+    self.campaignActive = !!self.launchContext.gw_campaign_active;
+    self.isSingleplayerGW = !self.campaignActive;
+    self.beaconSettings = {
+        game_name: 'Galactic War',
+        tag: 'Testing',
+        public: true,
+        friends: false,
+        hidden: false
+    };
+
+    if (self.launchContext.settings) {
+        var launchSettings = self.launchContext.settings;
+        if (_.isString(launchSettings.game_name))
+            self.beaconSettings.game_name = launchSettings.game_name;
+        if (_.isString(launchSettings.tag))
+            self.beaconSettings.tag = launchSettings.tag;
+        if (_.isBoolean(launchSettings.public))
+            self.beaconSettings.public = launchSettings.public;
+        if (_.has(launchSettings, 'friends'))
+            self.beaconSettings.friends = !!launchSettings.friends;
+        if (_.has(launchSettings, 'hidden'))
+            self.beaconSettings.hidden = !!launchSettings.hidden;
+    }
+
+    self.applyLaunchAccessControl = function() {
+        var access = self.launchContext.access || {};
+
+        // Rehydrate campaign lobby access settings (password/whitelist/blacklist)
+        // so gw_lobby and its beacon continue to mirror gw_campaign visibility.
+        bouncer.setPassword(_.isString(access.password) ? access.password : '');
+        bouncer.clearWhitelist();
+        bouncer.clearBlacklist();
+
+        if (_.isArray(access.friends)) {
+            _.forEach(access.friends, function(id) {
+                bouncer.addPlayerToWhitelist(id);
+            });
+        }
+
+        if (_.isArray(access.blocked)) {
+            _.forEach(access.blocked, function(id) {
+                bouncer.addPlayerToBlacklist(id);
+            });
+        }
+    };
+
+    self.getSessionMaxClients = function() {
+        if (self.isSingleplayerGW)
+            return 1;
+
+        if (_.isFinite(self.launchContext.max_clients) && self.launchContext.max_clients > 1)
+            return Math.floor(self.launchContext.max_clients);
+
+        return Math.max(2, MAX_GW_PLAYERS);
+    };
+
+    self.refreshCampaignContextFromConfig = function(config) {
+        if (!config || !_.has(config, 'gw_campaign_active'))
+            return;
+
+        self.campaignActive = !!config.gw_campaign_active;
+        self.isSingleplayerGW = !self.campaignActive;
+
+        // Keep beacon identity aligned if the host provided runtime lobby settings.
+        if (config.gw_campaign_settings) {
+            var settings = config.gw_campaign_settings;
+            if (_.isString(settings.game_name))
+                self.beaconSettings.game_name = settings.game_name;
+            if (_.isString(settings.tag))
+                self.beaconSettings.tag = settings.tag;
+            if (_.isBoolean(settings.public))
+                self.beaconSettings.public = settings.public;
+            if (_.has(settings, 'friends'))
+                self.beaconSettings.friends = !!settings.friends;
+            if (_.has(settings, 'hidden'))
+                self.beaconSettings.hidden = !!settings.hidden;
+            if (_.isFinite(settings.max_clients) && settings.max_clients > 0)
+                self.launchContext.max_clients = Math.floor(settings.max_clients);
+        }
+
+        server.maxClients = self.getSessionMaxClients();
+    };
 
     self.control = ko.observable({
         has_config: false,
@@ -33,11 +132,118 @@ function LobbyModel(creator) {
     self.config = ko.observable();
 
     self.creator = creator.id;
+    self.clientConfigReady = {};
     self.creatorReady = ko.observable();
     self.creatorReady.subscribe(function() {
-        self.changeControl({starting: true});
+        self.tryStart();
     });
     self.creatorDisconnectTimeout = undefined;
+    self.callbackCleanup = [];
+
+    self.clearCreatorDisconnectTimeout = function() {
+        if (!self.creatorDisconnectTimeout)
+            return;
+
+        clearTimeout(self.creatorDisconnectTimeout);
+        delete self.creatorDisconnectTimeout;
+    };
+
+    // Track callback-stack registrations so gw_lobby does not leak disconnect
+    // handlers into later states where they can trigger unintended server exits.
+    var registerCallback = function(target, callbackName, callback) {
+        utils.pushCallback(target, callbackName, callback);
+
+        var removed = false;
+        var remove = function() {
+            if (removed)
+                return;
+
+            removed = true;
+            if (target && target[callbackName] && _.isFunction(target[callbackName].pop))
+                target[callbackName].pop();
+        };
+
+        self.callbackCleanup.push(remove);
+        return remove;
+    };
+
+    self.tryStart = function() {
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+        var allConfigReady = _.every(connectedClients, function(client) {
+            return !!self.clientConfigReady[client.id];
+        });
+        var control = self.control();
+        var readyToStart = !!self.creatorReady() && !!control.system_ready && !!control.sim_ready && allConfigReady;
+
+        if (readyToStart && !control.starting)
+            self.changeControl({ starting: true });
+        else if (!readyToStart && control.starting)
+            self.changeControl({ starting: false });
+
+        if (!!self.creatorReady() && !allConfigReady)
+            console.log('GW - Waiting for all clients to mount GW config before start');
+    };
+
+    self.updateBeacon = function() {
+        // Never publish or update GW beacons for single-player sessions.
+        // This prevents solo campaigns from being exposed as joinable lobbies.
+        if (self.isSingleplayerGW) {
+            server.beacon = null;
+            return;
+        }
+
+        // Likewise, even if it is published, but set to either private or friends-only without a friends list, 
+        // the beacon would be useless, so we don't publish in that case either.
+        var hasFriendsList = bouncer.getWhitelist().length > 0;
+        var publish = !self.beaconSettings.hidden && (self.beaconSettings.public || hasFriendsList);
+        if (!publish) {
+            server.beacon = null;
+            return;
+        }
+
+        console.log('Updating beacon');
+        var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
+        var modsData = server.getModsForBeacon();
+        var config = self.config();
+        var gameSystem = (config && config.system)
+            ? utils.getMinimalSystemDescription(config.system)
+            : { planets: [] };
+
+        console.log('Connected clients: ' + connectedClients.length);
+        server.beacon = {
+            state: 'lobby',
+            uuid: server.uuid(),
+            full: connectedClients.length >= server.maxClients,
+            started: !!self.control().starting,
+            players: connectedClients.length,
+            creator: creator.name,
+            max_players: server.maxClients,
+            spectators: 0,
+            max_spectators: 0,
+            mode: 'FreeForAll',
+            mod_names: modsData.names,
+            mod_identifiers: modsData.identifiers,
+            cheat_config: main.cheats,
+            player_names: _.map(connectedClients, function(client) { return client.name; }),
+            spectator_names: [],
+            require_password: !!bouncer.doesGameRequirePassword(),
+            whitelist: bouncer.getWhitelist(),
+            blacklist: bouncer.getBlacklist(),
+            tag: self.beaconSettings.tag,
+            game: {
+                system: gameSystem,
+                name: self.beaconSettings.game_name
+            },
+            required_content: content_manager.getRequiredContent(),
+            bounty_mode: false,
+            bounty_value: 1.0,
+            sandbox: !!(config && config.sandbox)
+        };
+
+        debug_log(server.beacon);
+    };
 
     self.clientState = ko.computed(function() {
         if (!_.isEqual(client_state.control, self.control())) {
@@ -47,6 +253,9 @@ function LobbyModel(creator) {
                 payload: client_state.control
             });
         }
+
+        console.log('clientState', client_state);
+        self.updateBeacon();
     });
 
     self.changeControl = function(updateFlags) {
@@ -72,20 +281,85 @@ function LobbyModel(creator) {
         });
     };
 
+    self.sendGWConfigToClient = function(client) {
+        var config = self.config();
+        if (!config || !config.files)
+            return;
+
+        var message = {
+            message_type: 'gw_config',
+            payload: {
+                files: config.files
+            }
+        };
+
+        if (client && client.connected)
+            client.message(message);
+        else
+            server.broadcast(message);
+
+        if (client && client.id)
+            self.clientConfigReady[client.id] = false;
+        else {
+            _.forEach(server.clients, function(c) {
+                if (c.connected)
+                    self.clientConfigReady[c.id] = false;
+            });
+        }
+
+        self.tryStart();
+    };
+
     self.startGame = function() {
         var config = self.config();
-        // Point the non-AI slots at the player
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+
+        // Collect all human-controllable slots from non-AI armies.
+        var humanSlots = [];
+        var firstHumanArmy = null;
         _.forEach(config.armies, function(army) {
-            var ai = _.any(army.slots, 'ai');
-            if (!ai) {
+            var aiArmy = _.any(army.slots, 'ai');
+            if (!aiArmy) {
+                if (!firstHumanArmy)
+                    firstHumanArmy = army;
                 _.forEach(army.slots, function(slot) {
-                    slot.client = creator;
+                    if (!slot.ai)
+                        humanSlots.push(slot);
                 });
             }
         });
+
+        // Ensure enough human slots exist for all connected clients.
+        if (firstHumanArmy && humanSlots.length < connectedClients.length) {
+            var baseSlot = humanSlots[0] || { name: 'Player' };
+            while (humanSlots.length < connectedClients.length) {
+                var extraSlot = _.clone(baseSlot);
+                delete extraSlot.client;
+                delete extraSlot.ai;
+                firstHumanArmy.slots.push(extraSlot);
+                humanSlots.push(extraSlot);
+            }
+        }
+
+        // Map connected humans into human slots.
+        _.forEach(humanSlots, function(slot, index) {
+            if (index < connectedClients.length)
+                slot.client = connectedClients[index];
+            else
+                delete slot.client;
+        });
+
         // Set up the players array for the landing state
         var players = {};
-        players[self.creator] = config.player;
+        _.forEach(connectedClients, function(client) {
+            players[client.id] = _.clone(config.player);
+        });
+
+        console.log('GW - mapped clients to player slots: ' + _.map(connectedClients, function(client) {
+            return client.name + ' (' + client.id + ')';
+        }).join(', '));
 
         var landingConfig =
         {
@@ -96,6 +370,13 @@ function LobbyModel(creator) {
                 game_options:
                 {
                     game_type: 'Galactic War',
+                    // Persist campaign identity and lobby settings into the battle so
+                    // game_over can run a co-op-specific Continue War restart flow
+                    // without affecting single-player Galactic War behavior.
+                    gw_campaign_active: !!self.campaignActive,
+                    gw_campaign_host_id: self.creator,
+                    gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
+                    gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,
@@ -190,6 +471,8 @@ function LobbyModel(creator) {
     };
 
     self.config.subscribe(function(newConfig) {
+        self.refreshCampaignContextFromConfig(newConfig);
+
         self.changeControl({
             has_config: true,
             system_ready: false,
@@ -209,6 +492,8 @@ function LobbyModel(creator) {
         sim.shutdown(false);
         sim.systemName = newConfig.system.name;
         sim.planets = newConfig.system.planets;
+
+        self.sendGWConfigToClient();
     });
 
     var playerMsg = {
@@ -217,6 +502,8 @@ function LobbyModel(creator) {
             if (self.control().has_config) {
                 return response.fail('Configuration already set');
             }
+
+            self.refreshCampaignContextFromConfig(msg.payload);
 
             var validResult = self.validateConfig(msg.payload);
             var validResponse = function(valid) {
@@ -238,13 +525,23 @@ function LobbyModel(creator) {
         set_ready: function(msg, response) {
             self.creatorReady(true);
             response.succeed();
+        },
+        request_gw_config: function(msg, response) {
+            self.sendGWConfigToClient(msg.client);
+            response.succeed();
+        },
+        gw_config_ready: function(msg, response) {
+            self.clientConfigReady[msg.client.id] = true;
+            self.tryStart();
+            response.succeed();
         }
     };
     playerMsg = _.mapValues(playerMsg, function(handler, key) {
         return function(msg) {
             debug_log('playerMsg.' + key);
             var response = server.respond(msg);
-            if (msg.client.id !== self.creator)
+            var creatorOnly = key === 'set_config' || key === 'set_ready';
+            if (creatorOnly && msg.client.id !== self.creator)
                 return response.fail("Invalid message");
             return handler(msg, response);
         };
@@ -253,10 +550,15 @@ function LobbyModel(creator) {
     var cleanup = [];
 
     self.enter = function() {
+        self.applyLaunchAccessControl();
+        server.maxClients = self.getSessionMaxClients();
+        self.updateBeacon();
+
         utils.pushCallback(sim.planets, 'onReady', function (onReady) {
             debug_log('sim.planets.onReady');
             sim.create();
             self.changeControl({ system_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.planets.onReady.pop(); });
@@ -264,6 +566,7 @@ function LobbyModel(creator) {
         utils.pushCallback(sim, 'onReady', function (onReady) {
             debug_log('sim.onReady');
             self.changeControl({ sim_ready: true });
+            self.tryStart();
             return onReady;
         });
         cleanup.push(function () { sim.onReady.pop(); });
@@ -275,9 +578,21 @@ function LobbyModel(creator) {
     self.exit = function() {
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
+
+        // We clear the disconnect timeout and client handlers here to prevent a creator disconnect from 
+        // triggering after the lobby has been exited, which would cause unintended server exits 
+        // if the next state also has a creator disconnect handler (like gw_campaign_restart_loading).
+        self.clearCreatorDisconnectTimeout();
+        _.forEachRight(self.callbackCleanup, function(remove) {
+            remove();
+        });
+        self.callbackCleanup = [];
+
+        // Keep beacon cleared for single-player sessions.
+        server.beacon = null;
     };
 
-    utils.pushCallback(creator, 'onDisconnect', function(onDisconnect) {
+    registerCallback(creator, 'onDisconnect', function(onDisconnect) {
         self.creatorDisconnectTimeout = setTimeout(function() {
             delete self.creatorDisconnectTimeout;
             console.log('GW - Creator timed out');
@@ -286,38 +601,55 @@ function LobbyModel(creator) {
         return onDisconnect;
     });
 
-    utils.pushCallback(server, 'onConnect', function (onConnect, client, reconnect) {
-        if (!client.id !== self.creator) {
-            server.rejectClient(client, 'GW mode is currently single player');
-            return onConnect;
+    registerCallback(server, 'onConnect', function (onConnect, client, reconnect) {
+        if (client.id === self.creator) {
+            self.clearCreatorDisconnectTimeout();
+
+            self.creatorReady(false);
         }
 
-        if (self.creatorDisconnectTimeout) {
-            clearTimeout(self.creatorDisconnectTimeout);
-            delete self.creatorDisconnectTimeout;
-        }
+        self.clientConfigReady[client.id] = false;
 
-        self.creatorReady(false);
+        registerCallback(client, 'onDisconnect', function(onDisconnect) {
+            delete self.clientConfigReady[client.id];
+            self.updateBeacon();
+            self.tryStart();
+            return onDisconnect;
+        });
+
+        self.updateBeacon();
+        self.sendGWConfigToClient(client);
+        self.tryStart();
         return onConnect;
     });
 
     self.shutdown = function() {
-        server.onConnect.pop();
+        // Rather than just do server.onConnect.pop(); here, 
+        // we need to clear all the disconnect hooks and timeouts,
+        // and server.onConnect.pop would only clear one callback.
+        self.exit();
     };
 };
 
 var lobbyModel;
 
 exports.url = 'coui://ui/main/game/galactic_war/gw_lobby/gw_lobby.html';
-exports.enter = function (owner) {
+exports.enter = function (owner, launchContext) {
 
     if (lobbyModel) {
         lobbyModel.shutdown();
         lobbyModel = undefined;
     }
 
-    lobbyModel = new LobbyModel(owner);
+    lobbyModel = new LobbyModel(owner, launchContext);
     lobbyModel.enter();
+
+    try {
+        console.log('GW_Lobby: entering, client_state = ' + JSON.stringify(client_state));
+    }
+    catch (e) {
+        console.log('GW_Lobby: entering, client_state stringify failed', e);
+    }
 
     return client_state;
 };

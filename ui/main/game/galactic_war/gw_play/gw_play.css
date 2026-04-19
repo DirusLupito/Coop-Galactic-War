@@ -258,6 +258,19 @@ html, body {
     pointer-events: all;
 }
 
+/* Viewers in co-op are read-only; hide tech action controls that can cause local-only mutations. */
+.container.gw-campaign-viewer .div_panel_bar_background.tech #system-card .exploring.card_action {
+    display: none !important;
+}
+
+.container.gw-campaign-viewer .div_panel_bar_background.tech .div_options_bar {
+    display: none !important;
+}
+
+.container.gw-campaign-viewer #hover-card .card_action {
+    display: none !important;
+}
+
 
 
 .div_game_menu_panel {
@@ -390,6 +403,302 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     z-index: 2;
+}
+
+#gw-campaign-chat,
+#gw-campaign-settings {
+    position: absolute;
+    z-index: 4;
+}
+
+/* 
+Note the transition time in MS here must match the transtion time in MS in 
+self.queueClosedChatFlash in ui\main\game\galactic_war\gw_play\gw_play.js.
+Otherwise things will look off.
+*/
+#gw-campaign-chat {
+    left: 10px;
+    bottom: 36px;
+    width: 420px;
+    background: rgba(11, 26, 31, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 100px #000;
+    pointer-events: all;
+    text-align: left;
+    transition: border-color 200ms linear, box-shadow 200ms linear;
+}
+
+#gw-campaign-chat .gw-campaign-panel-header {
+    position: relative;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.gw-panel-collapse-button {
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.gw-panel-collapse-button.top {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    transition: background-color 200ms linear, border-color 200ms linear, box-shadow 200ms linear;
+}
+
+#gw-campaign-chat .gw-campaign-chat-body {
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+}
+
+#gw-chat-bar {
+    border: 1px solid #333;
+    margin: 8px;
+    padding: 8px;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+}
+
+#gw-send-chat {
+    margin: 0 8px 8px 8px;
+}
+
+#gw-send-chat input {
+    width: 100%;
+    margin: 0;
+}
+
+#gw-chat-bar .player-name {
+    color: #00ff00;
+    text-shadow: none;
+}
+
+#gw-chat-bar .chat-msg {
+    color: #fff;
+    text-shadow: none;
+}
+
+#gw-chat-bar .chat_message,
+#gw-chat-bar .player-name,
+#gw-chat-bar .separator,
+#gw-chat-bar .chat-msg {
+    font-size: 13px;
+}
+
+#gw-campaign-chat.gw-chat-unread {
+    border-color: rgba(0, 162, 0, 0.7);
+    box-shadow: inset 0 0 0 1px rgba(0, 120, 0, 0.9), inset 0 0 0 3px rgba(0, 80, 0, 0.95), 0px 0px 100px #000;
+}
+
+#gw-campaign-chat.gw-chat-unread .gw-panel-collapse-button.top {
+    background: rgba(0, 80, 0, 0.95);
+    border-color: rgba(0, 162, 0, 0.85);
+    box-shadow: inset 0 0 0 1px rgba(0, 120, 0, 0.9), inset 0 0 0 3px rgba(0, 80, 0, 0.95);
+}
+
+#gw-campaign-chat.gw-chat-flash {
+    border-color: rgba(0, 255, 0, 0.95);
+    box-shadow: inset 0 0 0 1px rgba(0, 200, 0, 0.95), inset 0 0 0 3px rgba(0, 120, 0, 0.95), 0px 0px 100px #000;
+}
+
+#gw-campaign-chat.gw-chat-flash .gw-panel-collapse-button.top {
+    border-color: rgba(0, 255, 0, 0.95);
+    background-color: rgba(0, 162, 0, 0.95);
+}
+
+#gw-campaign-settings {
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#gw-campaign-settings .gw-campaign-settings-body {
+    width: 530px;
+    background: rgba(11, 26, 31, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 100px #000;
+    pointer-events: all;
+}
+
+.gw-panel-collapse-button.side {
+    width: 24px;
+    height: 40px;
+    line-height: 38px;
+    margin-right: 4px;
+}
+
+.gw-settings-title-row {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.gw-settings-title-row input {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.gw-settings-privacy-row {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gw-settings-label {
+    margin-right: 8px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.gw-input-password {
+    width: 142px;
+    height: 24px;
+    margin: 0 4px 0 8px;
+}
+
+.gw-password-reveal {
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Privacy toggles matching multiplayer lobby */
+.btn_toggle {
+    min-width: 50px;
+    color: #00B3FF;
+    font-family: "Sansation";
+    text-align: center;
+    text-shadow: 0px 0px 0px;
+    background: #333;
+    border: 1px solid #808080;
+    box-shadow: none;
+    margin: 0px -3px 0px 0px;
+    padding: 2px 20px;
+    display: inline-block;
+    flex-shrink: 0;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-box-shadow: inset 0 0 8px rgba(255,255,255,.3);
+    -webkit-animation: fadeout;
+    -webkit-transition: .3s ease-out;
+}
+
+.btn_toggle:hover {
+    color: #fff;
+    text-shadow: 0px 0px 0px;
+    background: #0b1a1f;
+    border: 1px solid #1e7aa1;
+    box-shadow: inset 0px 0px 10px #1e7aa1;
+    -webkit-animation: none;
+    -webkit-transition: none;
+}
+
+.btn_toggle:active, .btn_toggle.live {
+    color: #FFFFFF;
+    text-shadow: 0px 0px 0px;
+    background: #1e7aa1;
+    border: 1px solid #00B3FF;
+    box-shadow: 0px 0px 20px #00B3FF;
+    -webkit-animation: none;
+    -webkit-transition: none;
+}
+
+.btn_toggle_disabled, .btn_toggle.btn_toggle_disabled {
+    pointer-events: none;
+    opacity: .3;
+}
+
+.btn_toggle_label {
+    margin: 2px 0px 0px 0px;
+}
+
+.gw-campaign-slot-list {
+    padding: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.gw-campaign-slot-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    min-height: 34px;
+    background: rgba(128, 128, 128, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.gw-slot-label {
+    width: 72px;
+    font-size: 12px;
+    color: #d0d0d0;
+    text-transform: uppercase;
+    padding-left: 8px;
+}
+
+.gw-slot-name {
+    color: #fff;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 8px;
+    flex-grow: 1;
+}
+
+.gw-slot-host {
+    color: #00ffff;
+    font-size: 14px;
+}
+
+.gw-slot-remove,
+.gw-campaign-slot-add {
+    width: 32px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 28px;
+    color: #88dbff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    user-select: none;
+}
+
+.gw-slot-kick {
+    min-width: 54px;
+    margin: 0 8px 0 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
+    color: #ffb0b0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(64, 0, 0, 0.35);
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.gw-slot-remove {
+    margin: 0 8px;
+}
+
+.gw-campaign-slot-add {
+    margin: 0 8px 8px 8px;
+    width: calc(100% - 16px);
 }
 
 /* #tech_bar_cont

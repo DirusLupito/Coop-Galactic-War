@@ -84,6 +84,40 @@ $(document).ready(function () {
 
         self.victors = ko.observableArray([]);
         self.playerIsWinner = ko.observable(false);
+        self.gwCampaignActive = ko.observable(false);
+        self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
+        self.rawMenuConfig = [];
+
+        self.isGwCampaignViewer = ko.computed(function () {
+            return self.gwCampaignRole() === 'viewer';
+        });
+
+        self.filterMenuButtonsForRole = function(menu) {
+            console.log("[GW_COOP] filterMenuButtonsForRole function called with role: " + self.gwCampaignRole() + " and menu: ", menu);
+            if (!self.isGwCampaignViewer())
+                return menu;
+
+            // Viewer should never be offered Continue War in co-op GW.
+            return _.filter(menu, function(button) {
+                return button.action !== 'menuReturnToWar';
+            });
+        };
+
+        // To prevent the viewer from being offered Continue War in co-op GW, we need to filter the menu buttons 
+        // based on role metadata that may not be present at initial menuConfig query time. 
+        // We rebuild the button list whenever new metadata arrives.
+        self.rebuildMenuButtons = function(menu) {
+            if (_.isArray(menu))
+                self.rawMenuConfig = menu;
+
+            var sourceMenu = _.isArray(self.rawMenuConfig) ? self.rawMenuConfig : [];
+            var filteredMenu = self.filterMenuButtonsForRole(sourceMenu);
+            var menuButtons = _.map(_.filter(filteredMenu, 'game_over'), function(button) {
+                return new MenuButtonModel(button);
+            });
+
+            self.menuButtons(menuButtons);
+        };
 
         self.showPlayerDefeated = ko.computed(function () {
             return !self.showVictorStats() && self.defeated() && !self.playerIsWinner();
@@ -562,10 +596,7 @@ $(document).ready(function () {
             parentQuery('playerData').then(self.handlePlayerData);
 
             parentQuery('menuConfig').then(function (menu) {
-                var menuButtons = _.map(_.filter(menu, 'game_over'), function(button) {
-                    return new MenuButtonModel(button);
-                });
-                self.menuButtons(menuButtons);
+                self.rebuildMenuButtons(menu || []);
             });
         };
     }
@@ -577,6 +608,18 @@ $(document).ready(function () {
     };
 
     handlers.server_state = function (msg) {
+        if (msg && msg.data && msg.data.client) {
+            if (_.has(msg.data.client, 'gw_campaign_active'))
+                model.gwCampaignActive(!!msg.data.client.gw_campaign_active);
+
+            if (_.isString(msg.data.client.gw_campaign_role))
+                model.gwCampaignRole(msg.data.client.gw_campaign_role);
+
+            // Role metadata may arrive before game_over state; keep menu
+            // filtering up-to-date in defeated-while-playing flows.
+            model.rebuildMenuButtons();
+        }
+
         if (!msg.state.endsWith('game_over'))
             return;
 
@@ -587,7 +630,7 @@ $(document).ready(function () {
         if (msg.data)
         {
             model.connected(true);
-            model.playerIsWinner(!!msg.data.client.winner);
+            model.playerIsWinner(!!(msg.data.client && msg.data.client.winner));
             model.draw(false);
 
             gameOverMsg = msg.data.game_over;
@@ -642,13 +685,7 @@ $(document).ready(function () {
     };
 
     handlers.menu_config = function (payload) {
-
-        var list = _.map(_.filter(payload, 'game_over'), function (button) {
-            return new MenuButtonModel(button);
-        });
-
-        if (!_.isEmpty(list))
-            model.menuButtons(list);
+        model.rebuildMenuButtons(payload || []);
     };
 
     handlers.ready = function (payload) {
