@@ -26,6 +26,8 @@ FILES_TO_COPY = [
      "ui/main/game/live_game/live_game_action_bar.js"),
     ("ui/main/game/connect_to_game/connect_to_game.js",
      "ui/main/game/connect_to_game/connect_to_game.js"),
+    ("ui/main/game/community_mods/states/connect_to_game.js",
+     "ui/main/game/community_mods/states/connect_to_game.js"),
     ("ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html",
      "ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html"),
     ("ui/main/game/gw_reconnect_loading/gw_reconnect_loading.css",

@@ -24,16 +24,50 @@ function CommunityMods() {
     $('div.div_panel_bar_background').append('<div id="community-mods-progress" style="margin-top: 0px; width: 70%; margin-left: 15%; text-align: left; height: 15px; font-size: 10px; line-height: 150%; vertical-align: middle;" data-bind="style: downloadsStyle"><!-- ko foreach: downloadsStatus --><div class="download-status" data-bind="style: $root.downloadStyles($data)" style="position: relative; display: inline-block; overflow: hidden;"><div class="download-name" style="position: relative; z-index: 2; background-color: transparent; text-align: center; padding-left: 2px; white-space: nowrap;;" data-bind="text: file"></div><div class="download-progress" style="background-color: #007800; width: 0; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; min-width: 1px;" data-bind="style: $root.downloadProgressStyles($data)"> </div></div><!-- /ko --></div>');
 
     model.companionModsChecked = ko.observable(false);
+    // Track processed identifiers because required mod lists can arrive in
+    // multiple waves during connect/reconnect and we want idempotent handling.
+    model.checkedCompanionModIdentifiers = ko.observableArray([]);
+    model.checkedClientModIdentifiers = ko.observableArray([]);
 
+    // Bullshit vibecode that shouldn't be necessary but the AI really likes to be super safe...
+    // ... and I don't feel like reworking the whole flow to be less safe.
+    var normalizeIdentifiers = function (identifiers) {
+        return _.chain(identifiers || [])
+            .filter(function (identifier) {
+                return _.isString(identifier) && identifier.length > 0;
+            })
+            .uniq()
+            .sortBy()
+            .value();
+    };
+
+    var finishClientModActivation = function () {
+        if (ko.isObservable(model.clientModsActivating))
+            model.clientModsActivating(false);
+
+        // server_state in base connect_to_game is paused while activation runs.
+        // If a redirect already arrived, continue immediately once we're done.
+        if (model.redirectURL && _.isString(model.redirectURL()) && model.redirectURL() !== window.location.href) {
+            window.location.href = model.redirectURL();
+            return;
+        }
+    };
+
+    // Standard companion-mod path: map required server mod identifiers to
+    // declared client companions and activate those companions.
     model.checkCompanionMods = function (companionMods) {
         var deferred = $.Deferred();
+        var incomingIdentifiers = normalizeIdentifiers(companionMods);
+        var checkedIdentifiers = model.checkedCompanionModIdentifiers();
+        var identifiersToCheck = _.difference(incomingIdentifiers, checkedIdentifiers);
 
-        if (model.companionModsChecked())
+        if (identifiersToCheck.length === 0)
             deferred.resolve();
         else {
             model.companionModsChecked(true);
+            model.checkedCompanionModIdentifiers(_.union(checkedIdentifiers, identifiersToCheck));
 
-            CommunityModsManager.companionModIdentifiers(companionMods);
+            CommunityModsManager.companionModIdentifiers(_.union(CommunityModsManager.companionModIdentifiers(), identifiersToCheck));
 
             var companionMods = CommunityModsManager.companionMods();
 
@@ -44,6 +78,112 @@ function CommunityMods() {
             else
                 deferred.resolve();
         }
+
+        return deferred;
+    }
+
+    // Direct client-mod path for GW transport: if required identifiers are
+    // themselves client mods, install/enable them and remount client content.
+    model.activateRequiredClientMods = function (requiredMods) {
+        var deferred = $.Deferred();
+
+        if (!window.CommunityModsManager) {
+            deferred.resolve();
+            return deferred;
+        }
+
+        var incomingIdentifiers = normalizeIdentifiers(requiredMods);
+        var checkedIdentifiers = model.checkedClientModIdentifiers();
+        var identifiersToCheck = _.difference(incomingIdentifiers, checkedIdentifiers);
+
+        if (identifiersToCheck.length === 0) {
+            deferred.resolve();
+            return deferred;
+        }
+
+        model.checkedClientModIdentifiers(_.union(checkedIdentifiers, identifiersToCheck));
+
+        CommunityModsManager.ready().always(function () {
+            var installedModsIndex = CommunityModsManager.installedModsIndex();
+            var availableModsIndex = CommunityModsManager.availableModsIndex();
+            var changed = false;
+
+            _.forEach(identifiersToCheck, function (identifier) {
+                var installedMod = installedModsIndex[identifier];
+                var availableMod = availableModsIndex[identifier];
+                var mod = installedMod || availableMod;
+
+                // Ignore non-client identifiers here; they are handled by
+                // server-mod download/mount flow elsewhere.
+                if (!mod || mod.context !== 'client')
+                    return;
+
+                if (!installedMod && _.isFunction(CommunityModsManager.installMod)) {
+                    if (CommunityModsManager.installMod(identifier, false)) {
+                        changed = true;
+                        installedModsIndex = CommunityModsManager.installedModsIndex();
+                        installedMod = installedModsIndex[identifier];
+                    }
+                }
+
+                if (availableMod && _.isFunction(CommunityModsManager.evaluateDependencies)) {
+                    var dependencies = CommunityModsManager.evaluateDependencies(availableMod);
+                    if (dependencies) {
+                        _.forEach(dependencies.needsInstall, function (dependencyIdentifier) {
+                            if (_.isFunction(CommunityModsManager.installMod)
+                                && CommunityModsManager.installMod(dependencyIdentifier, true)) {
+                                changed = true;
+                            }
+                        });
+
+                        _.forEach(dependencies.needsEnable, function (dependencyIdentifier) {
+                            if (_.isFunction(CommunityModsManager.enableMod)
+                                && CommunityModsManager.enableMod(dependencyIdentifier, true)) {
+                                changed = true;
+                            }
+                        });
+                    }
+                }
+
+                if (installedMod && !installedMod.enabled && _.isFunction(CommunityModsManager.enableMod)) {
+                    if (CommunityModsManager.enableMod(identifier, false))
+                        changed = true;
+                }
+            });
+
+            if (!changed) {
+                // Nothing new to install/enable for this wave.
+                deferred.resolve();
+                return;
+            }
+
+            sessionStorage.community_mods_reset_required = true;
+            model.pageSubTitle(loc('!LOC:MOUNTING COMPANION MODS... PLEASE WAIT'));
+
+            var mountResult = _.isFunction(CommunityModsManager.updateActiveZipMods)
+                // true,false => remount client mods now, avoid server zip refresh.
+                ? CommunityModsManager.updateActiveZipMods(true, false)
+                : CommunityModsManager.remountClientMods();
+
+            mountResult.always(function () {
+                deferred.resolve();
+            });
+        });
+
+        return deferred;
+    }
+
+    model.ensureClientModsForGame = function (requiredMods) {
+        var deferred = $.Deferred();
+
+        // Single gate used by base connect_to_game redirect logic.
+        if (ko.isObservable(model.clientModsActivating))
+            model.clientModsActivating(true);
+
+        $.when(model.checkCompanionMods(requiredMods), model.activateRequiredClientMods(requiredMods)).always(function () {
+            finishClientModActivation();
+            deferred.resolve();
+        });
 
         return deferred;
     }
@@ -111,6 +251,10 @@ function CommunityMods() {
 
             model.gameModIdentifiers(gameModIdentifiers);
             model.pageSubTitle(loc('!LOC:DOWNLOADING SERVER MODS'));
+
+            // Kick off companion + direct client activation as soon as required
+            // identifiers are known, before gameplay scene redirect proceeds.
+            model.ensureClientModsForGame(gameModIdentifiers);
         }
     }
 }
@@ -279,7 +423,9 @@ function CommunityModsSetup() {
 
                 var deferred = $.Deferred();
 
-                model.checkCompanionMods(model.gameModIdentifiers()).always(function (result) {
+                // Activate any required client mods before the final connect,
+                // so the gameplay scene loads with those mods already mounted.
+                model.ensureClientModsForGame(model.gameModIdentifiers()).always(function (result) {
                     // if joining custom server in waiting mode then we need to mount server mods for host
 
                     if (!waitingCustomServer)

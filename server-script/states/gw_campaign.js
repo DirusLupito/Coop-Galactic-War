@@ -457,6 +457,53 @@ function GWCampaignModel(creator) {
 
                 server.respond(msg).succeed();
             },
+            mod_data_available: function(msg) {
+                var response = server.respond(msg);
+                // Only host can publish the campaign modpack.
+                if (msg.client.id !== self.creatorId)
+                    return response.fail('Mod data can only be provided by campaign host');
+
+                var mods = server.getMods() || {};
+                var authToken = mods.auth_token || '';
+                var mountedMods = mods.mounted_mods || [];
+
+                if (mountedMods.length > 0)
+                    return response.fail('Mod data is already mounted');
+
+                response.succeed({ auth_token: authToken });
+            },
+            mod_data_updated: function(msg) {
+                // Host has uploaded an updated mod payload. Broadcast it out using the
+                // existing server-mod transport: peers download, host just mounts.
+                if (msg.client.id !== self.creatorId)
+                    return;
+
+                var mods = server.getModsPayload();
+                var payloadCount = mods && mods.length ? mods.length : 0;
+                var mountedMods = (server.getMods() || {}).mounted_mods || [];
+                console.log('[GW_COOP] gw_campaign mod_data_updated payload=' + payloadCount + ' mounted=' + mountedMods.length + ' recipients=' + server.clients.length);
+
+                _.forEach(server.clients, function(client) {
+                    if (!client || !client.connected)
+                        return;
+
+                    if (client.id !== msg.client.id) {
+                        client.message({
+                            message_type: 'downloading_mod_data',
+                            payload: mods
+                        });
+                        client.downloadModsFromServer();
+                    }
+                    else {
+                        client.message({
+                            message_type: 'mount_mod_file_data',
+                            payload: mods
+                        });
+                    }
+                });
+
+                self.updateBeacon();
+            },
             launch_gw_battle: function(msg) {
                 if (msg.client.id !== self.creatorId)
                     return server.respond(msg).fail('Only host can launch battle');

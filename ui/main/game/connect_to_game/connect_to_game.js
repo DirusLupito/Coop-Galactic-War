@@ -2,6 +2,205 @@
 
 $(document).ready(function () {
 
+    // MTP behavior: currently every mounted client mod is eligible for GW upload.
+    // Keep this intentionally broad so transport bugs are easier to spot.
+    function gwUploadClassifier(mod) {
+        return true;
+    }
+
+    function isGWCampaigntargetURL(url) {
+        return _.isString(url)
+            && url.indexOf('coui://ui/main/game/galactic_war/gw_play/gw_play.html') === 0
+            && url.indexOf('gw_campaign=1') !== -1;
+    }
+
+    function callAlwaysOrThen(result, onDone, label) {
+        try {
+            if (result && _.isFunction(result.always))
+                return result.always(onDone);
+
+            if (result && _.isFunction(result.then))
+                return result.then(onDone, onDone);
+        }
+        catch (e) {
+            console.error('[GW_COOP] connect_to_game async callback failed for ' + label, e);
+        }
+
+        onDone();
+    }
+
+    function indexByIdentifier(mods) {
+        if (_.isFunction(_.keyBy))
+            return _.keyBy(mods, 'identifier');
+        if (_.isFunction(_.indexBy))
+            return _.indexBy(mods, 'identifier');
+
+        return _.reduce(mods, function(result, mod) {
+            if (mod && mod.identifier)
+                result[mod.identifier] = mod;
+            return result;
+        }, {});
+    }
+
+    // Reuse server-mod transport for GW by staging host client mods into
+    // /server_mods and then publishing that staged set as the upload payload.
+    function stageClientModsForGWUpload() {
+        var deferred = $.Deferred();
+        var settled = false;
+
+        var settleOnce = function() {
+            if (settled)
+                return;
+            settled = true;
+            deferred.resolve();
+        };
+
+        if (!api.mods || !_.isFunction(api.mods.publishServerMods)) {
+            settleOnce();
+            return deferred.promise();
+        }
+
+        var publishStagedServerMods = function() {
+            try {
+                var result = api.mods.publishServerMods();
+                callAlwaysOrThen(result, settleOnce, 'publishServerMods');
+            }
+            catch (e) {
+                console.error('[GW_COOP] connect_to_game publishServerMods threw', e);
+                settleOnce();
+            }
+        };
+
+        var applyServerModsConfig = function(selectedIdentifiers, onDone) {
+            var done = _.isFunction(onDone) ? onDone : function() {};
+
+            // Explicit mount order keeps host and peers deterministic when many
+            // staged mods are present and avoids relying on filesystem ordering.
+            if (window.CommunityModsManager
+                && _.isFunction(CommunityModsManager.download)
+                && _.isFunction(CommunityModsManager.mountZipMod)
+                && typeof JSZip !== 'undefined') {
+                try {
+                    var configZip = new JSZip();
+                    configZip.file('mods.json', JSON.stringify({
+                        mount_order: selectedIdentifiers
+                    }));
+
+                    var configDataUrl = 'data:application/zip;base64,' + configZip.generate({ type: 'base64' });
+                    var configFile = 'gw-coop-server-mods-config.zip';
+                    var configMod = {
+                        identifier: 'gw-coop-server-mods-config',
+                        installedPath: '/download/' + configFile,
+                        mountPath: '/server_mods/'
+                    };
+
+                    callAlwaysOrThen(CommunityModsManager.download({
+                        url: configDataUrl,
+                        file: configFile
+                    }), function() {
+                        callAlwaysOrThen(CommunityModsManager.mountZipMod(configMod, true), function() {
+                            done();
+                        }, 'CommunityModsManager.mountZipMod(config)');
+                    }, 'CommunityModsManager.download(config)');
+
+                    return;
+                }
+                catch (e) {
+                    console.error('[GW_COOP] connect_to_game failed to build forced server mods config zip', e);
+                }
+            }
+
+            callAlwaysOrThen(api.file.mountMemoryFiles({
+                '/server_mods/mods.json': JSON.stringify({
+                    mount_order: selectedIdentifiers
+                })
+            }), function() {
+                done();
+            }, 'mountMemoryFiles(/server_mods/mods.json fallback)');
+        };
+
+        if (!_.isFunction(api.mods.getMounted) || !api.file || !_.isFunction(api.file.mountMemoryFiles)) {
+            publishStagedServerMods();
+            return deferred.promise();
+        }
+
+        api.mods.getMounted('client', true).then(function(clientMods) {
+            try {
+                var selectedClientMods = _.filter(clientMods || [], gwUploadClassifier);
+                var selectedByIdentifier = indexByIdentifier(selectedClientMods);
+                var selectedIdentifiers = _.map(selectedClientMods, 'identifier');
+                var mountedMemoryFiles = {};
+
+                _.forEach(selectedClientMods, function(mod) {
+                    if (!mod || !mod.identifier)
+                        return;
+
+                    // Server upload APIs only package server-context mods, so we
+                    // synthesize server-context modinfo for each selected client mod.
+                    var modInfo = _.cloneDeep(mod);
+                    modInfo.context = 'server';
+                    mountedMemoryFiles['/server_mods/' + mod.identifier + '/modinfo.json'] = JSON.stringify(modInfo);
+                });
+
+                var doPublish = function() {
+                    callAlwaysOrThen(api.file.mountMemoryFiles(mountedMemoryFiles), function() {
+                        console.log('[GW_COOP] connect_to_game staged client mod metadata files=' + _.size(mountedMemoryFiles));
+
+                        applyServerModsConfig(selectedIdentifiers, function() {
+                            if (api.content && _.isFunction(api.content.remount)) {
+                                callAlwaysOrThen(api.content.remount(), function() {
+                                    publishStagedServerMods();
+                                }, 'api.content.remount after staging');
+                            }
+                            else {
+                                publishStagedServerMods();
+                            }
+                        });
+                    }, 'mountMemoryFiles(/server_mods)');
+                };
+
+                if (window.CommunityModsManager
+                    && _.isFunction(CommunityModsManager.activeClientZipMods)
+                    && _.isFunction(CommunityModsManager.mountZipMods)) {
+                    // Zip mods can be re-mounted directly into /server_mods. Local
+                    // filesystem mods are represented by metadata only at this stage.
+                    var clientZipMods = CommunityModsManager.activeClientZipMods() || [];
+                    var zipModsToStage = _.chain(clientZipMods)
+                        .filter(function(mod) { return !!selectedByIdentifier[mod.identifier]; })
+                        .map(function(mod) {
+                            return {
+                                identifier: mod.identifier,
+                                installedPath: mod.installedPath,
+                                mountPath: '/server_mods/'
+                            };
+                        })
+                        .value();
+
+                    console.log('[GW_COOP] connect_to_game staging client zip mods into /server_mods count=' + zipModsToStage.length);
+                    console.log('[GW_COOP] connect_to_game selected client mods=' + selectedIdentifiers.length + ' zip-stageable=' + zipModsToStage.length);
+
+                    if (zipModsToStage.length > 0)
+                        callAlwaysOrThen(CommunityModsManager.mountZipMods(zipModsToStage), doPublish, 'CommunityModsManager.mountZipMods');
+                    else
+                        doPublish();
+                }
+                else {
+                    console.log('[GW_COOP] connect_to_game CommunityModsManager zip staging unavailable');
+                    doPublish();
+                }
+            }
+            catch (e) {
+                console.error('[GW_COOP] connect_to_game client->server staging failed', e);
+                publishStagedServerMods();
+            }
+        }, function() {
+            console.error('[GW_COOP] connect_to_game failed to enumerate mounted client mods for staging');
+            publishStagedServerMods();
+        });
+
+        return deferred.promise();
+    }
+
     function isGalacticWarForConnect(payload) {
         var serverGameType = payload
             && payload.data
@@ -192,6 +391,9 @@ $(document).ready(function () {
 
         self.needsServerModsUpload = ko.observable(false);
         self.serverModsUploading = ko.observable(false);
+        // Set by community_mods connect flow while it installs/enables/remounts
+        // required client mods; server_state redirects are held until this clears.
+        self.clientModsActivating = ko.observable(false);
         self.redirectURL = ko.observable(undefined);
 
         self.setup = function () {
@@ -506,33 +708,58 @@ $(document).ready(function () {
                 return;
             }
 
+            // Community mods may need a short activation/remount pass before
+            // entering gameplay scenes.
+            if (model.clientModsActivating && model.clientModsActivating()) {
+                return;
+            }
+
 // if redirecting to new game lobby check if server mods needs uploading
 
-            if (url == 'coui://ui/main/game/new_game/new_game.html' && model.needsServerModsUpload()) {
+            var shouldUploadForRedirect = model.needsServerModsUpload()
+                && (url == 'coui://ui/main/game/new_game/new_game.html' || isGWCampaigntargetURL(url));
+
+            if (shouldUploadForRedirect) {
 
                 model.needsServerModsUpload(false);
                 model.serverModsUploading(true);
+
+                if (isGWCampaigntargetURL(url)) {
+                    api.mods.getMounted('client', true).then(function(mods) {
+                        var hostMods = mods || [];
+                        var classifiedMods = _.filter(hostMods, gwUploadClassifier);
+                        console.log('[GW_COOP] connect_to_game classifier selected ' + classifiedMods.length + ' / ' + hostMods.length + ' host CLIENT mods for upload');
+                    });
+                }
 
                 if (model.gameModIdentifiers().length > 0) {
                     model.pageSubTitle(loc('!LOC:UPLOADING SERVER MODS... PLEASE WAIT'));
                 }
 
-// check if authorised to send mod data to server
+                var beginUpload = function() {
+                    // GW reuses the same auth-token handshake used by regular
+                    // server-mod upload before sending bundled file data.
+                    // check if authorised to send mod data to server
+                    model.send_message('mod_data_available', {}, function (success, response) {
 
-                model.send_message('mod_data_available', {}, function (success, response) {
+                        if (success) {
+                            // upload the server mods
+                            api.mods.sendModFileDataToServer(response.auth_token).then(function(data) {
+                                api.debug.log('server mods uploaded');
+                                api.debug.log(data);
+                            });
+                        } else {
+                            // uploading of server mods is not allowed
+                            window.location.href = url;
+                            return; /* window.location.href will not stop execution. */
+                        }
+                    });
+                };
 
-                    if (success) {
-// upload the server mods
-                       api.mods.sendModFileDataToServer(response.auth_token).then(function(data) {
-                            api.debug.log('server mods uploaded');
-                            api.debug.log(data);
-                        });
-                    } else {
-// uploading of server mods is not allowed
-                        window.location.href = url;
-                        return; /* window.location.href will not stop execution. */
-                   }
-                });
+                if (isGWCampaigntargetURL(url))
+                    stageClientModsForGWUpload().always(beginUpload);
+                else
+                    beginUpload();
             } else {
 // not redirecting to new game lobby
                 window.location.href = url;
