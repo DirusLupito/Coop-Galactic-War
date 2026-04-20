@@ -18,6 +18,75 @@ $(document).ready(function () {
     var DEFAULT_CONNECTION_ATTEMPTS = 5;
     var DEFAULT_CONNECT_DELAY = 2;
     var DEFAULT_RETRY_DELAY = 5;
+    var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
+    var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
+
+    function normalizeModIdentifier(identifier) {
+        if (!_.isString(identifier))
+            return '';
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length)
+            return '';
+
+        return trimmed.toLowerCase();
+    }
+
+    function getRequiredGwScenesForMod(mod) {
+        var scenes = mod && mod.scenes;
+        if (!scenes || !_.isObject(scenes))
+            return [];
+
+        return _.filter(REQUIRED_GW_SCENE_KEYS, function(sceneKey) {
+            if (!_.has(scenes, sceneKey))
+                return false;
+
+            var sceneValue = scenes[sceneKey];
+            if (_.isArray(sceneValue))
+                return sceneValue.length > 0;
+
+            return !!sceneValue;
+        });
+    }
+
+    function hasRequiredGwDescription(mod) {
+        var description = mod && mod.description;
+        if (!_.isString(description))
+            return false;
+
+        return description.toLowerCase().indexOf(REQUIRED_GW_DESCRIPTION_PHRASE) !== -1;
+    }
+
+    function extractRejectReason(payload) {
+        if (_.isString(payload))
+            return payload;
+
+        if (!payload)
+            return '';
+
+        if (_.isString(payload.reason))
+            return payload.reason;
+        if (_.isString(payload.message))
+            return payload.message;
+        if (_.isString(payload.payload))
+            return payload.payload;
+
+        return '';
+    }
+
+    function isGwCoopConnectContext() {
+        if (!model)
+            return false;
+
+        console.log('[GW COOP] Checking if connect context is for GW Coop; setup=' + model.serverSetup() + ' reconnectInfo=' + JSON.stringify(model.reconnectToGameInfo()));
+
+        var setup = model.serverSetup && model.serverSetup();
+        if (setup === 'gw_campaign')
+            return true;
+
+        var reconnectInfo = model.reconnectToGameInfo && model.reconnectToGameInfo();
+        return reconnectInfo && reconnectInfo.setup === 'gw_campaign';
+    }
 
     function ConnectViewModel() {
         var self = this;
@@ -193,6 +262,175 @@ $(document).ready(function () {
         self.needsServerModsUpload = ko.observable(false);
         self.serverModsUploading = ko.observable(false);
         self.redirectURL = ko.observable(undefined);
+        self.missingModsRejectHandled = false;
+        self.missingModsRejectReason = '';
+        self.waitingForClientModMatch = false;
+        self.pendingServerStatePayload = undefined;
+
+        self.beginClientModMatchWait = function(trigger) {
+            if (self.waitingForClientModMatch)
+                return;
+
+            self.waitingForClientModMatch = true;
+            self.pendingServerStatePayload = undefined;
+            self.pageSubTitle(loc('!LOC:VALIDATING REQUIRED CLIENT MODS'));
+            console.log('[GW COOP] begin client-mod match wait trigger=' + (trigger || 'unknown'));
+        };
+
+        self.completeClientModMatchWait = function(source) {
+            if (!self.waitingForClientModMatch)
+                return;
+
+            self.waitingForClientModMatch = false;
+            var queuedServerState = self.pendingServerStatePayload;
+            self.pendingServerStatePayload = undefined;
+
+            console.log('[GW COOP] complete client-mod match wait source=' + (source || 'unknown') + ' hasQueuedServerState=' + !!queuedServerState);
+
+            if (queuedServerState && !self.missingModsRejectHandled)
+                handlers.server_state(queuedServerState);
+        };
+
+        self.disconnectFromServer = function(reason) {
+            if (!_.isFunction(self.disconnect)) {
+                console.log('[GW COOP] disconnect() unavailable while handling reason=' + (reason || ''));
+                return;
+            }
+
+            console.log('[GW COOP] disconnecting client after missing-mod notice reason=' + (reason || ''));
+            try {
+                self.disconnect();
+            } catch (e) {
+                console.error('[GW COOP] disconnect() threw while handling missing-mod rejection');
+                console.error(e);
+            }
+        };
+
+        self.handleMissingModsRejection = function(reason) {
+            var rejectReason = _.isString(reason) && reason.length
+                ? reason
+                : 'Missing required mods';
+
+            if (self.missingModsRejectHandled)
+                return;
+
+            self.missingModsRejectHandled = true;
+            self.missingModsRejectReason = rejectReason;
+
+            self.cancelling(true);
+            self.connecting(false);
+            self.showCancel(false);
+            self.connectionAttemptsRemaining = 0;
+            self.waitingForClientModMatch = false;
+            self.pendingServerStatePayload = undefined;
+
+            console.log('[GW COOP] handling missing-mod rejection with reason=' + rejectReason);
+            self.disconnectFromServer(rejectReason);
+            self.fail(rejectReason);
+        };
+
+        self.publishRequiredClientMods = function() {
+            console.log('[GW COOP] Publishing required client mods for current game');
+            api.mods.getMounted('client', true).then(function(mountedMods) {
+                var requiredIdentifiers = [];
+                var requiredNamesById = {};
+                var seen = {};
+                var mountedCount = _.size(mountedMods || []);
+
+                console.log('[GW COOP] mounted client mod count=' + mountedCount);
+
+                _.forEach(mountedMods || [], function(mod) {
+                    var identifier = normalizeModIdentifier(mod && mod.identifier);
+                    if (!identifier) {
+                        console.log('[GW COOP] skipping mounted mod with missing identifier');
+                        return;
+                    }
+
+                    if (seen[identifier])
+                        return;
+
+                    var matchingScenes = getRequiredGwScenesForMod(mod);
+                    var hasDescriptionPhrase = hasRequiredGwDescription(mod);
+
+                    if (!matchingScenes.length || !hasDescriptionPhrase) {
+                        console.log('[GW COOP] mod not required id=' + identifier
+                            + ' matchedScenes=' + JSON.stringify(matchingScenes)
+                            + ' hasDescriptionPhrase=' + hasDescriptionPhrase);
+                        return;
+                    }
+
+                    console.log('[GW COOP] mod required id=' + identifier + ' matchedScenes=' + JSON.stringify(matchingScenes));
+
+                    seen[identifier] = true;
+                    requiredIdentifiers.push(identifier);
+                    requiredNamesById[identifier] = (_.isString(mod.display_name) && mod.display_name.length)
+                        ? mod.display_name
+                        : identifier;
+                });
+
+                console.log('[GW COOP] Required client mod identifiers: ' + JSON.stringify(requiredIdentifiers));
+                console.log('[GW COOP] Required client mod names by ID: ' + JSON.stringify(requiredNamesById));
+
+
+                // Server enforces host-only writes; non-host clients are ignored.
+                model.send_message('set_required_client_mods', {
+                    required_identifiers: requiredIdentifiers,
+                    required_names_by_id: requiredNamesById
+                }, function(success, response) {
+                    console.log('[GW COOP] set_required_client_mods success=' + !!success + ' response=' + JSON.stringify(response || {}));
+                });
+            }, function() {
+                console.log('[GW COOP] getMounted(client,true) failed; sending empty required mod list');
+                model.send_message('set_required_client_mods', {
+                    required_identifiers: [],
+                    required_names_by_id: {}
+                }, function(success, response) {
+                    console.log('[GW COOP] set_required_client_mods(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
+                });
+            });
+        };
+
+        self.sendClientModManifest = function() {
+            console.log('[GW COOP] sendClientModManifest begin setup=' + self.serverSetup() + ' game=' + self.gameType());
+            api.mods.getMounted('client', true).then(function(mountedMods) {
+                var activeIdentifiers = [];
+                var seen = {};
+
+                _.forEach(mountedMods || [], function(mod) {
+                    var identifier = normalizeModIdentifier(mod && mod.identifier);
+                    if (!identifier || seen[identifier])
+                        return;
+
+                    seen[identifier] = true;
+                    activeIdentifiers.push(identifier);
+                });
+
+                model.send_message('client_mod_manifest', {
+                    active_identifiers: activeIdentifiers
+                }, function(success, response) {
+                    var rejectReason = extractRejectReason(response);
+                    console.log('[GW COOP] client_mod_manifest success=' + !!success + ' active=' + JSON.stringify(activeIdentifiers) + ' response=' + JSON.stringify(response || {}));
+
+                    if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0)
+                        self.handleMissingModsRejection(rejectReason);
+                    else if (!!success)
+                        self.completeClientModMatchWait('manifest_response_success');
+                });
+            }, function() {
+                console.log('[GW COOP] getMounted(client,true) failed while building manifest; sending empty manifest');
+                model.send_message('client_mod_manifest', {
+                    active_identifiers: []
+                }, function(success, response) {
+                    var rejectReason = extractRejectReason(response);
+                    console.log('[GW COOP] client_mod_manifest(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
+
+                    if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0)
+                        self.handleMissingModsRejection(rejectReason);
+                    else if (!!success)
+                        self.completeClientModMatchWait('manifest_response_success_empty');
+                });
+            });
+        };
 
         self.setup = function () {
 
@@ -409,6 +647,10 @@ $(document).ready(function () {
         api.debug.log(JSON.stringify(_.omit(model.gameInfo(),'game_password')));
         model.connecting(false);
         model.showCancel(false);
+        model.missingModsRejectHandled = false;
+        model.missingModsRejectReason = '';
+        model.waitingForClientModMatch = false;
+        model.pendingServerStatePayload = undefined;
 
         var previousReconnectToGameInfo = model.reconnectToGameInfo();
         var gameInfo = model.gameInfo();
@@ -443,19 +685,51 @@ $(document).ready(function () {
             model.pageTitle(loc('!LOC:LOGIN ACCEPTED'));
         model.pageSubTitle('');
         app.hello(handlers.server_state, handlers.connection_disconnected);
+        var gwCoopContext = isGwCoopConnectContext();
+        console.log('[GW COOP] login_accepted gwCoopContext=' + gwCoopContext + ' setup=' + model.serverSetup() + ' game=' + model.gameType());
+        if (gwCoopContext)
+            model.publishRequiredClientMods();
 
         model.cancelTimer = setTimeout(model.enableCancel, 30000);
+    };
+
+    handlers.request_client_mod_manifest = function () {
+        if (model.missingModsRejectHandled)
+            return;
+
+        console.log('[GW COOP] request_client_mod_manifest received in connect_to_game setup=' + model.serverSetup() + ' game=' + model.gameType());
+        model.beginClientModMatchWait('request_client_mod_manifest');
+        model.sendClientModManifest();
+    };
+
+    handlers.all_client_mods_match = function(payload) {
+        console.log('[GW COOP] all_client_mods_match received payload=' + JSON.stringify(payload || {}));
+        model.completeClientModMatchWait('all_client_mods_match_message');
+    };
+
+    handlers.required_client_mods_missing = function(payload) {
+        var rejectReason = extractRejectReason(payload);
+        console.log('[GW COOP] required_client_mods_missing received reason=' + rejectReason + ' payload=' + JSON.stringify(payload || {}));
+        model.handleMissingModsRejection(rejectReason);
     };
 
     handlers.login_rejected = function (payload) {
         console.error('login_rejected');
         console.error(JSON.stringify(payload));
         model.connecting(false);
+        var rejectReason = extractRejectReason(payload);
+        var missingRequiredMods = _.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0;
+
+        if (missingRequiredMods)
+            return model.handleMissingModsRejection(rejectReason);
+
         if (model.shouldRetry())
             model.retryConnection();
         else
         {
-            if (model.isLocalGame())
+            if (_.isString(rejectReason) && rejectReason.length)
+                model.fail(rejectReason);
+            else if (model.isLocalGame())
                 model.fail(loc("!LOC:ACCESS TO WORLD SIMULATION DENIED"));
             else
                 model.fail(loc("!LOC:LOGIN TO SERVER REJECTED"));
@@ -485,6 +759,18 @@ $(document).ready(function () {
     }
 
     handlers.server_state = function (payload) {
+        if (model.missingModsRejectHandled) {
+            console.log('[GW COOP] ignoring server_state after missing-mod rejection');
+            return;
+        }
+
+        if (model.waitingForClientModMatch) {
+            if (payload && payload.url)
+                model.pendingServerStatePayload = payload;
+
+            console.log('[GW COOP] deferring server_state while waiting for client-mod match url=' + ((payload && payload.url) || '<none>'));
+            return;
+        }
 
         var url = payload.url;
 
@@ -545,6 +831,16 @@ $(document).ready(function () {
     handlers.connection_disconnected = function (payload) {
         console.error('disconnected');
         console.error(JSON.stringify(payload));
+
+        if (model.missingModsRejectHandled) {
+            console.log('[GW COOP] duplicate disconnect after missing-mod rejection; no retry/redirect');
+            return;
+        }
+
+        var disconnectReason = extractRejectReason(payload);
+        if (_.isString(disconnectReason) && disconnectReason.indexOf('Missing required mods') === 0)
+            return model.handleMissingModsRejection(disconnectReason);
+
         if (model.shouldRetry())
             model.retryConnection();
         else
