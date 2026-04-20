@@ -2,10 +2,357 @@
 
 $(document).ready(function () {
 
-    // MTP behavior: currently every mounted client mod is eligible for GW upload.
-    // Keep this intentionally broad so transport bugs are easier to spot.
-    function gwUploadClassifier(mod) {
-        return true;
+    var gwModCategory = {
+        actualServer: 'actual_server_mod',
+        galacticWar: 'galactic_war_mod',
+        skin: 'skin_mod',
+        pureClient: 'pure_client_mod'
+    };
+
+    var gwClassifierSignals = {
+        gwPath: /(^|[\/_\-.])gw([\/_\-.]|$)|galactic[\s_\-]?war/i,
+        paPath: /\/pa\//i
+    };
+
+    var gwProbeLoggingEnabled = true;
+
+    function gwProbeLog(message) {
+        if (!gwProbeLoggingEnabled)
+            return;
+
+        console.log('[GW_COOP][probe] ' + message);
+    }
+
+    function sampleList(values, count) {
+        var maxCount = _.isNumber(count) ? count : 8;
+        if (!_.isArray(values) || values.length === 0)
+            return '';
+
+        return _.take(values, maxCount).join('|');
+    }
+
+    function getModIdentifier(mod) {
+        if (!mod)
+            return '';
+
+        return mod.identifier || mod.name || '';
+    }
+
+    function normalizePathKey(path) {
+        if (!_.isString(path))
+            return '';
+
+        if (path.length > 1 && path.charAt(path.length - 1) === '/')
+            return path.substring(0, path.length - 1);
+
+        return path;
+    }
+
+    function normalizeRootPath(path) {
+        if (!_.isString(path) || !path.length)
+            return '';
+
+        var normalized = path;
+        if (normalized.charAt(0) !== '/')
+            normalized = '/' + normalized;
+        if (normalized.charAt(normalized.length - 1) !== '/')
+            normalized += '/';
+
+        return normalized;
+    }
+
+    function listAsDirectory(path, probeTag) {
+        var listingDeferred = $.Deferred();
+        if (!_.isString(path) || !path.length || !api.file || !_.isFunction(api.file.list)) {
+            listingDeferred.reject();
+            return listingDeferred.promise();
+        }
+
+        var slashPath = path.charAt(path.length - 1) === '/' ? path : path + '/';
+        var noSlashPath = slashPath.length > 1 ? slashPath.substring(0, slashPath.length - 1) : slashPath;
+        var candidatePaths = _.uniq([path, slashPath, noSlashPath]);
+        var candidateIndex = 0;
+
+        var tryNextCandidate = function() {
+            if (candidateIndex >= candidatePaths.length) {
+                gwProbeLog('list.fail tag=' + probeTag + ' path=' + path + ' reason=all_variants_failed');
+                listingDeferred.reject();
+                return;
+            }
+
+            var candidatePath = candidatePaths[candidateIndex];
+            candidateIndex += 1;
+
+            api.file.list(candidatePath, false).then(function(listing) {
+                if (!_.isArray(listing)) {
+                    gwProbeLog('list.reject_non_array tag=' + probeTag + ' candidate=' + candidatePath);
+                    tryNextCandidate();
+                    return;
+                }
+
+                var isSelfOnlyListing = listing.length === 1
+                    && normalizePathKey(listing[0]) === normalizePathKey(candidatePath);
+                if (isSelfOnlyListing) {
+                    gwProbeLog('list.self_only tag=' + probeTag + ' candidate=' + candidatePath);
+                    tryNextCandidate();
+                    return;
+                }
+
+                gwProbeLog('list.ok tag=' + probeTag + ' candidate=' + candidatePath + ' entries=' + listing.length + ' sample=' + sampleList(listing, 5));
+
+                listingDeferred.resolve({
+                    path: candidatePath,
+                    listing: listing
+                });
+            }, function() {
+                gwProbeLog('list.error tag=' + probeTag + ' candidate=' + candidatePath);
+                tryNextCandidate();
+            });
+        };
+
+        tryNextCandidate();
+
+        return listingDeferred.promise();
+    }
+
+    function recursiveListFiles(rootPath, probeTag) {
+        var deferred = $.Deferred();
+        var root = normalizeRootPath(rootPath);
+
+        if (!root.length) {
+            deferred.resolve([]);
+            return deferred.promise();
+        }
+
+        var pendingDirectories = [root];
+        var visitedDirectories = {};
+        var seenFiles = {};
+        var files = [];
+
+        var drain = function() {
+            if (!pendingDirectories.length) {
+                deferred.resolve(files);
+                return;
+            }
+
+            var nextDirectory = pendingDirectories.shift();
+            var nextKey = normalizePathKey(nextDirectory);
+            if (!nextKey.length || visitedDirectories[nextKey]) {
+                _.defer(drain);
+                return;
+            }
+            visitedDirectories[nextKey] = true;
+
+            listAsDirectory(nextDirectory, probeTag).then(function(directoryResult) {
+                _.forEach(directoryResult.listing, function(entryPath) {
+                    if (!_.isString(entryPath) || !entryPath.length)
+                        return;
+
+                    if (entryPath.charAt(entryPath.length - 1) === '/') {
+                        pendingDirectories.push(entryPath);
+                        return;
+                    }
+
+                    var fileKey = normalizePathKey(entryPath);
+                    if (!fileKey.length || seenFiles[fileKey])
+                        return;
+
+                    seenFiles[fileKey] = true;
+                    files.push(fileKey);
+                });
+
+                _.defer(drain);
+            }, function() {
+                _.defer(drain);
+            });
+        };
+
+        drain();
+        return deferred.promise();
+    }
+
+    function resolveModProbeRoots(mod) {
+        var roots = [];
+        var addRoot = function(path) {
+            var normalized = normalizeRootPath(path);
+            if (normalized.length)
+                roots.push(normalized);
+        };
+
+        addRoot(mod && (mod.mountPath || mod.mount_path || mod.mount_pathname));
+
+        var identifier = getModIdentifier(mod);
+        if (window.CommunityModsManager) {
+            try {
+                if (identifier && _.isFunction(CommunityModsManager.installedModsIndex)) {
+                    var installed = CommunityModsManager.installedModsIndex()[identifier];
+                    addRoot(installed && (installed.mountPath || installed.mount_path));
+                }
+
+                if (identifier && _.isFunction(CommunityModsManager.activeClientMods)) {
+                    var activeClientMods = CommunityModsManager.activeClientMods() || [];
+                    var active = _.find(activeClientMods, function(activeMod) {
+                        return getModIdentifier(activeMod) === identifier;
+                    });
+                    addRoot(active && (active.mountPath || active.mount_path));
+                }
+            }
+            catch (e) {
+                // Probe root resolution is best-effort only.
+            }
+        }
+
+        if (identifier.length)
+            addRoot('/client_mods/' + identifier + '/');
+
+        roots = _.uniq(roots);
+        gwProbeLog('roots mod=' + (identifier || '[unknown]') + ' roots=' + roots.length + ' list=' + sampleList(roots, 8));
+        return roots;
+    }
+
+    function probeModFiles(mod) {
+        var deferred = $.Deferred();
+        var roots = resolveModProbeRoots(mod);
+        var identifier = getModIdentifier(mod) || '[unknown]';
+        if (!roots.length) {
+            gwProbeLog('scan.skip mod=' + identifier + ' reason=no_roots');
+            deferred.resolve({
+                roots: [],
+                files: []
+            });
+            return deferred.promise();
+        }
+
+        var files = [];
+        var seenFiles = {};
+        var rootIndex = 0;
+
+        var scanNextRoot = function() {
+            if (rootIndex >= roots.length) {
+                gwProbeLog('scan.done mod=' + identifier + ' roots=' + roots.length + ' files=' + files.length + ' sample=' + sampleList(files, 8));
+                deferred.resolve({
+                    roots: roots,
+                    files: files
+                });
+                return;
+            }
+
+            var rootPath = roots[rootIndex];
+            rootIndex += 1;
+
+            recursiveListFiles(rootPath, identifier).always(function(rootFiles) {
+                _.forEach(rootFiles || [], function(filePath) {
+                    var key = normalizePathKey(filePath);
+                    if (!key.length || seenFiles[key])
+                        return;
+
+                    seenFiles[key] = true;
+                    files.push(key);
+                });
+
+                _.defer(scanNextRoot);
+            });
+        };
+
+        scanNextRoot();
+        return deferred.promise();
+    }
+
+    function classifyClientModForGW(mod) {
+        var deferred = $.Deferred();
+        var identifier = getModIdentifier(mod) || '[unknown]';
+        var modContext = _.isString(mod && mod.context) ? mod.context.toLowerCase() : '';
+
+        if (modContext === 'server') {
+            deferred.resolve({
+                mod: mod,
+                identifier: identifier,
+                category: gwModCategory.actualServer,
+                roots: [],
+                fileCount: 0
+            });
+            return deferred.promise();
+        }
+
+        probeModFiles(mod).always(function(probeResult) {
+            var files = (probeResult && probeResult.files) || [];
+            var roots = (probeResult && probeResult.roots) || [];
+            var gwMatchedPaths = _.filter(files, function(path) {
+                return gwClassifierSignals.gwPath.test(path);
+            });
+            var paMatchedPaths = _.filter(files, function(path) {
+                return gwClassifierSignals.paPath.test(path);
+            });
+            var hasGWSignal = gwMatchedPaths.length > 0;
+            var hasPASignal = paMatchedPaths.length > 0;
+
+            var category = gwModCategory.pureClient;
+            if (hasGWSignal)
+                category = gwModCategory.galacticWar;
+            else if (hasPASignal)
+                category = gwModCategory.skin;
+
+            gwProbeLog('classify mod=' + identifier
+                + ' ctx=' + (modContext || '[none]')
+                + ' roots=' + roots.length
+                + ' files=' + files.length
+                + ' gw_matches=' + gwMatchedPaths.length
+                + ' pa_matches=' + paMatchedPaths.length
+                + ' category=' + category
+                + ' file_sample=' + sampleList(files, 6)
+                + ' gw_sample=' + sampleList(gwMatchedPaths, 3)
+                + ' pa_sample=' + sampleList(paMatchedPaths, 3));
+
+            deferred.resolve({
+                mod: mod,
+                identifier: identifier,
+                category: category,
+                roots: roots,
+                fileCount: files.length,
+                gwMatchedPaths: gwMatchedPaths,
+                paMatchedPaths: paMatchedPaths,
+                fileSample: _.take(files, 6)
+            });
+        });
+
+        return deferred.promise();
+    }
+
+    function classifyClientModsForGWUpload(mods) {
+        var deferred = $.Deferred();
+        var sourceMods = _.isArray(mods) ? mods : [];
+        var cursor = 0;
+        var summary = {
+            actual_server_mod: [],
+            galactic_war_mod: [],
+            skin_mod: [],
+            pure_client_mod: [],
+            details: []
+        };
+
+        var classifyNext = function() {
+            if (cursor >= sourceMods.length) {
+                deferred.resolve(summary);
+                return;
+            }
+
+            var mod = sourceMods[cursor];
+            cursor += 1;
+
+            classifyClientModForGW(mod).always(function(result) {
+                var category = result.category || gwModCategory.pureClient;
+                if (!summary[category])
+                    summary[category] = [];
+
+                summary[category].push(result.mod);
+                summary.details.push(result);
+
+                _.defer(classifyNext);
+            });
+        };
+
+        classifyNext();
+        return deferred.promise();
     }
 
     function isGWCampaigntargetURL(url) {
@@ -126,68 +473,83 @@ $(document).ready(function () {
 
         api.mods.getMounted('client', true).then(function(clientMods) {
             try {
-                var selectedClientMods = _.filter(clientMods || [], gwUploadClassifier);
-                var selectedByIdentifier = indexByIdentifier(selectedClientMods);
-                var selectedIdentifiers = _.map(selectedClientMods, 'identifier');
-                var mountedMemoryFiles = {};
+                classifyClientModsForGWUpload(clientMods || []).always(function(classification) {
+                    var selectedClientMods = classification[gwModCategory.galacticWar] || [];
+                    var selectedByIdentifier = indexByIdentifier(selectedClientMods);
+                    var selectedIdentifiers = _.map(selectedClientMods, 'identifier');
+                    var mountedMemoryFiles = {};
 
-                _.forEach(selectedClientMods, function(mod) {
-                    if (!mod || !mod.identifier)
-                        return;
+                    console.log('[GW_COOP] connect_to_game classifier categories server=' + (classification[gwModCategory.actualServer] || []).length
+                        + ' gw=' + selectedClientMods.length
+                        + ' skin=' + (classification[gwModCategory.skin] || []).length
+                        + ' pure=' + (classification[gwModCategory.pureClient] || []).length);
 
-                    // Server upload APIs only package server-context mods, so we
-                    // synthesize server-context modinfo for each selected client mod.
-                    var modInfo = _.cloneDeep(mod);
-                    modInfo.context = 'server';
-                    mountedMemoryFiles['/server_mods/' + mod.identifier + '/modinfo.json'] = JSON.stringify(modInfo);
-                });
+                    _.forEach(classification.details || [], function(detail) {
+                        gwProbeLog('summary mod=' + detail.identifier
+                            + ' category=' + detail.category
+                            + ' files=' + (detail.fileCount || 0)
+                            + ' roots=' + (detail.roots ? detail.roots.length : 0)
+                            + ' file_sample=' + sampleList(detail.fileSample || [], 4)
+                            + ' gw_sample=' + sampleList(detail.gwMatchedPaths || [], 2)
+                            + ' pa_sample=' + sampleList(detail.paMatchedPaths || [], 2));
+                    });
 
-                var doPublish = function() {
-                    callAlwaysOrThen(api.file.mountMemoryFiles(mountedMemoryFiles), function() {
-                        console.log('[GW_COOP] connect_to_game staged client mod metadata files=' + _.size(mountedMemoryFiles));
+                    _.forEach(selectedClientMods, function(mod) {
+                        if (!mod || !mod.identifier)
+                            return;
 
-                        applyServerModsConfig(selectedIdentifiers, function() {
-                            if (api.content && _.isFunction(api.content.remount)) {
-                                callAlwaysOrThen(api.content.remount(), function() {
+                        // Only category-2 GW mods are staged for forced sharing.
+                        var modInfo = _.cloneDeep(mod);
+                        modInfo.context = 'server';
+                        mountedMemoryFiles['/server_mods/' + mod.identifier + '/modinfo.json'] = JSON.stringify(modInfo);
+                    });
+
+                    var doPublish = function() {
+                        callAlwaysOrThen(api.file.mountMemoryFiles(mountedMemoryFiles), function() {
+                            console.log('[GW_COOP] connect_to_game staged GW mod metadata files=' + _.size(mountedMemoryFiles));
+
+                            applyServerModsConfig(selectedIdentifiers, function() {
+                                if (api.content && _.isFunction(api.content.remount)) {
+                                    callAlwaysOrThen(api.content.remount(), function() {
+                                        publishStagedServerMods();
+                                    }, 'api.content.remount after staging');
+                                }
+                                else {
                                     publishStagedServerMods();
-                                }, 'api.content.remount after staging');
-                            }
-                            else {
-                                publishStagedServerMods();
-                            }
-                        });
-                    }, 'mountMemoryFiles(/server_mods)');
-                };
+                                }
+                            });
+                        }, 'mountMemoryFiles(/server_mods)');
+                    };
 
-                if (window.CommunityModsManager
-                    && _.isFunction(CommunityModsManager.activeClientZipMods)
-                    && _.isFunction(CommunityModsManager.mountZipMods)) {
-                    // Zip mods can be re-mounted directly into /server_mods. Local
-                    // filesystem mods are represented by metadata only at this stage.
-                    var clientZipMods = CommunityModsManager.activeClientZipMods() || [];
-                    var zipModsToStage = _.chain(clientZipMods)
-                        .filter(function(mod) { return !!selectedByIdentifier[mod.identifier]; })
-                        .map(function(mod) {
-                            return {
-                                identifier: mod.identifier,
-                                installedPath: mod.installedPath,
-                                mountPath: '/server_mods/'
-                            };
-                        })
-                        .value();
+                    if (window.CommunityModsManager
+                        && _.isFunction(CommunityModsManager.activeClientZipMods)
+                        && _.isFunction(CommunityModsManager.mountZipMods)) {
+                        // Category-3 skin mods are intentionally excluded for now.
+                        var clientZipMods = CommunityModsManager.activeClientZipMods() || [];
+                        var zipModsToStage = _.chain(clientZipMods)
+                            .filter(function(mod) { return !!selectedByIdentifier[mod.identifier]; })
+                            .map(function(mod) {
+                                return {
+                                    identifier: mod.identifier,
+                                    installedPath: mod.installedPath,
+                                    mountPath: '/server_mods/'
+                                };
+                            })
+                            .value();
 
-                    console.log('[GW_COOP] connect_to_game staging client zip mods into /server_mods count=' + zipModsToStage.length);
-                    console.log('[GW_COOP] connect_to_game selected client mods=' + selectedIdentifiers.length + ' zip-stageable=' + zipModsToStage.length);
+                        console.log('[GW_COOP] connect_to_game staging GW zip mods into /server_mods count=' + zipModsToStage.length);
+                        console.log('[GW_COOP] connect_to_game selected GW mods=' + selectedIdentifiers.length + ' zip-stageable=' + zipModsToStage.length);
 
-                    if (zipModsToStage.length > 0)
-                        callAlwaysOrThen(CommunityModsManager.mountZipMods(zipModsToStage), doPublish, 'CommunityModsManager.mountZipMods');
-                    else
+                        if (zipModsToStage.length > 0)
+                            callAlwaysOrThen(CommunityModsManager.mountZipMods(zipModsToStage), doPublish, 'CommunityModsManager.mountZipMods');
+                        else
+                            doPublish();
+                    }
+                    else {
+                        console.log('[GW_COOP] connect_to_game CommunityModsManager zip staging unavailable');
                         doPublish();
-                }
-                else {
-                    console.log('[GW_COOP] connect_to_game CommunityModsManager zip staging unavailable');
-                    doPublish();
-                }
+                    }
+                });
             }
             catch (e) {
                 console.error('[GW_COOP] connect_to_game client->server staging failed', e);
@@ -727,8 +1089,13 @@ $(document).ready(function () {
                 if (isGWCampaigntargetURL(url)) {
                     api.mods.getMounted('client', true).then(function(mods) {
                         var hostMods = mods || [];
-                        var classifiedMods = _.filter(hostMods, gwUploadClassifier);
-                        console.log('[GW_COOP] connect_to_game classifier selected ' + classifiedMods.length + ' / ' + hostMods.length + ' host CLIENT mods for upload');
+                        classifyClientModsForGWUpload(hostMods).always(function(classification) {
+                            var gwMods = classification[gwModCategory.galacticWar] || [];
+                            var serverMods = classification[gwModCategory.actualServer] || [];
+                            var skinMods = classification[gwModCategory.skin] || [];
+                            var pureMods = classification[gwModCategory.pureClient] || [];
+                            console.log('[GW_COOP] connect_to_game classifier selected ' + gwMods.length + ' / ' + hostMods.length + ' host CLIENT mods for GW upload; server=' + serverMods.length + ' skin=' + skinMods.length + ' pure=' + pureMods.length);
+                        });
                     });
                 }
 
