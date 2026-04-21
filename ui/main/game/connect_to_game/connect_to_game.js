@@ -267,7 +267,18 @@ $(document).ready(function () {
         self.waitingForClientModMatch = false;
         self.pendingServerStatePayload = undefined;
 
+        self.shouldGateServerStateForClientModMatch = function() {
+            // Reconnect flows can legitimately transition scenes before the
+            // manifest callback resolves; don't block reconnect on this gate.
+            return !self.reconnectingToExistingGame();
+        };
+
         self.beginClientModMatchWait = function(trigger) {
+            if (!self.shouldGateServerStateForClientModMatch()) {
+                console.log('[GW COOP] skipping client-mod match wait during reconnect trigger=' + (trigger || 'unknown'));
+                return;
+            }
+
             if (self.waitingForClientModMatch)
                 return;
 
@@ -371,6 +382,9 @@ $(document).ready(function () {
                 console.log('[GW COOP] Required client mod identifiers: ' + JSON.stringify(requiredIdentifiers));
                 console.log('[GW COOP] Required client mod names by ID: ' + JSON.stringify(requiredNamesById));
 
+                sessionStorage.setItem('gw_required_client_mod_identifiers', JSON.stringify(requiredIdentifiers));
+                console.log('[GW COOP] persisted required client mod identifiers for GW referee generation');
+
 
                 // Server enforces host-only writes; non-host clients are ignored.
                 model.send_message('set_required_client_mods', {
@@ -381,6 +395,7 @@ $(document).ready(function () {
                 });
             }, function() {
                 console.log('[GW COOP] getMounted(client,true) failed; sending empty required mod list');
+                sessionStorage.setItem('gw_required_client_mod_identifiers', JSON.stringify([]));
                 model.send_message('set_required_client_mods', {
                     required_identifiers: [],
                     required_names_by_id: {}
@@ -620,6 +635,8 @@ $(document).ready(function () {
         console.error('connection_failed');
         console.error(JSON.stringify(payload));
         model.connecting(false);
+        model.waitingForClientModMatch = false;
+        model.pendingServerStatePayload = undefined;
         if (model.shouldRetry())
             model.retryConnection();
         else
@@ -717,6 +734,8 @@ $(document).ready(function () {
         console.error('login_rejected');
         console.error(JSON.stringify(payload));
         model.connecting(false);
+        model.waitingForClientModMatch = false;
+        model.pendingServerStatePayload = undefined;
         var rejectReason = extractRejectReason(payload);
         var missingRequiredMods = _.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0;
 
@@ -764,7 +783,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (model.waitingForClientModMatch) {
+        if (model.waitingForClientModMatch && model.shouldGateServerStateForClientModMatch()) {
             if (payload && payload.url)
                 model.pendingServerStatePayload = payload;
 
@@ -836,6 +855,9 @@ $(document).ready(function () {
             console.log('[GW COOP] duplicate disconnect after missing-mod rejection; no retry/redirect');
             return;
         }
+
+        model.waitingForClientModMatch = false;
+        model.pendingServerStatePayload = undefined;
 
         var disconnectReason = extractRejectReason(payload);
         if (_.isString(disconnectReason) && disconnectReason.indexOf('Missing required mods') === 0)

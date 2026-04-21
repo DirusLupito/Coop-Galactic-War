@@ -22,6 +22,197 @@ requireGW([
     dealer
 ) {
     p = PopUp;
+
+    var REQUIRED_CLIENT_MODS_SESSION_KEY = 'gw_required_client_mod_identifiers';
+
+    var normalizeModIdentifier = function(identifier) {
+        if (!_.isString(identifier))
+            return '';
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length)
+            return '';
+
+        return trimmed.toLowerCase();
+    };
+
+    var readRequiredClientModIdentifiers = function() {
+        var raw = sessionStorage.getItem(REQUIRED_CLIENT_MODS_SESSION_KEY);
+        if (raw === null)
+            return [];
+
+        var parsed;
+        try {
+            parsed = JSON.parse(raw);
+        } catch (e) {
+            console.log('[GW_COOP] invalid required client mod session payload in gw_play; defaulting to empty list');
+            parsed = [];
+        }
+
+        if (!_.isArray(parsed))
+            parsed = [];
+
+        var normalized = [];
+        var seen = {};
+        _.forEach(parsed, function(identifier) {
+            var normalizedIdentifier = normalizeModIdentifier(identifier);
+            if (!normalizedIdentifier || seen[normalizedIdentifier])
+                return;
+
+            seen[normalizedIdentifier] = true;
+            normalized.push(normalizedIdentifier);
+        });
+        console.log('[GW_COOP] read required client mod identifiers for gw_play', normalized);
+
+        return normalized;
+    };
+
+    var buildRequiredLookupWithDependencies = function(requiredIdentifiers, installedClientModsById) {
+        var lookup = {};
+
+        var includeIdentifier = function(identifier) {
+            var normalizedIdentifier = normalizeModIdentifier(identifier);
+            if (!normalizedIdentifier || lookup[normalizedIdentifier])
+                return;
+
+            lookup[normalizedIdentifier] = true;
+
+            var installed = installedClientModsById[normalizedIdentifier];
+            if (!installed || !_.isArray(installed.dependencies))
+                return;
+
+            _.forEach(installed.dependencies, function(dependencyIdentifier) {
+                includeIdentifier(dependencyIdentifier);
+            });
+        };
+
+        _.forEach(requiredIdentifiers || [], function(identifier) {
+            includeIdentifier(identifier);
+        });
+
+        return lookup;
+    };
+
+    var runWithRequiredClientModsOnly = function(requiredIdentifiers, work) {
+        console.log('[GW_COOP] restricting client mods for gw_play', requiredIdentifiers);
+        var communityModsManager = window.CommunityModsManager;
+        var canRestrictClientMods = communityModsManager
+            && _.isFunction(communityModsManager.installedMods)
+            && communityModsManager.installedMods
+            && _.isFunction(communityModsManager.installedMods.valueHasMutated)
+            && _.isFunction(communityModsManager.remountClientMods);
+
+        if (!canRestrictClientMods)
+            return $.when(work());
+
+        var done = $.Deferred();
+
+        var installedMods = communityModsManager.installedMods();
+
+        if (!_.isArray(installedMods))
+            return $.when(work());
+
+        var clientEnabledBefore = {};
+        var installedClientModsById = {};
+
+        _.forEach(installedMods, function(mod) {
+            if (!mod || mod.context !== 'client')
+                return;
+
+            var identifier = normalizeModIdentifier(mod.identifier);
+            if (!identifier)
+                return;
+
+            clientEnabledBefore[identifier] = !!mod.enabled;
+            installedClientModsById[identifier] = mod;
+        });
+
+        var requiredLookup = buildRequiredLookupWithDependencies(requiredIdentifiers, installedClientModsById);
+
+        _.forEach(installedMods, function(mod) {
+            if (!mod || mod.context !== 'client')
+                return;
+
+            var identifier = normalizeModIdentifier(mod.identifier);
+            if (!identifier)
+                return;
+
+            mod.enabled = !!requiredLookup[identifier];
+        });
+
+        communityModsManager.installedMods.valueHasMutated();
+        console.log('[GW_COOP] gw_play restricting client mods for shared referee generation required=' + JSON.stringify(_.keys(requiredLookup)));
+
+        communityModsManager.remountClientMods().always(function() {
+            $.when(work()).always(function() {
+                _.forEach(installedMods, function(mod) {
+                    if (!mod || mod.context !== 'client')
+                        return;
+
+                    var identifier = normalizeModIdentifier(mod.identifier);
+                    if (!identifier || !_.has(clientEnabledBefore, identifier))
+                        return;
+
+                    mod.enabled = clientEnabledBefore[identifier];
+                });
+
+                communityModsManager.installedMods.valueHasMutated();
+                console.log('[GW_COOP] gw_play restoring full client mod set after shared referee generation');
+
+                communityModsManager.remountClientMods().always(function() {
+                    done.resolve();
+                });
+            });
+        });
+
+        return done.promise();
+    };
+
+    var hireRefereesForLaunch = function(game, isolateSharedSpecs) {
+        console.log('[GW_COOP] hiring referees for gw_play launch; isolateSharedSpecs=' + !!isolateSharedSpecs);
+        var done = $.Deferred();
+
+        if (!isolateSharedSpecs) {
+            GWReferee.hire(game).then(function(referee) {
+                done.resolve({
+                    sharedReferee: referee,
+                    localReferee: undefined
+                });
+            });
+            return done.promise();
+        }
+
+        var requiredIdentifiers = readRequiredClientModIdentifiers();
+
+        var sharedReferee;
+        var sharedRefereeReady = false;
+
+        runWithRequiredClientModsOnly(requiredIdentifiers, function() {
+            return GWReferee.hire(game).then(function(referee) {
+                sharedReferee = referee;
+                sharedRefereeReady = true;
+            });
+        }).always(function() {
+            if (!sharedRefereeReady) {
+                console.log('[GW_COOP] failed to build clean shared referee; aborting launch to avoid contaminated gw_config');
+                done.resolve({
+                    sharedReferee: undefined,
+                    localReferee: undefined
+                });
+                return;
+            }
+
+            GWReferee.hire(game).then(function(localReferee) {
+                done.resolve({
+                    sharedReferee: sharedReferee,
+                    localReferee: localReferee
+                });
+            });
+        });
+
+        return done.promise();
+    };
+
     self.exitGame = function() {
         
         // In the case that the player is in a co-op campaign session, we need to make
@@ -2549,7 +2740,7 @@ requireGW([
                 inventory.units().push(tutorialCommander);
             }
 
-            var hireReferee = GWReferee.hire(game);
+            var hireReferee = hireRefereesForLaunch(game, self.gwCampaignActive() && self.isCampaignHost());
             var liveGameScriptLoad = $.get('coui://ui/main/game/live_game/live_game.js');
             var liveGameScriptPatchLoad = $.get('coui://ui/main/game/galactic_war/gw_play/live_game_patch.js');
 
@@ -2560,15 +2751,31 @@ requireGW([
                 liveGameScriptPatchLoad
             ).always(function(
                 saveResult,
-                referee,
+                refereeBundle,
                 liveGameScriptGet,
                 liveGameScriptPatchGet
             ) {
                 var patchedLiveGameScript = liveGameScriptGet[0] + liveGameScriptPatchGet[0];
 
-                referee.localFiles({
-                    '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
-                });
+                var referee = refereeBundle && refereeBundle.sharedReferee;
+                var localReferee = refereeBundle && refereeBundle.localReferee;
+
+                if (!referee) {
+                    console.log('[GW_COOP] failed to hire GW referee for launch');
+                    self.launchingFight(false);
+                    return;
+                }
+
+                var localFiles = {};
+                if (localReferee && _.isFunction(localReferee.files)) {
+                    var personalizedFiles = localReferee.files();
+                    if (_.isObject(personalizedFiles))
+                        localFiles = _.cloneDeep(personalizedFiles);
+                }
+                console.log('[GW_COOP] personalizedFiles for launch', localFiles);
+
+                localFiles['/ui/main/game/live_game/live_game.js'] = patchedLiveGameScript;
+                referee.localFiles(localFiles);
 
                 referee.stripSystems();
                 referee.mountFiles().always(function()
