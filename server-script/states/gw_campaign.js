@@ -10,6 +10,8 @@ var DEFAULT_GW_CAMPAIGN_PLAYERS = 2;
 var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 6;
 var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
 var MAX_LOBBY_CHAT_HISTORY = 100;
+var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 10000;
+var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 10000;
 
 // We determine the max players limit for the campaign lobby in a two stage process;
 // first we see if the launch option (in steam, --local-server-max-players=N) is present and valid, and if so we use that; 
@@ -38,6 +40,12 @@ function GWCampaignModel(creator) {
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
     self.lobbyChatHistory = [];
+    self.requiredClientModIdentifiers = [];
+    self.requiredClientModNamesById = {};
+    self.pendingManifestTimeoutByClientId = {};
+    self.pendingSelfDisconnectTimeoutByClientId = {};
+    self.clientManifestReceivedByClientId = {};
+    self.clientManifestValidatedByClientId = {};
     self.access = {
         password: '',
         friends: [],
@@ -91,6 +99,184 @@ function GWCampaignModel(creator) {
         }
     };
 
+    self.normalizeClientModIdentifier = function(identifier) {
+        if (!_.isString(identifier))
+            return '';
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length)
+            return '';
+
+        return trimmed.toLowerCase();
+    };
+
+    self.normalizeClientModIdentifiers = function(identifiers) {
+        var normalized = [];
+        var seen = {};
+
+        _.forEach(identifiers || [], function(identifier) {
+            var normalizedIdentifier = self.normalizeClientModIdentifier(identifier);
+            if (!normalizedIdentifier || seen[normalizedIdentifier])
+                return;
+
+            seen[normalizedIdentifier] = true;
+            normalized.push(normalizedIdentifier);
+        });
+
+        return normalized;
+    };
+
+    self.normalizeClientModNamesById = function(namesById, identifiers) {
+        var normalizedNames = {};
+        _.forEach(identifiers || [], function(identifier) {
+            normalizedNames[identifier] = identifier;
+        });
+
+        _.forIn(namesById || {}, function(name, key) {
+            var normalizedIdentifier = self.normalizeClientModIdentifier(key);
+            if (!normalizedIdentifier || identifiers.indexOf(normalizedIdentifier) === -1)
+                return;
+
+            if (_.isString(name) && name.length)
+                normalizedNames[normalizedIdentifier] = name;
+        });
+
+        return normalizedNames;
+    };
+
+    self.setRequiredClientModsData = function(requiredIdentifiers, requiredNamesById) {
+        var previousRequiredIdentifiers = _.clone(self.requiredClientModIdentifiers);
+        self.requiredClientModIdentifiers = self.normalizeClientModIdentifiers(requiredIdentifiers);
+        self.requiredClientModNamesById = self.normalizeClientModNamesById(requiredNamesById, self.requiredClientModIdentifiers);
+
+        if (!_.isEqual(previousRequiredIdentifiers, self.requiredClientModIdentifiers))
+            self.clientManifestValidatedByClientId = {};
+
+        console.log('[GW_COOP] MOD CHECK [gw_campaign] required_identifiers=' + JSON.stringify(self.requiredClientModIdentifiers));
+
+        if (!self.requiredClientModIdentifiers.length)
+            self.clearAllPendingManifestTimeouts();
+    };
+
+    self.clearPendingSelfDisconnectTimeout = function(clientId) {
+        var timeout = self.pendingSelfDisconnectTimeoutByClientId[clientId];
+        if (timeout)
+            clearTimeout(timeout);
+
+        delete self.pendingSelfDisconnectTimeoutByClientId[clientId];
+    };
+
+    self.clearAllPendingSelfDisconnectTimeouts = function() {
+        _.forEach(self.pendingSelfDisconnectTimeoutByClientId, function(timeout) {
+            clearTimeout(timeout);
+        });
+
+        self.pendingSelfDisconnectTimeoutByClientId = {};
+    };
+
+    self.clearPendingManifestTimeout = function(clientId) {
+        var timeout = self.pendingManifestTimeoutByClientId[clientId];
+        if (timeout)
+            clearTimeout(timeout);
+
+        delete self.pendingManifestTimeoutByClientId[clientId];
+        delete self.clientManifestReceivedByClientId[clientId];
+    };
+
+    self.clearAllPendingManifestTimeouts = function() {
+        _.forEach(self.pendingManifestTimeoutByClientId, function(timeout) {
+            clearTimeout(timeout);
+        });
+
+        self.pendingManifestTimeoutByClientId = {};
+        self.clientManifestReceivedByClientId = {};
+        self.clearAllPendingSelfDisconnectTimeouts();
+    };
+
+    self.buildMissingRequiredModsReason = function(missingIdentifiers) {
+        if (!missingIdentifiers || !missingIdentifiers.length)
+            return 'Missing required mods [client did not report active client mods]';
+
+        return 'Missing required mods ' + _.map(missingIdentifiers, function(identifier) {
+            var displayName = self.requiredClientModNamesById && self.requiredClientModNamesById[identifier];
+            var label = (_.isString(displayName) && displayName.length)
+                ? displayName
+                : identifier;
+
+            return '[' + label + ']';
+        }).join('');
+    };
+
+    self.notifyClientMissingRequiredMods = function(client, missingIdentifiers) {
+        if (!client || !client.connected)
+            return;
+
+        var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers);
+
+        self.clearPendingSelfDisconnectTimeout(client.id);
+
+        console.log('[GW_COOP] MOD CHECK [gw_campaign] notifying client=' + client.id + ' missing=' + JSON.stringify(missingIdentifiers) + ' reason="' + rejectReason + '"');
+
+        client.message({
+            message_type: 'required_client_mods_missing',
+            payload: {
+                reason: rejectReason,
+                missing_identifiers: _.clone(missingIdentifiers || []),
+                required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                required_names_by_id: _.cloneDeep(self.requiredClientModNamesById)
+            }
+        });
+
+        self.pendingSelfDisconnectTimeoutByClientId[client.id] = setTimeout(function() {
+            if (!client.connected)
+                return;
+
+            self.clearPendingSelfDisconnectTimeout(client.id);
+            console.log('[GW_COOP] MOD CHECK [gw_campaign] client did not self-disconnect in time; forcing reject client=' + client.id);
+            server.rejectClient(client, rejectReason);
+        }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
+    };
+
+    self.requestClientManifest = function(client, reconnect) {
+        if (!client || !client.connected) {
+            console.log('[GW_COOP] MOD CHECK [gw_campaign] skipping manifest request for invalid/disconnected client');
+            return;
+        }
+
+        if (!self.requiredClientModIdentifiers.length) {
+            console.log('[GW_COOP] MOD CHECK [gw_campaign] no required client mods set; allowing client=' + client.id + ' without manifest gate');
+            return;
+        }
+
+        if (reconnect || self.clientManifestValidatedByClientId[client.id]) {
+            console.log('[GW_COOP] MOD CHECK [gw_campaign] skipping manifest request for reconnect/validated client=' + client.id + ' reconnect=' + !!reconnect + ' validated=' + !!self.clientManifestValidatedByClientId[client.id]);
+            return;
+        }
+
+        self.clearPendingManifestTimeout(client.id);
+        self.clientManifestReceivedByClientId[client.id] = false;
+
+        console.log('[GW_COOP] MOD CHECK [gw_campaign] requesting manifest from client=' + client.id + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
+
+        client.message({
+            message_type: 'request_client_mod_manifest',
+            payload: {
+                required_identifiers: self.requiredClientModIdentifiers,
+                required_names_by_id: self.requiredClientModNamesById
+            }
+        });
+
+        self.pendingManifestTimeoutByClientId[client.id] = setTimeout(function() {
+            if (!client.connected || self.clientManifestReceivedByClientId[client.id])
+                return;
+
+            self.clearPendingManifestTimeout(client.id);
+            self.clientManifestValidatedByClientId[client.id] = false;
+            console.log('[GW_COOP] MOD CHECK [gw_campaign] manifest timeout; rejecting client=' + client.id);
+            server.rejectClient(client, self.buildMissingRequiredModsReason());
+        }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
+    };
+
     // Builds the launch context for the gw_lobby state based on the current campaign lobby settings 
     // and an optional payload provided by the host client when they click "Play" from the campaign lobby panel.
     // This will let the in-game lobby know that it's launching from a co-op campaign lobby and apply 
@@ -117,6 +303,10 @@ function GWCampaignModel(creator) {
             current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
             settings: settings,
             max_clients: self.maxClients,
+            required_client_mods: {
+                required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                required_names_by_id: _.cloneDeep(self.requiredClientModNamesById)
+            },
             access: {
                 password: _.isString(self.access.password) ? self.access.password : '',
                 friends: _.cloneDeep(bouncer.getWhitelist()),
@@ -355,6 +545,8 @@ function GWCampaignModel(creator) {
             client._gwCampaignDisconnectCleanupApplied = false;
             utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
                 console.log('[GW_COOP] gw_campaign onDisconnect client=' + client.name + ' id=' + client.id);
+                self.clearPendingManifestTimeout(client.id);
+                self.clearPendingSelfDisconnectTimeout(client.id);
 
                 if (client.id === self.creatorId) {
                     console.log('[GW_COOP] gw_campaign creator disconnected, exiting server');
@@ -394,6 +586,9 @@ function GWCampaignModel(creator) {
         self.updateControl();
         self.sendRoleToClient(client);
         self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
+
+        if (client.id !== self.creatorId)
+            self.requestClientManifest(client, reconnect);
     };
 
     // Called when the server first enters the gw_campaign state. 
@@ -409,7 +604,63 @@ function GWCampaignModel(creator) {
         bouncer.clearWhitelist();
         bouncer.clearBlacklist();
 
+        self.setRequiredClientModsData([], {});
+
         var handlers = {
+            set_required_client_mods: function(msg) {
+                if (msg.client.id !== self.creatorId)
+                    return server.respond(msg).fail('Required client mods can only be provided by host');
+
+                var payload = msg.payload || {};
+                console.log('[GW_COOP] MOD CHECK [gw_campaign] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
+                self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id);
+                server.respond(msg).succeed({
+                    required_identifiers: self.requiredClientModIdentifiers
+                });
+            },
+            client_mod_manifest: function(msg) {
+                if (!self.requiredClientModIdentifiers.length) {
+                    console.log('[GW_COOP] MOD CHECK [gw_campaign] received manifest from client=' + msg.client.id + ' but no required list is active');
+                    return server.respond(msg).succeed({ missing: [] });
+                }
+
+                var activeIdentifiers = self.normalizeClientModIdentifiers(msg.payload && msg.payload.active_identifiers);
+                var missingIdentifiers = _.filter(self.requiredClientModIdentifiers, function(identifier) {
+                    return activeIdentifiers.indexOf(identifier) === -1;
+                });
+
+                console.log('[GW_COOP] MOD CHECK [gw_campaign] manifest from client=' + msg.client.id
+                    + ' active=' + JSON.stringify(activeIdentifiers)
+                    + ' missing=' + JSON.stringify(missingIdentifiers)
+                    + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
+
+                self.clearPendingManifestTimeout(msg.client.id);
+
+                if (missingIdentifiers.length) {
+                    var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers);
+                    self.clientManifestValidatedByClientId[msg.client.id] = false;
+                    server.respond(msg).succeed({
+                        missing: missingIdentifiers,
+                        reason: rejectReason,
+                        disconnecting: true
+                    });
+                    self.notifyClientMissingRequiredMods(msg.client, missingIdentifiers);
+                    return;
+                }
+
+                self.clientManifestValidatedByClientId[msg.client.id] = true;
+                server.respond(msg).succeed({ missing: [] });
+
+                if (msg.client && msg.client.connected) {
+                    console.log('[GW_COOP] MOD CHECK [gw_campaign] all_client_mods_match client=' + msg.client.id);
+                    msg.client.message({
+                        message_type: 'all_client_mods_match',
+                        payload: {
+                            required_identifiers: _.clone(self.requiredClientModIdentifiers)
+                        }
+                    });
+                }
+            },
             request_gw_campaign_snapshot: function(msg) {
                 console.log('[GW_COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
                 self.sendSnapshotToClient(msg.client, 'pull_on_join');
@@ -590,6 +841,7 @@ function GWCampaignModel(creator) {
             clearTimeout(timeout);
         });
         self.viewerReconnectTimers = {};
+        self.clearAllPendingManifestTimeouts();
 
         _.forEachRight(self.disconnectCleanup, function(removeDisconnectHook) {
             removeDisconnectHook();

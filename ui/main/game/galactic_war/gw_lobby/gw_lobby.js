@@ -13,6 +13,7 @@ $(document).ready(function() {
         self.clientLoading = ko.observable(true);
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
         self.gwConfigMounted = ko.observable(false);
+        self.gwConfigMountInProgress = false;
         self.ready = ko.computed(function() {
             return !self.clientLoading() && !self.serverLoading();
         })
@@ -91,6 +92,75 @@ $(document).ready(function() {
 
     handlers = {};
 
+    var buildLocalClientOverlayFiles = function() {
+        var done = $.Deferred();
+
+        var gameId = ko.observable().extend({ local: 'gw_active_game' })();
+        if (!gameId) {
+            done.resolve({});
+            return done.promise();
+        }
+
+        var moduleLoader = _.isFunction(window.requireGW) ? window.requireGW : require;
+        moduleLoader(['shared/gw_common'], function(GW) {
+            if (!GW || !GW.manifest || !_.isFunction(GW.manifest.loadGame) || !GW.specs) {
+                done.resolve({});
+                return;
+            }
+
+            GW.manifest.loadGame(gameId).then(function(game) {
+                if (!game) {
+                    done.resolve({});
+                    return;
+                }
+
+                var inventory = _.isFunction(game.inventory) ? game.inventory() : undefined;
+                if (!inventory || !_.isFunction(inventory.units) || !_.isFunction(inventory.mods)) {
+                    done.resolve({});
+                    return;
+                }
+
+                var titans = api.content.usingTitans();
+                var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
+                var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
+
+                $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
+                    var aiUnitMap = parse(aiMapGet[0]);
+                    var aiX1UnitMap = parse(aiX1MapGet[0]);
+                    var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.player');
+                    var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.player') : {};
+
+                    GW.specs.genUnitSpecs(inventory.units(), '.player').then(function(playerSpecFiles) {
+                        var playerFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.player': playerAIUnitMap }, playerSpecFiles);
+                        var playerFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.player': playerX1AIUnitMap }, playerSpecFiles) : {};
+                        var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1);
+
+                        try {
+                            GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
+                        } catch (e) {
+                            console.log('[GW_COOP] gw_lobby local overlay modSpecs failed', e);
+                            done.resolve({});
+                            return;
+                        }
+                        console.log('[GW_COOP] gw_lobby local overlay files generated', playerFiles);
+
+                        done.resolve(playerFiles);
+                    }, function() {
+                        done.resolve({});
+                    });
+                }, function() {
+                    done.resolve({});
+                });
+            }, function() {
+                done.resolve({});
+            });
+        }, function() {
+            done.resolve({});
+        });
+
+        return done.promise();
+    };
+
     handlers.control = function(control) {
         model.serverLoading(!control.sim_ready);
         if (!control.has_config) {
@@ -106,6 +176,11 @@ $(document).ready(function() {
         if (!payload || !payload.files)
             return;
 
+        if (model.gwConfigMounted() || model.gwConfigMountInProgress)
+            return;
+
+        model.gwConfigMountInProgress = true;
+
         if (!payload.files['/pa/units/unit_list.json']) {
             var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
             var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
@@ -113,19 +188,27 @@ $(document).ready(function() {
             payload.files['/pa/units/unit_list.json'] = { units: units };
         }
 
-        var cookedFiles = _.mapValues(payload.files, function(value) {
-            if (typeof value !== 'string')
-                return JSON.stringify(value);
-            return value;
-        });
+        buildLocalClientOverlayFiles().always(function(localOverlayFiles) {
+            var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
+            console.log('[GW_COOP] gw_lobby merging local overlay files', localOverlayFiles, mergedFiles);
 
-        // Do not globally unmount memory files here. Community mod hooks on
-        // unmountAllMemoryFiles can trigger broad remount activity and race
-        // with GW lobby startup on some machines.
-        api.file.mountMemoryFiles(cookedFiles).then(function() {
-            model.gwConfigMounted(true);
-            api.game.setUnitSpecTag('.player');
-            model.send_message('gw_config_ready', {});
+            var cookedFiles = _.mapValues(mergedFiles, function(value) {
+                if (typeof value !== 'string')
+                    return JSON.stringify(value);
+                return value;
+            });
+
+            // Do not globally unmount memory files here. Community mod hooks on
+            // unmountAllMemoryFiles can trigger broad remount activity and race
+            // with GW lobby startup on some machines.
+            api.file.mountMemoryFiles(cookedFiles).then(function() {
+                model.gwConfigMounted(true);
+                model.gwConfigMountInProgress = false;
+                api.game.setUnitSpecTag('.player');
+                model.send_message('gw_config_ready', {});
+            }, function() {
+                model.gwConfigMountInProgress = false;
+            });
         });
     };
 

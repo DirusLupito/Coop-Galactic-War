@@ -51,6 +51,9 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `cddd2ca` `Co-op player no longer sees the continue war button.`
   - `46206f1` `Fixed issue with continue war from GWO FFAs.`
   - `43e243e` `Fixed another issue where co-op players could see the continue war button.`
+- Required-mod enforcement and optional-mod isolation for GW coop:
+  - `0adc233` `Clients are now rejected from coop servers if they are missing GW affecting mods.`
+  - `d129a7a` `Client mods other than GW affecting mods are now isolated to each client.`
 
 ## High-Level Summary
 
@@ -1564,3 +1567,302 @@ For co-op GW Continue War, explicit orchestration beats inference:
 4. Treat UI menu generation as eventually-consistent with role metadata and support rebuilds when authoritative state arrives.
 5. If Continue War should exist in defeated-but-not-game-over contexts, implement role/restart logic in `playing` as first-class behavior, not as a `game_over` side effect.
 6. For multi-panel UI fixes, verify both data flow and packaging flow (for example `generate_mod.py` copy list), otherwise one panel can remain unfixed at runtime.
+
+---
+
+## GW Required-Mod Enforcement and Optional-Mod Isolation (Commits `0adc233` and `d129a7a`, plus stabilization)
+
+This section documents the full architecture that was added to solve issue #3 class failures:
+
+- hard crashes when players had different client mod sets
+- confusion about which mods should be mandatory
+- reconnect instability introduced by manifest checks
+- host/client disagreements about whether optional visual mods should affect shared GW generated files
+
+The final model is:
+
+1. Required GW-affecting client mods are enforced at connect/campaign/lobby boundaries.
+2. Optional non-required client mods are isolated per client.
+3. Shared GW battle files are generated from a required-only mod set.
+4. Each client then overlays a local `.player` variant so optional local visuals can still work.
+
+### Why this was needed
+
+The original coop architecture synced GW generated memory files from host to clients. That guaranteed parity when everyone had the same setup, but it also caused two different failure classes:
+
+1. If host generated files referenced assets from a client-only optional mod that a viewer did not have, the viewer could crash during battle (for example grenade ammo impact effects).
+2. If we over-corrected by forcing everything to a clean shared build, host/client optional visual mods disappeared.
+
+So the hard requirement became:
+
+- enforce only the mods that are truly GW-affecting and must match,
+- but keep optional client mods local.
+
+### Major components created for this solution
+
+This is the complete component list that makes the final design work.
+
+#### Component A: Required-mod classifier in connect flow
+
+File: [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+
+What was created:
+
+- Normalization helpers for identifiers.
+- A required-mod classifier that marks a mounted client mod as required when:
+  - it contains GW-critical scene keys (`gw_war_over`, `gw_play`, `gw_start`), and
+  - its description indicates GW relevance (contains `galactic war`).
+
+Why this exists:
+
+- We needed a deterministic, host-side way to separate GW-affecting mods from optional cosmetics without introducing new mod metadata schema.
+
+#### Component B: Host publication of required mod set
+
+File: [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+
+What was created:
+
+- `publishRequiredClientMods()` in connect flow.
+- Message `set_required_client_mods` carrying:
+  - `required_identifiers`
+  - `required_names_by_id`
+- Session persistence of required identifiers (`gw_required_client_mod_identifiers`) for downstream GW generation decisions.
+
+Why this exists:
+
+- Server states must not guess required mods; host sends authoritative required set for this session.
+
+#### Component C: Server-side required-mod state in campaign and GW lobby
+
+Files:
+
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+
+What was created:
+
+- Normalization and validation helpers.
+- Stored required set and display names.
+- Pending manifest timeout trackers.
+- Pending self-disconnect fallback trackers.
+- Per-client manifest receipt/validated state.
+
+Why this exists:
+
+- Both campaign and battle lobby needed identical enforcement semantics, including timeout cleanup on disconnect/exit.
+
+#### Component D: Manifest protocol and enforcement messages
+
+Files:
+
+- [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+
+What was created:
+
+- `request_client_mod_manifest`
+- `client_mod_manifest`
+- `required_client_mods_missing`
+- `all_client_mods_match`
+
+Why this exists:
+
+- We needed explicit request/response confirmation before entering sensitive GW scenes, and explicit positive completion to release client gating.
+
+#### Component E: Notify-first rejection flow with safe fallback
+
+Files:
+
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+
+What was created:
+
+- On mismatch, server now notifies the client first (`required_client_mods_missing`) and waits for voluntary client disconnect.
+- If client does not disconnect in time, server forces reject.
+
+Why this exists:
+
+- Immediate server-side reject races scene transitions and often loses user-facing reason context.
+
+#### Component F: Client-side connect gate and rejection hardening
+
+File: [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+
+What was created:
+
+- `waitingForClientModMatch` gate.
+- Deferred `server_state` handling while waiting for manifest verdict.
+- Centralized missing-mod rejection path that avoids retry loops.
+- Reconnect-aware bypass of the gate where needed.
+
+Why this exists:
+
+- Prevents redirects/scene transitions before a definitive mod match/mismatch result is available.
+
+#### Component G: Reconnect-aware timeout suppression
+
+Files:
+
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+
+What was created:
+
+- `clientManifestValidatedByClientId` tracking.
+- reconnect/validated-client bypass in `requestClientManifest`.
+
+Why this exists:
+
+- Reconnect timing could trigger false manifest-timeout rejects even after prior successful validation.
+
+#### Component H: Two-pass referee generation at launch
+
+File: [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+
+What was created:
+
+- `runWithRequiredClientModsOnly(requiredIdentifiers, work)`
+- `hireRefereesForLaunch(game, isolateSharedSpecs)`
+
+Behavior:
+
+1. Shared referee pass runs with required-only client mods enabled.
+2. Local referee pass runs after restoring full local client mod set.
+3. Shared files are used for server-visible config.
+4. Local files are used for host-local overlay.
+
+Why this exists:
+
+- This is the core isolation mechanic that preserves mandatory consistency while retaining local optional behavior.
+
+#### Component I: Per-client local overlay during GW lobby mount
+
+File: [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+What was created:
+
+- `buildLocalClientOverlayFiles()` that regenerates local `.player` files using `GW.specs` + local inventory.
+- Merge of local overlay files on top of server-shared `gw_config.files` before mount.
+- `gwConfigMountInProgress` guard to prevent duplicate mount races.
+
+Why this exists:
+
+- Host-local overlay from `gw_play` alone is not enough; everyone passes through `gw_lobby` mount and would otherwise revert to shared-only files.
+
+Important implementation detail:
+
+- The final local overlay builder intentionally does not invoke `GWReferee` in `gw_lobby`, because that path can trigger community-mod scene hooks and deadlock startup.
+
+### Problems faced and how they were overcome
+
+#### Problem 1: Rejection reason lost during scene redirect
+
+Observed behavior:
+
+- Server rejection could happen while client was transitioning scenes.
+
+Resolution:
+
+- Added notify-first rejection + client-managed fail handling + server fallback timer.
+
+#### Problem 2: Missed manifest verdict due to connect state races
+
+Observed behavior:
+
+- `server_state` could arrive before manifest verdict handling completed.
+
+Resolution:
+
+- Added connect gate (`waitingForClientModMatch`) and deferred server-state processing until `all_client_mods_match` or manifest success.
+
+#### Problem 3: Reconnect loops due to manifest timeout
+
+Observed behavior:
+
+- reconnect clients could hit manifest timeout and then churn through reconnect/game-in-progress loops.
+
+Resolution:
+
+- Added reconnect/validated-client bypass in campaign and gw_lobby manifest request path.
+
+#### Problem 4: Shared file contamination by optional host mods
+
+Observed behavior:
+
+- host-only optional client mods leaked into shared generated files and crashed clients lacking those assets.
+
+Resolution:
+
+- Introduced two-pass generation with required-only shared cook and separate local cook.
+
+#### Problem 5: Host local effects disappearing
+
+Observed behavior:
+
+- host local visuals were overwritten by shared gw_config remount in gw_lobby.
+
+Resolution:
+
+- Added per-client overlay in gw_lobby so each client reapplies local `.player` variant before final mount.
+
+#### Problem 6: Startup deadlock while waiting for gw_config_ready
+
+Observed behavior:
+
+- repeated `request_gw_config` and server "Waiting for all clients to mount GW config before start".
+- host logs showed `CommunityModsManager is not defined` from gw_referee community-mod state path.
+
+Resolution:
+
+- Removed gw_lobby dependency on `GWReferee` for local overlay generation.
+- Reimplemented local overlay with direct `GW.specs` pipeline and local inventory.
+
+### End-to-end final flow (what runs now)
+
+1. Host enters connect flow and publishes required GW-affecting mod set.
+2. Campaign/lobby states store required set and request manifests from non-host clients.
+3. Clients send normalized active manifest from mounted client mods.
+4. On mismatch, client receives explicit reason and self-fails; on match, server sends `all_client_mods_match`.
+5. During co-op host fight launch:
+  - shared referee cook runs with required-only mod set,
+  - local referee cook runs with full local mod set.
+6. Server-visible `gw_config.files` come from shared cook.
+7. In gw_lobby, each client builds local `.player` overlay and merges it over shared files.
+8. Mounted result is:
+  - shared-safe baseline for all required content,
+  - local optional overlays per client.
+
+### Final notes on these changes
+
+#### Tradeoffs
+
+1. More moving parts across scenes (`connect_to_game`, `gw_play`, `gw_lobby`, campaign/lobby server states).
+2. Increased coupling to CommunityMods behavior and mount timing semantics.
+3. Additional per-client generation cost in gw_lobby startup path.
+
+#### Residual risks to monitor
+
+1. Future community-mod hook changes that alter mount timing assumptions.
+2. Any new GW scene override that bypasses this documented flow and writes directly to shared config files.
+
+### Guidance for future contributors
+
+If you change this area, verify all four invariants:
+
+1. Missing required GW-affecting mods are rejected with a clear reason.
+2. Optional client mods do not contaminate shared files.
+3. Host still sees host-local optional visuals.
+4. Viewer still sees viewer-local optional visuals without startup deadlock.
+
+Recommended files to inspect first:
+
+- [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+- [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js)
+- [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js)
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+- [ui/main/game/galactic_war/shared/gw_specs.js](ui/main/game/galactic_war/shared/gw_specs.js)
+- [generate_mod.py](generate_mod.py)
