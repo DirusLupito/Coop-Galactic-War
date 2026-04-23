@@ -12,8 +12,8 @@ var ko = require('thirdparty/knockout');
 console.log('gw_lobby server script: loaded');
 
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
-var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 10000;
-var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 10000;
+var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms
+var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 60 * 1000; // ms
 var DEFAULT_GW_PLAYERS = 6;
 var getGWMaxPlayers = function() {
     var envIndex = env.indexOf('--max-players');
@@ -235,8 +235,7 @@ function LobbyModel(creator, launchContext) {
                 return;
 
             self.clearPendingSelfDisconnectTimeout(client.id);
-            console.log('[GW_COOP] MOD CHECK [gw_lobby] client did not self-disconnect in time; forcing reject client=' + client.id);
-            server.rejectClient(client, rejectReason);
+            console.warn('[GW_COOP] MOD CHECK [gw_lobby] client did not self-disconnect after missing required mod notice; leaving connection open client=' + client.id + ' reason="' + rejectReason + '"');
         }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
     };
 
@@ -280,8 +279,7 @@ function LobbyModel(creator, launchContext) {
 
             self.clearPendingManifestTimeout(client.id);
             self.clientManifestValidatedByClientId[client.id] = false;
-            console.log('[GW_COOP] MOD CHECK [gw_lobby] manifest timeout; rejecting client=' + client.id);
-            server.rejectClient(client, self.buildMissingRequiredModsReason());
+            console.warn('[GW_COOP] MOD CHECK [gw_lobby] manifest timeout; leaving connection open client=' + client.id + ' reason="' + self.buildMissingRequiredModsReason() + '"');
         }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
     };
 

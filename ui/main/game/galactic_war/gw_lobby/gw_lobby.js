@@ -6,6 +6,34 @@ $(document).ready(function() {
     // Mark this client session as running through GW coop lobby flow.
     ko.observable(true).extend({ session: 'gw_coop_mode' });
 
+    var normalizeModIdentifier = function(identifier) {
+        if (!_.isString(identifier))
+            return '';
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length)
+            return '';
+
+        return trimmed.toLowerCase();
+    };
+
+    var extractRejectReason = function(payload) {
+        if (_.isString(payload))
+            return payload;
+
+        if (!payload)
+            return '';
+
+        if (_.isString(payload.reason))
+            return payload.reason;
+        if (_.isString(payload.message))
+            return payload.message;
+        if (_.isString(payload.payload))
+            return payload.payload;
+
+        return '';
+    };
+
     function GWLobbyViewModel() {
         var self = this;
 
@@ -91,6 +119,49 @@ $(document).ready(function() {
     model = new GWLobbyViewModel();
 
     handlers = {};
+
+    var sendClientModManifestFromScene = function(sceneName) {
+        console.log('[GW COOP] sending client mod manifest from ' + sceneName);
+        api.mods.getMounted('client', true).then(function(mountedMods) {
+            var activeIdentifiers = [];
+            var seen = {};
+
+            _.forEach(mountedMods || [], function(mod) {
+                var identifier = normalizeModIdentifier(mod && mod.identifier);
+                if (!identifier || seen[identifier])
+                    return;
+
+                seen[identifier] = true;
+                activeIdentifiers.push(identifier);
+            });
+
+            model.send_message('client_mod_manifest', {
+                active_identifiers: activeIdentifiers
+            }, function(success, response) {
+                var rejectReason = extractRejectReason(response);
+                console.log('[GW COOP] client_mod_manifest from ' + sceneName
+                    + ' success=' + !!success
+                    + ' active=' + JSON.stringify(activeIdentifiers)
+                    + ' response=' + JSON.stringify(response || {}));
+
+                if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0 && _.isFunction(model.disconnect))
+                    model.disconnect();
+            });
+        }, function() {
+            console.log('[GW COOP] getMounted(client,true) failed in ' + sceneName + '; sending empty manifest');
+            model.send_message('client_mod_manifest', {
+                active_identifiers: []
+            }, function(success, response) {
+                var rejectReason = extractRejectReason(response);
+                console.log('[GW COOP] empty client_mod_manifest from ' + sceneName
+                    + ' success=' + !!success
+                    + ' response=' + JSON.stringify(response || {}));
+
+                if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0 && _.isFunction(model.disconnect))
+                    model.disconnect();
+            });
+        });
+    };
 
     var buildLocalClientOverlayFiles = function() {
         var done = $.Deferred();
@@ -231,6 +302,22 @@ $(document).ready(function() {
             handlers.control(control);
         else
             console.log('gw_lobby: server_state missing control payload', payload);
+    };
+
+    handlers.request_client_mod_manifest = function() {
+        sendClientModManifestFromScene('gw_lobby');
+    };
+
+    handlers.required_client_mods_missing = function(payload) {
+        var rejectReason = extractRejectReason(payload);
+        console.log('[GW COOP] required_client_mods_missing in gw_lobby reason=' + rejectReason + ' payload=' + JSON.stringify(payload || {}));
+
+        if (_.isFunction(model.disconnect))
+            model.disconnect();
+    };
+
+    handlers.all_client_mods_match = function(payload) {
+        console.log('[GW COOP] all_client_mods_match in gw_lobby payload=' + JSON.stringify(payload || {}));
     };
 
     handlers.connection_disconnected = function(payload) {

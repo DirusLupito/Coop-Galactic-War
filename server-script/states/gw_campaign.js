@@ -10,8 +10,8 @@ var DEFAULT_GW_CAMPAIGN_PLAYERS = 2;
 var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 6;
 var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
 var MAX_LOBBY_CHAT_HISTORY = 100;
-var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 10000;
-var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 10000;
+var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms
+var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 60 * 1000; // ms
 
 // We determine the max players limit for the campaign lobby in a two stage process;
 // first we see if the launch option (in steam, --local-server-max-players=N) is present and valid, and if so we use that; 
@@ -232,8 +232,7 @@ function GWCampaignModel(creator) {
                 return;
 
             self.clearPendingSelfDisconnectTimeout(client.id);
-            console.log('[GW_COOP] MOD CHECK [gw_campaign] client did not self-disconnect in time; forcing reject client=' + client.id);
-            server.rejectClient(client, rejectReason);
+            console.warn('[GW_COOP] MOD CHECK [gw_campaign] client did not self-disconnect after missing required mod notice; leaving connection open client=' + client.id + ' reason="' + rejectReason + '"');
         }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
     };
 
@@ -272,8 +271,7 @@ function GWCampaignModel(creator) {
 
             self.clearPendingManifestTimeout(client.id);
             self.clientManifestValidatedByClientId[client.id] = false;
-            console.log('[GW_COOP] MOD CHECK [gw_campaign] manifest timeout; rejecting client=' + client.id);
-            server.rejectClient(client, self.buildMissingRequiredModsReason());
+            console.warn('[GW_COOP] MOD CHECK [gw_campaign] manifest timeout; leaving connection open client=' + client.id + ' reason="' + self.buildMissingRequiredModsReason() + '"');
         }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
     };
 
@@ -584,11 +582,10 @@ function GWCampaignModel(creator) {
         }
 
         self.updateControl();
-        self.sendRoleToClient(client);
-        self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
-
         if (client.id !== self.creatorId)
             self.requestClientManifest(client, reconnect);
+        self.sendRoleToClient(client);
+        self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
     };
 
     // Called when the server first enters the gw_campaign state. 
