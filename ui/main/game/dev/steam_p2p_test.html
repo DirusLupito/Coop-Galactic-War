@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html class="use-ui-scale" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <noloc><title>Steam P2P Self-Test</title></noloc>
+    <link href="bundle://boot/boot.css" rel="stylesheet" type="text/css" />
+    <link href="coui://ui/main/shared/css/landing_page.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #p2p_test_table { width: 100%; border-collapse: collapse; }
+        #p2p_test_table th, #p2p_test_table td { padding: 6px 12px; border-bottom: 1px solid #444; text-align: left; }
+        #p2p_test_table td.status { width: 120px; font-weight: bold; }
+        #p2p_test_table td.duration { width: 100px; text-align: right; }
+        #p2p_test_table td.actions { width: 80px; text-align: right; }
+        .status_pending   { color: #888; }
+        .status_running   { color: #fc0; }
+        .status_passed    { color: #5c5; }
+        .status_failed    { color: #e55; }
+        .status_skipped   { color: #88c; }
+        .status_cancelled { color: #aaa; }
+        #p2p_test_log { background: #000; color: #ccc; padding: 8px; font-family: monospace;
+                        white-space: pre; overflow: auto; max-height: 240px; }
+    </style>
+
+    <script src="bundle://boot/boot.js" type="text/javascript"></script>
+    <script src="steam_p2p_test.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="background_glow"></div>
+
+    <div class="section_title section_title_centered">
+        <noloc>Steam P2P Self-Test</noloc>
+    </div>
+
+    <div class="section_content">
+        <div class="section_wrapper">
+            <div class="container_centered" style="padding: 0 40px;">
+                <p style="margin-bottom: 16px;">
+                    <noloc>Round-trips deterministic byte patterns through SteamMsgPipe's chunking layer via an in-process socket pair. Requires Steam to be running and the current account to own the game.</noloc>
+                </p>
+
+                <div style="margin-bottom: 12px;">
+                    <div class="btn_std" data-bind="click: runAll, click_sound: 'default', css: { disabled: anyRunning }">
+                        <div class="btn_label"><noloc>Run All</noloc></div>
+                    </div>
+                    <div class="btn_std" data-bind="click: cancelRun, click_sound: 'default', css: { disabled: !anyRunning() }">
+                        <div class="btn_label"><noloc>Cancel</noloc></div>
+                    </div>
+                    <div class="btn_std" data-bind="click: resetResults, click_sound: 'default', css: { disabled: anyRunning }">
+                        <div class="btn_label"><noloc>Reset</noloc></div>
+                    </div>
+                </div>
+
+                <table id="p2p_test_table">
+                    <thead>
+                        <tr>
+                            <th><noloc>Case</noloc></th>
+                            <th><noloc>Status</noloc></th>
+                            <th style="text-align:right;"><noloc>Duration</noloc></th>
+                            <th><noloc>Message</noloc></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: cases">
+                        <tr>
+                            <td data-bind="text: name"></td>
+                            <td class="status" data-bind="text: statusLabel, css: statusClass"></td>
+                            <td class="duration" data-bind="text: durationLabel"></td>
+                            <td data-bind="text: message"></td>
+                            <td class="actions">
+                                <div class="btn_std" data-bind="click: $root.runOne, click_sound: 'default', css: { disabled: $root.anyRunning }">
+                                    <div class="btn_label small"><noloc>Run</noloc></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-top: 24px;"><noloc>Log</noloc></h3>
+                <pre id="p2p_test_log" data-bind="text: logText"></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="div_commit_cont centered">
+        <div class="container_centered">
+            <div class="div_commit_btns">
+                <div class="btn_std" data-bind="click: back, click_sound: 'default'">
+                    <div class="btn_label" style="min-width:100px;"><noloc>Back</noloc></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
