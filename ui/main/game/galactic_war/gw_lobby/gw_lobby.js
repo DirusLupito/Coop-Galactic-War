@@ -253,8 +253,21 @@ $(document).ready(function() {
         });
     };
 
-    var buildLocalClientOverlayFiles = function() {
+    var buildLocalClientOverlayFiles = function(sharedFiles) {
         var done = $.Deferred();
+
+        var sharedAIUnits;
+        if (sharedFiles && sharedFiles['/pa/units/unit_list.json.ai']) {
+            var sharedAIUnitList = sharedFiles['/pa/units/unit_list.json.ai'];
+            if (_.isString(sharedAIUnitList))
+                sharedAIUnitList = parse(sharedAIUnitList);
+            if (sharedAIUnitList && _.isArray(sharedAIUnitList.units)) {
+                sharedAIUnits = _.map(sharedAIUnitList.units, function(unit) {
+                    var tag = '.ai';
+                    return (_.isString(unit) && unit.slice(-tag.length) === tag) ? unit.slice(0, -tag.length) : unit;
+                });
+            }
+        }
 
         var gameId = ko.observable().extend({ local: 'gw_active_game' })();
         if (!gameId) {
@@ -282,14 +295,30 @@ $(document).ready(function() {
                 }
 
                 var titans = api.content.usingTitans();
+                var unitsLoad = sharedAIUnits ? $.Deferred().resolve([{ units: sharedAIUnits }]) : $.get('spec://pa/units/unit_list.json');
                 var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
                 var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
 
-                $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
+                $.when(unitsLoad, aiMapLoad, aiX1MapLoad).then(function(unitsGet, aiMapGet, aiX1MapGet) {
+                    var units = parse(unitsGet[0]).units || [];
                     var aiUnitMap = parse(aiMapGet[0]);
                     var aiX1UnitMap = parse(aiX1MapGet[0]);
+                    var enemyAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.ai');
+                    var enemyX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.ai') : {};
                     var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.player');
                     var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.player') : {};
+
+                    var aiFileGen = $.Deferred();
+                    var playerFileGen = $.Deferred();
+
+                    GW.specs.genUnitSpecs(units, '.ai').then(function(aiSpecFiles) {
+                        var aiFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.ai': enemyAIUnitMap }, aiSpecFiles);
+                        var aiFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.ai': enemyX1AIUnitMap }, aiSpecFiles) : {};
+                        var aiFiles = _.assign({}, aiFilesClassic, aiFilesX1);
+                        aiFileGen.resolve(aiFiles);
+                    }, function() {
+                        aiFileGen.resolve({});
+                    });
 
                     GW.specs.genUnitSpecs(inventory.units(), '.player').then(function(playerSpecFiles) {
                         var playerFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.player': playerAIUnitMap }, playerSpecFiles);
@@ -300,14 +329,18 @@ $(document).ready(function() {
                             GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
                         } catch (e) {
                             console.log('[GW_COOP] gw_lobby local overlay modSpecs failed', e);
-                            done.resolve({});
+                            playerFileGen.resolve({});
                             return;
                         }
-                        console.log('[GW_COOP] gw_lobby local overlay files generated', playerFiles);
-
-                        done.resolve(playerFiles);
+                        playerFileGen.resolve(playerFiles);
                     }, function() {
-                        done.resolve({});
+                        playerFileGen.resolve({});
+                    });
+
+                    $.when(aiFileGen, playerFileGen).then(function(aiFiles, playerFiles) {
+                        var localFiles = _.assign({}, aiFiles, playerFiles);
+                        console.log('[GW_COOP] gw_lobby local overlay files generated', localFiles);
+                        done.resolve(localFiles);
                     });
                 }, function() {
                     done.resolve({});
@@ -349,7 +382,7 @@ $(document).ready(function() {
             payload.files['/pa/units/unit_list.json'] = { units: units };
         }
 
-        buildLocalClientOverlayFiles().always(function(localOverlayFiles) {
+        buildLocalClientOverlayFiles(payload.files).always(function(localOverlayFiles) {
             var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
             console.log('[GW_COOP] gw_lobby merging local overlay files', localOverlayFiles, mergedFiles);
 
