@@ -30,5 +30,25 @@
         </div>
         <div class="div_bottom_margin_bar"></div>
     </div>
+
+    <div class="required_mod_gate" style="display: none;" data-bind="visible: requiredClientModGateVisible">
+        <div class="required_mod_gate_panel">
+            <div class="required_mod_gate_title">
+                <loc>Required Client Mods Missing</loc>
+            </div>
+            <div class="required_mod_gate_body">
+                <div class="required_mod_gate_warning">
+                    <loc>You can continue, but Galactic War may crash or show missing effects if you do not have these mods.</loc>
+                </div>
+                <ul class="required_mod_gate_list" data-bind="foreach: requiredClientModGateMissingMods, visible: requiredClientModGateMissingMods().length">
+                    <li data-bind="text: $data"></li>
+                </ul>
+            </div>
+            <div class="required_mod_gate_buttons">
+                <input type="button" value="I Understand" class="btn_commit" data-bind="click: acknowledgeRequiredClientModRisk, click_sound: 'default', rollover_sound: 'default'" />
+                <input type="button" value="Go Back" class="btn_commit" data-bind="click: goBackFromRequiredClientModGate, click_sound: 'default', rollover_sound: 'default'" />
+            </div>
+        </div>
+    </div>
 </body>
 </html>

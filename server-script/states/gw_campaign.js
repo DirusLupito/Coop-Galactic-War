@@ -247,15 +247,10 @@ function GWCampaignModel(creator) {
             return;
         }
 
-        if (reconnect || self.clientManifestValidatedByClientId[client.id]) {
-            console.log('[GW_COOP] MOD CHECK [gw_campaign] skipping manifest request for reconnect/validated client=' + client.id + ' reconnect=' + !!reconnect + ' validated=' + !!self.clientManifestValidatedByClientId[client.id]);
-            return;
-        }
-
         self.clearPendingManifestTimeout(client.id);
         self.clientManifestReceivedByClientId[client.id] = false;
 
-        console.log('[GW_COOP] MOD CHECK [gw_campaign] requesting manifest from client=' + client.id + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
+        console.log('[GW_COOP] MOD CHECK [gw_campaign] requesting manifest from client=' + client.id + ' reconnect=' + !!reconnect + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
 
         client.message({
             message_type: 'request_client_mod_manifest',
@@ -638,8 +633,11 @@ function GWCampaignModel(creator) {
                     self.clientManifestValidatedByClientId[msg.client.id] = false;
                     server.respond(msg).succeed({
                         missing: missingIdentifiers,
+                        missing_identifiers: missingIdentifiers,
                         reason: rejectReason,
-                        disconnecting: true
+                        required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                        required_names_by_id: _.cloneDeep(self.requiredClientModNamesById),
+                        requires_acknowledgement: true
                     });
                     self.notifyClientMissingRequiredMods(msg.client, missingIdentifiers);
                     return;
@@ -657,6 +655,11 @@ function GWCampaignModel(creator) {
                         }
                     });
                 }
+            },
+            required_client_mods_acknowledged: function(msg) {
+                self.clearPendingSelfDisconnectTimeout(msg.client.id);
+                console.log('[GW_COOP] MOD CHECK [gw_campaign] client acknowledged missing required mods client=' + msg.client.id + ' payload=' + JSON.stringify(msg.payload || {}));
+                server.respond(msg).succeed();
             },
             request_gw_campaign_snapshot: function(msg) {
                 console.log('[GW_COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);

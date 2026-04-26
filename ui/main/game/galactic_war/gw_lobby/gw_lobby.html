@@ -16,5 +16,22 @@
 
 <body>
     <panel id="building_planets" src="coui://ui/main/game/building_planets/building_planets.html" />
+    <div id="required_client_mod_gate" class="required_mod_gate" style="display: none;">
+        <div class="required_mod_gate_panel">
+            <div class="required_mod_gate_title">
+                <loc>Required Client Mods Missing</loc>
+            </div>
+            <div class="required_mod_gate_body">
+                <div class="required_mod_gate_warning">
+                    <loc>You can continue, but Galactic War may crash or show missing effects if you do not have these mods.</loc>
+                </div>
+                <ul class="required-client-mod-gate-list required_mod_gate_list"></ul>
+            </div>
+            <div class="required_mod_gate_buttons">
+                <input type="button" value="I Understand" class="btn_commit required-client-mod-gate-understand" />
+                <input type="button" value="Go Back" class="btn_commit required-client-mod-gate-back" />
+            </div>
+        </div>
+    </div>
 </body>
 </html>

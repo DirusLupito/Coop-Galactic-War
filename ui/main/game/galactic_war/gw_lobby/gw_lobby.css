@@ -28,3 +28,55 @@ body {
     display: block;
     position: absolute;
 }
+
+.required_mod_gate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 10000;
+}
+
+.required_mod_gate_panel {
+    width: 560px;
+    max-width: calc(100% - 48px);
+    padding: 18px;
+    color: #D6D6D6;
+    border: 1px solid #D83A32;
+    box-shadow: 0 0 24px rgba(216, 58, 50, 0.38);
+    background: rgba(18, 18, 18, 0.96);
+}
+
+.required_mod_gate_title {
+    margin-bottom: 12px;
+    color: #FFF;
+    font-family: "Sansation";
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.required_mod_gate_body {
+    line-height: 1.35;
+}
+
+.required_mod_gate_warning {
+    margin-top: 0;
+    color: #FF665C;
+}
+
+.required_mod_gate_list {
+    max-height: 180px;
+    margin: 12px 0 0 20px;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.required_mod_gate_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+}

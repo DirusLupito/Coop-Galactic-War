@@ -74,6 +74,41 @@ $(document).ready(function () {
         return '';
     }
 
+    function getPayloadObject(payload) {
+        if (payload && _.isObject(payload.payload))
+            return payload.payload;
+
+        return payload || {};
+    }
+
+    function isMissingRequiredModsPayload(payload) {
+        var data = getPayloadObject(payload);
+        var reason = extractRejectReason(data) || extractRejectReason(payload);
+
+        return (_.isArray(data.missing) && data.missing.length > 0)
+            || (_.isArray(data.missing_identifiers) && data.missing_identifiers.length > 0)
+            || (_.isString(reason) && reason.indexOf('Missing required mods') === 0);
+    }
+
+    function getMissingRequiredModLabels(payload) {
+        var data = getPayloadObject(payload);
+        var missingIdentifiers = data.missing_identifiers || data.missing || [];
+        var namesById = data.required_names_by_id || {};
+        var labels = [];
+        var seen = {};
+
+        _.forEach(missingIdentifiers, function(identifier) {
+            var normalizedIdentifier = normalizeModIdentifier(identifier);
+            if (!normalizedIdentifier || seen[normalizedIdentifier])
+                return;
+
+            seen[normalizedIdentifier] = true;
+            labels.push(namesById[normalizedIdentifier] || identifier);
+        });
+
+        return labels;
+    }
+
     function isGwCoopConnectContext() {
         if (!model)
             return false;
@@ -262,15 +297,16 @@ $(document).ready(function () {
         self.needsServerModsUpload = ko.observable(false);
         self.serverModsUploading = ko.observable(false);
         self.redirectURL = ko.observable(undefined);
-        self.missingModsRejectHandled = false;
-        self.missingModsRejectReason = '';
+        self.requiredClientModGateVisible = ko.observable(false);
+        self.requiredClientModGateReason = ko.observable('');
+        self.requiredClientModGateMissingMods = ko.observableArray([]);
+        self.requiredClientModGateGoingBack = false;
+        self.requiredClientModGateAcknowledged = false;
         self.waitingForClientModMatch = false;
         self.pendingServerStatePayload = undefined;
 
         self.shouldGateServerStateForClientModMatch = function() {
-            // Reconnect flows can legitimately transition scenes before the
-            // manifest callback resolves; don't block reconnect on this gate.
-            return !self.reconnectingToExistingGame();
+            return true;
         };
 
         self.beginClientModMatchWait = function(trigger) {
@@ -298,7 +334,7 @@ $(document).ready(function () {
 
             console.log('[GW COOP] complete client-mod match wait source=' + (source || 'unknown') + ' hasQueuedServerState=' + !!queuedServerState);
 
-            if (queuedServerState && !self.missingModsRejectHandled)
+            if (queuedServerState && !self.requiredClientModGateVisible())
                 handlers.server_state(queuedServerState);
         };
 
@@ -308,36 +344,68 @@ $(document).ready(function () {
                 return;
             }
 
-            console.log('[GW COOP] disconnecting client after missing-mod notice reason=' + (reason || ''));
+            console.log('[GW COOP] disconnecting client from required-mod gate reason=' + (reason || ''));
             try {
                 self.disconnect();
             } catch (e) {
-                console.error('[GW COOP] disconnect() threw while handling missing-mod rejection');
+                console.error('[GW COOP] disconnect() threw while handling required-mod gate');
                 console.error(e);
             }
         };
 
-        self.handleMissingModsRejection = function(reason) {
-            var rejectReason = _.isString(reason) && reason.length
+        self.showRequiredClientModGate = function(payload) {
+            if (self.requiredClientModGateAcknowledged) {
+                console.log('[GW COOP] ignoring duplicate required client mod gate after acknowledgement');
+                return;
+            }
+
+            var data = getPayloadObject(payload);
+            var reason = extractRejectReason(data) || extractRejectReason(payload);
+            var gateReason = _.isString(reason) && reason.length
                 ? reason
                 : 'Missing required mods';
+            var labels = getMissingRequiredModLabels(data);
 
-            if (self.missingModsRejectHandled)
-                return;
-
-            self.missingModsRejectHandled = true;
-            self.missingModsRejectReason = rejectReason;
-
-            self.cancelling(true);
             self.connecting(false);
             self.showCancel(false);
+            self.waitingForClientModMatch = true;
+            self.requiredClientModGateReason(gateReason);
+            self.requiredClientModGateMissingMods(labels);
+            self.requiredClientModGateVisible(true);
+            self.pageTitle(loc('!LOC:REQUIRED CLIENT MODS MISSING'));
+            self.pageSubTitle('');
+
+            console.log('[GW COOP] showing required client mod gate reason=' + gateReason + ' missing=' + JSON.stringify(labels));
+        };
+
+        self.acknowledgeRequiredClientModRisk = function() {
+            var reason = self.requiredClientModGateReason();
+            self.requiredClientModGateVisible(false);
+            self.requiredClientModGateAcknowledged = true;
+
+            model.send_message('required_client_mods_acknowledged', {
+                proceed: true,
+                reason: reason
+            }, function(success, response) {
+                console.log('[GW COOP] required_client_mods_acknowledged success=' + !!success + ' response=' + JSON.stringify(response || {}));
+            });
+
+            self.completeClientModMatchWait('required_client_mods_acknowledged');
+        };
+
+        self.goBackFromRequiredClientModGate = function() {
+            var reason = self.requiredClientModGateReason() || loc('!LOC:Missing required mods');
+            var transitReason = loc('!LOC:Missing required mods');
+            self.requiredClientModGateGoingBack = true;
+            self.requiredClientModGateAcknowledged = true;
+            self.requiredClientModGateVisible(false);
+            self.cancelling(true);
             self.connectionAttemptsRemaining = 0;
             self.waitingForClientModMatch = false;
             self.pendingServerStatePayload = undefined;
 
-            console.log('[GW COOP] handling missing-mod rejection with reason=' + rejectReason);
-            self.disconnectFromServer(rejectReason);
-            self.fail(rejectReason);
+            self.disconnectFromServer(reason);
+            self.fail(transitReason);
         };
 
         self.publishRequiredClientMods = function() {
@@ -407,6 +475,7 @@ $(document).ready(function () {
 
         self.sendClientModManifest = function() {
             console.log('[GW COOP] sendClientModManifest begin setup=' + self.serverSetup() + ' game=' + self.gameType());
+            self.requiredClientModGateAcknowledged = false;
             api.mods.getMounted('client', true).then(function(mountedMods) {
                 var activeIdentifiers = [];
                 var seen = {};
@@ -426,8 +495,8 @@ $(document).ready(function () {
                     var rejectReason = extractRejectReason(response);
                     console.log('[GW COOP] client_mod_manifest success=' + !!success + ' active=' + JSON.stringify(activeIdentifiers) + ' response=' + JSON.stringify(response || {}));
 
-                    if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0)
-                        self.handleMissingModsRejection(rejectReason);
+                    if (isMissingRequiredModsPayload(response))
+                        self.showRequiredClientModGate(response);
                     else if (!!success)
                         self.completeClientModMatchWait('manifest_response_success');
                 });
@@ -439,8 +508,8 @@ $(document).ready(function () {
                     var rejectReason = extractRejectReason(response);
                     console.log('[GW COOP] client_mod_manifest(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
 
-                    if (_.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0)
-                        self.handleMissingModsRejection(rejectReason);
+                    if (isMissingRequiredModsPayload(response))
+                        self.showRequiredClientModGate(response);
                     else if (!!success)
                         self.completeClientModMatchWait('manifest_response_success_empty');
                 });
@@ -664,8 +733,11 @@ $(document).ready(function () {
         api.debug.log(JSON.stringify(_.omit(model.gameInfo(),'game_password')));
         model.connecting(false);
         model.showCancel(false);
-        model.missingModsRejectHandled = false;
-        model.missingModsRejectReason = '';
+        model.requiredClientModGateVisible(false);
+        model.requiredClientModGateReason('');
+        model.requiredClientModGateMissingMods([]);
+        model.requiredClientModGateGoingBack = false;
+        model.requiredClientModGateAcknowledged = false;
         model.waitingForClientModMatch = false;
         model.pendingServerStatePayload = undefined;
 
@@ -711,9 +783,6 @@ $(document).ready(function () {
     };
 
     handlers.request_client_mod_manifest = function () {
-        if (model.missingModsRejectHandled)
-            return;
-
         console.log('[GW COOP] request_client_mod_manifest received in connect_to_game setup=' + model.serverSetup() + ' game=' + model.gameType());
         model.beginClientModMatchWait('request_client_mod_manifest');
         model.sendClientModManifest();
@@ -727,7 +796,7 @@ $(document).ready(function () {
     handlers.required_client_mods_missing = function(payload) {
         var rejectReason = extractRejectReason(payload);
         console.log('[GW COOP] required_client_mods_missing received reason=' + rejectReason + ' payload=' + JSON.stringify(payload || {}));
-        model.handleMissingModsRejection(rejectReason);
+        model.showRequiredClientModGate(payload);
     };
 
     handlers.login_rejected = function (payload) {
@@ -740,7 +809,7 @@ $(document).ready(function () {
         var missingRequiredMods = _.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0;
 
         if (missingRequiredMods)
-            return model.handleMissingModsRejection(rejectReason);
+            return model.showRequiredClientModGate(payload);
 
         if (model.shouldRetry())
             model.retryConnection();
@@ -778,12 +847,7 @@ $(document).ready(function () {
     }
 
     handlers.server_state = function (payload) {
-        if (model.missingModsRejectHandled) {
-            console.log('[GW COOP] ignoring server_state after missing-mod rejection');
-            return;
-        }
-
-        if (model.waitingForClientModMatch && model.shouldGateServerStateForClientModMatch()) {
+        if ((model.waitingForClientModMatch || model.requiredClientModGateVisible()) && model.shouldGateServerStateForClientModMatch()) {
             if (payload && payload.url)
                 model.pendingServerStatePayload = payload;
 
@@ -851,8 +915,8 @@ $(document).ready(function () {
         console.error('disconnected');
         console.error(JSON.stringify(payload));
 
-        if (model.missingModsRejectHandled) {
-            console.log('[GW COOP] duplicate disconnect after missing-mod rejection; no retry/redirect');
+        if (model.requiredClientModGateGoingBack) {
+            console.log('[GW COOP] disconnect after required-mod gate go-back; no retry/redirect');
             return;
         }
 
@@ -861,7 +925,7 @@ $(document).ready(function () {
 
         var disconnectReason = extractRejectReason(payload);
         if (_.isString(disconnectReason) && disconnectReason.indexOf('Missing required mods') === 0)
-            return model.handleMissingModsRejection(disconnectReason);
+            return model.showRequiredClientModGate(payload);
 
         if (model.shouldRetry())
             model.retryConnection();

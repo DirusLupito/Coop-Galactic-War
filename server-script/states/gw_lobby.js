@@ -255,15 +255,10 @@ function LobbyModel(creator, launchContext) {
             return;
         }
 
-        if (reconnect || self.clientManifestValidatedByClientId[client.id]) {
-            console.log('[GW_COOP] MOD CHECK [gw_lobby] skipping manifest request for reconnect/validated client=' + client.id + ' reconnect=' + !!reconnect + ' validated=' + !!self.clientManifestValidatedByClientId[client.id]);
-            return;
-        }
-
         self.clearPendingManifestTimeout(client.id);
         self.clientManifestReceivedByClientId[client.id] = false;
 
-        console.log('[GW_COOP] MOD CHECK [gw_lobby] requesting manifest from client=' + client.id + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
+        console.log('[GW_COOP] MOD CHECK [gw_lobby] requesting manifest from client=' + client.id + ' reconnect=' + !!reconnect + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
 
         client.message({
             message_type: 'request_client_mod_manifest',
@@ -767,8 +762,11 @@ function LobbyModel(creator, launchContext) {
                 self.clientManifestValidatedByClientId[msg.client.id] = false;
                 response.succeed({
                     missing: missingIdentifiers,
+                    missing_identifiers: missingIdentifiers,
                     reason: rejectReason,
-                    disconnecting: true
+                    required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                    required_names_by_id: _.cloneDeep(self.requiredClientModNamesById),
+                    requires_acknowledgement: true
                 });
                 self.notifyClientMissingRequiredMods(msg.client, missingIdentifiers);
                 return;
@@ -786,6 +784,11 @@ function LobbyModel(creator, launchContext) {
                     }
                 });
             }
+        },
+        required_client_mods_acknowledged: function(msg, response) {
+            self.clearPendingSelfDisconnectTimeout(msg.client.id);
+            console.log('[GW_COOP] MOD CHECK [gw_lobby] client acknowledged missing required mods client=' + msg.client.id + ' payload=' + JSON.stringify(msg.payload || {}));
+            response.succeed();
         }
     };
     playerMsg = _.mapValues(playerMsg, function(handler, key) {
