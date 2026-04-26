@@ -1740,8 +1740,6 @@ requireGW([
                 ui: {
                     selectedStar: self.selection.star(),
                     hoverStar: self.hoverSystem.star(),
-                    stageOffset: self.galaxy.stageOffset(),
-                    zoom: self.galaxy.zoom(),
                     timestamp: _.now()
                 }
             };
@@ -2036,15 +2034,6 @@ requireGW([
 
                 if (_.isNumber(ui.hoverStar))
                     self.hoverSystem.star(ui.hoverStar);
-
-                if (_.isArray(ui.stageOffset) && ui.stageOffset.length === 2) {
-                    self.galaxy.stage.x = ui.stageOffset[0];
-                    self.galaxy.stage.y = ui.stageOffset[1];
-                    self.galaxy.stageOffset([ui.stageOffset[0], ui.stageOffset[1]]);
-                }
-
-                if (_.isNumber(ui.zoom))
-                    self.galaxy.zoom(ui.zoom);
 
                 console.log('[GW_COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
 
