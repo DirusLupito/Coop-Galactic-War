@@ -253,21 +253,99 @@ $(document).ready(function() {
         });
     };
 
+    // In theory this should always be the same, as I see no reason why we'd
+    // ever want to change where we pull the unit list from, but in case we do,
+    // we need to update this file and this variable together. 
+    // ... and probably a billion other things if we ever do something that hair-brained... 
+    var UNIT_LIST_PATH = '/pa/units/unit_list.json';
+
+    var parseFileValue = function(value) {
+        if (!_.isString(value))
+            return value;
+
+        try {
+            return parse(value);
+        } catch (e) {
+            return undefined;
+        }
+    };
+
+    // Basic idea/what I realized when making this bugfix:
+    // We don't actually just have .player or .ai tagged units, 
+    // mods can actually create any and all sorts of tagged unit lists, and we want to support them all in the local overlay.
+    // So we need to discover all tagged unit lists, parse them, merge them into a single untagged list for the game, 
+    // and then regenerate tagged spec files for the local skin mod/effects/ whatever overlay based on the discovered tags.
+
+    var stripUnitTag = function(unit, tag) {
+        if (!_.isString(unit) || !tag || unit.slice(-tag.length) !== tag)
+            return unit;
+
+        return unit.slice(0, -tag.length);
+    };
+
+    var discoverTaggedUnitLists = function(files) {
+        var taggedLists = [];
+
+        _.forEach(files || {}, function(value, path) {
+            if (!_.isString(path) || path.indexOf(UNIT_LIST_PATH) !== 0)
+                return;
+
+            var tag = path.slice(UNIT_LIST_PATH.length);
+            if (!tag)
+                return;
+
+            var unitList = parseFileValue(value);
+            if (!unitList || !_.isArray(unitList.units))
+                return;
+
+            taggedLists.push({
+                path: path,
+                tag: tag,
+                units: _.map(unitList.units, function(unit) {
+                    return stripUnitTag(unit, tag);
+                })
+            });
+        });
+
+        return taggedLists;
+    };
+
+    var buildUntaggedUnitListFromTaggedFiles = function(files) {
+        var units = [];
+
+        _.forEach(discoverTaggedUnitLists(files), function(taggedList) {
+            var unitList = parseFileValue(files[taggedList.path]);
+            if (unitList && _.isArray(unitList.units))
+                units = units.concat(unitList.units);
+        });
+
+        return { units: _.uniq(units) };
+    };
+
     var buildLocalClientOverlayFiles = function(sharedFiles) {
         var done = $.Deferred();
+        var taggedUnitLists = discoverTaggedUnitLists(sharedFiles);
 
-        var sharedAIUnits;
-        if (sharedFiles && sharedFiles['/pa/units/unit_list.json.ai']) {
-            var sharedAIUnitList = sharedFiles['/pa/units/unit_list.json.ai'];
-            if (_.isString(sharedAIUnitList))
-                sharedAIUnitList = parse(sharedAIUnitList);
-            if (sharedAIUnitList && _.isArray(sharedAIUnitList.units)) {
-                sharedAIUnits = _.map(sharedAIUnitList.units, function(unit) {
-                    var tag = '.ai';
-                    return (_.isString(unit) && unit.slice(-tag.length) === tag) ? unit.slice(0, -tag.length) : unit;
-                });
+        var generateTaggedFiles = function(GW, units, tag) {
+            var tagDone = $.Deferred();
+
+            if (!tag || !_.isArray(units)) {
+                tagDone.resolve({});
+                return tagDone.promise();
             }
-        }
+
+            GW.specs.genUnitSpecs(units, tag).then(function(specFiles) {
+                tagDone.resolve(specFiles || {});
+            }, function() {
+                tagDone.resolve({});
+            });
+
+            return tagDone.promise();
+        };
+
+        console.log('[GW_COOP] gw_lobby discovered local overlay unit tags', _.map(taggedUnitLists, function(taggedList) {
+            return taggedList.tag;
+        }));
 
         var gameId = ko.observable().extend({ local: 'gw_active_game' })();
         if (!gameId) {
@@ -295,32 +373,28 @@ $(document).ready(function() {
                 }
 
                 var titans = api.content.usingTitans();
-                var unitsLoad = sharedAIUnits ? $.Deferred().resolve([{ units: sharedAIUnits }]) : $.get('spec://pa/units/unit_list.json');
                 var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
                 var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
 
-                $.when(unitsLoad, aiMapLoad, aiX1MapLoad).then(function(unitsGet, aiMapGet, aiX1MapGet) {
-                    var units = parse(unitsGet[0]).units || [];
+                $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
                     var aiUnitMap = parse(aiMapGet[0]);
                     var aiX1UnitMap = parse(aiX1MapGet[0]);
-                    var enemyAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.ai');
-                    var enemyX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.ai') : {};
                     var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.player');
                     var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.player') : {};
 
-                    var aiFileGen = $.Deferred();
-                    var playerFileGen = $.Deferred();
+                    var filesToProcess = [];
 
-                    GW.specs.genUnitSpecs(units, '.ai').then(function(aiSpecFiles) {
-                        var aiFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.ai': enemyAIUnitMap }, aiSpecFiles);
-                        var aiFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.ai': enemyX1AIUnitMap }, aiSpecFiles) : {};
-                        var aiFiles = _.assign({}, aiFilesClassic, aiFilesX1);
-                        aiFileGen.resolve(aiFiles);
-                    }, function() {
-                        aiFileGen.resolve({});
+                    var playerFileGen = $.Deferred();
+                    filesToProcess.push(playerFileGen);
+
+                    _.forEach(taggedUnitLists, function(taggedList) {
+                        if (taggedList.tag === '.player')
+                            return;
+
+                        filesToProcess.push(generateTaggedFiles(GW, taggedList.units, taggedList.tag));
                     });
 
-                    GW.specs.genUnitSpecs(inventory.units(), '.player').then(function(playerSpecFiles) {
+                    generateTaggedFiles(GW, inventory.units(), '.player').then(function(playerSpecFiles) {
                         var playerFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.player': playerAIUnitMap }, playerSpecFiles);
                         var playerFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.player': playerX1AIUnitMap }, playerSpecFiles) : {};
                         var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1);
@@ -337,8 +411,8 @@ $(document).ready(function() {
                         playerFileGen.resolve({});
                     });
 
-                    $.when(aiFileGen, playerFileGen).then(function(aiFiles, playerFiles) {
-                        var localFiles = _.assign({}, aiFiles, playerFiles);
+                    $.when.apply($, filesToProcess).then(function() {
+                        var localFiles = _.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments)));
                         console.log('[GW_COOP] gw_lobby local overlay files generated', localFiles);
                         done.resolve(localFiles);
                     });
@@ -375,12 +449,8 @@ $(document).ready(function() {
 
         model.gwConfigMountInProgress = true;
 
-        if (!payload.files['/pa/units/unit_list.json']) {
-            var playerUnitList = payload.files['/pa/units/unit_list.json.player'];
-            var aiUnitList = payload.files['/pa/units/unit_list.json.ai'];
-            var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
-            payload.files['/pa/units/unit_list.json'] = { units: units };
-        }
+        if (!payload.files[UNIT_LIST_PATH])
+            payload.files[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(payload.files);
 
         buildLocalClientOverlayFiles(payload.files).always(function(localOverlayFiles) {
             var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
