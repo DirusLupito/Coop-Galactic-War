@@ -310,6 +310,49 @@ $(document).ready(function() {
         return taggedLists;
     };
 
+    var findTaggedUnitList = function(taggedUnitLists, tag) {
+        var found;
+
+        _.forEach(taggedUnitLists || [], function(taggedList) {
+            if (!found && taggedList && taggedList.tag === tag)
+                found = taggedList;
+        });
+
+        return found;
+    };
+
+    var summarizeTaggedUnitLists = function(taggedUnitLists) {
+        return _.map(taggedUnitLists || [], function(taggedList) {
+            return {
+                tag: taggedList.tag,
+                units: taggedList.units.length
+            };
+        });
+    };
+
+    var modTargetExists = function(files, mod, tag) {
+        if (!mod || !_.isString(mod.file))
+            return false;
+
+        return _.has(files, mod.file) || _.has(files, mod.file + tag);
+    };
+
+    var filterModsForTaggedFiles = function(files, mods, tag) {
+        var result = {
+            applicable: [],
+            skipped: 0
+        };
+
+        _.forEach(mods || [], function(mod) {
+            if (modTargetExists(files, mod, tag))
+                result.applicable.push(mod);
+            else
+                result.skipped += 1;
+        });
+
+        return result;
+    };
+
     var buildUntaggedUnitListFromTaggedFiles = function(files) {
         var units = [];
 
@@ -343,9 +386,7 @@ $(document).ready(function() {
             return tagDone.promise();
         };
 
-        console.log('[GW_COOP] gw_lobby discovered local overlay unit tags', _.map(taggedUnitLists, function(taggedList) {
-            return taggedList.tag;
-        }));
+        console.log('[GW_COOP] gw_lobby discovered local overlay unit tags ' + JSON.stringify(summarizeTaggedUnitLists(taggedUnitLists)));
 
         var gameId = ko.observable().extend({ local: 'gw_active_game' })();
         if (!gameId) {
@@ -394,13 +435,19 @@ $(document).ready(function() {
                         filesToProcess.push(generateTaggedFiles(GW, taggedList.units, taggedList.tag));
                     });
 
-                    generateTaggedFiles(GW, inventory.units(), '.player').then(function(playerSpecFiles) {
+                    var sharedPlayerUnitList = findTaggedUnitList(taggedUnitLists, '.player');
+                    var playerUnits = sharedPlayerUnitList ? sharedPlayerUnitList.units : inventory.units();
+
+                    generateTaggedFiles(GW, playerUnits, '.player').then(function(playerSpecFiles) {
                         var playerFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.player': playerAIUnitMap }, playerSpecFiles);
                         var playerFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.player': playerX1AIUnitMap }, playerSpecFiles) : {};
                         var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1);
 
                         try {
-                            GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
+                            var filteredMods = filterModsForTaggedFiles(playerFiles, inventory.mods(), '.player');
+                            if (filteredMods.skipped > 0)
+                                console.log('[GW_COOP] gw_lobby local overlay skipped missing-target player mods count=' + filteredMods.skipped);
+                            GW.specs.modSpecs(playerFiles, filteredMods.applicable, '.player');
                         } catch (e) {
                             console.log('[GW_COOP] gw_lobby local overlay modSpecs failed', e);
                             playerFileGen.resolve({});
@@ -413,7 +460,7 @@ $(document).ready(function() {
 
                     $.when.apply($, filesToProcess).then(function() {
                         var localFiles = _.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments)));
-                        console.log('[GW_COOP] gw_lobby local overlay files generated', localFiles);
+                        console.log('[GW_COOP] gw_lobby local overlay files generated count=' + _.keys(localFiles).length);
                         done.resolve(localFiles);
                     });
                 }, function() {
