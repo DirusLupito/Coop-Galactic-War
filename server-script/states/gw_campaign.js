@@ -374,6 +374,28 @@ function GWCampaignModel(creator) {
         return client.id === self.creatorId ? 'host' : 'viewer';
     };
 
+    // Helper to check if a client is allowed to join the lobby based on 
+    // how many clients are currently connected compared to the max clients limit.
+    // Originally I programmed this so it also took reconnect into account,
+    // but since gw_campaign is a lobby state where slots can be added
+    // and removed, it means that we no longer need to worry about a scenario
+    // where all the slots are full including a slot for a client that crashed
+    // and is now trying to reconnect, but can't because the slot is still technically occupied 
+    // by their previous connection which means paradoxically that they can't reconnect to their own slot.
+    // This is because in gw_campaign, the host is still at a stage where they can just open up more slots.
+    self.hasRoomForClient = function(client) {
+        if (!client)
+            return false;
+
+        var connectedClients = _.filter(server.clients, function(existingClient) {
+            return existingClient
+                && existingClient.connected
+                && existingClient.id !== client.id;
+        });
+
+        return connectedClients.length < self.maxClients;
+    };
+
     self.getClientState = function(client) {
         return {
             role: self.getRoleForClient(client),
@@ -832,6 +854,12 @@ function GWCampaignModel(creator) {
 
         utils.pushCallback(server, 'onConnect', function(onConnect, client, reconnect) {
             console.log('[GW_COOP] gw_campaign onConnect client=' + client.name + ' id=' + client.id + ' reconnect=' + !!reconnect);
+            if (!self.hasRoomForClient(client)) {
+                console.log('[GW_COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=No room');
+                server.rejectClient(client, 'No room');
+                return onConnect;
+            }
+
             self.attachClientLifecycle(client, reconnect);
             return onConnect;
         });
