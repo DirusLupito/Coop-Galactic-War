@@ -665,6 +665,13 @@ Otherwise things will look off.
     font-size: 14px;
 }
 
+.gw-slot-loading {
+    width: 22px;
+    height: 22px;
+    margin: 0 8px 0 0;
+    flex: 0 0 auto;
+}
+
 .gw-slot-remove,
 .gw-campaign-slot-add {
     width: 32px;

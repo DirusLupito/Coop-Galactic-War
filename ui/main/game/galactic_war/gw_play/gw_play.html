@@ -164,6 +164,7 @@
                         <span data-bind="text: name"></span>
                         <span class="gw-slot-host" data-bind="visible: host"><loc> - Host</loc></span>
                     </div>
+                    <img class="gw-slot-loading working small" src="coui://ui/main/shared/img/working.svg" data-placement="top" data-bind="visible: loading, tooltip: '!LOC:Loading into lobby'" />
                     <div class="gw-slot-kick" data-bind="visible: canKick && $root.canEditGwCampaignLobby(), click: function() { $root.kickGwCampaignClient($data); }, click_sound: 'default', rollover_sound: 'default'"><loc>Kick</loc></div>
                     <div class="gw-slot-remove" data-bind="visible: canRemove && $root.canEditGwCampaignLobby(), click: function() { $root.removeGwCampaignSlot($data); }, click_sound: 'default', rollover_sound: 'default'">-</div>
                 </div>

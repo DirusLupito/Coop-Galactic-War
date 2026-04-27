@@ -46,6 +46,7 @@ function GWCampaignModel(creator) {
     self.pendingSelfDisconnectTimeoutByClientId = {};
     self.clientManifestReceivedByClientId = {};
     self.clientManifestValidatedByClientId = {};
+    self.clientLoading = {};
     self.access = {
         password: '',
         friends: [],
@@ -380,6 +381,14 @@ function GWCampaignModel(creator) {
         };
     };
 
+    self.setClientLoading = function(client, loading) {
+        if (!client)
+            return;
+
+        self.clientLoading[client.id] = !!loading;
+        self.updateControl();
+    };
+
     self.sendRoleToClient = function(client) {
         if (!client || !client.connected)
             return;
@@ -417,7 +426,8 @@ function GWCampaignModel(creator) {
             return {
                 id: client.id,
                 name: client.name || (client.id === self.creatorId ? self.creatorName : 'Player'),
-                role: self.getRoleForClient(client)
+                role: self.getRoleForClient(client),
+                loading: !!self.clientLoading[client.id]
             };
         });
         self.maxClients = Math.max(1, Math.min(self.maxClients, self.maxClientsLimit));
@@ -540,6 +550,7 @@ function GWCampaignModel(creator) {
                 console.log('[GW_COOP] gw_campaign onDisconnect client=' + client.name + ' id=' + client.id);
                 self.clearPendingManifestTimeout(client.id);
                 self.clearPendingSelfDisconnectTimeout(client.id);
+                delete self.clientLoading[client.id];
 
                 if (client.id === self.creatorId) {
                     console.log('[GW_COOP] gw_campaign creator disconnected, exiting server');
@@ -576,6 +587,7 @@ function GWCampaignModel(creator) {
             self.disconnectCleanup.push(removeDisconnectHook);
         }
 
+        self.clientLoading[client.id] = true;
         self.updateControl();
         if (client.id !== self.creatorId)
             self.requestClientManifest(client, reconnect);
@@ -665,6 +677,10 @@ function GWCampaignModel(creator) {
                 console.log('[GW_COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
                 self.sendSnapshotToClient(msg.client, 'pull_on_join');
                 server.respond(msg).succeed({ has_snapshot: !!self.lastSnapshot });
+            },
+            set_loading: function(msg) {
+                self.setClientLoading(msg.client, msg.payload && msg.payload.loading);
+                server.respond(msg).succeed();
             },
             gw_campaign_snapshot: function(msg) {
                 if (msg.client.id !== self.creatorId)

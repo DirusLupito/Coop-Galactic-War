@@ -1381,12 +1381,18 @@ requireGW([
                     id: client ? client.id : undefined,
                     name: client ? client.name : loc('!LOC:Empty Slot'),
                     host: !!(client && client.role === 'host'),
+                    loading: !!(client && client.loading),
                     empty: !client,
                     canRemove: !client && maxClients > 1,
                     canKick: !!(client && client.role !== 'host')
                 };
             });
         });
+
+        self.reportGwCampaignLoading = function(loading) {
+            if (self.gwCampaignEnabled() && _.isFunction(self.send_message))
+                self.send_message('set_loading', { loading: !!loading });
+        };
 
         self.kickGwCampaignClient = function(slot) {
             if (!slot || !slot.canKick || !self.canEditGwCampaignLobby() || !self.gwCampaignActive())
@@ -3439,6 +3445,8 @@ requireGW([
                 self.fight(self, null, false);
                 self.game().stats().turns(2); /* the turn counter naturally increments when the player flies to another system */
             }
+
+            self.reportGwCampaignLoading(false);
         };
 
         self.showSocial = ko.observable(true).extend({ session: 'show_social' });
