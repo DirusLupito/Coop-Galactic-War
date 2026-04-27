@@ -35,6 +35,11 @@ function GWCampaignModel(creator) {
 
     self.creatorId = creator.id;
     self.creatorName = creator.name;
+    // Tracks whether the gw_campaign state is active. T
+    // his is used to prevent any late-arriving messages or connections from being processed by 
+    // gw_campaign handlers after the game has gone somewhere else. Like live_game.
+    // So I don't get goddamn stuck reconnecting forever at 1 AM on a monday...
+    self.active = false;
     self.viewerReconnectTimers = {};
     self.disconnectCleanup = [];
     self.lastSnapshot = undefined;
@@ -556,6 +561,9 @@ function GWCampaignModel(creator) {
     };
 
     self.attachClientLifecycle = function(client, reconnect) {
+        if (!self.active)
+            return;
+
         if (!client)
             return;
 
@@ -620,6 +628,7 @@ function GWCampaignModel(creator) {
     // Called when the server first enters the gw_campaign state. 
     // Sets up message handlers and connection lifecycle for the campaign lobby.
     self.enter = function() {
+        self.active = true;
         server.maxClients = self.maxClients;
         console.log('[GW_COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
 
@@ -853,8 +862,11 @@ function GWCampaignModel(creator) {
         self.removeHandlers = server.setHandlers(handlers);
 
         utils.pushCallback(server, 'onConnect', function(onConnect, client, reconnect) {
+            if (!self.active)
+                return onConnect;
+
             console.log('[GW_COOP] gw_campaign onConnect client=' + client.name + ' id=' + client.id + ' reconnect=' + !!reconnect);
-            if (!self.hasRoomForClient(client)) {
+            if (!self.hasRoomForClient(client, reconnect)) {
                 console.log('[GW_COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=No room');
                 server.rejectClient(client, 'No room');
                 return onConnect;
@@ -875,10 +887,14 @@ function GWCampaignModel(creator) {
 
     self.exit = function() {
         console.log('[GW_COOP] gw_campaign exit');
+
+        // Mark the state as inactive so that any late-arriving connections or messages that somehow slip through the cracks
+        // don't get sent through gw_campaign handlers that might still be hanging around.
+        self.active = false;
         if (self.removeHandlers)
             self.removeHandlers();
 
-        if (server.onConnect.length)
+        if (server.onConnect && _.isFunction(server.onConnect.pop))
             server.onConnect.pop();
 
         _.forEach(self.viewerReconnectTimers, function(timeout) {
