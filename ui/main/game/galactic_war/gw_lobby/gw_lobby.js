@@ -330,29 +330,6 @@ $(document).ready(function() {
         });
     };
 
-    var modTargetExists = function(files, mod, tag) {
-        if (!mod || !_.isString(mod.file))
-            return false;
-
-        return _.has(files, mod.file) || _.has(files, mod.file + tag);
-    };
-
-    var filterModsForTaggedFiles = function(files, mods, tag) {
-        var result = {
-            applicable: [],
-            skipped: 0
-        };
-
-        _.forEach(mods || [], function(mod) {
-            if (modTargetExists(files, mod, tag))
-                result.applicable.push(mod);
-            else
-                result.skipped += 1;
-        });
-
-        return result;
-    };
-
     var buildUntaggedUnitListFromTaggedFiles = function(files) {
         var units = [];
 
@@ -444,13 +421,10 @@ $(document).ready(function() {
                         var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1);
 
                         try {
-                            var filteredMods = filterModsForTaggedFiles(playerFiles, inventory.mods(), '.player');
-                            if (filteredMods.skipped > 0)
-                                console.log('[GW_COOP] gw_lobby local overlay skipped missing-target player mods count=' + filteredMods.skipped);
-                            GW.specs.modSpecs(playerFiles, filteredMods.applicable, '.player');
+                            GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
                         } catch (e) {
                             console.log('[GW_COOP] gw_lobby local overlay modSpecs failed', e);
-                            playerFileGen.resolve({});
+                            playerFileGen.resolve(playerFiles);
                             return;
                         }
                         playerFileGen.resolve(playerFiles);
