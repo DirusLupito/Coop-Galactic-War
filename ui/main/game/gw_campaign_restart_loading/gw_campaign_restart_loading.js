@@ -123,7 +123,7 @@ $(document).ready(function () {
                 // but force GW mode so connect_to_game retry logic follows the
                 // same reconnect path used for Galactic War transitions.
                 self.reconnectToGameInfo(_.assign({}, reconnectInfo, {
-                    game: 'GalacticWar',
+                    game: 'Galactic War',
                     content: content
                 }));
 

@@ -403,8 +403,9 @@ function GWCampaignModel(creator) {
 
     self.getClientState = function(client) {
         return {
-            role: self.getRoleForClient(client),
-            control: self.control
+            id: client && client.id,
+            name: client && client.name,
+            role: self.getRoleForClient(client)
         };
     };
 
@@ -412,7 +413,13 @@ function GWCampaignModel(creator) {
         if (!client)
             return;
 
-        self.clientLoading[client.id] = !!loading;
+        // We no longer update control if the loading state for the client hasn't actually
+        // gone from false/ambiguous to true or from true to false/ambiguous.
+        var nextLoading = !!loading;
+        if (self.clientLoading[client.id] === nextLoading)
+            return;
+
+        self.clientLoading[client.id] = nextLoading;
         self.updateControl();
     };
 
@@ -925,6 +932,14 @@ exports.enter = function(owner) {
     model = new GWCampaignModel(owner);
     model.enter();
     return model.control;
+};
+
+// Exported so the main server script can use this client state when sending the hello message.
+exports.getClientState = function(client) {
+    if (!model || !_.isFunction(model.getClientState))
+        return {};
+
+    return model.getClientState(client);
 };
 
 exports.exit = function(newState) {
