@@ -423,7 +423,11 @@ $(document).ready(function() {
                         try {
                             GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
                         } catch (e) {
-                            console.log('[GW_COOP] gw_lobby local overlay modSpecs failed', e);
+                            var errorText = e && (e.stack || e.message || e.toString && e.toString());
+                            console.log('[GW_COOP] gw_lobby local overlay modSpecs failed error=' + (errorText || JSON.stringify(e))
+                                + ' modCount=' + inventory.mods().length
+                                + ' playerFileCount=' + _.keys(playerFiles).length
+                                + ' mods=' + JSON.stringify(inventory.mods()));
                             playerFileGen.resolve(playerFiles);
                             return;
                         }

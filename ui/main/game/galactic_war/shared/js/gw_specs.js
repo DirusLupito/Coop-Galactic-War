@@ -254,11 +254,28 @@ define([], function()
                     return console.error('Invalid operation in mod', mod);
 
                 var originalPath = (mod.path || '').split('.');
-                var path = originalPath.reverse();
+                var path = originalPath.slice(0).reverse();
 
-                var reportError = function(error, path)
+                var reportError = function(error)
                 {
-                    console.error(error, spec[level], 'spec', spec, 'mod', mod, 'path', originalPath.slice(0, -path.length).join('.'));
+                    var traversedPath = originalPath.slice(0, Math.max(0, originalPath.length - path.length)).join('.');
+                    var value;
+                    try {
+                        value = JSON.stringify(spec && spec[level]);
+                    }
+                    catch (e) {
+                        value = String(spec && spec[level]);
+                    }
+
+                    console.log('[GW_COOP] modSpecs skipped mod error=' + error
+                        + ' level=' + level
+                        + ' value=' + value
+                        + ' mod=' + JSON.stringify(mod)
+                        + ' full_path=' + originalPath.join('.')
+                        + ' traversed_path=' + traversedPath
+                        + ' remaining_path=' + path.slice(0).reverse().join('.')
+                        + ' spec_tag=' + specTag
+                        + ' available_files=' + _.keys(specs).length);
                     return undefined;
                 };
 
