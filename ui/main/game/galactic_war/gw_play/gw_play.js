@@ -1198,7 +1198,7 @@ requireGW([
         self.payload = ko.observable(payload);
     }
 
-    function GameViewModel(game, startupBattleResult) {
+    function GameViewModel(game, startupBattleResult, requiresAuthoritativeCampaignState) {
         var self = this;
 
         self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
@@ -1250,6 +1250,11 @@ requireGW([
         self.gwCampaignStartupResultSent = false;
         self.gwCampaignConnectedClients = ko.observableArray([]);
         self.gwCampaignChatHistoryRequested = false;
+        self.gwCampaignAuthoritativeStateRequired = !!requiresAuthoritativeCampaignState;
+        self.gwCampaignAuthoritativeStateReady = ko.observable(!self.gwCampaignAuthoritativeStateRequired);
+        self.gwCampaignReportedLoading = undefined;
+        self.gwCampaignLastControlLogKey = '';
+        self.gwCampaignLastRoleLogKey = '';
 
         self.showGwChatPanel = ko.observable(true);
         self.showGwSettingsPanel = ko.observable(true);
@@ -1390,8 +1395,32 @@ requireGW([
         });
 
         self.reportGwCampaignLoading = function(loading) {
+            var nextLoading = !!loading;
+            if (self.gwCampaignReportedLoading === nextLoading)
+                return;
+
+            self.gwCampaignReportedLoading = nextLoading;
+
             if (self.gwCampaignEnabled() && _.isFunction(self.send_message))
-                self.send_message('set_loading', { loading: !!loading });
+                self.send_message('set_loading', { loading: nextLoading });
+        };
+
+        // Used to indicate that we've received all the necessary information from the server to consider the campaign state 
+        // "authoritative" and ready for the player to start playing.
+        self.markGwCampaignAuthoritativeStateReady = function(reason) {
+            if (!self.gwCampaignAuthoritativeStateReady())
+                console.log('[GW_COOP] authoritative campaign state ready reason=' + (reason || 'unknown'));
+
+            self.gwCampaignAuthoritativeStateReady(true);
+
+            try {
+                if (game && game.id)
+                    sessionStorage.setItem('gw_campaign_authoritative_game_id', String(game.id));
+            }
+            catch (e) {
+            }
+
+            self.reportGwCampaignLoading(false);
         };
 
         self.kickGwCampaignClient = function(slot) {
@@ -1644,6 +1673,14 @@ requireGW([
 
             // This section handles the voluntary leave case.
             self.persistCampaignLocalCopy('leave_session').always(function() {
+                self.gwCampaignEnabled(false);
+                self.gwCampaignRole('solo');
+                try {
+                    sessionStorage.removeItem('gw_campaign_authoritative_game_id');
+                }
+                catch (e) {
+                }
+
                 self.transitPrimaryMessage(loc('!LOC:Leaving GW Co-op Session'));
                 self.transitSecondaryMessage('');
                 self.transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');
@@ -1687,6 +1724,13 @@ requireGW([
             var done = $.Deferred();
 
             if (!self.gwCampaignEnabled()) {
+                done.resolve();
+                return done.promise();
+            }
+
+            // Skip saving because the local state is likely incomplete or inaccurate.
+            if (self.gwCampaignAuthoritativeStateRequired && !self.gwCampaignAuthoritativeStateReady()) {
+                console.log('[GW_COOP] persistCampaignLocalCopy skipped before authoritative campaign state reason=' + reason);
                 done.resolve();
                 return done.promise();
             }
@@ -1778,6 +1822,19 @@ requireGW([
                 reason: reason || 'update',
                 snapshot: self.getCampaignSnapshotPayload()
             });
+        };
+
+        self.maybeSendInitialCampaignSnapshot = function(control, reason) {
+            if (!self.isCampaignHost() || !control || control.has_snapshot !== false)
+                return;
+
+            var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
+            var hasViewer = _.some(connectedClients, function(client) {
+                return client && client.role === 'viewer';
+            });
+
+            if (hasViewer)
+                self.sendCampaignSnapshot(reason || 'viewer_joined');
         };
 
         self.requestCampaignSnapshot = function(force) {
@@ -2018,6 +2075,12 @@ requireGW([
                         self.gwCampaignReceivedSnapshot = true;
                         self.gwCampaignInitialSyncRequested = false;
                         ko.observable().extend({ local: 'gw_active_game' })(hydratedGame.id);
+                        try {
+                            sessionStorage.setItem('gw_campaign_authoritative_game_id', String(hydratedGame.id));
+                        }
+                        catch (e) {
+                            console.warn('[GW_COOP] failed to set authoritative game id in sessionStorage', e);
+                        }
                         window.location.reload();
                     }, function(err) {
                         self.gwCampaignHydrationInProgress = false;
@@ -2040,6 +2103,8 @@ requireGW([
 
                 if (_.isNumber(ui.hoverStar))
                     self.hoverSystem.star(ui.hoverStar);
+
+                self.markGwCampaignAuthoritativeStateReady('snapshot_seq_' + incomingSeq);
 
                 console.log('[GW_COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
 
@@ -2236,10 +2301,14 @@ requireGW([
                 // We apply the lobby control settings sent by the server upon connection to ensure our UI reflects the actual state of the campaign lobby,
                 // especially in cases where the host might have changed some settings while we were connecting.
                 self.applyCampaignLobbyControl(incomingControl);
+                self.maybeSendInitialCampaignSnapshot(incomingControl, 'viewer_joined_server_state');
             }
             self.requestCampaignChatHistory();
 
             console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
+
+            if (self.isCampaignHost())
+                self.markGwCampaignAuthoritativeStateReady('server_state_host');
 
             // In case we are continuing a war and thereby restarting an earlier
             // campaign session, we might already have campaign lobby state that 
@@ -3446,7 +3515,8 @@ requireGW([
                 self.game().stats().turns(2); /* the turn counter naturally increments when the player flies to another system */
             }
 
-            self.reportGwCampaignLoading(false);
+            if (self.gwCampaignEnabled() && (!self.gwCampaignAuthoritativeStateRequired || self.isCampaignHost()))
+                self.markGwCampaignAuthoritativeStateReady('start');
         };
 
         self.showSocial = ko.observable(true).extend({ session: 'show_social' });
@@ -3524,43 +3594,6 @@ requireGW([
         }
     };
 
-    var parseStoredValue = function(value) {
-        var parsed = value;
-        var maxDepth = 4;
-
-        while (maxDepth-- > 0) {
-            if (_.isString(parsed)) {
-                try {
-                    parsed = JSON.parse(parsed);
-                    continue;
-                }
-                catch (e) {
-                    return parsed;
-                }
-            }
-
-            if (parsed && _.isObject(parsed) && _.has(parsed, 'value')) {
-                parsed = parsed.value;
-                continue;
-            }
-
-            break;
-        }
-
-        return parsed;
-    };
-
-    var isTruthyStorageValue = function(value) {
-        if (value === true || value === 1)
-            return true;
-
-        if (!_.isString(value))
-            return false;
-
-        var normalized = value.toLowerCase();
-        return normalized === '1' || normalized === 'true' || normalized === 'yes';
-    };
-
     var gwCampaignMode = (function() {
         var query = window.location.search || '';
         if (!query.length || query.charAt(0) !== '?')
@@ -3579,36 +3612,40 @@ requireGW([
         return false;
     })();
 
-    var gwCampaignReconnectMode = (function() {
-        if (gwCampaignMode)
-            return true;
-
-        var setup = safeStorageGet(window.sessionStorage, 'game_server_setup');
-        if (setup === 'gw_campaign')
-            return true;
-
-        var enabled = safeStorageGet(window.sessionStorage, 'gw_campaign_enabled');
-        if (isTruthyStorageValue(enabled))
-            return true;
-
-        var reconnectInfoRaw = safeStorageGet(window.localStorage, 'reconnect_to_game_info');
-        var reconnectInfo = parseStoredValue(reconnectInfoRaw);
-        if (reconnectInfo && reconnectInfo.setup === 'gw_campaign')
-            return true;
-
-        return false;
-    })();
+    var gwCampaignCoopMode = gwCampaignMode;
 
     var gameLoader = GW.manifest.loadGame(activeGameId()).then(function(game) {
-        if (game || !gwCampaignReconnectMode)
+        if (game || !gwCampaignCoopMode)
             return game;
 
-        console.log('[GW_COOP] no local gw_active_game found, creating temporary co-op placeholder reconnectMode=' + gwCampaignReconnectMode + ' queryMode=' + gwCampaignMode);
+        console.log('[GW_COOP] no local gw_active_game found, creating hidden co-op bootstrap game coopMode=' + gwCampaignCoopMode + ' queryMode=' + gwCampaignMode);
         return new GW.Game();
     });
     var documentLoader = $(document).ready();
 
-    // We can start when both are ready
+    // Used by the UI during gw_play startup to determine if the authoritative campaign state is ready.
+    // Host bypasses this and is always ready, while clients use it to figure out if they can trust
+    // their local copy of the campaign state. As opposed to markGwCampaignAuthoritativeStateReady,
+    // this is used to see if we trust the loaded game.
+    var isAuthoritativeCampaignBootstrapReady = function(game) {
+        if (!gwCampaignCoopMode || !game || !game.id)
+            return false;
+
+        // Set in connect to game.
+        var hostOpening = safeStorageGet(window.sessionStorage, 'gw_campaign_host_opening');
+        if (hostOpening === 'true') {
+            try {
+                window.sessionStorage.removeItem('gw_campaign_host_opening');
+            }
+            catch (e) {
+            }
+            return true;
+        }
+
+        var authoritativeGameId = safeStorageGet(window.sessionStorage, 'gw_campaign_authoritative_game_id');
+        return !_.isUndefined(authoritativeGameId) && String(authoritativeGameId) === String(game.id);
+    };
+
     $.when(
         gameLoader,
         documentLoader
@@ -3619,7 +3656,7 @@ requireGW([
         // If the game fails to load, going back is better than getting stuck.
         if (!game) {
             // TODO: Maybe tell the player what's up?
-            console.error('Failed loading game');
+            console.log('[GW_COOP] failed to load game, exiting to main menu');
             self.exitGame();
             return;
         }
@@ -3653,7 +3690,7 @@ requireGW([
             }
         }
 
-        model = new GameViewModel(game, startupBattleResult);
+        model = new GameViewModel(game, startupBattleResult, gwCampaignCoopMode && !isAuthoritativeCampaignBootstrapReady(game));
 
         model.setup();
 
@@ -3683,7 +3720,17 @@ requireGW([
         };
 
         handlers.gw_campaign_control = function(payload) {
-            console.log('[GW_COOP] gw_campaign_control seq=' + (payload && payload.snapshot_seq) + ' hasSnapshot=' + !!(payload && payload.has_snapshot));
+            // Used to avoid logging the same control state repeatedly.
+            var controlLogKey = [
+                payload && payload.snapshot_seq,
+                !!(payload && payload.has_snapshot),
+                payload && payload.connected_clients && payload.connected_clients.length,
+                payload && payload.max_clients
+            ].join('|');
+            if (model.gwCampaignLastControlLogKey !== controlLogKey) {
+                model.gwCampaignLastControlLogKey = controlLogKey;
+                console.log('[GW_COOP] gw_campaign_control seq=' + (payload && payload.snapshot_seq) + ' hasSnapshot=' + !!(payload && payload.has_snapshot));
+            }
             model.gwCampaignControl(payload || {});
 
             // Any time we get a campaign control message, 
@@ -3716,7 +3763,11 @@ requireGW([
             if (!payload || !payload.role)
                 return;
 
-            console.log('[GW_COOP] gw_campaign_role=' + payload.role + ' host=' + payload.host_name);
+            var roleLogKey = [payload.role, payload.host_id, payload.host_name].join('|');
+            if (model.gwCampaignLastRoleLogKey !== roleLogKey) {
+                model.gwCampaignLastRoleLogKey = roleLogKey;
+                console.log('[GW_COOP] gw_campaign_role=' + payload.role + ' host=' + payload.host_name);
+            }
             var previousRole = model.gwCampaignRole();
             model.gwCampaignEnabled(true);
             model.gwCampaignConnected(true);
@@ -3760,6 +3811,9 @@ requireGW([
                 model.gwCampaignInitialSyncRequested = true;
                 model.requestCampaignSnapshot(true);
             }
+
+            if (payload.role === 'host')
+                model.markGwCampaignAuthoritativeStateReady('role_host');
 
             // In case we restarted the server after continuing the war, 
             // we want to keep the same lobby controls and other information
@@ -3817,6 +3871,14 @@ requireGW([
 
             // This section handles the forcible disconnect case.
             model.persistCampaignLocalCopy('disconnect').always(function() {
+                model.gwCampaignEnabled(false);
+                model.gwCampaignRole('solo');
+                try {
+                    sessionStorage.removeItem('gw_campaign_authoritative_game_id');
+                }
+                catch (e) {
+                }
+
                 transitPrimaryMessage(loc('!LOC:GW Co-op session disconnected'));
                 transitSecondaryMessage('');
                 transitDestination('coui://ui/main/game/galactic_war/gw_play/gw_play.html');

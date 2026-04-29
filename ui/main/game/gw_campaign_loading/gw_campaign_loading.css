@@ -1,0 +1,17 @@
+body {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+    min-width: 1280px;
+    min-height: 720px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+div.div_options_bar div {
+    margin-bottom: 5px;
+}

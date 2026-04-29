@@ -2,24 +2,78 @@
 
 $(document).ready(function () {
 
+    var DEFAULT_CONNECTION_ATTEMPTS = 5;
+    var DEFAULT_CONNECT_DELAY = 2;
+    var DEFAULT_RETRY_DELAY = 5;
+    var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
+    var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
+
     function isGalacticWarForConnect(payload) {
         var serverGameType = payload
             && payload.data
             && payload.data.client
             && payload.data.client.game_options
             && payload.data.client.game_options.game_type;
-        var reconnectGameType = model.reconnectToGameInfo() && model.reconnectToGameInfo().game;
+        var reconnectInfo = model.reconnectToGameInfo && model.reconnectToGameInfo();
+        var reconnectGameType = reconnectInfo && reconnectInfo.game;
 
         return serverGameType === 'Galactic War'
-            || reconnectGameType === 'GalacticWar'
             || reconnectGameType === 'Galactic War';
     }
 
-    var DEFAULT_CONNECTION_ATTEMPTS = 5;
-    var DEFAULT_CONNECT_DELAY = 2;
-    var DEFAULT_RETRY_DELAY = 5;
-    var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
-    var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
+    // Checks if the connect_to_game page is being opened for a GW campaign game
+    // by looking to see if the payload state is gw_campaign or if the URL has the gw_campaign=1 parameter.
+    function isGwCampaignForConnect(payload) {
+        var url = payload && payload.url;
+
+        return (payload && payload.state === 'gw_campaign')
+            || (_.isString(url) && url.indexOf('coui://ui/main/game/galactic_war/gw_play/gw_play.html') === 0 && url.indexOf('gw_campaign=1') >= 0);
+    }
+
+    function getGwCampaignRoleFromPayload(payload) {
+        // ES5 Slop. Evaluate left to right and return falsy if any part of the chain is missing.
+        // If the chain is all truthy, return the last value.
+
+        return payload
+            && payload.data
+            && payload.data.client
+            && payload.data.client.role;
+    }
+
+    // If the payload contains a role of 'host', or if the URL parameters say both 
+    // that this is a GW campaign and that the user is starting the game
+    // then this code is being opened by a host of a GW campaign.
+    function isGwCampaignHostOpening(payload) {
+        var role = getGwCampaignRoleFromPayload(payload);
+        if (role === 'host')
+            return true;
+
+        console.log('[GW COOP] did not find host role in payload: ' + role);
+        return $.url().param('action') === 'start'
+            && $.url().param('mode') === 'gw_campaign';
+    }
+
+    // Used to set some flags in sessionStorage so that the host's UI can bypass
+    // the campaign loading process and directly open the authoritative GW campaign lobby and game UI.
+    // Specifically, gw_play looks at these flags to bypass the normal client campaign loading process.
+    function markActiveGwGameAuthoritativeForHost() {
+        var activeGameId = ko.observable().extend({ local: 'gw_active_game' })();
+
+        try {
+            sessionStorage.setItem('gw_campaign_host_opening', 'true');
+        }
+        catch (e) {
+        }
+
+        if (_.isUndefined(activeGameId) || activeGameId === null)
+            return;
+
+        try {
+            sessionStorage.setItem('gw_campaign_authoritative_game_id', String(activeGameId));
+        }
+        catch (e) {
+        }
+    }
 
     function normalizeModIdentifier(identifier) {
         if (!_.isString(identifier))
@@ -543,7 +597,7 @@ $(document).ready(function () {
                 var reconnectInfo = self.reconnectToGameInfo() || {};
                 if (_.isString(reconnectInfo.content) && reconnectInfo.content.length)
                     content = reconnectInfo.content;
-                else if (reconnectInfo.game === 'GalacticWar' || reconnectInfo.game === 'Galactic War')
+                else if (reconnectInfo.game === 'Galactic War')
                     content = 'PAExpansion1';
             }
 
@@ -857,7 +911,23 @@ $(document).ready(function () {
 
         var url = payload.url;
 
-        if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
+        if (isGwCampaignForConnect(payload)) {
+            if (isGwCampaignHostOpening(payload)) {
+                markActiveGwGameAuthoritativeForHost();
+            }
+            else {
+                var campaignTarget = url || 'coui://ui/main/game/galactic_war/gw_play/gw_play.html?gw_campaign=1';
+                // Clear any stale session flags that might interfere with the campaign loading process. 
+                try {
+                    sessionStorage.removeItem('gw_campaign_authoritative_game_id');
+                    sessionStorage.removeItem('gw_campaign_host_opening');
+                }
+                catch (e) {
+                }
+                url = 'coui://ui/main/game/gw_campaign_loading/gw_campaign_loading.html?target=' + encodeURIComponent(campaignTarget);
+            }
+        }
+        else if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
             var stagingUrl = 'coui://ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
 
             url = stagingUrl;
