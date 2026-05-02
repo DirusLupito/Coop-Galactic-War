@@ -1,6 +1,6 @@
 # Coop Galactic War Change Explanations
 
-This document captures how rough-but-working Galactic War coop was introduced, how Galactic War's generated in-memory files work, how reconnect was later fixed, how Continue War ultimately stabilized around full server-process restart, and how the galactic war lobby was implemented.
+This document captures how rough-but-working Galactic War coop was introduced, how Galactic War's generated in-memory files work, how reconnect was later fixed, how Continue War ultimately stabilized around full server-process restart, how the galactic war lobby was implemented, and how later UI/UX hardening made campaign coop easier to join, diagnose, and tune.
 
 The intent is to preserve the reasoning behind these changes so future contributors and LLMs can follow the same patterns instead of rediscovering them from scratch.
 
@@ -54,6 +54,23 @@ The intent is to preserve the reasoning behind these changes so future contribut
 - Required-mod enforcement and optional-mod isolation for GW coop:
   - `0adc233` `Clients are now rejected from coop servers if they are missing GW affecting mods.`
   - `d129a7a` `Client mods other than GW affecting mods are now isolated to each client.`
+- UI/UX improvements and co-op setup hardening:
+  - `3e6ea25` `Added new warning screen for missing required mods.`
+  - `df48a7d` `Fixed vanilla PA issue where AIs would not be affected by skin mods.`
+  - `5b5565e` `Fixed issue where skin mods would not affect AIs for arbitrary mods.`
+  - `b70db88` `Fixed issue where coop player's camera would be sent to a wrong location.`
+  - `93cd35e` `Partially fixed an issue causing the log to be spammed with file not found errors.`
+  - `61b56f8` `Added indicator to show when clients are still connecting.`
+  - `61806ca` `Server will now reject players trying to join when the lobby is full.`
+  - `aefc22c` `Fixed an issue where some tech cards would cause local skin mods to not apply.`
+  - `6ca9bdc` `Fixed stale handlers trapping reconnecting clients in live_game.`
+  - `2d36936` `Removed outdated guide information.`
+  - `6fa9066` `GW Map loading now gated behind new loading screen.`
+  - `6c7308b` `GW Reconnect now applies skin mods just like regular connect.`
+  - `43e06fa` `Added a new, more obvious open to coop button.`
+  - `8348619` `Slots can be locked to a custom slot cap.`
+  - `877149e` `Galactic war now scales in difficulty with more players.`
+  - `35de697` `Co-op players can now select and hover their own stars.`
 
 ## High-Level Summary
 
@@ -69,6 +86,11 @@ At a high level, the codebase now does all of the following:
 6. Hardens lobby discovery, slot management, chat/settings UX, and startup sequencing so the coop flow stays visible and does not race memory-file mounts.
 7. Implements Continue War as an explicit host-triggered restart protocol (`restart_prepare` + process shutdown + reconnect staging), rather than implicit reconnect-on-disconnect fallbacks.
 8. Ensures expected Save-and-Exit semantics by shutting down immediately when host exits in `game_over`, while keeping restart-only behavior isolated to the Continue War path.
+9. Gives missing-required-mod failures explicit user-facing gates instead of relying on rejection text that can be lost during scene transitions.
+10. Treats campaign-map client loading as a first-class state, using a loading scene and server-side loading indicators before viewers enter `gw_play`.
+11. Stores co-op setup intent in GW saves, including intended co-op player count and optional hard slot caps.
+12. Uses the saved co-op player count to scale generated Galactic War difficulty through AI economy and enemy minions.
+13. Keeps campaign selection local to each player while leaving movement, fighting, exploring, and card decisions host-authoritative.
 
 ## Original Single-Player Galactic War File Model
 
@@ -1866,3 +1888,295 @@ Recommended files to inspect first:
 - [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
 - [ui/main/game/galactic_war/shared/gw_specs.js](ui/main/game/galactic_war/shared/gw_specs.js)
 - [generate_mod.py](generate_mod.py)
+
+---
+
+## UI/UX Improvements and Co-op Setup Hardening (Commits `3e6ea25` through `35de697`)
+
+This branch continued the same design philosophy as the required-mod work: the host remains authoritative for campaign state, but clients should get clear UI feedback, stable local mounts, and enough local freedom to inspect the campaign map without accidentally mutating the save.
+
+The major themes were:
+
+1. make required-mod failures understandable,
+2. make skin/local overlay behavior consistent in lobby and reconnect flows,
+3. make campaign joining visibly staged instead of hoping clients enter `gw_play` with usable state,
+4. let saves carry co-op setup intent,
+5. scale generated GW difficulty from that setup intent,
+6. treat star selection as local UI state while keeping campaign actions host-only.
+
+### Required-Mod Warning Gates (`3e6ea25`)
+
+The older missing-required-mod flow depended mostly on connection rejection text. That was fragile because a rejection could race against a scene transition and leave the player with a generic failure or a retry loop.
+
+This commit introduced an explicit required-client-mod gate in three places:
+
+- [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js)
+- [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js)
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js)
+
+The client now normalizes missing-mod payloads through helper functions such as `getPayloadObject`, `isMissingRequiredModsPayload`, and `getMissingRequiredModLabels`. This lets the same UI understand both direct responses and nested message payloads.
+
+On the server side, [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) and [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js) began returning richer rejection payloads:
+
+- `missing`
+- `missing_identifiers`
+- `required_identifiers`
+- `required_names_by_id`
+- `requires_acknowledgement`
+
+The client displays the missing mod names, stops normal connect progress, and waits for the player to acknowledge. Acknowledgement sends `required_client_mods_acknowledged`, which lets the server clear its pending self-disconnect timeout. Backing out from the gate deliberately disconnects and routes through the normal failure/transit path.
+
+Important practical detail:
+
+- The manifest wait gate no longer special-cases reconnect by default. Instead, server state is held until either the required-mod gate is dismissed or the mod match succeeds. This prevents a client from being redirected deeper into GW before the mod verdict arrives.
+
+### Skin Mods, Tagged Unit Lists, and Local Overlays (`df48a7d`, `5b5565e`, `93cd35e`, `aefc22c`, `6c7308b`)
+
+These commits refined the optional-client-mod isolation model described above. The important realization was that generated GW files are not limited to `.player` and `.ai` tags. Mods can create arbitrary tagged unit lists, and local skin/effect overlays need to preserve those tags instead of rebuilding only a hard-coded pair.
+
+The local overlay builder in [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js) now does the following:
+
+1. Discovers every tagged unit list under `/pa/units/unit_list.json*`.
+2. Parses stringified file values when necessary.
+3. Strips each tag suffix from unit specs before regenerating tagged files.
+4. Synthesizes an untagged `/pa/units/unit_list.json` from all discovered tagged lists if the shared payload did not include one.
+5. Regenerates local files for every discovered non-player tag.
+6. Regenerates `.player` from the shared `.player` unit list when present, otherwise from the local GW inventory.
+7. Applies the local inventory mods to the local `.player` files.
+8. Merges the local overlay over the shared host files before mounting.
+
+This solved several adjacent problems:
+
+- Vanilla PA skin mods now affect AI-tagged GW units, not only player-tagged units.
+- Arbitrary mod-created tags can survive the local overlay pass.
+- Missing untagged unit lists are synthesized consistently.
+- The logs are less noisy because discovered tag summaries and generated file counts are logged instead of dumping huge file maps.
+- If `GW.specs.modSpecs` fails while applying local player inventory mods, the code now still resolves with the generated player files. This keeps local skin mods working even when a tech card targets a file that is not present in the locally generated overlay.
+
+The reconnect path in [ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/gw_reconnect_loading/gw_reconnect_loading.js) was then updated to mirror the lobby overlay behavior. Reconnect used to remount the server's replay-config files and enter `live_game`. Now it also builds the local overlay, merges it, mounts the merged file set, calls `api.game.setUnitSpecTag('.player')`, refreshes spec data, and only then enters the live game.
+
+The shared `GW.specs.modSpecs` helper in both `ui/main/game/galactic_war/shared/gw_specs.js` and `ui/main/game/galactic_war/shared/js/gw_specs.js` also gained clearer logging for skipped or invalid mod paths. The function now preserves the original path array instead of mutating it with `reverse()`, and logs the traversed path, remaining path, spec tag, and available file count. This matters because GW card mods often fail because the generated unit universe does not contain the target file, and the old log output was too opaque to diagnose.
+
+### Camera State Is Local (`b70db88`)
+
+Earlier campaign snapshots included the host's galaxy `stageOffset` and `zoom`. That made viewers' cameras jump to the host's camera position whenever a snapshot applied.
+
+This commit removed camera offset and zoom from the snapshot payload and from snapshot application. Selection was still synchronized at this point, but camera framing became local to each client.
+
+This was the first step toward the later rule:
+
+- campaign state is shared,
+- camera and viewing context are local UI state.
+
+### Campaign Lobby Loading Indicators (`61b56f8`)
+
+The campaign lobby can show connected clients before those clients have fully loaded into the GW map. Without an indicator, a host could think a viewer was ready when they were still entering the scene.
+
+This commit added server-side client loading tracking in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js):
+
+- `clientLoading` stores loading state by client id,
+- new clients begin as loading,
+- disconnected clients are removed from the loading map,
+- `set_loading` lets a client report loading completion,
+- `connected_clients` entries include `loading`.
+
+On the UI side, [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js) maps that field into `gwCampaignSlots`, and [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html) displays a small `working.svg` spinner with a "Loading into lobby" tooltip. `gw_play` calls `reportGwCampaignLoading(false)` after startup reaches the map.
+
+Later, `setClientLoading` was tightened so it only broadcasts control updates when the loading value actually changes. That avoids repeated control churn from duplicate loading reports.
+
+### Full Lobby Rejection (`61806ca`)
+
+The campaign server now rejects clients when the campaign lobby is full instead of letting them join if they somehow make a direct connection to the server (like with the connect buttons mod).
+
+The key server helper is `hasRoomForClient(client)` in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js). It counts connected clients other than the incoming client and compares that count against `maxClients`.
+
+This is intentionally simpler than a reconnect-aware live-game slot model. `gw_campaign` is still a lobby-like state, so the host can add or remove slots there. If a returning viewer cannot fit, the host can make room explicitly.
+
+### Stale Campaign Handlers (`6ca9bdc`)
+
+This commit fixed a nasty reconnect trap caused by stale `gw_campaign` handlers after the server had already moved on to another state.
+
+The campaign model now has an `active` flag:
+
+- set `true` in `enter`,
+- checked before processing late connections or lifecycle setup,
+- set `false` in `exit`.
+
+`exit` also uses a safer `server.onConnect.pop` check before removing its connect hook. The purpose is to prevent old campaign callbacks from handling late connections after the session has transitioned into `gw_lobby`, `playing`, or another state. Without this, reconnecting clients could be pulled back toward stale campaign behavior and get stuck.
+
+### Campaign Map Loading Scene (`6fa9066`)
+
+Before this branch, viewers could be redirected into `gw_play` before they had an authoritative campaign save. That was especially risky when the local client had no matching save or had stale data from an older session.
+
+This commit added a dedicated scene:
+
+- [ui/main/game/gw_campaign_loading/gw_campaign_loading.html](ui/main/game/gw_campaign_loading/gw_campaign_loading.html)
+- [ui/main/game/gw_campaign_loading/gw_campaign_loading.css](ui/main/game/gw_campaign_loading/gw_campaign_loading.css)
+- [ui/main/game/gw_campaign_loading/gw_campaign_loading.js](ui/main/game/gw_campaign_loading/gw_campaign_loading.js)
+
+[ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js) now detects `gw_campaign` server state. Hosts are allowed to enter directly after marking their current active GW save as authoritative in session storage. Viewers are routed to `gw_campaign_loading` with the intended `gw_play` target URL.
+
+The loading scene:
+
+1. tracks the client's campaign role,
+2. requests `request_gw_campaign_snapshot` when acting as a viewer,
+3. retries snapshot requests while waiting,
+4. saves the received authoritative `GW.Game`,
+5. writes `gw_active_game`,
+6. records `gw_campaign_authoritative_game_id`,
+7. then enters `gw_play`.
+
+This makes the viewer entry flow explicit: a viewer should not trust local campaign state until the host snapshot has been saved and marked authoritative.
+
+To support this, [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) exports `getClientState(client)` so the main server hello path can include role information early enough for the loading scene to make decisions.
+
+### More Obvious Open-to-Co-op Entry (`43e06fa`)
+
+This commit added a prominent "Call for Reinforcements!" prompt to the GW map. The old menu item still existed, but the prompt makes the co-op path much harder to miss.
+
+The implementation is intentionally local UI state:
+
+- `canOpenCoopSession` already knows whether the current save can open co-op.
+- `openCoopPromptDismissed` lets the player close the prompt.
+- `showOpenCoopPrompt` is true when co-op can be opened and the prompt has not been dismissed.
+- Clicking the prompt calls the existing `openToCoop`.
+
+The assets `bground_alert_rest_coop.png`, `bground_alert_hover_coop.png`, and `bground_alert_active_coop.png` provide the prompt frame states, with styling in [ui/main/game/galactic_war/gw_play/gw_play.css](ui/main/game/galactic_war/gw_play/gw_play.css).
+
+They were created by the newly added python utility script `recolor.py` which took in the alert pictures for catalyst and halley readiness and recolored them using a gradient and color map.
+
+### Save-Based Co-op Slot Count and Slot Locking (`8348619`)
+
+This commit added a save-level co-op setup contract.
+
+New fields in [ui/main/game/galactic_war/shared/js/gw_game.js](ui/main/game/galactic_war/shared/js/gw_game.js):
+
+- `coopPlayers`
+- `coopPlayersSpecified`
+- `lockCoopPlayers`
+
+These are persisted through `load` and `save`. The distinction between `coopPlayers` and `coopPlayersSpecified` is intentional:
+
+- `coopPlayers` is the numeric value,
+- `coopPlayersSpecified` means the player actually typed a value in the setup field.
+
+That distinction preserves legacy behavior. A blank setup field can still allow the old default "open to co-op with two slots" behavior, while difficulty scaling and explicit slot setup can treat blank as "no explicit co-op player-count intent."
+
+The start screen in [ui/main/game/galactic_war/gw_start/gw_start.html](ui/main/game/galactic_war/gw_start/gw_start.html), [ui/main/game/galactic_war/gw_start/gw_start.css](ui/main/game/galactic_war/gw_start/gw_start.css), and [ui/main/game/galactic_war/gw_start/gw_start.js](ui/main/game/galactic_war/gw_start/gw_start.js) gained:
+
+- a number input for the intended number of co-op slots,
+- a checkbox for locking the number of slots,
+- tooltip text matching the existing GW setup style,
+- `normalizedNewGameCoopPlayers`,
+- `newGameCoopPlayersSpecified`,
+- regeneration when these setup values change.
+
+When a vanilla GW save is created, the new fields are copied into the `GW.Game`.
+
+The campaign lobby side then applies those saved settings in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- `savedCoopPlayers`
+- `savedCoopPlayersSpecified`
+- `savedCoopPlayersLocked`
+- `buildCampaignLobbySettingsPayload`
+- `applySavedCoopSettingsToCampaignLobby`
+
+`applySavedCoopSettingsToCampaignLobby` runs only for the host, only once per campaign session, and only after the campaign connection exists. If neither a player count nor a lock was specified, it marks itself applied and leaves legacy behavior alone.
+
+On the server side, [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) gained:
+
+- `baseMaxClientsLimit`, sourced from the process/local-server max player limit,
+- `maxClientsLimit`, which can be reduced by a save lock,
+- `maxClientsLocked`,
+- `max_clients_locked` and `max_clients_limit` in control/settings responses.
+
+When the host sends `max_clients_locked`, the server clamps the requested save-based limit against the base server limit. The effective maximum becomes the save's locked maximum, bounded by the server's own configured maximum. The live `maxClients` value is then clamped to the effective limit and copied to `server.maxClients`.
+
+Important modder contract:
+
+- Mods that replace GW creation must set the new `GW.Game` fields themselves before saving. The base game should not silently patch mod-created saves after the fact.
+
+### Co-op Difficulty Scaling (`877149e`)
+
+Difficulty scaling is applied at war generation time in [ui/main/game/galactic_war/gw_start/gw_start.js](ui/main/game/galactic_war/gw_start/gw_start.js), inside the existing AI difficulty ramping block.
+
+The code reads:
+
+```js
+var coopPlayers = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+```
+
+That means explicit co-op setup affects generated difficulty, while a blank field keeps solo difficulty scaling even though old co-op slot defaults can still be used later.
+
+AI economy scaling uses:
+
+- `AI_ECON_PER_PLAYER`
+- `MAX_AI_ECON_PLAYER_SCALING`
+
+The multiplier is:
+
+```js
+1 + ((coopPlayers - 1) * AI_ECON_PER_PLAYER)
+```
+
+clamped by `MAX_AI_ECON_PLAYER_SCALING`, then applied to each AI's `econ_rate` after the normal GW distance/difficulty value is computed.
+
+Enemy minion scaling uses:
+
+- `AI_ADDITIONAL_PLAYERS_FOR_MINION`
+- `AI_EXTRA_MINIONS_FROM_COOP_SCALING`
+- `AI_EXTRA_MINION_DISTANCE_SCALING`
+- `MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING`
+
+The first part is a flat co-op pressure bonus:
+
+```js
+Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION)
+    * AI_EXTRA_MINIONS_FROM_COOP_SCALING
+```
+
+The second part multiplies that flat bonus by the system's relative distance from the start:
+
+```js
+numMinionsToAdd += Math.floor(numMinionsToAdd * distRatio * AI_EXTRA_MINION_DISTANCE_SCALING);
+```
+
+This preserves an immediate co-op difficulty bump while still making deeper systems harder instead of plateauing at the same bonus everywhere.
+
+### Independent Viewer Selection and Hover (`35de697`)
+
+Originally the host's selected and hovered star were treated as shared UI state:
+
+- snapshots carried `selectedStar` and `hoverStar`,
+- viewers applied those snapshot values,
+- host clicks sent `select_star`,
+- viewer `canSelect` returned false outside replayed host actions.
+
+That made co-op viewers feel locked to the host's inspection target. It also confused the conceptual model, because selecting a star is not the same thing as moving to that star.
+
+This commit made star selection local:
+
+- snapshots no longer include `selectedStar` or `hoverStar`,
+- snapshot application no longer changes the viewer's selection or hover,
+- `select_star` replay was removed,
+- host clicks no longer send `select_star`,
+- viewers are allowed through `canSelect` so they can click visible/reachable systems for inspection.
+
+Movement and campaign actions remain host-authoritative:
+
+- `canMove` still blocks viewers outside replayed host actions,
+- `canFight` still blocks viewers,
+- `canExplore` still blocks viewers,
+- card decisions and battle launch still flow through the existing host action/snapshot system.
+
+The result is that every player can inspect the map independently, while only the host can mutate campaign state.
+
+### Practical Lessons From This Branch
+
+1. Treat user-facing failure states as scenes or gates, not as incidental rejection strings.
+2. Distinguish authoritative campaign state from local UI state. Saves, current star, cards, AI ownership, and battle results are shared. Camera, hover, and selected inspection target are local.
+3. When mounting GW generated files, assume there may be more than `.player` and `.ai` tags.
+4. Reconnect and lobby entry need the same local overlay behavior, otherwise optional local mods will behave differently depending on how the client entered the match.
+5. Save-level co-op settings are part of the GW save contract. Mods that replace save creation need to populate those fields explicitly.
+6. Never let a viewer enter `gw_play` believing stale local campaign data is authoritative. Gate viewer entry until a host snapshot has been saved and marked authoritative.
+7. Keep campaign server state guarded with active/inactive lifecycle flags. Late callbacks after a state transition are a real reconnect hazard.
