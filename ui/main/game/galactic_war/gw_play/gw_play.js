@@ -1842,8 +1842,6 @@ requireGW([
             return {
                 game: gameSave,
                 ui: {
-                    selectedStar: self.selection.star(),
-                    hoverStar: self.hoverSystem.star(),
                     timestamp: _.now()
                 }
             };
@@ -2152,12 +2150,6 @@ requireGW([
                 if (incomingSeq > self.gwCampaignAppliedSnapshotSeq)
                     self.gwCampaignAppliedSnapshotSeq = incomingSeq;
 
-                if (_.isNumber(ui.selectedStar))
-                    self.selection.star(ui.selectedStar);
-
-                if (_.isNumber(ui.hoverStar))
-                    self.hoverSystem.star(ui.hoverStar);
-
                 self.markGwCampaignAuthoritativeStateReady('snapshot_seq_' + incomingSeq);
 
                 console.log('[GW_COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
@@ -2202,13 +2194,6 @@ requireGW([
                     GW.manifest.saveGame(game);
                 }
 
-                self.gwCampaignReplayingAction = false;
-                return;
-            }
-
-            if (action.type === 'select_star' && _.isNumber(payload.star)) {
-                self.selection.star(payload.star);
-                self.syncViewerStarsFromGame('after_action_select_star', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -2681,9 +2666,6 @@ requireGW([
 
         self.canSelect = function(star)
         {
-            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
-                return false;
-
             var game = self.game();
             var cheats = self.cheats;
 
@@ -2806,7 +2788,6 @@ requireGW([
             system.click.subscribe(function() {
                 if (self.canSelect(star)) {
                     self.selection.star(star);
-                    self.sendCampaignAction('select_star', { star: star });
                 }
             });
         });
