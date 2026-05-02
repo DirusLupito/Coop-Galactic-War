@@ -30,7 +30,9 @@ var model;
 
 function GWCampaignModel(creator) {
     var self = this;
-    self.maxClientsLimit = getCampaignMaxPlayersLimit();
+    self.baseMaxClientsLimit = getCampaignMaxPlayersLimit();
+    self.maxClientsLimit = self.baseMaxClientsLimit;
+    self.maxClientsLocked = false;
     self.maxClients = Math.max(1, Math.min(DEFAULT_GW_CAMPAIGN_PLAYERS, self.maxClientsLimit));
 
     self.creatorId = creator.id;
@@ -74,6 +76,7 @@ function GWCampaignModel(creator) {
         host_name: self.creatorName,
         max_clients: self.maxClients,
         max_clients_limit: self.maxClientsLimit,
+        max_clients_locked: self.maxClientsLocked,
         connected_clients: [],
         has_snapshot: false,
         snapshot_seq: 0,
@@ -331,6 +334,20 @@ function GWCampaignModel(creator) {
         if (_.isBoolean(data.public))
             self.settings.public = data.public;
 
+        if (_.has(data, 'max_clients_locked')) {
+            self.maxClientsLocked = !!data.max_clients_locked;
+
+            if (self.maxClientsLocked) {
+                var requestedLimit = parseInt(_.has(data, 'max_clients_limit') ? data.max_clients_limit : data.max_clients);
+                if (_.isFinite(requestedLimit) && requestedLimit > 0)
+                    self.maxClientsLimit = Math.max(1, Math.min(Math.floor(requestedLimit), self.baseMaxClientsLimit));
+                else
+                    self.maxClientsLimit = Math.max(1, Math.min(1, self.baseMaxClientsLimit));
+            }
+            else
+                self.maxClientsLimit = self.baseMaxClientsLimit;
+        }
+
         if (_.has(data, 'max_clients')) {
             var connectedCount = self.getConnectedClients().length;
             var requestedMax = parseInt(data.max_clients);
@@ -340,6 +357,9 @@ function GWCampaignModel(creator) {
                 server.maxClients = self.maxClients;
             }
         }
+
+        self.maxClients = Math.max(1, Math.min(self.maxClients, self.maxClientsLimit));
+        server.maxClients = self.maxClients;
 
         self.updateBouncer(data);
 
@@ -467,6 +487,7 @@ function GWCampaignModel(creator) {
         self.maxClients = Math.max(1, Math.min(self.maxClients, self.maxClientsLimit));
         self.control.max_clients = self.maxClients;
         self.control.max_clients_limit = self.maxClientsLimit;
+        self.control.max_clients_locked = self.maxClientsLocked;
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
         self.control.settings = _.cloneDeep(self.settings);
@@ -824,7 +845,8 @@ function GWCampaignModel(creator) {
                 server.respond(msg).succeed({
                     settings: _.cloneDeep(self.settings),
                     max_clients: self.maxClients,
-                    max_clients_limit: self.maxClientsLimit
+                    max_clients_limit: self.maxClientsLimit,
+                    max_clients_locked: self.maxClientsLocked
                 });
             },
             // Handler for chat messages sent by clients in the lobby. 

@@ -132,3 +132,4 @@ Bundled third-party libraries.
 ## Notes
 - This is a general architectural guide, not a strict API contract.
 - File names and patterns are stable enough to use as navigation heuristics for new contributors or AI tools.
+- When making new changes, ensure that the python script `generate_mod.py` is up to date with all files touched.
