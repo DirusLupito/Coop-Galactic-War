@@ -1623,6 +1623,13 @@ requireGW([
         self.canOpenCoopSession = ko.computed(function() {
             return !self.gwCampaignActive() && !self.gwCampaignEnabled() && !game.isTutorial();
         });
+        self.openCoopPromptDismissed = ko.observable(false);
+        self.showOpenCoopPrompt = ko.computed(function() {
+            return self.canOpenCoopSession() && !self.openCoopPromptDismissed();
+        });
+        self.dismissOpenCoopPrompt = function() {
+            self.openCoopPromptDismissed(true);
+        };
         self.gwCampaignStatusText = ko.computed(function() {
             if (!self.gwCampaignEnabled())
                 return '';

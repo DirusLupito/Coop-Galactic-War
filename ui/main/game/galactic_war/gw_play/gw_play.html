@@ -100,6 +100,14 @@
             </div>
         </div>
         <div id="header-center" class="ignoremouse">
+            <div class="gw_coop_prompt_alert attendmouse" data-bind="visible: showOpenCoopPrompt, click: openToCoop, click_sound: 'default', rollover_sound: 'default'" style="display:none">
+                <div class="gw_coop_prompt_button">
+                    <div class="wrapper">
+                        <div class="gw_coop_prompt_text"><loc>Call for Reinforcements!</loc></div>
+                        <div class="btn_win btn_win_close" data-bind="click: dismissOpenCoopPrompt, clickBubble: false"></div>
+                    </div>
+                </div>
+            </div>
             <div class="attendmouse" data-bind="visible: gwCampaignEnabled" style="display:none; margin-top: 12px; text-align: center;">
                 <div data-bind="text: gwCampaignStatusText"></div>
                 <div data-bind="visible: isCampaignViewer" style="opacity: 0.85;"><loc>Read-only viewer mode</loc></div>

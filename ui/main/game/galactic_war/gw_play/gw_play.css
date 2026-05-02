@@ -75,6 +75,72 @@ html, body {
     width: 100%;
 }
 
+.gw_coop_prompt_alert {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.gw_coop_prompt_button {
+    width: 630px;
+    font-family: "Sansation";
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 0 0 10px #00BFFF;
+    border-image: url('coui://ui/main/game/galactic_war/gw_play/img/bground_alert_rest_coop.png') 72 72 0 72 fill;
+    border-width: 71px 71px 0 71px;
+    margin: -8px 0 -4px 0;
+    position: relative;
+    display: flex;
+    -webkit-transition: .3s ease-out;
+}
+
+.gw_coop_prompt_button:hover {
+    border-image: url('coui://ui/main/game/galactic_war/gw_play/img/bground_alert_hover_coop.png') 72 72 0 72 fill;
+}
+
+.gw_coop_prompt_button:active {
+    border-image: url('coui://ui/main/game/galactic_war/gw_play/img/bground_alert_active_coop.png') 72 72 0 72 fill;
+}
+
+.gw_coop_prompt_button > .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -69px 0 0 0;
+    flex-grow: 1;
+    position: relative;
+}
+
+.gw_coop_prompt_text {
+    white-space: normal;
+    line-height: 1;
+    margin: 0 48px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.gw_coop_prompt_alert .btn_win_close {
+    height: 20px;
+    width: 20px;
+    border: 1px solid #FFF;
+    opacity: .6;
+    flex-shrink: 0;
+    margin: 0 20px 0 0;
+}
+
+.gw_coop_prompt_alert .btn_win_close:hover {
+    opacity: 1;
+}
+
+.gw_coop_prompt_alert .btn_win_close:active {
+    opacity: .8;
+}
+
 #system-column {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
