@@ -221,6 +221,20 @@ $(document).ready(function() {
         self.newGameSizeIndex = ko.observable(1).extend({ numeric: 0 });
         self.newGameDifficultyIndex = ko.observable(1).extend({ numeric: 1});
         self.newGameHardcore = ko.observable(false);
+        self.newGameCoopPlayers = ko.observable('');
+        self.newGameLockCoopPlayers = ko.observable(false);
+
+        self.newGameCoopPlayersSpecified = ko.computed(function() {
+            var value = self.newGameCoopPlayers();
+            return !_.isUndefined(value) && value !== null && String(value).trim().length > 0;
+        });
+
+        self.normalizedNewGameCoopPlayers = ko.computed(function() {
+            var value = parseInt(self.newGameCoopPlayers());
+            if (!_.isFinite(value) || value < 1)
+                return 1;
+            return Math.floor(value);
+        });
 
         self.startCards = ko.observableArray();
         self.activeStartCardIndex = ko.observable(0);
@@ -301,6 +315,9 @@ $(document).ready(function() {
             game.mode(self.mode());
             game.hardcore(self.newGameHardcore());
             game.content(api.content.activeContent());
+            game.coopPlayers(self.normalizedNewGameCoopPlayers());
+            game.coopPlayersSpecified(self.newGameCoopPlayersSpecified());
+            game.lockCoopPlayers(self.newGameLockCoopPlayers());
 
             var useEasySystems = GW.balance.difficultyInfo[self.newGameDifficultyIndex() || 0].useEasierSystemTemplate;
             var systemTemplates = useEasySystems ? easy_system_templates : star_system_templates;
@@ -590,7 +607,9 @@ $(document).ready(function() {
                 self.playerFactionIndex(),
                 self.activeStartCard(),
                 self.newGameDifficultyIndex(),
-                self.newGameHardcore()
+                self.newGameHardcore(),
+                self.newGameCoopPlayers(),
+                self.newGameLockCoopPlayers()
             ];
         });
 

@@ -139,6 +139,10 @@
     color: black;
 }
 
+#coop-players {
+    text-align: left;
+}
+
 #new-game-right {
     width: 300px;
     display: inline-block;

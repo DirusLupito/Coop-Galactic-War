@@ -98,7 +98,16 @@
                         <input type="checkbox" data-bind="checked: newGameHardcore"/>
                         <loc>Hardcore</loc> <span id="game-settings" class="info_tip" data-bind="tooltip: '!LOC:Permanent death. No restarts when your commander is annihilated.'">?</span>
                     </label>
+                    <label style="text-transform: none" id="coop-lock-label">
+                        <input type="checkbox" data-bind="checked: newGameLockCoopPlayers"/>
+                        <loc>Lock number of slots</loc> <span id="coop-lock-settings" class="info_tip" data-bind="tooltip: '!LOC:Locks the maximum number of players to the number of slots in co-op.'">?</span>
+                    </label>
                </div>
+
+                <div class="form-group">
+                    <label for="coop-players"><loc>Number of slots in co-op</loc> <span id="coop-players-settings" class="info_tip" data-bind="tooltip: '!LOC:Specify the intended number of co-op players for difficulty scaling and co-op lobby setup. Leave blank to use the default 2.'">?</span></label>
+                    <input type="number" min="1" step="1" max="999" class="form-control" id="coop-players" name="coop-players" placeholder="2" data-bind="value: newGameCoopPlayers, valueUpdate: 'afterkeydown'" />
+                </div>
 
             </div>
         </div>

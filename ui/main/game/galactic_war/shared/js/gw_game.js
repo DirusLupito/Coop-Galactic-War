@@ -40,6 +40,9 @@ define([
         self.lastBattleResult = ko.observable();
         self.isTutorial = ko.observable();
         self.content = ko.observable();
+        self.coopPlayers = ko.observable(2);
+        self.coopPlayersSpecified = ko.observable(false);
+        self.lockCoopPlayers = ko.observable(false);
 
         self.serverModIdentifiers = ko.observableArray([]);
 
@@ -106,6 +109,10 @@ define([
             self.lastBattleResult(config.lastBattleResult);
             self.isTutorial(config.isTutorial);
             self.content(config.content);
+            var coopPlayers = parseInt(config.coopPlayers);
+            self.coopPlayers(_.isFinite(coopPlayers) && coopPlayers > 0 ? Math.floor(coopPlayers) : 1);
+            self.coopPlayersSpecified(!!config.coopPlayersSpecified);
+            self.lockCoopPlayers(!!config.lockCoopPlayers);
 
             self.serverModIdentifiers(config.serverModIdentifiers || []);
 
@@ -148,6 +155,9 @@ define([
                 lastBattleResult: self.lastBattleResult(),
                 isTutorial: self.isTutorial(),
                 content: self.content(),
+                coopPlayers: self.coopPlayers(),
+                coopPlayersSpecified: self.coopPlayersSpecified(),
+                lockCoopPlayers: self.lockCoopPlayers(),
                 serverModIdentifiers: self.serverModIdentifiers()
             };
 

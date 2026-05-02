@@ -1277,6 +1277,8 @@ requireGW([
         // gwCampaignMaxClientsLimit is the maximum number of clients that can possibly connect to a campaign session. 
         // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
         self.gwCampaignMaxClientsLimit = ko.observable(6);
+        self.gwCampaignMaxClientsLocked = ko.observable(false);
+        self.initialCoopSettingsApplied = false;
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -1371,6 +1373,77 @@ requireGW([
             self.passwordInputType(self.passwordInputType() === 'password' ? 'text' : 'password');
         };
 
+        self.savedCoopPlayers = function() {
+            var value = game && _.isFunction(game.coopPlayers) ? parseInt(game.coopPlayers()) : 1;
+            if (!_.isFinite(value) || value < 1)
+                value = 1;
+            return Math.floor(value);
+        };
+
+        self.savedCoopPlayersSpecified = function() {
+            return !!(game && _.isFunction(game.coopPlayersSpecified) && game.coopPlayersSpecified());
+        };
+
+        self.savedCoopPlayersLocked = function() {
+            return !!(game && _.isFunction(game.lockCoopPlayers) && game.lockCoopPlayers());
+        };
+
+        self.buildCampaignLobbySettingsPayload = function(maxClients) {
+            var mode = self.visibilityMode();
+            // Tag here is 'Testing', but perhaps should not be hardcoded?
+            // For beacon visibility, it can be any of 'Testing', 'Casual', 'Competitive', or 'AI Battle'.
+            var payload = {
+                game_name: self.gwLobbyTitle(),
+                public: mode === 'public',
+                friends: mode === 'friends' ? self.friends() : [],
+                password: self.privateGamePassword(),
+                tag: 'Testing'
+            };
+
+            var parsedMaxClients = parseInt(maxClients);
+            if (_.isFinite(parsedMaxClients) && parsedMaxClients > 0)
+                payload.max_clients = Math.floor(parsedMaxClients);
+
+            if (self.savedCoopPlayersLocked()) {
+                payload.max_clients_locked = true;
+                payload.max_clients_limit = self.savedCoopPlayers();
+            }
+
+            return payload;
+        };
+
+        self.applySavedCoopSettingsToCampaignLobby = function() {
+            console.log('[GW_COOP] applying saved coop slot settings to campaign lobby');
+            if (self.initialCoopSettingsApplied) {
+                console.log('[GW_COOP] already applied saved coop slot settings, skipping');
+                return;
+            }
+
+            if (!self.isCampaignHost() || !self.gwCampaignConnected()) {
+                console.log('[GW_COOP] not campaign host or not connected, skipping applying saved coop slot settings');
+                return;
+            }
+
+            var playersSpecified = self.savedCoopPlayersSpecified();
+            var playersLocked = self.savedCoopPlayersLocked();
+
+            console.log('[GW_COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked);
+            if (!playersSpecified && !playersLocked) {
+                self.initialCoopSettingsApplied = true;
+                console.log('[GW_COOP] no saved coop settings to apply, marking as applied');
+                return;
+            }
+
+            var players = self.savedCoopPlayers();
+            var payload = self.buildCampaignLobbySettingsPayload(players);
+
+            console.log('[GW_COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
+            self.initialCoopSettingsApplied = true;
+            self.send_message('modify_settings', payload, function(success, response) {
+                console.log('[GW_COOP] applied saved coop slot settings success=' + !!success + ' payload=' + JSON.stringify(payload || {}) + ' response=' + JSON.stringify(response || {}));
+            });
+        };
+
         // This will create a knockout computed observable that returns an array representing 
         // the possible campaign slots in a co-op session, and the client information for who is occupying those slots (if anyone).
         self.gwCampaignSlots = ko.computed(function() {
@@ -1454,16 +1527,7 @@ requireGW([
             if (!self.canAddGwCampaignSlot())
                 return;
 
-            var mode = self.visibilityMode();
-
-            self.send_message('modify_settings', {
-                game_name: self.gwLobbyTitle(),
-                public: mode === 'public',
-                friends: mode === 'friends' ? self.friends() : [],
-                password: self.privateGamePassword(),
-                tag: 'Testing',
-                max_clients: parseInt(self.gwCampaignMaxClients()) + 1
-            });
+            self.send_message('modify_settings', self.buildCampaignLobbySettingsPayload(parseInt(self.gwCampaignMaxClients()) + 1));
         };
 
         // Helper for removing a client slot from the campaign lobby. 
@@ -1474,16 +1538,7 @@ requireGW([
             if (!slot || !slot.canRemove || !self.canEditGwCampaignLobby() || !self.gwCampaignActive())
                 return;
 
-            var mode = self.visibilityMode();
-
-            self.send_message('modify_settings', {
-                game_name: self.gwLobbyTitle(),
-                public: mode === 'public',
-                friends: mode === 'friends' ? self.friends() : [],
-                password: self.privateGamePassword(),
-                tag: 'Testing',
-                max_clients: parseInt(self.gwCampaignMaxClients()) - 1
-            });
+            self.send_message('modify_settings', self.buildCampaignLobbySettingsPayload(parseInt(self.gwCampaignMaxClients()) - 1));
         };
 
         // Handles asking the server for the lobby's chat history.
@@ -1538,6 +1593,9 @@ requireGW([
                     self.gwCampaignMaxClientsLimit(maxClientsLimit);
             }
 
+            if (_.has(data, 'max_clients_locked'))
+                self.gwCampaignMaxClientsLocked(!!data.max_clients_locked);
+
             if (!_.has(data, 'settings') || !data.settings)
                 return;
 
@@ -1563,18 +1621,7 @@ requireGW([
             if (!self.canEditGwCampaignLobby() || !self.gwCampaignActive() || self.campaignLobbySettingsSync)
                 return;
 
-            var mode = self.visibilityMode();
-
-            // Tag here is 'Testing', but perhaps should not be hardcoded?
-            // For beacon visibility, it can be any of 'Testing', 'Casual', 'Competitive', or 'AI Battle'.
-            self.send_message('modify_settings', {
-                game_name: self.gwLobbyTitle(),
-                public: mode === 'public',
-                friends: mode === 'friends' ? self.friends() : [],
-                password: self.privateGamePassword(),
-                tag: 'Testing',
-                max_clients: self.gwCampaignMaxClients()
-            });
+            self.send_message('modify_settings', self.buildCampaignLobbySettingsPayload(self.gwCampaignMaxClients()));
         };
 
         // Applies one-time restart context after host reconnects to a newly
@@ -1886,7 +1933,7 @@ requireGW([
                     self.sendCampaignAction(actionType, payload || {});
                 }
 
-                // Modded explore implementations often bypass sync_star_cards relay.
+                // Modded explore implementations bypass sync_star_cards relay.
                 if (!self.gwCampaignReplayingAction && self.isCampaignHost() && self.gwCampaignConnected() && name === 'explore') {
                     var exploreStarIndex = game.currentStar();
                     var exploreStars = game.galaxy && game.galaxy().stars ? game.galaxy().stars() : undefined;
@@ -2321,6 +2368,7 @@ requireGW([
             // campaign session, we might already have campaign lobby state that 
             // we want to re-apply after the new session is ready.
             self.applyPendingGwCampaignRestartContext();
+            self.applySavedCoopSettingsToCampaignLobby();
 
             if (self.isCampaignViewer() && !self.gwCampaignReceivedSnapshot && !self.gwCampaignInitialSyncRequested) {
                 self.gwCampaignInitialSyncRequested = true;
@@ -3749,6 +3797,7 @@ requireGW([
             // we want to keep the same lobby controls and other information
             // from before the restart.
             model.applyPendingGwCampaignRestartContext();
+            model.applySavedCoopSettingsToCampaignLobby();
 
             if (model.isCampaignHost() && payload && payload.has_snapshot === false) {
                 var connectedClients = _.isArray(payload.connected_clients) ? payload.connected_clients : [];
@@ -3826,6 +3875,7 @@ requireGW([
             // we want to keep the same lobby controls and other information
             // from before the restart.
             model.applyPendingGwCampaignRestartContext();
+            model.applySavedCoopSettingsToCampaignLobby();
         };
 
         handlers.gw_campaign_snapshot = function(payload) {
