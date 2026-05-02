@@ -55,6 +55,35 @@ var startCards = [
 
 var baseNeutralStars = 2;
 
+// Controls the AI's economic bonus applied for every extra player beyond the host.
+// So if there are 2 players, the AI gets a AI_ECON_PER_PLAYER% econ bonus, 
+// if there are 5 players, the AI gets a 4 * AI_ECON_PER_PLAYER% econ bonus, and so on.
+var AI_ECON_PER_PLAYER = 0.2;
+
+// Maximum econ bonus the AI can get from extra players.
+var MAX_AI_ECON_PLAYER_SCALING = 10;
+
+// Controls the number of additional minions the AI gets based on the number of players. 
+// For every AI_ADDITIONAL_PLAYERS_FOR_MINION additional players beyond the host, 
+// the AI gets an additional AI_EXTRA_MINIONS_FROM_COOP_SCALING number of minions
+var AI_ADDITIONAL_PLAYERS_FOR_MINION = 2;
+
+var AI_EXTRA_MINIONS_FROM_COOP_SCALING = 1;
+
+// Scales the number of minions added based on the number of players 
+// by the relative distance of the system to the rim.
+// So if the additional number of AIs is 2 according to the above co-op scaling constants, 
+// and the system is halfway across the galaxy, and AI_EXTRA_MINION_DISTANCE_SCALING is 1, 
+// the AI gets 1 additional distance-based minion.
+// If AI_EXTRA_MINION_DISTANCE_SCALING is 2 instead, 
+// that same system gets 2 additional distance-based minions.
+// At the furthest distance, this would instead be 2 or 4 additional minions respectively.
+var AI_EXTRA_MINION_DISTANCE_SCALING = 2;
+
+// Maximum number of additional minions the AI can get from extra players.
+var MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING = 50;
+
+
 $(document).ready(function() {
     // Needed to reset the music when returning to this screen from the play screen
 
@@ -446,6 +475,11 @@ $(document).ready(function() {
                 }, 0);
                 var diffInfo = GW.balance.difficultyInfo[game.galaxy().difficultyIndex];
 
+                // We scale the economy rate of AIs to increase the difficulty in coop.
+                var coopPlayers = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+                console.log("[GW COOP] coop players for gw generation: " + coopPlayers);
+                var aiEconPlayerScaling = Math.min(1 + (Math.max(0, coopPlayers - 1) * AI_ECON_PER_PLAYER), MAX_AI_ECON_PLAYER_SCALING);
+
                 var setAIData = function(ai, dist, isBoss) {
                     //console.log("AI DIFF START: " + ai + " dist: " + dist + " boss: " + isBoss);
                     if (ai.personality === undefined)
@@ -467,6 +501,7 @@ $(document).ready(function() {
                         ai.personality.energy_drain_check = diffInfo.energyDrainCheck;
                         ai.personality.energy_demand_check = diffInfo.energyDemandCheck;
                     }
+                    ai.econ_rate = (ai.econ_rate || 1) * aiEconPlayerScaling;
 
                     if (!isBoss) {
                         ai.personality.percent_vehicle = diffInfo.percent_vehicle;
@@ -514,7 +549,21 @@ $(document).ready(function() {
                         var dist = worker.star.distance();
                         setAIData(worker.ai, dist, false);
                         var numMinions = Math.floor((diffInfo.mandatoryMinions + ((worker.star.distance() / maxDist) * 2)) * diffInfo.minionMod);
+                        
+                        // Now we add more minions if in coop to scale the difficulty.
+
+                        // Flat bonus applied to all AI systems based on the number of coop players.
+                        var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
+                        var distRatio = maxDist > 0 ? (dist / maxDist) : 0;
+
+                        // Additional bonus based on the distance of the system from the player's start.
+                        numMinionsToAdd += Math.floor(numMinionsToAdd * distRatio * AI_EXTRA_MINION_DISTANCE_SCALING);
+                        numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
+                        numMinions += numMinionsToAdd;
+                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist);
+
                         if (numMinions > 0) {
+
                             worker.ai.minions = [];
                             _.times(numMinions, function() {
                                 var mnn = _.sample(GWFactions[info.faction].minions);
