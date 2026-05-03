@@ -71,6 +71,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `8348619` `Slots can be locked to a custom slot cap.`
   - `877149e` `Galactic war now scales in difficulty with more players.`
   - `35de697` `Co-op players can now select and hover their own stars.`
+  - `1bb752a` `Added tooltip to the open to coop button.`
 
 ## High-Level Summary
 
@@ -1891,7 +1892,7 @@ Recommended files to inspect first:
 
 ---
 
-## UI/UX Improvements and Co-op Setup Hardening (Commits `3e6ea25` through `35de697`)
+## UI/UX Improvements and Co-op Setup Hardening (Commits `3e6ea25` through `1bb752a`)
 
 This branch continued the same design philosophy as the required-mod work: the host remains authoritative for campaign state, but clients should get clear UI feedback, stable local mounts, and enough local freedom to inspect the campaign map without accidentally mutating the save.
 
@@ -2171,6 +2172,50 @@ Movement and campaign actions remain host-authoritative:
 
 The result is that every player can inspect the map independently, while only the host can mutate campaign state.
 
+### Co-op Prompt Tooltip, Viewer Action Button Hiding, and Fresh Host Snapshot Joining (`1bb752a`)
+
+This commit fixed two follow-up UI issues from the independent viewer selection work, and then tightened the loading gate so stale campaign saves cannot be accepted on viewer join.
+
+The first small UX change is on the "Call for Reinforcements!" prompt. The visible prompt button in [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html) now has a tooltip:
+
+```text
+Launch campaign cooperative session
+```
+
+That makes the prompt's purpose clearer without adding more permanent text to the GW map header.
+
+The second fix handles a visual-only bug caused by local viewer selection. After viewers were allowed to select and hover their own stars, they could select a star where the old action-button bindings wanted to show Jump, Fight, Explore, or Load Save. Server-side and client-side action guards still blocked the actual action, but the button could appear under the selected star and imply that the viewer was allowed to act.
+
+The fix adds `canShowCampaignActionButtons` in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+```js
+return !self.gwCampaignEnabled() || self.isCampaignHost() || self.gwCampaignReplayingAction;
+```
+
+That computed value is used in two layers:
+
+- [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html) hides the selected-system action cluster for campaign viewers.
+- `displayMove`, `displayFight`, `displayLoadSave`, and `displayExplore` also check `canShowCampaignActionButtons()`.
+
+The `gwCampaignReplayingAction` exception is important because viewers still need replayed host actions to run through existing movement/fight/explore code paths internally. The UI is hidden during normal viewer inspection, but host-authored replay remains allowed.
+
+The larger synchronization fix is in the initial campaign loading path. The loading scene from `6fa9066` was correct in principle: viewers should not enter `gw_play` until a host-authored campaign snapshot has been saved locally and marked authoritative. However, the server still had two stale-state escape hatches:
+
+- `attachClientLifecycle` sent the server's cached `lastSnapshot` to a joining/reconnecting viewer.
+- `request_gw_campaign_snapshot` also sent cached `lastSnapshot` directly.
+
+That meant a viewer could rejoin after the host had moved while alone, receive the old cached snapshot, save it, and enter `gw_play` at the wrong current star. The viewer's local save was not the real problem; the server was allowing an old cached snapshot to masquerade as the host's current state.
+
+The new rule is stricter:
+
+- For viewer join/reconnect, [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) no longer sends cached snapshots at all.
+- `request_gw_campaign_snapshot` no longer serves `lastSnapshot` to viewers.
+- The server instead sends `request_gw_campaign_snapshot_publish` to the live host through `requestSnapshotFromHost`.
+- The host handles `request_gw_campaign_snapshot_publish` in `gw_play.js` and calls `sendCampaignSnapshot(reason, true)`.
+- The new `force` argument lets that host snapshot bypass the normal cooldown and "only send when a viewer is already visible in control state" guard.
+
+The intended architecture is now explicit: on initial campaign load, a viewer disregards their prior local save and waits for the host's live `GW.Game` state. If the host cannot publish a fresh snapshot, the viewer stays in the loading/retry flow instead of accepting undefined or stale server state.
+
 ### Practical Lessons From This Branch
 
 1. Treat user-facing failure states as scenes or gates, not as incidental rejection strings.
@@ -2178,5 +2223,5 @@ The result is that every player can inspect the map independently, while only th
 3. When mounting GW generated files, assume there may be more than `.player` and `.ai` tags.
 4. Reconnect and lobby entry need the same local overlay behavior, otherwise optional local mods will behave differently depending on how the client entered the match.
 5. Save-level co-op settings are part of the GW save contract. Mods that replace save creation need to populate those fields explicitly.
-6. Never let a viewer enter `gw_play` believing stale local campaign data is authoritative. Gate viewer entry until a host snapshot has been saved and marked authoritative.
+6. Never let a viewer enter `gw_play` believing stale local campaign data is authoritative. Gate viewer entry until a fresh host snapshot has been saved and marked authoritative; cached server snapshots are not authoritative for initial viewer load.
 7. Keep campaign server state guarded with active/inactive lifecycle flags. Late callbacks after a state transition are a real reconnect hazard.
