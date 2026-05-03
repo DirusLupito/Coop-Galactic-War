@@ -363,7 +363,7 @@ $(document).ready(function() {
             return tagDone.promise();
         };
 
-        console.log('[GW_COOP] gw_lobby discovered local overlay unit tags ' + JSON.stringify(summarizeTaggedUnitLists(taggedUnitLists)));
+        console.log('[GW COOP] gw_lobby discovered local overlay unit tags ' + JSON.stringify(summarizeTaggedUnitLists(taggedUnitLists)));
 
         var gameId = ko.observable().extend({ local: 'gw_active_game' })();
         if (!gameId) {
@@ -424,7 +424,7 @@ $(document).ready(function() {
                             GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
                         } catch (e) {
                             var errorText = e && (e.stack || e.message || e.toString && e.toString());
-                            console.log('[GW_COOP] gw_lobby local overlay modSpecs failed error=' + (errorText || JSON.stringify(e))
+                            console.log('[GW COOP] gw_lobby local overlay modSpecs failed error=' + (errorText || JSON.stringify(e))
                                 + ' modCount=' + inventory.mods().length
                                 + ' playerFileCount=' + _.keys(playerFiles).length
                                 + ' mods=' + JSON.stringify(inventory.mods()));
@@ -438,7 +438,7 @@ $(document).ready(function() {
 
                     $.when.apply($, filesToProcess).then(function() {
                         var localFiles = _.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments)));
-                        console.log('[GW_COOP] gw_lobby local overlay files generated count=' + _.keys(localFiles).length);
+                        console.log('[GW COOP] gw_lobby local overlay files generated count=' + _.keys(localFiles).length);
                         done.resolve(localFiles);
                     });
                 }, function() {
@@ -479,7 +479,7 @@ $(document).ready(function() {
 
         buildLocalClientOverlayFiles(payload.files).always(function(localOverlayFiles) {
             var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
-            console.log('[GW_COOP] gw_lobby merging local overlay files', localOverlayFiles, mergedFiles);
+            console.log('[GW COOP] gw_lobby merging local overlay files', localOverlayFiles, mergedFiles);
 
             var cookedFiles = _.mapValues(mergedFiles, function(value) {
                 if (typeof value !== 'string')

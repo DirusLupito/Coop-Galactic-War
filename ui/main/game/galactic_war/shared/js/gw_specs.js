@@ -267,7 +267,7 @@ define([], function()
                         value = String(spec && spec[level]);
                     }
 
-                    console.log('[GW_COOP] modSpecs skipped mod error=' + error
+                    console.log('[GW COOP] modSpecs skipped mod error=' + error
                         + ' level=' + level
                         + ' value=' + value
                         + ' mod=' + JSON.stringify(mod)

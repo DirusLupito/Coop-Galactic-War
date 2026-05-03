@@ -74,7 +74,7 @@ $(document).ready(function () {
             var hostStartDelay = Math.max(0, remainingShutdownDelay + HOST_START_MARGIN_MS);
             var viewerReconnectDelay = Math.max(0, remainingShutdownDelay + VIEWER_RECONNECT_MARGIN_MS);
 
-            console.log('[GW_COOP] restart_loading begin role=' + role + ' shutdownDelay=' + shutdownDelay + ' remainingShutdown=' + remainingShutdownDelay + ' hostStartDelay=' + hostStartDelay + ' viewerDelay=' + viewerReconnectDelay + ' token=' + restartToken);
+            console.log('[GW COOP] restart_loading begin role=' + role + ' shutdownDelay=' + shutdownDelay + ' remainingShutdown=' + remainingShutdownDelay + ' hostStartDelay=' + hostStartDelay + ' viewerDelay=' + viewerReconnectDelay + ' token=' + restartToken);
 
             self.connectionAttempts(30);
             self.connectionRetryDelaySeconds(2);
@@ -106,7 +106,7 @@ $(document).ready(function () {
                     else
                         self.serverType('uber');
 
-                    console.log('[GW_COOP] restart_loading host starting gw_campaign local=' + !!params.local + ' content=' + params.content);
+                    console.log('[GW COOP] restart_loading host starting gw_campaign local=' + !!params.local + ' content=' + params.content);
 
                     window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
                 }, hostStartDelay);
@@ -127,7 +127,7 @@ $(document).ready(function () {
                     content: content
                 }));
 
-                console.log('[GW_COOP] restart_loading viewer entering reconnect flow');
+                console.log('[GW COOP] restart_loading viewer entering reconnect flow');
 
                 window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?content=' + encodeURIComponent(content);
             }, viewerReconnectDelay);

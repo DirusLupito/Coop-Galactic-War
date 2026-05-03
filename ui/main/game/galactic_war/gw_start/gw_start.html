@@ -102,6 +102,10 @@
                         <input type="checkbox" data-bind="checked: newGameLockCoopPlayers"/>
                         <loc>Lock number of slots</loc> <span id="coop-lock-settings" class="info_tip" data-bind="tooltip: '!LOC:Locks the maximum number of players to the number of slots in co-op.'">?</span>
                     </label>
+                    <label style="text-transform: none" id="coop-share-label">
+                        <input type="checkbox" data-bind="checked: newGameSharedByDefault"/>
+                        <loc>Share control by default</loc> <span id="coop-share-settings" class="info_tip" data-bind="tooltip: '!LOC:Turn this on to default co-op lobbies to shared armies. This is only a default setting and can be changed mid-game.'">?</span>
+                    </label>
                </div>
 
                 <div class="form-group">

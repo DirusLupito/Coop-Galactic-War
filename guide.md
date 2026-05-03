@@ -1,6 +1,7 @@
 # Planetary Annihilation TITANS: `ui` + `server-script` Folder Guide
 
 This guide explains what the subfolders generally do, based on reading representative files in each area.
+Additionally, it contains notes for human and AI developers.
 
 ## Scope and approach
 - Focused on:
@@ -133,3 +134,127 @@ Bundled third-party libraries.
 - This is a general architectural guide, not a strict API contract.
 - File names and patterns are stable enough to use as navigation heuristics for new contributors or AI tools.
 - When making new changes, ensure that the python script `generate_mod.py` is up to date with all files touched.
+- Agents should not run `generate_mod.py`.
+- When writing code, do not try to silently succeed and ignore non-critical errors. Consider the following block of code:
+```javascript
+    var normalizeHumanArmiesForSharedControl = function(config, connectedClients) {
+        if (!config || !_.isArray(config.armies))
+            return;
+
+        var humanTemplate;
+        _.forEach(config.armies, function(army) {
+            if (!humanTemplate && !armyHasAI(army))
+                humanTemplate = army;
+        });
+
+        if (!humanTemplate)
+            return;
+
+        var baseSlot = _.find(humanTemplate.slots || [], function(slot) {
+            return slot && !slot.ai;
+        }) || { name: 'Player' };
+        var playerCount = Math.max(1, connectedClients.length);
+        var inserted = false;
+        var splitArmies = _.map(_.range(0, playerCount), function(index) {
+            var slot = _.clone(baseSlot);
+            delete slot.client;
+            delete slot.ai;
+
+            return {
+                slots: [slot],
+                color: getColorPairForPlayerArmy(index, humanTemplate.color),
+                econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
+                spec_tag: humanTemplate.spec_tag || '.player',
+                alliance_group: humanTemplate.alliance_group || 1
+            };
+        });
+
+        config.armies = _.reduce(config.armies, function(result, army) {
+            if (!armyHasAI(army)) {
+                if (!inserted) {
+                    result = result.concat(splitArmies);
+                    inserted = true;
+                }
+                return result;
+            }
+
+            result.push(army);
+            return result;
+        }, []);
+
+        console.log('[GW COOP] - unshared control enabled; split humans into ' + splitArmies.length + ' allied armies');
+    };
+```
+- When written this way, the code works, but it silently bypasses a couple of failures in an effort to guarantee that it doesn't crash. Consider the case when `connectedClients` is null. This code will not fail, and instead generate a single army when multiple should have been generated. The source of this strange generate would be harder to track down than if the code had just crashed and printed a message to the log. Similar problems also exist in this snippet, like with `baseSlot` defaulting to `{ name: 'Player' }` if no human slot can be found in what should be a human army. Moreover, this code fails to take into account PA specific knowledge, like how a human army will never have AI slots in it as AIs cannot share armies with human players. A better version of this same code is given below:
+```javascript
+    var normalizeHumanArmiesForSharedControl = function(config, connectedClients) {
+        if (!config || !_.isArray(config.armies)) {
+            return;
+        }
+
+        if (!connectedClients || !_.isArray(connectedClients) || connectedClients.length === 0) {
+            console.log('[GW COOP] No connected clients found.');
+            return;
+        }
+
+        var humanArmyCount = 0;
+
+        // Figure out which army is the one in normal GW that would be marked
+        // as the human player (so we can then use it as a template to create more armies).
+        var humanTemplate;
+        _.forEach(config.armies, function(army) {
+            if (!armyHasAI(army)) {
+                humanTemplate = army;
+                humanArmyCount++;
+            }
+        });
+
+        if (humanArmyCount !== 1) {
+            console.log('[GW COOP] Expected exactly one human army, found ' + humanArmyCount + '.');
+            return;
+        }
+
+        if (!humanTemplate) {
+            console.log('[GW COOP] No human player template found.');
+            return;
+        }
+
+        var baseSlot = humanTemplate.slots && humanTemplate.slots[0];
+
+        if (!baseSlot) {
+            console.log('[GW COOP] No valid base slot found.');
+            return;
+        }
+
+        // Create a new army for each connected client.
+        var splitArmies = _.map(_.range(0, connectedClients.length), function(index) {
+            var slot = _.cloneDeep(baseSlot);
+            // Slots will be assigned to specific clients later in startGame().
+            delete slot.client;
+            delete slot.ai;
+            delete slot.name;
+
+            return {
+                slots: [slot],
+                // I assume here that humanTemplate.color is both a valid color and the main faction color.
+                color: getColorPairForPlayerArmy(index, humanTemplate.color),
+                econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
+                spec_tag: humanTemplate.spec_tag || '.player',
+                alliance_group: humanTemplate.alliance_group
+            };
+        });
+
+        config.armies = _.reduce(config.armies, function(result, army) {
+            if (!armyHasAI(army)) {
+                return result.concat(splitArmies);
+            }
+
+            result.push(army);
+            return result;
+        }, []);
+
+        console.log('[GW COOP] - unshared control enabled; split humans into ' + splitArmies.length + ' allied armies');
+    };
+```
+- In general, the idea of the new version of the code is that crashing with an informative log message is preferable to succeeding in a mysterious way, as such successes can lead to mysterious and difficult to debug issues.
+- Related to this, if you are using an LLM, do not "vibecode". LLMs can be used to assist and enhance the development process, but any code generated should be very carefully reviewed before use (honestly the exact same thing is true for human written code. Code in general should be reviewed carefully). It is the responsibility of the developer using the LLM to ensure that the generated code is correct and follows best practices.

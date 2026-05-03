@@ -47,6 +47,7 @@
                 host_id: clientState.gw_campaign_host_id,
                 settings: settings,
                 access: access,
+                shared_control: _.has(settings, 'shared_control') ? !!settings.shared_control : true,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
                 use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []
@@ -75,7 +76,7 @@
             context.pending_reapply = (role === 'host');
             gwCampaignRestartContext(context);
             gwCampaignRestartNavigating = true;
-            console.log('[GW_COOP] navigateForCampaignRestart role=' + role + ' shutdownDelay=' + context.shutdown_delay_ms);
+            console.log('[GW COOP] navigateForCampaignRestart role=' + role + ' shutdownDelay=' + context.shutdown_delay_ms);
 
             // Mark disconnect as user-triggered so live_game native disconnect
             // handlers do not force transit back to main menu.
@@ -339,7 +340,7 @@
 
         // Server tells all clients to prepare for full server process restart.
         handlers.gw_return_to_campaign_restart_prepare = function(payload) {
-            console.log('[GW_COOP] gw_return_to_campaign_restart_prepare received payload=' + JSON.stringify(payload));
+            console.log('[GW COOP] gw_return_to_campaign_restart_prepare received payload=' + JSON.stringify(payload));
             var preparePayload = payload || {};
             var inferredRole = gwCampaignRole();
 
@@ -365,7 +366,7 @@
 
             gwCampaignRole(inferredRole);
 
-            console.log('[GW_COOP] restart_prepare received role=' + gwCampaignRole() + ' token=' + preparePayload.restart_token + ' delay=' + preparePayload.shutdown_delay_ms + ' host=' + preparePayload.host_id + ' name=' + displayName());
+            console.log('[GW COOP] restart_prepare received role=' + gwCampaignRole() + ' token=' + preparePayload.restart_token + ' delay=' + preparePayload.shutdown_delay_ms + ' host=' + preparePayload.host_id + ' name=' + displayName());
             gwCampaignEnabled(true);
             gwCampaignRestartRequestInFlight = false;
             gwCampaignRestartPending(true);

@@ -738,6 +738,21 @@ Otherwise things will look off.
     flex: 0 0 auto;
 }
 
+.gw-slot-share {
+    min-width: 130px;
+    height: 30px;
+    margin: 0 8px 0 0;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 28px;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+}
+
+.gw-slot-share .btn_toggle_label {
+    margin: 0;
+}
+
 .gw-slot-remove,
 .gw-campaign-slot-add {
     width: 32px;

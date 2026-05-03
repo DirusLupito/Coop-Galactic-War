@@ -135,7 +135,7 @@ function beginGwCampaignProcessRestart() {
             return client.id;
         });
 
-        console.log('[GW_COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
+        console.log('[GW COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
 
         server.broadcast({
             message_type: 'gw_return_to_campaign_restart_prepare',
@@ -162,7 +162,7 @@ function beginGwCampaignProcessRestart() {
     broadcastPrepare();
 
     _.delay(function() {
-        console.log('[GW_COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
+        console.log('[GW COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
 
         sim.onShutdown = server.exit;
         sim.shutdown(true);
@@ -204,6 +204,19 @@ function isAlly(army, targetArmy) {
 function isAI(army) {
     var result = army.sim.ai;
     return !!result
+}
+
+function isGwCampaignHostArmy(army) {
+    if (!isGwCampaignCoopMatch() || !army)
+        return false;
+
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+    if (!hostId)
+        return false;
+
+    return _.some(army.players || [], function(player) {
+        return normalizeClientId(player && player.client && player.client.id) === hostId;
+    });
 }
 
 function spawnEffect(config) {
@@ -564,13 +577,24 @@ function tickDefeatState(check_for_resurrection) {
             alive = _.some(army.commanders, function (commander) { return !commander.dead; });
         }
         if (!alive) {
-            if (isGalacticWar() && !isAI(army)) { /* in Galactic War, when the player is defeated we destroy all remaining subcommanders */
-                console.log('player died, so delete all their allies.');
-                var allies = _.filter(armies, function (target) {
-                    return isAlly(army, target) && isAI(target) && !target.defeated;
-                });
+            if (isGalacticWar() && !isAI(army)) { /* in Galactic War, when the host player is defeated we destroy all remaining subcommanders */
+                var defeatAlliedHumans = isGwCampaignHostArmy(army);
 
-                _.forEach(allies, defeatArmy);
+                if (!isGwCampaignCoopMatch() || defeatAlliedHumans) {
+                    console.log('player died, so delete all their allies.');
+                    console.log('[GW COOP] defeatAlliedHumans=' + JSON.stringify(defeatAlliedHumans));
+                    var allies = _.filter(armies, function (target) {
+                        if (!isAlly(army, target) || target.defeated)
+                            return false;
+
+                        if (isAI(target))
+                            return true;
+
+                        return defeatAlliedHumans && target !== army && !isAI(target);
+                    });
+
+                    _.forEach(allies, defeatArmy);
+                }
             }
 
             defeatArmy(army);
@@ -918,7 +942,7 @@ exports.enter = function (config) {
                 if (gwCampaignRestartRequested)
                     return;
 
-                console.log('[GW_COOP] playing host disconnect shutdown reason=' + reason);
+                console.log('[GW COOP] playing host disconnect shutdown reason=' + reason);
                 sim.onShutdown = server.exit;
                 sim.shutdown(true);
             });
