@@ -1847,7 +1847,7 @@ requireGW([
             };
         };
 
-        self.sendCampaignSnapshot = function(reason) {
+        self.sendCampaignSnapshot = function(reason, force) {
             if (!self.isCampaignHost() || !self.gwCampaignConnected() || self.gwCampaignApplyingSnapshot)
                 return;
 
@@ -1858,11 +1858,15 @@ requireGW([
             });
 
             // Avoid emitting massive snapshots when host is alone.
-            if (!hasViewer)
+            if (!hasViewer && !force)
                 return;
 
             var now = _.now();
-            var highPriorityReason = reason === 'viewer_joined' || reason === 'host_role_assigned';
+            var highPriorityReason = force
+                || reason === 'viewer_joined'
+                || reason === 'viewer_reconnect'
+                || reason === 'viewer_request'
+                || reason === 'host_role_assigned';
             if (!highPriorityReason && (now - self.gwCampaignLastSnapshotSentAt) < self.gwCampaignSnapshotCooldownMs)
                 return;
 
@@ -2567,6 +2571,11 @@ requireGW([
             return self.testGameState({fight: true}, false);
         });
 
+        self.canShowCampaignActionButtons = ko.computed(function()
+        {
+            return !self.gwCampaignEnabled() || self.isCampaignHost() || self.gwCampaignReplayingAction;
+        });
+
         self.canFight = ko.computed(function()
         {
             if (self.isCampaignViewer())
@@ -2597,12 +2606,15 @@ requireGW([
 
         self.displayFight = ko.computed(function()
         {
-            return self.canFight() && !self.allowLoad() && self.selection.star() === self.game().currentStar();
+            return self.canShowCampaignActionButtons() && self.canFight() && !self.allowLoad() && self.selection.star() === self.game().currentStar();
         });
 
+        // This is the continue fight button apparently.
+        // So loading a single in-progress battle, rather than the overall
+        // save for the whole galactic war.
         self.displayLoadSave = ko.computed(function()
         {
-            return self.canFight() && self.allowLoad() && self.selection.star() === self.game().currentStar();
+            return self.canShowCampaignActionButtons() && self.canFight() && self.allowLoad() && self.selection.star() === self.game().currentStar();
         });
 
         // self.canFight.subscribe(function(newValue)
@@ -2638,7 +2650,7 @@ requireGW([
 
         self.displayExplore = ko.computed(function()
         {
-            return self.canExplore() && self.selection.star() === game.currentStar();
+            return self.canShowCampaignActionButtons() && self.canExplore() && self.selection.star() === game.currentStar();
         });
 
         // self.canExplore.subscribe(function(newValue)
@@ -2707,7 +2719,7 @@ requireGW([
 
         self.displayMove = ko.computed(function()
         {
-            return self.canMove();
+            return self.canShowCampaignActionButtons() && self.canMove();
         });
 
         self.moveStep = function(path)
@@ -3862,6 +3874,10 @@ requireGW([
         handlers.gw_campaign_snapshot = function(payload) {
             console.log('[GW_COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.applyCampaignSnapshot(payload);
+        };
+
+        handlers.request_gw_campaign_snapshot_publish = function(payload) {
+            model.sendCampaignSnapshot(payload && payload.reason ? payload.reason : 'viewer_request', true);
         };
 
         handlers.request_client_mod_manifest = function() {

@@ -588,6 +588,26 @@ function GWCampaignModel(creator) {
         });
     };
 
+    self.requestSnapshotFromHost = function(reason, requester) {
+        var host = _.find(self.getConnectedClients(), function(client) {
+            return client.id === self.creatorId;
+        });
+
+        if (!host || !host.connected)
+            return false;
+
+        host.message({
+            message_type: 'request_gw_campaign_snapshot_publish',
+            payload: {
+                reason: reason || 'viewer_request',
+                requester_id: requester && requester.id,
+                requester_name: requester && requester.name
+            }
+        });
+
+        return true;
+    };
+
     self.attachClientLifecycle = function(client, reconnect) {
         if (!self.active)
             return;
@@ -650,7 +670,9 @@ function GWCampaignModel(creator) {
         if (client.id !== self.creatorId)
             self.requestClientManifest(client, reconnect);
         self.sendRoleToClient(client);
-        self.sendSnapshotToClient(client, reconnect ? 'reconnect' : 'join');
+
+        if (client.id !== self.creatorId)
+            self.requestSnapshotFromHost(reconnect ? 'viewer_reconnect' : 'viewer_joined', client);
     };
 
     // Called when the server first enters the gw_campaign state. 
@@ -734,8 +756,16 @@ function GWCampaignModel(creator) {
             },
             request_gw_campaign_snapshot: function(msg) {
                 console.log('[GW_COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
-                self.sendSnapshotToClient(msg.client, 'pull_on_join');
-                server.respond(msg).succeed({ has_snapshot: !!self.lastSnapshot });
+                var freshSnapshotRequested = false;
+                var viewerRequest = msg.client.id !== self.creatorId;
+
+                if (viewerRequest)
+                    freshSnapshotRequested = self.requestSnapshotFromHost('viewer_request', msg.client);
+
+                server.respond(msg).succeed({
+                    has_snapshot: !viewerRequest && !!self.lastSnapshot,
+                    fresh_snapshot_requested: freshSnapshotRequested
+                });
             },
             set_loading: function(msg) {
                 self.setClientLoading(msg.client, msg.payload && msg.payload.loading);

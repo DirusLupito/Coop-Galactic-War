@@ -46,7 +46,7 @@
     </div>
 
     <div id="selected-system-anchor" class="ignoremouse" data-bind="visible: selection && !hidingUI()" style="display: none">
-        <div class="below">
+        <div class="below" data-bind="visible: canShowCampaignActionButtons">
             <div class="attendmouse btn_hero jump" data-bind="click: move, click_sound: '/SE/UI/UI_GW_Jump', rollover_sound: 'default', visible: displayMove">
                 <div class="btn_label">
                     <loc>Jump</loc>
@@ -101,7 +101,7 @@
         </div>
         <div id="header-center" class="ignoremouse">
             <div class="gw_coop_prompt_alert attendmouse" data-bind="visible: showOpenCoopPrompt, click: openToCoop, click_sound: 'default', rollover_sound: 'default'" style="display:none">
-                <div class="gw_coop_prompt_button">
+                <div class="gw_coop_prompt_button" data-placement="bottom" data-container="body" data-bind="tooltip: '!LOC:Launch campaign cooperative session'">
                     <div class="wrapper">
                         <div class="gw_coop_prompt_text"><loc>Call for Reinforcements!</loc></div>
                         <div class="btn_win btn_win_close" data-bind="click: dismissOpenCoopPrompt, clickBubble: false"></div>
