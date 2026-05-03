@@ -65,8 +65,8 @@ $(document).ready(function () {
     model = new MenuViewModel();
 
     handlers.state = function (payload) {
-        console.log('[GW_COOP] live game menu state handler got payload', payload);
-        console.log('[GW_COOP] live game menu current gw_campaign_role=' + model.gwCampaignRole());
+        console.log('[GW COOP] live game menu state handler got payload', payload);
+        console.log('[GW COOP] live game menu current gw_campaign_role=' + model.gwCampaignRole());
         model.refreshRoleAndState(payload);
     };
 

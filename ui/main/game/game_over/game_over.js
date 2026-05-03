@@ -93,7 +93,7 @@ $(document).ready(function () {
         });
 
         self.filterMenuButtonsForRole = function(menu) {
-            console.log("[GW_COOP] filterMenuButtonsForRole function called with role: " + self.gwCampaignRole() + " and menu: ", menu);
+            console.log("[GW COOP] filterMenuButtonsForRole function called with role: " + self.gwCampaignRole() + " and menu: ", menu);
             if (!self.isGwCampaignViewer())
                 return menu;
 

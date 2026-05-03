@@ -149,7 +149,7 @@ function beginGwCampaignProcessRestart() {
             return client.id;
         });
 
-        console.log('[GW_COOP] sending restart_prepare to connected clients=' + JSON.stringify(recipients));
+        console.log('[GW COOP] sending restart_prepare to connected clients=' + JSON.stringify(recipients));
 
         server.broadcast({
             message_type: 'gw_return_to_campaign_restart_prepare',
@@ -182,7 +182,7 @@ function beginGwCampaignProcessRestart() {
     // Now we delay the process shutdown to give clients enough time to receive the restart message and 
     // switch into reconnect mode before we kill the server. 
     _.delay(function() {
-        console.log('[GW_COOP] Executing process-level restart from game_over after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
+        console.log('[GW COOP] Executing process-level restart from game_over after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
         // Ensure process exits after sim shutdown so clients can reconnect to a
         // newly-started campaign server instead of reusing this ended battle process.
         sim.onShutdown = server.exit;
@@ -253,7 +253,7 @@ exports.enter = function (game_over_data)
         if (gwCampaignRestartRequested || !isGwCampaignCoopMatch())
             return;
 
-        console.log('[GW_COOP] game_over host disconnect shutdown reason=' + reason);
+        console.log('[GW COOP] game_over host disconnect shutdown reason=' + reason);
         writeReplay();
         sim.onShutdown = server.exit;
         sim.shutdown(true);

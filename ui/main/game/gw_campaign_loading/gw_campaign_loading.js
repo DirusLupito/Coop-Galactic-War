@@ -73,7 +73,7 @@ requireGW([
                 self.navigating = true;
                 self.clearSnapshotRetry();
                 self.pageSubTitle(loc('!LOC:Entering co-op campaign...'));
-                console.log('[GW_COOP] campaign_loading complete reason=' + reason + ' target=' + gwCampaignTarget);
+                console.log('[GW COOP] campaign_loading complete reason=' + reason + ' target=' + gwCampaignTarget);
                 window.location.href = gwCampaignTarget;
             };
 
@@ -98,7 +98,7 @@ requireGW([
 
                 self.snapshotRequestedAt = now;
                 self.pageSubTitle(loc('!LOC:Receiving co-op campaign data...'));
-                console.log('[GW_COOP] campaign_loading request snapshot reason=' + reason);
+                console.log('[GW COOP] campaign_loading request snapshot reason=' + reason);
                 self.sendMessage('request_gw_campaign_snapshot', {}, function(success, response) {
                     if (success && response && response.has_snapshot === false)
                         self.pageSubTitle(loc('!LOC:Waiting for host campaign data...'));
@@ -193,7 +193,7 @@ requireGW([
                         self.markAuthoritativeGameReady(hydratedGame.id);
                         self.finishLoading('snapshot_seq_' + (payload.seq || 0));
                     }, function(err) {
-                        console.error('[GW_COOP] campaign_loading failed to save snapshot', err);
+                        console.error('[GW COOP] campaign_loading failed to save snapshot', err);
                         self.pageSubTitle(loc('!LOC:Failed to load co-op campaign data'));
                     });
                 });
@@ -235,7 +235,7 @@ requireGW([
         };
 
         handlers.gw_campaign_snapshot = function(payload) {
-            console.log('[GW_COOP] campaign_loading snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
+            console.log('[GW COOP] campaign_loading snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.saveSnapshotAndEnter(payload);
         };
 

@@ -163,7 +163,7 @@ function GWCampaignModel(creator) {
         if (!_.isEqual(previousRequiredIdentifiers, self.requiredClientModIdentifiers))
             self.clientManifestValidatedByClientId = {};
 
-        console.log('[GW_COOP] MOD CHECK [gw_campaign] required_identifiers=' + JSON.stringify(self.requiredClientModIdentifiers));
+        console.log('[GW COOP] MOD CHECK [gw_campaign] required_identifiers=' + JSON.stringify(self.requiredClientModIdentifiers));
 
         if (!self.requiredClientModIdentifiers.length)
             self.clearAllPendingManifestTimeouts();
@@ -226,7 +226,7 @@ function GWCampaignModel(creator) {
 
         self.clearPendingSelfDisconnectTimeout(client.id);
 
-        console.log('[GW_COOP] MOD CHECK [gw_campaign] notifying client=' + client.id + ' missing=' + JSON.stringify(missingIdentifiers) + ' reason="' + rejectReason + '"');
+        console.log('[GW COOP] MOD CHECK [gw_campaign] notifying client=' + client.id + ' missing=' + JSON.stringify(missingIdentifiers) + ' reason="' + rejectReason + '"');
 
         client.message({
             message_type: 'required_client_mods_missing',
@@ -243,25 +243,25 @@ function GWCampaignModel(creator) {
                 return;
 
             self.clearPendingSelfDisconnectTimeout(client.id);
-            console.warn('[GW_COOP] MOD CHECK [gw_campaign] client did not self-disconnect after missing required mod notice; leaving connection open client=' + client.id + ' reason="' + rejectReason + '"');
+            console.warn('[GW COOP] MOD CHECK [gw_campaign] client did not self-disconnect after missing required mod notice; leaving connection open client=' + client.id + ' reason="' + rejectReason + '"');
         }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
     };
 
     self.requestClientManifest = function(client, reconnect) {
         if (!client || !client.connected) {
-            console.log('[GW_COOP] MOD CHECK [gw_campaign] skipping manifest request for invalid/disconnected client');
+            console.log('[GW COOP] MOD CHECK [gw_campaign] skipping manifest request for invalid/disconnected client');
             return;
         }
 
         if (!self.requiredClientModIdentifiers.length) {
-            console.log('[GW_COOP] MOD CHECK [gw_campaign] no required client mods set; allowing client=' + client.id + ' without manifest gate');
+            console.log('[GW COOP] MOD CHECK [gw_campaign] no required client mods set; allowing client=' + client.id + ' without manifest gate');
             return;
         }
 
         self.clearPendingManifestTimeout(client.id);
         self.clientManifestReceivedByClientId[client.id] = false;
 
-        console.log('[GW_COOP] MOD CHECK [gw_campaign] requesting manifest from client=' + client.id + ' reconnect=' + !!reconnect + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
+        console.log('[GW COOP] MOD CHECK [gw_campaign] requesting manifest from client=' + client.id + ' reconnect=' + !!reconnect + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
 
         client.message({
             message_type: 'request_client_mod_manifest',
@@ -277,7 +277,7 @@ function GWCampaignModel(creator) {
 
             self.clearPendingManifestTimeout(client.id);
             self.clientManifestValidatedByClientId[client.id] = false;
-            console.warn('[GW_COOP] MOD CHECK [gw_campaign] manifest timeout; leaving connection open client=' + client.id + ' reason="' + self.buildMissingRequiredModsReason() + '"');
+            console.warn('[GW COOP] MOD CHECK [gw_campaign] manifest timeout; leaving connection open client=' + client.id + ' reason="' + self.buildMissingRequiredModsReason() + '"');
         }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
     };
 
@@ -455,7 +455,7 @@ function GWCampaignModel(creator) {
             return;
 
         var role = self.getRoleForClient(client);
-        console.log('[GW_COOP] gw_campaign sendRole client=' + client.name + ' id=' + client.id + ' role=' + role);
+        console.log('[GW COOP] gw_campaign sendRole client=' + client.name + ' id=' + client.id + ' role=' + role);
 
         client.message({
             message_type: 'gw_campaign_role',
@@ -483,7 +483,7 @@ function GWCampaignModel(creator) {
             // that gets sent to the UI, since the host client object can sometimes be in a weird state where 
             // it's not showing up as connected in server.clients even though the host is definitely connected 
             // and should be included in the list of clients that gets sent to the UI.
-            console.log('[GW_COOP] gw_campaign updateControl client=' + client.name + ' id=' + client.id + ' connected=' + client.connected);
+            console.log('[GW COOP] gw_campaign updateControl client=' + client.name + ' id=' + client.id + ' connected=' + client.connected);
             return {
                 id: client.id,
                 name: client.name || (client.id === self.creatorId ? self.creatorName : 'Player'),
@@ -502,7 +502,7 @@ function GWCampaignModel(creator) {
         self.control.require_password = !!bouncer.doesGameRequirePassword();
 
         self.updateBeacon();
-        console.log('[GW_COOP] gw_campaign updateControl clients=' + connectedClients.length + ' seq=' + self.lastSnapshotSeq + ' hasSnapshot=' + (!!self.lastSnapshot));
+        console.log('[GW COOP] gw_campaign updateControl clients=' + connectedClients.length + ' seq=' + self.lastSnapshotSeq + ' hasSnapshot=' + (!!self.lastSnapshot));
         self.broadcastControl();
 
         // Role messages can be missed during panel transitions; resend on every control update.
@@ -633,13 +633,13 @@ function GWCampaignModel(creator) {
             client._gwCampaignDisconnectAttached = true;
             client._gwCampaignDisconnectCleanupApplied = false;
             utils.pushCallback(client, 'onDisconnect', function(onDisconnect) {
-                console.log('[GW_COOP] gw_campaign onDisconnect client=' + client.name + ' id=' + client.id);
+                console.log('[GW COOP] gw_campaign onDisconnect client=' + client.name + ' id=' + client.id);
                 self.clearPendingManifestTimeout(client.id);
                 self.clearPendingSelfDisconnectTimeout(client.id);
                 delete self.clientLoading[client.id];
 
                 if (client.id === self.creatorId) {
-                    console.log('[GW_COOP] gw_campaign creator disconnected, exiting server');
+                    console.log('[GW COOP] gw_campaign creator disconnected, exiting server');
                     server.exit();
                 }
                 else {
@@ -688,7 +688,7 @@ function GWCampaignModel(creator) {
     self.enter = function() {
         self.active = true;
         server.maxClients = self.maxClients;
-        console.log('[GW_COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
+        console.log('[GW COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
 
         // No password by default, but clear any that might be lingering from previous sessions just in case, along with whitelist/blacklist
         // (which would correspond to the friends list unless there's some system I've never heard of before which also sets up
@@ -705,7 +705,7 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Required client mods can only be provided by host');
 
                 var payload = msg.payload || {};
-                console.log('[GW_COOP] MOD CHECK [gw_campaign] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
+                console.log('[GW COOP] MOD CHECK [gw_campaign] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
                 self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id);
                 server.respond(msg).succeed({
                     required_identifiers: self.requiredClientModIdentifiers
@@ -713,7 +713,7 @@ function GWCampaignModel(creator) {
             },
             client_mod_manifest: function(msg) {
                 if (!self.requiredClientModIdentifiers.length) {
-                    console.log('[GW_COOP] MOD CHECK [gw_campaign] received manifest from client=' + msg.client.id + ' but no required list is active');
+                    console.log('[GW COOP] MOD CHECK [gw_campaign] received manifest from client=' + msg.client.id + ' but no required list is active');
                     return server.respond(msg).succeed({ missing: [] });
                 }
 
@@ -722,7 +722,7 @@ function GWCampaignModel(creator) {
                     return activeIdentifiers.indexOf(identifier) === -1;
                 });
 
-                console.log('[GW_COOP] MOD CHECK [gw_campaign] manifest from client=' + msg.client.id
+                console.log('[GW COOP] MOD CHECK [gw_campaign] manifest from client=' + msg.client.id
                     + ' active=' + JSON.stringify(activeIdentifiers)
                     + ' missing=' + JSON.stringify(missingIdentifiers)
                     + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
@@ -748,7 +748,7 @@ function GWCampaignModel(creator) {
                 server.respond(msg).succeed({ missing: [] });
 
                 if (msg.client && msg.client.connected) {
-                    console.log('[GW_COOP] MOD CHECK [gw_campaign] all_client_mods_match client=' + msg.client.id);
+                    console.log('[GW COOP] MOD CHECK [gw_campaign] all_client_mods_match client=' + msg.client.id);
                     msg.client.message({
                         message_type: 'all_client_mods_match',
                         payload: {
@@ -759,11 +759,11 @@ function GWCampaignModel(creator) {
             },
             required_client_mods_acknowledged: function(msg) {
                 self.clearPendingSelfDisconnectTimeout(msg.client.id);
-                console.log('[GW_COOP] MOD CHECK [gw_campaign] client acknowledged missing required mods client=' + msg.client.id + ' payload=' + JSON.stringify(msg.payload || {}));
+                console.log('[GW COOP] MOD CHECK [gw_campaign] client acknowledged missing required mods client=' + msg.client.id + ' payload=' + JSON.stringify(msg.payload || {}));
                 server.respond(msg).succeed();
             },
             request_gw_campaign_snapshot: function(msg) {
-                console.log('[GW_COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
+                console.log('[GW COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
                 var freshSnapshotRequested = false;
                 var viewerRequest = msg.client.id !== self.creatorId;
 
@@ -792,7 +792,7 @@ function GWCampaignModel(creator) {
                 };
 
                 self.updateControl();
-                console.log('[GW_COOP] gw_campaign_snapshot accepted seq=' + self.lastSnapshotSeq + ' from host');
+                console.log('[GW COOP] gw_campaign_snapshot accepted seq=' + self.lastSnapshotSeq + ' from host');
 
                 // Relay to every connected peer except host.
                 _.forEach(self.getConnectedClients(), function(client) {
@@ -807,7 +807,7 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Only host can publish campaign actions');
 
                 var payload = msg.payload || {};
-                console.log('[GW_COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
+                console.log('[GW COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
 
                 _.forEach(self.getConnectedClients(), function(client) {
                     if (client.id === self.creatorId)
@@ -825,12 +825,12 @@ function GWCampaignModel(creator) {
                 if (msg.client.id !== self.creatorId)
                     return server.respond(msg).fail('Only host can launch battle');
 
-                console.log('[GW_COOP] launch_gw_battle by host=' + msg.client.name);
+                console.log('[GW COOP] launch_gw_battle by host=' + msg.client.name);
                 server.respond(msg).succeed();
                 main.setState(main.states.gw_lobby, msg.client, self.buildGwLobbyLaunchContext(msg.payload));
             },
             leave_gw_campaign: function(msg) {
-                console.log('[GW_COOP] leave_gw_campaign from=' + msg.client.name + ' id=' + msg.client.id);
+                console.log('[GW COOP] leave_gw_campaign from=' + msg.client.name + ' id=' + msg.client.id);
 
                 if (msg.client.id === self.creatorId) {
                     server.respond(msg).succeed();
@@ -933,9 +933,9 @@ function GWCampaignModel(creator) {
             if (!self.active)
                 return onConnect;
 
-            console.log('[GW_COOP] gw_campaign onConnect client=' + client.name + ' id=' + client.id + ' reconnect=' + !!reconnect);
+            console.log('[GW COOP] gw_campaign onConnect client=' + client.name + ' id=' + client.id + ' reconnect=' + !!reconnect);
             if (!self.hasRoomForClient(client, reconnect)) {
-                console.log('[GW_COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=No room');
+                console.log('[GW COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=No room');
                 server.rejectClient(client, 'No room');
                 return onConnect;
             }
@@ -946,7 +946,7 @@ function GWCampaignModel(creator) {
 
         // The host is already connected when entering from empty state.
         _.forEach(self.getConnectedClients(), function(client) {
-            console.log('[GW_COOP] gw_campaign attach existing client=' + client.name + ' id=' + client.id);
+            console.log('[GW COOP] gw_campaign attach existing client=' + client.name + ' id=' + client.id);
             self.attachClientLifecycle(client, false);
         });
 
@@ -954,7 +954,7 @@ function GWCampaignModel(creator) {
     };
 
     self.exit = function() {
-        console.log('[GW_COOP] gw_campaign exit');
+        console.log('[GW COOP] gw_campaign exit');
 
         // Mark the state as inactive so that any late-arriving connections or messages that somehow slip through the cracks
         // don't get sent through gw_campaign handlers that might still be hanging around.

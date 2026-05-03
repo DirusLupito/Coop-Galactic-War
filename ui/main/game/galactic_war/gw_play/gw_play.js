@@ -45,7 +45,7 @@ requireGW([
         try {
             parsed = JSON.parse(raw);
         } catch (e) {
-            console.log('[GW_COOP] invalid required client mod session payload in gw_play; defaulting to empty list');
+            console.log('[GW COOP] invalid required client mod session payload in gw_play; defaulting to empty list');
             parsed = [];
         }
 
@@ -62,7 +62,7 @@ requireGW([
             seen[normalizedIdentifier] = true;
             normalized.push(normalizedIdentifier);
         });
-        console.log('[GW_COOP] read required client mod identifiers for gw_play', normalized);
+        console.log('[GW COOP] read required client mod identifiers for gw_play', normalized);
 
         return normalized;
     };
@@ -244,7 +244,7 @@ requireGW([
     };
 
     var runWithRequiredClientModsOnly = function(requiredIdentifiers, work) {
-        console.log('[GW_COOP] restricting client mods for gw_play', requiredIdentifiers);
+        console.log('[GW COOP] restricting client mods for gw_play', requiredIdentifiers);
         var communityModsManager = window.CommunityModsManager;
         var canRestrictClientMods = communityModsManager
             && _.isFunction(communityModsManager.installedMods)
@@ -291,7 +291,7 @@ requireGW([
         });
 
         communityModsManager.installedMods.valueHasMutated();
-        console.log('[GW_COOP] gw_play restricting client mods for shared referee generation required=' + JSON.stringify(_.keys(requiredLookup)));
+        console.log('[GW COOP] gw_play restricting client mods for shared referee generation required=' + JSON.stringify(_.keys(requiredLookup)));
 
         communityModsManager.remountClientMods().always(function() {
             $.when(work()).always(function() {
@@ -307,7 +307,7 @@ requireGW([
                 });
 
                 communityModsManager.installedMods.valueHasMutated();
-                console.log('[GW_COOP] gw_play restoring full client mod set after shared referee generation');
+                console.log('[GW COOP] gw_play restoring full client mod set after shared referee generation');
 
                 communityModsManager.remountClientMods().always(function() {
                     done.resolve();
@@ -319,7 +319,7 @@ requireGW([
     };
 
     var hireRefereesForLaunch = function(game, isolateSharedSpecs) {
-        console.log('[GW_COOP] hiring referees for gw_play launch; isolateSharedSpecs=' + !!isolateSharedSpecs);
+        console.log('[GW COOP] hiring referees for gw_play launch; isolateSharedSpecs=' + !!isolateSharedSpecs);
         var done = $.Deferred();
 
         if (!isolateSharedSpecs) {
@@ -344,7 +344,7 @@ requireGW([
             });
         }).always(function() {
             if (!sharedRefereeReady) {
-                console.log('[GW_COOP] failed to build clean shared referee; aborting launch to avoid contaminated gw_config');
+                console.log('[GW COOP] failed to build clean shared referee; aborting launch to avoid contaminated gw_config');
                 done.resolve({
                     sharedReferee: undefined,
                     localReferee: undefined
@@ -1419,14 +1419,14 @@ requireGW([
         };
 
         self.applySavedCoopSettingsToCampaignLobby = function() {
-            console.log('[GW_COOP] applying saved coop slot settings to campaign lobby');
+            console.log('[GW COOP] applying saved coop slot settings to campaign lobby');
             if (self.initialCoopSettingsApplied) {
-                console.log('[GW_COOP] already applied saved coop slot settings, skipping');
+                console.log('[GW COOP] already applied saved coop slot settings, skipping');
                 return;
             }
 
             if (!self.isCampaignHost() || !self.gwCampaignConnected()) {
-                console.log('[GW_COOP] not campaign host or not connected, skipping applying saved coop slot settings');
+                console.log('[GW COOP] not campaign host or not connected, skipping applying saved coop slot settings');
                 return;
             }
 
@@ -1434,10 +1434,10 @@ requireGW([
             var playersLocked = self.savedCoopPlayersLocked();
             var sharedByDefault = self.savedSharedByDefault();
 
-            console.log('[GW_COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault);
+            console.log('[GW COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault);
             if (!playersSpecified && !playersLocked && sharedByDefault) {
                 self.initialCoopSettingsApplied = true;
-                console.log('[GW_COOP] no saved coop settings to apply, marking as applied');
+                console.log('[GW COOP] no saved coop settings to apply, marking as applied');
                 return;
             }
 
@@ -1445,10 +1445,10 @@ requireGW([
             var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
-            console.log('[GW_COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
+            console.log('[GW COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
             self.initialCoopSettingsApplied = true;
             self.send_message('modify_settings', payload, function(success, response) {
-                console.log('[GW_COOP] applied saved coop slot settings success=' + !!success + ' payload=' + JSON.stringify(payload || {}) + ' response=' + JSON.stringify(response || {}));
+                console.log('[GW COOP] applied saved coop slot settings success=' + !!success + ' payload=' + JSON.stringify(payload || {}) + ' response=' + JSON.stringify(response || {}));
             });
         };
 
@@ -1490,7 +1490,7 @@ requireGW([
         // "authoritative" and ready for the player to start playing.
         self.markGwCampaignAuthoritativeStateReady = function(reason) {
             if (!self.gwCampaignAuthoritativeStateReady())
-                console.log('[GW_COOP] authoritative campaign state ready reason=' + (reason || 'unknown'));
+                console.log('[GW COOP] authoritative campaign state ready reason=' + (reason || 'unknown'));
 
             self.gwCampaignAuthoritativeStateReady(true);
 
@@ -1789,7 +1789,7 @@ requireGW([
             });
 
             if (enrichedSystems > 0)
-                console.log('[GW_COOP] enrichCampaignGameSystems reason=' + reason + ' enriched=' + enrichedSystems);
+                console.log('[GW COOP] enrichCampaignGameSystems reason=' + reason + ' enriched=' + enrichedSystems);
 
             return enrichedSystems;
         };
@@ -1804,7 +1804,7 @@ requireGW([
 
             // Skip saving because the local state is likely incomplete or inaccurate.
             if (self.gwCampaignAuthoritativeStateRequired && !self.gwCampaignAuthoritativeStateReady()) {
-                console.log('[GW_COOP] persistCampaignLocalCopy skipped before authoritative campaign state reason=' + reason);
+                console.log('[GW COOP] persistCampaignLocalCopy skipped before authoritative campaign state reason=' + reason);
                 done.resolve();
                 return done.promise();
             }
@@ -1822,10 +1822,10 @@ requireGW([
             }
 
             saving.then(function() {
-                console.log('[GW_COOP] persistCampaignLocalCopy saved reason=' + reason);
+                console.log('[GW COOP] persistCampaignLocalCopy saved reason=' + reason);
                 done.resolve();
             }, function(err) {
-                console.error('[GW_COOP] persistCampaignLocalCopy failed reason=' + reason, err);
+                console.error('[GW COOP] persistCampaignLocalCopy failed reason=' + reason, err);
                 done.resolve();
             });
 
@@ -1857,7 +1857,7 @@ requireGW([
             }
 
             if (enrichedSystems > 0)
-                console.log('[GW_COOP] snapshot enriched missing systems=' + enrichedSystems);
+                console.log('[GW COOP] snapshot enriched missing systems=' + enrichedSystems);
 
             return {
                 game: gameSave,
@@ -1970,7 +1970,7 @@ requireGW([
                             star: exploreStarIndex,
                             cards: exploreStar && _.isFunction(exploreStar.cardList) ? exploreStar.cardList() : []
                         });
-                        console.log('[GW_COOP] wrapped explore relayed sync_star_cards reason=' + reason + ' star=' + exploreStarIndex);
+                        console.log('[GW COOP] wrapped explore relayed sync_star_cards reason=' + reason + ' star=' + exploreStarIndex);
                     };
 
                     if (exploreStar && _.isFunction(exploreStar.cardList) && _.isFunction(exploreStar.cardList.subscribe)) {
@@ -2000,7 +2000,7 @@ requireGW([
             wrapped.__gwCampaignWrappedName = name;
             wrapped.__gwCampaignWrappedOriginal = current;
             self[name] = wrapped;
-            console.log('[GW_COOP] wrapped external override for ' + name + ' to preserve co-op sync');
+            console.log('[GW COOP] wrapped external override for ' + name + ' to preserve co-op sync');
         };
 
         self.ensureCampaignCompatibilityHooks = function() {
@@ -2064,7 +2064,7 @@ requireGW([
             copyObservable('coordinates', true);
 
             if (changed)
-                console.log('[GW_COOP] syncViewerStarFromGame star=' + starIndex + ' reason=' + reason);
+                console.log('[GW COOP] syncViewerStarFromGame star=' + starIndex + ' reason=' + reason);
 
             return changed;
         };
@@ -2089,7 +2089,7 @@ requireGW([
             }
 
             if (changedCount > 0)
-                console.log('[GW_COOP] syncViewerStarsFromGame reason=' + reason + ' changed=' + changedCount);
+                console.log('[GW COOP] syncViewerStarsFromGame reason=' + reason + ' changed=' + changedCount);
         };
 
         self.getGalaxySignature = function(galaxyData) {
@@ -2135,7 +2135,7 @@ requireGW([
             var snapshot = payload.snapshot;
             var ui = snapshot.ui || {};
             var incomingSeq = _.isNumber(payload.seq) ? payload.seq : 0;
-            console.log('[GW_COOP] applyCampaignSnapshot start seq=' + incomingSeq + ' applying=' + self.gwCampaignApplyingSnapshot);
+            console.log('[GW COOP] applyCampaignSnapshot start seq=' + incomingSeq + ' applying=' + self.gwCampaignApplyingSnapshot);
 
             var localGalaxy = game.galaxy && game.galaxy();
             var localSignature = self.getGalaxySignature(localGalaxy);
@@ -2143,7 +2143,7 @@ requireGW([
 
             if (!self.gwCampaignHydrationInProgress && snapshotSignature && localSignature !== snapshotSignature) {
                 self.gwCampaignHydrationInProgress = true;
-                console.log('[GW_COOP] snapshot galaxy mismatch local=' + localSignature + ' remote=' + snapshotSignature + ', forcing full rehydrate');
+                console.log('[GW COOP] snapshot galaxy mismatch local=' + localSignature + ' remote=' + snapshotSignature + ', forcing full rehydrate');
 
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(snapshot.game).always(function() {
@@ -2155,12 +2155,12 @@ requireGW([
                             sessionStorage.setItem('gw_campaign_authoritative_game_id', String(hydratedGame.id));
                         }
                         catch (e) {
-                            console.warn('[GW_COOP] failed to set authoritative game id in sessionStorage', e);
+                            console.warn('[GW COOP] failed to set authoritative game id in sessionStorage', e);
                         }
                         window.location.reload();
                     }, function(err) {
                         self.gwCampaignHydrationInProgress = false;
-                        console.error('[GW_COOP] failed to save hydrated game', err);
+                        console.error('[GW COOP] failed to save hydrated game', err);
                     });
                 });
                 return;
@@ -2176,7 +2176,7 @@ requireGW([
 
                 self.markGwCampaignAuthoritativeStateReady('snapshot_seq_' + incomingSeq);
 
-                console.log('[GW_COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
+                console.log('[GW COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
 
                 self.gwCampaignApplyingSnapshot = false;
 
@@ -2199,14 +2199,14 @@ requireGW([
             var hasCardBeforeAction = currentSystemBeforeAction && currentSystemBeforeAction.star && _.isFunction(currentSystemBeforeAction.star.hasCard) ? currentSystemBeforeAction.star.hasCard() : undefined;
             var historyBeforeAction = currentSystemBeforeAction && currentSystemBeforeAction.star && _.isFunction(currentSystemBeforeAction.star.history) ? (currentSystemBeforeAction.star.history() || []).length : undefined;
 
-            console.log('[GW_COOP] applyCampaignAction recv type=' + action.type + ' currentStar=' + currentStarBeforeAction + ' hasAi=' + !!aiBeforeAction + ' hasCard=' + hasCardBeforeAction + ' history=' + historyBeforeAction);
+            console.log('[GW COOP] applyCampaignAction recv type=' + action.type + ' currentStar=' + currentStarBeforeAction + ' hasAi=' + !!aiBeforeAction + ' hasCard=' + hasCardBeforeAction + ' history=' + historyBeforeAction);
             self.syncViewerStarsFromGame('before_action_' + action.type, [currentStarBeforeAction]);
             self.gwCampaignReplayingAction = true;
 
             if (action.type === 'startup_battle_result' && payload && payload.result) {
                 if (payload.result === 'win') {
                     game.winTurn().then(function(didWin) {
-                        console.log('[GW_COOP] applyCampaignAction startup_battle_result win didWin=' + didWin + ' currentStar=' + game.currentStar());
+                        console.log('[GW COOP] applyCampaignAction startup_battle_result win didWin=' + didWin + ' currentStar=' + game.currentStar());
                         GW.manifest.saveGame(game);
                     });
                 }
@@ -2214,7 +2214,7 @@ requireGW([
                     var didLose = game.loseTurn();
                     if (game.isTutorial())
                         game.turnState(GW.Game.turnStates.begin);
-                    console.log('[GW_COOP] applyCampaignAction startup_battle_result loss didLose=' + didLose + ' currentStar=' + game.currentStar());
+                    console.log('[GW COOP] applyCampaignAction startup_battle_result loss didLose=' + didLose + ' currentStar=' + game.currentStar());
                     GW.manifest.saveGame(game);
                 }
 
@@ -2293,7 +2293,7 @@ requireGW([
 
             if (action.type === 'win_turn') {
                 // Viewer can be out of the precise turn micro-state; use snapshot correction instead.
-                console.log('[GW_COOP] applyCampaignAction win_turn fallback->snapshot');
+                console.log('[GW COOP] applyCampaignAction win_turn fallback->snapshot');
                 self.requestCampaignSnapshot();
                 self.gwCampaignReplayingAction = false;
                 return;
@@ -2324,7 +2324,7 @@ requireGW([
             if (!payload || payload.state !== 'gw_campaign')
                 return;
 
-            console.log('[GW_COOP] server_state gw_campaign url=' + payload.url);
+            console.log('[GW COOP] server_state gw_campaign url=' + payload.url);
             self.gwCampaignEnabled(true);
             self.gwCampaignConnected(true);
 
@@ -2368,7 +2368,7 @@ requireGW([
             }
             self.requestCampaignChatHistory();
 
-            console.log('[GW_COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
+            console.log('[GW COOP] gw_campaign role from server_state=' + (role || '<unchanged>'));
 
             if (self.isCampaignHost())
                 self.markGwCampaignAuthoritativeStateReady('server_state_host');
@@ -2500,7 +2500,7 @@ requireGW([
                 ].join('|');
                 if (self.gwCampaignOwnerStateDebug[star] !== ownerKey) {
                     self.gwCampaignOwnerStateDebug[star] = ownerKey;
-                    console.log('[GW_COOP] ownerColorState star=' + star + ' source=' + ownerSource + ' connected=' + system.connected() + ' hasAi=' + !!ai + ' hasCard=' + system.star.hasCard() + ' history=' + historyCount + ' owner=' + (owner ? owner.join(',') : 'none') + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                    console.log('[GW COOP] ownerColorState star=' + star + ' source=' + ownerSource + ' connected=' + system.connected() + ' hasAi=' + !!ai + ' hasCard=' + system.star.hasCard() + ' history=' + historyCount + ' owner=' + (owner ? owner.join(',') : 'none') + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                 }
 
                 if (boss && !bossModel) {
@@ -2750,7 +2750,7 @@ requireGW([
                 var visitedBeforeMove = system.visited();
 
                 if (!system.visited()) {
-                    console.log('[GW_COOP] revealSystem trigger star=' + star + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                    console.log('[GW COOP] revealSystem trigger star=' + star + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                     self.revealSystem(system);
                 }
 
@@ -2758,7 +2758,7 @@ requireGW([
 
                 // Some viewer replays can miss the internal move mutation. Force minimal sync fallback.
                 if (self.isCampaignViewer() && game.currentStar() !== star) {
-                    console.log('[GW_COOP] viewer move fallback set currentStar from=' + game.currentStar() + ' to=' + star);
+                    console.log('[GW COOP] viewer move fallback set currentStar from=' + game.currentStar() + ' to=' + star);
                     game.currentStar(star);
                 }
 
@@ -2767,7 +2767,7 @@ requireGW([
                     if (replayStar && _.isFunction(replayStar.history)) {
                         var history = replayStar.history() || [];
                         replayStar.history(history.concat([{ coop_replay: true, t: _.now() }]));
-                        console.log('[GW_COOP] viewer move fallback marked visited star=' + star);
+                        console.log('[GW COOP] viewer move fallback marked visited star=' + star);
                     }
                 }
 
@@ -2889,7 +2889,7 @@ requireGW([
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
-            console.log('[GW_COOP] win start selected=' + selected_card_index + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+            console.log('[GW COOP] win start selected=' + selected_card_index + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
 
             if (!self.gwCampaignReplayingAction)
                 self.sendCampaignAction('win_choice', { selected_card_index: selected_card_index });
@@ -2907,7 +2907,7 @@ requireGW([
             game.winTurn(selected_card_index).then(function(didWin) {
                 if (!didWin) {
                     console.error('Failed winning turn', game);
-                    console.log('[GW_COOP] win failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+                    console.log('[GW COOP] win failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
                     return;
                 }
 
@@ -2915,7 +2915,7 @@ requireGW([
                 var winAi = winStar && _.isFunction(winStar.ai) ? winStar.ai() : undefined;
                 var winHasCard = winStar && _.isFunction(winStar.hasCard) ? winStar.hasCard() : undefined;
                 var winHistory = winStar && _.isFunction(winStar.history) ? (winStar.history() || []).length : undefined;
-                console.log('[GW_COOP] win applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!winAi + ' hasCard=' + winHasCard + ' history=' + winHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+                console.log('[GW COOP] win applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!winAi + ' hasCard=' + winHasCard + ' history=' + winHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
 
                 if (self.isCampaignViewer())
                     self.syncViewerStarsFromGame('win_applied');
@@ -2951,7 +2951,7 @@ requireGW([
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
                 return;
 
-            console.log('[GW_COOP] lose start role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+            console.log('[GW COOP] lose start role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
 
             if (!self.gwCampaignReplayingAction)
                 self.sendCampaignAction('lose_turn', {});
@@ -2962,7 +2962,7 @@ requireGW([
                 var loseAi = loseStar && _.isFunction(loseStar.ai) ? loseStar.ai() : undefined;
                 var loseHasCard = loseStar && _.isFunction(loseStar.hasCard) ? loseStar.hasCard() : undefined;
                 var loseHistory = loseStar && _.isFunction(loseStar.history) ? (loseStar.history() || []).length : undefined;
-                console.log('[GW_COOP] lose applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!loseAi + ' hasCard=' + loseHasCard + ' history=' + loseHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+                console.log('[GW COOP] lose applied role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' hasAi=' + !!loseAi + ' hasCard=' + loseHasCard + ' history=' + loseHistory + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
 
                 if (self.isCampaignViewer())
                     self.syncViewerStarsFromGame('lose_applied');
@@ -2975,7 +2975,7 @@ requireGW([
                 });
             }
             else {
-                console.log('[GW_COOP] lose failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+                console.log('[GW COOP] lose failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
                 self.exitGate().resolve();
             }
         };
@@ -3043,7 +3043,7 @@ requireGW([
                 var localReferee = refereeBundle && refereeBundle.localReferee;
 
                 if (!referee) {
-                    console.log('[GW_COOP] failed to hire GW referee for launch');
+                    console.log('[GW COOP] failed to hire GW referee for launch');
                     self.launchingFight(false);
                     return;
                 }
@@ -3054,7 +3054,7 @@ requireGW([
                     if (_.isObject(personalizedFiles))
                         localFiles = _.cloneDeep(personalizedFiles);
                 }
-                console.log('[GW_COOP] personalizedFiles for launch', localFiles);
+                console.log('[GW COOP] personalizedFiles for launch', localFiles);
 
                 localFiles['/ui/main/game/live_game/live_game.js'] = patchedLiveGameScript;
                 referee.localFiles(localFiles);
@@ -3436,7 +3436,7 @@ requireGW([
 
         self.revealSystem = function(system) {
             if (!system) {
-                console.log('[GW_COOP] revealSystem skipped: no system role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                console.log('[GW COOP] revealSystem skipped: no system role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                 return;
             }
 
@@ -3446,14 +3446,14 @@ requireGW([
             });
             var hasAi = !!(system.star.ai && system.star.ai());
             var hasBoss = !!(hasAi && system.star.ai().boss);
-            console.log('[GW_COOP] revealSystem role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' newNeighbors=' + newNeighbors.length + ' hasAi=' + hasAi + ' hasBoss=' + hasBoss);
+            console.log('[GW COOP] revealSystem role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' newNeighbors=' + newNeighbors.length + ' hasAi=' + hasAi + ' hasBoss=' + hasBoss);
 
             if (newBoss) {
-                console.log('[GW_COOP] cue board_commander_factionleader_discovered');
+                console.log('[GW COOP] cue board_commander_factionleader_discovered');
                 api.audio.playSound('/VO/Computer/gw/board_commander_factionleader_discovered');
             }
             else if (system.star.ai() && !system.star.ai().boss) {
-                console.log('[GW_COOP] cue board_commander_discovered');
+                console.log('[GW COOP] cue board_commander_discovered');
                 api.audio.playSound('/VO/Computer/gw/board_commander_discovered');
             }
         };
@@ -3468,23 +3468,23 @@ requireGW([
         self.maybePlayCaptureSound = function() {
             var currentStar = self.currentStar();
             if (!currentStar) {
-                console.log('[GW_COOP] maybePlayCaptureSound no currentStar role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+                console.log('[GW COOP] maybePlayCaptureSound no currentStar role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
                 return false;
             }
 
             if (currentStar.ai()) {
-                console.log('[GW_COOP] maybePlayCaptureSound blocked: ai present star=' + game.currentStar());
+                console.log('[GW COOP] maybePlayCaptureSound blocked: ai present star=' + game.currentStar());
                 return false;
             }
 
             var history = currentStar.history();
             var last = history[history.length - 1];
             if (!last || !last.details || !last.details.win || !last.details.win.ai) {
-                console.log('[GW_COOP] maybePlayCaptureSound blocked: no capture history star=' + game.currentStar() + ' history=' + history.length);
+                console.log('[GW COOP] maybePlayCaptureSound blocked: no capture history star=' + game.currentStar() + ' history=' + history.length);
                 return false;
             }
 
-            console.log('[GW_COOP] cue board_system_capture star=' + game.currentStar() + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
+            console.log('[GW COOP] cue board_system_capture star=' + game.currentStar() + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction);
             api.audio.playSound('/VO/Computer/gw/board_system_capture');
             return true;
         };
@@ -3562,7 +3562,7 @@ requireGW([
 
             if (self.isCampaignHost() && self.gwCampaignConnected() && self.gwCampaignStartupBattleResult && !self.gwCampaignStartupResultSent) {
                 self.gwCampaignStartupResultSent = true;
-                console.log('[GW_COOP] host relaying startup_battle_result=' + self.gwCampaignStartupBattleResult);
+                console.log('[GW COOP] host relaying startup_battle_result=' + self.gwCampaignStartupBattleResult);
                 self.sendCampaignAction('startup_battle_result', { result: self.gwCampaignStartupBattleResult });
             }
 
@@ -3689,7 +3689,7 @@ requireGW([
         if (game || !gwCampaignCoopMode)
             return game;
 
-        console.log('[GW_COOP] no local gw_active_game found, creating hidden co-op bootstrap game coopMode=' + gwCampaignCoopMode + ' queryMode=' + gwCampaignMode);
+        console.log('[GW COOP] no local gw_active_game found, creating hidden co-op bootstrap game coopMode=' + gwCampaignCoopMode + ' queryMode=' + gwCampaignMode);
         return new GW.Game();
     });
     var documentLoader = $(document).ready();
@@ -3727,7 +3727,7 @@ requireGW([
         // If the game fails to load, going back is better than getting stuck.
         if (!game) {
             // TODO: Maybe tell the player what's up?
-            console.log('[GW_COOP] failed to load game, exiting to main menu');
+            console.log('[GW COOP] failed to load game, exiting to main menu');
             self.exitGame();
             return;
         }
@@ -3739,7 +3739,7 @@ requireGW([
         // process any battle results.
         var battleResult = game.lastBattleResult();
         var startupBattleResult = null;
-        console.log('[GW_COOP] startup battleResult=' + battleResult + ' currentStar=' + game.currentStar());
+        console.log('[GW COOP] startup battleResult=' + battleResult + ' currentStar=' + game.currentStar());
 
         if (battleResult)
         {
@@ -3747,13 +3747,13 @@ requireGW([
             startupBattleResult = battleResult;
             if (battleResult === 'win')
                 game.winTurn().then(function() {
-                    console.log('[GW_COOP] startup battleResult winTurn applied currentStar=' + game.currentStar());
+                    console.log('[GW COOP] startup battleResult winTurn applied currentStar=' + game.currentStar());
                     GW.manifest.saveGame(game);
                 });
 
             if (battleResult === 'loss') {
                 game.loseTurn();
-                console.log('[GW_COOP] startup battleResult loseTurn applied currentStar=' + game.currentStar());
+                console.log('[GW COOP] startup battleResult loseTurn applied currentStar=' + game.currentStar());
                 if (game.isTutorial()) {
                     game.turnState(GW.Game.turnStates.begin);
                 }
@@ -3800,7 +3800,7 @@ requireGW([
             ].join('|');
             if (model.gwCampaignLastControlLogKey !== controlLogKey) {
                 model.gwCampaignLastControlLogKey = controlLogKey;
-                console.log('[GW_COOP] gw_campaign_control seq=' + (payload && payload.snapshot_seq) + ' hasSnapshot=' + !!(payload && payload.has_snapshot));
+                console.log('[GW COOP] gw_campaign_control seq=' + (payload && payload.snapshot_seq) + ' hasSnapshot=' + !!(payload && payload.has_snapshot));
             }
             model.gwCampaignControl(payload || {});
 
@@ -3838,7 +3838,7 @@ requireGW([
             var roleLogKey = [payload.role, payload.host_id, payload.host_name].join('|');
             if (model.gwCampaignLastRoleLogKey !== roleLogKey) {
                 model.gwCampaignLastRoleLogKey = roleLogKey;
-                console.log('[GW_COOP] gw_campaign_role=' + payload.role + ' host=' + payload.host_name);
+                console.log('[GW COOP] gw_campaign_role=' + payload.role + ' host=' + payload.host_name);
             }
             var previousRole = model.gwCampaignRole();
             model.gwCampaignEnabled(true);
@@ -3895,7 +3895,7 @@ requireGW([
         };
 
         handlers.gw_campaign_snapshot = function(payload) {
-            console.log('[GW_COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
+            console.log('[GW COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.applyCampaignSnapshot(payload);
         };
 

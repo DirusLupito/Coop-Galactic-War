@@ -135,7 +135,7 @@ function beginGwCampaignProcessRestart() {
             return client.id;
         });
 
-        console.log('[GW_COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
+        console.log('[GW COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
 
         server.broadcast({
             message_type: 'gw_return_to_campaign_restart_prepare',
@@ -162,7 +162,7 @@ function beginGwCampaignProcessRestart() {
     broadcastPrepare();
 
     _.delay(function() {
-        console.log('[GW_COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
+        console.log('[GW COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');
 
         sim.onShutdown = server.exit;
         sim.shutdown(true);
@@ -942,7 +942,7 @@ exports.enter = function (config) {
                 if (gwCampaignRestartRequested)
                     return;
 
-                console.log('[GW_COOP] playing host disconnect shutdown reason=' + reason);
+                console.log('[GW COOP] playing host disconnect shutdown reason=' + reason);
                 sim.onShutdown = server.exit;
                 sim.shutdown(true);
             });
