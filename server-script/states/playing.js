@@ -206,6 +206,19 @@ function isAI(army) {
     return !!result
 }
 
+function isGwCampaignHostArmy(army) {
+    if (!isGwCampaignCoopMatch() || !army)
+        return false;
+
+    var hostId = normalizeClientId(game_options && game_options.gw_campaign_host_id);
+    if (!hostId)
+        return false;
+
+    return _.some(army.players || [], function(player) {
+        return normalizeClientId(player && player.client && player.client.id) === hostId;
+    });
+}
+
 function spawnEffect(config) {
     var army = config.army && config.army.sim;
     var spec = config.spec;
@@ -564,13 +577,24 @@ function tickDefeatState(check_for_resurrection) {
             alive = _.some(army.commanders, function (commander) { return !commander.dead; });
         }
         if (!alive) {
-            if (isGalacticWar() && !isAI(army)) { /* in Galactic War, when the player is defeated we destroy all remaining subcommanders */
-                console.log('player died, so delete all their allies.');
-                var allies = _.filter(armies, function (target) {
-                    return isAlly(army, target) && isAI(target) && !target.defeated;
-                });
+            if (isGalacticWar() && !isAI(army)) { /* in Galactic War, when the host player is defeated we destroy all remaining subcommanders */
+                var defeatAlliedHumans = isGwCampaignHostArmy(army);
 
-                _.forEach(allies, defeatArmy);
+                if (!isGwCampaignCoopMatch() || defeatAlliedHumans) {
+                    console.log('player died, so delete all their allies.');
+                    console.log('[GW COOP] defeatAlliedHumans=' + JSON.stringify(defeatAlliedHumans));
+                    var allies = _.filter(armies, function (target) {
+                        if (!isAlly(army, target) || target.defeated)
+                            return false;
+
+                        if (isAI(target))
+                            return true;
+
+                        return defeatAlliedHumans && target !== army && !isAI(target);
+                    });
+
+                    _.forEach(allies, defeatArmy);
+                }
             }
 
             defeatArmy(army);

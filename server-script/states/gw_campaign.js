@@ -34,6 +34,7 @@ function GWCampaignModel(creator) {
     self.maxClientsLimit = self.baseMaxClientsLimit;
     self.maxClientsLocked = false;
     self.maxClients = Math.max(1, Math.min(DEFAULT_GW_CAMPAIGN_PLAYERS, self.maxClientsLimit));
+    self.sharedControl = true;
 
     self.creatorId = creator.id;
     self.creatorName = creator.name;
@@ -77,6 +78,7 @@ function GWCampaignModel(creator) {
         max_clients: self.maxClients,
         max_clients_limit: self.maxClientsLimit,
         max_clients_locked: self.maxClientsLocked,
+        shared_control: self.sharedControl,
         connected_clients: [],
         has_snapshot: false,
         snapshot_seq: 0,
@@ -291,7 +293,8 @@ function GWCampaignModel(creator) {
             tag: _.isString(self.settings.tag) ? self.settings.tag : 'Testing',
             public: _.isBoolean(self.settings.public) ? self.settings.public : true,
             friends: !!self.settings.friends,
-            hidden: !!self.settings.hidden
+            hidden: !!self.settings.hidden,
+            shared_control: self.sharedControl
         };
 
         // Host payload is optional fallback metadata; authoritative values come from self.settings.
@@ -305,6 +308,7 @@ function GWCampaignModel(creator) {
             current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
             settings: settings,
             max_clients: self.maxClients,
+            shared_control: self.sharedControl,
             required_client_mods: {
                 required_identifiers: _.clone(self.requiredClientModIdentifiers),
                 required_names_by_id: _.cloneDeep(self.requiredClientModNamesById)
@@ -333,6 +337,9 @@ function GWCampaignModel(creator) {
 
         if (_.isBoolean(data.public))
             self.settings.public = data.public;
+
+        if (_.has(data, 'shared_control'))
+            self.sharedControl = !!data.shared_control;
 
         if (_.has(data, 'max_clients_locked')) {
             self.maxClientsLocked = !!data.max_clients_locked;
@@ -488,6 +495,7 @@ function GWCampaignModel(creator) {
         self.control.max_clients = self.maxClients;
         self.control.max_clients_limit = self.maxClientsLimit;
         self.control.max_clients_locked = self.maxClientsLocked;
+        self.control.shared_control = self.sharedControl;
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
         self.control.settings = _.cloneDeep(self.settings);
@@ -876,7 +884,8 @@ function GWCampaignModel(creator) {
                     settings: _.cloneDeep(self.settings),
                     max_clients: self.maxClients,
                     max_clients_limit: self.maxClientsLimit,
-                    max_clients_locked: self.maxClientsLocked
+                    max_clients_locked: self.maxClientsLocked,
+                    shared_control: self.sharedControl
                 });
             },
             // Handler for chat messages sent by clients in the lobby. 

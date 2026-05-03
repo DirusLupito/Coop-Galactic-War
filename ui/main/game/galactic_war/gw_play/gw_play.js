@@ -1278,6 +1278,7 @@ requireGW([
         // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
         self.gwCampaignMaxClientsLimit = ko.observable(6);
         self.gwCampaignMaxClientsLocked = ko.observable(false);
+        self.gwCampaignSharedControl = ko.observable(true);
         self.initialCoopSettingsApplied = false;
 
         var getQueryParam = function(name) {
@@ -1388,6 +1389,10 @@ requireGW([
             return !!(game && _.isFunction(game.lockCoopPlayers) && game.lockCoopPlayers());
         };
 
+        self.savedSharedByDefault = function() {
+            return !(game && _.isFunction(game.sharedByDefault) && game.sharedByDefault() === false);
+        };
+
         self.buildCampaignLobbySettingsPayload = function(maxClients) {
             var mode = self.visibilityMode();
             // Tag here is 'Testing', but perhaps should not be hardcoded?
@@ -1397,6 +1402,7 @@ requireGW([
                 public: mode === 'public',
                 friends: mode === 'friends' ? self.friends() : [],
                 password: self.privateGamePassword(),
+                shared_control: self.gwCampaignSharedControl(),
                 tag: 'Testing'
             };
 
@@ -1426,14 +1432,16 @@ requireGW([
 
             var playersSpecified = self.savedCoopPlayersSpecified();
             var playersLocked = self.savedCoopPlayersLocked();
+            var sharedByDefault = self.savedSharedByDefault();
 
-            console.log('[GW_COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked);
-            if (!playersSpecified && !playersLocked) {
+            console.log('[GW_COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault);
+            if (!playersSpecified && !playersLocked && sharedByDefault) {
                 self.initialCoopSettingsApplied = true;
                 console.log('[GW_COOP] no saved coop settings to apply, marking as applied');
                 return;
             }
 
+            self.gwCampaignSharedControl(sharedByDefault);
             var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
@@ -1596,6 +1604,9 @@ requireGW([
             if (_.has(data, 'max_clients_locked'))
                 self.gwCampaignMaxClientsLocked(!!data.max_clients_locked);
 
+            if (_.has(data, 'shared_control'))
+                self.gwCampaignSharedControl(!!data.shared_control);
+
             if (!_.has(data, 'settings') || !data.settings)
                 return;
 
@@ -1624,6 +1635,14 @@ requireGW([
             self.send_message('modify_settings', self.buildCampaignLobbySettingsPayload(self.gwCampaignMaxClients()));
         };
 
+        self.toggleGwCampaignSharedControl = function() {
+            if (!self.canEditGwCampaignLobby() || !self.gwCampaignActive())
+                return;
+
+            self.gwCampaignSharedControl(!self.gwCampaignSharedControl());
+            self.pushCampaignLobbySettings();
+        };
+
         // Applies one-time restart context after host reconnects to a newly
         // started gw_campaign server process. This keeps co-op lobby settings stable
         // across process-level Continue War restarts.
@@ -1642,6 +1661,7 @@ requireGW([
                 game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
                 tag: _.isString(settings.tag) ? settings.tag : 'Testing',
                 public: _.isBoolean(settings.public) ? settings.public : true,
+                shared_control: _.has(context, 'shared_control') ? !!context.shared_control : (_.has(settings, 'shared_control') ? !!settings.shared_control : self.gwCampaignSharedControl()),
                 max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
                 password: _.isString(access.password) ? access.password : self.privateGamePassword(),
                 friends: _.isArray(access.friends) ? access.friends : [],
@@ -3054,6 +3074,7 @@ requireGW([
                         '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
                     });
                     battleConfig.gw_campaign_active = !!self.gwCampaignActive();
+                    battleConfig.shared_control = self.gwCampaignActive() ? self.gwCampaignSharedControl() : true;
 
                     // Mirror current campaign lobby presentation settings so the
                     // battle lobby beacon can continue the same identity.
@@ -3065,6 +3086,7 @@ requireGW([
                         public: _.isBoolean(campaignSettings.public) ? campaignSettings.public : true,
                         friends: !!campaignSettings.friends,
                         hidden: !!campaignSettings.hidden,
+                        shared_control: battleConfig.shared_control,
                         max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
                     };
 
@@ -3106,7 +3128,8 @@ requireGW([
                         self.send_message('launch_gw_battle', {
                             current_star: game.currentStar(),
                             gw_campaign_active: true,
-                            gw_campaign_settings: battleConfig.gw_campaign_settings
+                            gw_campaign_settings: battleConfig.gw_campaign_settings,
+                            shared_control: battleConfig.shared_control
                         });
                         return;
                     }

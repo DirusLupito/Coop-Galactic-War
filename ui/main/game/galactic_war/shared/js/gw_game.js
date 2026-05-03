@@ -43,6 +43,7 @@ define([
         self.coopPlayers = ko.observable(2);
         self.coopPlayersSpecified = ko.observable(false);
         self.lockCoopPlayers = ko.observable(false);
+        self.sharedByDefault = ko.observable(true);
 
         self.serverModIdentifiers = ko.observableArray([]);
 
@@ -113,6 +114,7 @@ define([
             self.coopPlayers(_.isFinite(coopPlayers) && coopPlayers > 0 ? Math.floor(coopPlayers) : 1);
             self.coopPlayersSpecified(!!config.coopPlayersSpecified);
             self.lockCoopPlayers(!!config.lockCoopPlayers);
+            self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
 
             self.serverModIdentifiers(config.serverModIdentifiers || []);
 
@@ -158,6 +160,7 @@ define([
                 coopPlayers: self.coopPlayers(),
                 coopPlayersSpecified: self.coopPlayersSpecified(),
                 lockCoopPlayers: self.lockCoopPlayers(),
+                sharedByDefault: self.sharedByDefault(),
                 serverModIdentifiers: self.serverModIdentifiers()
             };
 

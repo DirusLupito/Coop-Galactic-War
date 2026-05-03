@@ -47,6 +47,7 @@
                 host_id: clientState.gw_campaign_host_id,
                 settings: settings,
                 access: access,
+                shared_control: _.has(settings, 'shared_control') ? !!settings.shared_control : true,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
                 use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []

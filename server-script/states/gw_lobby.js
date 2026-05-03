@@ -26,6 +26,12 @@ var getGWMaxPlayers = function() {
 };
 var MAX_GW_PLAYERS = getGWMaxPlayers();
 
+// Controls the range of color variation for player in unshared coop sessions.
+// Each of the R, G, and B color channels can vary from the host's color 
+// (determined by which faction the player belongs to) by at most PLAYER_COLOR_VARIATION_RANGE
+// in either the positive or negative direction.
+var PLAYER_COLOR_VARIATION_RANGE = 35;
+
 var debugging = false;
 
 function debug_log(object) {
@@ -376,7 +382,7 @@ function LobbyModel(creator, launchContext) {
             self.changeControl({ starting: false });
 
         if (!!self.creatorReady() && !allConfigReady)
-            console.log('GW - Waiting for all clients to mount GW config before start');
+            console.log('[GW COOP] Waiting for all clients to mount GW config before start');
     };
 
     self.updateBeacon = function() {
@@ -474,6 +480,107 @@ function LobbyModel(creator, launchContext) {
         });
     };
 
+    // In the following code, a color is essentially a type of array containing three integers
+    // (R, G, B) which must be in the range 0-255.
+
+    var clampColorChannel = function(value) {
+        return Math.max(0, Math.min(255, Math.round(value)));
+    };
+
+    var randomizeColorNearFactionColor = function(color) {
+        // For every item in the color array, we map it to a new value within 
+        // the variation range [color[i] - PLAYER_COLOR_VARIATION_RANGE, color[i] + PLAYER_COLOR_VARIATION_RANGE]
+        return _.map(color, function(channel) {
+            // Generate our offset in the range [-PLAYER_COLOR_VARIATION_RANGE, PLAYER_COLOR_VARIATION_RANGE]
+            var offset = Math.floor(Math.random() * ((PLAYER_COLOR_VARIATION_RANGE * 2) + 1)) - PLAYER_COLOR_VARIATION_RANGE;
+            return clampColorChannel(channel + offset);
+        });
+    };
+
+    var getColorPairForPlayerArmy = function(index, factionColor) {
+        // Host always gets the base faction color.
+        if (index === 0)
+            return _.cloneDeep(factionColor);
+
+        return [
+            randomizeColorNearFactionColor(factionColor[0]),
+            randomizeColorNearFactionColor(factionColor[1])
+        ];
+    };
+
+    var armyHasAI = function(army) {
+        return !!(army && _.isArray(army.slots) && _.any(army.slots, 'ai'));
+    };
+
+    var normalizeHumanArmiesForSharedControl = function(config, connectedClients) {
+        if (!config || !_.isArray(config.armies)) {
+            return;
+        }
+
+        if (!connectedClients || !_.isArray(connectedClients) || connectedClients.length === 0) {
+            console.log('[GW COOP] No connected clients found.');
+            return;
+        }
+
+        var humanArmyCount = 0;
+
+        // Figure out which army is the one in normal GW that would be marked
+        // as the human player (so we can then use it as a template to create more armies).
+        var humanTemplate;
+        _.forEach(config.armies, function(army) {
+            if (!armyHasAI(army)) {
+                humanTemplate = army;
+                humanArmyCount++;
+            }
+        });
+
+        if (humanArmyCount !== 1) {
+            console.log('[GW COOP] Expected exactly one human army, found ' + humanArmyCount + '.');
+            return;
+        }
+
+        if (!humanTemplate) {
+            console.log('[GW COOP] No human player template found.');
+            return;
+        }
+
+        var baseSlot = humanTemplate.slots && humanTemplate.slots[0];
+
+        if (!baseSlot) {
+            console.log('[GW COOP] No valid base slot found.');
+            return;
+        }
+
+        // Create a new army for each connected client.
+        var splitArmies = _.map(_.range(0, connectedClients.length), function(index) {
+            var slot = _.cloneDeep(baseSlot);
+            // Slots will be assigned to specific clients later in startGame().
+            delete slot.client;
+            delete slot.ai;
+            delete slot.name;
+
+            return {
+                slots: [slot],
+                // I assume here that humanTemplate.color is both a valid color and the main faction color.
+                color: getColorPairForPlayerArmy(index, humanTemplate.color),
+                econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
+                spec_tag: humanTemplate.spec_tag,
+                alliance_group: humanTemplate.alliance_group
+            };
+        });
+
+        config.armies = _.reduce(config.armies, function(result, army) {
+            if (!armyHasAI(army)) {
+                return result.concat(splitArmies);
+            }
+
+            result.push(army);
+            return result;
+        }, []);
+
+        console.log('[GW COOP] - unshared control enabled; split humans into ' + splitArmies.length + ' allied armies');
+    };
+
     self.sendGWConfigToClient = function(client) {
         var config = self.config();
         if (!config || !config.files)
@@ -508,6 +615,12 @@ function LobbyModel(creator, launchContext) {
         var connectedClients = _.filter(server.clients, function(client) {
             return client.connected;
         });
+        var sharedControl = _.has(config, 'shared_control')
+            ? !!config.shared_control
+            : (_.has(self.launchContext, 'shared_control') ? !!self.launchContext.shared_control : true);
+
+        if (!sharedControl)
+            normalizeHumanArmiesForSharedControl(config, connectedClients);
 
         // Collect all human-controllable slots from non-AI armies.
         var humanSlots = [];
@@ -538,10 +651,15 @@ function LobbyModel(creator, launchContext) {
 
         // Map connected humans into human slots.
         _.forEach(humanSlots, function(slot, index) {
-            if (index < connectedClients.length)
-                slot.client = connectedClients[index];
-            else
+            if (index < connectedClients.length) {
+                var client = connectedClients[index];
+                slot.client = client;
+                slot.name = client.name || 'Player';
+            }
+            else {
                 delete slot.client;
+                delete slot.name;
+            }
         });
 
         // Set up the players array for the landing state
@@ -570,6 +688,7 @@ function LobbyModel(creator, launchContext) {
                     gw_campaign_host_id: self.creator,
                     gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
                     gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
+                    shared_control: sharedControl,
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,
