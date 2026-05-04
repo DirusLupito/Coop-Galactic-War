@@ -72,6 +72,8 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `877149e` `Galactic war now scales in difficulty with more players.`
   - `35de697` `Co-op players can now select and hover their own stars.`
   - `1bb752a` `Added tooltip to the open to coop button.`
+- Unshared play:
+  - `515e287` `Implemented unshared play.`
 
 ## High-Level Summary
 
@@ -92,6 +94,7 @@ At a high level, the codebase now does all of the following:
 11. Stores co-op setup intent in GW saves, including intended co-op player count and optional hard slot caps.
 12. Uses the saved co-op player count to scale generated Galactic War difficulty through AI economy and enemy minions.
 13. Keeps campaign selection local to each player while leaving movement, fighting, exploring, and card decisions host-authoritative.
+14. Lets a co-op campaign launch a fight with either shared armies or as separate allied armies, with the default stored in the GW save and the per-battle value controlled from the campaign lobby.
 
 ## Original Single-Player Galactic War File Model
 
@@ -2225,3 +2228,46 @@ The intended architecture is now explicit: on initial campaign load, a viewer di
 5. Save-level co-op settings are part of the GW save contract. Mods that replace save creation need to populate those fields explicitly.
 6. Never let a viewer enter `gw_play` believing stale local campaign data is authoritative. Gate viewer entry until a fresh host snapshot has been saved and marked authoritative; cached server snapshots are not authoritative for initial viewer load.
 7. Keep campaign server state guarded with active/inactive lifecycle flags. Late callbacks after a state transition are a real reconnect hazard.
+
+---
+
+## Unshared Play (Commit `515e287`)
+
+### Implemented unshared play. (`515e287`)
+
+This commit added a second battle-control mode for co-op Galactic War. Before this point, co-op always meant that every connected human client was inserted into the same `.player` army and shared control of that army. Unshared play keeps the same campaign state and the same generated `.player` unit universe, but splits connected humans into separate allied armies at battle launch.
+
+The save-level default is stored on `GW.Game` in [ui/main/game/galactic_war/shared/js/gw_game.js](ui/main/game/galactic_war/shared/js/gw_game.js):
+
+- `sharedByDefault` is a persisted boolean.
+- Missing legacy saves default to `true`, preserving the original shared-army behavior.
+- New game creation exposes this as the "Share control by default" checkbox in [ui/main/game/galactic_war/gw_start/gw_start.html](ui/main/game/galactic_war/gw_start/gw_start.html) and writes the value in [ui/main/game/galactic_war/gw_start/gw_start.js](ui/main/game/galactic_war/gw_start/gw_start.js).
+
+This is intentionally only a default. The campaign lobby carries the live per-battle value as `shared_control` so players can change their mind from one fight to the next without editing the save. On the UI side, [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js) adds `gwCampaignSharedControl`, includes it in `buildCampaignLobbySettingsPayload`, applies it from `gw_campaign_control`, and sends it with the battle launch payload. The host-facing control is the "Share Army" toggle in the host slot row in [ui/main/game/galactic_war/gw_play/gw_play.html](ui/main/game/galactic_war/gw_play/gw_play.html), styled by [ui/main/game/galactic_war/gw_play/gw_play.css](ui/main/game/galactic_war/gw_play/gw_play.css).
+
+On the campaign server, [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) stores `self.sharedControl`, echoes it in control messages, accepts it through `modify_settings`, and includes it in the launch context passed to `gw_lobby`. The Continue War path also preserves the value through [ui/main/game/galactic_war/gw_play/live_game_patch.js](ui/main/game/galactic_war/gw_play/live_game_patch.js), so a restarted campaign lobby reopens with the same army-control setting.
+
+The actual shared-versus-unshared split happens in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js), immediately before the server enters `landing`. `startGame()` reads `shared_control` from the battle config or launch context. If it is true, the old behavior remains: all connected human clients are mapped into the existing human army slots. If it is false, `normalizeHumanArmiesForSharedControl(config, connectedClients)` rewrites `config.armies`.
+
+The unshared normalization does the following:
+
+1. Verifies that the config has armies and that connected clients exist.
+2. Finds the single non-AI army, which is the normal GW human army template.
+3. Refuses to perform the unshared rewrite if there is not exactly one human army, because multiple human armies would indicate a broken GW battle shape rather than a case to silently patch over.
+4. Uses the first slot from that human army as the base player slot. PA does not support human players sharing armies with AIs, so there is no need to search for a non-AI slot inside a known-human army.
+5. Creates one new army per connected client.
+6. Deep-clones the base slot, removes stale `client`, `ai`, and `name` fields, and leaves final client/name assignment to the existing `startGame()` slot-mapping pass.
+7. Preserves the template army's `econ_rate`, `spec_tag`, and `alliance_group` so every split player army remains a GW player-side army and stays allied with the others.
+8. Replaces the original human army with the generated split armies while preserving the existing AI armies.
+
+The slot-mapping pass after normalization is still important. It assigns the actual connected client objects and display names into whichever human slots exist after the army shape has been finalized. That shared assignment path fixes both modes: shared control gets multiple clients in one army, while unshared control gets one client per newly split army.
+
+Player colors are handled without introducing new unit specs or commander specs. The host army keeps the original faction color pair exactly. Additional player armies derive their primary and secondary RGB colors from the same faction color pair, with each channel randomized within `PLAYER_COLOR_VARIATION_RANGE` and clamped to the valid `0` through `255` RGB range. This makes unshared co-op players visually distinct while still reading as variants of the campaign faction.
+
+All human players still use the same generated `.player` spec tag. That is why unshared play does not need to create or distribute extra commander/unit specs: the split is at the army/control layer, not at the generated-file layer.
+
+Defeat handling also needed to distinguish host defeat from co-op player defeat. In [server-script/states/playing.js](server-script/states/playing.js), `isGwCampaignHostArmy` checks whether a defeated human army contains the campaign host client. In normal Galactic War, a human defeat kills all allied AI subcommanders. In co-op Galactic War, that cleanup only cascades from the host army. If a non-host unshared co-op player dies, only that player's army is defeated; the host, other co-op players, and allied AI subcommanders are left alone. If the host army dies, allied co-op humans and AI subcommanders are defeated as well, preserving the campaign rule that the host commander's death means game over.
+
+### Practical Lesson From This Branch
+
+1. Prefer explicit invariant checks over quiet fallback behavior when normalizing GW battle config. A broken army shape should be logged and stopped at the relevant operation, not converted into a mysterious partially working launch.
