@@ -1279,6 +1279,7 @@ requireGW([
         self.gwCampaignMaxClientsLimit = ko.observable(6);
         self.gwCampaignMaxClientsLocked = ko.observable(false);
         self.gwCampaignSharedControl = ko.observable(true);
+        self.gwCampaignPerPlayerTechCards = ko.observable(true);
         self.initialCoopSettingsApplied = false;
 
         var getQueryParam = function(name) {
@@ -1393,6 +1394,18 @@ requireGW([
             return !(game && _.isFunction(game.sharedByDefault) && game.sharedByDefault() === false);
         };
 
+        self.savedPerPlayerTechCards= function() {
+            if (!game || !_.isFunction(game.perPlayerTechCards)) {
+                return false;
+            }
+
+            if (!_.isBoolean(game.perPlayerTechCards())) {
+                return false;
+            }
+
+            return game.perPlayerTechCards();
+        };
+
         self.buildCampaignLobbySettingsPayload = function(maxClients) {
             var mode = self.visibilityMode();
             // Tag here is 'Testing', but perhaps should not be hardcoded?
@@ -1403,6 +1416,7 @@ requireGW([
                 friends: mode === 'friends' ? self.friends() : [],
                 password: self.privateGamePassword(),
                 shared_control: self.gwCampaignSharedControl(),
+                per_player_tech_cards: self.gwCampaignPerPlayerTechCards(),
                 tag: 'Testing'
             };
 
@@ -1433,15 +1447,17 @@ requireGW([
             var playersSpecified = self.savedCoopPlayersSpecified();
             var playersLocked = self.savedCoopPlayersLocked();
             var sharedByDefault = self.savedSharedByDefault();
+            var perPlayerTechCards = self.savedPerPlayerTechCards();
 
-            console.log('[GW COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault);
-            if (!playersSpecified && !playersLocked && sharedByDefault) {
+            console.log('[GW COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault + ', per-player tech cards: ' + perPlayerTechCards);
+            if (!playersSpecified && !playersLocked && sharedByDefault && !perPlayerTechCards) {
                 self.initialCoopSettingsApplied = true;
                 console.log('[GW COOP] no saved coop settings to apply, marking as applied');
                 return;
             }
 
             self.gwCampaignSharedControl(sharedByDefault);
+            self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
@@ -1607,6 +1623,9 @@ requireGW([
             if (_.has(data, 'shared_control'))
                 self.gwCampaignSharedControl(!!data.shared_control);
 
+            if (_.has(data, 'per_player_tech_cards'))
+                self.gwCampaignPerPlayerTechCards(!!data.per_player_tech_cards);
+
             if (!_.has(data, 'settings') || !data.settings)
                 return;
 
@@ -1661,7 +1680,8 @@ requireGW([
                 game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
                 tag: _.isString(settings.tag) ? settings.tag : 'Testing',
                 public: _.isBoolean(settings.public) ? settings.public : true,
-                shared_control: _.has(context, 'shared_control') ? !!context.shared_control : (_.has(settings, 'shared_control') ? !!settings.shared_control : self.gwCampaignSharedControl()),
+                shared_control: _.isBoolean(settings.shared_control) ? settings.shared_control : false,
+                per_player_tech_cards: _.isBoolean(settings.per_player_tech_cards) ? settings.per_player_tech_cards : false,
                 max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
                 password: _.isString(access.password) ? access.password : self.privateGamePassword(),
                 friends: _.isArray(access.friends) ? access.friends : [],
@@ -3075,6 +3095,7 @@ requireGW([
                     });
                     battleConfig.gw_campaign_active = !!self.gwCampaignActive();
                     battleConfig.shared_control = self.gwCampaignActive() ? self.gwCampaignSharedControl() : true;
+                    battleConfig.per_player_tech_cards = self.gwCampaignActive() ? self.gwCampaignPerPlayerTechCards() : false;
 
                     // Mirror current campaign lobby presentation settings so the
                     // battle lobby beacon can continue the same identity.
@@ -3087,6 +3108,7 @@ requireGW([
                         friends: !!campaignSettings.friends,
                         hidden: !!campaignSettings.hidden,
                         shared_control: battleConfig.shared_control,
+                        per_player_tech_cards: battleConfig.per_player_tech_cards,
                         max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
                     };
 
@@ -3129,7 +3151,8 @@ requireGW([
                             current_star: game.currentStar(),
                             gw_campaign_active: true,
                             gw_campaign_settings: battleConfig.gw_campaign_settings,
-                            shared_control: battleConfig.shared_control
+                            shared_control: battleConfig.shared_control,
+                            per_player_tech_cards: battleConfig.per_player_tech_cards
                         });
                         return;
                     }

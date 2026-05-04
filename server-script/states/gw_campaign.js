@@ -35,6 +35,7 @@ function GWCampaignModel(creator) {
     self.maxClientsLocked = false;
     self.maxClients = Math.max(1, Math.min(DEFAULT_GW_CAMPAIGN_PLAYERS, self.maxClientsLimit));
     self.sharedControl = true;
+    self.perPlayerTechCards = false;
 
     self.creatorId = creator.id;
     self.creatorName = creator.name;
@@ -79,6 +80,7 @@ function GWCampaignModel(creator) {
         max_clients_limit: self.maxClientsLimit,
         max_clients_locked: self.maxClientsLocked,
         shared_control: self.sharedControl,
+        per_player_tech_cards: self.perPlayerTechCards,
         connected_clients: [],
         has_snapshot: false,
         snapshot_seq: 0,
@@ -294,7 +296,8 @@ function GWCampaignModel(creator) {
             public: _.isBoolean(self.settings.public) ? self.settings.public : true,
             friends: !!self.settings.friends,
             hidden: !!self.settings.hidden,
-            shared_control: self.sharedControl
+            shared_control: self.sharedControl,
+            per_player_tech_cards: self.perPlayerTechCards
         };
 
         // Host payload is optional fallback metadata; authoritative values come from self.settings.
@@ -309,6 +312,7 @@ function GWCampaignModel(creator) {
             settings: settings,
             max_clients: self.maxClients,
             shared_control: self.sharedControl,
+            per_player_tech_cards: self.perPlayerTechCards,
             required_client_mods: {
                 required_identifiers: _.clone(self.requiredClientModIdentifiers),
                 required_names_by_id: _.cloneDeep(self.requiredClientModNamesById)
@@ -340,6 +344,9 @@ function GWCampaignModel(creator) {
 
         if (_.has(data, 'shared_control'))
             self.sharedControl = !!data.shared_control;
+
+        if (_.has(data, 'per_player_tech_cards'))
+            self.perPlayerTechCards = !!data.per_player_tech_cards;
 
         if (_.has(data, 'max_clients_locked')) {
             self.maxClientsLocked = !!data.max_clients_locked;
@@ -496,6 +503,7 @@ function GWCampaignModel(creator) {
         self.control.max_clients_limit = self.maxClientsLimit;
         self.control.max_clients_locked = self.maxClientsLocked;
         self.control.shared_control = self.sharedControl;
+        self.control.per_player_tech_cards = self.perPlayerTechCards;
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
         self.control.settings = _.cloneDeep(self.settings);
@@ -885,7 +893,8 @@ function GWCampaignModel(creator) {
                     max_clients: self.maxClients,
                     max_clients_limit: self.maxClientsLimit,
                     max_clients_locked: self.maxClientsLocked,
-                    shared_control: self.sharedControl
+                    shared_control: self.sharedControl,
+                    per_player_tech_cards: self.perPlayerTechCards,
                 });
             },
             // Handler for chat messages sent by clients in the lobby. 

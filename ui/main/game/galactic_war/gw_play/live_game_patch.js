@@ -48,6 +48,7 @@
                 settings: settings,
                 access: access,
                 shared_control: _.has(settings, 'shared_control') ? !!settings.shared_control : true,
+                per_player_tech_cards: _.has(settings, 'per_player_tech_cards') ? !!settings.per_player_tech_cards : false,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
                 use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []
