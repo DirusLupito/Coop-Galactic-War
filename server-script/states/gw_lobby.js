@@ -615,9 +615,31 @@ function LobbyModel(creator, launchContext) {
         var connectedClients = _.filter(server.clients, function(client) {
             return client.connected;
         });
-        var sharedControl = _.has(config, 'shared_control')
-            ? !!config.shared_control
-            : (_.has(self.launchContext, 'shared_control') ? !!self.launchContext.shared_control : true);
+
+        var gwCampaignConfigSettings = config.gw_campaign_settings || {};
+        var sharedControl = true;
+        var perPlayerTechCards = false;
+
+        if (_.has(gwCampaignConfigSettings, 'shared_control'))
+            sharedControl = !!gwCampaignConfigSettings.shared_control;
+
+        if (_.has(self.launchContext, 'shared_control'))
+            sharedControl = !!self.launchContext.shared_control;
+
+        if (_.has(config, 'shared_control'))
+            sharedControl = !!config.shared_control;
+
+        if (_.has(gwCampaignConfigSettings, 'per_player_tech_cards'))
+            perPlayerTechCards = !!gwCampaignConfigSettings.per_player_tech_cards;
+
+        if (_.has(self.launchContext, 'per_player_tech_cards'))
+            perPlayerTechCards = !!self.launchContext.per_player_tech_cards;
+
+        if (_.has(config, 'per_player_tech_cards'))
+            perPlayerTechCards = !!config.per_player_tech_cards;
+
+        if (perPlayerTechCards)
+            sharedControl = false;
 
         if (!sharedControl)
             normalizeHumanArmiesForSharedControl(config, connectedClients);
@@ -672,6 +694,10 @@ function LobbyModel(creator, launchContext) {
             return client.name + ' (' + client.id + ')';
         }).join(', '));
 
+        var gwCampaignSettings = _.cloneDeep(config.gw_campaign_settings || {});
+        gwCampaignSettings.shared_control = sharedControl;
+        gwCampaignSettings.per_player_tech_cards = perPlayerTechCards;
+
         var landingConfig =
         {
             game:
@@ -686,9 +712,10 @@ function LobbyModel(creator, launchContext) {
                     // without affecting single-player Galactic War behavior.
                     gw_campaign_active: !!self.campaignActive,
                     gw_campaign_host_id: self.creator,
-                    gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
+                    gw_campaign_settings: gwCampaignSettings,
                     gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
                     shared_control: sharedControl,
+                    per_player_tech_cards: perPlayerTechCards,
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,

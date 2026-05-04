@@ -1279,7 +1279,7 @@ requireGW([
         self.gwCampaignMaxClientsLimit = ko.observable(6);
         self.gwCampaignMaxClientsLocked = ko.observable(false);
         self.gwCampaignSharedControl = ko.observable(true);
-        self.gwCampaignPerPlayerTechCards = ko.observable(true);
+        self.gwCampaignPerPlayerTechCards = ko.observable(false);
         self.initialCoopSettingsApplied = false;
 
         var getQueryParam = function(name) {
@@ -1321,6 +1321,9 @@ requireGW([
         });
         self.canEditGwCampaignLobby = ko.computed(function() {
             return self.isCampaignHost();
+        });
+        self.canToggleGwCampaignSharedControl = ko.computed(function() {
+            return self.canEditGwCampaignLobby() && self.gwCampaignActive() && !self.gwCampaignPerPlayerTechCards();
         });
 
         // I wanted to make chat flash similar to how PA Chat (the mod) does flashes, 
@@ -1415,8 +1418,8 @@ requireGW([
                 public: mode === 'public',
                 friends: mode === 'friends' ? self.friends() : [],
                 password: self.privateGamePassword(),
-                shared_control: self.gwCampaignSharedControl(),
                 per_player_tech_cards: self.gwCampaignPerPlayerTechCards(),
+                shared_control: self.gwCampaignPerPlayerTechCards() ? false : self.gwCampaignSharedControl(),
                 tag: 'Testing'
             };
 
@@ -1456,8 +1459,8 @@ requireGW([
                 return;
             }
 
-            self.gwCampaignSharedControl(sharedByDefault);
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
+            self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedByDefault);
             var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
@@ -1620,11 +1623,13 @@ requireGW([
             if (_.has(data, 'max_clients_locked'))
                 self.gwCampaignMaxClientsLocked(!!data.max_clients_locked);
 
-            if (_.has(data, 'shared_control'))
-                self.gwCampaignSharedControl(!!data.shared_control);
-
             if (_.has(data, 'per_player_tech_cards'))
                 self.gwCampaignPerPlayerTechCards(!!data.per_player_tech_cards);
+
+            if (_.has(data, 'shared_control'))
+                self.gwCampaignSharedControl(self.gwCampaignPerPlayerTechCards() ? false : !!data.shared_control);
+            else if (self.gwCampaignPerPlayerTechCards())
+                self.gwCampaignSharedControl(false);
 
             if (!_.has(data, 'settings') || !data.settings)
                 return;
@@ -1655,7 +1660,7 @@ requireGW([
         };
 
         self.toggleGwCampaignSharedControl = function() {
-            if (!self.canEditGwCampaignLobby() || !self.gwCampaignActive())
+            if (!self.canToggleGwCampaignSharedControl())
                 return;
 
             self.gwCampaignSharedControl(!self.gwCampaignSharedControl());
@@ -1675,13 +1680,30 @@ requireGW([
 
             var settings = context.settings || {};
             var access = context.access || {};
+            var perPlayerTechCards = false;
+            var sharedControl = self.gwCampaignSharedControl();
+
+            if (_.isBoolean(settings.per_player_tech_cards))
+                perPlayerTechCards = settings.per_player_tech_cards;
+
+            if (_.isBoolean(settings.shared_control))
+                sharedControl = settings.shared_control;
+
+            if (_.has(context, 'per_player_tech_cards'))
+                perPlayerTechCards = !!context.per_player_tech_cards;
+
+            if (_.has(context, 'shared_control'))
+                sharedControl = !!context.shared_control;
+
+            if (perPlayerTechCards)
+                sharedControl = false;
 
             self.send_message('modify_settings', {
                 game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
                 tag: _.isString(settings.tag) ? settings.tag : 'Testing',
                 public: _.isBoolean(settings.public) ? settings.public : true,
-                shared_control: _.isBoolean(settings.shared_control) ? settings.shared_control : false,
-                per_player_tech_cards: _.isBoolean(settings.per_player_tech_cards) ? settings.per_player_tech_cards : false,
+                shared_control: sharedControl,
+                per_player_tech_cards: perPlayerTechCards,
                 max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
                 password: _.isString(access.password) ? access.password : self.privateGamePassword(),
                 friends: _.isArray(access.friends) ? access.friends : [],
@@ -3094,8 +3116,14 @@ requireGW([
                         '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
                     });
                     battleConfig.gw_campaign_active = !!self.gwCampaignActive();
-                    battleConfig.shared_control = self.gwCampaignActive() ? self.gwCampaignSharedControl() : true;
                     battleConfig.per_player_tech_cards = self.gwCampaignActive() ? self.gwCampaignPerPlayerTechCards() : false;
+                    battleConfig.shared_control = true;
+
+                    if (self.gwCampaignActive())
+                        battleConfig.shared_control = self.gwCampaignSharedControl();
+
+                    if (battleConfig.per_player_tech_cards)
+                        battleConfig.shared_control = false;
 
                     // Mirror current campaign lobby presentation settings so the
                     // battle lobby beacon can continue the same identity.

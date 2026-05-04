@@ -36,6 +36,9 @@ function GWCampaignModel(creator) {
     self.maxClients = Math.max(1, Math.min(DEFAULT_GW_CAMPAIGN_PLAYERS, self.maxClientsLimit));
     self.sharedControl = true;
     self.perPlayerTechCards = false;
+    self.effectiveSharedControl = function() {
+        return self.perPlayerTechCards ? false : self.sharedControl;
+    };
 
     self.creatorId = creator.id;
     self.creatorName = creator.name;
@@ -79,7 +82,7 @@ function GWCampaignModel(creator) {
         max_clients: self.maxClients,
         max_clients_limit: self.maxClientsLimit,
         max_clients_locked: self.maxClientsLocked,
-        shared_control: self.sharedControl,
+        shared_control: self.effectiveSharedControl(),
         per_player_tech_cards: self.perPlayerTechCards,
         connected_clients: [],
         has_snapshot: false,
@@ -296,7 +299,7 @@ function GWCampaignModel(creator) {
             public: _.isBoolean(self.settings.public) ? self.settings.public : true,
             friends: !!self.settings.friends,
             hidden: !!self.settings.hidden,
-            shared_control: self.sharedControl,
+            shared_control: self.effectiveSharedControl(),
             per_player_tech_cards: self.perPlayerTechCards
         };
 
@@ -311,7 +314,7 @@ function GWCampaignModel(creator) {
             current_star: _.isNumber(data.current_star) ? data.current_star : undefined,
             settings: settings,
             max_clients: self.maxClients,
-            shared_control: self.sharedControl,
+            shared_control: self.effectiveSharedControl(),
             per_player_tech_cards: self.perPlayerTechCards,
             required_client_mods: {
                 required_identifiers: _.clone(self.requiredClientModIdentifiers),
@@ -342,11 +345,14 @@ function GWCampaignModel(creator) {
         if (_.isBoolean(data.public))
             self.settings.public = data.public;
 
-        if (_.has(data, 'shared_control'))
-            self.sharedControl = !!data.shared_control;
-
         if (_.has(data, 'per_player_tech_cards'))
             self.perPlayerTechCards = !!data.per_player_tech_cards;
+
+        if (_.has(data, 'shared_control'))
+            self.sharedControl = self.perPlayerTechCards ? false : !!data.shared_control;
+
+        if (self.perPlayerTechCards)
+            self.sharedControl = false;
 
         if (_.has(data, 'max_clients_locked')) {
             self.maxClientsLocked = !!data.max_clients_locked;
@@ -502,7 +508,7 @@ function GWCampaignModel(creator) {
         self.control.max_clients = self.maxClients;
         self.control.max_clients_limit = self.maxClientsLimit;
         self.control.max_clients_locked = self.maxClientsLocked;
-        self.control.shared_control = self.sharedControl;
+        self.control.shared_control = self.effectiveSharedControl();
         self.control.per_player_tech_cards = self.perPlayerTechCards;
         self.control.has_snapshot = !!self.lastSnapshot;
         self.control.snapshot_seq = self.lastSnapshotSeq;
@@ -893,8 +899,8 @@ function GWCampaignModel(creator) {
                     max_clients: self.maxClients,
                     max_clients_limit: self.maxClientsLimit,
                     max_clients_locked: self.maxClientsLocked,
-                    shared_control: self.sharedControl,
-                    per_player_tech_cards: self.perPlayerTechCards,
+                    shared_control: self.effectiveSharedControl(),
+                    per_player_tech_cards: self.perPlayerTechCards
                 });
             },
             // Handler for chat messages sent by clients in the lobby. 

@@ -42,13 +42,24 @@
             var settings = _.cloneDeep(clientState.gw_campaign_settings || {});
             var access = _.cloneDeep(clientState.gw_campaign_access || {});
             var reconnectInfo = reconnectToGameInfo() || {};
+            var perPlayerTechCards = false;
+            var sharedControl = true;
+
+            if (_.has(settings, 'per_player_tech_cards'))
+                perPlayerTechCards = !!settings.per_player_tech_cards;
+
+            if (_.has(settings, 'shared_control'))
+                sharedControl = !!settings.shared_control;
+
+            if (perPlayerTechCards)
+                sharedControl = false;
 
             return {
                 host_id: clientState.gw_campaign_host_id,
                 settings: settings,
                 access: access,
-                shared_control: _.has(settings, 'shared_control') ? !!settings.shared_control : true,
-                per_player_tech_cards: _.has(settings, 'per_player_tech_cards') ? !!settings.per_player_tech_cards : false,
+                per_player_tech_cards: perPlayerTechCards,
+                shared_control: sharedControl,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
                 use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []

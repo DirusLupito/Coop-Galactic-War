@@ -254,6 +254,10 @@ $(document).ready(function() {
         self.newGameLockCoopPlayers = ko.observable(false);
         self.newGameSharedByDefault = ko.observable(true);
         self.newGamePerPlayerTechCards = ko.observable(false);
+        self.newGamePerPlayerTechCards.subscribe(function(value) {
+            if (value)
+                self.newGameSharedByDefault(false);
+        });
 
         self.newGameCoopPlayersSpecified = ko.computed(function() {
             var value = self.newGameCoopPlayers();
@@ -349,8 +353,8 @@ $(document).ready(function() {
             game.coopPlayers(self.normalizedNewGameCoopPlayers());
             game.coopPlayersSpecified(self.newGameCoopPlayersSpecified());
             game.lockCoopPlayers(self.newGameLockCoopPlayers());
-            game.sharedByDefault(self.newGameSharedByDefault());
             game.perPlayerTechCards(self.newGamePerPlayerTechCards());
+            game.sharedByDefault(game.perPlayerTechCards() ? false : self.newGameSharedByDefault());
 
             var useEasySystems = GW.balance.difficultyInfo[self.newGameDifficultyIndex() || 0].useEasierSystemTemplate;
             var systemTemplates = useEasySystems ? easy_system_templates : star_system_templates;
