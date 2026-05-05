@@ -141,6 +141,41 @@ define(function() {
     // In this case that logic ensures that the config is proper, the correct number of slots
     // are allocated for human players, and if applicable, manufactures slots and config changes
     // to support unshared control.
+    //
+    // Parameters:
+    // - Referee: the already-hired GW referee object. This function expects it to expose
+    //   a config observable, where referee.config() reads the generated battle
+    //   config and referee.config(config) writes the mutated config back for later launch steps.
+    //   This config is a map/object. Expected fields used by this referee are:
+    //       * armies: an array of army objects. This is the main field this referee mutates.
+    //             A human army is any army whose slots do not contain AI slots.
+    //       * armies[*].slots: an array of slot objects. Human slots are slots without slot.ai.
+    //             In shared control, extra human slots are added to the one human army.
+    //       * armies[*].slots[*].ai: true when the slot belongs to an AI. Missing or false means
+    //             the slot is treated as human-controllable.
+    //       * armies[*].color: the army color pair. In unshared control, the first human army
+    //             keeps the original color and later human armies get nearby randomized colors.
+    //       * armies[*].econ_rate: copied from the original human army when manufacturing
+    //             separate unshared human armies. A floating-point number.
+    //       * armies[*].spec_tag: copied from the original human army when manufacturing
+    //             separate unshared human armies. String like '.player' or '.ai0'.
+    //       * armies[*].alliance_group: copied from the original human army so split human
+    //             armies remain allied. Integer value.
+    //       * coop_human_armies_ready: written by this referee as true or false to record
+    //             whether co-op human army preparation succeeded. Boolean.
+    //
+    // - Options: a map/object describing the current launch context. Expected fields are:
+    //       * active: true when this is a co-op Galactic War campaign fight; false for normal
+    //             single-player GW, where this referee should do nothing and succeed.
+    //       * sharedControl: true when all connected humans should share one army; false when
+    //             each connected human should get a separate allied army.
+    //       * perPlayerTechCards: true when per-player tech is enabled. This referee does not
+    //             use it directly, but it comes with the options struct and should imply
+    //             sharedControl has already been forced false by earlier code.
+    //       * connectedClients: an array of connected campaign clients for this fight. Its
+    //             length is the number of human slots/armies this referee prepares.
+    //             Each client object within the array has an id, name, role ('host' or 'viewer')
+    //             and loading status (loading = true or loading = false).
     var apply = function(referee, options) {
         var done = $.Deferred();
         var config = referee && _.isFunction(referee.config) && referee.config();
@@ -153,6 +188,7 @@ define(function() {
 
         // No options means no co-op.
         if (!options || !options.active) {
+            console.log('[GW COOP] Co-op referee called without co-op options.');
             done.resolve(true);
             return done.promise();
         }
