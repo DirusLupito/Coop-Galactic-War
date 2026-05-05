@@ -9,6 +9,8 @@ requireGW([
     'shared/popup',
     'shared/vecmath',
     'pages/gw_play/gw_referee',
+    'pages/gw_play/gw_coop_referee',
+    'pages/gw_play/gw_per_player_tech_referee',
     'pages/gw_play/gw_play_nebulae',
     'pages/gw_start/gw_dealer',
 ], function(
@@ -18,6 +20,8 @@ requireGW([
     PopUp,
     VMath,
     GWReferee,
+    GWCoopReferee,
+    GWPerPlayerTechReferee,
     nebulae,
     dealer
 ) {
@@ -3090,20 +3094,41 @@ requireGW([
                     return;
                 }
 
-                var localFiles = {};
-                if (localReferee && _.isFunction(localReferee.files)) {
-                    var personalizedFiles = localReferee.files();
-                    if (_.isObject(personalizedFiles))
-                        localFiles = _.cloneDeep(personalizedFiles);
+                var refereeLaunchOptions = {
+                    active: !!self.gwCampaignActive(),
+                    sharedControl: true,
+                    perPlayerTechCards: false,
+                    connectedClients: _.cloneDeep(self.gwCampaignConnectedClients())
+                };
+
+                if (refereeLaunchOptions.active) {
+                    refereeLaunchOptions.perPlayerTechCards = self.gwCampaignPerPlayerTechCards();
+                    refereeLaunchOptions.sharedControl = self.gwCampaignSharedControl();
                 }
-                console.log('[GW COOP] personalizedFiles for launch', localFiles);
 
-                localFiles['/ui/main/game/live_game/live_game.js'] = patchedLiveGameScript;
-                referee.localFiles(localFiles);
+                if (refereeLaunchOptions.perPlayerTechCards)
+                    refereeLaunchOptions.sharedControl = false;
 
-                referee.stripSystems();
-                referee.mountFiles().always(function()
-                {
+                var abortRefereeLaunch = function(reason) {
+                    console.log('[GW COOP] failed to prepare GW referee for launch: ' + reason);
+                    self.launchingFight(false);
+                };
+
+                var continueLaunch = function() {
+                    var localFiles = {};
+                    if (localReferee && _.isFunction(localReferee.files)) {
+                        var personalizedFiles = localReferee.files();
+                        if (_.isObject(personalizedFiles))
+                            localFiles = _.cloneDeep(personalizedFiles);
+                    }
+                    console.log('[GW COOP] personalizedFiles for launch', localFiles);
+
+                    localFiles['/ui/main/game/live_game/live_game.js'] = patchedLiveGameScript;
+                    referee.localFiles(localFiles);
+
+                    referee.stripSystems();
+                    referee.mountFiles().always(function()
+                    {
                     referee.tagGame();
 
                     // Persist campaign context into the battle config so gw_lobby can
@@ -3211,6 +3236,23 @@ requireGW([
                         params['replayid'] = game.replayLobbyId();
                         connect();
                     }
+                    });
+                };
+
+                GWCoopReferee.apply(referee, refereeLaunchOptions).then(function(coopPrepared) {
+                    if (!coopPrepared) {
+                        abortRefereeLaunch('co-op referee rejected battle config');
+                        return;
+                    }
+
+                    GWPerPlayerTechReferee.apply(referee, refereeLaunchOptions).then(function(perPlayerTechPrepared) {
+                        if (!perPlayerTechPrepared) {
+                            abortRefereeLaunch('per-player tech referee rejected battle config');
+                            return;
+                        }
+
+                        continueLaunch();
+                    });
                 });
             });
         };
