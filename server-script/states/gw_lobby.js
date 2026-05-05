@@ -552,8 +552,15 @@ function LobbyModel(creator, launchContext) {
             if (!aiArmy) {
                 humanArmyCount++;
                 _.forEach(army.slots, function(slot) {
-                    if (!slot.ai)
-                        humanSlots.push(slot);
+                    if (!slot.ai) {
+                        // Need each slot to know which army it came from 
+                        // in case we need to reference the army later
+                        // like for figuring out which commander to use.
+                        humanSlots.push({
+                            slot: slot,
+                            army: army
+                        });
+                    }
                 });
             }
         });
@@ -568,23 +575,24 @@ function LobbyModel(creator, launchContext) {
             return;
         }
 
-        // Map connected humans into human slots.
-        _.forEach(humanSlots, function(slot, index) {
+        var players = {};
+        // Map connected humans into human slots,
+        // then assign them to the players array.
+        _.forEach(humanSlots, function(entry, index) {
             if (index < connectedClients.length) {
                 var client = connectedClients[index];
-                slot.client = client;
-                slot.name = client.name || 'Player';
+                entry.slot.client = client;
+                entry.slot.name = client.name || 'Player';
+                var playerConfig = _.clone(config.player);
+                if (entry.army && _.isString(entry.army.commander)) {
+                    playerConfig.commander = entry.army.commander;
+                }
+                players[client.id] = playerConfig;
             }
             else {
-                delete slot.client;
-                delete slot.name;
+                delete entry.slot.client;
+                delete entry.slot.name;
             }
-        });
-
-        // Set up the players array for the landing state
-        var players = {};
-        _.forEach(connectedClients, function(client) {
-            players[client.id] = _.clone(config.player);
         });
 
         console.log('GW - mapped clients to player slots: ' + _.map(connectedClients, function(client) {

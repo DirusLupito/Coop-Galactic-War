@@ -38,6 +38,59 @@ define([
         }
     };
 
+    var stringEndsWith = function(value, suffix) {
+        return _.isString(value) && value.slice(-suffix.length) === suffix;
+    };
+
+    // Helper function to strip the player tag from a string to get the base name.
+    var stripPlayerTag = function(value) {
+        var tag = '.player';
+        if (!stringEndsWith(value, tag)) {
+            console.log('[GW COOP] stripPlayerTag: value does not end with .player');
+            return value;
+        }
+
+        return value.slice(0, -tag.length);
+    };
+
+    // Helper function which takes in a player's inventory and their tag, 
+    // and generates the appropriate unit specs.
+    var generateUnitSpecsForPlayer = function(inventory, playerTag) {
+        var done = $.Deferred();
+        var titans = api.content.usingTitans();
+        var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
+        var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : {};
+        $.when(aiMapLoad, aiX1MapLoad).then(function (
+            aiMapGet,
+            aiX1MapGet
+        ) {
+            var aiUnitMap = parse(aiMapGet[0]);
+            var aiX1UnitMap = parse(aiX1MapGet[0]);
+
+            var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, playerTag);
+            var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, playerTag) : {};
+
+            GW.specs.genUnitSpecs(inventory.units(), playerTag).then(function (playerSpecFiles) {
+                var classicPath = '/pa/ai/unit_maps/ai_unit_map.json' + playerTag;
+                var x1Path = '/pa/ai/unit_maps/ai_unit_map_x1.json' + playerTag;
+
+                var playerFilesClassic = {};
+                playerFilesClassic[classicPath] = playerAIUnitMap;
+
+                var playerFilesX1 = {};
+                if (titans) {
+                    playerFilesX1[x1Path] = playerX1AIUnitMap;
+                }
+                
+                var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1, playerSpecFiles);
+                GW.specs.modSpecs(playerFiles, inventory.mods(), playerTag);
+                done.resolve(playerFiles);
+            });
+        });
+
+        return done.promise();
+    };
+
     // This referee should be applied after the co-op referee has done its work.
     // If per-player tech is enabled, this referee will generate the appropriate config
     // handling each player's
@@ -195,15 +248,49 @@ define([
 
         var playerTags = _.map(_.range(0, playerCount), getPlayerTagGivenIndex);
 
-        _.forEach(config.armies, function(army, index) {
-            army.spec_tag = playerTags[index];
-        });
+        var baseCommander = stripPlayerTag(playerCommander);
 
-        config.per_player_tech_ready = true;
-        config.per_player_tech_tags = playerTags;
-        console.log('[GW COOP] Per-player tech tags: ' + JSON.stringify(playerTags));
-        referee.config(config);
-        done.resolve(true);
+        // Keeps track of all the promises for generating player-specific specs.
+        var playerSpecPromises = [];
+
+        // We've already generated the .player tag, so we just need to generate subsequent tags.
+        for (var i = 1; i < playerTags.length; i++) {
+            playerSpecPromises.push(generateUnitSpecsForPlayer(inventory, playerTags[i]));
+        }
+
+        $.when.apply($, playerSpecPromises).then(function() {
+            var thisPlayersFiles = Array.prototype.slice.call(arguments);
+            var generatedFiles = {};
+
+            console.log('[GW COOP] Generating player-specific files.');
+
+            // Arguments is an array of the resolved values from the promises.
+            for (var i = 0; i < thisPlayersFiles.length; i++) {
+                _.assign(generatedFiles, thisPlayersFiles[i]);
+            }
+
+            var mergedFiles = _.assign({}, files, generatedFiles);
+
+            console.log('[GW COOP] Merged ' + _.keys(mergedFiles).length + ' files.');
+
+            referee.files(mergedFiles);
+            config.files = mergedFiles;
+
+            _.forEach(humanArmies, function(army, index) {
+                army.spec_tag = playerTags[index];
+
+                // Per player tech cards requires that all armies are unshared,
+                // thus each army only has one commander. So this is sensible.
+                // If in the future we have multiple commanders, this will not be sensible.
+                army.commander = baseCommander + playerTags[index];
+            });
+
+            config.per_player_tech_ready = true;
+            config.per_player_tech_tags = playerTags;
+            console.log('[GW COOP] Per-player tech tags: ' + JSON.stringify(playerTags));
+            referee.config(config);
+            done.resolve(true);
+        });
         return done.promise();
     };
 
