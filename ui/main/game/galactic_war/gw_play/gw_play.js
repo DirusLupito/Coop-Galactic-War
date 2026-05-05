@@ -3129,113 +3129,113 @@ requireGW([
                     referee.stripSystems();
                     referee.mountFiles().always(function()
                     {
-                    referee.tagGame();
+                        referee.tagGame();
 
-                    // Persist campaign context into the battle config so gw_lobby can
-                    // infer whether this launch is solo GW or campaign-coop GW.
-                    var battleConfig = referee.config();
-                    // localFiles are host-local memory mounts only; include the
-                    // patch in config.files so reconnecting/remote clients mount
-                    // the same live_game override.
-                    battleConfig.files = _.assign({}, battleConfig.files || {}, {
-                        '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
-                    });
-                    battleConfig.gw_campaign_active = !!self.gwCampaignActive();
-                    battleConfig.per_player_tech_cards = self.gwCampaignActive() ? self.gwCampaignPerPlayerTechCards() : false;
-                    battleConfig.shared_control = true;
+                        // Persist campaign context into the battle config so gw_lobby can
+                        // infer whether this launch is solo GW or campaign-coop GW.
+                        var battleConfig = referee.config();
+                        // localFiles are host-local memory mounts only; include the
+                        // patch in config.files so reconnecting/remote clients mount
+                        // the same live_game override.
+                        battleConfig.files = _.assign({}, battleConfig.files || {}, {
+                            '/ui/main/game/live_game/live_game.js': patchedLiveGameScript
+                        });
+                        battleConfig.gw_campaign_active = !!self.gwCampaignActive();
+                        battleConfig.per_player_tech_cards = self.gwCampaignActive() ? self.gwCampaignPerPlayerTechCards() : false;
+                        battleConfig.shared_control = true;
 
-                    if (self.gwCampaignActive())
-                        battleConfig.shared_control = self.gwCampaignSharedControl();
+                        if (self.gwCampaignActive())
+                            battleConfig.shared_control = self.gwCampaignSharedControl();
 
-                    if (battleConfig.per_player_tech_cards)
-                        battleConfig.shared_control = false;
+                        if (battleConfig.per_player_tech_cards)
+                            battleConfig.shared_control = false;
 
-                    // Mirror current campaign lobby presentation settings so the
-                    // battle lobby beacon can continue the same identity.
-                    var campaignControl = self.gwCampaignControl() || {};
-                    var campaignSettings = campaignControl.settings || {};
-                    battleConfig.gw_campaign_settings = {
-                        game_name: _.isString(campaignSettings.game_name) ? campaignSettings.game_name : 'GW Co-op Campaign',
-                        tag: _.isString(campaignSettings.tag) ? campaignSettings.tag : 'Testing',
-                        public: _.isBoolean(campaignSettings.public) ? campaignSettings.public : true,
-                        friends: !!campaignSettings.friends,
-                        hidden: !!campaignSettings.hidden,
-                        shared_control: battleConfig.shared_control,
-                        per_player_tech_cards: battleConfig.per_player_tech_cards,
-                        max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
-                    };
-
-                    self.battleConfig(battleConfig);
-
-                    // Come back if we fail.
-                    self.connectFailDestination(window.location.href);
-
-                    var tutorial = ko.observable().extend({ session: 'current_system_tutorial' });
-                    tutorial(model.currentSystem().star.tutorial());
-
-                    // Remove the tutorial commander from the game.  (It's not supposed to persist.)
-                    if (tutorialCommander) {
-                        inventory.units().pop();
-                        game.inventory().setTag('global', 'commander', oldCommander);
-                    }
-
-                    var params = {
-                        action: 'start',
-                        mode: 'gw',
-                        content: game.content()
-                    };
-
-                    if (self.useLocalServer()) {
-                        self.serverType('local');
-                        params['local'] = true;
-                    }
-                    else {
-                        self.serverType('uber');
-                    }
-
-                    var connect = function() {
-                        api.debug.log('start gw: ok');
-                        self.serverSetup('game');
-                        window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
-                    }
-
-                    if (self.gwCampaignActive() && self.isCampaignHost()) {
-                        self.send_message('launch_gw_battle', {
-                            current_star: game.currentStar(),
-                            gw_campaign_active: true,
-                            gw_campaign_settings: battleConfig.gw_campaign_settings,
+                        // Mirror current campaign lobby presentation settings so the
+                        // battle lobby beacon can continue the same identity.
+                        var campaignControl = self.gwCampaignControl() || {};
+                        var campaignSettings = campaignControl.settings || {};
+                        battleConfig.gw_campaign_settings = {
+                            game_name: _.isString(campaignSettings.game_name) ? campaignSettings.game_name : 'GW Co-op Campaign',
+                            tag: _.isString(campaignSettings.tag) ? campaignSettings.tag : 'Testing',
+                            public: _.isBoolean(campaignSettings.public) ? campaignSettings.public : true,
+                            friends: !!campaignSettings.friends,
+                            hidden: !!campaignSettings.hidden,
                             shared_control: battleConfig.shared_control,
-                            per_player_tech_cards: battleConfig.per_player_tech_cards
-                        });
-                        return;
-                    }
+                            per_player_tech_cards: battleConfig.per_player_tech_cards,
+                            max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
+                        };
 
-                    if (!self.allowLoad())
-                        connect();
-                    else if (self.useLocalServer()) {
-                        api.file.listReplays().then(function(replays) {
-                            if (_.has(replays, game.replayName())) {
-                                var paths = replays[game.replayName()];
-                                api.debug.log('local gw loadsave: ok', game.replayName(), paths);
-                                self.serverSetup('loadsave');
-                                self.serverType('uber');
-                                params['mode'] = 'loadsave'
-                                params['loadpath'] = paths.replay;
-                            } else {
-                                /* we could not find a match.  the replay is missing or the data is corrupted. */
-                                console.log('loadsave: failed with' + game.replayName());
-                            }
+                        self.battleConfig(battleConfig);
 
+                        // Come back if we fail.
+                        self.connectFailDestination(window.location.href);
+
+                        var tutorial = ko.observable().extend({ session: 'current_system_tutorial' });
+                        tutorial(model.currentSystem().star.tutorial());
+
+                        // Remove the tutorial commander from the game.  (It's not supposed to persist.)
+                        if (tutorialCommander) {
+                            inventory.units().pop();
+                            game.inventory().setTag('global', 'commander', oldCommander);
+                        }
+
+                        var params = {
+                            action: 'start',
+                            mode: 'gw',
+                            content: game.content()
+                        };
+
+                        if (self.useLocalServer()) {
+                            self.serverType('local');
+                            params['local'] = true;
+                        }
+                        else {
+                            self.serverType('uber');
+                        }
+
+                        var connect = function() {
+                            api.debug.log('start gw: ok');
+                            self.serverSetup('game');
+                            window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
+                        }
+
+                        if (self.gwCampaignActive() && self.isCampaignHost()) {
+                            self.send_message('launch_gw_battle', {
+                                current_star: game.currentStar(),
+                                gw_campaign_active: true,
+                                gw_campaign_settings: battleConfig.gw_campaign_settings,
+                                shared_control: battleConfig.shared_control,
+                                per_player_tech_cards: battleConfig.per_player_tech_cards
+                            });
+                            return;
+                        }
+
+                        if (!self.allowLoad())
                             connect();
-                        });
-                    }
-                    else {
-                        api.debug.log('remote gw loadsave: ok');
-                        self.serverSetup('loadsave');
-                        params['mode'] = 'loadsave'
-                        params['replayid'] = game.replayLobbyId();
-                        connect();
-                    }
+                        else if (self.useLocalServer()) {
+                            api.file.listReplays().then(function(replays) {
+                                if (_.has(replays, game.replayName())) {
+                                    var paths = replays[game.replayName()];
+                                    api.debug.log('local gw loadsave: ok', game.replayName(), paths);
+                                    self.serverSetup('loadsave');
+                                    self.serverType('uber');
+                                    params['mode'] = 'loadsave'
+                                    params['loadpath'] = paths.replay;
+                                } else {
+                                    /* we could not find a match.  the replay is missing or the data is corrupted. */
+                                    console.log('loadsave: failed with' + game.replayName());
+                                }
+
+                                connect();
+                            });
+                        }
+                        else {
+                            api.debug.log('remote gw loadsave: ok');
+                            self.serverSetup('loadsave');
+                            params['mode'] = 'loadsave'
+                            params['replayid'] = game.replayLobbyId();
+                            connect();
+                        }
                     });
                 };
 
