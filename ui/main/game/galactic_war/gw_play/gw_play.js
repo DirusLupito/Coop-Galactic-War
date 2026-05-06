@@ -1206,6 +1206,7 @@ requireGW([
         var self = this;
 
         self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
+        self.localHostTransportSetting = ko.observable().extend({ setting: { group: 'server', key: 'local_host_transport' } });
 
         // Local join configuration info
         self.isLocalGame = ko.observable().extend({ session: 'is_local_game' });
@@ -1227,6 +1228,16 @@ requireGW([
 
         self.gameModIdentifiers(undefined);
         self.gameType('Galactic War');
+
+        self.getLocalHostTransport = function() {
+            if (self.localHostTransportSetting())
+                return self.localHostTransportSetting();
+
+            if (api.net && _.isFunction(api.net.effectiveLocalHostTransport))
+                return api.net.effectiveLocalHostTransport();
+
+            return undefined;
+        };
 
         self.gwCampaignEnabled = ko.observable(false).extend({ session: 'gw_campaign_enabled' });
         self.gwCampaignRole = ko.observable('solo').extend({ session: 'gw_campaign_role' });
@@ -1764,7 +1775,10 @@ requireGW([
             var params = {
                 action: 'start',
                 mode: 'gw_campaign',
-                content: game.content()
+                content: game.content(),
+                params: JSON.stringify({
+                    local_host_transport: self.getLocalHostTransport()
+                })
             };
 
             if (self.useLocalServer()) {
@@ -3183,7 +3197,9 @@ requireGW([
                             action: 'start',
                             mode: 'gw',
                             content: game.content(),
-                            local_host_transport: 'TCP'
+                            params: JSON.stringify({
+                                local_host_transport: self.getLocalHostTransport()
+                            })
                         };
 
                         if (self.useLocalServer()) {
