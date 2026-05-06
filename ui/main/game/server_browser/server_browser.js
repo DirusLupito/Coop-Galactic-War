@@ -178,18 +178,6 @@ $(document).ready(function () {
             localStorage.setItem('server_browser_create_local_game', value.toString());
         });
 
-        self.doUseSteamNetworking = ko.observable(false);
-        // Clear any stale session value so a previous Steam P2P game
-        // doesn't silently force Steam networking on the next game.
-        ko.observable().extend({ session: 'lobby_enable_steam_networking' })(false);
-        self.doUseSteamNetworking.subscribe(function (value) {
-            ko.observable().extend({ session: 'lobby_enable_steam_networking' })(value);
-        });
-
-        self.showUseSteamNetworking = ko.pureComputed(function () {
-            return self.doCreateLocalGame() && !!api.net.enableSteamP2P();
-        });
-
         self.canCreateGame = ko.computed(function () {
             return self.remoteServerAvailable() || self.useLocalServer();
         });
@@ -450,13 +438,19 @@ $(document).ready(function () {
             self.joinGame(lastGame);
         };
 
+        self.selectedGameRequiresSteam = ko.computed(function () {
+            var game = self.currentSelectedGame();
+            return !!game && !!game.steam_id && !api.steam.hasClient();
+        });
         self.canJoinGame = ko.computed(function () {
             var game = self.currentSelectedGame();
-            return !!game && (game.players < game.max_players) && !game.started && !game.retired;
+            return !!game && (game.players < game.max_players) && !game.started && !game.retired
+                && !self.selectedGameRequiresSteam();
         });
         self.canSpectateGame = ko.computed(function () {
             var game = self.currentSelectedGame();
-            return !!game && (game.spectators < game.max_spectators) && !game.retired;
+            return !!game && (game.spectators < game.max_spectators) && !game.retired
+                && !self.selectedGameRequiresSteam();
         });
         self.canEnterGame = ko.computed(function () {
             return self.canJoinGame() || self.canSpectateGame();
@@ -629,8 +623,6 @@ $(document).ready(function () {
                 var name = beacon.creator + " : " + beacon.tag;
                 if (!_.isEmpty(gameData.name))
                     name = gameData.name;
-                if (beacon.steam_networking)
-                    name = "\uD83E\uDDEA " + name;
 
                 var map = self.knownLobbyIds();
                 if (!map[lobby_id]) {
