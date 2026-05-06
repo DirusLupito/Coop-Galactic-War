@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     // Mark this client session as running through GW coop lobby flow.
     ko.observable(true).extend({ session: 'gw_coop_mode' });
+    var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
     var normalizeModIdentifier = function(identifier) {
         if (!_.isString(identifier))
@@ -487,13 +488,19 @@ $(document).ready(function() {
                 return value;
             });
 
+            var unitSpecTag = (_.isString(payload.unit_spec_tag) && payload.unit_spec_tag.length)
+                ? payload.unit_spec_tag
+                : '.player';
+            gwCampaignUnitSpecTag(unitSpecTag);
+
             // Do not globally unmount memory files here. Community mod hooks on
             // unmountAllMemoryFiles can trigger broad remount activity and race
             // with GW lobby startup on some machines.
             api.file.mountMemoryFiles(cookedFiles).then(function() {
                 model.gwConfigMounted(true);
                 model.gwConfigMountInProgress = false;
-                api.game.setUnitSpecTag('.player');
+                console.log('[GW COOP] gw_lobby applying unit spec tag=' + unitSpecTag);
+                api.game.setUnitSpecTag(unitSpecTag);
                 model.send_message('gw_config_ready', {});
             }, function() {
                 model.gwConfigMountInProgress = false;

@@ -15,6 +15,7 @@ catch (e) {
 
 $(document).ready(function () {
     var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+    var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
     var idleTime = 0;
 
     api.game.releaseKeyboard(true);
@@ -2622,9 +2623,6 @@ $(document).ready(function () {
 
             self.refreshSettings();
 
-            if (gwCoopMode())
-                api.game.setUnitSpecTag('.player');
-
             ko.observable().extend({ session: 'has_entered_game' })(true);
 
             engine.call('push_mouse_constraint_flag', true);
@@ -4235,7 +4233,7 @@ $(document).ready(function () {
         // Reconnect restore should not globally unmount first, otherwise
         // client-mod mounted assets can be lost before remount hooks run.
         api.file.mountMemoryFiles(cookedFiles).always(function () {
-            api.game.setUnitSpecTag('.player');
+            api.game.setUnitSpecTag(gwCoopMode() ? (gwCampaignUnitSpecTag() || '.player') : '.player');
             engine.call('request_spec_data', -1);
 
             model.send_message('memory_files_received', {}, function (success, response) {

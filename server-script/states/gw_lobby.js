@@ -455,6 +455,16 @@ function LobbyModel(creator, launchContext) {
         self.control(_.assign({}, self.control(), updateFlags));
     };
 
+    self.getConnectedClientsInPlayerOrder = function() {
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+
+        return _.sortBy(connectedClients, function(client) {
+            return client.id === self.creator ? -1 : 0;
+        });
+    };
+
     var getAIName = (function () {
 
         var ai_names = _.shuffle(require('ai_names_table').data); /* shuffle returns a new collection */
@@ -479,17 +489,49 @@ function LobbyModel(creator, launchContext) {
         if (!config || !config.files)
             return;
 
-        var message = {
-            message_type: 'gw_config',
-            payload: {
-                files: config.files
-            }
+        var getClientUnitSpecTag = function(targetClient) {
+            if (!targetClient || !targetClient.id)
+                return '.player';
+
+            var connectedClients = self.getConnectedClientsInPlayerOrder();
+            var clientIndex = _.findIndex(connectedClients, function(connectedClient) {
+                return connectedClient.id === targetClient.id;
+            });
+
+            if (clientIndex < 0)
+                return '.player';
+
+            var humanArmies = [];
+            _.forEach(config.armies || [], function(army) {
+                var aiArmy = _.any(army.slots || [], 'ai');
+                if (!aiArmy)
+                    humanArmies.push(army);
+            });
+
+            var army = humanArmies[clientIndex];
+            if (army && _.isString(army.spec_tag) && army.spec_tag.length)
+                return army.spec_tag;
+
+            return '.player';
+        };
+
+        var sendToClient = function(targetClient) {
+            if (!targetClient || !targetClient.connected)
+                return;
+
+            targetClient.message({
+                message_type: 'gw_config',
+                payload: {
+                    files: config.files,
+                    unit_spec_tag: getClientUnitSpecTag(targetClient)
+                }
+            });
         };
 
         if (client && client.connected)
-            client.message(message);
+            sendToClient(client);
         else
-            server.broadcast(message);
+            _.forEach(server.clients, sendToClient);
 
         if (client && client.id)
             self.clientConfigReady[client.id] = false;
@@ -505,9 +547,7 @@ function LobbyModel(creator, launchContext) {
 
     self.startGame = function() {
         var config = self.config();
-        var connectedClients = _.filter(server.clients, function(client) {
-            return client.connected;
-        });
+        var connectedClients = self.getConnectedClientsInPlayerOrder();
 
         if (!config || !_.isArray(config.armies)) {
             console.log('[GW COOP] Cannot start GW battle without a valid battle config.');

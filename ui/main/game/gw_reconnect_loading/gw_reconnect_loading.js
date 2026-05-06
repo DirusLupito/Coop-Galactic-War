@@ -6,6 +6,7 @@ $(document).ready(function () {
     var gwReconnectTarget = $.url().param('target') || 'coui://ui/main/game/live_game/live_game.html';
     var gwReconnectFilesRequested = false;
     var gwReconnectFilesReady = false;
+    var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
     function requestReconnectMemoryFiles(reason) {
         if (gwReconnectFilesRequested)
@@ -306,7 +307,7 @@ $(document).ready(function () {
             api.file.mountMemoryFiles(cookedFiles).then(function() {
                 model.gwConfigMounted(true);
                 model.gwConfigMountInProgress = false;
-                api.game.setUnitSpecTag('.player');
+                api.game.setUnitSpecTag(gwCampaignUnitSpecTag() || '.player');
                 engine.call('request_spec_data', -1);
                 gwReconnectFilesReady = true;
                 model.pageSubTitle(loc('!LOC:Entering game...'));
