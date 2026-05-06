@@ -3182,7 +3182,8 @@ requireGW([
                         var params = {
                             action: 'start',
                             mode: 'gw',
-                            content: game.content()
+                            content: game.content(),
+                            local_host_transport: 'TCP'
                         };
 
                         if (self.useLocalServer()) {

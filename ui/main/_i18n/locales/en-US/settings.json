@@ -74,8 +74,17 @@
     "Default Audio Device": {
         "message": "Default Audio Device"
     },
-    "Steam P2P Networking": {
-        "message": "Steam P2P Networking"
+    "Local Host Networking": {
+        "message": "Local Host Networking"
+    },
+    "Steam (P2P)": {
+        "message": "Steam (P2P)"
+    },
+    "UPnP": {
+        "message": "UPnP"
+    },
+    "Disable UPnP": {
+        "message": "Disable UPnP"
     },
     "Display Mode": {
         "message": "Display Mode"

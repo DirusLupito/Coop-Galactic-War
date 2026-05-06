@@ -170,10 +170,10 @@
     "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation.": {
         "message": "The game you are trying to join requires the [style=content_description]__expansion_name__[/style] expansion for Planetary Annihilation."
     }, 
+    "This game is hosted via Steam. Launch the game through Steam to join.": {
+        "message": "This game is hosted via Steam. Launch the game through Steam to join."
+    },
     "This game is no longer available.": {
         "message": "This game is no longer available."
-    },
-    "Use Steam Networking": {
-        "message": "Use Steam Networking"
     }
 }
