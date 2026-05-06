@@ -577,28 +577,12 @@ $(document).ready(function ()
         self.useLocalServerMultiThreadingRule.subscribe(self.useLocalServerMultiThreading);
         self.useLocalServerMultiThreading(self.useLocalServerMultiThreadingRule());
         
-        self.disableUPNPSetting = ko.observable().extend({ setting: { group: 'server', key: 'disable_upnp' } });
-        self.disableUPNP = ko.observable().extend({ session: 'server_disable_upnp' });
-        self.disableUPNPRule = ko.computed(function ()
-        {
-            var setting = self.disableUPNPSetting();
-            if (setting === 'OFF')
-                return false;
-            if (setting === 'ON')
-                return true;
-            return false;
+        self.localHostTransportSetting = ko.observable().extend({ setting: { group: 'server', key: 'local_host_transport' } });
+        self.localHostTransport = ko.observable().extend({ session: 'server_local_host_transport' });
+        self.localHostTransport(self.localHostTransportSetting() || 'STEAM');
+        self.localHostTransportSetting.subscribe(function (value) {
+            self.localHostTransport(value || 'STEAM');
         });
-        self.disableUPNPRule.subscribe(self.disableUPNP);
-        self.disableUPNP(self.disableUPNPRule());
-
-        self.enableSteamP2PSetting = ko.observable().extend({ setting: { group: 'server', key: 'enable_steam_p2p' } });
-        self.enableSteamP2P = ko.observable().extend({ session: 'server_enable_steam_p2p' });
-        self.enableSteamP2PRule = ko.computed(function () {
-            var setting = self.enableSteamP2PSetting();
-            return setting === 'ON';
-        });
-        self.enableSteamP2PRule.subscribe(self.enableSteamP2P);
-        self.enableSteamP2P(self.enableSteamP2PRule());
 
         self.aiSkirmish = ko.observable().extend({ session: 'ai_skirmish' });
 

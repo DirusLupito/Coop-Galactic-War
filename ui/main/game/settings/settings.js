@@ -54,12 +54,6 @@ $(document).ready(function () {
             return self.localServerAvailable() && !self.localServerRecommended();
         });
 
-        self.showDisableUPNP = ko.computed(function() {
-            return api.game.getSetupInfo().then(function(payload) {
-                return payload.os === 'windows';
-            });
-        });
-
         self.clean = ko.computed(function () {
             return !api.settings.isDirty() && self.uberNetRegion() === self.selectedUberNetRegion();
         });

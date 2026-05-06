@@ -238,6 +238,7 @@ $(document).ready(function () {
             if (start) {
                 model.pageTitle(loc("!LOC:STARTING GAME"));
                 self.uuid(UberUtility.createHexUUIDString());
+                self.gameSteamId('');
 
                 var region = local ? 'Local' : (self.uberNetRegion() || "USCentral");
 
@@ -256,15 +257,6 @@ $(document).ready(function () {
                         connectDelay = 0;
 
                     var parsedParams = params ? JSON.parse(params) : {};
-                    var disableUPNP = $.url().param('disable_upnp');
-                    if (disableUPNP)
-                        parsedParams['disable_upnp'] = true;
-                    var enableSteamNetworking = $.url().param('enable_steam_networking');
-                    if (enableSteamNetworking)
-                        parsedParams['enable_steam_networking'] = true;
-                    var lobbyEnableSteam = ko.observable().extend({ session: 'lobby_enable_steam_networking' })();
-                    if (lobbyEnableSteam)
-                        parsedParams['enable_steam_networking'] = true;
 
                     startCall = api.net.startGame(region, mode, parsedParams);
                     self.needsServerModsUpload(!window.gNoMods);

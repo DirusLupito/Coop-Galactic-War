@@ -1369,7 +1369,7 @@ requireGW([
                         action: 'start',
                         mode: 'gw',
                         content: game.content(),
-                        disable_upnp: true
+                        local_host_transport: 'TCP'
                     };
 
                     if (self.useLocalServer()) {

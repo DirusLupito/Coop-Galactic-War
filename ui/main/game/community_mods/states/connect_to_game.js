@@ -138,23 +138,9 @@ function CommunityModsSetup() {
                 api.debug.log(data);
         
                 var localMultiThread = ko.observable().extend({ session: 'use_local_server_multi_threading' });
-                
-                var localDisableUPNP = ko.observable().extend({ session: 'server_disable_upnp' })();
-                if (startParams && startParams['disable_upnp'])
-                    localDisableUPNP = true;
 
-                var localSteamNetworking = false;
-                if (startParams && startParams['enable_steam_networking'])
-                    localSteamNetworking = true;
-                var lobbyEnableSteam = ko.observable().extend({ session: 'lobby_enable_steam_networking' })();
-                if (lobbyEnableSteam)
-                    localSteamNetworking = true;
-
-                // If Steam P2P is disabled in settings, force it off
-                if (!api.net.enableSteamP2P())
-                    localSteamNetworking = false;
-
-                var networkFlags = (localDisableUPNP ? 1 : 0) | (localSteamNetworking ? 2 : 0);
+                var transport = (startParams && startParams['local_host_transport']) || api.net.effectiveLocalHostTransport();
+                var networkFlags = api.net.transportToNetworkFlags(transport);
                 return engine.asyncCall('localserver.startGame', mode, localMultiThread(), networkFlags, data);
             });
         }

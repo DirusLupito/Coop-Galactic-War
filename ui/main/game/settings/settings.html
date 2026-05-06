@@ -212,8 +212,7 @@
                             <div class="warning" style="display: none" data-bind="visible: showDiscourageLocalServerWarning">
                                 <loc>Local server is not recommended on your configuration.  (4 CPU cores and 8GB of memory recommended.)</loc>
                             </div>
-                            <div class="option" style="display: none" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['server.disable_upnp'] }, visible: showDisableUPNP"></div>
-                            <div class="option" style="display: none" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['server.enable_steam_p2p'] }, visible: localServerAvailable"></div>
+                            <div class="option" style="display: none" data-bind="template: { name: 'setting-template', data: $root.settingsItemMap()['server.local_host_transport'] }, visible: localServerAvailable"></div>
                         </div>
                     </div>
 
