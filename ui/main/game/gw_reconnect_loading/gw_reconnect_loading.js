@@ -287,12 +287,17 @@ $(document).ready(function () {
             return;
 
         model.gwConfigMountInProgress = true;
-        if (!msg[UNIT_LIST_PATH]) {
-            msg[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(msg);
+        var files = msg.files || msg;
+        var unitSpecTag = (_.isString(msg.unit_spec_tag) && msg.unit_spec_tag.length)
+            ? msg.unit_spec_tag
+            : '.player';
+
+        if (!files[UNIT_LIST_PATH]) {
+            files[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(files);
         }
 
-        buildLocalClientOverlayFiles(msg).always(function(localOverlayFiles) {
-            var mergedFiles = _.assign({}, msg, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
+        buildLocalClientOverlayFiles(files).always(function(localOverlayFiles) {
+            var mergedFiles = _.assign({}, files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
             console.log('[GW COOP] gw_reconnect_loading merging local overlay files, total count=' + _.keys(mergedFiles).length);
 
             var cookedFiles = _.mapValues(mergedFiles, function(value) {
@@ -307,7 +312,9 @@ $(document).ready(function () {
             api.file.mountMemoryFiles(cookedFiles).then(function() {
                 model.gwConfigMounted(true);
                 model.gwConfigMountInProgress = false;
-                api.game.setUnitSpecTag(gwCampaignUnitSpecTag() || '.player');
+                gwCampaignUnitSpecTag(unitSpecTag);
+                console.log('[GW COOP] gw_reconnect_loading we are going to set the unit spec tag to ' + unitSpecTag + '.');
+                api.game.setUnitSpecTag(unitSpecTag);
                 engine.call('request_spec_data', -1);
                 gwReconnectFilesReady = true;
                 model.pageSubTitle(loc('!LOC:Entering game...'));

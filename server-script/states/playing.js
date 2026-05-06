@@ -60,6 +60,25 @@ function getReconnectReplayFiles() {
     return fullReplayConfig.files;
 }
 
+function getReconnectUnitSpecTag(client) {
+    var player = client && players[client.id];
+
+    if (!player) {
+        player = _.find(players, function(candidate) {
+            return candidate && candidate.client && client && candidate.client.id === client.id;
+        });
+    }
+
+    if (player && player.army && player.army.desc && _.isString(player.army.desc.spec_tag) && player.army.desc.spec_tag.length)
+        return player.army.desc.spec_tag;
+
+    console.log('[GW COOP] reconnect memory files could not find unit spec tag for client='
+        + (client && client.name)
+        + ' id=' + (client && client.id)
+        + '; defaulting to .player');
+    return '.player';
+}
+
 function sendReconnectMemoryFilesToClient(client, reason) {
     var reconnectReplayFiles = getReconnectReplayFiles();
 
@@ -68,7 +87,10 @@ function sendReconnectMemoryFilesToClient(client, reason) {
 
     client.message({
         message_type: 'memory_files',
-        payload: reconnectReplayFiles
+        payload: {
+            files: reconnectReplayFiles,
+            unit_spec_tag: getReconnectUnitSpecTag(client)
+        }
     });
     return true;
 }
