@@ -57,8 +57,11 @@ All major frontend game scenes/screens.
 
 ##### `ui/main/game/galactic_war/` subfolders
 - `cards/`: definitions of GW tech cards/buffs and unlock payloads (e.g., unit unlock lists).
+- `gw_campaign_loading/`: co-op campaign client staging/loading scene before entering `gw_play`.
+- `gw_campaign_restart_loading/`: co-op campaign restart staging scene used when returning from a campaign battle.
 - `gw_lobby/`: campaign battle staging lobby and readiness/config handoff.
 - `gw_play/`: campaign star-map play layer and battle progression UI.
+- `gw_reconnect_loading/`: Galactic War reconnect staging scene that prepares mounted content before `live_game`.
 - `gw_start/`: campaign creation/start flow, faction/cards/team setup.
 - `gw_war_over/`: end-of-campaign summary and archive/restart handling.
 - `shared/`: common GW helpers/spec transforms used across GW screens.

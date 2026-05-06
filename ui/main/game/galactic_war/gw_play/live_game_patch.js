@@ -8,7 +8,7 @@
         var saveGame = function(name) { }; /* replaced after gw game has been loaded. */
         var exitToPlay = 'coui://ui/main/game/galactic_war/gw_play/gw_play.html';
         var exitToStart = 'coui://ui/main/game/galactic_war/gw_start/gw_start.html';
-        var restartLoadingUrl = 'coui://ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.html';
+        var restartLoadingUrl = 'coui://ui/main/game/galactic_war/gw_campaign_restart_loading/gw_campaign_restart_loading.html';
         var exitDestination = ko.observable(exitToPlay);
 
         // Session/local state used for the co-op GW "Continue War" restart flow.
