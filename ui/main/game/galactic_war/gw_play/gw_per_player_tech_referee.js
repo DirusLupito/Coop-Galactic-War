@@ -255,7 +255,9 @@ define([
 
         // We've already generated the .player tag, so we just need to generate subsequent tags.
         for (var i = 1; i < playerTags.length; i++) {
-            playerSpecPromises.push(generateUnitSpecsForPlayer(inventory, playerTags[i]));
+            // TODO: Actually use a per-player inventory instead of cloning the host's inventory for each player. 
+            var thisPlayersInventory = inventory;
+            playerSpecPromises.push(generateUnitSpecsForPlayer(thisPlayersInventory, playerTags[i]));
         }
 
         $.when.apply($, playerSpecPromises).then(function() {
@@ -283,6 +285,32 @@ define([
                 // thus each army only has one commander. So this is sensible.
                 // If in the future we have multiple commanders, this will not be sensible.
                 army.commander = baseCommander + playerTags[index];
+
+                // Now for each player we need to generate their minions and give those minions
+                // this player's tag as well.
+
+                // TODO: Actually use a per-player inventory instead of cloning the host's inventory for each player. 
+                var thisPlayersInventory = inventory;
+                _.forEach(thisPlayersInventory.minions(), function (minion) {
+                    // We skip the host's minions since those are already included in the config from the main referee.
+                    // We check if we're the host by seeing if the tag is .player, since the host is always .player.
+                    if (playerTags[index] === '.player') {
+                        return;
+                    }
+
+                    config.armies.push({
+                        slots: [{
+                            ai: true,
+                            name: minion.name || 'Helper',
+                            commander: (minion.commander || baseCommander) + playerTags[index]
+                        }],
+                        color: minion.color || [army.color[1], army.color[0]],
+                        econ_rate: minion.econ_rate || 1,
+                        personality: minion.personality,
+                        spec_tag: playerTags[index],
+                        alliance_group: 1
+                    });
+                });
             });
 
             config.per_player_tech_ready = true;
