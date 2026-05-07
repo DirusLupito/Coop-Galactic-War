@@ -635,6 +635,17 @@ $(document).ready(function() {
                 self.makeGameBusy(false);
                 self.newGame(game);
                 self.updateCommander();
+                if (game.perPlayerTechCards()) {
+                    var displayName = ko.observable().extend({ session: 'displayName' });
+                    game.upsertCoopPlayerInventoryData({
+                        playerId: self.uberId(),
+                        playerName: displayName(),
+                        commander: self.selectedCommander(),
+                        loadoutCardId: self.activeStartCard().id(),
+                        inventory: game.inventory().save(),
+                        updatedAt: _.now()
+                    });
+                }
                 return game;
             });
         }

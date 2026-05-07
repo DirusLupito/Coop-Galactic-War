@@ -63,6 +63,14 @@ define([], function() {
                 }
             });
         },
+
+        // 4 = Add per-player co-op inventory data state.
+        // Idk where version 3 is but it wasn't here before
+        // I made coop galactic war, so maybe it never needed a patch.
+        function(game) {
+            if (!game.coopPlayerInventoryData)
+                game.coopPlayerInventoryData = ko.observableArray([]);
+        },
     ];
 
     return {

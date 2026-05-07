@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+    <noloc><title>Galactic War: Co-op Loadout</title></noloc>
+    <script src="bundle://boot/boot.js" type="text/javascript"></script>
+    <link href="bundle://boot/boot.css" rel="stylesheet" type="text/css" />
+    <link href="coui://ui/main/shared/css/template.css" rel="stylesheet" type="text/css" />
+    <link href="coui://ui/main/shared/css/landing_page.css" rel="stylesheet" type="text/css" />
+    <link href="coui://ui/main/game/galactic_war/gw_start/gw_start.css" rel="stylesheet" type="text/css" />
+    <link href="gw_coop_per_player_loadout.css" rel="stylesheet" type="text/css" />
+    <script src="coui://ui/main/shared/js/commander_utility.js" type="text/javascript"></script>
+    <script src="coui://ui/main/shared/js/playfab.js" type="text/javascript"></script>
+    <script src="coui://ui/main/shared/js/ui_media_utility.js" type="text/javascript"></script>
+    <script src="gw_coop_per_player_loadout.js" type="text/javascript"></script>
+</head>
+
+<body>
+<script id="cardTemplate">
+    app.loadTemplate("coui://ui/main/game/galactic_war/shared/template/gwt_card_horizontal",
+                     "coui://ui/main/game/galactic_war/shared/template/gwt_card",
+                     "coui://ui/main/game/galactic_war/shared/template/gwt_card");
+</script>
+
+<div class="background_glow"></div>
+
+<div class="section_title">
+    <div class="content">
+        <div class="btn_std_ix btn_back_small" data-bind="click: cancel">
+            <span class="glyphicon glyphicon-chevron-left carat"></span>
+        </div>
+        <div class="title">
+            <loc>Galactic War</loc>
+        </div>
+    </div>
+</div>
+
+<div class="section_content">
+    <div class="section_wrapper overall_width">
+        <div id="tab3" class="tab-pane coop-loadout-pane" data-bind="visible: true, css: { active: true }" style="display: none">
+            <div id="new-game-left" class="col">
+                <div class="header" style="background: rgba(255, 255, 255, 0.2);"><loc>Commander</loc></div>
+                <div class="col-padding">
+                    <div class="form-group">
+                        <div id="commander-select">
+                            <p data-bind="text: CommanderUtility.bySpec.getName(selectedCommander())"></p>
+                            <p id="game-commander-preview"><img src="" data-bind="attr: { src: CommanderUtility.bySpec.getImage(selectedCommander()) }" height="275" width="275" /></p>
+                            <div id="commander-prev" data-bind="click_sound: 'default', rollover_sound: 'default', click: prevCommander"></div>
+                            <div id="commander-next" data-bind="click_sound: 'default', rollover_sound: 'default', click: nextCommander"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loadouts" class="col">
+                <div class="header" style="background: rgba(255, 255, 255, 0.1);"><loc>Loadout</loc></div>
+                <div id="start-cards">
+                    <!-- ko foreach: startCards -->
+                    <!-- ko if: $data.id() -->
+                    <div class="card" data-bind="
+                        click_sound: 'default',
+                        rollover_sound: 'default',
+                        click: activate,
+                        css: btnClass
+                    ">
+                        <!-- ko template: 'cardTemplate' -->
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: !$data.id() -->
+                    <div class="card_locked">
+                        <div class="unknown">
+                            <div class="col1">
+                                <img class="icon" style="height:90px;" data-bind="attr: { src: $data.icon }" />
+                            </div>
+                            <div class="col2">
+                                <div class="summary" style="color:#666;"><loc>LOCKED</loc></div>
+                                <div class="desc"><span class="tip"><loc>Tip:</loc></span><span data-bind="html: loc($data.description())"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_commit_cont">
+    <div class="div_commit_secondary_options"></div>
+    <div class="btn_hero" data-bind="
+            click: submitLoadout,
+            click_sound: 'default',
+            rollover_sound: 'default',
+            css: { btn_hero_disabled: !ready() || submitting() }
+            ">
+        <div class="btn_label" style="padding: 0px 40px;">
+            <loc>Join War</loc>
+        </div>
+    </div>
+</div>
+</body>
+</html>

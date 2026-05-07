@@ -624,9 +624,13 @@ function LobbyModel(creator, launchContext) {
                 entry.slot.client = client;
                 entry.slot.name = client.name || 'Player';
                 var playerConfig = _.clone(config.player);
-                if (entry.army && _.isString(entry.army.commander)) {
+                if (entry.slot && entry.slot.player_config)
+                    playerConfig = _.clone(entry.slot.player_config);
+                else if (entry.army && entry.army.player_config)
+                    playerConfig = _.clone(entry.army.player_config);
+                else if (entry.army && _.isString(entry.army.commander))
                     playerConfig.commander = entry.army.commander;
-                }
+
                 players[client.id] = playerConfig;
             }
             else {

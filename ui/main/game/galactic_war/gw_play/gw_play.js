@@ -1502,6 +1502,8 @@ requireGW([
                     name: client ? client.name : loc('!LOC:Empty Slot'),
                     host: !!(client && client.role === 'host'),
                     loading: !!(client && client.loading),
+                    loadingStatus: client && client.loading_status,
+                    loadingTooltip: (client && client.loading_status === 'picking_loadout') ? '!LOC:Picking loadout' : '!LOC:Loading into lobby',
                     empty: !client,
                     canRemove: !client && maxClients > 1,
                     canKick: !!(client && client.role !== 'host')
@@ -4007,6 +4009,46 @@ requireGW([
         handlers.gw_campaign_snapshot = function(payload) {
             console.log('[GW COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.applyCampaignSnapshot(payload);
+        };
+
+        handlers.gw_campaign_player_loadout = function(payload) {
+            if (!payload || !payload.inventory_data) {
+                console.log('[GW COOP] ignoring invalid co-op player loadout payload');
+                return;
+            }
+
+            var inventoryData = payload.inventory_data;
+            var loadoutCardId = inventoryData.loadoutCardId || inventoryData.loadout_card_id;
+            if (!_.isString(inventoryData.commander) || !_.isString(loadoutCardId) || !inventoryData.inventory) {
+                console.log('[GW COOP] invalid co-op player loadout from client=' + payload.client_id);
+                return;
+            }
+
+            var saved = model.game();
+            if (!saved || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+                console.log('[GW COOP] cannot save co-op player inventory data without game helper');
+                return;
+            }
+
+            var record = {
+                playerId: payload.client_id,
+                playerName: payload.client_name || inventoryData.player_name,
+                commander: inventoryData.commander,
+                loadoutCardId: loadoutCardId,
+                inventory: inventoryData.inventory,
+                updatedAt: inventoryData.updatedAt || inventoryData.updated_at || _.now()
+            };
+
+            if (!saved.upsertCoopPlayerInventoryData(record)) {
+                console.log('[GW COOP] failed to upsert co-op player inventory data for client=' + payload.client_id);
+                return;
+            }
+
+            GW.manifest.saveGame(saved).then(function() {
+                console.log('[GW COOP] saved co-op player loadout for client=' + payload.client_id);
+            }, function(err) {
+                console.error('[GW COOP] failed to save co-op player inventory data', err);
+            });
         };
 
         handlers.request_gw_campaign_snapshot_publish = function(payload) {

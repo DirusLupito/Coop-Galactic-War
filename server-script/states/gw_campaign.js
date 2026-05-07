@@ -59,6 +59,7 @@ function GWCampaignModel(creator) {
     self.clientManifestReceivedByClientId = {};
     self.clientManifestValidatedByClientId = {};
     self.clientLoading = {};
+    self.clientLoadingStatus = {};
     self.access = {
         password: '',
         friends: [],
@@ -445,21 +446,108 @@ function GWCampaignModel(creator) {
         return {
             id: client && client.id,
             name: client && client.name,
-            role: self.getRoleForClient(client)
+            role: self.getRoleForClient(client),
+            requires_loadout: self.clientRequiresLoadout(client)
         };
     };
 
-    self.setClientLoading = function(client, loading) {
+    self.findCoopPlayerInventoryData = function(client) {
+        if (!client || !self.lastSnapshot || !self.lastSnapshot.snapshot || !self.lastSnapshot.snapshot.game)
+            return undefined;
+
+        var game = self.lastSnapshot.snapshot.game;
+        var inventoryData = _.isArray(game.coopPlayerInventoryData) ? game.coopPlayerInventoryData : [];
+        var idMatches = _.filter(inventoryData, function(record) {
+            return record && !_.isUndefined(record.playerId) && String(record.playerId) === String(client.id);
+        });
+
+        if (idMatches.length > 1) {
+            console.log('[GW COOP] Expected one inventory data record for client id ' + client.id + ', found ' + idMatches.length + '.');
+            return undefined;
+        }
+
+        if (idMatches.length === 1)
+            return idMatches[0];
+
+        if (_.isString(client.name) && client.name.length) {
+            var nameMatches = _.filter(inventoryData, function(record) {
+                return record && record.playerName === client.name;
+            });
+
+            if (nameMatches.length > 1) {
+                console.log('[GW COOP] Expected one inventory data record for client name ' + client.name + ', found ' + nameMatches.length + '.');
+                return undefined;
+            }
+
+            if (nameMatches.length === 1)
+                return nameMatches[0];
+        }
+
+        return undefined;
+    };
+
+    self.upsertCoopPlayerInventoryData = function(record) {
+        if (!record || !self.lastSnapshot || !self.lastSnapshot.snapshot || !self.lastSnapshot.snapshot.game)
+            return false;
+
+        var game = self.lastSnapshot.snapshot.game;
+        var inventoryData = _.isArray(game.coopPlayerInventoryData) ? game.coopPlayerInventoryData.slice(0) : [];
+        var existingIndex = -1;
+        var playerId = record.playerId;
+        var playerName = record.playerName;
+
+        if (!_.isUndefined(playerId) && playerId !== null) {
+            existingIndex = _.findIndex(inventoryData, function(entry) {
+                return entry && !_.isUndefined(entry.playerId) && String(entry.playerId) === String(playerId);
+            });
+        }
+
+        if (existingIndex < 0 && _.isString(playerName) && playerName.length) {
+            existingIndex = _.findIndex(inventoryData, function(entry) {
+                return entry && entry.playerName === playerName;
+            });
+        }
+
+        if (existingIndex >= 0)
+            inventoryData[existingIndex] = record;
+        else
+            inventoryData.push(record);
+
+        game.coopPlayerInventoryData = inventoryData;
+        return true;
+    };
+
+    self.clientRequiresLoadout = function(client) {
+        if (!client || client.id === self.creatorId)
+            return false;
+
+        if (!self.lastSnapshot || !self.lastSnapshot.snapshot || !self.lastSnapshot.snapshot.game)
+            return false;
+
+        var game = self.lastSnapshot.snapshot.game;
+        var perPlayerLoadoutsEnabled = self.perPlayerTechCards || !!game.perPlayerTechCards;
+        if (!perPlayerLoadoutsEnabled)
+            return false;
+
+        return !self.findCoopPlayerInventoryData(client);
+    };
+
+    self.setClientLoading = function(client, loading, loadingStatus) {
         if (!client)
             return;
 
         // We no longer update control if the loading state for the client hasn't actually
         // gone from false/ambiguous to true or from true to false/ambiguous.
         var nextLoading = !!loading;
-        if (self.clientLoading[client.id] === nextLoading)
+        var nextStatus = _.isString(loadingStatus) ? loadingStatus : '';
+        if (!nextLoading)
+            nextStatus = '';
+
+        if (self.clientLoading[client.id] === nextLoading && self.clientLoadingStatus[client.id] === nextStatus)
             return;
 
         self.clientLoading[client.id] = nextLoading;
+        self.clientLoadingStatus[client.id] = nextStatus;
         self.updateControl();
     };
 
@@ -501,7 +589,9 @@ function GWCampaignModel(creator) {
                 id: client.id,
                 name: client.name || (client.id === self.creatorId ? self.creatorName : 'Player'),
                 role: self.getRoleForClient(client),
-                loading: !!self.clientLoading[client.id]
+                loading: !!self.clientLoading[client.id],
+                loading_status: self.clientLoadingStatus[client.id] || '',
+                requires_loadout: self.clientRequiresLoadout(client)
             };
         });
         self.maxClients = Math.max(1, Math.min(self.maxClients, self.maxClientsLimit));
@@ -605,7 +695,8 @@ function GWCampaignModel(creator) {
         client.message({
             message_type: 'gw_campaign_snapshot',
             payload: _.assign({}, self.lastSnapshot, {
-                reason: reason || 'sync'
+                reason: reason || 'sync',
+                requires_loadout: self.clientRequiresLoadout(client)
             })
         });
     };
@@ -651,6 +742,7 @@ function GWCampaignModel(creator) {
                 self.clearPendingManifestTimeout(client.id);
                 self.clearPendingSelfDisconnectTimeout(client.id);
                 delete self.clientLoading[client.id];
+                delete self.clientLoadingStatus[client.id];
 
                 if (client.id === self.creatorId) {
                     console.log('[GW COOP] gw_campaign creator disconnected, exiting server');
@@ -688,6 +780,7 @@ function GWCampaignModel(creator) {
         }
 
         self.clientLoading[client.id] = true;
+        self.clientLoadingStatus[client.id] = '';
         self.updateControl();
         if (client.id !== self.creatorId)
             self.requestClientManifest(client, reconnect);
@@ -790,7 +883,57 @@ function GWCampaignModel(creator) {
                 });
             },
             set_loading: function(msg) {
-                self.setClientLoading(msg.client, msg.payload && msg.payload.loading);
+                var payload = msg.payload || {};
+                self.setClientLoading(msg.client, payload.loading, payload.loading_status);
+                server.respond(msg).succeed();
+            },
+            set_player_loadout: function(msg) {
+                if (msg.client.id === self.creatorId)
+                    return server.respond(msg).fail('Host does not submit co-op player loadout through viewer path');
+
+                var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
+                var perPlayerLoadoutsEnabled = self.perPlayerTechCards || !!(snapshotGame && snapshotGame.perPlayerTechCards);
+                if (!perPlayerLoadoutsEnabled)
+                    return server.respond(msg).fail('Per-player loadouts are not enabled');
+
+                var payload = msg.payload || {};
+                if (!_.isString(payload.commander) || !_.isString(payload.loadout_card_id) || !payload.inventory)
+                    return server.respond(msg).fail('Invalid co-op player loadout');
+
+                var record = {
+                    playerId: msg.client.id,
+                    playerName: msg.client.name || payload.player_name,
+                    commander: payload.commander,
+                    loadoutCardId: payload.loadout_card_id,
+                    inventory: payload.inventory,
+                    updatedAt: payload.updated_at || Date.now()
+                };
+
+                if (!self.upsertCoopPlayerInventoryData(record))
+                    return server.respond(msg).fail('Failed to store co-op player loadout');
+
+                self.lastSnapshotSeq += 1;
+                self.lastSnapshot.seq = self.lastSnapshotSeq;
+
+                server.broadcast({
+                    message_type: 'gw_campaign_player_loadout',
+                    payload: {
+                        client_id: msg.client.id,
+                        client_name: msg.client.name,
+                        inventory_data: record
+                    }
+                });
+
+                self.setClientLoading(msg.client, false, '');
+
+                msg.client.message({
+                    message_type: 'gw_campaign_loadout_complete',
+                    payload: {
+                        client_id: msg.client.id,
+                        snapshot: self.lastSnapshot.snapshot
+                    }
+                });
+
                 server.respond(msg).succeed();
             },
             gw_campaign_snapshot: function(msg) {

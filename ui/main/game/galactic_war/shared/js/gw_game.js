@@ -11,7 +11,7 @@ define([
     GWBank,
     GWGamePatches
 ) {
-    var CURRENT_VERSION = 3;
+    var CURRENT_VERSION = 4;
 
     var genId = function()
     {
@@ -45,6 +45,7 @@ define([
         self.lockCoopPlayers = ko.observable(false);
         self.sharedByDefault = ko.observable(true);
         self.perPlayerTechCards = ko.observable(false);
+        self.coopPlayerInventoryData = ko.observableArray([]);
 
         self.serverModIdentifiers = ko.observableArray([]);
 
@@ -117,6 +118,7 @@ define([
             self.lockCoopPlayers(!!config.lockCoopPlayers);
             self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
             self.perPlayerTechCards(_.has(config, 'perPlayerTechCards') ? !!config.perPlayerTechCards : false);
+            self.coopPlayerInventoryData(_.isArray(config.coopPlayerInventoryData) ? config.coopPlayerInventoryData : []);
 
             self.serverModIdentifiers(config.serverModIdentifiers || []);
 
@@ -164,10 +166,84 @@ define([
                 lockCoopPlayers: self.lockCoopPlayers(),
                 sharedByDefault: self.sharedByDefault(),
                 perPlayerTechCards: self.perPlayerTechCards(),
+                coopPlayerInventoryData: self.coopPlayerInventoryData(),
                 serverModIdentifiers: self.serverModIdentifiers()
             };
 
             return result;
+        },
+
+        findCoopPlayerInventoryData: function(player)
+        {
+            var self = this;
+            var records = self.coopPlayerInventoryData();
+            var playerId = player && player.id;
+            var playerName = player && player.name;
+
+            if (!_.isUndefined(playerId) && playerId !== null) {
+                var idMatches = _.filter(records, function(record) {
+                    return record && !_.isUndefined(record.playerId) && String(record.playerId) === String(playerId);
+                });
+
+                if (idMatches.length > 1) {
+                    console.log('[GW COOP] Expected one co-op player inventory data record for id ' + playerId + ', found ' + idMatches.length + '.');
+                    return undefined;
+                }
+
+                if (idMatches.length === 1)
+                    return idMatches[0];
+            }
+
+            if (_.isString(playerName) && playerName.length) {
+                var nameMatches = _.filter(records, function(record) {
+                    return record && record.playerName === playerName;
+                });
+
+                if (nameMatches.length > 1) {
+                    console.log('[GW COOP] Expected one co-op player inventory data record for name ' + playerName + ', found ' + nameMatches.length + '.');
+                    return undefined;
+                }
+
+                if (nameMatches.length === 1)
+                    return nameMatches[0];
+            }
+
+            return undefined;
+        },
+
+        upsertCoopPlayerInventoryData: function(record)
+        {
+            var self = this;
+
+            if (!record || ((_.isUndefined(record.playerId) || record.playerId === null) && !_.isString(record.playerName))) {
+                console.log('[GW COOP] Cannot upsert invalid co-op player inventory data record.');
+                return false;
+            }
+
+            var current = self.coopPlayerInventoryData().slice(0);
+            var existingIndex = -1;
+            var playerId = record.playerId;
+            var playerName = record.playerName;
+
+            if (!_.isUndefined(playerId) && playerId !== null) {
+                existingIndex = _.findIndex(current, function(entry) {
+                    return entry && !_.isUndefined(entry.playerId) && String(entry.playerId) === String(playerId);
+                });
+            }
+
+            if (existingIndex < 0 && _.isString(playerName) && playerName.length) {
+                existingIndex = _.findIndex(current, function(entry) {
+                    return entry && entry.playerName === playerName;
+                });
+            }
+
+            if (existingIndex >= 0)
+                current[existingIndex] = record;
+            else
+                current.push(record);
+
+            self.coopPlayerInventoryData(current);
+            return true;
         },
 
         fight: function()
