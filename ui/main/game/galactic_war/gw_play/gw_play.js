@@ -1272,9 +1272,6 @@ requireGW([
         self.gwCampaignReportedLoading = undefined;
         self.gwCampaignLastControlLogKey = '';
         self.gwCampaignLastRoleLogKey = '';
-        self.coopTechChoiceInventory = ko.observable();
-        self.coopTechChoiceInventorySubscriptions = [];
-        self.coopTechChoiceInventoryKey = '';
         self.coopTechChoiceSubmitting = ko.observable(false);
         self.coopPlayerDisplayInventory = ko.observable();
         self.coopPlayerDisplayInventoryKey = '';
@@ -1621,27 +1618,8 @@ requireGW([
         });
 
         self.canUseCoopTechChoice = ko.computed(function() {
-            return !!(self.canChooseCoopTechCards() && self.coopTechChoiceInventory());
+            return !!(self.canChooseCoopTechCards() && self.coopPlayerDisplayInventory() && !self.coopTechChoiceSubmitting());
         });
-
-        self.clearCoopTechChoiceInventory = function() {
-            _.forEach(self.coopTechChoiceInventorySubscriptions, function(subscription) {
-                if (subscription && _.isFunction(subscription.dispose)) {
-                    subscription.dispose();
-                }
-            });
-            self.coopTechChoiceInventorySubscriptions = [];
-            self.coopTechChoiceInventory(undefined);
-            self.coopTechChoiceInventoryKey = '';
-            self.coopTechChoiceSubmitting(false);
-
-            if (_.isFunction(self.updateCards)) {
-                self.updateCards();
-            }
-            else if (_.isFunction(self.cardsChanged)) {
-                self.cardsChanged();
-            }
-        };
 
         self.clearCoopPlayerDisplayInventory = function() {
             self.coopPlayerDisplayInventory(undefined);
@@ -1687,7 +1665,6 @@ requireGW([
             var activateInventory = function() {
                 self.coopPlayerDisplayInventory(inventory);
                 self.coopPlayerDisplayInventoryKey = key;
-                console.log('[GW COOP] display inventory active player=' + record.playerName + ' cards=' + inventory.cards().length + ' maxCards=' + inventory.maxCards());
 
                 if (_.isFunction(self.updateCards)) {
                     self.updateCards();
@@ -1706,10 +1683,6 @@ requireGW([
         };
 
         self.activeTechInventory = function() {
-            if (self.canUseCoopTechChoice() && !self.gwCampaignReplayingAction) {
-                return self.coopTechChoiceInventory();
-            }
-
             if (self.isCampaignViewer() && self.gwCampaignPerPlayerTechCards()) {
                 return self.coopPlayerDisplayInventory();
             }
@@ -1717,83 +1690,18 @@ requireGW([
             return game.inventory();
         };
 
-        self.prepareCoopTechChoiceInventory = function() {
-            if (!self.canChooseCoopTechCards()) {
-                if (self.coopTechChoiceInventory()) {
-                    self.clearCoopTechChoiceInventory();
-                }
-                return;
-            }
-
-            var record = self.currentCoopPlayerInventoryData();
-            var pendingTechCards = self.currentCoopPendingTechCards();
-            if (!record || !record.inventory || !pendingTechCards) {
-                console.error('[GW COOP] Cannot prepare co-op tech choice inventory without inventory data.');
-                return;
-            }
-
-            var key = [
-                record.playerId,
-                record.playerName,
-                pendingTechCards.star,
-                pendingTechCards.updatedAt || '',
-                JSON.stringify(pendingTechCards.cards || [])
-            ].join('|');
-
-            if (self.coopTechChoiceInventory() && self.coopTechChoiceInventoryKey === key) {
-                return;
-            }
-
-            self.clearCoopTechChoiceInventory();
-
-            var inventory = new GWInventory();
-            inventory.load(_.cloneDeep(record.inventory));
-            var activateInventory = function() {
-                self.coopTechChoiceInventory(inventory);
-                self.coopTechChoiceInventoryKey = key;
-                console.log('[GW COOP] tech choice inventory active player=' + record.playerName + ' cards=' + inventory.cards().length + ' maxCards=' + inventory.maxCards());
-                self.coopTechChoiceInventorySubscriptions = [
-                    inventory.cards.subscribe(function() {
-                        if (_.isFunction(self.cardsChanged)) {
-                            self.cardsChanged();
-                        }
-                    }),
-                    inventory.maxCards.subscribe(function() {
-                        if (_.isFunction(self.cardsChanged)) {
-                            self.cardsChanged();
-                        }
-                    })
-                ];
-
-                if (_.isFunction(self.updateCards)) {
-                    self.updateCards();
-                }
-                else if (_.isFunction(self.cardsChanged)) {
-                    self.cardsChanged();
-                }
-            };
-
-            if (inventory.cards().length) {
-                inventory.applyCards(activateInventory);
-            }
-            else {
-                activateInventory();
-            }
-        };
-
         self.prepareCoopPlayerInventories = function() {
             self.prepareCoopPlayerDisplayInventory();
-            self.prepareCoopTechChoiceInventory();
         };
 
         self.canChooseCoopTechCards.subscribe(function() {
-            self.prepareCoopTechChoiceInventory();
+            self.prepareCoopPlayerInventories();
         });
         self.currentCoopPlayerInventoryData.subscribe(function() {
             self.prepareCoopPlayerInventories();
         });
         self.currentCoopPendingTechCards.subscribe(function() {
-            self.prepareCoopTechChoiceInventory();
+            self.prepareCoopPlayerInventories();
         });
 
         // Used to indicate that we've received all the necessary information from the server to consider the campaign state 
@@ -3335,50 +3243,117 @@ requireGW([
         };
         self.explore.__gwCampaignNative = true;
 
-        self.finishCoopTechChoice = function(record) {
-            if (!record || !game || !_.isFunction(game.upsertCoopPlayerInventoryData)) {
-                console.error('[GW COOP] Cannot finish co-op tech choice without inventory data helper.');
-                return false;
+        self.applyCoopPlayerInventoryRecord = function(record, reason) {
+            var result = $.Deferred();
+            if (!record || !record.inventory || !game || !_.isFunction(game.upsertCoopPlayerInventoryData)) {
+                result.reject('Cannot apply co-op player inventory record without inventory data helper');
+                return result.promise();
             }
 
-            if (!game.upsertCoopPlayerInventoryData(record)) {
-                console.error('[GW COOP] Failed to store local co-op tech choice inventory data.');
-                return false;
+            var sourceInventory = _.cloneDeep(record.inventory);
+            var sourceTags = sourceInventory.tags || {};
+            sourceInventory.tags = {
+                global: _.cloneDeep(sourceTags.global || {})
+            };
+
+            var inventory = new GWInventory();
+            inventory.load(sourceInventory);
+
+            var finish = function() {
+                var nextRecord = _.assign({}, record, {
+                    inventory: inventory.save()
+                });
+
+                if (!game.upsertCoopPlayerInventoryData(nextRecord)) {
+                    result.reject('Failed to store co-op player inventory record for ' + reason);
+                    return;
+                }
+
+                self.prepareCoopPlayerInventories();
+                GW.manifest.saveGame(game).then(function() {
+                    console.log('[GW COOP] saved co-op player inventory operation ' + reason + ' for player=' + nextRecord.playerName);
+                    result.resolve(nextRecord);
+                }, function(err) {
+                    console.error('[GW COOP] failed to save co-op player inventory operation ' + reason, err);
+                    result.reject(err);
+                });
+            };
+
+            if (inventory.cards().length) {
+                inventory.applyCards(finish);
+            }
+            else {
+                finish();
             }
 
-            self.prepareCoopPlayerInventories();
-            self.clearCoopTechChoiceInventory();
-            GW.manifest.saveGame(game).then(function() {
-                console.log('[GW COOP] saved co-op player tech card choice');
-            }, function(err) {
-                console.error('[GW COOP] failed to save co-op player tech card choice', err);
-            });
-            return true;
+            return result.promise();
         };
 
-        self.submitCoopTechCardChoice = function(selected_card_index) {
+        self.applyCoopPlayerTechCardDeleted = function(payload) {
             var result = $.Deferred();
-            if (!self.canUseCoopTechChoice() || self.coopTechChoiceSubmitting()) {
-                result.reject('Co-op tech choice is not ready');
+            var record = game && _.isFunction(game.findCoopPlayerInventoryData)
+                ? game.findCoopPlayerInventoryData({ id: payload && payload.client_id, name: payload && payload.client_name })
+                : undefined;
+            if (!record || !record.inventory || !_.isArray(record.inventory.cards)) {
+                result.reject('Missing co-op player inventory data for tech card deletion');
                 return result.promise();
             }
 
-            var record = self.currentCoopPlayerInventoryData();
-            var pendingTechCards = self.currentCoopPendingTechCards();
-            var inventory = self.coopTechChoiceInventory();
-            if (!record || !pendingTechCards || !inventory) {
-                result.reject('Cannot submit co-op tech choice without pending inventory data');
+            var cardIndex = payload.card_index;
+            if (!_.isNumber(cardIndex) || cardIndex < 0 || cardIndex >= record.inventory.cards.length) {
+                result.reject('Invalid co-op tech card deletion index ' + cardIndex);
                 return result.promise();
             }
 
-            if (selected_card_index !== -1 && (selected_card_index < 0 || selected_card_index >= pendingTechCards.cards.length)) {
-                result.reject('Invalid co-op tech choice index ' + selected_card_index);
+            var nextRecord = _.cloneDeep(record);
+            nextRecord.inventory.cards.splice(cardIndex, 1);
+            nextRecord.updatedAt = payload.updated_at || _.now();
+
+            self.applyCoopPlayerInventoryRecord(nextRecord, 'delete_tech_card').then(function(appliedRecord) {
+                result.resolve(appliedRecord);
+            }, function(reason) {
+                result.reject(reason);
+            });
+            return result.promise();
+        };
+
+        self.applyCoopPlayerPendingTechCardChoice = function(payload) {
+            var result = $.Deferred();
+            var record = game && _.isFunction(game.findCoopPlayerInventoryData)
+                ? game.findCoopPlayerInventoryData({ id: payload && payload.client_id, name: payload && payload.client_name })
+                : undefined;
+            if (!record || !record.inventory || !_.isArray(record.inventory.cards)) {
+                result.reject('Missing co-op player inventory data for pending tech card choice');
                 return result.promise();
             }
 
-            var selectedCard = selected_card_index === -1 ? undefined : pendingTechCards.cards[selected_card_index];
-            var addedSelectedCard = false;
+            var pendingTechCards = record.pendingTechCards;
+            if (!pendingTechCards || !_.isNumber(pendingTechCards.star) || !_.isArray(pendingTechCards.cards)) {
+                result.reject('No pending co-op tech cards for player');
+                return result.promise();
+            }
+
+            var selectedCardIndex = payload.selected_card_index;
+            if (!_.isNumber(selectedCardIndex)) {
+                result.reject('Invalid co-op tech card choice index');
+                return result.promise();
+            }
+
+            if (!_.isNumber(payload.star) || payload.star !== pendingTechCards.star) {
+                result.reject('Co-op tech card choice star does not match pending tech cards');
+                return result.promise();
+            }
+
+            if (selectedCardIndex !== -1 && (selectedCardIndex < 0 || selectedCardIndex >= pendingTechCards.cards.length)) {
+                result.reject('Selected co-op tech card index is out of range');
+                return result.promise();
+            }
+
+            var nextRecord = _.cloneDeep(record);
+            var selectedCard = selectedCardIndex === -1 ? undefined : pendingTechCards.cards[selectedCardIndex];
             if (selectedCard) {
+                var inventory = new GWInventory();
+                inventory.load(_.cloneDeep(nextRecord.inventory));
                 if (inventory.hasCard(selectedCard.id)) {
                     result.reject('Duplicate co-op tech choice card=' + selectedCard.id);
                     return result.promise();
@@ -3389,56 +3364,72 @@ requireGW([
                     return result.promise();
                 }
 
-                inventory.cards.push(selectedCard);
-                addedSelectedCard = true;
+                nextRecord.inventory.cards.push(selectedCard);
             }
 
-            var submit = function() {
-                var inventoryData = _.assign({}, record, {
-                    playerId: self.uberId(),
-                    playerName: self.displayName(),
-                    inventory: inventory.save(),
-                    updatedAt: _.now()
-                });
-                delete inventoryData.pendingTechCards;
+            delete nextRecord.pendingTechCards;
+            nextRecord.updatedAt = payload.updated_at || _.now();
 
-                self.coopTechChoiceSubmitting(true);
-                self.send_message('set_player_tech_card_choice', {
-                    star: pendingTechCards.star,
-                    selected_card_index: selected_card_index,
-                    inventory_data: inventoryData
-                }, function(success, response) {
-                    if (!success) {
-                        if (addedSelectedCard) {
-                            var addedIndex = inventory.cards().indexOf(selectedCard);
-                            if (addedIndex >= 0) {
-                                inventory.cards.splice(addedIndex, 1);
-                                if (inventory.cards().length)
-                                    inventory.applyCards(self.cardsChanged);
-                                else if (_.isFunction(self.cardsChanged))
-                                    self.cardsChanged();
-                            }
-                        }
-                        self.coopTechChoiceSubmitting(false);
-                        result.reject('set_player_tech_card_choice failed response=' + JSON.stringify(response || {}));
-                        return;
-                    }
+            self.applyCoopPlayerInventoryRecord(nextRecord, 'choose_pending_tech_card').then(function(appliedRecord) {
+                result.resolve(appliedRecord);
+            }, function(reason) {
+                result.reject(reason);
+            });
+            return result.promise();
+        };
 
-                    if (!self.finishCoopTechChoice(inventoryData)) {
-                        result.reject('Failed to store local co-op tech choice inventory data');
-                        return;
-                    }
-
-                    result.resolve(inventoryData);
-                });
-            };
-
-            if (inventory.cards().length) {
-                inventory.applyCards(submit);
+        self.deleteCoopTechCard = function(cardIndex) {
+            var result = $.Deferred();
+            if (!self.canUseCoopTechChoice()) {
+                result.reject('Co-op tech deletion is not ready');
+                return result.promise();
             }
-            else {
-                submit();
+
+            self.send_message('delete_player_tech_card', {
+                card_index: cardIndex
+            }, function(success, response) {
+                if (!success) {
+                    result.reject('delete_player_tech_card failed response=' + JSON.stringify(response || {}));
+                    return;
+                }
+
+                result.resolve(response);
+            });
+
+            return result.promise();
+        };
+
+        self.submitCoopTechCardChoice = function(selected_card_index) {
+            var result = $.Deferred();
+            if (!self.canUseCoopTechChoice() || self.coopTechChoiceSubmitting()) {
+                result.reject('Co-op tech choice is not ready');
+                return result.promise();
             }
+
+            var pendingTechCards = self.currentCoopPendingTechCards();
+            if (!pendingTechCards) {
+                result.reject('Cannot submit co-op tech choice without pending cards');
+                return result.promise();
+            }
+
+            if (selected_card_index !== -1 && (selected_card_index < 0 || selected_card_index >= pendingTechCards.cards.length)) {
+                result.reject('Invalid co-op tech choice index ' + selected_card_index);
+                return result.promise();
+            }
+
+            self.coopTechChoiceSubmitting(true);
+            self.send_message('choose_player_pending_tech_card', {
+                star: pendingTechCards.star,
+                selected_card_index: selected_card_index
+            }, function(success, response) {
+                if (!success) {
+                    self.coopTechChoiceSubmitting(false);
+                    result.reject('choose_player_pending_tech_card failed response=' + JSON.stringify(response || {}));
+                    return;
+                }
+
+                result.resolve(response);
+            });
 
             return result.promise();
         };
@@ -3863,28 +3854,26 @@ requireGW([
         };
         self.discardHoverCard = function(card) {
             if (self.canUseCoopTechChoice() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
-                var coopInventory = self.coopTechChoiceInventory();
                 var coopDiscard = self.hoverCard();
-                if (!coopInventory || !coopDiscard)
+                if (!coopDiscard) {
                     return;
+                }
 
                 self.hoverCard(undefined);
                 var coopDiscardIndex = self.cards().indexOf(coopDiscard);
                 if (coopDiscardIndex >= 0) {
-                    coopInventory.cards.splice(coopDiscardIndex, 1);
-                    if (coopInventory.cards().length) {
-                        coopInventory.applyCards(function() {
-                            api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
-                        });
-                    }
-                    else
+                    self.deleteCoopTechCard(coopDiscardIndex).then(function() {
                         api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
+                    }, function(reason) {
+                        console.error('[GW COOP] failed to delete co-op tech card: ' + reason);
+                    });
                 }
                 return;
             }
 
-            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
                 return;
+            }
 
             // Since some earlier programmer was nice enough to have this card
             // variable passed to this function and never actually used, 
@@ -3915,8 +3904,9 @@ requireGW([
             }
 
             var discard = self.hoverCard();
-            if (!discard)
+            if (!discard) {
                 return;
+            }
             self.hoverCard(undefined);
 
             var discardIndex = self.cards().indexOf(discard);
@@ -4036,7 +4026,7 @@ requireGW([
         });
         self.showSystemCard = ko.computed(function() {
             if (self.isCampaignViewer() && self.gwCampaignPerPlayerTechCards()) {
-                return self.canChooseCoopTechCards() && self.currentSystemCardList() && !self.scanning();
+                return self.canChooseCoopTechCards() && !self.coopTechChoiceSubmitting() && self.currentSystemCardList() && !self.scanning();
             }
 
             if (self.canUseCoopTechChoice()) {
@@ -4694,35 +4684,34 @@ requireGW([
         };
 
         handlers.gw_campaign_player_pending_tech_cards = function(payload) {
-            if (!payload || !payload.inventory_data) {
+            if (!payload || !payload.pendingTechCards) {
                 console.log('[GW COOP] ignoring invalid co-op player pending tech cards payload');
                 return;
             }
 
-            var inventoryData = payload.inventory_data;
-            var pendingTechCards = inventoryData.pendingTechCards;
+            var pendingTechCards = payload.pendingTechCards;
             if (!pendingTechCards || !_.isNumber(pendingTechCards.star) || !_.isArray(pendingTechCards.cards)) {
                 console.log('[GW COOP] invalid co-op player pending tech cards from client=' + payload.client_id);
                 return;
             }
 
-            if (!inventoryData.inventory || !_.isString(inventoryData.commander) || !_.isString(inventoryData.loadoutCardId)) {
-                console.log('[GW COOP] incomplete co-op player pending tech cards from client=' + payload.client_id);
-                return;
-            }
-
             var saved = model.game();
-            if (!saved || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
                 console.log('[GW COOP] cannot save co-op player pending tech cards without game helper');
                 return;
             }
 
-            var record = _.assign({}, inventoryData, {
+            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
+            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
+                console.log('[GW COOP] incomplete co-op player pending tech cards from client=' + payload.client_id);
+                return;
+            }
+
+            var record = _.assign({}, _.cloneDeep(existingRecord), {
                 playerId: payload.client_id,
-                playerName: payload.client_name || inventoryData.playerName,
-                loadoutCardId: inventoryData.loadoutCardId,
+                playerName: payload.client_name || existingRecord.playerName,
                 pendingTechCards: pendingTechCards,
-                updatedAt: inventoryData.updatedAt || _.now()
+                updatedAt: payload.updated_at || _.now()
             });
 
             if (!saved.upsertCoopPlayerInventoryData(record)) {
@@ -4741,46 +4730,47 @@ requireGW([
             });
         };
 
-        handlers.gw_campaign_player_tech_card_choice = function(payload) {
-            if (!payload || !payload.inventory_data) {
-                console.log('[GW COOP] ignoring invalid co-op player tech card choice payload');
-                return;
-            }
-
-            var inventoryData = payload.inventory_data;
-            if (!inventoryData.inventory || !_.isString(inventoryData.commander) || !_.isString(inventoryData.loadoutCardId)) {
-                console.log('[GW COOP] invalid co-op player tech card choice from client=' + payload.client_id);
+        handlers.gw_campaign_player_tech_card_deleted = function(payload) {
+            if (!payload) {
+                console.log('[GW COOP] ignoring invalid co-op player tech card deleted payload');
                 return;
             }
 
             var saved = model.game();
-            if (!saved || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot save co-op player tech card choice without game helper');
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+                console.log('[GW COOP] cannot apply co-op player tech card deletion without game helper');
                 return;
             }
 
-            var record = _.assign({}, inventoryData, {
-                playerId: payload.client_id,
-                playerName: payload.client_name || inventoryData.playerName,
-                loadoutCardId: inventoryData.loadoutCardId,
-                updatedAt: inventoryData.updatedAt || _.now()
+            model.applyCoopPlayerTechCardDeleted(payload).then(function() {
+                console.log('[GW COOP] applied co-op player tech card deletion for client=' + payload.client_id);
+            }, function(reason) {
+                console.error('[GW COOP] failed to apply co-op player tech card deletion: ' + reason);
             });
-            delete record.pendingTechCards;
+        };
 
-            if (!saved.upsertCoopPlayerInventoryData(record)) {
-                console.log('[GW COOP] failed to upsert co-op player tech card choice for client=' + payload.client_id);
+        handlers.gw_campaign_player_tech_card_choice = function(payload) {
+            if (!payload) {
+                console.log('[GW COOP] ignoring invalid co-op player tech card choice payload');
                 return;
             }
 
-            if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
-                model.prepareCoopPlayerInventories();
-                model.clearCoopTechChoiceInventory();
+            var saved = model.game();
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+                console.log('[GW COOP] cannot apply co-op player tech card choice without game helper');
+                return;
             }
 
-            GW.manifest.saveGame(saved).then(function() {
-                console.log('[GW COOP] saved co-op player tech card choice for client=' + payload.client_id);
-            }, function(err) {
-                console.error('[GW COOP] failed to save co-op player tech card choice', err);
+            model.applyCoopPlayerPendingTechCardChoice(payload).then(function() {
+                if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
+                    model.coopTechChoiceSubmitting(false);
+                }
+                console.log('[GW COOP] applied co-op player tech card choice for client=' + payload.client_id);
+            }, function(reason) {
+                if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
+                    model.coopTechChoiceSubmitting(false);
+                }
+                console.error('[GW COOP] failed to apply co-op player tech card choice: ' + reason);
             });
         };
 
