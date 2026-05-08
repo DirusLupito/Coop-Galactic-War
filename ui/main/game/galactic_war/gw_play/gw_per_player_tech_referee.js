@@ -158,6 +158,7 @@ define([
         var inventory = null;
         var player = null;
         var playerCommander = null;
+        var playerColor = null;
         var game = null;
         var playerCount = null;
         var humanArmies = null;
@@ -285,6 +286,16 @@ define([
             return done.promise();
         }
 
+        playerColor = inventory.getTag('global', 'playerColor');
+
+        if (!_.isArray(playerColor) || playerColor.length < 2) {
+            console.log('[GW COOP] Per-player tech referee has no player color.');
+            config.per_player_tech_ready = false;
+            referee.config(config);
+            done.resolve(false);
+            return done.promise();
+        }
+
         // ERROR CHECKING DONE
         // ===================
 
@@ -391,7 +402,7 @@ define([
                             name: minion.name || 'Helper',
                             commander: stripKnownSpecTag(minion.commander || playerCommanders[index]) + playerTags[index]
                         }],
-                        color: minion.color || [army.color[1], army.color[0]],
+                        color: minion.color || [playerColor[1], playerColor[0]],
                         econ_rate: minion.econ_rate || 1,
                         personality: minion.personality,
                         spec_tag: playerTags[index],
