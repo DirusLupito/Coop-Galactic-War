@@ -707,7 +707,13 @@ requireGW([
 
         var faction = GWFactions[factionIndex];
 
-        var factionIcon = icon || faction.icon || ('coui://ui/main/game/galactic_war/shared/img/icon_faction_' + factionIndex.toString() + '.png');
+        // Maybe a modded save with an invalid faction index 
+        // but we don't want loading a modded save to break the game.
+        if (!faction) {
+            console.error('Invalid faction index', factionIndex);
+        }
+
+        var factionIcon = icon || (faction && faction.icon) || ('coui://ui/main/game/galactic_war/shared/img/icon_faction_' + factionIndex.toString() + '.png');
         var iconColor = icon ? (iconColor || [1,1,1]) : color;
 
         self.iconScale = ko.observable(2);
