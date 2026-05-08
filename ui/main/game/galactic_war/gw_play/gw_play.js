@@ -1405,6 +1405,14 @@ requireGW([
             return Math.floor(value);
         };
 
+        self.savedCoopLobbyPlayers = function() {
+            if (!self.savedCoopPlayersSpecified()) {
+                return 2;
+            }
+
+            return self.savedCoopPlayers();
+        };
+
         self.savedCoopPlayersSpecified = function() {
             return !!(game && _.isFunction(game.coopPlayersSpecified) && game.coopPlayersSpecified());
         };
@@ -1449,7 +1457,7 @@ requireGW([
 
             if (self.savedCoopPlayersLocked()) {
                 payload.max_clients_locked = true;
-                payload.max_clients_limit = self.savedCoopPlayers();
+                payload.max_clients_limit = self.savedCoopLobbyPlayers();
             }
 
             return payload;
@@ -1481,7 +1489,7 @@ requireGW([
 
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedByDefault);
-            var players = self.savedCoopPlayers();
+            var players = self.savedCoopLobbyPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
             console.log('[GW COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
