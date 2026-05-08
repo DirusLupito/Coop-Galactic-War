@@ -1437,6 +1437,18 @@ requireGW([
             return game.perPlayerTechCards();
         };
 
+        self.applyInitialPerPlayerTechStateFromGame = function() {
+            var perPlayerTechCards = self.savedPerPlayerTechCards();
+            if (!self.gwCampaignEnabled() || !perPlayerTechCards) {
+                return;
+            }
+
+            self.gwCampaignPerPlayerTechCards(true);
+            self.gwCampaignSharedControl(false);
+            console.log('[GW COOP] initialized per-player tech state from campaign save before first inventory render');
+        };
+        self.applyInitialPerPlayerTechStateFromGame();
+
         self.buildCampaignLobbySettingsPayload = function(maxClients) {
             var mode = self.visibilityMode();
             // Tag here is 'Testing', but perhaps should not be hardcoded?
