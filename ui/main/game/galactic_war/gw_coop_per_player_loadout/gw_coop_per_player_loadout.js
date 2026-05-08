@@ -186,9 +186,48 @@ requireGW([
                 return done.promise();
             };
 
+            self.buildStartingInventory = function(loadoutCardId, commander, galaxy, star) {
+                var result = $.Deferred();
+                var dealInventory = new GWInventory();
+                dealInventory.setTag('global', 'commander', commander);
+
+                GWDealer.dealCard({
+                    id: loadoutCardId,
+                    inventory: dealInventory,
+                    galaxy: galaxy,
+                    star: star
+                }).then(function(startCardProduct) {
+                    var inventory = new GWInventory();
+                    inventory.load({
+                        cards: [startCardProduct || { id: loadoutCardId }],
+                        tags: {
+                            global: {
+                                commander: commander
+                            }
+                        }
+                    });
+                    inventory.applyCards(function() {
+                        var savedInventory = inventory.save();
+                        var cards = savedInventory.cards || [];
+                        if (!cards.length || cards[0].id !== loadoutCardId || !_.isNumber(savedInventory.maxCards) || savedInventory.maxCards <= cards.length) {
+                            console.error('[GW COOP] Co-op loadout inventory did not produce empty tech banks loadout=' + loadoutCardId + ' maxCards=' + savedInventory.maxCards + ' cards=' + JSON.stringify(cards));
+                            result.reject('Co-op loadout inventory did not produce empty tech banks.');
+                            return;
+                        }
+
+                        result.resolve(savedInventory);
+                    });
+                }, function(err) {
+                    result.reject(err);
+                });
+
+                return result.promise();
+            };
+
             self.submitLoadout = function() {
-                if (!self.ready() || self.submitting())
+                if (!self.ready() || self.submitting()) {
                     return;
+                }
 
                 var gameId = self.activeGameId();
                 if (!gameId) {
@@ -218,33 +257,25 @@ requireGW([
                         return;
                     }
 
-                    var inventory = new GWInventory();
                     var commander = self.selectedCommander();
                     var loadoutCardId = self.activeStartCard().id();
-                    inventory.setTag('global', 'commander', commander);
-
-                    GWDealer.dealCard({
-                        id: loadoutCardId,
-                        inventory: inventory,
-                        galaxy: galaxy,
-                        star: star
-                    }).then(function(startCardProduct) {
-                        inventory.cards.push(startCardProduct || { id: loadoutCardId });
-                        inventory.applyCards(function() {
-                            self.sendMessage('set_player_loadout', {
-                                player_id: self.uberId(),
-                                player_name: self.displayName(),
-                                commander: commander,
-                                loadout_card_id: loadoutCardId,
-                                inventory: inventory.save(),
-                                updated_at: _.now()
-                            }, function(success, response) {
-                                if (!success) {
-                                    console.log('[GW COOP] set_player_loadout failed response=' + JSON.stringify(response || {}));
-                                    self.submitting(false);
-                                }
-                            });
+                    self.buildStartingInventory(loadoutCardId, commander, galaxy, star).then(function(savedInventory) {
+                        self.sendMessage('set_player_loadout', {
+                            player_id: self.uberId(),
+                            player_name: self.displayName(),
+                            commander: commander,
+                            loadout_card_id: loadoutCardId,
+                            inventory: savedInventory,
+                            updated_at: _.now()
+                        }, function(success, response) {
+                            if (!success) {
+                                console.log('[GW COOP] set_player_loadout failed response=' + JSON.stringify(response || {}));
+                                self.submitting(false);
+                            }
                         });
+                    }, function(err) {
+                        console.error('[GW COOP] Cannot build co-op starting inventory.', err);
+                        self.submitting(false);
                     });
                 }, function(err) {
                     console.error('[GW COOP] Cannot load campaign game for co-op loadout.', err);
@@ -257,11 +288,14 @@ requireGW([
         handlers = {};
 
         handlers.gw_campaign_loadout_complete = function(payload) {
-            console.log('[GW COOP] co-op loadout complete payload=' + JSON.stringify(payload || {}));
-            if (payload && payload.snapshot)
+            if (payload && payload.snapshot) {
+                console.log('[GW COOP] co-op loadout complete with snapshot.');
                 model.saveSnapshot(payload).always(model.finish);
-            else
+            }
+            else {
+                console.log('[GW COOP] co-op loadout complete recv without snapshot');
                 model.finish();
+            }
         };
 
         handlers.gw_campaign_snapshot = function(payload) {

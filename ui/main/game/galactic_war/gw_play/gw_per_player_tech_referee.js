@@ -71,7 +71,7 @@ define([
 
     var loadInventoryFromRecord = function(record) {
         var inventory = new GWInventory();
-        inventory.load(record.inventory);
+        inventory.load(_.cloneDeep(record.inventory));
         return inventory;
     };
 

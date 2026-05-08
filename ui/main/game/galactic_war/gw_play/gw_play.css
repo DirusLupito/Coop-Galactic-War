@@ -324,17 +324,23 @@ html, body {
     pointer-events: all;
 }
 
-/* Viewers in co-op are read-only; hide tech action controls that can cause local-only mutations. */
-.container.gw-campaign-viewer .div_panel_bar_background.tech #system-card .exploring.card_action {
+/* Viewers in co-op are read-only except while resolving their own per-player tech choice. */
+.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) .div_panel_bar_background.tech #system-card .exploring.card_action {
     display: none !important;
 }
 
-.container.gw-campaign-viewer .div_panel_bar_background.tech .div_options_bar {
+.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) .div_panel_bar_background.tech .div_options_bar {
     display: none !important;
 }
 
-.container.gw-campaign-viewer #hover-card .card_action {
+.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) #hover-card .card_action {
     display: none !important;
+}
+
+.btn_hero_disabled {
+    pointer-events: none;
+    opacity: .35;
+    filter: alpha(opacity=35);
 }
 
 

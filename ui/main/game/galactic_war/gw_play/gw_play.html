@@ -22,7 +22,7 @@
     app.loadTemplate("coui://ui/main/game/galactic_war/shared/template/gwt_card");
 </script>
 
-<div class="container" data-bind="visible: !hidingUI(), css: { 'gw-campaign-viewer': isCampaignViewer }" style="display: none">
+<div class="container" data-bind="visible: !hidingUI(), css: { 'gw-campaign-viewer': isCampaignViewer, 'gw-campaign-viewer-tech-choice': canChooseCoopTechCards }" style="display: none">
 
     <canvas id="galaxy-map" height="800" width="800" data-bind="attr: { height: galaxy.canvasHeight(), width: galaxy.canvasWidth(), visible: !hidingUI() }"></canvas>
 
@@ -52,22 +52,22 @@
                     <loc>Jump</loc>
                 </div>
             </div>
-            <div class="attendmouse btn_hero fight" data-bind="click: fight, click_sound: 'default', rollover_sound: 'default', visible: displayFight">
+            <div class="attendmouse btn_hero fight" data-bind="click: fight, click_sound: 'default', rollover_sound: 'default', visible: displayFight, css: { btn_hero_disabled: gwCampaignPlayerSetupBlocked }">
                 <div class="btn_label">
                     <loc>Fight</loc>
                 </div>
             </div>
-            <div class="attendmouse btn_hero fight" data-bind="click: restartFight, click_sound: 'default', rollover_sound: 'default', visible: displayLoadSave">
+            <div class="attendmouse btn_hero fight" data-bind="click: restartFight, click_sound: 'default', rollover_sound: 'default', visible: displayLoadSave, css: { btn_hero_disabled: gwCampaignPlayerSetupBlocked }">
                 <div class="btn_label">
                     <loc>Restart</loc>
                 </div>
             </div>
-            <div class="attendmouse btn_hero fight" data-bind="click: fight, click_sound: 'default', rollover_sound: 'default', visible: displayLoadSave">
+            <div class="attendmouse btn_hero fight" data-bind="click: fight, click_sound: 'default', rollover_sound: 'default', visible: displayLoadSave, css: { btn_hero_disabled: gwCampaignPlayerSetupBlocked }">
                 <div class="btn_label">
                     <loc>Continue</loc>
                 </div>
             </div>
-            <div class="attendmouse btn_hero explore" data-bind="click: explore, click_sound: 'default', rollover_sound: 'default', visible: displayExplore">
+            <div class="attendmouse btn_hero explore" data-bind="click: explore, click_sound: 'default', rollover_sound: 'default', visible: displayExplore, css: { btn_hero_disabled: gwCampaignPlayerSetupBlocked }">
                 <div class="btn_label">
                     <loc>Explore</loc>
                 </div>
@@ -305,7 +305,7 @@
                     <!-- ko template: 'cardTemplate' -->
                     <!-- /ko -->
                     <!-- /ko -->
-                    <div class="exploring card_action" data-bind="visible: $root.exploring" style="display: none">
+                    <div class="exploring card_action" data-bind="visible: $root.showSystemCardActions" style="display: none">
                         <!-- ko if: $root.currentSystemCardListConditions()[$index()] && $root.currentSystemCardListConditions()[$index()].ok -->
                         <div class="btn_hero" data-bind="click: function() { $root.win($index()); }, click_sound: '/SE/UI/UI_GW_Download_Tech', rollover_sound: 'default'">
                             <!-- ko with: $data -->

@@ -261,3 +261,4 @@ Bundled third-party libraries.
 ```
 - In general, the idea of the new version of the code is that crashing with an informative log message is preferable to succeeding in a mysterious way, as such successes can lead to mysterious and difficult to debug issues.
 - Related to this, if you are using an LLM, do not "vibecode". LLMs can be used to assist and enhance the development process, but any code generated should be very carefully reviewed before use (honestly the exact same thing is true for human written code. Code in general should be reviewed carefully). It is the responsibility of the developer using the LLM to ensure that the generated code is correct and follows best practices.
+- If statements and else statements should always use curly brackets even if they are not necessary.
