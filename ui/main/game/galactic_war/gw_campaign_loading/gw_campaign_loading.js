@@ -5,9 +5,11 @@ var model;
 var handlers = {};
 
 requireGW([
-    'shared/gw_common'
+    'shared/gw_common',
+    'shared/gw_inventory'
 ], function(
-    GW
+    GW,
+    GWInventory
 ) {
     $(document).ready(function () {
         var DEFAULT_TARGET = 'coui://ui/main/game/galactic_war/gw_play/gw_play.html?gw_campaign=1';
@@ -88,6 +90,59 @@ requireGW([
                 }
                 catch (e) {
                 }
+            };
+
+            self.prepareLocalCoopPlayerInventoryData = function(game) {
+                var result = $.Deferred();
+
+                if (self.role !== 'viewer') {
+                    result.resolve();
+                    return result.promise();
+                }
+
+                if (!game || !_.isFunction(game.perPlayerTechCards) || !game.perPlayerTechCards()) {
+                    result.resolve();
+                    return result.promise();
+                }
+
+                if (self.requiresLoadout) {
+                    result.resolve();
+                    return result.promise();
+                }
+
+                if (!_.isFunction(game.findCoopPlayerInventoryData) || !_.isFunction(game.upsertCoopPlayerInventoryData)) {
+                    result.reject('Missing co-op player inventory data helpers.');
+                    return result.promise();
+                }
+
+                var record = game.findCoopPlayerInventoryData({
+                    id: self.uberId && self.uberId(),
+                    name: self.displayName && self.displayName()
+                });
+
+                if (!record || !record.inventory || !_.isArray(record.inventory.cards) || !record.inventory.cards.length) {
+                    result.reject('Missing local co-op player inventory data before entering gw_play.');
+                    return result.promise();
+                }
+
+                var inventory = new GWInventory();
+                inventory.load(_.cloneDeep(record.inventory));
+
+                var finish = function() {
+                    var preparedRecord = _.assign({}, record, {
+                        inventory: inventory.save()
+                    });
+
+                    if (!game.upsertCoopPlayerInventoryData(preparedRecord)) {
+                        result.reject('Failed to store prepared local co-op player inventory data.');
+                        return;
+                    }
+
+                    result.resolve();
+                };
+
+                inventory.applyCards(finish);
+                return result.promise();
             };
 
             self.requestSnapshot = function(reason) {
@@ -194,12 +249,17 @@ requireGW([
 
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(payload.snapshot.game).always(function() {
-                    GW.manifest.saveGame(hydratedGame).then(function() {
-                        self.activeGameId(hydratedGame.id);
-                        self.markAuthoritativeGameReady(hydratedGame.id);
-                        self.finishLoading('snapshot_seq_' + (payload.seq || 0));
+                    self.prepareLocalCoopPlayerInventoryData(hydratedGame).then(function() {
+                        GW.manifest.saveGame(hydratedGame).then(function() {
+                            self.activeGameId(hydratedGame.id);
+                            self.markAuthoritativeGameReady(hydratedGame.id);
+                            self.finishLoading('snapshot_seq_' + (payload.seq || 0));
+                        }, function(err) {
+                            console.error('[GW COOP] campaign_loading failed to save snapshot', err);
+                            self.pageSubTitle(loc('!LOC:Failed to load co-op campaign data'));
+                        });
                     }, function(err) {
-                        console.error('[GW COOP] campaign_loading failed to save snapshot', err);
+                        console.error('[GW COOP] campaign_loading failed to prepare local co-op inventory', err);
                         self.pageSubTitle(loc('!LOC:Failed to load co-op campaign data'));
                     });
                 });
