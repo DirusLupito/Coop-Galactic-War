@@ -156,9 +156,12 @@ requireGW([
                 self.snapshotRequestedAt = now;
                 self.pageSubTitle(loc('!LOC:Receiving co-op campaign data...'));
                 console.log('[GW COOP] campaign_loading request snapshot reason=' + reason);
-                self.sendMessage('request_gw_campaign_snapshot', {}, function(success, response) {
-                    if (success && response && response.has_snapshot === false)
+                self.sendMessage('request_gw_campaign_snapshot', {
+                    reason: reason || 'campaign_loading'
+                }, function(success, response) {
+                    if (success && response && response.has_snapshot === false) {
                         self.pageSubTitle(loc('!LOC:Waiting for host campaign data...'));
+                    }
                 });
             };
 

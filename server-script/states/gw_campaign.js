@@ -51,6 +51,8 @@ function GWCampaignModel(creator) {
     self.disconnectCleanup = [];
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
+    self.snapshotRequestInFlight = false;
+    self.lastSnapshotStale = true;
     self.lobbyChatHistory = [];
     self.requiredClientModIdentifiers = [];
     self.requiredClientModNamesById = {};
@@ -805,6 +807,17 @@ function GWCampaignModel(creator) {
         return true;
     };
 
+    self.requestFreshSnapshotFromHost = function(reason, requester, force) {
+        if (self.snapshotRequestInFlight && !force) {
+            console.log('[GW COOP] snapshot request already sent; coalescing reason=' + reason);
+            return false;
+        }
+
+        var requested = self.requestSnapshotFromHost(reason, requester);
+        self.snapshotRequestInFlight = requested;
+        return requested;
+    };
+
     self.attachClientLifecycle = function(client, reconnect) {
         if (!self.active)
             return;
@@ -870,8 +883,9 @@ function GWCampaignModel(creator) {
             self.requestClientManifest(client, reconnect);
         self.sendRoleToClient(client);
 
-        if (client.id !== self.creatorId)
-            self.requestSnapshotFromHost(reconnect ? 'viewer_reconnect' : 'viewer_joined', client);
+        if (client.id !== self.creatorId) {
+            self.requestFreshSnapshotFromHost(reconnect ? 'viewer_reconnect' : 'viewer_joined', client);
+        }
     };
 
     // Called when the server first enters the gw_campaign state. 
@@ -953,17 +967,35 @@ function GWCampaignModel(creator) {
                 console.log('[GW COOP] MOD CHECK [gw_campaign] client acknowledged missing required mods client=' + msg.client.id + ' payload=' + JSON.stringify(msg.payload || {}));
                 server.respond(msg).succeed();
             },
+            // Note that requesting snapshots is undefined when
+            // in the middle of transitioning to a fight.
+            // If a snapshot is somehow requested after the host clicks fight
+            // there are no guarantees about what state the coop player will recieve.
+            // This should never happen in practice though.
             request_gw_campaign_snapshot: function(msg) {
-                console.log('[GW COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id);
+                var payload = msg.payload || {};
+                var reason = _.isString(payload.reason) ? payload.reason : 'viewer_request';
+                var forceFresh = !!payload.force_fresh;
+                console.log('[GW COOP] request_gw_campaign_snapshot from=' + msg.client.name + ' id=' + msg.client.id + ' reason=' + reason + ' forceFresh=' + forceFresh);
                 var freshSnapshotRequested = false;
                 var viewerRequest = msg.client.id !== self.creatorId;
 
-                if (viewerRequest)
-                    freshSnapshotRequested = self.requestSnapshotFromHost('viewer_request', msg.client);
+                if (viewerRequest) {
+                    if (self.lastSnapshot && !self.lastSnapshotStale && !forceFresh) {
+                        self.sendSnapshotToClient(msg.client, reason);
+                    }
+                    else {
+                        freshSnapshotRequested = self.requestFreshSnapshotFromHost(reason, msg.client, forceFresh);
+                    }
+                }
 
                 server.respond(msg).succeed({
-                    has_snapshot: !viewerRequest && !!self.lastSnapshot,
-                    fresh_snapshot_requested: freshSnapshotRequested
+                    has_snapshot: !!self.lastSnapshot,
+                    fresh_snapshot_requested: freshSnapshotRequested,
+                    cached_snapshot_sent: viewerRequest && !!self.lastSnapshot && !self.lastSnapshotStale && !forceFresh,
+                    snapshot_stale: self.lastSnapshotStale,
+                    snapshot_request_in_flight: viewerRequest && self.snapshotRequestInFlight,
+                    snapshot_seq: self.lastSnapshotSeq
                 });
             },
             set_loading: function(msg) {
@@ -1259,6 +1291,8 @@ function GWCampaignModel(creator) {
                     host_name: msg.client.name,
                     snapshot: msg.payload && msg.payload.snapshot ? msg.payload.snapshot : undefined
                 };
+                self.snapshotRequestInFlight = false;
+                self.lastSnapshotStale = false;
 
                 self.updateControl();
                 console.log('[GW COOP] gw_campaign_snapshot accepted seq=' + self.lastSnapshotSeq + ' from host');
@@ -1272,10 +1306,12 @@ function GWCampaignModel(creator) {
                 server.respond(msg).succeed({ seq: self.lastSnapshotSeq });
             },
             gw_campaign_action: function(msg) {
-                if (msg.client.id !== self.creatorId)
+                if (msg.client.id !== self.creatorId) {
                     return server.respond(msg).fail('Only host can publish campaign actions');
+                }
 
                 var payload = msg.payload || {};
+                self.lastSnapshotStale = true;
                 console.log('[GW COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
 
                 _.forEach(self.getConnectedClients(), function(client) {

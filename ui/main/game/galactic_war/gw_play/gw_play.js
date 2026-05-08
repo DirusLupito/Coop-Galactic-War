@@ -2164,32 +2164,25 @@ requireGW([
             });
         };
 
-        self.maybeSendInitialCampaignSnapshot = function(control, reason) {
-            if (!self.isCampaignHost() || !control || control.has_snapshot !== false)
+        self.requestCampaignSnapshot = function(force, reason) {
+            if (!self.gwCampaignActive()) {
                 return;
+            }
 
-            var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
-            var hasViewer = _.some(connectedClients, function(client) {
-                return client && client.role === 'viewer';
-            });
-
-            if (hasViewer)
-                self.sendCampaignSnapshot(reason || 'viewer_joined');
-        };
-
-        self.requestCampaignSnapshot = function(force) {
-            if (!self.gwCampaignActive())
+            if (!force && self.gwCampaignReceivedSnapshot) {
                 return;
-
-            if (!force && self.gwCampaignReceivedSnapshot)
-                return;
+            }
 
             var now = _.now();
-            if ((now - self.gwCampaignLastSnapshotRequestAt) < 500)
+            if ((now - self.gwCampaignLastSnapshotRequestAt) < 500) {
                 return;
+            }
 
             self.gwCampaignLastSnapshotRequestAt = now;
-            self.send_message('request_gw_campaign_snapshot', {});
+            self.send_message('request_gw_campaign_snapshot', {
+                reason: reason || (force ? 'initial_sync' : 'viewer_request'),
+                force_fresh: reason === 'action_fallback'
+            });
         };
 
         self.sendCampaignAction = function(type, payload) {
@@ -2560,7 +2553,7 @@ requireGW([
             if (action.type === 'win_turn') {
                 // Viewer can be out of the precise turn micro-state; use snapshot correction instead.
                 console.log('[GW COOP] applyCampaignAction win_turn fallback->snapshot');
-                self.requestCampaignSnapshot();
+                self.requestCampaignSnapshot(true, 'action_fallback');
                 self.gwCampaignReplayingAction = false;
                 return;
             }
@@ -2630,7 +2623,6 @@ requireGW([
                 // We apply the lobby control settings sent by the server upon connection to ensure our UI reflects the actual state of the campaign lobby,
                 // especially in cases where the host might have changed some settings while we were connecting.
                 self.applyCampaignLobbyControl(incomingControl);
-                self.maybeSendInitialCampaignSnapshot(incomingControl, 'viewer_joined_server_state');
             }
             self.requestCampaignChatHistory();
 
@@ -3621,6 +3613,12 @@ requireGW([
                 return;
             }
 
+            // After launching a fight, snapshots and their delivery
+            // are no longer well defined. There should never be
+            // a situation where someone joins after the host
+            // clicks fight but before the battle actually starts though,
+            // and furthermore even if someone does it should only
+            // affect them and not break the fight for the host or any other clients.
             if (self.launchingFight() || (!self.fighting() && !game.fight())) {
                 return;
             }
@@ -4578,16 +4576,6 @@ requireGW([
             // from before the restart.
             model.applyPendingGwCampaignRestartContext();
             model.applySavedCoopSettingsToCampaignLobby();
-
-            if (model.isCampaignHost() && payload && payload.has_snapshot === false) {
-                var connectedClients = _.isArray(payload.connected_clients) ? payload.connected_clients : [];
-                var hasViewer = _.some(connectedClients, function(client) {
-                    return client && client.role === 'viewer';
-                });
-
-                if (hasViewer)
-                    model.sendCampaignSnapshot('viewer_joined');
-            }
 
             if (model.isCampaignViewer() && payload && payload.has_snapshot && !model.gwCampaignReceivedSnapshot && !model.gwCampaignInitialSyncRequested) {
                 model.gwCampaignInitialSyncRequested = true;
