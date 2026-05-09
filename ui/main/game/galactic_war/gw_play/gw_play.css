@@ -759,6 +759,39 @@ Otherwise things will look off.
     margin: 0;
 }
 
+.gw-slot-inventory {
+    min-width: 86px;
+    height: 28px;
+    margin: 0 8px 0 0;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 28px;
+    color: #00ff66;
+    border: 1px solid rgba(0, 255, 102, 0.55);
+    background: rgba(30, 122, 161, 0.35);
+    box-shadow: 0 0 10px rgba(0, 179, 255, 0.2);
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+}
+
+.gw-slot-inventory:hover {
+    color: #fff;
+    border-color: #00ff66;
+    box-shadow: 0 0 14px rgba(0, 255, 102, 0.35);
+}
+
+.gw-slot-inventory.disabled {
+    opacity: 0.35;
+    cursor: default;
+    color: #9c9c9c;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: none;
+}
+
 .gw-slot-remove,
 .gw-campaign-slot-add {
     width: 32px;
@@ -793,6 +826,132 @@ Otherwise things will look off.
 .gw-campaign-slot-add {
     margin: 0 8px 8px 8px;
     width: calc(100% - 16px);
+}
+
+.gw-campaign-inventory-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.68);
+}
+
+.gw-campaign-inventory-panel {
+    position: relative;
+    width: 620px;
+    max-width: calc(100% - 80px);
+    padding: 18px;
+    color: #d6d6d6;
+    border: 1px solid rgba(0, 179, 255, 0.8);
+    box-shadow: 0 0 28px rgba(0, 179, 255, 0.35);
+    background: rgba(8, 12, 14, 0.96);
+}
+
+.gw-campaign-inventory-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: url('coui://ui/main/shared/img/window_controls/btn_close_10.png') center center no-repeat rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+}
+
+.gw-campaign-inventory-title {
+    color: #fff;
+    font-family: "Sansation";
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.gw-campaign-inventory-player {
+    margin-top: 2px;
+    color: #00ffff;
+    font-size: 15px;
+}
+
+.gw-campaign-inventory-loadout {
+    margin-top: 8px;
+    color: #00ff66;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.gw-campaign-inventory-body {
+    margin-top: 14px;
+}
+
+.gw-campaign-inventory-detail {
+    min-height: 210px;
+    padding: 16px 8px 0 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(to top, #222 0%, #000 100%);
+    box-shadow: 0 0 22px rgba(0, 0, 0, 0.55);
+}
+
+.gw-campaign-inventory-detail .card {
+    min-height: 190px;
+}
+
+.gw-campaign-inventory-detail .card > .img_card_icon {
+    width: 88px;
+    margin-bottom: 12px;
+}
+
+.gw-campaign-inventory-detail .card > .div_card_summary {
+    color: #00ff66;
+    font-size: 18px;
+    text-align: center;
+}
+
+.gw-campaign-inventory-detail .card > .div_card_desc {
+    min-height: 0;
+    padding: 14px 24px;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.gw-campaign-inventory-list {
+    min-height: 102px;
+    max-height: 210px;
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.gw-campaign-inventory-card {
+    display: flex;
+    width: 102px;
+    height: 96px;
+    margin: 0px;
+    border: 1px solid rgba(0, 179, 255, 0.28);
+    cursor: pointer;
+}
+
+.gw-campaign-inventory-card.selected,
+.gw-campaign-inventory-card:hover {
+    border-color: #00b3ff;
+    box-shadow: inset 0 0 18px rgba(0, 179, 255, 0.45), 0 0 10px rgba(0, 179, 255, 0.32);
+    background: rgba(30, 122, 161, 0.55);
+}
+
+.gw-campaign-inventory-card .icon {
+    width: 72px;
+    height: 72px;
+    padding: 2px;
+    margin: auto auto;
+}
+
+.gw-campaign-inventory-card.btn_slot {
+    display: flex;
 }
 
 /* #tech_bar_cont

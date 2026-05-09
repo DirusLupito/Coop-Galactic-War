@@ -173,6 +173,7 @@
                         <span class="gw-slot-host" data-bind="visible: host"><loc> - Host</loc></span>
                     </div>
                     <img class="gw-slot-loading working small" src="coui://ui/main/shared/img/working.svg" data-placement="top" data-bind="visible: loading, tooltip: loadingTooltip" />
+                    <div class="gw-slot-inventory" data-placement="top" data-bind="visible: showInventory, css: { disabled: !inventoryAvailable }, tooltip: inventoryTooltip, click: function() { if (inventoryAvailable) { $root.openGwCampaignInventoryModal($data); } }, click_sound: 'default', rollover_sound: 'default'"><loc>Inventory</loc></div>
                     <div class="gw-slot-share btn_toggle" data-bind="visible: host, css: { live: $root.gwCampaignSharedControl() && !$root.gwCampaignPerPlayerTechCards(), btn_toggle_disabled: !$root.canToggleGwCampaignSharedControl() }, click: $root.toggleGwCampaignSharedControl, click_sound: 'default', rollover_sound: 'default'">
                         <div class="btn_std_label btn_toggle_label"><loc>Share Army</loc></div>
                     </div>
@@ -182,6 +183,40 @@
             </div>
 
             <div class="gw-campaign-slot-add" data-bind="visible: canAddGwCampaignSlot, click: addGwCampaignSlot, click_sound: 'default', rollover_sound: 'default'">+</div>
+        </div>
+    </div>
+
+    <div id="gw-campaign-inventory-modal" class="gw-campaign-inventory-modal attendmouse" data-bind="visible: gwCampaignInventoryModalVisible" style="display: none;">
+        <div class="gw-campaign-inventory-panel">
+            <div class="gw-campaign-inventory-close" data-bind="click: closeGwCampaignInventoryModal, click_sound: 'default', rollover_sound: 'default'"></div>
+            <div class="gw-campaign-inventory-title"><loc>Inventory</loc></div>
+            <div class="gw-campaign-inventory-player" data-bind="text: gwCampaignInventoryModalPlayerName"></div>
+            <div class="gw-campaign-inventory-loadout">
+                <span><loc>Loadout:</loc></span>
+                <span data-bind="text: gwCampaignInventoryModalLoadoutText"></span>
+            </div>
+            <div class="gw-campaign-inventory-body">
+                <div class="gw-campaign-inventory-detail" data-bind="with: gwCampaignInventoryModalSelectedCard">
+                    <!-- ko template: 'cardTemplate' -->
+                    <!-- /ko -->
+                </div>
+                <div class="gw-campaign-inventory-list">
+                    <!-- ko foreach: gwCampaignInventoryModalCards -->
+                    <div class="gw-campaign-inventory-card btn_slot"
+                        data-bind="
+                            visible: visible,
+                            css: { selected: $data === $root.gwCampaignInventoryModalSelectedCard() },
+                            event: { mouseenter: function() { $root.setGwCampaignInventoryModalSelectedCard($data); } },
+                            click: function() { $root.setGwCampaignInventoryModalSelectedCard($data); },
+                            click_sound: 'default',
+                            rollover_sound: 'default'
+                            "
+                        style="display: none">
+                        <img class="icon" data-bind="visible: icon, attr: { src: icon }" />
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
         </div>
     </div>
 
