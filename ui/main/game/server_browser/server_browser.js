@@ -31,7 +31,7 @@ $(document).ready(function () {
         self.transitDelay = ko.observable().extend({ session: 'transit_delay' });
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
 
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
+        self.localServerAvailable = ko.observable().extend({ session: 'local_server_available' });
 
         self.lobbyId = ko.observable().extend({ session: 'lobbyId' });
         self.uuid = ko.observable('').extend({ session: 'invite_uuid' });
@@ -55,17 +55,8 @@ $(document).ready(function () {
 
         self.hasUberNetRegions = ko.computed(function () { return (self.uberNetRegions().length > 0); });
 
-        self.localServerSetting = ko.observable().extend({ setting: { 'group': 'server', 'key': 'local' } });
-        self.localServerDisabledInSettings = ko.pureComputed(function () {
-            return self.localServerSetting() === 'OFF';
-        });
-
         self.remoteServerAvailable = ko.computed(function() {
             return self.hasUberNetRegions();
-        });
-
-        self.disableServerOption = ko.pureComputed(function () {
-            return !self.remoteServerAvailable() || self.localServerDisabledInSettings();
         });
 
         self.defaultFilters = {
@@ -149,45 +140,14 @@ $(document).ready(function () {
             window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html' + query;
         };
 
-        self.createRemoteGame = function () {
-            if (!self.remoteServerAvailable())
-                return;
-
-            self.navigateToConnectToGame({ action: 'start', content: api.content.activeContent() });
-        };
-
-        self.createLocalGame = function() {
-            if (!self.useLocalServer())
+        self.createGame = function () {
+            if (!self.localServerAvailable())
                 return;
 
             self.navigateToConnectToGame({ action: 'start', local: true, content: api.content.activeContent() });
         };
 
-        // By default this setting is ON. If the user disabled local servers on the settings, turn it off.
-        var localStorageCreateGame = localStorage.getItem('server_browser_create_local_game');
-        if (localStorageCreateGame == null)
-            localStorageCreateGame = true.toString();
-            
-        self.doCreateLocalGame = ko.observable(localStorageCreateGame === 'true');
-        if (self.localServerSetting() === 'OFF')
-            self.doCreateLocalGame(false);
-        else if (!self.remoteServerAvailable())
-            self.doCreateLocalGame(true);
-        
-        self.doCreateLocalGame.subscribe(function (value) {
-            localStorage.setItem('server_browser_create_local_game', value.toString());
-        });
-
-        self.canCreateGame = ko.computed(function () {
-            return self.remoteServerAvailable() || self.useLocalServer();
-        });
-
-        self.createGame = function () {
-            if (self.doCreateLocalGame())
-                self.createLocalGame();
-            else
-                self.createRemoteGame();
-        };
+        self.canCreateGame = self.localServerAvailable;
 
         self.existingLobbyMap = ko.observable({}); /* lobby_id uuid : timestamp */
 

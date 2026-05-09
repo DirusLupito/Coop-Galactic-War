@@ -810,8 +810,6 @@ requireGW([
     function GameViewModel(game) {
         var self = this;
 
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
-
         // Local join configuration info
         self.isLocalGame = ko.observable().extend({ session: 'is_local_game' });
         self.gameHostname = ko.observable().extend({ session: 'gameHostname' });
@@ -1031,11 +1029,7 @@ requireGW([
         self.allowLoad = function()
         {
             var game = self.game();
-
-            var result = self.useLocalServer()
-                ? (self.useLocalServer() && game.replayName())
-                : (!self.useLocalServer() && game.replayLobbyId());
-
+            var result = game.replayName();
             return !!result && (!game.replayStar() || game.replayStar() === self.selection.star());
         };
 
@@ -1369,16 +1363,11 @@ requireGW([
                         action: 'start',
                         mode: 'gw',
                         content: game.content(),
-                        local_host_transport: 'TCP'
+                        local_host_transport: 'TCP',
+                        local: true
                     };
 
-                    if (self.useLocalServer()) {
-                        self.serverType('local');
-                        params['local'] = true;
-                    }
-                    else {
-                        self.serverType('uber');
-                    }
+                    self.serverType('local');
 
                     var connect = function() {
                         api.debug.log('start gw: ok');
@@ -1388,7 +1377,7 @@ requireGW([
 
                     if (!self.allowLoad())
                         connect();
-                    else if (self.useLocalServer()) {
+                    else {
                         api.file.listReplays().then(function(replays) {
                             if (_.has(replays, game.replayName())) {
                                 var paths = replays[game.replayName()];
@@ -1404,13 +1393,6 @@ requireGW([
 
                             connect();
                         });
-                    }
-                    else {
-                        api.debug.log('remote gw loadsave: ok');
-                        self.serverSetup('loadsave');
-                        params['mode'] = 'loadsave'
-                        params['replayid'] = game.replayLobbyId();
-                        connect();
                     }
                 });
             });
