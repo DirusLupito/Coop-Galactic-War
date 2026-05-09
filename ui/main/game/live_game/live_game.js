@@ -23,6 +23,25 @@ $(document).ready(function () {
     var start = /[^\/]*$/;  // ^ : start , \/ : '/', $ : end // as wildcard: /*.json
     var end = /[.]json[^\/]*$/;
 
+    var currentGwUnitSpecTag = function() {
+        if (gwCoopMode()) {
+            return gwCampaignUnitSpecTag() || '.player';
+        }
+
+        return '.player';
+    };
+
+    var gwCoopDebugLogSeen = {};
+    var logGwCoopOnce = function(kind, detail) {
+        var key = kind + '|' + (detail || '');
+        if (gwCoopDebugLogSeen[key]) {
+            return;
+        }
+
+        gwCoopDebugLogSeen[key] = true;
+        console.log('[GW COOP] live_game ' + kind + ' ' + (detail || '') + ' tag=' + currentGwUnitSpecTag() + ' gwCoopMode=' + gwCoopMode());
+    };
+
     function updateUnitDetails(options){
         $.get("/"+options.id).then(function(result){
             if(result.tools !== undefined){
@@ -1658,17 +1677,60 @@ $(document).ready(function () {
         });
         self.setBuildHover = function (id) {
             var details = self.itemDetails[id];
+            var resolvedBy = details ? 'exact' : '';
             if (!details && id) {
+                var currentTag = currentGwUnitSpecTag();
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 var canonicalId = strip && strip[1];
-                details = self.itemDetails[id + '.player'] || self.itemDetails[id + '.ai'];
+                details = self.itemDetails[id + currentTag];
+                if (details) {
+                    resolvedBy = 'id+currentTag';
+                }
 
-                if (!details && canonicalId)
-                    details = self.itemDetails[canonicalId + '.player'] || self.itemDetails[canonicalId + '.ai'];
+                if (!details) {
+                    details = self.itemDetails[id + '.player'];
+                    if (details) {
+                        resolvedBy = 'id+.player';
+                    }
+                }
 
-                if (!details && canonicalId)
+                if (!details) {
+                    details = self.itemDetails[id + '.ai'];
+                    if (details) {
+                        resolvedBy = 'id+.ai';
+                    }
+                }
+
+                if (!details && canonicalId) {
+                    details = self.itemDetails[canonicalId + currentTag];
+                    if (details) {
+                        resolvedBy = 'canonical+currentTag';
+                    }
+                }
+
+                if (!details && canonicalId) {
+                    details = self.itemDetails[canonicalId + '.player'];
+                    if (details) {
+                        resolvedBy = 'canonical+.player';
+                    }
+                }
+
+                if (!details && canonicalId) {
+                    details = self.itemDetails[canonicalId + '.ai'];
+                    if (details) {
+                        resolvedBy = 'canonical+.ai';
+                    }
+                }
+
+                if (!details && canonicalId) {
                     details = self.itemDetails[canonicalId];
+                    if (details) {
+                        resolvedBy = 'canonical';
+                    }
+                }
             }
+
+            logGwCoopOnce('setBuildHover', 'id=' + id + ' resolvedBy=' + (resolvedBy || 'missing') + ' cost=' + (details && _.isFunction(details.cost) ? details.cost() : ''));
             self.buildHover(details);
         };
         self.clearBuildHover = function () { self.setBuildHover(''); };
@@ -1717,12 +1779,13 @@ $(document).ready(function () {
         self.buildItemBySpec = function (spec_id) {
             var item = self.unitSpecs[spec_id];
             if (!item && spec_id) {
+                var currentTag = currentGwUnitSpecTag();
                 var strip = /(.*\.json)[^\/]*$/.exec(spec_id);
                 var canonicalId = strip && strip[1];
-                item = self.unitSpecs[spec_id + '.player'] || self.unitSpecs[spec_id + '.ai'];
+                item = self.unitSpecs[spec_id + currentTag] || self.unitSpecs[spec_id + '.player'] || self.unitSpecs[spec_id + '.ai'];
 
                 if (!item && canonicalId)
-                    item = self.unitSpecs[canonicalId + '.player'] || self.unitSpecs[canonicalId + '.ai'];
+                    item = self.unitSpecs[canonicalId + currentTag] || self.unitSpecs[canonicalId + '.player'] || self.unitSpecs[canonicalId + '.ai'];
 
                 if (!item && canonicalId)
                     item = self.unitSpecs[canonicalId];
@@ -1998,23 +2061,44 @@ $(document).ready(function () {
 
             var resolveUnitSpec = function(id) {
                 var unit = self.unitSpecs[id];
-                if (unit)
+                if (unit) {
+                    logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=exact');
                     return unit;
+                }
+
+                var currentTag = currentGwUnitSpecTag();
 
                 // Fallback across tagged/untagged ids:
                 // foo/bar/unit.json.player <-> foo/bar/unit.json
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 if (strip && strip[1]) {
-                    unit = self.unitSpecs[strip[1]];
-                    if (unit)
+                    unit = self.unitSpecs[strip[1] + currentTag];
+                    if (unit) {
+                        logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=canonical+currentTag target=' + strip[1] + currentTag);
                         return unit;
+                    }
+
+                    unit = self.unitSpecs[strip[1]];
+                    if (unit) {
+                        logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=canonical target=' + strip[1]);
+                        return unit;
+                    }
                 }
 
                 // If id is untagged, also try common GW tags.
-                unit = self.unitSpecs[id + '.player'] || self.unitSpecs[id + '.ai'];
-                if (unit)
+                unit = self.unitSpecs[id + currentTag];
+                if (unit) {
+                    logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=currentTag target=' + id + currentTag);
                     return unit;
+                }
 
+                unit = self.unitSpecs[id + '.player'] || self.unitSpecs[id + '.ai'];
+                if (unit) {
+                    logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=playerOrAi target=' + unit.id);
+                    return unit;
+                }
+
+                logGwCoopOnce('parseSelection resolveUnitSpec', 'id=' + id + ' resolvedBy=missing');
                 return null;
             };
 
@@ -4264,6 +4348,12 @@ $(document).ready(function () {
     handlers.unit_specs = function (payload)
     {
         delete payload.message_type;
+        var tag = currentGwUnitSpecTag();
+        var keys = _.keys(payload || {});
+        var taggedCount = _.filter(keys, function(key) {
+            return _.isString(key) && tag && key.slice(-tag.length) === tag;
+        }).length;
+        console.log('[GW COOP] live_game unit_specs received count=' + keys.length + ' tag=' + tag + ' taggedCount=' + taggedCount + ' gwCoopMode=' + gwCoopMode());
 
         model.unitSpecs = _.assign(payload, model.ammoBuildHover); // deprecated
 
@@ -4274,6 +4364,10 @@ $(document).ready(function () {
             var siconFor = function(id) {
                 return id.substring(id.search(start), id.search(end));
             }
+            var currentTag = currentGwUnitSpecTag();
+            var isCurrentPlayerSpec = function(id) {
+                return _.isString(id) && _.isString(currentTag) && currentTag.length && id.slice(-currentTag.length) === currentTag;
+            };
 
             model.itemDetails = {};
 
@@ -4290,20 +4384,31 @@ $(document).ready(function () {
                     var strip = /.*\.json/.exec(id);
                     if (strip) {
                         var strippedSpecId = strip.pop();
-                        if (!model.itemDetails[strippedSpecId] || /\.player$/.test(id))
+                        if (!model.itemDetails[strippedSpecId] || isCurrentPlayerSpec(id) || (currentTag === '.player' && /\.player$/.test(id))) {
                             model.itemDetails[strippedSpecId] = model.itemDetails[id];
+                        }
 
-                        if (!model.itemDetails[strippedSpecId + '.player'] || /\.player$/.test(id))
+                        if (!model.itemDetails[strippedSpecId + currentTag] || isCurrentPlayerSpec(id)) {
+                            model.itemDetails[strippedSpecId + currentTag] = model.itemDetails[id];
+                        }
+                        if (!model.itemDetails[strippedSpecId + '.player'] || /\.player$/.test(id)) {
                             model.itemDetails[strippedSpecId + '.player'] = model.itemDetails[id];
-                        if (!model.itemDetails[strippedSpecId + '.ai'])
+                        }
+                        if (!model.itemDetails[strippedSpecId + '.ai']) {
                             model.itemDetails[strippedSpecId + '.ai'] = model.itemDetails[id];
+                        }
                     }
                 }
                 else {
-                    if (!model.itemDetails[id + '.player'])
+                    if (!model.itemDetails[id + currentTag]) {
+                        model.itemDetails[id + currentTag] = model.itemDetails[id];
+                    }
+                    if (!model.itemDetails[id + '.player']) {
                         model.itemDetails[id + '.player'] = model.itemDetails[id];
-                    if (!model.itemDetails[id + '.ai'])
+                    }
+                    if (!model.itemDetails[id + '.ai']) {
                         model.itemDetails[id + '.ai'] = model.itemDetails[id];
+                    }
                 }
             });
 
@@ -4808,8 +4913,9 @@ api.debug.log('live_game mount_mod_file_data ' + JSON.stringify(payload));
     api.camera.injectHandlers(handlers);
 
     // inject per scene mods
-    if (scene_mod_list['live_game'] && !gwCoopMode())
+    if (scene_mod_list['live_game']) {
         loadMods(scene_mod_list['live_game']);
+    }
 
     // setup send/recv messages and signals
     app.registerWithCoherent(model, handlers);

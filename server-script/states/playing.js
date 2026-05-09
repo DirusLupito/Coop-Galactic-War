@@ -89,7 +89,8 @@ function sendReconnectMemoryFilesToClient(client, reason) {
         message_type: 'memory_files',
         payload: {
             files: reconnectReplayFiles,
-            unit_spec_tag: getReconnectUnitSpecTag(client)
+            unit_spec_tag: getReconnectUnitSpecTag(client),
+            gw_campaign_active: isGwCampaignCoopMatch()
         }
     });
     return true;

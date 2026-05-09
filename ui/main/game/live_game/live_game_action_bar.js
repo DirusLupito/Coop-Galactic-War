@@ -22,7 +22,27 @@ $(document).ready(function () {
         self.unitSpecs = ko.observable({});
         self.selection = ko.observable({});
         self.changingSelection = ko.observable(false); /* raises to true while we're binding a new selection to suppress sound effect subscriptions */
+        self.gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+        self.gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
         self.gwCoopResolutionLogSeen = {};
+
+        self.currentGwUnitSpecTag = function() {
+            if (self.gwCoopMode()) {
+                return self.gwCampaignUnitSpecTag() || '.player';
+            }
+
+            return '.player';
+        };
+
+        self.logGwCoopResolutionOnce = function(kind, fromId, toId) {
+            var key = kind + '|' + fromId + '|' + (toId || '');
+            if (self.gwCoopResolutionLogSeen[key]) {
+                return;
+            }
+
+            self.gwCoopResolutionLogSeen[key] = true;
+            console.log('[GW COOP] action_bar ' + kind + ' from=' + fromId + ' to=' + (toId || '') + ' tag=' + self.currentGwUnitSpecTag());
+        };
 
         self.parsedUnitSpecs = ko.computed(function() {
             var unitSpecs = self.unitSpecs();
@@ -61,25 +81,28 @@ $(document).ready(function () {
             var unitSpecs = self.parsedUnitSpecs();
 
             var resolveUnitSpec = function(id) {
-                var logOnce = function(kind, fromId, toId) {
-                    var key = kind + '|' + fromId + '|' + (toId || '');
-                    if (self.gwCoopResolutionLogSeen[key])
-                        return;
-                    self.gwCoopResolutionLogSeen[key] = true;
-                };
-
                 var unit = unitSpecs[id];
-                if (unit)
+                if (unit) {
+                    self.logGwCoopResolutionOnce('exact resolveUnitSpec', id, unit.id);
                     return unit;
+                }
+
+                var currentTag = self.currentGwUnitSpecTag();
 
                 // Fallback across tagged/untagged ids:
                 // foo/bar/unit.json.player <-> foo/bar/unit.json
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 var canonicalId = strip && strip[1];
                 if (canonicalId) {
+                    unit = unitSpecs[canonicalId + currentTag];
+                    if (unit) {
+                        self.logGwCoopResolutionOnce('canonical+current tag fallback', id, unit.id);
+                        return unit;
+                    }
+
                     unit = unitSpecs[canonicalId + '.player'] || unitSpecs[canonicalId + '.ai'];
                     if (unit) {
-                        logOnce('canonical+tag fallback', id, unit.id);
+                        self.logGwCoopResolutionOnce('canonical+tag fallback', id, unit.id);
                         return unit;
                     }
                 }
@@ -88,20 +111,27 @@ $(document).ready(function () {
                     unit = unitSpecs[strip[1]];
                     if (unit)
                     {
-                        logOnce('fallback', id, strip[1]);
+                        self.logGwCoopResolutionOnce('fallback', id, strip[1]);
                         return unit;
                     }
                 }
 
                 // If id is untagged, also try common GW tags.
-                unit = unitSpecs[id + '.player'] || unitSpecs[id + '.ai'];
+                unit = unitSpecs[id + currentTag];
                 if (unit)
                 {
-                    logOnce('fallback', id, unit.id);
+                    self.logGwCoopResolutionOnce('current tag fallback', id, unit.id);
                     return unit;
                 }
 
-                logOnce('unresolved', id + ' canonical=' + canonicalId);
+                unit = unitSpecs[id + '.player'] || unitSpecs[id + '.ai'];
+                if (unit)
+                {
+                    self.logGwCoopResolutionOnce('fallback', id, unit.id);
+                    return unit;
+                }
+
+                self.logGwCoopResolutionOnce('unresolved', id + ' canonical=' + canonicalId);
 
                 return null;
             };
@@ -458,7 +488,15 @@ $(document).ready(function () {
     }
     model = new ActionBarViewModel();
 
-    handlers.unit_specs = model.unitSpecs;
+    handlers.unit_specs = function(payload) {
+        var tag = model.currentGwUnitSpecTag();
+        var keys = _.keys(payload || {});
+        var taggedCount = _.filter(keys, function(key) {
+            return _.isString(key) && key.slice(-tag.length) === tag;
+        }).length;
+        console.log('[GW COOP] action_bar unit_specs received count=' + keys.length + ' tag=' + tag + ' taggedCount=' + taggedCount);
+        model.unitSpecs(payload);
+    };
 
     handlers.selection = function(payload) {
         model.changingSelection(true);

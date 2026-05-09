@@ -3,8 +3,8 @@ var model;
 
 $(document).ready(function() {
 
-    // Mark this client session as running through GW coop lobby flow.
-    ko.observable(true).extend({ session: 'gw_coop_mode' });
+    // The server control payload decides whether this GW lobby is campaign co-op or solo GW.
+    var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
     var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
     var normalizeModIdentifier = function(identifier) {
@@ -322,6 +322,10 @@ $(document).ready(function() {
         return found;
     };
 
+    var isPerPlayerTechTag = function(tag) {
+        return _.isString(tag) && /^\.player\d+$/.test(tag);
+    };
+
     var summarizeTaggedUnitLists = function(taggedUnitLists) {
         return _.map(taggedUnitLists || [], function(taggedList) {
             return {
@@ -409,6 +413,10 @@ $(document).ready(function() {
                     _.forEach(taggedUnitLists, function(taggedList) {
                         if (taggedList.tag === '.player')
                             return;
+                        if (isPerPlayerTechTag(taggedList.tag)) {
+                            console.log('[GW COOP] gw_lobby preserving generated per-player tech tag ' + taggedList.tag + ' during local overlay');
+                            return;
+                        }
 
                         filesToProcess.push(generateTaggedFiles(GW, taggedList.units, taggedList.tag));
                     });
@@ -456,6 +464,12 @@ $(document).ready(function() {
     };
 
     handlers.control = function(control) {
+        var nextGwCoopMode = !!(control && control.gw_campaign_active);
+        if (gwCoopMode() !== nextGwCoopMode) {
+            gwCoopMode(nextGwCoopMode);
+            console.log('[GW COOP] gw_lobby persisted gw_coop_mode=' + gwCoopMode());
+        }
+
         model.serverLoading(!control.sim_ready);
         if (!control.has_config) {
             var config = model.config();

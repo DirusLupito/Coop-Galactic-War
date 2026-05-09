@@ -294,6 +294,7 @@ function LobbyModel(creator, launchContext) {
 
         self.campaignActive = !!config.gw_campaign_active;
         self.isSingleplayerGW = !self.campaignActive;
+        self.changeControl({ gw_campaign_active: self.campaignActive });
 
         // Keep beacon identity aligned if the host provided runtime lobby settings.
         if (config.gw_campaign_settings) {
@@ -317,6 +318,7 @@ function LobbyModel(creator, launchContext) {
 
     self.control = ko.observable({
         has_config: false,
+        gw_campaign_active: self.campaignActive,
         starting: false,
         system_ready: false,
         sim_ready: false

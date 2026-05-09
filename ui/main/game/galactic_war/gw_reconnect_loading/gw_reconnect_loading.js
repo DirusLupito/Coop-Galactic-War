@@ -6,6 +6,7 @@ $(document).ready(function () {
     var gwReconnectTarget = $.url().param('target') || 'coui://ui/main/game/live_game/live_game.html';
     var gwReconnectFilesRequested = false;
     var gwReconnectFilesReady = false;
+    var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
     var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
     function requestReconnectMemoryFiles(reason) {
@@ -146,6 +147,10 @@ $(document).ready(function () {
         return found;
     };
 
+    var isPerPlayerTechTag = function(tag) {
+        return _.isString(tag) && /^\.player\d+$/.test(tag);
+    };
+
     var summarizeTaggedUnitLists = function(taggedUnitLists) {
         return _.map(taggedUnitLists || [], function(taggedList) {
             return {
@@ -233,6 +238,10 @@ $(document).ready(function () {
                     _.forEach(taggedUnitLists, function(taggedList) {
                         if (taggedList.tag === '.player')
                             return;
+                        if (isPerPlayerTechTag(taggedList.tag)) {
+                            console.log('[GW COOP] gw_reconnect_loading preserving generated per-player tech tag ' + taggedList.tag + ' during local overlay');
+                            return;
+                        }
 
                         filesToProcess.push(generateTaggedFiles(GW, taggedList.units, taggedList.tag));
                     });
@@ -291,6 +300,11 @@ $(document).ready(function () {
         var unitSpecTag = (_.isString(msg.unit_spec_tag) && msg.unit_spec_tag.length)
             ? msg.unit_spec_tag
             : '.player';
+        var gwCampaignActive = !!msg.gw_campaign_active;
+        if (gwCoopMode() !== gwCampaignActive) {
+            gwCoopMode(gwCampaignActive);
+            console.log('[GW COOP] gw_reconnect_loading persisted gw_coop_mode=' + gwCoopMode());
+        }
 
         if (!files[UNIT_LIST_PATH]) {
             files[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(files);

@@ -262,3 +262,8 @@ Bundled third-party libraries.
 - In general, the idea of the new version of the code is that crashing with an informative log message is preferable to succeeding in a mysterious way, as such successes can lead to mysterious and difficult to debug issues.
 - Related to this, if you are using an LLM, do not "vibecode". LLMs can be used to assist and enhance the development process, but any code generated should be very carefully reviewed before use (honestly the exact same thing is true for human written code. Code in general should be reviewed carefully). It is the responsibility of the developer using the LLM to ensure that the generated code is correct and follows best practices.
 - If statements and else statements should always use curly brackets even if they are not necessary.
+
+Some more notes...
+- If a state value, observable, session key, engine value, or API result, etc appears unreliable, do not route around it with fallback heuristics as the first response. Treat that unreliability as the bug. Find where the value is set, where it is lost or overwritten, and fix that lifecycle/root cause unless there is a documented reason that the value is allowed to be absent.
+- Do not add compatibility shims, alternate detectors, or "best effort" fallbacks to mask broken state propagation. Fallbacks are acceptable only after proving the primary source is inherently optional, and the reason must be documented in the change.
+- Before changing co-op GW state flow, trace the original intent of the state through `changeExplanations.md` using `git blame` on the line of code you're modifying, then preserve the intended ideas.

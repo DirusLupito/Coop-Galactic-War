@@ -229,9 +229,12 @@ $(document).ready(function () {
 
         self.logGwCoopResolutionOnce = function(kind, fromId, toId) {
             var key = kind + '|' + fromId + '|' + (toId || '');
-            if (self.gwCoopResolutionLogSeen[key])
+            if (self.gwCoopResolutionLogSeen[key]) {
                 return;
+            }
+
             self.gwCoopResolutionLogSeen[key] = true;
+            console.log('[GW COOP] build_bar ' + kind + ' from=' + fromId + ' to=' + (toId || '') + ' tag=' + (self.specTag || '.player'));
         };
 
         self.parseSelection = function(selection)
@@ -244,40 +247,50 @@ $(document).ready(function () {
                 if (self.buildLists[id])
                     return id;
 
+                var currentTag = self.specTag || '.player';
+
                 // Fallback across tagged/untagged ids:
                 // foo/bar/unit.json.player <-> foo/bar/unit.json
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 if (strip && strip[1]) {
+                    if (self.buildLists[strip[1] + currentTag]) {
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+current tag fallback', id, strip[1] + currentTag);
+                        return strip[1] + currentTag;
+                    }
                     if (self.buildLists[strip[1] + '.player']) {
-                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.player');
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+player fallback', id, strip[1] + '.player');
                         return strip[1] + '.player';
                     }
                     if (self.buildLists[strip[1] + '.ai']) {
-                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+tag fallback', id, strip[1] + '.ai');
+                        self.logGwCoopResolutionOnce('resolveBuildSpecId canonical+ai fallback', id, strip[1] + '.ai');
                         return strip[1] + '.ai';
                     }
                 }
 
                 if (strip && strip[1] && self.buildLists[strip[1]])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, strip[1]);
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId canonical fallback', id, strip[1]);
                     return strip[1];
                 }
 
+                if (self.buildLists[id + currentTag])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId current tag fallback', id, id + currentTag);
+                    return id + currentTag;
+                }
                 if (self.buildLists[id + '.player'])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.player');
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId player fallback', id, id + '.player');
                     return id + '.player';
                 }
                 if (self.buildLists[id + '.ai'])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildSpecId fallback', id, id + '.ai');
+                    self.logGwCoopResolutionOnce('resolveBuildSpecId ai fallback', id, id + '.ai');
                     return id + '.ai';
 
                 }
 
-                self.logGwCoopResolutionOnce('resolveBuildSpecId unresolved', 'id=' + id);
-
+                self.logGwCoopResolutionOnce('resolveBuildSpecId unresolved', id);
                 return null;
             };
 
@@ -285,38 +298,47 @@ $(document).ready(function () {
                 if (items[id])
                     return id;
 
+                var currentTag = self.specTag || '.player';
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 if (strip && strip[1]) {
+                    if (items[strip[1] + currentTag]) {
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+current tag fallback', id, strip[1] + currentTag);
+                        return strip[1] + currentTag;
+                    }
                     if (items[strip[1] + '.player']) {
-                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.player');
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+player fallback', id, strip[1] + '.player');
                         return strip[1] + '.player';
                     }
                     if (items[strip[1] + '.ai']) {
-                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+tag fallback', id, strip[1] + '.ai');
+                        self.logGwCoopResolutionOnce('resolveBuildItemId canonical+ai fallback', id, strip[1] + '.ai');
                         return strip[1] + '.ai';
                     }
                 }
 
                 if (strip && strip[1] && items[strip[1]])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, strip[1]);
+                    self.logGwCoopResolutionOnce('resolveBuildItemId canonical fallback', id, strip[1]);
                     return strip[1];
                 }
 
+                if (items[id + currentTag])
+                {
+                    self.logGwCoopResolutionOnce('resolveBuildItemId current tag fallback', id, id + currentTag);
+                    return id + currentTag;
+                }
                 if (items[id + '.player'])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.player');
+                    self.logGwCoopResolutionOnce('resolveBuildItemId player fallback', id, id + '.player');
                     return id + '.player';
                 }
                 if (items[id + '.ai'])
                 {
-                    self.logGwCoopResolutionOnce('resolveBuildItemId fallback', id, id + '.ai');
+                    self.logGwCoopResolutionOnce('resolveBuildItemId ai fallback', id, id + '.ai');
                     return id + '.ai';
 
                 }
 
-                self.logGwCoopResolutionOnce('resolveBuildItemId unresolved', 'id=' + id);
-
+                self.logGwCoopResolutionOnce('resolveBuildItemId unresolved', id);
                 return null;
             };
 
@@ -396,10 +418,18 @@ $(document).ready(function () {
     function BuildBarViewModel() {
         var self = this;
         self.gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+        self.gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
         self.unitSpecs = $.Deferred();
         self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
-            self.specTag = self.gwCoopMode() ? '.player' : tag;
+            var sessionTag = self.gwCampaignUnitSpecTag();
+            if (self.gwCoopMode()) {
+                self.specTag = tag && tag !== '.player' ? tag : (sessionTag || tag || '.player');
+            }
+            else {
+                self.specTag = tag;
+            }
+            console.log('[GW COOP] build_bar spec tag resolved apiTag=' + tag + ' sessionTag=' + sessionTag + ' gwCoopMode=' + self.gwCoopMode() + ' finalTag=' + self.specTag);
         });
 
         self.buildSet = ko.observable();
@@ -698,7 +728,9 @@ $(document).ready(function () {
             }));
         };
         self.unitSpecs.then(function(payload) {
-            return self.processUnitSpecs(payload);
+            $.when(self.getSpecTag).then(function() {
+                return self.processUnitSpecs(payload);
+            });
         });
 
         self.BuildItem = BuildItem;
@@ -753,7 +785,15 @@ $(document).ready(function () {
     handlers.unit_specs = function (payload)
     {
         delete payload.message_type;
-        model.unitSpecs.resolve(payload);
+        $.when(model.getSpecTag).then(function() {
+            var tag = model.specTag || '.player';
+            var keys = _.keys(payload || {});
+            var taggedCount = _.filter(keys, function(key) {
+                return _.isString(key) && tag && key.slice(-tag.length) === tag;
+            }).length;
+            console.log('[GW COOP] build_bar unit_specs received count=' + keys.length + ' tag=' + tag + ' taggedCount=' + taggedCount);
+            model.unitSpecs.resolve(payload);
+        });
     };
 
     handlers.clear_build_sequence = model.clearBuildSequence;
