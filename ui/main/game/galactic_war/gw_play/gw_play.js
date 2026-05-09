@@ -1213,7 +1213,6 @@ requireGW([
     function GameViewModel(game, startupBattleResult, requiresAuthoritativeCampaignState) {
         var self = this;
 
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
         self.localHostTransportSetting = ko.observable().extend({ setting: { group: 'server', key: 'local_host_transport' } });
 
         // Local join configuration info
@@ -1238,11 +1237,13 @@ requireGW([
         self.gameType('Galactic War');
 
         self.getLocalHostTransport = function() {
-            if (self.localHostTransportSetting())
+            if (self.localHostTransportSetting()) {
                 return self.localHostTransportSetting();
+            }
 
-            if (api.net && _.isFunction(api.net.effectiveLocalHostTransport))
+            if (api.net && _.isFunction(api.net.effectiveLocalHostTransport)) {
                 return api.net.effectiveLocalHostTransport();
+            }
 
             return undefined;
         };
@@ -2283,18 +2284,13 @@ requireGW([
                 action: 'start',
                 mode: 'gw_campaign',
                 content: game.content(),
+                local: true,
                 params: JSON.stringify({
                     local_host_transport: self.getLocalHostTransport()
                 })
             };
 
-            if (self.useLocalServer()) {
-                self.serverType('local');
-                params.local = true;
-            }
-            else {
-                self.serverType('uber');
-            }
+            self.serverType('local');
 
             self.serverSetup('gw_campaign');
             self.gwCampaignEnabled(true);
@@ -3179,11 +3175,7 @@ requireGW([
         self.allowLoad = function()
         {
             var game = self.game();
-
-            var result = self.useLocalServer()
-                ? (self.useLocalServer() && game.replayName())
-                : (!self.useLocalServer() && game.replayLobbyId());
-
+            var result = game.replayName();
             return !!result && (!game.replayStar() || game.replayStar() === self.selection.star());
         };
 
@@ -4133,8 +4125,9 @@ requireGW([
                     refereeLaunchOptions.sharedControl = self.gwCampaignSharedControl();
                 }
 
-                if (refereeLaunchOptions.perPlayerTechCards)
+                if (refereeLaunchOptions.perPlayerTechCards) {
                     refereeLaunchOptions.sharedControl = false;
+                }
 
                 var abortRefereeLaunch = function(reason) {
                     console.log('[GW COOP] failed to prepare GW referee for launch: ' + reason);
@@ -4145,8 +4138,9 @@ requireGW([
                     var localFiles = {};
                     if (localReferee && _.isFunction(localReferee.files)) {
                         var personalizedFiles = localReferee.files();
-                        if (_.isObject(personalizedFiles))
+                        if (_.isObject(personalizedFiles)) {
                             localFiles = _.cloneDeep(personalizedFiles);
+                        }
                     }
                     console.log('[GW COOP] personalizedFiles for launch', localFiles);
 
@@ -4171,11 +4165,13 @@ requireGW([
                         battleConfig.per_player_tech_cards = self.gwCampaignActive() ? self.gwCampaignPerPlayerTechCards() : false;
                         battleConfig.shared_control = true;
 
-                        if (self.gwCampaignActive())
+                        if (self.gwCampaignActive()) {
                             battleConfig.shared_control = self.gwCampaignSharedControl();
+                        }
 
-                        if (battleConfig.per_player_tech_cards)
+                        if (battleConfig.per_player_tech_cards) {
                             battleConfig.shared_control = false;
+                        }
 
                         // Mirror current campaign lobby presentation settings so the
                         // battle lobby beacon can continue the same identity.
@@ -4210,18 +4206,13 @@ requireGW([
                             action: 'start',
                             mode: 'gw',
                             content: game.content(),
+                            local: true,
                             params: JSON.stringify({
                                 local_host_transport: self.getLocalHostTransport()
                             })
                         };
 
-                        if (self.useLocalServer()) {
-                            self.serverType('local');
-                            params['local'] = true;
-                        }
-                        else {
-                            self.serverType('uber');
-                        }
+                        self.serverType('local');
 
                         var connect = function() {
                             api.debug.log('start gw: ok');
@@ -4245,15 +4236,16 @@ requireGW([
                             return;
                         }
 
-                        if (!self.allowLoad())
+                        if (!self.allowLoad()) {
                             connect();
-                        else if (self.useLocalServer()) {
+                        }
+                        else {
                             api.file.listReplays().then(function(replays) {
                                 if (_.has(replays, game.replayName())) {
                                     var paths = replays[game.replayName()];
                                     api.debug.log('local gw loadsave: ok', game.replayName(), paths);
                                     self.serverSetup('loadsave');
-                                    self.serverType('uber');
+                                    self.serverType('local');
                                     params['mode'] = 'loadsave'
                                     params['loadpath'] = paths.replay;
                                 } else {
@@ -4263,13 +4255,6 @@ requireGW([
 
                                 connect();
                             });
-                        }
-                        else {
-                            api.debug.log('remote gw loadsave: ok');
-                            self.serverSetup('loadsave');
-                            params['mode'] = 'loadsave'
-                            params['replayid'] = game.replayLobbyId();
-                            connect();
                         }
                     });
                 };

@@ -46,21 +46,6 @@
                                 <loc>Create Game</loc>
                             </div>
                         </div>
-
-                        <!-- ko if: $root.disableServerOption -->
-                        <label class="label_checkbox label_checkbox_disabled" data-bind="click_sound: 'default', rollover_sound: 'default'">
-                            <input type="checkbox" disabled data-bind="checked: doCreateLocalGame"/>
-                                <loc>Host game locally</loc>
-                        </label>
-                        <!-- /ko -->
-
-                        <!-- ko ifnot: $root.disableServerOption -->
-                        <label class="label_checkbox" data-bind="click_sound: 'default', rollover_sound: 'default'">
-                            <input type="checkbox" data-bind="checked: doCreateLocalGame"/>
-                                <loc>Host game locally</loc>
-                        </label>
-                        <!-- /ko -->
-
                     </div>
 
                     <div class="form-group" data-bind="visible: hasUberNetRegions">

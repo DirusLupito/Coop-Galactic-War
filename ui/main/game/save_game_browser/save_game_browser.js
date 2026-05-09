@@ -17,8 +17,6 @@ $(document).ready(function () {
         self.transitDestination = ko.observable().extend({ session: 'transit_destination' });
         self.transitDelay = ko.observable().extend({ session: 'transit_delay' });
 
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
-
         self.lastSceneUrl = ko.observable().extend({ session: 'last_scene_url' });
 
         self.uberNetRegions = ko.observableArray().extend({ session: 'uber_net_regions' });

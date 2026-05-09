@@ -19,7 +19,6 @@
         var gwCampaignRestartPending = ko.observable(false).extend({ local: 'gw_campaign_restart_pending' });
         var gwCampaignRestartContext = ko.observable().extend({ local: 'gw_campaign_restart_context' });
         var reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
-        var useLocalServer = ko.observable().extend({ session: 'use_local_server' });
         var gameContent = ko.observable().extend({ session: 'game_content' });
         var connectionAttempts = ko.observable().extend({ session: 'connection_attempts' });
         var connectionRetryDelaySeconds = ko.observable().extend({ session: 'connection_retry_delay_seconds' });
@@ -61,7 +60,6 @@
                 per_player_tech_cards: perPlayerTechCards,
                 shared_control: sharedControl,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
-                use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []
             };
         };

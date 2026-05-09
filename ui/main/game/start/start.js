@@ -547,21 +547,6 @@ $(document).ready(function ()
 
         self.localServerAvailable = ko.observable().extend({ session: 'local_server_available' });
         self.localServerRecommended = ko.observable().extend({ session: 'local_server_recommended' });
-        self.localServerSetting = ko.observable().extend({ setting: { group: 'server', key: 'local' } });
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
-        self.useLocalServerRule = ko.computed(function ()
-        {
-            if (!self.localServerAvailable())
-                return false;
-            var setting = self.localServerSetting();
-            if (setting === 'OFF')
-                return false;
-            if (setting === 'ON')
-                return true;
-            return self.localServerRecommended();
-        });
-        self.useLocalServerRule.subscribe(self.useLocalServer);
-        self.useLocalServer(self.useLocalServerRule());
 
         self.localServerMultiThreadSetting = ko.observable().extend({ setting: { group: 'server', key: 'multi_threading' } });
         self.useLocalServerMultiThreading = ko.observable().extend({ session: 'use_local_server_multi_threading' });
@@ -658,7 +643,7 @@ $(document).ready(function ()
         });
 
         self.allowNewOrJoinGame = ko.computed(function () {
-            return self.allowUbernetActions() || self.useLocalServer();
+            return self.allowUbernetActions() || self.localServerAvailable();
         });
 
         self.videoLoaded = ko.observable(false);
@@ -1393,20 +1378,17 @@ $(document).ready(function ()
 
             self.aiSkirmish(false);
             self.redirectToGalacticWar(true);
-            if (model.useLocalServer() || model.isUberNetRegionAvailable()) {
-                model.inRegionSetup(false);
-                var params = {};
-                if (!_.isEmpty(self.galacticWarMode()))
-                    params['mode'] = self.galacticWarMode();
-                else
-                    params['content'] = api.content.activeContent();
-                window.location.href = 'coui://ui/main/game/galactic_war/gw_start/gw_start.html?' + $.param(params);
-                return; /* window.location.href will not stop execution. */
-            }
-            else {
-                model.inRegionSetup(true);
-                $("#regionDlg").dialog('open');
-            }
+
+            if (!self.localServerAvailable())
+                return;
+
+            self.inRegionSetup(false);
+            var params = {};
+            if (!_.isEmpty(self.galacticWarMode()))
+                params['mode'] = self.galacticWarMode();
+            else
+                params['content'] = api.content.activeContent();
+            window.location.href = 'coui://ui/main/game/galactic_war/gw_start/gw_start.html?' + $.param(params);
         }
         self.navToAISkirmish = function () {
 
@@ -1415,25 +1397,20 @@ $(document).ready(function ()
 
             self.aiSkirmish(true);
             self.redirectToAISkirmish(true);
-            if (self.useLocalServer() || self.isUberNetRegionAvailable()) {
-                self.inRegionSetup(false);
-                self.lastSceneUrl(window.location.href);
 
-                var params = {
-                    action: 'start',
-                    content: api.content.activeContent(),
-                };
-
-                if (self.useLocalServer())
-                    params['local'] = true;
-
-                window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
+            if (!self.localServerAvailable())
                 return;
-            }
-            else {
-                model.inRegionSetup(true);
-                $("#regionDlg").dialog('open');
-            }
+
+            self.inRegionSetup(false);
+            self.lastSceneUrl(window.location.href);
+
+            var params = {
+                action: 'start',
+                local: true,
+                content: api.content.activeContent(),
+            };
+
+            window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
         };
 
         this.navToNewPlanet = function () {
@@ -1567,7 +1544,7 @@ $(document).ready(function ()
 
         self.hasShownOfflinePlayDialog = ko.observable(false).extend({ local: 'hasShownOfflinePlayDialog' });
         self.maybeShowOfflinePlayDialog = function() {
-            // 32-bit users.
+            // 32-bit users (or any install where the dedicated server binary is missing).
             if (!self.localServerAvailable())
             {
                 if (!self.hasShownOfflinePlayDialog())
@@ -1578,30 +1555,12 @@ $(document).ready(function ()
                 return;
             }
 
-            var setting = self.localServerSetting();
-            if (setting === 'OFF' || setting === 'ON' || self.localServerRecommended())
-            {
-                self.hasShownOfflinePlayDialog(false);
-                return;
-            }
-
-            if (!self.hasShownOfflinePlayDialog())
-            {
-                self.hasShownOfflinePlayDialog(true);
-                $('#offlineInitiallyDisabled').modal('show');
-            }
+            self.hasShownOfflinePlayDialog(false);
         };
 
         self.openOfflineUnavailableMoreInfo = function () {
             engine.call('web.launchPage', 'https://support.planetaryannihilation.com/kb/?a=search&q=Offline+Play+Disabled');
             $("#offlineUnavailable").modal('hide');
-            $("#offlineInitiallyDisabled").modal('hide');
-        };
-
-        self.enableOfflinePlay = function() {
-            self.localServerSetting('ON');
-            api.settings.save();
-            $("#offlineInitiallyDisabled").modal('hide');
         };
 
         self.graphicsVendorDescription = ko.pureComputed(function() {
@@ -1869,11 +1828,6 @@ $(document).ready(function ()
                 engine.call('web.launchPage', 'https://store.steampowered.com/app/386070');
         };
 
-        self.localServerSetting = ko.observable().extend({ setting: { 'group': 'server', 'key': 'local' } });
-        self.localServerDisabledInSettings = ko.pureComputed(function () {
-            return self.localServerSetting() === 'OFF';
-        });
-
         self.showOfflineWarning = ko.pureComputed(function() {
             /* Don't show it before we have gotten initialized. */
             if (!self.readyToLogin())
@@ -1887,7 +1841,7 @@ $(document).ready(function ()
                 return false;
 
             /* Otherwise, if we can use the offline server, then we are able to play. */
-            return !self.useLocalServer();
+            return !self.localServerAvailable();
         });
 
         self.squelchTitansUpsellPage = ko.observable(false).extend({ local: 'squelch_titans_upsell' });
