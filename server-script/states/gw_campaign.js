@@ -676,7 +676,7 @@ function GWCampaignModel(creator) {
         }
 
         var record = self.findCoopPlayerInventoryData(client);
-        if (!nextLoading && self.perPlayerTechCards && (self.coopPlayerHasPendingTechCards(record) || self.coopPlayerNeedsTechCatchup(record))) {
+        if (!nextLoading && self.perPlayerTechCards && client.id !== self.creatorId && (self.coopPlayerHasPendingTechCards(record) || self.coopPlayerNeedsTechCatchup(record))) {
             nextLoading = true;
             nextStatus = 'picking_tech_cards';
         }
@@ -727,7 +727,7 @@ function GWCampaignModel(creator) {
             var pendingInventoryData = self.findCoopPlayerInventoryData(client);
             var loading = !!self.clientLoading[client.id];
             var loadingStatus = self.clientLoadingStatus[client.id] || '';
-            if (self.perPlayerTechCards && (self.coopPlayerHasPendingTechCards(pendingInventoryData) || self.coopPlayerNeedsTechCatchup(pendingInventoryData))) {
+            if (self.perPlayerTechCards && client.id !== self.creatorId && (self.coopPlayerHasPendingTechCards(pendingInventoryData) || self.coopPlayerNeedsTechCatchup(pendingInventoryData))) {
                 loading = true;
                 loadingStatus = 'picking_tech_cards';
             }
