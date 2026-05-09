@@ -1545,6 +1545,25 @@ requireGW([
             });
         };
 
+        self.isLocalGwCampaignClient = function(client) {
+            if (!client) {
+                return false;
+            }
+
+            var localId = self.uberId && self.uberId();
+            var localName = self.displayName && self.displayName();
+
+            if (!_.isUndefined(client.id) && !_.isUndefined(localId) && String(client.id) === String(localId)) {
+                return true;
+            }
+
+            if (_.isString(client.name) && _.isString(localName) && client.name === localName) {
+                return true;
+            }
+
+            return false;
+        };
+
         self.validateGwCampaignInventoryRecord = function(record, client, logFailures) {
             var label = client && (client.name || client.id || client.playerName || client.playerId);
 
@@ -1750,6 +1769,11 @@ requireGW([
                 return;
             }
 
+            if (self.isLocalGwCampaignClient(slot)) {
+                console.log('[GW COOP] Cannot open co-op inventory modal for local player slot.');
+                return;
+            }
+
             if (slot.host) {
                 self.syncHostCoopInventoryRecord('open_inventory_modal');
             }
@@ -1805,6 +1829,7 @@ requireGW([
                 var client = connected[index];
                 var inventoryRecord = self.getGwCampaignInventoryRecordForClient(client);
                 var inventoryAvailable = self.validateGwCampaignInventoryRecord(inventoryRecord, client, false);
+                var localClient = self.isLocalGwCampaignClient(client);
                 return {
                     index: index + 1,
                     id: client ? client.id : undefined,
@@ -1814,7 +1839,7 @@ requireGW([
                     loadingStatus: client && client.loading_status,
                     loadingTooltip: self.getGwCampaignLoadingTooltip(client),
                     empty: !client,
-                    showInventory: !!(client && self.gwCampaignPerPlayerTechCards()),
+                    showInventory: !!(client && self.gwCampaignPerPlayerTechCards() && !localClient),
                     inventoryAvailable: inventoryAvailable,
                     inventoryTooltip: inventoryAvailable ? '!LOC:View loadout and tech cards' : '!LOC:Waiting for loadout',
                     canRemove: !client && maxClients > 1,
