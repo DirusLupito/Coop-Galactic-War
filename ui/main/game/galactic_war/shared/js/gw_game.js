@@ -46,6 +46,8 @@ define([
         self.sharedByDefault = ko.observable(true);
         self.perPlayerTechCards = ko.observable(false);
         self.coopPlayerInventoryData = ko.observableArray([]);
+        self.hostTechCardDealCount = ko.observable(0);
+        self.hostTechCardDealHistory = ko.observableArray([]);
 
         self.serverModIdentifiers = ko.observableArray([]);
 
@@ -119,6 +121,18 @@ define([
             self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
             self.perPlayerTechCards(_.has(config, 'perPlayerTechCards') ? !!config.perPlayerTechCards : false);
             self.coopPlayerInventoryData(_.isArray(config.coopPlayerInventoryData) ? config.coopPlayerInventoryData : []);
+            if (_.isArray(config.hostTechCardDealHistory)) {
+                self.hostTechCardDealHistory(config.hostTechCardDealHistory);
+            }
+            else {
+                self.hostTechCardDealHistory([]);
+            }
+            if (_.isNumber(config.hostTechCardDealCount)) {
+                self.hostTechCardDealCount(Math.max(0, Math.floor(config.hostTechCardDealCount)));
+            }
+            else {
+                self.hostTechCardDealCount(self.hostTechCardDealHistory().length);
+            }
 
             self.serverModIdentifiers(config.serverModIdentifiers || []);
 
@@ -167,10 +181,36 @@ define([
                 sharedByDefault: self.sharedByDefault(),
                 perPlayerTechCards: self.perPlayerTechCards(),
                 coopPlayerInventoryData: self.coopPlayerInventoryData(),
+                hostTechCardDealCount: self.hostTechCardDealCount(),
+                hostTechCardDealHistory: self.hostTechCardDealHistory(),
                 serverModIdentifiers: self.serverModIdentifiers()
             };
 
             return result;
+        },
+
+        recordHostTechCardDeal: function(starIndex)
+        {
+            var self = this;
+
+            if (!_.isNumber(starIndex)) {
+                console.log('[GW COOP] Cannot record host tech card deal without numeric star index.');
+                return undefined;
+            }
+
+            var nextDealIndex = self.hostTechCardDealCount() + 1;
+            var history = self.hostTechCardDealHistory().slice(0);
+            var entry = {
+                dealIndex: nextDealIndex,
+                star: starIndex,
+                updatedAt: _.now()
+            };
+
+            history.push(entry);
+            self.hostTechCardDealHistory(history);
+            self.hostTechCardDealCount(nextDealIndex);
+
+            return entry;
         },
 
         findCoopPlayerInventoryData: function(player)

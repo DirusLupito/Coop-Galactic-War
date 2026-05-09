@@ -62,6 +62,7 @@ function GWCampaignModel(creator) {
     self.clientManifestValidatedByClientId = {};
     self.clientLoading = {};
     self.clientLoadingStatus = {};
+    self.pendingTechCatchupRequestByClientId = {};
     self.access = {
         password: '',
         friends: [],
@@ -541,6 +542,54 @@ function GWCampaignModel(creator) {
             && _.isArray(record.pendingTechCards.cards));
     };
 
+    self.getHostTechCardDealHistory = function(game) {
+        if (!game) {
+            return [];
+        }
+
+        if (_.isArray(game.hostTechCardDealHistory)) {
+            return game.hostTechCardDealHistory;
+        }
+
+        return [];
+    };
+
+    self.getHostTechCardDealCount = function(game) {
+        if (!game) {
+            return 0;
+        }
+
+        if (_.isNumber(game.hostTechCardDealCount)) {
+            return Math.max(0, Math.floor(game.hostTechCardDealCount));
+        }
+
+        return self.getHostTechCardDealHistory(game).length;
+    };
+
+    self.getCoopPlayerTechCardDealCount = function(record, hostTechCardDealCount) {
+        if (!record) {
+            return 0;
+        }
+
+        if (_.isNumber(record.techCardDealCount)) {
+            return Math.max(0, Math.floor(record.techCardDealCount));
+        }
+
+        return 0;
+    };
+
+    self.coopPlayerNeedsTechCatchup = function(record) {
+        if (!self.perPlayerTechCards || !record || self.coopPlayerHasPendingTechCards(record)) {
+            return false;
+        }
+
+        var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
+        var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
+        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record, hostTechCardDealCount);
+
+        return playerTechCardDealCount < hostTechCardDealCount;
+    };
+
     self.coopInventoryHasCard = function(inventory, cardId) {
         var cards = inventory && _.isArray(inventory.cards) ? inventory.cards : [];
         return _.any(cards, function(card) {
@@ -560,7 +609,7 @@ function GWCampaignModel(creator) {
         });
     };
 
-    self.broadcastCoopPlayerTechCardChoice = function(client, star, selectedCardIndex, updatedAt) {
+    self.broadcastCoopPlayerTechCardChoice = function(client, star, selectedCardIndex, updatedAt, dealIndex, techCardDealCount) {
         server.broadcast({
             message_type: 'gw_campaign_player_tech_card_choice',
             payload: {
@@ -568,6 +617,8 @@ function GWCampaignModel(creator) {
                 client_name: client.name,
                 selected_card_index: selectedCardIndex,
                 star: star,
+                deal_index: dealIndex,
+                tech_card_deal_count: techCardDealCount,
                 updated_at: updatedAt
             }
         });
@@ -583,46 +634,56 @@ function GWCampaignModel(creator) {
     };
 
     self.hasPendingPlayerSetup = function() {
-        if (!self.perPlayerTechCards)
+        if (!self.perPlayerTechCards) {
             return false;
+        }
 
         var connectedClients = self.getConnectedClients();
         return _.some(connectedClients, function(client) {
-            if (!client || client.id === self.creatorId)
+            if (!client || client.id === self.creatorId) {
                 return false;
+            }
 
-            if (self.clientRequiresLoadout(client))
+            if (self.clientRequiresLoadout(client)) {
                 return true;
+            }
 
-            if (self.clientLoading[client.id])
+            if (self.clientLoading[client.id]) {
                 return true;
+            }
 
             var loadingStatus = self.clientLoadingStatus[client.id] || '';
-            if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards')
+            if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards') {
                 return true;
+            }
 
-            return self.coopPlayerHasPendingTechCards(self.findCoopPlayerInventoryData(client));
+            var record = self.findCoopPlayerInventoryData(client);
+            return self.coopPlayerHasPendingTechCards(record) || self.coopPlayerNeedsTechCatchup(record);
         });
     };
 
     self.setClientLoading = function(client, loading, loadingStatus) {
-        if (!client)
+        if (!client) {
             return;
+        }
 
         // We no longer update control if the loading state for the client hasn't actually
         // gone from false/ambiguous to true or from true to false/ambiguous.
         var nextLoading = !!loading;
         var nextStatus = _.isString(loadingStatus) ? loadingStatus : '';
-        if (!nextLoading)
+        if (!nextLoading) {
             nextStatus = '';
+        }
 
-        if (!nextLoading && self.perPlayerTechCards && self.coopPlayerHasPendingTechCards(self.findCoopPlayerInventoryData(client))) {
+        var record = self.findCoopPlayerInventoryData(client);
+        if (!nextLoading && self.perPlayerTechCards && (self.coopPlayerHasPendingTechCards(record) || self.coopPlayerNeedsTechCatchup(record))) {
             nextLoading = true;
             nextStatus = 'picking_tech_cards';
         }
 
-        if (self.clientLoading[client.id] === nextLoading && self.clientLoadingStatus[client.id] === nextStatus)
+        if (self.clientLoading[client.id] === nextLoading && self.clientLoadingStatus[client.id] === nextStatus) {
             return;
+        }
 
         self.clientLoading[client.id] = nextLoading;
         self.clientLoadingStatus[client.id] = nextStatus;
@@ -666,7 +727,7 @@ function GWCampaignModel(creator) {
             var pendingInventoryData = self.findCoopPlayerInventoryData(client);
             var loading = !!self.clientLoading[client.id];
             var loadingStatus = self.clientLoadingStatus[client.id] || '';
-            if (self.perPlayerTechCards && self.coopPlayerHasPendingTechCards(pendingInventoryData)) {
+            if (self.perPlayerTechCards && (self.coopPlayerHasPendingTechCards(pendingInventoryData) || self.coopPlayerNeedsTechCatchup(pendingInventoryData))) {
                 loading = true;
                 loadingStatus = 'picking_tech_cards';
             }
@@ -818,6 +879,64 @@ function GWCampaignModel(creator) {
         return requested;
     };
 
+    // Asks the host client to deal tech cards to a co-op player if they have fallen behind the host in terms of tech card deals.
+    self.requestHostCoopPlayerTechCatchupIfNeeded = function(client, reason) {
+        if (!self.perPlayerTechCards || !client || client.id === self.creatorId) {
+            return false;
+        }
+
+        var record = self.findCoopPlayerInventoryData(client);
+        if (!record || self.coopPlayerHasPendingTechCards(record)) {
+            return false;
+        }
+
+        var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
+        var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
+        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record, hostTechCardDealCount);
+        if (playerTechCardDealCount >= hostTechCardDealCount) {
+            return false;
+        }
+
+        var host = _.find(self.getConnectedClients(), function(connectedClient) {
+            return connectedClient && connectedClient.id === self.creatorId;
+        });
+        if (!host || !host.connected) {
+            console.log('[GW COOP] Cannot request tech catch-up without connected host client.');
+            return false;
+        }
+
+        self.setClientLoading(client, true, 'picking_tech_cards');
+        if (self.pendingTechCatchupRequestByClientId[client.id]) {
+            return true;
+        }
+
+        self.pendingTechCatchupRequestByClientId[client.id] = true;
+        var nextDealIndex = playerTechCardDealCount + 1;
+        console.log('[GW COOP] requesting host tech catch-up client=' + client.id + ' nextDeal=' + nextDealIndex + ' hostDeals=' + hostTechCardDealCount + ' reason=' + reason);
+        host.message({
+            message_type: 'gw_campaign_player_tech_catchup_needed',
+            payload: {
+                client_id: client.id,
+                client_name: client.name,
+                next_deal_index: nextDealIndex,
+                host_tech_card_deal_count: hostTechCardDealCount,
+                reason: reason || 'catchup'
+            }
+        });
+
+        return true;
+    };
+
+    self.requestAllHostCoopPlayerTechCatchups = function(reason) {
+        if (!self.perPlayerTechCards) {
+            return;
+        }
+
+        _.forEach(self.getConnectedClients(), function(client) {
+            self.requestHostCoopPlayerTechCatchupIfNeeded(client, reason);
+        });
+    };
+
     self.attachClientLifecycle = function(client, reconnect) {
         if (!self.active)
             return;
@@ -840,6 +959,7 @@ function GWCampaignModel(creator) {
                 self.clearPendingSelfDisconnectTimeout(client.id);
                 delete self.clientLoading[client.id];
                 delete self.clientLoadingStatus[client.id];
+                delete self.pendingTechCatchupRequestByClientId[client.id];
 
                 if (client.id === self.creatorId) {
                     console.log('[GW COOP] gw_campaign creator disconnected, exiting server');
@@ -1004,17 +1124,20 @@ function GWCampaignModel(creator) {
                 server.respond(msg).succeed();
             },
             set_player_loadout: function(msg) {
-                if (msg.client.id === self.creatorId)
+                if (msg.client.id === self.creatorId) {
                     return server.respond(msg).fail('Host does not submit co-op player loadout through viewer path');
+                }
 
                 var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
                 var perPlayerLoadoutsEnabled = self.perPlayerTechCards || !!(snapshotGame && snapshotGame.perPlayerTechCards);
-                if (!perPlayerLoadoutsEnabled)
+                if (!perPlayerLoadoutsEnabled) {
                     return server.respond(msg).fail('Per-player loadouts are not enabled');
+                }
 
                 var payload = msg.payload || {};
-                if (!_.isString(payload.commander) || !_.isString(payload.loadout_card_id) || !payload.inventory)
+                if (!_.isString(payload.commander) || !_.isString(payload.loadout_card_id) || !payload.inventory) {
                     return server.respond(msg).fail('Invalid co-op player loadout');
+                }
 
                 if (!_.isArray(payload.inventory.cards) || !payload.inventory.cards.length || payload.inventory.cards[0].id !== payload.loadout_card_id || !_.isNumber(payload.inventory.maxCards) || payload.inventory.maxCards <= payload.inventory.cards.length) {
                     return server.respond(msg).fail('Invalid co-op player loadout inventory: missing starting tech banks');
@@ -1026,11 +1149,13 @@ function GWCampaignModel(creator) {
                     commander: payload.commander,
                     loadoutCardId: payload.loadout_card_id,
                     inventory: payload.inventory,
+                    techCardDealCount: 0,
                     updatedAt: payload.updated_at || Date.now()
                 };
 
-                if (!self.upsertCoopPlayerInventoryData(record))
+                if (!self.upsertCoopPlayerInventoryData(record)) {
                     return server.respond(msg).fail('Failed to store co-op player loadout');
+                }
 
                 self.lastSnapshotSeq += 1;
                 self.lastSnapshot.seq = self.lastSnapshotSeq;
@@ -1044,7 +1169,9 @@ function GWCampaignModel(creator) {
                     }
                 });
 
-                self.setClientLoading(msg.client, false, '');
+                if (!self.requestHostCoopPlayerTechCatchupIfNeeded(msg.client, 'loadout_complete')) {
+                    self.setClientLoading(msg.client, false, '');
+                }
 
                 msg.client.message({
                     message_type: 'gw_campaign_loadout_complete',
@@ -1057,28 +1184,42 @@ function GWCampaignModel(creator) {
                 server.respond(msg).succeed();
             },
             set_player_pending_tech_cards: function(msg) {
-                if (msg.client.id !== self.creatorId)
+                if (msg.client.id !== self.creatorId) {
                     return server.respond(msg).fail('Only host can publish co-op player pending tech cards');
+                }
 
                 var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
                 var perPlayerTechCardsEnabled = self.perPlayerTechCards || !!(snapshotGame && snapshotGame.perPlayerTechCards);
-                if (!perPlayerTechCardsEnabled)
+                if (!perPlayerTechCardsEnabled) {
                     return server.respond(msg).fail('Per-player tech cards are not enabled');
+                }
 
-                if (!snapshotGame)
+                if (!snapshotGame) {
                     return server.respond(msg).fail('No campaign snapshot for pending tech cards');
+                }
 
                 var payload = msg.payload || {};
-                if (!_.isArray(payload.players))
+                if (!_.isArray(payload.players)) {
                     return server.respond(msg).fail('Invalid co-op pending tech cards payload');
+                }
+
+                if (_.isNumber(payload.host_tech_card_deal_count)) {
+                    snapshotGame.hostTechCardDealCount = Math.max(0, Math.floor(payload.host_tech_card_deal_count));
+                }
+
+                if (_.isArray(payload.host_tech_card_deal_history)) {
+                    snapshotGame.hostTechCardDealHistory = _.cloneDeep(payload.host_tech_card_deal_history);
+                }
 
                 var updates = [];
                 var connectedClients = self.getConnectedClients();
                 var validationError;
+                var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
 
                 _.forEach(payload.players, function(playerPayload) {
-                    if (validationError)
+                    if (validationError) {
                         return;
+                    }
 
                     var clientId = playerPayload && playerPayload.client_id;
                     var targetClient = _.find(connectedClients, function(client) {
@@ -1107,12 +1248,33 @@ function GWCampaignModel(creator) {
                         return;
                     }
 
+                    if (self.coopPlayerHasPendingTechCards(existingRecord)) {
+                        validationError = 'Client already has pending tech cards client id ' + clientId;
+                        return;
+                    }
+
+                    var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord, hostTechCardDealCount);
+                    var dealIndex = _.isNumber(pendingTechCards.dealIndex)
+                        ? Math.floor(pendingTechCards.dealIndex)
+                        : currentTechCardDealCount + 1;
+
+                    if (dealIndex <= currentTechCardDealCount) {
+                        validationError = 'Pending tech cards deal index is not ahead for client id ' + clientId;
+                        return;
+                    }
+
+                    if (hostTechCardDealCount > 0 && dealIndex > hostTechCardDealCount) {
+                        validationError = 'Pending tech cards deal index exceeds host deal count for client id ' + clientId;
+                        return;
+                    }
+
                     var record = _.assign({}, existingRecord, {
                         playerId: targetClient.id,
                         playerName: targetClient.name || existingRecord.playerName,
                         pendingTechCards: {
                             star: pendingTechCards.star,
                             cards: pendingTechCards.cards,
+                            dealIndex: dealIndex,
                             updatedAt: pendingTechCards.updatedAt || Date.now()
                         },
                         updatedAt: Date.now()
@@ -1130,6 +1292,7 @@ function GWCampaignModel(creator) {
 
                 _.forEach(updates, function(update) {
                     self.upsertCoopPlayerInventoryData(update.record);
+                    delete self.pendingTechCatchupRequestByClientId[update.client.id];
                 });
 
                 self.lastSnapshotSeq += 1;
@@ -1257,9 +1420,15 @@ function GWCampaignModel(creator) {
                 }
 
                 var updatedAt = Date.now();
+                var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
+                var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord, hostTechCardDealCount);
+                var dealIndex = _.isNumber(pendingTechCards.dealIndex)
+                    ? Math.floor(pendingTechCards.dealIndex)
+                    : currentTechCardDealCount + 1;
                 var record = _.assign({}, _.cloneDeep(existingRecord), {
                     playerId: msg.client.id,
                     playerName: msg.client.name || existingRecord.playerName,
+                    techCardDealCount: Math.max(currentTechCardDealCount, dealIndex),
                     updatedAt: updatedAt
                 });
                 if (selectedCard) {
@@ -1275,14 +1444,18 @@ function GWCampaignModel(creator) {
                 self.lastSnapshotSeq += 1;
                 self.lastSnapshot.seq = self.lastSnapshotSeq;
 
-                self.broadcastCoopPlayerTechCardChoice(msg.client, payload.star, selectedCardIndex, updatedAt);
-                self.setClientLoading(msg.client, false, '');
+                self.broadcastCoopPlayerTechCardChoice(msg.client, payload.star, selectedCardIndex, updatedAt, dealIndex, record.techCardDealCount);
+                delete self.pendingTechCatchupRequestByClientId[msg.client.id];
+                if (!self.requestHostCoopPlayerTechCatchupIfNeeded(msg.client, 'tech_choice')) {
+                    self.setClientLoading(msg.client, false, '');
+                }
 
                 server.respond(msg).succeed({ updated_at: updatedAt });
             },
             gw_campaign_snapshot: function(msg) {
-                if (msg.client.id !== self.creatorId)
+                if (msg.client.id !== self.creatorId) {
                     return server.respond(msg).fail('Only host can publish campaign snapshot');
+                }
 
                 self.lastSnapshotSeq += 1;
                 self.lastSnapshot = {
@@ -1295,12 +1468,14 @@ function GWCampaignModel(creator) {
                 self.lastSnapshotStale = false;
 
                 self.updateControl();
+                self.requestAllHostCoopPlayerTechCatchups('snapshot_accepted');
                 console.log('[GW COOP] gw_campaign_snapshot accepted seq=' + self.lastSnapshotSeq + ' from host');
 
                 // Relay to every connected peer except host.
                 _.forEach(self.getConnectedClients(), function(client) {
-                    if (client.id !== self.creatorId)
+                    if (client.id !== self.creatorId) {
                         self.sendSnapshotToClient(client, 'host_push');
+                    }
                 });
 
                 server.respond(msg).succeed({ seq: self.lastSnapshotSeq });

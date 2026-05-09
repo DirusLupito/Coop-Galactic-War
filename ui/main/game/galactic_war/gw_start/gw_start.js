@@ -643,6 +643,7 @@ $(document).ready(function() {
                         commander: self.selectedCommander(),
                         loadoutCardId: self.activeStartCard().id(),
                         inventory: game.inventory().save(),
+                        techCardDealCount: 0,
                         updatedAt: _.now()
                     });
                 }
