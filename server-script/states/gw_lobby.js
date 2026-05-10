@@ -486,16 +486,93 @@ function LobbyModel(creator, launchContext) {
         });
     };
 
+    var getHumanArmies = function(config) {
+        var humanArmies = [];
+
+        _.forEach((config && config.armies) || [], function(army) {
+            var aiArmy = _.any(army.slots || [], 'ai');
+            if (!aiArmy) {
+                humanArmies.push(army);
+            }
+        });
+
+        return humanArmies;
+    };
+
+    var buildPerPlayerTechTagAssignments = function(config, connectedClients) {
+        var perPlayerTechCards = !!(config && config.per_player_tech_cards);
+        var perPlayerTechTags = config && config.per_player_tech_tags;
+
+        if (!perPlayerTechCards && !(_.isArray(perPlayerTechTags) && perPlayerTechTags.length)) {
+            return undefined;
+        }
+
+        if (!config || !_.isArray(config.armies)) {
+            console.log('[GW COOP] Cannot map per-player tech tag assignments without a valid battle config.');
+            return undefined;
+        }
+
+        if (!_.isArray(connectedClients) || !connectedClients.length) {
+            console.log('[GW COOP] Cannot map per-player tech tag assignments without connected clients.');
+            return undefined;
+        }
+
+        var humanArmies = getHumanArmies(config);
+        if (humanArmies.length < connectedClients.length) {
+            console.log('[GW COOP] Cannot map per-player tech tag assignments. armies=' + humanArmies.length + ' clients=' + connectedClients.length + '.');
+            return undefined;
+        }
+
+        var invalidMapping = false;
+        var tagAssignments = [];
+
+        _.forEach(connectedClients, function(client, index) {
+            var army = humanArmies[index];
+
+            if (!client || _.isUndefined(client.id) || client.id === null) {
+                console.log('[GW COOP] Cannot map per-player tech tag assignment at index ' + index + ' without a client id.');
+                invalidMapping = true;
+                return;
+            }
+
+            if (!army || !_.isString(army.spec_tag) || !army.spec_tag.length) {
+                console.log('[GW COOP] Cannot map per-player tech tag assignment for ' + client.name + ' without a spec tag.');
+                invalidMapping = true;
+                return;
+            }
+
+            tagAssignments.push({
+                tag: army.spec_tag,
+                client_id: client.id,
+                client_name: client.name
+            });
+        });
+
+        if (invalidMapping) {
+            return undefined;
+        }
+
+        return tagAssignments;
+    };
+
     self.sendGWConfigToClient = function(client) {
         var config = self.config();
         if (!config || !config.files)
             return;
 
+        var connectedClients = self.getConnectedClientsInPlayerOrder();
+        var perPlayerTechTagAssignments = buildPerPlayerTechTagAssignments(config, connectedClients);
+        if (perPlayerTechTagAssignments) {
+            config.per_player_tech_tag_assignments = perPlayerTechTagAssignments;
+        }
+        else {
+            delete config.per_player_tech_tag_assignments;
+        }
+
         var getClientUnitSpecTag = function(targetClient) {
             if (!targetClient || !targetClient.id)
                 return '.player';
 
-            var connectedClients = self.getConnectedClientsInPlayerOrder();
             var clientIndex = _.findIndex(connectedClients, function(connectedClient) {
                 return connectedClient.id === targetClient.id;
             });
@@ -503,13 +580,7 @@ function LobbyModel(creator, launchContext) {
             if (clientIndex < 0)
                 return '.player';
 
-            var humanArmies = [];
-            _.forEach(config.armies || [], function(army) {
-                var aiArmy = _.any(army.slots || [], 'ai');
-                if (!aiArmy)
-                    humanArmies.push(army);
-            });
-
+            var humanArmies = getHumanArmies(config);
             var army = humanArmies[clientIndex];
             if (army && _.isString(army.spec_tag) && army.spec_tag.length)
                 return army.spec_tag;
@@ -525,7 +596,8 @@ function LobbyModel(creator, launchContext) {
                 message_type: 'gw_config',
                 payload: {
                     files: config.files,
-                    unit_spec_tag: getClientUnitSpecTag(targetClient)
+                    unit_spec_tag: getClientUnitSpecTag(targetClient),
+                    per_player_tech_tag_assignments: config.per_player_tech_tag_assignments
                 }
             });
         };
@@ -618,6 +690,14 @@ function LobbyModel(creator, launchContext) {
         }
 
         var players = {};
+        var perPlayerTechTagAssignments = buildPerPlayerTechTagAssignments(config, connectedClients);
+        if (perPlayerTechTagAssignments) {
+            config.per_player_tech_tag_assignments = perPlayerTechTagAssignments;
+        }
+        else {
+            delete config.per_player_tech_tag_assignments;
+        }
+
         // Map connected humans into human slots,
         // then assign them to the players array.
         _.forEach(humanSlots, function(entry, index) {

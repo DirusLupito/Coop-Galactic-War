@@ -1,4 +1,4 @@
-﻿// !LOCNS:galactic_war
+// !LOCNS:galactic_war
 var model;
 
 $(document).ready(function() {
@@ -347,7 +347,7 @@ $(document).ready(function() {
         return { units: _.uniq(units) };
     };
 
-    var buildLocalClientOverlayFiles = function(sharedFiles) {
+    var buildLocalClientOverlayFiles = function(sharedFiles, perPlayerTechTagAssignments) {
         var done = $.Deferred();
         var taggedUnitLists = discoverTaggedUnitLists(sharedFiles);
 
@@ -366,6 +366,27 @@ $(document).ready(function() {
             });
 
             return tagDone.promise();
+        };
+
+        var getInventoryMods = function(inventory) {
+            if (inventory && _.isFunction(inventory.mods)) {
+                return inventory.mods();
+            }
+
+            return inventory && inventory.mods;
+        };
+
+        var getPerPlayerTechTagAssignment = function(tag) {
+            var matches = _.filter(perPlayerTechTagAssignments || [], function(assignment) {
+                return assignment && assignment.tag === tag;
+            });
+
+            if (matches.length !== 1) {
+                console.log('[GW COOP] gw_lobby cannot regenerate local overlay for ' + tag + '; expected one tag assignment, found ' + matches.length + '.');
+                return undefined;
+            }
+
+            return matches[0];
         };
 
         console.log('[GW COOP] gw_lobby discovered local overlay unit tags ' + JSON.stringify(summarizeTaggedUnitLists(taggedUnitLists)));
@@ -402,19 +423,57 @@ $(document).ready(function() {
                 $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
                     var aiUnitMap = parse(aiMapGet[0]);
                     var aiX1UnitMap = parse(aiX1MapGet[0]);
-                    var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, '.player');
-                    var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, '.player') : {};
 
                     var filesToProcess = [];
 
-                    var playerFileGen = $.Deferred();
-                    filesToProcess.push(playerFileGen);
+                    var generateInventoryOverlayFiles = function(units, mods, tag) {
+                        var overlayDone = $.Deferred();
+
+                        if (!_.isString(tag) || !tag.length || !_.isArray(units) || !_.isArray(mods)) {
+                            overlayDone.resolve({});
+                            return overlayDone.promise();
+                        }
+
+                        var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, tag);
+                        var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, tag) : {};
+
+                        generateTaggedFiles(GW, units, tag).then(function(playerSpecFiles) {
+                            var playerFilesClassic = {};
+                            var playerFilesX1 = {};
+
+                            playerFilesClassic['/pa/ai/unit_maps/ai_unit_map.json' + tag] = playerAIUnitMap;
+                            if (titans) {
+                                playerFilesX1['/pa/ai/unit_maps/ai_unit_map_x1.json' + tag] = playerX1AIUnitMap;
+                            }
+
+                            var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1, playerSpecFiles);
+
+                            try {
+                                GW.specs.modSpecs(playerFiles, mods, tag);
+                            } catch (e) {
+                                var errorText = e && (e.stack || e.message || e.toString && e.toString());
+                                console.log('[GW COOP] gw_lobby local overlay modSpecs failed tag=' + tag
+                                    + ' error=' + (errorText || JSON.stringify(e))
+                                    + ' modCount=' + mods.length
+                                    + ' playerFileCount=' + _.keys(playerFiles).length
+                                    + ' mods=' + JSON.stringify(mods));
+                                overlayDone.resolve(playerFiles);
+                                return;
+                            }
+
+                            overlayDone.resolve(playerFiles);
+                        }, function() {
+                            overlayDone.resolve({});
+                        });
+
+                        return overlayDone.promise();
+                    };
 
                     _.forEach(taggedUnitLists, function(taggedList) {
-                        if (taggedList.tag === '.player')
+                        if (taggedList.tag === '.player') {
                             return;
+                        }
                         if (isPerPlayerTechTag(taggedList.tag)) {
-                            console.log('[GW COOP] gw_lobby preserving generated per-player tech tag ' + taggedList.tag + ' during local overlay');
                             return;
                         }
 
@@ -423,26 +482,41 @@ $(document).ready(function() {
 
                     var sharedPlayerUnitList = findTaggedUnitList(taggedUnitLists, '.player');
                     var playerUnits = sharedPlayerUnitList ? sharedPlayerUnitList.units : inventory.units();
+                    filesToProcess.push(generateInventoryOverlayFiles(playerUnits, inventory.mods(), '.player'));
 
-                    generateTaggedFiles(GW, playerUnits, '.player').then(function(playerSpecFiles) {
-                        var playerFilesClassic = _.assign({ '/pa/ai/unit_maps/ai_unit_map.json.player': playerAIUnitMap }, playerSpecFiles);
-                        var playerFilesX1 = titans ? _.assign({ '/pa/ai/unit_maps/ai_unit_map_x1.json.player': playerX1AIUnitMap }, playerSpecFiles) : {};
-                        var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1);
-
-                        try {
-                            GW.specs.modSpecs(playerFiles, inventory.mods(), '.player');
-                        } catch (e) {
-                            var errorText = e && (e.stack || e.message || e.toString && e.toString());
-                            console.log('[GW COOP] gw_lobby local overlay modSpecs failed error=' + (errorText || JSON.stringify(e))
-                                + ' modCount=' + inventory.mods().length
-                                + ' playerFileCount=' + _.keys(playerFiles).length
-                                + ' mods=' + JSON.stringify(inventory.mods()));
-                            playerFileGen.resolve(playerFiles);
+                    _.forEach(taggedUnitLists, function(taggedList) {
+                        if (!isPerPlayerTechTag(taggedList.tag)) {
                             return;
                         }
-                        playerFileGen.resolve(playerFiles);
-                    }, function() {
-                        playerFileGen.resolve({});
+
+                        var tagAssignment = getPerPlayerTechTagAssignment(taggedList.tag);
+                        if (!tagAssignment) {
+                            return;
+                        }
+
+                        if (!_.isFunction(game.findCoopPlayerInventoryData)) {
+                            console.log('[GW COOP] gw_lobby cannot regenerate local overlay for ' + taggedList.tag + '; game has no inventory lookup.');
+                            return;
+                        }
+
+                        var record = game.findCoopPlayerInventoryData({
+                            id: tagAssignment.client_id,
+                            name: tagAssignment.client_name
+                        });
+
+                        if (!record || !record.inventory) {
+                            console.log('[GW COOP] gw_lobby cannot regenerate local overlay for ' + taggedList.tag + '; missing inventory data for ' + tagAssignment.client_name + '.');
+                            return;
+                        }
+
+                        var recordMods = getInventoryMods(record.inventory);
+                        if (!_.isArray(recordMods)) {
+                            console.log('[GW COOP] gw_lobby cannot regenerate local overlay for ' + taggedList.tag + '; invalid inventory mods for ' + tagAssignment.client_name + '.');
+                            return;
+                        }
+
+                        console.log('[GW COOP] gw_lobby generating local per-player overlay for tag ' + taggedList.tag);
+                        filesToProcess.push(generateInventoryOverlayFiles(taggedList.units, recordMods, taggedList.tag));
                     });
 
                     $.when.apply($, filesToProcess).then(function() {
@@ -492,7 +566,7 @@ $(document).ready(function() {
         if (!payload.files[UNIT_LIST_PATH])
             payload.files[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(payload.files);
 
-        buildLocalClientOverlayFiles(payload.files).always(function(localOverlayFiles) {
+        buildLocalClientOverlayFiles(payload.files, payload.per_player_tech_tag_assignments).always(function(localOverlayFiles) {
             var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
             console.log('[GW COOP] gw_lobby merging local overlay files', localOverlayFiles, mergedFiles);
 

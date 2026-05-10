@@ -52,12 +52,12 @@ function debug_log(object) {
         console.log(JSON.stringify(object, null, '\t'));
 }
 
-function getReconnectReplayFiles() {
+function getReconnectReplayConfig() {
     var fullReplayConfig = server.getFullReplayConfig && server.getFullReplayConfig();
     if (!fullReplayConfig || !fullReplayConfig.files)
         return undefined;
 
-    return fullReplayConfig.files;
+    return fullReplayConfig;
 }
 
 function getReconnectUnitSpecTag(client) {
@@ -80,16 +80,17 @@ function getReconnectUnitSpecTag(client) {
 }
 
 function sendReconnectMemoryFilesToClient(client, reason) {
-    var reconnectReplayFiles = getReconnectReplayFiles();
+    var reconnectReplayConfig = getReconnectReplayConfig();
 
-    if (!reconnectReplayFiles)
+    if (!reconnectReplayConfig)
         return false;
 
     client.message({
         message_type: 'memory_files',
         payload: {
-            files: reconnectReplayFiles,
+            files: reconnectReplayConfig.files,
             unit_spec_tag: getReconnectUnitSpecTag(client),
+            per_player_tech_tag_assignments: reconnectReplayConfig.per_player_tech_tag_assignments,
             gw_campaign_active: isGwCampaignCoopMatch()
         }
     });
