@@ -55,6 +55,11 @@ var startCards = [
 
 var baseNeutralStars = 2;
 
+// ===========================================
+// Controls the difficulty scaling of the
+// AI in co-op based on the number of players.
+// ===========================================
+
 // Controls the AI's economic bonus applied for every extra player beyond the host.
 // So if there are 2 players, the AI gets a AI_ECON_PER_PLAYER% econ bonus, 
 // if there are 5 players, the AI gets a 4 * AI_ECON_PER_PLAYER% econ bonus, and so on.
@@ -70,18 +75,33 @@ var AI_ADDITIONAL_PLAYERS_FOR_MINION = 2;
 
 var AI_EXTRA_MINIONS_FROM_COOP_SCALING = 1;
 
-// Scales the number of minions added based on the number of players 
-// by the relative distance of the system to the rim.
-// So if the additional number of AIs is 2 according to the above co-op scaling constants, 
-// and the system is halfway across the galaxy, and AI_EXTRA_MINION_DISTANCE_SCALING is 1, 
-// the AI gets 1 additional distance-based minion.
-// If AI_EXTRA_MINION_DISTANCE_SCALING is 2 instead, 
-// that same system gets 2 additional distance-based minions.
-// At the furthest distance, this would instead be 2 or 4 additional minions respectively.
-var AI_EXTRA_MINION_DISTANCE_SCALING = 2;
+// Controls how frequently the number of minions increases based on distance.
+// For every AI_EXTRA_MINION_DISTANCE_INTERVAL jumps from the player's starting
+// system, the AI gets an additional
+//
+// (coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION * AI_EXTRA_MINIONS_FROM_COOP_SCALING
+//
+// number of minions.
+var AI_EXTRA_MINION_DISTANCE_INTERVAL = 2;
 
 // Maximum number of additional minions the AI can get from extra players.
 var MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING = 50;
+
+// =====================================
+// Controls the extra AI bonuses applied
+// if per-player tech cards are enabled.
+// =====================================
+
+// Applies a multiplier TO the AI_ECON_PER_PLAYER * (coopPlayers - 1) econ bonus
+// if per-player tech cards are enabled. So if the multiplier is 1.5, and AI_ECON_PER_PLAYER is 0.2,
+// there are 3 players, the AI already gets a 2 * 0.2 = 0.4 econ bonus.
+// With this multiplier, that bonus would instead be 0.4 * 1.5 = 0.6.
+var PER_PLAYER_TECH_CARD_ECON_SCALING = 1.5;
+
+// Applies a multiplier TO the number of additional minions the AI gets from co-op scaling if per-player tech cards are enabled.
+// So if the multiplier is 1.5, and the number of additional minions from co-op scaling is 2,
+// the AI would instead get 2 * 1.5 = 3 additional minions. Rounds up to the nearest whole number.
+var PER_PLAYER_TECH_CARD_MINION_SCALING = 1.5;
 
 
 $(document).ready(function() {
@@ -485,8 +505,14 @@ $(document).ready(function() {
 
                 // We scale the economy rate of AIs to increase the difficulty in coop.
                 var coopPlayers = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
-                console.log("[GW COOP] coop players for gw generation: " + coopPlayers);
-                var aiEconPlayerScaling = Math.min(1 + (Math.max(0, coopPlayers - 1) * AI_ECON_PER_PLAYER), MAX_AI_ECON_PLAYER_SCALING);
+                var perPlayerTechCards = game.perPlayerTechCards();
+                console.log("[GW COOP] coop players for gw generation: " + coopPlayers + ", per-player tech cards: " + perPlayerTechCards);
+
+                var aiEconPlayerBonus = Math.max(0, coopPlayers - 1) * AI_ECON_PER_PLAYER;
+                if (perPlayerTechCards) {
+                    aiEconPlayerBonus *= PER_PLAYER_TECH_CARD_ECON_SCALING;
+                }
+                var aiEconPlayerScaling = Math.min(1 + aiEconPlayerBonus, MAX_AI_ECON_PLAYER_SCALING);
 
                 var setAIData = function(ai, dist, isBoss) {
                     //console.log("AI DIFF START: " + ai + " dist: " + dist + " boss: " + isBoss);
@@ -562,13 +588,17 @@ $(document).ready(function() {
 
                         // Flat bonus applied to all AI systems based on the number of coop players.
                         var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
-                        var distRatio = maxDist > 0 ? (dist / maxDist) : 0;
 
-                        // Additional bonus based on the distance of the system from the player's start.
-                        numMinionsToAdd += Math.floor(numMinionsToAdd * distRatio * AI_EXTRA_MINION_DISTANCE_SCALING);
+                        // Additional bonus based on the absolute number of jumps from the player's start.
+                        numMinionsToAdd += Math.floor(dist / AI_EXTRA_MINION_DISTANCE_INTERVAL) * numMinionsToAdd;
+
+                        if (perPlayerTechCards) {
+                            numMinionsToAdd = Math.ceil(numMinionsToAdd * PER_PLAYER_TECH_CARD_MINION_SCALING);
+                        }
+
                         numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
                         numMinions += numMinionsToAdd;
-                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist);
+                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist + ", coop bonus: " + numMinionsToAdd);
 
                         if (numMinions > 0) {
 
