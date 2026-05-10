@@ -640,7 +640,9 @@ $(document).ready(function() {
                         }
                     } else {
                         star.system().display_name = ai.name; /* display name overrides name even after the ai dies */
-                        star.system().description = ai.description;
+                        if (!_.isUndefined(ai.description)) {
+                            star.system().description = ai.description;
+                        }
                     }
                 });
 
