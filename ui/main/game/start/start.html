@@ -200,23 +200,12 @@
 
                     <div id="warnings">
                         <div class="message-warning" style="display: none;" data-bind="visible: showOfflineWarning">
-                            <!-- ko if: $root.localServerDisabledInSettings() -->
                             <div class="title">
                                 <loc>Gameplay Disabled</loc>
                             </div>
                             <div>
                                 <loc>Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].</loc>
                             </div>
-                            <!-- /ko -->
-
-                            <!-- ko ifnot: $root.localServerDisabledInSettings() -->
-                            <div class="title">
-                                <loc>Gameplay Unavailable</loc>
-                            </div>
-                            <div>
-                                <loc>Your system does not meet the requirements for offline play. Please sign in to play on PA servers, or in [strong]Settings[/strong], manually set local server to [strong]On[/strong].</loc>
-                            </div>
-                            <!-- /ko -->
                         </div>
                     </div>
 
@@ -2282,41 +2271,6 @@
         </div>
         <!-- /.modal -->
 
-        <!-- OFFLINE INITIALLY DISABLED MODAL -->
-        <div class="modal fade" id="offlineInitiallyDisabled" tabindex="-1" role="dialog" aria-labelledby="offlineInitiallyDisabledLabel" aria-hidden="true" data-show="false">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="btn_win btn_win_close" type="button" data-dismiss="modal" aria-hidden="true"></div>
-                    <div class="modal-header">
-                        <div class="modal-title warning" id="offlineInitiallyDisabledLabel">
-                            <loc>Offline Play Disabled</loc>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            <loc>Your machine does not meet the recommended system requirements for offline play &mdash; for offline mode we recommend at least 8 gigabytes of RAM and a Quad Core processor.</loc>
-                        </p>
-                        <p>
-                            <loc>If you ignore this recommendation by enabling offline play, you may experience degraded performance.</loc>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn_std" data-bind="click: openOfflineUnavailableMoreInfo, click_sound: 'default', rollover_sound: 'default'">
-                            <loc>More Info</loc>
-                        </button>
-                        <button class="btn_std" data-bind="click: enableOfflinePlay, click_sound: 'default', rollover_sound: 'default'">
-                            <loc>Enable Offline Play</loc>
-                        </button>
-                        <button class="btn_std" data-dismiss="modal" data-bind="click_sound: 'default', rollover_sound: 'default'">
-                            <loc>Close</loc>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
 
         <!-- GRAPHICS DRIVER CRASH MODAL -->
         <div class="modal fade" id="graphicsDriverCrash" tabindex="-1" role="dialog" aria-labelledby="graphicsDriverCrashLabel" aria-hidden="true" data-show="false">

@@ -1,0 +1,11 @@
+.coop-loadout-pane #new-game-left {
+    width: 300px;
+}
+
+.coop-loadout-pane #loadouts {
+    width: calc(100% - 300px);
+}
+
+.div_commit_secondary_options {
+    width: 300px;
+}

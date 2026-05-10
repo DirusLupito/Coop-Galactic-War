@@ -916,11 +916,11 @@ $(document).ready(function () {
                 }
                 catch (e) {
                 }
-                url = 'coui://ui/main/game/gw_campaign_loading/gw_campaign_loading.html?target=' + encodeURIComponent(campaignTarget);
+                url = 'coui://ui/main/game/galactic_war/gw_campaign_loading/gw_campaign_loading.html?target=' + encodeURIComponent(campaignTarget);
             }
         }
         else if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
-            var stagingUrl = 'coui://ui/main/game/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
+            var stagingUrl = 'coui://ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
 
             url = stagingUrl;
         }

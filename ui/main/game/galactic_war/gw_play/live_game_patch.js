@@ -8,7 +8,7 @@
         var saveGame = function(name) { }; /* replaced after gw game has been loaded. */
         var exitToPlay = 'coui://ui/main/game/galactic_war/gw_play/gw_play.html';
         var exitToStart = 'coui://ui/main/game/galactic_war/gw_start/gw_start.html';
-        var restartLoadingUrl = 'coui://ui/main/game/gw_campaign_restart_loading/gw_campaign_restart_loading.html';
+        var restartLoadingUrl = 'coui://ui/main/game/galactic_war/gw_campaign_restart_loading/gw_campaign_restart_loading.html';
         var exitDestination = ko.observable(exitToPlay);
 
         // Session/local state used for the co-op GW "Continue War" restart flow.
@@ -19,7 +19,6 @@
         var gwCampaignRestartPending = ko.observable(false).extend({ local: 'gw_campaign_restart_pending' });
         var gwCampaignRestartContext = ko.observable().extend({ local: 'gw_campaign_restart_context' });
         var reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
-        var useLocalServer = ko.observable().extend({ session: 'use_local_server' });
         var gameContent = ko.observable().extend({ session: 'game_content' });
         var connectionAttempts = ko.observable().extend({ session: 'connection_attempts' });
         var connectionRetryDelaySeconds = ko.observable().extend({ session: 'connection_retry_delay_seconds' });
@@ -42,14 +41,25 @@
             var settings = _.cloneDeep(clientState.gw_campaign_settings || {});
             var access = _.cloneDeep(clientState.gw_campaign_access || {});
             var reconnectInfo = reconnectToGameInfo() || {};
+            var perPlayerTechCards = false;
+            var sharedControl = true;
+
+            if (_.has(settings, 'per_player_tech_cards'))
+                perPlayerTechCards = !!settings.per_player_tech_cards;
+
+            if (_.has(settings, 'shared_control'))
+                sharedControl = !!settings.shared_control;
+
+            if (perPlayerTechCards)
+                sharedControl = false;
 
             return {
                 host_id: clientState.gw_campaign_host_id,
                 settings: settings,
                 access: access,
-                shared_control: _.has(settings, 'shared_control') ? !!settings.shared_control : true,
+                per_player_tech_cards: perPlayerTechCards,
+                shared_control: sharedControl,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
-                use_local_server: !!useLocalServer(),
                 mods: reconnectInfo.mods || []
             };
         };

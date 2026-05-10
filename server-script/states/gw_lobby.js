@@ -26,12 +26,6 @@ var getGWMaxPlayers = function() {
 };
 var MAX_GW_PLAYERS = getGWMaxPlayers();
 
-// Controls the range of color variation for player in unshared coop sessions.
-// Each of the R, G, and B color channels can vary from the host's color 
-// (determined by which faction the player belongs to) by at most PLAYER_COLOR_VARIATION_RANGE
-// in either the positive or negative direction.
-var PLAYER_COLOR_VARIATION_RANGE = 35;
-
 var debugging = false;
 
 function debug_log(object) {
@@ -300,6 +294,7 @@ function LobbyModel(creator, launchContext) {
 
         self.campaignActive = !!config.gw_campaign_active;
         self.isSingleplayerGW = !self.campaignActive;
+        self.changeControl({ gw_campaign_active: self.campaignActive });
 
         // Keep beacon identity aligned if the host provided runtime lobby settings.
         if (config.gw_campaign_settings) {
@@ -323,6 +318,7 @@ function LobbyModel(creator, launchContext) {
 
     self.control = ko.observable({
         has_config: false,
+        gw_campaign_active: self.campaignActive,
         starting: false,
         system_ready: false,
         sim_ready: false
@@ -461,6 +457,16 @@ function LobbyModel(creator, launchContext) {
         self.control(_.assign({}, self.control(), updateFlags));
     };
 
+    self.getConnectedClientsInPlayerOrder = function() {
+        var connectedClients = _.filter(server.clients, function(client) {
+            return client.connected;
+        });
+
+        return _.sortBy(connectedClients, function(client) {
+            return client.id === self.creator ? -1 : 0;
+        });
+    };
+
     var getAIName = (function () {
 
         var ai_names = _.shuffle(require('ai_names_table').data); /* shuffle returns a new collection */
@@ -480,105 +486,73 @@ function LobbyModel(creator, launchContext) {
         });
     };
 
-    // In the following code, a color is essentially a type of array containing three integers
-    // (R, G, B) which must be in the range 0-255.
+    var getHumanArmies = function(config) {
+        var humanArmies = [];
 
-    var clampColorChannel = function(value) {
-        return Math.max(0, Math.min(255, Math.round(value)));
-    };
-
-    var randomizeColorNearFactionColor = function(color) {
-        // For every item in the color array, we map it to a new value within 
-        // the variation range [color[i] - PLAYER_COLOR_VARIATION_RANGE, color[i] + PLAYER_COLOR_VARIATION_RANGE]
-        return _.map(color, function(channel) {
-            // Generate our offset in the range [-PLAYER_COLOR_VARIATION_RANGE, PLAYER_COLOR_VARIATION_RANGE]
-            var offset = Math.floor(Math.random() * ((PLAYER_COLOR_VARIATION_RANGE * 2) + 1)) - PLAYER_COLOR_VARIATION_RANGE;
-            return clampColorChannel(channel + offset);
+        _.forEach((config && config.armies) || [], function(army) {
+            var aiArmy = _.any(army.slots || [], 'ai');
+            if (!aiArmy) {
+                humanArmies.push(army);
+            }
         });
+
+        return humanArmies;
     };
 
-    var getColorPairForPlayerArmy = function(index, factionColor) {
-        // Host always gets the base faction color.
-        if (index === 0)
-            return _.cloneDeep(factionColor);
+    var buildPerPlayerTechTagAssignments = function(config, connectedClients) {
+        var perPlayerTechCards = !!(config && config.per_player_tech_cards);
+        var perPlayerTechTags = config && config.per_player_tech_tags;
 
-        return [
-            randomizeColorNearFactionColor(factionColor[0]),
-            randomizeColorNearFactionColor(factionColor[1])
-        ];
-    };
+        if (!perPlayerTechCards && !(_.isArray(perPlayerTechTags) && perPlayerTechTags.length)) {
+            return undefined;
+        }
 
-    var armyHasAI = function(army) {
-        return !!(army && _.isArray(army.slots) && _.any(army.slots, 'ai'));
-    };
-
-    var normalizeHumanArmiesForSharedControl = function(config, connectedClients) {
         if (!config || !_.isArray(config.armies)) {
-            return;
+            console.log('[GW COOP] Cannot map per-player tech tag assignments without a valid battle config.');
+            return undefined;
         }
 
-        if (!connectedClients || !_.isArray(connectedClients) || connectedClients.length === 0) {
-            console.log('[GW COOP] No connected clients found.');
-            return;
+        if (!_.isArray(connectedClients) || !connectedClients.length) {
+            console.log('[GW COOP] Cannot map per-player tech tag assignments without connected clients.');
+            return undefined;
         }
 
-        var humanArmyCount = 0;
-
-        // Figure out which army is the one in normal GW that would be marked
-        // as the human player (so we can then use it as a template to create more armies).
-        var humanTemplate;
-        _.forEach(config.armies, function(army) {
-            if (!armyHasAI(army)) {
-                humanTemplate = army;
-                humanArmyCount++;
-            }
-        });
-
-        if (humanArmyCount !== 1) {
-            console.log('[GW COOP] Expected exactly one human army, found ' + humanArmyCount + '.');
-            return;
+        var humanArmies = getHumanArmies(config);
+        if (humanArmies.length < connectedClients.length) {
+            console.log('[GW COOP] Cannot map per-player tech tag assignments. armies=' + humanArmies.length + ' clients=' + connectedClients.length + '.');
+            return undefined;
         }
 
-        if (!humanTemplate) {
-            console.log('[GW COOP] No human player template found.');
-            return;
-        }
+        var invalidMapping = false;
+        var tagAssignments = [];
 
-        var baseSlot = humanTemplate.slots && humanTemplate.slots[0];
+        _.forEach(connectedClients, function(client, index) {
+            var army = humanArmies[index];
 
-        if (!baseSlot) {
-            console.log('[GW COOP] No valid base slot found.');
-            return;
-        }
-
-        // Create a new army for each connected client.
-        var splitArmies = _.map(_.range(0, connectedClients.length), function(index) {
-            var slot = _.cloneDeep(baseSlot);
-            // Slots will be assigned to specific clients later in startGame().
-            delete slot.client;
-            delete slot.ai;
-            delete slot.name;
-
-            return {
-                slots: [slot],
-                // I assume here that humanTemplate.color is both a valid color and the main faction color.
-                color: getColorPairForPlayerArmy(index, humanTemplate.color),
-                econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
-                spec_tag: humanTemplate.spec_tag,
-                alliance_group: humanTemplate.alliance_group
-            };
-        });
-
-        config.armies = _.reduce(config.armies, function(result, army) {
-            if (!armyHasAI(army)) {
-                return result.concat(splitArmies);
+            if (!client || _.isUndefined(client.id) || client.id === null) {
+                console.log('[GW COOP] Cannot map per-player tech tag assignment at index ' + index + ' without a client id.');
+                invalidMapping = true;
+                return;
             }
 
-            result.push(army);
-            return result;
-        }, []);
+            if (!army || !_.isString(army.spec_tag) || !army.spec_tag.length) {
+                console.log('[GW COOP] Cannot map per-player tech tag assignment for ' + client.name + ' without a spec tag.');
+                invalidMapping = true;
+                return;
+            }
 
-        console.log('[GW COOP] - unshared control enabled; split humans into ' + splitArmies.length + ' allied armies');
+            tagAssignments.push({
+                tag: army.spec_tag,
+                client_id: client.id,
+                client_name: client.name
+            });
+        });
+
+        if (invalidMapping) {
+            return undefined;
+        }
+
+        return tagAssignments;
     };
 
     self.sendGWConfigToClient = function(client) {
@@ -586,17 +560,52 @@ function LobbyModel(creator, launchContext) {
         if (!config || !config.files)
             return;
 
-        var message = {
-            message_type: 'gw_config',
-            payload: {
-                files: config.files
-            }
+        var connectedClients = self.getConnectedClientsInPlayerOrder();
+        var perPlayerTechTagAssignments = buildPerPlayerTechTagAssignments(config, connectedClients);
+        if (perPlayerTechTagAssignments) {
+            config.per_player_tech_tag_assignments = perPlayerTechTagAssignments;
+        }
+        else {
+            delete config.per_player_tech_tag_assignments;
+        }
+
+        var getClientUnitSpecTag = function(targetClient) {
+            if (!targetClient || !targetClient.id)
+                return '.player';
+
+            var clientIndex = _.findIndex(connectedClients, function(connectedClient) {
+                return connectedClient.id === targetClient.id;
+            });
+
+            if (clientIndex < 0)
+                return '.player';
+
+            var humanArmies = getHumanArmies(config);
+            var army = humanArmies[clientIndex];
+            if (army && _.isString(army.spec_tag) && army.spec_tag.length)
+                return army.spec_tag;
+
+            return '.player';
+        };
+
+        var sendToClient = function(targetClient) {
+            if (!targetClient || !targetClient.connected)
+                return;
+
+            targetClient.message({
+                message_type: 'gw_config',
+                payload: {
+                    files: config.files,
+                    unit_spec_tag: getClientUnitSpecTag(targetClient),
+                    per_player_tech_tag_assignments: config.per_player_tech_tag_assignments
+                }
+            });
         };
 
         if (client && client.connected)
-            client.message(message);
+            sendToClient(client);
         else
-            server.broadcast(message);
+            _.forEach(server.clients, sendToClient);
 
         if (client && client.id)
             self.clientConfigReady[client.id] = false;
@@ -612,65 +621,113 @@ function LobbyModel(creator, launchContext) {
 
     self.startGame = function() {
         var config = self.config();
-        var connectedClients = _.filter(server.clients, function(client) {
-            return client.connected;
-        });
-        var sharedControl = _.has(config, 'shared_control')
-            ? !!config.shared_control
-            : (_.has(self.launchContext, 'shared_control') ? !!self.launchContext.shared_control : true);
+        var connectedClients = self.getConnectedClientsInPlayerOrder();
 
-        if (!sharedControl)
-            normalizeHumanArmiesForSharedControl(config, connectedClients);
+        if (!config || !_.isArray(config.armies)) {
+            console.log('[GW COOP] Cannot start GW battle without a valid battle config.');
+            return;
+        }
+
+        if (!connectedClients.length) {
+            console.log('[GW COOP] Cannot start GW battle without connected clients.');
+            return;
+        }
+
+        var gwCampaignConfigSettings = config.gw_campaign_settings || {};
+        var sharedControl = true;
+        var perPlayerTechCards = false;
+
+        if (_.has(gwCampaignConfigSettings, 'shared_control'))
+            sharedControl = !!gwCampaignConfigSettings.shared_control;
+
+        if (_.has(self.launchContext, 'shared_control'))
+            sharedControl = !!self.launchContext.shared_control;
+
+        if (_.has(config, 'shared_control'))
+            sharedControl = !!config.shared_control;
+
+        if (_.has(gwCampaignConfigSettings, 'per_player_tech_cards'))
+            perPlayerTechCards = !!gwCampaignConfigSettings.per_player_tech_cards;
+
+        if (_.has(self.launchContext, 'per_player_tech_cards'))
+            perPlayerTechCards = !!self.launchContext.per_player_tech_cards;
+
+        if (_.has(config, 'per_player_tech_cards'))
+            perPlayerTechCards = !!config.per_player_tech_cards;
+
+        if (perPlayerTechCards)
+            sharedControl = false;
 
         // Collect all human-controllable slots from non-AI armies.
         var humanSlots = [];
-        var firstHumanArmy = null;
+        var humanArmyCount = 0;
         _.forEach(config.armies, function(army) {
             var aiArmy = _.any(army.slots, 'ai');
             if (!aiArmy) {
-                if (!firstHumanArmy)
-                    firstHumanArmy = army;
+                humanArmyCount++;
                 _.forEach(army.slots, function(slot) {
-                    if (!slot.ai)
-                        humanSlots.push(slot);
+                    if (!slot.ai) {
+                        // Need each slot to know which army it came from 
+                        // in case we need to reference the army later
+                        // like for figuring out which commander to use.
+                        humanSlots.push({
+                            slot: slot,
+                            army: army
+                        });
+                    }
                 });
             }
         });
 
-        // Ensure enough human slots exist for all connected clients.
-        if (firstHumanArmy && humanSlots.length < connectedClients.length) {
-            var baseSlot = humanSlots[0] || { name: 'Player' };
-            while (humanSlots.length < connectedClients.length) {
-                var extraSlot = _.clone(baseSlot);
-                delete extraSlot.client;
-                delete extraSlot.ai;
-                firstHumanArmy.slots.push(extraSlot);
-                humanSlots.push(extraSlot);
-            }
+        if (self.campaignActive && humanSlots.length < connectedClients.length) {
+            console.log('[GW COOP] Referee prepared too few human slots for connected clients. slots=' + humanSlots.length + ' clients=' + connectedClients.length + '.');
+            return;
         }
 
-        // Map connected humans into human slots.
-        _.forEach(humanSlots, function(slot, index) {
+        if (self.campaignActive && !sharedControl && humanArmyCount < connectedClients.length) {
+            console.log('[GW COOP] Referee prepared too few human armies for unshared control. armies=' + humanArmyCount + ' clients=' + connectedClients.length + '.');
+            return;
+        }
+
+        var players = {};
+        var perPlayerTechTagAssignments = buildPerPlayerTechTagAssignments(config, connectedClients);
+        if (perPlayerTechTagAssignments) {
+            config.per_player_tech_tag_assignments = perPlayerTechTagAssignments;
+        }
+        else {
+            delete config.per_player_tech_tag_assignments;
+        }
+
+        // Map connected humans into human slots,
+        // then assign them to the players array.
+        _.forEach(humanSlots, function(entry, index) {
             if (index < connectedClients.length) {
                 var client = connectedClients[index];
-                slot.client = client;
-                slot.name = client.name || 'Player';
+                entry.slot.client = client;
+                entry.slot.name = client.name || 'Player';
+                var playerConfig = _.clone(config.player);
+                if (entry.slot && entry.slot.player_config)
+                    playerConfig = _.clone(entry.slot.player_config);
+                else if (entry.army && entry.army.player_config)
+                    playerConfig = _.clone(entry.army.player_config);
+                else if (entry.army && _.isString(entry.army.commander))
+                    playerConfig.commander = entry.army.commander;
+
+                players[client.id] = playerConfig;
             }
             else {
-                delete slot.client;
-                delete slot.name;
+                delete entry.slot.client;
+                delete entry.slot.name;
             }
-        });
-
-        // Set up the players array for the landing state
-        var players = {};
-        _.forEach(connectedClients, function(client) {
-            players[client.id] = _.clone(config.player);
         });
 
         console.log('GW - mapped clients to player slots: ' + _.map(connectedClients, function(client) {
             return client.name + ' (' + client.id + ')';
         }).join(', '));
+
+        var gwCampaignSettings = _.cloneDeep(config.gw_campaign_settings || {});
+        gwCampaignSettings.shared_control = sharedControl;
+        gwCampaignSettings.per_player_tech_cards = perPlayerTechCards;
 
         var landingConfig =
         {
@@ -686,9 +743,10 @@ function LobbyModel(creator, launchContext) {
                     // without affecting single-player Galactic War behavior.
                     gw_campaign_active: !!self.campaignActive,
                     gw_campaign_host_id: self.creator,
-                    gw_campaign_settings: _.cloneDeep(config.gw_campaign_settings || {}),
+                    gw_campaign_settings: gwCampaignSettings,
                     gw_campaign_access: _.cloneDeep(self.launchContext.access || {}),
                     shared_control: sharedControl,
+                    per_player_tech_cards: perPlayerTechCards,
                     sandbox: config.sandbox,
                     eradication_mode: !!config.eradication_mode,
                     eradication_mode_sub_commanders: !!config.eradication_mode_sub_commanders,

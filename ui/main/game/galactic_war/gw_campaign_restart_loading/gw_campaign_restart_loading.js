@@ -18,7 +18,7 @@ $(document).ready(function () {
         self.reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
         self.gameContent = ko.observable().extend({ session: 'game_content' });
 
-        self.useLocalServer = ko.observable().extend({ session: 'use_local_server' });
+        self.localHostTransportSetting = ko.observable().extend({ setting: { group: 'server', key: 'local_host_transport' } });
         self.serverType = ko.observable().extend({ session: 'game_server_type' });
         self.serverSetup = ko.observable().extend({ session: 'game_server_setup' });
         self.gwCampaignEnabled = ko.observable().extend({ session: 'gw_campaign_enabled' });
@@ -34,6 +34,18 @@ $(document).ready(function () {
                 clearTimeout(self.redirectHandle);
                 self.redirectHandle = undefined;
             }
+        };
+
+        self.getLocalHostTransport = function() {
+            if (self.localHostTransportSetting()) {
+                return self.localHostTransportSetting();
+            }
+
+            if (api.net && _.isFunction(api.net.effectiveLocalHostTransport)) {
+                return api.net.effectiveLocalHostTransport();
+            }
+
+            return undefined;
         };
 
         self.navToMainMenu = function () {
@@ -92,19 +104,14 @@ $(document).ready(function () {
                     var params = {
                         action: 'start',
                         mode: 'gw_campaign',
-                        content: content
+                        content: content,
+                        local: true,
+                        params: JSON.stringify({
+                            local_host_transport: self.getLocalHostTransport()
+                        })
                     };
 
-                    var useLocal = _.has(context, 'use_local_server')
-                        ? !!context.use_local_server
-                        : !!self.useLocalServer();
-
-                    if (useLocal) {
-                        params.local = true;
-                        self.serverType('local');
-                    }
-                    else
-                        self.serverType('uber');
+                    self.serverType('local');
 
                     console.log('[GW COOP] restart_loading host starting gw_campaign local=' + !!params.local + ' content=' + params.content);
 

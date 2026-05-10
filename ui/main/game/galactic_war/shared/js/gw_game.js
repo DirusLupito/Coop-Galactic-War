@@ -11,7 +11,7 @@ define([
     GWBank,
     GWGamePatches
 ) {
-    var CURRENT_VERSION = 3;
+    var CURRENT_VERSION = 4;
 
     var genId = function()
     {
@@ -44,6 +44,10 @@ define([
         self.coopPlayersSpecified = ko.observable(false);
         self.lockCoopPlayers = ko.observable(false);
         self.sharedByDefault = ko.observable(true);
+        self.perPlayerTechCards = ko.observable(false);
+        self.coopPlayerInventoryData = ko.observableArray([]);
+        self.hostTechCardDealCount = ko.observable(0);
+        self.hostTechCardDealHistory = ko.observableArray([]);
 
         self.serverModIdentifiers = ko.observableArray([]);
 
@@ -115,6 +119,20 @@ define([
             self.coopPlayersSpecified(!!config.coopPlayersSpecified);
             self.lockCoopPlayers(!!config.lockCoopPlayers);
             self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
+            self.perPlayerTechCards(_.has(config, 'perPlayerTechCards') ? !!config.perPlayerTechCards : false);
+            self.coopPlayerInventoryData(_.isArray(config.coopPlayerInventoryData) ? config.coopPlayerInventoryData : []);
+            if (_.isArray(config.hostTechCardDealHistory)) {
+                self.hostTechCardDealHistory(config.hostTechCardDealHistory);
+            }
+            else {
+                self.hostTechCardDealHistory([]);
+            }
+            if (_.isNumber(config.hostTechCardDealCount)) {
+                self.hostTechCardDealCount(Math.max(0, Math.floor(config.hostTechCardDealCount)));
+            }
+            else {
+                self.hostTechCardDealCount(self.hostTechCardDealHistory().length);
+            }
 
             self.serverModIdentifiers(config.serverModIdentifiers || []);
 
@@ -161,10 +179,115 @@ define([
                 coopPlayersSpecified: self.coopPlayersSpecified(),
                 lockCoopPlayers: self.lockCoopPlayers(),
                 sharedByDefault: self.sharedByDefault(),
+                perPlayerTechCards: self.perPlayerTechCards(),
+                coopPlayerInventoryData: self.coopPlayerInventoryData(),
+                hostTechCardDealCount: self.hostTechCardDealCount(),
+                hostTechCardDealHistory: self.hostTechCardDealHistory(),
                 serverModIdentifiers: self.serverModIdentifiers()
             };
 
             return result;
+        },
+
+        recordHostTechCardDeal: function(starIndex, options)
+        {
+            var self = this;
+            var dealOptions = options || {};
+
+            if (!_.isNumber(starIndex)) {
+                console.log('[GW COOP] Cannot record host tech card deal without numeric star index.');
+                return undefined;
+            }
+
+            var nextDealIndex = self.hostTechCardDealCount() + 1;
+            var history = self.hostTechCardDealHistory().slice(0);
+            var entry = {
+                dealIndex: nextDealIndex,
+                star: starIndex,
+                updatedAt: _.now()
+            };
+            if (_.isArray(dealOptions.startLoadoutCards) && dealOptions.startLoadoutCards.length) {
+                entry.startLoadoutCards = _.cloneDeep(dealOptions.startLoadoutCards);
+            }
+
+            history.push(entry);
+            self.hostTechCardDealHistory(history);
+            self.hostTechCardDealCount(nextDealIndex);
+
+            return entry;
+        },
+
+        findCoopPlayerInventoryData: function(player)
+        {
+            var self = this;
+            var records = self.coopPlayerInventoryData();
+            var playerId = player && player.id;
+            var playerName = player && player.name;
+
+            if (!_.isUndefined(playerId) && playerId !== null) {
+                var idMatches = _.filter(records, function(record) {
+                    return record && !_.isUndefined(record.playerId) && String(record.playerId) === String(playerId);
+                });
+
+                if (idMatches.length > 1) {
+                    console.log('[GW COOP] Expected one co-op player inventory data record for id ' + playerId + ', found ' + idMatches.length + '.');
+                    return undefined;
+                }
+
+                if (idMatches.length === 1)
+                    return idMatches[0];
+            }
+
+            if (_.isString(playerName) && playerName.length) {
+                var nameMatches = _.filter(records, function(record) {
+                    return record && record.playerName === playerName;
+                });
+
+                if (nameMatches.length > 1) {
+                    console.log('[GW COOP] Expected one co-op player inventory data record for name ' + playerName + ', found ' + nameMatches.length + '.');
+                    return undefined;
+                }
+
+                if (nameMatches.length === 1)
+                    return nameMatches[0];
+            }
+
+            return undefined;
+        },
+
+        upsertCoopPlayerInventoryData: function(record)
+        {
+            var self = this;
+
+            if (!record || ((_.isUndefined(record.playerId) || record.playerId === null) && !_.isString(record.playerName))) {
+                console.log('[GW COOP] Cannot upsert invalid co-op player inventory data record.');
+                return false;
+            }
+
+            var current = self.coopPlayerInventoryData().slice(0);
+            var existingIndex = -1;
+            var playerId = record.playerId;
+            var playerName = record.playerName;
+
+            if (!_.isUndefined(playerId) && playerId !== null) {
+                existingIndex = _.findIndex(current, function(entry) {
+                    return entry && !_.isUndefined(entry.playerId) && String(entry.playerId) === String(playerId);
+                });
+            }
+
+            if (existingIndex < 0 && _.isString(playerName) && playerName.length) {
+                existingIndex = _.findIndex(current, function(entry) {
+                    return entry && entry.playerName === playerName;
+                });
+            }
+
+            if (existingIndex >= 0)
+                current[existingIndex] = record;
+            else
+                current.push(record);
+
+            self.coopPlayerInventoryData(current);
+            return true;
         },
 
         fight: function()
