@@ -64,12 +64,47 @@ define([], function() {
             });
         },
 
-        // 4 = Add per-player co-op inventory data state.
+        // 4 = Add co-op GW save state.
         // Idk where version 3 is but it wasn't here before
         // I made coop galactic war, so maybe it never needed a patch.
         function(game) {
-            if (!game.coopPlayerInventoryData)
+            if (!_.isFunction(game.coopPlayers)) {
+                game.coopPlayers = ko.observable(1);
+            }
+
+            if (!_.isFunction(game.coopPlayersSpecified)) {
+                game.coopPlayersSpecified = ko.observable(false);
+            }
+
+            if (!_.isFunction(game.lockCoopPlayers)) {
+                game.lockCoopPlayers = ko.observable(false);
+            }
+
+            if (!_.isFunction(game.sharedByDefault)) {
+                game.sharedByDefault = ko.observable(true);
+            }
+
+            if (!_.isFunction(game.perPlayerTechCards)) {
+                game.perPlayerTechCards = ko.observable(false);
+            }
+
+            // As of version 4, we can't have each player
+            // get their own tech cards and be in shared armies.
+            if (game.perPlayerTechCards()) {
+                game.sharedByDefault(false);
+            }
+
+            if (!_.isFunction(game.coopPlayerInventoryData)) {
                 game.coopPlayerInventoryData = ko.observableArray([]);
+            }
+
+            if (!_.isFunction(game.hostTechCardDealHistory)) {
+                game.hostTechCardDealHistory = ko.observableArray([]);
+            }
+
+            if (!_.isFunction(game.hostTechCardDealCount)) {
+                game.hostTechCardDealCount = ko.observable(game.hostTechCardDealHistory().length);
+            }
         },
     ];
 
