@@ -97,6 +97,54 @@ requireGW([
         return payload || {};
     };
 
+    var getCardId = function(card) {
+        if (_.isString(card)) {
+            return card;
+        }
+
+        return card && card.id;
+    };
+
+    var isStartLoadoutCardId = function(cardId) {
+        return _.isString(cardId) && cardId.indexOf('gwc_start') === 0;
+    };
+
+    var isStartLoadoutCard = function(card) {
+        return isStartLoadoutCardId(getCardId(card));
+    };
+
+    var normalizeStartCardIds = function(cards) {
+        var ids = [];
+        var seen = {};
+
+        _.forEach(cards || [], function(card) {
+            var id = getCardId(card);
+            if (!isStartLoadoutCardId(id) || seen[id]) {
+                return;
+            }
+
+            seen[id] = true;
+            ids.push(id);
+        });
+
+        return ids;
+    };
+
+    var filterStartLoadoutCards = function(cards) {
+        return _.filter(cards || [], function(card) {
+            return isStartLoadoutCard(card);
+        });
+    };
+
+    var buildPendingStartLoadoutCard = function(card) {
+        var result = _.isString(card) ? { id: card } : _.cloneDeep(card);
+        if (result && isStartLoadoutCardId(result.id) && _.isUndefined(result.allowOverflow)) {
+            result.allowOverflow = true;
+        }
+
+        return result;
+    };
+
     var isMissingRequiredModsPayload = function(payload) {
         var data = getPayloadObject(payload);
         var reason = extractRejectReason(data) || extractRejectReason(payload);
@@ -1923,6 +1971,77 @@ requireGW([
             return false;
         };
 
+        self.getLocalUnlockedStartCardIds = function(extraCards) {
+            var bankCards = (GW.bank && GW.bank.startCards && GW.bank.startCards()) || [];
+            return normalizeStartCardIds(bankCards.concat(extraCards || []));
+        };
+
+        self.recordHasUnlockedStartCard = function(record, card) {
+            var cardId = getCardId(card);
+            if (!isStartLoadoutCardId(cardId)) {
+                return false;
+            }
+
+            var unlockedStartCardIds = record && _.isArray(record.unlockedStartCardIds) ? record.unlockedStartCardIds : [];
+            return normalizeStartCardIds(unlockedStartCardIds.concat([record && record.loadoutCardId])).indexOf(cardId) !== -1;
+        };
+
+        self.addRecordUnlockedStartCard = function(record, card) {
+            var cardId = getCardId(card);
+            var existingStartCardIds = record && _.isArray(record.unlockedStartCardIds) ? record.unlockedStartCardIds : [];
+            var unlockedStartCardIds = normalizeStartCardIds(existingStartCardIds.concat([record && record.loadoutCardId]));
+            if (!isStartLoadoutCardId(cardId) || unlockedStartCardIds.indexOf(cardId) !== -1) {
+                return unlockedStartCardIds;
+            }
+
+            unlockedStartCardIds.push(cardId);
+            return unlockedStartCardIds;
+        };
+
+        self.reportLocalUnlockedStartCards = function(reason) {
+            if (!self.isCampaignViewer() || !self.gwCampaignActive() || !self.gwCampaignPerPlayerTechCards()) {
+                return false;
+            }
+
+            if (!game || !_.isFunction(game.findCoopPlayerInventoryData)) {
+                console.log('[GW COOP] Cannot report local unlocked loadouts without co-op inventory helpers for ' + (reason || 'unknown') + '.');
+                return false;
+            }
+
+            var record = self.currentCoopPlayerInventoryData && self.currentCoopPlayerInventoryData();
+            if (!record) {
+                console.log('[GW COOP] Cannot report local unlocked loadouts without local co-op inventory record for ' + (reason || 'unknown') + '.');
+                return false;
+            }
+
+            var unlockedStartCardIds = self.getLocalUnlockedStartCardIds([record.loadoutCardId]);
+            var reportKey = [
+                record.playerId,
+                record.playerName,
+                unlockedStartCardIds.join(',')
+            ].join('|');
+
+            if (self.gwCampaignUnlockedStartCardsReportKey === reportKey) {
+                return false;
+            }
+
+            self.gwCampaignUnlockedStartCardsReportKey = reportKey;
+            self.send_message('set_player_unlocked_start_cards', {
+                unlocked_start_card_ids: unlockedStartCardIds,
+                updated_at: _.now()
+            }, function(success, response) {
+                if (!success) {
+                    self.gwCampaignUnlockedStartCardsReportKey = '';
+                    console.log('[GW COOP] set_player_unlocked_start_cards failed response=' + JSON.stringify(response || {}));
+                    return;
+                }
+
+                console.log('[GW COOP] reported local unlocked loadouts count=' + unlockedStartCardIds.length + ' reason=' + (reason || 'unknown'));
+            });
+
+            return true;
+        };
+
         self.currentCoopPendingTechCards = ko.computed(function() {
             var record = self.currentCoopPlayerInventoryData();
             var pendingTechCards = record && record.pendingTechCards;
@@ -2023,6 +2142,7 @@ requireGW([
         });
         self.currentCoopPlayerInventoryData.subscribe(function() {
             self.prepareCoopPlayerInventories();
+            self.reportLocalUnlockedStartCards('inventory_record_changed');
         });
         self.currentCoopPendingTechCards.subscribe(function() {
             self.prepareCoopPlayerInventories();
@@ -2044,6 +2164,7 @@ requireGW([
             }
 
             self.reportGwCampaignLoading(false);
+            self.reportLocalUnlockedStartCards(reason || 'authoritative_state_ready');
         };
 
         self.kickGwCampaignClient = function(slot) {
@@ -3423,6 +3544,7 @@ requireGW([
         self.dealCoopPlayerPendingTechCards = function(starIndex, star, options) {
             var result = $.Deferred();
             var dealOptions = options || {};
+            var startLoadoutCards = filterStartLoadoutCards(dealOptions.startLoadoutCards);
 
             if (!self.gwCampaignActive() || !self.isCampaignHost() || !self.gwCampaignPerPlayerTechCards()) {
                 result.resolve([]);
@@ -3470,10 +3592,22 @@ requireGW([
                     return;
                 }
 
+                var startLoadoutCard = undefined;
+                if (startLoadoutCards.length) {
+                    if (!_.isArray(record.unlockedStartCardIds)) {
+                        console.log('[GW COOP] Co-op player has no unlocked loadout metadata; treating as missing loadouts client=' + client.id + ' name=' + client.name);
+                    }
+
+                    startLoadoutCard = _.find(startLoadoutCards, function(card) {
+                        return !self.recordHasUnlockedStartCard(record, card);
+                    });
+                }
+
                 targets.push({
                     client: client,
                     record: record,
-                    dealIndex: dealIndex
+                    dealIndex: dealIndex,
+                    startLoadoutCard: startLoadoutCard
                 });
             });
 
@@ -3492,6 +3626,21 @@ requireGW([
                 var record = target.record;
                 var job = $.Deferred();
                 jobs.push(job.promise());
+
+                if (target.startLoadoutCard) {
+                    updates.push({
+                        client_id: client.id,
+                        client_name: client.name,
+                        pendingTechCards: {
+                            star: starIndex,
+                            cards: [buildPendingStartLoadoutCard(target.startLoadoutCard)],
+                            dealIndex: target.dealIndex,
+                            updatedAt: _.now()
+                        }
+                    });
+                    job.resolve();
+                    return;
+                }
 
                 var inventory = new GWInventory();
                 inventory.load(_.cloneDeep(record.inventory));
@@ -3601,7 +3750,8 @@ requireGW([
                     name: clientName,
                     role: 'viewer'
                 }],
-                dealIndex: dealIndex
+                dealIndex: dealIndex,
+                startLoadoutCards: entry.startLoadoutCards
             }).then(function() {
                 console.log('[GW COOP] dealt tech catch-up client=' + clientId + ' dealIndex=' + dealIndex);
             }, function(reason) {
@@ -3632,6 +3782,7 @@ requireGW([
             api.audio.playSound('/VO/Computer/gw/board_exploring');
 
             var star = game.galaxy().stars()[game.currentStar()];
+            var startLoadoutCards = filterStartLoadoutCards(star && _.isFunction(star.cardList) ? star.cardList() : []);
 
             var dealStarCards = !game.isTutorial() && dealer.chooseCards({
                     inventory: game.inventory(),
@@ -3660,8 +3811,10 @@ requireGW([
                 }
 
                 var dealEntry = undefined;
-                if (ok && _.isArray(star.cardList()) && star.cardList().length && game && _.isFunction(game.recordHostTechCardDeal)) {
-                    dealEntry = game.recordHostTechCardDeal(game.currentStar());
+                if ((ok || startLoadoutCards.length) && _.isArray(star.cardList()) && star.cardList().length && game && _.isFunction(game.recordHostTechCardDeal)) {
+                    dealEntry = game.recordHostTechCardDeal(game.currentStar(), {
+                        startLoadoutCards: startLoadoutCards
+                    });
                     console.log('[GW COOP] recorded host tech card deal index=' + dealEntry.dealIndex + ' star=' + dealEntry.star);
                 }
 
@@ -3670,7 +3823,8 @@ requireGW([
                 }
 
                 return self.dealCoopPlayerPendingTechCards(game.currentStar(), star, {
-                    dealIndex: dealEntry && dealEntry.dealIndex
+                    dealIndex: dealEntry && dealEntry.dealIndex,
+                    startLoadoutCards: startLoadoutCards
                 });
             });
             $.when(dealStarCards).then(function() {
@@ -3797,20 +3951,30 @@ requireGW([
 
             var nextRecord = _.cloneDeep(record);
             var selectedCard = selectedCardIndex === -1 ? undefined : pendingTechCards.cards[selectedCardIndex];
+            var selectedCardId = getCardId(selectedCard);
+            var selectedStartLoadout = selectedCard && isStartLoadoutCardId(selectedCardId);
             if (selectedCard) {
-                var inventory = new GWInventory();
-                inventory.load(_.cloneDeep(nextRecord.inventory));
-                if (inventory.hasCard(selectedCard.id)) {
-                    result.reject('Duplicate co-op tech choice card=' + selectedCard.id);
-                    return result.promise();
+                if (selectedStartLoadout) {
+                    nextRecord.unlockedStartCardIds = self.addRecordUnlockedStartCard(nextRecord, selectedCard);
+                    if (self.isCampaignViewer() && self.isLocalCoopPlayerInventoryPayload(payload)) {
+                        GW.bank.addStartCard({ id: selectedCardId });
+                    }
                 }
+                else {
+                    var inventory = new GWInventory();
+                    inventory.load(_.cloneDeep(nextRecord.inventory));
+                    if (inventory.hasCard(selectedCard.id)) {
+                        result.reject('Duplicate co-op tech choice card=' + selectedCard.id);
+                        return result.promise();
+                    }
 
-                if (!inventory.canFitCard(selectedCard)) {
-                    result.reject('Co-op tech bank is full for card=' + selectedCard.id);
-                    return result.promise();
+                    if (!inventory.canFitCard(selectedCard)) {
+                        result.reject('Co-op tech bank is full for card=' + selectedCard.id);
+                        return result.promise();
+                    }
+
+                    nextRecord.inventory.cards.push(selectedCard);
                 }
-
-                nextRecord.inventory.cards.push(selectedCard);
             }
 
             var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(record);
@@ -5108,12 +5272,14 @@ requireGW([
                 return;
             }
 
+            var unlockedStartCardIds = _.isArray(inventoryData.unlockedStartCardIds) ? inventoryData.unlockedStartCardIds : [];
             var record = {
                 playerId: payload.client_id,
                 playerName: payload.client_name || inventoryData.playerName,
                 commander: inventoryData.commander,
                 loadoutCardId: loadoutCardId,
                 inventory: inventoryData.inventory,
+                unlockedStartCardIds: normalizeStartCardIds(unlockedStartCardIds.concat([loadoutCardId])),
                 techCardDealCount: _.isNumber(inventoryData.techCardDealCount) ? inventoryData.techCardDealCount : 0,
                 updatedAt: inventoryData.updatedAt || _.now()
             };
@@ -5129,6 +5295,45 @@ requireGW([
                 console.log('[GW COOP] saved co-op player loadout for client=' + payload.client_id);
             }, function(err) {
                 console.error('[GW COOP] failed to save co-op player inventory data', err);
+            });
+        };
+
+        handlers.gw_campaign_player_unlocked_start_cards = function(payload) {
+            if (!payload || !_.isArray(payload.unlocked_start_card_ids)) {
+                console.log('[GW COOP] ignoring invalid co-op player unlocked loadouts payload');
+                return;
+            }
+
+            var saved = model.game();
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+                console.log('[GW COOP] cannot save co-op player unlocked loadouts without game helper');
+                return;
+            }
+
+            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
+            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
+                console.log('[GW COOP] incomplete co-op player unlocked loadouts from client=' + payload.client_id);
+                return;
+            }
+
+            var record = _.assign({}, _.cloneDeep(existingRecord), {
+                playerId: payload.client_id,
+                playerName: payload.client_name || existingRecord.playerName,
+                unlockedStartCardIds: normalizeStartCardIds(payload.unlocked_start_card_ids),
+                updatedAt: payload.updated_at || _.now()
+            });
+
+            if (!saved.upsertCoopPlayerInventoryData(record)) {
+                console.log('[GW COOP] failed to upsert co-op player unlocked loadouts for client=' + payload.client_id);
+                return;
+            }
+
+            model.refreshGwCampaignInventoryModal();
+
+            GW.manifest.saveGame(saved).then(function() {
+                console.log('[GW COOP] saved co-op player unlocked loadouts for client=' + payload.client_id);
+            }, function(err) {
+                console.error('[GW COOP] failed to save co-op player unlocked loadouts', err);
             });
         };
 

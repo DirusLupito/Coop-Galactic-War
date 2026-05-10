@@ -597,6 +597,47 @@ function GWCampaignModel(creator) {
         });
     };
 
+    self.getCardId = function(card) {
+        if (_.isString(card)) {
+            return card;
+        }
+
+        return card && card.id;
+    };
+
+    self.isStartLoadoutCardId = function(cardId) {
+        return _.isString(cardId) && cardId.indexOf('gwc_start') === 0;
+    };
+
+    self.normalizeUnlockedStartCardIds = function(cards) {
+        var ids = [];
+        var seen = {};
+
+        _.forEach(cards || [], function(card) {
+            var id = self.getCardId(card);
+            if (!self.isStartLoadoutCardId(id) || seen[id]) {
+                return;
+            }
+
+            seen[id] = true;
+            ids.push(id);
+        });
+
+        return ids;
+    };
+
+    self.addCoopPlayerUnlockedStartCardId = function(record, card) {
+        var cardId = self.getCardId(card);
+        var existingStartCardIds = record && _.isArray(record.unlockedStartCardIds) ? record.unlockedStartCardIds : [];
+        var unlockedStartCardIds = self.normalizeUnlockedStartCardIds(existingStartCardIds.concat([record && record.loadoutCardId]));
+        if (!self.isStartLoadoutCardId(cardId) || unlockedStartCardIds.indexOf(cardId) !== -1) {
+            return unlockedStartCardIds;
+        }
+
+        unlockedStartCardIds.push(cardId);
+        return unlockedStartCardIds;
+    };
+
     self.broadcastCoopPlayerTechCardDeleted = function(client, cardIndex, updatedAt) {
         server.broadcast({
             message_type: 'gw_campaign_player_tech_card_deleted',
@@ -604,6 +645,18 @@ function GWCampaignModel(creator) {
                 client_id: client.id,
                 client_name: client.name,
                 card_index: cardIndex,
+                updated_at: updatedAt
+            }
+        });
+    };
+
+    self.broadcastCoopPlayerUnlockedStartCards = function(client, unlockedStartCardIds, updatedAt) {
+        server.broadcast({
+            message_type: 'gw_campaign_player_unlocked_start_cards',
+            payload: {
+                client_id: client.id,
+                client_name: client.name,
+                unlocked_start_card_ids: unlockedStartCardIds,
                 updated_at: updatedAt
             }
         });
@@ -1143,12 +1196,14 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Invalid co-op player loadout inventory: missing starting tech banks');
                 }
 
+                var unlockedStartCardIds = _.isArray(payload.unlocked_start_card_ids) ? payload.unlocked_start_card_ids : [];
                 var record = {
                     playerId: msg.client.id,
                     playerName: msg.client.name || payload.player_name,
                     commander: payload.commander,
                     loadoutCardId: payload.loadout_card_id,
                     inventory: payload.inventory,
+                    unlockedStartCardIds: self.normalizeUnlockedStartCardIds(unlockedStartCardIds.concat([payload.loadout_card_id])),
                     techCardDealCount: 0,
                     updatedAt: payload.updated_at || Date.now()
                 };
@@ -1182,6 +1237,50 @@ function GWCampaignModel(creator) {
                 });
 
                 server.respond(msg).succeed();
+            },
+            set_player_unlocked_start_cards: function(msg) {
+                if (msg.client.id === self.creatorId) {
+                    return server.respond(msg).fail('Host does not submit co-op player unlocked loadouts through viewer path');
+                }
+
+                var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
+                var perPlayerTechCardsEnabled = self.perPlayerTechCards || !!(snapshotGame && snapshotGame.perPlayerTechCards);
+                if (!perPlayerTechCardsEnabled) {
+                    return server.respond(msg).fail('Per-player tech cards are not enabled');
+                }
+
+                if (!snapshotGame) {
+                    return server.respond(msg).fail('No campaign snapshot for unlocked loadouts');
+                }
+
+                var payload = msg.payload || {};
+                if (!_.isArray(payload.unlocked_start_card_ids)) {
+                    return server.respond(msg).fail('Invalid unlocked loadout payload');
+                }
+
+                var existingRecord = self.findCoopPlayerInventoryData(msg.client);
+                if (!existingRecord) {
+                    return server.respond(msg).fail('Missing co-op player inventory data for unlocked loadouts');
+                }
+
+                var unlockedStartCardIds = self.normalizeUnlockedStartCardIds(payload.unlocked_start_card_ids);
+                var updatedAt = payload.updated_at || Date.now();
+                var record = _.assign({}, _.cloneDeep(existingRecord), {
+                    playerId: msg.client.id,
+                    playerName: msg.client.name || existingRecord.playerName,
+                    unlockedStartCardIds: unlockedStartCardIds,
+                    updatedAt: updatedAt
+                });
+
+                if (!self.upsertCoopPlayerInventoryData(record)) {
+                    return server.respond(msg).fail('Failed to store co-op player unlocked loadouts');
+                }
+
+                self.lastSnapshotSeq += 1;
+                self.lastSnapshot.seq = self.lastSnapshotSeq;
+
+                self.broadcastCoopPlayerUnlockedStartCards(msg.client, unlockedStartCardIds, updatedAt);
+                server.respond(msg).succeed({ updated_at: updatedAt });
             },
             set_player_pending_tech_cards: function(msg) {
                 if (msg.client.id !== self.creatorId) {
@@ -1413,8 +1512,10 @@ function GWCampaignModel(creator) {
                 }
 
                 var selectedCard = selectedCardIndex === -1 ? undefined : pendingTechCards.cards[selectedCardIndex];
+                var selectedCardId = self.getCardId(selectedCard);
+                var selectedStartLoadout = selectedCard && self.isStartLoadoutCardId(selectedCardId);
                 if (selectedCard) {
-                    if (self.coopInventoryHasCard(existingRecord.inventory, selectedCard.id)) {
+                    if (!selectedStartLoadout && self.coopInventoryHasCard(existingRecord.inventory, selectedCard.id)) {
                         return server.respond(msg).fail('Duplicate co-op tech choice card=' + selectedCard.id);
                     }
                 }
@@ -1432,7 +1533,12 @@ function GWCampaignModel(creator) {
                     updatedAt: updatedAt
                 });
                 if (selectedCard) {
-                    record.inventory.cards.push(selectedCard);
+                    if (selectedStartLoadout) {
+                        record.unlockedStartCardIds = self.addCoopPlayerUnlockedStartCardId(record, selectedCard);
+                    }
+                    else {
+                        record.inventory.cards.push(selectedCard);
+                    }
                 }
                 record.inventory = self.normalizeCoopPlayerInventoryForOperator(record.inventory);
                 delete record.pendingTechCards;

@@ -17,6 +17,31 @@ requireGW([
         var gwCampaignTarget = $.url().param('target') || DEFAULT_TARGET;
         var AUTHORITATIVE_GAME_ID_KEY = 'gw_campaign_authoritative_game_id';
 
+        var getCardId = function(card) {
+            if (_.isString(card)) {
+                return card;
+            }
+
+            return card && card.id;
+        };
+
+        var normalizeStartCardIds = function(cards) {
+            var ids = [];
+            var seen = {};
+
+            _.forEach(cards || [], function(card) {
+                var id = getCardId(card);
+                if (!_.isString(id) || id.indexOf('gwc_start') !== 0 || seen[id]) {
+                    return;
+                }
+
+                seen[id] = true;
+                ids.push(id);
+            });
+
+            return ids;
+        };
+
         function UnknownCardViewModel(cardData) {
             var self = this;
 
@@ -260,12 +285,15 @@ requireGW([
                     var commander = self.selectedCommander();
                     var loadoutCardId = self.activeStartCard().id();
                     self.buildStartingInventory(loadoutCardId, commander, galaxy, star).then(function(savedInventory) {
+                        var unlockedStartCardIds = normalizeStartCardIds((GW.bank.startCards && GW.bank.startCards()) || []);
+                        unlockedStartCardIds = normalizeStartCardIds(unlockedStartCardIds.concat([loadoutCardId]));
                         self.sendMessage('set_player_loadout', {
                             player_id: self.uberId(),
                             player_name: self.displayName(),
                             commander: commander,
                             loadout_card_id: loadoutCardId,
                             inventory: savedInventory,
+                            unlocked_start_card_ids: unlockedStartCardIds,
                             updated_at: _.now()
                         }, function(success, response) {
                             if (!success) {

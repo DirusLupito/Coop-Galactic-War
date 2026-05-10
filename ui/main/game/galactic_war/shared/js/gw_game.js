@@ -189,9 +189,10 @@ define([
             return result;
         },
 
-        recordHostTechCardDeal: function(starIndex)
+        recordHostTechCardDeal: function(starIndex, options)
         {
             var self = this;
+            var dealOptions = options || {};
 
             if (!_.isNumber(starIndex)) {
                 console.log('[GW COOP] Cannot record host tech card deal without numeric star index.');
@@ -205,6 +206,9 @@ define([
                 star: starIndex,
                 updatedAt: _.now()
             };
+            if (_.isArray(dealOptions.startLoadoutCards) && dealOptions.startLoadoutCards.length) {
+                entry.startLoadoutCards = _.cloneDeep(dealOptions.startLoadoutCards);
+            }
 
             history.push(entry);
             self.hostTechCardDealHistory(history);
