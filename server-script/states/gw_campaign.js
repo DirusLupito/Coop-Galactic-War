@@ -7,7 +7,7 @@ var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
 
 var DEFAULT_GW_CAMPAIGN_PLAYERS = 2;
-var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 6;
+var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 12;
 var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
 var MAX_LOBBY_CHAT_HISTORY = 100;
 var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms

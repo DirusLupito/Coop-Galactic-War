@@ -14,7 +14,7 @@ console.log('gw_lobby server script: loaded');
 var DISCONNECT_TIMEOUT = 0.0; // In ms.
 var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms
 var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 60 * 1000; // ms
-var DEFAULT_GW_PLAYERS = 6;
+var DEFAULT_GW_PLAYERS = 12;
 var getGWMaxPlayers = function() {
     var envIndex = env.indexOf('--max-players');
     if (envIndex !== -1) {

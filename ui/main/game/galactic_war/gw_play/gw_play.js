@@ -1208,7 +1208,7 @@ requireGW([
         self.gwCampaignMaxClients = ko.observable(2);
         // gwCampaignMaxClientsLimit is the maximum number of clients that can possibly connect to a campaign session. 
         // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
-        self.gwCampaignMaxClientsLimit = ko.observable(6);
+        self.gwCampaignMaxClientsLimit = ko.observable(12);
         self.gwCampaignMaxClientsLocked = ko.observable(false);
         self.gwCampaignSharedControl = ko.observable(true);
         self.gwCampaignPerPlayerTechCards = ko.observable(false);
@@ -2037,7 +2037,7 @@ requireGW([
             if (!_.isFinite(maxClients))
                 maxClients = 1;
             if (!_.isFinite(limit) || limit < 1)
-                limit = 6;
+                limit = 12;
 
             return maxClients < limit;
         });
