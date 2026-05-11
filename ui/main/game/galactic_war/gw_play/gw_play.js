@@ -73,30 +73,6 @@ requireGW([
         return normalized;
     };
 
-    var extractRejectReason = function(payload) {
-        if (_.isString(payload))
-            return payload;
-
-        if (!payload)
-            return '';
-
-        if (_.isString(payload.reason))
-            return payload.reason;
-        if (_.isString(payload.message))
-            return payload.message;
-        if (_.isString(payload.payload))
-            return payload.payload;
-
-        return '';
-    };
-
-    var getPayloadObject = function(payload) {
-        if (payload && _.isObject(payload.payload))
-            return payload.payload;
-
-        return payload || {};
-    };
-
     var getCardId = function(card) {
         if (_.isString(card)) {
             return card;
@@ -143,132 +119,6 @@ requireGW([
         }
 
         return result;
-    };
-
-    var isMissingRequiredModsPayload = function(payload) {
-        var data = getPayloadObject(payload);
-        var reason = extractRejectReason(data) || extractRejectReason(payload);
-
-        return (_.isArray(data.missing) && data.missing.length > 0)
-            || (_.isArray(data.missing_identifiers) && data.missing_identifiers.length > 0)
-            || (_.isString(reason) && reason.indexOf('Missing required mods') === 0);
-    };
-
-    var getMissingRequiredModLabels = function(payload) {
-        var data = getPayloadObject(payload);
-        var missingIdentifiers = data.missing_identifiers || data.missing || [];
-        var namesById = data.required_names_by_id || {};
-        var labels = [];
-        var seen = {};
-
-        _.forEach(missingIdentifiers, function(identifier) {
-            var normalizedIdentifier = normalizeModIdentifier(identifier);
-            if (!normalizedIdentifier || seen[normalizedIdentifier])
-                return;
-
-            seen[normalizedIdentifier] = true;
-            labels.push(namesById[normalizedIdentifier] || identifier);
-        });
-
-        return labels;
-    };
-
-    var requiredClientModGateVisible = false;
-    var requiredClientModGateAcknowledged = false;
-    var showRequiredClientModGateFromScene = function(payload, sceneName) {
-        if (requiredClientModGateAcknowledged) {
-            console.log('[GW COOP] ignoring duplicate required client mod gate in ' + sceneName + ' after acknowledgement');
-            return;
-        }
-
-        var data = getPayloadObject(payload);
-        var reason = extractRejectReason(data) || extractRejectReason(payload) || 'Missing required mods';
-        var labels = getMissingRequiredModLabels(data);
-        var $gate = $('#required_client_mod_gate');
-        var $list;
-
-        if (!$gate.length) {
-            console.log('[GW COOP] required client mod gate markup missing in ' + sceneName);
-            return;
-        }
-
-        requiredClientModGateVisible = true;
-        $gate.data('reason', reason);
-        $gate.data('sceneName', sceneName);
-        $gate.off('click.requiredClientModGate');
-        $gate.on('click.requiredClientModGate', '.required-client-mod-gate-understand', function() {
-            requiredClientModGateVisible = false;
-            requiredClientModGateAcknowledged = true;
-            $gate.hide();
-            if (_.isFunction(model.send_message)) {
-                model.send_message('required_client_mods_acknowledged', {
-                    proceed: true,
-                    reason: $gate.data('reason'),
-                    scene: $gate.data('sceneName')
-                }, function(success, response) {
-                    console.log('[GW COOP] required_client_mods_acknowledged from ' + $gate.data('sceneName') + ' success=' + !!success + ' response=' + JSON.stringify(response || {}));
-                });
-            }
-        });
-        $gate.on('click.requiredClientModGate', '.required-client-mod-gate-back', function() {
-            requiredClientModGateVisible = false;
-            requiredClientModGateAcknowledged = true;
-            $gate.hide();
-            if (_.isFunction(model.disconnect))
-                model.disconnect();
-        });
-        $list = $gate.find('.required-client-mod-gate-list');
-        $list.empty();
-        _.forEach(labels, function(label) {
-            $('<li></li>').text(label).appendTo($list);
-        });
-        $list.toggle(labels.length > 0);
-        $gate.css('display', 'flex');
-        console.log('[GW COOP] showing required client mod gate in ' + sceneName + ' reason=' + reason + ' missing=' + JSON.stringify(labels));
-    };
-
-    var sendClientModManifestFromScene = function(sceneName) {
-        console.log('[GW COOP] sending client mod manifest from ' + sceneName);
-        requiredClientModGateAcknowledged = false;
-        api.mods.getMounted('client', true).then(function(mountedMods) {
-            var activeIdentifiers = [];
-            var seen = {};
-
-            _.forEach(mountedMods || [], function(mod) {
-                var identifier = normalizeModIdentifier(mod && mod.identifier);
-                if (!identifier || seen[identifier])
-                    return;
-
-                seen[identifier] = true;
-                activeIdentifiers.push(identifier);
-            });
-
-            model.send_message('client_mod_manifest', {
-                active_identifiers: activeIdentifiers
-            }, function(success, response) {
-                var rejectReason = extractRejectReason(response);
-                console.log('[GW COOP] client_mod_manifest from ' + sceneName
-                    + ' success=' + !!success
-                    + ' active=' + JSON.stringify(activeIdentifiers)
-                    + ' response=' + JSON.stringify(response || {}));
-
-                if (isMissingRequiredModsPayload(response))
-                    showRequiredClientModGateFromScene(response, sceneName);
-            });
-        }, function() {
-            console.log('[GW COOP] getMounted(client,true) failed in ' + sceneName + '; sending empty manifest');
-            model.send_message('client_mod_manifest', {
-                active_identifiers: []
-            }, function(success, response) {
-                var rejectReason = extractRejectReason(response);
-                console.log('[GW COOP] empty client_mod_manifest from ' + sceneName
-                    + ' success=' + !!success
-                    + ' response=' + JSON.stringify(response || {}));
-
-                if (isMissingRequiredModsPayload(response))
-                    showRequiredClientModGateFromScene(response, sceneName);
-            });
-        });
     };
 
     var buildRequiredLookupWithDependencies = function(requiredIdentifiers, installedClientModsById) {
@@ -5441,21 +5291,6 @@ requireGW([
 
         handlers.request_gw_campaign_snapshot_publish = function(payload) {
             model.sendCampaignSnapshot(payload && payload.reason ? payload.reason : 'viewer_request', true);
-        };
-
-        handlers.request_client_mod_manifest = function() {
-            sendClientModManifestFromScene('gw_play');
-        };
-
-        handlers.required_client_mods_missing = function(payload) {
-            var rejectReason = extractRejectReason(payload);
-            console.log('[GW COOP] required_client_mods_missing in gw_play reason=' + rejectReason + ' payload=' + JSON.stringify(payload || {}));
-
-            showRequiredClientModGateFromScene(payload, 'gw_play');
-        };
-
-        handlers.all_client_mods_match = function(payload) {
-            console.log('[GW COOP] all_client_mods_match in gw_play payload=' + JSON.stringify(payload || {}));
         };
 
         handlers.gw_campaign_action = function(payload) {

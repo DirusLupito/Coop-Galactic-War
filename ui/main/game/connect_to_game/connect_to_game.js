@@ -111,6 +111,11 @@ $(document).ready(function () {
         return description.toLowerCase().indexOf(REQUIRED_GW_DESCRIPTION_PHRASE) !== -1;
     }
 
+    function isRequiredGwClientMod(mod) {
+        return getRequiredGwScenesForMod(mod).length > 0
+            && hasRequiredGwDescription(mod);
+    }
+
     function extractRejectReason(payload) {
         if (_.isString(payload))
             return payload;
@@ -141,17 +146,16 @@ $(document).ready(function () {
 
         return (_.isArray(data.missing) && data.missing.length > 0)
             || (_.isArray(data.missing_identifiers) && data.missing_identifiers.length > 0)
-            || (_.isString(reason) && reason.indexOf('Missing required mods') === 0);
+            || (_.isArray(data.extra_identifiers) && data.extra_identifiers.length > 0)
+            || (_.isString(reason) && reason.indexOf('Missing required mods') === 0)
+            || (_.isString(reason) && reason.indexOf('Client mod mismatch') === 0);
     }
 
-    function getMissingRequiredModLabels(payload) {
-        var data = getPayloadObject(payload);
-        var missingIdentifiers = data.missing_identifiers || data.missing || [];
-        var namesById = data.required_names_by_id || {};
+    function getModMismatchLabels(identifiers, namesById) {
         var labels = [];
         var seen = {};
 
-        _.forEach(missingIdentifiers, function(identifier) {
+        _.forEach(identifiers || [], function(identifier) {
             var normalizedIdentifier = normalizeModIdentifier(identifier);
             if (!normalizedIdentifier || seen[normalizedIdentifier])
                 return;
@@ -161,6 +165,59 @@ $(document).ready(function () {
         });
 
         return labels;
+    }
+
+    function getMissingRequiredModLabels(payload) {
+        var data = getPayloadObject(payload);
+        var missingIdentifiers = data.missing_identifiers || data.missing || [];
+        var namesById = data.required_names_by_id || {};
+
+        return getModMismatchLabels(missingIdentifiers, namesById);
+    }
+
+    function getExtraRequiredModLabels(payload) {
+        var data = getPayloadObject(payload);
+        var extraIdentifiers = data.extra_identifiers || [];
+        var namesById = data.extra_names_by_id || {};
+
+        return getModMismatchLabels(extraIdentifiers, namesById);
+    }
+
+    function buildClientModManifest(mountedMods) {
+        var activeIdentifiers = [];
+        var activeRequiredIdentifiers = [];
+        var activeRequiredNamesById = {};
+        var seen = {};
+        var seenRequired = {};
+
+        _.forEach(mountedMods || [], function(mod) {
+            var identifier = normalizeModIdentifier(mod && mod.identifier);
+            if (!identifier) {
+                console.log('[GW COOP] skipping mounted client mod with missing identifier while building manifest');
+                return;
+            }
+
+            if (!seen[identifier]) {
+                seen[identifier] = true;
+                activeIdentifiers.push(identifier);
+            }
+
+            if (!isRequiredGwClientMod(mod) || seenRequired[identifier]) {
+                return;
+            }
+
+            seenRequired[identifier] = true;
+            activeRequiredIdentifiers.push(identifier);
+            activeRequiredNamesById[identifier] = (_.isString(mod.display_name) && mod.display_name.length)
+                ? mod.display_name
+                : identifier;
+        });
+
+        return {
+            active_identifiers: activeIdentifiers,
+            active_required_identifiers: activeRequiredIdentifiers,
+            active_required_names_by_id: activeRequiredNamesById
+        };
     }
 
     function isGwCoopConnectContext() {
@@ -354,6 +411,7 @@ $(document).ready(function () {
         self.requiredClientModGateVisible = ko.observable(false);
         self.requiredClientModGateReason = ko.observable('');
         self.requiredClientModGateMissingMods = ko.observableArray([]);
+        self.requiredClientModGateExtraMods = ko.observableArray([]);
         self.requiredClientModGateGoingBack = false;
         self.requiredClientModGateAcknowledged = false;
         self.waitingForClientModMatch = false;
@@ -417,19 +475,23 @@ $(document).ready(function () {
             var reason = extractRejectReason(data) || extractRejectReason(payload);
             var gateReason = _.isString(reason) && reason.length
                 ? reason
-                : 'Missing required mods';
-            var labels = getMissingRequiredModLabels(data);
+                : 'Client mod mismatch';
+            var missingLabels = getMissingRequiredModLabels(data);
+            var extraLabels = getExtraRequiredModLabels(data);
 
             self.connecting(false);
             self.showCancel(false);
             self.waitingForClientModMatch = true;
             self.requiredClientModGateReason(gateReason);
-            self.requiredClientModGateMissingMods(labels);
+            self.requiredClientModGateMissingMods(missingLabels);
+            self.requiredClientModGateExtraMods(extraLabels);
             self.requiredClientModGateVisible(true);
-            self.pageTitle(loc('!LOC:REQUIRED CLIENT MODS MISSING'));
+            self.pageTitle(loc('!LOC:CLIENT MOD MISMATCH'));
             self.pageSubTitle('');
 
-            console.log('[GW COOP] showing required client mod gate reason=' + gateReason + ' missing=' + JSON.stringify(labels));
+            console.log('[GW COOP] showing required client mod gate reason=' + gateReason
+                + ' missing=' + JSON.stringify(missingLabels)
+                + ' extra=' + JSON.stringify(extraLabels));
         };
 
         self.acknowledgeRequiredClientModRisk = function() {
@@ -448,8 +510,8 @@ $(document).ready(function () {
         };
 
         self.goBackFromRequiredClientModGate = function() {
-            var reason = self.requiredClientModGateReason() || loc('!LOC:Missing required mods');
-            var transitReason = loc('!LOC:Missing required mods');
+            var reason = self.requiredClientModGateReason() || loc('!LOC:Client mod mismatch');
+            var transitReason = loc('!LOC:Client mod mismatch');
             self.requiredClientModGateGoingBack = true;
             self.requiredClientModGateAcknowledged = true;
             self.requiredClientModGateVisible(false);
@@ -531,41 +593,36 @@ $(document).ready(function () {
             console.log('[GW COOP] sendClientModManifest begin setup=' + self.serverSetup() + ' game=' + self.gameType());
             self.requiredClientModGateAcknowledged = false;
             api.mods.getMounted('client', true).then(function(mountedMods) {
-                var activeIdentifiers = [];
-                var seen = {};
+                var manifest = buildClientModManifest(mountedMods);
 
-                _.forEach(mountedMods || [], function(mod) {
-                    var identifier = normalizeModIdentifier(mod && mod.identifier);
-                    if (!identifier || seen[identifier])
-                        return;
+                model.send_message('client_mod_manifest', manifest, function(success, response) {
+                    console.log('[GW COOP] client_mod_manifest success=' + !!success
+                        + ' active=' + JSON.stringify(manifest.active_identifiers)
+                        + ' active_required=' + JSON.stringify(manifest.active_required_identifiers)
+                        + ' response=' + JSON.stringify(response || {}));
 
-                    seen[identifier] = true;
-                    activeIdentifiers.push(identifier);
-                });
-
-                model.send_message('client_mod_manifest', {
-                    active_identifiers: activeIdentifiers
-                }, function(success, response) {
-                    var rejectReason = extractRejectReason(response);
-                    console.log('[GW COOP] client_mod_manifest success=' + !!success + ' active=' + JSON.stringify(activeIdentifiers) + ' response=' + JSON.stringify(response || {}));
-
-                    if (isMissingRequiredModsPayload(response))
+                    if (isMissingRequiredModsPayload(response)) {
                         self.showRequiredClientModGate(response);
-                    else if (!!success)
+                    }
+                    else if (!!success) {
                         self.completeClientModMatchWait('manifest_response_success');
+                    }
                 });
             }, function() {
                 console.log('[GW COOP] getMounted(client,true) failed while building manifest; sending empty manifest');
                 model.send_message('client_mod_manifest', {
-                    active_identifiers: []
+                    active_identifiers: [],
+                    active_required_identifiers: [],
+                    active_required_names_by_id: {}
                 }, function(success, response) {
-                    var rejectReason = extractRejectReason(response);
                     console.log('[GW COOP] client_mod_manifest(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
 
-                    if (isMissingRequiredModsPayload(response))
+                    if (isMissingRequiredModsPayload(response)) {
                         self.showRequiredClientModGate(response);
-                    else if (!!success)
+                    }
+                    else if (!!success) {
                         self.completeClientModMatchWait('manifest_response_success_empty');
+                    }
                 });
             });
         };
@@ -782,6 +839,7 @@ $(document).ready(function () {
         model.requiredClientModGateVisible(false);
         model.requiredClientModGateReason('');
         model.requiredClientModGateMissingMods([]);
+        model.requiredClientModGateExtraMods([]);
         model.requiredClientModGateGoingBack = false;
         model.requiredClientModGateAcknowledged = false;
         model.waitingForClientModMatch = false;
@@ -852,10 +910,11 @@ $(document).ready(function () {
         model.waitingForClientModMatch = false;
         model.pendingServerStatePayload = undefined;
         var rejectReason = extractRejectReason(payload);
-        var missingRequiredMods = _.isString(rejectReason) && rejectReason.indexOf('Missing required mods') === 0;
+        var missingRequiredMods = isMissingRequiredModsPayload(payload);
 
-        if (missingRequiredMods)
+        if (missingRequiredMods) {
             return model.showRequiredClientModGate(payload);
+        }
 
         if (model.shouldRetry())
             model.retryConnection();
@@ -985,9 +1044,9 @@ $(document).ready(function () {
         model.waitingForClientModMatch = false;
         model.pendingServerStatePayload = undefined;
 
-        var disconnectReason = extractRejectReason(payload);
-        if (_.isString(disconnectReason) && disconnectReason.indexOf('Missing required mods') === 0)
+        if (isMissingRequiredModsPayload(payload)) {
             return model.showRequiredClientModGate(payload);
+        }
 
         if (model.shouldRetry())
             model.retryConnection();

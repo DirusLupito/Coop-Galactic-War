@@ -64,9 +64,19 @@ div.div_options_bar div
     color: #FF665C;
 }
 
+.required_mod_gate_section {
+    margin-top: 12px;
+}
+
+.required_mod_gate_section_title {
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .required_mod_gate_list {
-    max-height: 180px;
-    margin: 12px 0 0 20px;
+    max-height: 150px;
+    margin: 6px 0 0 20px;
     padding: 0;
     overflow-y: auto;
 }
