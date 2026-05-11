@@ -423,12 +423,12 @@
                 </div>
 
                 <div data-bind="visible: fighting">
-                    <div class="btn_hero" data-bind="click: win, click_sound: 'default', rollover_sound: 'default'">
+                    <div class="btn_hero" data-bind="click: function() { win(-1); }, click_sound: 'default', rollover_sound: 'default'">
                         <div class="btn_label">
                             Win
                         </div>
                     </div>
-                    <div class="btn_hero" data-bind="click: lose, click_sound: 'default', rollover_sound: 'default'">
+                    <div class="btn_hero" data-bind="click: function() { lose(); }, click_sound: 'default', rollover_sound: 'default'">
                         <div class="btn_label">
                             Lose
                         </div>
