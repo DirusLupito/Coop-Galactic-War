@@ -256,11 +256,14 @@ define([
 
             self.difficultyIndex = config.difficultyIndex;
             var StarSystemTemplates = chooseStarSystemTemplates(config.content, config.useEasierSystemTemplate);
+            var coopSystemPlayerBonus = Math.max(0, Math.floor((config.coopPlayersForSystemGeneration || 1) - 1));
 
             // Generate the planets, increasing the size based on the distance from the start.
             var starGenerators = _.map(self.stars(), function(star) {
                 var starPct = star.distance() / maxDist;
-                var plyrs = Math.floor(starPct * 2.25 + 2);
+                var basePlayers = Math.floor(starPct * 2.25 + 2);
+                // Keep vanilla system templates in the normal [3, 40] systems bucket instead of falling through to special fallback templates.
+                var plyrs = Math.min(40, basePlayers + coopSystemPlayerBonus);
                 return StarSystemTemplates.generate({
                         players: plyrs,
                         seed: rng() * rng()

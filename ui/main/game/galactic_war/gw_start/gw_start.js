@@ -380,6 +380,7 @@ $(document).ready(function() {
             var systemTemplates = useEasySystems ? easy_system_templates : star_system_templates;
             var sizes = GW.balance.numberOfSystems;
             var size = sizes[self.newGameSizeIndex()] || 40;
+            var coopPlayersForGeneration = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
 
             if (self.creditsMode()) {
                 size = _.reduce(GWFactions, function(factionSum, faction) {
@@ -399,6 +400,7 @@ $(document).ready(function() {
                 difficultyIndex: self.newGameDifficultyIndex() || 0,
                 systemTemplates: systemTemplates,
                 content: game.content(),
+                coopPlayersForSystemGeneration: coopPlayersForGeneration,
                 minStarDistance: 2,
                 maxStarDistance: 4,
                 maxConnections: 4,

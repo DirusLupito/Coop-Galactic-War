@@ -48,6 +48,8 @@ FILES_TO_COPY = [
      "ui/main/game/galactic_war/shared/js/gw_specs.js"),
     ("ui/main/game/galactic_war/shared/js/gw_game.js",
      "ui/main/game/galactic_war/shared/js/gw_game.js"),
+    ("ui/main/game/galactic_war/shared/js/gw_galaxy.js",
+     "ui/main/game/galactic_war/shared/js/gw_galaxy.js"),
     ("ui/main/game/galactic_war/shared/js/gw_game_patches.js",
      "ui/main/game/galactic_war/shared/js/gw_game_patches.js"),
     ("ui/main/game/galactic_war/shared/js/gw_start_loadouts.js",
