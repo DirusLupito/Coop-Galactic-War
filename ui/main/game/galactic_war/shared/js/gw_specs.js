@@ -59,10 +59,10 @@ define([], function()
 
             if (_.isString(spec.death_weapon.air_ammo_spec))
                 applyTag(spec.death_weapon, 'air_ammo_spec');
+        }
 
-            if (_.isString(spec.spawn_unit_on_death)) {
-                applyTag(spec, "spawn_unit_on_death");
-            }
+        if (_.isString(spec.spawn_unit_on_death)) {
+            applyTag(spec, "spawn_unit_on_death");
         }
 
         return moreWork;
