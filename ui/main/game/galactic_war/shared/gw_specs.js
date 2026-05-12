@@ -60,7 +60,9 @@ define([], function()
             if (_.isString(spec.death_weapon.air_ammo_spec))
                 applyTag(spec.death_weapon, 'air_ammo_spec');
         }
-        
+
+        // Projectiles such as Lob ammo can spawn units when they expire.
+        // Keep spawned units in the same tagged spec set as the spawning spec.
         if (_.isString(spec.spawn_unit_on_death)) {
             applyTag(spec, "spawn_unit_on_death");
         }
