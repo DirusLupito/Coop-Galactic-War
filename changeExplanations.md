@@ -74,6 +74,43 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `1bb752a` `Added tooltip to the open to coop button.`
 - Unshared play:
   - `515e287` `Implemented unshared play.`
+- Per-player tech cards:
+  - `573cdd5` `Per player tech now locks shared to off.`
+  - `9e42412` `Generating a config for unshared is now a referee's responsibility.`
+  - `3ba9c65` `Fixed indentation error`
+  - `5e14025` `Tech referee now generates .player0, .player1... tags.`
+  - `5719b1c` `Tech referee now cooks unit specs for .player0, player1,...`
+  - `42cd816` `Co-op player can now build with .playerN tagged units.`
+  - `b5c6318` `Added changes from build 124640`
+  - `aaca920` `Added explicit steam p2p/local networking choice support.`
+  - `84063ab` `Fixed reconnect breaking coop player's ability to build`
+  - `d593a47` `Move various gw loading screens to the galactic war folder.`
+  - `3d8ec46` `Per player tech cards now properly generate minions for each player.`
+  - `4a956a2` `Coop players can now pick their loadout and commander.`
+  - `f7b8b02` `Coop players can now pick their own tech cards.`
+  - `b2ec283` `Refactored tech card picking to do more client side prediction.`
+  - `fd233da` `Coop player now waits until inventory is loaded.`
+  - `1b9d952` `Fixed issue where lobby would open with only 1 slot by default.`
+  - `f2a5e4b` `Fixed issue with incorrect colors for co-op subcommanders.`
+  - `5e00ed8` `Fixed small issue where coop player would see bad inventory.`
+  - `f7db6fd` `Optimized network usage for sending GW coop data.`
+  - `8281eff` `Fixed an issue where loading a modded save without the mod crashed.`
+  - `1ff4ce1` `Fixes for a few issues.`
+  - `50a656f` `Added a catch up mechanic so late joiners are still equal to host.`
+  - `193a0c1` `Fixed visual issue where host was eternally picking tech cards.`
+  - `afd8727` `Added a screen to view other player's loadouts and cards.`
+  - `c4f097c` `Removed extraneous inventory button for the local player.`
+  - `5351a24` `Added changes from build 124641`
+  - `14ca456` `Adjusted difficulty scaling code.`
+  - `f48ba07` `Added patcher to gw game for coop games.`
+  - `8bf0142` `Per player tech tags are now regenerated with skin mod effects.`
+  - `753439a` `Per-player tech card games now unlock loadouts for co-op players.`
+  - `791141d` `Copied boss flavor text fix.`
+- Post-per-player-tech-card changes:
+  - `f303aee` `Client mod gate now shows mods on client missing from server.`
+  - `41e8bcc` `Fixed issue #33.`
+  - `75e12ba` `Galaxy generation now factors in number of coop players.`
+  - `16d2f02` `spawn_unit_on_death specs are now applied even when there is no death_weapon spec.`
 
 ## High-Level Summary
 
@@ -95,6 +132,8 @@ At a high level, the codebase now does all of the following:
 12. Uses the saved co-op player count to scale generated Galactic War difficulty through AI economy and enemy minions.
 13. Keeps campaign selection local to each player while leaving movement, fighting, exploring, and card decisions host-authoritative.
 14. Lets a co-op campaign launch a fight with either shared armies or as separate allied armies, with the default stored in the GW save and the per-battle value controlled from the campaign lobby.
+15. Adds a per-player tech-card battle mode by giving each human army its own generated player spec tag, its own unit files, and eventually its own inventory/loadout/card choice lifecycle.
+16. Tightens post-merge behavior around required client mod mismatches, co-op galaxy generation, issue #33, and spawned-unit spec tagging.
 
 ## Original Single-Player Galactic War File Model
 
@@ -2271,3 +2310,733 @@ Defeat handling also needed to distinguish host defeat from co-op player defeat.
 ### Practical Lesson From This Branch
 
 1. Prefer explicit invariant checks over quiet fallback behavior when normalizing GW battle config. A broken army shape should be logged and stopped at the relevant operation, not converted into a mysterious partially working launch.
+
+---
+
+## Per-Player Tech Cards
+
+Per-player tech cards extend unshared co-op from "separate allied armies using one shared `.player` tech universe" into "separate allied armies where each human can have a different Galactic War inventory." The core technical problem is that Galactic War tech cards are not applied directly to live units. They are applied when `GW.specs.genUnitSpecs` and `GW.specs.modSpecs` generate tagged virtual files before battle launch.
+
+Shared and unshared co-op could use one player-side generated namespace:
+
+- `.player`
+
+Per-player tech needs one namespace per human player:
+
+- host: `.player`
+- first joining player: `.player0`
+- second joining player: `.player1`
+- later players: `.player2`, `.player3`, and so on
+
+The first phase of the branch established the battle-launch architecture needed to make that possible. It moved co-op army preparation out of the server lobby and into client-side referee modules, then taught the battle config, mounted files, lobby assignment, and live-game UI to carry the correct player tag for each connected client.
+
+### Per-Player Tech Forces Unshared Control (`573cdd5`)
+
+Per-player tech cards cannot yet work in a shared army well. PA assigns one `spec_tag` per army, so two players sharing the same army have a hard time simultaneously using different versions of the same unit. If one player has flame Dox and another has vanilla Dox, those two Dox definitions require two different generated spec namespaces.
+
+This commit made that invariant explicit:
+
+- If `per_player_tech_cards` is true, `shared_control` is treated as false.
+- The campaign server reports `shared_control` through `effectiveSharedControl()`, so clients see the effective value rather than a stale stored preference.
+- `modify_settings` refuses to keep shared control enabled once per-player tech is on.
+- The campaign lobby UI disables the "Share Army" toggle when per-player tech is active.
+- New game creation disables "Share control by default" while per-player tech is checked and saves `sharedByDefault(false)` for per-player-tech games.
+- Battle launch and Continue War restart metadata also force `shared_control: false` whenever `per_player_tech_cards` is true.
+
+This is not just UI convenience. It protects the battle config from an impossible state. A per-player tech game must have separate human armies before it can assign separate tags.
+
+### Co-op Battle Config Preparation Moves Into Referees (`9e42412`)
+
+Before this branch, the server-side `gw_lobby` state was responsible for reshaping the GW battle config for unshared play. That worked for basic unshared armies, but it put gameplay-specific config generation in the wrong place.
+
+The server lobby does not generate Galactic War unit specs. It should assign connected server clients to already-prepared human slots and then hand the config to landing. Per-player tech needs to generate additional memory files and mutate army `spec_tag` fields before the server assigns real clients. That work naturally belongs beside `GWReferee.hire`, where the `.player` and `.ai` file trees already exist.
+
+This commit introduced two launch-time referee modules:
+
+- [ui/main/game/galactic_war/gw_play/gw_coop_referee.js](ui/main/game/galactic_war/gw_play/gw_coop_referee.js)
+- [ui/main/game/galactic_war/gw_play/gw_per_player_tech_referee.js](ui/main/game/galactic_war/gw_play/gw_per_player_tech_referee.js)
+
+`gw_coop_referee` took over the army/slot preparation that had lived in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- shared control: ensure the single human army has enough human slots for all connected clients,
+- unshared control: split the one human army into one allied army per connected client,
+- preserve player-side `spec_tag`, `econ_rate`, and `alliance_group`,
+- randomize additional player army colors near the faction color,
+- write `coop_human_armies_ready` so launch can fail clearly if preparation failed.
+
+`gw_per_player_tech_referee` started as a shell, deliberately returning success without changing files yet. The important architecture was the sequencing in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+1. Hire the normal GW referee.
+2. Build launch options from campaign state.
+3. Apply `GWCoopReferee`.
+4. Apply `GWPerPlayerTechReferee`.
+5. Only then mount files, tag the game, and connect to the battle.
+
+The server lobby was also hardened. Instead of quietly manufacturing missing slots, it now validates that the referee prepared enough human slots and enough human armies. That follows the repo's later rule: broken state should fail with a useful log, not limp into a mysterious partial battle.
+
+`generate_mod.py` was updated to include both new referee files.
+
+### Indentation Cleanup After Referee Sequencing (`3ba9c65`)
+
+This commit was a formatting-only cleanup in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js). It fixed indentation around the newly introduced referee launch flow.
+
+The intended behavior did not change. The value of the commit is practical: launch sequencing in this area is easy to misread because it mixes asynchronous referee generation, local file overlay setup, `stripSystems`, memory-file mounting, and navigation to `connect_to_game`. Keeping the indentation honest makes later changes safer to review.
+
+### Per-Player Tech Referee Assigns Player Tags (`5e14025`)
+
+This commit gave `gw_per_player_tech_referee` its first real job: assign each human army a distinct player tag.
+
+The tag contract is:
+
+```js
+index 0 -> '.player'
+index 1 -> '.player0'
+index 2 -> '.player1'
+index 3 -> '.player2'
+```
+
+The host keeps `.player` because the base GW referee already generated and modified that namespace. Joining players get numbered tags. The per-player tech referee validates the config before mutating it:
+
+- the battle config must have armies,
+- the launch must be active co-op,
+- per-player tech must be enabled,
+- shared control must already be false,
+- connected player count must match human army count,
+- referee files, game, inventory, and player commander must exist.
+
+At this stage the referee only changed `army.spec_tag` and recorded:
+
+- `per_player_tech_ready`
+- `per_player_tech_tags`
+
+It did not yet cook separate files for `.player0`, `.player1`, etc. That meant this commit established the tag ownership model but did not fully make those tags usable.
+
+The same commit also added broad in-file documentation to `gw_per_player_tech_referee.js` describing the implicit battle config shape. That documentation matters because per-player tech touches `config.files`, `config.armies`, `config.player`, later `config.players`, and server-side slot assignment. Without a formal schema, the branch needed an explicit written contract near the code doing the mutation.
+
+### Per-Player Tech Referee Cooks `.playerN` Specs (`5719b1c`)
+
+After army tags existed, the next problem was that `.player0` and `.player1` had no mounted files behind them. An army can point at `.player0`, but the sim and UI can only use it if `/pa/units/...json.player0`, `/pa/units/unit_list.json.player0`, and the matching AI unit-map files exist.
+
+This commit added `generateUnitSpecsForPlayer(inventory, playerTag)` to `gw_per_player_tech_referee`:
+
+- load base AI unit maps,
+- generate tagged AI maps for the player tag,
+- call `GW.specs.genUnitSpecs(inventory.units(), playerTag)`,
+- apply `GW.specs.modSpecs(playerFiles, inventory.mods(), playerTag)`,
+- merge the generated files into `referee.files()` and `config.files`.
+
+At this early point every player tag was generated from the host inventory. That was still enough to prove the file/tag plumbing, but not yet enough for truly separate inventories. Later commits replace that shortcut with each viewer's own stored inventory.
+
+The commit also set each human army commander to the matching tag by stripping `.player` from the base commander and appending the new player tag. This was necessary because the commander spec has to live in the same namespace as that army's `spec_tag`.
+
+On the server side, [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js) changed its human slot collection from raw slots to `{ slot, army }` entries. That let the lobby create each connected client's player config from the army it was actually assigned to. Human commander spawning reads from `config.players[client.id].commander`, so army-level commander changes are not enough by themselves; the client-specific `players` map has to agree.
+
+### Clients Receive And Use Their Own Unit Spec Tag (`42cd816`)
+
+With `.playerN` files generated, each client still needed to enter the battle using the tag assigned to its human army. Before this point, GW co-op clients generally assumed `.player`.
+
+This commit added a deterministic client order in [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js):
+
+- host first,
+- then other connected clients.
+
+The same order is used for:
+
+- assigning clients to human slots in `startGame`,
+- deciding which human army belongs to a target client,
+- sending each client its `unit_spec_tag` in the `gw_config` message.
+
+On the client side:
+
+- [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js) stores the received tag in `gw_campaign_unit_spec_tag` and calls `api.game.setUnitSpecTag(unitSpecTag)` after mounting memory files.
+- reconnect loading reads the same session value and restores that tag when mounting memory files.
+- [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js) stops unconditionally resetting GW co-op clients to `.player` and instead uses the saved campaign unit tag during memory-file restore.
+
+This is the commit where "co-op player can build with `.playerN` tagged units" becomes true for the normal entry path. The generated files existed, the army had the tag, and the client UI/sim lookup tag matched.
+
+The commit message also recorded a known gap: reconnect could still break the co-op player's ability to build. That is expected at this stage because reconnect had only a partial version of the tag restoration and memory-file regeneration story.
+
+### Upstream Build 124640 Integration (`b5c6318`)
+
+This commit imported PA build `124640` changes while the per-player tech branch was in progress. It is not itself a per-player tech feature commit, but it matters because it changed local-host networking setup that the GW battle launch path depends on.
+
+The branch moved away from ad hoc `disable_upnp` and `enable_steam_networking` flags toward a single transport value:
+
+```js
+local_host_transport
+```
+
+For Galactic War launch, [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js) changed the local start params from:
+
+```js
+disable_upnp: true
+```
+
+to:
+
+```js
+local_host_transport: 'TCP'
+```
+
+The surrounding platform changes also:
+
+- moved local-server network flag computation into `api.net.transportToNetworkFlags`,
+- used `api.net.effectiveLocalHostTransport`,
+- replaced the old separate UPnP/Steam P2P settings UI with a unified "Local Host Networking" setting,
+- blocked joining Steam-hosted games when the client was not launched through Steam.
+
+For the per-player tech branch, the important practical result is that campaign battle launch continued to request a deterministic local TCP transport while the rest of PA's local-host networking API changed underneath it.
+
+### Explicit Local Host Transport Through GW Launch and Restart (`aaca920`)
+
+Build `124640` changed the local server start contract from scattered query flags into an explicit transport setting. The previous GW code had hardcoded local battle launch toward TCP, but the new platform code expected that value inside the JSON `params` payload passed through `connect_to_game`.
+
+This commit added `getLocalHostTransport()` to the GW play view model. It reads the saved `server.local_host_transport` setting first, falls back to `api.net.effectiveLocalHostTransport()` when available, and otherwise leaves the value undefined rather than inventing a fake transport.
+
+Both campaign launch paths now pass:
+
+```js
+params: JSON.stringify({
+    local_host_transport: self.getLocalHostTransport()
+})
+```
+
+The same helper was added to the campaign restart loading scene so Continue War restarts preserve the user's local-host networking choice. This matters for per-player tech because the branch was increasingly dependent on reliable multi-scene transitions: campaign map, restart loading, connect, GW lobby, and live game all have to agree on how the local server is being started.
+
+### Reconnect Restores Each Client's Unit Spec Tag (`84063ab`)
+
+Commit `42cd816` made normal battle entry per-player-tag aware, but reconnect still had the older assumption that a GW co-op client should come back as `.player`. That broke joining players whose armies used `.player0`, `.player1`, or another numbered tag.
+
+This commit fixed reconnect at the server source of truth. [server-script/states/playing.js](server-script/states/playing.js) gained `getReconnectUnitSpecTag(client)`, which locates the reconnecting client's runtime player/army and reads:
+
+```js
+player.army.desc.spec_tag
+```
+
+The reconnect memory-file message changed from sending only a raw files map to sending:
+
+```js
+{
+    files: reconnectReplayFiles,
+    unit_spec_tag: getReconnectUnitSpecTag(client)
+}
+```
+
+The reconnect loading scene then reads `msg.files || msg`, persists `msg.unit_spec_tag` into `gw_campaign_unit_spec_tag`, mounts the memory files, and calls `api.game.setUnitSpecTag(unitSpecTag)`.
+
+The fallback to `.player` remains only for a truly missing runtime lookup, and it logs the client name/id. The normal path is no longer a heuristic: reconnect derives the tag from the actual army the server assigned to that player.
+
+### Move GW Loading Screens Under Galactic War (`d593a47`)
+
+This commit moved the three GW-specific staging scenes into the Galactic War folder:
+
+- `gw_campaign_loading`
+- `gw_campaign_restart_loading`
+- `gw_reconnect_loading`
+
+The files themselves were mostly renamed without logic changes, but the path change is important architecture. These scenes are not general game loading screens; they exist to prepare Galactic War campaign state, memory files, reconnect tags, and restart context.
+
+The updated paths are:
+
+- `coui://ui/main/game/galactic_war/gw_campaign_loading/gw_campaign_loading.html`
+- `coui://ui/main/game/galactic_war/gw_campaign_restart_loading/gw_campaign_restart_loading.html`
+- `coui://ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.html`
+
+[ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js) and [ui/main/game/galactic_war/gw_play/live_game_patch.js](ui/main/game/galactic_war/gw_play/live_game_patch.js) were updated to point at the new scene locations. `generate_mod.py` was updated too, and the guide gained the new subfolder descriptions.
+
+For the per-player tech branch, the practical reason is simple: the branch was adding more GW-only lifecycle scenes, and keeping them inside `galactic_war/` made the ownership boundary clearer.
+
+### Per-Player Tags Also Generate Allied Minions (`3d8ec46`)
+
+The early `.playerN` implementation handled the human armies and commanders, but it missed allied minions/subcommanders that belong to each player's inventory. In Galactic War, minions are part of the player's inventory-derived army shape. If player 1 has their own tech namespace, their allied minions must use that same namespace too.
+
+This commit extended `gw_per_player_tech_referee` so, for each non-host player tag, it adds that player's minions as allied AI armies:
+
+- commander path tagged with the player's tag,
+- `spec_tag` set to the player's tag,
+- `alliance_group: 1`,
+- minion color/economy/personality preserved from inventory data.
+
+At this stage the implementation still used the host inventory for every player and left TODOs noting that real per-player inventories were still needed. Even so, it fixed the important config shape: per-player tech does not only mean "one human commander per player"; it also means all allied player-side forces for that player need matching tagged specs.
+
+### Viewer Loadout and Commander Selection (`4a956a2`)
+
+This is where per-player tech stopped being only a battle-file experiment and became a campaign setup flow.
+
+The save model in [ui/main/game/galactic_war/shared/js/gw_game.js](ui/main/game/galactic_war/shared/js/gw_game.js) gained persisted `coopPlayerInventoryData` plus lookup/update helpers:
+
+- `findCoopPlayerInventoryData(player)`
+- `upsertCoopPlayerInventoryData(record)`
+
+Those records store each non-host player's commander, selected start loadout, saved inventory, and identity. The game version was bumped so old saves could be patched into the new shape.
+
+A new scene was added:
+
+- [ui/main/game/galactic_war/gw_coop_per_player_loadout/gw_coop_per_player_loadout.js](ui/main/game/galactic_war/gw_coop_per_player_loadout/gw_coop_per_player_loadout.js)
+
+That scene lets a joining co-op player choose:
+
+- their commander,
+- their starting loadout card.
+
+The server campaign state tracks which viewers still need a loadout via `clientRequiresLoadout`, includes `requires_loadout` and `loading_status` in control/snapshot payloads, and accepts `set_player_loadout` from non-host clients. After a loadout is submitted, the server stores the inventory data into the host-authored snapshot and broadcasts `gw_campaign_player_loadout`.
+
+The campaign loading scene routes viewers who require setup into the new loadout scene before they enter `gw_play`. This prevents a viewer from appearing on the campaign map with no usable inventory record.
+
+The per-player tech referee was changed to stop cloning the host inventory for every player. It now loads each connected viewer's stored inventory data, generates that player's tag from that inventory, and assigns that player's commander:
+
+- host keeps the main `game.inventory()`,
+- each viewer loads their `coopPlayerInventoryData` record into `GWInventory`,
+- `army.player_config.commander` is set to the matching tagged commander,
+- minions are generated from the matching player's inventory.
+
+This commit also introduced a shared `gw_start_loadouts` helper so loadout-card presentation can be reused instead of duplicating start-card construction logic.
+
+### Co-op Players Pick Their Own Tech Cards (`f7b8b02`)
+
+After viewers had independent starting inventories, they also needed independent tech acquisition. The host still explores the map and wins fights, but per-player tech means each viewer must receive and resolve their own pending card choices.
+
+The server gained pending-tech-card state on each co-op player inventory record:
+
+```js
+pendingTechCards: {
+    star: Number,
+    cards: Array,
+    updatedAt: Number
+}
+```
+
+The host deals pending cards for viewers and publishes them with `set_player_pending_tech_cards`. The server validates that:
+
+- per-player tech is enabled,
+- the target client is connected,
+- the target is not the host,
+- the target already has an inventory record,
+- pending card data has a valid star and card list.
+
+While a viewer has pending cards, the server reports them as loading with `loading_status: 'picking_tech_cards'`. Battle launch is blocked through `hasPendingPlayerSetup()` until all viewer loadouts and pending tech choices are resolved.
+
+On the viewer side, `gw_play` learned to display the pending card list as the active card choice UI when `canChooseCoopTechCards()` is true. The viewer's active inventory is their own co-op inventory record, not the host's inventory. Selecting a card sends a tech-choice message; dismissing a card is allowed through the same card UI flow.
+
+The server initially accepted full updated inventory data from the viewer's choice response, stored it, cleared `pendingTechCards`, and broadcast the resulting record to everyone. Other clients saved the updated co-op inventory data locally so later battle launches could generate the right `.playerN` specs.
+
+This commit made the end-user feature visible: in a per-player tech campaign, each joining player can pick their own rewards instead of inheriting the host's tech card choices.
+
+### Tech Choice Becomes Server-Validated Client Prediction (`b2ec283`)
+
+The first working tech-choice implementation let viewers send back a full mutated inventory after choosing a card. That worked, but it made the client too authoritative over the inventory record and sent more data than necessary.
+
+This commit moved the design closer to the existing campaign action model: the client predicts enough locally for UI responsiveness, but the server applies the authoritative inventory operation and broadcasts the minimal operation to everyone else.
+
+Server-side changes in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js):
+
+- `choose_player_pending_tech_card` replaces the full-inventory choice submission.
+- The server looks up the existing player inventory record.
+- It validates the pending star, selected index, duplicate card state, and inventory shape.
+- It appends the selected card itself, normalizes inventory tags to the global context, clears `pendingTechCards`, and stores the record.
+- It broadcasts `gw_campaign_player_tech_card_choice` with only the client, star, selected index, and timestamp.
+- `delete_player_tech_card` performs server-authoritative deletion from the viewer's current tech inventory and broadcasts `gw_campaign_player_tech_card_deleted`.
+
+Client-side changes in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js):
+
+- removed the separate temporary `coopTechChoiceInventory`,
+- uses the displayed co-op player inventory as the active tech inventory,
+- applies broadcasts locally through `applyCoopPlayerInventoryRecord`,
+- supports card deletion as an operation rather than a full record replacement,
+- only sends `choose_player_pending_tech_card` with `star` and `selected_card_index`.
+
+This is a better synchronization contract. The server becomes the arbiter of whether the card choice is valid, while clients still update their local saved campaign data from the same operation. It also reduces network payloads by avoiding full inventory records for every tech-card choice.
+
+### Viewer Loading Waits For Prepared Local Inventory (`fd233da`)
+
+After viewers could have their own inventory records, the campaign loading scene had a new race to deal with. A viewer could receive the host snapshot, save it, and enter `gw_play` before their local co-op inventory had been hydrated and had its cards applied. That meant the first render inside `gw_play` could see an incomplete or raw inventory.
+
+This commit added `prepareLocalCoopPlayerInventoryData(game)` to the GW campaign loading scene. The helper only runs for viewers in per-player tech games who already have a loadout. It:
+
+- finds the viewer's `coopPlayerInventoryData` record,
+- rejects loading if the record or card list is missing,
+- loads the saved inventory into `GWInventory`,
+- runs `inventory.applyCards`,
+- saves the prepared inventory back into the game record,
+- only then allows `GW.manifest.saveGame` and navigation into `gw_play`.
+
+This made viewer entry stricter in the right place. If per-player tech requires a prepared local inventory, loading should wait for that state instead of letting the next scene discover the breakage after UI and battle setup have already started.
+
+### Co-op Lobby Defaults To Two Slots When Count Is Unspecified (`1b9d952`)
+
+This fixed a campaign lobby setup edge case. When a co-op save did not yet have an explicit saved player count, the lobby setup path could pass the raw `savedCoopPlayers()` value through to `max_clients_limit`. In that default state the value could behave like a one-player lobby, causing the lobby to open with only one slot.
+
+The commit added `savedCoopLobbyPlayers()`:
+
+```js
+if (!self.savedCoopPlayersSpecified()) {
+    return 2;
+}
+```
+
+Lobby payload generation and saved-setting application now use that helper. The important distinction is between "the save explicitly locked this campaign to N players" and "there is no saved count yet." The latter should still produce a useful co-op lobby, so it defaults to two players.
+
+### Subcommander Colors Use The Player's Inventory Color (`f2a5e4b`)
+
+The first minion-generation pass derived fallback minion colors from the battle army color. That could be wrong for co-op subcommanders because the per-player tech referee mutates and assigns multiple human armies while also loading independent inventories.
+
+This commit made the referee read the owning player's original color from the inventory tag:
+
+```js
+inventory.getTag('global', 'playerColor')
+```
+
+If that color is missing or invalid, the referee now fails per-player tech generation instead of guessing. When a minion does not provide its own color, its fallback color becomes the owning inventory color:
+
+```js
+[playerColor[0], playerColor[1]]
+```
+
+That keeps subcommander colors tied to the player's saved Galactic War identity rather than to whatever army color happened to be present after battle config generation.
+
+### Initialize Per-Player Tech State Before Inventory Render (`5e00ed8`)
+
+This was a small but important UI-ordering fix. `gw_play` has multiple computed values that decide which inventory to display: the host campaign inventory or the local co-op player's inventory. Those computed values depend on the per-player tech session state.
+
+Before this commit, a viewer could briefly render with the wrong inventory because `gwCampaignPerPlayerTechCards` had not yet been initialized from the loaded campaign save. The commit added `applyInitialPerPlayerTechStateFromGame()` and calls it immediately during view-model setup.
+
+For a per-player tech campaign, it sets:
+
+- `gwCampaignPerPlayerTechCards(true)`
+- `gwCampaignSharedControl(false)`
+
+That means the first inventory render already knows it is in per-player tech mode and uses the co-op player's display inventory instead of briefly falling back to the host/global inventory path.
+
+### Campaign Snapshot Requests Are Coalesced And Cached (`f7db6fd`)
+
+As more viewer setup state moved through campaign snapshots, the network path started doing too much repeated work. Viewers joining, reconnecting, or falling back after an action replay could all ask the host for fresh campaign data.
+
+This commit added two server-side snapshot lifecycle flags:
+
+- `snapshotRequestInFlight`
+- `lastSnapshotStale`
+
+The server now coalesces duplicate fresh snapshot requests with `requestFreshSnapshotFromHost`. If a non-stale snapshot is already cached and the viewer does not request a forced refresh, the server sends the cached snapshot immediately instead of asking the host again.
+
+The request payload also gained a reason and force flag:
+
+```js
+{
+    reason: 'viewer_request',
+    force_fresh: false
+}
+```
+
+Campaign actions from the host mark the cached snapshot stale. Fresh host snapshots clear both `snapshotRequestInFlight` and `lastSnapshotStale`. Viewers still request a forced snapshot for action fallback cases, where deterministic replay is not reliable enough.
+
+On the client side, the older "host notices viewer and sends initial snapshot" helper was removed in favor of the server-mediated request path. The result is a cleaner synchronization model: viewers request campaign state, the server decides whether cached state is good enough, and only one fresh host request is in flight at a time.
+
+### Invalid Modded Faction Saves No Longer Crash Icon Setup (`8281eff`)
+
+This commit handled a defensive-load case around modded Galactic War saves. A save created with a modded faction index can later be opened without the mod installed. In that situation, `GWFactions[factionIndex]` may be missing.
+
+Previously the UI immediately dereferenced `faction.icon`, which could crash campaign loading. The fix logs the invalid faction index and falls back to the normal faction-icon path:
+
+```js
+icon || (faction && faction.icon) || defaultFactionIconPath
+```
+
+This is intentionally narrow. It does not try to reconstruct the missing modded faction; it prevents a missing optional presentation object from taking down the campaign UI.
+
+### Live Game Resolves Current Per-Player Spec Tags (`1ff4ce1`)
+
+This commit fixed several places where the live-game UI still behaved as though GW co-op meant `.player`. That was good enough for normal Galactic War and shared co-op, but not for per-player tech. A joining player using `.player0` or `.player1` needs the action bar, build bar, build hover, and selection parsing to prefer that player's current tag.
+
+The server now carries `gw_campaign_active` through the lobby and reconnect paths:
+
+- `gw_lobby` exposes it in the control payload,
+- reconnect memory files include it,
+- `gw_lobby.js` and `gw_reconnect_loading.js` persist it into the `gw_coop_mode` session key.
+
+That fixed a root lifecycle issue: `live_game` could see `gwCoopMode` as false even during an actual co-op Galactic War battle.
+
+The live-game UI then uses the current GW unit tag when resolving specs:
+
+- [ui/main/game/live_game/live_game.js](ui/main/game/live_game/live_game.js) uses `currentGwUnitSpecTag()` for build hover, build item lookup, selection parsing, and item detail aliases.
+- [ui/main/game/live_game/live_game_action_bar.js](ui/main/game/live_game/live_game_action_bar.js) resolves selected unit specs through the current GW tag before falling back to `.player` or `.ai`.
+- [ui/main/game/live_game/live_game_build_bar.js](ui/main/game/live_game/live_game_build_bar.js) waits for `api.game.getUnitSpecTag()` and the saved session tag, then processes build specs against the resolved tag.
+
+This was especially visible for cost-reduction tech. If a viewer had different build-cost tech from the host, a build bar lookup that fell back to `.player` could show host costs instead of the viewer's `.playerN` costs. After this change, the UI prefers the same tag the client uses for its GW unit files.
+
+The same commit also removed the old special-case that skipped `live_game` scene mods while in GW co-op, and added guide notes reinforcing the branch's state-flow rule: when a state value is missing or unreliable, fix the lifecycle that lost it instead of adding another masking fallback.
+
+### Late Joiners Catch Up To The Host's Tech Deal Count (`50a656f`)
+
+Per-player tech created a fairness problem for players who joined after the host had already earned tech-card rewards. A new viewer could choose a starting loadout, but they would have fewer reward deals than the host and older co-op players.
+
+This commit added a catch-up system based on deal count rather than raw card count. That distinction matters because players can dismiss cards. The goal is not "everyone has exactly the same number of cards"; it is "everyone has been offered the same number of reward deals."
+
+The save model gained two host-side fields:
+
+- `hostTechCardDealCount`
+- `hostTechCardDealHistory`
+
+When the host explores and a star deals cards, `recordHostTechCardDeal(starIndex)` records the deal index and star. Viewer records gained `techCardDealCount`, initialized to `0` when their loadout is submitted.
+
+The server uses those counts to detect viewers who are behind:
+
+- `coopPlayerNeedsTechCatchup(record)`
+- `requestHostCoopPlayerTechCatchupIfNeeded(client, reason)`
+- `requestAllHostCoopPlayerTechCatchups(reason)`
+
+If a viewer is behind and does not already have pending cards, the server marks that viewer as `picking_tech_cards` and asks the host to deal the next missing reward through `gw_campaign_player_tech_catchup_needed`. The host looks up the original deal entry from `hostTechCardDealHistory`, deals cards from that same star, and sends them through the normal pending-card path with the original `dealIndex`.
+
+When the viewer chooses or dismisses the catch-up card, the server advances that viewer's `techCardDealCount` and immediately checks whether another catch-up deal is still needed. This repeats until the viewer has caught up to the host's deal count.
+
+The result is a clean extension of the existing tech-choice protocol. Late joiners do not get arbitrary bonus cards, and the server does not need to invent rewards. It replays the host's historical deal sequence one pending choice at a time.
+
+### Host Is Not Shown As Eternally Picking Tech Cards (`193a0c1`)
+
+The catch-up logic initially treated every client as eligible for pending-tech loading state. That accidentally included the host. Since the host is the source of the campaign's main inventory and tech-deal history, they should not be considered a co-op viewer who needs per-player catch-up.
+
+This commit added `client.id !== self.creatorId` checks in the loading-state paths that force `picking_tech_cards`. The server still evaluates viewer pending cards and catch-up needs, but the host no longer appears stuck in the "picking tech cards" state.
+
+### Co-op Inventory Modal For Viewing Other Players (`afd8727`)
+
+Once each player had their own loadout, tech inventory, and catch-up lifecycle, the campaign lobby needed a way to inspect that state. This commit added an inventory viewer modal to `gw_play`.
+
+Each occupied co-op slot can show an Inventory button when per-player tech is active and the slot has a valid inventory record. The modal displays:
+
+- the player name,
+- their selected loadout,
+- their visible tech cards,
+- a larger detail panel for the selected card.
+
+The implementation validates records before opening the modal so empty or still-loading players show "Waiting for loadout" instead of opening a broken view. It also keeps the modal fresh when inventory records change through loadout submission, tech choices, or local card changes.
+
+The host needed one extra bit of bookkeeping. The host's real inventory is still `game.inventory()`, but the modal reads from `coopPlayerInventoryData` so it can present all players uniformly. `syncHostCoopInventoryRecord(reason)` copies the host's current saved inventory into the host co-op inventory record before snapshots and when cards change.
+
+That makes the viewer screen a read-only presentation layer over the same records battle launch uses, instead of adding a separate display-only inventory model.
+
+### Hide The Other-Player Inventory Button For The Local Player (`c4f097c`)
+
+The inventory modal from the previous commit was meant to inspect other players. The local player's own inventory is already visible in the main Galactic War UI, so showing an extra Inventory button on the local slot was redundant and could be confusing.
+
+This commit added `isLocalGwCampaignClient(client)`, matching by local Uber id first and display name second. Slot generation now sets:
+
+```js
+showInventory: client && perPlayerTechCards && !localClient
+```
+
+The modal open path also refuses local slots directly. That keeps the slot list focused on what it uniquely provides: checking teammates' loadouts and cards.
+
+### Upstream Build 124641 Integration (`5351a24`)
+
+This commit imported PA build `124641` changes while the per-player tech work was still in flight. Its main effect was removing the old user-facing "local or remote server" choice and simplifying game launch around local servers.
+
+In the GW play path, `useLocalServer` was removed and battle launch now always marks the start params as local:
+
+```js
+local: true
+```
+
+`allowLoad()` now keys off `game.replayName()` instead of switching between local replay names and remote replay lobby ids. The remote load-save path was removed from this branch's GW launch code.
+
+Outside Galactic War, the start screen, server browser, settings, and save-game browser were updated to match the upstream local-server policy:
+
+- remove the old `server.local` setting UI,
+- remove the "Host game locally" choice from server browser,
+- gate gameplay on `local_server_available`,
+- launch AI skirmish and Galactic War through local server paths.
+
+For the per-player tech branch, the practical consequence is narrower launch state. The branch no longer has to preserve per-player GW setup across both local and remote GW battle start flows.
+
+### Co-op Difficulty Scaling Accounts For Per-Player Tech (`14ca456`)
+
+Earlier co-op difficulty scaling increased AI economy and enemy minions based on player count. Per-player tech changes the balance: each player can have their own tech progression, so the allied side can become significantly stronger than shared-tech co-op.
+
+This commit adjusted the scaling constants and formulas in GW start generation:
+
+- economy bonus is still based on extra co-op players,
+- per-player tech multiplies that extra-player economy bonus by `PER_PLAYER_TECH_CARD_ECON_SCALING`,
+- minion distance scaling now uses absolute jump distance from the player's start instead of relative distance to the galaxy rim,
+- per-player tech multiplies the extra co-op minion count by `PER_PLAYER_TECH_CARD_MINION_SCALING`.
+
+The move from relative to absolute distance is important because relative scaling changes with galaxy size. Absolute jump distance makes the additional minion ramp easier to reason about: every fixed number of jumps adds another chunk of co-op-scaled minions.
+
+### Version 4 Save Patcher Covers All Co-op GW State (`f48ba07`)
+
+The version 4 game patch originally only ensured `coopPlayerInventoryData` existed. By this point, version 4 represented a broader co-op save shape: co-op player count settings, shared-control defaults, per-player tech enablement, inventory records, and host tech-deal history.
+
+This commit expanded the patcher so old saves get all of those observables if they are missing:
+
+- `coopPlayers`
+- `coopPlayersSpecified`
+- `lockCoopPlayers`
+- `sharedByDefault`
+- `perPlayerTechCards`
+- `coopPlayerInventoryData`
+- `hostTechCardDealHistory`
+- `hostTechCardDealCount`
+
+It also enforces the key invariant during patching: if `perPlayerTechCards()` is true, `sharedByDefault(false)` is applied. That prevents an old or partially upgraded save from loading into the impossible "per-player tech plus shared army" state.
+
+This patcher matters because the branch evolved the save format over many commits. Loading an older co-op GW save should not depend on exactly which intermediate commit created it.
+
+### Local Overlays Regenerate Per-Player Tags With Client-Side Effects (`8bf0142`)
+
+This commit fixed the interaction between per-player generated tech files and local client-side mods such as skins or effects. The important constraint is that the shared battle files already contain the referee-generated gameplay tags:
+
+- `.player`
+- `.player0`
+- `.player1`
+- later `.playerN` tags
+
+Local overlays should not replace that ownership model. They should regenerate local presentation overlays for the same tags using the correct inventory mods for the player who owns each tag.
+
+The server now builds explicit tag assignments from the prepared battle config:
+
+```js
+{
+    tag: army.spec_tag,
+    client_id: client.id,
+    client_name: client.name
+}
+```
+
+Those assignments are sent in the normal `gw_config` payload and are also stored in the full replay config so reconnect can receive the same mapping through `memory_files`.
+
+The lobby and reconnect loading scenes then use that mapping while building local overlay files:
+
+- `.player` is regenerated from the local campaign inventory,
+- `.playerN` tags are matched to their owning co-op player inventory record,
+- each tag gets AI unit maps generated for that same tag,
+- `GW.specs.modSpecs` is applied with that inventory's mods,
+- the resulting local files are merged over the already-refereed shared files.
+
+This is the generic version of the behavior the branch needed. The base/referee files remain authoritative for gameplay ownership, while each client can still apply local modded visuals and effects across the generated per-player tag set.
+
+### Co-op Players Unlock Start Loadouts In Per-Player Tech Games (`753439a`)
+
+Start loadouts are represented as Galactic War cards with ids like `gwc_start...`. In a single-player campaign, when the host encounters or earns a start loadout card, the host's local bank can unlock it. Per-player tech needed the same idea for viewers: if a co-op player is offered a start loadout card, it should unlock for that player instead of being treated like a normal inventory tech card.
+
+This commit introduced normalized `unlockedStartCardIds` on co-op player inventory records. The loadout scene reports the viewer's currently unlocked start cards when submitting their initial loadout, always including the selected loadout card.
+
+The server gained helpers to identify and normalize start loadout cards:
+
+- `isStartLoadoutCardId`
+- `normalizeUnlockedStartCardIds`
+- `addCoopPlayerUnlockedStartCardId`
+
+It also gained `set_player_unlocked_start_cards` so a viewer can report newly unlocked local loadouts, and `gw_campaign_player_unlocked_start_cards` broadcasts so every client saves the same co-op player record.
+
+Tech-card dealing was updated too. When a star's card list contains start loadout cards, the host records them in the host deal history. For each viewer, the pending-card deal checks whether that player already has the start loadout unlocked. If not, the pending choice can be a one-card start-loadout unlock. Choosing it updates `unlockedStartCardIds`; it does not consume a tech bank slot or get inserted into the normal tech card inventory.
+
+This let viewers unlock new loadouts even in co-op, as before they would have had to play single player to unlock the new loadouts.
+
+### Preserve Existing Boss/System Flavor Text When AI Description Is Missing (`791141d`)
+
+This was a small upstream-style content fix in GW generation. When assigning AI identity to a star, the code always wrote:
+
+```js
+star.system().description = ai.description;
+```
+
+If `ai.description` was undefined, that overwrote any existing system description with `undefined`. The fix only assigns the AI description when it exists:
+
+```js
+if (!_.isUndefined(ai.description)) {
+    star.system().description = ai.description;
+}
+```
+
+This keeps existing boss or system flavor text intact when the AI record does not provide replacement text.
+
+### Practical Lessons From Per-Player Tech Cards
+
+The branch's core model is now consistent:
+
+1. Per-player tech must imply unshared human armies, because a shared army can only have one `spec_tag`.
+2. Referees prepare the battle config and generated shared files before the server lobby assigns clients.
+3. Each human client receives the tag belonging to their assigned army and carries it through lobby, reconnect, and live game.
+4. Co-op player inventories are persisted in the campaign save, not reconstructed from UI state.
+5. Server messages describe validated operations whenever possible, rather than accepting full mutated client records.
+6. Local overlays are allowed to regenerate the same tags for presentation mods, but the tag ownership comes from the prepared battle config.
+7. Fallbacks are only acceptable when the source is genuinely optional; broken propagation should be fixed at the lifecycle point where the value is lost.
+
+---
+
+## Post-Per-Player-Tech-Card Changes
+
+These commits landed after the per-player tech-card branch. This section intentionally skips `78c5f1b` and `081420c`, and covers the remaining post-merge commits.
+
+### Client Mod Gate Reports Both Missing And Extra GW-Affecting Mods (`f303aee`)
+
+The earlier client-mod gate only reported required mods that a joining client was missing. That was not enough for Galactic War co-op, because a client can also have an extra GW-affecting client mod enabled that the host does not have. In that case the client may locally generate or patch files differently from the shared campaign state.
+
+This commit changed the manifest contract. Clients now report:
+
+- all active client mod identifiers,
+- active client mods that declare themselves as required/GW-affecting,
+- display names for those active required mods.
+
+The server compares the host-published required set against the client's active required set. A mismatch can now be:
+
+- missing on the client,
+- extra on the client,
+- malformed because the client did not send the required manifest fields.
+
+Both `gw_campaign` and `gw_lobby` gained a `requiredClientModsPublished` flag. That prevents the manifest gate from treating "host has not published required mod data yet" as equivalent to "there are no required mods." Once the host publishes the set, already-connected viewers are asked to resend manifests.
+
+The user-facing gate moved out of `gw_lobby` and `gw_play` into [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js). That gives one shared connection-time UI for mod mismatches instead of duplicating gate markup and handlers in every GW scene. The gate title changed from "Required Client Mods Missing" to "Client Mod Mismatch" and now shows separate lists for:
+
+- "Missing on this client"
+- "Only active on this client"
+
+This keeps the mod check aligned with the required/GW-affecting mod model: everyone should have the same behavior-changing client mods, while purely local presentation mods can still remain local.
+
+### Issue #33: Explicit Win Button Argument (`41e8bcc`)
+
+Per-player tech made `win` require an explicit selected-card index so the viewer tech-choice path could tell the server exactly which pending card was chosen. That changed the function contract, but one debug/hero button in `gw_play.html` still bound directly to `win`.
+
+Knockout click bindings pass the current binding context as an argument when a function is referenced directly. After the function signature changed, clicking that button could pass the wrong value as the selected-card index.
+
+This commit made the binding explicit:
+
+```html
+click: function() { win(-1); }
+```
+
+`-1` is the existing "no selected card" value. The `lose` button was similarly wrapped as `function() { lose(); }` so the click context is not accidentally passed into it either.
+
+### Galaxy System Generation Includes Co-op Player Count (`75e12ba`)
+
+Co-op difficulty scaling already adjusted AI economy and enemy minions after the galaxy existed, but the generated star systems themselves were still chosen using the vanilla player-count ramp. That meant a larger co-op group could face co-op-scaled armies inside systems whose planet layouts were selected for fewer players.
+
+This commit passes the saved co-op player count into galaxy generation:
+
+```js
+coopPlayersForSystemGeneration: coopPlayersForGeneration
+```
+
+[ui/main/game/galactic_war/shared/js/gw_galaxy.js](ui/main/game/galactic_war/shared/js/gw_galaxy.js) then adds one system-generation player per extra co-op player:
+
+```js
+var coopSystemPlayerBonus = Math.max(0, Math.floor((config.coopPlayersForSystemGeneration || 1) - 1));
+var plyrs = Math.min(40, basePlayers + coopSystemPlayerBonus);
+```
+
+The cap at `40` is deliberate. The vanilla system template buckets use normal player counts up to that range, and exceeding it can fall into special fallback behavior rather than the intended normal templates.
+
+`generate_mod.py` was updated to copy `gw_galaxy.js`, because the co-op mod package now needs this shared generation file for the new behavior.
+
+### Spawned Units Are Tagged Independently Of Death Weapon Tagging (`16d2f02`)
+
+This fixed the Lob-spawned Dox problem in the primary `shared/js` copy of `gw_specs.js`. The old tagging logic only applied `spawn_unit_on_death` inside the `death_weapon` block. That meant a projectile or transient spec could spawn a unit, but if it did not also have a `death_weapon`, the spawned unit path stayed untagged.
+
+For Galactic War generated specs, that is wrong. `spawn_unit_on_death` is a dependent spec reference just like ammo specs, buildable unit paths, and death weapon ammo paths. If the current generated namespace is `.player`, `.player0`, or `.player1`, the spawned unit reference needs the same tag.
+
+The fix moves the `spawn_unit_on_death` check outside the `death_weapon` branch:
+
+```js
+if (_.isString(spec.spawn_unit_on_death)) {
+    applyTag(spec, "spawn_unit_on_death");
+}
+```
+
+This is generic base behavior, not a GWO-specific workaround. Any GW tech system that modifies a unit should also affect copies of that unit spawned through `spawn_unit_on_death`, including Lob-spawned Dox.

@@ -402,7 +402,7 @@ define([
                             name: minion.name || 'Helper',
                             commander: stripKnownSpecTag(minion.commander || playerCommanders[index]) + playerTags[index]
                         }],
-                        color: minion.color || [playerColor[1], playerColor[0]],
+                        color: minion.color || [playerColor[0], playerColor[1]],
                         econ_rate: minion.econ_rate || 1,
                         personality: minion.personality,
                         spec_tag: playerTags[index],
