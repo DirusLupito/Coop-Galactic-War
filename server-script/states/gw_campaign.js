@@ -928,7 +928,9 @@ function GWCampaignModel(creator) {
             required_content: content_manager.getRequiredContent(),
             bounty_mode: false,
             bounty_value: 1.0,
-            sandbox: false
+            sandbox: false,
+            steam_networking: !!server.steam_networking_enabled,
+            steam_id: server.steam_networking_enabled ? server.steam_id : undefined
         };
     };
 
