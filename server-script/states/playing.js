@@ -152,7 +152,7 @@ function beginGwCampaignProcessRestart() {
     gwCampaignRestartRequested = true;
     var preparePayload = buildGwCampaignRestartPreparePayload();
 
-    var broadcastPrepare = function() {
+    var sendRestartPrepare = function() {
         var recipients = _.map(_.filter(server.clients, function(client) {
             return client && client.connected;
         }), function(client) {
@@ -161,13 +161,6 @@ function beginGwCampaignProcessRestart() {
 
         console.log('[GW COOP] sending restart_prepare from playing to connected clients=' + JSON.stringify(recipients));
 
-        server.broadcast({
-            message_type: 'gw_return_to_campaign_restart_prepare',
-            payload: preparePayload
-        });
-
-        // Direct-send as a fallback in case some clients are mid-transition and
-        // miss the broadcast packet while swapping UI panels.
         _.forEach(server.clients, function(client) {
             if (!client || !client.connected)
                 return;
@@ -183,7 +176,7 @@ function beginGwCampaignProcessRestart() {
         });
     };
 
-    broadcastPrepare();
+    sendRestartPrepare();
 
     _.delay(function() {
         console.log('[GW COOP] Executing process-level restart from playing after delay=' + GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS + 'ms');

@@ -352,29 +352,13 @@
         handlers.gw_return_to_campaign_restart_prepare = function(payload) {
             console.log('[GW COOP] gw_return_to_campaign_restart_prepare received payload=' + JSON.stringify(payload));
             var preparePayload = payload || {};
-            var inferredRole = gwCampaignRole();
 
-            // Prefer explicit per-client role from server restart_prepare payload.
             if (_.isString(preparePayload.role) && (preparePayload.role === 'host' || preparePayload.role === 'viewer')) {
-                inferredRole = preparePayload.role;
+                gwCampaignRole(preparePayload.role);
             }
-            // Next fallback is role captured from game_over server_state.
-            else if (lastGameOverClientState && _.isString(lastGameOverClientState.gw_campaign_role)) {
-                inferredRole = lastGameOverClientState.gw_campaign_role;
+            else {
+                console.error('[GW COOP] restart_prepare missing explicit per-client role; keeping current role=' + gwCampaignRole() + ' host=' + preparePayload.host_id + ' name=' + displayName());
             }
-            else if (!_.isUndefined(preparePayload.host_id)) {
-                var hostId = String(preparePayload.host_id);
-                var localDisplayName = displayName();
-                if (_.isString(localDisplayName) && localDisplayName.length)
-                    inferredRole = (String(localDisplayName) === hostId) ? 'host' : 'viewer';
-                else {
-                    var localUberId = uberId();
-                    if (!_.isUndefined(localUberId))
-                        inferredRole = (String(localUberId) === hostId) ? 'host' : 'viewer';
-                }
-            }
-
-            gwCampaignRole(inferredRole);
 
             console.log('[GW COOP] restart_prepare received role=' + gwCampaignRole() + ' token=' + preparePayload.restart_token + ' delay=' + preparePayload.shutdown_delay_ms + ' host=' + preparePayload.host_id + ' name=' + displayName());
             gwCampaignEnabled(true);

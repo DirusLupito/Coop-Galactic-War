@@ -132,7 +132,7 @@ function buildGwCampaignRestartPreparePayload() {
 }
 
 // Performs a full server restart for co-op GW:
-// 1) broadcast restart prep to all clients
+// 1) send role-specific restart prep to all clients
 // 2) shut down sim/server process so host can start a fresh campaign server
 // 3) clients reconnect through UI-side retry logic
 function beginGwCampaignProcessRestart() {
@@ -142,7 +142,7 @@ function beginGwCampaignProcessRestart() {
     gwCampaignRestartRequested = true;
     var preparePayload = buildGwCampaignRestartPreparePayload();
 
-    var broadcastPrepare = function() {
+    var sendRestartPrepare = function() {
         var recipients = _.map(_.filter(server.clients, function(client) {
             return client && client.connected;
         }), function(client) {
@@ -151,13 +151,6 @@ function beginGwCampaignProcessRestart() {
 
         console.log('[GW COOP] sending restart_prepare to connected clients=' + JSON.stringify(recipients));
 
-        server.broadcast({
-            message_type: 'gw_return_to_campaign_restart_prepare',
-            payload: preparePayload
-        });
-
-        // Direct-send to each connected client as a fallback
-        // in case some clients miss a broadcast while changing UI state.
         _.forEach(server.clients, function(client) {
             if (!client || !client.connected)
                 return;
@@ -175,9 +168,9 @@ function beginGwCampaignProcessRestart() {
         });
     };
 
-    // Broadcast the restart preparation message to all clients so 
-    // they can begin showing the appropriate UI and reconnect logic for the upcoming restart. 
-    broadcastPrepare();
+    // Send the restart preparation message to all clients so they can begin
+    // showing the appropriate UI and reconnect logic for the upcoming restart.
+    sendRestartPrepare();
 
     // Now we delay the process shutdown to give clients enough time to receive the restart message and 
     // switch into reconnect mode before we kill the server. 
