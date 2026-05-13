@@ -6,6 +6,8 @@ $(document).ready(function() {
     // The server control payload decides whether this GW lobby is campaign co-op or solo GW.
     var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
     var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
+    var GW_CONFIG_REQUEST_INTERVAL_MS = 1000;
+    var GW_CONFIG_MAX_RETRIES = 120;
 
     function GWLobbyViewModel() {
         var self = this;
@@ -431,6 +433,7 @@ $(document).ready(function() {
                 model.send_message('gw_config_ready', {});
             }, function() {
                 model.gwConfigMountInProgress = false;
+                console.error('[GW COOP] gw_lobby failed to mount GW config memory files.');
             });
         });
     };
@@ -480,13 +483,44 @@ $(document).ready(function() {
 
     app.hello(handlers.server_state, handlers.connection_disconnected);
 
+    var failGWConfigRequest = function(reason) {
+        var transitPrimaryMessage = ko.observable().extend({ session: 'transit_primary_message' });
+        var transitSecondaryMessage = ko.observable().extend({ session: 'transit_secondary_message' });
+        var transitDestination = ko.observable().extend({ session: 'transit_destination' });
+        var transitDelay = ko.observable().extend({ session: 'transit_delay' });
+
+        console.error('[GW COOP] gw_lobby failed to mount GW config after ' + GW_CONFIG_MAX_RETRIES + ' retries reason=' + reason);
+        transitPrimaryMessage(loc('!LOC:FAILED TO LOAD GALACTIC WAR CONFIG'));
+        transitSecondaryMessage(loc('!LOC:Returning to Galactic War'));
+        transitDestination(model.lastSceneUrl() || 'coui://ui/main/game/galactic_war/gw_play/gw_play.html');
+        transitDelay(5000);
+        window.location.href = 'coui://ui/main/game/transit/transit.html';
+    };
+
     // Browser-join clients may enter this scene after the server first sent gw_config.
     // Explicitly request the GW config and keep trying briefly until mounted.
+    var gwConfigRetryCount = 0;
     var requestGWConfig = function() {
-        if (!model.gwConfigMounted()) {
-            model.send_message('request_gw_config', {});
-            setTimeout(requestGWConfig, 1000);
+        if (model.gwConfigMounted()) {
+            return;
         }
+
+        if (gwConfigRetryCount >= GW_CONFIG_MAX_RETRIES) {
+            failGWConfigRequest(model.gwConfigMountInProgress ? 'mount_in_progress' : 'not_mounted');
+            return;
+        }
+
+        gwConfigRetryCount++;
+
+        if (!model.gwConfigMountInProgress) {
+            model.send_message('request_gw_config', {}, function(success, response) {
+                if (!success) {
+                    console.error('[GW COOP] gw_lobby request_gw_config failed retry=' + gwConfigRetryCount + ' response=' + JSON.stringify(response || {}));
+                }
+            });
+        }
+
+        setTimeout(requestGWConfig, GW_CONFIG_REQUEST_INTERVAL_MS);
     };
     requestGWConfig();
 
