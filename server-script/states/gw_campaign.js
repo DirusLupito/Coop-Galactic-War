@@ -610,7 +610,7 @@ function GWCampaignModel(creator) {
         return self.getHostTechCardDealHistory(game).length;
     };
 
-    self.getCoopPlayerTechCardDealCount = function(record, hostTechCardDealCount) {
+    self.getCoopPlayerTechCardDealCount = function(record) {
         if (!record) {
             return 0;
         }
@@ -629,7 +629,7 @@ function GWCampaignModel(creator) {
 
         var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
         var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
-        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record, hostTechCardDealCount);
+        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record);
 
         return playerTechCardDealCount < hostTechCardDealCount;
     };
@@ -991,7 +991,7 @@ function GWCampaignModel(creator) {
 
         var snapshotGame = self.lastSnapshot && self.lastSnapshot.snapshot && self.lastSnapshot.snapshot.game;
         var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
-        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record, hostTechCardDealCount);
+        var playerTechCardDealCount = self.getCoopPlayerTechCardDealCount(record);
         if (playerTechCardDealCount >= hostTechCardDealCount) {
             return false;
         }
@@ -1424,7 +1424,7 @@ function GWCampaignModel(creator) {
                         return;
                     }
 
-                    var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord, hostTechCardDealCount);
+                    var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord);
                     var dealIndex = _.isNumber(pendingTechCards.dealIndex)
                         ? Math.floor(pendingTechCards.dealIndex)
                         : currentTechCardDealCount + 1;
@@ -1594,7 +1594,7 @@ function GWCampaignModel(creator) {
 
                 var updatedAt = Date.now();
                 var hostTechCardDealCount = self.getHostTechCardDealCount(snapshotGame);
-                var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord, hostTechCardDealCount);
+                var currentTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord);
                 var dealIndex = _.isNumber(pendingTechCards.dealIndex)
                     ? Math.floor(pendingTechCards.dealIndex)
                     : currentTechCardDealCount + 1;
