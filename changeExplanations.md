@@ -111,6 +111,11 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `41e8bcc` `Fixed issue #33.`
   - `75e12ba` `Galaxy generation now factors in number of coop players.`
   - `16d2f02` `spawn_unit_on_death specs are now applied even when there is no death_weapon spec.`
+  - `bcdfcde` `Fixed an issue with steamp2p connections failing.`
+  - `cea37ad` `Cleaned up bad fallback for host/client inference.`
+  - `3f4f727` `Comma separates logged reject reason.`
+  - `1da19fa` `GW Lobby will no longer try to request config forever.`
+  - `f3bd000` `Removed unused parameter in getCoopPlayerTechCardDealCount.`
 
 ## High-Level Summary
 
@@ -134,6 +139,7 @@ At a high level, the codebase now does all of the following:
 14. Lets a co-op campaign launch a fight with either shared armies or as separate allied armies, with the default stored in the GW save and the per-battle value controlled from the campaign lobby.
 15. Adds a per-player tech-card battle mode by giving each human army its own generated player spec tag, its own unit files, and eventually its own inventory/loadout/card choice lifecycle.
 16. Tightens post-merge behavior around required client mod mismatches, co-op galaxy generation, issue #33, and spawned-unit spec tagging.
+17. Preserves Steam networking metadata across GW campaign and battle lobby beacons, removes role-guessing from Continue War restart prep, and bounds GW config retry behavior.
 
 ## Original Single-Player Galactic War File Model
 
@@ -3040,3 +3046,91 @@ if (_.isString(spec.spawn_unit_on_death)) {
 ```
 
 This is generic base behavior, not a GWO-specific workaround. Any GW tech system that modifies a unit should also affect copies of that unit spawned through `spawn_unit_on_death`, including Lob-spawned Dox.
+
+## More Cleanup (Commits `bcdfcde` through `f3bd000`)
+
+These commits landed after the spawned-unit tagging fix. They are smaller than the per-player tech branch, but they are important because they tighten protocol boundaries that had become easy to reason about incorrectly.
+
+### Steam P2P Beacon Metadata For GW Campaign States (`bcdfcde`)
+
+This commit fixed Steam P2P connection failures by making the GW campaign server states publish the same Steam networking metadata expected by the normal connection path.
+
+Both [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) and [server-script/states/gw_lobby.js](server-script/states/gw_lobby.js) already constructed beacon payloads with lobby identity, mode, required content, and sandbox information. The missing pieces were:
+
+```js
+steam_networking: !!server.steam_networking_enabled,
+steam_id: server.steam_networking_enabled ? server.steam_id : undefined
+```
+
+Without those fields, clients discovering or joining through a Steam P2P-capable path could lack the transport identity needed to connect correctly. The fix keeps the beacon conditional: Steam metadata is only advertised when Steam networking is actually enabled.
+
+### Restart Prepare Uses Explicit Per-Client Roles Only (`cea37ad`)
+
+The Continue War restart protocol already had the right design direction: the server should send each client an explicit role, and the UI should not infer host/viewer from loose identity fields. This commit made that rule stricter.
+
+Previously, [ui/main/game/galactic_war/gw_play/live_game_patch.js](ui/main/game/galactic_war/gw_play/live_game_patch.js) still had fallback logic that tried to infer the role from `host_id`, `displayName`, `uberId`, or previously captured game-over client state. That was risky because role identity is not a display concern, and because a fallback can hide the real bug if the restart payload loses its role.
+
+The client now accepts only an explicit `role` value of `host` or `viewer` from `gw_return_to_campaign_restart_prepare`. If that field is missing, it logs a loud error and keeps the current role rather than guessing.
+
+The server-side half changed too. [server-script/states/game_over.js](server-script/states/game_over.js) and [server-script/states/playing.js](server-script/states/playing.js) no longer send a roleless broadcast followed by role-specific direct messages. They now send role-specific restart prep directly to each connected client. This avoids a normal-path roleless message triggering the new error logging.
+
+This preserves the important Continue War split:
+
+- `game_over` handles the normal post-battle restart path,
+- `playing` handles defeated-while-still-playing cases such as GWO/FFA,
+- the UI consumes the same role-bearing restart message from either server state.
+
+### Mod Mismatch Reason Text Uses Separators (`3f4f727`)
+
+This commit cleaned up the server-generated reason string for required/GW-affecting client mod mismatches.
+
+The visible client mod mismatch gate in [ui/main/game/connect_to_game/connect_to_game.html](ui/main/game/connect_to_game/connect_to_game.html) renders missing and extra mod names as vertical lists from structured identifier arrays. This commit does not change that primary UI.
+
+Instead, it changes the fallback/reason text generated by `buildMissingRequiredModsReason` in both campaign states. Lists like:
+
+```text
+missing [Mod A][Mod B]
+```
+
+now become:
+
+```text
+missing [Mod A], [Mod B]
+```
+
+That reason string is still useful in logs, acknowledgement payloads, rejection/fallback flows, and debugging output. Keeping it readable matters even though the main visual gate uses structured fields.
+
+### GW Lobby Config Requests Are Bounded (`1da19fa`)
+
+The GW battle lobby can be entered by clients after the server has already sent the generated GW config. To cover that race, [ui/main/game/galactic_war/gw_lobby/gw_lobby.js](ui/main/game/galactic_war/gw_lobby/gw_lobby.js) explicitly requests `request_gw_config` until the memory files are mounted.
+
+Before this commit, that retry loop was unbounded. If the config never arrived, or if mounting failed permanently, the client could keep requesting forever with no clear error path.
+
+The new behavior keeps the recovery intent but gives it a finite lifecycle:
+
+- retry once per second,
+- stop after `GW_CONFIG_MAX_RETRIES`,
+- avoid sending duplicate config requests while a mount is already in progress,
+- log failed `request_gw_config` responses,
+- log memory-file mount failures,
+- route the user back through transit with a clear "failed to load Galactic War config" message if the config never mounts.
+
+The retry limit is intentionally generous so slow machines or heavy local overlay generation do not fail during normal operation, while still preventing an infinite silent loop.
+
+### Removed Dead Tech-Deal Count Parameter (`f3bd000`)
+
+This cleanup removed an unused parameter from `getCoopPlayerTechCardDealCount` in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js).
+
+The helper only reads the co-op player's own inventory record:
+
+```js
+self.getCoopPlayerTechCardDealCount = function(record) {
+```
+
+Callers still compute the host deal count separately when they need to compare player progress against host progress. Removing the unused parameter makes that separation explicit:
+
+- `getHostTechCardDealCount(game)` answers "how many deals has the host reached?",
+- `getCoopPlayerTechCardDealCount(record)` answers "how many deals has this player resolved?",
+- comparison logic stays at the call site where both values are meaningful.
+
+This does not change behavior. It prevents future readers from assuming the helper is using the host count as an override or fallback.
