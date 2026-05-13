@@ -214,7 +214,7 @@ function LobbyModel(creator, launchContext) {
                     : identifier;
 
                 return '[' + label + ']';
-            }).join(''));
+            }).join(', '));
         }
 
         if (extraIdentifiers && extraIdentifiers.length) {
@@ -225,7 +225,7 @@ function LobbyModel(creator, launchContext) {
                     : identifier;
 
                 return '[' + label + ']';
-            }).join(''));
+            }).join(', '));
         }
 
         if (!parts.length) {

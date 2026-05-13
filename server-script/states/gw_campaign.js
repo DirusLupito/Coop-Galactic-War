@@ -230,7 +230,7 @@ function GWCampaignModel(creator) {
                     : identifier;
 
                 return '[' + label + ']';
-            }).join(''));
+            }).join(', '));
         }
 
         if (extraIdentifiers && extraIdentifiers.length) {
@@ -241,7 +241,7 @@ function GWCampaignModel(creator) {
                     : identifier;
 
                 return '[' + label + ']';
-            }).join(''));
+            }).join(', '));
         }
 
         if (!parts.length) {
