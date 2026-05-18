@@ -124,6 +124,14 @@ function isCampaignHostClient(client) {
     return !!hostId && !!clientId && hostId === clientId;
 }
 
+function getCampaignHostName(hostId) {
+    var hostClient = _.find(server.clients, function(client) {
+        return client && normalizeClientId(client.id) === hostId;
+    });
+
+    return hostClient && hostClient.name;
+}
+
 // Build a payload that allows both host and viewers to follow a coordinated
 // reconnect timeline after Continue War is triggered mid-match.
 function buildGwCampaignRestartPreparePayload() {
@@ -133,6 +141,7 @@ function buildGwCampaignRestartPreparePayload() {
 
     return {
         host_id: hostId,
+        host_name: getCampaignHostName(hostId),
         settings: settings,
         access: access,
         shutdown_delay_ms: GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS,

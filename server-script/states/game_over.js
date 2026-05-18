@@ -112,6 +112,14 @@ function isCampaignHostClient(client) {
     return !!hostId && !!clientId && hostId === clientId;
 }
 
+function getCampaignHostName(hostId) {
+    var hostClient = _.find(server.clients, function(client) {
+        return client && normalizeClientId(client.id) === hostId;
+    });
+
+    return hostClient && hostClient.name;
+}
+
 // Build the payload that tells clients to enter reconnect mode.
 // This payload is intentionally host-agnostic enough that both host and viewers
 // can use it to coordinate the same restart sequence.
@@ -122,6 +130,7 @@ function buildGwCampaignRestartPreparePayload() {
 
     return {
         host_id: hostId,
+        host_name: getCampaignHostName(hostId),
         settings: settings,
         access: access,
         shutdown_delay_ms: GW_CAMPAIGN_RESTART_BROADCAST_DELAY_MS,
