@@ -117,6 +117,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `1da19fa` `GW Lobby will no longer try to request config forever.`
   - `f3bd000` `Removed unused parameter in getCoopPlayerTechCardDealCount.`
   - `ddf96c2` `Steam P2P now works with autoreconnect.`
+  - `pending` `GWO-style pre-dealt star cards are now host-authoritative.`
 
 ## High-Level Summary
 
@@ -3173,3 +3174,25 @@ The new logs are deliberately modest but should make future failures diagnosable
 - timeout logs a clear give-up message before returning through transit.
 
 The practical rule from this bug is: when mimicking server-browser behavior, mimic the whole source pipeline before inventing fallback theories. In this repo, LAN, UberNet, and custom-server discovery are distinct feeds that only become one list inside `server_browser.js`.
+
+### Host-Authoritative Star Card Offer Sync (`pending`)
+
+Galactic War Overhaul exposes a small but useful synchronization mistake in the campaign-map operator model. GWO pre-deals one card onto selectable enemy systems and shows that card in its system information panel as "Available Tech". The real shared game state for this is still the normal Galactic War `star.cardList()`, but GWO also caches a display label on `star.ai().cardName`.
+
+In single-player, this is harmless. In co-op, host and viewer can reveal a new enemy system while both clients have GWO loaded. If both clients run GWO's local pre-deal independently, they can locally roll different cards. The actual reward follows the host's `star.cardList()`, but the viewer's information panel can show a different local prediction, or lose the label after movement sync overwrites the viewer's map star from the campaign game star.
+
+The fix keeps the operator theory intact. We do not send a whole snapshot and we do not ask viewers to rerun the mod's card dealer. Instead, the host emits the existing `sync_star_cards` operator with concrete operands:
+
+```js
+{
+    star: starIndex,
+    cards: star.cardList(),
+    extra_card_info: {
+        card_name: star.ai().cardName
+    }
+}
+```
+
+`cards` is the actual generic state. `extra_card_info` is optional metadata associated with that card offer. For now the only applied key is `card_name`, because that is the reviewed field needed by GWO's panel. This avoids inventing a GWO-specific "star intel" protocol while also avoiding an arbitrary mod-data tunnel.
+
+The host now observes star `cardList` changes and sends `sync_star_cards` when a mod or the base game changes a star's pending cards. Viewers apply the packet to their campaign game state, then the existing viewer-star sync copies that state into the map/view model. This makes newly revealed GWO systems behave like late-join systems: the host's card offer and display label are the only promise shown to co-op players.

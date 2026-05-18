@@ -2468,6 +2468,125 @@ requireGW([
             });
         };
 
+        self.buildSyncStarCardsPayload = function(starIndex) {
+            var galaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var stars = galaxy && _.isFunction(galaxy.stars) ? galaxy.stars() : undefined;
+            var star = _.isNumber(starIndex) && _.isArray(stars) ? stars[starIndex] : undefined;
+
+            if (!star || !_.isFunction(star.cardList)) {
+                console.log('[GW COOP] cannot build sync_star_cards payload for star=' + starIndex);
+                return undefined;
+            }
+
+            var payload = {
+                star: starIndex,
+                cards: _.cloneDeep(star.cardList() || []),
+                extra_card_info: {}
+            };
+
+            // some mods include extra information in the star data.
+            //
+            // Currently only GWO is known to do this, with the star's ai observable
+            // having the available tech cards for the star. 
+            //
+            // In case that extra information is present, we include it in the 
+            // sync_star_cards payload so it can be applied  on the viewer side 
+            // and keep everyone's state consistent even with mods.
+            var ai = _.isFunction(star.ai) ? star.ai() : undefined;
+            if (ai && _.has(ai, 'cardName')) {
+                payload.extra_card_info.card_name = ai.cardName;
+            }
+
+            return payload;
+        };
+
+        self.sendSyncStarCardsAction = function(starIndex, reason) {
+            var payload = self.buildSyncStarCardsPayload(starIndex);
+            if (!payload) {
+                console.log('[GW COOP] sync_star_cards not sent reason=' + reason + ' star=' + starIndex);
+                return false;
+            }
+
+            self.sendCampaignAction('sync_star_cards', payload);
+            return true;
+        };
+
+        self.applySyncStarCardsPayload = function(payload, reason) {
+            if (!payload || !_.isNumber(payload.star) || !_.isArray(payload.cards)) {
+                console.log('[GW COOP] invalid sync_star_cards payload reason=' + reason + ' payload=' + JSON.stringify(payload || {}));
+                return;
+            }
+
+            var galaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var stars = galaxy && _.isFunction(galaxy.stars) ? galaxy.stars() : undefined;
+            var star = _.isArray(stars) ? stars[payload.star] : undefined;
+            if (!star || !_.isFunction(star.cardList)) {
+                console.log('[GW COOP] cannot apply sync_star_cards for star=' + payload.star + ' reason=' + reason);
+                return;
+            }
+
+            star.cardList(_.cloneDeep(payload.cards));
+
+            if (_.has(payload, 'extra_card_info')) {
+                var extraCardInfo = payload.extra_card_info;
+                if (!_.isObject(extraCardInfo) || _.isArray(extraCardInfo)) {
+                    console.log('[GW COOP] invalid sync_star_cards extra_card_info star=' + payload.star + ' reason=' + reason);
+                    return;
+                }
+
+                var ai = _.isFunction(star.ai) ? star.ai() : undefined;
+                if (ai) {
+                    if (_.has(extraCardInfo, 'card_name')) {
+                        ai.cardName = extraCardInfo.card_name;
+                    }
+                    else if (_.has(ai, 'cardName')) {
+                        delete ai.cardName;
+                    }
+                    star.ai(ai);
+                }
+            }
+        };
+
+        self.ensureCampaignStarCardSyncHooks = function() {
+            if (self.gwCampaignStarCardSyncHooksReady) {
+                return;
+            }
+
+            if (!self.isCampaignHost() || !self.gwCampaignConnected()) {
+                return;
+            }
+
+            var galaxy = game && _.isFunction(game.galaxy) ? game.galaxy() : undefined;
+            var stars = galaxy && _.isFunction(galaxy.stars) ? galaxy.stars() : undefined;
+            if (!_.isArray(stars) || !stars.length) {
+                return;
+            }
+
+            self.gwCampaignStarCardSyncHooksReady = true;
+            self.gwCampaignStarCardSyncSubscriptions = [];
+
+            _.forEach(stars, function(star, starIndex) {
+                if (!star || !_.isFunction(star.cardList) || !_.isFunction(star.cardList.subscribe)) {
+                    console.log('[GW COOP] cannot observe star card list for star=' + starIndex);
+                    return;
+                }
+
+                self.gwCampaignStarCardSyncSubscriptions.push(star.cardList.subscribe(function() {
+                    if (!self.isCampaignHost() || !self.gwCampaignConnected() || self.gwCampaignReplayingAction) {
+                        return;
+                    }
+
+                    _.delay(function() {
+                        if (self.sendSyncStarCardsAction(starIndex, 'observed_card_list')) {
+                            console.log('[GW COOP] observed star card sync star=' + starIndex);
+                        }
+                    }, 500);
+                }));
+            });
+
+            console.log('[GW COOP] observing star card lists for host sync count=' + self.gwCampaignStarCardSyncSubscriptions.length);
+        };
+
         self.wrapCampaignOverrideIfNeeded = function(name, actionType, payloadBuilder) {
             var current = self[name];
             if (!_.isFunction(current) || current.__gwCampaignNative || current.__gwCampaignWrapped)
@@ -2495,10 +2614,7 @@ requireGW([
                             return;
 
                         syncSent = true;
-                        self.sendCampaignAction('sync_star_cards', {
-                            star: exploreStarIndex,
-                            cards: exploreStar && _.isFunction(exploreStar.cardList) ? exploreStar.cardList() : []
-                        });
+                        self.sendSyncStarCardsAction(exploreStarIndex, reason);
                         console.log('[GW COOP] wrapped explore relayed sync_star_cards reason=' + reason + ' star=' + exploreStarIndex);
                     };
 
@@ -2544,6 +2660,8 @@ requireGW([
             self.wrapCampaignOverrideIfNeeded('lose', 'lose_turn', function() {
                 return {};
             });
+
+            self.ensureCampaignStarCardSyncHooks();
         };
 
         self.syncViewerStarFromGame = function(starIndex, reason) {
@@ -2802,10 +2920,7 @@ requireGW([
             }
 
             if (action.type === 'explore_cards') {
-                var stars = game.galaxy().stars();
-                var star = _.isNumber(payload.star) ? stars[payload.star] : undefined;
-                if (star && _.isFunction(star.cardList) && _.isArray(payload.cards))
-                    star.cardList(payload.cards);
+                self.applySyncStarCardsPayload(payload, 'explore_cards');
                 self.scanning(false);
                 self.syncViewerStarsFromGame('after_action_explore_cards', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
@@ -2813,10 +2928,7 @@ requireGW([
             }
 
             if (action.type === 'sync_star_cards') {
-                var syncStars = game.galaxy().stars();
-                var syncStar = _.isNumber(payload.star) ? syncStars[payload.star] : undefined;
-                if (syncStar && _.isFunction(syncStar.cardList) && _.isArray(payload.cards))
-                    syncStar.cardList(payload.cards);
+                self.applySyncStarCardsPayload(payload, 'sync_star_cards');
                 self.syncViewerStarsFromGame('after_action_sync_star_cards', [payload.star, game.currentStar()]);
                 self.gwCampaignReplayingAction = false;
                 return;
@@ -3654,10 +3766,7 @@ requireGW([
                 }
 
                 if (!self.gwCampaignReplayingAction) {
-                    self.sendCampaignAction('sync_star_cards', {
-                        star: game.currentStar(),
-                        cards: star.cardList()
-                    });
+                    self.sendSyncStarCardsAction(game.currentStar(), 'native_explore');
                 }
 
                 var dealEntry = undefined;
