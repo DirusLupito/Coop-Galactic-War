@@ -116,6 +116,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `3f4f727` `Comma separates logged reject reason.`
   - `1da19fa` `GW Lobby will no longer try to request config forever.`
   - `f3bd000` `Removed unused parameter in getCoopPlayerTechCardDealCount.`
+  - `ddf96c2` `Steam P2P now works with autoreconnect.`
 
 ## High-Level Summary
 
@@ -140,6 +141,7 @@ At a high level, the codebase now does all of the following:
 15. Adds a per-player tech-card battle mode by giving each human army its own generated player spec tag, its own unit files, and eventually its own inventory/loadout/card choice lifecycle.
 16. Tightens post-merge behavior around required client mod mismatches, co-op galaxy generation, issue #33, and spawned-unit spec tagging.
 17. Preserves Steam networking metadata across GW campaign and battle lobby beacons, removes role-guessing from Continue War restart prep, and bounds GW config retry behavior.
+18. Reconnects Steam socket Continue War viewers by rediscovering the restarted lobby through the same remote, custom, and LAN beacon sources used by the multiplayer server browser.
 
 ## Original Single-Player Galactic War File Model
 
@@ -3134,3 +3136,40 @@ Callers still compute the host deal count separately when they need to compare p
 - comparison logic stays at the call site where both values are meaningful.
 
 This does not change behavior. It prevents future readers from assuming the helper is using the host count as an override or fallback.
+
+### Steam P2P now works with autoreconnect. (`ddf96c2`)
+
+Steam socket servers do not have a stable `steam_id` at the moment Continue War restart prep is sent. Logs showed the server starts with a temporary Steam game-server id and then updates it after the restarted server is already running. That means the old direct reconnect payload can safely preserve TCP/IP host/port, but it cannot safely preserve a Steam socket connection target.
+
+The fix keeps the direct TCP/IP and UPnP path unchanged. If the saved reconnect info has no Steam id, [ui/main/game/galactic_war/gw_campaign_restart_loading/gw_campaign_restart_loading.js](ui/main/game/galactic_war/gw_campaign_restart_loading/gw_campaign_restart_loading.js) restores `game_hostname` and `game_port` and goes straight to `connect_to_game`.
+
+For Steam socket reconnects only, the restart loading scene now rediscovers the restarted lobby using the same sources as the normal multiplayer server browser:
+
+- UberNet remote games through `api.net.requestCurrentGames()`,
+- custom server listings through the session `custom_servers_url`,
+- LAN lookout beacons through `enable_lan_lookout` and Coherent `update_beacon` / `new_beacon` handlers.
+
+[server-script/states/game_over.js](server-script/states/game_over.js) and [server-script/states/playing.js](server-script/states/playing.js) include the host display name in the existing `gw_return_to_campaign_restart_prepare` payload. The restart loading scene uses that normal beacon field as the matching key:
+
+```js
+creator === context.host_name
+```
+
+It also requires normal advertised lobby fields: `state === 'lobby'`, `mode === 'FreeForAll'`, `steam_networking === true`, and a present `steam_id`. On match, it fills the same session state that server-browser join uses: blank host/port for Steam, fresh `game_steam_id`, lobby id, uuid, server type, GW setup, game type, mods, password, and then navigates to `connect_to_game`.
+
+This path intentionally does not use custom beacon fields. A tested `gw_restart_token` experiment did not survive into the LAN beacon payload, and nonstandard beacon data has historically been stripped or hidden by the discovery layer. The durable matching data is the normal host display name plus the normal lobby/Steam fields.
+
+The debugging lesson was that "the server browser sees it" does not imply `requestCurrentGames()` sees it. The server browser merges three lists: remote UberNet games, custom server games, and LAN beacons. The off-LAN failure printed `requestCurrentGames()` returning zero while the browser still showed `Custom: local` rows, which meant restart discovery had copied only part of the browser pipeline.
+
+The new logs are deliberately modest but should make future failures diagnosable:
+
+- restart entry includes role, timing, token, and host name,
+- direct reconnect logs the chosen host/port,
+- Steam discovery logs attempt number, host, and build,
+- remote discovery logs `requestCurrentGames` failures and returned game count,
+- custom discovery logs custom-list availability, failures, and returned game count,
+- LAN/custom/remote candidates log source, lobby id, creator, Steam id, and mode,
+- a match logs lobby id, source, and fresh Steam id,
+- timeout logs a clear give-up message before returning through transit.
+
+The practical rule from this bug is: when mimicking server-browser behavior, mimic the whole source pipeline before inventing fallback theories. In this repo, LAN, UberNet, and custom-server discovery are distinct feeds that only become one list inside `server_browser.js`.
