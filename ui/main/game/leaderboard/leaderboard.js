@@ -253,7 +253,7 @@ $(document).ready(function () {
 
         self.seasonText = ko.computed(function()
         {
-            return ['!LOC:Season ends __date__', { date: MatchmakingUtility.getSeasonEndDate() }];
+            return ['!LOC:Season 15 ends __date__', { date: MatchmakingUtility.getSeasonEndDate() }];
         });
 
         self.setup = function()
