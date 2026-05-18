@@ -1,4 +1,4 @@
-﻿body {
+body {
 }
 
 
@@ -339,8 +339,32 @@
     opacity: 0.2;
 }
 
-#seasons, #invictus
+#seasons, #season_reward_image
 {
     margin-top: 20px;
     text-align: center;
 }
+
+    #season_reward_image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+#season_reward {
+    margin-top: 12px;
+    text-align: center;
+    font-family: "Sansation";
+    font-weight: bold;
+}
+
+    #season_reward .label {
+        font-size: 14px;
+        color: #999;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    #season_reward .stat {
+        font-size: 24px;
+        text-shadow: 0px 0px 40px #00b3ff;
+    }

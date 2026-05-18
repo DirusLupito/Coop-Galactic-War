@@ -1082,7 +1082,7 @@ $(document).ready(function()
         });
 
         self.maxSpectatorsLimit = ko.observable(3);
-        self.maxPlayersLimit = ko.observable(10);
+        self.maxPlayersLimit = ko.observable(12);
 
         self.spectatorLimitOptions = ko.computed(function () {
             return _.range(self.maxSpectatorsLimit()+1);

@@ -11,7 +11,7 @@ var _ = require('thirdparty/lodash');
 // Timeout values, in seconds.
 var EMPTY_TIMEOUT = 120;
 
-exports.MAX_PLAYERS = 10;
+exports.MAX_PLAYERS = 12;
 exports.MAX_SPECTATORS = 5;
 exports.SERVER_PASSWORD = '';
 exports.DEFAULT_LOBBY_NAME = '';
