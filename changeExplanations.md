@@ -117,7 +117,7 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `1da19fa` `GW Lobby will no longer try to request config forever.`
   - `f3bd000` `Removed unused parameter in getCoopPlayerTechCardDealCount.`
   - `ddf96c2` `Steam P2P now works with autoreconnect.`
-  - `pending` `GWO-style pre-dealt star cards are now host-authoritative.`
+  - `96cc3ee` `Fixed issue where coop players saw different available tech.`
 
 ## High-Level Summary
 
@@ -3175,7 +3175,7 @@ The new logs are deliberately modest but should make future failures diagnosable
 
 The practical rule from this bug is: when mimicking server-browser behavior, mimic the whole source pipeline before inventing fallback theories. In this repo, LAN, UberNet, and custom-server discovery are distinct feeds that only become one list inside `server_browser.js`.
 
-### Host-Authoritative Star Card Offer Sync (`pending`)
+### Host-Authoritative Star Card Offer Sync (`96cc3ee`)
 
 Galactic War Overhaul exposes a small but useful synchronization mistake in the campaign-map operator model. GWO pre-deals one card onto selectable enemy systems and shows that card in its system information panel as "Available Tech". The real shared game state for this is still the normal Galactic War `star.cardList()`, but GWO also caches a display label on `star.ai().cardName`.
 
