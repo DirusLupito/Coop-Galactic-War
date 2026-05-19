@@ -3,6 +3,86 @@ var handlers = {};
 
 $(document).ready(function()
 {
+    var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
+    var GW_TECH_CARD_EXCLUDES = {
+        gwc_add_card_slot: true,
+        gwc_minion: true
+    };
+    var GW_TECH_FAKE_GALAXY = {
+        stars: function() {
+            return _.range(0, 12);
+        }
+    };
+    var GW_TECH_FAKE_STAR = {
+        distance: function() {
+            return 1;
+        }
+    };
+
+    var normalizeGwTechSlotCount = function(value) {
+        var count = Math.floor(Number(value));
+        if (!_.isFinite(count) || count < 0) {
+            return 0;
+        }
+
+        return count;
+    };
+
+    var normalizeGwTechLoadout = function(loadout) {
+        if (_.isString(loadout) && loadout.indexOf('gwc_start') === 0) {
+            return loadout;
+        }
+
+        return DEFAULT_GW_TECH_LOADOUT;
+    };
+
+    var normalizeGwTechCards = function(cards, slotCount) {
+        var result = [];
+
+        _.forEach(cards || [], function(card) {
+            if (_.isString(card) && card.indexOf('gwc_start') !== 0) {
+                result.push(card);
+            }
+        });
+
+        if (_.isFinite(slotCount) && result.length > slotCount) {
+            result.length = slotCount;
+        }
+
+        return result;
+    };
+
+    function GwTechSlotCardViewModel(slot, index, cardId) {
+        var self = this;
+
+        self.slot = slot;
+        self.index = index;
+        self.cardId = cardId;
+        self.card = new CardViewModel(cardId ? { id: cardId } : undefined);
+        self.filled = ko.observable(!!cardId);
+        self.isNextOpen = ko.computed(function() {
+            return index === slot.gwTechCards().length;
+        });
+        self.isRightmostFilled = ko.computed(function() {
+            return index === slot.gwTechCards().length - 1;
+        });
+        self.canPick = ko.computed(function() {
+            return slot.canEditGwTech() && (self.isNextOpen() || self.isRightmostFilled());
+        });
+        self.canClear = ko.computed(function() {
+            return slot.canEditGwTech() && self.filled() && self.isRightmostFilled();
+        });
+        self.pick = function(data, event) {
+            slot.openGwTechCardPicker(index, event);
+        };
+        self.clear = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            slot.clearGwTechCard(index);
+        };
+    }
+
     function SlotViewModel(options /* ai economy_factor */)
     {
         var self = this;
@@ -33,6 +113,168 @@ $(document).ready(function()
 
         self.secondaryColor = ko.observable('');
         self.commander = ko.observable();
+        self.gwTechLoadout = ko.observable(DEFAULT_GW_TECH_LOADOUT);
+        self.gwTechCards = ko.observableArray([]);
+        self.showGwTechLoadoutPicker = ko.observable(false);
+        self.showGwTechCardPicker = ko.observable(false);
+        self.gwTechPickerSlotIndex = ko.observable(-1);
+        self.gwTechAllowedCardIds = ko.observable({});
+        self.gwTechValidationPending = ko.observable(false);
+        self.showGwTech = ko.computed(function() {
+            return self.isPlayer() && !!model && model.gwTechCardSlotCount() > 0;
+        });
+        self.gwTechLoadoutCard = ko.computed(function() {
+            if (!self.showGwTech()) {
+                return null;
+            }
+
+            return new CardViewModel({ id: self.gwTechLoadout() });
+        });
+        self.gwTechSlotCards = ko.computed(function() {
+            if (!self.showGwTech()) {
+                return [];
+            }
+
+            var slotCount = model ? model.gwTechCardSlotCount() : 0;
+            var cards = self.gwTechCards();
+
+            return _.map(_.range(0, slotCount), function(index) {
+                return new GwTechSlotCardViewModel(self, index, cards[index]);
+            });
+        });
+        self.canEditGwTech = ko.computed(function() {
+            var ownsSlot = self.playerName() === model.displayName();
+            return self.showGwTech() && (ownsSlot || (self.ai() && model.isGameCreator()));
+        });
+        self.gwTechPickerOptions = ko.computed(function() {
+            if (!self.showGwTech()) {
+                return [];
+            }
+
+            var allowed = self.gwTechAllowedCardIds();
+            return _.map(model.gwTechCardOptions(), function(option) {
+                return {
+                    id: option.id,
+                    card: option.card,
+                    enabled: !!allowed[option.id]
+                };
+            });
+        });
+        self.closeGwTechPickers = function() {
+            self.showGwTechLoadoutPicker(false);
+            self.showGwTechCardPicker(false);
+            self.gwTechPickerSlotIndex(-1);
+        };
+        self.openGwTechLoadoutPicker = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            model.closeDropDowns();
+            self.showGwTechLoadoutPicker(true);
+        };
+        self.selectGwTechLoadout = function(option, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech() || !option || !option.id) {
+                return;
+            }
+
+            self.gwTechLoadout(option.id);
+            self.gwTechCards([]);
+            model.send_message('set_gw_tech_loadout', {
+                id: self.playerId(),
+                loadout_card_id: option.id
+            });
+            self.closeGwTechPickers();
+        };
+        self.openGwTechCardPicker = function(index, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            var firstEmpty = self.gwTechCards().length;
+            var rightmostFilled = self.gwTechCards().length - 1;
+            if (index !== firstEmpty && index !== rightmostFilled) {
+                return;
+            }
+
+            model.closeDropDowns();
+            self.gwTechPickerSlotIndex(index);
+            self.gwTechAllowedCardIds({});
+            self.gwTechValidationPending(true);
+            model.buildGwTechAllowedCardMap(self, index).then(function(allowed) {
+                if (self.gwTechPickerSlotIndex() !== index) {
+                    return;
+                }
+                self.gwTechAllowedCardIds(allowed);
+                self.gwTechValidationPending(false);
+                self.showGwTechCardPicker(true);
+            }, function(reason) {
+                console.error('Failed to validate GW tech cards: ' + reason);
+                self.gwTechAllowedCardIds({});
+                self.gwTechValidationPending(false);
+                self.showGwTechCardPicker(true);
+            });
+        };
+        self.selectGwTechCard = function(option, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech() || !option || !option.enabled) {
+                return;
+            }
+
+            var index = self.gwTechPickerSlotIndex();
+            var cards = self.gwTechCards().slice(0);
+            cards[index] = option.id;
+            self.gwTechCards(normalizeGwTechCards(cards, model.gwTechCardSlotCount()));
+            model.send_message('set_gw_tech_card', {
+                id: self.playerId(),
+                slot_index: index,
+                card_id: option.id
+            });
+            self.closeGwTechPickers();
+        };
+        self.clearGwTechCard = function(index) {
+            if (!self.canEditGwTech() || index !== self.gwTechCards().length - 1) {
+                return;
+            }
+
+            var cards = self.gwTechCards().slice(0);
+            cards.splice(index, 1);
+            self.gwTechCards(cards);
+            model.send_message('clear_gw_tech_card', {
+                id: self.playerId(),
+                slot_index: index
+            });
+            self.closeGwTechPickers();
+        };
+        self.pruneInvalidGwTechCards = function() {
+            model.findFirstInvalidGwTechCardIndex(self).then(function(invalidIndex) {
+                if (invalidIndex < 0) {
+                    return;
+                }
+
+                var originalLength = self.gwTechCards().length;
+                var cards = self.gwTechCards().slice(0, invalidIndex);
+                self.gwTechCards(cards);
+
+                for (var index = originalLength - 1; index >= invalidIndex; --index) {
+                    model.send_message('clear_gw_tech_card', {
+                        id: self.playerId(),
+                        slot_index: index
+                    });
+                }
+            });
+        };
 
         self.serverEconFactor = ko.observable(parseFloat(options.economy_factor));
         self.clientEconFactor = ko.observable(null);
@@ -208,6 +450,9 @@ $(document).ready(function()
             if (json.commander)
                 self.commander(json.commander);
 
+            self.gwTechLoadout(normalizeGwTechLoadout(json.gw_tech_loadout));
+            self.gwTechCards(normalizeGwTechCards(json.gw_tech_cards, model.gwTechCardSlotCount()));
+
             self.isReady(json.ready);
             self.isLoading(json.loading);
         };
@@ -222,6 +467,9 @@ $(document).ready(function()
             self.primaryColor('');
             self.secondaryColor('');
             self.clientEconFactor('');
+            self.gwTechLoadout(DEFAULT_GW_TECH_LOADOUT);
+            self.gwTechCards([]);
+            self.closeGwTechPickers();
         };
 
         self.containsThisPlayer = ko.computed(function () {
@@ -249,7 +497,7 @@ $(document).ready(function()
                 axis: 'y',
                 revert: true,
                 handle: '.slot-player',
-                cancel: '.slot-player-commander, .army-econ, .slot-controls',
+                cancel: '.slot-player-commander, .army-econ, .slot-controls, .gw-tech-strip',
                 // snap: '.one-slot',
                 containment: '.armies',
                 cursor: 'move',
@@ -434,7 +682,7 @@ $(document).ready(function()
 
             while (self.slots().length < json.slots)
             {
-                self.slots.push(new SlotViewModel({ index: self.slots().length -1, armyIndex: self.index(), ai: self.aiArmy() }));
+                self.slots.push(new SlotViewModel({ index: self.slots().length, armyIndex: self.index(), ai: self.aiArmy() }));
             }
 
             while (self.slots().length > json.slots)
@@ -668,6 +916,198 @@ $(document).ready(function()
         self.isFFAGame      = ko.computed(function() { return self.gameType() === 'FreeForAll'; });
         self.isTeamGame     = ko.computed(function() { return self.gameType() === 'TeamArmies'; });
         self.isVersusAIGame = ko.computed(function() { return self.gameType() === 'VersusAI'; });
+        self.gwTechCardSlotCountLock = ko.observable(false);
+        self.gwTechCardSlotCount = ko.observable(0);
+        self.gwTechCardSlotCountInput = ko.observable(0).extend({ rateLimit: { timeout: 750, method: "notifyWhenChangesStop" } });
+        self.gwTechCardSlotCountInput.subscribe(function(value) {
+            var count = normalizeGwTechSlotCount(value);
+            if (count !== Number(value)) {
+                self.gwTechCardSlotCountInput(count);
+            }
+            self.gwTechCardSlotCount(count);
+        });
+        self.gwTechCardSlotCount.subscribe(function(value) {
+            self.gwTechCardSlotCountInput(value);
+            _.forEach(self.armies(), function(army) {
+                _.forEach(army.slots(), function(slot) {
+                    slot.gwTechCards(normalizeGwTechCards(slot.gwTechCards(), value));
+                });
+            });
+            if (!self.gwTechCardSlotCountLock()) {
+                self.changeSettings();
+            }
+        });
+        self.gwTechModulesReady = ko.observable(false);
+        self.gwInventoryModule = null;
+        self.gwDealerModule = null;
+        self.gwTechLoadoutOptions = ko.observableArray([]);
+        self.gwTechCardOptions = ko.observableArray([]);
+        self.gwTechCardModules = {};
+
+        self.loadGwTechModules = function() {
+            if (!window.requireGW) {
+                console.error('requireGW is not available for custom lobby tech-card UI.');
+                return;
+            }
+
+            requireGW([
+                'shared/gw_inventory',
+                'shared/gw_start_loadouts',
+                'pages/gw_start/gw_dealer'
+            ], function(
+                GWInventory,
+                GWStartLoadouts,
+                GWDealer
+            ) {
+                self.gwInventoryModule = GWInventory;
+                self.gwDealerModule = GWDealer;
+
+                self.gwTechLoadoutOptions(_.map(GWStartLoadouts.all(), function(cardData) {
+                    return {
+                        id: cardData.id,
+                        card: new CardViewModel(cardData)
+                    };
+                }));
+
+                GWDealer.allCards().then(function(cards) {
+                    var options = [];
+                    _.forEach(cards, function(card) {
+                        if (!card || !_.isString(card.id)) {
+                            return;
+                        }
+                        if (card.id.indexOf('gwc_start') === 0 || GW_TECH_CARD_EXCLUDES[card.id]) {
+                            return;
+                        }
+                        if (_.isFunction(card.visible) && card.visible({}) !== true) {
+                            return;
+                        }
+                        if (card.visible && !_.isFunction(card.visible) && card.visible !== true) {
+                            return;
+                        }
+
+                        self.gwTechCardModules[card.id] = card;
+                        options.push({
+                            id: card.id,
+                            card: new CardViewModel({ id: card.id })
+                        });
+                    });
+
+                    self.gwTechCardOptions(options);
+                    self.gwTechModulesReady(true);
+                });
+            });
+        };
+
+        self.buildGwTechInventory = function(slot, slotIndex) {
+            var result = $.Deferred();
+
+            if (!self.gwInventoryModule || !self.gwDealerModule) {
+                result.reject('GW tech modules are not loaded.');
+                return result.promise();
+            }
+
+            var dealInventory = new self.gwInventoryModule();
+            dealInventory.setTag('global', 'commander', slot.commander());
+            self.gwDealerModule.dealCard({
+                id: slot.gwTechLoadout(),
+                inventory: dealInventory,
+                galaxy: GW_TECH_FAKE_GALAXY,
+                star: GW_TECH_FAKE_STAR
+            }).then(function(startCardProduct) {
+                var inventory = new self.gwInventoryModule();
+                var cards = [startCardProduct || { id: slot.gwTechLoadout() }];
+                var selectedCards = slot.gwTechCards().slice(0, slotIndex);
+
+                _.forEach(selectedCards, function(cardId) {
+                    cards.push({ id: cardId });
+                });
+
+                inventory.load({
+                    cards: cards,
+                    tags: {
+                        global: {
+                            commander: slot.commander()
+                        }
+                    }
+                });
+                inventory.applyCards(function() {
+                    result.resolve(inventory);
+                });
+            }, function(reason) {
+                result.reject(reason);
+            });
+
+            return result.promise();
+        };
+
+        self.gwTechCardHasChance = function(cardId, inventory) {
+            var card = self.gwTechCardModules[cardId];
+            if (!card) {
+                return false;
+            }
+
+            if (inventory.hasCard(cardId)) {
+                return false;
+            }
+
+            try {
+                var context = card.getContext && card.getContext(GW_TECH_FAKE_GALAXY, inventory);
+                var deal = card.deal && card.deal(GW_TECH_FAKE_STAR, context, inventory);
+                var chance = deal && Number(deal.chance);
+                if (card.releaseContext) {
+                    card.releaseContext(context);
+                }
+                return _.isFinite(chance) && chance > 0;
+            }
+            catch (e) {
+                console.error('Failed evaluating GW tech card ' + cardId + ': ' + JSON.stringify(e));
+                return false;
+            }
+        };
+
+        self.buildGwTechAllowedCardMap = function(slot, slotIndex) {
+            var result = $.Deferred();
+
+            self.buildGwTechInventory(slot, slotIndex).then(function(inventory) {
+                var allowed = {};
+                _.forEach(self.gwTechCardOptions(), function(option) {
+                    allowed[option.id] = self.gwTechCardHasChance(option.id, inventory);
+                });
+                result.resolve(allowed);
+            }, function(reason) {
+                result.reject(reason);
+            });
+
+            return result.promise();
+        };
+
+        self.findFirstInvalidGwTechCardIndex = function(slot) {
+            var result = $.Deferred();
+            var cards = slot.gwTechCards().slice(0);
+
+            var checkIndex = function(index) {
+                if (index >= cards.length) {
+                    result.resolve(-1);
+                    return;
+                }
+
+                self.buildGwTechInventory(slot, index).then(function(inventory) {
+                    if (!self.gwTechCardHasChance(cards[index], inventory)) {
+                        result.resolve(index);
+                        return;
+                    }
+
+                    checkIndex(index + 1);
+                }, function() {
+                    result.resolve(index);
+                });
+            };
+
+            checkIndex(0);
+            return result.promise();
+        };
+
+        self.loadGwTechModules();
 
         self.allowSpectate = ko.computed(function () {
             if (self.thisPlayerIsReady())
@@ -714,7 +1154,8 @@ $(document).ready(function()
                     'bounty_value': self.bountyValue(),
                     'sandbox': self.sandbox(),
                     'sudden_death_mode': self.suddenDeathMode(),
-                    'shuffle_landing_zones': self.shuffleLandingZones()
+                    'shuffle_landing_zones': self.shuffleLandingZones(),
+                    'gw_tech_card_slots': self.gwTechCardSlotCount()
                 }
             }
 
@@ -2652,6 +3093,11 @@ api.debug.log(personality);
             self.showColorPicker(false);
             self.showCommanderPicker(false);
             self.showAICommanderPicker(false);
+            _.forEach(self.armies(), function(army) {
+                _.forEach(army.slots(), function(slot) {
+                    slot.closeGwTechPickers();
+                });
+            });
         }
 
         /** @deprecated */
@@ -3341,6 +3787,10 @@ api.debug.log(personality);
         model.suddenDeathMode(payload.game_options ? payload.game_options.sudden_death_mode : false);
 
         model.shuffleLandingZones(payload.game_options ? payload.game_options.shuffle_landing_zones : false);
+
+        model.gwTechCardSlotCountLock(true);
+        model.gwTechCardSlotCount(payload.game_options ? normalizeGwTechSlotCount(payload.game_options.gw_tech_card_slots) : 0);
+        model.gwTechCardSlotCountLock(false);
 
         model.requestUpdateCheatConfig();
     };

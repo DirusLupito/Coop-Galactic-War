@@ -540,9 +540,30 @@ select {
             margin: 0px 0px 4px 0px;
         }
 
-    .game_settings .sub_options {
+.game_settings .sub_options {
         margin: 0 0 6px 20px;
     }
+
+.gw-tech-slot-setting {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0px 0px 0px;
+    color: #A1E5FF;
+}
+
+.gw-tech-slot-setting input {
+    width: 56px;
+    height: 24px;
+    background: #111;
+    border: 1px solid #555;
+    color: #e3e3e3;
+    padding: 0px 6px;
+}
+
+.gw-tech-slot-setting.readonly {
+    color: #c5c5c5;
+}
 
 .multiplier_alert {
     color: #000;
@@ -1064,6 +1085,10 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: -5px;
 }
 
+.one-slot.gwTechVisible {
+    margin-bottom: 6px;
+}
+
 .one-empty {
     margin-right: 185px;
     margin-bottom: 5px;
@@ -1217,6 +1242,194 @@ input[type=number]::-webkit-outer-spin-button {
 .slot-controls {
     margin: 12px 10px 0px 0px;
     float: right;
+}
+
+.gw-tech-strip {
+    clear: both;
+    height: 80px;
+    width: calc(100% - 181px);
+    max-width: calc(100% - 181px);
+    min-width: 0;
+    margin: 4px 95px 4px 86px;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid rgba(0, 179, 255, 0.35);
+    box-shadow: inset 0px 0px 12px rgba(0, 179, 255, 0.24);
+}
+
+.gw-tech-card-tile {
+    width: 62px;
+    height: 62px;
+    flex: 0 0 62px;
+    margin: 5px 4px 5px 0px;
+    position: relative;
+    border: 1px solid rgba(0, 179, 255, 0.4);
+    background: #06151a;
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.22);
+}
+
+.gw-tech-card-tile.editable:hover {
+    border-color: #00b3ff;
+    background: #0b2630;
+}
+
+.gw-tech-card-tile.empty {
+    background: url('coui://ui/main/game/galactic_war/gw_play/img/tech/gwc_empty.png') center center no-repeat #06151a;
+    background-size: 44px 44px;
+    opacity: 0.72;
+}
+
+.gw-tech-card-tile img {
+    width: 56px;
+    height: 56px;
+    margin: 2px;
+}
+
+.gw-tech-loadout {
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    margin: 5px 0px 5px 0px;
+    border-color: rgba(0, 255, 163, 0.55);
+}
+
+.gw-tech-loadout-mark,
+.gw-tech-card-index,
+.gw-tech-card-clear {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-family: "Sansation";
+    font-size: 10px;
+    line-height: 1;
+}
+
+.gw-tech-loadout-mark {
+    left: 3px;
+    bottom: 3px;
+    padding: 2px 4px;
+    color: #5fffc4;
+}
+
+.gw-tech-card-index {
+    left: 3px;
+    bottom: 3px;
+    padding: 2px 4px;
+    color: #9de8ff;
+}
+
+.gw-tech-card-clear {
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.gw-tech-card-clear:hover {
+    background: rgba(255, 40, 40, 0.8);
+}
+
+.gw-tech-scroll {
+    position: absolute;
+    left: 73px;
+    right: 0px;
+    top: 0px;
+    height: 78px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.gw-tech-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gw-tech-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 30, 40, 0.8);
+}
+
+.gw-tech-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 179, 255, 0.55);
+    border: 1px solid rgba(0, 255, 163, 0.25);
+}
+
+.gw-tech-card-row {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.gw-tech-scroll .gw-tech-card-tile {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.gw-tech-picker {
+    position: absolute;
+    z-index: 1000;
+    left: 0px;
+    right: 0px;
+    top: 75px;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #07171d;
+    border: 1px solid #1e7aa1;
+    box-shadow: 0px 0px 20px #000, inset 0px 0px 18px rgba(30, 122, 161, 0.55);
+    padding: 4px;
+}
+
+.gw-tech-picker-item {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: 3px 6px;
+}
+
+.gw-tech-picker-item:hover {
+    border-color: #00b3ff;
+    background: rgba(0, 179, 255, 0.15);
+}
+
+.gw-tech-picker-item.selected {
+    border-color: #5fffc4;
+    background: rgba(0, 255, 163, 0.16);
+}
+
+.gw-tech-picker-item.disabled {
+    opacity: 0.35;
+}
+
+.gw-tech-picker-item.disabled:hover {
+    border-color: transparent;
+    background: none;
+}
+
+.gw-tech-picker-item img {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+}
+
+.gw-tech-picker-item span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gw-tech-picker-loading {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

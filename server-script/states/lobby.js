@@ -87,6 +87,54 @@ var DEFAULT_GAME_OPTIONS =
     land_anywhere: false,
     sudden_death_mode: false,
     shuffle_landing_zones: false,
+    gw_tech_card_slots: 0,
+};
+
+var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
+
+var normalizeGwTechCardSlotCount = function(value)
+{
+    var count = Math.floor(Number(value));
+    if (!_.isFinite(count) || count < 0)
+    {
+        return 0;
+    }
+
+    return count;
+};
+
+var normalizeGwTechCardList = function(cards, slotCount)
+{
+    if (!_.isArray(cards))
+    {
+        return [];
+    }
+
+    var result = [];
+    _.forEach(cards, function(card)
+    {
+        if (_.isString(card) && card.indexOf('gwc_start') !== 0)
+        {
+            result.push(card);
+        }
+    });
+
+    if (slotCount >= 0 && result.length > slotCount)
+    {
+        result.length = slotCount;
+    }
+
+    return result;
+};
+
+var normalizeGwTechLoadout = function(loadout)
+{
+    if (_.isString(loadout) && loadout.indexOf('gwc_start') === 0)
+    {
+        return loadout;
+    }
+
+    return DEFAULT_GW_TECH_LOADOUT;
 };
 
 
@@ -178,6 +226,8 @@ function PlayerModel(client, options) {
 
     self.economyFactor = _.isFinite(options.economy_factor) ? options.economy_factor : 1.0;
     self.economyFactor = Math.min(Math.max(0.0, self.economyFactor), 10.0);
+    self.gwTechLoadout = normalizeGwTechLoadout(options.gw_tech_loadout);
+    self.gwTechCards = normalizeGwTechCardList(options.gw_tech_cards);
 
     if (!!options.mod)
         bouncer.addPlayerToModlist(client.id);
@@ -294,6 +344,65 @@ function PlayerModel(client, options) {
         self.economyFactor = value;
     };
 
+    self.setGwTechLoadout = function(loadout)
+    {
+        self.gwTechLoadout = normalizeGwTechLoadout(loadout);
+        self.gwTechCards = [];
+    };
+
+    self.setGwTechCard = function(slotIndex, cardId, slotCount)
+    {
+        slotIndex = Math.floor(Number(slotIndex));
+        slotCount = normalizeGwTechCardSlotCount(slotCount);
+
+        if (!_.isFinite(slotIndex) || slotIndex < 0 || slotIndex >= slotCount)
+        {
+            return false;
+        }
+
+        if (!_.isString(cardId) || cardId.indexOf('gwc_start') === 0)
+        {
+            return false;
+        }
+
+        self.gwTechCards = normalizeGwTechCardList(self.gwTechCards, slotCount);
+        var firstEmpty = self.gwTechCards.length;
+        var rightmostFilled = self.gwTechCards.length - 1;
+        if (slotIndex !== firstEmpty && slotIndex !== rightmostFilled)
+        {
+            return false;
+        }
+
+        self.gwTechCards[slotIndex] = cardId;
+        self.gwTechCards = normalizeGwTechCardList(self.gwTechCards, slotCount);
+        return true;
+    };
+
+    self.clearGwTechCard = function(slotIndex, slotCount)
+    {
+        slotIndex = Math.floor(Number(slotIndex));
+        slotCount = normalizeGwTechCardSlotCount(slotCount);
+
+        if (!_.isFinite(slotIndex) || slotIndex < 0 || slotIndex >= slotCount)
+        {
+            return false;
+        }
+
+        self.gwTechCards = normalizeGwTechCardList(self.gwTechCards, slotCount);
+        if (slotIndex !== self.gwTechCards.length - 1)
+        {
+            return false;
+        }
+
+        self.gwTechCards.splice(slotIndex, 1);
+        return true;
+    };
+
+    self.truncateGwTechCards = function(slotCount)
+    {
+        self.gwTechCards = normalizeGwTechCardList(self.gwTechCards, normalizeGwTechCardSlotCount(slotCount));
+    };
+
     self.asJson = function()
     {
         return {
@@ -312,7 +421,9 @@ function PlayerModel(client, options) {
             ready: self.ready,
             loading: self.loading,
             color: colors.getColorFor(self.colorIndex),
-            color_index: self.colorIndex[0]
+            color_index: self.colorIndex[0],
+            gw_tech_loadout: self.gwTechLoadout,
+            gw_tech_cards: self.gwTechCards.slice(0)
         };
     };
 
@@ -327,7 +438,9 @@ function PlayerModel(client, options) {
             ai: self.ai,
             personality: self.personality,
             landing_policy: self.landingPolicy,
-            creator: self.creator
+            creator: self.creator,
+            gw_tech_loadout: self.gwTechLoadout,
+            gw_tech_cards: self.gwTechCards.slice(0)
         };
     };
 
@@ -1260,6 +1373,71 @@ function LobbyModel(creator) {
         }
     };
 
+    self.setGwTechLoadout = function(player_id, loadout)
+    {
+        debug_log('setGwTechLoadout');
+        var player = self.players[player_id];
+
+        if (!player || player.spectator)
+        {
+            return false;
+        }
+
+        player.setGwTechLoadout(loadout);
+        self.unreadyAllPlayers();
+        return true;
+    };
+
+    self.setGwTechCard = function(player_id, slotIndex, cardId)
+    {
+        debug_log('setGwTechCard');
+        var player = self.players[player_id];
+
+        if (!player || player.spectator)
+        {
+            return false;
+        }
+
+        var slotCount = self.settings.game_options ? self.settings.game_options.gw_tech_card_slots : 0;
+        if (!player.setGwTechCard(slotIndex, cardId, slotCount))
+        {
+            return false;
+        }
+
+        self.unreadyAllPlayers();
+        return true;
+    };
+
+    self.clearGwTechCard = function(player_id, slotIndex)
+    {
+        debug_log('clearGwTechCard');
+        var player = self.players[player_id];
+
+        if (!player || player.spectator)
+        {
+            return false;
+        }
+
+        var slotCount = self.settings.game_options ? self.settings.game_options.gw_tech_card_slots : 0;
+        if (!player.clearGwTechCard(slotIndex, slotCount))
+        {
+            return false;
+        }
+
+        self.unreadyAllPlayers();
+        return true;
+    };
+
+    self.truncateGwTechCards = function(slotCount)
+    {
+        slotCount = normalizeGwTechCardSlotCount(slotCount);
+        _.forEach(self.players, function(player)
+        {
+            player.truncateGwTechCards(slotCount);
+        });
+        self.updatePlayerState();
+    };
+
     self.validateSetup = function()
     {
         debug_log('validateSetup');
@@ -1519,6 +1697,11 @@ function playerMsg_modifySettings(msg)
 
         if (config.game_options.shuffle_landing_zones)
             game_options.shuffle_landing_zones = !!config.game_options.shuffle_landing_zones;
+
+        if (_.has(config.game_options, 'gw_tech_card_slots'))
+        {
+            game_options.gw_tech_card_slots = normalizeGwTechCardSlotCount(config.game_options.gw_tech_card_slots);
+        }
     }
 
     settings.hidden = (!hasFriendsList && !config.public);
@@ -1561,6 +1744,11 @@ function playerMsg_modifySettings(msg)
     }
 
     lobbyModel.changeSettings(settings);
+
+    if (lobbyModel.settings.game_options)
+    {
+        lobbyModel.truncateGwTechCards(lobbyModel.settings.game_options.gw_tech_card_slots);
+    }
 
     if (!nameChangeOnly)
         lobbyModel.unreadyAllPlayers();
@@ -1785,6 +1973,88 @@ function playerMsg_setEconomyFactor(msg)
         return response.fail("Not allowed");
 
     lobbyModel.setEconomyFactor(msg.payload.id, msg.payload.economy_factor);
+    response.succeed();
+}
+
+function canEditGwTechFor(client, player)
+{
+    if (!client || !player)
+    {
+        return false;
+    }
+
+    if (lobbyModel.control.countdown || lobbyModel.control.starting)
+    {
+        return false;
+    }
+
+    if (player.ai)
+    {
+        return lobbyModel.isCreator(client.id);
+    }
+
+    return player.client && player.client.id === client.id;
+}
+
+function playerMsg_setGwTechLoadout(msg)
+{
+    var response = server.respond(msg);
+    var payload = msg.payload || {};
+    var player = lobbyModel.players[payload.id];
+
+    if (!canEditGwTechFor(msg.client, player))
+    {
+        return response.fail("Not allowed");
+    }
+
+    if (!_.isString(payload.loadout_card_id) || payload.loadout_card_id.indexOf('gwc_start') !== 0)
+    {
+        return response.fail("Invalid loadout");
+    }
+
+    if (!lobbyModel.setGwTechLoadout(payload.id, payload.loadout_card_id))
+    {
+        return response.fail("Unable to set loadout");
+    }
+
+    response.succeed();
+}
+
+function playerMsg_setGwTechCard(msg)
+{
+    var response = server.respond(msg);
+    var payload = msg.payload || {};
+    var player = lobbyModel.players[payload.id];
+
+    if (!canEditGwTechFor(msg.client, player))
+    {
+        return response.fail("Not allowed");
+    }
+
+    if (!lobbyModel.setGwTechCard(payload.id, payload.slot_index, payload.card_id))
+    {
+        return response.fail("Invalid tech card slot");
+    }
+
+    response.succeed();
+}
+
+function playerMsg_clearGwTechCard(msg)
+{
+    var response = server.respond(msg);
+    var payload = msg.payload || {};
+    var player = lobbyModel.players[payload.id];
+
+    if (!canEditGwTechFor(msg.client, player))
+    {
+        return response.fail("Not allowed");
+    }
+
+    if (!lobbyModel.clearGwTechCard(payload.id, payload.slot_index))
+    {
+        return response.fail("Invalid tech card slot");
+    }
+
     response.succeed();
 }
 
@@ -2375,6 +2645,9 @@ exports.enter = function (owner) {
         set_ai_landing_policy: playerMsg_setAILandingPolicy,
         set_ai_commander: playerMsg_setAICommander,
         set_econ_factor: playerMsg_setEconomyFactor,
+        set_gw_tech_loadout: playerMsg_setGwTechLoadout,
+        set_gw_tech_card: playerMsg_setGwTechCard,
+        clear_gw_tech_card: playerMsg_clearGwTechCard,
         join_army: playerMsg_joinArmy,
         toggle_ready: playerMsg_toggleReady,
         leave_army: playerMsg_leaveArmy,
