@@ -243,9 +243,78 @@ $(document).ready(function()
         return {
             icon: ko.observable('coui://ui/main/game/galactic_war/shared/img/red-commander.png'),
             summary: ko.observable('!LOC:Vanilla Commander'),
-            locDesc: ko.observable('!LOC:No Galactic War tech. Uses the normal base-game commander and unit tree.')
+            desc: ko.observable('!LOC:Normal base-game commander. Uses the full normal unit tree with no Galactic War loadout, no buffs, no nerfs, and no selectable tech-card slots.'),
+            locDesc: ko.computed(function() {
+                return loc('!LOC:Normal base-game commander. Uses the full normal unit tree with no Galactic War loadout, no buffs, no nerfs, and no selectable tech-card slots.');
+            }),
+            visible: ko.observable(true)
         };
     };
+
+    var unwrapGwTechValue = function(value) {
+        return _.isFunction(value) ? value() : value;
+    };
+
+    var stripGwTechHtml = function(value) {
+        if (!_.isString(value)) {
+            value = _.isUndefined(value) || value === null ? '' : String(value);
+        }
+
+        return value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    };
+
+    var normalizeGwTechSearchText = function(value) {
+        return stripGwTechHtml(value).toLowerCase();
+    };
+
+    var getGwTechCardSummaryText = function(card) {
+        if (!card) {
+            return '';
+        }
+
+        return stripGwTechHtml(loc(unwrapGwTechValue(card.summary) || ''));
+    };
+
+    var getGwTechCardDescriptionText = function(card) {
+        if (!card) {
+            return '';
+        }
+
+        if (!_.isUndefined(card.locDesc)) {
+            return stripGwTechHtml(unwrapGwTechValue(card.locDesc) || '');
+        }
+
+        return stripGwTechHtml(loc(unwrapGwTechValue(card.desc) || ''));
+    };
+
+    function GwTechPickerOptionViewModel(option, enabled) {
+        var self = this;
+
+        if (!option || !_.isString(option.id) || !option.card) {
+            console.log('[GW TECH] Invalid tech picker option: ' + JSON.stringify(option || {}));
+        }
+
+        self.id = option && option.id;
+        self.card = option && option.card;
+        self.enabled = _.isUndefined(enabled) ? true : !!enabled;
+        self.summaryText = ko.computed(function() {
+            return getGwTechCardSummaryText(self.card);
+        });
+        self.descText = ko.computed(function() {
+            return getGwTechCardDescriptionText(self.card);
+        });
+        self.searchText = ko.computed(function() {
+            return normalizeGwTechSearchText([self.id || '', self.summaryText(), self.descText()].join(' '));
+        });
+        self.matchesSearch = function(search) {
+            var needle = normalizeGwTechSearchText(search || '');
+            if (!needle) {
+                return true;
+            }
+
+            return self.searchText().indexOf(needle) >= 0;
+        };
+    }
 
     var normalizeGwTechCards = function(cards, slotCount) {
         var result = [];
@@ -515,6 +584,15 @@ $(document).ready(function()
         self.canClear = ko.computed(function() {
             return slot.canEditGwTech() && self.filled() && self.isRightmostFilled();
         });
+        self.inspect = function(data, event) {
+            slot.showGwTechCardInspector(self.card, event);
+        };
+        self.moveInspector = function(data, event) {
+            slot.moveGwTechInspector(event);
+        };
+        self.hideInspector = function() {
+            slot.hideGwTechInspector();
+        };
         self.pick = function(data, event) {
             slot.openGwTechCardPicker(index, event);
         };
@@ -561,6 +639,10 @@ $(document).ready(function()
         self.showGwTechLoadoutPicker = ko.observable(false);
         self.showGwTechCardPicker = ko.observable(false);
         self.gwTechPickerSlotIndex = ko.observable(-1);
+        self.gwTechLoadoutSearch = ko.observable('');
+        self.gwTechCardSearch = ko.observable('');
+        self.gwTechSelectedLoadoutOption = ko.observable();
+        self.gwTechSelectedCardOption = ko.observable();
         self.gwTechAllowedCardIds = ko.observable({});
         self.gwTechValidationPending = ko.observable(false);
         self.showGwTech = ko.computed(function() {
@@ -632,17 +714,75 @@ $(document).ready(function()
 
             var allowed = self.gwTechAllowedCardIds();
             return _.map(model.gwTechCardOptions(), function(option) {
-                return {
-                    id: option.id,
-                    card: option.card,
-                    enabled: !!allowed[option.id]
-                };
+                return new GwTechPickerOptionViewModel(option, !!allowed[option.id]);
             });
         });
+        self.gwTechVisibleLoadoutOptions = ko.computed(function() {
+            var search = self.gwTechLoadoutSearch();
+            return _.filter(model.gwTechLoadoutOptions(), function(option) {
+                return option && option.matchesSearch(search);
+            });
+        });
+        self.gwTechVisibleCardPickerOptions = ko.computed(function() {
+            var search = self.gwTechCardSearch();
+            return _.filter(self.gwTechPickerOptions(), function(option) {
+                return option && option.matchesSearch(search);
+            });
+        });
+        self.gwTechLoadoutDetailOption = ko.computed(function() {
+            var selected = self.gwTechSelectedLoadoutOption();
+            if (selected && selected.matchesSearch(self.gwTechLoadoutSearch())) {
+                return selected;
+            }
+
+            return self.gwTechVisibleLoadoutOptions()[0];
+        });
+        self.gwTechCardDetailOption = ko.computed(function() {
+            var selected = self.gwTechSelectedCardOption();
+            if (selected && selected.matchesSearch(self.gwTechCardSearch())) {
+                return selected;
+            }
+
+            return self.gwTechVisibleCardPickerOptions()[0];
+        });
+        self.setGwTechLoadoutDetailOption = function(option) {
+            self.gwTechSelectedLoadoutOption(option);
+        };
+        self.setGwTechCardDetailOption = function(option) {
+            self.gwTechSelectedCardOption(option);
+        };
+        self.focusGwTechPickerSearch = function(pickerSelector) {
+            window.setTimeout(function() {
+                var search = $(pickerSelector + ':visible .gw-tech-picker-search').first();
+                if (!search.length) {
+                    console.log('[GW TECH] Could not focus tech picker search for ' + pickerSelector + '.');
+                    return;
+                }
+
+                search.focus();
+                search.select();
+            }, 0);
+        };
+        self.showGwTechLoadoutInspector = function(data, event) {
+            model.showGwTechInspector(self.gwTechLoadoutCard(), event);
+        };
+        self.showGwTechCardInspector = function(card, event) {
+            model.showGwTechInspector(card, event);
+        };
+        self.moveGwTechInspector = function(event) {
+            model.moveGwTechInspector(event);
+        };
+        self.hideGwTechInspector = function() {
+            model.hideGwTechInspector();
+        };
         self.closeGwTechPickers = function() {
             self.showGwTechLoadoutPicker(false);
             self.showGwTechCardPicker(false);
             self.gwTechPickerSlotIndex(-1);
+            self.gwTechLoadoutSearch('');
+            self.gwTechCardSearch('');
+            self.gwTechSelectedLoadoutOption(undefined);
+            self.gwTechSelectedCardOption(undefined);
         };
         self.openGwTechLoadoutPicker = function(data, event) {
             if (event) {
@@ -653,7 +793,12 @@ $(document).ready(function()
             }
 
             model.closeDropDowns();
+            self.gwTechLoadoutSearch('');
+            self.gwTechSelectedLoadoutOption(_.find(model.gwTechLoadoutOptions(), function(option) {
+                return option && option.id === self.gwTechLoadout();
+            }) || model.gwTechLoadoutOptions()[0]);
             self.showGwTechLoadoutPicker(true);
+            self.focusGwTechPickerSearch('.gw-tech-loadout-picker');
         };
         self.selectGwTechLoadout = function(option, event) {
             if (event) {
@@ -688,6 +833,8 @@ $(document).ready(function()
             model.closeDropDowns();
             self.gwTechPickerSlotIndex(index);
             self.gwTechAllowedCardIds({});
+            self.gwTechCardSearch('');
+            self.gwTechSelectedCardOption(undefined);
             self.gwTechValidationPending(true);
             model.buildGwTechAllowedCardMap(self, index).then(function(allowed) {
                 if (self.gwTechPickerSlotIndex() !== index) {
@@ -695,12 +842,18 @@ $(document).ready(function()
                 }
                 self.gwTechAllowedCardIds(allowed);
                 self.gwTechValidationPending(false);
+                self.gwTechSelectedCardOption(_.find(self.gwTechPickerOptions(), function(option) {
+                    return option && option.enabled;
+                }) || self.gwTechPickerOptions()[0]);
                 self.showGwTechCardPicker(true);
+                self.focusGwTechPickerSearch('.gw-tech-card-picker');
             }, function(reason) {
                 console.error('Failed to validate GW tech cards: ' + reason);
                 self.gwTechAllowedCardIds({});
                 self.gwTechValidationPending(false);
+                self.gwTechSelectedCardOption(self.gwTechPickerOptions()[0]);
                 self.showGwTechCardPicker(true);
+                self.focusGwTechPickerSearch('.gw-tech-card-picker');
             });
         };
         self.selectGwTechCard = function(option, event) {
@@ -1451,6 +1604,53 @@ $(document).ready(function()
         self.gwTechCardOptions = ko.observableArray([]);
         self.gwTechCardModules = {};
         self.gwoMounted = ko.observable(false);
+        self.gwTechInspectorVisible = ko.observable(false);
+        self.gwTechInspectorCard = ko.observable();
+        self.gwTechInspectorLeft = ko.observable(0);
+        self.gwTechInspectorTop = ko.observable(0);
+
+        self.positionGwTechInspector = function(event) {
+            if (!event) {
+                return;
+            }
+
+            var width = 360;
+            var height = 270;
+            var margin = 18;
+            var viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1280;
+            var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 720;
+            var left = event.clientX + margin;
+            var top = event.clientY + margin;
+
+            if (left + width > viewportWidth) {
+                left = event.clientX - width - margin;
+            }
+            if (top + height > viewportHeight) {
+                top = viewportHeight - height - margin;
+            }
+
+            self.gwTechInspectorLeft(Math.max(16, left));
+            self.gwTechInspectorTop(Math.max(16, top));
+        };
+        self.showGwTechInspector = function(card, event) {
+            if (!card) {
+                console.log('[GW TECH] Cannot inspect missing tech card.');
+                return;
+            }
+
+            self.gwTechInspectorCard(card);
+            self.positionGwTechInspector(event);
+            self.gwTechInspectorVisible(true);
+        };
+        self.moveGwTechInspector = function(event) {
+            if (self.gwTechInspectorVisible()) {
+                self.positionGwTechInspector(event);
+            }
+        };
+        self.hideGwTechInspector = function() {
+            self.gwTechInspectorVisible(false);
+            self.gwTechInspectorCard(undefined);
+        };
 
         self.loadGwTechCardModule = function(cardId) {
             var done = $.Deferred();
@@ -1531,17 +1731,17 @@ $(document).ready(function()
                     setupGwoTechGlobals();
 
                     var loadoutOptionsById = {};
-                    var loadoutOptions = [{
+                    var loadoutOptions = [new GwTechPickerOptionViewModel({
                         id: VANILLA_GW_TECH_LOADOUT,
                         card: makeVanillaGwTechLoadoutCard()
-                    }];
+                    })];
 
                     _.forEach(GWStartLoadouts.all(), function(cardData) {
                         loadoutOptionsById[cardData.id] = true;
-                        loadoutOptions.push({
+                        loadoutOptions.push(new GwTechPickerOptionViewModel({
                             id: cardData.id,
                             card: new CardViewModel(cardData)
-                        });
+                        }));
                     });
 
                     var finishLoadoutOptions = function() {
@@ -1561,10 +1761,10 @@ $(document).ready(function()
                                 }
 
                                 loadoutOptionsById[loadoutId] = true;
-                                loadoutOptions.push({
+                                loadoutOptions.push(new GwTechPickerOptionViewModel({
                                     id: loadoutId,
                                     card: new CardViewModel({ id: loadoutId })
-                                });
+                                }));
                             });
                         });
 
@@ -1587,10 +1787,10 @@ $(document).ready(function()
 
                         seenCards[card.id] = true;
                         self.gwTechCardModules[card.id] = card;
-                        options.push({
+                        options.push(new GwTechPickerOptionViewModel({
                             id: card.id,
                             card: new CardViewModel({ id: card.id })
-                        });
+                        }));
                     };
 
                     var loadGwoCards = function(options, seenCards) {
@@ -4096,6 +4296,7 @@ api.debug.log(personality);
         };
 
         self.closeDropDowns = function () {
+            self.hideGwTechInspector();
             self.showColorPicker(false);
             self.showCommanderPicker(false);
             self.showAICommanderPicker(false);

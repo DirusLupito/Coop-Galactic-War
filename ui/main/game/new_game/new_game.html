@@ -25,6 +25,11 @@
         app.loadTemplate("coui://ui/main/game/galactic_war/shared/template/gwt_card");
     </script>
 
+    <div class="gw-tech-hover-inspector" data-bind="visible: gwTechInspectorVisible, style: { left: gwTechInspectorLeft() + 'px', top: gwTechInspectorTop() + 'px' }, with: gwTechInspectorCard" style="display: none;">
+        <!-- ko template: 'cardTemplate' -->
+        <!-- /ko -->
+    </div>
+
     <div class="background_glow"></div>
     <!-- TITLE -->
     <div class="section_title">
@@ -745,7 +750,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="gw-tech-strip" data-bind="visible: slot.showGwTech() && !army.sharedArmy(), clickBubble: false" style="display: none;">
-                                                                                                    <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: slot.openGwTechLoadoutPicker, css: { editable: slot.canEditGwTech }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                    <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: slot.openGwTechLoadoutPicker, css: { editable: slot.canEditGwTech }, event: { mouseenter: slot.showGwTechLoadoutInspector, mousemove: slot.moveGwTechInspector, mouseleave: slot.hideGwTechInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                         <!-- ko with: slot.gwTechLoadoutCard -->
                                                                                                         <img data-bind="visible: icon, attr: { src: icon }" />
                                                                                                         <!-- /ko -->
@@ -753,7 +758,7 @@
                                                                                                     </div>
                                                                                                     <div class="gw-tech-scroll" data-bind="visible: !slot.gwTechUsesVanillaLoadout()">
                                                                                                         <div class="gw-tech-card-row" data-bind="foreach: slot.gwTechSlotCards">
-                                                                                                            <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                            <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, event: { mouseenter: inspect, mousemove: moveInspector, mouseleave: hideInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                                 <img data-bind="visible: card.icon, attr: { src: card.icon }" />
                                                                                                                 <div class="gw-tech-card-index" data-bind="text: index + 1"></div>
                                                                                                                 <div class="gw-tech-card-clear" data-bind="visible: canClear, click: clear, clickBubble: false">x</div>
@@ -761,25 +766,49 @@
                                                                                                         </div>
                                                                                                     </div>
 
-                                                                                                    <div class="gw-tech-picker gw-tech-loadout-picker" data-bind="visible: slot.showGwTechLoadoutPicker" style="display: none;">
-                                                                                                        <!-- ko foreach: $root.gwTechLoadoutOptions -->
-                                                                                                        <div class="gw-tech-picker-item" data-bind="click: function(option, event) { slot.selectGwTechLoadout(option, event); }, css: { selected: id === slot.gwTechLoadout() }, click_sound: 'default', rollover_sound: 'default'">
-                                                                                                            <img data-bind="visible: card.icon, attr: { src: card.icon }" />
-                                                                                                            <span data-bind="text: loc(card.summary())"></span>
+                                                                                                    <div class="gw-tech-picker gw-tech-loadout-picker" data-bind="visible: slot.showGwTechLoadoutPicker, click: function() { return true; }, clickBubble: false" style="display: none;">
+                                                                                                        <input class="gw-tech-picker-search" type="text" data-bind="textInput: slot.gwTechLoadoutSearch, attr: { placeholder: loc('!LOC:Search loadouts') }, clickBubble: false" />
+                                                                                                        <div class="gw-tech-picker-body">
+                                                                                                            <div class="gw-tech-picker-list" data-bind="foreach: slot.gwTechVisibleLoadoutOptions">
+                                                                                                                <div class="gw-tech-picker-item" data-bind="click: function(option, event) { slot.selectGwTechLoadout(option, event); }, event: { mouseenter: function(option) { slot.setGwTechLoadoutDetailOption(option); } }, css: { selected: id === slot.gwTechLoadout() }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                                    <img data-bind="visible: card.icon, attr: { src: card.icon }" />
+                                                                                                                    <div class="gw-tech-picker-copy">
+                                                                                                                        <div class="gw-tech-picker-title" data-bind="text: summaryText"></div>
+                                                                                                                        <div class="gw-tech-picker-desc" data-bind="text: descText"></div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="gw-tech-picker-detail" data-bind="with: slot.gwTechLoadoutDetailOption">
+                                                                                                                <div data-bind="with: card">
+                                                                                                                    <!-- ko template: 'cardTemplate' -->
+                                                                                                                    <!-- /ko -->
+                                                                                                                </div>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <!-- /ko -->
                                                                                                     </div>
 
-                                                                                                    <div class="gw-tech-picker gw-tech-card-picker" data-bind="visible: slot.showGwTechCardPicker" style="display: none;">
+                                                                                                    <div class="gw-tech-picker gw-tech-card-picker" data-bind="visible: slot.showGwTechCardPicker, click: function() { return true; }, clickBubble: false" style="display: none;">
+                                                                                                        <input class="gw-tech-picker-search" type="text" data-bind="textInput: slot.gwTechCardSearch, attr: { placeholder: loc('!LOC:Search tech cards') }, clickBubble: false" />
                                                                                                         <div class="gw-tech-picker-loading" data-bind="visible: slot.gwTechValidationPending">
                                                                                                             <img class="working small" src="coui://ui/main/shared/img/working.svg" />
                                                                                                         </div>
-                                                                                                        <!-- ko foreach: slot.gwTechPickerOptions -->
-                                                                                                        <div class="gw-tech-picker-item" data-bind="click: function(option, event) { slot.selectGwTechCard(option, event); }, css: { disabled: !enabled }, click_sound: 'default', rollover_sound: 'default'">
-                                                                                                            <img data-bind="visible: card.icon, attr: { src: card.icon }" />
-                                                                                                            <span data-bind="text: loc(card.summary())"></span>
+                                                                                                        <div class="gw-tech-picker-body">
+                                                                                                            <div class="gw-tech-picker-list" data-bind="foreach: slot.gwTechVisibleCardPickerOptions">
+                                                                                                                <div class="gw-tech-picker-item" data-bind="click: function(option, event) { slot.selectGwTechCard(option, event); }, event: { mouseenter: function(option) { slot.setGwTechCardDetailOption(option); } }, css: { disabled: !enabled }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                                    <img data-bind="visible: card.icon, attr: { src: card.icon }" />
+                                                                                                                    <div class="gw-tech-picker-copy">
+                                                                                                                        <div class="gw-tech-picker-title" data-bind="text: summaryText"></div>
+                                                                                                                        <div class="gw-tech-picker-desc" data-bind="text: descText"></div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="gw-tech-picker-detail" data-bind="with: slot.gwTechCardDetailOption">
+                                                                                                                <div data-bind="with: card">
+                                                                                                                    <!-- ko template: 'cardTemplate' -->
+                                                                                                                    <!-- /ko -->
+                                                                                                                </div>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <!-- /ko -->
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="fix"></div>
@@ -790,7 +819,7 @@
                                                                                 </div>
                                                                                 <!-- ko with: army.gwTechSharedSlot -->
                                                                                 <div class="gw-tech-strip gw-tech-shared-strip" data-bind="visible: $parent.showGwTechShared, clickBubble: false" style="display: none;">
-                                                                                    <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: openGwTechLoadoutPicker, css: { editable: canEditGwTech }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                    <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: openGwTechLoadoutPicker, css: { editable: canEditGwTech }, event: { mouseenter: showGwTechLoadoutInspector, mousemove: moveGwTechInspector, mouseleave: hideGwTechInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                         <!-- ko with: gwTechLoadoutCard -->
                                                                                         <img data-bind="visible: icon, attr: { src: icon }" />
                                                                                         <!-- /ko -->
@@ -798,7 +827,7 @@
                                                                                     </div>
                                                                                     <div class="gw-tech-scroll" data-bind="visible: !gwTechUsesVanillaLoadout()">
                                                                                         <div class="gw-tech-card-row" data-bind="foreach: gwTechSlotCards">
-                                                                                            <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                            <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, event: { mouseenter: inspect, mousemove: moveInspector, mouseleave: hideInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                 <img data-bind="visible: card.icon, attr: { src: card.icon }" />
                                                                                                 <div class="gw-tech-card-index" data-bind="text: index + 1"></div>
                                                                                                 <div class="gw-tech-card-clear" data-bind="visible: canClear, click: clear, clickBubble: false">x</div>
@@ -806,25 +835,49 @@
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div class="gw-tech-picker gw-tech-loadout-picker" data-bind="visible: showGwTechLoadoutPicker" style="display: none;">
-                                                                                        <!-- ko foreach: $root.gwTechLoadoutOptions -->
-                                                                                        <div class="gw-tech-picker-item" data-bind="click: function(option, event) { $parent.selectGwTechLoadout(option, event); }, css: { selected: id === $parent.gwTechLoadout() }, click_sound: 'default', rollover_sound: 'default'">
-                                                                                            <img data-bind="visible: card.icon, attr: { src: card.icon }" />
-                                                                                            <span data-bind="text: loc(card.summary())"></span>
+                                                                                    <div class="gw-tech-picker gw-tech-loadout-picker" data-bind="visible: showGwTechLoadoutPicker, click: function() { return true; }, clickBubble: false" style="display: none;">
+                                                                                        <input class="gw-tech-picker-search" type="text" data-bind="textInput: gwTechLoadoutSearch, attr: { placeholder: loc('!LOC:Search loadouts') }, clickBubble: false" />
+                                                                                        <div class="gw-tech-picker-body">
+                                                                                            <div class="gw-tech-picker-list" data-bind="foreach: gwTechVisibleLoadoutOptions">
+                                                                                                <div class="gw-tech-picker-item" data-bind="click: function(option, event) { $parent.selectGwTechLoadout(option, event); }, event: { mouseenter: function(option) { $parent.setGwTechLoadoutDetailOption(option); } }, css: { selected: id === $parent.gwTechLoadout() }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                    <img data-bind="visible: card.icon, attr: { src: card.icon }" />
+                                                                                                    <div class="gw-tech-picker-copy">
+                                                                                                        <div class="gw-tech-picker-title" data-bind="text: summaryText"></div>
+                                                                                                        <div class="gw-tech-picker-desc" data-bind="text: descText"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="gw-tech-picker-detail" data-bind="with: gwTechLoadoutDetailOption">
+                                                                                                <div data-bind="with: card">
+                                                                                                    <!-- ko template: 'cardTemplate' -->
+                                                                                                    <!-- /ko -->
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <!-- /ko -->
                                                                                     </div>
 
-                                                                                    <div class="gw-tech-picker gw-tech-card-picker" data-bind="visible: showGwTechCardPicker" style="display: none;">
+                                                                                    <div class="gw-tech-picker gw-tech-card-picker" data-bind="visible: showGwTechCardPicker, click: function() { return true; }, clickBubble: false" style="display: none;">
+                                                                                        <input class="gw-tech-picker-search" type="text" data-bind="textInput: gwTechCardSearch, attr: { placeholder: loc('!LOC:Search tech cards') }, clickBubble: false" />
                                                                                         <div class="gw-tech-picker-loading" data-bind="visible: gwTechValidationPending">
                                                                                             <img class="working small" src="coui://ui/main/shared/img/working.svg" />
                                                                                         </div>
-                                                                                        <!-- ko foreach: gwTechPickerOptions -->
-                                                                                        <div class="gw-tech-picker-item" data-bind="click: function(option, event) { $parent.selectGwTechCard(option, event); }, css: { disabled: !enabled }, click_sound: 'default', rollover_sound: 'default'">
-                                                                                            <img data-bind="visible: card.icon, attr: { src: card.icon }" />
-                                                                                            <span data-bind="text: loc(card.summary())"></span>
+                                                                                        <div class="gw-tech-picker-body">
+                                                                                            <div class="gw-tech-picker-list" data-bind="foreach: gwTechVisibleCardPickerOptions">
+                                                                                                <div class="gw-tech-picker-item" data-bind="click: function(option, event) { $parent.selectGwTechCard(option, event); }, event: { mouseenter: function(option) { $parent.setGwTechCardDetailOption(option); } }, css: { disabled: !enabled }, click_sound: 'default', rollover_sound: 'default'">
+                                                                                                    <img data-bind="visible: card.icon, attr: { src: card.icon }" />
+                                                                                                    <div class="gw-tech-picker-copy">
+                                                                                                        <div class="gw-tech-picker-title" data-bind="text: summaryText"></div>
+                                                                                                        <div class="gw-tech-picker-desc" data-bind="text: descText"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="gw-tech-picker-detail" data-bind="with: gwTechCardDetailOption">
+                                                                                                <div data-bind="with: card">
+                                                                                                    <!-- ko template: 'cardTemplate' -->
+                                                                                                    <!-- /ko -->
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <!-- /ko -->
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- /ko -->

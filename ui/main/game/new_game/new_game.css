@@ -1280,6 +1280,11 @@ input[type=number]::-webkit-outer-spin-button {
     background: #0b2630;
 }
 
+.gw-tech-card-tile:hover {
+    border-color: rgba(0, 255, 163, 0.75);
+    box-shadow: inset 0px 0px 16px rgba(0, 179, 255, 0.38), 0px 0px 10px rgba(0, 179, 255, 0.22);
+}
+
 .gw-tech-card-tile.empty {
     background: url('coui://ui/main/game/galactic_war/gw_play/img/tech/gwc_empty.png') center center no-repeat #06151a;
     background-size: 44px 44px;
@@ -1377,26 +1382,67 @@ input[type=number]::-webkit-outer-spin-button {
 
 .gw-tech-picker {
     position: absolute;
-    z-index: 1000;
+    z-index: 1500;
     left: 0px;
     right: 0px;
     top: 75px;
-    max-height: 260px;
-    overflow-y: auto;
+    min-height: 292px;
+    overflow: hidden;
     background: #07171d;
     border: 1px solid #1e7aa1;
     box-shadow: 0px 0px 20px #000, inset 0px 0px 18px rgba(30, 122, 161, 0.55);
-    padding: 4px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.gw-tech-picker-search {
+    width: 100%;
+    height: 28px;
+    margin: 0px 0px 6px 0px;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    color: #d8f7ff;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 179, 255, 0.45);
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.18);
+}
+
+.gw-tech-picker-body {
+    display: flex;
+    gap: 8px;
+    height: 246px;
+}
+
+.gw-tech-picker-list {
+    width: 52%;
+    min-width: 0;
+    height: 246px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid rgba(0, 179, 255, 0.22);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.gw-tech-picker-detail {
+    width: 48%;
+    min-width: 0;
+    height: 246px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(to top, #202426 0%, #030707 100%);
+    box-shadow: inset 0px 0px 18px rgba(0, 179, 255, 0.16);
 }
 
 .gw-tech-picker-item {
-    height: 42px;
+    min-height: 58px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     color: #fff;
     border: 1px solid transparent;
-    padding: 3px 6px;
+    padding: 5px 6px;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 .gw-tech-picker-item:hover {
@@ -1411,6 +1457,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .gw-tech-picker-item.disabled {
     opacity: 0.35;
+    cursor: default;
 }
 
 .gw-tech-picker-item.disabled:hover {
@@ -1419,15 +1466,37 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .gw-tech-picker-item img {
-    width: 34px;
-    height: 34px;
-    flex: 0 0 34px;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    margin-top: 2px;
 }
 
-.gw-tech-picker-item span {
+.gw-tech-picker-copy {
+    min-width: 0;
+    flex: 1 1 auto;
+    margin-left: 6px;
+}
+
+.gw-tech-picker-title,
+.gw-tech-picker-desc {
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.gw-tech-picker-title {
+    color: #e8fbff;
+    font-size: 13px;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.gw-tech-picker-desc {
+    margin-top: 3px;
+    color: #a8c4ca;
+    font-size: 11px;
+    line-height: 13px;
+    max-height: 26px;
 }
 
 .gw-tech-picker-loading {
@@ -1435,6 +1504,62 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.gw-tech-picker-detail .card {
+    min-height: 226px;
+    padding-top: 10px;
+}
+
+.gw-tech-picker-detail .card > .img_card_icon {
+    width: 64px;
+    margin-bottom: 8px;
+}
+
+.gw-tech-picker-detail .card > .div_card_summary {
+    color: #00ff66;
+    font-size: 15px;
+    text-align: center;
+}
+
+.gw-tech-picker-detail .card > .div_card_desc {
+    min-height: 0;
+    padding: 8px 14px;
+    color: #d6d6d6;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.gw-tech-hover-inspector {
+    position: fixed;
+    z-index: 9500;
+    width: 360px;
+    max-height: 270px;
+    overflow-y: auto;
+    pointer-events: none;
+    color: #d6d6d6;
+    border: 1px solid rgba(0, 179, 255, 0.8);
+    background: rgba(8, 12, 14, 0.96);
+    box-shadow: 0px 0px 28px rgba(0, 179, 255, 0.35), inset 0px 0px 18px rgba(0, 179, 255, 0.18);
+    padding: 10px;
+}
+
+.gw-tech-hover-inspector .card > .img_card_icon {
+    width: 72px;
+    margin-bottom: 8px;
+}
+
+.gw-tech-hover-inspector .card > .div_card_summary {
+    color: #00ff66;
+    font-size: 16px;
+    text-align: center;
+}
+
+.gw-tech-hover-inspector .card > .div_card_desc {
+    min-height: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    line-height: 1.2;
 }
 
 
