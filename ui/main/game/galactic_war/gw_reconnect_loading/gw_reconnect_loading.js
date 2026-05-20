@@ -66,8 +66,13 @@ $(document).ready(function () {
             && msg.data.client
             && msg.data.client.game_options
             && msg.data.client.game_options.game_type;
+        var gwTechCardsActive = !!(msg
+            && msg.data
+            && msg.data.client
+            && msg.data.client.game_options
+            && msg.data.client.game_options.gw_tech_cards_active);
 
-        if (msg && msg.url === gwReconnectTarget && serverGameType === 'Galactic War' && !gwReconnectFilesReady) {
+        if (msg && msg.url === gwReconnectTarget && (serverGameType === 'Galactic War' || gwTechCardsActive) && !gwReconnectFilesReady) {
             model.pageSubTitle(loc('!LOC:Restoring Galactic War unit specs...'));
             requestReconnectMemoryFiles('gw_reconnect_server_state');
             return;
@@ -217,7 +222,76 @@ $(document).ready(function () {
         console.log('[GW COOP] gw_reconnect_loading discovered local overlay unit tags ' + JSON.stringify(summarizeTaggedUnitLists(taggedUnitLists)));
 
         var gameId = ko.observable().extend({ local: 'gw_active_game' })();
+        var assignmentBackedOverlay = _.some(perPlayerTechTagAssignments || [], function(assignment) {
+            return assignment && _.isArray(assignment.inventory_mods);
+        });
         if (!gameId) {
+            if (assignmentBackedOverlay) {
+                var moduleLoaderForAssignments = _.isFunction(window.requireGW) ? window.requireGW : require;
+                moduleLoaderForAssignments(['shared/gw_common'], function(GW) {
+                    if (!GW || !GW.specs) {
+                        done.resolve({});
+                        return;
+                    }
+
+                    var titans = api.content.usingTitans();
+                    var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
+                    var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
+
+                    $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
+                        var aiUnitMap = parse(aiMapGet[0]);
+                        var aiX1UnitMap = parse(aiX1MapGet[0]);
+                        var filesToProcess = [];
+
+                        _.forEach(taggedUnitLists, function(taggedList) {
+                            var tagAssignment = getPerPlayerTechTagAssignment(taggedList.tag);
+                            if (!tagAssignment || !_.isArray(tagAssignment.inventory_mods)) {
+                                return;
+                            }
+
+                            var overlayDone = $.Deferred();
+                            var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, taggedList.tag);
+                            var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, taggedList.tag) : {};
+
+                            generateTaggedFiles(GW, taggedList.units, taggedList.tag).then(function(playerSpecFiles) {
+                                var playerFilesClassic = {};
+                                var playerFilesX1 = {};
+
+                                playerFilesClassic['/pa/ai/unit_maps/ai_unit_map.json' + taggedList.tag] = playerAIUnitMap;
+                                if (titans) {
+                                    playerFilesX1['/pa/ai/unit_maps/ai_unit_map_x1.json' + taggedList.tag] = playerX1AIUnitMap;
+                                }
+
+                                var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1, playerSpecFiles);
+                                try {
+                                    GW.specs.modSpecs(playerFiles, tagAssignment.inventory_mods, taggedList.tag);
+                                } catch (e) {
+                                    console.log('[GW COOP] gw_reconnect_loading assignment overlay modSpecs failed tag=' + taggedList.tag);
+                                }
+                                overlayDone.resolve(playerFiles);
+                            }, function() {
+                                overlayDone.resolve({});
+                            });
+                            filesToProcess.push(overlayDone.promise());
+                        });
+
+                        if (!filesToProcess.length) {
+                            done.resolve({});
+                            return;
+                        }
+
+                        $.when.apply($, filesToProcess).then(function() {
+                            done.resolve(_.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments))));
+                        });
+                    }, function() {
+                        done.resolve({});
+                    });
+                }, function() {
+                    done.resolve({});
+                });
+                return done.promise();
+            }
+
             done.resolve({});
             return done.promise();
         }
@@ -307,7 +381,13 @@ $(document).ready(function () {
 
                     var sharedPlayerUnitList = findTaggedUnitList(taggedUnitLists, '.player');
                     var playerUnits = sharedPlayerUnitList ? sharedPlayerUnitList.units : inventory.units();
-                    filesToProcess.push(generateInventoryOverlayFiles(playerUnits, inventory.mods(), '.player'));
+                    var sharedPlayerAssignment = getPerPlayerTechTagAssignment('.player');
+                    if (sharedPlayerAssignment && _.isArray(sharedPlayerAssignment.inventory_mods)) {
+                        filesToProcess.push(generateInventoryOverlayFiles(playerUnits, sharedPlayerAssignment.inventory_mods, '.player'));
+                    }
+                    else {
+                        filesToProcess.push(generateInventoryOverlayFiles(playerUnits, inventory.mods(), '.player'));
+                    }
 
                     _.forEach(taggedUnitLists, function(taggedList) {
                         if (!isPerPlayerTechTag(taggedList.tag)) {
@@ -316,6 +396,12 @@ $(document).ready(function () {
 
                         var tagAssignment = getPerPlayerTechTagAssignment(taggedList.tag);
                         if (!tagAssignment) {
+                            return;
+                        }
+
+                        if (_.isArray(tagAssignment.inventory_mods)) {
+                            console.log('[GW COOP] gw_reconnect_loading generating assignment-provided local overlay for tag ' + taggedList.tag);
+                            filesToProcess.push(generateInventoryOverlayFiles(taggedList.units, tagAssignment.inventory_mods, taggedList.tag));
                             return;
                         }
 
@@ -375,16 +461,19 @@ $(document).ready(function () {
             ? msg.unit_spec_tag
             : '.player';
         var gwCampaignActive = !!msg.gw_campaign_active;
+        var gwTechCardsActive = !!msg.gw_tech_cards_active;
         if (gwCoopMode() !== gwCampaignActive) {
             gwCoopMode(gwCampaignActive);
             console.log('[GW COOP] gw_reconnect_loading persisted gw_coop_mode=' + gwCoopMode());
         }
+        var gwTechCardsActiveSession = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
+        gwTechCardsActiveSession(gwTechCardsActive);
 
         if (!files[UNIT_LIST_PATH]) {
             files[UNIT_LIST_PATH] = buildUntaggedUnitListFromTaggedFiles(files);
         }
 
-        buildLocalClientOverlayFiles(files, msg.per_player_tech_tag_assignments).always(function(localOverlayFiles) {
+        buildLocalClientOverlayFiles(files, msg.tag_assignments || msg.per_player_tech_tag_assignments).always(function(localOverlayFiles) {
             var mergedFiles = _.assign({}, files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
             console.log('[GW COOP] gw_reconnect_loading merging local overlay files, total count=' + _.keys(mergedFiles).length);
 

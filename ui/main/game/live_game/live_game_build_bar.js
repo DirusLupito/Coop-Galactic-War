@@ -418,18 +418,19 @@ $(document).ready(function () {
     function BuildBarViewModel() {
         var self = this;
         self.gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+        self.gwTechCardsActive = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
         self.gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
 
         self.unitSpecs = $.Deferred();
         self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
             var sessionTag = self.gwCampaignUnitSpecTag();
-            if (self.gwCoopMode()) {
+            if (self.gwCoopMode() || self.gwTechCardsActive()) {
                 self.specTag = tag && tag !== '.player' ? tag : (sessionTag || tag || '.player');
             }
             else {
                 self.specTag = tag;
             }
-            console.log('[GW COOP] build_bar spec tag resolved apiTag=' + tag + ' sessionTag=' + sessionTag + ' gwCoopMode=' + self.gwCoopMode() + ' finalTag=' + self.specTag);
+            console.log('[GW COOP] build_bar spec tag resolved apiTag=' + tag + ' sessionTag=' + sessionTag + ' gwCoopMode=' + self.gwCoopMode() + ' gwTechCardsActive=' + self.gwTechCardsActive() + ' finalTag=' + self.specTag);
         });
 
         self.buildSet = ko.observable();

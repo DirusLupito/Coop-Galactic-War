@@ -21,6 +21,17 @@ $(document).ready(function () {
             || reconnectGameType === 'Galactic War';
     }
 
+    function isGwTechCardsForConnect(payload) {
+        var serverGameOptions = payload
+            && payload.data
+            && payload.data.client
+            && payload.data.client.game_options;
+        var reconnectInfo = model.reconnectToGameInfo && model.reconnectToGameInfo();
+
+        return !!(serverGameOptions && serverGameOptions.gw_tech_cards_active)
+            || !!(reconnectInfo && reconnectInfo.gw_tech_cards_active);
+    }
+
     // Checks if the connect_to_game page is being opened for a GW campaign game
     // by looking to see if the payload state is gw_campaign or if the URL has the gw_campaign=1 parameter.
     function isGwCampaignForConnect(payload) {
@@ -978,7 +989,7 @@ $(document).ready(function () {
                 url = 'coui://ui/main/game/galactic_war/gw_campaign_loading/gw_campaign_loading.html?target=' + encodeURIComponent(campaignTarget);
             }
         }
-        else if (url === 'coui://ui/main/game/live_game/live_game.html' && isGalacticWarForConnect(payload)) {
+        else if (url === 'coui://ui/main/game/live_game/live_game.html' && (isGalacticWarForConnect(payload) || isGwTechCardsForConnect(payload))) {
             var stagingUrl = 'coui://ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
 
             url = stagingUrl;

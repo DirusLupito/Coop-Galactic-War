@@ -18,6 +18,10 @@ $(document).ready(function()
             return 1;
         }
     };
+    var REQUIRED_CLIENT_MODS_SESSION_KEY = 'gw_required_client_mod_identifiers';
+    var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
+    var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
+    var UNIT_LIST_PATH = '/pa/units/unit_list.json';
 
     var normalizeGwTechSlotCount = function(value) {
         var count = Math.floor(Number(value));
@@ -50,6 +54,210 @@ $(document).ready(function()
         }
 
         return result;
+    };
+
+    var normalizeModIdentifier = function(identifier) {
+        if (!_.isString(identifier)) {
+            return '';
+        }
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length) {
+            return '';
+        }
+
+        return trimmed.toLowerCase();
+    };
+
+    var getRequiredGwScenesForMod = function(mod) {
+        var scenes = mod && mod.scenes;
+        if (!scenes || !_.isObject(scenes)) {
+            return [];
+        }
+
+        return _.filter(REQUIRED_GW_SCENE_KEYS, function(sceneKey) {
+            if (!_.has(scenes, sceneKey)) {
+                return false;
+            }
+
+            var sceneValue = scenes[sceneKey];
+            if (_.isArray(sceneValue)) {
+                return sceneValue.length > 0;
+            }
+
+            return !!sceneValue;
+        });
+    };
+
+    var hasRequiredGwDescription = function(mod) {
+        var description = mod && mod.description;
+        return _.isString(description) && description.toLowerCase().indexOf(REQUIRED_GW_DESCRIPTION_PHRASE) !== -1;
+    };
+
+    var isRequiredGwClientMod = function(mod) {
+        return getRequiredGwScenesForMod(mod).length > 0 && hasRequiredGwDescription(mod);
+    };
+
+    var buildClientModManifest = function(mountedMods) {
+        var activeIdentifiers = [];
+        var activeRequiredIdentifiers = [];
+        var activeRequiredNamesById = {};
+        var seen = {};
+        var seenRequired = {};
+
+        _.forEach(mountedMods || [], function(mod) {
+            var identifier = normalizeModIdentifier(mod && mod.identifier);
+            if (!identifier) {
+                return;
+            }
+
+            if (!seen[identifier]) {
+                seen[identifier] = true;
+                activeIdentifiers.push(identifier);
+            }
+
+            if (!isRequiredGwClientMod(mod) || seenRequired[identifier]) {
+                return;
+            }
+
+            seenRequired[identifier] = true;
+            activeRequiredIdentifiers.push(identifier);
+            activeRequiredNamesById[identifier] = (_.isString(mod.display_name) && mod.display_name.length)
+                ? mod.display_name
+                : identifier;
+        });
+
+        return {
+            active_identifiers: activeIdentifiers,
+            active_required_identifiers: activeRequiredIdentifiers,
+            active_required_names_by_id: activeRequiredNamesById
+        };
+    };
+
+    var buildRequiredLookupWithDependencies = function(requiredIdentifiers, installedClientModsById) {
+        var lookup = {};
+
+        var includeIdentifier = function(identifier) {
+            var normalizedIdentifier = normalizeModIdentifier(identifier);
+            if (!normalizedIdentifier || lookup[normalizedIdentifier]) {
+                return;
+            }
+
+            lookup[normalizedIdentifier] = true;
+
+            var installed = installedClientModsById[normalizedIdentifier];
+            if (!installed || !_.isArray(installed.dependencies)) {
+                return;
+            }
+
+            _.forEach(installed.dependencies, function(dependencyIdentifier) {
+                includeIdentifier(dependencyIdentifier);
+            });
+        };
+
+        _.forEach(requiredIdentifiers || [], function(identifier) {
+            includeIdentifier(identifier);
+        });
+
+        return lookup;
+    };
+
+    var runWithRequiredClientModsOnly = function(requiredIdentifiers, work) {
+        var communityModsManager = window.CommunityModsManager;
+        var canRestrictClientMods = communityModsManager
+            && _.isFunction(communityModsManager.installedMods)
+            && communityModsManager.installedMods
+            && _.isFunction(communityModsManager.installedMods.valueHasMutated)
+            && _.isFunction(communityModsManager.remountClientMods);
+
+        if (!canRestrictClientMods) {
+            return $.when(work());
+        }
+
+        var done = $.Deferred();
+        var installedMods = communityModsManager.installedMods();
+
+        if (!_.isArray(installedMods)) {
+            return $.when(work());
+        }
+
+        var clientEnabledBefore = {};
+        var installedClientModsById = {};
+
+        _.forEach(installedMods, function(mod) {
+            if (!mod || mod.context !== 'client') {
+                return;
+            }
+
+            var identifier = normalizeModIdentifier(mod.identifier);
+            if (!identifier) {
+                return;
+            }
+
+            clientEnabledBefore[identifier] = !!mod.enabled;
+            installedClientModsById[identifier] = mod;
+        });
+
+        var requiredLookup = buildRequiredLookupWithDependencies(requiredIdentifiers, installedClientModsById);
+
+        _.forEach(installedMods, function(mod) {
+            if (!mod || mod.context !== 'client') {
+                return;
+            }
+
+            var identifier = normalizeModIdentifier(mod.identifier);
+            if (!identifier) {
+                return;
+            }
+
+            mod.enabled = !!requiredLookup[identifier];
+        });
+
+        communityModsManager.installedMods.valueHasMutated();
+
+        communityModsManager.remountClientMods().always(function() {
+            $.when(work()).then(function() {
+                var workArgs = arguments;
+                _.forEach(installedMods, function(mod) {
+                    if (!mod || mod.context !== 'client') {
+                        return;
+                    }
+
+                    var identifier = normalizeModIdentifier(mod.identifier);
+                    if (!identifier || !_.has(clientEnabledBefore, identifier)) {
+                        return;
+                    }
+
+                    mod.enabled = clientEnabledBefore[identifier];
+                });
+
+                communityModsManager.installedMods.valueHasMutated();
+                communityModsManager.remountClientMods().always(function() {
+                    done.resolve.apply(done, workArgs);
+                });
+            }, function() {
+                var workArgs = arguments;
+                _.forEach(installedMods, function(mod) {
+                    if (!mod || mod.context !== 'client') {
+                        return;
+                    }
+
+                    var identifier = normalizeModIdentifier(mod.identifier);
+                    if (!identifier || !_.has(clientEnabledBefore, identifier)) {
+                        return;
+                    }
+
+                    mod.enabled = clientEnabledBefore[identifier];
+                });
+
+                communityModsManager.installedMods.valueHasMutated();
+                communityModsManager.remountClientMods().always(function() {
+                    done.reject.apply(done, workArgs);
+                });
+            });
+        });
+
+        return done.promise();
     };
 
     function GwTechSlotCardViewModel(slot, index, cardId) {
@@ -963,6 +1171,8 @@ $(document).ready(function()
         self.isVersusAIGame = ko.computed(function() { return self.gameType() === 'VersusAI'; });
         self.gwTechCardSlotCountLock = ko.observable(false);
         self.gwTechCardSlotCount = ko.observable(0);
+        self.gwTechCardsActiveSession = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
+        self.gwTechCardsActiveSession(false);
         self.gwTechCardSlotCountInput = ko.observable(0).extend({ rateLimit: { timeout: 750, method: "notifyWhenChangesStop" } });
         self.gwTechCardSlotCountInput.subscribe(function(value) {
             var count = normalizeGwTechSlotCount(value);
@@ -973,6 +1183,9 @@ $(document).ready(function()
         });
         self.gwTechCardSlotCount.subscribe(function(value) {
             self.gwTechCardSlotCountInput(value);
+            if (value <= 0) {
+                self.gwTechCardsActiveSession(false);
+            }
             if (value > 0 && self.loadGwTechModules) {
                 self.loadGwTechModules();
             }
@@ -1164,6 +1377,334 @@ $(document).ready(function()
             checkIndex(0);
             return result.promise();
         };
+
+        self.gwTechLaunchInProgress = ko.observable(false);
+        self.gwTechConfigMounted = ko.observable(false);
+        self.gwTechConfigMountInProgress = false;
+
+        self.publishRequiredClientModsForGwTech = function() {
+            var done = $.Deferred();
+
+            api.mods.getMounted('client', true).then(function(mountedMods) {
+                var manifest = buildClientModManifest(mountedMods);
+                var requiredIdentifiers = manifest.active_required_identifiers || [];
+                var requiredNamesById = manifest.active_required_names_by_id || {};
+
+                try {
+                    sessionStorage.setItem(REQUIRED_CLIENT_MODS_SESSION_KEY, JSON.stringify(requiredIdentifiers));
+                } catch (e) {
+                }
+
+                self.send_message('set_required_client_mods', {
+                    required_identifiers: requiredIdentifiers,
+                    required_names_by_id: requiredNamesById
+                }, function(success, response) {
+                    if (!success) {
+                        done.reject(response || 'set_required_client_mods failed');
+                        return;
+                    }
+
+                    done.resolve(requiredIdentifiers);
+                });
+            }, function(reason) {
+                try {
+                    sessionStorage.setItem(REQUIRED_CLIENT_MODS_SESSION_KEY, JSON.stringify([]));
+                } catch (e) {
+                }
+
+                self.send_message('set_required_client_mods', {
+                    required_identifiers: [],
+                    required_names_by_id: {}
+                }, function(success, response) {
+                    if (!success) {
+                        done.reject(response || reason || 'set_required_client_mods failed');
+                        return;
+                    }
+
+                    done.resolve([]);
+                });
+            });
+
+            return done.promise();
+        };
+
+        self.collectGwTechOwnersForCook = function() {
+            var owners = [];
+
+            _.forEach(self.armies(), function(army) {
+                var occupiedSlots = _.filter(army.slots(), function(slot) {
+                    return slot.isPlayer();
+                });
+
+                if (!occupiedSlots.length) {
+                    return;
+                }
+
+                var addOwner = function(slot) {
+                    var color = slot.rawColor();
+                    if (!_.isArray(color) || color.length < 2) {
+                        color = [[255, 255, 255], [0, 0, 0]];
+                    }
+
+                    owners.push({
+                        owner_key: army.sharedArmy() ? ('army:' + army.index()) : ('slot:' + army.index() + ':' + slot.index()),
+                        army_index: army.index(),
+                        slot_index: slot.index(),
+                        shared_army: army.sharedArmy(),
+                        player_id: slot.playerId(),
+                        client_id: slot.ai() ? undefined : slot.playerId(),
+                        client_name: slot.ai() ? undefined : slot.playerName(),
+                        player_name: slot.playerName(),
+                        ai: slot.ai(),
+                        commander: slot.commander(),
+                        color: color,
+                        loadout: slot.gwTechLoadout(),
+                        cards: slot.gwTechCards().slice(0)
+                    });
+                };
+
+                if (army.sharedArmy()) {
+                    addOwner(occupiedSlots[0]);
+                    return;
+                }
+
+                _.forEach(occupiedSlots, addOwner);
+            });
+
+            return owners;
+        };
+
+        self.cookGwTechConfig = function() {
+            var done = $.Deferred();
+            var owners = self.collectGwTechOwnersForCook();
+
+            if (!owners.length) {
+                done.reject('No occupied tech-card slots to cook.');
+                return done.promise();
+            }
+
+            self.publishRequiredClientModsForGwTech().then(function(requiredIdentifiers) {
+                runWithRequiredClientModsOnly(requiredIdentifiers || [], function() {
+                    var cookDone = $.Deferred();
+
+                    requireGW(['shared/gw_custom_lobby_tech_referee'], function(GWCustomLobbyTechReferee) {
+                        GWCustomLobbyTechReferee.cook(owners).then(function(config) {
+                            cookDone.resolve(config);
+                        }, function(reason) {
+                            cookDone.reject(reason);
+                        });
+                    }, function(reason) {
+                        cookDone.reject(reason || 'Failed to load custom lobby tech referee.');
+                    });
+
+                    return cookDone.promise();
+                }).then(function(config) {
+                    done.resolve(config);
+                }, function(reason) {
+                    done.reject(reason);
+                });
+            }, function(reason) {
+                done.reject(reason);
+            });
+
+            return done.promise();
+        };
+
+        self.parseGwTechFileValue = function(value) {
+            if (!_.isString(value)) {
+                return value;
+            }
+
+            try {
+                return parse(value);
+            } catch (e) {
+                return undefined;
+            }
+        };
+
+        self.stripGwTechUnitTag = function(unit, tag) {
+            if (!_.isString(unit) || !tag || unit.slice(-tag.length) !== tag) {
+                return unit;
+            }
+
+            return unit.slice(0, -tag.length);
+        };
+
+        self.discoverGwTechTaggedUnitLists = function(files) {
+            var taggedLists = [];
+
+            _.forEach(files || {}, function(value, path) {
+                if (!_.isString(path) || path.indexOf(UNIT_LIST_PATH) !== 0) {
+                    return;
+                }
+
+                var tag = path.slice(UNIT_LIST_PATH.length);
+                if (!tag) {
+                    return;
+                }
+
+                var unitList = self.parseGwTechFileValue(value);
+                if (!unitList || !_.isArray(unitList.units)) {
+                    return;
+                }
+
+                taggedLists.push({
+                    path: path,
+                    tag: tag,
+                    units: _.map(unitList.units, function(unit) {
+                        return self.stripGwTechUnitTag(unit, tag);
+                    })
+                });
+            });
+
+            return taggedLists;
+        };
+
+        self.buildGwTechUntaggedUnitListFromFiles = function(files) {
+            var units = [];
+
+            _.forEach(self.discoverGwTechTaggedUnitLists(files), function(taggedList) {
+                var unitList = self.parseGwTechFileValue(files[taggedList.path]);
+                if (unitList && _.isArray(unitList.units)) {
+                    units = units.concat(unitList.units);
+                }
+            });
+
+            return { units: _.uniq(units) };
+        };
+
+        self.buildGwTechLocalOverlayFiles = function(sharedFiles, tagAssignments) {
+            var done = $.Deferred();
+            var taggedUnitLists = self.discoverGwTechTaggedUnitLists(sharedFiles);
+
+            requireGW(['shared/gw_common'], function(GW) {
+                var titans = api.content.usingTitans();
+                var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
+                var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
+
+                $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
+                    var aiUnitMap = parse(aiMapGet[0]);
+                    var aiX1UnitMap = parse(aiX1MapGet[0]);
+                    var filesToProcess = [];
+
+                    var generateInventoryOverlayFiles = function(units, mods, tag) {
+                        var overlayDone = $.Deferred();
+
+                        if (!_.isString(tag) || !tag.length || !_.isArray(units) || !_.isArray(mods)) {
+                            overlayDone.resolve({});
+                            return overlayDone.promise();
+                        }
+
+                        var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, tag);
+                        var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, tag) : {};
+
+                        GW.specs.genUnitSpecs(units, tag).then(function(playerSpecFiles) {
+                            var playerFilesClassic = {};
+                            var playerFilesX1 = {};
+
+                            playerFilesClassic['/pa/ai/unit_maps/ai_unit_map.json' + tag] = playerAIUnitMap;
+                            if (titans) {
+                                playerFilesX1['/pa/ai/unit_maps/ai_unit_map_x1.json' + tag] = playerX1AIUnitMap;
+                            }
+
+                            var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1, playerSpecFiles);
+
+                            try {
+                                GW.specs.modSpecs(playerFiles, mods, tag);
+                            } catch (e) {
+                                console.log('[GW TECH] local overlay modSpecs failed tag=' + tag + ' error=' + JSON.stringify(e));
+                            }
+
+                            overlayDone.resolve(playerFiles);
+                        }, function() {
+                            overlayDone.resolve({});
+                        });
+
+                        return overlayDone.promise();
+                    };
+
+                    _.forEach(taggedUnitLists, function(taggedList) {
+                        var assignment = _.find(tagAssignments || [], function(candidate) {
+                            return candidate && candidate.tag === taggedList.tag;
+                        });
+
+                        if (!assignment || !_.isArray(assignment.inventory_mods)) {
+                            return;
+                        }
+
+                        filesToProcess.push(generateInventoryOverlayFiles(taggedList.units, assignment.inventory_mods, taggedList.tag));
+                    });
+
+                    if (!filesToProcess.length) {
+                        done.resolve({});
+                        return;
+                    }
+
+                    $.when.apply($, filesToProcess).then(function() {
+                        done.resolve(_.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments))));
+                    });
+                }, function() {
+                    done.resolve({});
+                });
+            }, function() {
+                done.resolve({});
+            });
+
+            return done.promise();
+        };
+
+        self.mountGwTechConfig = function(payload) {
+            var done = $.Deferred();
+
+            if (!payload || !payload.files) {
+                done.reject('No GW tech config files.');
+                return done.promise();
+            }
+
+            if (self.gwTechConfigMountInProgress) {
+                done.resolve();
+                return done.promise();
+            }
+
+            self.gwTechConfigMountInProgress = true;
+            self.gwTechConfigMounted(false);
+
+            if (!payload.files[UNIT_LIST_PATH]) {
+                payload.files[UNIT_LIST_PATH] = self.buildGwTechUntaggedUnitListFromFiles(payload.files);
+            }
+
+            self.buildGwTechLocalOverlayFiles(payload.files, payload.tag_assignments).always(function(localOverlayFiles) {
+                var mergedFiles = _.assign({}, payload.files, _.isObject(localOverlayFiles) ? localOverlayFiles : {});
+                var cookedFiles = _.mapValues(mergedFiles, function(value) {
+                    if (typeof value !== 'string') {
+                        return JSON.stringify(value);
+                    }
+                    return value;
+                });
+
+                api.file.mountMemoryFiles(cookedFiles).then(function() {
+                    var unitSpecTag = (_.isString(payload.unit_spec_tag) && payload.unit_spec_tag.length)
+                        ? payload.unit_spec_tag
+                        : '.player';
+                    var gwTechCardsActive = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
+                    var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
+
+                    gwTechCardsActive(true);
+                    gwCampaignUnitSpecTag(unitSpecTag);
+                    api.game.setUnitSpecTag(unitSpecTag);
+                    self.gwTechConfigMounted(true);
+                    self.gwTechConfigMountInProgress = false;
+                    self.send_message('gw_tech_config_ready', {});
+                    done.resolve();
+                }, function(reason) {
+                    self.gwTechConfigMountInProgress = false;
+                    done.reject(reason || 'Failed to mount GW tech config.');
+                });
+            });
+
+            return done.promise();
+        };
+
         self.allowSpectate = ko.computed(function () {
             if (self.thisPlayerIsReady())
                 return false;
@@ -1913,8 +2454,43 @@ $(document).ready(function()
             self.assignRandomAI()
 
             api.audio.playSound('/SE/UI/UI_lobby_start_button');
-            self.send_message('start_game', {
-                countdown: 5
+
+            if (self.gwTechCardSlotCount() <= 0) {
+                self.gwTechCardsActiveSession(false);
+                self.send_message('start_game', {
+                    countdown: 5
+                });
+                return;
+            }
+
+            if (self.gwTechLaunchInProgress()) {
+                return;
+            }
+
+            self.gwTechLaunchInProgress(true);
+            self.gwTechConfigMounted(false);
+            self.gwTechConfigMountInProgress = false;
+
+            self.cookGwTechConfig().then(function(config) {
+                self.send_message('set_gw_tech_config', config, function(success, response) {
+                    if (!success) {
+                        console.error('[GW TECH] set_gw_tech_config failed: ' + JSON.stringify(response || {}));
+                        self.gwTechLaunchInProgress(false);
+                        return;
+                    }
+
+                    self.send_message('start_game', {
+                        countdown: 5
+                    }, function(startSuccess, startResponse) {
+                        if (!startSuccess) {
+                            console.error('[GW TECH] start_game failed: ' + JSON.stringify(startResponse || {}));
+                            self.gwTechLaunchInProgress(false);
+                        }
+                    });
+                });
+            }, function(reason) {
+                console.error('[GW TECH] Failed to cook tech-card config: ' + JSON.stringify(reason));
+                self.gwTechLaunchInProgress(false);
             });
         };
 
@@ -3656,6 +4232,35 @@ api.debug.log(personality);
                 model.chatMessages.push(new ChatMessageViewModel('server', 'server', payload.target + payload.message));
                 break;
         }
+    };
+
+    handlers.request_client_mod_manifest = function() {
+        api.mods.getMounted('client', true).then(function(mountedMods) {
+            model.send_message('client_mod_manifest', buildClientModManifest(mountedMods));
+        }, function() {
+            model.send_message('client_mod_manifest', {
+                active_identifiers: [],
+                active_required_identifiers: [],
+                active_required_names_by_id: {}
+            });
+        });
+    };
+
+    handlers.required_client_mods_missing = function(payload) {
+        console.error('[GW TECH] Client mod mismatch for custom lobby tech cards: ' + JSON.stringify(payload || {}));
+        model.gwTechLaunchInProgress(false);
+    };
+
+    handlers.all_client_mods_match = function(payload) {
+        console.log('[GW TECH] Client mod manifest accepted: ' + JSON.stringify(payload || {}));
+    };
+
+    handlers.gw_tech_config = function(payload) {
+        model.mountGwTechConfig(payload).then(function() {
+            console.log('[GW TECH] Mounted custom lobby tech-card config.');
+        }, function(reason) {
+            console.error('[GW TECH] Failed mounting custom lobby tech-card config: ' + JSON.stringify(reason));
+        });
     };
 
     handlers.colors = function (payload) {

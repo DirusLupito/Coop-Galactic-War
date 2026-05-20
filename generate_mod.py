@@ -54,6 +54,8 @@ FILES_TO_COPY = [
      "ui/main/game/galactic_war/shared/js/gw_game_patches.js"),
     ("ui/main/game/galactic_war/shared/js/gw_start_loadouts.js",
      "ui/main/game/galactic_war/shared/js/gw_start_loadouts.js"),
+    ("ui/main/game/galactic_war/shared/js/gw_custom_lobby_tech_referee.js",
+     "ui/main/game/galactic_war/shared/js/gw_custom_lobby_tech_referee.js"),
     ("ui/main/game/live_game/live_game_action_bar.js",
      "ui/main/game/live_game/live_game_action_bar.js"),
     ("ui/main/game/connect_to_game/connect_to_game.js",

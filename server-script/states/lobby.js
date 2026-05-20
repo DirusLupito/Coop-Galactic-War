@@ -6,6 +6,7 @@ var content_manager = require('content_manager');
 var utils = require('utils');
 var bouncer = require('bouncer');
 var env = require('env');
+var file = require('file');
 var _ = require('thirdparty/lodash');
 var commander_manager = require('lobby/commander_manager');
 var color_manager = require('lobby/color_manager');
@@ -45,6 +46,8 @@ var commanders = new commander_manager.CommanderManager();
 var colors = new color_manager.ColorManager();
 
 var START_GAME_DELAY = 5; // In s.
+var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms
+var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 60 * 1000; // ms
 var MAX_PLAYERS = main.MAX_PLAYERS;
 var MAX_SPECTATORS = main.MAX_SPECTATORS;
 var MAX_CLIENTS = MAX_PLAYERS + MAX_SPECTATORS;
@@ -88,6 +91,7 @@ var DEFAULT_GAME_OPTIONS =
     sudden_death_mode: false,
     shuffle_landing_zones: false,
     gw_tech_card_slots: 0,
+    gw_tech_cards_active: false
 };
 
 var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
@@ -541,6 +545,16 @@ function LobbyModel(creator) {
     self.control = {}; /* has_first_config starting system_ready sim_ready */
 
     self.creator = creator;
+    self.gwTechConfig = undefined;
+    self.gwTechConfigReadyByClientId = {};
+    self.gwTechStartPending = undefined;
+    self.requiredClientModIdentifiers = [];
+    self.requiredClientModNamesById = {};
+    self.requiredClientModsPublished = false;
+    self.pendingManifestTimeoutByClientId = {};
+    self.pendingSelfDisconnectTimeoutByClientId = {};
+    self.clientManifestReceivedByClientId = {};
+    self.clientManifestValidatedByClientId = {};
 
     self.dirty = {};
     self.allDirty = {
@@ -615,6 +629,271 @@ function LobbyModel(creator) {
         });
     };
 
+    self.normalizeClientModIdentifier = function(identifier)
+    {
+        if (!_.isString(identifier))
+        {
+            return '';
+        }
+
+        var trimmed = identifier.trim();
+        if (!trimmed.length)
+        {
+            return '';
+        }
+
+        return trimmed.toLowerCase();
+    };
+
+    self.normalizeClientModIdentifiers = function(identifiers)
+    {
+        var normalized = [];
+        var seen = {};
+
+        _.forEach(identifiers || [], function(identifier)
+        {
+            var normalizedIdentifier = self.normalizeClientModIdentifier(identifier);
+            if (!normalizedIdentifier || seen[normalizedIdentifier])
+            {
+                return;
+            }
+
+            seen[normalizedIdentifier] = true;
+            normalized.push(normalizedIdentifier);
+        });
+
+        return normalized;
+    };
+
+    self.normalizeClientModNamesById = function(namesById, identifiers)
+    {
+        var normalizedNames = {};
+        _.forEach(identifiers || [], function(identifier)
+        {
+            normalizedNames[identifier] = identifier;
+        });
+
+        _.forIn(namesById || {}, function(name, key)
+        {
+            var normalizedIdentifier = self.normalizeClientModIdentifier(key);
+            if (!normalizedIdentifier || identifiers.indexOf(normalizedIdentifier) === -1)
+            {
+                return;
+            }
+
+            if (_.isString(name) && name.length)
+            {
+                normalizedNames[normalizedIdentifier] = name;
+            }
+        });
+
+        return normalizedNames;
+    };
+
+    self.setRequiredClientModsData = function(requiredIdentifiers, requiredNamesById, published)
+    {
+        self.requiredClientModIdentifiers = self.normalizeClientModIdentifiers(requiredIdentifiers);
+        self.requiredClientModNamesById = self.normalizeClientModNamesById(requiredNamesById, self.requiredClientModIdentifiers);
+        self.requiredClientModsPublished = !!published;
+        self.clientManifestValidatedByClientId = {};
+
+        if (!self.requiredClientModsPublished)
+        {
+            self.clearAllPendingManifestTimeouts();
+        }
+    };
+
+    self.clearPendingManifestTimeout = function(clientId)
+    {
+        var timeout = self.pendingManifestTimeoutByClientId[clientId];
+        if (timeout)
+        {
+            clearTimeout(timeout);
+        }
+
+        delete self.pendingManifestTimeoutByClientId[clientId];
+        delete self.clientManifestReceivedByClientId[clientId];
+    };
+
+    self.clearPendingSelfDisconnectTimeout = function(clientId)
+    {
+        var timeout = self.pendingSelfDisconnectTimeoutByClientId[clientId];
+        if (timeout)
+        {
+            clearTimeout(timeout);
+        }
+
+        delete self.pendingSelfDisconnectTimeoutByClientId[clientId];
+    };
+
+    self.clearAllPendingManifestTimeouts = function()
+    {
+        _.forEach(self.pendingManifestTimeoutByClientId, function(timeout)
+        {
+            clearTimeout(timeout);
+        });
+
+        self.pendingManifestTimeoutByClientId = {};
+        self.clientManifestReceivedByClientId = {};
+        self.clearAllPendingSelfDisconnectTimeouts();
+    };
+
+    self.clearAllPendingSelfDisconnectTimeouts = function()
+    {
+        _.forEach(self.pendingSelfDisconnectTimeoutByClientId, function(timeout)
+        {
+            clearTimeout(timeout);
+        });
+
+        self.pendingSelfDisconnectTimeoutByClientId = {};
+    };
+
+    self.buildMissingRequiredModsReason = function(missingIdentifiers, extraIdentifiers, extraNamesById)
+    {
+        var parts = [];
+
+        if (missingIdentifiers && missingIdentifiers.length)
+        {
+            parts.push('missing ' + _.map(missingIdentifiers, function(identifier)
+            {
+                var displayName = self.requiredClientModNamesById && self.requiredClientModNamesById[identifier];
+                var label = (_.isString(displayName) && displayName.length) ? displayName : identifier;
+                return '[' + label + ']';
+            }).join(', '));
+        }
+
+        if (extraIdentifiers && extraIdentifiers.length)
+        {
+            parts.push('extra ' + _.map(extraIdentifiers, function(identifier)
+            {
+                var displayName = extraNamesById && extraNamesById[identifier];
+                var label = (_.isString(displayName) && displayName.length) ? displayName : identifier;
+                return '[' + label + ']';
+            }).join(', '));
+        }
+
+        if (!parts.length)
+        {
+            return 'Client mod mismatch [client did not report active GW-affecting client mods]';
+        }
+
+        return 'Client mod mismatch: ' + parts.join('; ');
+    };
+
+    self.notifyClientMissingRequiredMods = function(client, missingIdentifiers, extraIdentifiers, extraNamesById)
+    {
+        if (!client || !client.connected)
+        {
+            return;
+        }
+
+        var normalizedExtraNamesById = self.normalizeClientModNamesById(extraNamesById, extraIdentifiers || []);
+        var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, normalizedExtraNamesById);
+
+        self.clearPendingSelfDisconnectTimeout(client.id);
+
+        client.message({
+            message_type: 'required_client_mods_missing',
+            payload: {
+                reason: rejectReason,
+                missing_identifiers: _.clone(missingIdentifiers || []),
+                extra_identifiers: _.clone(extraIdentifiers || []),
+                required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                required_names_by_id: _.cloneDeep(self.requiredClientModNamesById),
+                extra_names_by_id: _.cloneDeep(normalizedExtraNamesById)
+            }
+        });
+
+        self.pendingSelfDisconnectTimeoutByClientId[client.id] = setTimeout(function()
+        {
+            if (!client.connected)
+            {
+                return;
+            }
+
+            self.clearPendingSelfDisconnectTimeout(client.id);
+            console.warn('[GW TECH] client did not self-disconnect after required mod mismatch client=' + client.id + ' reason="' + rejectReason + '"');
+        }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
+    };
+
+    self.notifyGwTechHostStartBlocked = function(payload)
+    {
+        var hostClient = _.find(server.clients, function(client)
+        {
+            return client && client.connected && client.id === self.creator;
+        });
+
+        if (!hostClient)
+        {
+            return;
+        }
+
+        hostClient.message({
+            message_type: 'required_client_mods_missing',
+            payload: payload || {}
+        });
+    };
+
+    self.requestClientManifest = function(client, reconnect)
+    {
+        if (!self.gwTechCardSlotsEnabled())
+        {
+            return;
+        }
+
+        if (!client || !client.connected)
+        {
+            return;
+        }
+
+        if (!self.requiredClientModsPublished)
+        {
+            return;
+        }
+
+        self.clearPendingManifestTimeout(client.id);
+        self.clientManifestReceivedByClientId[client.id] = false;
+
+        client.message({
+            message_type: 'request_client_mod_manifest',
+            payload: {
+                required_identifiers: self.requiredClientModIdentifiers,
+                required_names_by_id: self.requiredClientModNamesById
+            }
+        });
+
+        self.pendingManifestTimeoutByClientId[client.id] = setTimeout(function()
+        {
+            if (!client.connected || self.clientManifestReceivedByClientId[client.id])
+            {
+                return;
+            }
+
+            self.clearPendingManifestTimeout(client.id);
+            self.clientManifestValidatedByClientId[client.id] = false;
+            console.warn('[GW TECH] client mod manifest timeout client=' + client.id);
+            self.gwTechStartPending = undefined;
+            self.notifyGwTechHostStartBlocked({
+                reason: 'Timed out waiting for client mod manifest.',
+                client_id: client.id,
+                client_name: client.name
+            });
+        }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
+    };
+
+    self.requestConnectedClientManifests = function(reason)
+    {
+        _.forEach(server.clients, function(client)
+        {
+            if (!client || !client.connected || client.id === self.creator)
+            {
+                return;
+            }
+
+            self.requestClientManifest(client, false);
+        });
+    };
+
     self.gwTechCardSlotsEnabled = function()
     {
         return !!(self.settings &&
@@ -653,6 +932,242 @@ function LobbyModel(creator) {
             }
         });
         return changed;
+    };
+
+    self.getGwTechExpectedAssignments = function()
+    {
+        if (!self.gwTechCardSlotsEnabled())
+        {
+            return [];
+        }
+
+        var assignments = [];
+        _.forEach(self.armies, function(army, armyIndex)
+        {
+            var players = _.sortBy(_.filter(self.playersInArmy(armyIndex), function(player)
+            {
+                return !player.spectator;
+            }), 'slotIndex');
+
+            if (!players.length)
+            {
+                return;
+            }
+
+            var addAssignment = function(player)
+            {
+                var index = assignments.length;
+                assignments.push({
+                    owner_key: army.alliance ? ('slot:' + armyIndex + ':' + player.slotIndex) : ('army:' + armyIndex),
+                    army_index: armyIndex,
+                    slot_index: player.slotIndex,
+                    shared_army: !army.alliance,
+                    player_id: player.client.id,
+                    client_id: player.ai ? undefined : player.client.id,
+                    client_name: player.ai ? undefined : player.client.name,
+                    player_name: player.client.name,
+                    ai: player.ai,
+                    tag: index === 0 ? '.player' : '.player' + (index - 1)
+                });
+            };
+
+            if (!army.alliance)
+            {
+                addAssignment(players[0]);
+                return;
+            }
+
+            _.forEach(players, addAssignment);
+        });
+
+        return assignments;
+    };
+
+    self.validateGwTechConfig = function(config)
+    {
+        if (!self.gwTechCardSlotsEnabled())
+        {
+            return 'GW tech card slots are disabled';
+        }
+
+        if (!config || !_.isObject(config) || !_.isObject(config.files) || !_.isArray(config.tag_assignments))
+        {
+            return 'Invalid GW tech config payload';
+        }
+
+        var expected = self.getGwTechExpectedAssignments();
+        if (expected.length !== config.tag_assignments.length)
+        {
+            return 'GW tech owner count changed';
+        }
+
+        var invalid = false;
+        _.forEach(expected, function(expectedAssignment, index)
+        {
+            var actual = config.tag_assignments[index];
+            if (!actual ||
+                actual.owner_key !== expectedAssignment.owner_key ||
+                actual.player_id !== expectedAssignment.player_id ||
+                actual.tag !== expectedAssignment.tag)
+            {
+                invalid = true;
+            }
+        });
+
+        if (invalid)
+        {
+            return 'GW tech config no longer matches lobby state';
+        }
+
+        return '';
+    };
+
+    self.setGwTechConfig = function(config)
+    {
+        var validation = self.validateGwTechConfig(config);
+        if (validation)
+        {
+            console.log('[GW TECH] rejected config: ' + validation);
+            return validation;
+        }
+
+        self.gwTechConfig = {
+            files: _.cloneDeep(config.files),
+            tag_assignments: _.cloneDeep(config.tag_assignments)
+        };
+        self.gwTechConfigReadyByClientId = {};
+
+        var cookedFiles = _.mapValues(self.gwTechConfig.files, function(value)
+        {
+            if (typeof value !== 'string')
+            {
+                return JSON.stringify(value);
+            }
+            return value;
+        });
+        file.mountMemoryFiles(cookedFiles);
+
+        self.sendGwTechConfigToClients();
+        return '';
+    };
+
+    self.getGwTechTagForClient = function(client)
+    {
+        if (!client || !self.gwTechConfig || !_.isArray(self.gwTechConfig.tag_assignments))
+        {
+            return '.player';
+        }
+
+        var assignment = _.find(self.gwTechConfig.tag_assignments, function(candidate)
+        {
+            return candidate && candidate.client_id === client.id;
+        });
+
+        return assignment && assignment.tag || '.player';
+    };
+
+    self.sendGwTechConfigToClients = function(client)
+    {
+        if (!self.gwTechConfig)
+        {
+            return;
+        }
+
+        var sendToClient = function(targetClient)
+        {
+            if (!targetClient || !targetClient.connected)
+            {
+                return;
+            }
+
+            targetClient.message({
+                message_type: 'gw_tech_config',
+                payload: {
+                    files: self.gwTechConfig.files,
+                    unit_spec_tag: self.getGwTechTagForClient(targetClient),
+                    tag_assignments: self.gwTechConfig.tag_assignments,
+                    gw_tech_cards_active: true
+                }
+            });
+            self.gwTechConfigReadyByClientId[targetClient.id] = false;
+        };
+
+        if (client)
+        {
+            sendToClient(client);
+        }
+        else
+        {
+            _.forEach(server.clients, sendToClient);
+        }
+    };
+
+    self.gwTechConfigAllClientsReady = function()
+    {
+        if (!self.gwTechCardSlotsEnabled())
+        {
+            return true;
+        }
+
+        if (!self.gwTechConfig)
+        {
+            return false;
+        }
+
+        return _.every(server.clients, function(client)
+        {
+            return !client.connected || self.gwTechConfigReadyByClientId[client.id] === true;
+        });
+    };
+
+    self.gwTechClientModsAllValid = function()
+    {
+        if (!self.gwTechCardSlotsEnabled() || !self.requiredClientModsPublished)
+        {
+            return true;
+        }
+
+        return _.every(server.clients, function(client)
+        {
+            return !client.connected || client.id === self.creator || self.clientManifestValidatedByClientId[client.id] === true;
+        });
+    };
+
+    self.gwTechClientModsStillPending = function()
+    {
+        if (!self.gwTechCardSlotsEnabled() || !self.requiredClientModsPublished)
+        {
+            return false;
+        }
+
+        return _.some(server.clients, function(client)
+        {
+            return client.connected &&
+                client.id !== self.creator &&
+                !_.has(self.clientManifestValidatedByClientId, client.id);
+        });
+    };
+
+    self.markGwTechConfigReady = function(client)
+    {
+        if (!client || !client.id)
+        {
+            return;
+        }
+
+        self.gwTechConfigReadyByClientId[client.id] = true;
+    };
+
+    self.invalidateGwTechConfig = function(reason)
+    {
+        if (self.gwTechConfig)
+        {
+            console.log('[GW TECH] invalidating cooked config: ' + reason);
+        }
+
+        self.gwTechConfig = undefined;
+        self.gwTechConfigReadyByClientId = {};
+        self.gwTechStartPending = undefined;
     };
 
     self.aiCount = function () {
@@ -779,10 +1294,51 @@ function LobbyModel(creator) {
 
         _.invoke(self.players, 'maybeTakeColorIndex');
 
+        if (self.gwTechCardSlotsEnabled() && self.gwTechConfig)
+        {
+            _.forEach(self.gwTechConfig.tag_assignments, function(assignment)
+            {
+                var player = assignment && self.players[assignment.player_id];
+                var army = player && self.armies[player.armyIndex];
+                if (army && _.isString(assignment.tag))
+                {
+                    army.spec_tag = assignment.tag;
+                }
+            });
+        }
+
+        var gameConfig = lobbyModel.finalizeConfig();
+        gameConfig.game_options = _.cloneDeep(gameConfig.game_options || {});
+        var finalArmies = lobbyModel.finalizeArmies();
+        var finalPlayers = lobbyModel.finalizePlayers();
+
+        if (self.gwTechCardSlotsEnabled() && self.gwTechConfig)
+        {
+            gameConfig.game_options.gw_tech_cards_active = true;
+
+            _.forEach(self.gwTechConfig.tag_assignments, function(assignment)
+            {
+                var player = assignment && self.players[assignment.player_id];
+                var ownerArmy = player && finalArmies[player.armyIndex];
+                var ownerAllianceGroup = ownerArmy && ownerArmy.alliance_group;
+
+                _.forEach((assignment && assignment.minion_armies) || [], function(minionArmy)
+                {
+                    var clonedArmy = _.cloneDeep(minionArmy);
+                    clonedArmy.alliance_group = ownerAllianceGroup;
+                    finalArmies.push(clonedArmy);
+                });
+            });
+        }
+        else
+        {
+            gameConfig.game_options.gw_tech_cards_active = false;
+        }
+
         return {
-            game: lobbyModel.finalizeConfig(),
-            armies: lobbyModel.finalizeArmies(),
-            players: lobbyModel.finalizePlayers(),
+            game: gameConfig,
+            armies: finalArmies,
+            players: finalPlayers,
             ranked: false
         }
     };
@@ -882,6 +1438,11 @@ function LobbyModel(creator) {
     self.unreadyAllPlayers = function()
     {
         debug_log('unreadyAllPlayers');
+
+        if (!self.control.starting)
+        {
+            self.invalidateGwTechConfig('lobby state changed');
+        }
 
         _.forIn(self.players, function (element)
         {
@@ -1862,6 +2423,20 @@ function maybeStartLandingState()
 
     var final_data = lobbyModel.getFinalData();
 
+    if (final_data.game.game_options.gw_tech_cards_active && lobbyModel.gwTechConfig)
+    {
+        var replaySummary = _.cloneDeep(final_data.game);
+        replaySummary.files = undefined;
+
+        var replayConfig = {
+            game_options: _.cloneDeep(final_data.game.game_options),
+            files: _.cloneDeep(lobbyModel.gwTechConfig.files),
+            tag_assignments: _.cloneDeep(lobbyModel.gwTechConfig.tag_assignments)
+        };
+
+        server.setReplayConfig(JSON.stringify(replaySummary), JSON.stringify(replayConfig));
+    }
+
     try
     {
         if (server_utils.log_lobby_description)
@@ -1879,17 +2454,14 @@ function maybeStartLandingState()
     main.setState(main.states.landing, final_data);
 }
 
-
-
-function playerMsg_startCountdown(msg)
+function beginStartCountdownForClient(client, countdown)
 {
-    debug_log('playerMsg_startGame');
-    var response = server.respond(msg);
+    var player = lobbyModel.players[client.id];
+    if (!player)
+    {
+        return 'Invalid player';
+    }
 
-    if (!allowChangesFrom(msg.client))
-        return response.fail("Not allowed");
-
-    var player = lobbyModel.players[msg.client.id];
     player.ready = true;
 
     function not_ready()
@@ -1903,20 +2475,44 @@ function playerMsg_startCountdown(msg)
     if (not_ready())
     {
         player.ready = false;
-        return response.fail("Not ready.");
+        return 'Not ready.';
     }
 
     var lobbyValidationResult = lobbyModel.validateSetup();
     if (lobbyValidationResult)
     {
         player.ready = false;
-        return response.fail("Invalid game setup - " + lobbyValidationResult);
+        return 'Invalid game setup - ' + lobbyValidationResult;
     }
 
     if (!lobbyModel.control.sim_ready)
     {
         player.ready = false;
-        return response.fail("Server is not done gerating planets");
+        return 'Server is not done gerating planets';
+    }
+
+    if (lobbyModel.gwTechCardSlotsEnabled() && !lobbyModel.gwTechClientModsAllValid())
+    {
+        if (lobbyModel.gwTechClientModsStillPending())
+        {
+            lobbyModel.gwTechStartPending = {
+                client_id: client.id,
+                countdown: countdown
+            };
+            return '';
+        }
+
+        player.ready = false;
+        return 'Client mod validation failed';
+    }
+
+    if (lobbyModel.gwTechCardSlotsEnabled() && !lobbyModel.gwTechConfigAllClientsReady())
+    {
+        lobbyModel.gwTechStartPending = {
+            client_id: client.id,
+            countdown: countdown
+        };
+        return '';
     }
 
     lobbyModel.updatePlayerState();
@@ -1932,7 +2528,7 @@ function playerMsg_startCountdown(msg)
         maybeStartLandingState();
     }
 
-    var count = _.has(msg, 'countdown') ? msg.countdown : START_GAME_DELAY;
+    var count = _.isFinite(countdown) ? countdown : START_GAME_DELAY;
     function countdownToStartGame()
     {
         server.broadcastEventMessage('', count, 'countdown');
@@ -1950,6 +2546,53 @@ function playerMsg_startCountdown(msg)
     {
         server.broadcastEventMessage('', 'Game will start in ' + START_GAME_DELAY + ' seconds.');
         countdownToStartGame();
+    }
+
+    return '';
+}
+
+function maybeResumePendingGwTechStart()
+{
+    if (!lobbyModel.gwTechStartPending ||
+        !lobbyModel.gwTechClientModsAllValid() ||
+        !lobbyModel.gwTechConfigAllClientsReady())
+    {
+        return;
+    }
+
+    var pending = lobbyModel.gwTechStartPending;
+    lobbyModel.gwTechStartPending = undefined;
+
+    var client = server.getClient && server.getClient(pending.client_id);
+    if (!client)
+    {
+        client = _.find(server.clients, function(candidate)
+        {
+            return candidate && candidate.id === pending.client_id;
+        });
+    }
+
+    if (!client)
+    {
+        return;
+    }
+
+    beginStartCountdownForClient(client, pending.countdown);
+}
+
+function playerMsg_startCountdown(msg)
+{
+    debug_log('playerMsg_startGame');
+    var response = server.respond(msg);
+
+    if (!allowChangesFrom(msg.client))
+        return response.fail("Not allowed");
+
+    var count = _.has(msg, 'countdown') ? msg.countdown : START_GAME_DELAY;
+    var error = beginStartCountdownForClient(msg.client, count);
+    if (error)
+    {
+        return response.fail(error);
     }
 
     response.succeed();
@@ -2055,6 +2698,141 @@ function playerMsg_setEconomyFactor(msg)
         return response.fail("Not allowed");
 
     lobbyModel.setEconomyFactor(msg.payload.id, msg.payload.economy_factor);
+    response.succeed();
+}
+
+function playerMsg_setRequiredClientMods(msg)
+{
+    var response = server.respond(msg);
+    var payload = msg.payload || {};
+
+    if (lobbyModel.creator !== msg.client.id)
+    {
+        return response.fail("Required client mods can only be provided by lobby creator");
+    }
+
+    lobbyModel.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id, true);
+    lobbyModel.requestConnectedClientManifests('required_data_published');
+
+    response.succeed({
+        required_identifiers: lobbyModel.requiredClientModIdentifiers,
+        required_client_mods_published: lobbyModel.requiredClientModsPublished
+    });
+}
+
+function playerMsg_clientModManifest(msg)
+{
+    var response = server.respond(msg);
+    var payload = msg.payload || {};
+
+    if (!lobbyModel.requiredClientModsPublished)
+    {
+        return response.succeed({
+            required_identifiers: lobbyModel.requiredClientModIdentifiers,
+            required_client_mods_published: false
+        });
+    }
+
+    lobbyModel.clientManifestReceivedByClientId[msg.client.id] = true;
+    lobbyModel.clearPendingManifestTimeout(msg.client.id);
+
+    if (!_.isArray(payload.active_required_identifiers))
+    {
+        lobbyModel.clientManifestValidatedByClientId[msg.client.id] = false;
+        lobbyModel.notifyClientMissingRequiredMods(msg.client, undefined, undefined, payload.active_required_names_by_id);
+        lobbyModel.gwTechStartPending = undefined;
+        lobbyModel.notifyGwTechHostStartBlocked({
+            reason: lobbyModel.buildMissingRequiredModsReason(),
+            client_id: msg.client.id,
+            client_name: msg.client.name,
+            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById)
+        });
+        return response.fail({
+            reason: lobbyModel.buildMissingRequiredModsReason(),
+            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById)
+        });
+    }
+
+    var activeRequiredIdentifiers = lobbyModel.normalizeClientModIdentifiers(payload.active_required_identifiers);
+    var activeRequiredNamesById = lobbyModel.normalizeClientModNamesById(payload.active_required_names_by_id, activeRequiredIdentifiers);
+    var missingIdentifiers = _.filter(lobbyModel.requiredClientModIdentifiers, function(identifier)
+    {
+        return activeRequiredIdentifiers.indexOf(identifier) === -1;
+    });
+    var extraIdentifiers = _.filter(activeRequiredIdentifiers, function(identifier)
+    {
+        return lobbyModel.requiredClientModIdentifiers.indexOf(identifier) === -1;
+    });
+
+    if (missingIdentifiers.length || extraIdentifiers.length)
+    {
+        lobbyModel.clientManifestValidatedByClientId[msg.client.id] = false;
+        lobbyModel.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, extraIdentifiers, activeRequiredNamesById);
+        lobbyModel.gwTechStartPending = undefined;
+        lobbyModel.notifyGwTechHostStartBlocked({
+            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById),
+            client_id: msg.client.id,
+            client_name: msg.client.name,
+            missing_identifiers: missingIdentifiers,
+            extra_identifiers: extraIdentifiers,
+            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
+            extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
+        });
+        return response.fail({
+            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById),
+            missing_identifiers: missingIdentifiers,
+            extra_identifiers: extraIdentifiers,
+            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
+            extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
+        });
+    }
+
+    lobbyModel.clientManifestValidatedByClientId[msg.client.id] = true;
+    msg.client.message({
+        message_type: 'all_client_mods_match',
+        payload: {
+            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+            required_client_mods_published: lobbyModel.requiredClientModsPublished
+        }
+    });
+
+    response.succeed({
+        required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
+        required_client_mods_published: lobbyModel.requiredClientModsPublished
+    });
+
+    maybeResumePendingGwTechStart();
+}
+
+function playerMsg_setGwTechConfig(msg)
+{
+    var response = server.respond(msg);
+
+    if (lobbyModel.creator !== msg.client.id)
+    {
+        return response.fail("GW tech config can only be provided by lobby creator");
+    }
+
+    var validation = lobbyModel.setGwTechConfig(msg.payload || {});
+    if (validation)
+    {
+        return response.fail(validation);
+    }
+
+    response.succeed();
+}
+
+function playerMsg_gwTechConfigReady(msg)
+{
+    var response = server.respond(msg);
+
+    lobbyModel.markGwTechConfigReady(msg.client);
+    maybeResumePendingGwTechStart();
+
     response.succeed();
 }
 
@@ -2696,6 +3474,12 @@ exports.enter = function (owner) {
             payload: main.cheats
         });
 
+        lobbyModel.requestClientManifest(client, true);
+        if (lobbyModel.gwTechConfig)
+        {
+            lobbyModel.sendGwTechConfigToClients(client);
+        }
+
         return onConnect;
     });
     cleanupOnEntry.push(function () { server.onConnect.pop(); });
@@ -2733,6 +3517,10 @@ exports.enter = function (owner) {
         set_ai_landing_policy: playerMsg_setAILandingPolicy,
         set_ai_commander: playerMsg_setAICommander,
         set_econ_factor: playerMsg_setEconomyFactor,
+        set_required_client_mods: playerMsg_setRequiredClientMods,
+        client_mod_manifest: playerMsg_clientModManifest,
+        set_gw_tech_config: playerMsg_setGwTechConfig,
+        gw_tech_config_ready: playerMsg_gwTechConfigReady,
         set_gw_tech_loadout: playerMsg_setGwTechLoadout,
         set_gw_tech_card: playerMsg_setGwTechCard,
         clear_gw_tech_card: playerMsg_clearGwTechCard,

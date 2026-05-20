@@ -91,7 +91,9 @@ function sendReconnectMemoryFilesToClient(client, reason) {
             files: reconnectReplayConfig.files,
             unit_spec_tag: getReconnectUnitSpecTag(client),
             per_player_tech_tag_assignments: reconnectReplayConfig.per_player_tech_tag_assignments,
-            gw_campaign_active: isGwCampaignCoopMatch()
+            tag_assignments: reconnectReplayConfig.tag_assignments,
+            gw_campaign_active: isGwCampaignCoopMatch(),
+            gw_tech_cards_active: isGwTechCardsMatch()
         }
     });
     return true;
@@ -106,6 +108,10 @@ function isGalacticWar() {
 // so normal matches keep their existing playing-state semantics.
 function isGwCampaignCoopMatch() {
     return !!(game_options && game_options.gw_campaign_active);
+}
+
+function isGwTechCardsMatch() {
+    return !!(game_options && game_options.gw_tech_cards_active);
 }
 
 // IDs can be numeric in some environments and strings in others?
@@ -994,7 +1000,7 @@ exports.enter = function (config) {
             var response = server.respond(msg);
             var sent = false;
 
-            if (isGalacticWar())
+            if (isGalacticWar() || isGwTechCardsMatch())
                 sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request');
 
             response.succeed({

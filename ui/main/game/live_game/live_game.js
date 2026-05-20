@@ -15,6 +15,7 @@ catch (e) {
 
 $(document).ready(function () {
     var gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+    var gwTechCardsActive = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
     var gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
     var idleTime = 0;
 
@@ -24,7 +25,7 @@ $(document).ready(function () {
     var end = /[.]json[^\/]*$/;
 
     var currentGwUnitSpecTag = function() {
-        if (gwCoopMode()) {
+        if (gwCoopMode() || gwTechCardsActive()) {
             return gwCampaignUnitSpecTag() || '.player';
         }
 
@@ -4301,14 +4302,23 @@ $(document).ready(function () {
         if (!payload)
             return;
 
-        if (!payload['/pa/units/unit_list.json']) {
-            var playerUnitList = payload['/pa/units/unit_list.json.player'];
-            var aiUnitList = payload['/pa/units/unit_list.json.ai'];
-            var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
-            payload['/pa/units/unit_list.json'] = { units: units };
+        var files = payload.files || payload;
+        var unitSpecTag = (_.isString(payload.unit_spec_tag) && payload.unit_spec_tag.length)
+            ? payload.unit_spec_tag
+            : (gwCampaignUnitSpecTag() || '.player');
+
+        if (_.has(payload, 'gw_tech_cards_active')) {
+            gwTechCardsActive(!!payload.gw_tech_cards_active);
         }
 
-        var cookedFiles = _.mapValues(payload, function (value) {
+        if (!files['/pa/units/unit_list.json']) {
+            var playerUnitList = files['/pa/units/unit_list.json.player'];
+            var aiUnitList = files['/pa/units/unit_list.json.ai'];
+            var units = (playerUnitList && playerUnitList.units || []).concat(aiUnitList && aiUnitList.units || []);
+            files['/pa/units/unit_list.json'] = { units: units };
+        }
+
+        var cookedFiles = _.mapValues(files, function (value) {
             if (typeof value !== 'string')
                 return JSON.stringify(value);
             return value;
@@ -4317,7 +4327,8 @@ $(document).ready(function () {
         // Reconnect restore should not globally unmount first, otherwise
         // client-mod mounted assets can be lost before remount hooks run.
         api.file.mountMemoryFiles(cookedFiles).always(function () {
-            api.game.setUnitSpecTag(gwCoopMode() ? (gwCampaignUnitSpecTag() || '.player') : '.player');
+            gwCampaignUnitSpecTag(unitSpecTag);
+            api.game.setUnitSpecTag((gwCoopMode() || gwTechCardsActive()) ? unitSpecTag : '.player');
             engine.call('request_spec_data', -1);
 
             model.send_message('memory_files_received', {}, function (success, response) {

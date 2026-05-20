@@ -23,11 +23,12 @@ $(document).ready(function () {
         self.selection = ko.observable({});
         self.changingSelection = ko.observable(false); /* raises to true while we're binding a new selection to suppress sound effect subscriptions */
         self.gwCoopMode = ko.observable(false).extend({ session: 'gw_coop_mode' });
+        self.gwTechCardsActive = ko.observable(false).extend({ session: 'gw_tech_cards_active' });
         self.gwCampaignUnitSpecTag = ko.observable('.player').extend({ session: 'gw_campaign_unit_spec_tag' });
         self.gwCoopResolutionLogSeen = {};
 
         self.currentGwUnitSpecTag = function() {
-            if (self.gwCoopMode()) {
+            if (self.gwCoopMode() || self.gwTechCardsActive()) {
                 return self.gwCampaignUnitSpecTag() || '.player';
             }
 
