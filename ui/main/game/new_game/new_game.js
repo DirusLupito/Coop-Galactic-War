@@ -123,6 +123,14 @@ $(document).ready(function()
         self.showGwTech = ko.computed(function() {
             return self.isPlayer() && !!model && model.gwTechCardSlotCount() > 0;
         });
+        self.armyUsesSharedGwTech = ko.computed(function() {
+            var army = model && model.armies()[self.armyIndex()];
+            return !!army && army.sharedArmy();
+        });
+        self.isSharedGwTechSlot = ko.computed(function() {
+            var army = model && model.armies()[self.armyIndex()];
+            return !!army && army.gwTechSharedSlot && army.gwTechSharedSlot() === self;
+        });
         self.gwTechLoadoutCard = ko.computed(function() {
             if (!self.showGwTech()) {
                 return null;
@@ -130,21 +138,39 @@ $(document).ready(function()
 
             return new CardViewModel({ id: self.gwTechLoadout() });
         });
+        var gwTechSlotCardCache = [];
         self.gwTechSlotCards = ko.computed(function() {
             if (!self.showGwTech()) {
+                gwTechSlotCardCache = [];
                 return [];
             }
 
             var slotCount = model ? model.gwTechCardSlotCount() : 0;
             var cards = self.gwTechCards();
+            var result = [];
 
-            return _.map(_.range(0, slotCount), function(index) {
-                return new GwTechSlotCardViewModel(self, index, cards[index]);
+            _.forEach(_.range(0, slotCount), function(index) {
+                var cardId = cards[index];
+                var cached = gwTechSlotCardCache[index];
+                if (!cached || cached.cardId !== cardId) {
+                    cached = new GwTechSlotCardViewModel(self, index, cardId);
+                }
+                result.push(cached);
             });
+
+            gwTechSlotCardCache = result;
+            return result;
         });
         self.canEditGwTech = ko.computed(function() {
+            if (!self.showGwTech()) {
+                return false;
+            }
+            if (self.armyUsesSharedGwTech()) {
+                return self.isSharedGwTechSlot() && model.isGameCreator();
+            }
+
             var ownsSlot = self.playerName() === model.displayName();
-            return self.showGwTech() && (ownsSlot || (self.ai() && model.isGameCreator()));
+            return ownsSlot || (self.ai() && model.isGameCreator());
         });
         self.gwTechPickerOptions = ko.computed(function() {
             if (!self.showGwTech()) {
@@ -571,6 +597,18 @@ $(document).ready(function()
 
         self.alliance = ko.observable(!!options.alliance);
         self.sharedArmy = ko.computed(function () { return !self.alliance(); });
+        self.gwTechSharedSlot = ko.computed(function() {
+            if (!self.sharedArmy() || !model || model.gwTechCardSlotCount() <= 0) {
+                return null;
+            }
+
+            return _.find(self.slots(), function(slot) {
+                return slot.isPlayer();
+            });
+        });
+        self.showGwTechShared = ko.computed(function() {
+            return !!self.gwTechSharedSlot();
+        });
 
         self.showToggleSharedArmy = ko.computed(function () {
             return model.isTeamGame() && self.numberOfSlots() > 1;
@@ -579,9 +617,11 @@ $(document).ready(function()
             if (!model.isGameCreator())
                 return;
 
+            var alliance = !self.alliance();
+            self.alliance(alliance);
             model.send_message('modify_army', {
                 army_index: self.index(),
-                options: { alliance: !self.alliance() }
+                options: { alliance: alliance }
             });
         };
 
@@ -597,9 +637,14 @@ $(document).ready(function()
             return model.canAddMorePlayers() && model.isGameCreator();
         });
         self.addSlot = function () {
+            if (!self.showAddSlot())
+                return;
+
+            var slots = self.numberOfSlots() + 1;
+            self.slots.push(new SlotViewModel({ index: self.slots().length, armyIndex: self.index(), ai: self.aiArmy() }));
             model.send_message('modify_army', {
                 army_index: self.index(),
-                options: { slots: self.numberOfSlots() + 1 }
+                options: { slots: slots }
             });
         }
         self.addSlotCSS = ko.computed(function() {
@@ -928,6 +973,9 @@ $(document).ready(function()
         });
         self.gwTechCardSlotCount.subscribe(function(value) {
             self.gwTechCardSlotCountInput(value);
+            if (value > 0 && self.loadGwTechModules) {
+                self.loadGwTechModules();
+            }
             _.forEach(self.armies(), function(army) {
                 _.forEach(army.slots(), function(slot) {
                     slot.gwTechCards(normalizeGwTechCards(slot.gwTechCards(), value));
@@ -938,6 +986,7 @@ $(document).ready(function()
             }
         });
         self.gwTechModulesReady = ko.observable(false);
+        self.gwTechModulesLoading = ko.observable(false);
         self.gwInventoryModule = null;
         self.gwDealerModule = null;
         self.gwTechLoadoutOptions = ko.observableArray([]);
@@ -945,11 +994,16 @@ $(document).ready(function()
         self.gwTechCardModules = {};
 
         self.loadGwTechModules = function() {
+            if (self.gwTechModulesReady() || self.gwTechModulesLoading()) {
+                return;
+            }
+
             if (!window.requireGW) {
                 console.error('requireGW is not available for custom lobby tech-card UI.');
                 return;
             }
 
+            self.gwTechModulesLoading(true);
             requireGW([
                 'shared/gw_inventory',
                 'shared/gw_start_loadouts',
@@ -994,6 +1048,10 @@ $(document).ready(function()
 
                     self.gwTechCardOptions(options);
                     self.gwTechModulesReady(true);
+                    self.gwTechModulesLoading(false);
+                }, function(reason) {
+                    console.error('Failed loading custom lobby tech-card data: ' + JSON.stringify(reason));
+                    self.gwTechModulesLoading(false);
                 });
             });
         };
@@ -1106,9 +1164,6 @@ $(document).ready(function()
             checkIndex(0);
             return result.promise();
         };
-
-        self.loadGwTechModules();
-
         self.allowSpectate = ko.computed(function () {
             if (self.thisPlayerIsReady())
                 return false;

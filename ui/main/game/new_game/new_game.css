@@ -1259,6 +1259,11 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: inset 0px 0px 12px rgba(0, 179, 255, 0.24);
 }
 
+.gw-tech-shared-strip {
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
 .gw-tech-card-tile {
     width: 62px;
     height: 62px;

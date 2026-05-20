@@ -350,6 +350,25 @@ function PlayerModel(client, options) {
         self.gwTechCards = [];
     };
 
+    self.copyGwTechFrom = function(other)
+    {
+        if (!other)
+        {
+            return false;
+        }
+
+        var loadout = normalizeGwTechLoadout(other.gwTechLoadout);
+        var cards = normalizeGwTechCardList(other.gwTechCards);
+        if (self.gwTechLoadout === loadout && _.isEqual(self.gwTechCards, cards))
+        {
+            return false;
+        }
+
+        self.gwTechLoadout = loadout;
+        self.gwTechCards = cards;
+        return true;
+    };
+
     self.setGwTechCard = function(slotIndex, cardId, slotCount)
     {
         slotIndex = Math.floor(Number(slotIndex));
@@ -594,6 +613,46 @@ function LobbyModel(creator) {
         return _.filter(_.values(self.players), function (element){
             return element.armyIndex === army_index;
         });
+    };
+
+    self.gwTechCardSlotsEnabled = function()
+    {
+        return !!(self.settings &&
+                  self.settings.game_options &&
+                  normalizeGwTechCardSlotCount(self.settings.game_options.gw_tech_card_slots) > 0);
+    };
+
+    self.sharedGwTechSourceInArmy = function(army_index)
+    {
+        var players = _.sortBy(self.playersInArmy(army_index), 'slotIndex');
+        return _.find(players, function(player)
+        {
+            return !player.spectator;
+        });
+    };
+
+    self.syncSharedGwTechInArmy = function(army_index, source)
+    {
+        if (!self.gwTechCardSlotsEnabled())
+        {
+            return false;
+        }
+
+        var army = self.armies[army_index];
+        if (!army || army.alliance || !source)
+        {
+            return false;
+        }
+
+        var changed = false;
+        _.forEach(self.playersInArmy(army_index), function(player)
+        {
+            if (player !== source)
+            {
+                changed = player.copyGwTechFrom(source) || changed;
+            }
+        });
+        return changed;
     };
 
     self.aiCount = function () {
@@ -916,6 +975,8 @@ function LobbyModel(creator) {
         if (options.slots && (options.slots - army.slots + self.totalSlots()) > MAX_PLAYERS)
             return;
 
+        var syncSharedGwTech = self.gwTechCardSlotsEnabled() && _.has(options, 'alliance') && !new_options.alliance;
+
         self.unreadyAllPlayers(); // calls updatePlayerState
 
         if (options.slots < army.slots) {
@@ -934,6 +995,10 @@ function LobbyModel(creator) {
         self.armies[army_index] = new ArmyModel(new_options);
 
         self.addPlayersToSlotsIfPossible();
+        if (syncSharedGwTech)
+        {
+            self.syncSharedGwTechInArmy(army_index, self.sharedGwTechSourceInArmy(army_index));
+        }
 
         self.fixColors();
 
@@ -1151,6 +1216,11 @@ function LobbyModel(creator) {
         if ((player.ai && array.some(isHuman)) || (!player.ai && array.some(isAI)))
             army.alliance = true; /* override to prevent shared army with ai */
 
+        if (self.gwTechCardSlotsEnabled() && !army.alliance && array.length)
+        {
+            player.copyGwTechFrom(self.sharedGwTechSourceInArmy(army_index));
+        }
+
         self.fixColors();
 
         self.unreadyAllPlayers(); // calls updatePlayerState
@@ -1221,6 +1291,15 @@ function LobbyModel(creator) {
 
         if ((player2.ai && players2.some(isHuman)) || (!player2.ai && players2.some(isAI)))
             army2.alliance = true; /* override to prevent shared army with ai */
+
+        if (self.gwTechCardSlotsEnabled())
+        {
+            self.syncSharedGwTechInArmy(player1.armyIndex, self.sharedGwTechSourceInArmy(player1.armyIndex));
+            if (player2.armyIndex !== player1.armyIndex)
+            {
+                self.syncSharedGwTechInArmy(player2.armyIndex, self.sharedGwTechSourceInArmy(player2.armyIndex));
+            }
+        }
 
         self.fixColors();
 
@@ -1384,6 +1463,7 @@ function LobbyModel(creator) {
         }
 
         player.setGwTechLoadout(loadout);
+        self.syncSharedGwTechInArmy(player.armyIndex, player);
         self.unreadyAllPlayers();
         return true;
     };
@@ -1404,6 +1484,7 @@ function LobbyModel(creator) {
             return false;
         }
 
+        self.syncSharedGwTechInArmy(player.armyIndex, player);
         self.unreadyAllPlayers();
         return true;
     };
@@ -1424,6 +1505,7 @@ function LobbyModel(creator) {
             return false;
         }
 
+        self.syncSharedGwTechInArmy(player.armyIndex, player);
         self.unreadyAllPlayers();
         return true;
     };
@@ -1986,6 +2068,12 @@ function canEditGwTechFor(client, player)
     if (lobbyModel.control.countdown || lobbyModel.control.starting)
     {
         return false;
+    }
+
+    var army = lobbyModel.armies[player.armyIndex];
+    if (army && !army.alliance)
+    {
+        return lobbyModel.isCreator(client.id);
     }
 
     if (player.ai)
