@@ -125,9 +125,10 @@ define([
     };
 
     var getAIPathDestination = function(owner, tag, inventory) {
-        // Keep AI managers on their real AI path. The sim appends army spec_tag
-        // to discovered unit-map filenames; synthetic all-memory AI paths can
-        // make it discover already-tagged files and request .player.player.
+        if (owner && owner.ai && tag && inventoryHasAIMods(inventory)) {
+            return '/pa/ai_gw_tech/' + tag.replace(/^\./, '') + '/';
+        }
+
         return normalizeAIPath(owner);
     };
 
@@ -142,6 +143,18 @@ define([
             }
         }, function(reason) {
             done.reject(reason);
+        });
+
+        return done.promise();
+    };
+
+    var getBaseUnitList = function() {
+        var done = $.Deferred();
+
+        getFileJSON('/pa/units/unit_list.json').then(function(unitList) {
+            done.resolve(unitList && _.isArray(unitList.units) ? unitList.units : []);
+        }, function() {
+            done.resolve([]);
         });
 
         return done.promise();
@@ -216,17 +229,20 @@ define([
         setupGwoTechGlobals();
 
         if (isVanillaOwner(owner)) {
-            var vanillaInventory = ensureGwoInventoryCompatibility(new GWInventory());
-            vanillaInventory.load({
-                cards: [],
-                tags: {
-                    global: {
-                        commander: stripKnownSpecTag(owner.commander),
-                        playerColor: owner.color
+            getBaseUnitList().then(function(baseUnits) {
+                var vanillaInventory = ensureGwoInventoryCompatibility(new GWInventory());
+                vanillaInventory.load({
+                    units: baseUnits,
+                    cards: [],
+                    tags: {
+                        global: {
+                            commander: stripKnownSpecTag(owner.commander),
+                            playerColor: owner.color
+                        }
                     }
-                }
+                });
+                done.resolve(vanillaInventory);
             });
-            done.resolve(vanillaInventory);
             return done.promise();
         }
 
@@ -356,6 +372,9 @@ define([
 
                 filesToProcess.push(getFileJSON(path).then(function(aiUnitMap) {
                     var result = {};
+                    if (destination.indexOf(aiPathDestination) === 0 && aiPathDestination !== aiPath) {
+                        result[destination] = aiUnitMap;
+                    }
                     result[destination + tag] = GW.specs.genAIUnitMap(aiUnitMap, tag);
                     return result;
                 }, function() {
@@ -656,38 +675,22 @@ define([
 
         var ownerPromises = [];
         var taggedOwnerCount = 0;
-        var hasVanillaOwner = false;
 
         _.forEach(ownerList, function(owner, index) {
             var vanilla = isVanillaOwner(owner);
-            var tag = '';
-
-            if (vanilla) {
-                hasVanillaOwner = true;
-            }
-            else {
-                tag = getPlayerTagGivenIndex(taggedOwnerCount);
-                ++taggedOwnerCount;
-            }
+            var tag = getPlayerTagGivenIndex(taggedOwnerCount);
+            ++taggedOwnerCount;
 
             ownerPromises.push(buildInventory(owner).then(function(inventory) {
-                if (vanilla) {
-                    var baseCommander = stripKnownSpecTag(owner.commander);
-                    return {
-                        files: {},
-                        assignment: _.assign({}, owner, {
-                            tag: '',
-                            commander: baseCommander,
-                            inventory_mods: [],
-                            minion_armies: []
-                        })
-                    };
-                }
-
                 return generateUnitSpecsForOwner(inventory, tag, owner).then(function(files) {
                     var baseCommander = stripKnownSpecTag(owner.commander);
                     var minionArmies = [];
                     var personality = owner.personality ? _.cloneDeep(owner.personality) : undefined;
+                    var aiPathDestination = getAIPathDestination(owner, tag, inventory);
+
+                    if (personality && owner.ai && aiPathDestination !== normalizeAIPath(owner)) {
+                        personality.ai_path = aiPathDestination;
+                    }
 
                     _.forEach(inventory.minions(), function(minion) {
                         minionArmies.push({
@@ -709,7 +712,7 @@ define([
                             tag: tag,
                             commander: baseCommander + tag,
                             personality: personality,
-                            inventory_mods: _.cloneDeep(inventory.mods()),
+                            inventory_mods: vanilla ? [] : _.cloneDeep(inventory.mods()),
                             minion_armies: minionArmies
                         })
                     };
@@ -736,16 +739,9 @@ define([
                 });
             };
 
-            if (hasVanillaOwner) {
-                getFileJSON('/pa/units/unit_list.json').then(function(unitList) {
-                    finish(unitList && _.isArray(unitList.units) ? unitList.units : []);
-                }, function() {
-                    finish([]);
-                });
-            }
-            else {
+            getBaseUnitList().then(finish, function() {
                 finish([]);
-            }
+            });
         }, function(reason) {
             done.reject(reason);
         });

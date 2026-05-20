@@ -1029,12 +1029,8 @@ function LobbyModel(creator) {
 
             var addAssignment = function(player)
             {
-                var tag = '';
-                if (!isVanillaGwTechLoadout(player.gwTechLoadout))
-                {
-                    tag = getGwTechPlayerTagGivenIndex(taggedOwnerCount);
-                    ++taggedOwnerCount;
-                }
+                var tag = getGwTechPlayerTagGivenIndex(taggedOwnerCount);
+                ++taggedOwnerCount;
 
                 assignments.push({
                     owner_key: self.usesSharedGwTechForArmy(army) ? ('army:' + armyIndex) : ('slot:' + armyIndex + ':' + player.slotIndex),
