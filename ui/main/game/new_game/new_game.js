@@ -426,7 +426,7 @@ $(document).ready(function()
             if (event) {
                 event.stopPropagation();
             }
-            if (!self.canEditGwTech() || self.gwTechUsesVanillaLoadout()) {
+            if (!self.canEditGwTech()) {
                 return;
             }
 
@@ -453,7 +453,7 @@ $(document).ready(function()
             if (event) {
                 event.stopPropagation();
             }
-            if (!self.canEditGwTech()) {
+            if (!self.canEditGwTech() || self.gwTechUsesVanillaLoadout()) {
                 return;
             }
 
