@@ -96,10 +96,41 @@ var DEFAULT_GAME_OPTIONS =
 
 var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
 var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
+var GWO_GW_TECH_LOADOUT_IDS = [
+    'gwaio_start_ceo',
+    'gwaio_start_paratrooper',
+    'nem_start_deepspace',
+    'nem_start_nuke',
+    'nem_start_planetary',
+    'nem_start_tower_rush',
+    'gwaio_start_tourist',
+    'gwaio_start_rapid',
+    'tgw_start_speed',
+    'tgw_start_tank',
+    'gwaio_start_nomad',
+    'gwaio_start_backpacker',
+    'gwaio_start_hoarder',
+    'gwaio_start_warp',
+    'gwaio_start_terminal',
+    'gwaio_start_lucky',
+    'gwaio_start_naval'
+];
 
 var isVanillaGwTechLoadout = function(loadout)
 {
     return loadout === VANILLA_GW_TECH_LOADOUT;
+};
+
+var isGwTechLoadoutId = function(loadout)
+{
+    return _.isString(loadout) &&
+        (loadout.indexOf('gwc_start') === 0 ||
+            _.includes(GWO_GW_TECH_LOADOUT_IDS, loadout));
+};
+
+var isGwTechCardId = function(cardId)
+{
+    return _.isString(cardId) && cardId.indexOf('gwc_start') !== 0 && cardId.indexOf('_start_') < 0;
 };
 
 var getGwTechPlayerTagGivenIndex = function(index)
@@ -133,7 +164,7 @@ var normalizeGwTechCardList = function(cards, slotCount)
     var result = [];
     _.forEach(cards, function(card)
     {
-        if (_.isString(card) && card.indexOf('gwc_start') !== 0)
+        if (isGwTechCardId(card))
         {
             result.push(card);
         }
@@ -149,7 +180,7 @@ var normalizeGwTechCardList = function(cards, slotCount)
 
 var normalizeGwTechLoadout = function(loadout)
 {
-    if (_.isString(loadout) && loadout.indexOf('gwc_start') === 0)
+    if (isGwTechLoadoutId(loadout))
     {
         return loadout;
     }
@@ -413,7 +444,7 @@ function PlayerModel(client, options) {
             return false;
         }
 
-        if (!_.isString(cardId) || cardId.indexOf('gwc_start') === 0)
+        if (!isGwTechCardId(cardId))
         {
             return false;
         }
@@ -1391,6 +1422,11 @@ function LobbyModel(creator) {
                 var player = assignment && self.players[assignment.player_id];
                 var ownerArmy = player && finalArmies[player.armyIndex];
                 var ownerAllianceGroup = ownerArmy && ownerArmy.alliance_group;
+
+                if (ownerArmy && assignment.ai && assignment.personality)
+                {
+                    ownerArmy.personality = _.cloneDeep(assignment.personality);
+                }
 
                 _.forEach((assignment && assignment.minion_armies) || [], function(minionArmy)
                 {
@@ -2943,7 +2979,7 @@ function playerMsg_setGwTechLoadout(msg)
         return response.fail("Not allowed");
     }
 
-    if (!_.isString(payload.loadout_card_id) || payload.loadout_card_id.indexOf('gwc_start') !== 0)
+    if (!isGwTechLoadoutId(payload.loadout_card_id))
     {
         return response.fail("Invalid loadout");
     }

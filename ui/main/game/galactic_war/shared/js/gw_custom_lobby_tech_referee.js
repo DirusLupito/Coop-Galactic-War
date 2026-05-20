@@ -8,9 +8,60 @@ define([
     GWDealer
 ) {
     var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
+    var GWO_CARDS_GRANTING_ADVANCED_TECH = [
+        'gwc_enable_air_all',
+        'gwc_enable_bots_all',
+        'gwc_enable_sea_all',
+        'gwc_enable_vehicles_all',
+        'gwaio_upgrade_fabricationaircraft',
+        'gwaio_upgrade_fabricationbot',
+        'gwaio_upgrade_fabricationship',
+        'gwaio_upgrade_fabricationvehicle',
+        'gwaio_start_hoarder'
+    ];
 
     var isVanillaOwner = function(owner) {
         return !!(owner && (owner.vanilla || owner.loadout === VANILLA_GW_TECH_LOADOUT));
+    };
+
+    var setupGwoTechGlobals = function() {
+        if (typeof model !== 'undefined') {
+            model.gwoCardsGrantingAdvancedTech = GWO_CARDS_GRANTING_ADVANCED_TECH.slice(0);
+        }
+    };
+
+    var isGwTechLoadoutId = function(cardId) {
+        return _.isString(cardId) && (cardId.indexOf('gwc_start') === 0 || cardId.indexOf('_start_') >= 0);
+    };
+
+    var ensureGwoInventoryCompatibility = function(inventory) {
+        if (!inventory) {
+            return inventory;
+        }
+
+        if (!_.isFunction(inventory.aiMods)) {
+            inventory.aiMods = ko.observableArray([]);
+        }
+
+        if (!_.isFunction(inventory.addAIMods)) {
+            inventory.addAIMods = function(aiMods) {
+                inventory.aiMods(inventory.aiMods().concat(aiMods || []));
+            };
+        }
+
+        return inventory;
+    };
+
+    var inventoryAIMods = function(inventory) {
+        if (!inventory || !_.isFunction(inventory.aiMods)) {
+            return [];
+        }
+
+        return inventory.aiMods() || [];
+    };
+
+    var inventoryHasAIMods = function(inventory) {
+        return inventoryAIMods(inventory).length > 0;
     };
 
     var getPlayerTagGivenIndex = function(index) {
@@ -46,7 +97,7 @@ define([
         var result = [];
 
         _.forEach(cards || [], function(cardId) {
-            if (_.isString(cardId) && cardId.indexOf('gwc_start') !== 0) {
+            if (_.isString(cardId) && !isGwTechLoadoutId(cardId)) {
                 result.push(cardId);
             }
         });
@@ -73,6 +124,13 @@ define([
         return aiPath;
     };
 
+    var getAIPathDestination = function(owner, tag, inventory) {
+        // Keep AI managers on their real AI path. The sim appends army spec_tag
+        // to discovered unit-map filenames; synthetic all-memory AI paths can
+        // make it discover already-tagged files and request .player.player.
+        return normalizeAIPath(owner);
+    };
+
     var getFileJSON = function(path) {
         var done = $.Deferred();
 
@@ -89,12 +147,76 @@ define([
         return done.promise();
     };
 
+    var loadCard = function(cardId) {
+        var done = $.Deferred();
+
+        requireGW(['cards/' + cardId], function(card) {
+            if (card) {
+                card.id = cardId;
+            }
+            done.resolve(card);
+        }, function(reason) {
+            done.reject(reason || ('Unable to load card ' + cardId));
+        });
+
+        return done.promise();
+    };
+
+    var dealStartCard = function(loadout, inventory) {
+        var done = $.Deferred();
+        var fakeGalaxy = {
+            stars: function() {
+                return _.range(0, 12);
+            }
+        };
+        var fakeStar = {
+            distance: function() {
+                return 1;
+            }
+        };
+
+        loadCard(loadout).then(function(card) {
+            if (!card) {
+                done.reject('Unable to load start card ' + loadout);
+                return;
+            }
+
+            try {
+                var context = card.getContext && card.getContext(fakeGalaxy, inventory);
+                var deal = card.deal && card.deal(fakeStar, context, inventory);
+                var product = { id: loadout };
+                var cardParams = deal && deal.params;
+
+                if (cardParams && _.isObject(cardParams)) {
+                    _.assign(product, cardParams);
+                }
+
+                if (card.keep) {
+                    card.keep(deal, context);
+                }
+                if (card.releaseContext) {
+                    card.releaseContext(context);
+                }
+
+                done.resolve(product);
+            }
+            catch (e) {
+                done.reject(e);
+            }
+        }, function(reason) {
+            done.reject(reason);
+        });
+
+        return done.promise();
+    };
+
     var buildInventory = function(owner) {
         var done = $.Deferred();
         var loadout = _.isString(owner.loadout) ? owner.loadout : 'gwc_start_vehicle';
+        setupGwoTechGlobals();
 
         if (isVanillaOwner(owner)) {
-            var vanillaInventory = new GWInventory();
+            var vanillaInventory = ensureGwoInventoryCompatibility(new GWInventory());
             vanillaInventory.load({
                 cards: [],
                 tags: {
@@ -108,24 +230,11 @@ define([
             return done.promise();
         }
 
-        var dealInventory = new GWInventory();
+        var dealInventory = ensureGwoInventoryCompatibility(new GWInventory());
         dealInventory.setTag('global', 'commander', stripKnownSpecTag(owner.commander));
 
-        GWDealer.dealCard({
-            id: loadout,
-            inventory: dealInventory,
-            galaxy: {
-                stars: function() {
-                    return _.range(0, 12);
-                }
-            },
-            star: {
-                distance: function() {
-                    return 1;
-                }
-            }
-        }).then(function(startCardProduct) {
-            var inventory = new GWInventory();
+        dealStartCard(loadout, dealInventory).then(function(startCardProduct) {
+            var inventory = ensureGwoInventoryCompatibility(new GWInventory());
             var cards = [startCardProduct || { id: loadout }];
 
             _.forEach(normalizeCards(owner.cards), function(cardId) {
@@ -152,11 +261,12 @@ define([
         return done.promise();
     };
 
-    var generateAIPathFilesForOwner = function(owner, tag) {
+    var generateAIPathFilesForOwner = function(owner, tag, inventory) {
         var done = $.Deferred();
         var aiPath = normalizeAIPath(owner);
+        var aiPathDestination = getAIPathDestination(owner, tag, inventory);
 
-        if (aiPath === '/pa/ai/') {
+        if (aiPath === '/pa/ai/' && aiPathDestination === aiPath && !inventoryHasAIMods(inventory)) {
             done.resolve({});
             return done.promise();
         }
@@ -175,7 +285,7 @@ define([
 
                 filesToProcess.push(getFileJSON(path).then(function(json) {
                     var result = {};
-                    result[path] = json;
+                    result[aiPathDestination + path.slice(aiPath.length)] = json;
                     return result;
                 }, function() {
                     return {};
@@ -199,10 +309,11 @@ define([
         return done.promise();
     };
 
-    var generateAIUnitMapFilesForOwner = function(owner, tag) {
+    var generateAIUnitMapFilesForOwner = function(owner, tag, inventory) {
         var done = $.Deferred();
         var titans = api.content.usingTitans();
         var aiPath = normalizeAIPath(owner);
+        var aiPathDestination = getAIPathDestination(owner, tag, inventory);
         var defaultMapPaths = ['/pa/ai/unit_maps/ai_unit_map.json'];
 
         if (titans) {
@@ -212,13 +323,13 @@ define([
         var fallbackMapPathsForAIPath = function() {
             var result = [{
                 source: '/pa/ai/unit_maps/ai_unit_map.json',
-                destination: aiPath + 'unit_maps/ai_unit_map.json'
+                destination: aiPathDestination + 'unit_maps/ai_unit_map.json'
             }];
 
             if (titans) {
                 result.push({
                     source: '/pa/ai/unit_maps/ai_unit_map_x1.json',
-                    destination: aiPath + 'unit_maps/ai_unit_map_x1.json'
+                    destination: aiPathDestination + 'unit_maps/ai_unit_map_x1.json'
                 });
             }
 
@@ -230,7 +341,7 @@ define([
 
             _.forEach(mapPaths || [], function(mapPath) {
                 var path = _.isString(mapPath) ? mapPath : mapPath && mapPath.source;
-                var destination = _.isString(mapPath) ? mapPath : mapPath && mapPath.destination;
+                var destination = _.isString(mapPath) ? aiPathDestination + mapPath.slice(aiPath.length) : mapPath && mapPath.destination;
 
                 if (!_.isString(path) ||
                     !_.isString(destination) ||
@@ -286,17 +397,217 @@ define([
         return done.promise();
     };
 
+    var managerPathForGwoAIMod = function(type) {
+        switch (type) {
+            case 'fabber':
+                return 'fabber_builds/';
+            case 'factory':
+                return 'factory_builds/';
+            case 'platoon':
+                return 'platoon_builds/';
+            case 'template':
+                return 'platoon_templates/';
+            default:
+                return '';
+        }
+    };
+
+    var applyGwoAIModsToJSON = function(json, mods) {
+        var ops = {
+            append: function(mod) {
+                _.forEach(json.build_list || [], function(build) {
+                    if (build.to_build !== mod.toBuild) {
+                        return;
+                    }
+
+                    var validMatch = (_.isUndefined(mod.refId) || _.isEqual(build[mod.refId], mod.refValue)) && build[mod.idToMod];
+
+                    if (validMatch && _.isArray(build[mod.idToMod])) {
+                        build[mod.idToMod] = build[mod.idToMod].concat(mod.value);
+                    }
+                    else if (validMatch) {
+                        build[mod.idToMod] += mod.value;
+                    }
+                    else {
+                        _.forEach(build.build_conditions || [], function(testArray) {
+                            _.forEach(testArray || [], function(test) {
+                                if (test[mod.refId] === mod.refValue) {
+                                    if (_.isArray(test[mod.idToMod])) {
+                                        test[mod.idToMod] = test[mod.idToMod].concat(mod.value);
+                                    }
+                                    else if (test[mod.idToMod]) {
+                                        test[mod.idToMod] += mod.value;
+                                    }
+                                }
+                            });
+                        });
+                    }
+                });
+            },
+            prepend: function(mod) {
+                _.forEach(json.build_list || [], function(build) {
+                    if (build.to_build !== mod.toBuild) {
+                        return;
+                    }
+
+                    var validMatch = (_.isUndefined(mod.refId) || _.isEqual(build[mod.refId], mod.refValue)) && build[mod.idToMod];
+
+                    if (validMatch && _.isArray(build[mod.idToMod])) {
+                        build[mod.idToMod] = mod.value.concat(build[mod.idToMod]);
+                    }
+                    else if (validMatch) {
+                        build[mod.idToMod] = mod.value + build[mod.idToMod];
+                    }
+                    else {
+                        _.forEach(build.build_conditions || [], function(testArray) {
+                            _.forEach(testArray || [], function(test) {
+                                if (test[mod.refId] === mod.refValue) {
+                                    if (_.isArray(test[mod.idToMod])) {
+                                        test[mod.idToMod] = mod.value.concat(test[mod.idToMod]);
+                                    }
+                                    else if (test[mod.idToMod]) {
+                                        test[mod.idToMod] = mod.value + test[mod.idToMod];
+                                    }
+                                }
+                            });
+                        });
+                    }
+                });
+            },
+            replace: function(mod) {
+                _.forEach(json.build_list || [], function(build) {
+                    if (build.to_build !== mod.toBuild) {
+                        return;
+                    }
+
+                    var validMatch = (_.isUndefined(mod.refId) || _.isEqual(build[mod.refId], mod.refValue)) && build[mod.idToMod];
+
+                    if (validMatch) {
+                        build[mod.idToMod] = mod.value;
+                    }
+                    else {
+                        _.forEach(build.build_conditions || [], function(testArray) {
+                            _.forEach(testArray || [], function(test) {
+                                if (test[mod.refId] === mod.refValue && test[mod.idToMod]) {
+                                    test[mod.idToMod] = mod.value;
+                                }
+                            });
+                        });
+                    }
+                });
+            },
+            remove: function(mod) {
+                _.forEach(json.build_list || [], function(build) {
+                    if (build.to_build !== mod.toBuild) {
+                        return;
+                    }
+
+                    _.forEach(build.build_conditions || [], function(testArray) {
+                        _.remove(testArray, function(object) {
+                            return _.isEqual(object, mod.value);
+                        });
+                    });
+                });
+            },
+            new: function(mod) {
+                _.forEach(json.build_list || [], function(build) {
+                    if (build.to_build !== mod.toBuild) {
+                        return;
+                    }
+
+                    if (mod.idToMod) {
+                        _.forEach(build.build_conditions || [], function(testArray) {
+                            testArray.push(mod.value);
+                        });
+                    }
+                    else {
+                        build.build_conditions = build.build_conditions || [];
+                        build.build_conditions.push(mod.value);
+                    }
+                });
+            },
+            squad: function(mod) {
+                if (json.platoon_templates && json.platoon_templates[mod.toBuild]) {
+                    json.platoon_templates[mod.toBuild].units.push(mod.value);
+                }
+            }
+        };
+
+        _.forEach(mods || [], function(mod) {
+            if (mod && ops[mod.op]) {
+                ops[mod.op](mod);
+            }
+        });
+    };
+
+    var applyGwoAIManagerMods = function(files, owner, tag, inventory) {
+        var done = $.Deferred();
+        var aiMods = inventoryAIMods(inventory);
+
+        if (!owner || !owner.ai || !aiMods.length) {
+            done.resolve(files);
+            return done.promise();
+        }
+
+        var aiPathDestination = getAIPathDestination(owner, tag, inventory);
+        var loadPromises = [];
+
+        _.forEach(_.filter(aiMods, { op: 'load' }), function(mod) {
+            var managerPath = managerPathForGwoAIMod(mod.type);
+            if (!managerPath || !_.isString(mod.value)) {
+                return;
+            }
+
+            loadPromises.push(getFileJSON('/pa/ai_tech/' + managerPath + mod.value).then(function(json) {
+                files[aiPathDestination + managerPath + mod.value] = json;
+            }, function() {
+            }));
+        });
+
+        $.when.apply($, loadPromises).always(function() {
+            var managerModsByPath = {};
+
+            _.forEach(_.reject(aiMods, { op: 'load' }), function(mod) {
+                var managerPath = mod && managerPathForGwoAIMod(mod.type);
+                if (!managerPath) {
+                    return;
+                }
+
+                managerModsByPath[managerPath] = managerModsByPath[managerPath] || [];
+                managerModsByPath[managerPath].push(mod);
+            });
+
+            _.forEach(files, function(json, path) {
+                if (!_.isString(path) || path.indexOf(aiPathDestination) !== 0) {
+                    return;
+                }
+
+                _.forEach(managerModsByPath, function(mods, managerPath) {
+                    if (path.indexOf(aiPathDestination + managerPath) === 0) {
+                        applyGwoAIModsToJSON(json, mods);
+                    }
+                });
+            });
+
+            done.resolve(files);
+        });
+
+        return done.promise();
+    };
+
     var generateUnitSpecsForOwner = function(inventory, tag, owner) {
         var done = $.Deferred();
 
         $.when(
-            generateAIUnitMapFilesForOwner(owner, tag),
-            generateAIPathFilesForOwner(owner, tag)
+            generateAIUnitMapFilesForOwner(owner, tag, inventory),
+            generateAIPathFilesForOwner(owner, tag, inventory)
         ).then(function(aiUnitMapFiles, aiPathFiles) {
             GW.specs.genUnitSpecs(inventory.units(), tag).then(function(playerSpecFiles) {
                 var playerFiles = _.assign({}, aiPathFiles || {}, aiUnitMapFiles || {}, playerSpecFiles);
                 GW.specs.modSpecs(playerFiles, inventory.mods(), tag);
-                done.resolve(playerFiles);
+                applyGwoAIManagerMods(playerFiles, owner, tag, inventory).then(function(files) {
+                    done.resolve(files);
+                });
             }, function(reason) {
                 done.reject(reason);
             });
@@ -376,6 +687,7 @@ define([
                 return generateUnitSpecsForOwner(inventory, tag, owner).then(function(files) {
                     var baseCommander = stripKnownSpecTag(owner.commander);
                     var minionArmies = [];
+                    var personality = owner.personality ? _.cloneDeep(owner.personality) : undefined;
 
                     _.forEach(inventory.minions(), function(minion) {
                         minionArmies.push({
@@ -396,6 +708,7 @@ define([
                         assignment: _.assign({}, owner, {
                             tag: tag,
                             commander: baseCommander + tag,
+                            personality: personality,
                             inventory_mods: _.cloneDeep(inventory.mods()),
                             minion_armies: minionArmies
                         })

@@ -5,6 +5,192 @@ $(document).ready(function()
 {
     var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
     var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
+    var GWO_MOD_IDENTIFIER = 'com.pa.quitch.gwaioverhaul';
+    var GWO_LOADOUT_IDS = [
+        'gwaio_start_ceo',
+        'gwaio_start_paratrooper',
+        'nem_start_deepspace',
+        'nem_start_nuke',
+        'nem_start_planetary',
+        'nem_start_tower_rush',
+        'gwaio_start_tourist',
+        'gwaio_start_rapid',
+        'tgw_start_speed',
+        'tgw_start_tank',
+        'gwaio_start_nomad',
+        'gwaio_start_backpacker',
+        'gwaio_start_hoarder',
+        'gwaio_start_warp',
+        'gwaio_start_terminal',
+        'gwaio_start_lucky',
+        'gwaio_start_naval'
+    ];
+    var GWO_TECH_CARD_IDS = [
+        'gwaio_anti_air',
+        'gwaio_anti_bots',
+        'gwaio_anti_commander',
+        'gwaio_anti_hover',
+        'gwaio_anti_orbital',
+        'gwaio_anti_sea',
+        'gwaio_anti_structure',
+        'gwaio_anti_vehicles',
+        'gwaio_combat_titans',
+        'gwaio_cooldown_air',
+        'gwaio_cooldown_bots',
+        'gwaio_cooldown_orbital',
+        'gwaio_cooldown_sea',
+        'gwaio_cooldown_vehicles',
+        'gwaio_damage_titans',
+        'gwaio_enable_bounties',
+        'gwaio_enable_eradication',
+        'gwaio_enable_factories_t1_all',
+        'gwaio_enable_landanywhere',
+        'gwaio_enable_orbitalbombardment',
+        'gwaio_enable_planetaryradar',
+        'gwaio_enable_suddendeath',
+        'gwaio_enable_tsunami',
+        'gwaio_health_titans',
+        'gwaio_protocol_agility',
+        'gwaio_protocol_blindness',
+        'gwaio_protocol_disposability',
+        'gwaio_protocol_fortitude',
+        'gwaio_protocol_killswitch',
+        'gwaio_protocol_precision',
+        'gwaio_protocol_wrath',
+        'gwaio_speed_structure',
+        'gwaio_speed_titans',
+        'gwaio_upgrade_advancedairfactory',
+        'gwaio_upgrade_advancedbotfactory',
+        'gwaio_upgrade_advancedenergyplant',
+        'gwaio_upgrade_advancedfabricationaircraft',
+        'gwaio_upgrade_advancedfabricationbot',
+        'gwaio_upgrade_advancedfabricationship',
+        'gwaio_upgrade_advancedfabricationvehicle',
+        'gwaio_upgrade_advancedlaserdefensetower',
+        'gwaio_upgrade_advancedmetalextractor',
+        'gwaio_upgrade_advancednavalfactory',
+        'gwaio_upgrade_advancedradar',
+        'gwaio_upgrade_advancedradarsatellite',
+        'gwaio_upgrade_advancedtorpedolauncher',
+        'gwaio_upgrade_advancedvehiclefactory',
+        'gwaio_upgrade_airfactory',
+        'gwaio_upgrade_anchor',
+        'gwaio_upgrade_angel',
+        'gwaio_upgrade_ant',
+        'gwaio_upgrade_antinuke',
+        'gwaio_upgrade_ares',
+        'gwaio_upgrade_arkyd',
+        'gwaio_upgrade_artemis',
+        'gwaio_upgrade_astraeus',
+        'gwaio_upgrade_atlas',
+        'gwaio_upgrade_avenger',
+        'gwaio_upgrade_barnacle',
+        'gwaio_upgrade_barracuda',
+        'gwaio_upgrade_bluehawk',
+        'gwaio_upgrade_boom',
+        'gwaio_upgrade_botfactory',
+        'gwaio_upgrade_bumblebee',
+        'gwaio_upgrade_catalyst',
+        'gwaio_upgrade_catapult',
+        'gwaio_upgrade_colonel',
+        'gwaio_upgrade_dox',
+        'gwaio_upgrade_drifter',
+        'gwaio_upgrade_energyplant',
+        'gwaio_upgrade_energystorage',
+        'gwaio_upgrade_fabricationaircraft',
+        'gwaio_upgrade_fabricationbot',
+        'gwaio_upgrade_fabricationship',
+        'gwaio_upgrade_fabricationvehicle',
+        'gwaio_upgrade_firefly',
+        'gwaio_upgrade_flak',
+        'gwaio_upgrade_galata',
+        'gwaio_upgrade_gile',
+        'gwaio_upgrade_grenadier',
+        'gwaio_upgrade_halley',
+        'gwaio_upgrade_helios',
+        'gwaio_upgrade_hermes',
+        'gwaio_upgrade_holkins',
+        'gwaio_upgrade_hornet',
+        'gwaio_upgrade_horsefly',
+        'gwaio_upgrade_hummingbird',
+        'gwaio_upgrade_icarus',
+        'gwaio_upgrade_inferno',
+        'gwaio_upgrade_jig',
+        'gwaio_upgrade_kaiju',
+        'gwaio_upgrade_kessler',
+        'gwaio_upgrade_kestrel',
+        'gwaio_upgrade_kraken',
+        'gwaio_upgrade_laserdefensetower',
+        'gwaio_upgrade_leveler',
+        'gwaio_upgrade_leviathan',
+        'gwaio_upgrade_lob',
+        'gwaio_upgrade_locusts',
+        'gwaio_upgrade_manhattan',
+        'gwaio_upgrade_mend',
+        'gwaio_upgrade_metalextractor',
+        'gwaio_upgrade_metalstorage',
+        'gwaio_upgrade_mine',
+        'gwaio_upgrade_narwhal',
+        'gwaio_upgrade_navalfactory',
+        'gwaio_upgrade_nukes',
+        'gwaio_upgrade_nyx',
+        'gwaio_upgrade_omega',
+        'gwaio_upgrade_orbitalfabricationbot',
+        'gwaio_upgrade_orbitalfactory',
+        'gwaio_upgrade_orbitallauncher',
+        'gwaio_upgrade_orca',
+        'gwaio_upgrade_pelican',
+        'gwaio_upgrade_pelter',
+        'gwaio_upgrade_phoenix',
+        'gwaio_upgrade_piranha',
+        'gwaio_upgrade_planetaryradar',
+        'gwaio_upgrade_radar',
+        'gwaio_upgrade_radarjammer',
+        'gwaio_upgrade_ragnarok',
+        'gwaio_upgrade_sheller',
+        'gwaio_upgrade_singlelaserdefensetower',
+        'gwaio_upgrade_skitter',
+        'gwaio_upgrade_slammer',
+        'gwaio_upgrade_solararray',
+        'gwaio_upgrade_spark',
+        'gwaio_upgrade_spinner',
+        'gwaio_upgrade_squall',
+        'gwaio_upgrade_stinger',
+        'gwaio_upgrade_stingray',
+        'gwaio_upgrade_stitch',
+        'gwaio_upgrade_storm',
+        'gwaio_upgrade_stryker',
+        'gwaio_upgrade_subcommander_duplication',
+        'gwaio_upgrade_subcommander_fabber',
+        'gwaio_upgrade_subcommander_tactics',
+        'gwaio_upgrade_sxx',
+        'gwaio_upgrade_teleporter',
+        'gwaio_upgrade_torpedolauncher',
+        'gwaio_upgrade_typhoon',
+        'gwaio_upgrade_ubercannon_structure',
+        'gwaio_upgrade_umbrella',
+        'gwaio_upgrade_unitcannon',
+        'gwaio_upgrade_vanguard',
+        'gwaio_upgrade_vehiclefactory',
+        'gwaio_upgrade_wall',
+        'gwaio_upgrade_ward',
+        'gwaio_upgrade_wyrm',
+        'gwaio_upgrade_zeus',
+        'gwc_cost_intel',
+        'gwc_energy_efficiency_intel',
+        'gwc_energy_efficiency_weapons'
+    ];
+    var GWO_CARDS_GRANTING_ADVANCED_TECH = [
+        'gwc_enable_air_all',
+        'gwc_enable_bots_all',
+        'gwc_enable_sea_all',
+        'gwc_enable_vehicles_all',
+        'gwaio_upgrade_fabricationaircraft',
+        'gwaio_upgrade_fabricationbot',
+        'gwaio_upgrade_fabricationship',
+        'gwaio_upgrade_fabricationvehicle',
+        'gwaio_start_hoarder'
+    ];
     var GW_TECH_CARD_EXCLUDES = {
         gwc_add_card_slot: true,
         gwc_minion: true
@@ -33,8 +219,16 @@ $(document).ready(function()
         return count;
     };
 
+    var isGwTechLoadoutId = function(loadout) {
+        return _.isString(loadout) && (loadout.indexOf('gwc_start') === 0 || loadout.indexOf('_start_') >= 0 || _.includes(GWO_LOADOUT_IDS, loadout));
+    };
+
+    var isGwTechCardId = function(cardId) {
+        return _.isString(cardId) && !isGwTechLoadoutId(cardId);
+    };
+
     var normalizeGwTechLoadout = function(loadout) {
-        if (_.isString(loadout) && loadout.indexOf('gwc_start') === 0) {
+        if (isGwTechLoadoutId(loadout)) {
             return loadout;
         }
 
@@ -57,7 +251,7 @@ $(document).ready(function()
         var result = [];
 
         _.forEach(cards || [], function(card) {
-            if (_.isString(card) && card.indexOf('gwc_start') !== 0) {
+            if (isGwTechCardId(card)) {
                 result.push(card);
             }
         });
@@ -145,6 +339,34 @@ $(document).ready(function()
             active_required_identifiers: activeRequiredIdentifiers,
             active_required_names_by_id: activeRequiredNamesById
         };
+    };
+
+    var isGwoMounted = function(mountedMods) {
+        return _.some(mountedMods || [], function(mod) {
+            return normalizeModIdentifier(mod && mod.identifier) === GWO_MOD_IDENTIFIER;
+        });
+    };
+
+    var ensureGwoTechInventoryCompatibility = function(inventory) {
+        if (!inventory) {
+            return inventory;
+        }
+
+        if (!_.isFunction(inventory.aiMods)) {
+            inventory.aiMods = ko.observableArray([]);
+        }
+
+        if (!_.isFunction(inventory.addAIMods)) {
+            inventory.addAIMods = function(aiMods) {
+                inventory.aiMods(inventory.aiMods().concat(aiMods || []));
+            };
+        }
+
+        return inventory;
+    };
+
+    var setupGwoTechGlobals = function() {
+        model.gwoCardsGrantingAdvancedTech = GWO_CARDS_GRANTING_ADVANCED_TECH.slice(0);
     };
 
     var buildRequiredLookupWithDependencies = function(requiredIdentifiers, installedClientModsById) {
@@ -1228,6 +1450,58 @@ $(document).ready(function()
         self.gwTechLoadoutOptions = ko.observableArray([]);
         self.gwTechCardOptions = ko.observableArray([]);
         self.gwTechCardModules = {};
+        self.gwoMounted = ko.observable(false);
+
+        self.loadGwTechCardModule = function(cardId) {
+            var done = $.Deferred();
+
+            requireGW(['cards/' + cardId], function(card) {
+                if (card) {
+                    card.id = cardId;
+                }
+                done.resolve(card);
+            }, function() {
+                done.resolve(undefined);
+            });
+
+            return done.promise();
+        };
+
+        self.dealGwTechStartCard = function(loadout, inventory) {
+            var done = $.Deferred();
+
+            self.loadGwTechCardModule(loadout).then(function(card) {
+                if (!card) {
+                    done.reject('Unable to load start card ' + loadout);
+                    return;
+                }
+
+                try {
+                    var context = card.getContext && card.getContext(GW_TECH_FAKE_GALAXY, inventory);
+                    var deal = card.deal && card.deal(GW_TECH_FAKE_STAR, context, inventory);
+                    var product = { id: loadout };
+                    var cardParams = deal && deal.params;
+
+                    if (cardParams && _.isObject(cardParams)) {
+                        _.assign(product, cardParams);
+                    }
+
+                    if (card.keep) {
+                        card.keep(deal, context);
+                    }
+                    if (card.releaseContext) {
+                        card.releaseContext(context);
+                    }
+
+                    done.resolve(product);
+                }
+                catch (e) {
+                    done.reject(e);
+                }
+            });
+
+            return done.promise();
+        };
 
         self.loadGwTechModules = function() {
             if (self.gwTechModulesReady() || self.gwTechModulesLoading()) {
@@ -1240,35 +1514,68 @@ $(document).ready(function()
             }
 
             self.gwTechModulesLoading(true);
-            requireGW([
-                'shared/gw_inventory',
-                'shared/gw_start_loadouts',
-                'pages/gw_start/gw_dealer'
-            ], function(
-                GWInventory,
-                GWStartLoadouts,
-                GWDealer
-            ) {
-                self.gwInventoryModule = GWInventory;
-                self.gwDealerModule = GWDealer;
+            api.mods.getMounted('client', true).then(function(mountedMods) {
+                self.gwoMounted(isGwoMounted(mountedMods));
 
-                self.gwTechLoadoutOptions([{
-                    id: VANILLA_GW_TECH_LOADOUT,
-                    card: makeVanillaGwTechLoadoutCard()
-                }].concat(_.map(GWStartLoadouts.all(), function(cardData) {
-                    return {
-                        id: cardData.id,
-                        card: new CardViewModel(cardData)
+                requireGW([
+                    'shared/gw_inventory',
+                    'shared/gw_start_loadouts',
+                    'pages/gw_start/gw_dealer'
+                ], function(
+                    GWInventory,
+                    GWStartLoadouts,
+                    GWDealer
+                ) {
+                    self.gwInventoryModule = GWInventory;
+                    self.gwDealerModule = GWDealer;
+                    setupGwoTechGlobals();
+
+                    var loadoutOptionsById = {};
+                    var loadoutOptions = [{
+                        id: VANILLA_GW_TECH_LOADOUT,
+                        card: makeVanillaGwTechLoadoutCard()
+                    }];
+
+                    _.forEach(GWStartLoadouts.all(), function(cardData) {
+                        loadoutOptionsById[cardData.id] = true;
+                        loadoutOptions.push({
+                            id: cardData.id,
+                            card: new CardViewModel(cardData)
+                        });
+                    });
+
+                    var finishLoadoutOptions = function() {
+                        self.gwTechLoadoutOptions(loadoutOptions);
                     };
-                })));
 
-                GWDealer.allCards().then(function(cards) {
-                    var options = [];
-                    _.forEach(cards, function(card) {
-                        if (!card || !_.isString(card.id)) {
+                    var loadGwoLoadouts = function() {
+                        if (!self.gwoMounted()) {
+                            finishLoadoutOptions();
+                            return $.Deferred().resolve().promise();
+                        }
+
+                        var loadoutLoads = _.map(GWO_LOADOUT_IDS, function(loadoutId) {
+                            return self.loadGwTechCardModule(loadoutId).then(function(card) {
+                                if (!card || loadoutOptionsById[loadoutId]) {
+                                    return;
+                                }
+
+                                loadoutOptionsById[loadoutId] = true;
+                                loadoutOptions.push({
+                                    id: loadoutId,
+                                    card: new CardViewModel({ id: loadoutId })
+                                });
+                            });
+                        });
+
+                        return $.when.apply($, loadoutLoads).then(finishLoadoutOptions, finishLoadoutOptions);
+                    };
+
+                    var appendCardOption = function(options, seenCards, card) {
+                        if (!card || !_.isString(card.id) || seenCards[card.id]) {
                             return;
                         }
-                        if (card.id.indexOf('gwc_start') === 0 || GW_TECH_CARD_EXCLUDES[card.id]) {
+                        if (!isGwTechCardId(card.id) || GW_TECH_CARD_EXCLUDES[card.id]) {
                             return;
                         }
                         if (_.isFunction(card.visible) && card.visible({}) !== true) {
@@ -1278,20 +1585,49 @@ $(document).ready(function()
                             return;
                         }
 
+                        seenCards[card.id] = true;
                         self.gwTechCardModules[card.id] = card;
                         options.push({
                             id: card.id,
                             card: new CardViewModel({ id: card.id })
                         });
-                    });
+                    };
 
-                    self.gwTechCardOptions(options);
-                    self.gwTechModulesReady(true);
-                    self.gwTechModulesLoading(false);
-                }, function(reason) {
-                    console.error('Failed loading custom lobby tech-card data: ' + JSON.stringify(reason));
-                    self.gwTechModulesLoading(false);
+                    var loadGwoCards = function(options, seenCards) {
+                        if (!self.gwoMounted()) {
+                            return $.Deferred().resolve().promise();
+                        }
+
+                        var cardLoads = _.map(GWO_TECH_CARD_IDS, function(cardId) {
+                            return self.loadGwTechCardModule(cardId).then(function(card) {
+                                appendCardOption(options, seenCards, card);
+                            });
+                        });
+
+                        return $.when.apply($, cardLoads);
+                    };
+
+                    $.when(loadGwoLoadouts(), GWDealer.allCards()).then(function(ignore, cards) {
+                        var options = [];
+                        var seenCards = {};
+
+                        _.forEach(cards || [], function(card) {
+                            appendCardOption(options, seenCards, card);
+                        });
+
+                        loadGwoCards(options, seenCards).always(function() {
+                            self.gwTechCardOptions(options);
+                            self.gwTechModulesReady(true);
+                            self.gwTechModulesLoading(false);
+                        });
+                    }, function(reason) {
+                        console.error('Failed loading custom lobby tech-card data: ' + JSON.stringify(reason));
+                        self.gwTechModulesLoading(false);
+                    });
                 });
+            }, function(reason) {
+                console.error('Failed checking mounted mods for custom lobby tech-card data: ' + JSON.stringify(reason));
+                self.gwTechModulesLoading(false);
             });
         };
 
@@ -1304,7 +1640,7 @@ $(document).ready(function()
             }
 
             if (isVanillaGwTechLoadout(slot.gwTechLoadout())) {
-                var vanillaInventory = new self.gwInventoryModule();
+                var vanillaInventory = ensureGwoTechInventoryCompatibility(new self.gwInventoryModule());
                 vanillaInventory.load({
                     cards: [],
                     tags: {
@@ -1317,15 +1653,12 @@ $(document).ready(function()
                 return result.promise();
             }
 
-            var dealInventory = new self.gwInventoryModule();
+            setupGwoTechGlobals();
+
+            var dealInventory = ensureGwoTechInventoryCompatibility(new self.gwInventoryModule());
             dealInventory.setTag('global', 'commander', slot.commander());
-            self.gwDealerModule.dealCard({
-                id: slot.gwTechLoadout(),
-                inventory: dealInventory,
-                galaxy: GW_TECH_FAKE_GALAXY,
-                star: GW_TECH_FAKE_STAR
-            }).then(function(startCardProduct) {
-                var inventory = new self.gwInventoryModule();
+            self.dealGwTechStartCard(slot.gwTechLoadout(), dealInventory).then(function(startCardProduct) {
+                var inventory = ensureGwoTechInventoryCompatibility(new self.gwInventoryModule());
                 var cards = [startCardProduct || { id: slot.gwTechLoadout() }];
                 var selectedCards = slot.gwTechCards().slice(0, slotIndex);
 
