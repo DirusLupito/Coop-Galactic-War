@@ -29,7 +29,8 @@ $(document).ready(function () {
 
         self.currentGwUnitSpecTag = function() {
             if (self.gwCoopMode() || self.gwTechCardsActive()) {
-                return self.gwCampaignUnitSpecTag() || '.player';
+                var tag = self.gwCampaignUnitSpecTag();
+                return _.isString(tag) ? tag : '.player';
             }
 
             return '.player';

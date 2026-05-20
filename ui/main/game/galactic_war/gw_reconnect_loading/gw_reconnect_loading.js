@@ -457,7 +457,7 @@ $(document).ready(function () {
 
         model.gwConfigMountInProgress = true;
         var files = msg.files || msg;
-        var unitSpecTag = (_.isString(msg.unit_spec_tag) && msg.unit_spec_tag.length)
+        var unitSpecTag = (_.has(msg, 'unit_spec_tag') && _.isString(msg.unit_spec_tag))
             ? msg.unit_spec_tag
             : '.player';
         var gwCampaignActive = !!msg.gw_campaign_active;

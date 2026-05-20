@@ -7,6 +7,12 @@ define([
     GWInventory,
     GWDealer
 ) {
+    var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
+
+    var isVanillaOwner = function(owner) {
+        return !!(owner && (owner.vanilla || owner.loadout === VANILLA_GW_TECH_LOADOUT));
+    };
+
     var getPlayerTagGivenIndex = function(index) {
         if (index === 0) {
             return '.player';
@@ -86,6 +92,21 @@ define([
     var buildInventory = function(owner) {
         var done = $.Deferred();
         var loadout = _.isString(owner.loadout) ? owner.loadout : 'gwc_start_vehicle';
+
+        if (isVanillaOwner(owner)) {
+            var vanillaInventory = new GWInventory();
+            vanillaInventory.load({
+                cards: [],
+                tags: {
+                    global: {
+                        commander: stripKnownSpecTag(owner.commander),
+                        playerColor: owner.color
+                    }
+                }
+            });
+            done.resolve(vanillaInventory);
+            return done.promise();
+        }
 
         var dealInventory = new GWInventory();
         dealInventory.setTag('global', 'commander', stripKnownSpecTag(owner.commander));
@@ -286,8 +307,8 @@ define([
         return done.promise();
     };
 
-    var buildUntaggedUnitListFromFiles = function(files) {
-        var units = [];
+    var buildUntaggedUnitListFromFiles = function(files, baseUnits) {
+        var units = _.isArray(baseUnits) ? baseUnits.slice(0) : [];
 
         _.forEach(files || {}, function(value, path) {
             if (!_.isString(path) || path.indexOf('/pa/units/unit_list.json') !== 0 || path === '/pa/units/unit_list.json') {
@@ -323,11 +344,35 @@ define([
         }
 
         var ownerPromises = [];
+        var taggedOwnerCount = 0;
+        var hasVanillaOwner = false;
 
         _.forEach(ownerList, function(owner, index) {
-            var tag = getPlayerTagGivenIndex(index);
+            var vanilla = isVanillaOwner(owner);
+            var tag = '';
+
+            if (vanilla) {
+                hasVanillaOwner = true;
+            }
+            else {
+                tag = getPlayerTagGivenIndex(taggedOwnerCount);
+                ++taggedOwnerCount;
+            }
 
             ownerPromises.push(buildInventory(owner).then(function(inventory) {
+                if (vanilla) {
+                    var baseCommander = stripKnownSpecTag(owner.commander);
+                    return {
+                        files: {},
+                        assignment: _.assign({}, owner, {
+                            tag: '',
+                            commander: baseCommander,
+                            inventory_mods: [],
+                            minion_armies: []
+                        })
+                    };
+                }
+
                 return generateUnitSpecsForOwner(inventory, tag, owner).then(function(files) {
                     var baseCommander = stripKnownSpecTag(owner.commander);
                     var minionArmies = [];
@@ -369,12 +414,25 @@ define([
                 assignments.push(cookedOwner.assignment);
             });
 
-            files['/pa/units/unit_list.json'] = buildUntaggedUnitListFromFiles(files);
+            var finish = function(baseUnits) {
+                files['/pa/units/unit_list.json'] = buildUntaggedUnitListFromFiles(files, baseUnits);
 
-            done.resolve({
-                files: files,
-                tag_assignments: assignments
-            });
+                done.resolve({
+                    files: files,
+                    tag_assignments: assignments
+                });
+            };
+
+            if (hasVanillaOwner) {
+                getFileJSON('/pa/units/unit_list.json').then(function(unitList) {
+                    finish(unitList && _.isArray(unitList.units) ? unitList.units : []);
+                }, function() {
+                    finish([]);
+                });
+            }
+            else {
+                finish([]);
+            }
         }, function(reason) {
             done.reject(reason);
         });

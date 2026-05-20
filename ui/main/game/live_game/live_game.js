@@ -26,7 +26,8 @@ $(document).ready(function () {
 
     var currentGwUnitSpecTag = function() {
         if (gwCoopMode() || gwTechCardsActive()) {
-            return gwCampaignUnitSpecTag() || '.player';
+            var tag = gwCampaignUnitSpecTag();
+            return _.isString(tag) ? tag : '.player';
         }
 
         return '.player';
@@ -4303,9 +4304,9 @@ $(document).ready(function () {
             return;
 
         var files = payload.files || payload;
-        var unitSpecTag = (_.isString(payload.unit_spec_tag) && payload.unit_spec_tag.length)
+        var unitSpecTag = (_.has(payload, 'unit_spec_tag') && _.isString(payload.unit_spec_tag))
             ? payload.unit_spec_tag
-            : (gwCampaignUnitSpecTag() || '.player');
+            : (_.isString(gwCampaignUnitSpecTag()) ? gwCampaignUnitSpecTag() : '.player');
 
         if (_.has(payload, 'gw_tech_cards_active')) {
             gwTechCardsActive(!!payload.gw_tech_cards_active);

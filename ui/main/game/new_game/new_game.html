@@ -751,7 +751,7 @@
                                                                                                         <!-- /ko -->
                                                                                                         <span class="gw-tech-loadout-mark">L</span>
                                                                                                     </div>
-                                                                                                    <div class="gw-tech-scroll">
+                                                                                                    <div class="gw-tech-scroll" data-bind="visible: !slot.gwTechUsesVanillaLoadout()">
                                                                                                         <div class="gw-tech-card-row" data-bind="foreach: slot.gwTechSlotCards">
                                                                                                             <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                                 <img data-bind="visible: card.icon, attr: { src: card.icon }" />
@@ -796,7 +796,7 @@
                                                                                         <!-- /ko -->
                                                                                         <span class="gw-tech-loadout-mark">L</span>
                                                                                     </div>
-                                                                                    <div class="gw-tech-scroll">
+                                                                                    <div class="gw-tech-scroll" data-bind="visible: !gwTechUsesVanillaLoadout()">
                                                                                         <div class="gw-tech-card-row" data-bind="foreach: gwTechSlotCards">
                                                                                             <div class="gw-tech-card-tile" data-bind="click: pick, css: { filled: filled, empty: !filled(), editable: canPick }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                 <img data-bind="visible: card.icon, attr: { src: card.icon }" />

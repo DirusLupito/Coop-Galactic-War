@@ -95,6 +95,22 @@ var DEFAULT_GAME_OPTIONS =
 };
 
 var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
+var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
+
+var isVanillaGwTechLoadout = function(loadout)
+{
+    return loadout === VANILLA_GW_TECH_LOADOUT;
+};
+
+var getGwTechPlayerTagGivenIndex = function(index)
+{
+    if (index === 0)
+    {
+        return '.player';
+    }
+
+    return '.player' + (index - 1);
+};
 
 var normalizeGwTechCardSlotCount = function(value)
 {
@@ -232,6 +248,10 @@ function PlayerModel(client, options) {
     self.economyFactor = Math.min(Math.max(0.0, self.economyFactor), 10.0);
     self.gwTechLoadout = normalizeGwTechLoadout(options.gw_tech_loadout);
     self.gwTechCards = normalizeGwTechCardList(options.gw_tech_cards);
+    if (isVanillaGwTechLoadout(self.gwTechLoadout))
+    {
+        self.gwTechCards = [];
+    }
 
     if (!!options.mod)
         bouncer.addPlayerToModlist(client.id);
@@ -363,6 +383,11 @@ function PlayerModel(client, options) {
 
         var loadout = normalizeGwTechLoadout(other.gwTechLoadout);
         var cards = normalizeGwTechCardList(other.gwTechCards);
+        if (isVanillaGwTechLoadout(loadout))
+        {
+            cards = [];
+        }
+
         if (self.gwTechLoadout === loadout && _.isEqual(self.gwTechCards, cards))
         {
             return false;
@@ -375,6 +400,11 @@ function PlayerModel(client, options) {
 
     self.setGwTechCard = function(slotIndex, cardId, slotCount)
     {
+        if (isVanillaGwTechLoadout(self.gwTechLoadout))
+        {
+            return false;
+        }
+
         slotIndex = Math.floor(Number(slotIndex));
         slotCount = normalizeGwTechCardSlotCount(slotCount);
 
@@ -423,6 +453,12 @@ function PlayerModel(client, options) {
 
     self.truncateGwTechCards = function(slotCount)
     {
+        if (isVanillaGwTechLoadout(self.gwTechLoadout))
+        {
+            self.gwTechCards = [];
+            return;
+        }
+
         self.gwTechCards = normalizeGwTechCardList(self.gwTechCards, normalizeGwTechCardSlotCount(slotCount));
     };
 
@@ -947,6 +983,7 @@ function LobbyModel(creator) {
         }
 
         var assignments = [];
+        var taggedOwnerCount = 0;
         _.forEach(self.armies, function(army, armyIndex)
         {
             var players = _.sortBy(_.filter(self.playersInArmy(armyIndex), function(player)
@@ -961,7 +998,13 @@ function LobbyModel(creator) {
 
             var addAssignment = function(player)
             {
-                var index = assignments.length;
+                var tag = '';
+                if (!isVanillaGwTechLoadout(player.gwTechLoadout))
+                {
+                    tag = getGwTechPlayerTagGivenIndex(taggedOwnerCount);
+                    ++taggedOwnerCount;
+                }
+
                 assignments.push({
                     owner_key: self.usesSharedGwTechForArmy(army) ? ('army:' + armyIndex) : ('slot:' + armyIndex + ':' + player.slotIndex),
                     army_index: armyIndex,
@@ -972,7 +1015,7 @@ function LobbyModel(creator) {
                     client_name: player.ai ? undefined : player.client.name,
                     player_name: player.client.name,
                     ai: player.ai,
-                    tag: index === 0 ? '.player' : '.player' + (index - 1)
+                    tag: tag
                 });
             };
 
@@ -1068,7 +1111,29 @@ function LobbyModel(creator) {
             return candidate && candidate.client_id === client.id;
         });
 
-        return assignment && assignment.tag || '.player';
+        if (!assignment)
+        {
+            var player = self.players[client.id];
+            if (player)
+            {
+                var army = self.armies[player.armyIndex];
+                var ownerKey = self.usesSharedGwTechForArmy(army)
+                    ? ('army:' + player.armyIndex)
+                    : ('slot:' + player.armyIndex + ':' + player.slotIndex);
+
+                assignment = _.find(self.gwTechConfig.tag_assignments, function(candidate)
+                {
+                    return candidate && candidate.owner_key === ownerKey;
+                });
+            }
+        }
+
+        if (assignment && _.isString(assignment.tag))
+        {
+            return assignment.tag;
+        }
+
+        return '.player';
     };
 
     self.sendGwTechConfigToClients = function(client)

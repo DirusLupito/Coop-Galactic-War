@@ -226,6 +226,9 @@ $(document).ready(function () {
 
         self.buildLists = buildLists;
         self.gwCoopResolutionLogSeen = {};
+        self.currentSpecTag = function() {
+            return _.isString(self.specTag) ? self.specTag : '.player';
+        };
 
         self.logGwCoopResolutionOnce = function(kind, fromId, toId) {
             var key = kind + '|' + fromId + '|' + (toId || '');
@@ -234,7 +237,7 @@ $(document).ready(function () {
             }
 
             self.gwCoopResolutionLogSeen[key] = true;
-            console.log('[GW COOP] build_bar ' + kind + ' from=' + fromId + ' to=' + (toId || '') + ' tag=' + (self.specTag || '.player'));
+            console.log('[GW COOP] build_bar ' + kind + ' from=' + fromId + ' to=' + (toId || '') + ' tag=' + self.currentSpecTag());
         };
 
         self.parseSelection = function(selection)
@@ -247,7 +250,7 @@ $(document).ready(function () {
                 if (self.buildLists[id])
                     return id;
 
-                var currentTag = self.specTag || '.player';
+                var currentTag = self.currentSpecTag();
 
                 // Fallback across tagged/untagged ids:
                 // foo/bar/unit.json.player <-> foo/bar/unit.json
@@ -298,7 +301,7 @@ $(document).ready(function () {
                 if (items[id])
                     return id;
 
-                var currentTag = self.specTag || '.player';
+                var currentTag = self.currentSpecTag();
                 var strip = /(.*\.json)[^\/]*$/.exec(id);
                 if (strip && strip[1]) {
                     if (items[strip[1] + currentTag]) {
@@ -425,7 +428,15 @@ $(document).ready(function () {
         self.getSpecTag = api.game.getUnitSpecTag().then(function(tag) {
             var sessionTag = self.gwCampaignUnitSpecTag();
             if (self.gwCoopMode() || self.gwTechCardsActive()) {
-                self.specTag = tag && tag !== '.player' ? tag : (sessionTag || tag || '.player');
+                if (_.isString(tag) && tag !== '.player') {
+                    self.specTag = tag;
+                }
+                else if (_.isString(sessionTag)) {
+                    self.specTag = sessionTag;
+                }
+                else {
+                    self.specTag = tag || '.player';
+                }
             }
             else {
                 self.specTag = tag;
@@ -787,7 +798,7 @@ $(document).ready(function () {
     {
         delete payload.message_type;
         $.when(model.getSpecTag).then(function() {
-            var tag = model.specTag || '.player';
+            var tag = _.isString(model.specTag) ? model.specTag : '.player';
             var keys = _.keys(payload || {});
             var taggedCount = _.filter(keys, function(key) {
                 return _.isString(key) && tag && key.slice(-tag.length) === tag;

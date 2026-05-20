@@ -4,6 +4,7 @@ var handlers = {};
 $(document).ready(function()
 {
     var DEFAULT_GW_TECH_LOADOUT = 'gwc_start_vehicle';
+    var VANILLA_GW_TECH_LOADOUT = 'gwc_start_vanilla';
     var GW_TECH_CARD_EXCLUDES = {
         gwc_add_card_slot: true,
         gwc_minion: true
@@ -38,6 +39,18 @@ $(document).ready(function()
         }
 
         return DEFAULT_GW_TECH_LOADOUT;
+    };
+
+    var isVanillaGwTechLoadout = function(loadout) {
+        return loadout === VANILLA_GW_TECH_LOADOUT;
+    };
+
+    var makeVanillaGwTechLoadoutCard = function() {
+        return {
+            icon: ko.observable('coui://ui/main/game/galactic_war/shared/img/red-commander.png'),
+            summary: ko.observable('!LOC:Vanilla Commander'),
+            locDesc: ko.observable('!LOC:No Galactic War tech. Uses the normal base-game commander and unit tree.')
+        };
     };
 
     var normalizeGwTechCards = function(cards, slotCount) {
@@ -331,6 +344,9 @@ $(document).ready(function()
         self.showGwTech = ko.computed(function() {
             return self.isPlayer() && !!model && model.gwTechCardSlotCount() > 0;
         });
+        self.gwTechUsesVanillaLoadout = ko.computed(function() {
+            return isVanillaGwTechLoadout(self.gwTechLoadout());
+        });
         self.armyUsesSharedGwTech = ko.computed(function() {
             var army = model && model.armies()[self.armyIndex()];
             return !!army && army.sharedArmy();
@@ -344,11 +360,15 @@ $(document).ready(function()
                 return null;
             }
 
+            if (self.gwTechUsesVanillaLoadout()) {
+                return makeVanillaGwTechLoadoutCard();
+            }
+
             return new CardViewModel({ id: self.gwTechLoadout() });
         });
         var gwTechSlotCardCache = [];
         self.gwTechSlotCards = ko.computed(function() {
-            if (!self.showGwTech()) {
+            if (!self.showGwTech() || self.gwTechUsesVanillaLoadout()) {
                 gwTechSlotCardCache = [];
                 return [];
             }
@@ -406,7 +426,7 @@ $(document).ready(function()
             if (event) {
                 event.stopPropagation();
             }
-            if (!self.canEditGwTech()) {
+            if (!self.canEditGwTech() || self.gwTechUsesVanillaLoadout()) {
                 return;
             }
 
@@ -465,7 +485,7 @@ $(document).ready(function()
             if (event) {
                 event.stopPropagation();
             }
-            if (!self.canEditGwTech() || !option || !option.enabled) {
+            if (!self.canEditGwTech() || self.gwTechUsesVanillaLoadout() || !option || !option.enabled) {
                 return;
             }
 
@@ -688,7 +708,7 @@ $(document).ready(function()
                 self.commander(json.commander);
 
             self.gwTechLoadout(normalizeGwTechLoadout(json.gw_tech_loadout));
-            self.gwTechCards(normalizeGwTechCards(json.gw_tech_cards, model.gwTechCardSlotCount()));
+            self.gwTechCards(self.gwTechUsesVanillaLoadout() ? [] : normalizeGwTechCards(json.gw_tech_cards, model.gwTechCardSlotCount()));
 
             self.isReady(json.ready);
             self.isLoading(json.loading);
@@ -1232,12 +1252,15 @@ $(document).ready(function()
                 self.gwInventoryModule = GWInventory;
                 self.gwDealerModule = GWDealer;
 
-                self.gwTechLoadoutOptions(_.map(GWStartLoadouts.all(), function(cardData) {
+                self.gwTechLoadoutOptions([{
+                    id: VANILLA_GW_TECH_LOADOUT,
+                    card: makeVanillaGwTechLoadoutCard()
+                }].concat(_.map(GWStartLoadouts.all(), function(cardData) {
                     return {
                         id: cardData.id,
                         card: new CardViewModel(cardData)
                     };
-                }));
+                })));
 
                 GWDealer.allCards().then(function(cards) {
                     var options = [];
@@ -1277,6 +1300,20 @@ $(document).ready(function()
 
             if (!self.gwInventoryModule || !self.gwDealerModule) {
                 result.reject('GW tech modules are not loaded.');
+                return result.promise();
+            }
+
+            if (isVanillaGwTechLoadout(slot.gwTechLoadout())) {
+                var vanillaInventory = new self.gwInventoryModule();
+                vanillaInventory.load({
+                    cards: [],
+                    tags: {
+                        global: {
+                            commander: slot.commander()
+                        }
+                    }
+                });
+                result.resolve(vanillaInventory);
                 return result.promise();
             }
 
@@ -1463,7 +1500,8 @@ $(document).ready(function()
                         color: color,
                         personality: slot.ai() ? _.cloneDeep(model.aiPersonalities()[slot.aiPersonality()] || {}) : undefined,
                         loadout: slot.gwTechLoadout(),
-                        cards: slot.gwTechCards().slice(0)
+                        vanilla: isVanillaGwTechLoadout(slot.gwTechLoadout()),
+                        cards: isVanillaGwTechLoadout(slot.gwTechLoadout()) ? [] : slot.gwTechCards().slice(0)
                     });
                 };
 
@@ -1687,7 +1725,7 @@ $(document).ready(function()
                 });
 
                 api.file.mountMemoryFiles(cookedFiles).then(function() {
-                    var unitSpecTag = (_.isString(payload.unit_spec_tag) && payload.unit_spec_tag.length)
+                    var unitSpecTag = (_.has(payload, 'unit_spec_tag') && _.isString(payload.unit_spec_tag))
                         ? payload.unit_spec_tag
                         : '.player';
                     var gwTechCardsActive = ko.observable(false).extend({ session: 'gw_tech_cards_active' });

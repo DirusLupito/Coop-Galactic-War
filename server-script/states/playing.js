@@ -69,7 +69,7 @@ function getReconnectUnitSpecTag(client) {
         });
     }
 
-    if (player && player.army && player.army.desc && _.isString(player.army.desc.spec_tag) && player.army.desc.spec_tag.length)
+    if (player && player.army && player.army.desc && _.isString(player.army.desc.spec_tag))
         return player.army.desc.spec_tag;
 
     console.log('[GW COOP] reconnect memory files could not find unit spec tag for client='
