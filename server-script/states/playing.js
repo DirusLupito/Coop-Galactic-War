@@ -1008,6 +1008,21 @@ exports.enter = function (config) {
                 game_type: game_options && game_options.game_type
             });
         },
+        client_mod_manifest: function (msg) {
+            server.respond(msg).succeed({
+                required_identifiers: [],
+                required_client_mods_published: false,
+                game_type: game_options && game_options.game_type,
+                gw_tech_cards_active: isGwTechCardsMatch()
+            });
+        },
+        required_client_mods_acknowledged: function (msg) {
+            server.respond(msg).succeed({
+                acknowledged: true,
+                game_type: game_options && game_options.game_type,
+                gw_tech_cards_active: isGwTechCardsMatch()
+            });
+        },
         memory_files_received: function (msg) {
             var response = server.respond(msg);
 

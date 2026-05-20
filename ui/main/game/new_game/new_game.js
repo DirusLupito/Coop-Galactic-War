@@ -377,7 +377,10 @@ $(document).ready(function()
                 return self.isSharedGwTechSlot() && model.isGameCreator();
             }
 
-            var ownsSlot = self.playerName() === model.displayName();
+            var slotPlayerId = self.playerId();
+            var ownsSlot = (!!slotPlayerId && String(slotPlayerId) === String(model.uberId && model.uberId()))
+                || (!!slotPlayerId && String(slotPlayerId) === String(model.displayName && model.displayName()))
+                || self.playerName() === model.displayName();
             return ownsSlot || (self.ai() && model.isGameCreator());
         });
         self.gwTechPickerOptions = ko.computed(function() {
@@ -804,7 +807,7 @@ $(document).ready(function()
         });
 
         self.alliance = ko.observable(!!options.alliance);
-        self.sharedArmy = ko.computed(function () { return !self.alliance(); });
+        self.sharedArmy = ko.computed(function () { return model.isTeamGame() && !self.alliance(); });
         self.gwTechSharedSlot = ko.computed(function() {
             if (!self.sharedArmy() || !model || model.gwTechCardSlotCount() <= 0) {
                 return null;

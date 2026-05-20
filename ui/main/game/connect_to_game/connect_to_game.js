@@ -428,7 +428,13 @@ $(document).ready(function () {
         self.waitingForClientModMatch = false;
         self.pendingServerStatePayload = undefined;
 
-        self.shouldGateServerStateForClientModMatch = function() {
+        self.shouldGateServerStateForClientModMatch = function(payload) {
+            if (self.reconnectingToExistingGame && self.reconnectingToExistingGame()
+                    && (isGalacticWarForConnect(payload) || isGwTechCardsForConnect(payload))) {
+                console.log('[GW COOP] skipping client-mod match gate during reconnect');
+                return false;
+            }
+
             return true;
         };
 
@@ -963,7 +969,7 @@ $(document).ready(function () {
     }
 
     handlers.server_state = function (payload) {
-        if ((model.waitingForClientModMatch || model.requiredClientModGateVisible()) && model.shouldGateServerStateForClientModMatch()) {
+        if ((model.waitingForClientModMatch || model.requiredClientModGateVisible()) && model.shouldGateServerStateForClientModMatch(payload)) {
             if (payload && payload.url)
                 model.pendingServerStatePayload = payload;
 

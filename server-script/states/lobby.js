@@ -901,6 +901,11 @@ function LobbyModel(creator) {
                   normalizeGwTechCardSlotCount(self.settings.game_options.gw_tech_card_slots) > 0);
     };
 
+    self.usesSharedGwTechForArmy = function(army)
+    {
+        return !!(army && isTeamArmiesType(self.gameType()) && !army.alliance);
+    };
+
     self.sharedGwTechSourceInArmy = function(army_index)
     {
         var players = _.sortBy(self.playersInArmy(army_index), 'slotIndex');
@@ -918,7 +923,7 @@ function LobbyModel(creator) {
         }
 
         var army = self.armies[army_index];
-        if (!army || army.alliance || !source)
+        if (!self.usesSharedGwTechForArmy(army) || !source)
         {
             return false;
         }
@@ -958,10 +963,10 @@ function LobbyModel(creator) {
             {
                 var index = assignments.length;
                 assignments.push({
-                    owner_key: army.alliance ? ('slot:' + armyIndex + ':' + player.slotIndex) : ('army:' + armyIndex),
+                    owner_key: self.usesSharedGwTechForArmy(army) ? ('army:' + armyIndex) : ('slot:' + armyIndex + ':' + player.slotIndex),
                     army_index: armyIndex,
                     slot_index: player.slotIndex,
-                    shared_army: !army.alliance,
+                    shared_army: self.usesSharedGwTechForArmy(army),
                     player_id: player.client.id,
                     client_id: player.ai ? undefined : player.client.id,
                     client_name: player.ai ? undefined : player.client.name,
@@ -971,7 +976,7 @@ function LobbyModel(creator) {
                 });
             };
 
-            if (!army.alliance)
+            if (self.usesSharedGwTechForArmy(army))
             {
                 addAssignment(players[0]);
                 return;
@@ -1777,7 +1782,7 @@ function LobbyModel(creator) {
         if ((player.ai && array.some(isHuman)) || (!player.ai && array.some(isAI)))
             army.alliance = true; /* override to prevent shared army with ai */
 
-        if (self.gwTechCardSlotsEnabled() && !army.alliance && array.length)
+        if (self.gwTechCardSlotsEnabled() && self.usesSharedGwTechForArmy(army) && array.length)
         {
             player.copyGwTechFrom(self.sharedGwTechSourceInArmy(army_index));
         }
@@ -2849,7 +2854,7 @@ function canEditGwTechFor(client, player)
     }
 
     var army = lobbyModel.armies[player.armyIndex];
-    if (army && !army.alliance)
+    if (lobbyModel.usesSharedGwTechForArmy(army))
     {
         return lobbyModel.isCreator(client.id);
     }
