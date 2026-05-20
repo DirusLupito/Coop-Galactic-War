@@ -48,6 +48,41 @@ define([
         return result;
     };
 
+    var normalizeAIPath = function(owner) {
+        var aiPath = owner &&
+            owner.personality &&
+            _.isString(owner.personality.ai_path) &&
+            owner.personality.ai_path.length &&
+            owner.personality.ai_path ||
+            '/pa/ai';
+
+        if (aiPath.charAt(0) !== '/') {
+            aiPath = '/' + aiPath;
+        }
+
+        if (aiPath.charAt(aiPath.length - 1) !== '/') {
+            aiPath = aiPath + '/';
+        }
+
+        return aiPath;
+    };
+
+    var getFileJSON = function(path) {
+        var done = $.Deferred();
+
+        $.get('coui:/' + path).then(function(value) {
+            try {
+                done.resolve(_.isString(value) ? parse(value) : value);
+            } catch (e) {
+                done.reject(e);
+            }
+        }, function(reason) {
+            done.reject(reason);
+        });
+
+        return done.promise();
+    };
+
     var buildInventory = function(owner) {
         var done = $.Deferred();
         var loadout = _.isString(owner.loadout) ? owner.loadout : 'gwc_start_vehicle';
@@ -96,28 +131,149 @@ define([
         return done.promise();
     };
 
-    var generateUnitSpecsForOwner = function(inventory, tag) {
+    var generateAIPathFilesForOwner = function(owner, tag) {
         var done = $.Deferred();
-        var titans = api.content.usingTitans();
-        var aiMapLoad = $.get('spec://pa/ai/unit_maps/ai_unit_map.json');
-        var aiX1MapLoad = titans ? $.get('spec://pa/ai/unit_maps/ai_unit_map_x1.json') : $.Deferred().resolve([{}]);
+        var aiPath = normalizeAIPath(owner);
 
-        $.when(aiMapLoad, aiX1MapLoad).then(function(aiMapGet, aiX1MapGet) {
-            var aiUnitMap = parse(aiMapGet[0]);
-            var aiX1UnitMap = parse(aiX1MapGet[0]);
-            var playerAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, tag);
-            var playerX1AIUnitMap = titans ? GW.specs.genAIUnitMap(aiX1UnitMap, tag) : {};
+        if (aiPath === '/pa/ai/') {
+            done.resolve({});
+            return done.promise();
+        }
 
-            GW.specs.genUnitSpecs(inventory.units(), tag).then(function(playerSpecFiles) {
-                var playerFilesClassic = {};
-                var playerFilesX1 = {};
+        api.file.list(aiPath, true).then(function(fileList) {
+            var filesToProcess = [];
 
-                playerFilesClassic['/pa/ai/unit_maps/ai_unit_map.json' + tag] = playerAIUnitMap;
-                if (titans) {
-                    playerFilesX1['/pa/ai/unit_maps/ai_unit_map_x1.json' + tag] = playerX1AIUnitMap;
+            _.forEach(fileList || [], function(path) {
+                if (!_.isString(path) ||
+                    path.indexOf(aiPath) !== 0 ||
+                    path.indexOf('/unit_maps/') >= 0 ||
+                    path.indexOf('/neural_networks/') >= 0 ||
+                    path.slice(-'.json'.length) !== '.json') {
+                    return;
                 }
 
-                var playerFiles = _.assign({}, playerFilesClassic, playerFilesX1, playerSpecFiles);
+                filesToProcess.push(getFileJSON(path).then(function(json) {
+                    var result = {};
+                    result[path] = json;
+                    return result;
+                }, function() {
+                    return {};
+                }));
+            });
+
+            if (!filesToProcess.length) {
+                done.resolve({});
+                return;
+            }
+
+            $.when.apply($, filesToProcess).then(function() {
+                done.resolve(_.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments))));
+            }, function() {
+                done.resolve({});
+            });
+        }, function() {
+            done.resolve({});
+        });
+
+        return done.promise();
+    };
+
+    var generateAIUnitMapFilesForOwner = function(owner, tag) {
+        var done = $.Deferred();
+        var titans = api.content.usingTitans();
+        var aiPath = normalizeAIPath(owner);
+        var defaultMapPaths = ['/pa/ai/unit_maps/ai_unit_map.json'];
+
+        if (titans) {
+            defaultMapPaths.push('/pa/ai/unit_maps/ai_unit_map_x1.json');
+        }
+
+        var fallbackMapPathsForAIPath = function() {
+            var result = [{
+                source: '/pa/ai/unit_maps/ai_unit_map.json',
+                destination: aiPath + 'unit_maps/ai_unit_map.json'
+            }];
+
+            if (titans) {
+                result.push({
+                    source: '/pa/ai/unit_maps/ai_unit_map_x1.json',
+                    destination: aiPath + 'unit_maps/ai_unit_map_x1.json'
+                });
+            }
+
+            return result;
+        };
+
+        var buildFilesFromMapPaths = function(mapPaths) {
+            var filesToProcess = [];
+
+            _.forEach(mapPaths || [], function(mapPath) {
+                var path = _.isString(mapPath) ? mapPath : mapPath && mapPath.source;
+                var destination = _.isString(mapPath) ? mapPath : mapPath && mapPath.destination;
+
+                if (!_.isString(path) ||
+                    !_.isString(destination) ||
+                    path.indexOf('/unit_maps/') < 0 ||
+                    path.slice(-'.json'.length) !== '.json') {
+                    return;
+                }
+
+                if (!titans && path.slice(-'_x1.json'.length) === '_x1.json') {
+                    return;
+                }
+
+                filesToProcess.push(getFileJSON(path).then(function(aiUnitMap) {
+                    var result = {};
+                    result[destination + tag] = GW.specs.genAIUnitMap(aiUnitMap, tag);
+                    return result;
+                }, function() {
+                    return {};
+                }));
+            });
+
+            if (!filesToProcess.length) {
+                done.resolve({});
+                return;
+            }
+
+            $.when.apply($, filesToProcess).then(function() {
+                done.resolve(_.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments))));
+            }, function() {
+                done.resolve({});
+            });
+        };
+
+        if (aiPath === '/pa/ai/') {
+            buildFilesFromMapPaths(defaultMapPaths);
+            return done.promise();
+        }
+
+        api.file.list(aiPath + 'unit_maps/', true).then(function(fileList) {
+            var mapPaths = _.filter(fileList || [], function(path) {
+                return _.isString(path) && path.slice(-'.json'.length) === '.json';
+            });
+
+            if (!mapPaths.length) {
+                mapPaths = fallbackMapPathsForAIPath();
+            }
+
+            buildFilesFromMapPaths(mapPaths);
+        }, function() {
+            buildFilesFromMapPaths(fallbackMapPathsForAIPath());
+        });
+
+        return done.promise();
+    };
+
+    var generateUnitSpecsForOwner = function(inventory, tag, owner) {
+        var done = $.Deferred();
+
+        $.when(
+            generateAIUnitMapFilesForOwner(owner, tag),
+            generateAIPathFilesForOwner(owner, tag)
+        ).then(function(aiUnitMapFiles, aiPathFiles) {
+            GW.specs.genUnitSpecs(inventory.units(), tag).then(function(playerSpecFiles) {
+                var playerFiles = _.assign({}, aiPathFiles || {}, aiUnitMapFiles || {}, playerSpecFiles);
                 GW.specs.modSpecs(playerFiles, inventory.mods(), tag);
                 done.resolve(playerFiles);
             }, function(reason) {
@@ -172,7 +328,7 @@ define([
             var tag = getPlayerTagGivenIndex(index);
 
             ownerPromises.push(buildInventory(owner).then(function(inventory) {
-                return generateUnitSpecsForOwner(inventory, tag).then(function(files) {
+                return generateUnitSpecsForOwner(inventory, tag, owner).then(function(files) {
                     var baseCommander = stripKnownSpecTag(owner.commander);
                     var minionArmies = [];
 

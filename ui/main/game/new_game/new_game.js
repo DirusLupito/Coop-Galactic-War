@@ -1458,6 +1458,7 @@ $(document).ready(function()
                         ai: slot.ai(),
                         commander: slot.commander(),
                         color: color,
+                        personality: slot.ai() ? _.cloneDeep(model.aiPersonalities()[slot.aiPersonality()] || {}) : undefined,
                         loadout: slot.gwTechLoadout(),
                         cards: slot.gwTechCards().slice(0)
                     });
