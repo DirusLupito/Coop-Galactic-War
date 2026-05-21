@@ -209,6 +209,7 @@ $(document).ready(function()
     var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
     var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
     var UNIT_LIST_PATH = '/pa/units/unit_list.json';
+    var GW_TECH_PRESETS_STORAGE_KEY = 'gw_custom_lobby_tech_presets_v1';
 
     var normalizeGwTechSlotCount = function(value) {
         var count = Math.floor(Number(value));
@@ -305,6 +306,140 @@ $(document).ready(function()
         });
         self.searchText = ko.computed(function() {
             return normalizeGwTechSearchText([self.id || '', self.summaryText(), self.descText()].join(' '));
+        });
+        self.matchesSearch = function(search) {
+            var needle = normalizeGwTechSearchText(search || '');
+            if (!needle) {
+                return true;
+            }
+
+            return self.searchText().indexOf(needle) >= 0;
+        };
+    }
+
+    var normalizeGwTechPresetName = function(name) {
+        if (!_.isString(name)) {
+            name = _.isUndefined(name) || name === null ? '' : String(name);
+        }
+
+        return stripGwTechHtml(name).slice(0, 80);
+    };
+
+    var normalizeGwTechPresetLoadout = function(loadout) {
+        return _.isString(loadout) ? loadout : '';
+    };
+
+    var normalizeGwTechPresetCards = function(cards) {
+        var result = [];
+
+        _.forEach(cards || [], function(card) {
+            if (_.isString(card)) {
+                result.push(card);
+            }
+        });
+
+        return result;
+    };
+
+    var makeGwTechPresetId = function() {
+        return 'preset-' + Date.now() + '-' + Math.floor(Math.random() * 1000000);
+    };
+
+    var normalizeGwTechPreset = function(preset) {
+        var now = Date.now();
+        var loadout = normalizeGwTechPresetLoadout(preset && preset.loadout);
+        var cards = normalizeGwTechPresetCards(preset && preset.cards);
+        var name = normalizeGwTechPresetName(preset && preset.name);
+
+        return {
+            id: _.isString(preset && preset.id) && preset.id.length ? preset.id : makeGwTechPresetId(),
+            name: name || 'Unnamed Preset',
+            loadout: loadout,
+            cards: cards,
+            created_at: _.isFinite(Number(preset && preset.created_at)) ? Number(preset.created_at) : now,
+            updated_at: _.isFinite(Number(preset && preset.updated_at)) ? Number(preset.updated_at) : now
+        };
+    };
+
+    var loadGwTechPresetsFromStorage = function() {
+        try {
+            var raw = localStorage.getItem(GW_TECH_PRESETS_STORAGE_KEY);
+            if (!raw) {
+                return [];
+            }
+
+            var parsed = JSON.parse(raw);
+            var presets = _.isArray(parsed) ? parsed : parsed && parsed.presets;
+            return _.sortBy(_.map(_.filter(presets || [], _.isObject), normalizeGwTechPreset), function(preset) {
+                return normalizeGwTechSearchText(preset.name);
+            });
+        }
+        catch (e) {
+            console.log('[GW TECH] Failed loading tech presets: ' + e);
+            return [];
+        }
+    };
+
+    var saveGwTechPresetsToStorage = function(presets) {
+        try {
+            localStorage.setItem(GW_TECH_PRESETS_STORAGE_KEY, JSON.stringify({
+                version: 1,
+                presets: presets || []
+            }));
+        }
+        catch (e) {
+            console.log('[GW TECH] Failed saving tech presets: ' + e);
+        }
+    };
+
+    function GwTechPresetOptionViewModel(preset) {
+        var self = this;
+
+        self.raw = normalizeGwTechPreset(preset);
+        self.id = self.raw.id;
+        self.name = self.raw.name;
+        self.loadout = self.raw.loadout;
+        self.cards = self.raw.cards.slice(0);
+        self.loadoutOption = ko.computed(function() {
+            return model && model.findGwTechLoadoutOptionById(self.loadout);
+        });
+        self.loadoutSummaryText = ko.computed(function() {
+            var option = self.loadoutOption();
+            return option ? option.summaryText() : self.loadout;
+        });
+        self.cardPreviews = ko.computed(function() {
+            return _.map(self.cards, function(cardId) {
+                var option = model && model.findGwTechCardOptionById(cardId);
+                var icon = option && option.card && unwrapGwTechValue(option.card.icon);
+
+                return {
+                    id: cardId,
+                    icon: icon,
+                    summaryText: option ? option.summaryText() : cardId
+                };
+            });
+        });
+        self.cardCountText = ko.computed(function() {
+            return self.cards.length + (self.cards.length === 1 ? ' card' : ' cards');
+        });
+        self.searchText = ko.computed(function() {
+            var option = self.loadoutOption();
+            var parts = [self.name, self.id, self.loadout, self.loadoutSummaryText()];
+
+            if (option) {
+                parts.push(option.descText());
+            }
+
+            _.forEach(self.cards, function(cardId) {
+                var cardOption = model && model.findGwTechCardOptionById(cardId);
+                parts.push(cardId);
+                if (cardOption) {
+                    parts.push(cardOption.summaryText());
+                    parts.push(cardOption.descText());
+                }
+            });
+
+            return normalizeGwTechSearchText(parts.join(' '));
         });
         self.matchesSearch = function(search) {
             var needle = normalizeGwTechSearchText(search || '');
@@ -638,11 +773,23 @@ $(document).ready(function()
         self.gwTechCards = ko.observableArray([]);
         self.showGwTechLoadoutPicker = ko.observable(false);
         self.showGwTechCardPicker = ko.observable(false);
+        self.showGwTechPresetPicker = ko.observable(false);
         self.gwTechPickerSlotIndex = ko.observable(-1);
         self.gwTechLoadoutSearch = ko.observable('');
         self.gwTechCardSearch = ko.observable('');
+        self.gwTechPresetSearch = ko.observable('');
+        self.gwTechPresetError = ko.observable('');
+        self.gwTechPresetApplying = ko.observable(false);
         self.gwTechSelectedLoadoutOption = ko.observable();
         self.gwTechSelectedCardOption = ko.observable();
+        self.gwTechSelectedPresetOption = ko.observable();
+        self.gwTechPresetNamePromptVisible = ko.observable(false);
+        self.gwTechPresetNamePromptMode = ko.observable('');
+        self.gwTechPresetNamePromptValue = ko.observable('');
+        self.gwTechPresetNamePromptError = ko.observable('');
+        self.gwTechPresetNamePromptReplaceTarget = ko.observable();
+        self.gwTechPresetNamePromptPreset = ko.observable();
+        self.gwTechPresetPendingDeleteId = ko.observable('');
         self.gwTechAllowedCardIds = ko.observable({});
         self.gwTechValidationPending = ko.observable(false);
         self.showGwTech = ko.computed(function() {
@@ -745,11 +892,41 @@ $(document).ready(function()
 
             return self.gwTechVisibleCardPickerOptions()[0];
         });
+        self.gwTechPresetOptions = ko.computed(function() {
+            return _.map(model && model.gwTechPresets ? model.gwTechPresets() : [], function(preset) {
+                return new GwTechPresetOptionViewModel(preset);
+            });
+        });
+        self.gwTechVisiblePresetOptions = ko.computed(function() {
+            var search = self.gwTechPresetSearch();
+            return _.filter(self.gwTechPresetOptions(), function(option) {
+                return option && option.matchesSearch(search);
+            });
+        });
+        self.gwTechPresetDetailOption = ko.computed(function() {
+            var selected = self.gwTechSelectedPresetOption();
+            if (selected && selected.matchesSearch(self.gwTechPresetSearch())) {
+                return selected;
+            }
+
+            return self.gwTechVisiblePresetOptions()[0];
+        });
+        self.gwTechPresetNamePromptTitle = ko.computed(function() {
+            return self.gwTechPresetNamePromptMode() === 'rename' ? loc('!LOC:Rename Preset') : loc('!LOC:Save Preset');
+        });
+        self.gwTechPresetNamePromptActionText = ko.computed(function() {
+            return self.gwTechPresetNamePromptMode() === 'rename' ? loc('!LOC:Rename') : loc('!LOC:Save');
+        });
         self.setGwTechLoadoutDetailOption = function(option) {
             self.gwTechSelectedLoadoutOption(option);
         };
         self.setGwTechCardDetailOption = function(option) {
             self.gwTechSelectedCardOption(option);
+        };
+        self.setGwTechPresetDetailOption = function(option) {
+            self.gwTechSelectedPresetOption(option);
+            self.gwTechPresetError('');
+            self.gwTechPresetPendingDeleteId('');
         };
         self.focusGwTechPickerSearch = function(pickerSelector) {
             window.setTimeout(function() {
@@ -763,6 +940,22 @@ $(document).ready(function()
                 search.select();
             }, 0);
         };
+        self.focusGwTechPresetNameInput = function() {
+            window.setTimeout(function() {
+                var input = $('.gw-tech-preset-picker:visible .gw-tech-preset-name-input').first();
+                if (!input.length) {
+                    console.log('[GW TECH] Could not focus preset name input.');
+                    return;
+                }
+
+                input.focus();
+                input.select();
+            }, 0);
+        };
+        self.gwTechPresetNamePromptValue.subscribe(function() {
+            self.gwTechPresetNamePromptError('');
+            self.gwTechPresetNamePromptReplaceTarget(undefined);
+        });
         self.showGwTechLoadoutInspector = function(data, event) {
             model.showGwTechInspector(self.gwTechLoadoutCard(), event);
         };
@@ -778,11 +971,22 @@ $(document).ready(function()
         self.closeGwTechPickers = function() {
             self.showGwTechLoadoutPicker(false);
             self.showGwTechCardPicker(false);
+            self.showGwTechPresetPicker(false);
             self.gwTechPickerSlotIndex(-1);
             self.gwTechLoadoutSearch('');
             self.gwTechCardSearch('');
+            self.gwTechPresetSearch('');
+            self.gwTechPresetError('');
+            self.gwTechPresetNamePromptVisible(false);
+            self.gwTechPresetNamePromptMode('');
+            self.gwTechPresetNamePromptValue('');
+            self.gwTechPresetNamePromptError('');
+            self.gwTechPresetNamePromptReplaceTarget(undefined);
+            self.gwTechPresetNamePromptPreset(undefined);
+            self.gwTechPresetPendingDeleteId('');
             self.gwTechSelectedLoadoutOption(undefined);
             self.gwTechSelectedCardOption(undefined);
+            self.gwTechSelectedPresetOption(undefined);
         };
         self.openGwTechLoadoutPicker = function(data, event) {
             if (event) {
@@ -799,6 +1003,28 @@ $(document).ready(function()
             }) || model.gwTechLoadoutOptions()[0]);
             self.showGwTechLoadoutPicker(true);
             self.focusGwTechPickerSearch('.gw-tech-loadout-picker');
+        };
+        self.openGwTechPresetPicker = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.showGwTech()) {
+                return;
+            }
+
+            model.closeDropDowns();
+            self.gwTechPresetSearch('');
+            self.gwTechPresetError('');
+            self.gwTechPresetNamePromptVisible(false);
+            self.gwTechPresetNamePromptMode('');
+            self.gwTechPresetNamePromptValue('');
+            self.gwTechPresetNamePromptError('');
+            self.gwTechPresetNamePromptReplaceTarget(undefined);
+            self.gwTechPresetNamePromptPreset(undefined);
+            self.gwTechPresetPendingDeleteId('');
+            self.gwTechSelectedPresetOption(self.gwTechPresetOptions()[0]);
+            self.showGwTechPresetPicker(true);
+            self.focusGwTechPickerSearch('.gw-tech-preset-picker');
         };
         self.selectGwTechLoadout = function(option, event) {
             if (event) {
@@ -905,6 +1131,220 @@ $(document).ready(function()
                         slot_index: index
                     });
                 }
+            });
+        };
+
+        self.defaultGwTechPresetName = function() {
+            var option = model.findGwTechLoadoutOptionById(self.gwTechLoadout());
+            var loadoutName = option ? option.summaryText() : self.gwTechLoadout();
+            var cardCount = self.gwTechUsesVanillaLoadout() ? 0 : self.gwTechCards().length;
+            return loadoutName + ' (' + cardCount + (cardCount === 1 ? ' card' : ' cards') + ')';
+        };
+        self.captureGwTechPreset = function(name) {
+            var loadout = normalizeGwTechLoadout(self.gwTechLoadout());
+            return normalizeGwTechPreset({
+                name: name || self.defaultGwTechPresetName(),
+                loadout: loadout,
+                cards: isVanillaGwTechLoadout(loadout) ? [] : normalizeGwTechCards(self.gwTechCards(), model.gwTechCardSlotCount())
+            });
+        };
+        self.openGwTechPresetNamePrompt = function(mode, defaultName, preset) {
+            self.gwTechPresetError('');
+            self.gwTechPresetNamePromptMode(mode);
+            self.gwTechPresetNamePromptValue(defaultName || '');
+            self.gwTechPresetNamePromptError('');
+            self.gwTechPresetNamePromptReplaceTarget(undefined);
+            self.gwTechPresetNamePromptPreset(preset);
+            self.gwTechPresetPendingDeleteId('');
+            self.gwTechPresetNamePromptVisible(true);
+            self.focusGwTechPresetNameInput();
+        };
+        self.cancelGwTechPresetNamePrompt = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+
+            self.gwTechPresetNamePromptVisible(false);
+            self.gwTechPresetNamePromptMode('');
+            self.gwTechPresetNamePromptValue('');
+            self.gwTechPresetNamePromptError('');
+            self.gwTechPresetNamePromptReplaceTarget(undefined);
+            self.gwTechPresetNamePromptPreset(undefined);
+        };
+        self.handleGwTechPresetNamePromptKey = function(data, event) {
+            if (!event) {
+                return true;
+            }
+
+            if (event.keyCode === 13) {
+                self.commitGwTechPresetNamePrompt(false, event);
+                return false;
+            }
+            if (event.keyCode === 27) {
+                self.cancelGwTechPresetNamePrompt(data, event);
+                return false;
+            }
+
+            return true;
+        };
+        self.commitGwTechPresetNamePrompt = function(replaceExisting, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            var mode = self.gwTechPresetNamePromptMode();
+            var name = normalizeGwTechPresetName(self.gwTechPresetNamePromptValue());
+            var existing;
+            var preset;
+            var saved;
+            var selected;
+
+            if (!name) {
+                self.gwTechPresetNamePromptError(loc('!LOC:Enter a preset name.'));
+                return;
+            }
+
+            existing = model.findGwTechPresetByName(name);
+
+            if (mode === 'save') {
+                if (existing && !replaceExisting) {
+                    self.gwTechPresetNamePromptReplaceTarget(existing);
+                    self.gwTechPresetNamePromptError(loc('!LOC:Preset already exists.'));
+                    return;
+                }
+
+                preset = self.captureGwTechPreset(name);
+                if (existing) {
+                    preset.id = existing.id;
+                    preset.created_at = existing.created_at;
+                }
+
+                saved = model.saveGwTechPreset(preset);
+                self.gwTechPresetError('');
+                self.gwTechSelectedPresetOption(_.find(self.gwTechPresetOptions(), { id: saved.id }));
+                self.cancelGwTechPresetNamePrompt(null, event);
+                return;
+            }
+
+            if (mode === 'rename') {
+                selected = self.gwTechPresetNamePromptPreset();
+                if (!selected) {
+                    self.gwTechPresetNamePromptError(loc('!LOC:No preset selected.'));
+                    return;
+                }
+                if (name === selected.name) {
+                    self.cancelGwTechPresetNamePrompt(null, event);
+                    return;
+                }
+                if (existing && existing.id !== selected.id && !replaceExisting) {
+                    self.gwTechPresetNamePromptReplaceTarget(existing);
+                    self.gwTechPresetNamePromptError(loc('!LOC:Preset already exists.'));
+                    return;
+                }
+
+                saved = model.renameGwTechPreset(selected.raw, name, existing);
+                self.gwTechPresetError('');
+                self.gwTechSelectedPresetOption(_.find(self.gwTechPresetOptions(), { id: saved.id }));
+                self.cancelGwTechPresetNamePrompt(null, event);
+                return;
+            }
+
+            self.gwTechPresetNamePromptError(loc('!LOC:No preset action selected.'));
+        };
+        self.saveCurrentGwTechPreset = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            self.openGwTechPresetNamePrompt('save', self.defaultGwTechPresetName());
+        };
+        self.renameGwTechPreset = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            var selected = self.gwTechPresetDetailOption();
+            if (!selected) {
+                self.gwTechPresetError(loc('!LOC:No preset selected.'));
+                return;
+            }
+
+            self.openGwTechPresetNamePrompt('rename', selected.name, selected);
+        };
+        self.deleteGwTechPreset = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech()) {
+                return;
+            }
+
+            var selected = self.gwTechPresetDetailOption();
+            if (!selected) {
+                self.gwTechPresetError(loc('!LOC:No preset selected.'));
+                return;
+            }
+
+            self.cancelGwTechPresetNamePrompt(null, event);
+
+            if (self.gwTechPresetPendingDeleteId() !== selected.id) {
+                self.gwTechPresetPendingDeleteId(selected.id);
+                self.gwTechPresetError(loc('!LOC:Click Delete again to confirm.'));
+                return;
+            }
+
+            model.deleteGwTechPreset(selected.id);
+            self.gwTechPresetError('');
+            self.gwTechPresetPendingDeleteId('');
+            self.gwTechSelectedPresetOption(self.gwTechVisiblePresetOptions()[0]);
+        };
+        self.applyGwTechPreset = function(data, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            if (!self.canEditGwTech() || self.gwTechPresetApplying()) {
+                return;
+            }
+
+            var selected = self.gwTechPresetDetailOption();
+            if (!selected) {
+                self.gwTechPresetError(loc('!LOC:No preset selected.'));
+                return;
+            }
+
+            self.gwTechPresetApplying(true);
+            self.gwTechPresetError('');
+            model.validateGwTechPresetForSlot(self, selected.raw).then(function(preset) {
+                self.gwTechLoadout(preset.loadout);
+                self.gwTechCards(preset.cards.slice(0));
+
+                model.send_message('set_gw_tech_loadout', {
+                    id: self.playerId(),
+                    loadout_card_id: preset.loadout
+                });
+
+                _.forEach(preset.cards, function(cardId, index) {
+                    model.send_message('set_gw_tech_card', {
+                        id: self.playerId(),
+                        slot_index: index,
+                        card_id: cardId
+                    });
+                });
+
+                self.gwTechPresetApplying(false);
+                self.closeGwTechPickers();
+            }, function(reason) {
+                self.gwTechPresetApplying(false);
+                self.gwTechPresetError(reason || loc('!LOC:Preset is not valid for this slot.'));
             });
         };
 
@@ -1603,11 +2043,70 @@ $(document).ready(function()
         self.gwTechLoadoutOptions = ko.observableArray([]);
         self.gwTechCardOptions = ko.observableArray([]);
         self.gwTechCardModules = {};
+        self.gwTechCardEvaluationErrorLog = {};
+        self.gwTechPresets = ko.observableArray(loadGwTechPresetsFromStorage());
         self.gwoMounted = ko.observable(false);
         self.gwTechInspectorVisible = ko.observable(false);
         self.gwTechInspectorCard = ko.observable();
         self.gwTechInspectorLeft = ko.observable(0);
         self.gwTechInspectorTop = ko.observable(0);
+
+        self.persistGwTechPresets = function() {
+            saveGwTechPresetsToStorage(self.gwTechPresets());
+        };
+        self.findGwTechLoadoutOptionById = function(loadoutId) {
+            return _.find(self.gwTechLoadoutOptions(), function(option) {
+                return option && option.id === loadoutId;
+            });
+        };
+        self.findGwTechCardOptionById = function(cardId) {
+            return _.find(self.gwTechCardOptions(), function(option) {
+                return option && option.id === cardId;
+            });
+        };
+        self.findGwTechPresetByName = function(name) {
+            var normalized = normalizeGwTechSearchText(name || '');
+            return _.find(self.gwTechPresets(), function(preset) {
+                return normalizeGwTechSearchText(preset && preset.name || '') === normalized;
+            });
+        };
+        self.saveGwTechPreset = function(preset) {
+            var normalized = normalizeGwTechPreset(_.assign({}, preset, { updated_at: Date.now() }));
+            var presets = _.reject(self.gwTechPresets(), function(existing) {
+                return existing && existing.id === normalized.id;
+            });
+
+            presets.push(normalized);
+            presets = _.sortBy(presets, function(item) {
+                return normalizeGwTechSearchText(item.name);
+            });
+            self.gwTechPresets(presets);
+            self.persistGwTechPresets();
+            return normalized;
+        };
+        self.renameGwTechPreset = function(preset, name, replacedPreset) {
+            var normalized = normalizeGwTechPreset(_.assign({}, preset, {
+                name: name,
+                updated_at: Date.now()
+            }));
+            var presets = _.reject(self.gwTechPresets(), function(existing) {
+                return existing && (existing.id === normalized.id || (replacedPreset && existing.id === replacedPreset.id));
+            });
+
+            presets.push(normalized);
+            presets = _.sortBy(presets, function(item) {
+                return normalizeGwTechSearchText(item.name);
+            });
+            self.gwTechPresets(presets);
+            self.persistGwTechPresets();
+            return normalized;
+        };
+        self.deleteGwTechPreset = function(presetId) {
+            self.gwTechPresets(_.reject(self.gwTechPresets(), function(existing) {
+                return existing && existing.id === presetId;
+            }));
+            self.persistGwTechPresets();
+        };
 
         self.positionGwTechInspector = function(event) {
             if (!event) {
@@ -1904,7 +2403,12 @@ $(document).ready(function()
                 return _.isFinite(chance) && chance > 0;
             }
             catch (e) {
-                console.error('Failed evaluating GW tech card ' + cardId + ': ' + JSON.stringify(e));
+                var detail = e && (e.stack || e.message || JSON.stringify(e)) || String(e);
+                var key = cardId + ':' + detail;
+                if (!self.gwTechCardEvaluationErrorLog[key]) {
+                    self.gwTechCardEvaluationErrorLog[key] = true;
+                    console.error('Failed evaluating GW tech card ' + cardId + ': ' + detail);
+                }
                 return false;
             }
         };
@@ -1922,6 +2426,69 @@ $(document).ready(function()
                 result.reject(reason);
             });
 
+            return result.promise();
+        };
+
+        self.validateGwTechPresetForSlot = function(slot, preset) {
+            var result = $.Deferred();
+            var normalizedPreset = normalizeGwTechPreset(preset);
+            var slotCount = self.gwTechCardSlotCount();
+            var tempCards = ko.observableArray([]);
+            var tempSlot = {
+                gwTechLoadout: ko.observable(normalizedPreset.loadout),
+                gwTechCards: tempCards,
+                commander: slot.commander
+            };
+
+            if (!self.gwTechModulesReady()) {
+                result.reject(loc('!LOC:Tech card data is still loading.'));
+                return result.promise();
+            }
+
+            if (!self.findGwTechLoadoutOptionById(normalizedPreset.loadout)) {
+                result.reject(loc('!LOC:Preset loadout is not available.'));
+                return result.promise();
+            }
+
+            if (normalizedPreset.cards.length > slotCount) {
+                result.reject(loc('!LOC:Preset has more tech cards than this lobby allows.'));
+                return result.promise();
+            }
+
+            if (isVanillaGwTechLoadout(normalizedPreset.loadout) && normalizedPreset.cards.length) {
+                result.reject(loc('!LOC:Vanilla Commander presets cannot include tech cards.'));
+                return result.promise();
+            }
+
+            var missingCard = _.find(normalizedPreset.cards, function(cardId) {
+                return !self.findGwTechCardOptionById(cardId);
+            });
+            if (missingCard) {
+                result.reject(loc('!LOC:Preset card is not available: ') + missingCard);
+                return result.promise();
+            }
+
+            var checkIndex = function(index) {
+                if (index >= normalizedPreset.cards.length) {
+                    result.resolve(normalizedPreset);
+                    return;
+                }
+
+                self.buildGwTechInventory(tempSlot, index).then(function(inventory) {
+                    var cardId = normalizedPreset.cards[index];
+                    if (!self.gwTechCardHasChance(cardId, inventory)) {
+                        result.reject(loc('!LOC:Preset card is not valid at slot ') + (index + 1) + ': ' + cardId);
+                        return;
+                    }
+
+                    tempCards.push(cardId);
+                    checkIndex(index + 1);
+                }, function(reason) {
+                    result.reject(reason || loc('!LOC:Unable to validate preset.'));
+                });
+            };
+
+            checkIndex(0);
             return result.promise();
         };
 

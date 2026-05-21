@@ -1380,6 +1380,31 @@ input[type=number]::-webkit-outer-spin-button {
     vertical-align: top;
 }
 
+.gw-tech-presets-button {
+    position: absolute;
+    left: -80px;
+    top: 26px;
+    width: 70px;
+    height: 26px;
+    box-sizing: border-box;
+    color: #9de8ff;
+    font-family: "Sansation";
+    font-size: 11px;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid rgba(0, 179, 255, 0.45);
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.22), 0px 2px 6px rgba(0, 0, 0, 0.65);
+    cursor: pointer;
+}
+
+.gw-tech-presets-button.editable:hover {
+    color: #5fffc4;
+    border-color: #00b3ff;
+    background: #0b2630;
+    box-shadow: inset 0px 0px 14px rgba(0, 179, 255, 0.34), 0px 0px 10px rgba(0, 179, 255, 0.25);
+}
+
 .gw-tech-picker {
     position: absolute;
     z-index: 1500;
@@ -1504,6 +1529,211 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.gw-tech-picker-empty {
+    color: #7f9da5;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.gw-tech-preset-picker {
+    left: -80px;
+    right: 0px;
+    min-height: 326px;
+}
+
+.gw-tech-preset-picker.naming {
+    min-height: 384px;
+}
+
+.gw-tech-preset-error {
+    min-height: 20px;
+    margin: -2px 0px 6px 0px;
+    padding: 3px 6px;
+    color: #ffb6a8;
+    font-size: 12px;
+    background: rgba(120, 20, 12, 0.25);
+    border: 1px solid rgba(255, 90, 64, 0.35);
+}
+
+.gw-tech-preset-body {
+    height: 220px;
+}
+
+.gw-tech-preset-list,
+.gw-tech-preset-detail {
+    height: 220px;
+}
+
+.gw-tech-preset-picker.naming .gw-tech-preset-body,
+.gw-tech-preset-picker.naming .gw-tech-preset-list,
+.gw-tech-preset-picker.naming .gw-tech-preset-detail {
+    height: 160px;
+}
+
+.gw-tech-preset-name-prompt {
+    margin: -2px 0px 7px 0px;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 179, 255, 0.3);
+    background: rgba(0, 0, 0, 0.48);
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.12);
+}
+
+.gw-tech-preset-name-title {
+    color: #9de8ff;
+    font-family: "Sansation";
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 4px;
+}
+
+.gw-tech-preset-name-input {
+    width: 100%;
+    height: 26px;
+    padding: 0px 7px;
+    box-sizing: border-box;
+    color: #d8f7ff;
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid rgba(0, 179, 255, 0.45);
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.18);
+}
+
+.gw-tech-preset-name-error {
+    margin-top: 4px;
+    color: #ffb6a8;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.gw-tech-preset-name-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.gw-tech-preset-item {
+    display: block;
+    min-height: 48px;
+}
+
+.gw-tech-preset-item-title {
+    color: #e8fbff;
+    font-family: "Sansation";
+    font-size: 13px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gw-tech-preset-item-meta {
+    margin-top: 4px;
+    color: #9eb7be;
+    font-size: 11px;
+    line-height: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gw-tech-preset-detail {
+    padding: 9px;
+    box-sizing: border-box;
+}
+
+.gw-tech-preset-detail-title {
+    color: #5fffc4;
+    font-family: "Sansation";
+    font-size: 16px;
+    line-height: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gw-tech-preset-detail-loadout {
+    margin-top: 4px;
+    color: #9de8ff;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.gw-tech-preset-card-preview {
+    margin-top: 8px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.gw-tech-preset-card-chip {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 4px;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    color: #d8f7ff;
+    font-size: 11px;
+    border: 1px solid rgba(0, 179, 255, 0.18);
+    background: rgba(0, 0, 0, 0.38);
+}
+
+.gw-tech-preset-card-chip img {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+}
+
+.gw-tech-preset-card-chip span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gw-tech-preset-actions {
+    height: 34px;
+    display: flex;
+    gap: 6px;
+    margin-top: 7px;
+}
+
+.gw-tech-preset-action {
+    flex: 1 1 0;
+    height: 28px;
+    box-sizing: border-box;
+    color: #d8f7ff;
+    font-family: "Sansation";
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    border: 1px solid rgba(0, 179, 255, 0.42);
+    background: rgba(0, 34, 47, 0.82);
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.18);
+    cursor: pointer;
+}
+
+.gw-tech-preset-action:hover {
+    color: #5fffc4;
+    border-color: #00b3ff;
+    background: rgba(0, 70, 92, 0.88);
+}
+
+.gw-tech-preset-action.danger:hover {
+    color: #ffb6a8;
+    border-color: rgba(255, 90, 64, 0.75);
+    background: rgba(95, 20, 14, 0.88);
+}
+
+.gw-tech-preset-action.disabled,
+.gw-tech-preset-action.disabled:hover {
+    color: #6f858c;
+    border-color: rgba(100, 130, 140, 0.24);
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: none;
+    cursor: default;
 }
 
 .gw-tech-picker-detail .card {

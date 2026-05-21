@@ -24,6 +24,73 @@
     <script id="cardTemplate">
         app.loadTemplate("coui://ui/main/game/galactic_war/shared/template/gwt_card");
     </script>
+    <script id="gwTechPresetControlsTemplate" type="text/html">
+        <div class="gw-tech-presets-button" data-bind="click: openGwTechPresetPicker, css: { editable: canEditGwTech }, click_sound: 'default', rollover_sound: 'default'">
+            <loc>PRESETS</loc>
+        </div>
+        <div class="gw-tech-picker gw-tech-preset-picker" data-bind="visible: showGwTechPresetPicker, css: { naming: gwTechPresetNamePromptVisible }, click: function() { return true; }, clickBubble: false" style="display: none;">
+            <input class="gw-tech-picker-search" type="text" data-bind="textInput: gwTechPresetSearch, attr: { placeholder: loc('!LOC:Search presets') }, clickBubble: false" />
+            <div class="gw-tech-preset-error" data-bind="visible: gwTechPresetError, text: gwTechPresetError"></div>
+            <div class="gw-tech-preset-name-prompt" data-bind="visible: gwTechPresetNamePromptVisible, clickBubble: false" style="display: none;">
+                <div class="gw-tech-preset-name-title" data-bind="text: gwTechPresetNamePromptTitle"></div>
+                <input class="gw-tech-preset-name-input" type="text" data-bind="textInput: gwTechPresetNamePromptValue, event: { keyup: handleGwTechPresetNamePromptKey }, clickBubble: false" />
+                <div class="gw-tech-preset-name-error" data-bind="visible: gwTechPresetNamePromptError, text: gwTechPresetNamePromptError"></div>
+                <div class="gw-tech-preset-name-actions">
+                    <div class="gw-tech-preset-action" data-bind="click: function(data, event) { commitGwTechPresetNamePrompt(false, event); }, text: gwTechPresetNamePromptActionText, click_sound: 'default', rollover_sound: 'default'"></div>
+                    <div class="gw-tech-preset-action" data-bind="visible: gwTechPresetNamePromptReplaceTarget, click: function(data, event) { commitGwTechPresetNamePrompt(true, event); }, click_sound: 'default', rollover_sound: 'default'">
+                        <loc>Replace Existing</loc>
+                    </div>
+                    <div class="gw-tech-preset-action" data-bind="click: cancelGwTechPresetNamePrompt, click_sound: 'default', rollover_sound: 'default'">
+                        <loc>Cancel</loc>
+                    </div>
+                </div>
+            </div>
+            <div class="gw-tech-picker-body gw-tech-preset-body">
+                <div class="gw-tech-picker-list gw-tech-preset-list">
+                    <div class="gw-tech-picker-empty" data-bind="visible: !gwTechVisiblePresetOptions().length">
+                        <loc>No saved presets</loc>
+                    </div>
+                    <!-- ko foreach: gwTechVisiblePresetOptions -->
+                    <div class="gw-tech-picker-item gw-tech-preset-item" data-bind="click: function(option) { $parent.setGwTechPresetDetailOption(option); }, event: { mouseenter: function(option) { $parent.setGwTechPresetDetailOption(option); } }, css: { selected: $parent.gwTechSelectedPresetOption() && id === $parent.gwTechSelectedPresetOption().id }, click_sound: 'default', rollover_sound: 'default'">
+                        <div class="gw-tech-preset-item-title" data-bind="text: name"></div>
+                        <div class="gw-tech-preset-item-meta">
+                            <span data-bind="text: loadoutSummaryText"></span>
+                            <span> / </span>
+                            <span data-bind="text: cardCountText"></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="gw-tech-picker-detail gw-tech-preset-detail" data-bind="with: gwTechPresetDetailOption">
+                    <div class="gw-tech-preset-detail-title" data-bind="text: name"></div>
+                    <div class="gw-tech-preset-detail-loadout" data-bind="text: loadoutSummaryText"></div>
+                    <div class="gw-tech-preset-card-preview" data-bind="foreach: cardPreviews">
+                        <div class="gw-tech-preset-card-chip">
+                            <img data-bind="visible: icon, attr: { src: icon }" />
+                            <span data-bind="text: summaryText"></span>
+                        </div>
+                    </div>
+                    <div class="gw-tech-picker-empty" data-bind="visible: !cards.length">
+                        <loc>No tech cards</loc>
+                    </div>
+                </div>
+            </div>
+            <div class="gw-tech-preset-actions">
+                <div class="gw-tech-preset-action" data-bind="click: applyGwTechPreset, css: { disabled: !canEditGwTech() || gwTechPresetApplying() || !gwTechPresetDetailOption() }, click_sound: 'default', rollover_sound: 'default'">
+                    <loc>Apply</loc>
+                </div>
+                <div class="gw-tech-preset-action" data-bind="click: saveCurrentGwTechPreset, css: { disabled: !canEditGwTech() }, click_sound: 'default', rollover_sound: 'default'">
+                    <loc>Save Current</loc>
+                </div>
+                <div class="gw-tech-preset-action" data-bind="click: renameGwTechPreset, css: { disabled: !canEditGwTech() || !gwTechPresetDetailOption() }, click_sound: 'default', rollover_sound: 'default'">
+                    <loc>Rename</loc>
+                </div>
+                <div class="gw-tech-preset-action danger" data-bind="click: deleteGwTechPreset, css: { disabled: !canEditGwTech() || !gwTechPresetDetailOption() }, click_sound: 'default', rollover_sound: 'default'">
+                    <loc>Delete</loc>
+                </div>
+            </div>
+        </div>
+    </script>
 
     <div class="gw-tech-hover-inspector" data-bind="visible: gwTechInspectorVisible, style: { left: gwTechInspectorLeft() + 'px', top: gwTechInspectorTop() + 'px' }, with: gwTechInspectorCard" style="display: none;">
         <!-- ko template: 'cardTemplate' -->
@@ -750,6 +817,8 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="gw-tech-strip" data-bind="visible: slot.showGwTech() && !army.sharedArmy(), clickBubble: false" style="display: none;">
+                                                                                                    <!-- ko template: { name: 'gwTechPresetControlsTemplate', data: slot } -->
+                                                                                                    <!-- /ko -->
                                                                                                     <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: slot.openGwTechLoadoutPicker, css: { editable: slot.canEditGwTech }, event: { mouseenter: slot.showGwTechLoadoutInspector, mousemove: slot.moveGwTechInspector, mouseleave: slot.hideGwTechInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                                         <!-- ko with: slot.gwTechLoadoutCard -->
                                                                                                         <img data-bind="visible: icon, attr: { src: icon }" />
@@ -819,6 +888,8 @@
                                                                                 </div>
                                                                                 <!-- ko with: army.gwTechSharedSlot -->
                                                                                 <div class="gw-tech-strip gw-tech-shared-strip" data-bind="visible: $parent.showGwTechShared, clickBubble: false" style="display: none;">
+                                                                                    <!-- ko template: { name: 'gwTechPresetControlsTemplate', data: $data } -->
+                                                                                    <!-- /ko -->
                                                                                     <div class="gw-tech-loadout gw-tech-card-tile" data-bind="click: openGwTechLoadoutPicker, css: { editable: canEditGwTech }, event: { mouseenter: showGwTechLoadoutInspector, mousemove: moveGwTechInspector, mouseleave: hideGwTechInspector }, click_sound: 'default', rollover_sound: 'default'">
                                                                                         <!-- ko with: gwTechLoadoutCard -->
                                                                                         <img data-bind="visible: icon, attr: { src: icon }" />
