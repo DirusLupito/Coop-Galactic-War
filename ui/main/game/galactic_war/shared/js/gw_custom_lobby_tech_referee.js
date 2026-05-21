@@ -24,6 +24,19 @@ define([
         return !!(owner && (owner.vanilla || owner.loadout === VANILLA_GW_TECH_LOADOUT));
     };
 
+    var getOwnerCommanders = function(owner) {
+        var commanders = [];
+
+        if (owner && _.isString(owner.commander)) {
+            commanders.push(owner.commander);
+        }
+        if (owner && _.isArray(owner.commanders)) {
+            commanders = commanders.concat(owner.commanders);
+        }
+
+        return _.uniq(_.filter(_.map(commanders, stripKnownSpecTag), _.isString));
+    };
+
     var setupGwoTechGlobals = function() {
         if (typeof model !== 'undefined') {
             model.gwoCardsGrantingAdvancedTech = GWO_CARDS_GRANTING_ADVANCED_TECH.slice(0);
@@ -232,7 +245,7 @@ define([
             getBaseUnitList().then(function(baseUnits) {
                 var vanillaInventory = ensureGwoInventoryCompatibility(new GWInventory());
                 vanillaInventory.load({
-                    units: baseUnits,
+                    units: _.uniq((baseUnits || []).concat(getOwnerCommanders(owner))),
                     cards: [],
                     tags: {
                         global: {
@@ -268,6 +281,10 @@ define([
             });
 
             inventory.applyCards(function() {
+                var missingOwnerCommanders = _.difference(getOwnerCommanders(owner), inventory.units());
+                if (missingOwnerCommanders.length) {
+                    inventory.addUnits(missingOwnerCommanders);
+                }
                 done.resolve(inventory);
             });
         }, function(reason) {

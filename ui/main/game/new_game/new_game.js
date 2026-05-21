@@ -2019,6 +2019,13 @@ $(document).ready(function()
                         color = [[255, 255, 255], [0, 0, 0]];
                     }
 
+                    var commanders = [slot.commander()];
+                    if (army.sharedArmy()) {
+                        commanders = _.map(occupiedSlots, function(occupiedSlot) {
+                            return occupiedSlot.commander();
+                        });
+                    }
+
                     owners.push({
                         owner_key: army.sharedArmy() ? ('army:' + army.index()) : ('slot:' + army.index() + ':' + slot.index()),
                         army_index: army.index(),
@@ -2030,6 +2037,7 @@ $(document).ready(function()
                         player_name: slot.playerName(),
                         ai: slot.ai(),
                         commander: slot.commander(),
+                        commanders: _.uniq(_.filter(commanders, _.isString)),
                         color: color,
                         personality: slot.ai() ? _.cloneDeep(model.aiPersonalities()[slot.aiPersonality()] || {}) : undefined,
                         loadout: slot.gwTechLoadout(),
