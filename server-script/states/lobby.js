@@ -2890,25 +2890,32 @@ function playerMsg_clientModManifest(msg)
         return lobbyModel.requiredClientModIdentifiers.indexOf(identifier) === -1;
     });
 
-    if (missingIdentifiers.length || extraIdentifiers.length)
+    if (extraIdentifiers.length)
+    {
+        console.log('[GW TECH] client reported extra GW-affecting client mods client=' + msg.client.id +
+            ' extras=' + extraIdentifiers.join(',') +
+            ' required=' + lobbyModel.requiredClientModIdentifiers.join(','));
+    }
+
+    if (missingIdentifiers.length)
     {
         lobbyModel.clientManifestValidatedByClientId[msg.client.id] = false;
-        lobbyModel.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, extraIdentifiers, activeRequiredNamesById);
+        lobbyModel.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, [], activeRequiredNamesById);
         lobbyModel.gwTechStartPending = undefined;
         lobbyModel.notifyGwTechHostStartBlocked({
-            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById),
+            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, [], activeRequiredNamesById),
             client_id: msg.client.id,
             client_name: msg.client.name,
             missing_identifiers: missingIdentifiers,
-            extra_identifiers: extraIdentifiers,
+            extra_identifiers: [],
             required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
             required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
             extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
         });
         return response.fail({
-            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById),
+            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, [], activeRequiredNamesById),
             missing_identifiers: missingIdentifiers,
-            extra_identifiers: extraIdentifiers,
+            extra_identifiers: [],
             required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
             required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
             extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
