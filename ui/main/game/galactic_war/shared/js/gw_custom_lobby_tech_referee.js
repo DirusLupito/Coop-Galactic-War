@@ -20,8 +20,8 @@ define([
         'gwaio_start_hoarder'
     ];
     var AI_BIAS_LOG_PREFIX = '[GW TECH AI BIAS] ';
-    var AI_BIAS_PRIORITY_MULTIPLIER_PER_SCORE = 3.0;
-    var AI_BIAS_COUNT_CAP_MULTIPLIER_PER_SCORE = 3.0;
+    var AI_BIAS_PRIORITY_MULTIPLIER_PER_SCORE = 1 / 3;
+    var AI_BIAS_COUNT_CAP_MULTIPLIER_PER_SCORE = 1 / 3;
     var CUSTOM_TECH_LOG_PREFIX = '[GW Custom Tech] ';
     var PENCHANT_FRAGMENT_TAGS = {
         allterrain: true,
