@@ -1112,6 +1112,21 @@ function LobbyModel(creator) {
         };
         self.gwTechConfigReadyByClientId = {};
 
+        var gwTechFilePaths = _.keys(self.gwTechConfig.files || {});
+        var gwTechAIPaths = _.filter(gwTechFilePaths, function(path)
+        {
+            return _.isString(path) && path.indexOf('/pa/ai_gw_tech/') === 0;
+        });
+        var gwTechPenchantPaths = _.filter(gwTechAIPaths, function(path)
+        {
+            return path.indexOf('/penchants/') >= 0;
+        });
+        console.log('[GW Custom Tech] accepted config files=' + gwTechFilePaths.length +
+            ' ai_files=' + gwTechAIPaths.length +
+            ' penchant_ai_files=' + gwTechPenchantPaths.length +
+            ' assignments=' + self.gwTechConfig.tag_assignments.length +
+            ' penchant_sample=' + gwTechPenchantPaths.slice(0, 8).join(','));
+
         var cookedFiles = _.mapValues(self.gwTechConfig.files, function(value)
         {
             if (typeof value !== 'string')
@@ -1399,7 +1414,14 @@ function LobbyModel(creator) {
                 var army = player && self.armies[player.armyIndex];
                 if (army && _.isString(assignment.tag))
                 {
-                    army.spec_tag = assignment.tag;
+                    army.spec_tag = _.isString(assignment.army_spec_tag)
+                        ? assignment.army_spec_tag
+                        : assignment.tag;
+                    console.log('[GW Custom Tech] final army tag player=' + (player && player.name || assignment.player_name || assignment.player_id || '') +
+                        ' assignment_tag=' + assignment.tag +
+                        ' army_spec_tag=' + army.spec_tag +
+                        ' personality=' + (assignment.personality && assignment.personality.name || '') +
+                        ' ai_path=' + (assignment.personality && assignment.personality.ai_path || ''));
                 }
             });
         }

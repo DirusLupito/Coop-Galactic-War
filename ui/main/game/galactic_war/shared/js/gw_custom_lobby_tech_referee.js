@@ -22,9 +22,35 @@ define([
     var AI_BIAS_LOG_PREFIX = '[GW TECH AI BIAS] ';
     var AI_BIAS_PRIORITY_MULTIPLIER_PER_SCORE = 3.0;
     var AI_BIAS_COUNT_CAP_MULTIPLIER_PER_SCORE = 3.0;
+    var CUSTOM_TECH_LOG_PREFIX = '[GW Custom Tech] ';
+    var PENCHANT_FRAGMENT_TAGS = {
+        allterrain: true,
+        artillery: true,
+        assault: true,
+        boomer: true,
+        fortress: true,
+        gwcartillery: true,
+        heavy: true,
+        infernodier: true,
+        minelayer: true,
+        nopercentage: true,
+        nuker: true,
+        platoonair: true,
+        platoonamphibious: true,
+        platoonhover: true,
+        platoonland: true,
+        raider: true,
+        sniper: true,
+        subcommander: true,
+        tactical: true
+    };
 
     var logAIBias = function(message) {
         console.log(AI_BIAS_LOG_PREFIX + message);
+    };
+
+    var logCustomTech = function(message) {
+        console.log(CUSTOM_TECH_LOG_PREFIX + message);
     };
 
     var ownerLogName = function(owner) {
@@ -187,6 +213,26 @@ define([
         return inventoryHasAIMods(inventory) || inventoryHasTechBiasSource(inventory);
     };
 
+    var normalizePersonalityTagForPath = function(value) {
+        if (!_.isString(value)) {
+            return '';
+        }
+
+        return value.toLowerCase().replace(/[^a-z0-9]/g, '');
+    };
+
+    var ownerHasKnownPenchantFragmentTag = function(owner) {
+        var tags = owner &&
+            owner.personality &&
+            _.isArray(owner.personality.personality_tags) &&
+            owner.personality.personality_tags ||
+            [];
+
+        return _.some(tags, function(tag) {
+            return !!PENCHANT_FRAGMENT_TAGS[normalizePersonalityTagForPath(tag)];
+        });
+    };
+
     var normalizeCards = function(cards) {
         var result = [];
 
@@ -219,7 +265,11 @@ define([
     };
 
     var getAIPathDestination = function(owner, tag, inventory) {
-        if (owner && owner.ai && tag && inventoryHasAIManagerInfluence(inventory)) {
+        if (owner &&
+            owner.ai &&
+            tag &&
+            (inventoryHasAIManagerInfluence(inventory) ||
+                (normalizeAIPath(owner) === '/pa/ai/' && ownerHasKnownPenchantFragmentTag(owner)))) {
             return '/pa/ai_gw_tech/' + tag.replace(/^\./, '') + '/';
         }
 
@@ -375,15 +425,42 @@ define([
         return done.promise();
     };
 
-    var generateAIPathFilesForOwner = function(owner, tag, inventory) {
-        var done = $.Deferred();
-        var aiPath = normalizeAIPath(owner);
-        var aiPathDestination = getAIPathDestination(owner, tag, inventory);
+    var buildPersonalityTagLookup = function(owner) {
+        var lookup = {};
+        var tags = owner && owner.personality && owner.personality.personality_tags || [];
 
-        if (aiPath === '/pa/ai/' && aiPathDestination === aiPath && !inventoryHasAIManagerInfluence(inventory)) {
-            done.resolve({});
-            return done.promise();
+        _.forEach(tags, function(tagName) {
+            var normalized = normalizePersonalityTagForPath(tagName);
+            if (normalized) {
+                lookup[normalized] = true;
+            }
+        });
+
+        return lookup;
+    };
+
+    var pathBaseNameWithoutJSON = function(path) {
+        if (!_.isString(path) || path.slice(-'.json'.length) !== '.json') {
+            return '';
         }
+
+        var parts = path.split('/');
+        return parts[parts.length - 1].slice(0, -'.json'.length);
+    };
+
+    var isPenchantManagerFragmentPath = function(path, aiPath) {
+        return _.isString(path) &&
+            path.indexOf(aiPath) === 0 &&
+            path.indexOf('/penchants/') >= 0 &&
+            (path.indexOf(aiPath + 'fabber_builds/penchants/') === 0 ||
+                path.indexOf(aiPath + 'factory_builds/penchants/') === 0 ||
+                path.indexOf(aiPath + 'platoon_builds/penchants/') === 0 ||
+                path.indexOf(aiPath + 'platoon_templates/penchants/') === 0) &&
+            path.slice(-'.json'.length) === '.json';
+    };
+
+    var copyVisibleAIManagerFiles = function(aiPath, aiPathDestination) {
+        var done = $.Deferred();
 
         api.file.list(aiPath, true).then(function(fileList) {
             var filesToProcess = [];
@@ -421,6 +498,183 @@ define([
         }, function() {
             logAIBias('ai-manager-list-failed source=' + aiPath + ' destination=' + aiPathDestination);
             done.resolve({});
+        });
+
+        return done.promise();
+    };
+
+    var normalizePathWithTrailingSlash = function(path) {
+        if (!_.isString(path) || !path.length) {
+            return '';
+        }
+
+        if (path.charAt(0) !== '/') {
+            path = '/' + path;
+        }
+
+        if (path.charAt(path.length - 1) !== '/') {
+            path = path + '/';
+        }
+
+        return path;
+    };
+
+    var addUniquePath = function(paths, path) {
+        path = normalizePathWithTrailingSlash(path);
+        if (path && paths.indexOf(path) < 0) {
+            paths.push(path);
+        }
+    };
+
+    var getConfiguredServerModAIPaths = function() {
+        var communityModsManager = typeof window !== 'undefined' && window.CommunityModsManager;
+        var result = [];
+        var mods;
+
+        if (!communityModsManager) {
+            return result;
+        }
+
+        if (_.isFunction(communityModsManager.activeServerModsToMount)) {
+            mods = communityModsManager.activeServerModsToMount();
+        }
+        else if (_.isFunction(communityModsManager.activeServerMods)) {
+            mods = communityModsManager.activeServerMods();
+        }
+        else {
+            mods = [];
+        }
+
+        _.forEach(mods || [], function(mod) {
+            var mountPath = normalizePathWithTrailingSlash(mod && mod.mountPath);
+            if (mountPath) {
+                addUniquePath(result, mountPath + 'pa/ai/');
+            }
+        });
+
+        return result;
+    };
+
+    var discoverMountedServerModAIPaths = function() {
+        var done = $.Deferred();
+        var result = getConfiguredServerModAIPaths();
+
+        api.file.list('/server_mods/', false).then(function(listing) {
+            _.forEach(listing || [], function(path) {
+                if (!_.isString(path) || path.charAt(path.length - 1) !== '/') {
+                    return;
+                }
+
+                if (path === '/server_mods/pa/') {
+                    addUniquePath(result, '/server_mods/pa/ai/');
+                    return;
+                }
+
+                if (path.indexOf('/server_mods/') === 0) {
+                    addUniquePath(result, path + 'pa/ai/');
+                }
+            });
+
+            logCustomTech('server-mod-ai-paths-discovered count=' + result.length + ' sources=' + result.join(','));
+            done.resolve(result);
+        }, function() {
+            logCustomTech('server-mod-root-list-failed configured_sources=' + result.join(','));
+            done.resolve(result);
+        });
+
+        return done.promise();
+    };
+
+    var copyActiveServerModPenchantFragmentsForOwner = function(owner, aiPath, aiPathDestination) {
+        var done = $.Deferred();
+        var tagLookup = buildPersonalityTagLookup(owner);
+        var tagNames = _.keys(tagLookup);
+
+        if (!owner || !owner.ai || aiPath !== '/pa/ai/' || aiPathDestination === aiPath || !tagNames.length) {
+            done.resolve({});
+            return done.promise();
+        }
+
+        discoverMountedServerModAIPaths().then(function(serverAIPaths) {
+            var listPromises = [];
+
+            _.forEach(serverAIPaths, function(serverAIPath) {
+                var listDone = $.Deferred();
+
+                api.file.list(serverAIPath, true).then(function(fileList) {
+                    var filesToProcess = [];
+
+                    _.forEach(fileList || [], function(path) {
+                        var fragmentName = normalizePersonalityTagForPath(pathBaseNameWithoutJSON(path));
+                        if (!isPenchantManagerFragmentPath(path, serverAIPath) || !tagLookup[fragmentName]) {
+                            return;
+                        }
+
+                        filesToProcess.push(getFileJSON(path).then(function(json) {
+                            var result = {};
+                            result[aiPathDestination + path.slice(serverAIPath.length)] = json;
+                            return result;
+                        }, function() {
+                            logCustomTech('failed-penchant-ai-fragment-load source=' + path);
+                            return {};
+                        }));
+                    });
+
+                    if (!filesToProcess.length) {
+                        listDone.resolve({});
+                        return;
+                    }
+
+                    $.when.apply($, filesToProcess).then(function() {
+                        var result = _.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments)));
+                        logCustomTech('penchant-ai-fragments-copied destination=' + aiPathDestination +
+                            ' count=' + _.keys(result).length +
+                            ' source=' + serverAIPath +
+                            ' tags=' + tagNames.join(','));
+                        listDone.resolve(result);
+                    }, function() {
+                        logCustomTech('penchant-ai-fragments-copy-failed destination=' + aiPathDestination +
+                            ' source=' + serverAIPath +
+                            ' tags=' + tagNames.join(','));
+                        listDone.resolve({});
+                    });
+                }, function() {
+                    listDone.resolve({});
+                });
+
+                listPromises.push(listDone.promise());
+            });
+
+            $.when.apply($, listPromises).then(function() {
+                var result = _.assign.apply(_, [{}].concat(Array.prototype.slice.call(arguments)));
+                if (!_.keys(result).length) {
+                    logCustomTech('penchant-ai-fragments-not-found destination=' + aiPathDestination +
+                        ' sources=' + serverAIPaths.join(',') +
+                        ' tags=' + tagNames.join(','));
+                }
+                done.resolve(result);
+            }, function() {
+                done.resolve({});
+            });
+        });
+
+        return done.promise();
+    };
+
+    var generateAIPathFilesForOwner = function(owner, tag, inventory) {
+        var done = $.Deferred();
+        var aiPath = normalizeAIPath(owner);
+        var aiPathDestination = getAIPathDestination(owner, tag, inventory);
+
+        if (aiPath === '/pa/ai/' && aiPathDestination === aiPath && !inventoryHasAIManagerInfluence(inventory)) {
+            done.resolve({});
+            return done.promise();
+        }
+
+        copyVisibleAIManagerFiles(aiPath, aiPathDestination).then(function(aiPathFiles) {
+            copyActiveServerModPenchantFragmentsForOwner(owner, aiPath, aiPathDestination).then(function(penchantFiles) {
+                done.resolve(_.assign({}, aiPathFiles || {}, penchantFiles || {}));
+            });
         });
 
         return done.promise();
@@ -473,10 +727,14 @@ define([
 
                 filesToProcess.push(getFileJSON(path).then(function(aiUnitMap) {
                     var result = {};
+                    var generatedAIUnitMap = GW.specs.genAIUnitMap(aiUnitMap, tag);
+
                     if (destination.indexOf(aiPathDestination) === 0 && aiPathDestination !== aiPath) {
-                        result[destination] = aiUnitMap;
+                        result[destination] = generatedAIUnitMap;
+                        return result;
                     }
-                    result[destination + tag] = GW.specs.genAIUnitMap(aiUnitMap, tag);
+
+                    result[destination + tag] = generatedAIUnitMap;
                     return result;
                 }, function() {
                     return {};
@@ -1233,8 +1491,10 @@ define([
                     var minionArmies = [];
                     var personality = owner.personality ? _.cloneDeep(owner.personality) : undefined;
                     var aiPathDestination = getAIPathDestination(owner, tag, inventory);
+                    var isolatedAIPath = owner.ai && aiPathDestination !== normalizeAIPath(owner);
+                    var armySpecTag = isolatedAIPath ? '' : tag;
 
-                    if (personality && owner.ai && aiPathDestination !== normalizeAIPath(owner)) {
+                    if (personality && isolatedAIPath) {
                         personality.ai_path = aiPathDestination;
                     }
 
@@ -1256,6 +1516,7 @@ define([
                         files: files,
                         assignment: _.assign({}, owner, {
                             tag: tag,
+                            army_spec_tag: armySpecTag,
                             commander: baseCommander + tag,
                             personality: personality,
                             inventory_mods: vanilla ? [] : _.cloneDeep(inventory.mods()),
