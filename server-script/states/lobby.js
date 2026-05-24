@@ -883,24 +883,6 @@ function LobbyModel(creator) {
         }, CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS);
     };
 
-    self.notifyGwTechHostStartBlocked = function(payload)
-    {
-        var hostClient = _.find(server.clients, function(client)
-        {
-            return client && client.connected && client.id === self.creator;
-        });
-
-        if (!hostClient)
-        {
-            return;
-        }
-
-        hostClient.message({
-            message_type: 'required_client_mods_missing',
-            payload: payload || {}
-        });
-    };
-
     self.requestClientManifest = function(client, reconnect)
     {
         if (!self.gwTechCardSlotsEnabled())
@@ -939,12 +921,7 @@ function LobbyModel(creator) {
             self.clearPendingManifestTimeout(client.id);
             self.clientManifestValidatedByClientId[client.id] = false;
             console.warn('[GW TECH] client mod manifest timeout client=' + client.id);
-            self.gwTechStartPending = undefined;
-            self.notifyGwTechHostStartBlocked({
-                reason: 'Timed out waiting for client mod manifest.',
-                client_id: client.id,
-                client_name: client.name
-            });
+            maybeResumePendingGwTechStart();
         }, CLIENT_MOD_MANIFEST_TIMEOUT_MS);
     };
 
@@ -1232,7 +1209,7 @@ function LobbyModel(creator) {
         });
     };
 
-    self.gwTechClientModsAllValid = function()
+    self.gwTechClientModsAllReported = function()
     {
         if (!self.gwTechCardSlotsEnabled() || !self.requiredClientModsPublished)
         {
@@ -1241,7 +1218,7 @@ function LobbyModel(creator) {
 
         return _.every(server.clients, function(client)
         {
-            return !client.connected || client.id === self.creator || self.clientManifestValidatedByClientId[client.id] === true;
+            return !client.connected || client.id === self.creator || _.has(self.clientManifestValidatedByClientId, client.id);
         });
     };
 
@@ -2615,7 +2592,7 @@ function beginStartCountdownForClient(client, countdown)
         return 'Server is not done gerating planets';
     }
 
-    if (lobbyModel.gwTechCardSlotsEnabled() && !lobbyModel.gwTechClientModsAllValid())
+    if (lobbyModel.gwTechCardSlotsEnabled() && !lobbyModel.gwTechClientModsAllReported())
     {
         if (lobbyModel.gwTechClientModsStillPending())
         {
@@ -2625,9 +2602,6 @@ function beginStartCountdownForClient(client, countdown)
             };
             return '';
         }
-
-        player.ready = false;
-        return 'Client mod validation failed';
     }
 
     if (lobbyModel.gwTechCardSlotsEnabled() && !lobbyModel.gwTechConfigAllClientsReady())
@@ -2678,7 +2652,7 @@ function beginStartCountdownForClient(client, countdown)
 function maybeResumePendingGwTechStart()
 {
     if (!lobbyModel.gwTechStartPending ||
-        !lobbyModel.gwTechClientModsAllValid() ||
+        !lobbyModel.gwTechClientModsAllReported() ||
         !lobbyModel.gwTechConfigAllClientsReady())
     {
         return;
@@ -2864,19 +2838,14 @@ function playerMsg_clientModManifest(msg)
     {
         lobbyModel.clientManifestValidatedByClientId[msg.client.id] = false;
         lobbyModel.notifyClientMissingRequiredMods(msg.client, undefined, undefined, payload.active_required_names_by_id);
-        lobbyModel.gwTechStartPending = undefined;
-        lobbyModel.notifyGwTechHostStartBlocked({
-            reason: lobbyModel.buildMissingRequiredModsReason(),
-            client_id: msg.client.id,
-            client_name: msg.client.name,
-            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
-            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById)
-        });
-        return response.fail({
+        response.succeed({
             reason: lobbyModel.buildMissingRequiredModsReason(),
             required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
-            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById)
+            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
+            requires_acknowledgement: true
         });
+        maybeResumePendingGwTechStart();
+        return;
     }
 
     var activeRequiredIdentifiers = lobbyModel.normalizeClientModIdentifiers(payload.active_required_identifiers);
@@ -2901,25 +2870,17 @@ function playerMsg_clientModManifest(msg)
     {
         lobbyModel.clientManifestValidatedByClientId[msg.client.id] = false;
         lobbyModel.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, [], activeRequiredNamesById);
-        lobbyModel.gwTechStartPending = undefined;
-        lobbyModel.notifyGwTechHostStartBlocked({
-            reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, [], activeRequiredNamesById),
-            client_id: msg.client.id,
-            client_name: msg.client.name,
-            missing_identifiers: missingIdentifiers,
-            extra_identifiers: [],
-            required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
-            required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
-            extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
-        });
-        return response.fail({
+        response.succeed({
             reason: lobbyModel.buildMissingRequiredModsReason(missingIdentifiers, [], activeRequiredNamesById),
             missing_identifiers: missingIdentifiers,
             extra_identifiers: [],
             required_identifiers: _.clone(lobbyModel.requiredClientModIdentifiers),
             required_names_by_id: _.cloneDeep(lobbyModel.requiredClientModNamesById),
-            extra_names_by_id: _.cloneDeep(activeRequiredNamesById)
+            extra_names_by_id: _.cloneDeep(activeRequiredNamesById),
+            requires_acknowledgement: true
         });
+        maybeResumePendingGwTechStart();
+        return;
     }
 
     lobbyModel.clientManifestValidatedByClientId[msg.client.id] = true;
