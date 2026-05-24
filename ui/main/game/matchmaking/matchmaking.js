@@ -21,6 +21,7 @@ $(document).ready(function()
         self.serverSetup = ko.observable().extend({ session: 'game_server_setup' });
         self.gameType = ko.observable().extend({ session: 'game_type' });
         self.gameModIdentifiers = ko.observableArray().extend({ session: 'game_mod_identifiers' });
+        self.gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
 
         self.currentTimeSeconds = UberUtility.getCurrentTimeObservable();
 
@@ -282,6 +283,7 @@ $(document).ready(function()
                 self.gameTicket(data.Ticket);
                 self.gameHostname(data.ServerHostname);
                 self.gamePort(data.ServerPort);
+                self.gameSteamId(data.steam_id || '');
                 self.connectionAttempts(3);
                 self.connectionRetryDelaySeconds(3);
 
