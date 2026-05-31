@@ -486,6 +486,7 @@ $(document).ready(function() {
                         return GWTeams.makeBoss(star, ai, teams[ai.team], systemTemplates).then(function() {
                             ai.faction = teamInfo[ai.team].faction;
                             teamInfo[ai.team].boss = ai;
+                            teamInfo[ai.team].bossStar = star;
                         });
                     },
                     breedToOrigin : game.isTutorial()
@@ -570,37 +571,60 @@ $(document).ready(function() {
                     //console.log("AI DIFF END: ");
                 };
 
+                var minionCountsForDistance = function(dist) {
+                    var numMinions = Math.floor((diffInfo.mandatoryMinions + ((dist / maxDist) * 2)) * diffInfo.minionMod);
+
+                    // Flat bonus applied to all AI systems based on the number of coop players.
+                    var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
+
+                    // Additional bonus based on the absolute number of jumps from the player's start.
+                    numMinionsToAdd += Math.floor(dist / AI_EXTRA_MINION_DISTANCE_INTERVAL) * numMinionsToAdd;
+
+                    if (perPlayerTechCards) {
+                        numMinionsToAdd = Math.ceil(numMinionsToAdd * PER_PLAYER_TECH_CARD_MINION_SCALING);
+                    }
+
+                    numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
+                    numMinions += numMinionsToAdd;
+
+                    return {
+                        total: numMinions,
+                        coopBonus: numMinionsToAdd
+                    };
+                };
+
                 _.forEach(teamInfo, function(info) {
                     if (info.boss) {
-                        setAIData(info.boss, maxDist, true);
-                        if( info.boss.minions )
-                        {
-                            _.forEach(info.boss.minions, function(minion)
-                            {
-                                setAIData(minion, maxDist, true);
-                            });
+                        var bossDist = info.bossStar.distance();
+                        var bossMinionCounts = minionCountsForDistance(bossDist);
+                        var scriptedMinionCount = info.boss.minions ? info.boss.minions.length : 0;
+                        var targetMinionCount = Math.max(scriptedMinionCount, bossMinionCounts.total);
+
+                        setAIData(info.boss, bossDist, true);
+
+                        if (!info.boss.minions) {
+                            info.boss.minions = [];
                         }
+
+                        _.times(targetMinionCount - info.boss.minions.length, function() {
+                            var mnn = _.sample(GWFactions[info.faction].minions);
+                            mnn.color = info.boss.color;
+                            info.boss.minions.push(mnn);
+                        });
+
+                        _.forEach(info.boss.minions, function(minion) {
+                            setAIData(minion, bossDist, true);
+                        });
+
+                        console.log("[GW COOP] Adding " + info.boss.minions.length + " minions for boss " + info.boss.name + " at distance " + bossDist + ", scripted minions: " + scriptedMinionCount + ", coop bonus: " + bossMinionCounts.coopBonus);
                     }
                     _.forEach(info.workers, function(worker) {
                         var dist = worker.star.distance();
                         setAIData(worker.ai, dist, false);
-                        var numMinions = Math.floor((diffInfo.mandatoryMinions + ((worker.star.distance() / maxDist) * 2)) * diffInfo.minionMod);
-                        
-                        // Now we add more minions if in coop to scale the difficulty.
+                        var workerMinionCounts = minionCountsForDistance(dist);
+                        var numMinions = workerMinionCounts.total;
 
-                        // Flat bonus applied to all AI systems based on the number of coop players.
-                        var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
-
-                        // Additional bonus based on the absolute number of jumps from the player's start.
-                        numMinionsToAdd += Math.floor(dist / AI_EXTRA_MINION_DISTANCE_INTERVAL) * numMinionsToAdd;
-
-                        if (perPlayerTechCards) {
-                            numMinionsToAdd = Math.ceil(numMinionsToAdd * PER_PLAYER_TECH_CARD_MINION_SCALING);
-                        }
-
-                        numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
-                        numMinions += numMinionsToAdd;
-                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist + ", coop bonus: " + numMinionsToAdd);
+                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist + ", coop bonus: " + workerMinionCounts.coopBonus);
 
                         if (numMinions > 0) {
 
