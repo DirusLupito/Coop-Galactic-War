@@ -889,12 +889,18 @@ function GWCampaignModel(creator) {
         var connectedClients = self.getConnectedClients();
         var modsData = server.getModsForBeacon();
         var hasFriendsList = bouncer.getWhitelist().length > 0;
+        var hostLoading = !!self.clientLoading[self.creatorId];
+
+        if (hostLoading) {
+            server.beacon = null;
+            return;
+        }
 
         // So if this lobby is PRIVATE in the sense that you don't
         // want anyone to join, or if you're forever alone
         // but mark it as friends only (thereby excluding everyone)
         // then there's no point in publishing it on the beacon since no one can join anyway.
-        var publish = self.settings.public || hasFriendsList;
+        var publish = !self.settings.hidden && (self.settings.public || hasFriendsList);
 
         if (!publish) {
             server.beacon = null;

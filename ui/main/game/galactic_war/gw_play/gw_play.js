@@ -2006,16 +2006,23 @@ requireGW([
         // Used to indicate that we've received all the necessary information from the server to consider the campaign state 
         // "authoritative" and ready for the player to start playing.
         self.markGwCampaignAuthoritativeStateReady = function(reason) {
-            if (!self.gwCampaignAuthoritativeStateReady())
+            if (!self.gwCampaignAuthoritativeStateReady()) {
                 console.log('[GW COOP] authoritative campaign state ready reason=' + (reason || 'unknown'));
+            }
 
             self.gwCampaignAuthoritativeStateReady(true);
 
             try {
-                if (game && game.id)
+                if (game && game.id) {
                     sessionStorage.setItem('gw_campaign_authoritative_game_id', String(game.id));
+                }
             }
             catch (e) {
+            }
+
+            if (self.isCampaignHost()) {
+                self.applyPendingGwCampaignRestartContext();
+                self.applySavedCoopSettingsToCampaignLobby();
             }
 
             self.reportGwCampaignLoading(false);
@@ -2194,18 +2201,36 @@ requireGW([
             if (_.has(context, 'shared_control'))
                 sharedControl = !!context.shared_control;
 
-            if (perPlayerTechCards)
+            if (perPlayerTechCards) {
                 sharedControl = false;
+            }
+
+            var gameName = _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle();
+            var tag = _.isString(settings.tag) ? settings.tag : 'Testing';
+            var isPublic = _.isBoolean(settings.public) ? settings.public : true;
+            var friends = _.isArray(access.friends) ? access.friends : [];
+            var password = _.isString(access.password) ? access.password : self.privateGamePassword();
+            var maxClients = _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients();
+
+            if (_.isString(gameName)) {
+                self.gwLobbyTitle(gameName);
+            }
+
+            self.visibilityMode(friends.length ? 'friends' : (isPublic ? 'public' : 'private'));
+            self.friends(friends);
+            self.privateGamePassword(password);
+            self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
+            self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedControl);
 
             self.send_message('modify_settings', {
-                game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
-                tag: _.isString(settings.tag) ? settings.tag : 'Testing',
-                public: _.isBoolean(settings.public) ? settings.public : true,
+                game_name: gameName,
+                tag: tag,
+                public: isPublic,
                 shared_control: sharedControl,
                 per_player_tech_cards: perPlayerTechCards,
-                max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
-                password: _.isString(access.password) ? access.password : self.privateGamePassword(),
-                friends: _.isArray(access.friends) ? access.friends : [],
+                max_clients: maxClients,
+                password: password,
+                friends: friends,
                 blocked: _.isArray(access.blocked) ? access.blocked : []
             });
 
