@@ -731,18 +731,10 @@ function GWCampaignModel(creator) {
     };
 
     self.hasPendingPlayerSetup = function() {
-        if (!self.perPlayerTechCards) {
-            return false;
-        }
-
         var connectedClients = self.getConnectedClients();
         return _.some(connectedClients, function(client) {
             if (!client || client.id === self.creatorId) {
                 return false;
-            }
-
-            if (self.clientRequiresLoadout(client)) {
-                return true;
             }
 
             if (self.clientLoading[client.id]) {
@@ -751,6 +743,14 @@ function GWCampaignModel(creator) {
 
             var loadingStatus = self.clientLoadingStatus[client.id] || '';
             if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards') {
+                return true;
+            }
+
+            if (!self.perPlayerTechCards) {
+                return false;
+            }
+
+            if (self.clientRequiresLoadout(client)) {
                 return true;
             }
 

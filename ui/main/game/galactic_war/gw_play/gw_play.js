@@ -1748,8 +1748,9 @@ requireGW([
         });
 
         self.gwCampaignPlayerSetupBlocked = ko.computed(function() {
-            if (!self.isCampaignHost() || !self.gwCampaignActive() || !self.gwCampaignPerPlayerTechCards())
+            if (!self.isCampaignHost() || !self.gwCampaignActive()) {
                 return false;
+            }
 
             var connected = _.isArray(self.gwCampaignConnectedClients()) ? self.gwCampaignConnectedClients() : [];
             return _.some(connected, function(client) {
@@ -1764,6 +1765,10 @@ requireGW([
                 var loadingStatus = client.loading_status || '';
                 if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards') {
                     return true;
+                }
+
+                if (!self.gwCampaignPerPlayerTechCards()) {
+                    return false;
                 }
 
                 var record = game && _.isFunction(game.findCoopPlayerInventoryData)
