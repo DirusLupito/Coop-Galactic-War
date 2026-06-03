@@ -1726,7 +1726,10 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Already left');
 
                 // In both lobbies and here, it seems like the blacklist doesn't actually do anything.
-                bouncer.addPlayerToBlacklist(id);
+                // Just kidding this is the cause of a mystery bug where you can become banned
+                // from a gw campaign until the host rehosts the campaign lobby but only
+                // after you play 2 battles in the campaign after rejoining from a kick???
+                // bouncer.addPlayerToBlacklist(id);  
                 targetClient.kill();
 
                 server.respond(msg).succeed();
