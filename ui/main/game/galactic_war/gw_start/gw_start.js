@@ -279,15 +279,11 @@ $(document).ready(function() {
                 self.newGameSharedByDefault(false);
         });
 
-        self.newGameCoopPlayersSpecified = ko.computed(function() {
-            var value = self.newGameCoopPlayers();
-            return !_.isUndefined(value) && value !== null && String(value).trim().length > 0;
-        });
-
         self.normalizedNewGameCoopPlayers = ko.computed(function() {
             var value = parseInt(self.newGameCoopPlayers());
-            if (!_.isFinite(value) || value < 1)
+            if (!_.isFinite(value) || value < 1) {
                 return 1;
+            }
             return Math.floor(value);
         });
 
@@ -371,7 +367,7 @@ $(document).ready(function() {
             game.hardcore(self.newGameHardcore());
             game.content(api.content.activeContent());
             game.coopPlayers(self.normalizedNewGameCoopPlayers());
-            game.coopPlayersSpecified(self.newGameCoopPlayersSpecified());
+            game.coopPlayersSpecified(true);
             game.lockCoopPlayers(self.newGameLockCoopPlayers());
             game.perPlayerTechCards(self.newGamePerPlayerTechCards());
             game.sharedByDefault(game.perPlayerTechCards() ? false : self.newGameSharedByDefault());
@@ -380,7 +376,7 @@ $(document).ready(function() {
             var systemTemplates = useEasySystems ? easy_system_templates : star_system_templates;
             var sizes = GW.balance.numberOfSystems;
             var size = sizes[self.newGameSizeIndex()] || 40;
-            var coopPlayersForGeneration = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+            var coopPlayersForGeneration = game.coopPlayers();
 
             if (self.creditsMode()) {
                 size = _.reduce(GWFactions, function(factionSum, faction) {
@@ -507,7 +503,7 @@ $(document).ready(function() {
                 var diffInfo = GW.balance.difficultyInfo[game.galaxy().difficultyIndex];
 
                 // We scale the economy rate of AIs to increase the difficulty in coop.
-                var coopPlayers = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+                var coopPlayers = game.coopPlayers();
                 var perPlayerTechCards = game.perPlayerTechCards();
                 console.log("[GW COOP] coop players for gw generation: " + coopPlayers + ", per-player tech cards: " + perPlayerTechCards);
 

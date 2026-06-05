@@ -1205,7 +1205,7 @@ requireGW([
         self.campaignLobbySettingsSync = false;
         // gwCampaignMaxClients is the number of clients that can currently connect to the current campaign session.
         // This can be raised or lowered by the host adding or removing slots in the lobby controls.
-        self.gwCampaignMaxClients = ko.observable(2);
+        self.gwCampaignMaxClients = ko.observable(1);
         // gwCampaignMaxClientsLimit is the maximum number of clients that can possibly connect to a campaign session. 
         // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
         self.gwCampaignMaxClientsLimit = ko.observable(12);
@@ -1312,21 +1312,10 @@ requireGW([
 
         self.savedCoopPlayers = function() {
             var value = game && _.isFunction(game.coopPlayers) ? parseInt(game.coopPlayers()) : 1;
-            if (!_.isFinite(value) || value < 1)
+            if (!_.isFinite(value) || value < 1) {
                 value = 1;
-            return Math.floor(value);
-        };
-
-        self.savedCoopLobbyPlayers = function() {
-            if (!self.savedCoopPlayersSpecified()) {
-                return 2;
             }
-
-            return self.savedCoopPlayers();
-        };
-
-        self.savedCoopPlayersSpecified = function() {
-            return !!(game && _.isFunction(game.coopPlayersSpecified) && game.coopPlayersSpecified());
+            return Math.floor(value);
         };
 
         self.savedCoopPlayersLocked = function() {
@@ -1376,12 +1365,13 @@ requireGW([
             };
 
             var parsedMaxClients = parseInt(maxClients);
-            if (_.isFinite(parsedMaxClients) && parsedMaxClients > 0)
+            if (_.isFinite(parsedMaxClients) && parsedMaxClients > 0) {
                 payload.max_clients = Math.floor(parsedMaxClients);
+            }
 
             if (self.savedCoopPlayersLocked()) {
                 payload.max_clients_locked = true;
-                payload.max_clients_limit = self.savedCoopLobbyPlayers();
+                payload.max_clients_limit = self.savedCoopPlayers();
             }
 
             return payload;
@@ -1399,21 +1389,15 @@ requireGW([
                 return;
             }
 
-            var playersSpecified = self.savedCoopPlayersSpecified();
             var playersLocked = self.savedCoopPlayersLocked();
             var sharedByDefault = self.savedSharedByDefault();
             var perPlayerTechCards = self.savedPerPlayerTechCards();
 
-            console.log('[GW COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault + ', per-player tech cards: ' + perPlayerTechCards);
-            if (!playersSpecified && !playersLocked && sharedByDefault && !perPlayerTechCards) {
-                self.initialCoopSettingsApplied = true;
-                console.log('[GW COOP] no saved coop settings to apply, marking as applied');
-                return;
-            }
+            console.log('[GW COOP] saved coop players: ' + self.savedCoopPlayers() + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault + ', per-player tech cards: ' + perPlayerTechCards);
 
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedByDefault);
-            var players = self.savedCoopLobbyPlayers();
+            var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
             console.log('[GW COOP] applying saved coop slot settings: ' + JSON.stringify(payload));

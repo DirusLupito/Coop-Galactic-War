@@ -64,16 +64,14 @@ define([], function() {
             });
         },
 
-        // 4 = Add co-op GW save state.
-        // Idk where version 3 is but it wasn't here before
-        // I made coop galactic war, so maybe it never needed a patch.
+        // 3 = Add co-op GW save state.
         function(game) {
             if (!_.isFunction(game.coopPlayers)) {
                 game.coopPlayers = ko.observable(1);
             }
 
             if (!_.isFunction(game.coopPlayersSpecified)) {
-                game.coopPlayersSpecified = ko.observable(false);
+                game.coopPlayersSpecified = ko.observable(true);
             }
 
             if (!_.isFunction(game.lockCoopPlayers)) {
@@ -88,7 +86,7 @@ define([], function() {
                 game.perPlayerTechCards = ko.observable(false);
             }
 
-            // As of version 4, we can't have each player
+            // As of version 3, we can't have each player
             // get their own tech cards and be in shared armies.
             if (game.perPlayerTechCards()) {
                 game.sharedByDefault(false);
