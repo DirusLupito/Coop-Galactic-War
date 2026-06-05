@@ -994,8 +994,9 @@ exports.enter = function (config) {
             var response = server.respond(msg);
             var sent = false;
 
-            if (isGalacticWar())
+            if (isGwCampaignCoopMatch()) {
                 sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request');
+            }
 
             response.succeed({
                 sent: sent,
