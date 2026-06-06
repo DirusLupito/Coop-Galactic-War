@@ -24,6 +24,8 @@ FILES_TO_COPY = [
      "ui/main/game/galactic_war/gw_start/gw_start.css"),
     ("ui/main/game/galactic_war/gw_start/gw_start.html",
      "ui/main/game/galactic_war/gw_start/gw_start.html"),
+    ("ui/main/game/galactic_war/gw_start/info_icon.png",
+     "ui/main/game/galactic_war/gw_start/info_icon.png"),
     ("ui/main/game/galactic_war/gw_play/gw_play.js",
      "ui/main/game/galactic_war/gw_play/gw_play.js"),
     ("ui/main/game/galactic_war/gw_play/gw_play.css",

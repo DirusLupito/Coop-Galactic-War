@@ -278,14 +278,138 @@ $(document).ready(function() {
             if (value)
                 self.newGameSharedByDefault(false);
         });
+        self.coopSettingsIcon = 'coui://ui/main/game/start/img/icon_community.png';
+        self.coopSettingsInfoIcon = 'coui://ui/main/game/galactic_war/gw_start/info_icon.png';
+        self.coopSettingsModalVisible = ko.observable(false);
+        self.draftNewGameCoopPlayers = ko.observable('');
+        self.draftNewGameSharedByDefault = ko.observable(true);
+        self.draftNewGamePerPlayerTechCards = ko.observable(false);
+        self.draftNewGameAllowExtraPlayersLater = ko.observable(true);
+        self.suppressMakeGameFromCoopApply = false;
 
         self.normalizedNewGameCoopPlayers = ko.computed(function() {
             var value = parseInt(self.newGameCoopPlayers());
             if (!_.isFinite(value) || value < 1) {
                 return 1;
             }
-            return Math.floor(value);
+            return Math.min(Math.floor(value), 999);
         });
+
+        var normalizeCoopPlayerCount = function(value) {
+            var parsed = parseInt(value);
+            if (!_.isFinite(parsed) || parsed < 1) {
+                return 1;
+            }
+            return Math.min(Math.floor(parsed), 999);
+        };
+
+        self.coopPlayersSummaryText = ko.computed(function() {
+            var players = self.normalizedNewGameCoopPlayers();
+            if (players === 1) {
+                return loc('!LOC:1 Player');
+            }
+
+            return loc('!LOC:__players__ Players', {
+                players: players
+            });
+        });
+
+        self.coopSharedSummaryText = ko.computed(function() {
+            return self.newGameSharedByDefault() && !self.newGamePerPlayerTechCards() ? loc('!LOC:Shared Control') : loc('!LOC:Separate Control');
+        });
+
+        self.coopLockSummaryText = ko.computed(function() {
+            return self.newGameLockCoopPlayers() ? loc('!LOC:Locked') : loc('!LOC:Unlocked');
+        });
+
+        self.coopPerPlayerTechSummaryText = ko.computed(function() {
+            return self.newGamePerPlayerTechCards() ? loc('!LOC:Separate Tech') : loc('!LOC:Shared Tech');
+        });
+
+        self.draftSharedByDefaultSwitchText = ko.computed(function() {
+            return self.draftNewGameSharedByDefault() && !self.draftNewGamePerPlayerTechCards() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftPerPlayerTechCardsSwitchText = ko.computed(function() {
+            return self.draftNewGamePerPlayerTechCards() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftAllowExtraPlayersLaterSwitchText = ko.computed(function() {
+            return self.draftNewGameAllowExtraPlayersLater() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftNewGamePerPlayerTechCards.subscribe(function(value) {
+            if (value) {
+                self.draftNewGameSharedByDefault(false);
+            }
+        });
+
+        self.clampingDraftNewGameCoopPlayers = false;
+        self.draftNewGameCoopPlayers.subscribe(function(value) {
+            if (self.clampingDraftNewGameCoopPlayers) {
+                return;
+            }
+
+            var parsed = parseInt(value);
+            if (!_.isFinite(parsed) || parsed <= 999) {
+                return;
+            }
+
+            self.clampingDraftNewGameCoopPlayers = true;
+            self.draftNewGameCoopPlayers('999');
+            self.clampingDraftNewGameCoopPlayers = false;
+        });
+
+        self.openCoopSettingsModal = function() {
+            self.draftNewGameCoopPlayers(self.normalizedNewGameCoopPlayers().toString());
+            self.draftNewGameSharedByDefault(self.newGamePerPlayerTechCards() ? false : self.newGameSharedByDefault());
+            self.draftNewGamePerPlayerTechCards(self.newGamePerPlayerTechCards());
+            self.draftNewGameAllowExtraPlayersLater(!self.newGameLockCoopPlayers());
+            self.coopSettingsModalVisible(true);
+        };
+
+        self.closeCoopSettingsModal = function() {
+            self.coopSettingsModalVisible(false);
+        };
+
+        self.toggleDraftNewGameSharedByDefault = function() {
+            if (self.draftNewGamePerPlayerTechCards()) {
+                return;
+            }
+
+            self.draftNewGameSharedByDefault(!self.draftNewGameSharedByDefault());
+        };
+
+        self.toggleDraftNewGamePerPlayerTechCards = function() {
+            self.draftNewGamePerPlayerTechCards(!self.draftNewGamePerPlayerTechCards());
+        };
+
+        self.toggleDraftNewGameAllowExtraPlayersLater = function() {
+            self.draftNewGameAllowExtraPlayersLater(!self.draftNewGameAllowExtraPlayersLater());
+        };
+
+        self.applyCoopSettingsModal = function() {
+            var coopPlayers = normalizeCoopPlayerCount(self.draftNewGameCoopPlayers());
+            var perPlayerTechCards = !!self.draftNewGamePerPlayerTechCards();
+            var sharedByDefault = perPlayerTechCards ? false : !!self.draftNewGameSharedByDefault();
+
+            self.suppressMakeGameFromCoopApply = true;
+            try {
+                self.newGameCoopPlayers(coopPlayers.toString());
+                self.newGamePerPlayerTechCards(perPlayerTechCards);
+                self.newGameSharedByDefault(sharedByDefault);
+                self.newGameLockCoopPlayers(!self.draftNewGameAllowExtraPlayersLater());
+            }
+            finally {
+                self.suppressMakeGameFromCoopApply = false;
+            }
+
+            self.coopSettingsModalVisible(false);
+
+            if (!self.creditsMode()) {
+                self.makeGame();
+            }
+        };
 
         self.startCards = ko.observableArray();
         self.activeStartCardIndex = ko.observable(0);
@@ -740,6 +864,8 @@ $(document).ready(function() {
 
         makeGameRule.subscribe(function() {
             if (self.creditsMode())
+                return;
+            if (self.suppressMakeGameFromCoopApply)
                 return;
             self.makeGame();
         });

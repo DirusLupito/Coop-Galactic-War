@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -101,31 +101,27 @@
                </div>
 
                 <div class="coop-setup-panel">
-                    <div class="coop-setup-title"><loc>Co-op Setup</loc></div>
-
-                    <div class="form-group">
-                        <label style="text-transform: none" id="coop-share-label">
-                            <input type="checkbox" data-bind="checked: newGameSharedByDefault, enable: !newGamePerPlayerTechCards()"/>
-                            <loc>Share control by default</loc> <span id="coop-share-settings" class="info_tip" data-bind="tooltip: '!LOC:Turn this on to default co-op lobbies to shared armies. This is only a default setting and can be changed mid-game.'">?</span>
-                        </label>
-                        <label style="text-transform: none" id="coop-per-player-tech-label">
-                            <input type="checkbox" data-bind="checked: newGamePerPlayerTechCards"/>
-                            <loc>Per-player loadout and tech</loc> <span id="coop-per-player-tech-settings" class="info_tip" data-bind="tooltip: '!LOC:Turning this on will allow each player to have their own unique loadout and tech card set. This will lock shared control to false.'">?</span>
-                        </label>
+                    <div class="coop-setup-heading">
+                        <img class="coop-setup-icon" data-bind="attr: { src: coopSettingsIcon }" />
+                        <div class="coop-setup-title"><loc>Co-op Campaign</loc></div>
                     </div>
-
-                    <div class="form-group">
-                        <p class="form-help"><loc>Starting a Galactic War with extra player slots will generate a more difficult campaign better suited for more players. If the number of slots is not locked you may still add more players after generation, but this will not affect difficulty.</loc></p>
-                        <label for="coop-players"><loc>Number of slots in co-op</loc> <span id="coop-players-settings" class="info_tip" data-bind="tooltip: '!LOC:Defaults to 1'">?</span></label>
-                        <input type="number" min="1" step="1" max="999" class="form-control" id="coop-players" name="coop-players" placeholder="1" data-bind="value: newGameCoopPlayers, valueUpdate: 'afterkeydown'" />
+                    <div class="coop-setup-summary">
+                        <div class="coop-setup-chip">
+                            <span data-bind="text: coopPlayersSummaryText"></span>
+                        </div>
+                        <div class="coop-setup-chip">
+                            <span data-bind="text: coopSharedSummaryText"></span>
+                        </div>
+                        <div class="coop-setup-chip">
+                            <span data-bind="text: coopLockSummaryText, css: { positive: !newGameLockCoopPlayers() }"></span>
+                        </div>
+                        <div class="coop-setup-chip">
+                            <span data-bind="text: coopPerPlayerTechSummaryText"></span>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label style="text-transform: none" id="coop-lock-label">
-                            <input type="checkbox" data-bind="checked: newGameLockCoopPlayers"/>
-                            <loc>Lock number of slots</loc> <span id="coop-lock-settings" class="info_tip" data-bind="tooltip: '!LOC:Locks the maximum number of players to the number of slots in co-op.'">?</span>
-                        </label>
-                   </div>
+                    <div class="coop-setup-configure" data-bind="click: openCoopSettingsModal, click_sound: 'default', rollover_sound: 'default'">
+                        <loc>Configure...</loc>
+                    </div>
                 </div>
 
 
@@ -183,6 +179,68 @@
     </div>
 </div>
 </div>
+
+<div id="gw-start-coop-settings-modal" class="gw-start-coop-settings-modal attendmouse" data-bind="visible: coopSettingsModalVisible" style="display: none;">
+    <div class="gw-start-coop-settings-panel">
+        <div class="gw-start-coop-settings-close" data-bind="click: closeCoopSettingsModal, click_sound: 'default', rollover_sound: 'default'"><noloc>X</noloc></div>
+        <div class="gw-start-coop-settings-title"><loc>Co-op Campaign</loc></div>
+
+        <div class="gw-start-coop-settings-intro">
+            <div class="gw-start-coop-settings-intro-text"><loc>Configure cooperative campaign settings.</loc></div>
+        </div>
+
+        <div class="gw-start-coop-settings-body">
+            <div class="gw-start-coop-player-row">
+                <span><loc>Generate campaign for</loc></span>
+                <input type="number" min="1" step="1" max="999" class="gw-start-coop-player-input" data-bind="value: draftNewGameCoopPlayers, valueUpdate: 'afterkeydown'" />
+                <span><loc>Players</loc></span>
+            </div>
+
+            <div class="gw-start-coop-switch-row" data-bind="css: { disabled: draftNewGamePerPlayerTechCards }">
+                <div class="gw-start-coop-switch-label">
+                    <loc>Shared control</loc>
+                    <span class="info_tip" data-bind="tooltip: '!LOC:Turn this on to default co-op lobbies to shared armies. This is only a default setting and can be changed mid-game.'">?</span>
+                </div>
+                <div class="gw-start-square-switch" data-bind="css: { on: draftNewGameSharedByDefault() && !draftNewGamePerPlayerTechCards(), disabled: draftNewGamePerPlayerTechCards }, click: toggleDraftNewGameSharedByDefault, click_sound: 'default', rollover_sound: 'default'">
+                    <span class="gw-start-square-switch-label" data-bind="text: draftSharedByDefaultSwitchText"></span>
+                    <span class="gw-start-square-switch-thumb"></span>
+                </div>
+            </div>
+
+            <div class="gw-start-coop-switch-row">
+                <div class="gw-start-coop-switch-label">
+                    <loc>Separate loadout &amp; tech</loc>
+                    <span class="info_tip" data-bind="tooltip: '!LOC:Turning this on will allow each player to have their own unique loadout and tech card set. This will lock shared control to off.'">?</span>
+                </div>
+                <div class="gw-start-square-switch" data-bind="css: { on: draftNewGamePerPlayerTechCards }, click: toggleDraftNewGamePerPlayerTechCards, click_sound: 'default', rollover_sound: 'default'">
+                    <span class="gw-start-square-switch-label" data-bind="text: draftPerPlayerTechCardsSwitchText"></span>
+                    <span class="gw-start-square-switch-thumb"></span>
+                </div>
+            </div>
+
+            <div class="gw-start-coop-switch-row">
+                <div class="gw-start-coop-switch-label">
+                    <loc>Allow extra players later</loc>
+                    <span class="info_tip" data-bind="tooltip: '!LOC:If enabled, more players may join after campaign generation than the specified player count. Difficulty will not be affected by these additional players.'">?</span>
+                </div>
+                <div class="gw-start-square-switch" data-bind="css: { on: draftNewGameAllowExtraPlayersLater }, click: toggleDraftNewGameAllowExtraPlayersLater, click_sound: 'default', rollover_sound: 'default'">
+                    <span class="gw-start-square-switch-label" data-bind="text: draftAllowExtraPlayersLaterSwitchText"></span>
+                    <span class="gw-start-square-switch-thumb"></span>
+                </div>
+            </div>
+
+            <div class="gw-start-coop-settings-note">
+                <img class="gw-start-coop-settings-note-icon" data-bind="attr: { src: coopSettingsInfoIcon }" />
+                <span><loc>The selected player count sets difficulty scaling when the war is generated. Allowing extra players lets others join later without changing the difficulty.</loc></span>
+            </div>
+        </div>
+
+        <div class="gw-start-coop-settings-apply btn_hero" data-bind="click: applyCoopSettingsModal, click_sound: 'default', rollover_sound: 'default'">
+            <div class="btn_label" style="padding: 0px 40px;"><loc>Apply Settings</loc></div>
+        </div>
+    </div>
+</div>
+
 <!-- COMMIT -->
 <div class="div_commit_cont">
     <div class="div_commit_secondary_options">
