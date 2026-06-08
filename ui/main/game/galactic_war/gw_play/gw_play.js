@@ -1550,12 +1550,23 @@ requireGW([
                 return false;
             }
 
+            var hostTechCardDealCount = _.isFunction(game.hostTechCardDealCount)
+                ? game.hostTechCardDealCount()
+                : undefined;
+            var existingTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord);
             var nextRecord = _.assign({}, _.cloneDeep(existingRecord), {
                 playerId: !_.isUndefined(existingRecord.playerId) ? existingRecord.playerId : host.id,
                 playerName: existingRecord.playerName || host.name,
                 inventory: inventory.save(),
                 updatedAt: _.now()
             });
+
+            if (_.isNumber(hostTechCardDealCount)) {
+                nextRecord.techCardDealCount = Math.max(existingTechCardDealCount, Math.max(0, Math.floor(hostTechCardDealCount)));
+                if (nextRecord.techCardDealCount !== existingTechCardDealCount) {
+                    console.log('[GW COOP] synced host co-op tech deal count reason=' + (reason || 'unknown') + ' player=' + (nextRecord.playerName || nextRecord.playerId || '<unknown>') + ' previous=' + existingTechCardDealCount + ' next=' + nextRecord.techCardDealCount + ' hostDeals=' + hostTechCardDealCount + '.');
+                }
+            }
 
             if (!game.upsertCoopPlayerInventoryData(nextRecord)) {
                 console.log('[GW COOP] Failed to sync host co-op inventory record for ' + (reason || 'unknown') + '.');
@@ -5022,12 +5033,118 @@ requireGW([
 
     var gwCampaignCoopMode = gwCampaignMode;
 
+    var restoreHostPerPlayerInventoryFromSave = function(game) {
+        var result = $.Deferred();
+
+        if (!gwCampaignCoopMode || !game) {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var hostOpening = safeStorageGet(window.sessionStorage, 'gw_campaign_host_opening');
+        if (hostOpening !== 'true') {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!_.isFunction(game.perPlayerTechCards) || !game.perPlayerTechCards()) {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!_.isFunction(game.findCoopPlayerInventoryData) || !_.isFunction(game.upsertCoopPlayerInventoryData) || !_.isFunction(game.inventory)) {
+            console.log('[GW COOP] Cannot restore host per-player inventory without campaign inventory helpers.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var localUberId = ko.observable().extend({ session: 'uberId' })();
+        var localDisplayName = ko.observable().extend({ session: 'displayName' })();
+        var record = game.findCoopPlayerInventoryData({
+            id: localUberId,
+            name: localDisplayName
+        });
+
+        if (!record) {
+            console.log('[GW COOP] No local co-op inventory record found for host inventory restore id=' + localUberId + ' name=' + localDisplayName + '.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!record.inventory || !_.isArray(record.inventory.cards) || !record.inventory.cards.length) {
+            console.log('[GW COOP] Local co-op inventory record is invalid for host inventory restore id=' + localUberId + ' name=' + localDisplayName + '.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var inventory = new GWInventory();
+        inventory.load(_.cloneDeep(record.inventory));
+        var campaignInventory = game.inventory();
+        var campaignPlayerFaction = campaignInventory && _.isFunction(campaignInventory.getTag)
+            ? campaignInventory.getTag('global', 'playerFaction')
+            : undefined;
+        var campaignPlayerColor = campaignInventory && _.isFunction(campaignInventory.getTag)
+            ? campaignInventory.getTag('global', 'playerColor')
+            : undefined;
+
+        inventory.applyCards(function() {
+            if (!_.isUndefined(campaignPlayerFaction)) {
+                inventory.setTag('global', 'playerFaction', campaignPlayerFaction);
+            }
+
+            if (!_.isUndefined(campaignPlayerColor)) {
+                inventory.setTag('global', 'playerColor', campaignPlayerColor);
+            }
+
+            var hostTechCardDealCount = _.isFunction(game.hostTechCardDealCount)
+                ? game.hostTechCardDealCount()
+                : undefined;
+            var existingTechCardDealCount = _.isNumber(record.techCardDealCount)
+                ? Math.max(0, Math.floor(record.techCardDealCount))
+                : 0;
+            var nextRecord = _.assign({}, _.cloneDeep(record), {
+                playerId: !_.isUndefined(record.playerId) ? record.playerId : localUberId,
+                playerName: record.playerName || localDisplayName,
+                inventory: inventory.save(),
+                updatedAt: _.now()
+            });
+
+            if (_.isNumber(hostTechCardDealCount)) {
+                nextRecord.techCardDealCount = Math.max(existingTechCardDealCount, Math.max(0, Math.floor(hostTechCardDealCount)));
+            }
+
+            if (nextRecord.pendingTechCards) {
+                console.log('[GW COOP] clearing stale pending tech cards while restoring local host inventory id=' + localUberId + ' name=' + localDisplayName + '.');
+                delete nextRecord.pendingTechCards;
+            }
+
+            if (!game.upsertCoopPlayerInventoryData(nextRecord)) {
+                console.log('[GW COOP] Failed to update local host co-op inventory record during restore id=' + localUberId + ' name=' + localDisplayName + '.');
+                result.resolve(game);
+                return;
+            }
+
+            game.inventory(inventory);
+            GW.manifest.saveGame(game).then(function() {
+                console.log('[GW COOP] restored host campaign inventory from local co-op record id=' + localUberId + ' name=' + localDisplayName + '.');
+                result.resolve(game);
+            }, function(err) {
+                console.error('[GW COOP] failed to save restored host campaign inventory', err);
+                result.resolve(game);
+            });
+        });
+
+        return result.promise();
+    };
+
     var gameLoader = GW.manifest.loadGame(activeGameId()).then(function(game) {
         if (game || !gwCampaignCoopMode)
             return game;
 
         console.log('[GW COOP] no local gw_active_game found, creating hidden co-op bootstrap game coopMode=' + gwCampaignCoopMode + ' queryMode=' + gwCampaignMode);
         return new GW.Game();
+    }).then(function(game) {
+        return restoreHostPerPlayerInventoryFromSave(game);
     });
     var documentLoader = $(document).ready();
 
