@@ -461,7 +461,7 @@ function LobbyModel(creator, launchContext) {
             max_players: server.maxClients,
             spectators: 0,
             max_spectators: 0,
-            mode: 'FreeForAll',
+            mode: 'GalacticWar',
             mod_names: modsData.names,
             mod_identifiers: modsData.identifiers,
             cheat_config: main.cheats,

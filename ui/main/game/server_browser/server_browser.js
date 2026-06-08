@@ -176,10 +176,15 @@ $(document).ready(function () {
 
         self.gameModeText = function(mode) {
             var lowerMode = mode.toLowerCase();
-            if (lowerMode === 'freeforall')
+            if (lowerMode === 'freeforall') {
                 return '!LOC:Free For All';
-            else if (lowerMode === 'teamarmies')
+            }
+            else if (lowerMode === 'galacticwar') {
+                return '!LOC:Galactic War';
+            }
+            else if (lowerMode === 'teamarmies') {
                 return '!LOC:Team Armies';
+            }
             return mode;
         };
 

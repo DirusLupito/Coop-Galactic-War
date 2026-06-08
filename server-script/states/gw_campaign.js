@@ -917,7 +917,7 @@ function GWCampaignModel(creator) {
             max_players: self.maxClients,
             spectators: 0,
             max_spectators: 0,
-            mode: 'FreeForAll',
+            mode: 'GalacticWar',
             mod_names: modsData.names,
             mod_identifiers: modsData.identifiers,
             cheat_config: main.cheats,

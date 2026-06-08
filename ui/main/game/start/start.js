@@ -2026,7 +2026,7 @@ $(document).ready(function ()
             var serverSetup = reconnectToGameInfo.setup;
             var gameType = reconnectToGameInfo.game;
 
-            if (gameType == 'Galactic War' || serverSetup == 'replay' || serverSetup == 'loadsave') {
+            if (serverSetup == 'replay' || serverSetup == 'loadsave') {
                 return false;
             }
 

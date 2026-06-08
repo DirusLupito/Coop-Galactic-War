@@ -648,10 +648,12 @@ $(document).ready(function () {
             // to PAExpansion1 when no content is explicitly provided.
             if (_.isEmpty(content)) {
                 var reconnectInfo = self.reconnectToGameInfo() || {};
-                if (_.isString(reconnectInfo.content) && reconnectInfo.content.length)
+                if (_.isString(reconnectInfo.content) && reconnectInfo.content.length) {
                     content = reconnectInfo.content;
-                else if (reconnectInfo.game === 'Galactic War')
+                }
+                else if (reconnectInfo.game === 'GalacticWar') {
                     content = 'PAExpansion1';
+                }
             }
 
             if (loadtime) {
