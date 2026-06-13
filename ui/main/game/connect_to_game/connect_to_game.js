@@ -8,17 +8,13 @@ $(document).ready(function () {
     var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
     var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
 
-    function isGalacticWarForConnect(payload) {
-        var serverGameType = payload
+    function isGwCampaignBattleForConnect(payload) {
+        var gwCampaignActive = payload
             && payload.data
             && payload.data.client
-            && payload.data.client.game_options
-            && payload.data.client.game_options.game_type;
-        var reconnectInfo = model.reconnectToGameInfo && model.reconnectToGameInfo();
-        var reconnectGameType = reconnectInfo && reconnectInfo.game;
+            && payload.data.client.gw_campaign_active === true;
 
-        return serverGameType === 'Galactic War'
-            || reconnectGameType === 'Galactic War';
+        return gwCampaignActive === true;
     }
 
     function isGwTechCardsForConnect(payload) {
@@ -669,10 +665,12 @@ $(document).ready(function () {
             // to PAExpansion1 when no content is explicitly provided.
             if (_.isEmpty(content)) {
                 var reconnectInfo = self.reconnectToGameInfo() || {};
-                if (_.isString(reconnectInfo.content) && reconnectInfo.content.length)
+                if (_.isString(reconnectInfo.content) && reconnectInfo.content.length) {
                     content = reconnectInfo.content;
-                else if (reconnectInfo.game === 'Galactic War')
+                }
+                else if (reconnectInfo.game === 'GalacticWar') {
                     content = 'PAExpansion1';
+                }
             }
 
             if (loadtime) {
@@ -995,7 +993,7 @@ $(document).ready(function () {
                 url = 'coui://ui/main/game/galactic_war/gw_campaign_loading/gw_campaign_loading.html?target=' + encodeURIComponent(campaignTarget);
             }
         }
-        else if (url === 'coui://ui/main/game/live_game/live_game.html' && (isGalacticWarForConnect(payload) || isGwTechCardsForConnect(payload))) {
+        else if (url === 'coui://ui/main/game/live_game/live_game.html' && (isGwCampaignBattleForConnect(payload) || isGwTechCardsForConnect(payload))) {
             var stagingUrl = 'coui://ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.html?target=' + encodeURIComponent(url);
 
             url = stagingUrl;

@@ -278,18 +278,138 @@ $(document).ready(function() {
             if (value)
                 self.newGameSharedByDefault(false);
         });
-
-        self.newGameCoopPlayersSpecified = ko.computed(function() {
-            var value = self.newGameCoopPlayers();
-            return !_.isUndefined(value) && value !== null && String(value).trim().length > 0;
-        });
+        self.coopSettingsIcon = 'coui://ui/main/game/start/img/icon_community.png';
+        self.coopSettingsInfoIcon = 'coui://ui/main/game/galactic_war/gw_start/info_icon.png';
+        self.coopSettingsModalVisible = ko.observable(false);
+        self.draftNewGameCoopPlayers = ko.observable('');
+        self.draftNewGameSharedByDefault = ko.observable(true);
+        self.draftNewGamePerPlayerTechCards = ko.observable(false);
+        self.draftNewGameAllowExtraPlayersLater = ko.observable(true);
+        self.suppressMakeGameFromCoopApply = false;
 
         self.normalizedNewGameCoopPlayers = ko.computed(function() {
             var value = parseInt(self.newGameCoopPlayers());
-            if (!_.isFinite(value) || value < 1)
+            if (!_.isFinite(value) || value < 1) {
                 return 1;
-            return Math.floor(value);
+            }
+            return Math.min(Math.floor(value), 999);
         });
+
+        var normalizeCoopPlayerCount = function(value) {
+            var parsed = parseInt(value);
+            if (!_.isFinite(parsed) || parsed < 1) {
+                return 1;
+            }
+            return Math.min(Math.floor(parsed), 999);
+        };
+
+        self.coopPlayersSummaryText = ko.computed(function() {
+            var players = self.normalizedNewGameCoopPlayers();
+            if (players === 1) {
+                return loc('!LOC:1 Player');
+            }
+
+            return loc('!LOC:__players__ Players', {
+                players: players
+            });
+        });
+
+        self.coopSharedSummaryText = ko.computed(function() {
+            return self.newGameSharedByDefault() && !self.newGamePerPlayerTechCards() ? loc('!LOC:Shared Control') : loc('!LOC:Separate Control');
+        });
+
+        self.coopLockSummaryText = ko.computed(function() {
+            return self.newGameLockCoopPlayers() ? loc('!LOC:Locked') : loc('!LOC:Unlocked');
+        });
+
+        self.coopPerPlayerTechSummaryText = ko.computed(function() {
+            return self.newGamePerPlayerTechCards() ? loc('!LOC:Separate Tech') : loc('!LOC:Shared Tech');
+        });
+
+        self.draftSharedByDefaultSwitchText = ko.computed(function() {
+            return self.draftNewGameSharedByDefault() && !self.draftNewGamePerPlayerTechCards() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftPerPlayerTechCardsSwitchText = ko.computed(function() {
+            return self.draftNewGamePerPlayerTechCards() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftAllowExtraPlayersLaterSwitchText = ko.computed(function() {
+            return self.draftNewGameAllowExtraPlayersLater() ? loc('!LOC:ON') : loc('!LOC:OFF');
+        });
+
+        self.draftNewGamePerPlayerTechCards.subscribe(function(value) {
+            if (value) {
+                self.draftNewGameSharedByDefault(false);
+            }
+        });
+
+        self.clampingDraftNewGameCoopPlayers = false;
+        self.draftNewGameCoopPlayers.subscribe(function(value) {
+            if (self.clampingDraftNewGameCoopPlayers) {
+                return;
+            }
+
+            var parsed = parseInt(value);
+            if (!_.isFinite(parsed) || parsed <= 999) {
+                return;
+            }
+
+            self.clampingDraftNewGameCoopPlayers = true;
+            self.draftNewGameCoopPlayers('999');
+            self.clampingDraftNewGameCoopPlayers = false;
+        });
+
+        self.openCoopSettingsModal = function() {
+            self.draftNewGameCoopPlayers(self.normalizedNewGameCoopPlayers().toString());
+            self.draftNewGameSharedByDefault(self.newGamePerPlayerTechCards() ? false : self.newGameSharedByDefault());
+            self.draftNewGamePerPlayerTechCards(self.newGamePerPlayerTechCards());
+            self.draftNewGameAllowExtraPlayersLater(!self.newGameLockCoopPlayers());
+            self.coopSettingsModalVisible(true);
+        };
+
+        self.closeCoopSettingsModal = function() {
+            self.coopSettingsModalVisible(false);
+        };
+
+        self.toggleDraftNewGameSharedByDefault = function() {
+            if (self.draftNewGamePerPlayerTechCards()) {
+                return;
+            }
+
+            self.draftNewGameSharedByDefault(!self.draftNewGameSharedByDefault());
+        };
+
+        self.toggleDraftNewGamePerPlayerTechCards = function() {
+            self.draftNewGamePerPlayerTechCards(!self.draftNewGamePerPlayerTechCards());
+        };
+
+        self.toggleDraftNewGameAllowExtraPlayersLater = function() {
+            self.draftNewGameAllowExtraPlayersLater(!self.draftNewGameAllowExtraPlayersLater());
+        };
+
+        self.applyCoopSettingsModal = function() {
+            var coopPlayers = normalizeCoopPlayerCount(self.draftNewGameCoopPlayers());
+            var perPlayerTechCards = !!self.draftNewGamePerPlayerTechCards();
+            var sharedByDefault = perPlayerTechCards ? false : !!self.draftNewGameSharedByDefault();
+
+            self.suppressMakeGameFromCoopApply = true;
+            try {
+                self.newGameCoopPlayers(coopPlayers.toString());
+                self.newGamePerPlayerTechCards(perPlayerTechCards);
+                self.newGameSharedByDefault(sharedByDefault);
+                self.newGameLockCoopPlayers(!self.draftNewGameAllowExtraPlayersLater());
+            }
+            finally {
+                self.suppressMakeGameFromCoopApply = false;
+            }
+
+            self.coopSettingsModalVisible(false);
+
+            if (!self.creditsMode()) {
+                self.makeGame();
+            }
+        };
 
         self.startCards = ko.observableArray();
         self.activeStartCardIndex = ko.observable(0);
@@ -371,7 +491,7 @@ $(document).ready(function() {
             game.hardcore(self.newGameHardcore());
             game.content(api.content.activeContent());
             game.coopPlayers(self.normalizedNewGameCoopPlayers());
-            game.coopPlayersSpecified(self.newGameCoopPlayersSpecified());
+            game.coopPlayersSpecified(true);
             game.lockCoopPlayers(self.newGameLockCoopPlayers());
             game.perPlayerTechCards(self.newGamePerPlayerTechCards());
             game.sharedByDefault(game.perPlayerTechCards() ? false : self.newGameSharedByDefault());
@@ -380,7 +500,7 @@ $(document).ready(function() {
             var systemTemplates = useEasySystems ? easy_system_templates : star_system_templates;
             var sizes = GW.balance.numberOfSystems;
             var size = sizes[self.newGameSizeIndex()] || 40;
-            var coopPlayersForGeneration = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+            var coopPlayersForGeneration = game.coopPlayers();
 
             if (self.creditsMode()) {
                 size = _.reduce(GWFactions, function(factionSum, faction) {
@@ -486,6 +606,7 @@ $(document).ready(function() {
                         return GWTeams.makeBoss(star, ai, teams[ai.team], systemTemplates).then(function() {
                             ai.faction = teamInfo[ai.team].faction;
                             teamInfo[ai.team].boss = ai;
+                            teamInfo[ai.team].bossStar = star;
                         });
                     },
                     breedToOrigin : game.isTutorial()
@@ -506,7 +627,7 @@ $(document).ready(function() {
                 var diffInfo = GW.balance.difficultyInfo[game.galaxy().difficultyIndex];
 
                 // We scale the economy rate of AIs to increase the difficulty in coop.
-                var coopPlayers = game.coopPlayersSpecified() ? game.coopPlayers() : 1;
+                var coopPlayers = game.coopPlayers();
                 var perPlayerTechCards = game.perPlayerTechCards();
                 console.log("[GW COOP] coop players for gw generation: " + coopPlayers + ", per-player tech cards: " + perPlayerTechCards);
 
@@ -570,37 +691,60 @@ $(document).ready(function() {
                     //console.log("AI DIFF END: ");
                 };
 
+                var minionCountsForDistance = function(dist) {
+                    var numMinions = Math.floor((diffInfo.mandatoryMinions + ((dist / maxDist) * 2)) * diffInfo.minionMod);
+
+                    // Flat bonus applied to all AI systems based on the number of coop players.
+                    var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
+
+                    // Additional bonus based on the absolute number of jumps from the player's start.
+                    numMinionsToAdd += Math.floor(dist / AI_EXTRA_MINION_DISTANCE_INTERVAL) * numMinionsToAdd;
+
+                    if (perPlayerTechCards) {
+                        numMinionsToAdd = Math.ceil(numMinionsToAdd * PER_PLAYER_TECH_CARD_MINION_SCALING);
+                    }
+
+                    numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
+                    numMinions += numMinionsToAdd;
+
+                    return {
+                        total: numMinions,
+                        coopBonus: numMinionsToAdd
+                    };
+                };
+
                 _.forEach(teamInfo, function(info) {
                     if (info.boss) {
-                        setAIData(info.boss, maxDist, true);
-                        if( info.boss.minions )
-                        {
-                            _.forEach(info.boss.minions, function(minion)
-                            {
-                                setAIData(minion, maxDist, true);
-                            });
+                        var bossDist = info.bossStar.distance();
+                        var bossMinionCounts = minionCountsForDistance(bossDist);
+                        var scriptedMinionCount = info.boss.minions ? info.boss.minions.length : 0;
+                        var targetMinionCount = Math.max(scriptedMinionCount, bossMinionCounts.total);
+
+                        setAIData(info.boss, bossDist, true);
+
+                        if (!info.boss.minions) {
+                            info.boss.minions = [];
                         }
+
+                        _.times(targetMinionCount - info.boss.minions.length, function() {
+                            var mnn = _.sample(GWFactions[info.faction].minions);
+                            mnn.color = info.boss.color;
+                            info.boss.minions.push(mnn);
+                        });
+
+                        _.forEach(info.boss.minions, function(minion) {
+                            setAIData(minion, bossDist, true);
+                        });
+
+                        console.log("[GW COOP] Adding " + info.boss.minions.length + " minions for boss " + info.boss.name + " at distance " + bossDist + ", scripted minions: " + scriptedMinionCount + ", coop bonus: " + bossMinionCounts.coopBonus);
                     }
                     _.forEach(info.workers, function(worker) {
                         var dist = worker.star.distance();
                         setAIData(worker.ai, dist, false);
-                        var numMinions = Math.floor((diffInfo.mandatoryMinions + ((worker.star.distance() / maxDist) * 2)) * diffInfo.minionMod);
-                        
-                        // Now we add more minions if in coop to scale the difficulty.
+                        var workerMinionCounts = minionCountsForDistance(dist);
+                        var numMinions = workerMinionCounts.total;
 
-                        // Flat bonus applied to all AI systems based on the number of coop players.
-                        var numMinionsToAdd = Math.floor((coopPlayers - 1) / AI_ADDITIONAL_PLAYERS_FOR_MINION) * AI_EXTRA_MINIONS_FROM_COOP_SCALING;
-
-                        // Additional bonus based on the absolute number of jumps from the player's start.
-                        numMinionsToAdd += Math.floor(dist / AI_EXTRA_MINION_DISTANCE_INTERVAL) * numMinionsToAdd;
-
-                        if (perPlayerTechCards) {
-                            numMinionsToAdd = Math.ceil(numMinionsToAdd * PER_PLAYER_TECH_CARD_MINION_SCALING);
-                        }
-
-                        numMinionsToAdd = Math.min(numMinionsToAdd, MAX_AI_EXTRA_MINIONS_FROM_COOP_SCALING);
-                        numMinions += numMinionsToAdd;
-                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist + ", coop bonus: " + numMinionsToAdd);
+                        console.log("[GW COOP] Adding " + numMinions + " minions for worker " + worker.ai.name + " at distance " + dist + ", coop bonus: " + workerMinionCounts.coopBonus);
 
                         if (numMinions > 0) {
 
@@ -720,6 +864,8 @@ $(document).ready(function() {
 
         makeGameRule.subscribe(function() {
             if (self.creditsMode())
+                return;
+            if (self.suppressMakeGameFromCoopApply)
                 return;
             self.makeGame();
         });

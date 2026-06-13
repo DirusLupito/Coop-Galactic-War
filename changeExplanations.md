@@ -118,6 +118,15 @@ The intent is to preserve the reasoning behind these changes so future contribut
   - `f3bd000` `Removed unused parameter in getCoopPlayerTechCardDealCount.`
   - `ddf96c2` `Steam P2P now works with autoreconnect.`
   - `96cc3ee` `Fixed issue where coop players saw different available tech.`
+  - `e52e988` `Fixed issue where boss difficulty was not scaled.`
+  - `d6f4c2d` `Loading clients always block fighting now.`
+  - `302776c` `Fixed race condition with SP2P and autoreconnects.`
+  - `c6a8dd5` `Kicks no longer ban players.`
+  - `b76fa99` `GW reconnects no longer crash in game_over.`
+  - `a9c2b4d` `Improved gw_start UI look.`
+  - `cfed3c5` `Num coop players now assumes 1 instead of 2.`
+  - `9364748` `Coop color picker now uses custom lobby colors.`
+  - `2750478` `Redesigned gw_start coop controls yet again.`
 
 ## High-Level Summary
 
@@ -143,6 +152,9 @@ At a high level, the codebase now does all of the following:
 16. Tightens post-merge behavior around required client mod mismatches, co-op galaxy generation, issue #33, and spawned-unit spec tagging.
 17. Preserves Steam networking metadata across GW campaign and battle lobby beacons, removes role-guessing from Continue War restart prep, and bounds GW config retry behavior.
 18. Reconnects Steam socket Continue War viewers by rediscovering the restarted lobby through the same remote, custom, and LAN beacon sources used by the multiplayer server browser.
+19. Applies co-op difficulty scaling to boss systems, makes one player the default intended co-op count, and keeps generated difficulty tied to the saved player count.
+20. Treats loading clients as battle blockers in every co-op campaign mode, hides Steam P2P beacons until the host is ready, and restores GW memory-file reconnect support in `game_over`.
+21. Makes campaign kicks disconnect-only, replaces random unshared army colors with deterministic custom-lobby colors, and redesigns the GW start co-op controls around a summary plus modal.
 
 ## Original Single-Player Galactic War File Model
 
@@ -3196,3 +3208,112 @@ The fix keeps the operator theory intact. We do not send a whole snapshot and we
 `cards` is the actual generic state. `extra_card_info` is optional metadata associated with that card offer. For now the only applied key is `card_name`, because that is the reviewed field needed by GWO's panel. This avoids inventing a GWO-specific "star intel" protocol while also avoiding an arbitrary mod-data tunnel.
 
 The host now observes star `cardList` changes and sends `sync_star_cards` when a mod or the base game changes a star's pending cards. Viewers apply the packet to their campaign game state, then the existing viewer-star sync copies that state into the map/view model. This makes newly revealed GWO systems behave like late-join systems: the host's card offer and display label are the only promise shown to co-op players.
+
+### Boss Difficulty Scaling Uses The Same Co-op Minion Rules (`e52e988`)
+
+Earlier co-op difficulty scaling added extra minions to normal AI systems, but boss systems still mostly followed their scripted setup. That meant increasing the campaign's intended co-op player count could make worker systems harder while leaving boss fights under-scaled relative to the rest of the war.
+
+This commit stores each team's boss star as `teamInfo[team].bossStar` when bosses are created, then reuses the same distance and co-op player minion math for boss systems. The old worker-only calculation was extracted into `minionCountsForDistance(dist)`, which returns both the final minion total and the co-op bonus count for logging. Bosses now get their AI difficulty data from their real star distance, are guaranteed to have a `minions` array, and receive sampled faction minions until they reach the larger of their scripted minion count and the co-op-scaled target.
+
+The implementation preserves authored boss setups by using `Math.max(scriptedMinionCount, bossMinionCounts.total)`. Scripted minions are not deleted or replaced just because the co-op formula would have produced fewer. If the formula produces more, the extra minions inherit the boss color and then all boss minions are passed through `setAIData` at the boss distance. The log line records total minions, scripted minions, distance, and co-op bonus, which is useful because boss difficulty can now change through both normal distance scaling and the co-op player-count modifiers.
+
+### Loading Clients Block Fighting Outside Per-Player Tech Too (`d6f4c2d`)
+
+The campaign host's fight controls were previously gated by `hasPendingPlayerSetup`, but that helper returned immediately when per-player tech cards were disabled. That made sense for loadout selection, pending tech-card deals, and catch-up mechanics, all of which belong to per-player tech. It was wrong for plain client loading state, because a viewer who is still loading the campaign map can still be left behind by a host starting a fight too quickly.
+
+This commit moved the universal blockers ahead of the per-player-tech-card check in both the server and host UI. In [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js), `hasPendingPlayerSetup()` now always checks connected non-host clients for `clientLoading` and `clientLoadingTimedOut` before returning `false` for non-per-player-tech campaigns. In [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js), `gwCampaignPlayerSetupBlocked` likewise stops requiring `gwCampaignPerPlayerTechCards()` before it considers loading or timeout state.
+
+The effect is that loading readiness is treated as a campaign synchronization concern, not as a tech-card feature. Per-player tech still controls the extra loadout, pending-card, and catch-up checks, but a loading viewer blocks fighting in every co-op campaign mode.
+
+### Steam P2P Autoreconnect Waits For Host Loading To Finish (`302776c`)
+
+The Steam P2P autoreconnect fix in `ddf96c2` rediscovered the restarted lobby through normal beacon sources, but there was still a race at startup: Steam game-server ids can change while the host's restarted server is coming up. If an autoreconnecting viewer discovered the campaign beacon during that unstable window, it could connect to a stale or temporary Steam id.
+
+The server-side fix in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js) hides the campaign beacon while the creator is marked loading:
+
+```js
+var hostLoading = !!self.clientLoading[self.creatorId];
+
+if (hostLoading) {
+    server.beacon = null;
+    return;
+}
+```
+
+The same publish calculation also gained the existing `hidden` setting, so a hidden campaign does not publish just because it is public or friends-visible. This keeps rediscovery from racing ahead of the host's actual campaign readiness.
+
+The client-side half in [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js) makes the host apply pending restart context and saved co-op lobby settings only after `markGwCampaignAuthoritativeStateReady`. That method already marks the campaign state as authoritative and reports loading complete, so it is the right lifecycle point for reopening the campaign to reconnecting viewers. `applySavedCoopSettingsToCampaignLobby` was also tightened so the UI observables and the server `modify_settings` payload are built from the same normalized values for name, tag, visibility, friends, password, max clients, shared control, and per-player tech.
+
+The assumption documented in the commit message is important: this works because the Steam id is expected to settle before the host reports loading complete. The code does not guess a better id. It removes the campaign from discovery until the existing loading protocol says the host is ready.
+
+### Kicking No Longer Adds Players To The Blacklist (`c6a8dd5`)
+
+The campaign kick handler used to call `bouncer.addPlayerToBlacklist(id)` before killing the target client. In practice that made a kick behave like a temporary ban from the current campaign server, with a strange delayed failure mode where a player could be unable to rejoin until the host rehosted the campaign lobby.
+
+This commit leaves the actual kick behavior intact by still calling `targetClient.kill()`, but comments out the blacklist insertion in [server-script/states/gw_campaign.js](server-script/states/gw_campaign.js). That makes "kick" mean "disconnect this player now" rather than "disconnect this player and deny future joins for some unclear lifetime." It also keeps the fix honest by preserving the comment about the observed mystery bug instead of pretending the blacklist was harmless.
+
+### Game-Over Reconnects Can Request GW Memory Files (`b76fa99`)
+
+GW reconnect staging expects to request generated memory files before entering `live_game`. That handler existed in the `playing` state, but not in `game_over`. If a client reconnected after the battle had ended, the request would route to `game_over`, get no useful response, and the client could proceed without the generated `.player`, `.player0`, `.ai`, or related unit files mounted. The crash happened later when the server referenced a tagged unit spec that the client had never loaded.
+
+This commit adds the missing game-over memory-file path to [server-script/states/game_over.js](server-script/states/game_over.js). `getReconnectReplayConfig()` pulls `server.getFullReplayConfig()` and requires it to contain `files`, logging clearly if those files are unavailable. `getReconnectUnitSpecTag(client)` finds the reconnecting client's player record and army `spec_tag`, with a loud log before defaulting to `.player` if the tag cannot be found. `sendReconnectMemoryFilesToClient()` then sends the memory file map, the client's unit spec tag, per-player tech tag assignments, and `gw_campaign_active`.
+
+The new `game_over` handlers mirror the live-game protocol:
+
+- `request_memory_files` tries to send files for co-op GW matches and responds with whether it sent them.
+- `memory_files_received` acknowledges the client response.
+
+The same commit also tightens the classifier used by reconnect staging. Older code checked whether the game mode was literally `"Galactic War"`, which no longer matched the actual co-op battle modes after the project settled on FFA/team-army compatible modes. [ui/main/game/connect_to_game/connect_to_game.js](ui/main/game/connect_to_game/connect_to_game.js) and [ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.js](ui/main/game/galactic_war/gw_reconnect_loading/gw_reconnect_loading.js) now use the explicit `gw_campaign_active === true` value sent in server state. [server-script/states/playing.js](server-script/states/playing.js) was adjusted the same way so reconnect memory files are gated to actual co-op GW campaign matches, not to a stale game-type name.
+
+This is a good example of the repo's "fix the lifecycle signal" rule. The correct fix was not to add more guesses about game names; it was to consume the modern server-owned `gw_campaign_active` signal and add the missing handler in the state that was actually receiving the request.
+
+### First Co-op Setup Panel Pass In `gw_start` (`a9c2b4d`)
+
+This commit improved the first-run campaign creation UI by grouping the co-op settings into a dedicated "Co-op Setup" panel in [ui/main/game/galactic_war/gw_start/gw_start.html](ui/main/game/galactic_war/gw_start/gw_start.html). Before this, the co-op options sat beside normal GW settings as individual labels and an input. The new panel made those controls read as one related setup area: shared control, per-player loadout and tech, intended co-op slot count, and slot locking.
+
+The CSS in [ui/main/game/galactic_war/gw_start/gw_start.css](ui/main/game/galactic_war/gw_start/gw_start.css) added the panel frame, title treatment, spacing rules, number-input sizing, and a short help paragraph style. The help text clarified the most important behavioral distinction: the player count chosen at campaign generation affects difficulty, while later extra joiners can be allowed only if the slot count is not locked and do not retroactively change generation difficulty.
+
+This pass also changed the visible number input placeholder and tooltip from a default of `2` to a default of `1`. The underlying save/default model was cleaned up in the next commit, but this UI change prepared the screen for the new interpretation: co-op settings exist even for a solo campaign, and explicit extra players are what make generation harder.
+
+### Co-op Player Count Defaults To One Everywhere (`cfed3c5`)
+
+Earlier co-op setup had an awkward split between "specified" and "unspecified" player counts. Some code treated an unspecified value as a two-slot lobby default, while generation treated unspecified as one player so solo campaigns were not over-scaled. That made it too easy for lobby setup, saved settings, and generation difficulty to disagree.
+
+This commit removes that split. [ui/main/game/galactic_war/shared/js/gw_game.js](ui/main/game/galactic_war/shared/js/gw_game.js) now initializes `coopPlayers` to `1` and `coopPlayersSpecified` to `true`, and loading old configs always normalizes the count to at least one while treating it as specified. The save patch in [ui/main/game/galactic_war/shared/js/gw_game_patches.js](ui/main/game/galactic_war/shared/js/gw_game_patches.js) follows the same rule for older saves that lack these observables.
+
+[ui/main/game/galactic_war/gw_start/gw_start.js](ui/main/game/galactic_war/gw_start/gw_start.js) no longer computes whether the input was blank. Creating a new campaign writes the normalized count and sets `coopPlayersSpecified(true)`. Galaxy generation and AI economy/minion scaling read `game.coopPlayers()` directly. In [ui/main/game/galactic_war/gw_play/gw_play.js](ui/main/game/galactic_war/gw_play/gw_play.js), the campaign lobby default maximum clients observable changed from `2` to `1`, the helper that invented a separate "lobby players" value was removed, and locked-slot limits now use the saved co-op player count directly.
+
+The resulting rule is simple: a campaign always has an intended co-op player count, and the default intended count is one. Slot locking, lobby max clients, galaxy generation, AI economy scaling, and minion scaling all work from that same normalized value instead of each making its own guess.
+
+### Unshared Co-op Colors Use The Custom-Lobby Palette (`9364748`)
+
+Unshared co-op creates one allied human army per player, so each army needs a distinct color. The earlier implementation kept the host faction color for player one and randomized later players near that faction color. That was unpredictable and could produce awkward or hard-to-distinguish results.
+
+This commit replaces the random variation scheme in [ui/main/game/galactic_war/gw_play/gw_coop_referee.js](ui/main/game/galactic_war/gw_play/gw_coop_referee.js) with a deterministic copy of the normal custom-game lobby primary color table. The code keeps the same base RGB values and the same brightness adjustment used by the lobby palette. It then sorts candidate primary colors by squared RGB distance from the host's faction primary color, skipping exact duplicates, and assigns the nearest available custom-lobby primaries to non-host human armies. Every generated co-op army keeps the host's secondary color.
+
+This gives the color picker three useful properties:
+
+- player one keeps the exact GW faction color,
+- later players get familiar lobby colors rather than arbitrary random colors,
+- the ordering stays visually related to the faction color because the closest primaries are used first.
+
+The function now builds all player color pairs up front with `getColorPairsForPlayerArmies(playerCount, factionColor)`. If the requested player count exceeds the available distinct lobby primaries, it logs that there are not enough custom-game lobby colors and returns failure instead of manufacturing dubious fallbacks. That matches the surrounding unshared-army generation style: if required setup data is not valid, stop with a useful log instead of silently creating a mysterious battle config.
+
+### Co-op Campaign Setup Moved Into A Summary Card And Modal (`2750478`)
+
+This was a larger UI redesign of the `gw_start` co-op controls. The earlier `a9c2b4d` panel put all settings directly on the right side of the start screen. This commit turns that area into a compact "Co-op Campaign" summary with four chips: player count, shared/separate control, locked/unlocked joining, and shared/separate tech. A "Configure..." button opens a dedicated modal for editing the settings.
+
+The modal in [ui/main/game/galactic_war/gw_start/gw_start.html](ui/main/game/galactic_war/gw_start/gw_start.html) uses draft observables rather than mutating the real campaign settings on every click. It has a bounded player-count input, square switch controls for shared control, separate loadout and tech, and whether extra players may join later. The wording changed from "lock number of slots" to the more player-facing "allow extra players later", with the stored value still written back as `newGameLockCoopPlayers(!allowExtraPlayersLater)`.
+
+The logic in [ui/main/game/galactic_war/gw_start/gw_start.js](ui/main/game/galactic_war/gw_start/gw_start.js) added:
+
+- summary computed values for the four chips,
+- draft modal state for player count, shared control, per-player tech, and extra-player allowance,
+- switch text computeds that render `ON` or `OFF`,
+- a draft subscription that forces shared control off when per-player tech is enabled,
+- player-count normalization and clamping to the UI's `1` through `999` range,
+- `openCoopSettingsModal`, `closeCoopSettingsModal`, toggle handlers, and `applyCoopSettingsModal`.
+
+Applying the modal copies the normalized draft values back to the real new-game observables, hides the modal, and regenerates the campaign preview with `makeGame()` when not in credits mode. The `suppressMakeGameFromCoopApply` flag prevents intermediate observable writes during apply from causing multiple preview regenerations before all related settings have been updated together.
+
+The CSS update is correspondingly large: it styles the summary, modal overlay, close button, player-count row, square switches, explanatory note, and apply button, while widening the right settings column from `300px` to `320px` and reducing the central loadout width accordingly. The commit also adds `info_icon.png` under both `art/` and the `gw_start` scene and updates [generate_mod.py](generate_mod.py) so the new scene-local icon is copied into the packaged mod.

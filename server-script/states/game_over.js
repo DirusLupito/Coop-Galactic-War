@@ -86,9 +86,60 @@ function playerMsg_controlSim(msg) {
  var playerMsg_writeReplay = function (msg) {
     var allow_save = (server.clients.length === 1) || !!game_options.sandbox;
 
-    if (allow_save && msg.payload.name)
+    if (allow_save && msg.payload.name) {
         server.writeReplay(msg.payload.name, 'replay');
+    }
 };
+
+function getReconnectReplayConfig() {
+    var fullReplayConfig = server.getFullReplayConfig && server.getFullReplayConfig();
+    if (!fullReplayConfig || !fullReplayConfig.files) {
+        console.log('[GW COOP] game_over reconnect memory files unavailable; full replay config files missing.');
+        return undefined;
+    }
+
+    return fullReplayConfig;
+}
+
+function getReconnectUnitSpecTag(client) {
+    var player = client && players[client.id];
+
+    if (!player) {
+        player = _.find(players, function(candidate) {
+            return candidate && candidate.client && client && candidate.client.id === client.id;
+        });
+    }
+
+    if (player && player.army && player.army.desc && _.isString(player.army.desc.spec_tag) && player.army.desc.spec_tag.length) {
+        return player.army.desc.spec_tag;
+    }
+
+    console.log('[GW COOP] game_over reconnect memory files could not find unit spec tag for client='
+        + (client && client.name)
+        + ' id=' + (client && client.id)
+        + '; defaulting to .player');
+    return '.player';
+}
+
+function sendReconnectMemoryFilesToClient(client, reason) {
+    var reconnectReplayConfig = getReconnectReplayConfig();
+
+    if (!reconnectReplayConfig) {
+        console.log('[GW COOP] game_over reconnect memory files not sent reason=' + reason);
+        return false;
+    }
+
+    client.message({
+        message_type: 'memory_files',
+        payload: {
+            files: reconnectReplayConfig.files,
+            unit_spec_tag: getReconnectUnitSpecTag(client),
+            per_player_tech_tag_assignments: reconnectReplayConfig.per_player_tech_tag_assignments,
+            gw_campaign_active: isGwCampaignCoopMatch()
+        }
+    });
+    return true;
+}
 
 // Helper that gates restart behavior to co-op GW battles only so we do not
 // alter non-co-op or non-GW game-over behavior.
@@ -416,7 +467,28 @@ exports.enter = function (game_over_data)
         control_sim: playerMsg_controlSim,
         write_replay: playerMsg_writeReplay,
         // Host-only co-op GW "Continue War" handler for full process restart.
-        gw_return_to_campaign_restart: playerMsg_gwReturnToCampaignRestart
+        gw_return_to_campaign_restart: playerMsg_gwReturnToCampaignRestart,
+        request_memory_files: function (msg) {
+            var response = server.respond(msg);
+            var sent = false;
+
+            if (isGwCampaignCoopMatch()) {
+                sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request_game_over');
+            }
+
+            response.succeed({
+                sent: sent,
+                game_type: game_options && game_options.game_type
+            });
+        },
+        memory_files_received: function (msg) {
+            var response = server.respond(msg);
+
+            response.succeed({
+                acknowledged: true,
+                game_type: game_options && game_options.game_type
+            });
+        }
     };
     _.assign(transientHandlers, chat_utils.getChatHandlers(game_over_data.players, { listen_to_spectators: true, ignore_defeated_state: true }));
     cleanup.push(server.setHandlers(transientHandlers));

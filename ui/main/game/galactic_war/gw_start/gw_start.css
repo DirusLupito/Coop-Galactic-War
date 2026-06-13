@@ -143,8 +143,314 @@
     text-align: left;
 }
 
+.coop-setup-panel {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 16px 0px 8px 0px;
+    padding: 14px 12px 14px 12px;
+    border: 1px solid rgba(0, 179, 255, 0.65);
+    background: rgba(0, 0, 0, 0.38);
+    box-shadow: inset 0px 0px 18px rgba(0, 179, 255, 0.18), 0px 0px 30px rgba(0, 0, 0, 0.75);
+}
+
+.coop-setup-heading {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 14px 0px;
+}
+
+.coop-setup-icon {
+    width: 28px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.coop-setup-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 12px #ffffff;
+}
+
+.coop-setup-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: 64px;
+    margin: 0px 0px 12px 0px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.42);
+}
+
+.coop-setup-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 50%;
+    height: 32px;
+    min-width: 0px;
+    padding: 0px 6px;
+    border-right: 1px solid rgba(255, 255, 255, 0.24);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+    color: #d8f3ff;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 8px #00B3FF;
+    white-space: nowrap;
+}
+
+.coop-setup-chip:nth-child(2n) {
+    border-right: 0px;
+}
+
+.coop-setup-chip:nth-child(n+3) {
+    border-bottom: 0px;
+}
+
+.coop-setup-chip .positive {
+    color: #b4ff00;
+    text-shadow: 0px 0px 8px rgba(180, 255, 0, 0.6);
+}
+
+.coop-setup-configure {
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 32px;
+    text-align: center;
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.coop-setup-configure:hover {
+    border-color: #00B3FF;
+    background: rgba(0, 179, 255, 0.16);
+    box-shadow: inset 0px 0px 14px rgba(0, 179, 255, 0.45), 0px 0px 22px rgba(0, 179, 255, 0.18);
+}
+
+.coop-setup-configure:active {
+    background: rgba(0, 179, 255, 0.35);
+    box-shadow: inset 0px 0px 14px rgba(0, 179, 255, 0.7), 0px 0px 22px rgba(0, 179, 255, 0.35);
+}
+
+.gw-start-coop-settings-modal {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+.gw-start-coop-settings-panel {
+    position: relative;
+    box-sizing: border-box;
+    width: 460px;
+    padding: 18px 24px 20px 24px;
+    border: 1px solid #00B3FF;
+    background: rgba(7, 12, 15, 0.96);
+    box-shadow: inset 0px 0px 24px rgba(0, 179, 255, 0.16), 0px 0px 32px rgba(0, 179, 255, 0.45), 0px 0px 80px rgba(0, 0, 0, 0.95);
+    color: #d8d8d8;
+}
+
+.gw-start-coop-settings-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    cursor: default;
+}
+
+.gw-start-coop-settings-close:hover {
+    border-color: #ffffff;
+    box-shadow: inset 0px 0px 12px rgba(255, 255, 255, 0.35), 0px 0px 18px rgba(0, 179, 255, 0.35);
+}
+
+.gw-start-coop-settings-title {
+    margin: 0px 36px 18px 36px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 12px #ffffff;
+}
+
+.gw-start-coop-settings-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 14px 22px 14px;
+}
+
+.gw-start-coop-settings-intro-text {
+    color: #d8d8d8;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.gw-start-coop-settings-body {
+    padding: 28px 20px 14px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.32);
+}
+
+.gw-start-coop-player-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    margin: 0px 10px 34px 10px;
+    color: #00B3FF;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 12px #00B3FF;
+    white-space: nowrap;
+}
+
+.gw-start-coop-player-row span {
+    flex-shrink: 0;
+}
+
+.gw-start-coop-player-input {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 42px;
+    height: 30px;
+    margin: 0px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: inset 0px 0px 8px rgba(0, 179, 255, 0.18);
+}
+
+.gw-start-coop-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 36px;
+    margin: 8px 0px;
+}
+
+.gw-start-coop-switch-row.disabled {
+    opacity: 0.65;
+}
+
+.gw-start-coop-switch-label {
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.gw-start-square-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 72px;
+    height: 30px;
+    padding: 0px 6px 0px 8px;
+    border: 1px solid #00B3FF;
+    background: rgba(0, 0, 0, 0.65);
+    color: #00B3FF;
+    cursor: default;
+    box-shadow: inset 0px 0px 8px rgba(0, 179, 255, 0.2);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.gw-start-square-switch.on {
+    background: #007fc2;
+    color: #ffffff;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.25), 0px 0px 14px rgba(0, 179, 255, 0.5);
+}
+
+.gw-start-square-switch.disabled {
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+.gw-start-square-switch:hover {
+    border-color: #ffffff;
+    box-shadow: inset 0px 0px 10px rgba(0, 179, 255, 0.45), 0px 0px 18px rgba(0, 179, 255, 0.35);
+}
+
+.gw-start-square-switch-label {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.gw-start-square-switch-thumb {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.35);
+}
+
+.gw-start-square-switch.on .gw-start-square-switch-thumb {
+    background: #ffffff;
+}
+
+.gw-start-coop-settings-note {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 16px;
+    padding: 10px 12px;
+    border: 1px solid rgba(0, 179, 255, 0.72);
+    background: rgba(0, 72, 112, 0.18);
+    color: #d8d8d8;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.gw-start-coop-settings-note-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+}
+
+.gw-start-coop-settings-apply {
+    margin: 18px auto 0px auto;
+    display: table;
+}
+
+.gw-start-coop-settings-apply:hover,
+.gw-start-coop-settings-apply:active {
+    display: table;
+}
+
 #new-game-right {
-    width: 300px;
+    width: 320px;
     display: inline-block;
 }
 
@@ -181,7 +487,7 @@
 
 #loadouts {
     position: relative;
-    width: calc(100% - 600px);
+    width: calc(100% - 620px);
     height: 100%;
     display: flex;
     flex-direction: column;

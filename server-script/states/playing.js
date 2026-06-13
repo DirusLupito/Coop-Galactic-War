@@ -1000,8 +1000,9 @@ exports.enter = function (config) {
             var response = server.respond(msg);
             var sent = false;
 
-            if (isGalacticWar() || isGwTechCardsMatch())
+            if (isGwCampaignCoopMatch() || isGwTechCardsMatch()) {
                 sent = sendReconnectMemoryFilesToClient(msg.client, 'client_request');
+            }
 
             response.succeed({
                 sent: sent,

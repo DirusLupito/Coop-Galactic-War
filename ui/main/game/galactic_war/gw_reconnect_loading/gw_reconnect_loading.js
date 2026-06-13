@@ -61,18 +61,17 @@ $(document).ready(function () {
     };
 
     handlers.server_state = function (msg) {
-        var serverGameType = msg
+        var gwCampaignActive = msg
             && msg.data
             && msg.data.client
-            && msg.data.client.game_options
-            && msg.data.client.game_options.game_type;
+            && msg.data.client.gw_campaign_active === true;
         var gwTechCardsActive = !!(msg
             && msg.data
             && msg.data.client
             && msg.data.client.game_options
             && msg.data.client.game_options.gw_tech_cards_active);
 
-        if (msg && msg.url === gwReconnectTarget && (serverGameType === 'Galactic War' || gwTechCardsActive) && !gwReconnectFilesReady) {
+        if (msg && msg.url === gwReconnectTarget && (gwCampaignActive === true || gwTechCardsActive) && !gwReconnectFilesReady) {
             model.pageSubTitle(loc('!LOC:Restoring Galactic War unit specs...'));
             requestReconnectMemoryFiles('gw_reconnect_server_state');
             return;

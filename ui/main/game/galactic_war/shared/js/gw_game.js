@@ -40,8 +40,8 @@ define([
         self.lastBattleResult = ko.observable();
         self.isTutorial = ko.observable();
         self.content = ko.observable();
-        self.coopPlayers = ko.observable(2);
-        self.coopPlayersSpecified = ko.observable(false);
+        self.coopPlayers = ko.observable(1);
+        self.coopPlayersSpecified = ko.observable(true);
         self.lockCoopPlayers = ko.observable(false);
         self.sharedByDefault = ko.observable(true);
         self.perPlayerTechCards = ko.observable(false);
@@ -116,7 +116,7 @@ define([
             self.content(config.content);
             var coopPlayers = parseInt(config.coopPlayers);
             self.coopPlayers(_.isFinite(coopPlayers) && coopPlayers > 0 ? Math.floor(coopPlayers) : 1);
-            self.coopPlayersSpecified(!!config.coopPlayersSpecified);
+            self.coopPlayersSpecified(true);
             self.lockCoopPlayers(!!config.lockCoopPlayers);
             self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
             self.perPlayerTechCards(_.has(config, 'perPlayerTechCards') ? !!config.perPlayerTechCards : false);

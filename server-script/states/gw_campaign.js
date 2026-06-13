@@ -731,18 +731,10 @@ function GWCampaignModel(creator) {
     };
 
     self.hasPendingPlayerSetup = function() {
-        if (!self.perPlayerTechCards) {
-            return false;
-        }
-
         var connectedClients = self.getConnectedClients();
         return _.some(connectedClients, function(client) {
             if (!client || client.id === self.creatorId) {
                 return false;
-            }
-
-            if (self.clientRequiresLoadout(client)) {
-                return true;
             }
 
             if (self.clientLoading[client.id]) {
@@ -751,6 +743,14 @@ function GWCampaignModel(creator) {
 
             var loadingStatus = self.clientLoadingStatus[client.id] || '';
             if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards') {
+                return true;
+            }
+
+            if (!self.perPlayerTechCards) {
+                return false;
+            }
+
+            if (self.clientRequiresLoadout(client)) {
                 return true;
             }
 
@@ -889,12 +889,18 @@ function GWCampaignModel(creator) {
         var connectedClients = self.getConnectedClients();
         var modsData = server.getModsForBeacon();
         var hasFriendsList = bouncer.getWhitelist().length > 0;
+        var hostLoading = !!self.clientLoading[self.creatorId];
+
+        if (hostLoading) {
+            server.beacon = null;
+            return;
+        }
 
         // So if this lobby is PRIVATE in the sense that you don't
         // want anyone to join, or if you're forever alone
         // but mark it as friends only (thereby excluding everyone)
         // then there's no point in publishing it on the beacon since no one can join anyway.
-        var publish = self.settings.public || hasFriendsList;
+        var publish = !self.settings.hidden && (self.settings.public || hasFriendsList);
 
         if (!publish) {
             server.beacon = null;
@@ -911,7 +917,7 @@ function GWCampaignModel(creator) {
             max_players: self.maxClients,
             spectators: 0,
             max_spectators: 0,
-            mode: 'FreeForAll',
+            mode: 'GalacticWar',
             mod_names: modsData.names,
             mod_identifiers: modsData.identifiers,
             cheat_config: main.cheats,
@@ -1720,7 +1726,10 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Already left');
 
                 // In both lobbies and here, it seems like the blacklist doesn't actually do anything.
-                bouncer.addPlayerToBlacklist(id);
+                // Just kidding this is the cause of a mystery bug where you can become banned
+                // from a gw campaign until the host rehosts the campaign lobby but only
+                // after you play 2 battles in the campaign after rejoining from a kick???
+                // bouncer.addPlayerToBlacklist(id);  
                 targetClient.kill();
 
                 server.respond(msg).succeed();

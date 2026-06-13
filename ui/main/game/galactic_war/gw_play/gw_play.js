@@ -1205,7 +1205,7 @@ requireGW([
         self.campaignLobbySettingsSync = false;
         // gwCampaignMaxClients is the number of clients that can currently connect to the current campaign session.
         // This can be raised or lowered by the host adding or removing slots in the lobby controls.
-        self.gwCampaignMaxClients = ko.observable(2);
+        self.gwCampaignMaxClients = ko.observable(1);
         // gwCampaignMaxClientsLimit is the maximum number of clients that can possibly connect to a campaign session. 
         // This is a hard limit that is not allowed to be exceeded, and is used to cap the maximum value of gwCampaignMaxClients.
         self.gwCampaignMaxClientsLimit = ko.observable(12);
@@ -1312,21 +1312,10 @@ requireGW([
 
         self.savedCoopPlayers = function() {
             var value = game && _.isFunction(game.coopPlayers) ? parseInt(game.coopPlayers()) : 1;
-            if (!_.isFinite(value) || value < 1)
+            if (!_.isFinite(value) || value < 1) {
                 value = 1;
-            return Math.floor(value);
-        };
-
-        self.savedCoopLobbyPlayers = function() {
-            if (!self.savedCoopPlayersSpecified()) {
-                return 2;
             }
-
-            return self.savedCoopPlayers();
-        };
-
-        self.savedCoopPlayersSpecified = function() {
-            return !!(game && _.isFunction(game.coopPlayersSpecified) && game.coopPlayersSpecified());
+            return Math.floor(value);
         };
 
         self.savedCoopPlayersLocked = function() {
@@ -1376,12 +1365,13 @@ requireGW([
             };
 
             var parsedMaxClients = parseInt(maxClients);
-            if (_.isFinite(parsedMaxClients) && parsedMaxClients > 0)
+            if (_.isFinite(parsedMaxClients) && parsedMaxClients > 0) {
                 payload.max_clients = Math.floor(parsedMaxClients);
+            }
 
             if (self.savedCoopPlayersLocked()) {
                 payload.max_clients_locked = true;
-                payload.max_clients_limit = self.savedCoopLobbyPlayers();
+                payload.max_clients_limit = self.savedCoopPlayers();
             }
 
             return payload;
@@ -1399,21 +1389,15 @@ requireGW([
                 return;
             }
 
-            var playersSpecified = self.savedCoopPlayersSpecified();
             var playersLocked = self.savedCoopPlayersLocked();
             var sharedByDefault = self.savedSharedByDefault();
             var perPlayerTechCards = self.savedPerPlayerTechCards();
 
-            console.log('[GW COOP] saved coop players specified: ' + playersSpecified + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault + ', per-player tech cards: ' + perPlayerTechCards);
-            if (!playersSpecified && !playersLocked && sharedByDefault && !perPlayerTechCards) {
-                self.initialCoopSettingsApplied = true;
-                console.log('[GW COOP] no saved coop settings to apply, marking as applied');
-                return;
-            }
+            console.log('[GW COOP] saved coop players: ' + self.savedCoopPlayers() + ', locked: ' + playersLocked + ', shared: ' + sharedByDefault + ', per-player tech cards: ' + perPlayerTechCards);
 
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedByDefault);
-            var players = self.savedCoopLobbyPlayers();
+            var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
             console.log('[GW COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
@@ -1566,12 +1550,23 @@ requireGW([
                 return false;
             }
 
+            var hostTechCardDealCount = _.isFunction(game.hostTechCardDealCount)
+                ? game.hostTechCardDealCount()
+                : undefined;
+            var existingTechCardDealCount = self.getCoopPlayerTechCardDealCount(existingRecord);
             var nextRecord = _.assign({}, _.cloneDeep(existingRecord), {
                 playerId: !_.isUndefined(existingRecord.playerId) ? existingRecord.playerId : host.id,
                 playerName: existingRecord.playerName || host.name,
                 inventory: inventory.save(),
                 updatedAt: _.now()
             });
+
+            if (_.isNumber(hostTechCardDealCount)) {
+                nextRecord.techCardDealCount = Math.max(existingTechCardDealCount, Math.max(0, Math.floor(hostTechCardDealCount)));
+                if (nextRecord.techCardDealCount !== existingTechCardDealCount) {
+                    console.log('[GW COOP] synced host co-op tech deal count reason=' + (reason || 'unknown') + ' player=' + (nextRecord.playerName || nextRecord.playerId || '<unknown>') + ' previous=' + existingTechCardDealCount + ' next=' + nextRecord.techCardDealCount + ' hostDeals=' + hostTechCardDealCount + '.');
+                }
+            }
 
             if (!game.upsertCoopPlayerInventoryData(nextRecord)) {
                 console.log('[GW COOP] Failed to sync host co-op inventory record for ' + (reason || 'unknown') + '.');
@@ -1748,8 +1743,9 @@ requireGW([
         });
 
         self.gwCampaignPlayerSetupBlocked = ko.computed(function() {
-            if (!self.isCampaignHost() || !self.gwCampaignActive() || !self.gwCampaignPerPlayerTechCards())
+            if (!self.isCampaignHost() || !self.gwCampaignActive()) {
                 return false;
+            }
 
             var connected = _.isArray(self.gwCampaignConnectedClients()) ? self.gwCampaignConnectedClients() : [];
             return _.some(connected, function(client) {
@@ -1764,6 +1760,10 @@ requireGW([
                 var loadingStatus = client.loading_status || '';
                 if (loadingStatus === 'picking_loadout' || loadingStatus === 'picking_tech_cards') {
                     return true;
+                }
+
+                if (!self.gwCampaignPerPlayerTechCards()) {
+                    return false;
                 }
 
                 var record = game && _.isFunction(game.findCoopPlayerInventoryData)
@@ -2001,16 +2001,23 @@ requireGW([
         // Used to indicate that we've received all the necessary information from the server to consider the campaign state 
         // "authoritative" and ready for the player to start playing.
         self.markGwCampaignAuthoritativeStateReady = function(reason) {
-            if (!self.gwCampaignAuthoritativeStateReady())
+            if (!self.gwCampaignAuthoritativeStateReady()) {
                 console.log('[GW COOP] authoritative campaign state ready reason=' + (reason || 'unknown'));
+            }
 
             self.gwCampaignAuthoritativeStateReady(true);
 
             try {
-                if (game && game.id)
+                if (game && game.id) {
                     sessionStorage.setItem('gw_campaign_authoritative_game_id', String(game.id));
+                }
             }
             catch (e) {
+            }
+
+            if (self.isCampaignHost()) {
+                self.applyPendingGwCampaignRestartContext();
+                self.applySavedCoopSettingsToCampaignLobby();
             }
 
             self.reportGwCampaignLoading(false);
@@ -2189,18 +2196,36 @@ requireGW([
             if (_.has(context, 'shared_control'))
                 sharedControl = !!context.shared_control;
 
-            if (perPlayerTechCards)
+            if (perPlayerTechCards) {
                 sharedControl = false;
+            }
+
+            var gameName = _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle();
+            var tag = _.isString(settings.tag) ? settings.tag : 'Testing';
+            var isPublic = _.isBoolean(settings.public) ? settings.public : true;
+            var friends = _.isArray(access.friends) ? access.friends : [];
+            var password = _.isString(access.password) ? access.password : self.privateGamePassword();
+            var maxClients = _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients();
+
+            if (_.isString(gameName)) {
+                self.gwLobbyTitle(gameName);
+            }
+
+            self.visibilityMode(friends.length ? 'friends' : (isPublic ? 'public' : 'private'));
+            self.friends(friends);
+            self.privateGamePassword(password);
+            self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
+            self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedControl);
 
             self.send_message('modify_settings', {
-                game_name: _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle(),
-                tag: _.isString(settings.tag) ? settings.tag : 'Testing',
-                public: _.isBoolean(settings.public) ? settings.public : true,
+                game_name: gameName,
+                tag: tag,
+                public: isPublic,
                 shared_control: sharedControl,
                 per_player_tech_cards: perPlayerTechCards,
-                max_clients: _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients(),
-                password: _.isString(access.password) ? access.password : self.privateGamePassword(),
-                friends: _.isArray(access.friends) ? access.friends : [],
+                max_clients: maxClients,
+                password: password,
+                friends: friends,
                 blocked: _.isArray(access.blocked) ? access.blocked : []
             });
 
@@ -5008,12 +5033,118 @@ requireGW([
 
     var gwCampaignCoopMode = gwCampaignMode;
 
+    var restoreHostPerPlayerInventoryFromSave = function(game) {
+        var result = $.Deferred();
+
+        if (!gwCampaignCoopMode || !game) {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var hostOpening = safeStorageGet(window.sessionStorage, 'gw_campaign_host_opening');
+        if (hostOpening !== 'true') {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!_.isFunction(game.perPlayerTechCards) || !game.perPlayerTechCards()) {
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!_.isFunction(game.findCoopPlayerInventoryData) || !_.isFunction(game.upsertCoopPlayerInventoryData) || !_.isFunction(game.inventory)) {
+            console.log('[GW COOP] Cannot restore host per-player inventory without campaign inventory helpers.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var localUberId = ko.observable().extend({ session: 'uberId' })();
+        var localDisplayName = ko.observable().extend({ session: 'displayName' })();
+        var record = game.findCoopPlayerInventoryData({
+            id: localUberId,
+            name: localDisplayName
+        });
+
+        if (!record) {
+            console.log('[GW COOP] No local co-op inventory record found for host inventory restore id=' + localUberId + ' name=' + localDisplayName + '.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        if (!record.inventory || !_.isArray(record.inventory.cards) || !record.inventory.cards.length) {
+            console.log('[GW COOP] Local co-op inventory record is invalid for host inventory restore id=' + localUberId + ' name=' + localDisplayName + '.');
+            result.resolve(game);
+            return result.promise();
+        }
+
+        var inventory = new GWInventory();
+        inventory.load(_.cloneDeep(record.inventory));
+        var campaignInventory = game.inventory();
+        var campaignPlayerFaction = campaignInventory && _.isFunction(campaignInventory.getTag)
+            ? campaignInventory.getTag('global', 'playerFaction')
+            : undefined;
+        var campaignPlayerColor = campaignInventory && _.isFunction(campaignInventory.getTag)
+            ? campaignInventory.getTag('global', 'playerColor')
+            : undefined;
+
+        inventory.applyCards(function() {
+            if (!_.isUndefined(campaignPlayerFaction)) {
+                inventory.setTag('global', 'playerFaction', campaignPlayerFaction);
+            }
+
+            if (!_.isUndefined(campaignPlayerColor)) {
+                inventory.setTag('global', 'playerColor', campaignPlayerColor);
+            }
+
+            var hostTechCardDealCount = _.isFunction(game.hostTechCardDealCount)
+                ? game.hostTechCardDealCount()
+                : undefined;
+            var existingTechCardDealCount = _.isNumber(record.techCardDealCount)
+                ? Math.max(0, Math.floor(record.techCardDealCount))
+                : 0;
+            var nextRecord = _.assign({}, _.cloneDeep(record), {
+                playerId: !_.isUndefined(record.playerId) ? record.playerId : localUberId,
+                playerName: record.playerName || localDisplayName,
+                inventory: inventory.save(),
+                updatedAt: _.now()
+            });
+
+            if (_.isNumber(hostTechCardDealCount)) {
+                nextRecord.techCardDealCount = Math.max(existingTechCardDealCount, Math.max(0, Math.floor(hostTechCardDealCount)));
+            }
+
+            if (nextRecord.pendingTechCards) {
+                console.log('[GW COOP] clearing stale pending tech cards while restoring local host inventory id=' + localUberId + ' name=' + localDisplayName + '.');
+                delete nextRecord.pendingTechCards;
+            }
+
+            if (!game.upsertCoopPlayerInventoryData(nextRecord)) {
+                console.log('[GW COOP] Failed to update local host co-op inventory record during restore id=' + localUberId + ' name=' + localDisplayName + '.');
+                result.resolve(game);
+                return;
+            }
+
+            game.inventory(inventory);
+            GW.manifest.saveGame(game).then(function() {
+                console.log('[GW COOP] restored host campaign inventory from local co-op record id=' + localUberId + ' name=' + localDisplayName + '.');
+                result.resolve(game);
+            }, function(err) {
+                console.error('[GW COOP] failed to save restored host campaign inventory', err);
+                result.resolve(game);
+            });
+        });
+
+        return result.promise();
+    };
+
     var gameLoader = GW.manifest.loadGame(activeGameId()).then(function(game) {
         if (game || !gwCampaignCoopMode)
             return game;
 
         console.log('[GW COOP] no local gw_active_game found, creating hidden co-op bootstrap game coopMode=' + gwCampaignCoopMode + ' queryMode=' + gwCampaignMode);
         return new GW.Game();
+    }).then(function(game) {
+        return restoreHostPerPlayerInventoryFromSave(game);
     });
     var documentLoader = $(document).ready();
 

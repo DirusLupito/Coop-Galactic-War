@@ -107,7 +107,7 @@ $(document).ready(function () {
             self.isLocalGame(!!info.local_game);
             self.serverType(type);
             self.serverSetup('gw_campaign');
-            self.gameType('Galactic War');
+            self.gameType('GalacticWar');
             self.gameModIdentifiers(mods);
             self.privateGamePassword(password);
             self.gameContent(content);
@@ -119,7 +119,7 @@ $(document).ready(function () {
                 game_password: password,
                 type: type,
                 setup: 'gw_campaign',
-                game: 'Galactic War',
+                game: 'GalacticWar',
                 mods: mods,
                 steam_id: '',
                 timestamp: Date.now()
@@ -184,7 +184,7 @@ $(document).ready(function () {
                 return false;
             }
 
-            if (game.mode !== 'FreeForAll') {
+            if (game.mode !== 'GalacticWar') {
                 return false;
             }
 
@@ -315,7 +315,7 @@ $(document).ready(function () {
             self.uuid(game.uuid);
             self.serverType(game.server_type);
             self.serverSetup('gw_campaign');
-            self.gameType('Galactic War');
+            self.gameType('GalacticWar');
             self.gameModIdentifiers(mods);
             self.gameSteamId(game.steam_id || '');
             self.privateGamePassword(password);
@@ -332,7 +332,7 @@ $(document).ready(function () {
                 local_game: self.isLocalGame(),
                 type: self.serverType(),
                 setup: 'gw_campaign',
-                game: 'Galactic War',
+                game: 'GalacticWar',
                 mods: mods,
                 steam_id: self.gameSteamId(),
                 timestamp: Date.now()
