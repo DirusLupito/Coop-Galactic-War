@@ -143,7 +143,7 @@ var communityModManager = function () {
 
     self.pammDetected = ko.observable(false).extend({ local: 'community_mods_pamm_detected' });
 
-    self.recommendedModIdentifiers = ['com.pa.legion-expansion-server', 'com.pa.quitch.gwaioverhaul', 'com.pa.conundrum.cShareSystems', 'com.exodusesports.tournamentmappack', 'nl.pa.wpmarshall.wpmarshall_map_pack', 'com.pa.grandhomie.maps', 'com.pa.lula-mae.milkyway-skybox', 'pachat', 'com.pa.proeleert.hotbuild2', 'com.pa.trialq.tinfinitebuild'];
+    self.recommendedModIdentifiers = ['com.pa.legion-expansion-server', 'com.pa.quitch.gwaioverhaul', 'com.pa.conundrum.cShareSystems', 'com.exodusesports.tournamentmappack', 'nl.pa.wpmarshall.wpmarshall_map_pack', 'com.pa.grandhomie.maps', 'com.pa.lula-mae.milkyway-skybox', 'pachat', 'pa.service.mod', 'com.pa.proeleert.hotbuild2', 'com.pa.trialq.tinfinitebuild'];
 
     if (self.usingTitans) {
         self.recommendedModIdentifiers.push('com.pa.domdom.laser_unit_effects');

@@ -286,6 +286,13 @@ function CommunityModsSetup() {
                         CommunityModsManager.installMod('pachat', false);
                     }
 
+                    // Make sure that the PA service mod is installed for all players (will only
+                    // appear on second boot)
+                    var paServiceModInstalled = CommunityModsManager.installedModsIndex()['pa.service.mod'];
+                    if (!paServiceModInstalled){
+                        CommunityModsManager.installMod('pa.service.mod', false);
+                    }
+
 
                     if (offlineMode) {
                         resetCommunityModsTimeout();
