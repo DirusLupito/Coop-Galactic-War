@@ -1161,7 +1161,6 @@ requireGW([
         self.gwCampaignInitialSyncRequested = false;
         self.gwCampaignAppliedSnapshotSeq = 0;
         self.gwCampaignHeartbeatHandle = undefined;
-        self.gwCampaignHookWatchHandle = undefined;
         self.gwCampaignLastSnapshotSentAt = 0;
         self.gwCampaignLastSnapshotRequestAt = 0;
         self.gwCampaignSnapshotCooldownMs = 1500;
@@ -2493,84 +2492,6 @@ requireGW([
             });
         };
 
-        self.wrapCampaignOverrideIfNeeded = function(name, actionType, payloadBuilder) {
-            var current = self[name];
-            if (!_.isFunction(current) || current.__gwCampaignNative || current.__gwCampaignWrapped)
-                return;
-
-            var wrapped = function() {
-                var args = Array.prototype.slice.call(arguments);
-
-                if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
-                    return;
-
-                if (!self.gwCampaignReplayingAction && self.isCampaignHost() && self.gwCampaignConnected() && actionType) {
-                    var payload = payloadBuilder ? payloadBuilder(args) : {};
-                    self.sendCampaignAction(actionType, payload || {});
-                }
-
-                // Modded explore implementations bypass sync_star_cards relay.
-                if (!self.gwCampaignReplayingAction && self.isCampaignHost() && self.gwCampaignConnected() && name === 'explore') {
-                    var exploreStarIndex = game.currentStar();
-                    var exploreStars = game.galaxy && game.galaxy().stars ? game.galaxy().stars() : undefined;
-                    var exploreStar = _.isArray(exploreStars) ? exploreStars[exploreStarIndex] : undefined;
-                    var syncSent = false;
-                    var syncCards = function(reason) {
-                        if (syncSent)
-                            return;
-
-                        syncSent = true;
-                        self.sendCampaignAction('sync_star_cards', {
-                            star: exploreStarIndex,
-                            cards: exploreStar && _.isFunction(exploreStar.cardList) ? exploreStar.cardList() : []
-                        });
-                        console.log('[GW COOP] wrapped explore relayed sync_star_cards reason=' + reason + ' star=' + exploreStarIndex);
-                    };
-
-                    if (exploreStar && _.isFunction(exploreStar.cardList) && _.isFunction(exploreStar.cardList.subscribe)) {
-                        var subscription = exploreStar.cardList.subscribe(function() {
-                            syncCards('card_list_update');
-                            if (subscription && _.isFunction(subscription.dispose))
-                                subscription.dispose();
-                        });
-
-                        _.delay(function() {
-                            if (subscription && _.isFunction(subscription.dispose))
-                                subscription.dispose();
-                            syncCards('timeout');
-                        }, 2600);
-                    }
-                    else {
-                        _.delay(function() {
-                            syncCards('timeout_no_subscription');
-                        }, 2600);
-                    }
-                }
-
-                return current.apply(self, args);
-            };
-
-            wrapped.__gwCampaignWrapped = true;
-            wrapped.__gwCampaignWrappedName = name;
-            wrapped.__gwCampaignWrappedOriginal = current;
-            self[name] = wrapped;
-            console.log('[GW COOP] wrapped external override for ' + name + ' to preserve co-op sync');
-        };
-
-        self.ensureCampaignCompatibilityHooks = function() {
-            self.wrapCampaignOverrideIfNeeded('explore', 'explore', function() {
-                return { star: game.currentStar() };
-            });
-
-            self.wrapCampaignOverrideIfNeeded('win', 'win_choice', function(args) {
-                return { selected_card_index: args[0] };
-            });
-
-            self.wrapCampaignOverrideIfNeeded('lose', 'lose_turn', function() {
-                return {};
-            });
-        };
-
         self.syncViewerStarFromGame = function(starIndex, reason) {
             if (!self.isCampaignViewer())
                 return false;
@@ -3716,7 +3637,6 @@ requireGW([
                 self.scanning(false);
             });
         };
-        self.explore.__gwCampaignNative = true;
 
         self.applyCoopPlayerInventoryRecord = function(record, reason) {
             var result = $.Deferred();
@@ -4033,7 +3953,6 @@ requireGW([
                 }
             });
         };
-        self.win.__gwCampaignNative = true;
 
         self.lose = function() {
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
@@ -4067,7 +3986,6 @@ requireGW([
                 self.exitGate().resolve();
             }
         };
-        self.lose.__gwCampaignNative = true;
 
         self.restartFight = function(model, event, cheat) {
             if (self.isCampaignViewer())
@@ -4792,13 +4710,6 @@ requireGW([
         {
             self.hasEnteredGame(true);
 
-            self.ensureCampaignCompatibilityHooks();
-            if (!self.gwCampaignHookWatchHandle) {
-                self.gwCampaignHookWatchHandle = setInterval(function() {
-                    self.ensureCampaignCompatibilityHooks();
-                }, 1000);
-            }
-
             if (self.isCampaignHost() && self.gwCampaignConnected() && self.gwCampaignStartupBattleResult && !self.gwCampaignStartupResultSent) {
                 self.gwCampaignStartupResultSent = true;
                 console.log('[GW COOP] host relaying startup_battle_result=' + self.gwCampaignStartupBattleResult);
@@ -4884,10 +4795,6 @@ requireGW([
                 self.gwCampaignHeartbeatHandle = undefined;
             }
 
-            if (self.gwCampaignHookWatchHandle) {
-                clearInterval(self.gwCampaignHookWatchHandle);
-                self.gwCampaignHookWatchHandle = undefined;
-            }
         }
 
         self.activeGameId = ko.observable().extend({ local: 'gw_active_game' });
