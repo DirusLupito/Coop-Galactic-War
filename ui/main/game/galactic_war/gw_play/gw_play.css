@@ -343,6 +343,11 @@ html, body {
     filter: alpha(opacity=35);
 }
 
+.gw-campaign-fight-button.btn_hero_disabled {
+    pointer-events: all;
+    cursor: default;
+}
+
 
 
 .div_game_menu_panel {

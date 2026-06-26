@@ -730,6 +730,10 @@ function GWCampaignModel(creator) {
         return result;
     };
 
+    self.hasEmptyPlayerSlots = function() {
+        return self.getConnectedClients().length < self.maxClients;
+    };
+
     self.hasPendingPlayerSetup = function() {
         var connectedClients = self.getConnectedClients();
         return _.some(connectedClients, function(client) {
@@ -1688,6 +1692,10 @@ function GWCampaignModel(creator) {
             launch_gw_battle: function(msg) {
                 if (msg.client.id !== self.creatorId)
                     return server.respond(msg).fail('Only host can launch battle');
+
+                if (self.hasEmptyPlayerSlots()) {
+                    return server.respond(msg).fail('Cannot launch battle while co-op campaign has empty slots');
+                }
 
                 if (self.hasPendingPlayerSetup())
                     return server.respond(msg).fail('Cannot launch battle while co-op players are loading or choosing per-player tech');

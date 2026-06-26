@@ -1773,6 +1773,35 @@ requireGW([
             });
         });
 
+        self.gwCampaignHasEmptySlots = ko.computed(function() {
+            if (!self.isCampaignHost() || !self.gwCampaignActive()) {
+                return false;
+            }
+
+            var maxClients = parseInt(self.gwCampaignMaxClients());
+            if (!_.isFinite(maxClients) || maxClients < 1) {
+                return false;
+            }
+
+            var connected = _.isArray(self.gwCampaignConnectedClients()) ? self.gwCampaignConnectedClients() : [];
+            return connected.length < maxClients;
+        });
+
+        self.gwCampaignFightBlocked = ko.computed(function() {
+            return self.gwCampaignHasEmptySlots() || self.gwCampaignPlayerSetupBlocked();
+        });
+
+        self.gwCampaignFightTooltip = ko.computed(function() {
+            if (self.gwCampaignHasEmptySlots()) {
+                return '!LOC:Slots are empty';
+            }
+
+            if (self.gwCampaignPlayerSetupBlocked()) {
+                return '!LOC:Waiting for players';
+            }
+
+            return undefined;
+        });
         self.reportGwCampaignLoading = function(loading) {
             var nextLoading = !!loading;
             if (self.gwCampaignReportedLoading === nextLoading) {
@@ -3991,6 +4020,11 @@ requireGW([
             if (self.isCampaignViewer())
                 return;
 
+            if (self.gwCampaignHasEmptySlots()) {
+                console.log('[GW COOP] restartFight blocked while campaign has empty slots');
+                return;
+            }
+
             if (self.gwCampaignPlayerSetupBlocked()) {
                 console.log('[GW COOP] restartFight blocked while co-op players are loading or choosing per-player tech');
                 return;
@@ -4006,17 +4040,19 @@ requireGW([
             if (self.isCampaignViewer())
                 return;
 
+            if (self.gwCampaignHasEmptySlots()) {
+                console.log('[GW COOP] fight blocked while campaign has empty slots');
+                return;
+            }
+
             if (self.gwCampaignPlayerSetupBlocked()) {
                 console.log('[GW COOP] fight blocked while co-op players are loading or choosing per-player tech');
                 return;
             }
 
             // After launching a fight, snapshots and their delivery
-            // are no longer well defined. There should never be
-            // a situation where someone joins after the host
-            // clicks fight but before the battle actually starts though,
-            // and furthermore even if someone does it should only
-            // affect them and not break the fight for the host or any other clients.
+            // are no longer well defined. Keep the player count fixed before
+            // launch so the generated referee data matches connected clients.
             if (self.launchingFight() || (!self.fighting() && !game.fight())) {
                 return;
             }
