@@ -810,22 +810,55 @@ $(document).ready(function() {
                 if (self.makeGameBusy() !== busyToken)
                     return;
 
-                self.makeGameBusy(false);
-                self.newGame(game);
-                self.updateCommander();
-                if (game.perPlayerTechCards()) {
-                    var displayName = ko.observable().extend({ session: 'displayName' });
-                    game.upsertCoopPlayerInventoryData({
-                        playerId: self.uberId(),
-                        playerName: displayName(),
-                        commander: self.selectedCommander(),
-                        loadoutCardId: self.activeStartCard().id(),
-                        inventory: game.inventory().save(),
-                        techCardDealCount: 0,
-                        updatedAt: _.now()
-                    });
-                }
-                return game;
+
+                // We defer the upsertion of coop player inventory data until after the cards have been applied
+                // because part of the applyCards process involves zeroing out the maxCards, which can obliterate
+                // the inventory data if we accidentally upsert it before the asynchronous applyCards process 
+                // has completed.  See gw_inventory.js for more details on the applyCards process.
+
+                var finished = $.Deferred();
+                game.inventory().setTag('global', 'commander', self.selectedCommander());
+                game.inventory().applyCards(function() {
+
+                    // makeGameBusy is used to both mark the UI as busy and to cancel the makeGame process
+                    // if the user changes any of the game parameters while the asynchronous makeGame process
+                    // is still running (like here if we see that the busyToken we got at the start of the
+                    // makeGame process is no longer the same as the current busyToken, then we know that
+                    // its time to abort the current makeGame process and start a new one with the new parameters).
+                    if (self.makeGameBusy() !== busyToken) {
+                        finished.resolve();
+                        return;
+                    }
+
+                    // Coop player inventory data is only used when per-player tech cards are enabled.
+                    if (game.perPlayerTechCards()) {
+                        var displayName = ko.observable().extend({ session: 'displayName' });
+                        var savedInventory = game.inventory().save();
+                        var cards = savedInventory.cards || [];
+                        // Mirror of the error checking done in the gw_coop_per_player_loadout.js applyCards function.
+                        if (!cards.length || cards[0].id !== self.activeStartCard().id() || !_.isNumber(savedInventory.maxCards) || savedInventory.maxCards <= cards.length) {
+                            console.error('[GW COOP] Host co-op inventory did not produce empty tech banks loadout=' + self.activeStartCard().id() + ' maxCards=' + savedInventory.maxCards + ' cards=' + JSON.stringify(cards));
+                        }
+
+                        game.upsertCoopPlayerInventoryData({
+                            playerId: self.uberId(),
+                            playerName: displayName(),
+                            commander: self.selectedCommander(),
+                            loadoutCardId: self.activeStartCard().id(),
+                            inventory: savedInventory,
+                            techCardDealCount: 0,
+                            updatedAt: _.now()
+                        });
+                    }
+
+                    // As this is the last step of the makeGame process, we can now mark the UI as no longer busy 
+                    // and set the new game as the current game.
+                    self.makeGameBusy(false);
+                    self.newGame(game);
+                    finished.resolve(game);
+                });
+
+                return finished.promise();
             });
         }
 
