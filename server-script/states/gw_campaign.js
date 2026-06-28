@@ -5,6 +5,7 @@ var utils = require('utils');
 var content_manager = require('content_manager');
 var bouncer = require('bouncer');
 var _ = require('thirdparty/lodash');
+var campaignOperators = require('states/gw_campaign_operators');
 
 var DEFAULT_GW_CAMPAIGN_PLAYERS = 2;
 var DEFAULT_GW_CAMPAIGN_PLAYERS_LIMIT = 12;
@@ -977,6 +978,8 @@ function GWCampaignModel(creator) {
         return true;
     };
 
+    campaignOperators.installHelpers(self);
+
     self.requestFreshSnapshotFromHost = function(reason, requester, force) {
         if (self.snapshotRequestInFlight && !force) {
             console.log('[GW COOP] snapshot request already sent; coalescing reason=' + reason);
@@ -1678,8 +1681,9 @@ function GWCampaignModel(creator) {
                 console.log('[GW COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
 
                 _.forEach(self.getConnectedClients(), function(client) {
-                    if (client.id === self.creatorId)
+                    if (client.id === self.creatorId) {
                         return;
+                    }
 
                     client.message({
                         message_type: 'gw_campaign_action',
@@ -1806,6 +1810,7 @@ function GWCampaignModel(creator) {
             }
         };
 
+        campaignOperators.installHandlers(self, server, handlers);
         self.removeHandlers = server.setHandlers(handlers);
 
         utils.pushCallback(server, 'onConnect', function(onConnect, client, reconnect) {

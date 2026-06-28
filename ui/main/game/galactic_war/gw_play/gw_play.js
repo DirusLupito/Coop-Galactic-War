@@ -2511,14 +2511,102 @@ requireGW([
         };
 
         self.sendCampaignAction = function(type, payload) {
-            if (!self.isCampaignHost() || !self.gwCampaignConnected())
+            if (!self.isCampaignHost() || !self.gwCampaignConnected()) {
                 return;
+            }
 
             self.send_message('gw_campaign_action', {
                 type: type,
                 payload: payload || {},
                 timestamp: _.now()
             });
+        };
+
+        // See server script state gw_campaign_operator_handlers for more details.
+
+        self.gwCampaignViewerOperatorHandlers = {};
+        self.gwCampaignHostOperatorHandlers = {};
+
+        self.registerCampaignViewerOperatorHandler = function(type, handler) {
+            if (!_.isString(type) || !type.length || !_.isFunction(handler)) {
+                return false;
+            }
+
+            self.gwCampaignViewerOperatorHandlers[type] = handler;
+            return true;
+        };
+
+        self.registerCampaignHostOperatorHandler = function(type, handler) {
+            if (!_.isString(type) || !type.length || !_.isFunction(handler)) {
+                return false;
+            }
+
+            self.gwCampaignHostOperatorHandlers[type] = handler;
+            return true;
+        };
+
+        self.applyCampaignOperator = function(operatorHandlers, operator, direction) {
+            if (!operator || !_.isString(operator.type) || !operator.type.length) {
+                console.log('[GW COOP] ignored invalid ' + direction + ' campaign operator');
+                return;
+            }
+
+            var handler = operatorHandlers[operator.type];
+            if (!_.isFunction(handler)) {
+                console.log('[GW COOP] no handler for ' + direction + ' campaign operator type=' + operator.type);
+                return;
+            }
+
+            handler(operator);
+        };
+
+        self.applyCampaignViewerOperator = function(operator) {
+            self.applyCampaignOperator(self.gwCampaignViewerOperatorHandlers, operator, 'viewer');
+        };
+
+        self.applyCampaignHostOperator = function(operator) {
+            self.applyCampaignOperator(self.gwCampaignHostOperatorHandlers, operator, 'host');
+        };
+
+        self.sendCampaignViewerOperator = function(type, payload, options) {
+            if (!self.isCampaignViewer() || !self.gwCampaignConnected()) {
+                return false;
+            }
+
+            options = options || {};
+            self.send_message('gw_campaign_viewer_operator', {
+                type: type,
+                payload: payload || {},
+                request_id: options.request_id,
+                timestamp: _.now()
+            });
+
+            return true;
+        };
+
+        self.sendCampaignHostOperator = function(type, payload, options) {
+            if (!self.isCampaignHost() || !self.gwCampaignConnected()) {
+                return false;
+            }
+
+            options = options || {};
+            var message = {
+                type: type,
+                payload: payload || {},
+                request_id: options.request_id,
+                stale_snapshot: options.stale_snapshot === true,
+                timestamp: _.now()
+            };
+
+            if (_.has(options, 'target_client_id')) {
+                message.target_client_id = options.target_client_id;
+            }
+            if (_.has(options, 'target_client_ids')) {
+                message.target_client_ids = options.target_client_ids;
+            }
+
+            self.send_message('gw_campaign_host_operator', message);
+            return true;
         };
 
         self.syncViewerStarFromGame = function(starIndex, reason) {
@@ -5369,6 +5457,14 @@ requireGW([
 
         handlers.gw_campaign_action = function(payload) {
             model.applyCampaignAction(payload);
+        };
+
+        handlers.gw_campaign_viewer_operator = function(payload) {
+            model.applyCampaignViewerOperator(payload || {});
+        };
+
+        handlers.gw_campaign_host_operator = function(payload) {
+            model.applyCampaignHostOperator(payload || {});
         };
 
         // Handles incoming individual chat messages for the campaign chat. 
