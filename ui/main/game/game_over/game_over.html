@@ -264,7 +264,7 @@
                     <!-- /ko -->
                     <!-- ko foreach: menuButtons -->
                     <div>
-                        <input type="button" id="Button2" class="" data-bind="value: $data.label, click: $data.click, click_sound: 'default', rollover_sound: 'default'" />
+                        <input type="button" id="Button2" class="" data-bind="value: $data.label, click: $data.click, enable: $data.enabled, css: { 'gw-menu-button-disabled': !$data.enabled() }, click_sound: $data.enabled() ? 'default' : '', rollover_sound: $data.enabled() ? 'default' : ''" />
                     </div>
                     <!-- /ko -->
                     <div data-bind="visible: ranked">

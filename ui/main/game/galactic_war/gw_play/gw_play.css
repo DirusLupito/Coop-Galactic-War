@@ -329,12 +329,19 @@ html, body {
     display: none !important;
 }
 
-.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) .div_panel_bar_background.tech .div_options_bar {
+.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) #hover-card .card_action {
     display: none !important;
 }
 
-.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) #hover-card .card_action {
-    display: none !important;
+.gw-host-choosing-tech {
+    height: 34px;
+    font-family: "Sansation";
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 8px 0 0;
+    text-shadow: 0 0 12px rgba(0,0,0,1);
 }
 
 .btn_hero_disabled {

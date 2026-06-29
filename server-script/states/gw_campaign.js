@@ -108,9 +108,7 @@ function GWCampaignModel(creator) {
 
         if (_.has(data, 'friends')) {
             bouncer.clearWhitelist();
-            if (_.isArray(data.friends) && data.friends.length)
-                _.forEach(data.friends, function(id) { bouncer.addPlayerToWhitelist(id); });
-            self.access.friends = _.isArray(data.friends) ? _.cloneDeep(data.friends) : [];
+            self.access.friends = [];
         }
 
         if (_.has(data, 'blocked')) {
@@ -183,6 +181,47 @@ function GWCampaignModel(creator) {
         if (!self.requiredClientModsPublished) {
             self.clearAllPendingManifestTimeouts();
         }
+    };
+
+    self.getRequiredClientModsForBeacon = function() {
+        var identifiers = _.clone(self.requiredClientModIdentifiers || []);
+        var names = _.map(identifiers, function(identifier) {
+            return self.requiredClientModNamesById[identifier] || identifier;
+        });
+
+        return {
+            names: names,
+            identifiers: identifiers
+        };
+    };
+
+    self.getBeaconModsData = function(serverModsData, requiredClientModsData) {
+        var names = [];
+        var identifiers = [];
+        var seen = {};
+
+        var addMod = function(name, identifier) {
+            var key = self.normalizeClientModIdentifier(identifier) || (_.isString(name) ? name.toLowerCase() : '');
+            if (!key || seen[key])
+                return;
+
+            seen[key] = true;
+            names.push(name || identifier);
+            identifiers.push(identifier);
+        };
+
+        _.forEach(serverModsData.identifiers || [], function(identifier, index) {
+            addMod((serverModsData.names || [])[index], identifier);
+        });
+
+        _.forEach(requiredClientModsData.identifiers || [], function(identifier, index) {
+            addMod((requiredClientModsData.names || [])[index], identifier);
+        });
+
+        return {
+            names: names,
+            identifiers: identifiers
+        };
     };
 
     self.clearPendingSelfDisconnectTimeout = function(clientId) {
@@ -345,11 +384,16 @@ function GWCampaignModel(creator) {
             game_name: _.isString(self.settings.game_name) ? self.settings.game_name : 'GW Co-op Campaign',
             tag: _.isString(self.settings.tag) ? self.settings.tag : 'Testing',
             public: _.isBoolean(self.settings.public) ? self.settings.public : true,
-            friends: !!self.settings.friends,
-            hidden: !!self.settings.hidden,
+            friends: false,
+            hidden: !self.settings.public,
             shared_control: self.effectiveSharedControl(),
-            per_player_tech_cards: self.perPlayerTechCards
+            per_player_tech_cards: self.perPlayerTechCards,
+            max_clients: self.maxClients
         };
+
+        var battleLaunchClients = parseInt(payloadSettings.battle_launch_clients);
+        if (_.isFinite(battleLaunchClients) && battleLaunchClients > 0)
+            settings.battle_launch_clients = Math.floor(battleLaunchClients);
 
         // Host payload is optional fallback metadata; authoritative values come from self.settings.
         if (!_.isString(settings.game_name) && _.isString(payloadSettings.game_name))
@@ -371,7 +415,7 @@ function GWCampaignModel(creator) {
             },
             access: {
                 password: _.isString(self.access.password) ? self.access.password : '',
-                friends: _.cloneDeep(bouncer.getWhitelist()),
+                friends: [],
                 blocked: _.cloneDeep(bouncer.getBlacklist())
             }
         };
@@ -432,9 +476,10 @@ function GWCampaignModel(creator) {
 
         self.updateBouncer(data);
 
-        var hasFriendsList = bouncer.getWhitelist().length > 0;
-        self.settings.friends = hasFriendsList;
-        self.settings.hidden = (!self.settings.public && !hasFriendsList);
+        bouncer.clearWhitelist();
+        self.access.friends = [];
+        self.settings.friends = false;
+        self.settings.hidden = !self.settings.public;
     };
 
     self.getConnectedClients = function() {
@@ -893,7 +938,8 @@ function GWCampaignModel(creator) {
     self.updateBeacon = function() {
         var connectedClients = self.getConnectedClients();
         var modsData = server.getModsForBeacon();
-        var hasFriendsList = bouncer.getWhitelist().length > 0;
+        var requiredClientModsData = self.getRequiredClientModsForBeacon();
+        var beaconModsData = self.getBeaconModsData(modsData, requiredClientModsData);
         var hostLoading = !!self.clientLoading[self.creatorId];
 
         if (hostLoading) {
@@ -901,11 +947,8 @@ function GWCampaignModel(creator) {
             return;
         }
 
-        // So if this lobby is PRIVATE in the sense that you don't
-        // want anyone to join, or if you're forever alone
-        // but mark it as friends only (thereby excluding everyone)
-        // then there's no point in publishing it on the beacon since no one can join anyway.
-        var publish = !self.settings.hidden && (self.settings.public || hasFriendsList);
+        // Private campaign lobbies are intentionally omitted from the beacon.
+        var publish = !self.settings.hidden && self.settings.public;
 
         if (!publish) {
             server.beacon = null;
@@ -923,8 +966,8 @@ function GWCampaignModel(creator) {
             spectators: 0,
             max_spectators: 0,
             mode: 'GalacticWar',
-            mod_names: modsData.names,
-            mod_identifiers: modsData.identifiers,
+            mod_names: beaconModsData.names,
+            mod_identifiers: beaconModsData.identifiers,
             cheat_config: main.cheats,
             player_names: _.map(connectedClients, function(client) { return client.name; }),
             spectator_names: [],
@@ -1127,9 +1170,7 @@ function GWCampaignModel(creator) {
         server.maxClients = self.maxClients;
         console.log('[GW COOP] gw_campaign enter host=' + self.creatorName + ' id=' + self.creatorId);
 
-        // No password by default, but clear any that might be lingering from previous sessions just in case, along with whitelist/blacklist
-        // (which would correspond to the friends list unless there's some system I've never heard of before which also sets up
-        // white/blacklists for lobbies).
+        // No password by default, but clear any access lists that might be lingering from previous sessions.
         bouncer.setPassword('');
         bouncer.clearWhitelist();
         bouncer.clearBlacklist();
@@ -1144,6 +1185,7 @@ function GWCampaignModel(creator) {
                 var payload = msg.payload || {};
                 console.log('[GW COOP] MOD CHECK [gw_campaign] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
                 self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id, true);
+                self.updateControl();
                 self.requestConnectedClientManifests('host_published_required_mods');
                 server.respond(msg).succeed({
                     required_identifiers: self.requiredClientModIdentifiers,

@@ -5,8 +5,6 @@ $(document).ready(function () {
     var DEFAULT_CONNECTION_ATTEMPTS = 5;
     var DEFAULT_CONNECT_DELAY = 2;
     var DEFAULT_RETRY_DELAY = 5;
-    var REQUIRED_GW_SCENE_KEYS = ['gw_war_over', 'gw_play', 'gw_start'];
-    var REQUIRED_GW_DESCRIPTION_PHRASE = 'galactic war';
 
     function isGwCampaignBattleForConnect(payload) {
         var gwCampaignActive = payload
@@ -82,34 +80,8 @@ $(document).ready(function () {
         return trimmed.toLowerCase();
     }
 
-    function getRequiredGwScenesForMod(mod) {
-        var scenes = mod && mod.scenes;
-        if (!scenes || !_.isObject(scenes))
-            return [];
-
-        return _.filter(REQUIRED_GW_SCENE_KEYS, function(sceneKey) {
-            if (!_.has(scenes, sceneKey))
-                return false;
-
-            var sceneValue = scenes[sceneKey];
-            if (_.isArray(sceneValue))
-                return sceneValue.length > 0;
-
-            return !!sceneValue;
-        });
-    }
-
-    function hasRequiredGwDescription(mod) {
-        var description = mod && mod.description;
-        if (!_.isString(description))
-            return false;
-
-        return description.toLowerCase().indexOf(REQUIRED_GW_DESCRIPTION_PHRASE) !== -1;
-    }
-
     function isRequiredGwClientMod(mod) {
-        return getRequiredGwScenesForMod(mod).length > 0
-            && hasRequiredGwDescription(mod);
+        return !!(mod && mod.galacticWarMod === true);
     }
 
     function extractRejectReason(payload) {
@@ -409,7 +381,6 @@ $(document).ready(function () {
         self.requiredClientModGateMissingMods = ko.observableArray([]);
         self.requiredClientModGateExtraMods = ko.observableArray([]);
         self.requiredClientModGateGoingBack = false;
-        self.requiredClientModGateAcknowledged = false;
         self.waitingForClientModMatch = false;
         self.pendingServerStatePayload = undefined;
 
@@ -462,11 +433,6 @@ $(document).ready(function () {
         };
 
         self.showRequiredClientModGate = function(payload) {
-            if (self.requiredClientModGateAcknowledged) {
-                console.log('[GW COOP] ignoring duplicate required client mod gate after acknowledgement');
-                return;
-            }
-
             var data = getPayloadObject(payload);
             var reason = extractRejectReason(data) || extractRejectReason(payload);
             var gateReason = _.isString(reason) && reason.length
@@ -490,26 +456,10 @@ $(document).ready(function () {
                 + ' extra=' + JSON.stringify(extraLabels));
         };
 
-        self.acknowledgeRequiredClientModRisk = function() {
-            var reason = self.requiredClientModGateReason();
-            self.requiredClientModGateVisible(false);
-            self.requiredClientModGateAcknowledged = true;
-
-            model.send_message('required_client_mods_acknowledged', {
-                proceed: true,
-                reason: reason
-            }, function(success, response) {
-                console.log('[GW COOP] required_client_mods_acknowledged success=' + !!success + ' response=' + JSON.stringify(response || {}));
-            });
-
-            self.completeClientModMatchWait('required_client_mods_acknowledged');
-        };
-
         self.goBackFromRequiredClientModGate = function() {
             var reason = self.requiredClientModGateReason() || loc('!LOC:Client mod mismatch');
             var transitReason = loc('!LOC:Client mod mismatch');
             self.requiredClientModGateGoingBack = true;
-            self.requiredClientModGateAcknowledged = true;
             self.requiredClientModGateVisible(false);
             self.cancelling(true);
             self.connectionAttemptsRemaining = 0;
@@ -540,17 +490,12 @@ $(document).ready(function () {
                     if (seen[identifier])
                         return;
 
-                    var matchingScenes = getRequiredGwScenesForMod(mod);
-                    var hasDescriptionPhrase = hasRequiredGwDescription(mod);
-
-                    if (!matchingScenes.length || !hasDescriptionPhrase) {
-                        console.log('[GW COOP] mod not required id=' + identifier
-                            + ' matchedScenes=' + JSON.stringify(matchingScenes)
-                            + ' hasDescriptionPhrase=' + hasDescriptionPhrase);
+                    if (!isRequiredGwClientMod(mod)) {
+                        console.log('[GW COOP] mod not required id=' + identifier + ' galacticWarMod=' + JSON.stringify(mod && mod.galacticWarMod));
                         return;
                     }
 
-                    console.log('[GW COOP] mod required id=' + identifier + ' matchedScenes=' + JSON.stringify(matchingScenes));
+                    console.log('[GW COOP] mod required id=' + identifier + ' galacticWarMod=true');
 
                     seen[identifier] = true;
                     requiredIdentifiers.push(identifier);
@@ -587,7 +532,6 @@ $(document).ready(function () {
 
         self.sendClientModManifest = function() {
             console.log('[GW COOP] sendClientModManifest begin setup=' + self.serverSetup() + ' game=' + self.gameType());
-            self.requiredClientModGateAcknowledged = false;
             api.mods.getMounted('client', true).then(function(mountedMods) {
                 var manifest = buildClientModManifest(mountedMods);
 
@@ -839,7 +783,6 @@ $(document).ready(function () {
         model.requiredClientModGateMissingMods([]);
         model.requiredClientModGateExtraMods([]);
         model.requiredClientModGateGoingBack = false;
-        model.requiredClientModGateAcknowledged = false;
         model.waitingForClientModMatch = false;
         model.pendingServerStatePayload = undefined;
 

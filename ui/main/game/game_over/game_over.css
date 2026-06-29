@@ -220,6 +220,14 @@ body {
         text-transform: uppercase;
     }
 
+        .div_stats_panel_options input[type="button"].gw-menu-button-disabled {
+            opacity: .45;
+            color: #888;
+            pointer-events: none;
+            box-shadow: none;
+            -webkit-filter: grayscale(1);
+        }
+
 .div_notification_bar {
     width: 100%;
     text-align: center;

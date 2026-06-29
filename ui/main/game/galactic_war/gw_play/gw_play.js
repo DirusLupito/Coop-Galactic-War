@@ -1356,7 +1356,7 @@ requireGW([
             var payload = {
                 game_name: self.gwLobbyTitle(),
                 public: mode === 'public',
-                friends: mode === 'friends' ? self.friends() : [],
+                friends: [],
                 password: self.privateGamePassword(),
                 per_player_tech_cards: self.gwCampaignPerPlayerTechCards(),
                 shared_control: self.gwCampaignPerPlayerTechCards() ? false : self.gwCampaignSharedControl(),
@@ -2169,10 +2169,8 @@ requireGW([
             if (_.isString(settings.game_name))
                 self.gwLobbyTitle(settings.game_name);
 
-            if (_.has(settings, 'friends') || _.has(settings, 'public')) {
-                if (settings.friends)
-                    self.visibilityMode('friends');
-                else if (settings.public)
+            if (_.has(settings, 'public')) {
+                if (settings.public)
                     self.visibilityMode('public');
                 else
                     self.visibilityMode('private');
@@ -2231,19 +2229,26 @@ requireGW([
             var gameName = _.isString(settings.game_name) ? settings.game_name : self.gwLobbyTitle();
             var tag = _.isString(settings.tag) ? settings.tag : 'Testing';
             var isPublic = _.isBoolean(settings.public) ? settings.public : true;
-            var friends = _.isArray(access.friends) ? access.friends : [];
             var password = _.isString(access.password) ? access.password : self.privateGamePassword();
-            var maxClients = _.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients();
+            var maxClients = parseInt(_.isFinite(settings.max_clients) ? settings.max_clients : self.gwCampaignMaxClients());
+            if (!_.isFinite(maxClients) || maxClients < 1)
+                maxClients = 1;
+            maxClients = Math.floor(maxClients);
+
+            var battleLaunchClients = parseInt(settings.battle_launch_clients);
+            if (_.isFinite(battleLaunchClients) && battleLaunchClients > 0)
+                maxClients = Math.max(maxClients, Math.floor(battleLaunchClients));
 
             if (_.isString(gameName)) {
                 self.gwLobbyTitle(gameName);
             }
 
-            self.visibilityMode(friends.length ? 'friends' : (isPublic ? 'public' : 'private'));
-            self.friends(friends);
+            self.visibilityMode(isPublic ? 'public' : 'private');
+            self.friends([]);
             self.privateGamePassword(password);
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedControl);
+            self.initialCoopSettingsApplied = true;
 
             self.send_message('modify_settings', {
                 game_name: gameName,
@@ -2253,7 +2258,7 @@ requireGW([
                 per_player_tech_cards: perPlayerTechCards,
                 max_clients: maxClients,
                 password: password,
-                friends: friends,
+                friends: [],
                 blocked: _.isArray(access.blocked) ? access.blocked : []
             });
 
@@ -2263,11 +2268,6 @@ requireGW([
 
         self.setPrivateGame = function() {
             self.visibilityMode('private');
-            self.pushCampaignLobbySettings();
-        };
-
-        self.setFriendsOnlyGame = function() {
-            self.visibilityMode('friends');
             self.pushCampaignLobbySettings();
         };
 
@@ -4258,15 +4258,28 @@ requireGW([
                         // battle lobby beacon can continue the same identity.
                         var campaignControl = self.gwCampaignControl() || {};
                         var campaignSettings = campaignControl.settings || {};
+                        var campaignConnectedClients = _.isArray(campaignControl.connected_clients) ? campaignControl.connected_clients : [];
+                        var battleLaunchClients = Math.max(1, campaignConnectedClients.length);
+                        var campaignMaxClients = parseInt(campaignControl.max_clients);
+                        if (_.isFinite(campaignMaxClients) && campaignMaxClients > 0)
+                            campaignMaxClients = Math.floor(campaignMaxClients);
+                        else
+                            campaignMaxClients = undefined;
+
+                        var battleMaxClients = _.isFinite(campaignMaxClients)
+                            ? Math.max(campaignMaxClients, battleLaunchClients)
+                            : battleLaunchClients;
+
                         battleConfig.gw_campaign_settings = {
                             game_name: _.isString(campaignSettings.game_name) ? campaignSettings.game_name : 'GW Co-op Campaign',
                             tag: _.isString(campaignSettings.tag) ? campaignSettings.tag : 'Testing',
                             public: _.isBoolean(campaignSettings.public) ? campaignSettings.public : true,
-                            friends: !!campaignSettings.friends,
-                            hidden: !!campaignSettings.hidden,
+                            friends: false,
+                            hidden: _.isBoolean(campaignSettings.public) ? !campaignSettings.public : !!campaignSettings.hidden,
                             shared_control: battleConfig.shared_control,
                             per_player_tech_cards: battleConfig.per_player_tech_cards,
-                            max_clients: _.isFinite(campaignControl.max_clients) ? campaignControl.max_clients : undefined
+                            max_clients: battleMaxClients,
+                            battle_launch_clients: battleLaunchClients
                         };
 
                         self.battleConfig(battleConfig);
@@ -4575,6 +4588,10 @@ requireGW([
 
         self.showSystemCardActions = ko.computed(function() {
             return self.exploring() || self.canUseCoopTechChoice();
+        });
+
+        self.showHostChoosingSharedTech = ko.computed(function() {
+            return self.isCampaignViewer() && self.gwCampaignActive() && !self.gwCampaignPerPlayerTechCards();
         });
 
         self.showSystemCard.subscribe(function() {
@@ -5472,12 +5489,6 @@ requireGW([
             model.addCampaignChatMessage(msg.player_name, msg.message, true);
         };
 
-        // Handler to update the friends list in the uberbar. 
-        handlers.friends = function(payload) {
-            // || [] to prevent null.
-            model.friends(payload || []);
-        };
-
         handlers.connection_disconnected = function(payload) {
             if (!model.gwCampaignEnabled())
                 return;
@@ -5526,11 +5537,6 @@ requireGW([
 
         if (model.gwCampaignEnabled())
             app.hello(handlers.server_state, handlers.connection_disconnected);
-
-        // When entering the campaign lobby, we want to request the friends list immediately so that 
-        // it's populated in the uberbar as soon as possible for the player, since we need to know
-        // who friends are if we set up a friends only whitelist.
-        api.Panel.message('uberbar', 'request_friends');
 
         // Activates knockout.js
         ko.applyBindings(model);

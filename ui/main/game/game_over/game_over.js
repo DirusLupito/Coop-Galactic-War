@@ -16,7 +16,16 @@ $(document).ready(function () {
 
         self.label = ko.observable(params.game_over);
         self.action = ko.observable(params.action);
+        self.enabled = ko.observable(params.enabled !== false);
         self.click = function() {
+            if (!self.enabled())
+                return;
+
+            if (_.isFunction(params.click)) {
+                params.click(self);
+                return;
+            }
+
             parentInvoke(self.action());
         };
     }
@@ -92,28 +101,30 @@ $(document).ready(function () {
             return self.gwCampaignRole() === 'viewer';
         });
 
-        self.filterMenuButtonsForRole = function(menu) {
-            console.log("[GW COOP] filterMenuButtonsForRole function called with role: " + self.gwCampaignRole() + " and menu: ", menu);
-            if (!self.isGwCampaignViewer())
-                return menu;
+        self.toMenuButtonModel = function(button) {
+            var params = button;
 
-            // Viewer should never be offered Continue War in co-op GW.
-            return _.filter(menu, function(button) {
-                return button.action !== 'menuReturnToWar';
-            });
+            if (self.gwCampaignActive() && self.isGwCampaignViewer() && button && button.action === 'menuReturnToWar') {
+                params = _.assign({}, button, {
+                    click: function(menuButton) {
+                        menuButton.label(loc('!LOC:AWAITING HOST'));
+                        menuButton.enabled(false);
+                    }
+                });
+            }
+
+            return new MenuButtonModel(params);
         };
 
-        // To prevent the viewer from being offered Continue War in co-op GW, we need to filter the menu buttons 
-        // based on role metadata that may not be present at initial menuConfig query time. 
-        // We rebuild the button list whenever new metadata arrives.
+        // Role metadata may not be present at initial menuConfig query time, so
+        // rebuild whenever new metadata arrives.
         self.rebuildMenuButtons = function(menu) {
             if (_.isArray(menu))
                 self.rawMenuConfig = menu;
 
             var sourceMenu = _.isArray(self.rawMenuConfig) ? self.rawMenuConfig : [];
-            var filteredMenu = self.filterMenuButtonsForRole(sourceMenu);
-            var menuButtons = _.map(_.filter(filteredMenu, 'game_over'), function(button) {
-                return new MenuButtonModel(button);
+            var menuButtons = _.map(_.filter(sourceMenu, 'game_over'), function(button) {
+                return self.toMenuButtonModel(button);
             });
 
             self.menuButtons(menuButtons);

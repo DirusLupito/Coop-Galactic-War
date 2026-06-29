@@ -276,13 +276,13 @@
         model.menuConfigGenerator(function() {
             var over_string = tutorial() ? '!LOC:Continue Tutorial' : '!LOC:Continue War';
             var exit_string = hardcore() ? '!LOC:Abandon War' : '!LOC:Surrender';
-            // In co-op campaign end/defeat flows, only host can continue war.
-            // Prefer role from latest server_state metadata, then session role.
+            // In co-op campaign end/defeat flows, only host can actually continue
+            // war, but viewers still need the game_over panel affordance so they
+            // know to wait. The live in-game menu filters this action for viewers;
+            // game_over maps it to a local no-op "awaiting host" button.
             var gameOverClient = lastGameOverClientState || {};
             var campaignContinueContext = !!(gwCampaignEnabled() || gameOverClient.gw_campaign_active);
             var gameOverCampaignActive = campaignContinueContext && (model.gameOver() || model.isSpectator());
-            var isViewer = (gameOverClient.gw_campaign_role === 'viewer') || gwCampaignRole() === 'viewer';
-            var hideContinueForViewer = gameOverCampaignActive && isViewer;
             var continueAction = gameOverCampaignActive
                 ? 'menuReturnToWar'
                 : (model.gameOver() ? 'menuReturnToWar' : (hardcore() ? 'menuAbandonWar' : 'menuSurrender'));
@@ -319,13 +319,11 @@
                 }
             ];
 
-            if (!hideContinueForViewer) {
-                list.splice(6, 0, {
-                    label: gameOverCampaignActive || model.gameOver() ? over_string : exit_string,
-                    action: continueAction,
-                    game_over: over_string
-                });
-            }
+            list.splice(6, 0, {
+                label: gameOverCampaignActive || model.gameOver() ? over_string : exit_string,
+                action: continueAction,
+                game_over: over_string
+            });
 
             if (model.canSave())
                 list.splice(6, 0, {

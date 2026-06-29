@@ -66,8 +66,6 @@ function LobbyModel(creator, launchContext) {
             self.beaconSettings.tag = launchSettings.tag;
         if (_.isBoolean(launchSettings.public))
             self.beaconSettings.public = launchSettings.public;
-        if (_.has(launchSettings, 'friends'))
-            self.beaconSettings.friends = !!launchSettings.friends;
         if (_.has(launchSettings, 'hidden'))
             self.beaconSettings.hidden = !!launchSettings.hidden;
     }
@@ -75,17 +73,11 @@ function LobbyModel(creator, launchContext) {
     self.applyLaunchAccessControl = function() {
         var access = self.launchContext.access || {};
 
-        // Rehydrate campaign lobby access settings (password/whitelist/blacklist)
+        // Rehydrate campaign lobby access settings (password/blacklist)
         // so gw_lobby and its beacon continue to mirror gw_campaign visibility.
         bouncer.setPassword(_.isString(access.password) ? access.password : '');
         bouncer.clearWhitelist();
         bouncer.clearBlacklist();
-
-        if (_.isArray(access.friends)) {
-            _.forEach(access.friends, function(id) {
-                bouncer.addPlayerToWhitelist(id);
-            });
-        }
 
         if (_.isArray(access.blocked)) {
             _.forEach(access.blocked, function(id) {
@@ -166,6 +158,47 @@ function LobbyModel(creator, launchContext) {
         if (!self.requiredClientModsPublished) {
             self.clearAllPendingManifestTimeouts();
         }
+    };
+
+    self.getRequiredClientModsForBeacon = function() {
+        var identifiers = _.clone(self.requiredClientModIdentifiers || []);
+        var names = _.map(identifiers, function(identifier) {
+            return self.requiredClientModNamesById[identifier] || identifier;
+        });
+
+        return {
+            names: names,
+            identifiers: identifiers
+        };
+    };
+
+    self.getBeaconModsData = function(serverModsData, requiredClientModsData) {
+        var names = [];
+        var identifiers = [];
+        var seen = {};
+
+        var addMod = function(name, identifier) {
+            var key = self.normalizeClientModIdentifier(identifier) || (_.isString(name) ? name.toLowerCase() : '');
+            if (!key || seen[key])
+                return;
+
+            seen[key] = true;
+            names.push(name || identifier);
+            identifiers.push(identifier);
+        };
+
+        _.forEach(serverModsData.identifiers || [], function(identifier, index) {
+            addMod((serverModsData.names || [])[index], identifier);
+        });
+
+        _.forEach(requiredClientModsData.identifiers || [], function(identifier, index) {
+            addMod((requiredClientModsData.names || [])[index], identifier);
+        });
+
+        return {
+            names: names,
+            identifiers: identifiers
+        };
     };
 
     self.clearPendingManifestTimeout = function(clientId) {
@@ -349,8 +382,6 @@ function LobbyModel(creator, launchContext) {
                 self.beaconSettings.tag = settings.tag;
             if (_.isBoolean(settings.public))
                 self.beaconSettings.public = settings.public;
-            if (_.has(settings, 'friends'))
-                self.beaconSettings.friends = !!settings.friends;
             if (_.has(settings, 'hidden'))
                 self.beaconSettings.hidden = !!settings.hidden;
             if (_.isFinite(settings.max_clients) && settings.max_clients > 0)
@@ -433,10 +464,8 @@ function LobbyModel(creator, launchContext) {
             return;
         }
 
-        // Likewise, even if it is published, but set to either private or friends-only without a friends list, 
-        // the beacon would be useless, so we don't publish in that case either.
-        var hasFriendsList = bouncer.getWhitelist().length > 0;
-        var publish = !self.beaconSettings.hidden && (self.beaconSettings.public || hasFriendsList);
+        // Private co-op GW battle lobbies are intentionally omitted from the beacon.
+        var publish = !self.beaconSettings.hidden && self.beaconSettings.public;
         if (!publish) {
             server.beacon = null;
             return;
@@ -445,6 +474,8 @@ function LobbyModel(creator, launchContext) {
         console.log('Updating beacon');
         var connectedClients = _.filter(server.clients, function(client) { return client.connected; });
         var modsData = server.getModsForBeacon();
+        var requiredClientModsData = self.getRequiredClientModsForBeacon();
+        var beaconModsData = self.getBeaconModsData(modsData, requiredClientModsData);
         var config = self.config();
         var gameSystem = (config && config.system)
             ? utils.getMinimalSystemDescription(config.system)
@@ -462,8 +493,8 @@ function LobbyModel(creator, launchContext) {
             spectators: 0,
             max_spectators: 0,
             mode: 'GalacticWar',
-            mod_names: modsData.names,
-            mod_identifiers: modsData.identifiers,
+            mod_names: beaconModsData.names,
+            mod_identifiers: beaconModsData.identifiers,
             cheat_config: main.cheats,
             player_names: _.map(connectedClients, function(client) { return client.name; }),
             spectator_names: [],
@@ -958,6 +989,7 @@ function LobbyModel(creator, launchContext) {
             var payload = msg.payload || {};
             console.log('[GW COOP] MOD CHECK [gw_lobby] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
             self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id, true);
+            self.updateBeacon();
             self.requestConnectedClientManifests('host_published_required_mods');
             response.succeed({
                 required_identifiers: self.requiredClientModIdentifiers,

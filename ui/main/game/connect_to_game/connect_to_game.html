@@ -38,7 +38,7 @@
             </div>
             <div class="required_mod_gate_body">
                 <div class="required_mod_gate_warning">
-                    <loc>You can continue, but Galactic War may crash or show missing effects if these mods do not match the host.</loc>
+                    <loc>These Galactic War client mods are required to match the host. Install or enable the listed mods, then reconnect.</loc>
                 </div>
                 <div class="required_mod_gate_section" data-bind="visible: requiredClientModGateMissingMods().length">
                     <div class="required_mod_gate_section_title">
@@ -58,7 +58,6 @@
                 </div>
             </div>
             <div class="required_mod_gate_buttons">
-                <input type="button" value="I Understand" class="btn_commit" data-bind="click: acknowledgeRequiredClientModRisk, click_sound: 'default', rollover_sound: 'default'" />
                 <input type="button" value="Go Back" class="btn_commit" data-bind="click: goBackFromRequiredClientModGate, click_sound: 'default', rollover_sound: 'default'" />
             </div>
         </div>
