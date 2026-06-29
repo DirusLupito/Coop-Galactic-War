@@ -2551,13 +2551,23 @@ requireGW([
                 return;
             }
 
+            if (!_.has(operatorHandlers, operator.type)) {
+                console.log('[GW COOP] no handler for ' + direction + ' campaign operator type=' + operator.type);
+                return;
+            }
+
             var handler = operatorHandlers[operator.type];
             if (!_.isFunction(handler)) {
                 console.log('[GW COOP] no handler for ' + direction + ' campaign operator type=' + operator.type);
                 return;
             }
 
-            handler(operator);
+            try {
+                handler(operator);
+            } catch (e) {
+                console.error('[GW COOP] ' + direction + ' campaign operator handler failed type=' + operator.type);
+                console.error(e);
+            }
         };
 
         self.applyCampaignViewerOperator = function(operator) {

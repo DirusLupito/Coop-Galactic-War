@@ -127,9 +127,9 @@ exports.installHelpers = function(self) {
         //
         //     payload: {},          // Optional. Operator-specific arguments. For a reroll request this might include
         //                           // the pending tech star and deal index; for another mod it could be any structured
-        //                           // JSON-serializable data the sender and handler have agreed on. If omitted, the
-        //                           // server normalizes it to {}. The server intentionally does not validate payload
-        //                           // fields because it does not know the operator's semantics.
+        //                           // JSON-serializable data the sender and handler have agreed on. If omitted or not
+        //                           // a plain object, the server normalizes it to {}. The server intentionally does not
+        //                           // validate payload fields because it does not know the operator's semantics.
         //
         //     request_id: 'string', // Optional. A correlation token supplied by the UI. This is useful when a viewer
         //                           // asks the host to do something asynchronously and the host later sends a result
@@ -162,9 +162,13 @@ exports.installHelpers = function(self) {
             return undefined;
         }
 
+        var operatorPayload = _.has(payload, 'payload') && _.isPlainObject(payload.payload)
+            ? payload.payload
+            : {};
+
         return {
             type: payload.type,
-            payload: _.has(payload, 'payload') ? payload.payload : {},
+            payload: operatorPayload,
             request_id: payload.request_id,
             timestamp: _.isNumber(payload.timestamp) ? payload.timestamp : Date.now()
         };
@@ -184,19 +188,40 @@ exports.installHelpers = function(self) {
         }
 
         var targetIds = _.has(payload, 'target_client_ids') ? payload.target_client_ids : [payload.target_client_id];
-        targetIds = _.filter(_.isArray(targetIds) ? targetIds : [targetIds], function(id) {
-            return !_.isUndefined(id) && !_.isNull(id);
+        var requested = [];
+        var requestedByKey = {};
+
+        _.forEach(_.isArray(targetIds) ? targetIds : [targetIds], function(id) {
+            if (_.isUndefined(id) || _.isNull(id)) {
+                return;
+            }
+
+            var key = String(id);
+            if (_.has(requestedByKey, key)) {
+                return;
+            }
+
+            requestedByKey[key] = id;
+            requested.push(id);
         });
 
         var targets = _.filter(connectedClients, function(client) {
-            return client && client.id !== self.creatorId && _.some(targetIds, function(id) {
-                return String(client.id) === String(id);
-            });
+            return client && client.id !== self.creatorId && _.has(requestedByKey, String(client.id));
+        });
+
+        var foundByKey = {};
+        _.forEach(targets, function(client) {
+            foundByKey[String(client.id)] = true;
+        });
+
+        var missing = _.filter(requested, function(id) {
+            return !_.has(foundByKey, String(id));
         });
 
         return {
             explicit: true,
-            requested: targetIds,
+            requested: requested,
+            missing: missing,
             clients: targets
         };
     };
@@ -247,7 +272,7 @@ exports.installHandlers = function(self, server, handlers) {
         if (targets.explicit && !targets.requested.length) {
             return server.respond(msg).fail('No target campaign clients requested');
         }
-        if (targets.explicit && targets.requested.length && targets.clients.length !== targets.requested.length) {
+        if (targets.explicit && targets.requested.length && !targets.clients.length) {
             return server.respond(msg).fail('Target campaign client is not connected');
         }
 
@@ -260,7 +285,7 @@ exports.installHandlers = function(self, server, handlers) {
             host_name: msg.client.name
         });
 
-        console.log('[GW COOP] gw_campaign_host_operator type=' + operator.type + ' from host=' + msg.client.name + ' targets=' + targets.clients.length);
+        console.log('[GW COOP] gw_campaign_host_operator type=' + operator.type + ' from host=' + msg.client.name + ' targets=' + targets.clients.length + ' missing_targets=' + JSON.stringify(targets.missing || []));
         _.forEach(targets.clients, function(client) {
             client.message({
                 message_type: 'gw_campaign_host_operator',
@@ -268,6 +293,9 @@ exports.installHandlers = function(self, server, handlers) {
             });
         });
 
-        server.respond(msg).succeed({ sent_count: targets.clients.length });
+        server.respond(msg).succeed({
+            sent_count: targets.clients.length,
+            missing_target_client_ids: targets.missing || []
+        });
     };
 };
