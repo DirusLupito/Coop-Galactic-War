@@ -932,7 +932,12 @@ function GWCampaignModel(creator) {
         if (!system)
             return { planets: [] };
 
-        return utils.getMinimalSystemDescription(system);
+        var gameSystem = utils.getMinimalSystemDescription(system);
+        if (_.isString(gameSystem.name)) {
+            gameSystem.name = gameSystem.name.replace('!LOC:', '');
+        }
+
+        return gameSystem;
     };
 
     self.updateBeacon = function() {

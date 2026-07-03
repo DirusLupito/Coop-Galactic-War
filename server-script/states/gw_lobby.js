@@ -481,6 +481,10 @@ function LobbyModel(creator, launchContext) {
             ? utils.getMinimalSystemDescription(config.system)
             : { planets: [] };
 
+        if (_.isString(gameSystem.name)) {
+            gameSystem.name = gameSystem.name.replace('!LOC:', '');
+        }
+
         console.log('Connected clients: ' + connectedClients.length);
         server.beacon = {
             state: 'lobby',
