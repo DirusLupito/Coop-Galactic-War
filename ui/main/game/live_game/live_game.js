@@ -82,6 +82,10 @@ $(document).ready(function () {
         if(options.navigation !== undefined){
             self.moveSpeed = ko.observable(options.navigation.moveSpeed);
         }
+        if(options.shield !== undefined){
+            self.maxShield = ko.observable(options.shield.max_health);
+            self.shieldRadius = ko.observable(options.shield.radius);
+        }
 
         self.damage = ko.observable(options.damage);
         self.fireRate = ko.observable(options.rate_of_fire);

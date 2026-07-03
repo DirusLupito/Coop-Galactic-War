@@ -1723,9 +1723,8 @@ function GWCampaignModel(creator) {
                 console.log('[GW COOP] gw_campaign_action type=' + payload.type + ' from host=' + msg.client.name);
 
                 _.forEach(self.getConnectedClients(), function(client) {
-                    if (client.id === self.creatorId) {
+                    if (client.id === self.creatorId)
                         return;
-                    }
 
                     client.message({
                         message_type: 'gw_campaign_action',

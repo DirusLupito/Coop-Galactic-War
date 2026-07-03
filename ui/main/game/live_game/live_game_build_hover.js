@@ -53,6 +53,8 @@ $(document).ready(function () {
         self.desc = ko.computed(function() { return self.state().desc || ''; });
         self.health = ko.computed(function() { return self.state().maxHealth || ''; }).extend({ numeric: 2 });
         self.speed = ko.computed(function() { return self.state().moveSpeed || ''; }).extend({ numeric: 2 });
+        self.shield = ko.computed(function() { return self.state().maxShield || ''; }).extend({ numeric: 2 });
+        self.shieldRadius = ko.computed(function() { return self.state().shieldRadius || ''; }).extend({ numeric: 2 });
         self.damage = ko.computed(function () { return self.state().damage || ''; }).extend({ numeric: 2 });
         self.cost = ko.computed(function () { return self.state().cost || ''; }).extend({ numeric: 2 });
         self.fireRate = ko.computed(function () { return self.state().fireRate || ''; }).extend({ numeric: 2 });

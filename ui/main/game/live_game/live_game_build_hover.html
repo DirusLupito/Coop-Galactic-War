@@ -59,6 +59,16 @@
                                             <div class="group-label" data-bind="visible: health"><loc>HEALTH</loc></div>
                                             <div class="stat"><span class="stat_num" data-bind="text: health"></span></div>
                                         </div>
+                                        <div class="resource-group" data-bind="visible: shield">
+                                            <div class="group-label"><loc>SHIELD</loc></div>
+                                            <div class="stat"><span class="stat_num" data-bind="text: shield"></span></div>
+                                            <div class="group-label" data-bind="visible: shieldRadius"><loc>RADIUS</loc></div>
+                                            <div class="stat" data-bind="visible: shieldRadius"><span class="stat_num" data-bind="text: shieldRadius"></span></div>
+                                        </div>
+                                        <div class="resource-group" data-bind="visible: speed">
+                                            <div class="group-label"><loc>SPEED</loc></div>
+                                            <div class="stat"><span class="stat_num" data-bind="text: speed"></span></div>
+                                        </div>
                                         <div class="resource-group" data-bind="visible: damage">
                                             <div class="group-label"><loc>DMG</loc></div>
                                             <div class="stat" data-bind="visible: damage"><span class="stat_num" data-bind="text: damage"></span></div>

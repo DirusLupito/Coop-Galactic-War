@@ -892,6 +892,14 @@ table.game_settings tr:first-child .section .section_header {
             margin: 0px 6px 0px 0px;
         }
 
+    .army-button.make-host {
+        margin: 0px 0px 0px 8px;
+    }
+
+        .army-button.make-host.spectator {
+            margin: 0px 6px 0px 0px;
+        }
+
 
 .slot-remove-button {
     margin: 0px -10px 0px 4px;

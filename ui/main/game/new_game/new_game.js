@@ -502,6 +502,16 @@ $(document).ready(function()
 
         self.thisPlayerIsReady = ko.observable(false);
 
+        // Host-only nudge: ping players who aren't ready yet (sound + taskbar flash).
+        self.pingCooldown = ko.observable(false);
+        self.pingNotReadyPlayers = function () {
+            if (!self.isGameCreator() || self.pingCooldown() || self.allPlayersAreReady())
+                return;
+            self.sendJsonMessage({ identifier: 'host_ping' });
+            self.pingCooldown(true);
+            setTimeout(function () { self.pingCooldown(false); }, 8000);
+        };
+
         self.startingGameCountdown = ko.observable(-1);
         self.showStartingGameCountdown = ko.computed(function () {
             return self.startingGameCountdown() !== -1;
@@ -767,6 +777,11 @@ $(document).ready(function()
         self.kickUser = function (user_id) {
             api.debug.log('kick', user_id);
             self.send_message('kick', { 'id': user_id });
+        };
+
+        self.makeHost = function (user_id) {
+            api.debug.log('make_host', user_id);
+            self.send_message('make_host', { player: user_id });
         };
 
         self.lobbyId = ko.observable().extend({ session: 'lobbyId' });
@@ -1251,11 +1266,53 @@ $(document).ready(function()
             return self.allPlayersAreReady() && !self.serverLoading() && !self.clientLoading() && !self.gameIsNotOk();
         });
 
+        // Auto-start (host opt-in): once everyone's ready, begin the countdown after a short cancelable delay.
+        self.autoStartWhenReady = ko.observable(false).extend({ session: 'auto_start_when_ready' });
+        self.autoStartTimer = null;
+
+        self.cancelAutoStart = function ()
+        {
+            if (self.autoStartTimer)
+            {
+                clearTimeout(self.autoStartTimer);
+                self.autoStartTimer = null;
+            }
+        };
+
+        self.scheduleAutoStart = function ()
+        {
+            self.cancelAutoStart();
+            if (!(self.isGameCreator() && self.autoStartWhenReady() && self.startEnabled()))
+                return;
+            // 3s grace so a late change can cancel it; re-check conditions when it fires.
+            self.autoStartTimer = setTimeout(function ()
+            {
+                self.autoStartTimer = null;
+                if (self.isGameCreator() && self.autoStartWhenReady() && self.startEnabled())
+                    self.startGame();
+            }, 3000);
+        };
+
+        self.toggleAutoStartWhenReady = function ()
+        {
+            self.autoStartWhenReady(!self.autoStartWhenReady());
+        };
+
+        self.autoStartWhenReady.subscribe(function ()
+        {
+            self.scheduleAutoStart();
+        });
+
         self.startEnabled.subscribe(function (value)
         {
             if (value)
             {
                 api.audio.playSound('/SE/UI/UI_lobby_game_loaded');
+                self.scheduleAutoStart();
+            }
+            else
+            {
+                self.cancelAutoStart();
             }
         });
 
@@ -2978,6 +3035,15 @@ api.debug.log(personality);
             model.send_message("json_message", payload);
         }
 
+        // Host ping: only players who aren't ready (and aren't the host) get a sound + taskbar flash.
+        self.registerJsonMessageHandler('host_ping', function (jsonMsg) {
+            if (self.isGameCreator() || self.thisPlayerIsReady())
+                return;
+            api.audio.playSound('/SE/UI/UI_lobby_game_loaded');
+            // outOfGameNotification uses FLASHW_TIMERNOFG, so it only flashes when the window is unfocused.
+            api.game.outOfGameNotification(loc('!LOC:The host is waiting for you to ready up.'));
+        });
+
         self.requestChatHistory = function() {
             model.send_message("chat_history", {}, function(sucesss, response) {
                 if (sucesss && response && response.chat_history) {
@@ -3188,6 +3254,10 @@ api.debug.log(personality);
         _.forEach(payload, function (element)
         {
             var isCurrentPlayer = element.id === model.uberId() || element.id === model.displayName();
+
+            // Track host status both ways so a demoted host loses its host UI on transfer.
+            if (isCurrentPlayer)
+                model.isGameCreator(!!element.creator);
 
             if (element.creator && isCurrentPlayer)
             {

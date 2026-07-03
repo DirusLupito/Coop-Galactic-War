@@ -377,6 +377,9 @@
     "Quit to Main Menu": {
         "message": "Quit to Main Menu"
     },
+    "RADIUS": {
+        "message": "RADIUS"
+    },
     "READY": {
         "message": "READY"
     },
@@ -431,8 +434,14 @@
     "SHARED METAL:": {
         "message": "SHARED METAL: "
     },
+    "SHIELD": {
+        "message": "SHIELD"
+    },
     "SPECIAL-MOVE": {
         "message": "SPECIAL-MOVE"
+    },
+    "SPEED": {
+        "message": "SPEED"
     },
     "START ANNIHILATION": {
         "message": "START ANNIHILATION"

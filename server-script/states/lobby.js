@@ -724,6 +724,20 @@ function LobbyModel(creator) {
         self.updatePlayerState();
     };
 
+    self.unreadyPlayer = function(player_id)
+    {
+        debug_log('unreadyPlayer');
+
+        var element = self.players[player_id];
+        if (element && element.ready && !element.ai)
+        {
+            server.broadcastEventMessage(element.client.name, ' is no longer ready.');
+            element.ready = false;
+            self.setDirty({ players: true });
+            self.updatePlayerState();
+        }
+    };
+
     self.addPlayersToSlotsIfPossible = function()
     {
         debug_log('addPlayersToSlotsIfPossible');
@@ -751,8 +765,6 @@ function LobbyModel(creator) {
         if (options.slots && options.slots + self.totalSlots() > MAX_PLAYERS)
             return;
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-
         self.armies.push(new ArmyModel(options));
         self.addPlayersToSlotsIfPossible();
         self.updateArmyState();
@@ -763,8 +775,6 @@ function LobbyModel(creator) {
         debug_log('removeArmy');
 
         var spares = [];
-
-        self.unreadyAllPlayers(); // calls updatePlayerState
 
         self.armies.splice(army_index, 1);
 
@@ -802,8 +812,6 @@ function LobbyModel(creator) {
 
         if (options.slots && (options.slots - army.slots + self.totalSlots()) > MAX_PLAYERS)
             return;
-
-        self.unreadyAllPlayers(); // calls updatePlayerState
 
         if (options.slots < army.slots) {
             _.forEach(_.range(options.slots, army.slots), function (index) {
@@ -942,6 +950,34 @@ function LobbyModel(creator) {
         return player ? player.client.name : '';
     };
 
+    self.setCreator = function(id)
+    {
+        debug_log('setCreator');
+
+        var player = self.players[id];
+        if (!player || player.ai)
+            return false;
+
+        if (id === self.creator)
+            return true;
+
+        // Demote the previous host and revoke their moderator status (only the host is a mod).
+        var previous = self.players[self.creator];
+        if (previous)
+        {
+            previous.creator = false;
+            bouncer.removePlayerFromModlist(self.creator);
+        }
+
+        self.creator = id;
+        player.creator = true;
+        bouncer.addPlayerToModlist(id);
+
+        self.updatePlayerState();
+        server.broadcastEventMessage(player.client.name, ' is now the host.');
+        return true;
+    };
+
     self.chooseNextPlayerAsCreator = function()
     {
         debug_log('chooseNextPlayerAsCreator');
@@ -952,16 +988,7 @@ function LobbyModel(creator) {
         if (!client)
             return;
 
-        var id = client.id;
-        self.creator = id;
-
-        var player = self.players[id];
-
-        player.creator = true;
-        bouncer.addPlayerToModlist(id);
-
-        self.updatePlayerState();
-        server.broadcastEventMessage(player.client.name, ' is now the host.');
+        self.setCreator(client.id);
     };
 
     self.removePlayer = function(id, disconnected)
@@ -1040,8 +1067,7 @@ function LobbyModel(creator) {
 
         self.fixColors();
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-        // self.updatePlayerState();
+        self.updatePlayerState(); // adding/joining/moving into a slot no longer resets everyone's ready
         self.updateArmyState();
         self.updateColorState();
         return true;
@@ -1111,8 +1137,7 @@ function LobbyModel(creator) {
 
         self.fixColors();
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-        // self.updatePlayerState();
+        self.updatePlayerState(); // host swap: don't reset everyone's ready
         self.updateArmyState();
         self.updateColorState();
         return true;
@@ -1212,8 +1237,7 @@ function LobbyModel(creator) {
 
         player.setAIPersonality(personality);
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-        // self.updatePlayerState();
+        self.updatePlayerState(); // AI tweaks no longer reset everyone's ready
     };
 
     self.setAILandingPolicy = function(player_id, policy)
@@ -1226,8 +1250,7 @@ function LobbyModel(creator) {
 
         player.setAILandingPolicy(policy);
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-        // self.updatePlayerState();
+        self.updatePlayerState(); // AI tweaks no longer reset everyone's ready
     };
 
     self.setAICommander = function(player_id, commander)
@@ -1239,8 +1262,7 @@ function LobbyModel(creator) {
 
         player.setCommander(commander);
 
-        self.unreadyAllPlayers(); // calls updatePlayerState
-        // self.updatePlayerState();
+        self.updatePlayerState(); // AI tweaks no longer reset everyone's ready
     };
 
     self.setEconomyFactor = function(player_id, value)
@@ -1548,21 +1570,12 @@ function playerMsg_modifySettings(msg)
 
     settings.game_options = game_options;
 
-    var nameChangeOnly = false;
-
-    if (settings.game_name !== lobbyModel.settings.game_name)
-    {
-        var currentSettings = _.cloneDeep(lobbyModel.settings);
-        delete currentSettings.game_name;
-        var newSettings = _.cloneDeep(settings);
-        delete newSettings.game_name;
-
-        nameChangeOnly = _.isEqual(currentSettings, newSettings);
-    }
+    // Only gameplay-rule changes reset ready; visibility/spectator-count/tag/name changes do not.
+    var gameplayChanged = !_.isEqual(lobbyModel.settings.game_options, game_options);
 
     lobbyModel.changeSettings(settings);
 
-    if (!nameChangeOnly)
+    if (gameplayChanged)
         lobbyModel.unreadyAllPlayers();
 
     response.succeed();
@@ -1814,9 +1827,14 @@ function playerMsg_joinArmy(msg)
     if (msg.payload.commander)
         player.setCommander(msg.payload.commander);
 
+    var fromArmy = player.armyIndex;
+
     lobbyModel.removePlayerFromArmy(msg.client.id);
     if (lobbyModel.addPlayerToArmy(msg.client.id, msg.payload.army))
     {
+        // Switching your own team re-readies just you (joining from spectator leaves you not-ready anyway).
+        if (fromArmy !== -1 && player.armyIndex !== fromArmy)
+            lobbyModel.unreadyPlayer(msg.client.id);
         server.broadcastEventMessage(player.client.name, ' has joined an army.');
         response.succeed();
     } else
@@ -1945,10 +1963,15 @@ function playerMsg_movePlayer(msg)
     if (!player)
         return response.fail("Invalid player");
 
+    var fromArmy = player.armyIndex;
+
     lobbyModel.removePlayerFromArmy(id);
 
     if (lobbyModel.addPlayerToArmy(id, msg.payload.army))
     {
+        // Moving a player to a different team only un-readies that player, not everyone.
+        if (player.armyIndex !== fromArmy)
+            lobbyModel.unreadyPlayer(id);
         server.broadcastEventMessage(player.client.name, ' moved army');
         response.succeed();
     }
@@ -1979,8 +2002,16 @@ function playerMsg_swapPlayers(msg)
     if (!player1 || !player2)
         return response.fail("Invalid players");
 
+    var sameArmy = (player1.armyIndex === player2.armyIndex);
+
     if (lobbyModel.swapPlayers(id1, id2))
     {
+        // Swapping across teams only un-readies the two swapped players, not everyone.
+        if (!sameArmy)
+        {
+            lobbyModel.unreadyPlayer(id1);
+            lobbyModel.unreadyPlayer(id2);
+        }
         server.broadcastEventMessage(player1.client.name, ' swapped with ' + player2.client.name);
         response.succeed();
     }
@@ -2065,6 +2096,30 @@ function playerMsg_promoteToMod(msg) {
 
     bouncer.addPlayerToModlist(id);
     lobbyModel.updatePlayerState();
+}
+
+function playerMsg_makeHost(msg)
+{
+    debug_log('playerMsg_makeHost');
+    var response = server.respond(msg);
+
+    // allowChangesFrom requires the sender to be the current host and blocks countdown/starting.
+    if (!allowChangesFrom(msg.client))
+        return response.fail("Not allowed");
+
+    if (!msg.payload)
+        return response.fail("Invalid message");
+
+    var id = msg.payload.player;
+    var player = lobbyModel.players[id];
+
+    if (!player || player.ai)
+        return response.fail("Invalid player");
+
+    if (lobbyModel.setCreator(id))
+        response.succeed();
+    else
+        response.fail("Unable to transfer host");
 }
 
 function playerMsg_setLoading(msg) {
@@ -2383,6 +2438,7 @@ exports.enter = function (owner) {
         leave: playerMsg_leave,
         kick: playerMsg_kick,
         promote_to_mod: playerMsg_promoteToMod,
+        make_host: playerMsg_makeHost,
         set_loading: playerMsg_setLoading,
         mod_data_available: playerMsg_modDataAvailable,
         mod_data_updated: playerMsg_modDataUpdated,
