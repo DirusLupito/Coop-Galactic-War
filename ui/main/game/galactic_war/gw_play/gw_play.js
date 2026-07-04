@@ -1517,7 +1517,9 @@ requireGW([
         };
 
         self.syncHostCoopInventoryRecord = function(reason) {
-            if (!self.gwCampaignActive() || !self.gwCampaignPerPlayerTechCards()) {
+            var perPlayerTechCards = self.gwCampaignPerPlayerTechCards() || self.savedPerPlayerTechCards();
+            var canSyncSoloRecord = !self.gwCampaignEnabled() && game && !game.isTutorial();
+            if (!perPlayerTechCards || (!self.gwCampaignActive() && !canSyncSoloRecord)) {
                 return false;
             }
 
@@ -1527,6 +1529,14 @@ requireGW([
             }
 
             var host = self.getGwCampaignHostClient();
+            if (!host && canSyncSoloRecord) {
+                host = {
+                    id: self.uberId && self.uberId(),
+                    name: self.displayName && self.displayName(),
+                    role: 'host'
+                };
+            }
+
             if (!host) {
                 console.log('[GW COOP] Cannot sync host co-op inventory record without host client data for ' + (reason || 'unknown') + '.');
                 return false;
@@ -2303,6 +2313,13 @@ requireGW([
                 return;
 
             self.connectFailDestination(window.location.href);
+            var navigateToCoop = function() {
+                self.serverType('local');
+
+                self.serverSetup('gw_campaign');
+                self.gwCampaignEnabled(true);
+                window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
+            };
 
             var params = {
                 action: 'start',
@@ -2314,11 +2331,23 @@ requireGW([
                 })
             };
 
-            self.serverType('local');
+            if (!self.syncHostCoopInventoryRecord('open_to_coop')) {
+                navigateToCoop();
+                return;
+            }
 
-            self.serverSetup('gw_campaign');
-            self.gwCampaignEnabled(true);
-            window.location.href = 'coui://ui/main/game/connect_to_game/connect_to_game.html?' + $.param(params);
+            var saving = GW.manifest.saveGame(game);
+            if (!saving || !_.isFunction(saving.then)) {
+                navigateToCoop();
+                return;
+            }
+
+            saving.then(function() {
+                navigateToCoop();
+            }, function(err) {
+                console.error('[GW COOP] failed to save host co-op inventory before opening co-op', err);
+                navigateToCoop();
+            });
         };
 
         self.leaveCoopSession = function() {
