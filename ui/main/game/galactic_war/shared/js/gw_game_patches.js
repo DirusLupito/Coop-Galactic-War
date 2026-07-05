@@ -104,6 +104,27 @@ define([], function() {
                 game.hostTechCardDealCount = ko.observable(game.hostTechCardDealHistory().length);
             }
         },
+
+        // 4 = Add save persisted co-op lobby name/password.
+        function(game) {
+            if (!_.isFunction(game.coopLobbySettings)) {
+                game.coopLobbySettings = ko.observable({
+                    game_name: '',
+                    password: ''
+                });
+                return;
+            }
+
+            var settings = game.coopLobbySettings();
+            if (!_.isObject(settings)) {
+                settings = {};
+            }
+
+            game.coopLobbySettings({
+                game_name: _.isString(settings.game_name) ? settings.game_name : '',
+                password: _.isString(settings.password) ? settings.password : ''
+            });
+        },
     ];
 
     return {

@@ -1198,8 +1198,9 @@ requireGW([
 
         self.friends = ko.observableArray([]).extend({ session: 'friends' });
         self.visibilityMode = ko.observable('public');
-        self.gwLobbyTitle = ko.observable('GW Co-op Campaign');
-        self.privateGamePassword = ko.observable('').extend({ session: 'private_game_password' });
+        self.defaultGwCoopLobbyTitle = ko.observable('GW Co-op Campaign');
+        self.gwLobbyTitle = ko.observable(self.defaultGwCoopLobbyTitle());
+        self.privateGamePassword = ko.observable('');
         self.passwordInputType = ko.observable('password');
         self.campaignLobbySettingsSync = false;
         // gwCampaignMaxClients is the number of clients that can currently connect to the current campaign session.
@@ -1337,6 +1338,94 @@ requireGW([
             return game.perPlayerTechCards();
         };
 
+        self.savedCoopLobbySettings = function() {
+            if (!game || !_.isFunction(game.coopLobbySettings)) {
+                return {};
+            }
+
+            var settings = game.coopLobbySettings();
+            return _.isObject(settings) ? settings : {};
+        };
+
+        self.savedCoopLobbyName = function() {
+            var settings = self.savedCoopLobbySettings();
+            if (_.isString(settings.game_name) && settings.game_name.length) {
+                return settings.game_name;
+            }
+
+            return self.defaultGwCoopLobbyTitle();
+        };
+
+        self.savedCoopLobbyPassword = function() {
+            var settings = self.savedCoopLobbySettings();
+            return _.isString(settings.password) ? settings.password : '';
+        };
+
+        self.setDefaultGwCoopLobbyTitle = function(title) {
+            if (!_.isString(title) || !title.length) {
+                return false;
+            }
+
+            self.defaultGwCoopLobbyTitle(title);
+
+            var settings = self.savedCoopLobbySettings();
+            if (!_.isString(settings.game_name) || !settings.game_name.length) {
+                self.gwLobbyTitle(title);
+            }
+
+            return true;
+        };
+
+        self.updateSavedCoopLobbySettings = function(settings) {
+            if (!game || !_.isFunction(game.coopLobbySettings)) {
+                return false;
+            }
+
+            settings = settings || {};
+            var current = self.savedCoopLobbySettings();
+            var next = {
+                game_name: _.isString(current.game_name) ? current.game_name : '',
+                password: _.isString(current.password) ? current.password : ''
+            };
+
+            if (_.has(settings, 'game_name') && _.isString(settings.game_name)) {
+                next.game_name = settings.game_name;
+            }
+
+            if (_.has(settings, 'password') && _.isString(settings.password)) {
+                next.password = settings.password;
+            }
+
+            if (_.isEqual(current, next)) {
+                return false;
+            }
+
+            game.coopLobbySettings(next);
+            return true;
+        };
+
+        self.persistSavedCoopLobbySettings = function(settings, reason) {
+            if (!self.updateSavedCoopLobbySettings(settings)) {
+                return;
+            }
+
+            var saving = GW.manifest.saveGame(game);
+            if (!saving || !_.isFunction(saving.then)) {
+                return;
+            }
+
+            saving.then(function() {
+                console.log('[GW COOP] saved co-op lobby settings reason=' + (reason || 'unknown'));
+                console.log('[GW COOP] saved co-op lobby settings: ' + JSON.stringify(settings || {}));
+            }, function(err) {
+                console.error('[GW COOP] failed to save co-op lobby settings reason=' + (reason || 'unknown'), err);
+            });
+        };
+
+        self.gwLobbyTitle(self.savedCoopLobbyName());
+        self.privateGamePassword(self.savedCoopLobbyPassword());
+        console.log('[GW COOP] initialized campaign lobby title to "' + self.gwLobbyTitle() + '" and password to "' + self.privateGamePassword() + '".');
+
         self.applyInitialPerPlayerTechStateFromGame = function() {
             var perPlayerTechCards = self.savedPerPlayerTechCards();
             if (!self.gwCampaignEnabled() || !perPlayerTechCards) {
@@ -1396,11 +1485,14 @@ requireGW([
 
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedByDefault);
+            self.gwLobbyTitle(self.savedCoopLobbyName());
+            self.privateGamePassword(self.savedCoopLobbyPassword());
             var players = self.savedCoopPlayers();
             var payload = self.buildCampaignLobbySettingsPayload(players);
 
             console.log('[GW COOP] applying saved coop slot settings: ' + JSON.stringify(payload));
             self.initialCoopSettingsApplied = true;
+            self.persistSavedCoopLobbySettings(payload, 'apply_saved_coop_settings');
             self.send_message('modify_settings', payload, function(success, response) {
                 console.log('[GW COOP] applied saved coop slot settings success=' + !!success + ' payload=' + JSON.stringify(payload || {}) + ' response=' + JSON.stringify(response || {}));
             });
@@ -2193,7 +2285,9 @@ requireGW([
             if (!self.canEditGwCampaignLobby() || !self.gwCampaignActive() || self.campaignLobbySettingsSync)
                 return;
 
-            self.send_message('modify_settings', self.buildCampaignLobbySettingsPayload(self.gwCampaignMaxClients()));
+            var payload = self.buildCampaignLobbySettingsPayload(self.gwCampaignMaxClients());
+            self.persistSavedCoopLobbySettings(payload, 'push_campaign_lobby_settings');
+            self.send_message('modify_settings', payload);
         };
 
         self.toggleGwCampaignSharedControl = function() {
@@ -2259,6 +2353,10 @@ requireGW([
             self.gwCampaignPerPlayerTechCards(perPlayerTechCards);
             self.gwCampaignSharedControl(perPlayerTechCards ? false : sharedControl);
             self.initialCoopSettingsApplied = true;
+            self.persistSavedCoopLobbySettings({
+                game_name: gameName,
+                password: password
+            }, 'apply_restart_context');
 
             self.send_message('modify_settings', {
                 game_name: gameName,

@@ -11,7 +11,7 @@ define([
     GWBank,
     GWGamePatches
 ) {
-    var CURRENT_VERSION = 4;
+    var CURRENT_VERSION = 5;
 
     var genId = function()
     {
@@ -45,6 +45,10 @@ define([
         self.lockCoopPlayers = ko.observable(false);
         self.sharedByDefault = ko.observable(true);
         self.perPlayerTechCards = ko.observable(false);
+        self.coopLobbySettings = ko.observable({
+            game_name: '',
+            password: ''
+        });
         self.coopPlayerInventoryData = ko.observableArray([]);
         self.hostTechCardDealCount = ko.observable(0);
         self.hostTechCardDealHistory = ko.observableArray([]);
@@ -120,6 +124,11 @@ define([
             self.lockCoopPlayers(!!config.lockCoopPlayers);
             self.sharedByDefault(_.has(config, 'sharedByDefault') ? !!config.sharedByDefault : true);
             self.perPlayerTechCards(_.has(config, 'perPlayerTechCards') ? !!config.perPlayerTechCards : false);
+            var coopLobbySettings = _.isObject(config.coopLobbySettings) ? config.coopLobbySettings : {};
+            self.coopLobbySettings({
+                game_name: _.isString(coopLobbySettings.game_name) ? coopLobbySettings.game_name : '',
+                password: _.isString(coopLobbySettings.password) ? coopLobbySettings.password : ''
+            });
             self.coopPlayerInventoryData(_.isArray(config.coopPlayerInventoryData) ? config.coopPlayerInventoryData : []);
             if (_.isArray(config.hostTechCardDealHistory)) {
                 self.hostTechCardDealHistory(config.hostTechCardDealHistory);
@@ -180,6 +189,7 @@ define([
                 lockCoopPlayers: self.lockCoopPlayers(),
                 sharedByDefault: self.sharedByDefault(),
                 perPlayerTechCards: self.perPlayerTechCards(),
+                coopLobbySettings: _.cloneDeep(self.coopLobbySettings()),
                 coopPlayerInventoryData: self.coopPlayerInventoryData(),
                 hostTechCardDealCount: self.hostTechCardDealCount(),
                 hostTechCardDealHistory: self.hostTechCardDealHistory(),
