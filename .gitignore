@@ -1,3 +1,4 @@
 ui/main/shared/*
 media/*
 deploy_media.ps1
+mod/*

@@ -1611,6 +1611,10 @@ requireGW([
         self.syncHostCoopInventoryRecord = function(reason) {
             var perPlayerTechCards = self.gwCampaignPerPlayerTechCards() || self.savedPerPlayerTechCards();
             var canSyncSoloRecord = !self.gwCampaignEnabled() && game && !game.isTutorial();
+            if (self.gwCampaignActive() && !self.isCampaignHost()) {
+                return false;
+            }
+
             if (!perPlayerTechCards || (!self.gwCampaignActive() && !canSyncSoloRecord)) {
                 return false;
             }
@@ -1675,6 +1679,30 @@ requireGW([
             }
 
             return true;
+        };
+
+        self.publishHostCoopInventoryRecord = function(reason) {
+            if (!self.gwCampaignActive() || !self.isCampaignHost()) {
+                return false;
+            }
+
+            if (!game || !_.isFunction(game.findCoopPlayerInventoryData)) {
+                console.log('[GW COOP] Cannot publish host co-op inventory record without game inventory helpers for ' + (reason || 'unknown') + '.');
+                return false;
+            }
+
+            var host = self.getGwCampaignHostClient();
+            var record = host ? game.findCoopPlayerInventoryData(host) : undefined;
+            if (!self.validateGwCampaignInventoryRecord(record, host, true)) {
+                console.log('[GW COOP] Cannot publish invalid host co-op inventory record for ' + (reason || 'unknown') + '.');
+                return false;
+            }
+
+            return self.sendCampaignHostOperator('coop_inventory_record_changed', {
+                record: _.cloneDeep(record)
+            }, {
+                stale_snapshot: true
+            });
         };
 
         self.getGwCampaignInventoryModalRecordKey = function(record) {
@@ -2429,10 +2457,7 @@ requireGW([
                 })
             };
 
-            if (!self.syncHostCoopInventoryRecord('open_to_coop')) {
-                navigateToCoop();
-                return;
-            }
+            self.syncHostCoopInventoryRecord('open_to_coop');
 
             var saving = GW.manifest.saveGame(game);
             if (!saving || !_.isFunction(saving.then)) {
@@ -2443,7 +2468,7 @@ requireGW([
             saving.then(function() {
                 navigateToCoop();
             }, function(err) {
-                console.error('[GW COOP] failed to save host co-op inventory before opening co-op', err);
+                console.error('[GW COOP] failed to save host inventory before opening co-op', err);
                 navigateToCoop();
             });
         };
@@ -3031,7 +3056,7 @@ requireGW([
             }
 
             if (action.type === 'win_choice') {
-                self.win(payload.selected_card_index);
+                self.win(self.gwCampaignPerPlayerTechCards() ? -1 : payload.selected_card_index);
                 _.defer(function() {
                     self.syncViewerStarsFromGame('after_action_win_choice');
                 });
@@ -3938,6 +3963,40 @@ requireGW([
             return result.promise();
         };
 
+        self.registerCampaignHostOperatorHandler('coop_inventory_record_changed', function(operator) {
+            var payload = operator && operator.payload || {};
+            var record = payload.record;
+            var hostIdentifiers = _.filter([operator && operator.host_id, operator && operator.host_name], function(value) {
+                return !_.isUndefined(value) && value !== null && String(value).length;
+            });
+            var recordIdentifiers = _.filter([record && record.playerId, record && record.playerName], function(value) {
+                return !_.isUndefined(value) && value !== null && String(value).length;
+            });
+            var matchesHost = _.some(recordIdentifiers, function(recordIdentifier) {
+                return _.some(hostIdentifiers, function(hostIdentifier) {
+                    return String(recordIdentifier) === String(hostIdentifier);
+                });
+            });
+
+            if (!matchesHost) {
+                console.log('[GW COOP] ignoring host co-op inventory record operator for non-host record');
+                return;
+            }
+
+            if (!self.validateGwCampaignInventoryRecord(record, {
+                id: operator && operator.host_id,
+                name: operator && operator.host_name
+            }, true)) {
+                return;
+            }
+
+            self.applyCoopPlayerInventoryRecord(_.cloneDeep(record), 'coop_inventory_record_changed').then(function() {
+                console.log('[GW COOP] applied host co-op inventory record change for host=' + (operator.host_name || operator.host_id || '<unknown>'));
+            }, function(reason) {
+                console.log('[GW COOP] failed to apply host co-op inventory record change: ' + reason);
+            });
+        });
+
         self.applyCoopPlayerTechCardDeleted = function(payload) {
             var result = $.Deferred();
             var record = game && _.isFunction(game.findCoopPlayerInventoryData)
@@ -4654,7 +4713,9 @@ requireGW([
             if (!game.busy || !_.isFunction(game.busy.then)) {
                 self.cardsDirty = false;
                 self.updateCards();
-                self.syncHostCoopInventoryRecord('cards_changed');
+                if (self.syncHostCoopInventoryRecord('cards_changed')) {
+                    self.publishHostCoopInventoryRecord('cards_changed');
+                }
                 self.refreshGwCampaignInventoryModal();
                 return;
             }
@@ -4663,7 +4724,9 @@ requireGW([
             {
                 self.cardsDirty = false;
                 self.updateCards();
-                self.syncHostCoopInventoryRecord('cards_changed');
+                if (self.syncHostCoopInventoryRecord('cards_changed')) {
+                    self.publishHostCoopInventoryRecord('cards_changed');
+                }
                 self.refreshGwCampaignInventoryModal();
             });
         };
@@ -5112,13 +5175,13 @@ requireGW([
     var restoreHostPerPlayerInventoryFromSave = function(game) {
         var result = $.Deferred();
 
-        if (!gwCampaignCoopMode || !game) {
+        if (!game) {
             result.resolve(game);
             return result.promise();
         }
 
         var hostOpening = safeStorageGet(window.sessionStorage, 'gw_campaign_host_opening');
-        if (hostOpening !== 'true') {
+        if (gwCampaignCoopMode && hostOpening !== 'true') {
             result.resolve(game);
             return result.promise();
         }
@@ -5202,7 +5265,7 @@ requireGW([
 
             game.inventory(inventory);
             GW.manifest.saveGame(game).then(function() {
-                console.log('[GW COOP] restored host campaign inventory from local co-op record id=' + localUberId + ' name=' + localDisplayName + '.');
+                console.log('[GW COOP] restored host campaign inventory from local co-op record during save load id=' + localUberId + ' name=' + localDisplayName + '.');
                 result.resolve(game);
             }, function(err) {
                 console.error('[GW COOP] failed to save restored host campaign inventory', err);
