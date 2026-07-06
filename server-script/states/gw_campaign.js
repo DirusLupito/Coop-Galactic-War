@@ -1571,10 +1571,6 @@ function GWCampaignModel(creator) {
                     return server.respond(msg).fail('Missing co-op player inventory data for tech card deletion');
                 }
 
-                if (!self.coopPlayerHasPendingTechCards(existingRecord)) {
-                    return server.respond(msg).fail('Co-op tech card deletion requires pending tech cards');
-                }
-
                 var inventory = existingRecord.inventory || {};
                 if (!_.isArray(inventory.cards)) {
                     return server.respond(msg).fail('Co-op player inventory has no tech cards to delete');

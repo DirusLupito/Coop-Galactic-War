@@ -2071,6 +2071,14 @@ requireGW([
             return !!(self.canChooseCoopTechCards() && self.coopPlayerDisplayInventory() && !self.coopTechChoiceSubmitting());
         });
 
+        self.canUseCoopTechDeletion = ko.computed(function() {
+            return !!(self.isCampaignViewer()
+                && self.gwCampaignActive()
+                && self.gwCampaignPerPlayerTechCards()
+                && self.coopPlayerDisplayInventory()
+                && !self.coopTechChoiceSubmitting());
+        });
+
         self.clearCoopPlayerDisplayInventory = function() {
             self.coopPlayerDisplayInventory(undefined);
             self.coopPlayerDisplayInventoryKey = '';
@@ -4105,7 +4113,7 @@ requireGW([
 
         self.deleteCoopTechCard = function(cardIndex) {
             var result = $.Deferred();
-            if (!self.canUseCoopTechChoice()) {
+            if (!self.canUseCoopTechDeletion()) {
                 result.reject('Co-op tech deletion is not ready');
                 return result.promise();
             }
@@ -4595,7 +4603,7 @@ requireGW([
             self.hoverCard(card);
         };
         self.discardHoverCard = function(card) {
-            if (self.canUseCoopTechChoice() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
+            if (self.canUseCoopTechDeletion() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
                 var coopDiscard = self.hoverCard();
                 if (!coopDiscard) {
                     return;

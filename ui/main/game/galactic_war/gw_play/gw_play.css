@@ -324,13 +324,13 @@ html, body {
     pointer-events: all;
 }
 
-/* Viewers in co-op are read-only except while resolving their own per-player tech choice. */
+/* Viewers in co-op are read-only except for their own per-player tech inventory. */
 .container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) .div_panel_bar_background.tech #system-card .exploring.card_action {
-    display: none !important;
+    display: none;
 }
 
-.container.gw-campaign-viewer:not(.gw-campaign-viewer-tech-choice) #hover-card .card_action {
-    display: none !important;
+.container.gw-campaign-viewer:not(.gw-campaign-viewer-per-player-tech) #hover-card .card_action {
+    display: none;
 }
 
 .gw-host-choosing-tech {
