@@ -264,12 +264,18 @@ $(document).ready(function () {
                         retired = true;
                 }
 
-                var ffa = game.mode === 'FreeForAll';
                 if (self.gameModeFilter() !== 'any') {
-                    if (ffa && self.gameModeFilter() === 'teamarmies')
+                    if (self.gameModeFilter() === 'freeforall' && game.mode !== 'FreeForAll') {
                         retired = true;
-                    if (!ffa && self.gameModeFilter() === 'freeforall')
+                    }
+
+                    if (self.gameModeFilter() === 'galacticwar' && game.mode !== 'GalacticWar') {
                         retired = true;
+                    }
+
+                    if (self.gameModeFilter() === 'teamarmies' && game.mode !== 'TeamArmies') {
+                        retired = true;
+                    }
                 }
 
                 // Check for valid number of planets

@@ -76,12 +76,18 @@ function CommunityMods() {
                         retired = true;
                 }
 
-                var ffa = game.mode === 'FreeForAll';
                 if (model.gameModeFilter() !== 'any') {
-                    if (ffa && model.gameModeFilter() === 'teamarmies')
+                    if (model.gameModeFilter() === 'freeforall' && game.mode !== 'FreeForAll') {
                         retired = true;
-                    if (!ffa && model.gameModeFilter() === 'freeforall')
+                    }
+
+                    if (model.gameModeFilter() === 'galacticwar' && game.mode !== 'GalacticWar') {
                         retired = true;
+                    }
+
+                    if (model.gameModeFilter() === 'teamarmies' && game.mode !== 'TeamArmies') {
+                        retired = true;
+                    }
                 }
 
                 // Check for valid number of planets
