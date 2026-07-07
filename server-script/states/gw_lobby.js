@@ -45,6 +45,7 @@ function LobbyModel(creator, launchContext) {
     self.isSingleplayerGW = !self.campaignActive;
     self.requiredClientModIdentifiers = [];
     self.requiredClientModNamesById = {};
+    self.requiredClientModVersionsById = {};
     self.requiredClientModsPublished = false;
     self.pendingManifestTimeoutByClientId = {};
     self.pendingSelfDisconnectTimeoutByClientId = {};
@@ -131,11 +132,36 @@ function LobbyModel(creator, launchContext) {
         return normalizedNames;
     };
 
-    self.setRequiredClientModsData = function(requiredIdentifiers, requiredNamesById, published) {
+    self.normalizeClientModVersion = function(version) {
+        if (_.isUndefined(version) || version === null)
+            return '';
+
+        return String(version).trim();
+    };
+
+    self.normalizeClientModVersionsById = function(versionsById, identifiers) {
+        var normalizedVersions = {};
+        _.forEach(identifiers || [], function(identifier) {
+            normalizedVersions[identifier] = '';
+        });
+
+        _.forIn(versionsById || {}, function(version, key) {
+            var normalizedIdentifier = self.normalizeClientModIdentifier(key);
+            if (!normalizedIdentifier || identifiers.indexOf(normalizedIdentifier) === -1)
+                return;
+
+            normalizedVersions[normalizedIdentifier] = self.normalizeClientModVersion(version);
+        });
+
+        return normalizedVersions;
+    };
+
+    self.setRequiredClientModsData = function(requiredIdentifiers, requiredNamesById, requiredVersionsById, published) {
         if (!self.campaignActive) {
             console.log('[GW COOP] MOD CHECK [gw_lobby] campaign inactive; clearing required client mod list');
             self.requiredClientModIdentifiers = [];
             self.requiredClientModNamesById = {};
+            self.requiredClientModVersionsById = {};
             self.requiredClientModsPublished = false;
             self.clientManifestValidatedByClientId = {};
             self.clearAllPendingManifestTimeouts();
@@ -143,16 +169,21 @@ function LobbyModel(creator, launchContext) {
         }
 
         var previousRequiredIdentifiers = _.clone(self.requiredClientModIdentifiers);
+        var previousRequiredVersionsById = _.cloneDeep(self.requiredClientModVersionsById);
         var previousPublished = self.requiredClientModsPublished;
         self.requiredClientModIdentifiers = self.normalizeClientModIdentifiers(requiredIdentifiers);
         self.requiredClientModNamesById = self.normalizeClientModNamesById(requiredNamesById, self.requiredClientModIdentifiers);
+        self.requiredClientModVersionsById = self.normalizeClientModVersionsById(requiredVersionsById, self.requiredClientModIdentifiers);
         self.requiredClientModsPublished = !!published;
 
-        if (previousPublished !== self.requiredClientModsPublished || !_.isEqual(previousRequiredIdentifiers, self.requiredClientModIdentifiers)) {
+        if (previousPublished !== self.requiredClientModsPublished
+                || !_.isEqual(previousRequiredIdentifiers, self.requiredClientModIdentifiers)
+                || !_.isEqual(previousRequiredVersionsById, self.requiredClientModVersionsById)) {
             self.clientManifestValidatedByClientId = {};
         }
 
         console.log('[GW COOP] MOD CHECK [gw_lobby] required_identifiers=' + JSON.stringify(self.requiredClientModIdentifiers)
+            + ' required_versions=' + JSON.stringify(self.requiredClientModVersionsById)
             + ' published=' + self.requiredClientModsPublished);
 
         if (!self.requiredClientModsPublished) {
@@ -236,7 +267,19 @@ function LobbyModel(creator, launchContext) {
         self.pendingSelfDisconnectTimeoutByClientId = {};
     };
 
-    self.buildMissingRequiredModsReason = function(missingIdentifiers, extraIdentifiers, extraNamesById) {
+    self.buildClientModVersionMismatchLabels = function(versionMismatchIdentifiers, activeVersionsById) {
+        return _.map(versionMismatchIdentifiers || [], function(identifier) {
+            var displayName = self.requiredClientModNamesById && self.requiredClientModNamesById[identifier];
+            var label = (_.isString(displayName) && displayName.length)
+                ? displayName
+                : identifier;
+
+            return label + ' host=' + (self.requiredClientModVersionsById[identifier] || '<none>')
+                + ' local=' + (activeVersionsById && activeVersionsById[identifier] || '<none>');
+        });
+    };
+
+    self.buildMissingRequiredModsReason = function(missingIdentifiers, extraIdentifiers, extraNamesById, versionMismatchIdentifiers, activeVersionsById) {
         var parts = [];
 
         if (missingIdentifiers && missingIdentifiers.length) {
@@ -261,6 +304,12 @@ function LobbyModel(creator, launchContext) {
             }).join(', '));
         }
 
+        if (versionMismatchIdentifiers && versionMismatchIdentifiers.length) {
+            parts.push('different version ' + _.map(self.buildClientModVersionMismatchLabels(versionMismatchIdentifiers, activeVersionsById), function(label) {
+                return '[' + label + ']';
+            }).join(', '));
+        }
+
         if (!parts.length) {
             return 'Client mod mismatch [client did not report active GW-affecting client mods]';
         }
@@ -268,19 +317,20 @@ function LobbyModel(creator, launchContext) {
         return 'Client mod mismatch: ' + parts.join('; ');
     };
 
-    self.notifyClientMissingRequiredMods = function(client, missingIdentifiers, extraIdentifiers, extraNamesById) {
+    self.notifyClientMissingRequiredMods = function(client, missingIdentifiers, extraIdentifiers, extraNamesById, versionMismatchIdentifiers, activeVersionsById) {
         if (!client || !client.connected) {
             return;
         }
 
         var normalizedExtraNamesById = self.normalizeClientModNamesById(extraNamesById, extraIdentifiers || []);
-        var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, normalizedExtraNamesById);
+        var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, normalizedExtraNamesById, versionMismatchIdentifiers, activeVersionsById);
 
         self.clearPendingSelfDisconnectTimeout(client.id);
 
         console.log('[GW COOP] MOD CHECK [gw_lobby] notifying client=' + client.id
             + ' missing=' + JSON.stringify(missingIdentifiers)
             + ' extra=' + JSON.stringify(extraIdentifiers)
+            + ' version_mismatch=' + JSON.stringify(versionMismatchIdentifiers)
             + ' reason="' + rejectReason + '"');
 
         client.message({
@@ -289,9 +339,12 @@ function LobbyModel(creator, launchContext) {
                 reason: rejectReason,
                 missing_identifiers: _.clone(missingIdentifiers || []),
                 extra_identifiers: _.clone(extraIdentifiers || []),
+                version_mismatch_identifiers: _.clone(versionMismatchIdentifiers || []),
                 required_identifiers: _.clone(self.requiredClientModIdentifiers),
                 required_names_by_id: _.cloneDeep(self.requiredClientModNamesById),
-                extra_names_by_id: _.cloneDeep(normalizedExtraNamesById)
+                required_versions_by_id: _.cloneDeep(self.requiredClientModVersionsById),
+                extra_names_by_id: _.cloneDeep(normalizedExtraNamesById),
+                active_required_versions_by_id: _.cloneDeep(activeVersionsById || {})
             }
         });
 
@@ -330,7 +383,8 @@ function LobbyModel(creator, launchContext) {
             message_type: 'request_client_mod_manifest',
             payload: {
                 required_identifiers: self.requiredClientModIdentifiers,
-                required_names_by_id: self.requiredClientModNamesById
+                required_names_by_id: self.requiredClientModNamesById,
+                required_versions_by_id: self.requiredClientModVersionsById
             }
         });
 
@@ -992,11 +1046,12 @@ function LobbyModel(creator, launchContext) {
 
             var payload = msg.payload || {};
             console.log('[GW COOP] MOD CHECK [gw_lobby] host set_required_client_mods from=' + msg.client.id + ' payload=' + JSON.stringify(payload));
-            self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id, true);
+            self.setRequiredClientModsData(payload.required_identifiers, payload.required_names_by_id, payload.required_versions_by_id, true);
             self.updateBeacon();
             self.requestConnectedClientManifests('host_published_required_mods');
             response.succeed({
                 required_identifiers: self.requiredClientModIdentifiers,
+                required_versions_by_id: _.cloneDeep(self.requiredClientModVersionsById),
                 required_client_mods_published: self.requiredClientModsPublished
             });
         },
@@ -1009,17 +1064,20 @@ function LobbyModel(creator, launchContext) {
             var activeIdentifiers = self.normalizeClientModIdentifiers(msg.payload && msg.payload.active_identifiers);
             var activeRequiredIdentifiers;
             var activeRequiredNamesById;
+            var activeRequiredVersionsById;
             var manifestMalformed = false;
 
             if (msg.payload && _.isArray(msg.payload.active_required_identifiers)) {
                 activeRequiredIdentifiers = self.normalizeClientModIdentifiers(msg.payload.active_required_identifiers);
                 activeRequiredNamesById = self.normalizeClientModNamesById(msg.payload.active_required_names_by_id, activeRequiredIdentifiers);
+                activeRequiredVersionsById = self.normalizeClientModVersionsById(msg.payload.active_required_versions_by_id, activeRequiredIdentifiers);
             }
             else {
                 manifestMalformed = true;
                 console.log('[GW COOP] MOD CHECK [gw_lobby] malformed manifest from client=' + msg.client.id + '; active_required_identifiers missing');
                 activeRequiredIdentifiers = [];
                 activeRequiredNamesById = {};
+                activeRequiredVersionsById = {};
             }
 
             var missingIdentifiers = _.filter(self.requiredClientModIdentifiers, function(identifier) {
@@ -1028,31 +1086,40 @@ function LobbyModel(creator, launchContext) {
             var extraIdentifiers = _.filter(activeRequiredIdentifiers, function(identifier) {
                 return self.requiredClientModIdentifiers.indexOf(identifier) === -1;
             });
+            var versionMismatchIdentifiers = _.filter(self.requiredClientModIdentifiers, function(identifier) {
+                return activeRequiredIdentifiers.indexOf(identifier) !== -1
+                    && self.requiredClientModVersionsById[identifier] !== activeRequiredVersionsById[identifier];
+            });
 
             console.log('[GW COOP] MOD CHECK [gw_lobby] manifest from client=' + msg.client.id
                 + ' active=' + JSON.stringify(activeIdentifiers)
                 + ' active_required=' + JSON.stringify(activeRequiredIdentifiers)
+                + ' active_versions=' + JSON.stringify(activeRequiredVersionsById)
                 + ' missing=' + JSON.stringify(missingIdentifiers)
                 + ' extra=' + JSON.stringify(extraIdentifiers)
+                + ' version_mismatch=' + JSON.stringify(versionMismatchIdentifiers)
                 + ' malformed=' + manifestMalformed
                 + ' required=' + JSON.stringify(self.requiredClientModIdentifiers));
 
             self.clearPendingManifestTimeout(msg.client.id);
 
-            if (manifestMalformed || missingIdentifiers.length || extraIdentifiers.length) {
-                var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById);
+            if (manifestMalformed || missingIdentifiers.length || extraIdentifiers.length || versionMismatchIdentifiers.length) {
+                var rejectReason = self.buildMissingRequiredModsReason(missingIdentifiers, extraIdentifiers, activeRequiredNamesById, versionMismatchIdentifiers, activeRequiredVersionsById);
                 self.clientManifestValidatedByClientId[msg.client.id] = false;
                 response.succeed({
                     missing: missingIdentifiers,
                     missing_identifiers: missingIdentifiers,
                     extra_identifiers: extraIdentifiers,
+                    version_mismatch_identifiers: versionMismatchIdentifiers,
                     reason: rejectReason,
                     required_identifiers: _.clone(self.requiredClientModIdentifiers),
                     required_names_by_id: _.cloneDeep(self.requiredClientModNamesById),
+                    required_versions_by_id: _.cloneDeep(self.requiredClientModVersionsById),
                     extra_names_by_id: _.cloneDeep(activeRequiredNamesById),
+                    active_required_versions_by_id: _.cloneDeep(activeRequiredVersionsById),
                     requires_acknowledgement: true
                 });
-                self.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, extraIdentifiers, activeRequiredNamesById);
+                self.notifyClientMissingRequiredMods(msg.client, missingIdentifiers, extraIdentifiers, activeRequiredNamesById, versionMismatchIdentifiers, activeRequiredVersionsById);
                 return;
             }
 
@@ -1065,6 +1132,7 @@ function LobbyModel(creator, launchContext) {
                     message_type: 'all_client_mods_match',
                     payload: {
                         required_identifiers: _.clone(self.requiredClientModIdentifiers),
+                        required_versions_by_id: _.cloneDeep(self.requiredClientModVersionsById),
                         required_client_mods_published: self.requiredClientModsPublished
                     }
                 });
@@ -1097,6 +1165,7 @@ function LobbyModel(creator, launchContext) {
         self.setRequiredClientModsData(
             launchRequiredMods.required_identifiers,
             launchRequiredMods.required_names_by_id,
+            launchRequiredMods.required_versions_by_id,
             !!launchRequiredMods.required_client_mods_published);
 
         self.updateBeacon();

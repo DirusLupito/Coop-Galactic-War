@@ -38,11 +38,11 @@
             </div>
             <div class="required_mod_gate_body">
                 <div class="required_mod_gate_warning">
-                    <loc>These Galactic War client mods are required to match the host. Install or enable the listed mods, then reconnect.</loc>
+                    <loc>Your enabled Galactic War client mods must match the host exactly. Make the changes below, then reconnect.</loc>
                 </div>
                 <div class="required_mod_gate_section" data-bind="visible: requiredClientModGateMissingMods().length">
                     <div class="required_mod_gate_section_title">
-                        <loc>Missing on this client</loc>
+                        <loc>You are missing these mods</loc>
                     </div>
                     <ul class="required_mod_gate_list" data-bind="foreach: requiredClientModGateMissingMods">
                         <li data-bind="text: $data"></li>
@@ -50,9 +50,17 @@
                 </div>
                 <div class="required_mod_gate_section" data-bind="visible: requiredClientModGateExtraMods().length">
                     <div class="required_mod_gate_section_title">
-                        <loc>Only active on this client</loc>
+                        <loc>You need to disable these mods</loc>
                     </div>
                     <ul class="required_mod_gate_list" data-bind="foreach: requiredClientModGateExtraMods">
+                        <li data-bind="text: $data"></li>
+                    </ul>
+                </div>
+                <div class="required_mod_gate_section" data-bind="visible: requiredClientModGateVersionMismatchMods().length">
+                    <div class="required_mod_gate_section_title">
+                        <loc>You need a different version of these mods</loc>
+                    </div>
+                    <ul class="required_mod_gate_list" data-bind="foreach: requiredClientModGateVersionMismatchMods">
                         <li data-bind="text: $data"></li>
                     </ul>
                 </div>

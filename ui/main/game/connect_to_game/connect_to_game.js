@@ -84,6 +84,13 @@ $(document).ready(function () {
         return !!(mod && mod.galacticWarMod === true);
     }
 
+    function normalizeModVersion(version) {
+        if (_.isUndefined(version) || version === null)
+            return '';
+
+        return String(version).trim();
+    }
+
     function extractRejectReason(payload) {
         if (_.isString(payload))
             return payload;
@@ -115,6 +122,7 @@ $(document).ready(function () {
         return (_.isArray(data.missing) && data.missing.length > 0)
             || (_.isArray(data.missing_identifiers) && data.missing_identifiers.length > 0)
             || (_.isArray(data.extra_identifiers) && data.extra_identifiers.length > 0)
+            || (_.isArray(data.version_mismatch_identifiers) && data.version_mismatch_identifiers.length > 0)
             || (_.isString(reason) && reason.indexOf('Missing required mods') === 0)
             || (_.isString(reason) && reason.indexOf('Client mod mismatch') === 0);
     }
@@ -151,10 +159,34 @@ $(document).ready(function () {
         return getModMismatchLabels(extraIdentifiers, namesById);
     }
 
+    function getVersionMismatchRequiredModLabels(payload) {
+        var data = getPayloadObject(payload);
+        var identifiers = data.version_mismatch_identifiers || [];
+        var namesById = data.required_names_by_id || {};
+        var requiredVersionsById = data.required_versions_by_id || {};
+        var activeVersionsById = data.active_required_versions_by_id || {};
+        var labels = [];
+        var seen = {};
+
+        _.forEach(identifiers, function(identifier) {
+            var normalizedIdentifier = normalizeModIdentifier(identifier);
+            if (!normalizedIdentifier || seen[normalizedIdentifier])
+                return;
+
+            seen[normalizedIdentifier] = true;
+            labels.push((namesById[normalizedIdentifier] || identifier)
+                + ' (host: ' + (requiredVersionsById[normalizedIdentifier] || '<none>')
+                + ', local: ' + (activeVersionsById[normalizedIdentifier] || '<none>') + ')');
+        });
+
+        return labels;
+    }
+
     function buildClientModManifest(mountedMods) {
         var activeIdentifiers = [];
         var activeRequiredIdentifiers = [];
         var activeRequiredNamesById = {};
+        var activeRequiredVersionsById = {};
         var seen = {};
         var seenRequired = {};
 
@@ -179,12 +211,14 @@ $(document).ready(function () {
             activeRequiredNamesById[identifier] = (_.isString(mod.display_name) && mod.display_name.length)
                 ? mod.display_name
                 : identifier;
+            activeRequiredVersionsById[identifier] = normalizeModVersion(mod && mod.version);
         });
 
         return {
             active_identifiers: activeIdentifiers,
             active_required_identifiers: activeRequiredIdentifiers,
-            active_required_names_by_id: activeRequiredNamesById
+            active_required_names_by_id: activeRequiredNamesById,
+            active_required_versions_by_id: activeRequiredVersionsById
         };
     }
 
@@ -380,6 +414,7 @@ $(document).ready(function () {
         self.requiredClientModGateReason = ko.observable('');
         self.requiredClientModGateMissingMods = ko.observableArray([]);
         self.requiredClientModGateExtraMods = ko.observableArray([]);
+        self.requiredClientModGateVersionMismatchMods = ko.observableArray([]);
         self.requiredClientModGateGoingBack = false;
         self.waitingForClientModMatch = false;
         self.pendingServerStatePayload = undefined;
@@ -440,6 +475,7 @@ $(document).ready(function () {
                 : 'Client mod mismatch';
             var missingLabels = getMissingRequiredModLabels(data);
             var extraLabels = getExtraRequiredModLabels(data);
+            var versionMismatchLabels = getVersionMismatchRequiredModLabels(data);
 
             self.connecting(false);
             self.showCancel(false);
@@ -447,13 +483,15 @@ $(document).ready(function () {
             self.requiredClientModGateReason(gateReason);
             self.requiredClientModGateMissingMods(missingLabels);
             self.requiredClientModGateExtraMods(extraLabels);
+            self.requiredClientModGateVersionMismatchMods(versionMismatchLabels);
             self.requiredClientModGateVisible(true);
             self.pageTitle(loc('!LOC:CLIENT MOD MISMATCH'));
             self.pageSubTitle('');
 
             console.log('[GW COOP] showing required client mod gate reason=' + gateReason
                 + ' missing=' + JSON.stringify(missingLabels)
-                + ' extra=' + JSON.stringify(extraLabels));
+                + ' extra=' + JSON.stringify(extraLabels)
+                + ' version_mismatch=' + JSON.stringify(versionMismatchLabels));
         };
 
         self.goBackFromRequiredClientModGate = function() {
@@ -475,6 +513,7 @@ $(document).ready(function () {
             api.mods.getMounted('client', true).then(function(mountedMods) {
                 var requiredIdentifiers = [];
                 var requiredNamesById = {};
+                var requiredVersionsById = {};
                 var seen = {};
                 var mountedCount = _.size(mountedMods || []);
 
@@ -502,10 +541,12 @@ $(document).ready(function () {
                     requiredNamesById[identifier] = (_.isString(mod.display_name) && mod.display_name.length)
                         ? mod.display_name
                         : identifier;
+                    requiredVersionsById[identifier] = normalizeModVersion(mod && mod.version);
                 });
 
                 console.log('[GW COOP] Required client mod identifiers: ' + JSON.stringify(requiredIdentifiers));
                 console.log('[GW COOP] Required client mod names by ID: ' + JSON.stringify(requiredNamesById));
+                console.log('[GW COOP] Required client mod versions by ID: ' + JSON.stringify(requiredVersionsById));
 
                 sessionStorage.setItem('gw_required_client_mod_identifiers', JSON.stringify(requiredIdentifiers));
                 console.log('[GW COOP] persisted required client mod identifiers for GW referee generation');
@@ -514,7 +555,8 @@ $(document).ready(function () {
                 // Server enforces host-only writes; non-host clients are ignored.
                 model.send_message('set_required_client_mods', {
                     required_identifiers: requiredIdentifiers,
-                    required_names_by_id: requiredNamesById
+                    required_names_by_id: requiredNamesById,
+                    required_versions_by_id: requiredVersionsById
                 }, function(success, response) {
                     console.log('[GW COOP] set_required_client_mods success=' + !!success + ' response=' + JSON.stringify(response || {}));
                 });
@@ -523,7 +565,8 @@ $(document).ready(function () {
                 sessionStorage.setItem('gw_required_client_mod_identifiers', JSON.stringify([]));
                 model.send_message('set_required_client_mods', {
                     required_identifiers: [],
-                    required_names_by_id: {}
+                    required_names_by_id: {},
+                    required_versions_by_id: {}
                 }, function(success, response) {
                     console.log('[GW COOP] set_required_client_mods(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
                 });
@@ -553,7 +596,8 @@ $(document).ready(function () {
                 model.send_message('client_mod_manifest', {
                     active_identifiers: [],
                     active_required_identifiers: [],
-                    active_required_names_by_id: {}
+                    active_required_names_by_id: {},
+                    active_required_versions_by_id: {}
                 }, function(success, response) {
                     console.log('[GW COOP] client_mod_manifest(empty) success=' + !!success + ' response=' + JSON.stringify(response || {}));
 
@@ -782,6 +826,7 @@ $(document).ready(function () {
         model.requiredClientModGateReason('');
         model.requiredClientModGateMissingMods([]);
         model.requiredClientModGateExtraMods([]);
+        model.requiredClientModGateVersionMismatchMods([]);
         model.requiredClientModGateGoingBack = false;
         model.waitingForClientModMatch = false;
         model.pendingServerStatePayload = undefined;
