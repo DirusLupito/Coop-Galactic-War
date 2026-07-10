@@ -8,6 +8,7 @@
 # Note that by specify, I mean manually editing this script :)
 
 from pathlib import Path
+import sys
 
 import numpy as np
 from PIL import Image
@@ -234,6 +235,26 @@ def nearest_referee_colors(source_color, n, stride, colors):
     return [candidate["color"] for candidate in candidates[stride:stride + n]]
 
 
+# helper when loading colors from a file that converts strings of the format
+#   (255, 140, 0)
+# for instance to the format #rrggbb
+def _parse_color_string(color_string):
+    color_string = color_string.strip()
+    if color_string.startswith("(") and color_string.endswith(")"):
+        color_string = color_string[1:-1]
+        parts = color_string.split(",")
+        if len(parts) != 3:
+            raise ValueError(f"Invalid color string: {color_string}")
+        r, g, b = (int(part.strip()) for part in parts)
+        return f"#{r:02x}{g:02x}{b:02x}"
+    return color_string
+
+
+def _load_colors_from_file(color_file):
+    with open(color_file, "r", encoding="utf-8") as handle:
+        return [_parse_color_string(line.strip()) for line in handle if line.strip()]
+
+
 # PNG pixels, CSS hex colors, and the PA lobby color table are sRGB colors.
 # sRGB is nonlinear: a value of 0.5 does not mean "half as much light".
 # The PA client converts army colors to linear RGB with this standard sRGB
@@ -364,19 +385,30 @@ def main() -> None:
 
     print(f"Found {len(icon_files)} icon files in {icon_folder}")
     print(f"Using {len(AVAILABLE_COLORS)} available colors for generating faction colors")
-    numcolors = int(input("How many colors do you want to preview? "))
-    source_color = input("Enter a source color to base the generated colors on (example '#ff0000' or '255,0,0'): ")
-
-    # have to convert the source color to a tuple of floats in the range 0-1, since the nearest_referee_colors function expects that.
-    if source_color.startswith("#"):
-        source_color = tuple(int(source_color[i:i+2], 16) / 255.0 for i in (1, 3, 5))
+    color_file = sys.argv[1] if len(sys.argv) > 1 else None
+    if color_file:
+        nearest_colors = _load_colors_from_file(color_file)
+        print(f"Using {len(nearest_colors)} colors from {color_file}")
     else:
-        source_color = tuple(int(x) / 255.0 for x in source_color.split(","))
+        numcolors = int(input("How many colors do you want to preview? "))
+        source_color = input("Enter a source color to base the generated colors on (example '#ff0000' or '255,0,0'): ")
+
+        # have to convert the source color to a tuple of floats in the range 0-1, since the nearest_referee_colors function expects that.
+        if source_color.startswith("#"):
+            source_color = tuple(int(source_color[i:i+2], 16) / 255.0 for i in (1, 3, 5))
+        else:
+            source_color = tuple(int(x) / 255.0 for x in source_color.split(","))
 
 
-    stride = int(input("Enter a stride value (number of nearest colors to skip): "))
+        stride = int(input("Enter a stride value (number of nearest colors to skip): "))
+        nearest_colors = nearest_referee_colors(source_color, numcolors, stride, AVAILABLE_COLORS)
+        print(f"Generated {len(nearest_colors)} colors based on source color {source_color} with stride {stride}")
+
+    print("Colors:")
+    for color in nearest_colors:
+        print(f"{color}")
+
     save_path = input("Enter a path to save the generated image (example 'color_preset_preview.png'): ")
-    nearest_colors = nearest_referee_colors(source_color, numcolors, stride, AVAILABLE_COLORS)
 
     # we want to make a grid of images, each image itself a square or as close to square as possible
     # shape of sub-sub-images which themselves are the colored icons.
