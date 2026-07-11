@@ -1655,6 +1655,11 @@ requireGW([
                 return false;
             }
 
+            if (_.isFunction(inventory.isApplyingCards) && inventory.isApplyingCards()) {
+                console.log('[GW COOP] Cannot sync host co-op inventory record while inventory cards are still applying for ' + (reason || 'unknown') + '.');
+                return false;
+            }
+
             var hostTechCardDealCount = _.isFunction(game.hostTechCardDealCount)
                 ? game.hostTechCardDealCount()
                 : undefined;
@@ -4667,10 +4672,13 @@ requireGW([
             self.sendCampaignAction('discard_card', { discard_index: discardIndex });
 
             if (discardIndex >= 0) {
+                var busy = $.Deferred();
+                game.busy = busy.promise();
                 game.inventory().cards.splice(discardIndex, 1);
 
                 self.driveAccessInProgress(true);
                 game.inventory().applyCards(function() {
+                    busy.resolve(game);
                     GW.manifest.saveGame(game).then(function() {
                         self.driveAccessInProgress(false);
                         api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
@@ -4718,24 +4726,28 @@ requireGW([
             }
             self.cardsDirty = true;
 
-            if (!game.busy || !_.isFunction(game.busy.then)) {
+            var finishCardsChanged = function() {
                 self.cardsDirty = false;
                 self.updateCards();
                 if (self.syncHostCoopInventoryRecord('cards_changed')) {
                     self.publishHostCoopInventoryRecord('cards_changed');
                 }
                 self.refreshGwCampaignInventoryModal();
+            };
+            var inventory = game && _.isFunction(game.inventory) ? game.inventory() : undefined;
+            if (inventory && _.isFunction(inventory.isApplyingCards) && inventory.isApplyingCards()) {
+                inventory.applyCards(finishCardsChanged);
+                return;
+            }
+
+            if (!game.busy || !_.isFunction(game.busy.then)) {
+                finishCardsChanged();
                 return;
             }
 
             game.busy.then(function()
             {
-                self.cardsDirty = false;
-                self.updateCards();
-                if (self.syncHostCoopInventoryRecord('cards_changed')) {
-                    self.publishHostCoopInventoryRecord('cards_changed');
-                }
-                self.refreshGwCampaignInventoryModal();
+                finishCardsChanged();
             });
         };
         game.inventory().cards.subscribe(self.cardsChanged);
