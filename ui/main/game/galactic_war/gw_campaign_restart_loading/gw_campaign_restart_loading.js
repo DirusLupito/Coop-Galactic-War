@@ -86,6 +86,10 @@ $(document).ready(function () {
             return !!(reconnectInfo && reconnectInfo.steam_id) || !!self.gameSteamId();
         };
 
+        self.hasReconnectTarget = function(reconnectInfo) {
+            return !!(reconnectInfo && ((reconnectInfo.game_hostname && reconnectInfo.game_port) || reconnectInfo.steam_id));
+        };
+
         self.restoreDirectReconnectSession = function(reconnectInfo, content) {
             var info = reconnectInfo || {};
             var hostname = info.game_hostname || '';
@@ -551,6 +555,11 @@ $(document).ready(function () {
             var context = self.gwCampaignRestartContext() || {};
             var reconnectInfo = self.reconnectToGameInfo() || {};
             var role = self.role() === ROLE_HOST ? ROLE_HOST : ROLE_VIEWER;
+
+            if (!self.hasReconnectTarget(reconnectInfo) && self.hasReconnectTarget(context.reconnect_info)) {
+                reconnectInfo = context.reconnect_info;
+            }
+
             var content = context.content || reconnectInfo.content || 'PAExpansion1';
             var shutdownDelay = _.isFinite(context.shutdown_delay_ms) ? context.shutdown_delay_ms : DEFAULT_HOST_START_DELAY_MS;
             var restartToken = _.isFinite(context.restart_token) ? context.restart_token : undefined;

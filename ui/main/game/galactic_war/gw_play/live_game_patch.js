@@ -34,6 +34,43 @@
             return gwCampaignEnabled() && gwCampaignRole() === 'host';
         };
 
+        var hasReconnectTarget = function(info) {
+            return !!(info && ((info.game_hostname && info.game_port) || info.steam_id));
+        };
+
+        var restoreCampaignReconnectInfo = function(savedReconnectInfo) {
+            if (!gwCampaignEnabled() || !hasReconnectTarget(savedReconnectInfo))
+                return;
+
+            if (hasReconnectTarget(reconnectToGameInfo()))
+                return;
+
+            reconnectToGameInfo(_.cloneDeep(savedReconnectInfo));
+        };
+
+        // We override the traditional abandon flow to preserve the reconnect info for co-op GW.
+        // Normally, abandoning a game clears the reconnect info since typically the user is
+        // playing an FFA, or team game, or 1v1, etc where surrender means the game is over for
+        // them and they typically will not want to reconnect. In co-op GW, however, the players
+        // may surrender but want to continue watching while the game plays out, and win or lose
+        // everyone is going to want to continue the overarching campaign.
+        // Thus, we need to preserve the reconnect info so that the autreconnect logic can continue
+        // to work after the surrender/abandon.
+        var oldAbandon = model.abandon;
+        model.abandon = function() {
+            var savedReconnectInfo = gwCampaignEnabled() ? _.cloneDeep(reconnectToGameInfo()) : undefined;
+            console.log('[GW COOP] model.abandon override saving reconnect info=' + JSON.stringify(savedReconnectInfo));
+            var result = oldAbandon.apply(this, arguments);
+
+            restoreCampaignReconnectInfo(savedReconnectInfo);
+
+            $.when(result).always(function() {
+                restoreCampaignReconnectInfo(savedReconnectInfo);
+            });
+
+            return result;
+        };
+
         // Build host-side reconnect context so host can start a fresh gw_campaign
         // server process with the same campaign/lobby intent after game_over.
         var buildCampaignRestartContext = function() {
@@ -60,7 +97,8 @@
                 per_player_tech_cards: perPlayerTechCards,
                 shared_control: sharedControl,
                 content: (_.isFunction(loadedGwGame && loadedGwGame.content) ? loadedGwGame.content() : undefined) || gameContent() || reconnectInfo.content,
-                mods: reconnectInfo.mods || []
+                mods: reconnectInfo.mods || [],
+                reconnect_info: hasReconnectTarget(reconnectInfo) ? _.cloneDeep(reconnectInfo) : undefined
             };
         };
 
