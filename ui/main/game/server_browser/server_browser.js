@@ -13,6 +13,7 @@ $(document).ready(function () {
         self.gameTicket = ko.observable().extend({ session: 'gameTicket' });
         self.gameHostname = ko.observable().extend({ session: 'gameHostname' });
         self.gamePort = ko.observable().extend({ session: 'gamePort' });
+        self.gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
 
         // deprecated and no longer used
         self.joinLocalServer = ko.observable().extend({ session: 'join_local_server' });
@@ -35,6 +36,7 @@ $(document).ready(function () {
 
         self.lobbyId = ko.observable().extend({ session: 'lobbyId' });
         self.uuid = ko.observable('').extend({ session: 'invite_uuid' });
+        self.reconnectToGameInfo = ko.observable().extend({ local: 'reconnect_to_game_info' });
 
         // Stuff for dealing with locked games
         self.privateGamePassword = ko.observable().extend({ session: 'private_game_password' });
@@ -148,6 +150,126 @@ $(document).ready(function () {
         };
 
         self.canCreateGame = self.localServerAvailable;
+
+        self.directConnectModalVisible = ko.observable(false);
+        self.directConnectUsesSteam = ko.observable(false);
+        self.directConnectHost = ko.observable('');
+        self.directConnectPort = ko.observable('20545');
+        self.directConnectSteamId = ko.observable('');
+        self.directConnectSteamAvailable = api.steam.hasClient();
+
+        self.isValidDirectConnectHost = function (host) {
+            var octets = host.split('.');
+            if (octets.length !== 4) {
+                return false;
+            }
+
+            return _.every(octets, function (octet) {
+                return /^\d{1,3}$/.test(octet) && Number(octet) <= 255;
+            });
+        };
+
+        self.isValidDirectConnectPort = function (port) {
+            return /^\d{1,5}$/.test(port) && Number(port) >= 1 && Number(port) <= 65535;
+        };
+
+        self.isValidDirectConnectSteamId = function (steamId) {
+            var maximumSteamId = '18446744073709551615';
+            if (!/^\d+$/.test(steamId) || /^0+$/.test(steamId)) {
+                return false;
+            }
+
+            return steamId.length < maximumSteamId.length
+                || (steamId.length === maximumSteamId.length && steamId <= maximumSteamId);
+        };
+
+        self.directConnectValidationMessage = ko.computed(function () {
+            if (self.directConnectUsesSteam()) {
+                if (!self.directConnectSteamAvailable) {
+                    return loc('!LOC:Launch the game through Steam to use Steam networking.');
+                }
+
+                if (!self.isValidDirectConnectSteamId($.trim(self.directConnectSteamId()))) {
+                    return loc('!LOC:Enter a valid Steam game server ID.');
+                }
+
+                return '';
+            }
+
+            if (!self.isValidDirectConnectHost($.trim(self.directConnectHost()))) {
+                return loc('!LOC:Enter a valid IPv4 address.');
+            }
+
+            if (!self.isValidDirectConnectPort($.trim(self.directConnectPort()))) {
+                return loc('!LOC:Enter a port from 1 to 65535.');
+            }
+
+            return '';
+        });
+
+        self.canDirectConnect = ko.computed(function () {
+            return self.directConnectValidationMessage() === '';
+        });
+
+        self.focusDirectConnectInput = function () {
+            _.defer(function () {
+                var selector = self.directConnectUsesSteam() ? '#direct-connect-steam-id' : '#direct-connect-host';
+                $(selector).focus().select();
+            });
+        };
+
+        self.openDirectConnectModal = function () {
+            self.directConnectModalVisible(true);
+            self.focusDirectConnectInput();
+        };
+
+        self.closeDirectConnectModal = function () {
+            self.directConnectModalVisible(false);
+        };
+
+        self.useDirectConnectIp = function () {
+            self.directConnectUsesSteam(false);
+            self.focusDirectConnectInput();
+        };
+
+        self.useDirectConnectSteam = function () {
+            self.directConnectUsesSteam(true);
+            self.focusDirectConnectInput();
+        };
+
+        self.directConnect = function () {
+            var validationMessage = self.directConnectValidationMessage();
+            if (validationMessage) {
+                console.error('Direct connect rejected: ' + validationMessage);
+                return;
+            }
+
+            var usesSteam = self.directConnectUsesSteam();
+            self.lobbyId(undefined);
+            self.gameTicket('');
+            self.gameHostname(usesSteam ? '' : $.trim(self.directConnectHost()));
+            self.gamePort(usesSteam ? '' : Number($.trim(self.directConnectPort())));
+            self.gameSteamId(usesSteam ? $.trim(self.directConnectSteamId()) : '');
+            self.isLocalGame(false);
+            self.uuid('');
+            self.serverType('custom');
+            self.serverSetup('game');
+            self.gameType('Waiting');
+            self.gameModIdentifiers([]);
+            self.privateGamePassword('');
+            self.reconnectToGameInfo(false);
+            self.tryToSpectate(false);
+            self.navigateToConnectToGame({ content: api.content.activeContent() });
+        };
+
+        self.submitDirectConnectOnEnter = function (data, event) {
+            if (event.keyCode === 13) {
+                self.directConnect();
+                return false;
+            }
+
+            return true;
+        };
 
         self.existingLobbyMap = ko.observable({}); /* lobby_id uuid : timestamp */
 
@@ -487,8 +609,7 @@ $(document).ready(function () {
             self.gameType(game.mode);
             self.gameModIdentifiers(game.mod_identifiers);
 
-            var gameSteamId = ko.observable().extend({ session: 'game_steam_id' });
-            gameSteamId(game.steam_id || '');
+            self.gameSteamId(game.steam_id || '');
 
             var params = {};
             if (_.has(game, 'required_content'))

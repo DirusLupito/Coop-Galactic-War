@@ -46,6 +46,11 @@
                                 <loc>Create Game</loc>
                             </div>
                         </div>
+                        <div class="btn_std direct-connect-open" data-bind="click: openDirectConnectModal, click_sound: 'default', rollover_sound: 'default'">
+                            <div class="btn_label">
+                                <loc>Direct Connect</loc>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group" data-bind="visible: hasUberNetRegions">
@@ -429,6 +434,46 @@
         </div>
     </div>
 
+</div>
+
+<!-- DIRECT CONNECT MODAL -->
+<div class="direct-connect-modal attendmouse" data-bind="visible: directConnectModalVisible" style="display: none;">
+    <div class="direct-connect-panel">
+        <div class="direct-connect-close" data-bind="click: closeDirectConnectModal, click_sound: 'default', rollover_sound: 'default'"><noloc>X</noloc></div>
+        <div class="direct-connect-title"><loc>Direct Connect</loc></div>
+        <div class="direct-connect-intro"><loc>Connect to a game server without finding it in the browser.</loc></div>
+
+        <div class="direct-connect-mode">
+            <div class="direct-connect-mode-option" data-bind="css: { selected: !directConnectUsesSteam() }, click: useDirectConnectIp, click_sound: 'default', rollover_sound: 'default'"><loc>IPv4</loc></div>
+            <div class="direct-connect-mode-option" data-bind="css: { selected: directConnectUsesSteam }, click: useDirectConnectSteam, click_sound: 'default', rollover_sound: 'default'"><loc>Steam</loc></div>
+        </div>
+
+        <div class="direct-connect-body">
+            <!-- ko ifnot: directConnectUsesSteam -->
+            <div class="direct-connect-field-row">
+                <label for="direct-connect-host"><loc>IPv4 Address</loc></label>
+                <input id="direct-connect-host" type="text" autocomplete="off" placeholder="127.0.0.1" data-bind="value: directConnectHost, valueUpdate: 'afterkeydown', event: { keydown: submitDirectConnectOnEnter }" />
+            </div>
+            <div class="direct-connect-field-row direct-connect-port-row">
+                <label for="direct-connect-port"><loc>Port</loc></label>
+                <input id="direct-connect-port" type="text" autocomplete="off" placeholder="20545" data-bind="value: directConnectPort, valueUpdate: 'afterkeydown', event: { keydown: submitDirectConnectOnEnter }" />
+            </div>
+            <!-- /ko -->
+
+            <!-- ko if: directConnectUsesSteam -->
+            <div class="direct-connect-field-row">
+                <label for="direct-connect-steam-id"><loc>Steam Game Server ID</loc></label>
+                <input id="direct-connect-steam-id" type="text" autocomplete="off" placeholder="12345678901234567" data-bind="value: directConnectSteamId, valueUpdate: 'afterkeydown', event: { keydown: submitDirectConnectOnEnter }" />
+            </div>
+            <!-- /ko -->
+
+            <div class="direct-connect-validation" data-bind="text: directConnectValidationMessage"></div>
+        </div>
+
+        <div class="direct-connect-submit" data-bind="click: directConnect, css: { btn_std: canDirectConnect, btn_std_disabled: !canDirectConnect() }, click_sound: 'default', rollover_sound: 'default'">
+            <div class="btn_label"><loc>Connect</loc></div>
+        </div>
+    </div>
 </div>
 
 

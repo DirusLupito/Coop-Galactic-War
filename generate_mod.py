@@ -64,6 +64,8 @@ FILES_TO_COPY = [
      "ui/main/game/server_browser/server_browser.js"),
     ("ui/main/game/server_browser/server_browser.html",
      "ui/main/game/server_browser/server_browser.html"),
+    ("ui/main/game/server_browser/server_browser.css",
+     "ui/main/game/server_browser/server_browser.css"),
     ("ui/main/game/community_mods/states/server_browser.js",
      "ui/main/game/community_mods/states/server_browser.js"),
     ("ui/main/game/start/start.js",
