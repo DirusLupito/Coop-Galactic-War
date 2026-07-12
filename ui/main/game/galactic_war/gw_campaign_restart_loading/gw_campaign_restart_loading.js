@@ -560,6 +560,21 @@ $(document).ready(function () {
                 reconnectInfo = context.reconnect_info;
             }
 
+            if (!context.access || !_.isString(context.access.password)) {
+                console.error('[GW COOP] restart_loading missing campaign password in authoritative restart context');
+                self.failRestartDiscovery();
+                return;
+            }
+
+            // The old battle connection may not contain the campaign password.
+            // Apply the password carried by restart_prepare before either direct
+            // reconnect or Steam beacon discovery rebuilds the connection state.
+            reconnectInfo = _.assign({}, reconnectInfo, {
+                game_password: context.access.password
+            });
+            self.reconnectToGameInfo(reconnectInfo);
+            self.privateGamePassword(context.access.password);
+
             var content = context.content || reconnectInfo.content || 'PAExpansion1';
             var shutdownDelay = _.isFinite(context.shutdown_delay_ms) ? context.shutdown_delay_ms : DEFAULT_HOST_START_DELAY_MS;
             var restartToken = _.isFinite(context.restart_token) ? context.restart_token : undefined;

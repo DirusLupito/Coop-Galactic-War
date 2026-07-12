@@ -1924,10 +1924,37 @@ function GWCampaignModel(creator) {
         self.removeHandlers = server.setHandlers(handlers);
 
         utils.pushCallback(server, 'onConnect', function(onConnect, client, reconnect) {
-            if (!self.active)
+            if (!self.active) {
                 return onConnect;
+            }
 
             console.log('[GW COOP] gw_campaign onConnect client=' + client.name + ' id=' + client.id + ' reconnect=' + !!reconnect);
+
+            var clientData;
+            try {
+                clientData = JSON.parse(client.data);
+            }
+            catch (error) {
+                console.log('[GW COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=Bad Client data');
+                server.rejectClient(client, 'Bad Client data');
+                return onConnect;
+            }
+
+            if (!clientData || !_.isObject(clientData) || _.isArray(clientData)) {
+                console.log('[GW COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=Bad Client data');
+                server.rejectClient(client, 'Bad Client data');
+                return onConnect;
+            }
+
+            client.uberid = clientData.uberid;
+
+            // Check if the client is valid according to the bouncer (correct password, not blacklisted, etc.)
+            if (!bouncer.isPlayerValid(clientData.uberid, clientData.password, clientData.uuid, true)) {
+                console.log('[GW COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=Credentials are invalid');
+                server.rejectClient(client, 'Credentials are invalid');
+                return onConnect;
+            }
+
             if (!self.hasRoomForClient(client, reconnect)) {
                 console.log('[GW COOP] gw_campaign rejecting client=' + client.name + ' id=' + client.id + ' reason=No room');
                 server.rejectClient(client, 'No room');
