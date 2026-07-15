@@ -3489,7 +3489,7 @@ requireGW([
             var from = game.currentStar();
             var to = self.selection.star();
 
-            if ((to < 0) || (to > galaxy.stars().length))
+            if ((to < 0) || (to >= galaxy.stars().length))
                 return false;
 
             if (!self.canSelectOrMovePrefix())

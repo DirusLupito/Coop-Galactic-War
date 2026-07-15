@@ -25,7 +25,7 @@ function CommunityModsGW() {
         while (worklist.length > 0) {
             var path = worklist.shift();
             var node = path[path.length - 1];
-            var nodeNeighbors = neighborsMap[node];
+            var nodeNeighbors = neighborsMap[node] || [];
 
             checked[node] = true;
 
