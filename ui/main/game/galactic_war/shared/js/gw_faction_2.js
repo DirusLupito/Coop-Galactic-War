@@ -1,8 +1,18 @@
 // !LOCNS:galactic_war
 define([], function() {
+    var factionColor = [[244, 125, 31], [192, 192, 192]];
+
     return {
         name: 'Synchronous',
-        color: [[244,125,31], [192,192,192]],
+        color: factionColor,
+        coopPlayerColors: [
+            factionColor[0],
+            [218, 165, 32],
+            [160, 86, 40],
+            [255, 255, 0],
+            [255, 229, 180],
+            [205, 133, 63]
+        ],
         teams: [
             {
                 name: 'Cupru - Synchronous',

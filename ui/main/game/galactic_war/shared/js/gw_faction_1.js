@@ -1,8 +1,18 @@
 // !LOCNS:galactic_war
 define([], function() {
+    var factionColor = [[145, 87, 199], [192, 192, 192]];
+
     return {
         name: 'Foundation',
-        color: [[145, 87, 199], [192, 192, 192]],
+        color: factionColor,
+        coopPlayerColors: [
+            factionColor[0],
+            [186, 85, 211],
+            [123, 104, 238],
+            [248, 172, 244],
+            [108, 23, 186],
+            [205, 136, 153]
+        ],
         teams: [
             {
                 name: 'Atlas - Foundation',

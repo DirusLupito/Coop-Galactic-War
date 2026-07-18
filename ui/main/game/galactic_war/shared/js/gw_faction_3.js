@@ -1,8 +1,18 @@
 // !LOCNS:galactic_war
 define([], function() {
+    var factionColor = [[236, 34, 35], [192, 192, 192]];
+
     return {
         name: 'Revenants',
-        color: [[236,34,35], [192,192,192]],
+        color: factionColor,
+        coopPlayerColors: [
+            factionColor[0],
+            [205, 92, 92],
+            [140, 16, 0],
+            [237, 12, 83],
+            [165, 42, 42],
+            [255, 0, 0]
+        ],
         teams: [
             {
                 name: 'Alenquer - Revenants',

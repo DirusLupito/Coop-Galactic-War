@@ -6,6 +6,7 @@ requireGW([
     'require',
     'shared/gw_common',
     'shared/gw_factions',
+    'shared/gw_coop_player_colors',
     'shared/popup',
     'shared/vecmath',
     'pages/gw_play/gw_referee',
@@ -18,6 +19,7 @@ requireGW([
     require,
     GW,
     GWFactions,
+    GWCoopPlayerColors,
     PopUp,
     VMath,
     GWReferee,
@@ -1213,6 +1215,95 @@ requireGW([
         self.gwCampaignSharedControl = ko.observable(true);
         self.gwCampaignPerPlayerTechCards = ko.observable(false);
         self.initialCoopSettingsApplied = false;
+
+        var getGwCampaignConnectedClientsInPlayerOrder = function() {
+            var connectedClients = self.gwCampaignConnectedClients();
+            if (!_.isArray(connectedClients)) {
+                console.log('[GW COOP] Cannot resolve player colors without a connected client array.');
+                return [];
+            }
+
+            return _.sortBy(connectedClients, function(client) {
+                return client && client.role === 'host' ? -1 : 0;
+            });
+        };
+
+        /**
+         * Resolves the color pair displayed and later assigned to every connected
+         * co-op campaign player.
+         *
+         * This computed is the authoritative source for
+         * the colors players will receive in the generated battle config.
+         *
+         * Connected clients are copied into the same stable host-first order used by
+         * gw_lobby when it maps clients to human armies. The remaining viewers keep
+         * their existing relative order. Under shared control, every record receives
+         * a clone of the host faction color pair because all clients control one army.
+         * Under separate control, colors are resolved in that player order from the 
+         * active faction's coopPlayerColors palette and then go to a fallback 
+         * algorithm which you can read more about in the
+         * GWCoopPlayerColors.resolvePlayerColorPairs function.
+         *
+         * Each returned record has the following shape:
+         *     {
+         *         id: <client id>,
+         *         name: <client display name>,
+         *         role: 'host' or 'viewer',
+         *         color: [[primary red, green, blue], [secondary red, green, blue]]
+         *     }
+         *
+         * The computed returns an empty array while no clients are connected or when
+         * required state is invalid, including a missing/duplicate host, an unknown
+         * faction, a malformed faction palette, or too few distinct colors. The
+         * resolver logs the specific validation failure.
+         *
+         * @returns {Array.<Object>} Host-first client records with cloned color pairs.
+         */
+        self.gwCoopPlayerColors = ko.computed(function() {
+            var connectedClients = getGwCampaignConnectedClientsInPlayerOrder();
+            if (!connectedClients.length) {
+                return [];
+            }
+
+            var hostCount = _.filter(connectedClients, function(client) {
+                return client && client.role === 'host';
+            }).length;
+            if (hostCount !== 1) {
+                console.log('[GW COOP] Expected exactly one host while resolving player colors, found ' + hostCount + '.');
+                return [];
+            }
+
+            var inventory = game.inventory();
+            var factionIndex = inventory.getTag('global', 'playerFaction');
+            var faction = GWFactions[factionIndex];
+            if (!faction) {
+                console.log('[GW COOP] Cannot resolve player colors for missing faction index ' + factionIndex + '.');
+                return [];
+            }
+
+            var factionColor = inventory.getTag('global', 'playerColor');
+            var sharedControl = self.gwCampaignSharedControl() && !self.gwCampaignPerPlayerTechCards();
+            var resolvedColorPairs = GWCoopPlayerColors.resolvePlayerColorPairs(
+                sharedControl ? 1 : connectedClients.length,
+                faction,
+                factionColor
+            );
+            var expectedColorCount = sharedControl ? 1 : connectedClients.length;
+
+            if (resolvedColorPairs.length !== expectedColorCount) {
+                console.log('[GW COOP] Could not resolve a color for every connected campaign player.');
+                return [];
+            }
+
+            return _.map(connectedClients, function(client, index) {
+                return {
+                    id: client.id,
+                    name: client.name,
+                    role: client.role,
+                    color: _.cloneDeep(resolvedColorPairs[sharedControl ? 0 : index])
+                };
+            });
+        });
 
         var getQueryParam = function(name) {
             var query = window.location.search || '';
@@ -4417,6 +4508,12 @@ requireGW([
 
                 if (refereeLaunchOptions.perPlayerTechCards) {
                     refereeLaunchOptions.sharedControl = false;
+                }
+
+                if (refereeLaunchOptions.active && !refereeLaunchOptions.sharedControl) {
+                    refereeLaunchOptions.playerColors = _.map(self.gwCoopPlayerColors(), function(playerColor) {
+                        return _.cloneDeep(playerColor.color);
+                    });
                 }
 
                 var abortRefereeLaunch = function(reason) {

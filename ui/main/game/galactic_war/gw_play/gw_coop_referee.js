@@ -1,155 +1,63 @@
 define(function() {
 
-    // In the following code, a color is essentially a type of array containing three integers
-    // (R, G, B) which must be in the range 0-255.
-
-    // Mirrors the custom-game lobby color table from server-script/lobby/color_table.js.
-    // The lobby table defines the familiar set of possible primary colors from
-    // custom-game lobbies. Co-op only uses those primary colors; every generated
-    // player keeps the host's secondary color.
-    //
-    // This copy intentionally keeps the same source colors and brightness adjustment
-    // instead of hand-writing the final adjusted values. That makes it easier to
-    // compare this table against the server-side original if the lobby palette changes.
-    var CUSTOM_GAME_LOBBY_COLOR_BRIGHTNESS_ADJUSTMENT = 14 / 16;
-    var CUSTOM_GAME_LOBBY_BASE_COLORS = [
-        [142, 107, 68],
-        [74, 43, 0],
-        [139, 69, 19],
-        [255, 0, 0],
-        [128, 0, 0],
-        [161, 59, 59],
-        [255, 120, 47],
-        [255, 200, 0],
-        [139, 128, 0],
-        [255, 255, 0],
-        [0, 255, 255],
-        [127, 255, 212],
-        [70, 70, 70],
-        [128, 128, 128],
-        [164, 164, 164],
-        [215, 215, 215],
-        [160, 32, 240],
-        [128, 0, 255],
-        [75, 0, 130],
-        [84, 44, 94],
-        [22, 52, 102],
-        [59, 54, 182],
-        [0, 128, 255],
-        [51, 151, 197],
-        [100, 149, 237],
-        [176, 224, 230],
-        [147, 122, 219],
-        [54, 78, 102],
-        [0, 128, 128],
-        [72, 89, 61],
-        [50, 184, 50],
-        [0, 255, 0],
-        [0, 128, 0],
-        [0, 255, 128],
-        [32, 178, 170],
-        [0, 250, 154],
-        [124, 252, 0],
-        [154, 205, 50],
-        [240, 230, 140],
-        [255, 255, 224],
-        [255, 218, 185],
-        [255, 182, 193],
-        [255, 160, 122],
-        [250, 128, 114],
-        [255, 99, 71],
-        [255, 69, 0],
-        [199, 21, 133],
-        [255, 0, 255],
-        [218, 112, 214],
-        [255, 105, 180]
-    ];
-    var customGameLobbyColorTable;
-
-    var adjustCustomGameLobbyColor = function(color) {
-        var adjusted = _.cloneDeep(color);
-
-        if (adjusted[0] === 255 || adjusted[1] === 255 || adjusted[2] === 255) {
-            adjusted = _.map(adjusted, function(channel) {
-                return Math.round(channel * CUSTOM_GAME_LOBBY_COLOR_BRIGHTNESS_ADJUSTMENT);
-            });
-        }
-
-        return adjusted;
-    };
-
-    var getCustomGameLobbyColorTable = function() {
-        if (customGameLobbyColorTable) {
-            return customGameLobbyColorTable;
-        }
-
-        customGameLobbyColorTable = _.map(CUSTOM_GAME_LOBBY_BASE_COLORS, adjustCustomGameLobbyColor);
-        return customGameLobbyColorTable;
-    };
-
     var colorsEqual = function(a, b) {
         return !!(a && b && a[0] === b[0] && a[1] === b[1] && a[2] === b[2]);
     };
 
-    // Squared RGB distance. We do not need the actual Euclidean distance because
-    // this is only used for sorting by similarity, and sqrt would preserve order.
-    var colorDistanceSquared = function(a, b) {
-        var red = a[0] - b[0];
-        var green = a[1] - b[1];
-        var blue = a[2] - b[2];
-
-        return (red * red) + (green * green) + (blue * blue);
-    };
-
-    var colorIsAlreadyInCandidates = function(color, candidates) {
-        return _.some(candidates, function(candidate) {
-            return colorsEqual(color, candidate.color);
+    var isValidColor = function(color) {
+        return _.isArray(color) && color.length === 3 && _.every(color, function(channel) {
+            return _.isNumber(channel)
+                && _.isFinite(channel)
+                && Math.floor(channel) === channel
+                && channel >= 0
+                && channel <= 255;
         });
     };
 
-    // Sort custom-lobby primary colors from most similar to least similar to the
-    // host's primary color. The host still keeps its exact GW faction color.
-    // Non-host armies then walk this sorted primary palette in order while all
-    // using the host's secondary color. If the exact host primary exists in the
-    // custom-game palette, skip it so player 2 does not get the same primary.
-    var getCustomGameLobbyPrimaryColorsBySimilarity = function(hostPrimaryColor) {
-        var colorTable = getCustomGameLobbyColorTable();
-        var candidates = [];
+    var isValidColorPair = function(colorPair) {
+        return _.isArray(colorPair)
+            && colorPair.length === 2
+            && isValidColor(colorPair[0])
+            && isValidColor(colorPair[1]);
+    };
 
-        _.forEach(colorTable, function(color) {
-            if (!colorsEqual(color, hostPrimaryColor) && !colorIsAlreadyInCandidates(color, candidates)) {
-                candidates.push({
-                    color: _.cloneDeep(color),
-                    distance: colorDistanceSquared(color, hostPrimaryColor)
-                });
+    var colorIsAlreadyInList = function(color, colors) {
+        return _.some(colors, function(existingColor) {
+            return colorsEqual(color, existingColor);
+        });
+    };
+
+    var validateResolvedPlayerColors = function(colorPairs, playerCount, factionColor) {
+        if (!_.isArray(colorPairs) || colorPairs.length !== playerCount) {
+            console.log('[GW COOP] Expected ' + playerCount + ' resolved player color pairs, found ' + (_.isArray(colorPairs) ? colorPairs.length : 0) + '.');
+            return false;
+        }
+
+        var primaryColors = [];
+        return _.every(colorPairs, function(colorPair, index) {
+            if (!isValidColorPair(colorPair)) {
+                console.log('[GW COOP] Resolved player color pair at index ' + index + ' is invalid.');
+                return false;
             }
+
+            if (index === 0 && !_.isEqual(colorPair, factionColor)) {
+                console.log('[GW COOP] Resolved host color does not match the generated faction color.');
+                return false;
+            }
+
+            if (!colorsEqual(colorPair[1], factionColor[1])) {
+                console.log('[GW COOP] Resolved player color pair at index ' + index + ' does not preserve the faction secondary color.');
+                return false;
+            }
+
+            if (colorIsAlreadyInList(colorPair[0], primaryColors)) {
+                console.log('[GW COOP] Resolved player color pair at index ' + index + ' duplicates an earlier primary color.');
+                return false;
+            }
+
+            primaryColors.push(colorPair[0]);
+            return true;
         });
-
-        candidates = _.sortBy(candidates, function(candidate) {
-            return candidate.distance;
-        });
-
-        return _.map(candidates, function(candidate) {
-            return candidate.color;
-        });
-    };
-
-    var getColorPairsForPlayerArmies = function(playerCount, factionColor) {
-        var sortedPrimaryColors = getCustomGameLobbyPrimaryColorsBySimilarity(factionColor[0]);
-        var colorPairs = [_.cloneDeep(factionColor)];
-
-        if (playerCount - 1 > sortedPrimaryColors.length) {
-            console.log('[GW COOP] Not enough custom-game lobby primary colors for ' + playerCount + ' player armies.');
-        }
-
-        while (colorPairs.length < playerCount && colorPairs.length - 1 < sortedPrimaryColors.length) {
-            colorPairs.push([
-                _.cloneDeep(sortedPrimaryColors[colorPairs.length - 1]),
-                _.cloneDeep(factionColor[1])
-            ]);
-        }
-
-        return colorPairs;
     };
 
     var armyHasAI = function(army) {
@@ -207,7 +115,7 @@ define(function() {
         return true;
     };
 
-    var splitHumanArmiesForUnsharedControl = function(config, playerCount) {
+    var splitHumanArmiesForUnsharedControl = function(config, playerCount, playerColors) {
         var humanArmies = collectHumanArmies(config);
 
         if (humanArmies.length !== 1) {
@@ -225,10 +133,7 @@ define(function() {
             return false;
         }
 
-        var colorPairs = getColorPairsForPlayerArmies(playerCount, humanTemplate.color);
-
-        if (colorPairs.length !== playerCount) {
-            console.log('[GW COOP] Expected ' + playerCount + ' player color pairs, found ' + colorPairs.length + '.');
+        if (!validateResolvedPlayerColors(playerColors, playerCount, humanTemplate.color)) {
             return false;
         }
 
@@ -243,7 +148,7 @@ define(function() {
             return {
                 slots: [slot],
                 // I assume here that humanTemplate.color is both a valid color and the main faction color.
-                color: colorPairs[index],
+                color: _.cloneDeep(playerColors[index]),
                 econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
                 spec_tag: humanTemplate.spec_tag,
                 alliance_group: humanTemplate.alliance_group
@@ -279,7 +184,7 @@ define(function() {
     //       * armies[*].slots[*].ai: true when the slot belongs to an AI. Missing or false means
     //             the slot is treated as human-controllable.
     //       * armies[*].color: the army color pair. In unshared control, the first human army
-    //             keeps the original color and later human armies get nearby custom-lobby primaries.
+    //             keeps the original color and later human armies use the pairs resolved by gw_play.
     //       * armies[*].econ_rate: copied from the original human army when manufacturing
     //             separate unshared human armies. A floating-point number.
     //       * armies[*].spec_tag: copied from the original human army when manufacturing
@@ -301,6 +206,8 @@ define(function() {
     //             length is the number of human slots/armies this referee prepares.
     //             Each client object within the array has an id, name, role ('host' or 'viewer')
     //             and loading status (loading = true or loading = false).
+    //       * playerColors: for unshared control, the already-resolved color pairs in the
+    //             same host-first order that gw_lobby uses to assign clients to armies.
     var apply = function(referee, options) {
         var done = $.Deferred();
         var config = referee && _.isFunction(referee.config) && referee.config();
@@ -334,7 +241,7 @@ define(function() {
         if (sharedControl) {
             prepared = ensureSharedHumanSlots(config, playerCount);
         } else {
-            prepared = splitHumanArmiesForUnsharedControl(config, playerCount);
+            prepared = splitHumanArmiesForUnsharedControl(config, playerCount, options.playerColors);
         }
             
 

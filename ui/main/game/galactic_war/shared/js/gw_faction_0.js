@@ -1,8 +1,18 @@
 // !LOCNS:galactic_war
 define([], function() {
+    var factionColor = [[0, 176, 255], [192, 192, 192]];
+
     return {
         name: 'Legonis Machina',
-        color: [[0, 176, 255], [192, 192, 192]],
+        color: factionColor,
+        coopPlayerColors: [
+            factionColor[0],
+            [0, 255, 255],
+            [25, 144, 160],
+            [168, 177, 255],
+            [193, 249, 241],
+            [116, 179, 206]
+        ],
         teams: [
             {
                 name: 'Kohr - Legonis Machina',
