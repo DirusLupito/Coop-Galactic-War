@@ -1110,7 +1110,25 @@ function GWCampaignModel(creator) {
         return gameSystem;
     };
 
+    var steamIdBeaconRetryPending = false;
+
     self.updateBeacon = function() {
+        // Steam-enabled games must not advertise until Steam has assigned the
+        // server's P2P identity, or joining clients would try to connect to an
+        // unroutable placeholder ID. Retry until the ID arrives.
+        if (server.steam_networking_enabled && !server.steam_id) {
+            server.beacon = null;
+            if (!steamIdBeaconRetryPending) {
+                steamIdBeaconRetryPending = true;
+                _.delay(function() {
+                    steamIdBeaconRetryPending = false;
+                    if (self.active)
+                        self.updateBeacon();
+                }, 1000);
+            }
+            return;
+        }
+
         var connectedClients = self.getConnectedClients();
         var modsData = server.getModsForBeacon();
         var requiredClientModsData = self.getRequiredClientModsForBeacon();

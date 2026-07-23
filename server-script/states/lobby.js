@@ -847,11 +847,34 @@ function LobbyModel(creator) {
         return _.keys(self.players).length;
     };
 
+    var steamIdBeaconRetryPending = false;
+    var steamIdBeaconRetryStopped = false;
+    cleanup.push(function () { steamIdBeaconRetryStopped = true; });
+
     self.updateBeacon = function()
     {
         debug_log('updateBeacon');
         var numPlayerSlots = self.numPlayerSlots();
         server.maxClients = Math.min(MAX_PLAYERS, numPlayerSlots) + Math.min(MAX_SPECTATORS, main.spectators);
+
+        // Steam-enabled games must not advertise until Steam has assigned the
+        // server's P2P identity, or joining clients would try to connect to an
+        // unroutable placeholder ID. Retry until the ID arrives.
+        if (server.steam_networking_enabled && !server.steam_id)
+        {
+            server.beacon = null;
+            if (!steamIdBeaconRetryPending)
+            {
+                steamIdBeaconRetryPending = true;
+                _.delay(function() {
+                    steamIdBeaconRetryPending = false;
+                    if (!steamIdBeaconRetryStopped)
+                        self.updateBeacon();
+                }, 1000);
+            }
+            return;
+        }
+
         var publish = !server.closed && (self.settings.public || bouncer.getWhitelist().length) && !self.settings.hidden;
 
         if (publish)

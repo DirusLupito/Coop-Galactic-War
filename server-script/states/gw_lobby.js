@@ -510,11 +510,30 @@ function LobbyModel(creator, launchContext) {
             console.log('[GW COOP] Waiting for all clients to mount GW config before start');
     };
 
+    var steamIdBeaconRetryPending = false;
+    var steamIdBeaconRetryStopped = false;
+
     self.updateBeacon = function() {
         // Never publish or update GW beacons for single-player sessions.
         // This prevents solo campaigns from being exposed as joinable lobbies.
         if (self.isSingleplayerGW) {
             server.beacon = null;
+            return;
+        }
+
+        // Steam-enabled games must not advertise until Steam has assigned the
+        // server's P2P identity, or joining clients would try to connect to an
+        // unroutable placeholder ID. Retry until the ID arrives.
+        if (server.steam_networking_enabled && !server.steam_id) {
+            server.beacon = null;
+            if (!steamIdBeaconRetryPending) {
+                steamIdBeaconRetryPending = true;
+                _.delay(function() {
+                    steamIdBeaconRetryPending = false;
+                    if (!steamIdBeaconRetryStopped)
+                        self.updateBeacon();
+                }, 1000);
+            }
             return;
         }
 
@@ -1192,6 +1211,7 @@ function LobbyModel(creator, launchContext) {
     };
 
     self.exit = function() {
+        steamIdBeaconRetryStopped = true;
         _.forEachRight(cleanup, function (c) { c(); });
         cleanup = [];
         self.clearAllPendingManifestTimeouts();
