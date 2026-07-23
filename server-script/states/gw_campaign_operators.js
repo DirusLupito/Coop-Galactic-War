@@ -287,10 +287,10 @@ exports.installHandlers = function(self, server, handlers) {
 
         console.log('[GW COOP] gw_campaign_host_operator type=' + operator.type + ' from host=' + msg.client.name + ' targets=' + targets.clients.length + ' missing_targets=' + JSON.stringify(targets.missing || []));
         _.forEach(targets.clients, function(client) {
-            client.message({
+            self.sendOrQueueCampaignUpdate(client, {
                 message_type: 'gw_campaign_host_operator',
                 payload: hostRelayPayload
-            });
+            }, false);
         });
 
         server.respond(msg).succeed({

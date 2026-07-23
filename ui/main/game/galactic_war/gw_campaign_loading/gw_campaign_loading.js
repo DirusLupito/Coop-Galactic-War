@@ -33,24 +33,21 @@ requireGW([
 
             self.role = 'solo';
             self.connected = false;
-            self.snapshotRequestedAt = 0;
-            self.snapshotRetryHandle = undefined;
+            // Role and control messages can arrive in either order and both call
+            // requestSnapshot(). So we track whether the initial snapshot request
+            // has already been sent to avoid sending it twice.
+            self.initialSnapshotRequested = false;
             self.navigating = false;
             self.cancelled = false;
             self.requiresLoadout = false;
 
             self.sendMessage = function(messageType, payload, callback) {
-                if (!_.isFunction(self.send_message))
-                    return;
+                if (!_.isFunction(self.send_message)) {
+                    return false;
+                }
 
                 self.send_message(messageType, payload || {}, callback);
-            };
-
-            self.clearSnapshotRetry = function() {
-                if (self.snapshotRetryHandle) {
-                    clearInterval(self.snapshotRetryHandle);
-                    self.snapshotRetryHandle = undefined;
-                }
+                return true;
             };
 
             self.navToMainMenu = function () {
@@ -60,7 +57,6 @@ requireGW([
                 var transitDelay = ko.observable().extend({ session: 'transit_delay' });
 
                 self.cancelled = true;
-                self.clearSnapshotRetry();
                 self.reconnectToGameInfo(undefined);
 
                 transitPrimaryMessage(loc('!LOC:Returning to Main Menu'));
@@ -75,7 +71,6 @@ requireGW([
                     return;
 
                 self.navigating = true;
-                self.clearSnapshotRetry();
                 self.pageSubTitle(loc('!LOC:Entering co-op campaign...'));
                 console.log('[GW COOP] campaign_loading complete reason=' + reason + ' target=' + gwCampaignTarget);
                 window.location.href = self.requiresLoadout ? LOADOUT_TARGET : gwCampaignTarget;
@@ -146,32 +141,33 @@ requireGW([
             };
 
             self.requestSnapshot = function(reason) {
-                if (self.role !== 'viewer' || self.navigating || self.cancelled)
+                if (self.role !== 'viewer' || self.navigating || self.cancelled || self.initialSnapshotRequested) {
                     return;
+                }
 
-                var now = Date.now();
-                if (now - self.snapshotRequestedAt < 750)
+                if (!_.isFunction(self.send_message)) {
+                    console.error('[GW COOP] campaign_loading cannot request initial snapshot: send_message is unavailable');
                     return;
+                }
 
-                self.snapshotRequestedAt = now;
+                // Set this only after proving the transport function exists. If it is
+                // not installed yet, a later role/control callback may try again.
+                self.initialSnapshotRequested = true;
                 self.pageSubTitle(loc('!LOC:Receiving co-op campaign data...'));
                 console.log('[GW COOP] campaign_loading request snapshot reason=' + reason);
                 self.sendMessage('request_gw_campaign_snapshot', {
-                    reason: reason || 'campaign_loading'
+                    reason: reason || 'campaign_loading',
+                    request_kind: 'initial_sync'
                 }, function(success, response) {
+                    if (!success) {
+                        console.error('[GW COOP] campaign_loading initial snapshot request failed', response);
+                        return;
+                    }
+
                     if (success && response && response.has_snapshot === false) {
                         self.pageSubTitle(loc('!LOC:Waiting for host campaign data...'));
                     }
                 });
-            };
-
-            self.ensureSnapshotRetry = function() {
-                if (self.snapshotRetryHandle || self.role !== 'viewer')
-                    return;
-
-                self.snapshotRetryHandle = setInterval(function() {
-                    self.requestSnapshot('retry');
-                }, 1500);
             };
 
             self.matchesLocalClient = function(client) {
@@ -231,7 +227,6 @@ requireGW([
                     var localClient = _.find(connectedClients, self.matchesLocalClient);
                     self.requiresLoadout = !!(localClient && localClient.requires_loadout);
                     self.pageSubTitle(loc('!LOC:Waiting for host campaign data...'));
-                    self.ensureSnapshotRetry();
                     self.requestSnapshot((control && control.has_snapshot) ? 'control_has_snapshot' : 'viewer_role');
                     return;
                 }
@@ -247,7 +242,6 @@ requireGW([
                     return;
 
                 self.pageSubTitle(loc('!LOC:Applying co-op campaign data...'));
-                self.clearSnapshotRetry();
                 self.requiresLoadout = !!payload.requires_loadout;
 
                 var hydratedGame = new GW.Game();
