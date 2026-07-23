@@ -1110,7 +1110,7 @@ requireGW([
         self.payload = ko.observable(payload);
     }
 
-    function GameViewModel(game, startupBattleResult, requiresAuthoritativeCampaignState) {
+    function GameViewModel(game, startupBattleResult, requiresAuthoritativeCampaignState, authoritativeCampaignBootstrapReady) {
         var self = this;
 
         self.localHostTransportSetting = ko.observable().extend({ setting: { group: 'server', key: 'local_host_transport' } });
@@ -1158,9 +1158,17 @@ requireGW([
         self.gwCampaignControl = ko.observable({});
         self.gwCampaignSnapshotSeq = 0;
         self.gwCampaignApplyingSnapshot = false;
-        self.gwCampaignPendingSnapshot = undefined;
-        self.gwCampaignReceivedSnapshot = false;
-        self.gwCampaignInitialSyncRequested = false;
+        // Every inbound state mutation replaces this tail with a promise for the
+        // previous mutation followed by itself. The serial is logging-only;
+        // order comes from handler invocation order, not from this number.
+        self.gwCampaignStateApplyTail = $.when();
+        self.gwCampaignStateApplySerial = 0;
+        // A matching authoritative game ID means the loading/loadout scene already
+        // completed this connection's initial synchronization before entering gw_play.
+        self.gwCampaignReceivedSnapshot = !!authoritativeCampaignBootstrapReady;
+        self.gwCampaignInitialSyncRequested = !!authoritativeCampaignBootstrapReady;
+        self.gwCampaignPlayStarted = false;
+        self.gwCampaignUpdatesReadySent = false;
         self.gwCampaignAppliedSnapshotSeq = 0;
         self.gwCampaignHeartbeatHandle = undefined;
         self.gwCampaignLastSnapshotSentAt = 0;
@@ -1181,6 +1189,9 @@ requireGW([
         self.coopTechChoiceSubmitting = ko.observable(false);
         self.coopPlayerDisplayInventory = ko.observable();
         self.coopPlayerDisplayInventoryKey = '';
+        // Knockout subscriptions can start display-inventory preparation outside the
+        // campaign message queue. This generation invalidates older applyCards callbacks.
+        self.coopPlayerDisplayInventoryPreparationSerial = 0;
         self.gwCampaignInventoryModalVisible = ko.observable(false);
         self.gwCampaignInventoryModalPlayerId = ko.observable();
         self.gwCampaignInventoryModalPlayerName = ko.observable('');
@@ -2041,6 +2052,21 @@ requireGW([
             }
         };
 
+        self.signalGwCampaignUpdatesReady = function() {
+            if (self.gwCampaignUpdatesReadySent || !self.gwCampaignPlayStarted || !self.gwCampaignReceivedSnapshot || !self.gwCampaignEnabled() || !self.gwCampaignConnected() || !self.isCampaignViewer()) {
+                return;
+            }
+
+            if (!_.isFunction(self.send_message)) {
+                console.error('[GW COOP] cannot register campaign update readiness without send_message');
+                return;
+            }
+
+            self.gwCampaignUpdatesReadySent = true;
+            console.log('[GW COOP] registering campaign update readiness');
+            self.send_message('gw_campaign_updates_ready', {});
+        };
+
         self.currentCoopPlayerInventoryData = ko.computed(function() {
             if (!self.isCampaignViewer() || !self.gwCampaignPerPlayerTechCards()) {
                 return undefined;
@@ -2176,6 +2202,8 @@ requireGW([
         });
 
         self.clearCoopPlayerDisplayInventory = function() {
+            // Also invalidate any applyCards callback that has not completed yet.
+            self.coopPlayerDisplayInventoryPreparationSerial += 1;
             self.coopPlayerDisplayInventory(undefined);
             self.coopPlayerDisplayInventoryKey = '';
 
@@ -2188,11 +2216,18 @@ requireGW([
         };
 
         self.prepareCoopPlayerDisplayInventory = function() {
+            var result = $.Deferred();
+            // Knockout may call this function again before an earlier inventory.applyCards()
+            // callback finishes. Increment the shared generation and capture this call's
+            // generation. activateInventory() below installs the result only if no newer
+            // call has incremented the shared generation in the meantime.
+            var preparationSerial = ++self.coopPlayerDisplayInventoryPreparationSerial;
             if (!self.isCampaignViewer() || !self.gwCampaignPerPlayerTechCards()) {
                 if (self.coopPlayerDisplayInventory()) {
                     self.clearCoopPlayerDisplayInventory();
                 }
-                return;
+                result.resolve();
+                return result.promise();
             }
 
             var record = self.currentCoopPlayerInventoryData();
@@ -2200,7 +2235,8 @@ requireGW([
                 if (self.coopPlayerDisplayInventory()) {
                     self.clearCoopPlayerDisplayInventory();
                 }
-                return;
+                result.resolve();
+                return result.promise();
             }
 
             var key = [
@@ -2211,12 +2247,20 @@ requireGW([
             ].join('|');
 
             if (self.coopPlayerDisplayInventory() && self.coopPlayerDisplayInventoryKey === key) {
-                return;
+                result.resolve(self.coopPlayerDisplayInventory());
+                return result.promise();
             }
 
             var inventory = new GWInventory();
             inventory.load(_.cloneDeep(record.inventory));
             var activateInventory = function() {
+                // A newer preparation has already requested a display inventory.
+                // Resolve this obsolete job without installing its stale result.
+                if (preparationSerial !== self.coopPlayerDisplayInventoryPreparationSerial) {
+                    result.resolve();
+                    return;
+                }
+
                 self.coopPlayerDisplayInventory(inventory);
                 self.coopPlayerDisplayInventoryKey = key;
 
@@ -2226,6 +2270,7 @@ requireGW([
                 else if (_.isFunction(self.cardsChanged)) {
                     self.cardsChanged();
                 }
+                result.resolve(inventory);
             };
 
             if (inventory.cards().length) {
@@ -2234,6 +2279,7 @@ requireGW([
             else {
                 activateInventory();
             }
+            return result.promise();
         };
 
         self.activeTechInventory = function() {
@@ -2245,8 +2291,9 @@ requireGW([
         };
 
         self.prepareCoopPlayerInventories = function() {
-            self.prepareCoopPlayerDisplayInventory();
-            self.refreshGwCampaignInventoryModal();
+            return self.prepareCoopPlayerDisplayInventory().then(function() {
+                self.refreshGwCampaignInventoryModal();
+            });
         };
 
         self.canChooseCoopTechCards.subscribe(function() {
@@ -2762,7 +2809,7 @@ requireGW([
             self.gwCampaignLastSnapshotRequestAt = now;
             self.send_message('request_gw_campaign_snapshot', {
                 reason: reason || (force ? 'initial_sync' : 'viewer_request'),
-                force_fresh: reason === 'action_fallback'
+                request_kind: reason === 'action_fallback' ? 'action_fallback' : 'initial_sync'
             });
         };
 
@@ -2778,11 +2825,51 @@ requireGW([
             });
         };
 
+        // Web UI delivers campaign messages in order, but some handlers finish
+        // asynchronously. Preserve that same order through completion so a later
+        // update cannot be overwritten by an older snapshot or inventory operation.
+        self.enqueueGwCampaignStateApply = function(label, apply) {
+            var serial = ++self.gwCampaignStateApplySerial;
+            var result = $.Deferred();
+
+            var execute = function() {
+                var applyResult;
+                console.log('[GW COOP] campaign state apply start serial=' + serial + ' type=' + label);
+
+                try {
+                    applyResult = apply();
+                }
+                catch (error) {
+                    console.error('[GW COOP] campaign state apply threw serial=' + serial + ' type=' + label, error);
+                    result.reject(error);
+                    return;
+                }
+
+                return $.when(applyResult).then(function() {
+                    console.log('[GW COOP] campaign state apply done serial=' + serial + ' type=' + label);
+                    result.resolve.apply(result, arguments);
+                }, function(error) {
+                    console.error('[GW COOP] campaign state apply failed serial=' + serial + ' type=' + label, error);
+                    result.reject(error);
+
+                    // Do not return this rejection. The individual operation fails,
+                    // but the shared tail must remain usable for later updates. The
+                    // separately returned result promise still rejects for callers.
+                });
+            };
+
+            self.gwCampaignStateApplyTail = self.gwCampaignStateApplyTail.then(execute, execute);
+            return result.promise();
+        };
+
         // See server script state gw_campaign_operator_handlers for more details.
 
         self.gwCampaignViewerOperatorHandlers = {};
         self.gwCampaignHostOperatorHandlers = {};
 
+        // Synchronous handlers may return nothing. A handler that mutates campaign
+        // state asynchronously must return its completion promise so later
+        // authoritative updates remain ordered behind it.
         self.registerCampaignViewerOperatorHandler = function(type, handler) {
             if (!_.isString(type) || !type.length || !_.isFunction(handler)) {
                 return false;
@@ -2819,19 +2906,20 @@ requireGW([
             }
 
             try {
-                handler(operator);
+                return handler(operator);
             } catch (e) {
                 console.error('[GW COOP] ' + direction + ' campaign operator handler failed type=' + operator.type);
                 console.error(e);
+                return $.Deferred().reject(e).promise();
             }
         };
 
         self.applyCampaignViewerOperator = function(operator) {
-            self.applyCampaignOperator(self.gwCampaignViewerOperatorHandlers, operator, 'viewer');
+            return self.applyCampaignOperator(self.gwCampaignViewerOperatorHandlers, operator, 'viewer');
         };
 
         self.applyCampaignHostOperator = function(operator) {
-            self.applyCampaignOperator(self.gwCampaignHostOperatorHandlers, operator, 'host');
+            return self.applyCampaignOperator(self.gwCampaignHostOperatorHandlers, operator, 'host');
         };
 
         self.sendCampaignViewerOperator = function(type, payload, options) {
@@ -2979,19 +3067,23 @@ requireGW([
         };
 
         self.applyCampaignSnapshot = function(payload) {
-            if (!self.isCampaignViewer() || !payload || !payload.snapshot || !payload.snapshot.game)
-                return;
+            var result = $.Deferred();
+            if (!self.isCampaignViewer() || !payload || !payload.snapshot || !payload.snapshot.game) {
+                result.reject('Cannot apply invalid campaign snapshot');
+                return result.promise();
+            }
 
-            if (self.gwCampaignHydrationInProgress)
-                return;
+            if (self.gwCampaignHydrationInProgress) {
+                result.reject('Cannot apply campaign snapshot while full rehydration is in progress');
+                return result.promise();
+            }
 
             if (self.gwCampaignApplyingSnapshot) {
-                self.gwCampaignPendingSnapshot = payload;
-                return;
+                result.reject('Cannot apply overlapping campaign snapshots');
+                return result.promise();
             }
 
             var snapshot = payload.snapshot;
-            var ui = snapshot.ui || {};
             var incomingSeq = _.isNumber(payload.seq) ? payload.seq : 0;
             console.log('[GW COOP] applyCampaignSnapshot start seq=' + incomingSeq + ' applying=' + self.gwCampaignApplyingSnapshot);
 
@@ -3004,7 +3096,7 @@ requireGW([
                 console.log('[GW COOP] snapshot galaxy mismatch local=' + localSignature + ' remote=' + snapshotSignature + ', forcing full rehydrate');
 
                 var hydratedGame = new GW.Game();
-                hydratedGame.load(snapshot.game).always(function() {
+                hydratedGame.load(snapshot.game).then(function() {
                     GW.manifest.saveGame(hydratedGame).then(function() {
                         self.gwCampaignReceivedSnapshot = true;
                         self.gwCampaignInitialSyncRequested = false;
@@ -3015,42 +3107,60 @@ requireGW([
                         catch (e) {
                             console.warn('[GW COOP] failed to set authoritative game id in sessionStorage', e);
                         }
+                        // Do not resolve result before reloading. Otherwise the shared
+                        // queue could apply later messages to the obsolete game model
+                        // during the short interval before navigation completes.
                         window.location.reload();
                     }, function(err) {
                         self.gwCampaignHydrationInProgress = false;
                         console.error('[GW COOP] failed to save hydrated game', err);
+                        result.reject(err);
                     });
+                }, function(err) {
+                    self.gwCampaignHydrationInProgress = false;
+                    console.error('[GW COOP] failed to load hydrated game', err);
+                    result.reject(err);
                 });
-                return;
+                return result.promise();
             }
 
             self.gwCampaignApplyingSnapshot = true;
-            game.load(snapshot.game).always(function() {
+            game.load(snapshot.game).then(function() {
                 self.gwCampaignReceivedSnapshot = true;
                 self.gwCampaignInitialSyncRequested = false;
                 self.syncViewerStarsFromGame('snapshot_seq_' + incomingSeq);
                 if (incomingSeq > self.gwCampaignAppliedSnapshotSeq) {
+                    // Diagnostic only. Snapshots are applied in
+                    // receive order by gwCampaignStateApplyTail, never sorted by seq.
                     self.gwCampaignAppliedSnapshotSeq = incomingSeq;
                 }
 
                 self.markGwCampaignAuthoritativeStateReady('snapshot_seq_' + incomingSeq);
-                self.prepareCoopPlayerInventories();
+                self.prepareCoopPlayerInventories().then(function() {
+                    console.log('[GW COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
 
-                console.log('[GW COOP] applyCampaignSnapshot done seq=' + incomingSeq + ' currentStar=' + game.currentStar() + ' selected=' + self.selection.star());
-
+                    self.gwCampaignApplyingSnapshot = false;
+                    self.signalGwCampaignUpdatesReady();
+                    result.resolve();
+                }, function(err) {
+                    self.gwCampaignApplyingSnapshot = false;
+                    console.error('[GW COOP] failed to prepare co-op inventories after snapshot seq=' + incomingSeq, err);
+                    result.reject(err);
+                });
+            }, function(err) {
                 self.gwCampaignApplyingSnapshot = false;
-
-                if (self.gwCampaignPendingSnapshot) {
-                    var pendingSnapshot = self.gwCampaignPendingSnapshot;
-                    self.gwCampaignPendingSnapshot = undefined;
-                    self.applyCampaignSnapshot(pendingSnapshot);
-                }
+                console.error('[GW COOP] failed to load campaign snapshot seq=' + incomingSeq, err);
+                result.reject(err);
             });
+            return result.promise();
         };
 
         self.applyCampaignAction = function(action) {
-            if (!self.isCampaignViewer() || !action || !action.type)
-                return;
+            var result = $.Deferred();
+            if (!self.isCampaignViewer() || !action || !action.type) {
+                result.reject('Cannot apply invalid campaign action');
+                return result.promise();
+            }
 
             var payload = action.payload || {};
             var currentStarBeforeAction = game.currentStar();
@@ -3063,121 +3173,128 @@ requireGW([
             self.syncViewerStarsFromGame('before_action_' + action.type, [currentStarBeforeAction]);
             self.gwCampaignReplayingAction = true;
 
+            var finish = function(operation, syncAfter) {
+                // This flag authorizes the synchronous entry into host-only UI
+                // methods. Clear it immediately so viewers cannot interact while
+                // the returned asynchronous work is still completing.
+                self.gwCampaignReplayingAction = false;
+                $.when(operation).then(function() {
+                    try {
+                        if (_.isFunction(syncAfter)) {
+                            syncAfter();
+                        }
+                    }
+                    catch (error) {
+                        result.reject(error);
+                        return;
+                    }
+
+                    result.resolve.apply(result, arguments);
+                }, function(error) {
+                    result.reject(error);
+                });
+                return result.promise();
+            };
+
             if (action.type === 'startup_battle_result' && payload && payload.result) {
                 if (payload.result === 'win') {
-                    game.winTurn().then(function(didWin) {
+                    return finish(game.winTurn().then(function(didWin) {
                         console.log('[GW COOP] applyCampaignAction startup_battle_result win didWin=' + didWin + ' currentStar=' + game.currentStar());
-                        GW.manifest.saveGame(game);
-                    });
+                        return GW.manifest.saveGame(game);
+                    }));
                 }
                 else if (payload.result === 'loss') {
                     var didLose = game.loseTurn();
-                    if (game.isTutorial())
+                    if (game.isTutorial()) {
                         game.turnState(GW.Game.turnStates.begin);
+                    }
                     console.log('[GW COOP] applyCampaignAction startup_battle_result loss didLose=' + didLose + ' currentStar=' + game.currentStar());
-                    GW.manifest.saveGame(game);
+                    return finish(GW.manifest.saveGame(game));
                 }
 
                 self.gwCampaignReplayingAction = false;
-                return;
+                result.reject('Invalid startup battle result ' + payload.result);
+                return result.promise();
             }
 
             if (action.type === 'move_to_star' && _.isNumber(payload.star)) {
                 self.selection.star(payload.star);
-                self.move();
-                _.defer(function() {
+                return finish(self.move(), function() {
                     self.syncViewerStarsFromGame('after_action_move_to_star', [payload.star, game.currentStar()]);
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'move_path' && _.isArray(payload.path) && payload.path.length) {
                 self.selection.star(payload.destination);
-                self.move();
-                _.defer(function() {
+                return finish(self.move(), function() {
                     var changedStars = _.isArray(payload.path) ? payload.path.concat([payload.destination, game.currentStar()]) : [payload.destination, game.currentStar()];
                     self.syncViewerStarsFromGame('after_action_move_path', changedStars);
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'explore_begin') {
-                self.explore();
-                _.defer(function() {
+                return finish(self.explore(), function() {
                     self.syncViewerStarsFromGame('after_action_explore_begin', [game.currentStar()]);
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'explore') {
-                self.explore();
-                _.defer(function() {
+                return finish(self.explore(), function() {
                     self.syncViewerStarsFromGame('after_action_explore', [game.currentStar()]);
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'discard_card') {
-                self.discardHoverCard(payload.discard_index);
-                _.defer(function() {
+                return finish(self.discardHoverCard(payload.discard_index), function() {
                     self.syncViewerStarsFromGame('after_action_discard_card', [game.currentStar()]);
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'explore_cards') {
                 var stars = game.galaxy().stars();
                 var star = _.isNumber(payload.star) ? stars[payload.star] : undefined;
-                if (star && _.isFunction(star.cardList) && _.isArray(payload.cards))
+                if (star && _.isFunction(star.cardList) && _.isArray(payload.cards)) {
                     star.cardList(payload.cards);
+                }
                 self.scanning(false);
-                self.syncViewerStarsFromGame('after_action_explore_cards', [payload.star, game.currentStar()]);
-                self.gwCampaignReplayingAction = false;
-                return;
+                return finish(undefined, function() {
+                    self.syncViewerStarsFromGame('after_action_explore_cards', [payload.star, game.currentStar()]);
+                });
             }
 
             if (action.type === 'sync_star_cards') {
                 var syncStars = game.galaxy().stars();
                 var syncStar = _.isNumber(payload.star) ? syncStars[payload.star] : undefined;
-                if (syncStar && _.isFunction(syncStar.cardList) && _.isArray(payload.cards))
+                if (syncStar && _.isFunction(syncStar.cardList) && _.isArray(payload.cards)) {
                     syncStar.cardList(payload.cards);
-                self.syncViewerStarsFromGame('after_action_sync_star_cards', [payload.star, game.currentStar()]);
-                self.gwCampaignReplayingAction = false;
-                return;
+                }
+                return finish(undefined, function() {
+                    self.syncViewerStarsFromGame('after_action_sync_star_cards', [payload.star, game.currentStar()]);
+                });
             }
 
             if (action.type === 'win_turn') {
                 // Viewer can be out of the precise turn micro-state; use snapshot correction instead.
                 console.log('[GW COOP] applyCampaignAction win_turn fallback->snapshot');
                 self.requestCampaignSnapshot(true, 'action_fallback');
-                self.gwCampaignReplayingAction = false;
-                return;
+                return finish();
             }
 
             if (action.type === 'win_choice') {
-                self.win(self.gwCampaignPerPlayerTechCards() ? -1 : payload.selected_card_index);
-                _.defer(function() {
+                return finish(self.win(self.gwCampaignPerPlayerTechCards() ? -1 : payload.selected_card_index), function() {
                     self.syncViewerStarsFromGame('after_action_win_choice');
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             if (action.type === 'lose_turn') {
-                self.lose();
-                _.defer(function() {
+                return finish(self.lose(), function() {
                     self.syncViewerStarsFromGame('after_action_lose_turn');
                 });
-                self.gwCampaignReplayingAction = false;
-                return;
             }
 
             self.gwCampaignReplayingAction = false;
+            result.reject('Unknown or invalid campaign action type=' + action.type);
+            return result.promise();
         };
 
         self.updateCampaignConnectionState = function(payload) {
@@ -3242,6 +3359,8 @@ requireGW([
                 self.gwCampaignInitialSyncRequested = true;
                 self.requestCampaignSnapshot(true);
             }
+
+            self.signalGwCampaignUpdatesReady();
         };
 
         self.devMode = ko.observable().extend({ session: 'dev_mode' });
@@ -3599,6 +3718,12 @@ requireGW([
 
         self.moveStep = function(path)
         {
+            var result = $.Deferred();
+            if (!_.isArray(path) || !path.length) {
+                result.reject('Cannot move without a campaign path');
+                return result.promise();
+            }
+
             var star = path[0];
             var system = self.galaxy.systems()[star];
             self.player.moveTo(star, function() {
@@ -3638,21 +3763,36 @@ requireGW([
                 }
 
                 self.driveAccessInProgress(true);
-                GW.manifest.saveGame(game).then(function() {
+                var saving = GW.manifest.saveGame(game);
+                saving.then(function() {
                     self.driveAccessInProgress(false);
+                }, function(error) {
+                    self.driveAccessInProgress(false);
+                    console.error('[GW COOP] failed to save campaign move step star=' + star, error);
                 });
 
-               if (system.visited && path.length > 1) {
+                var nextMove;
+                if (system.visited && path.length > 1) {
                     path.shift();
-                    self.moveStep(path);
+                    nextMove = self.moveStep(path);
                 }
+
+                // Preserve the existing movement cadence by starting the next visual
+                // step immediately, but do not complete the campaign action promise
+                // until both this save and the remaining path have finished.
+                $.when(saving, nextMove).then(function() {
+                    result.resolve();
+                }, function(error) {
+                    result.reject(error);
+                });
             });
+            return result.promise();
         };
 
         self.move = function()
         {
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
-                return;
+                return $.Deferred().reject('Viewer cannot originate a campaign move').promise();
             }
 
             var star = self.selection.star();
@@ -3664,10 +3804,12 @@ requireGW([
                 path.shift();
 
                 self.sendCampaignAction('move_to_star', { star: star });
-                self.moveStep(path);
+                return self.moveStep(path);
             }
-            else
+            else {
                 console.error("Unable to find path for move command", game.currentStar(), star);
+                return $.Deferred().reject('Unable to find path for campaign move').promise();
+            }
 
         };
 
@@ -3939,17 +4081,21 @@ requireGW([
         };
 
         self.explore = function() {
+            var result = $.Deferred();
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
-                return;
+                result.reject('Viewer cannot originate campaign exploration');
+                return result.promise();
             }
 
-            if (self.gwCampaignPlayerSetupBlocked()) {
+            if (!self.gwCampaignReplayingAction && self.gwCampaignPlayerSetupBlocked()) {
                 console.log('[GW COOP] explore blocked while co-op players are loading or choosing per-player tech');
-                return;
+                result.reject('Campaign exploration blocked by co-op player setup');
+                return result.promise();
             }
 
             if (!game || !game.explore()) {
-                return;
+                result.reject('Campaign game rejected exploration');
+                return result.promise();
             }
 
             if (!self.gwCampaignReplayingAction) {
@@ -4010,6 +4156,10 @@ requireGW([
                 self.driveAccessInProgress(true);
                 GW.manifest.saveGame(game).then(function() {
                     self.driveAccessInProgress(false);
+                    result.resolve();
+                }, function(error) {
+                    self.driveAccessInProgress(false);
+                    result.reject(error);
                 });
 
                 _.delay(function() {
@@ -4018,7 +4168,117 @@ requireGW([
             }, function(reason) {
                 console.error('[GW COOP] failed to deal co-op player pending tech cards: ' + reason);
                 self.scanning(false);
+                result.reject(reason);
             });
+            return result.promise();
+        };
+
+        self.saveCoopPlayerInventoryMetadata = function(record, reason, prepareLocalInventory) {
+            // These messages replace saved metadata only. Card application belongs to
+            // applyCoopPlayerInventoryRecord; applying cards here would replay effects.
+            var result = $.Deferred();
+            var saved = self.game();
+            if (!saved || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
+                result.reject('Cannot save co-op player inventory metadata without game helper');
+                return result.promise();
+            }
+
+            if (!saved.upsertCoopPlayerInventoryData(record)) {
+                result.reject('Failed to upsert co-op player inventory metadata for ' + reason);
+                return result.promise();
+            }
+
+            self.refreshGwCampaignInventoryModal();
+            var preparing = $.when();
+            if (prepareLocalInventory) {
+                preparing = self.prepareCoopPlayerInventories();
+            }
+
+            $.when(preparing, GW.manifest.saveGame(saved)).then(function() {
+                console.log('[GW COOP] saved co-op player inventory metadata reason=' + reason + ' player=' + record.playerName);
+                result.resolve(record);
+            }, function(error) {
+                console.error('[GW COOP] failed to save co-op player inventory metadata reason=' + reason, error);
+                result.reject(error);
+            });
+            return result.promise();
+        };
+
+        self.applyCoopPlayerLoadout = function(payload) {
+            var result = $.Deferred();
+            var inventoryData = payload && payload.inventory_data;
+            var loadoutCardId = inventoryData && inventoryData.loadoutCardId;
+            if (!inventoryData || !_.isString(inventoryData.commander) || !_.isString(loadoutCardId) || !inventoryData.inventory) {
+                result.reject('Invalid co-op player loadout from client=' + (payload && payload.client_id));
+                return result.promise();
+            }
+
+            var unlockedStartCardIds = _.isArray(inventoryData.unlockedStartCardIds) ? inventoryData.unlockedStartCardIds : [];
+            return self.saveCoopPlayerInventoryMetadata({
+                playerId: payload.client_id,
+                playerName: payload.client_name || inventoryData.playerName,
+                commander: inventoryData.commander,
+                loadoutCardId: loadoutCardId,
+                inventory: inventoryData.inventory,
+                unlockedStartCardIds: normalizeStartCardIds(unlockedStartCardIds.concat([loadoutCardId])),
+                techCardDealCount: _.isNumber(inventoryData.techCardDealCount) ? inventoryData.techCardDealCount : 0,
+                updatedAt: inventoryData.updatedAt || _.now()
+            }, 'player_loadout', false);
+        };
+
+        self.applyCoopPlayerUnlockedStartCards = function(payload) {
+            var result = $.Deferred();
+            if (!payload || !_.isArray(payload.unlocked_start_card_ids)) {
+                result.reject('Invalid co-op player unlocked loadouts payload');
+                return result.promise();
+            }
+
+            var saved = self.game();
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData)) {
+                result.reject('Cannot find co-op player unlocked loadouts without game helper');
+                return result.promise();
+            }
+
+            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
+            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
+                result.reject('Incomplete co-op player unlocked loadouts from client=' + payload.client_id);
+                return result.promise();
+            }
+
+            return self.saveCoopPlayerInventoryMetadata(_.assign({}, _.cloneDeep(existingRecord), {
+                playerId: payload.client_id,
+                playerName: payload.client_name || existingRecord.playerName,
+                unlockedStartCardIds: normalizeStartCardIds(payload.unlocked_start_card_ids),
+                updatedAt: payload.updated_at || _.now()
+            }), 'unlocked_start_cards', false);
+        };
+
+        self.applyCoopPlayerPendingTechCards = function(payload) {
+            var result = $.Deferred();
+            var pendingTechCards = payload && payload.pendingTechCards;
+            if (!pendingTechCards || !_.isNumber(pendingTechCards.star) || !_.isArray(pendingTechCards.cards)) {
+                result.reject('Invalid co-op player pending tech cards from client=' + (payload && payload.client_id));
+                return result.promise();
+            }
+
+            var saved = self.game();
+            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData)) {
+                result.reject('Cannot find co-op player pending tech cards without game helper');
+                return result.promise();
+            }
+
+            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
+            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
+                result.reject('Incomplete co-op player pending tech cards from client=' + payload.client_id);
+                return result.promise();
+            }
+
+            return self.saveCoopPlayerInventoryMetadata(_.assign({}, _.cloneDeep(existingRecord), {
+                playerId: payload.client_id,
+                playerName: payload.client_name || existingRecord.playerName,
+                pendingTechCards: _.cloneDeep(pendingTechCards),
+                updatedAt: payload.updated_at || _.now()
+            }), 'pending_tech_cards', self.isCampaignViewer() && self.isLocalCoopPlayerInventoryPayload(payload));
         };
 
         self.applyCoopPlayerInventoryRecord = function(record, reason) {
@@ -4047,8 +4307,7 @@ requireGW([
                     return;
                 }
 
-                self.prepareCoopPlayerInventories();
-                GW.manifest.saveGame(game).then(function() {
+                $.when(self.prepareCoopPlayerInventories(), GW.manifest.saveGame(game)).then(function() {
                     console.log('[GW COOP] saved co-op player inventory operation ' + reason + ' for player=' + nextRecord.playerName);
                     result.resolve(nextRecord);
                 }, function(err) {
@@ -4094,11 +4353,13 @@ requireGW([
                 return;
             }
 
-            self.applyCoopPlayerInventoryRecord(_.cloneDeep(record), 'coop_inventory_record_changed').then(function() {
+            var applying = self.applyCoopPlayerInventoryRecord(_.cloneDeep(record), 'coop_inventory_record_changed');
+            applying.then(function() {
                 console.log('[GW COOP] applied host co-op inventory record change for host=' + (operator.host_name || operator.host_id || '<unknown>'));
             }, function(reason) {
                 console.log('[GW COOP] failed to apply host co-op inventory record change: ' + reason);
             });
+            return applying;
         });
 
         self.applyCoopPlayerTechCardDeleted = function(payload) {
@@ -4287,7 +4548,8 @@ requireGW([
                         ? tech_card.audio().found
                         : null;
 
-                self.submitCoopTechCardChoice(selected_card_index).then(function() {
+                var submitting = self.submitCoopTechCardChoice(selected_card_index);
+                submitting.then(function() {
                     if (!tech_audio) {
                         api.audio.playSound('/VO/Computer/gw/board_tech_acquired');
                     }
@@ -4297,11 +4559,11 @@ requireGW([
                 }, function(reason) {
                     console.error('[GW COOP] failed to acquire co-op tech choice: ' + reason);
                 });
-                return;
+                return submitting;
             }
 
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
-                return;
+                return $.Deferred().reject('Viewer cannot originate a campaign win choice').promise();
             }
 
             console.log('[GW COOP] win start selected=' + selected_card_index + ' role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
@@ -4313,9 +4575,10 @@ requireGW([
             var actionCardList = self.currentSystemActionCardList();
             if (selected_card_index !== -1 && (!actionCardList || !actionCardList[selected_card_index])) {
                 console.error('[GW COOP] Cannot apply win choice without current system card data.');
-                return;
+                return $.Deferred().reject('Cannot apply win choice without current system card data').promise();
             }
 
+            var result = $.Deferred();
             self.exitGate($.Deferred());
             var oldSlots = game.inventory().maxCards() - game.inventory().cards().length;
 
@@ -4330,6 +4593,8 @@ requireGW([
                 if (!didWin) {
                     console.error('Failed winning turn', game);
                     console.log('[GW COOP] win failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
+                    self.exitGate().resolve();
+                    result.reject('Campaign game rejected win turn');
                     return;
                 }
 
@@ -4345,35 +4610,42 @@ requireGW([
 
                 self.maybePlayCaptureSound();
                 self.driveAccessInProgress(true);
-                var saving = GW.manifest.saveGame(game);
-                if (saving) {
-                    saving.then(function() {
-                        self.driveAccessInProgress(false);
-                        if (self.gameOver()) {
-                            api.tally.incStatInt('gw_war_victory').always(function() {
-                                self.exitGate().resolve();
-                            });
-                        }
-                        else {
+                GW.manifest.saveGame(game).then(function() {
+                    self.driveAccessInProgress(false);
+                    if (self.gameOver()) {
+                        api.tally.incStatInt('gw_war_victory').always(function() {
                             self.exitGate().resolve();
+                            result.resolve();
+                        });
+                    }
+                    else {
+                        self.exitGate().resolve();
 
-                            if (play_tech_audio) {
-                                if (!tech_audio) {
-                                    api.audio.playSound('/VO/Computer/gw/board_tech_acquired');
-                                }
-                                else {
-                                    api.audio.playSound(tech_audio);
-                                }
+                        if (play_tech_audio) {
+                            if (!tech_audio) {
+                                api.audio.playSound('/VO/Computer/gw/board_tech_acquired');
+                            }
+                            else {
+                                api.audio.playSound(tech_audio);
                             }
                         }
-                    });
-                }
+                        result.resolve();
+                    }
+                }, function(error) {
+                    self.driveAccessInProgress(false);
+                    self.exitGate().resolve();
+                    result.reject(error);
+                });
             });
+            return result.promise();
         };
 
         self.lose = function() {
-            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction)
-                return;
+            if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
+                return $.Deferred().reject('Viewer cannot originate a campaign loss').promise();
+            }
+
+            var result = $.Deferred();
 
             console.log('[GW COOP] lose start role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
 
@@ -4391,17 +4663,23 @@ requireGW([
                 if (self.isCampaignViewer())
                     self.syncViewerStarsFromGame('lose_applied');
 
-                $.when([
+                $.when(
                     GW.manifest.saveGame(game),
                     api.tally.incStatInt('gw_war_loss')
-                ]).then(function() {
+                ).then(function() {
                     self.exitGate().resolve();
+                    result.resolve();
+                }, function(error) {
+                    self.exitGate().resolve();
+                    result.reject(error);
                 });
             }
             else {
                 console.log('[GW COOP] lose failed role=' + self.gwCampaignRole() + ' replay=' + self.gwCampaignReplayingAction + ' currentStar=' + game.currentStar() + ' turnState=' + game.turnState() + ' gameState=' + game.gameState());
                 self.exitGate().resolve();
+                result.reject('Campaign game rejected loss');
             }
+            return result.promise();
         };
 
         self.restartFight = function(model, event, cheat) {
@@ -4708,23 +4986,25 @@ requireGW([
             if (self.canUseCoopTechDeletion() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
                 var coopDiscard = self.hoverCard();
                 if (!coopDiscard) {
-                    return;
+                    return $.Deferred().reject('Cannot discard without a selected co-op tech card').promise();
                 }
 
                 self.hoverCard(undefined);
                 var coopDiscardIndex = self.cards().indexOf(coopDiscard);
                 if (coopDiscardIndex >= 0) {
-                    self.deleteCoopTechCard(coopDiscardIndex).then(function() {
+                    var deleting = self.deleteCoopTechCard(coopDiscardIndex);
+                    deleting.then(function() {
                         api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
                     }, function(reason) {
                         console.error('[GW COOP] failed to delete co-op tech card: ' + reason);
                     });
+                    return deleting;
                 }
-                return;
+                return $.Deferred().reject('Selected co-op tech card was not found').promise();
             }
 
             if (self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
-                return;
+                return $.Deferred().reject('Viewer cannot originate a campaign tech discard').promise();
             }
 
             // Since some earlier programmer was nice enough to have this card
@@ -4734,6 +5014,7 @@ requireGW([
             // is being called from applyCampaignSnapshot to do a clientside discard of a card that was
             // ordered to be discarded from the host.
             if (self.gwCampaignReplayingAction) {
+                var replayResult = $.Deferred();
                 var discardIndex = parseInt(card);
                 var replayCards = game.inventory().cards();
                 if (!isNaN(discardIndex) && discardIndex >= 0 && discardIndex < replayCards.length) {
@@ -4742,22 +5023,31 @@ requireGW([
                         game.inventory().applyCards(function() {
                             GW.manifest.saveGame(game).then(function() {
                                 api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
+                                replayResult.resolve();
+                            }, function(error) {
+                                replayResult.reject(error);
                             });
                         });
                     }
                     else {
                         GW.manifest.saveGame(game).then(function() {
                             api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
+                            replayResult.resolve();
+                        }, function(error) {
+                            replayResult.reject(error);
                         });
                     }
                 }
+                else {
+                    replayResult.reject('Invalid campaign tech discard index ' + card);
+                }
 
-                return;
+                return replayResult.promise();
             }
 
             var discard = self.hoverCard();
             if (!discard) {
-                return;
+                return $.Deferred().reject('Cannot discard without a selected tech card').promise();
             }
             self.hoverCard(undefined);
 
@@ -4769,6 +5059,7 @@ requireGW([
             self.sendCampaignAction('discard_card', { discard_index: discardIndex });
 
             if (discardIndex >= 0) {
+                var result = $.Deferred();
                 var busy = $.Deferred();
                 game.busy = busy.promise();
                 game.inventory().cards.splice(discardIndex, 1);
@@ -4779,9 +5070,15 @@ requireGW([
                     GW.manifest.saveGame(game).then(function() {
                         self.driveAccessInProgress(false);
                         api.audio.playSound('/VO/Computer/gw/board_tech_deleted');
+                        result.resolve();
+                    }, function(error) {
+                        self.driveAccessInProgress(false);
+                        result.reject(error);
                     });
                 });
+                return result.promise();
             }
+            return $.Deferred().reject('Selected tech card was not found').promise();
         };
         self.updateCards = function()
         {
@@ -5471,7 +5768,13 @@ requireGW([
             }
         }
 
-        model = new GameViewModel(game, startupBattleResult, gwCampaignCoopMode && !isAuthoritativeCampaignBootstrapReady(game));
+        var authoritativeCampaignBootstrapReady = isAuthoritativeCampaignBootstrapReady(game);
+        model = new GameViewModel(
+            game,
+            startupBattleResult,
+            gwCampaignCoopMode && !authoritativeCampaignBootstrapReady,
+            authoritativeCampaignBootstrapReady
+        );
 
         model.setup();
 
@@ -5584,195 +5887,67 @@ requireGW([
                 model.requestCampaignSnapshot(true);
             }
 
-            if (payload.role === 'host')
+            if (payload.role === 'host') {
                 model.markGwCampaignAuthoritativeStateReady('role_host');
+            }
 
             // In case we restarted the server after continuing the war, 
             // we want to keep the same lobby controls and other information
             // from before the restart.
             model.applyPendingGwCampaignRestartContext();
             model.applySavedCoopSettingsToCampaignLobby();
+            model.signalGwCampaignUpdatesReady();
         };
 
+        // Enqueue at receipt time rather than inside the application helpers. This is
+        // what preserves one receive-order FIFO across different message types.
         handlers.gw_campaign_snapshot = function(payload) {
             console.log('[GW COOP] gw_campaign_snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
-            model.applyCampaignSnapshot(payload);
+            return model.enqueueGwCampaignStateApply('snapshot:' + (payload && payload.seq), function() {
+                return model.applyCampaignSnapshot(payload);
+            });
         };
 
         handlers.gw_campaign_player_loadout = function(payload) {
-            if (!payload || !payload.inventory_data) {
-                console.log('[GW COOP] ignoring invalid co-op player loadout payload');
-                return;
-            }
-
-            var inventoryData = payload.inventory_data;
-            var loadoutCardId = inventoryData.loadoutCardId;
-            if (!_.isString(inventoryData.commander) || !_.isString(loadoutCardId) || !inventoryData.inventory) {
-                console.log('[GW COOP] invalid co-op player loadout from client=' + payload.client_id);
-                return;
-            }
-
-            var saved = model.game();
-            if (!saved || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot save co-op player inventory data without game helper');
-                return;
-            }
-
-            var unlockedStartCardIds = _.isArray(inventoryData.unlockedStartCardIds) ? inventoryData.unlockedStartCardIds : [];
-            var record = {
-                playerId: payload.client_id,
-                playerName: payload.client_name || inventoryData.playerName,
-                commander: inventoryData.commander,
-                loadoutCardId: loadoutCardId,
-                inventory: inventoryData.inventory,
-                unlockedStartCardIds: normalizeStartCardIds(unlockedStartCardIds.concat([loadoutCardId])),
-                techCardDealCount: _.isNumber(inventoryData.techCardDealCount) ? inventoryData.techCardDealCount : 0,
-                updatedAt: inventoryData.updatedAt || _.now()
-            };
-
-            if (!saved.upsertCoopPlayerInventoryData(record)) {
-                console.log('[GW COOP] failed to upsert co-op player inventory data for client=' + payload.client_id);
-                return;
-            }
-
-            model.refreshGwCampaignInventoryModal();
-
-            GW.manifest.saveGame(saved).then(function() {
-                console.log('[GW COOP] saved co-op player loadout for client=' + payload.client_id);
-            }, function(err) {
-                console.error('[GW COOP] failed to save co-op player inventory data', err);
+            return model.enqueueGwCampaignStateApply('player_loadout', function() {
+                return model.applyCoopPlayerLoadout(payload);
             });
         };
 
         handlers.gw_campaign_player_unlocked_start_cards = function(payload) {
-            if (!payload || !_.isArray(payload.unlocked_start_card_ids)) {
-                console.log('[GW COOP] ignoring invalid co-op player unlocked loadouts payload');
-                return;
-            }
-
-            var saved = model.game();
-            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot save co-op player unlocked loadouts without game helper');
-                return;
-            }
-
-            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
-            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
-                console.log('[GW COOP] incomplete co-op player unlocked loadouts from client=' + payload.client_id);
-                return;
-            }
-
-            var record = _.assign({}, _.cloneDeep(existingRecord), {
-                playerId: payload.client_id,
-                playerName: payload.client_name || existingRecord.playerName,
-                unlockedStartCardIds: normalizeStartCardIds(payload.unlocked_start_card_ids),
-                updatedAt: payload.updated_at || _.now()
-            });
-
-            if (!saved.upsertCoopPlayerInventoryData(record)) {
-                console.log('[GW COOP] failed to upsert co-op player unlocked loadouts for client=' + payload.client_id);
-                return;
-            }
-
-            model.refreshGwCampaignInventoryModal();
-
-            GW.manifest.saveGame(saved).then(function() {
-                console.log('[GW COOP] saved co-op player unlocked loadouts for client=' + payload.client_id);
-            }, function(err) {
-                console.error('[GW COOP] failed to save co-op player unlocked loadouts', err);
+            return model.enqueueGwCampaignStateApply('unlocked_start_cards', function() {
+                return model.applyCoopPlayerUnlockedStartCards(payload);
             });
         };
 
         handlers.gw_campaign_player_pending_tech_cards = function(payload) {
-            if (!payload || !payload.pendingTechCards) {
-                console.log('[GW COOP] ignoring invalid co-op player pending tech cards payload');
-                return;
-            }
-
-            var pendingTechCards = payload.pendingTechCards;
-            if (!pendingTechCards || !_.isNumber(pendingTechCards.star) || !_.isArray(pendingTechCards.cards)) {
-                console.log('[GW COOP] invalid co-op player pending tech cards from client=' + payload.client_id);
-                return;
-            }
-
-            var saved = model.game();
-            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot save co-op player pending tech cards without game helper');
-                return;
-            }
-
-            var existingRecord = saved.findCoopPlayerInventoryData({ id: payload.client_id, name: payload.client_name });
-            if (!existingRecord || !existingRecord.inventory || !_.isString(existingRecord.commander) || !_.isString(existingRecord.loadoutCardId)) {
-                console.log('[GW COOP] incomplete co-op player pending tech cards from client=' + payload.client_id);
-                return;
-            }
-
-            var record = _.assign({}, _.cloneDeep(existingRecord), {
-                playerId: payload.client_id,
-                playerName: payload.client_name || existingRecord.playerName,
-                pendingTechCards: pendingTechCards,
-                updatedAt: payload.updated_at || _.now()
-            });
-
-            if (!saved.upsertCoopPlayerInventoryData(record)) {
-                console.log('[GW COOP] failed to upsert co-op player pending tech cards for client=' + payload.client_id);
-                return;
-            }
-
-            model.refreshGwCampaignInventoryModal();
-
-            if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
-                model.prepareCoopPlayerInventories();
-            }
-
-            GW.manifest.saveGame(saved).then(function() {
-                console.log('[GW COOP] saved co-op player pending tech cards for client=' + payload.client_id);
-            }, function(err) {
-                console.error('[GW COOP] failed to save co-op player pending tech cards', err);
+            return model.enqueueGwCampaignStateApply('pending_tech_cards', function() {
+                return model.applyCoopPlayerPendingTechCards(payload);
             });
         };
 
         handlers.gw_campaign_player_tech_card_deleted = function(payload) {
-            if (!payload) {
-                console.log('[GW COOP] ignoring invalid co-op player tech card deleted payload');
-                return;
-            }
-
-            var saved = model.game();
-            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot apply co-op player tech card deletion without game helper');
-                return;
-            }
-
-            model.applyCoopPlayerTechCardDeleted(payload).then(function() {
-                console.log('[GW COOP] applied co-op player tech card deletion for client=' + payload.client_id);
-            }, function(reason) {
-                console.error('[GW COOP] failed to apply co-op player tech card deletion: ' + reason);
+            return model.enqueueGwCampaignStateApply('tech_card_deleted', function() {
+                var applying = model.applyCoopPlayerTechCardDeleted(payload);
+                applying.then(function() {
+                    console.log('[GW COOP] applied co-op player tech card deletion for client=' + (payload && payload.client_id));
+                });
+                return applying;
             });
         };
 
         handlers.gw_campaign_player_tech_card_choice = function(payload) {
-            if (!payload) {
-                console.log('[GW COOP] ignoring invalid co-op player tech card choice payload');
-                return;
-            }
-
-            var saved = model.game();
-            if (!saved || !_.isFunction(saved.findCoopPlayerInventoryData) || !_.isFunction(saved.upsertCoopPlayerInventoryData)) {
-                console.log('[GW COOP] cannot apply co-op player tech card choice without game helper');
-                return;
-            }
-
-            model.applyCoopPlayerPendingTechCardChoice(payload).then(function() {
-                if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
-                    model.coopTechChoiceSubmitting(false);
-                }
-                console.log('[GW COOP] applied co-op player tech card choice for client=' + payload.client_id);
-            }, function(reason) {
-                if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
-                    model.coopTechChoiceSubmitting(false);
-                }
-                console.error('[GW COOP] failed to apply co-op player tech card choice: ' + reason);
+            return model.enqueueGwCampaignStateApply('tech_card_choice', function() {
+                var applying = model.applyCoopPlayerPendingTechCardChoice(payload);
+                applying.then(function() {
+                    console.log('[GW COOP] applied co-op player tech card choice for client=' + (payload && payload.client_id));
+                });
+                applying.always(function() {
+                    if (model.isCampaignViewer() && model.isLocalCoopPlayerInventoryPayload(payload)) {
+                        model.coopTechChoiceSubmitting(false);
+                    }
+                });
+                return applying;
             });
         };
 
@@ -5790,15 +5965,21 @@ requireGW([
         };
 
         handlers.gw_campaign_action = function(payload) {
-            model.applyCampaignAction(payload);
+            return model.enqueueGwCampaignStateApply('campaign_action:' + (payload && payload.type), function() {
+                return model.applyCampaignAction(payload);
+            });
         };
 
         handlers.gw_campaign_viewer_operator = function(payload) {
-            model.applyCampaignViewerOperator(payload || {});
+            return model.enqueueGwCampaignStateApply('viewer_operator:' + (payload && payload.type), function() {
+                return model.applyCampaignViewerOperator(payload || {});
+            });
         };
 
         handlers.gw_campaign_host_operator = function(payload) {
-            model.applyCampaignHostOperator(payload || {});
+            return model.enqueueGwCampaignStateApply('host_operator:' + (payload && payload.type), function() {
+                return model.applyCampaignHostOperator(payload || {});
+            });
         };
 
         // Handles incoming individual chat messages for the campaign chat. 
@@ -5859,6 +6040,8 @@ requireGW([
         ko.applyBindings(model);
 
         model.start();
+        model.gwCampaignPlayStarted = true;
+        model.signalGwCampaignUpdatesReady();
     });
 
 });
