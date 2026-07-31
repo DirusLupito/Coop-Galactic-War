@@ -50,7 +50,11 @@ requireGW([
                 return true;
             };
 
-            self.navToMainMenu = function () {
+            self.returnToMainMenu = function(primaryMessage, secondaryMessage, delay) {
+                if (self.navigating || self.cancelled) {
+                    return;
+                }
+
                 var transitPrimaryMessage = ko.observable().extend({ session: 'transit_primary_message' });
                 var transitSecondaryMessage = ko.observable().extend({ session: 'transit_secondary_message' });
                 var transitDestination = ko.observable().extend({ session: 'transit_destination' });
@@ -59,11 +63,23 @@ requireGW([
                 self.cancelled = true;
                 self.reconnectToGameInfo(undefined);
 
-                transitPrimaryMessage(loc('!LOC:Returning to Main Menu'));
-                transitSecondaryMessage('');
+                transitPrimaryMessage(primaryMessage);
+                transitSecondaryMessage(secondaryMessage || '');
                 transitDestination('coui://ui/main/game/start/start.html');
-                transitDelay(0);
+                transitDelay(delay || 0);
                 window.location.href = 'coui://ui/main/game/transit/transit.html';
+            };
+
+            self.navToMainMenu = function() {
+                self.returnToMainMenu(loc('!LOC:Returning to Main Menu'), '', 0);
+            };
+
+            self.failAndReturnToMainMenu = function() {
+                self.returnToMainMenu(
+                    loc('!LOC:Unable to receive co-op campaign data'),
+                    loc('!LOC:Returning to Main Menu'),
+                    5000
+                );
             };
 
             self.finishLoading = function(reason) {
@@ -161,6 +177,7 @@ requireGW([
                 }, function(success, response) {
                     if (!success) {
                         console.error('[GW COOP] campaign_loading initial snapshot request failed', response);
+                        self.failAndReturnToMainMenu();
                         return;
                     }
 
@@ -300,6 +317,11 @@ requireGW([
         handlers.gw_campaign_snapshot = function(payload) {
             console.log('[GW COOP] campaign_loading snapshot recv seq=' + (payload && payload.seq) + ' reason=' + (payload && payload.reason));
             model.saveSnapshotAndEnter(payload);
+        };
+
+        handlers.gw_campaign_snapshot_request_failed = function(payload) {
+            console.error('[GW COOP] campaign_loading host failed to publish initial snapshot', payload);
+            model.failAndReturnToMainMenu();
         };
 
         handlers.login_rejected = function () {

@@ -2762,9 +2762,21 @@ requireGW([
             };
         };
 
-        self.sendCampaignSnapshot = function(reason, force) {
-            if (!self.isCampaignHost() || !self.gwCampaignConnected() || self.gwCampaignApplyingSnapshot)
-                return;
+        self.sendCampaignSnapshot = function(reason, force, requestId) {
+            if (!self.isCampaignHost()) {
+                console.error('[GW COOP] cannot publish campaign snapshot because this client is not the host');
+                return false;
+            }
+
+            if (!self.gwCampaignConnected()) {
+                console.error('[GW COOP] cannot publish campaign snapshot while disconnected from the campaign');
+                return false;
+            }
+
+            if (self.gwCampaignApplyingSnapshot) {
+                console.error('[GW COOP] cannot publish campaign snapshot while applying another snapshot');
+                return false;
+            }
 
             var control = self.gwCampaignControl() || {};
             var connectedClients = _.isArray(control.connected_clients) ? control.connected_clients : [];
@@ -2773,8 +2785,9 @@ requireGW([
             });
 
             // Avoid emitting massive snapshots when host is alone.
-            if (!hasViewer && !force)
-                return;
+            if (!hasViewer && !force) {
+                return false;
+            }
 
             var now = _.now();
             var highPriorityReason = force
@@ -2782,8 +2795,14 @@ requireGW([
                 || reason === 'viewer_reconnect'
                 || reason === 'viewer_request'
                 || reason === 'host_role_assigned';
-            if (!highPriorityReason && (now - self.gwCampaignLastSnapshotSentAt) < self.gwCampaignSnapshotCooldownMs)
-                return;
+            if (!highPriorityReason && (now - self.gwCampaignLastSnapshotSentAt) < self.gwCampaignSnapshotCooldownMs) {
+                return false;
+            }
+
+            if (!_.isFunction(self.send_message)) {
+                console.error('[GW COOP] cannot publish campaign snapshot because send_message is unavailable');
+                return false;
+            }
 
             self.syncHostCoopInventoryRecord('send_snapshot_' + (reason || 'update'));
 
@@ -2793,11 +2812,13 @@ requireGW([
             self.send_message('gw_campaign_snapshot', {
                 seq: self.gwCampaignSnapshotSeq,
                 reason: reason || 'update',
+                request_id: requestId,
                 snapshot: self.getCampaignSnapshotPayload()
             });
+            return true;
         };
 
-        self.requestCampaignSnapshot = function(force, reason) {
+        self.requestCampaignSnapshot = function(force, reason, callback) {
             if (!self.gwCampaignActive()) {
                 return;
             }
@@ -2815,7 +2836,16 @@ requireGW([
             self.send_message('request_gw_campaign_snapshot', {
                 reason: reason || (force ? 'initial_sync' : 'viewer_request'),
                 request_kind: reason === 'action_fallback' ? 'action_fallback' : 'initial_sync'
+            }, function(success, response) {
+                if (!success) {
+                    console.error('[GW COOP] campaign snapshot request failed reason=' + reason, response);
+                }
+
+                if (_.isFunction(callback)) {
+                    callback(success, response);
+                }
             });
+            return true;
         };
 
         self.sendCampaignAction = function(type, payload) {
@@ -5966,7 +5996,26 @@ requireGW([
         };
 
         handlers.request_gw_campaign_snapshot_publish = function(payload) {
-            model.sendCampaignSnapshot(payload && payload.reason ? payload.reason : 'viewer_request', true);
+            var requestId = payload && payload.request_id;
+            var published = model.sendCampaignSnapshot(
+                payload && payload.reason ? payload.reason : 'viewer_request',
+                true,
+                requestId
+            );
+            if (!_.isFunction(model.send_message)) {
+                console.error('[GW COOP] cannot acknowledge campaign snapshot publication because send_message is unavailable');
+                return;
+            }
+
+            model.send_message('gw_campaign_snapshot_publish_result', {
+                request_id: requestId,
+                success: published,
+                reason: published ? 'published' : 'host_could_not_publish'
+            });
+        };
+
+        handlers.gw_campaign_snapshot_request_failed = function(payload) {
+            console.error('[GW COOP] campaign snapshot publication failed', payload);
         };
 
         handlers.gw_campaign_action = function(payload) {

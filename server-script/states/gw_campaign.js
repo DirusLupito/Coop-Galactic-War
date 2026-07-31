@@ -13,6 +13,10 @@ var VIEWER_RECONNECT_TIMEOUT = 30 * 1000; // ms
 var MAX_LOBBY_CHAT_HISTORY = 100;
 var CLIENT_MOD_MANIFEST_TIMEOUT_MS = 60 * 1000; // ms
 var CLIENT_MOD_SELF_DISCONNECT_TIMEOUT_MS = 60 * 1000; // ms
+// Host snapshot publication normally starts immediately. This watchdog exists for
+// the scene gap where the host has no request_gw_campaign_snapshot_publish handler.
+// It only releases the coalescing latch; it never retransmits a snapshot itself.
+var SNAPSHOT_PUBLISH_TIMEOUT_MS = 2 * 60 * 1000; // ms
 
 // We determine the max players limit for the campaign lobby in a two stage process;
 // first we see if the launch option (in steam, --local-server-max-players=N) is present and valid, and if so we use that; 
@@ -53,6 +57,9 @@ function GWCampaignModel(creator) {
     self.lastSnapshot = undefined;
     self.lastSnapshotSeq = 0;
     self.snapshotRequestInFlight = false;
+    self.snapshotRequestInFlightId = undefined;
+    self.snapshotRequestSerial = 0;
+    self.snapshotPublishTimeout = undefined;
     // These maps describe the lifetime of one viewer connection. Reconnect clears
     // them even when the new connection reuses the same player ID.
     //
@@ -1181,7 +1188,7 @@ function GWCampaignModel(creator) {
         };
     };
 
-    self.sendSnapshotToClient = function(client, reason) {
+    self.sendSnapshotToClient = function(client, reason, allowRedelivery) {
         if (!client || !client.connected || !self.lastSnapshot) {
             return false;
         }
@@ -1191,14 +1198,24 @@ function GWCampaignModel(creator) {
             return false;
         }
 
-        if (self.lastSnapshotSentSeqByClientId[client.id] === self.lastSnapshot.seq) {
+        var redelivering = self.lastSnapshotSentSeqByClientId[client.id] === self.lastSnapshot.seq;
+        if (redelivering && !allowRedelivery) {
             console.log('[GW COOP] suppressing duplicate campaign snapshot delivery client=' + client.id + ' seq=' + self.lastSnapshot.seq);
             return false;
         }
 
-        // This freshly published snapshot contains every host mutation that happened
-        // before it, so no older queued update may be replayed on top of it.
-        self.clearQueuedCampaignUpdates(client.id, false, 'snapshot_seq_' + self.lastSnapshot.seq);
+        if (redelivering) {
+            // A new scene on the same connection may need the same baseline again.
+            // Preserve its FIFO: those updates happened after this cached snapshot
+            // and are not represented by it.
+            console.log('[GW COOP] redelivering cached campaign snapshot client=' + client.id + ' seq=' + self.lastSnapshot.seq);
+        }
+        else {
+            // This freshly published snapshot contains every host mutation that happened
+            // before it, so no older queued update may be replayed on top of it.
+            self.clearQueuedCampaignUpdates(client.id, false, 'snapshot_seq_' + self.lastSnapshot.seq);
+        }
+
         client.message({
             message_type: 'gw_campaign_snapshot',
             payload: _.assign({}, self.lastSnapshot, {
@@ -1210,17 +1227,19 @@ function GWCampaignModel(creator) {
         return true;
     };
 
-    self.requestSnapshotFromHost = function(reason, requester) {
+    self.requestSnapshotFromHost = function(reason, requester, requestId) {
         var host = _.find(self.getConnectedClients(), function(client) {
             return client.id === self.creatorId;
         });
 
-        if (!host || !host.connected)
+        if (!host || !host.connected) {
             return false;
+        }
 
         host.message({
             message_type: 'request_gw_campaign_snapshot_publish',
             payload: {
+                request_id: requestId,
                 reason: reason || 'viewer_request',
                 requester_id: requester && requester.id,
                 requester_name: requester && requester.name
@@ -1232,6 +1251,42 @@ function GWCampaignModel(creator) {
 
     campaignOperators.installHelpers(self);
 
+    self.clearSnapshotRequestInFlight = function(reason, requestId) {
+        if (!_.isUndefined(requestId) && requestId !== self.snapshotRequestInFlightId) {
+            console.log('[GW COOP] ignoring stale snapshot publish result requestId=' + requestId + ' activeRequestId=' + self.snapshotRequestInFlightId);
+            return false;
+        }
+
+        var wasInFlight = self.snapshotRequestInFlight;
+        if (self.snapshotPublishTimeout) {
+            clearTimeout(self.snapshotPublishTimeout);
+            self.snapshotPublishTimeout = undefined;
+        }
+
+        self.snapshotRequestInFlight = false;
+        self.snapshotRequestInFlightId = undefined;
+        if (wasInFlight) {
+            console.log('[GW COOP] cleared snapshot publish request reason=' + reason);
+        }
+        return wasInFlight;
+    };
+
+    self.notifySnapshotPublishFailed = function(requestId, reason) {
+        _.forEach(self.getConnectedClients(), function(client) {
+            if (client.id === self.creatorId || !self.snapshotSubscribersByClientId[client.id]) {
+                return;
+            }
+
+            client.message({
+                message_type: 'gw_campaign_snapshot_request_failed',
+                payload: {
+                    request_id: requestId,
+                    reason: reason
+                }
+            });
+        });
+    };
+
     self.requestFreshSnapshotFromHost = function(reason, requester) {
         // One host publication can satisfy every viewer that subscribed while it was
         // in flight. No request kind is allowed to bypass this global coalescing.
@@ -1240,9 +1295,25 @@ function GWCampaignModel(creator) {
             return false;
         }
 
-        var requested = self.requestSnapshotFromHost(reason, requester);
-        self.snapshotRequestInFlight = requested;
-        return requested;
+        var requestId = ++self.snapshotRequestSerial;
+        self.snapshotRequestInFlight = true;
+        self.snapshotRequestInFlightId = requestId;
+        self.snapshotPublishTimeout = setTimeout(function() {
+            if (self.snapshotRequestInFlightId !== requestId) {
+                return;
+            }
+
+            console.error('[GW COOP] timed out waiting for host campaign snapshot publication requestId=' + requestId + ' reason=' + reason);
+            self.clearSnapshotRequestInFlight('host_publish_timeout', requestId);
+            self.notifySnapshotPublishFailed(requestId, 'host_publish_timeout');
+        }, SNAPSHOT_PUBLISH_TIMEOUT_MS);
+
+        if (!self.requestSnapshotFromHost(reason, requester, requestId)) {
+            self.clearSnapshotRequestInFlight('host_unavailable', requestId);
+            return false;
+        }
+
+        return true;
     };
 
     // Asks the host client to deal tech cards to a co-op player if they have fallen behind the host in terms of tech card deals.
@@ -1528,20 +1599,35 @@ function GWCampaignModel(creator) {
                 if (requestKind === 'initial_sync') {
                     initialSyncAlreadyRequested = !!self.snapshotInitialSyncRequestedByClientId[msg.client.id];
                     if (initialSyncAlreadyRequested) {
-                        console.log('[GW COOP] initial campaign snapshot request already handled for client=' + msg.client.id);
-                        return server.respond(msg).succeed({
-                            has_snapshot: !!self.lastSnapshot,
-                            fresh_snapshot_requested: false,
-                            initial_sync_already_requested: true,
-                            snapshot_request_in_flight: self.snapshotRequestInFlight,
-                            snapshot_seq: self.lastSnapshotSeq
-                        });
-                    }
+                        var lastSnapshotAlreadySent = self.lastSnapshot
+                            && self.lastSnapshotSentSeqByClientId[msg.client.id] === self.lastSnapshot.seq;
+                        if (lastSnapshotAlreadySent) {
+                            // This is not an initial-load cache fallback. The matching
+                            // sent sequence proves this exact fresh snapshot already
+                            // reached this connection, whose new scene needs it again.
+                            // Re-arm the handler-installation gate before redelivery so
+                            // later campaign updates queue for that new scene.
+                            self.campaignUpdatesReadyByClientId[msg.client.id] = false;
+                            var snapshotRedelivered = self.sendSnapshotToClient(msg.client, 'repeat_initial_sync', true);
+                            console.log('[GW COOP] repeated initial campaign sync client=' + msg.client.id + ' snapshotRedelivered=' + snapshotRedelivered);
+                            return server.respond(msg).succeed({
+                                has_snapshot: true,
+                                fresh_snapshot_requested: false,
+                                initial_sync_already_requested: true,
+                                snapshot_redelivered: snapshotRedelivered,
+                                snapshot_request_in_flight: self.snapshotRequestInFlight,
+                                snapshot_seq: self.lastSnapshotSeq
+                            });
+                        }
 
-                    // Register the subscriber before asking the host. The host may
-                    // publish immediately in response to the request.
-                    self.snapshotInitialSyncRequestedByClientId[msg.client.id] = true;
-                    self.snapshotSubscribersByClientId[msg.client.id] = true;
+                        console.log('[GW COOP] repeated initial campaign sync has no previously delivered cached snapshot client=' + msg.client.id);
+                    }
+                    else {
+                        // Register the subscriber before asking the host. The host may
+                        // publish immediately in response to the request.
+                        self.snapshotInitialSyncRequestedByClientId[msg.client.id] = true;
+                        self.snapshotSubscribersByClientId[msg.client.id] = true;
+                    }
                 }
                 else if (!self.snapshotSubscribersByClientId[msg.client.id]) {
                     console.error('[GW COOP] action fallback requested before initial synchronization client=' + msg.client.id);
@@ -1587,6 +1673,39 @@ function GWCampaignModel(creator) {
                 }
 
                 server.respond(msg).succeed({ flushed_count: flushedCount, already_ready: false });
+            },
+            gw_campaign_snapshot_publish_result: function(msg) {
+                if (msg.client.id !== self.creatorId) {
+                    return server.respond(msg).fail('Only host can acknowledge campaign snapshot publication');
+                }
+
+                var payload = msg.payload || {};
+                var requestId = payload.request_id;
+                if (!_.isFinite(requestId)) {
+                    return server.respond(msg).fail('Campaign snapshot publication result requires a numeric request id');
+                }
+
+                if (!_.isBoolean(payload.success)) {
+                    return server.respond(msg).fail('Campaign snapshot publication result requires a boolean success value');
+                }
+
+                if (requestId !== self.snapshotRequestInFlightId) {
+                    console.log('[GW COOP] stale campaign snapshot publication result requestId=' + requestId + ' activeRequestId=' + self.snapshotRequestInFlightId);
+                    return server.respond(msg).succeed({ stale: true });
+                }
+
+                if (payload.success) {
+                    self.clearSnapshotRequestInFlight('host_ack', requestId);
+                    console.log('[GW COOP] host acknowledged campaign snapshot publication requestId=' + requestId);
+                }
+                else {
+                    var failureReason = _.isString(payload.reason) ? payload.reason : 'host_nack';
+                    console.error('[GW COOP] host rejected campaign snapshot publication requestId=' + requestId + ' reason=' + failureReason);
+                    self.clearSnapshotRequestInFlight('host_nack', requestId);
+                    self.notifySnapshotPublishFailed(requestId, failureReason);
+                }
+
+                server.respond(msg).succeed({ stale: false });
             },
             set_loading: function(msg) {
                 var payload = msg.payload || {};
@@ -1989,7 +2108,15 @@ function GWCampaignModel(creator) {
                     host_name: msg.client.name,
                     snapshot: msg.payload && msg.payload.snapshot ? msg.payload.snapshot : undefined
                 };
-                self.snapshotRequestInFlight = false;
+                var publishedRequestId = msg.payload && msg.payload.request_id;
+                if (_.isFinite(publishedRequestId)) {
+                    self.clearSnapshotRequestInFlight('snapshot_received', publishedRequestId);
+                }
+                else {
+                    // Host-initiated snapshots have no correlated request id, but
+                    // still satisfy any currently coalesced request.
+                    self.clearSnapshotRequestInFlight('unsolicited_snapshot_received');
+                }
 
                 self.updateControl();
                 self.requestAllHostCoopPlayerTechCatchups('snapshot_accepted');
@@ -2212,6 +2339,7 @@ function GWCampaignModel(creator) {
             clearTimeout(timeout);
         });
         self.viewerReconnectTimers = {};
+        self.clearSnapshotRequestInFlight('state_exit');
         self.clearAllPendingManifestTimeouts();
 
         _.forEachRight(self.disconnectCleanup, function(removeDisconnectHook) {
