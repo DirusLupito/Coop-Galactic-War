@@ -66,6 +66,7 @@ define(function() {
         [255, 105, 180]
     ];
     var customGameLobbyColorTable;
+    var EMERGENCY_GW_PLAYER_COLOR = [[210, 50, 44], [51, 151, 197]];
 
     var colorsEqual = function(a, b) {
         return !!(a && b && a[0] === b[0] && a[1] === b[1] && a[2] === b[2]);
@@ -114,6 +115,8 @@ define(function() {
         return customGameLobbyColorTable;
     };
 
+    // Squared RGB distance. We do not need the actual Euclidean distance because
+    // this is only used for sorting by similarity, and sqrt would preserve order.
     var colorDistanceSquared = function(a, b) {
         var red = a[0] - b[0];
         var green = a[1] - b[1];
@@ -122,11 +125,19 @@ define(function() {
         return (red * red) + (green * green) + (blue * blue);
     };
 
+    var colorIsAlreadyInCandidates = function(color, candidates) {
+        return _.some(candidates, function(candidate) {
+            return colorsEqual(color, candidate.color);
+        });
+    };
+
+    // Sort custom-lobby primary colors from most similar to least similar to the
+    // host's primary color. Preferred faction colors are used before this list.
     var getCustomGameLobbyPrimaryColorsBySimilarity = function(hostPrimaryColor) {
         var candidates = [];
 
         _.forEach(getCustomGameLobbyColorTable(), function(color) {
-            if (!colorIsAlreadyInList(color, _.map(candidates, 'color'))) {
+            if (!colorIsAlreadyInCandidates(color, candidates)) {
                 candidates.push({
                     color: _.cloneDeep(color),
                     distance: colorDistanceSquared(color, hostPrimaryColor)
@@ -143,54 +154,127 @@ define(function() {
         });
     };
 
-    var getValidatedFactionPrimaryColors = function(faction, factionColor) {
-        if (!faction || !isValidColorPair(faction.color)) {
-            console.log('[GW COOP] Cannot resolve player colors without a valid faction definition color.');
-            return undefined;
+    var getHostColorPair = function(faction, factionColor) {
+        if (isValidColorPair(factionColor)) {
+            return _.cloneDeep(factionColor);
         }
 
-        if (!_.isEqual(faction.color, factionColor)) {
-            console.log('[GW COOP] Saved player color does not match the active faction definition.');
-            return undefined;
+        console.log('[GW COOP] Saved player color is invalid; using faction color data instead.');
+
+        if (faction && isValidColorPair(faction.color)) {
+            return _.cloneDeep(faction.color);
         }
 
+        if (faction
+                && _.isArray(faction.coopPlayerColors)
+                && isValidColor(faction.coopPlayerColors[0])) {
+            console.log('[GW COOP] Faction color pair is invalid; using the co-op palette host primary with the emergency secondary.');
+            return [
+                _.cloneDeep(faction.coopPlayerColors[0]),
+                _.cloneDeep(EMERGENCY_GW_PLAYER_COLOR[1])
+            ];
+        }
+
+        console.log('[GW COOP] No valid saved or faction player color exists; using the emergency player color.');
+        return _.cloneDeep(EMERGENCY_GW_PLAYER_COLOR);
+    };
+
+    var getPreferredFactionPrimaryColors = function(faction, hostColorPair) {
         // coopPlayerColors is optional so older third-party factions continue to use
         // the deterministic custom-lobby fallback without changing their definition.
-        if (!_.has(faction, 'coopPlayerColors')) {
-            return [_.cloneDeep(factionColor[0])];
+        if (!faction || !_.has(faction, 'coopPlayerColors')) {
+            return [];
         }
 
-        if (!_.isArray(faction.coopPlayerColors) || !faction.coopPlayerColors.length) {
-            console.log('[GW COOP] Faction co-op player colors must be a non-empty array.');
-            return undefined;
+        if (!_.isArray(faction.coopPlayerColors)) {
+            console.log('[GW COOP] Faction co-op player colors must be an array; using custom-lobby fallback colors.');
+            return [];
+        }
+
+        if (!faction.coopPlayerColors.length) {
+            console.log('[GW COOP] Faction co-op player colors are empty; using custom-lobby fallback colors.');
+            return [];
+        }
+
+        var paletteHostPrimary = faction.coopPlayerColors[0];
+        if (!isValidColor(paletteHostPrimary)) {
+            console.log('[GW COOP] Faction co-op player host color at index 0 is invalid; the actual host color will be used.');
+        } else if (isValidColorPair(faction.color) && !colorsEqual(paletteHostPrimary, faction.color[0])) {
+            console.log('[GW COOP] Faction co-op player host color does not match the faction definition primary; the actual host color will be used.');
         }
 
         var validatedColors = [];
-        var valid = _.every(faction.coopPlayerColors, function(color, index) {
+        _.forEach(faction.coopPlayerColors.slice(1), function(color, index) {
+            var paletteIndex = index + 1;
             if (!isValidColor(color)) {
-                console.log('[GW COOP] Faction co-op player color at index ' + index + ' is invalid.');
-                return false;
+                console.log('[GW COOP] Faction co-op player color at index ' + paletteIndex + ' is invalid; skipping it.');
+                return;
             }
 
-            if (colorIsAlreadyInList(color, validatedColors)) {
-                console.log('[GW COOP] Faction co-op player color at index ' + index + ' duplicates an earlier color.');
-                return false;
+            // Faction definitions store raw RGB values. Apply the same brightness
+            // mutation as custom-lobby colors before assigning or deduplicating them.
+            var adjustedColor = adjustCustomGameLobbyColor(color);
+            if (colorsEqual(adjustedColor, hostColorPair[0])
+                    || colorIsAlreadyInList(adjustedColor, validatedColors)) {
+                console.log('[GW COOP] Faction co-op player color at index ' + paletteIndex + ' duplicates an assigned primary after adjustment; skipping it.');
+                return;
             }
 
-            validatedColors.push(_.cloneDeep(color));
-            return true;
+            validatedColors.push(adjustedColor);
         });
 
-        if (!valid) {
-            return undefined;
-        }
-
-        if (!colorsEqual(validatedColors[0], factionColor[0])) {
-            console.log('[GW COOP] First faction co-op player color must match the faction primary color.');
-            return undefined;
-        }
-
         return validatedColors;
+    };
+
+    var buildPlayerColorPairs = function(playerCount, hostColorPair, preferredPrimaryColors) {
+        var usedPrimaryColors = [_.cloneDeep(hostColorPair[0])];
+        var colorPairs = [_.cloneDeep(hostColorPair)];
+
+        _.forEach(preferredPrimaryColors, function(primaryColor) {
+            if (colorPairs.length < playerCount) {
+                if (colorIsAlreadyInList(primaryColor, usedPrimaryColors)) {
+                    return;
+                }
+
+                usedPrimaryColors.push(_.cloneDeep(primaryColor));
+                colorPairs.push([
+                    _.cloneDeep(primaryColor),
+                    _.cloneDeep(hostColorPair[1])
+                ]);
+            }
+        });
+
+        var fallbackPrimaryColors = getCustomGameLobbyPrimaryColorsBySimilarity(hostColorPair[0]);
+        _.forEach(fallbackPrimaryColors, function(primaryColor) {
+            if (colorPairs.length < playerCount && !colorIsAlreadyInList(primaryColor, usedPrimaryColors)) {
+                usedPrimaryColors.push(_.cloneDeep(primaryColor));
+                colorPairs.push([
+                    _.cloneDeep(primaryColor),
+                    _.cloneDeep(hostColorPair[1])
+                ]);
+            }
+        });
+
+        if (colorPairs.length < playerCount) {
+            console.log('[GW COOP] Not enough distinct player colors for ' + playerCount + ' player armies; reusing valid colors.');
+            var reusablePrimaryColors = _.map(colorPairs.slice(1), function(colorPair) {
+                return colorPair[0];
+            });
+            if (!reusablePrimaryColors.length) {
+                reusablePrimaryColors.push(hostColorPair[0]);
+            }
+
+            var reuseIndex = 0;
+            while (colorPairs.length < playerCount) {
+                colorPairs.push([
+                    _.cloneDeep(reusablePrimaryColors[reuseIndex % reusablePrimaryColors.length]),
+                    _.cloneDeep(hostColorPair[1])
+                ]);
+                reuseIndex++;
+            }
+        }
+
+        return colorPairs;
     };
 
     var resolvePlayerColorPairs = function(playerCount, faction, factionColor) {
@@ -199,46 +283,62 @@ define(function() {
             return [];
         }
 
-        if (!isValidColorPair(factionColor)) {
-            console.log('[GW COOP] Cannot resolve player colors without a valid saved faction color pair.');
+        var hostColorPair = getHostColorPair(faction, factionColor);
+        var preferredPrimaryColors = getPreferredFactionPrimaryColors(faction, hostColorPair);
+        return buildPlayerColorPairs(playerCount, hostColorPair, preferredPrimaryColors);
+    };
+
+    var normalizePlayerColorPairs = function(playerCount, playerColors, hostColor) {
+        if (!_.isNumber(playerCount) || !_.isFinite(playerCount) || Math.floor(playerCount) !== playerCount || playerCount < 1) {
+            console.log('[GW COOP] Cannot normalize player colors for invalid player count ' + playerCount + '.');
             return [];
         }
 
-        var factionPrimaryColors = getValidatedFactionPrimaryColors(faction, factionColor);
-        if (!factionPrimaryColors) {
-            return [];
+        var hostColorPair;
+        if (isValidColorPair(hostColor)) {
+            hostColorPair = _.cloneDeep(hostColor);
+        } else if (_.isArray(playerColors) && isValidColorPair(playerColors[0])) {
+            console.log('[GW COOP] Generated host color is invalid; using the resolved host color instead.');
+            hostColorPair = _.cloneDeep(playerColors[0]);
+        } else {
+            console.log('[GW COOP] Generated and resolved host colors are invalid; using the emergency player color.');
+            hostColorPair = _.cloneDeep(EMERGENCY_GW_PLAYER_COLOR);
         }
 
-        var usedPrimaryColors = _.cloneDeep(factionPrimaryColors);
-        var colorPairs = [_.cloneDeep(factionColor)];
-
-        _.forEach(factionPrimaryColors.slice(1), function(primaryColor) {
-            if (colorPairs.length < playerCount) {
-                colorPairs.push([
-                    _.cloneDeep(primaryColor),
-                    _.cloneDeep(factionColor[1])
-                ]);
-            }
-        });
-
-        _.forEach(getCustomGameLobbyPrimaryColorsBySimilarity(factionColor[0]), function(primaryColor) {
-            if (colorPairs.length < playerCount && !colorIsAlreadyInList(primaryColor, usedPrimaryColors)) {
-                usedPrimaryColors.push(_.cloneDeep(primaryColor));
-                colorPairs.push([
-                    _.cloneDeep(primaryColor),
-                    _.cloneDeep(factionColor[1])
-                ]);
-            }
-        });
-
-        if (colorPairs.length < playerCount) {
-            console.log('[GW COOP] Not enough distinct player colors for ' + playerCount + ' player armies.');
+        if (!_.isArray(playerColors)) {
+            console.log('[GW COOP] Resolved player colors are not an array; rebuilding them from fallback colors.');
+            playerColors = [];
+        } else if (playerColors.length !== playerCount) {
+            console.log('[GW COOP] Expected ' + playerCount + ' resolved player color pairs, found ' + playerColors.length + '; rebuilding missing colors from fallback colors.');
         }
 
-        return colorPairs;
+        var preferredPrimaryColors = [];
+        _.forEach(playerColors.slice(1), function(colorPair, index) {
+            var colorIndex = index + 1;
+            if (!isValidColorPair(colorPair)) {
+                console.log('[GW COOP] Resolved player color pair at index ' + colorIndex + ' is invalid; replacing it with a fallback color.');
+                return;
+            }
+
+            if (!colorsEqual(colorPair[1], hostColorPair[1])) {
+                console.log('[GW COOP] Resolved player color pair at index ' + colorIndex + ' has a different secondary; using the host secondary.');
+            }
+
+            var adjustedPrimaryColor = adjustCustomGameLobbyColor(colorPair[0]);
+            if (colorsEqual(adjustedPrimaryColor, hostColorPair[0])
+                    || colorIsAlreadyInList(adjustedPrimaryColor, preferredPrimaryColors)) {
+                console.log('[GW COOP] Resolved player color pair at index ' + colorIndex + ' duplicates an assigned primary after adjustment; replacing it with a fallback color.');
+                return;
+            }
+
+            preferredPrimaryColors.push(adjustedPrimaryColor);
+        });
+
+        return buildPlayerColorPairs(playerCount, hostColorPair, preferredPrimaryColors);
     };
 
     return {
-        resolvePlayerColorPairs: resolvePlayerColorPairs
+        resolvePlayerColorPairs: resolvePlayerColorPairs,
+        normalizePlayerColorPairs: normalizePlayerColorPairs
     };
 });

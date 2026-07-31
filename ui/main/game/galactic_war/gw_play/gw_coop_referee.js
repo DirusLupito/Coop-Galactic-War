@@ -1,64 +1,4 @@
-define(function() {
-
-    var colorsEqual = function(a, b) {
-        return !!(a && b && a[0] === b[0] && a[1] === b[1] && a[2] === b[2]);
-    };
-
-    var isValidColor = function(color) {
-        return _.isArray(color) && color.length === 3 && _.every(color, function(channel) {
-            return _.isNumber(channel)
-                && _.isFinite(channel)
-                && Math.floor(channel) === channel
-                && channel >= 0
-                && channel <= 255;
-        });
-    };
-
-    var isValidColorPair = function(colorPair) {
-        return _.isArray(colorPair)
-            && colorPair.length === 2
-            && isValidColor(colorPair[0])
-            && isValidColor(colorPair[1]);
-    };
-
-    var colorIsAlreadyInList = function(color, colors) {
-        return _.some(colors, function(existingColor) {
-            return colorsEqual(color, existingColor);
-        });
-    };
-
-    var validateResolvedPlayerColors = function(colorPairs, playerCount, factionColor) {
-        if (!_.isArray(colorPairs) || colorPairs.length !== playerCount) {
-            console.log('[GW COOP] Expected ' + playerCount + ' resolved player color pairs, found ' + (_.isArray(colorPairs) ? colorPairs.length : 0) + '.');
-            return false;
-        }
-
-        var primaryColors = [];
-        return _.every(colorPairs, function(colorPair, index) {
-            if (!isValidColorPair(colorPair)) {
-                console.log('[GW COOP] Resolved player color pair at index ' + index + ' is invalid.');
-                return false;
-            }
-
-            if (index === 0 && !_.isEqual(colorPair, factionColor)) {
-                console.log('[GW COOP] Resolved host color does not match the generated faction color.');
-                return false;
-            }
-
-            if (!colorsEqual(colorPair[1], factionColor[1])) {
-                console.log('[GW COOP] Resolved player color pair at index ' + index + ' does not preserve the faction secondary color.');
-                return false;
-            }
-
-            if (colorIsAlreadyInList(colorPair[0], primaryColors)) {
-                console.log('[GW COOP] Resolved player color pair at index ' + index + ' duplicates an earlier primary color.');
-                return false;
-            }
-
-            primaryColors.push(colorPair[0]);
-            return true;
-        });
-    };
+define(['shared/gw_coop_player_colors'], function(GWCoopPlayerColors) {
 
     var armyHasAI = function(army) {
         return !!(army && _.isArray(army.slots) && _.any(army.slots, 'ai'));
@@ -133,7 +73,9 @@ define(function() {
             return false;
         }
 
-        if (!validateResolvedPlayerColors(playerColors, playerCount, humanTemplate.color)) {
+        var normalizedPlayerColors = GWCoopPlayerColors.normalizePlayerColorPairs(playerCount, playerColors, humanTemplate.color);
+        if (normalizedPlayerColors.length !== playerCount) {
+            console.log('[GW COOP] Could not normalize a color for every unshared human army.');
             return false;
         }
 
@@ -147,8 +89,9 @@ define(function() {
 
             return {
                 slots: [slot],
-                // I assume here that humanTemplate.color is both a valid color and the main faction color.
-                color: _.cloneDeep(playerColors[index]),
+                // The shared color module preserves the generated host color when valid
+                // and repairs every additional pair before army construction.
+                color: _.cloneDeep(normalizedPlayerColors[index]),
                 econ_rate: _.has(humanTemplate, 'econ_rate') ? humanTemplate.econ_rate : 1,
                 spec_tag: humanTemplate.spec_tag,
                 alliance_group: humanTemplate.alliance_group
@@ -206,8 +149,9 @@ define(function() {
     //             length is the number of human slots/armies this referee prepares.
     //             Each client object within the array has an id, name, role ('host' or 'viewer')
     //             and loading status (loading = true or loading = false).
-    //       * playerColors: for unshared control, the already-resolved color pairs in the
-    //             same host-first order that gw_lobby uses to assign clients to armies.
+    //       * playerColors: for unshared control, the preferred resolved color pairs in the
+    //             same host-first order that gw_lobby uses to assign clients to armies. The
+    //             shared color module repairs malformed or missing pairs before assignment.
     var apply = function(referee, options) {
         var done = $.Deferred();
         var config = referee && _.isFunction(referee.config) && referee.config();
