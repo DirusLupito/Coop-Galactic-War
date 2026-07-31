@@ -46,11 +46,6 @@
                                 <loc>Create Game</loc>
                             </div>
                         </div>
-                        <div class="btn_std direct-connect-open" data-bind="click: openDirectConnectModal, click_sound: 'default', rollover_sound: 'default'">
-                            <div class="btn_label">
-                                <loc>Direct Connect</loc>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="form-group" data-bind="visible: hasUberNetRegions">
@@ -220,6 +215,12 @@
                         <label for="locked-game"><loc>LOCKED</loc></label>
                         <select class="selectpicker form-control" id="locked-game" name="locked-game" data-bind="options: lockedGameFilterOptions, optionsText: 'text', optionsValue: 'value', selectPicker: lockedFilter">
                         </select>
+                    </div>
+
+                    <div class="direct-connect-footer">
+                        <button class="direct-connect-open" data-bind="click: openDirectConnectModal, click_sound: 'default', rollover_sound: 'default'">
+                            <loc>Direct Connect</loc>
+                        </button>
                     </div>
                 </div>
             </div>

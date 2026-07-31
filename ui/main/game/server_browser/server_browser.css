@@ -442,9 +442,23 @@ select {
     margin: -6px 0 10px 0;
 }
 
+.col_1 .section_controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.direct-connect-footer {
+    margin-top: auto;
+    padding: 16px 0;
+}
+
 .direct-connect-open {
-    width: 100%;
-    margin-top: 8px;
+    display: block;
+    width: auto;
+    padding: 4px 8px;
+    margin: 0 auto;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .direct-connect-modal {
