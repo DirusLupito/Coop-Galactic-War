@@ -1250,6 +1250,15 @@ requireGW([
          * adjustments, then fills missing or invalid preferences with the standard
          * custom-lobby fallback. Cosmetic palette errors are logged but do not prevent
          * the computed from returning a color for each connected client.
+         * 
+         * Color pairs are tied to armies if we're being honest, but this is only used
+         * by the co-op referee and when we check if we are unshared first. Thus, as 
+         * long as we are unshared, there exists a bijection between armies and players
+         * (proof left to the reader). As such, we know there will be a bijection between
+         * armies and color pairs even though we are just generating it for each
+         * player rather than going to the effort of retrieving the armies.
+         * Should the underlying game change such that these bijections no longer hold, 
+         * this computed will need to be updated.
          *
          * Each returned record has the following shape:
          *     {
