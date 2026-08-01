@@ -194,6 +194,10 @@ requireGW([
 
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(payload.snapshot.game).always(function() {
+                    // The snapshot's `saved` flag refers to the publishing client's
+                    // IndexedDB. Force this client to write the embedded systems to
+                    // its own system store before it saves the hydrated game.
+                    hydratedGame.galaxy().saved(false);
                     GW.manifest.saveGame(hydratedGame).then(function() {
                         self.activeGameId(hydratedGame.id);
                         try {

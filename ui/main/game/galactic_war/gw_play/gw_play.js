@@ -3132,6 +3132,10 @@ requireGW([
 
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(snapshot.game).then(function() {
+                    // A remote `saved` flag only proves the publisher has written
+                    // these systems to its IndexedDB. This full rehydrate must write
+                    // the embedded systems into the viewer's local system store.
+                    hydratedGame.galaxy().saved(false);
                     GW.manifest.saveGame(hydratedGame).then(function() {
                         self.gwCampaignReceivedSnapshot = true;
                         self.gwCampaignInitialSyncRequested = false;

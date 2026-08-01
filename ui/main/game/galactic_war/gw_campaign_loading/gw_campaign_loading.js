@@ -264,6 +264,11 @@ requireGW([
                 var hydratedGame = new GW.Game();
                 hydratedGame.load(payload.snapshot.game).always(function() {
                     self.prepareLocalCoopPlayerInventoryData(hydratedGame).then(function() {
+                        // `saved` only says the publisher already has this galaxy's
+                        // systems in its own IndexedDB system store. This client does
+                        // not, so force manifest.saveGame to persist the embedded
+                        // snapshot systems locally before entering the campaign.
+                        hydratedGame.galaxy().saved(false);
                         GW.manifest.saveGame(hydratedGame).then(function() {
                             self.activeGameId(hydratedGame.id);
                             self.markAuthoritativeGameReady(hydratedGame.id);
