@@ -3331,6 +3331,12 @@ requireGW([
                 });
             }
 
+            // Used only for the cheat menu available with the --devmode launch parameters
+            if (action.type === 'fight_begin') {
+                game.turnState(GW.Game.turnStates.fight);
+                return finish();
+            }
+
             self.gwCampaignReplayingAction = false;
             result.reject('Unknown or invalid campaign action type=' + action.type);
             return result.promise();
@@ -4745,6 +4751,9 @@ requireGW([
             if (self.isCampaignViewer())
                 return;
 
+            if (self.gwCampaignReplayingAction) 
+                return;
+
             if (self.gwCampaignHasEmptySlots()) {
                 console.log('[GW COOP] fight blocked while campaign has empty slots');
                 return;
@@ -4762,6 +4771,7 @@ requireGW([
                 return;
             }
             var save = GW.manifest.saveGame(game);
+            self.sendCampaignAction('fight_begin')
 
             if (cheat)
                 return;
