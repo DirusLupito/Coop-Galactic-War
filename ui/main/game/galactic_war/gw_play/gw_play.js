@@ -3331,6 +3331,12 @@ requireGW([
                 });
             }
 
+            // Used only for the cheat menu available with the --devmode launch parameters
+            if (action.type === 'fight_begin') {
+                game.turnState(GW.Game.turnStates.fight);
+                return finish();
+            }
+
             self.gwCampaignReplayingAction = false;
             result.reject('Unknown or invalid campaign action type=' + action.type);
             return result.promise();
@@ -4580,6 +4586,7 @@ requireGW([
             api.audio.playSound('/VO/Computer/gw/board_tech_dismissed');
         };
 
+
         self.win = function(selected_card_index) {
             if (self.canUseCoopTechChoice() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
                 var tech_card = self.currentSystemCardList()[selected_card_index];
@@ -4745,6 +4752,9 @@ requireGW([
             if (self.isCampaignViewer())
                 return;
 
+            if (self.gwCampaignReplayingAction) 
+                return;
+
             if (self.gwCampaignHasEmptySlots()) {
                 console.log('[GW COOP] fight blocked while campaign has empty slots');
                 return;
@@ -4761,7 +4771,10 @@ requireGW([
             if (self.launchingFight() || (!self.fighting() && !game.fight())) {
                 return;
             }
+            
             var save = GW.manifest.saveGame(game);
+ 
+            self.sendCampaignAction('fight_begin')
 
             if (cheat)
                 return;
