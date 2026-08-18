@@ -4586,7 +4586,6 @@ requireGW([
             api.audio.playSound('/VO/Computer/gw/board_tech_dismissed');
         };
 
-
         self.win = function(selected_card_index) {
             if (self.canUseCoopTechChoice() && self.isCampaignViewer() && !self.gwCampaignReplayingAction) {
                 var tech_card = self.currentSystemCardList()[selected_card_index];
@@ -4771,7 +4770,6 @@ requireGW([
             if (self.launchingFight() || (!self.fighting() && !game.fight())) {
                 return;
             }
-            
             var save = GW.manifest.saveGame(game);
  
             self.sendCampaignAction('fight_begin')
