@@ -4771,7 +4771,6 @@ requireGW([
                 return;
             }
             var save = GW.manifest.saveGame(game);
- 
             self.sendCampaignAction('fight_begin')
 
             if (cheat)
